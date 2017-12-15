@@ -1,0 +1,1 @@
+Ten folder zawierający lokalizację zawartość usuwana z głównej dokumentacji, zwykle materiału, która ma zastosowanie do wcześniejszych wersji, które prawdopodobnie zostanie przeniesiony do lokalizacji stałe archiwum.

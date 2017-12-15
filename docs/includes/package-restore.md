@@ -1,0 +1,3 @@
+- **Interfejs użytkownika Menedżera pakietów** (Visual Studio): kliknij prawym przyciskiem myszy rozwiązanie w Eksploratorze rozwiązań i wybierz **przywracania pakietów NuGet**. Jeśli co najmniej jeden indywidualne pakiety są nadal nie jest poprawnie zainstalowany (co oznacza, że Eksplorator rozwiązań zawiera ikony błędu), a następnie użyj interfejsu użytkownika Menedżera pakietu do odinstalowania odpowiednich pakietów i zainstaluj je ponownie. Zobacz [ponowne zainstalowanie i aktualizowanie pakietów](../Consume-Packages/Reinstalling-and-Updating-Packages.md)
+
+- **Wiersz polecenia**: Użyj [Przywracanie nuget](../tools/cli-ref-restore.md) polecenia. Po prostu systemem `nuget restore` w projekcie folderu podejmie próbę przywrócenia zależności projektu.
