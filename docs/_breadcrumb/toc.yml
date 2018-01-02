@@ -1,0 +1,41 @@
+- name: Docs
+  tocHref: /
+  topicHref: /
+  items:
+    - name: NuGet
+      tocHref: /nuget/
+      topicHref: /nuget
+      items:
+        - name: Szybki start
+          tocHref: /nuget/quickstart/
+          topicHref: /nuget/quickstart/create-and-publish-a-package
+        - name: Przewodniki
+          tocHref: /nuget/guides/
+          topicHref: /nuget/guides/install-nuget
+        - name: Tworzenie pakietów
+          tocHref: /nuget/create-packages/
+          topicHref: /nuget/create-packages/overview-and-workflow
+        - name: Korzystanie z pakietów
+          tocHref: /nuget/consume-packages/
+          topicHref: /nuget/consume-packages/overview-and-workflow
+        - name: Hostowanie pakietów
+          tocHref: /nuget/hosting-packages/
+          topicHref: /nuget/hosting-packages/overview
+        - name: Narzędzia
+          tocHref: /nuget/tools/
+          topicHref: /nuget/tools/nuget-exe-cli-reference
+        - name: Tematy pomocy
+          tocHref: /nuget/reference/
+          topicHref: /nuget/schema/nuspec
+        - name: interfejs API
+          tocHref: /nuget/api/
+          topicHref: /nuget/api/overview
+        - name: Rozszerzalność programu Visual Studio
+          tocHref: /nuget/visual-studio-extensibility/
+          topicHref: /nuget/visual-studio-extensibility/nuget-api-in-visual-studio
+        - name: Zasady
+          tocHref: /nuget/policies/
+          topicHref: /nuget/policies/nuget-faq
+        - name: Uwagi do wersji
+          tocHref: /nuget/release-notes/
+          topicHref: /nuget/release-notes/index
