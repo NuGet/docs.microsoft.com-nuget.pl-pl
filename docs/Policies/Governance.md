@@ -13,11 +13,11 @@ keywords: "Zarządzanie NuGet, dictator dobroczynne NuGet, obowiązki zatwierdza
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: db2ed774b35d5698a88f9afba43fd30692001f6a
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 0437b7d41f965da6a7ad44a7d0675916ed655fe1
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-governance"></a>Zarządzanie NuGet
 

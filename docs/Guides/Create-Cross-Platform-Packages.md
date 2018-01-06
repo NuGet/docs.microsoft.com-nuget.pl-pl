@@ -13,11 +13,11 @@ keywords: "Utwórz pakiet, pakietów dla platformy Xamarin, pakietów i platform
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 8ee825a6299d7de375fd2f242cf456da13b777d9
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: f372856232f151efcf972881cffbe7d4bb7ed6ee
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-cross-platform-packages"></a>Tworzenie pakietów i platform
 
@@ -43,7 +43,7 @@ W tym przewodniku utworzysz wieloplatformowych pakietu NuGet, który może być 
 
 ## <a name="create-the-project-structure-and-abstraction-code"></a>Tworzenie projektu kodu struktury i abstrakcji
 
-1. Pobierz i uruchom [wtyczki dla rozszerzenia szablonów Xamarin](https://visualstudiogallery.msdn.microsoft.com/afead421-3fbf-489a-a4e8-4a244ecdbb1e) dla programu Visual Studio. Te szablony ułatwi późniejszą tworzenia struktury projektu na potrzeby tego przewodnika.
+1. Pobierz i uruchom [wtyczki dla rozszerzenia szablonów Xamarin](https://marketplace.visualstudio.com/items?itemName=vs-publisher-473885.PluginForXamarinTemplates) dla programu Visual Studio. Te szablony ułatwi późniejszą tworzenia struktury projektu na potrzeby tego przewodnika.
 1. W programie Visual Studio **Plik > Nowy > Projekt**, wyszukiwania `Plugin`, wybierz pozycję **dodatek plug-in dla platformy Xamarin** szablonu, Zmień nazwę na LoggingLibrary, a następnie kliknij przycisk OK.
 
     ![Nowy projekt pusta aplikacja (przenośna platformy Xamarin.Forms) w programie Visual Studio](media/CrossPlatform-NewProject.png)

@@ -13,11 +13,11 @@ keywords: "Wersje pakietu NuGet pytań i odpowiedzi, pytania i odpowiedzi, typow
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 105fa6e1cad3d163b673376c74ce9c835a0b5059
-ms.sourcegitcommit: 122bf7ce308365ea45da018b0768f0536de76a1f
+ms.openlocfilehash: 44636a3ab8a3f7aaf96e52aa67d568d7ef381549
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet często zadawane pytania
 
@@ -57,9 +57,9 @@ Aby uzyskać więcej informacji, zobacz [wyszukiwanie i Wybieranie pakietów](..
 **Jak NuGet jest obsługiwane w różnych produktów Visual Studio?**
 
 - Program Visual Studio w systemie Windows obsługuje [interfejsu użytkownika Menedżera pakietów](../tools/Package-Manager-UI.md) i [Konsola Menedżera pakietów](../tools/Package-Manager-Console.md).
-- Visual Studio for Mac ma wbudowane funkcje NuGet, zgodnie z opisem na [pakietu w tym NuGet w projekcie](https://docs.microsoft.com/visualstudio/mac/nuget-walkthrough).
+- Visual Studio for Mac ma wbudowane funkcje NuGet, zgodnie z opisem na [pakietu w tym NuGet w projekcie](/visualstudio/mac/nuget-walkthrough).
 - Visual Studio Code (wszystkie platformy) nie ma żadnych bezpośrednich integracji z programem NuGet. Użyj [interfejsu wiersza polecenia NuGet](../tools/nuget-exe-CLI-Reference.md) lub [dotnet interfejsu wiersza polecenia](../tools/dotnet-commands.md).
-- Visual Studio Team Services zapewnia [kroku kompilacji pod kątem przywracania pakietów NuGet](https://docs.microsoft.com/vsts/build-release/tasks/package/nuget). Możesz również [pakietu NuGet prywatnych hosta źródła na Team Services](https://www.visualstudio.com/docs/package/nuget/publish).
+- Visual Studio Team Services zapewnia [kroku kompilacji pod kątem przywracania pakietów NuGet](/vsts/build-release/tasks/package/nuget). Możesz również [pakietu NuGet prywatnych hosta źródła na Team Services](https://www.visualstudio.com/docs/package/nuget/publish).
 
 **Jak sprawdzić dokładnej wersji narzędzia NuGet, które są zainstalowane**
 
@@ -101,7 +101,7 @@ Tak, istnieje możliwość dodawania niestandardowych poleceń do `nuget.exe`, z
 
 **Jak uzyskać dostęp do obiektu DTE w konsoli Menedżera pakietów?**
 
-Obiekt najwyższego poziomu w modelu obiektu automatyzacji programu Visual Studio jest wywołać obiekt DTE (Development Tools Environment). Zapewnia to za pośrednictwem zmiennej o nazwie konsoli `$DTE`. Aby uzyskać więcej informacji, zobacz [omówienie modelu automatyzacji](https://docs.microsoft.com/visualstudio/extensibility/internals/automation-model-overview) w dokumentacji programu Visual Studio Extensibility.
+Obiekt najwyższego poziomu w modelu obiektu automatyzacji programu Visual Studio jest wywołać obiekt DTE (Development Tools Environment). Zapewnia to za pośrednictwem zmiennej o nazwie konsoli `$DTE`. Aby uzyskać więcej informacji, zobacz [omówienie modelu automatyzacji](/visualstudio/extensibility/internals/automation-model-overview) w dokumentacji programu Visual Studio Extensibility.
 
 **Próbie rzutowania $DTE zmienną typu DTE2, ale występuje błąd: nie można przekonwertować wartości "EnvDTE.DTEClass" typu "EnvDTE.DTEClass" na typ "EnvDTE80.DTE2". Co jest nie tak?**
 

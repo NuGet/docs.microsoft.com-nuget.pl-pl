@@ -13,11 +13,11 @@ keywords: Formanty NuGet platformy uniwersalnej systemu Windows, programu Visual
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: f51dbabd406199752e4f9d612b498f59ffb54021
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 8756ce472c11a05370914841245295361b3f179b
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="creating-uwp-controls-as-nuget-packages"></a>Tworzenie formantów platformy uniwersalnej systemu Windows w postaci pakietów NuGet
 
@@ -105,7 +105,7 @@ Na przykład załóżmy, że ustawiono TPMinV pakietu formantów systemu Windows
 \ref\uap10.0\*
 ```
 
-Aby wymusić odpowiednie wyboru TPMinV, Utwórz [plik elementów docelowych MSBuild](https://docs.microsoft.com/visualstudio/msbuild/msbuild-targets) i pakietu go w folderze kompilacji (zastępując "your_assembly_name" o nazwie z określonego zestawu):
+Aby wymusić odpowiednie wyboru TPMinV, Utwórz [plik elementów docelowych MSBuild](/visualstudio/msbuild/msbuild-targets) i pakietu go w folderze kompilacji (zastępując "your_assembly_name" o nazwie z określonego zestawu):
 
 ```
 \build
@@ -133,7 +133,7 @@ Oto przykład jak powinien wyglądać plik elementów docelowych:
 
 ## <a name="add-design-time-support"></a>Dodawanie obsługi w czasie projektowania
 
-Aby skonfigurować, których właściwości wyświetlane w Inspektora właściwości, Dodaj niestandardowego modułu definiowania układu kodu itp., umieść Twojej `design.dll` pliku wewnątrz `lib\<platform>\Design` folderu odpowiednio do platformy docelowej. Ponadto aby upewnić się, że  **[Edytuj szablon > edytowania kopii](https://docs.microsoft.com/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)**  działa funkcja musi zawierać `Generic.xaml` i słowników zasobów, które w scaleń `<AssemblyName>\Themes` folderu. (Ten plik nie ma wpływu na zachowanie środowiska uruchomieniowego formantu.)
+Aby skonfigurować, których właściwości wyświetlane w Inspektora właściwości, Dodaj niestandardowego modułu definiowania układu kodu itp., umieść Twojej `design.dll` pliku wewnątrz `lib\<platform>\Design` folderu odpowiednio do platformy docelowej. Ponadto aby upewnić się, że  **[Edytuj szablon > edytowania kopii](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)**  działa funkcja musi zawierać `Generic.xaml` i słowników zasobów, które w scaleń `<AssemblyName>\Themes` folderu. (Ten plik nie ma wpływu na zachowanie środowiska uruchomieniowego formantu.)
 
 
 ```
@@ -172,7 +172,7 @@ Do pakietu zawartości, takich jak obrazy, które mogą być używane przez form
 \tools
 ```
 
-Mogą również tworzyć[plik elementów docelowych MSBuild](https://docs.microsoft.com/visualstudio/msbuild/msbuild-targets) zapewnienie element zawartości jest kopiowany do folderu wyjściowego odbierającą projektu:
+Mogą również tworzyć[plik elementów docelowych MSBuild](/visualstudio/msbuild/msbuild-targets) zapewnienie element zawartości jest kopiowany do folderu wyjściowego odbierającą projektu:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -187,5 +187,5 @@ Mogą również tworzyć[plik elementów docelowych MSBuild](https://docs.micros
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Tworzenie pakietów platformy uniwersalnej systemu Windows](create-uwp-packages.md)
+- [Tworzenie pakietów platformy UWP](create-uwp-packages.md)
 - [Przykładowe ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage)

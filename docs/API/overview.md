@@ -17,17 +17,17 @@ keywords: "Interfejsu API w wersji 3 NuGet, interfejsu API w wersji 2 NuGet, NuG
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: a9515d90ad66d8840f575bba542f0cf887c41718
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 05ed17f12f413d29d97a253d7d55f154d4910834
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-api"></a>NuGet interfejsu API
 
 Interfejs API NuGet jest zestaw punktów końcowych HTTP, które może służyć do pobierania pakietów, pobrać metadanych publikowanie nowych pakietów i wykonywać większości innych operacji dostępne oficjalnego klientów NuGet z.
 
-Ten interfejs API jest używany przez klienta NuGet w Visual Studio, nuget.exe i interfejsu wiersza polecenia platformy .NET w celu wykonania operacji NuGet, takich jak [ `dotnet restore` ](https://docs.microsoft.com/dotnet/articles/core/preview3/tools/dotnet-restore), wyszukiwanie w interfejsie użytkownika programu Visual Studio i [ `nuget.exe push` ](../tools/cli-ref-push.md).
+Ten interfejs API jest używany przez klienta NuGet w Visual Studio, nuget.exe i interfejsu wiersza polecenia platformy .NET w celu wykonania operacji NuGet, takich jak [ `dotnet restore` ](/dotnet/articles/core/preview3/tools/dotnet-restore), wyszukiwanie w interfejsie użytkownika programu Visual Studio i [ `nuget.exe push` ](../tools/cli-ref-push.md).
 
 Należy pamiętać, w niektórych przypadkach nuget.org ma dodatkowe wymagania, które nie są wymuszane przez inne źródła pakietu. Te różnice są udokumentowane przez [protokołów nuget.org](nuget-protocols.md).
 

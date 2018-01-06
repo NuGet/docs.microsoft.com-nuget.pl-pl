@@ -13,11 +13,11 @@ keywords: "Przywracanie pakietu NuGet, NuGet i TFS, NuGet i programu VSTS system
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 4be1bb83549958897a15d690439cac073c9683d1
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 82decfa1a39cb99c405840a8f13b0bc993111c09
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="setting-up-package-restore-with-team-foundation-build"></a>Konfigurowanie Przywracanie pakietu z Team Foundation Build
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 12/14/2017
 >
 > Jeśli używasz programu Visual Studio Team Services lub lokalnymi Team Foundation Server 2013 z jego szablony procesu kompilacji, następuje automatyczne przywracanie pakietu jako część procesu kompilacji.
 
-W tej sekcji zawierają szczegółowe wskazówki dotyczące przywracania pakietów w ramach [Team Foundation Build](http://msdn.microsoft.com/library/ms181710(v=VS.90).aspx) zarówno dla [git](http://en.wikipedia.org/wiki/Git_(software)) oraz [kontroli wersji TF](http://msdn.microsoft.com/library/ms181237(v=vs.120).aspx).
+W tej sekcji zawierają szczegółowe wskazówki dotyczące przywracania pakietów w ramach [Team Services Build](/vsts/build-release/index) zarówno dla Git i kontroli wersji programu Team Services.
 
-Chociaż ten przewodnik jest specyficzna dla scenariusza użycia [Team Foundation Service](http://tfs.visualstudio.com/), również zastosować do innych kontroli wersji — i stworzyć systemy.
+Chociaż ten przewodnik jest specyficzna dla scenariusza za pomocą programu Visual Studio Team Services, również zastosować do innych kontroli wersji i kompilacji systemu.
 
 ## <a name="the-general-approach"></a>Metody ogólne
 
@@ -119,7 +119,7 @@ Aby komunikować się do systemu kontroli wersji, że firma Microsoft nie opcje 
 
 To powoduje wyłączenie wszystkich `packages` folderów jednak zostanie ponownie obejmują wszystkie zawarte `.targets` plików. W systemie można znaleźć szablonu dla `.gitignore` pliki, które jest w szczególny sposób dopasowane do potrzeb deweloperów programu Visual Studio [tutaj](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
 
-Kontrola wersji TF obsługuje mechanizm bardzo podobne za pośrednictwem [.tfignore](http://msdn.microsoft.com/library/ms245454.aspx) pliku. Składnia jest praktycznie:
+Kontrola wersji TF obsługuje mechanizm bardzo podobne za pośrednictwem [.tfignore](/vsts/tfvc/add-files-server#customize-which-files-are-ignored-by-version-control) pliku. Składnia jest praktycznie:
 
     *.user
     *.suo
@@ -135,7 +135,7 @@ Ten projekt będzie mieć trzy obiektów docelowych z konwencjonalnej `Clean`, `
 
 - `Build` i `Rebuild` zależą od obiektów docelowych `RestorePackages`. Dzięki temu, że można jednocześnie uruchomić `Build` i `Rebuild` i zależne od pakietów przywracana.
 - `Clean`, `Build` i `Rebuild` wywołania odpowiedniego docelowego MSBuild we wszystkich plikach w rozwiązaniu.
-- `RestorePackages` Wywołuje docelowej `nuget.exe` dla każdego pliku rozwiązania. Jest to zrobić za pomocą [MSBuild na przetwarzanie wsadowe funkcji](http://msdn.microsoft.com/library/ms171473.aspx).
+- `RestorePackages` Wywołuje docelowej `nuget.exe` dla każdego pliku rozwiązania. Jest to zrobić za pomocą [MSBuild na przetwarzanie wsadowe funkcji](/visualstudio/msbuild/msbuild-batching).
 
 Wynik wygląda następująco:
 

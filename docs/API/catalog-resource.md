@@ -17,11 +17,11 @@ keywords: "Interfejsu API w wersji 3 NuGet katalogu, nuget.org dziennika transak
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 50e329680c5527d2a69d9c2b1421dc3aa609b478
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 4c98b7cbd92575f6905e98a5bca5602a4d8ac0dd
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="catalog"></a>Katalogu
 

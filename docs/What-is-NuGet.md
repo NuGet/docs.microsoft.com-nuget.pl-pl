@@ -13,15 +13,15 @@ keywords: "Menedżer pakietów NuGet, użycie, tworzenia pakietu pakiet hostingu
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 29dcedf33a54e249fe0b6acf588e4aafde28304f
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 2bc6a9e154df287fee6a7e00cc1349dfa2100643
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do NuGet
 
-Podstawowe narzędzie dla dowolnej platformy nowoczesnych programowanie jest mechanizm, za pośrednictwem której deweloperzy można utworzyć, udostępniania oraz korzystać z biblioteki przydatne kodu. Takie biblioteki są zazwyczaj określone "packages", ponieważ zawierają skompilowany kod (dll) wraz z innej zawartości, które mogą być wymagane w projektach, używające tych bibliotek.
+Podstawowe narzędzie dla dowolnej platformy nowoczesnych programowanie jest mechanizm, za pośrednictwem której deweloperzy można utworzyć, udostępniania oraz korzystać z kodu przydatne. Często taki kod jest połączone w "packages" zawierające skompilowanego kodu (w postaci bibliotek DLL) wraz z inną zawartość w projektach, które wykorzystać te pakiety.
 
 Dla platformy .NET, jest mechanizm udostępnianie kodu **NuGet**, który definiuje sposób pakietów dla platformy .NET są tworzone, obsługiwane i używane i udostępnia narzędzia dla każdej z tych ról. 
 
@@ -44,9 +44,9 @@ Oprócz obsługi pomocy technicznej, NuGet zapewnia różne narzędzia używane 
 | Narzędzie | Platformy | Scenariusze zastosowania | Opis |
 | --- | --- | --- | --- |
 | [nuget.exe interfejsu wiersza polecenia](Tools/nuget-exe-CLI-Reference.md) | Wszystkie | Tworzenie, zużycia | Zawiera wszystkie funkcje NuGet, z niektórych poleceń stosowania specjalnie do pakietu twórcy, niektóre mające zastosowanie tylko do użytkowników, i inne osoby mające zastosowanie do obu. Na przykład pakiet Użyj twórców `nuget pack` polecenie, aby utworzyć pakiet z różnych zestawów i powiązane pliki, użyj konsumentów pakietu `nuget install` pakiety mają być projektem i wszyscy używa `nuget config` konfiguracji NuGet zmienne.  |
-| [Interfejs użytkownika Menedżera pakietów](Tools/Package-Manager-UI.md) | Visual Studio w systemie Windows | Zużycie | Zapewnia łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach platformy .NET. | 
-| [Zarządzanie NuGet interfejsu użytkownika](https://docs.microsoft.com/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Zużycie | Podaj łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach platformy .NET. |
-| [Konsola Menedżera pakietów](Tools/Package-Manager-Console.md) | Visual Studio w systemie Windows | Zużycie | Udostępnia [poleceń programu PowerShell](Tools/Powershell-Reference.md) instalowania i zarządzania pakietami w projektach platformy .NET. | 
+| [Interfejs użytkownika menedżera pakietów](Tools/Package-Manager-UI.md) | Visual Studio w systemie Windows | Zużycie | Zapewnia łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach platformy .NET. | 
+| [Zarządzanie NuGet interfejsu użytkownika](/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Zużycie | Podaj łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach platformy .NET. |
+| [Konsola menedżera pakietów](Tools/Package-Manager-Console.md) | Visual Studio w systemie Windows | Zużycie | Udostępnia [poleceń programu PowerShell](Tools/Powershell-Reference.md) instalowania i zarządzania pakietami w projektach platformy .NET. | 
 | [DotNet interfejsu wiersza polecenia](Tools/dotnet-Commands.md) | Wszystkie | Tworzenie, zużycia | Zapewnia możliwości bezpośrednio w ramach łańcuch narzędzi platformy .NET Core niektórych interfejsu wiersza polecenia NuGet. |
 | [MSBuild](Schema/msbuild-targets.md) | Windows | Tworzenie, zużycia | Zapewnia możliwość tworzenia pakietów i przywrócenia pakietów używane w projekcie bezpośrednio przez łańcuch narzędzi programu MSBuild. |
 

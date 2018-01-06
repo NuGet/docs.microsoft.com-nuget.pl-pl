@@ -13,11 +13,11 @@ keywords: NuGet 1.8 informacje o wersji, poprawki, znanymi problemami, nowe funk
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 875cb752fed102c24da255a336d3f16729ca082c
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 350f0d9590c1e0ef1a843fd783203b158059efa7
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-18-release-notes"></a>Informacje o wersji 1.8 NuGet
 
@@ -72,7 +72,7 @@ Istnieją 2 sposoby zapewnienia tej zgody. Pierwszy znajdują się w pakiet Mene
 
 Druga metoda jest ustawiona środowiska zmiennej "EnableNuGetPackageRestore" na wartość "true".  Ta metoda jest przeznaczona dla instalacji nienadzorowanej maszyny, takich jak serwery CI lub kompilacji.
 
-Teraz jak już wspomniano, firma Microsoft ma tylko określone przygotowuje tej funkcji w NuGet 1.8.  W praktyce oznacza to, że podczas dodaliśmy wszystkie logiki do włączenia tej funkcji nie są one obecnie wymuszane w tej wersji. Zostanie włączona, jednak w następnej wersji programu NuGet, więc możemy się go jak najszybciej, aby odpowiednio skonfigurować środowiska i w związku z tym nie występować po Rozpoczniemy wymuszenia ograniczenia zgody.
+Teraz jak już wspomniano, firma Microsoft ma tylko określone przygotowuje tej funkcji w NuGet 1.8.  W praktyce oznacza to, że podczas dodaliśmy wszystkie logiki, aby włączyć funkcję jest obecnie wymuszone w tej wersji. Zostanie włączona, jednak w następnej wersji programu NuGet, więc możemy się go jak najszybciej, aby odpowiednio skonfigurować środowiska i w związku z tym nie występować po Rozpoczniemy wymuszenia ograniczenia zgody.
 
 Aby uzyskać więcej informacji, zobacz [wpis w blogu zespołu](http://blog.nuget.org/20120518/package-restore-and-consent.html) tę funkcję.
 

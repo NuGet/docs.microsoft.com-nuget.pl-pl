@@ -17,16 +17,15 @@ keywords: "Pakiet wypychania NuGet interfejsu API, interfejsu API NuGet usunąć
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 1fa3c0e1698a11208d9ef29fdf26a4980cb60cf5
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 87970a701c63bce2b74c619069ec1d231ea77ab5
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="push-and-delete"></a>Wypychanie i usuwania
 
-Istnieje możliwość wypychania i usunąć (lub unlist, w zależności od implementacji serwera) pakietów przy użyciu interfejsu API w wersji 3 NuGet.
-Obie operacje są oparte na off z `PackagePublish` można znaleźć zasobu w [indeksu usługi](service-index.md).
+Istnieje możliwość push, Usuń (lub unlist, w zależności od implementacji serwera) i ponownie wystaw pakiety przy użyciu interfejsu API programu NuGet w wersji 3. Operacje te są oparte na off z `PackagePublish` można znaleźć zasobu w [indeksu usługi](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
@@ -44,9 +43,12 @@ Należy pamiętać, że ten adres URL wskazuje do tej samej lokalizacji co stars
 
 ## <a name="http-methods"></a>Metody HTTP
 
-`PUT` i `DELETE` metod HTTP obsługiwanych przez ten zasób. Dla metod, które są obsługiwane na każdym punkcie końcowym są wymienione poniżej.
+`PUT`, `POST` i `DELETE` metod HTTP obsługiwanych przez ten zasób. Dla metod, które są obsługiwane na każdym punkcie końcowym są wymienione poniżej.
 
 ## <a name="push-a-package"></a>Wypychanie pakietu
+
+> [!Note]
+> ma nuget.org [dodatkowe wymagania](NuGet-Protocols.md) do interakcji z punktem końcowym wypychania.
 
 nuget.org obsługuje położenia nowe pakiety przy użyciu następujących interfejsu API. Jeśli pakiet o identyfikatorze podana i wersji już istnieje, nuget.org spowoduje odrzucenie powiadomienia wypychanego. Inne źródła pakietu może obsługiwać, zastępując istniejący pakiet.
 
@@ -101,4 +103,29 @@ ApiKey-X-NuGet | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: 
 Kod stanu | Znaczenie
 ----------- | -------
 204         | Pakiet został usunięty.
+404         | Nie pakietu z dostarczonych `ID` i `VERSION` istnieje
+
+## <a name="relist-a-package"></a>Wystaw ponownie pakietu
+
+Jeśli pakiet jest nieznajdujące się na liście, istnieje możliwość ponownie wyświetlić tego pakietu w wynikach wyszukiwania przy użyciu punktu końcowego "Wystaw ponownie". Ten punkt końcowy ma ten sam kształt co [usunąć (unlist) punktu końcowego](#delete-a-package) , ale `POST` HTTP zamiast metody `DELETE` metody.
+
+Jeśli pakiet jest już na liście, żądanie nadal powiedzie się.
+
+```
+POST https://www.nuget.org/api/v2/package/{ID}/{VERSION}
+```
+
+### <a name="request-parameters"></a>Parametry żądania
+
+Nazwa           | W     | Typ   | Wymagane | Uwagi
+-------------- | ------ | ------ | -------- | -----
+ID             | Adres URL    | string | Tak      | Identyfikator pakietu do ponownego wystawienia
+WERSJA        | Adres URL    | string | Tak      | Wersja pakietu do ponownego wystawienia
+ApiKey-X-NuGet | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
+
+### <a name="response"></a>Odpowiedź
+
+Kod stanu | Znaczenie
+----------- | -------
+204         | Pakiet zostanie wyświetlony
 404         | Nie pakietu z dostarczonych `ID` i `VERSION` istnieje

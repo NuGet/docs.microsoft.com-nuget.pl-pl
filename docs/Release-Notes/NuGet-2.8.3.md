@@ -13,11 +13,11 @@ keywords: NuGet 2.8.3 informacje o wersji, poprawki, znanymi problemami, nowe fu
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 8c0b38ea4975300af701b66266a9883eb54412c1
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: d6fbebaf02cede52a701abd31e843a077f8acbb7
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-283-release-notes"></a>Informacje o wersji NuGet 2.8.3
 
@@ -25,4 +25,4 @@ ms.lasthandoff: 12/14/2017
 
 NuGet 2.8.3 został wydany 17 października 2014 r. Jest to aktualizacja pomocnicza do naszej 2.8.1 VSIX niektóre docelowe poprawki.
 
-W tej wersji dodano obsługę dla okna dialogowego Menedżer pakietów NuGet [ASP.NET vNext](http://www.asp.net/vnext), [DevExtreme](http://js.devexpress.com/) i [BizTalk (.btproj)](http://msdn.microsoft.com/library/aa577497.aspx) typy projektów. Obejmuje on też niezawodności poprawki dotyczące scenariusze umożliwiające przywracanie pakietów i zapisywanie opcji Menedżera pakietów.
+W tej wersji dodano obsługę dla okna dialogowego Menedżer pakietów NuGet [ASP.NET vNext](http://www.asp.net/vnext), [DevExtreme](http://js.devexpress.com/) i [BizTalk (.btproj)](/biztalk/core/developing-biztalk-server-applications) typy projektów. Obejmuje on też niezawodności poprawki dotyczące scenariusze umożliwiające przywracanie pakietów i zapisywanie opcji Menedżera pakietów.

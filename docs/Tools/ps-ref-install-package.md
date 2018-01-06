@@ -13,15 +13,15 @@ keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershel
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: d51cce6223cd2d89c555ca9d6e936eaadf3757bb
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 4d7645297d2cd48f39a8e2ec168040710f6fc7a3
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="install-package-package-manager-console-in-visual-studio"></a>Install-Package (Konsola Menedżera pakietów w programie Visual Studio)
 
-*W tym temacie opisano polecenia w [Konsola Menedżera pakietów NuGet](Package-Manager-Console.md) w programie Visual Studio w systemie Windows. Polecenia programu PowerShell Install-Package ogólny, zobacz [odwołania programu PowerShell PackageManagement](https://docs.microsoft.com/powershell/module/packagemanagement/?view=powershell-6).*
+*W tym temacie opisano polecenia w [Konsola Menedżera pakietów NuGet](Package-Manager-Console.md) w programie Visual Studio w systemie Windows. Polecenia programu PowerShell Install-Package ogólny, zobacz [odwołania programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
 
 Instaluje pakiet i jego zależności w projekcie.
 

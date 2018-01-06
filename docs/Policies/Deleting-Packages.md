@@ -13,11 +13,11 @@ keywords: "Usuwanie pakietu NuGet, pakiet NuGet unlisting, zabronione zastosowan
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 331979bdc3703ddbeff18e2bd0e6b0a17551e68b
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 9e388171f83fae7deb4f20033184dfa91bfab3da
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="deleting-packages"></a>Usunięcie pakietów
 
@@ -41,7 +41,7 @@ Pakiety, które jest spełnienie któregoś z następujących kryteriów nie są
 - Narusza prawa autorskie lub narusza licencji.
 - Zawartość niedozwolona.
 - Są używane do squat na identyfikatorach pakietu, w tym pakietów, które ma zerowy produktywności zawartości. Pakiety musi zawierać kod lub właściciele należy przyznać identyfikator do osoby, która faktycznie zawiera produktu do wysłania.
-- Próba utworzenia galerii czynność nie jest jawnie przeznaczone do.
+- Próba utworzenia czymś, które nie są jawnie zostało zaprojektowane do galerii.
 
 Jeśli pakiet, który narusza te elementy, kliknij przycisk **zgłaszania nadużyć** łącze na stronie szczegółów pakietu i przesłać raportu.
 

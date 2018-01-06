@@ -13,11 +13,11 @@ keywords: "Zależności pakietów NuGet, odwołania do pakietu, projektu package
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c8fc9e558557af444d9a35ace36d043a5f6382a7
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 275957c94e4a4bb45f359cd48816acf4f286ebad
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 

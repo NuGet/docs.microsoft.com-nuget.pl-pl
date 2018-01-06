@@ -13,11 +13,11 @@ keywords: NuGet 2.6 informacje o wersji, poprawki, znanymi problemami, nowe funk
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: f93e34326aa9ab3d6bd5d1756126e6bfa24fd82e
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: b34c0049a5ba42f6bcd5b36fa5b0ba261e27ecd5
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-26-release-notes"></a>Informacje o wersji version 2.6 NuGet
 
@@ -35,8 +35,8 @@ Aby zapewnić najlepsze możliwe pomocy technicznej dla programu Visual Studio 2
 
 Począwszy od wersji 2.6 NuGet, firma Microsoft będzie publikować dwóch rozszerzeń, jak pokazano poniżej:
 
-1. [Menedżer pakietów NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c/file/37502/30/NuGet.Tools.vsix) (dotyczy programu Visual Studio 2010 i 2012)
-2. [Menedżer pakietów NuGet dla programu Visual Studio 2013](http://visualstudiogallery.msdn.microsoft.com/4ec1526c-4a8c-4a84-b702-b21a8f5293ca)
+1. [Menedżer pakietów NuGet](https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManager) (dotyczy programu Visual Studio 2010 i 2012)
+1. [Menedżer pakietów NuGet dla programu Visual Studio 2013](https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2013)
 
 Z tego podziału [nuget.org](https://nuget.org) przycisk "Instalowania NuGet" Strona główna teraz nastąpi przekierowanie do [instalowania NuGet](../guides/install-nuget.md) strony, gdzie można znaleźć więcej informacji na temat instalacji różnych klientów NuGet.
 
@@ -44,7 +44,8 @@ Z tego podziału [nuget.org](https://nuget.org) przycisk "Instalowania NuGet" St
 
 ### <a name="xdt-webconfig-transformation-support"></a>Obsługa transformacji pliku Web.config XDT
 
-Jedną z najbardziej wysokiej wymagane funkcje klienta NuGet został do obsługi bardziej zaawansowanych transformacji XML przy użyciu aparat przekształcania XDT, który jest używany w programie Visual Studio [kompilacji konfiguracji przekształcenia](http://msdn.microsoft.com/library/dd465318(v=vs.100).aspx).
+Jedną z najbardziej wysokiej wymagane funkcje klienta NuGet została do obsługi bardziej zaawansowanych transformacji XML przy użyciu aparat przekształcania XDT, który jest używany w transformacji konfiguracji kompilacji programu Visual Studio.
+
 W przypadku kwietnia 2013 wprowadziliśmy dwóch big ogłoszenia dotyczące NuGet obsługę XDT. Pierwszy został samej biblioteki XDT został on sam [wydane jako pakietu NuGet](https://nuget.org/packages/Microsoft.Web.Xdt) i [Otwórz powierzając jej ich konserwację w witrynie CodePlex](http://xdt.codeplex.com/). Ten krok włączony aparat XDT za darmo używanego przez inne oprogramowanie open source, w tym klienta NuGet. Drugi anons został planu, który będzie obsługiwał Użycie aparatu XDT przekształcenia w kliencie programu NuGet. NuGet 2.6 obejmuje tej integracji.
 
 #### <a name="how-it-works"></a>Jak to działa

@@ -13,11 +13,11 @@ keywords: NuGet 2.8 informacje o wersji, poprawki, znanymi problemami, nowe funk
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0bb35e9d6ef6f3dde7919cd502b32ba5a550c689
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 182e7d1e2224c431631cddd14fdbea8dd9e14278
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-28-release-notes"></a>Informacje o wersji 2,8 NuGet
 
@@ -96,7 +96,7 @@ Nie jest rzadko do zainstalowania wstępnej wersji pakietu w celu zbadania nowe 
 
 ## <a name="development-dependencies"></a>Programowanie zależności
 
-Wiele różnych typów możliwości mogą być dostarczane jako pakiety NuGet — w tym narzędzia, które są używane do optymalizacji procesu tworzenia. Nie należy traktować te składniki mogą być instrumentalnego Opracowując nowy pakiet, opublikowany zależność nowy pakiet, gdy jest ona nowsza. NuGet 2.8 umożliwia pakietu w celu identyfikacji w `.nuspec` pliku jako developmentDependency. Po zainstalowaniu tych metadanych również zostaną dodane do `packages.config` pliku projektu, w którym został zainstalowany pakiet. Gdy który `packages.config` zależności NuGet podczas dalszej analizy pliku `nuget.exe pack`, spowoduje wykluczenie tych zależności oznaczona jako programowanie zależności.
+Wiele różnych typów możliwości mogą być dostarczane jako pakiety NuGet — w tym narzędzia, które są używane do optymalizacji procesu tworzenia. Te składniki mogą być instrumentalnego w tworzeniu nowego pakietu, nie należy traktować jako zależność nowy pakiet publikowanych później. NuGet 2.8 umożliwia pakietu w celu identyfikacji w `.nuspec` pliku jako developmentDependency. Po zainstalowaniu tych metadanych również zostaną dodane do `packages.config` pliku projektu, w którym został zainstalowany pakiet. Gdy który `packages.config` zależności NuGet podczas dalszej analizy pliku `nuget.exe pack`, spowoduje wykluczenie tych zależności oznaczona jako programowanie zależności.
 
 ## <a name="individual-packagesconfig-files-for-different-platforms"></a>Packages.config poszczególnych plików na różnych platformach
 

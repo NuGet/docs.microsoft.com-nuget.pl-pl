@@ -13,17 +13,17 @@ keywords: "Tworzenie pakietu, .NET Standard pakietów, .NET Standard tabeli mapo
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: a912c27e1873d60426f2147995f69e2dcc433ca9
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: e02888bf552997afe25e967f13e021e78e40d48d
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-net-standard-packages-with-visual-studio-2015"></a>Utwórz pakiety .NET Standard z programem Visual Studio 2015
 
 *Dotyczy NuGet 3.x. Zobacz [utworzyć .NET Standard pakiety z programu Visual Studio 2017](../guides/create-net-standard-packages-vs2017.md) do pracy z NuGet 4.x+.*
 
-[Biblioteki standardowej .NET](https://docs.microsoft.com/dotnet/articles/standard/library) jest formalną specyfikację interfejsów API architektury .NET mają być dostępne na wszystkich środowisk uruchomieniowych .NET, w związku z tym ustanawianie większej jednolitości w ekosystemie .NET. Standardowa biblioteka .NET definiuje zestaw uniform BCL (Biblioteka klasy podstawowej) interfejsów API dla wszystkich platform .NET zaimplementować, niezależnie od obciążenia. Go umożliwia deweloperom tworzenia PCLs, które będą używać dla wszystkich programów .NET, i zmniejsza Jeśli nie eliminuje dyrektywy kompilacja warunkowa specyficzne dla platformy w kodzie udostępnionego.
+[Biblioteki standardowej .NET](/dotnet/articles/standard/library) jest formalną specyfikację interfejsów API architektury .NET mają być dostępne na wszystkich środowisk uruchomieniowych .NET, w związku z tym ustanawianie większej jednolitości w ekosystemie .NET. Standardowa biblioteka .NET definiuje zestaw uniform BCL (Biblioteka klasy podstawowej) interfejsów API dla wszystkich platform .NET zaimplementować, niezależnie od obciążenia. Go umożliwia deweloperom tworzenia PCLs, które będą używać dla wszystkich programów .NET, i zmniejsza Jeśli nie eliminuje dyrektywy kompilacja warunkowa specyficzne dla platformy w kodzie udostępnionego.
 
 Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu nuget przeznaczonych dla platformy .NET Standard biblioteki 1.4. To będzie działać w .NET Framework 4.6.1, uniwersalnych systemu Windows 10 platformy .NET Core i Mono/Xamarin. Aby uzyskać więcej informacji, zobacz [.NET Standard tabeli mapowania](#net-standard-mapping-table) dalszej części tego tematu.
 
@@ -329,5 +329,5 @@ W tym celu należy utworzyć użytkownika `readme.txt` pliku, umieść go w fold
 - [Obsługa wielu wersje programu .NET Framework](../create-packages/supporting-multiple-target-frameworks.md)
 - [Zawiera właściwości programu MSBuild i obiektów docelowych w pakiecie](../create-packages/creating-a-package.md#including-msbuild-props-and-targets-in-a-package)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
-- [Dokumentacja biblioteki standardowej .NET](https://docs.microsoft.com/dotnet/articles/standard/library)
-- [Eksportowanie do platformy .NET Core z .NET Framework](https://docs.microsoft.com/dotnet/articles/core/porting/index)
+- [Dokumentacja biblioteki standardowej .NET](/dotnet/articles/standard/library)
+- [Eksportowanie do platformy .NET Core z .NET Framework](/dotnet/articles/core/porting/index)

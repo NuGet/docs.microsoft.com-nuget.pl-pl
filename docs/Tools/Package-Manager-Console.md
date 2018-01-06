@@ -13,11 +13,11 @@ keywords: "Konsoli Menedżera pakietów NuGet, programu NuGet powershell zarząd
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: d9df514c6f92a3ea0841503d86c44271e70f95f2
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: cc11963a9b9bfe9aa456d8cd4c8397e1084f660b
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="package-manager-console"></a>Konsola Menedżera pakietów
 
@@ -62,7 +62,7 @@ W tym temacie:
 
 ## <a name="opening-the-console-and-console-controls"></a>Otwieranie konsoli i formanty konsoli
 
-1. Otwórz program Visual Studio przy użyciu **Narzędzia > Menedżera pakietów NuGet > konsoli Menedżera pakietów** polecenia. Konsoli jest oknem programu Visual Studio, które mogą być rozmieszczane i znajduje się jednak chcesz (zobacz [dostosowywanie układów okien w programie Visual Studio](https://docs.microsoft.com/visualstudio/ide/customizing-window-layouts-in-visual-studio)).
+1. Otwórz program Visual Studio przy użyciu **Narzędzia > Menedżera pakietów NuGet > konsoli Menedżera pakietów** polecenia. Konsoli jest oknem programu Visual Studio, które mogą być rozmieszczane i znajduje się jednak chcesz (zobacz [dostosowywanie układów okien w programie Visual Studio](/visualstudio/ide/customizing-window-layouts-in-visual-studio)).
 
 1. Domyślnie polecenia konsoli działają z określonego pakietu źródłowego i projektu jako zestaw w formancie w górnej części okna:
 
@@ -171,7 +171,7 @@ W programie Visual Studio 2017 r. NuGet i Menedżer pakietów NuGet są instalow
 
 Ponadto jeśli jest Brak Menedżera pakietów NuGet w programie Visual Studio 2015 i starszych wersji, sprawdź **Narzędzia > rozszerzenia i aktualizacje...**  i wyszukaj rozszerzenie NuGet Package Manager. Jeśli nie możesz użyć Instalatora rozszerzeń programu Visual Studio, możesz pobrać rozszerzenia bezpośrednio z [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html).
 
-Konsola Menedżera pakietów nie jest obecnie dostępna w programie Visual Studio dla komputerów Mac. Jednak równoważnych poleceń są dostępne za pośrednictwem [interfejsu wiersza polecenia NuGet](nuget-exe-CLI-reference.md). Visual Studio dla komputerów Mac mają interfejsu użytkownika do zarządzania pakietami NuGet. Zobacz [pakietu w tym NuGet w projekcie](https://docs.microsoft.com/visualstudio/mac/nuget-walkthrough).
+Konsola Menedżera pakietów nie jest obecnie dostępna w programie Visual Studio dla komputerów Mac. Jednak równoważnych poleceń są dostępne za pośrednictwem [interfejsu wiersza polecenia NuGet](nuget-exe-CLI-reference.md). Visual Studio dla komputerów Mac mają interfejsu użytkownika do zarządzania pakietami NuGet. Zobacz [pakietu w tym NuGet w projekcie](/visualstudio/mac/nuget-walkthrough).
 
 Konsola Menedżera pakietów nie jest uwzględniona w programie Visual Studio Code.
 

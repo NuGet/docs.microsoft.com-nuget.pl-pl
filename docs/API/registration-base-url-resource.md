@@ -17,11 +17,11 @@ keywords: "Metadane pakietów NuGet interfejsu API, NuGet interfejsu API rejestr
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 15d3c836a5748497fe33dadc17e5a44846b4a8c0
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 1aabe6ae5c661e12b2639700813946e7a9a58b24
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="package-metadata"></a>Metadane pakietów
 
@@ -76,7 +76,7 @@ Adres URL rejestracji indeksu jest atrybutem wartości prognozowanych i można o
 
 ### <a name="registration-pages-and-leaves"></a>Strony rejestracji i pozostawia
 
-Chociaż nie jest ściśle wymagane dla wdrożenia serwera do przechowywania rejestracji liści w dokumentach strony rejestracji odrębnych, jest zalecaną praktyką w celu zachowywania pamięci po stronie klienta. Zamiast ze śródwierszowaniem wszystkich rejestracji pozostawia w lub od razu przechowywania pozostawia w dokumentach strony indeksu, zaleca się, że implementacją serwera zdefiniować niektóre heurystyki wybrać dwa podejścia na podstawie numeru wersji pakietu lub pozostawia całkowity rozmiar pakietu.
+Chociaż nie ściśle są wymagane dla wdrożenia serwera do przechowywania się, że rejestracja liści w dokumentach strony rejestracji odrębnych, jest zalecaną praktyką w celu zachowywania pamięci po stronie klienta. Zamiast ze śródwierszowaniem wszystkich rejestracji pozostawia w lub od razu przechowywania pozostawia w dokumentach strony indeksu, zaleca się, że implementacją serwera zdefiniować niektóre heurystyki wybrać dwa podejścia na podstawie numeru wersji pakietu lub pozostawia całkowity rozmiar pakietu.
 
 Przechowywanie wszystkich wersji pakietu (pozostawia) w rejestracji zapisuje indeksu liczby żądań HTTP niezbędne do pobrania pakietu metadanych, ale oznacza, że jest większy dokument musi zostać pobrana i musi być przydzielona większa ilość pamięci klienta. Z drugiej strony jeśli implementacja serwera natychmiast przechowuje rejestracji pozostawia w dokumentach na osobnej stronie, klienta należy wykonać więcej żądań HTTP, aby uzyskać informacje, które są niezbędne.
 
@@ -92,7 +92,7 @@ Nazwa     | W     | Typ    | Wymagane | Uwagi
 -------- | ------ | ------- | -------- | -----
 LOWER_ID | Adres URL    | string  | Tak      | Identyfikator pakietu małej
 
-`LOWER_ID` Wartość jest małej, za pomocą reguł wdrożonych przez identyfikator żądanego pakietu. W sieci [ `System.String.ToLowerInvariant()` ](https://msdn.microsoft.com/en-us/library/system.string.tolowerinvariant.aspx) metody.
+`LOWER_ID` Wartość jest małej, za pomocą reguł wdrożonych przez identyfikator żądanego pakietu. W sieci [ `System.String.ToLowerInvariant()` ](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) metody.
 
 ### <a name="response"></a>Odpowiedź
 

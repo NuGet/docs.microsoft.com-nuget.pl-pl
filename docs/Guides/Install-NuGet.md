@@ -13,11 +13,11 @@ keywords: "nuget.exe interfejsu wiersza polecenia narzędzia klienta NuGet, Mene
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b1abb30458c9ebfb0ffb28be254efd9709a9627f
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 2f67c298d269149bba9f36ad9e026d5443c39b6a
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="installing-nuget-client-tools"></a>Instalowanie narzędzi klienta NuGet
 
@@ -29,7 +29,7 @@ Istnieją dwa podstawowe narzędzia ułatwiających tworzenie, publikowanie i ko
 1. [ **Interfejsu wiersza polecenia NuGet** ](#nuget-cli) to narzędzie wiersza polecenia dla systemu Windows, który zawiera wszystkie funkcje NuGet; może również być uruchomione na systemu Mac OS x i Linux za pomocą Mono lub za pośrednictwem interfejsu wiersza polecenia platformy .NET Core (`dotnet`).
 1. [ **Menedżera pakietów NuGet w programie Visual Studio** ](#nuget-package-manager-in-visual-studio) (tylko system Windows) jest narzędziem do graficznego interfejsu użytkownika dla zarządzania pakietów i obejmuje konsolę programu PowerShell, za pomocą których można użyć pewnych poleceń NuGet bezpośrednio z poziomu programu Visual Studio. Interfejs użytkownika Menedżera pakietów i konsoli są dołączone do programu Visual Studio (w systemie Windows), 2012 lub nowszy i może zostać zainstalowany ręcznie w przypadku wcześniejszych wersji.
 
-    Program Visual Studio dla komputerów Mac możliwości NuGet są wbudowane bezpośrednio. Zobacz [pakietu w tym NuGet w projekcie](https://docs.microsoft.com/visualstudio/mac/nuget-walkthrough) przewodnik.
+    Program Visual Studio dla komputerów Mac możliwości NuGet są wbudowane bezpośrednio. Zobacz [pakietu w tym NuGet w projekcie](/visualstudio/mac/nuget-walkthrough) przewodnik.
 
     Visual Studio Code obecnie nie ma żadnych wbudowana obsługa NuGet. Użyj interfejsu wiersza polecenia NuGet lub [dotnet interfejsu wiersza polecenia](../Tools/dotnet-Commands.md).
 
@@ -53,7 +53,7 @@ Następujące funkcje są obsługiwane tylko w przypadku interfejsu wiersza pole
 
 > [!Note]
 > Kolejnym narzędziem dobrej jest [Explorer pakietu NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer), open source, autonomiczne narzędzie, aby wizualnie eksplorować, tworzyć i edytować pakietów NuGet. Bardzo przydatne, jest na przykład zmienić eksperymentalne Struktura pakietu bez konieczności Skompiluj ponownie pakiet zawsze.
-> Obsługujący wiele platform [interfejsu wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/articles/core/tools/index#installation) łańcuch narzędzi, używany do tworzenia aplikacji platformy .NET Core obsługuje kilka polecenia NuGet, takich jak usuwanie, zmienne lokalne, wypychania, pakietu i przywracania. 
+> Obsługujący wiele platform [interfejsu wiersza polecenia platformy .NET Core](/dotnet/articles/core/tools/index#installation) łańcuch narzędzi, używany do tworzenia aplikacji platformy .NET Core obsługuje kilka polecenia NuGet, takich jak usuwanie, zmienne lokalne, wypychania, pakietu i przywracania. 
 
 ## <a name="nuget-cli"></a>Interfejs wiersza polecenia NuGet
 

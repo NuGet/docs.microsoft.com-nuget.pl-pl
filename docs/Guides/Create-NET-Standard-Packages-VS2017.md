@@ -13,17 +13,17 @@ keywords: "Utwórz pakiet, .NET Standard pakietów platformy .NET Core"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 82e413119b12503336becd6019e4fa3e4ac0b1f3
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 5b48ad2f062fd3a9b99985dbda6f89e6039dac4d
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-net-standard-20-packages-with-visual-studio-2017"></a>Utwórz pakiety .NET 2.0 standardowe z programu Visual Studio 2017 r.
 
 *Dotyczy NuGet 4.x+ i MSBuild 15 ustęp 3 + zgodnie z programu Visual Studio 2017 Update 3. W przypadku wcześniejszych wersji programu Visual Studio 2017 te instrukcje dotyczą 1.4 standardowe .NET do wersji 1.6, zmieniając \<TargetFramework\> właściwości. Zobacz też [utworzyć .NET Standard pakiety z programem Visual Studio 2015](../guides/create-net-standard-packages-vs2015.md) do pracy z NuGet 3.x+.*
 
-[Biblioteki standardowej .NET](https://docs.microsoft.com/dotnet/articles/standard/library) jest formalną specyfikację interfejsów API architektury .NET mają być dostępne na wszystkich środowisk uruchomieniowych .NET, w związku z tym ustanawianie większej jednolitości w ekosystemie .NET. Standardowa biblioteka .NET definiuje zestaw uniform BCL (Biblioteka klasy podstawowej) interfejsów API dla wszystkich platform .NET zaimplementować, niezależnie od obciążenia. Go umożliwia deweloperom tworzenia PCLs, które będą używać dla wszystkich programów .NET, i zmniejsza Jeśli nie eliminuje dyrektywy kompilacja warunkowa specyficzne dla platformy w kodzie udostępnionego.
+[Biblioteki standardowej .NET](/dotnet/articles/standard/library) jest formalną specyfikację interfejsów API architektury .NET mają być dostępne na wszystkich środowisk uruchomieniowych .NET, w związku z tym ustanawianie większej jednolitości w ekosystemie .NET. Standardowa biblioteka .NET definiuje zestaw uniform BCL (Biblioteka klasy podstawowej) interfejsów API dla wszystkich platform .NET zaimplementować, niezależnie od obciążenia. Go umożliwia deweloperom tworzenia PCLs, które będą używać dla wszystkich programów .NET, i zmniejsza Jeśli nie eliminuje dyrektywy kompilacja warunkowa specyficzne dla platformy w kodzie udostępnionego.
 
 Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu nuget przeznaczonych dla platformy .NET Standard biblioteki 2.0 z Visual Studio 2017 Update 3 i NuGet 4.0.
 
@@ -113,5 +113,5 @@ Aby udostępnić pakietu inni deweloperzy, postępuj zgodnie z instrukcjami [opu
 
 - [Pakiet odwołań w plikach projektu](../consume-packages/package-references-in-project-files.md) opisano wszystkie szczegóły opisujące pakiet bezpośrednio w pliku projektu.
 - [NuGet pakietu i ich przywracania docelowych elementów MSBuild](../schema/msbuild-targets.md) opisuje wszystkie opcje przy użyciu `msbuild /t:pack` do utworzenia pakietu.
-- [Dokumentacja biblioteki standardowej .NET](https://docs.microsoft.com/dotnet/articles/standard/library)
-- [Eksportowanie do platformy .NET Core z .NET Framework](https://docs.microsoft.com/dotnet/articles/core/porting/index)
+- [Dokumentacja biblioteki standardowej .NET](/dotnet/articles/standard/library)
+- [Eksportowanie do platformy .NET Core z .NET Framework](/dotnet/articles/core/porting/index)

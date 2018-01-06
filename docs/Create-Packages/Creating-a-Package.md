@@ -13,11 +13,11 @@ keywords: Tworzenie pakietu NuGet, tworzenie pakietu, nuspec manifest, konwencje
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: e7a2c4d02afb2387161c22fe5bd443eb0991ea8c
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 50bc9e79f95f901477208f638b0965c82fd98356
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -284,7 +284,7 @@ Nuget 3.5 +, można oznaczyć pakiety z określonym *typu* wskazująca jego prze
 
 - `Dependency`pakiety typu Dodaj kompilacji lub wykonywania zasoby do biblioteki i aplikacji, a można zainstalować w dowolnym typie projektu (przy założeniu, że są one zgodne).
 
-- `DotnetCliTool`rozszerzenia są pakiety typu [.NET CLI](https://docs.microsoft.com/dotnet/articles/core/tools/index) i są wywoływane z poziomu wiersza polecenia. Takie pakiety można zainstalować tylko w projektach platformy .NET Core i nie mają wpływu na operacje przywracania. Więcej informacji na temat tych rozszerzeń dla projektu są dostępne w [rozszerzenia architektury .NET Core](https://docs.microsoft.com/dotnet/articles/core/tools/extensibility#per-project-based-extensibility) dokumentacji.
+- `DotnetCliTool`rozszerzenia są pakiety typu [.NET CLI](/dotnet/articles/core/tools/index) i są wywoływane z poziomu wiersza polecenia. Takie pakiety można zainstalować tylko w projektach platformy .NET Core i nie mają wpływu na operacje przywracania. Więcej informacji na temat tych rozszerzeń dla projektu są dostępne w [rozszerzenia architektury .NET Core](/dotnet/articles/core/tools/extensibility#per-project-based-extensibility) dokumentacji.
 
     Po zainstalowaniu pakietu DotnetCliTool programu Visual Studio umieszcza pakietu w `project.json` `tools` węzła zamiast `dependencies` węzła.
 
@@ -487,5 +487,5 @@ Można również rozszerzyć możliwości pakietu lub w przeciwnym razie sprosta
 
 Ponadto istnieją typy dodatkowego pakietu pod uwagę:
 
-- [Oryginalne pakiety](../create-packages/native-packages.md)
+- [Pakiety natywne](../create-packages/native-packages.md)
 - [Pakiety symboli](../create-packages/symbol-packages.md)

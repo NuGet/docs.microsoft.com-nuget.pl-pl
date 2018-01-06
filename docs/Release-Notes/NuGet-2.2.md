@@ -13,11 +13,11 @@ keywords: NuGet 2.2 informacje o wersji, poprawki, znanymi problemami, nowe funk
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 690e76a0686a5e7bb699410edef4a6e62ccd2a32
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 1f6080e01777431c4dfb2278db167bd3bc9a67ea
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-22-release-notes"></a>Informacje o wersji 2,2 NuGet
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/14/2017
 NuGet 2.2 został wydany 12 grudnia 2012.
 
 ## <a name="visual-studio-quick-launch"></a>Szybkie uruchamianie programu Visual Studio
-Jedną z nowych funkcji, które dodano w programie Visual Studio 2012 został [okno dialogowe Szybkie uruchamianie](http://msdn.microsoft.com/library/hh417697.aspx). NuGet 2.2 rozszerza tego okna dialogowego, dzięki któremu można zainicjować okno dialogowe menedżera pakietu z warunkami wyszukiwania w szybkie uruchamianie. Na przykład wprowadź "jquery" Szybkie uruchamianie teraz zawiera opcję w wynikach wyszukiwania dopasowania "jquery" pakietów NuGet.
+Jedną z nowych funkcji, które dodano w programie Visual Studio 2012 został [okno dialogowe Szybkie uruchamianie](/visualstudio/ide/reference/quick-launch-environment-options-dialog-box). NuGet 2.2 rozszerza tego okna dialogowego, dzięki któremu można zainicjować okno dialogowe menedżera pakietu z warunkami wyszukiwania w szybkie uruchamianie. Na przykład wprowadź "jquery" Szybkie uruchamianie teraz zawiera opcję w wynikach wyszukiwania dopasowania "jquery" pakietów NuGet.
 
 ![NuGet w szybkiego uruchamiania programu Visual Studio](./media/quick-launch.png)
 

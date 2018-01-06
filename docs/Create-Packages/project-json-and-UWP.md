@@ -13,11 +13,11 @@ keywords: "Zależności NuGet, NuGet i platformy uniwersalnej systemu Windows, p
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 40507e541997cea368052c373a4124d9c4a00a51
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: ae49c017365e1a63622fde318d5c94b64ed1ea2e
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="projectjson-and-uwp"></a>pliku Project.JSON i platformy uniwersalnej systemu Windows
 
@@ -70,7 +70,7 @@ Pakiety NuGet, w tym formacie mają następujące dobrze znany folder i zachowan
 
 Pakiety NuGet mogą zawierać `.targets` i `.props` pliki, które są importowane do żadnego projektu MSBuild zainstalowanego pakietu do. W NuGet 2.x, to był przez wstrzykiwanie `<Import>` instrukcje do `.csproj` pliku, w NuGet 3.0 istnieje akcja określonych "Instalacja do projektu". Zamiast tego proces przywracania pakietu zapisuje dwa pliki `[projectname].nuget.props` i `[projectname].NuGet.targets`.
 
-MSBuild zna do wyszukania tych plików i automatycznie importowane na początku i pod koniec procesu tworzenia projektu. Zapewnia to bardzo podobnie do NuGet 2.x, ale z jedną główną różnicą: *istnieje w tym przypadku nie gwarantuje kolejność plików celów/arkuszy właściwości*. Jednak MSBuild udostępniają sposoby kolejności docelowych za pośrednictwem `BeforeTargets` i `AfterTargets` atrybuty `<Target>` definicji (zobacz [Target — Element (MSBuild)](https://docs.microsoft.com/visualstudio/msbuild/target-element-msbuild).
+MSBuild zna do wyszukania tych plików i automatycznie importowane na początku i pod koniec procesu tworzenia projektu. Zapewnia to bardzo podobnie do NuGet 2.x, ale z jedną główną różnicą: *istnieje w tym przypadku nie gwarantuje kolejność plików celów/arkuszy właściwości*. Jednak MSBuild udostępniają sposoby kolejności docelowych za pośrednictwem `BeforeTargets` i `AfterTargets` atrybuty `<Target>` definicji (zobacz [Target — Element (MSBuild)](/visualstudio/msbuild/target-element-msbuild).
 
 
 ## <a name="lib-and-ref"></a>Lib i Ref
@@ -93,7 +93,7 @@ Czasami istnieją przypadki, w których należy używać innym zestawie podczas 
 
 Większość autorów pakietu nie wymagają `ref` folderu. Jest to przydatne w przypadku pakietów, które należy zapewnić spójne powierzchni IntelliSense i kompilacji, ale następnie inną implementację dla różnych TxMs. Przypadek użycia największych są `System.*` pakietów oferowanych w ramach wysyłanie .NET Core na NuGet. Te pakiety mają różne implementacje, które są trwa unified spójny zestaw zestawy ref.
 
-Mechanicznie zestawy zawarte w `ref` znajdują się zestawy referencyjne przekazywany do kompilatora. Dla tych osób, które zostały użyte csc.exe są zestawy, możemy przekazywane do [opcji/Reference C#](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/compiler-options/reference-compiler-option) przełącznika.
+Mechanicznie zestawy zawarte w `ref` znajdują się zestawy referencyjne przekazywany do kompilatora. Dla tych osób, które zostały użyte csc.exe są zestawy, możemy przekazywane do [opcji/Reference C#](/dotnet/articles/csharp/language-reference/compiler-options/reference-compiler-option) przełącznika.
 
 Struktura `ref` folderu jest taka sama jak `lib`, na przykład:
 
@@ -121,7 +121,7 @@ W tym przykładzie zestawów w `ref` katalogów wszystkie będą identyczne.
 
 ## <a name="runtimes"></a>środowisk uruchomieniowych
 
-Folder środowisk uruchomieniowych zawiera zestawy i natywnych bibliotek wymaganych do uruchomienia na określonym "środowisk uruchomieniowych", które są zazwyczaj definiowane przez architekturę systemu operacyjnego i procesora CPU. Te programy obsługi są identyfikowane za pomocą [identyfikatorów środowiska uruchomieniowego (RID)](https://docs.microsoft.com/dotnet/core/rid-catalog) takich jak `win`, `win-x86`, `win7-x86`, `win8-64`itp.
+Folder środowisk uruchomieniowych zawiera zestawy i natywnych bibliotek wymaganych do uruchomienia na określonym "środowisk uruchomieniowych", które są zazwyczaj definiowane przez architekturę systemu operacyjnego i procesora CPU. Te programy obsługi są identyfikowane za pomocą [identyfikatorów środowiska uruchomieniowego (RID)](/dotnet/core/rid-catalog) takich jak `win`, `win-x86`, `win7-x86`, `win8-64`itp.
 
 ## <a name="native-light-up"></a>Natywny światła w górę
 

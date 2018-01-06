@@ -13,11 +13,11 @@ keywords: "Dostawcy poświadczeń NuGet, uwierzytelniania za pomocą kanału inf
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2b2fac23102865a08509acc1cc3d09f0cd375f26
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 8d7360205387d4813f95560018e2ac68f71f5603
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="authenticating-feeds-in-visual-studio-with-nuget-credential-providers"></a>Źródła danych w programie Visual Studio za pomocą NuGet dostawcy poświadczeń uwierzytelniania
 
@@ -88,5 +88,5 @@ Niestandardowy Dostawca poświadczeń NuGet dla programu Visual Studio musi impl
 | wartość logiczna isRetry | Wartość true, jeśli poświadczenia zostały wcześniej żądał dla tego identyfikatora Uri, ale podane poświadczenia nie zezwala na dostęp do autoryzowanych. |
 | wartość logiczna nieinterakcyjne | Jeśli PRAWDA, Dostawca poświadczeń należy pominąć wszystkie monity użytkownika i zamiast tego użyj wartości domyślnych. |
 | CancellationToken cancellationToken | Ten token anulowania powinny być sprawdzane w celu ustalenia, jeśli poświadczenia żądania operacja została anulowana. |
-  
-**Wartość zwracana**: implementacja obiektu poświadczeń [ `System.Net.ICredentials` interfejsu](https://msdn.microsoft.com/library/system.net.icredentials.aspx).
+
+**Wartość zwracana**: implementacja obiektu poświadczeń [ `System.Net.ICredentials` interfejsu](/dotnet/api/system.net.icredentials?view=netstandard-2.0).

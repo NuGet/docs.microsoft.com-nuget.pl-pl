@@ -13,11 +13,11 @@ keywords: "Przywracanie pakietu NuGet, instalacja pakietu NuGet, instalowanie pa
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c2567f45b6bb36cdd94c4ce6f1418cb1c7ceac5e
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 4e819a2bb34bbe70f0f11d5adeed82b976a8cb65
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="package-restore"></a>Przywracanie pakietu
 
@@ -64,7 +64,7 @@ W wierszu polecenia lub [Konsola Menedżera pakietów](../tools/Package-Manager-
 | Polecenie | Scenariusze zastosowania |
 | --- | --- | 
 | `nuget restore` | Wszystkie wersje programu NuGet i wszystkie typy referencyjne. Zobacz [wiersza polecenia przywracania](#command-line-restore) poniżej. | 
-| `dotnet restore` | Taki sam jak `nuget restore` dla projektów .NET Core. Zobacz [przywracania dotnet](https://docs.microsoft.com/dotnet/articles/core/tools/dotnet-restore). |
+| `dotnet restore` | Taki sam jak `nuget restore` dla projektów .NET Core. Zobacz [przywracania dotnet](/dotnet/articles/core/tools/dotnet-restore). |
 | `msbuild /t:restore` | Nuget 4.x+ i MSBuild 15.1 + z [pakietu odwołań w plikach projektu](../Consume-Packages/Package-References-in-Project-Files.md) tylko. `nuget restore`i `dotnet restore` dla projektów dotyczy zarówno Użyj tego polecenia. Zobacz [pakiet NuGet i przywracania jako MSBuild elementy docelowe przywracaniem docelowej](../schema/msbuild-targets.md#restore-target).|
 
 Visual Studio, sama przywraca również pakiety w różnym czasie:

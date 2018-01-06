@@ -14,11 +14,11 @@ ms.reviewer:
 - karann-msft
 - unniravindranathan
 - anangaur
-ms.openlocfilehash: 7d380b7f2ff52ec39a2ac9a2b939ee51db6054f3
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 89a55716ccbc9043cfce4c7f38ec8ab9a0e2f768
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="transforming-source-code-and-configuration-files"></a>Przekształcanie plików źródłowych kodem i konfiguracją
 
@@ -27,20 +27,19 @@ Dla projektów przy użyciu `packages.config` lub `project.json`NuGet obsługuje
 > [!Note]
 > Przekształcenia pliku źródłowego i konfiguracji nie są stosowane, gdy pakiet jest zainstalowany w projekcie przy użyciu [odwołania do pakietu w plikach projektu](../Consume-Packages/Package-References-in-Project-Files.md). 
 
-A **źródła kodu transformacji** jednokierunkowe zastępujący tokenu jest stosowana do plików w pakiecie `content` folderu, gdy pakiet jest zainstalowany, gdy tokeny odnoszą się do programu Visual Studio [właściwości projektu](https://msdn.microsoft.com/library/vslangproj.projectproperties_properties.aspx) . Dzięki temu można wstawić plik do projektu przestrzeni nazw lub Dostosuj kod, który zazwyczaj przejdzie do `global.asax` w projekcie programu ASP.NET.
+A **źródła kodu transformacji** jednokierunkowe zastępujący tokenu jest stosowana do plików w pakiecie `content` folderu, gdy pakiet jest zainstalowany, gdy tokeny odnoszą się do programu Visual Studio [właściwości projektu](/dotnet/api/vslangproj.projectproperties?redirectedfrom=MSDN&view=visualstudiosdk-2017#properties_) . Dzięki temu można wstawić plik do projektu przestrzeni nazw lub Dostosuj kod, który zazwyczaj przejdzie do `global.asax` w projekcie programu ASP.NET.
 
 A **transformacji pliku config** umożliwia modyfikowanie plików, które już istnieją w projekcie docelowym, takich jak `web.config` i `app.config`. Na przykład pakiet może być konieczne dodanie elementu `modules` sekcji w pliku konfiguracji. Ta transformacja odbywa się przy tym specjalne pliki w pakiecie, który opisano sekcjach, aby dodać do plików konfiguracji. Po odinstalowaniu pakietu te same zmiany są następnie wycofać, co to dwukierunkowe przekształcania.
-
 
 ## <a name="specifying-source-code-transformations"></a>Określanie przekształcenia kodu źródłowego
 
 1. Pliki, które ma zostać wstawiony z pakietu w projekcie musi znajdować się w pakiecie `content` folderu. Na przykład, jeśli chcesz, aby plik o nazwie `ContosoData.cs` ma być zainstalowany w `Models` folder docelowy projekt, musi znajdować się wewnątrz `content\Models` folderu w pakiecie.
 
-2. Aby nakazać NuGet, aby zastosować zastępujący tokenu w czasie instalacji, należy dołączyć `.pp` nazwy pliku kodu źródłowego. Po zakończeniu instalacji, nie ma pliku `.pp` rozszerzenia.
+1. Aby nakazać NuGet, aby zastosować zastępujący tokenu w czasie instalacji, należy dołączyć `.pp` nazwy pliku kodu źródłowego. Po zakończeniu instalacji, nie ma pliku `.pp` rozszerzenia.
 
     Na przykład, aby dokonać przekształcenia w `ContosoData.cs`, nazwa pliku w pakiecie `ContosoData.cs.pp`. Po zakończeniu instalacji zostanie wyświetlony jako `ContosoData.cs`.
 
-3. W pliku kodu źródłowego za pomocą tokenów bez uwzględniania wielkości liter w postaci `$token$` wartości tego NuGet należy zastąpić właściwości projektu:
+1. W pliku kodu źródłowego za pomocą tokenów bez uwzględniania wielkości liter w postaci `$token$` wartości tego NuGet należy zastąpić właściwości projektu:
 
     ```cs
     namespace $rootnamespace$.Models
@@ -58,8 +57,7 @@ A **transformacji pliku config** umożliwia modyfikowanie plików, które już i
 
     Podczas instalacji, zastępuje NuGet `$rootnamespace$` z `Fabrikam` przy założeniu projektu docelowego obiektu, którego przestrzeń nazw głównego `Fabrikam`.
 
-`$rootnamespace$` Token jest właściwość projektu najczęściej używane; pozostałe są wymienione w [właściwości projektu](https://msdn.microsoft.com/library/vslangproj.projectproperties_properties.aspx) dokumentacji w witrynie MSDN. Można, mając na uwadze, że niektóre właściwości mogą być specyficzne dla typu projektu.
-
+`$rootnamespace$` Token jest właściwość projektu najczęściej używane; pozostałe są wymienione w [właściwości projektu](/dotnet/api/vslangproj.projectproperties?redirectedfrom=MSDN&view=visualstudiosdk-2017#properties_) dokumentacji w witrynie MSDN. Można, mając na uwadze, że niektóre właściwości mogą być specyficzne dla typu projektu.
 
 ## <a name="specifying-config-file-transformations"></a>Określenie konfiguracji pliku przekształcenia
 
@@ -91,7 +89,6 @@ Na przykład załóżmy, że projekt zawiera początkowo następującą zawarto�
 
 Aby dodać `MyNuModule` elementu `modules` sekcji podczas instalacji, Utwórz `web.config.transform` pliku do pakietu `content` folderu, który wygląda następująco:
 
-    
 ```xml
 <configuration>
     <system.webServer>
@@ -125,10 +122,9 @@ Do sprawdzenia jego `web.config.transform` plik, Pobierz pakiet ELMAH z powyższ
 
 Aby zobaczyć efekt Instalowanie i odinstalowanie pakietu, należy utworzyć nowy projekt ASP.NET w programie Visual Studio (szablon podlega **Visual C# > sieci Web** w oknie dialogowym Nowy projekt) i wybierz opcję Pusta aplikacja platformy ASP.NET. Otwórz `web.config` aby zobaczyć stan początkowy. Kliknij prawym przyciskiem myszy projekt, wybierz **Zarządzaj pakietami NuGet**Przeglądaj w poszukiwaniu ELMAH na nuget.org i zainstaluj najnowszą wersję. Zwróć uwagę, wszystkie zmiany do `web.config`. Teraz odinstalować pakiet i zobaczysz `web.config` powrócić do poprzedniego stanu.
 
-
 ### <a name="xdt-transforms"></a>Przekształca XDT
 
-2.6 NuGet i nowsze, można zmodyfikować plików konfiguracji przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Może także zawierać NuGet Zastąp tokeny z [właściwości projektu](https://msdn.microsoft.com/library/vslangproj.projectproperties_properties.aspx) przez dołączenie nazwy właściwości w `$` ograniczników (bez uwzględniania wielkości liter).
+2.6 NuGet i nowsze, można zmodyfikować plików konfiguracji przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Może także zawierać NuGet Zastąp tokeny z [właściwości projektu](/dotnet/api/vslangproj.projectproperties?redirectedfrom=MSDN&view=visualstudiosdk-2017#properties_) przez dołączenie nazwy właściwości w `$` ograniczników (bez uwzględniania wielkości liter).
 
 Na przykład następująca `app.config.install.xdt` pliku zostanie wstawiona `appSettings` element do `app.config` zawierający `FullPath`, `FileName`, i `ActiveConfigurationSettings` wartości z projektu:
 

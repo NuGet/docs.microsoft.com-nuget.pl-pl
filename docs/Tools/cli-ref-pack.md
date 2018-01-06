@@ -13,11 +13,11 @@ keywords: "Odwołanie do pakietu nuget, polecenie pakietu"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 353d5d839d85c04bc315c3a0e9cfe274a361bd15
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 22643ee4c7d5f858da728ba9d9d2886d600d20f0
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="pack-command-nuget-cli"></a>polecenie pakietu (NuGet CLI)
 
@@ -53,7 +53,7 @@ gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub odpowiednio projekt
 | NoDefaultExcludes | Zapobiega domyślne wykluczenie NuGet pakiet plików i pliki i foldery rozpoczynający się kropką, na przykład `.svn` i `.gitignore`. |
 | NoPackageAnalysis | Określa, że pakiet nie należy uruchamiać analizy pakietu po utworzeniu pakietu. |
 | OutputDirectory | Określa folder, w którym przechowywany jest utworzony pakiet. Jeśli folder nie jest określony, używany jest bieżący folder. |
-| Właściwości | Określa listę właściwości, które przesłaniają wartości w pliku projektu. zobacz [wspólne właściwości projektów MSBuild](https://docs.microsoft.com/visualstudio/msbuild/common-msbuild-project-properties) dla nazwy właściwości. Argument właściwości w tym miejscu znajduje się lista tokenu = pary wartości, oddziel je średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostaną zastąpione podanej wartości. Możliwe wartości ciągów w cudzysłowy. Należy pamiętać, że dla właściwości "Konfiguracja", wartość domyślna to "Debug". Aby zmienić konfigurację, wersji, należy użyć `-Properties Configuration=Release`. |
+| Właściwości | Określa listę właściwości, które przesłaniają wartości w pliku projektu. zobacz [wspólne właściwości projektów MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazwy właściwości. Argument właściwości w tym miejscu znajduje się lista tokenu = pary wartości, oddziel je średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostaną zastąpione podanej wartości. Możliwe wartości ciągów w cudzysłowy. Należy pamiętać, że dla właściwości "Konfiguracja", wartość domyślna to "Debug". Aby zmienić konfigurację, wersji, należy użyć `-Properties Configuration=Release`. |
 | Sufiks | *(3.4.4+)*  Dołącza sufiks z numerem wersji wewnętrznie generowane zwykle używany w przypadku dołączania kompilacji lub innych identyfikatorów w wersji wstępnej. Na przykład za pomocą `-suffix nightly` utworzy pakiet z podobne do numeru wersji `1.2.3-nightly`. Sufiksy musi rozpoczynać się od litery, aby uniknąć potencjalnych niezgodności z różnymi wersjami programu NuGet i Menedżer pakietów NuGet, błędy i ostrzeżenia. |
 | Symbole | Określa, że pakiet zawiera źródła i symbole. W przypadku użycia z `.nuspec` pliku, tworzy zwykły plik pakietu NuGet i odpowiedniego pakietu symboli. |
 | Narzędzie | Określa, że pliki wyjściowe projektu powinna zostać umieszczona w `tool` folderu. |

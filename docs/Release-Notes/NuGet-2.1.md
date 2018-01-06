@@ -13,11 +13,11 @@ keywords: NuGet 2.1 informacje o wersji, poprawki, znanymi problemami, nowe funk
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c45cfb9f6a46a1efd9fe4531602191973da66290
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: dafe575eedbfed215c0b1c86795bea281de97252
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="nuget-21-release-notes"></a>Informacje o wersji 2.1 NuGet
 
@@ -80,7 +80,7 @@ NuGet 2.1 zapewnia większą kontrolę nad lokalizację folderu pakietów za pom
 W tym przykładzie udostępnionego `Nuget.Config` pliku Określa folder udostępniony pakietów dla każdego projektu, który jest tworzony poniżej C:\myteam, niezależnie od głębokość. Uwaga: Jeśli masz istniejący folder pakietów poniżej katalogu głównym rozwiązanie będzie należy go usunąć przed NuGet spowoduje umieszczenie pakietów w nowej lokalizacji.
 
 ## <a name="support-for-portable-libraries"></a>Obsługa bibliotek przenośnych
-[Przenośnych bibliotek](http://msdn.microsoft.com/library/gg597391.aspx) to funkcja wprowadzona z .NET 4, który umożliwia tworzenie zestawów, które mogą pracować bez żadnych modyfikacji na różnych platformach firmy Microsoft, z wersji środowiska.NET Framework do Silverlight Windows Phone i nawet Xbox 360 (chociaż w tej chwili NuGet nie obsługują elementu docelowego przenośnej biblioteki konsoli Xbox).  Rozszerzając [pakietu konwencje](../create-packages/supporting-multiple-target-frameworks.md) profilów i framework w wersji NuGet 2.1 obsługuje teraz bibliotek przenośnych dzięki umożliwieniu tworzenia pakietów, które framework złożone i cel profilu `lib` folderów.
+[Przenośnych bibliotek](/dotnet/standard/cross-platform/cross-platform-development-with-the-portable-class-library) to funkcja wprowadzona z .NET 4, który umożliwia tworzenie zestawów, które mogą pracować bez żadnych modyfikacji na różnych platformach firmy Microsoft, z wersji środowiska.NET Framework do Silverlight Windows Phone i nawet Xbox 360 (chociaż w tej chwili NuGet nie obsługują elementu docelowego przenośnej biblioteki konsoli Xbox).  Rozszerzając [pakietu konwencje](../create-packages/supporting-multiple-target-frameworks.md) profilów i framework w wersji NuGet 2.1 obsługuje teraz bibliotek przenośnych dzięki umożliwieniu tworzenia pakietów, które framework złożone i cel profilu `lib` folderów.
 
 Na przykład należy wziąć pod uwagę następujące biblioteki klas przenośnych dostępnych platform.
 

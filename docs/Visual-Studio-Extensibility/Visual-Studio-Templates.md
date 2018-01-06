@@ -3,29 +3,28 @@ title: Pakiety NuGet w szablony Visual Studio | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 2/8/2017
+ms.date: 1/3/2018
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 0b2cf228-f028-475d-8792-c012dffdb26f
 description: "Instrukcje dotyczące tym pakiety NuGet jako część programu Visual Studio szablonów projektów i elementów."
 keywords: "NuGet w Visual Studio, szablony projektu Visual Studio, szablony elementów Visual Studio, pakiety w szablonach projektu, pakiety w szablonach elementów"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 5b2ad7616578b5f54d917c4555e861c847814da9
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 45a2ca2c08660be650f9cf38301f628923e1f8be
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="packages-in-visual-studio-templates"></a>Pakiety w szablony programu Visual Studio
 
-Szablony Visual Studio projektu i elementu często muszą upewnij się, że niektóre pakiety są zainstalowane w po utworzeniu projektu lub elementu. Na przykład szablonu platformy ASP.NET MVC 3 instaluje jQuery, Modernizr i inne pakiety.
+Szablony Visual Studio projektu i elementu często konieczne jest zainstalowanie niektórych pakietów podczas tworzenia projektów lub elementów. Na przykład szablonu platformy ASP.NET MVC 3 instaluje jQuery, Modernizr i inne pakiety.
 
 W tym autorom można nakazać NuGet w celu zainstalowania wymaganych pakietów, a nie poszczególnych bibliotek. Deweloperzy i uaktualnić tych pakietów w dowolnym momencie nowsze.
 
-Aby dowiedzieć się więcej na temat tworzenia szablony, zajrzyj do [tworzenie szablony projektów i elementów w programie Visual Studio](https://msdn.microsoft.com/library/s365byhx.aspx) lub [tworzenie niestandardowe szablony projektów i elementów z programu Visual Studio SDK](https://msdn.microsoft.com/library/ff527340.aspx).
+Aby dowiedzieć się więcej na temat tworzenia szablony, zapoznaj się [porady: Tworzenie szablonów projektów](/visualstudio/ide/how-to-create-project-templates) lub [Tworzenie niestandardowych Project and Item Templates](/visualstudio/extensibility/creating-custom-project-and-item-templates).
 
 W pozostałej części tej sekcji opisano procedury określonych w sytuacji, gdy tworzony jest szablon uwzględnienie poprawnie pakietów NuGet.
 
@@ -34,16 +33,15 @@ W pozostałej części tej sekcji opisano procedury określonych w sytuacji, gdy
 
 Na przykład zobacz [próbki NuGetInVsTemplates](https://bitbucket.org/marcind/nugetinvstemplates).
 
-
 ## <a name="adding-packages-to-a-template"></a>Dodawanie pakietów do szablonu
 
-Podczas tworzenia wystąpienia klasy szablonu [Kreatora szablonów](https://msdn.microsoft.com/library/ms185301.aspx) jest wywoływane w celu załadowania listy pakietów do zainstalowania wraz z informacjami o tym, gdzie można znaleźć tych pakietów. Pakietów można być osadzone w pliku VSIX, osadzone w szablonie lub znajduje się na lokalnym dysku twardym w takim przypadku odwołać się do ścieżki pliku za pomocą klucza rejestru. Szczegółowe informacje o tych lokalizacji podane są później w tej sekcji.
+Podczas tworzenia wystąpienia klasy szablonu [Kreatora szablonów](/visualstudio/extensibility/how-to-use-wizards-with-project-templates) jest wywoływane w celu załadowania listy pakietów do zainstalowania wraz z informacjami o tym, gdzie można znaleźć tych pakietów. Pakietów można być osadzone w pliku VSIX, osadzone w szablonie lub znajduje się na lokalnym dysku twardym w takim przypadku odwołać się do ścieżki pliku za pomocą klucza rejestru. Szczegółowe informacje o tych lokalizacji podane są później w tej sekcji.
 
-Preinstalowane pakiety pracę za pomocą [kreatorów szablonów](http://msdn.microsoft.com/library/ms185301.aspx). Specjalne Kreator pobiera wywoływane, gdy pobiera wystąpienia szablonu. Kreator ładuje listę pakietów, które muszą być zainstalowane i przekazuje informację do odpowiednich interfejsów API NuGet.
+Preinstalowane pakiety pracę za pomocą [kreatorów szablonów](/visualstudio/extensibility/how-to-use-wizards-with-project-templates). Specjalne Kreator pobiera wywoływane, gdy pobiera wystąpienia szablonu. Kreator ładuje listę pakietów, które muszą być zainstalowane i przekazuje informację do odpowiednich interfejsów API NuGet.
 
 Kroki pakiety mają być dołączane w szablonie:
 
-1. W Twojej `vstemplate` plików, Dodaj odwołanie do Kreatora szablonów NuGet przez dodanie [ `WizardExtension` ](http://msdn.microsoft.com/library/ms171411.aspx) elementu:
+1. W Twojej `vstemplate` plików, Dodaj odwołanie do Kreatora szablonów NuGet przez dodanie [ `WizardExtension` ](/visualstudio/extensibility/wizardextension-element-visual-studio-templates) elementu:
 
     ```xml
     <WizardExtension>
@@ -66,12 +64,11 @@ Kroki pakiety mają być dołączane w szablonie:
 
     *(NuGet 2.2.1+)*  Kreator obsługuje wielu `<package>` elementy do obsługi wielu źródeł pakietów. Zarówno `id` i `version` atrybuty są wymagane, co oznacza, że określonej wersji pakietu zostanie zainstalowany, nawet jeśli jest dostępna nowsza wersja. Zapobiega to fundamentalne szablonu, pozostawiając wyboru do zaktualizowania pakietu do deweloperów za pomocą szablonu pakietu aktualizacji.
 
-
 1. Określ repozytorium, gdzie NuGet można znaleźć pakiety, zgodnie z opisem w poniższych sekcjach.
 
 ### <a name="vsix-package-repository"></a>Repozytorium pakietu VSIX
 
-Podejście zalecane wdrożenie szablonów projektu/elementu programu Visual Studio jest [rozszerzenia VSIX](http://msdn.microsoft.com/library/ff363239.aspx) ponieważ umożliwia pakietu ze sobą kilka szablonów projektu/elementu i umożliwia deweloperom łatwe odnajdowanie szablonów za pomocą Menedżera rozszerzenia programu VS lub galerii programu Visual Studio. Aktualizacje z rozszerzeniem są także łatwo wdrażać przy użyciu [mechanizmu aktualizacji automatycznych Menedżera rozszerzeń programu Visual Studio](http://msdn.microsoft.com/library/dd997169.aspx).
+Podejście zalecane wdrożenie szablonów projektu/elementu programu Visual Studio jest [rozszerzenia VSIX](/visualstudio/extensibility/shipping-visual-studio-extensions) ponieważ umożliwia pakietu ze sobą kilka szablonów projektu/elementu i umożliwia deweloperom łatwe odnajdowanie szablonów za pomocą Menedżera rozszerzenia programu VS lub galerii programu Visual Studio. Aktualizacje z rozszerzeniem są także łatwo wdrażać przy użyciu [mechanizmu aktualizacji automatycznych Menedżera rozszerzeń programu Visual Studio](/visualstudio/extensibility/how-to-update-a-visual-studio-extension).
 
 Samego pliku VSIX może służyć jako źródło dla pakietów wymagane przez szablon:
 
@@ -83,25 +80,17 @@ Samego pliku VSIX może służyć jako źródło dla pakietów wymagane przez sz
     </packages>
     ```
 
-    `repository` Atrybut określa typ z repozytorium jako `extension` podczas `repositoryId` jest unikatowym identyfikatorem VSIX, sama (jest to wartość [ `ID` atrybutu](http://msdn.microsoft.com/library/dd393688.aspx) w rozszerzenia`vsixmanifest` pliku).
+    `repository` Atrybut określa typ z repozytorium jako `extension` podczas `repositoryId` jest unikatowym identyfikatorem VSIX, sama (jest to wartość `ID` atrybut do rozszerzenia `vsixmanifest` plików, zobacz [ Odwołanie do schematu 2.0 rozszerzenia VSIX](/visualstudio/extensibility/vsix-extension-schema-2-0-reference)).
 
 1. Miejsce Twojego `nupkg` pliki w folderze o nazwie `Packages` w pliku VSIX.
-1. Dodaj pliki potrzebny pakiet jako [zawartości rozszerzenia niestandardowego](http://msdn.microsoft.com/library/dd393737.aspx) w Twojej `source.extension.vsixmanifest` pliku. Jeśli używasz schematu 2.0 powinien wyglądać następująco:
+
+1. Dodaj pliki potrzebny pakiet jako `<Asset>` w Twojej `vsixmanifest` pliku (zobacz [odwołania 2.0 schematu rozszerzenia VSIX](/visualstudio/extensibility/vsix-extension-schema-2-0-reference)):
 
     ```xml
     <Asset Type="Moq.4.0.10827.nupkg" d:Source="File" Path="Packages\Moq.4.0.10827.nupkg" d:VsixSubPath="Packages" />
     ```
 
-    Jeśli używasz schematu 1.0 powinien wyglądać następująco:
-
-    ```xml
-    <CustomExtension Type="Moq.4.0.10827.nupkg">
-        packages/Moq.4.0.10827.nupkg
-    </CustomExtension>
-    ```
-
 1. Zauważ, że może dostarczać pakietów w tym samym pliku VSIX jako szablonów projektu lub można umieścić je w osobnym pliku VSIX jeśli ma to sens więcej dla danego scenariusza. Jednak nie odwołuj się do żadnych VSIX, w którym nie ma kontroli, ponieważ zmiany tego rozszerzenia może spowodować przerwanie szablonu.
-
 
 ### <a name="template-package-repository"></a>Repozytorium pakietów szablonu
 
@@ -120,7 +109,6 @@ Jeśli jest dystrybuowany szablon pojedynczego projektu/elementu i nie trzeba pa
 1. Umieść pakiety w folderze głównym pliku ZIP szablonu projektu/elementu.
 
 Należy pamiętać, że przy użyciu tej metody w pliku VSIX, który zawiera wiele szablonów prowadzi do niepotrzebnych rozrostu, gdy jeden lub więcej pakietów są wspólne dla szablonów. W takiej sytuacji należy użyć [VSIX jako repozytorium](#vsix-package-repository) zgodnie z opisem w poprzedniej sekcji.
-
 
 ### <a name="registry-specified-folder-path"></a>Ścieżka folderu określona w rejestrze
 
@@ -159,6 +147,6 @@ Zestawy SDK, które są instalowane za pomocą Instalatora MSI można zainstalow
     <!-- ... -->
     ```
 
-1. Wymagaj szablonów projektu/elementu do zapisania przy tworzeniu przez ustawienie [ `<PromptForSaveOnCreation>` ](http://msdn.microsoft.com/library/twfxayz5.aspx) w `.vstemplate` pliku.
+1. Wymagaj szablonów projektu/elementu można zapisać przy tworzeniu, umieszczając w niej [ `<PromptForSaveOnCreation>true</PromptForSaveOnCreation>` ](/visualstudio/extensibility/promptforsaveoncreation-element-visual-studio-templates) w `.vstemplate` pliku.
 
 1. Szablony nie zawierają `packages.config` lub `project.json` pliku, a nie dołączaj lub żadnych odwołań do zawartości lub zostanie dodany podczas instalowania pakietów NuGet.

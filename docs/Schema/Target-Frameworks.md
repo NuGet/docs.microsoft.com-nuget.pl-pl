@@ -14,11 +14,11 @@ ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 4d1d2e6850f22306d715b1c2071ee45b0eb050dc
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 36e1f0cd6e4284a6bd272ce3c85749e9ed72cbcd
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="target-frameworks"></a>Docelowych platform
 
@@ -53,7 +53,7 @@ Klienci NuGet obsługuje platform w poniższej tabeli. Odpowiedniki są wyświet
 |                |              | net46      |
 |                |              | net461     |
 |                |              | net462     |
-|Sklep Windows   | netcore      | netcore [netcore45] |
+|Microsoft Store (Sklep Windows) | netcore      | netcore [netcore45] |
 |                |              | netcore45 [win, Windows 8] |
 |                |              | netcore451 [win81] |
 |                |              | netcore50 |
@@ -83,7 +83,7 @@ Platforma uniwersalna systemu Windows | uap | uap [uap10.0] |
 Aplikacja .NET core | netcoreapp | netcoreapp1.0 |
 | | | netcoreapp1.1 |
 | | | netcoreapp2.0 |
-Tizen | tizen | tizen3 |
+tizen | tizen | tizen3 |
 | | | tizen4 |
 
 ## <a name="deprecated-frameworks"></a>Przestarzałe struktur
@@ -122,7 +122,7 @@ Liczba struktur są powiązane z i zgodne ze sobą, ale nie jest równorzędny m
 
 ## <a name="net-platform-standard"></a>Standard platformy Asp.net
 
-[Platformy .NET Standard](https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-platform-standard.md) upraszcza odwołania między struktur zgodnego pliku binarnego, dzięki czemu framework pojedynczym elementem docelowym odwołać kombinacji innych. (W tle, zobacz [Elementarz .NET](https://docs.microsoft.com/dotnet/articles/standard/index).)
+[Platformy .NET Standard](https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-platform-standard.md) upraszcza odwołania między struktur zgodnego pliku binarnego, dzięki czemu framework pojedynczym elementem docelowym odwołać kombinacji innych. (W tle, zobacz [Elementarz .NET](/dotnet/articles/standard/index).)
 
 [NuGet pobrania najbliższej Framework narzędzia](https://aka.ms/s2m3th) symuluje NuGet używa do wybrania framework jedną z wielu zasobów framework dostępne w pakiecie na platformę projektu na podstawie.
 

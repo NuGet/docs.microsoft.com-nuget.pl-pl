@@ -13,11 +13,11 @@ keywords: Tworzenie pakietu NuGet, pakietu NuGet publikowania, samouczek NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 36a7c2b1d056dddf07a59737de1c3e94294689ac
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: b33344c3b3dd782fc4668d2a1674b9501fadcc03
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-and-publish-a-package"></a>Tworzenie i publikowanie pakietu
 
@@ -115,7 +115,6 @@ Po utworzeniu `.nupkg` pliku opublikowaniu go przy użyciu nuget.org `push` pole
 > [!Warning]
 > Pakiety, które publikowania nuget.org są publicznie widoczne dla innych deweloperów. Do hostowania pakietów prywatnie, zobacz [Hosting pakiety](../hosting-packages/overview.md).
 
-
 1. Utwórz bezpłatne konto na [nuget.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F), lub jeśli już istnieje. Tworzenie nowego konta wysyła wiadomość e-mail z potwierdzeniem. Aby przekazać pakiet, musisz potwierdzić konto.
 
 1. Po zalogowaniu, wybierz nazwę użytkownika (w prawym górnym rogu), a następnie wybierz **klucze interfejsu API**.
@@ -134,7 +133,7 @@ Po utworzeniu `.nupkg` pliku opublikowaniu go przy użyciu nuget.org `push` pole
     ```
     nuget push AppLogger.1.0.0.0.nupkg 47be3377-c434-4c29-8576-af7f6993a54b -Source https://api.nuget.org/v3/index.json
     ```
-    
+
 1. nuget.exe wyświetla wyniki procesu publikowania:
 
     ```

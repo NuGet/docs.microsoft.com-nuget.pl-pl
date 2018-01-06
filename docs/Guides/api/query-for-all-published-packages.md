@@ -17,11 +17,11 @@ keywords: "Interfejs API NuGet wyliczyć wszystkie pakiety, replikowania pakiety
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 50a5be4cb0405ad78a72d0497612781a4b346060
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 5559a7cd104861b1a10aa8d1513696e609c51c15
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="query-for-all-packages-published-to-nugetorg"></a>Zapytania dla wszystkich pakietów opublikowane nuget.org
 
@@ -106,7 +106,7 @@ Ten krok polega na tym, gdzie wdrożyć niestandardowej logiki. Pozostałe kroki
 
 ### <a name="downloading-the-nupkg"></a>Pobieranie .nupkg
 
-Jeśli interesuje Cię w czasie pobierania pakietów .nupkg odnaleziono w katalogu, można użyć [pakietu zawartości zasobów](../../api/package-base-address-resource.md). Jednak należy pamiętać, że krótkie opóźnienie podczas pakietu znajduje się w katalogu i gdy jest on dostępny w zasobu zawartości pakietu. W związku z tym jeśli wystąpią `404 Not Found` podczas próby pobrania .nupkg dla pakietu, który można znaleźć w katalogu, po prostu ponownie przez krótki czas później. Ustalenie to opóźnienie jest śledzony przez problem GitHub [&#3455; NuGet/NuGetGallery](https://github.com/NuGet/NuGetGallery/issues/3455).
+Jeśli interesuje Cię w czasie pobierania pakietów .nupkg odnaleziono w katalogu, można użyć [pakietu zawartości zasobów](../../api/package-base-address-resource.md). Jednak należy pamiętać, że krótkie opóźnienie podczas pakietu znajduje się w katalogu i gdy jest dostępny w zasobie zawartości pakietu. W związku z tym jeśli wystąpią `404 Not Found` podczas próby pobrania .nupkg dla pakietu, który można znaleźć w katalogu, po prostu ponownie przez krótki czas później. Ustalenie to opóźnienie jest śledzony przez problem GitHub [&#3455; NuGet/NuGetGallery](https://github.com/NuGet/NuGetGallery/issues/3455).
 
 ## <a name="move-the-cursor-forward"></a>Przeniesienie kursora do przodu
 

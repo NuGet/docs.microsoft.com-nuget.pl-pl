@@ -13,15 +13,15 @@ keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershel
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 679e89e9cfb16dbe484f133b0b6431313b9d87ac
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 0899198a354a56615a48a1f7f428674a205f386b
+ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="uninstall-package-package-manager-console-in-visual-studio"></a>Odinstaluj pakiet (Konsola Menedżera pakietów w programie Visual Studio)
 
-*W tym temacie opisano polecenia w [Konsola Menedżera pakietów NuGet](Package-Manager-Console.md) w programie Visual Studio w systemie Windows. Ogólny polecenia pakietu dezinstalacji programu PowerShell, zobacz [odwołania programu PowerShell PackageManagement](https://docs.microsoft.com/powershell/module/packagemanagement/?view=powershell-6).*
+*W tym temacie opisano polecenia w [Konsola Menedżera pakietów NuGet](Package-Manager-Console.md) w programie Visual Studio w systemie Windows. Ogólny polecenia pakietu dezinstalacji programu PowerShell, zobacz [odwołania programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
 
 Usuwa pakiet z projektu, opcjonalnie usunięcie jego zależności. Jeśli tego pakietu zależą inne pakiety, polecenie zakończy się niepowodzeniem, jeśli nie zostanie określona opcja Force.
 
