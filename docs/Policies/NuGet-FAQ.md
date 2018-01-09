@@ -13,11 +13,11 @@ keywords: "Wersje pakietu NuGet pytań i odpowiedzi, pytania i odpowiedzi, typow
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 44636a3ab8a3f7aaf96e52aa67d568d7ef381549
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: d19a24a2d1955e996e18d44fee346865d36493f8
+ms.sourcegitcommit: e5b7cf6675be9891341c196afe822cea6f71d60c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet często zadawane pytania
 
@@ -177,9 +177,9 @@ Jeśli pakiet nie określa postanowień licencyjnych, skontaktuj się z właści
 
 ## <a name="managing-packages-on-nugetorg"></a>Zarządzanie pakietami na nuget.org
 
-**Metadane pakietów można edytować po jest przekazane? Dlaczego zalecamy edycji plik nuspec i przekazać nowy pakiet do wprowadzania zmian do pakietu metadanych?**
+**Metadane pakietów można edytować po jest przekazane? Dlaczego wymagają edycji plik nuspec i przekazać nowy pakiet do wprowadzania zmian do pakietu metadanych?**
 
-Będzie można implementacja NuGet podpisywania pakietu. Zasada projektowania podpisywania pakietu jest, że zawartość podpisanego pakietu musi być niezmienne, która obejmuje plik nuspec. Edytowanie metadanych pakietu powoduje zmian w plik nuspec, unieważnienie istniejących podpisów. Zaleca się zmodyfikowanie istniejącej przepływy pracy, aby nie wymagają edycji metadanych pakietu po utworzeniu pakietu.
+NuGet wymaga wszystkich pakietów, były podpisane. Zasada projektowania podpisywania pakietu jest, że zawartość podpisanego pakietu musi być niezmienne, która obejmuje plik nuspec. Edytowanie metadanych pakietu powoduje zmian w plik nuspec, unieważnienie istniejących podpisów. Zaleca się zmodyfikowanie istniejącej przepływy pracy, aby nie wymagają edycji metadanych pakietu po utworzeniu pakietu.
 
 Należy pamiętać, że zależności dla pakietu są generowane automatycznie z pakietu się i nie można edytować.
 
