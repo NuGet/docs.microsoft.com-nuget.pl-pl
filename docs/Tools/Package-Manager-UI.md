@@ -17,11 +17,11 @@ keywords: "Interfejs użytkownika NuGet, Menedżer pakietów NuGet interfejsu u�
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0f08e5a36499c4481c4e0cd70738d67d65cd980a
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: fb2166b727dd01de0f7096535fdbc71c5ab0e2a3
+ms.sourcegitcommit: cde52deee5691d3e8bcb96f46f9645c7ba579af8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="nuget-package-manager-ui"></a>Interfejs użytkownika Menedżera pakietów NuGet
 
@@ -39,7 +39,7 @@ W tym temacie:
 > [!Note]
 > Sprawdź, czy jest Brak Menedżera pakietów NuGet w programie Visual Studio 2015, **Narzędzia > rozszerzenia i aktualizacje...**  i wyszukaj *Menedżera pakietów NuGet* rozszerzenia. Jeśli nie można użyć Instalatora rozszerzeń programu Visual Studio, pobierz rozszerzenie bezpośrednio z [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html).
 >
-> W programie Visual Studio 2017 r. NuGet i Menedżer pakietów NuGet są automatycznie instalowane ze wszystkimi. Obciążenia związane z sieci. Zainstalować individuall, wybierając **pojedynczych składników > narzędzia Code > Menedżera pakietów NuGet** opcji w Instalatorze programu Visual Studio 2017 r.
+> W programie Visual Studio 2017 r. NuGet i Menedżer pakietów NuGet są automatycznie instalowane ze wszystkimi. Obciążenia związane z sieci. Zainstalować oddzielnie, wybierając **pojedynczych składników > narzędzia Code > Menedżera pakietów NuGet** opcji w Instalatorze programu Visual Studio 2017 r.
 
 ## <a name="finding-and-installing-a-package"></a>Znajdowanie i instalowanie pakietu
 
