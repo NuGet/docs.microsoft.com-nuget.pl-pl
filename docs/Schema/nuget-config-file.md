@@ -13,11 +13,11 @@ keywords: "Pliku NuGet.Config, NuGet konfiguracji odwołania, opcje konfiguracji
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: fa471e1ad419c6a4cab99e271375d9be94c29a50
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 830c622f622b894a228b18dfdb3a790bccfde8a3
+ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="nugetconfig-reference"></a>Odwołanie do pliku NuGet.Config.
 
@@ -31,12 +31,11 @@ W tym temacie:
 - [sekcja bindingRedirects](#bindingredirects-section)
 - [sekcja packageRestore](#packagerestore-section)
 - [sekcji rozwiązania](#solution-section)
-- [Pakiet sekcje źródła](#package-source-sections):
-    - [packageSources](#packagesources)
-    - [packageSourceCredentials](#packagesourcecredentials)
-    - [apikeys](#apikeys)
-    - [disabledPackageSources](#disabledpackagesources)
-    - [activePackageSource](#activepackagesource)
+- [Pakiet sekcje źródła](#package-source-sections): - [packageSources](#packagesources)
+  - [packageSourceCredentials](#packagesourcecredentials)
+  - [apikeys](#apikeys)
+  - [disabledPackageSources](#disabledpackagesources)
+  - [activePackageSource](#activepackagesource)
 - [Korzystanie ze zmiennych środowiskowych](#using-environment-variables)
 - [Przykładowy plik konfiguracji](#example-config-file)
 
@@ -59,7 +58,6 @@ Uwaga: `dependencyVersion` i `repositoryPath` stosowania tylko dla projektów pr
 | defaultPushSource | Określa adres URL lub ścieżkę źródła pakietu, które mają być używane jako domyślne, jeśli inne źródła pakietu nie znaleziono dla operacji. |
 | że http_proxy.user http_proxy.password no_proxy | Ustawienia serwera proxy do użycia podczas połączenia ze źródła pakietów; `http_proxy` powinien być w formacie `http://<username>:<password>@<domain>`. Hasła są szyfrowane i nie można dodać ręcznie. Aby uzyskać `no_proxy`, wartość jest rozdzielaną przecinkami listę domen obejścia serwera proxy. Można również używać zmiennych środowiskowych że i no_proxy, dla tych wartości. Aby uzyskać więcej informacji, zobacz [ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com). |
 
-
 **Przykład**:
 
 ```xml
@@ -70,7 +68,6 @@ Uwaga: `dependencyVersion` i `repositoryPath` stosowania tylko dla projektów pr
     <add key="http_proxy" value="http://company-squid:3128@contoso.com" />
 </config>
 ```
-
 
 ## <a name="bindingredirects-section"></a>sekcja bindingRedirects
 
@@ -116,7 +113,6 @@ Formanty czy `packages` folderu rozwiązania jest uwzględniona w kontroli źró
 | --- | --- |
 | disableSourceControlIntegration | Wartość logiczna wskazująca, czy Ignoruj folderu pakietów podczas pracy z kontroli źródła. Wartość domyślna to false. |
 
-
 **Przykład**:
 
 ```xml
@@ -125,13 +121,13 @@ Formanty czy `packages` folderu rozwiązania jest uwzględniona w kontroli źró
 </solution>
 ```
 
-
 ## <a name="package-source-sections"></a>Sekcje źródła pakietu
 
 `packageSources`, `packageSourceCredentials`, `apikeys`, `activePackageSource`, I `disabledPackageSources` wszystkie działają razem, konfigurowanie, jak NuGet współpracuje z repozytoriów pakietu podczas instalacji, przywracania i operacje aktualizacji.
 
 [ `nuget sources` Polecenia](../tools/cli-ref-sources.md) jest zazwyczaj używany do zarządzania te ustawienia, z wyjątkiem `apikeys` której odbywa się przy użyciu [ `nuget setapikey` polecenia](../tools/cli-ref-setapikey.md).
 
+Należy zauważyć, że adres URL źródła dla nuget.org `https://api.nuget.org/v3/index.json`.
 
 ### <a name="packagesources"></a>packageSources
 
@@ -150,7 +146,6 @@ Wyświetla wszystkie źródła pakietów znane.
     <add key="Test Source" value="c:\packages" />
 </packageSources>
 ```
-
 
 ### <a name="packagesourcecredentials"></a>packageSourceCredentials
 
@@ -190,7 +185,7 @@ Podczas używania niezaszyfrowane hasła:
     <Test_x0020_Source>
         <add key="Username" value="user" />
         <add key="ClearTextPassword" value="hal+9ooo_da!sY" />
-    </Test_x0020_Source>    
+    </Test_x0020_Source>
 </packageSourceCredentials>
 ```
 
@@ -210,7 +205,6 @@ Przechowuje klucze źródeł, które korzystają z uwierzytelniania klucza inter
 </apikeys>
 ```
 
-
 ### <a name="disabledpackagesources"></a>disabledPackageSources
 
 Rozpoznane źródła aktualnie wyłączone. Może być pusta.
@@ -218,8 +212,6 @@ Rozpoznane źródła aktualnie wyłączone. Może być pusta.
 | Key | Wartość |
 | --- | --- |
 | (nazwa źródła) | Wartość logiczna wskazująca, czy źródło jest wyłączone. |
-
-
 
 **Przykład:**
 
@@ -263,7 +255,6 @@ Na przykład jeśli `HOME` ustawiono zmiennej środowiskowej w systemie Windows 
 Podobnie jeśli `HOME` na system Mac/Linux jest ustawiona na `/home/myStuff`, następnie `$HOME/NuGetRepository` w konfiguracji pliku jest rozpoznawana jako `/home/myStuff/NuGetRepository`.
 
 Jeśli zmienna środowiskowa nie zostanie znaleziony, NuGet korzysta z wartości literału z pliku konfiguracji.
-
 
 ## <a name="example-config-file"></a>Przykładowy plik konfiguracji
 

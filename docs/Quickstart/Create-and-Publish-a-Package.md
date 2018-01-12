@@ -13,11 +13,11 @@ keywords: Tworzenie pakietu NuGet, pakietu NuGet publikowania, samouczek NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b33344c3b3dd782fc4668d2a1674b9501fadcc03
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: ab5235537d869047075b93f9d8255ae9e61dfedd
+ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-and-publish-a-package"></a>Tworzenie i publikowanie pakietu
 
@@ -52,7 +52,7 @@ Każdy pakiet NuGet musi manifestu&mdash; `.nuspec` pliku&mdash;do opisywania za
     nuget spec
     ```
 
-1. Otwórz plik w edytorze tekstów. Manifest wygląda kod poniżej, gdzie tokenów w postaci  *$ `<token>` $*  zastępuje podczas procesu tworzenia pakietów z wartościami z Properties/AssemblyInfo.cs projektu plik. Aby uzyskać więcej szczegółów na tokeny, zobacz [Tworzenie pliku .nuspec](../create-packages/creating-a-package.md#creating-the-nuspec-file).
+1. Otwórz plik w edytorze tekstów. Manifest wygląda kod poniżej, gdzie tokenów w postaci `<token>` (takie jak `$id$`) są zastępowane podczas procesu tworzenia pakietów z wartościami z pliku Properties/AssemblyInfo.cs projektu. Aby uzyskać więcej szczegółów na tokeny, zobacz [Tworzenie pliku .nuspec](../create-packages/creating-a-package.md#creating-the-nuspec-file).
 
     ```xml
     <?xml version="1.0"?>

@@ -13,11 +13,11 @@ keywords: "NuGet pakietu instalacji, ponowna instalacja pakietu NuGet, Przywraca
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 898a431af4ed2e090b87d97bf43cec965b72d3c3
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 6a198b371c86166e2bcdee7f6cf2a6c971bea0a3
+ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak zainstalować i pakietów aktualizacji
 
@@ -31,7 +31,8 @@ Aktualizowanie i ponowne zainstalowanie pakietów odbywa się w następujący sp
 | Interfejs użytkownika Menedżera pakietów | Na **aktualizacje** , wybierz jeden lub więcej pakietów i zaznacz **aktualizacji** | Na **zainstalowana** , wybierz pakiet, zapisz jego nazwę, a następnie wybierz **Odinstaluj**. Przełącz się do **Przeglądaj** , wyszukaj nazwę pakietu, wybierz go, a następnie wybierz **zainstalować**). |
 | nuget.exe interfejsu wiersza polecenia | `nuget update`polecenie | Dla wszystkich pakietów, usuń folder pakietu, a następnie uruchom `nuget install`. Jeden pakiet, usuń folder pakietu i używać `nuget install <id>` ponownie zainstalować ten sam. |
 
-W tym temacie:
+W tym artykule:
+
 - [Kiedy należy ponownie zainstalować pakiet](#when-to-reinstall-a-package)
 - [Ograniczający uaktualniania wersji](#constraining-upgrade-versions)
 
@@ -39,7 +40,7 @@ W tym temacie:
 
 1. **Uszkodzenie odwołań po przywróceniu pakietu**: Jeśli już otwarty projekt i przywrócić pakietów NuGet, ale nadal odwołania Zobacz uszkodzony, spróbuj ponownie zainstalować każdego z tych pakietów.
 1. **Projekt jest uszkodzony z powodu usuniętych plików**: NuGet nie uniemożliwiają usunięcie elementów dodanych z pakietów, więc łatwo przypadkowo modyfikowanie zawartości zainstalowane z pakietu i przerwać projektu. Aby przywrócić projekt, zainstaluj ponownie odpowiednich pakietów.
-1. **Aktualizacja pakietu spowodowało przerwanie projektu**: Jeśli aktualizacja pakietu dzieli projektu, awarii jest zazwyczaj spowodowane pakietu zależności, które mogły zostać również. Aby przywrócić stan zależności, ponownej instalacji tego określonego pakietu.
+1. **Aktualizacja pakietu spowodowało przerwanie projektu**: Jeśli aktualizacja pakietu dzieli projektu, awarii jest zazwyczaj spowodowane pakietu zależności, które mogły zostać również aktualizacji. Aby przywrócić stan zależności, ponownej instalacji tego określonego pakietu.
 1. **Projekt przekierowania lub Uaktualnij**: może to być przydatne, gdy projekt został przekierować lub uaktualnić, a pakiet wymaga ponownej instalacji z powodu zmiany w platformie docelowej. NuGet 2.7 i nowszym pokazuje błąd kompilacji w takich przypadkach natychmiast po przekierowania projektu i ostrzeżenia kompilacji kolejnych informacją o tym, że pakiet może być konieczne ponowne zainstalowanie. Do uaktualnienia projektu NuGet pokazuje błąd w dzienniku uaktualnić projekt.
 1. **Ponowna instalacja pakietu podczas jego tworzenia**: autorów pakietu często konieczne ponowne zainstalowanie tej samej wersji pakietu, tworzony jest do testowania zachowanie. `Install-Package` Polecenia nie zapewnia opcję, aby wymusić konieczności ponownej instalacji, należy więc `Update-Package -reinstall` zamiast tego.
 

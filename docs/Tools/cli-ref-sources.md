@@ -13,17 +13,19 @@ keywords: "nuget źródeł odwołania, źródłem polecenia"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 52c46dba168e7395d50cb8d8f9775839389e614c
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 2eca8557840c467a60f5f708efe242cd83609164
+ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="sources-command-nuget-cli"></a>polecenie źródeł (NuGet CLI)
 
 **Dotyczy:** zużycie pakietu, publikowanie &bullet; **obsługiwane wersje:** wszystkie
 
 Zarządza listy źródeł znajduje się w `%AppData%\NuGet\NuGet.Config` lub określonego pliku konfiguracji.
+
+Należy zauważyć, że adres URL źródła dla nuget.org `https://api.nuget.org/v3/index.json`.
 
 ## <a name="usage"></a>Użycie
 
@@ -32,7 +34,6 @@ nuget sources <operation> -Name <name> -Source <source>
 ```
 
 gdzie `<operation>` jest jednym z *listy, dodawanie, usuwanie, włączanie i wyłączanie,* lub *aktualizacji*, `<name>` to nazwa źródła i `<source>` jest adres URL źródła.
-
 
 ## <a name="options"></a>Opcje
 
