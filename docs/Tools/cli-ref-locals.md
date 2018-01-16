@@ -39,7 +39,7 @@ gdzie `<cache>` jest jednym z `all`, `http-cache`, `packages-cache`, `global-pac
 | --- | --- |
 | Wyczyść | Usuwa określony pamięci podręcznej. |
 | ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
-| ForceEnglishOutput | *(3.5 +) * Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
+| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | Lista | Wyświetla lokalizację pamięci podręcznej określony lub lokalizacje wszystkich usług pamięć podręczna w przypadku użycia z *wszystkich*. |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
