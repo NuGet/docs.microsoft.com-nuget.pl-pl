@@ -109,7 +109,7 @@ Następnie zestaw satelicki używa konwencji nazewnictwa `{identifier}.{language
 
 Ponieważ to oddzielny pakiet ma własną `.nuspec` pliku, który zawiera zlokalizowane metadanych. Zachować ostrożność, który język w `.nuspec` **musi** zgodne z działaniem używanym w nazwie pliku.
 
-Zestawu satelickiego **musi** deklarować dokładnej wersji głównej pakietu także jako zależności, przy użyciu notacji wersji [] (zobacz [wersji pakietu](../reference/package-versioning.md)). Na przykład `ContosoUtilities.de.1.0.0.nupkg` należy zadeklarować zależność `ContosoUtilities.1.0.0.nupkg` przy użyciu `[1.0.0]` notacji. Oczywiście pakietu satelity ma numer wersji innego niż podstawowy pakiet.
+Zestawu satelickiego **musi** deklarować dokładnej wersji głównej pakietu także jako zależności, przy użyciu notacji wersji [] \(zobacz [wersji pakietu](../reference/package-versioning.md)). Na przykład `ContosoUtilities.de.1.0.0.nupkg` należy zadeklarować zależność `ContosoUtilities.1.0.0.nupkg` przy użyciu `[1.0.0]` notacji. Oczywiście pakietu satelity ma numer wersji innego niż podstawowy pakiet.
 
 Struktura pakietu satelity następnie muszą zawierać zestaw zasobów i plik XML IntelliSense w w podfolderze odpowiadający `{language}` w nazwie pliku pakietu:
 

@@ -311,12 +311,12 @@ W tym celu należy utworzyć użytkownika `readme.txt` pliku, umieść go w fold
 |Nazwa platformy |Alias|
 |--------------|-----|
 |.NET standard | krótkich nazw netstandard| 1.0| 1.1| 1.2| 1.3| 1.4| 1.5| 1.6|
-|.NET Core | netcoreapp| & #x 2192;| & #x 2192;| & #x 2192;| & #x 2192;| & #x 2192;| & #x 2192;| 1.0|
+|.NET Core | netcoreapp| &#x2192;| &#x2192;| &#x2192;| &#x2192;| &#x2192;| &#x2192;| 1.0|
 |.NET Framework| NET| 4.5| 4.5.1| 4.6| 4.6.1| 4.6.2| 4.6.3|
-|Platformy mono/Xamarin| & #x 2192;| & #x 2192;| & #x 2192;| & #x 2192;| & #x 2192;| & #x 2192;|
-|Platforma uniwersalna systemu Windows| uap| & #x 2192;| & #x 2192;| & #x 2192;| & #x 2192;|10.0|
-|Windows| win| & #x 2192;| 8.0| 8.1|
-|Windows Phone| WPA| & #x 2192;| & #x 2192;|8.1|
+|Platformy mono/Xamarin| &#x2192;| &#x2192;| &#x2192;| &#x2192;| &#x2192;| &#x2192;|
+|Platforma uniwersalna systemu Windows| uap| &#x2192;| &#x2192;| &#x2192;| &#x2192;|10.0|
+|Windows| win| &#x2192;| 8.0| 8.1|
+|Windows Phone| WPA| &#x2192;| &#x2192;|8.1|
 |Windows Phone Silverlight| WP| 8.0|
 
 

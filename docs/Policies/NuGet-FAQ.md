@@ -3,7 +3,7 @@ title: "NuGet często zadawane pytania | Dokumentacja firmy Microsoft"
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 12/07/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
@@ -13,11 +13,11 @@ keywords: "Wersje pakietu NuGet pytań i odpowiedzi, pytania i odpowiedzi, typow
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: d19a24a2d1955e996e18d44fee346865d36493f8
-ms.sourcegitcommit: e5b7cf6675be9891341c196afe822cea6f71d60c
+ms.openlocfilehash: f029af78edfcc5e542c5df2d4d6db8eeaebc3068
+ms.sourcegitcommit: d576d84fb4b6a178eb2ac11f55deb08ac771ba1c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet często zadawane pytania
 
@@ -26,7 +26,7 @@ W tym temacie:
 - [Wprowadzenie](#getting-started)
 - [NuGet w programie Visual Studio](#nuget-in-visual-studio)
 - [Wiersz polecenia NuGet](#nuget-command-line)
-- [Konsola Menedżera pakietów NuGet](#nuget-package-manager-console)
+- [NuGet Package Manager Console](#nuget-package-manager-console)
 - [Tworzenie i publikowanie pakietów](#creating-and-publishing-packages)
 - [Praca z pakietami](#working-with-packages)
 - [Zarządzanie pakietami na nuget.org](#managing-packages-on-nugetorg)
@@ -92,6 +92,10 @@ Tak, NuGet działa bezpośrednio z poziomu wiersza polecenia. Zobacz [Przewodnik
 **Jak uzyskać najnowszą wersję narzędzia wiersza polecenia NuGet?**
 
 Zobacz [Przewodnik instalacji](../guides/install-nuget.md).
+
+**Co to jest licencja na nuget.exe?**
+
+Możesz wykonać ponowną dystrybucję nuget.exe zgodnie z warunkami licencji MIT. Jest odpowiedzialny za aktualizacji i obsługi kopie nuget.exe, który chcesz ponownie rozesłać.
 
 **Czy jest możliwe rozszerzenie NuGet narzędzia wiersza polecenia**
 
@@ -173,7 +177,6 @@ To nie jest problem przy użyciu PackageReference, ponieważ każdy plik projekt
 Każdy pakiet jest objęte postanowienia, które są dołączone do pakietu. Należy przejrzeć postanowienia mające zastosowanie przed uzyskiwanie dostępu do, pobierania lub uzyskiwania wszystkie pakiety. Na nuget.org, użyj **informacje dotyczące licencji** łącze na stronie pakiet.
 
 Jeśli pakiet nie określa postanowień licencyjnych, skontaktuj się z właścicielem pakietu bezpośrednio za pomocą **skontaktuj się z właścicieli** łącze na stronie pakiet nuget.org. Microsoft nie licencji jakiejkolwiek własności intelektualnej użytkownikowi od innych dostawców pakietu i nie jest odpowiedzialny za informacji dostarczonych przez strony trzecie.
-
 
 ## <a name="managing-packages-on-nugetorg"></a>Zarządzanie pakietami na nuget.org
 

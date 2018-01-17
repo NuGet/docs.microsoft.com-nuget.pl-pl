@@ -14,11 +14,11 @@ ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: cd5b7c79ad0af07b167e062d4a2f5142ef2d718a
-ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
+ms.openlocfilehash: b8c286b9a5705526e2e8fcf259c6503d48e5d181
+ms.sourcegitcommit: d576d84fb4b6a178eb2ac11f55deb08ac771ba1c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -68,7 +68,7 @@ Dla wyczyść wizualną reprezentację schematu, otwórz plik schematu w program
 
 | Atrybut | Wymagane | Opis |
 | --- | --- | --- | 
-| **Element minClientVersion** | Nie | *(2.5 +)*  Określa minimalną wersję klienta NuGet, który można zainstalować ten pakiet, wymuszane przez nuget.exe i Menedżer pakietów programu Visual Studio. To jest używana zawsze, gdy pakiet jest zależny od konkretnych cech `.nuspec` plików, które zostały dodane w przypadku konkretnej wersji klienta NuGet. Na przykład pakietu za pomocą `developmentDependency` atrybut powinien określać "2.8" dla `minClientVersion`. Podobnie, pakietu za pomocą `contentFiles` (zobacz następną sekcję) należy ustawić element `minClientVersion` do "3.3". Należy zauważyć, że ponieważ klientów NuGet przed 2.5 nie rozpoznają tej flagi one *zawsze* odmówić można zainstalować pakietu, niezależnie od tego, co `minClientVersion` zawiera. |
+| **minClientVersion** | Nie | *(2.5 +)*  Określa minimalną wersję klienta NuGet, który można zainstalować ten pakiet, wymuszane przez nuget.exe i Menedżer pakietów programu Visual Studio. To jest używana zawsze, gdy pakiet jest zależny od konkretnych cech `.nuspec` plików, które zostały dodane w przypadku konkretnej wersji klienta NuGet. Na przykład pakietu za pomocą `developmentDependency` atrybut powinien określać "2.8" dla `minClientVersion`. Podobnie, pakietu za pomocą `contentFiles` (zobacz następną sekcję) należy ustawić element `minClientVersion` do "3.3". Należy zauważyć, że ponieważ klientów NuGet przed 2.5 nie rozpoznają tej flagi one *zawsze* odmówić można zainstalować pakietu, niezależnie od tego, co `minClientVersion` zawiera. |
 
 ### <a name="required-metadata-elements"></a>Elementy wymagane metadane
 
@@ -91,29 +91,29 @@ Te elementy mogą być widoczne w `<metadata>` elementu.
 
 | Element | Opis |
 | --- | --- |
-| **Tytuł** | Tytuł przyjaznych dla człowieka pakietu, zwykle używanych w wyświetla interfejsu użytkownika na nuget.org i Menedżera pakietów w programie Visual Studio. Jeśli nie zostanie określony, identyfikator pakietu jest używany. |
+| **title** | Tytuł przyjaznych dla człowieka pakietu, zwykle używanych w wyświetla interfejsu użytkownika na nuget.org i Menedżera pakietów w programie Visual Studio. Jeśli nie zostanie określony, identyfikator pakietu jest używany. |
 | **Właściciele** | Rozdzielana przecinkami lista twórców pakietu przy użyciu nazwy profilu na nuget.org. Jest to często jak w tej samej listy `authors`i jest ignorowane w przypadku przekazywania pakietu do nuget.org. Zobacz [Zarządzanie właścicieli pakietu na nuget.org](../create-packages/publish-a-package.md#managing-package-owners-on-nugetorg). |
-| **adresem projectUrl** | Wyświetla adres URL strony głównej pakietu, często są wyświetlane w interfejsie użytkownika oraz nuget.org. |
+| **projectUrl** | Wyświetla adres URL strony głównej pakietu, często są wyświetlane w interfejsie użytkownika oraz nuget.org. |
 | **licenseUrl** | Adres URL wyświetlany w wyświetla interfejsu użytkownika, a także nuget.org licencji pakietu. |
 | **iconUrl** | Adres URL obrazu 64 x 64, przezroczystość tła ma być używana jako ikonę pakietu w wyświetlania interfejsu użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* , a nie adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, użyj plik raw, takie jak adres URL `https://github.com/<username>/<repository>/raw/<branch>/<logo.png>`. |
 | **requireLicenseAcceptance** | Wartość logiczna, określając, czy klient musi monitować o konsumenta, aby zaakceptować licencji pakietu przed zainstalowaniem pakietu. |
 | **developmentDependency** | *(2.8 +)*  Wartość logiczna A, określając, czy pakiet jest oznaczone jako programowanie — tylko zależność, która zapobiega włączaniu jako zależności w innych pakietach pakietu. |
 | **Podsumowanie** | Krótki opis pakietu do wyświetlenia interfejsu użytkownika. Pominięcie skrócona wersja `description` jest używany. |
 | **releaseNotes** | *(w wersji 1.5 +)*  Opis zmian wprowadzonych w tej wersji pakietu, często używany w interfejsie użytkownika, takich jak **aktualizacje** kartę programu Visual Studio Menedżer pakietów zamiast Opis pakietu. |
-| **prawa autorskie** | *(w wersji 1.5 +)*  Copyright szczegóły pakietu. |
+| **copyright** | *(w wersji 1.5 +)*  Copyright szczegóły pakietu. |
 | **język** | Identyfikator ustawień regionalnych dla pakietu. Zobacz [tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md). |
 | **tagi** | Rozdzieloną spacjami listę tagów i słów kluczowych, które opisują odnajdywania pakietu i pomocy pakietów za pomocą wyszukiwania i filtrowania. |
-| **obsługiwanych** | *(3.3 +)*  Programu NuGet wewnętrznego użytku. |
+| **serviceable** | *(3.3 +)*  Programu NuGet wewnętrznego użytku. |
 
 #### <a name="collection-elements"></a>Elementy kolekcji
 
 | Element | Opis |
 | --- | --- |
-**packageTypes** | *(3.3 +)*  Kolekcji zero lub więcej `<packageType>` elementy określenie typu pakietu, jeśli inne niż tradycyjne zależności pakietu. Każdy packageType ma atrybuty *nazwa* i *wersji*. Zobacz [ustawienie typu pakietu](../create-packages/creating-a-package.md#setting-a-package-type). |
+**packageTypes** | *(3.5 +)*  Kolekcji zero lub więcej `<packageType>` elementy określenie typu pakietu, jeśli inne niż tradycyjne zależności pakietu. Każdy packageType ma atrybuty *nazwa* i *wersji*. Zobacz [ustawienie typu pakietu](../create-packages/creating-a-package.md#setting-a-package-type). |
 | **zależności** | Kolekcja zero lub więcej `<dependency>` elementy określania zależności dla pakietu. Poszczególne zależności ma atrybuty *identyfikator*, *wersji*, *obejmują* (3.x+) i *wykluczyć* (3.x+). Zobacz [zależności](#dependencies) poniżej. |
 | **frameworkAssemblies** | *(1.2 +)*  Kolekcji zero lub więcej `<frameworkAssembly>` elementy identyfikowanie odwołań zestawu .NET Framework, które wymaga tego pakietu, który zapewnia dodania odwołań do projektów korzystających z pakietu. Każdy frameworkAssembly ma *assemblyName* i *targetFramework* atrybutów. Zobacz [określenie zestawu struktury odwołuje się do pamięci podręcznej GAC](#specifying-framework-assembly-references-gac) poniżej. |
 | **odwołania** | *(w wersji 1.5 +)*  Kolekcji zero lub więcej `<reference>` elementy nazw zestawów, w tym pakiecie `lib` folderów, które są dodawane jako odwołania do projektu. Odwołanie do każdego ma *pliku* atrybutu. `<references>`może również zawierać `<group>` element z *targetFramework* atrybut, który następnie zawiera `<reference>` elementów. Pominięcie wszystkie odwołania w `lib` są uwzględniane. Zobacz [odwołania do zestawów jawne określenie](#specifying-explicit-assembly-references) poniżej. |
-| **Pliki** | *(3.3 +)*  Kolekcja `<files>` elementy identyfikujące pliki zawartości do uwzględnienia w projekcie odbierającą. Te pliki są określane za pomocą zestawu atrybutów, które opisują jak powinny być używane w ramach systemu projektu. Zobacz [określenie plików do uwzględnienia w pakiecie](#specifying-files-to-include-in-the-package) poniżej. |
+| **contentFiles** | *(3.3 +)*  Kolekcja `<files>` elementy identyfikujące pliki zawartości do uwzględnienia w projekcie odbierającą. Te pliki są określane za pomocą zestawu atrybutów, które opisują jak powinny być używane w ramach systemu projektu. Zobacz [określenie plików do uwzględnienia w pakiecie](#specifying-files-to-include-in-the-package) poniżej. |
 
 ### <a name="files-element"></a>Element Pliki
 
@@ -182,7 +182,7 @@ I kompilacji zestawu których `AssemblyName` jest `LoggingLibrary` z `Release` k
 | --- | --- |
 | Pliki | Zawartość  |
 | środowisko uruchomieniowe | Środowisko uruchomieniowe, zasobów i FrameworkAssemblies  |
-| Kompilacji | Lib |
+| Kompilacji | lib |
 | kompilacja | Kompilacja (właściwości programu MSBuild i elementy docelowe) |
 | natywne | natywne |
 | brak | Brak folderów |
@@ -341,7 +341,7 @@ Każdy `<file>` element określa następujące atrybuty:
 | --- | --- |
 | **src** | Lokalizacja pliku lub plików do uwzględnienia, mogą ulec wykluczenia określony przez `exclude` atrybutu. Ścieżka jest względem `.nuspec` pliku, chyba że określony jest ścieżką bezwzględną. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
 | **docelowy** | Względna ścieżka do folderu w pakiecie, gdzie znajdują się pliki źródłowe, musi rozpoczynać się od `lib`, `content`, `build`, lub `tools`. Zobacz [tworzenie .nuspec z katalogu roboczego opartych na konwencjach](../Create-Packages/Creating-a-Package.md#from-a-convention-based-working-directory). |
-| **Wyklucz** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
+| **exclude** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
 
 ### <a name="examples"></a>Przykłady
 
@@ -543,11 +543,11 @@ Te pliki są określane za pomocą zestawu atrybutów, które opisują jak powin
 
 | Atrybut | Opis |
 | --- | --- |
-| **obejmują** | (Wymagane) Lokalizacja pliku lub plików do uwzględnienia, mogą ulec wykluczenia określony przez `exclude` atrybutu. Ścieżka jest względem `.nuspec` pliku, chyba że określony jest ścieżką bezwzględną. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
-| **Wyklucz** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
+| **include** | (Wymagane) Lokalizacja pliku lub plików do uwzględnienia, mogą ulec wykluczenia określony przez `exclude` atrybutu. Ścieżka jest względem `.nuspec` pliku, chyba że określony jest ścieżką bezwzględną. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
+| **exclude** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
 | **buildAction** | Akcja kompilacji można przypisać do elementu zawartości dla programu MSBuild, takich jak `Content`, `None`, `Embedded Resource`, `Compile`itp. Wartość domyślna to `Compile`. |
 | **copyToOutput** | Wartość logiczna wskazująca, czy skopiować elementy zawartości do folderu wyjściowego kompilacji. Wartością domyślną jest false. |
-| **spłaszczanie** | Wartość logiczna wskazująca, czy można skopiować elementy zawartości do pojedynczego folderu w danych wyjściowych kompilacji (true) czy zachowanie struktury folderów w pakiecie (false). Wartością domyślną jest false. |
+| **spłaszczanie** | Wartość logiczna wskazująca, czy można skopiować elementy zawartości do pojedynczego folderu w danych wyjściowych kompilacji (true) czy zachowanie struktury folderów w pakiecie (false). Ta flaga działa tylko wtedy, gdy copyToOutput flaga jest ustawiona na true. Wartością domyślną jest false. |
 
 Podczas instalowania pakietu, NuGet stosuje elementy podrzędne `<contentFiles>` od góry do dołu. Jeśli wiele wpisów pasuje do tego samego pliku wszystkie wpisy są stosowane. Wpis najwyższy przesłania wpisy niższe konflikt dla tego samego atrybutu.
 
@@ -679,7 +679,7 @@ Można użyć puste foldery `.` rezygnacji z zawarto dla niektórych kombinacji 
 
 W tym przykładzie poniżej są zainstalowane dla określonego projektu celów:
 
-- . -> NET4 `System.Web`,`System.Net`
+- .NET4 -> `System.Web`, `System.Net`
 - . NET4 -> Client Profile`System.Net`
 - -> Silverlight 3`System.Json`
 - -> Programu Silverlight 4`System.Windows.Controls.DomainServices`
