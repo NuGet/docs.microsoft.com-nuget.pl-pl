@@ -31,7 +31,7 @@ ms.lasthandoff: 01/05/2018
 > Ponieważ katalog nie jest używany przez klienta NuGet oficjalnego, nie wszystkie źródła pakietów implementuje katalogu.
 
 > [!Note]
-> Wykaz nuget.org nie jest obecnie dostępna w Chinach. Aby uzyskać więcej informacji, zobacz [&#4949; NuGet/NuGetGallery](https://github.com/NuGet/NuGetGallery/issues/4949).
+> Wykaz nuget.org nie jest obecnie dostępna w Chinach. Aby uzyskać więcej informacji, zobacz [NuGet/NuGetGallery#4949](https://github.com/NuGet/NuGetGallery/issues/4949).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
