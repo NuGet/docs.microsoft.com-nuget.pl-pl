@@ -9,7 +9,6 @@
 ## [Tworzenie pakietów platformy UWP](Guides/Create-UWP-Packages.md)
 ## [Tworzenie kontrolek platformy UWP jako pakietów NuGet](Guides/Create-UWP-Controls.md)
 ## [Tworzenie pakietów dla wielu platform](Guides/Create-Cross-Platform-Packages.md)
-## [Wykonywanie zapytania o wszystkie pakiety za pomocą interfejsu API](Guides/api/query-for-all-published-packages.md)
 # Tworzenie pakietów
 ## [Omówienie i przepływ pracy](Create-Packages/Overview-and-Workflow.md)
 ## [Tworzenie pakietu](Create-Packages/Creating-a-Package.md)
@@ -48,7 +47,7 @@
 ### [list](Tools/cli-ref-list.md) 
 ### [locals](Tools/cli-ref-locals.md)
 ### [mirror](Tools/cli-ref-mirror.md)
-### [pack](Tools/cli-ref-pack.md) 
+### [pakiet](Tools/cli-ref-pack.md) 
 ### [push](Tools/cli-ref-push.md) 
 ### [restore](Tools/cli-ref-restore.md)
 ### [setapikey](Tools/cli-ref-setapikey.md)
@@ -86,6 +85,7 @@
 ### [Dostawcy poświadczeń programu nuget.exe](Reference/extensibility/nuget-exe-Credential-Providers.md)
 # interfejs API
 ## [Omówienie](API/overview.md)
+## [Instrukcje: Wykonywanie zapytania o wszystkie pakiety za pomocą interfejsu API](Guides/api/query-for-all-published-packages.md)
 ## [Indeks usług](API/service-index.md)
 ## [Wypychanie i usuwanie](API/package-publish-resource.md)
 ## [Wyszukiwanie](API/search-query-service-resource.md)
