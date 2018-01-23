@@ -13,11 +13,11 @@ keywords: Tworzenie pakietu NuGet, pakietu NuGet publikowania, samouczek NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: ab5235537d869047075b93f9d8255ae9e61dfedd
-ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
+ms.openlocfilehash: 9ec7091b0984c53fb883bbace9ee55d10ece773c
+ms.sourcegitcommit: 9ac1fa23a4a8ce098692de93328b1db4136fe3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="create-and-publish-a-package"></a>Tworzenie i publikowanie pakietu
 
@@ -119,14 +119,14 @@ Po utworzeniu `.nupkg` pliku opublikowaniu go przy użyciu nuget.org `push` pole
 
 1. Po zalogowaniu, wybierz nazwę użytkownika (w prawym górnym rogu), a następnie wybierz **klucze interfejsu API**.
 
-1. Wybierz **Utwórz**, podaj nazwę klucza, wybierz **wybierz zakresy > Push**w obszarze **klucz interfejsu API**, wprowadź * dla **wzorzec Glob**, następnie Wybierz **Utwórz**.
+1. Wybierz **Utwórz**, podaj nazwę klucza, wybierz **wybierz zakresy > Push** w obszarze **klucz interfejsu API**, wprowadź * dla **wzorzec Glob**, następnie Wybierz **Utwórz**.
 
 1. Po klucz zostanie utworzony, wybierz **kopiowania** można pobrać dostępu do klucza będziesz potrzebować na platformie interfejsu wiersza polecenia:
 
     ![Kopiowanie do Schowka klucz interfejsu API](media/QS_Create-02-APIKey.png)
 
     > [!Warning]
-    > Zapisz klucz w bezpiecznym miejscu i Zachowaj jest klucz tajny. Jeśli klucz zostanie przypadkowo ujawniony, zawsze można go odtworzyć w dowolnym momencie. Można również usunąć klucz interfejsu API, jeśli nie chcesz push pakietów za pomocą interfejsu wiersza polecenia.
+    > Zapisz klucz w bezpiecznej lokalizacji, a nie ujawniaj go. Jeśli klucz zostanie przypadkowo ujawniony, można go odtworzyć w dowolnym momencie. Można również usunąć klucz interfejsu API, jeśli nie chcesz push pakietów za pomocą interfejsu wiersza polecenia.
 
 1. W wierszu polecenia, uruchom następujące polecenie określając nazwę pakietu i zastępowanie klucza o wartości skopiowany w kroku 4:
 

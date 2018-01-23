@@ -14,11 +14,11 @@ ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 53fccbb86f2920d870b5383070d043e25045a626
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 29eb72cbb6c095cd3aeb524fd8b28416ec5dc798
+ms.sourcegitcommit: 6ccb963e065680ab2e7df1d8dd5492897fd56b04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
 
@@ -31,7 +31,7 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | Grupa | Błąd liczby |
 | --- | --- |
 | [Nieprawidłowy błędów na wejściu](#invalid-input-errors) | [NU1001](#nu1001), [NU1002](#nu1002), [NU1003](#nu1003) |
-| [Brak błędów pakietu i projektu](#missing-package-and-project-errors) | [NU1100](#nu1100), [NU1101](#nu1101), [NU1102](#nu1102), [NU1103](#nu1103), [NU1104](#nu1104), [NU1105](#nu1105), [ NU1106](#nu1106), [NU1107](#nu1107) (wcześniej NU1607) [NU1108](#nu1107) (wcześniej NU1606) |
+| [Brak błędów pakietu i projektu](#missing-package-and-project-errors) | [NU1100](#nu1100), [NU1101](#nu1101), [NU1102](#nu1102), [NU1103](#nu1103), [NU1104](#nu1104), [NU1105](#nu1105), [ NU1106](#nu1106), [NU1107](#nu1107) (wcześniej NU1607) [NU1108](#nu1108) (wcześniej NU1606) |
 | [Błędy zgodności](#compatibility-errors) | [NU1201](#nu1201), [NU1202](#nu1202), [NU1203](#nu1203), [NU1401](#nu1401) |
 
 **Ostrzeżenia**
@@ -75,7 +75,7 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 
 ## <a name="missing-package-and-project-errors"></a>Brak błędów pakietu i projektu
 
-[NU1100](#nu1100) | [NU1101](#nu1101) | [NU1102](#nu1102) | [NU1103](#nu1103) | [NU1104 ](#nu1104)  |  [NU1105](#nu1105) | [NU1106](#nu1106)
+[NU1100](#nu1100) | [NU1101](#nu1101) | [NU1102](#nu1102) | [NU1103](#nu1103) | [NU1104](#nu1104) | [NU1105](#nu1105) | [NU1106](#nu1106)
 
 ### <a name="nu1100"></a>NU1100
 
@@ -133,7 +133,7 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | **Typowe przyczyny** | Pakiety zawierają zależność od dokładnej wersji pakietu zamiast nieograniczoną zakresów. |
 | **Przykładowy komunikat** | *Nie można zrealizować żądań będących w konflikcie dla {id}: {konflikt path} Framework: {docelowy wykres}* |
 
-< name = "NU1107 ></a>
+<a name="nu1107"></a> 
 
 ### <a name="nu1107-previously-nu1607"></a>NU1107 (wcześniej NU1607)
 
@@ -143,7 +143,7 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | **Typowe przyczyny** | Pakiety z ograniczeniami zależności na dokładną wersję nie zezwalają na inne pakiety w razie potrzeby zwiększyć wersji. |
 | **Przykładowy komunikat** | *Konflikt wersji dla NuGet.Versioning wykryte. Pakiet odwoływać się bezpośrednio z projektu, aby rozwiązać ten problem.<br/>  NuGet.Versioning (= 3.5.0) -> NuGet.Packaging 3.5.0<br/> NuGet.Configuration 4.0.0 -> NuGet.Versioning (= 4.0.0)* |
 
-< name = "NU1108 ></a>
+<a name="nu1108"></a>
 
 ### <a name="nu1108-previously-nu1606"></a>NU1108 (wcześniej NU1606)
 
@@ -263,8 +263,6 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 
 ## <a name="resolver-conflict-warnings"></a>Mechanizm rozpoznawania konfliktu ostrzeżenia
 
-[NU1608](#nu1608)
-
 ### <a name="nu1608"></a>NU1608
 
 | | |
@@ -275,8 +273,6 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 
 ## <a name="package-fallback-warnings"></a>Ostrzeżenia rezerwowy pakietu
 
-[NU1701](#nu1701)
-
 ### <a name="nu1701"></a>NU1701
 
 | | |
@@ -286,8 +282,6 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | **Przykładowy komunikat** | *Pakiet "NuGet.Versioning" został przywrócony przy użyciu "portable net45 + win8" zamiast platformy docelowej projektu "netstandard1.5". Ten pakiet nie może być całkowicie zgodne z projektem.* |
 
 ## <a name="feed-warnings"></a>Źródła danych ostrzeżenia
-
-[NU1801](#nu1801)
 
 ### <a name="nu1801"></a>NU1801
 

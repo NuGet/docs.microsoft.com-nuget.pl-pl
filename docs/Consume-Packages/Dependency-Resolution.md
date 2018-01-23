@@ -13,19 +13,19 @@ keywords: "Zależności pakietów NuGet, przechowywanie wersji NuGet, wersje zal
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 93a3d077a6dd1946485fc8c48f97c8009280890c
-ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
+ms.openlocfilehash: 91af96eb1f4bf0ee5a46ea8c418440eff20c768d
+ms.sourcegitcommit: 9ac1fa23a4a8ce098692de93328b1db4136fe3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-nuget-resolves-package-dependencies"></a>Jak NuGet jest rozpoznawany jako zależności pakietów
 
 Dowolnej chwili pakiet jest zainstalowany lub ponownej instalacji, w tym instalowane jako część [przywrócić](../consume-packages/package-restore.md) procesu NuGet instaluje wszystkie dodatkowe pakiety, od których zależy ten pierwszy pakietu.
 
-Te zależności natychmiastowego następnie również zainstalować zależności na ich własnych, które mogą w dalszym dowolnego głębokość. Daje to tak zwany *wykresu zależności* , który opisuje relacje między pakietami są wszystkie poziomy.
+Te zależności natychmiastowego następnie również zainstalować zależności na ich własnych, które mogą w dalszym dowolnego głębokość. Daje to tak zwany *wykresu zależności* , który opisuje relacje między pakietami na wszystkich poziomach.
 
-Jeśli tego samego zależności wielu pakietów, następnie ten sam identyfikator pakietu może występować na wykresie wiele razy potencjalnie z ograniczeniami innej wersji. Jednak tylko jedna wersja danego pakietu może służyć w projekcie, dlatego należy wybrać NuGet, która wersja jest można użyć. Dokładne proces zależy od używany format odwołanie do pakietu.
+Jeśli tego samego zależności wielu pakietów, następnie ten sam identyfikator pakietu może występować na wykresie wiele razy potencjalnie z ograniczeniami innej wersji. Jednak tylko jedna wersja danego pakietu można w projekcie, dlatego należy wybrać NuGet, która wersja jest używana. Dokładne proces zależy od używany format odwołanie do pakietu.
 
 W tym temacie:
 - [Rozpoznawanie zależności z PackageReference i project.json](#dependency-resolution-with-packagereference-and-projectjson)

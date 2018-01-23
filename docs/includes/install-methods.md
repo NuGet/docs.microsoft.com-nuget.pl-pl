@@ -1,4 +1,4 @@
-Instalowanie pakietu odbywa się na trzy sposoby:
+Można zainstalować pakietu NuGet, na trzy sposoby:
 
 | Metoda | Opis | Tematy pomocy |
 | --- | --- | --- |

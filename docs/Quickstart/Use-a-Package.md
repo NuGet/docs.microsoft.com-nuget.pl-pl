@@ -13,11 +13,11 @@ keywords: "instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGe
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 639f4883f5ce904a44d8aa23d76c93ed79ea4b9d
-ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
+ms.openlocfilehash: ffba868bbbf1fe373fd45a9459eab7072f4c19b3
+ms.sourcegitcommit: 9ac1fa23a4a8ce098692de93328b1db4136fe3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="install-and-use-a-package"></a>Zainstaluj i użyj pakietu
 
@@ -27,7 +27,7 @@ Pakiety NuGet to jednostki do ponownego użycia kodu, który inni deweloperzy ud
 
 Po zakończeniu instalacji można znaleźć pakietu w kodzie z `using <namespace>` gdzie \<przestrzeni nazw\> jest przeznaczony dla pakietu używasz. Po odniesienia, można wywołać pakietu za pośrednictwem jej interfejsu API.
 
-W pozostałej części tego tematu, który przeprowadzi Cię przez proces instalowania popularnego przy użyciu interfejsu użytkownika Menedżera pakietów [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakiet w projekcie systemu Windows platformy Uniwersalnej. Następnie pokaże przykładem przy użyciu pakietu. Używasz podobne tego samego przepływu pracy dla niemal każdego pakietu NuGet, które stosowanie w projekcie.
+W pozostałej części tego tematu, który przeprowadzi Cię przez proces instalowania popularnego przy użyciu interfejsu użytkownika Menedżera pakietów [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakiet w projekcie systemu Windows platformy Uniwersalnej. Następnie pokaże przykładem przy użyciu pakietu. Podobne przepływu pracy są używane inne pakiety NuGet.
 
 - [Zainstaluj wymagania wstępne](#install-pre-requisites)
 - [Tworzenie projektu](#create-a-project)
@@ -35,7 +35,7 @@ W pozostałej części tego tematu, który przeprowadzi Cię przez proces instal
 - [Użyj Newtonsoft.Json interfejsu API w aplikacji](#use-the-newtonsoftjson-api-in-the-app)
 
 > [!Tip]
-> **Rozpoczynać nuget.org**: Instalowanie pakietów z nuget.org to typowe przepływ pracy deweloperów platformy .NET Użyj, aby znaleźć można ponownie użyć składników we własnych aplikacjach. Może zawsze wyszukiwania nuget.org bezpośrednio lub znajdować i instalować pakiety w programie Visual Studio, jak pokazano w tym temacie.
+> **Rozpoczynać nuget.org**: Instalowanie pakietów z nuget.org to typowe przepływ pracy deweloperów platformy .NET Użyj, aby znaleźć mogą używać składników we własnych aplikacjach. Może zawsze wyszukiwania nuget.org bezpośrednio lub znajdować i instalować pakiety w programie Visual Studio, jak pokazano w tym temacie.
 
 ## <a name="install-pre-requisites"></a>Zainstaluj wymagania wstępne
 

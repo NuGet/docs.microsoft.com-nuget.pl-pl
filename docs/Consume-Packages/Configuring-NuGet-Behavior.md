@@ -13,11 +13,11 @@ keywords: "Pliki konfiguracji programu NuGet, NuGet ustawienia zachowania NuGet,
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: f9e56b68f70387435cdaa1537db503abb912fd2a
-ms.sourcegitcommit: 122bf7ce308365ea45da018b0768f0536de76a1f
+ms.openlocfilehash: 9269180241a880d3b796b79a13dbcd45627d74d7
+ms.sourcegitcommit: 9ac1fa23a4a8ce098692de93328b1db4136fe3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="configuring-nuget-behavior"></a>Konfigurowanie zachowania NuGet
 
@@ -28,19 +28,19 @@ W tym temacie:
 - [Lokalizacje pliku NuGet.Config i używa](#config-file-locations-and-uses)
 - [Zmiana ustawień](#changing-config-settings)
 - [Jak są stosowane ustawienia](#how-settings-are-applied)
-- [Plik NuGetDefaults.Config](#nuget-defaults-file)
+- [NuGetDefaults.Config file](#nuget-defaults-file)
 
-## <a name="config-file-locations-and-uses"></a>Lokalizacje plików konfiguracji i używa
+## <a name="nugetconfig-file-locations-and-uses"></a>Lokalizacje pliku NuGet.Config i używa
 
 | Zakres | Lokalizacja pliku NuGet.Config. | Opis |
 | --- | --- | --- |
-| Project | Folder projektu lub folderu do katalogu głównego dysku | W folderze projektu ustawienia mają zastosowanie tylko do tego projektu. W folderów nadrzędnych zawierających wiele projektów podfolderów ustawienia mają zastosowanie do wszystkich projektów w tych podfolderach. |
-| Użytkownik | Windows: %APPDATA%\NuGet\NuGet.Config<br/>System Mac/Linux: ~/.nuget/NuGet.Config | Ustawienia stosowane do wszystkich operacji, ale są zastępowane przez wszystkie ustawienia na poziomie projektu. Korzystając z polecenia interfejsu wiersza polecenia, można określić pliku różnych konfiguracji przy użyciu `-configFile` przełącznik, aby zignorować wszystkie ustawienia w pliku domyślny na poziomie użytkownika. |
-| Komputer | System Windows: % ProgramFiles (x86) %\NuGet\Config<br/>System Mac/Linux: XDG_DATA_HOME $ (zazwyczaj ~/.local/share) | Ustawienia stosowane do wszystkich operacji na komputerze, ale zostały zastąpione przez wszystkie ustawienia na poziomie użytkownika lub projektu. |
+| Projekt | Bieżący folder (alias folderu projektu) lub dowolnego folderu do katalogu głównego dysku.| W folderze projektu ustawienia mają zastosowanie tylko do tego projektu. W folderów nadrzędnych zawierających wiele projektów podfolderów ustawienia mają zastosowanie do wszystkich projektów w tych podfolderach. |
+| Użytkownik | Windows: %APPDATA%\NuGet\NuGet.Config<br/>Mac/Linux: ~/.nuget/NuGet.Config | Ustawienia stosowane do wszystkich operacji, ale są zastępowane przez wszystkie ustawienia na poziomie projektu. |
+| Komputer | Windows: %ProgramFiles(x86)%\NuGet\Config<br/>System Mac/Linux: XDG_DATA_HOME $ (zazwyczaj ~/.local/share) | Ustawienia stosowane do wszystkich operacji na komputerze, ale zostały zastąpione przez wszystkie ustawienia na poziomie użytkownika lub projektu. |
 
 Uwagi dotyczące starszych wersji programu NuGet:
 - NuGet 3.3 i wcześniej używany `.nuget` folder ustawienia dotyczące całego rozwiązania. Ten plik nie jest używany w NuGet 3.4 +.
-- Dla 2.6 NuGet do 3.x, pliku konfiguracji na poziomie komputera w systemie Windows znajduje się w lokalizacji % ProgramData%\NuGet\Config [\\{IDE} [\\{wersja} [\\{SKU}]]]\NuGet.Config, gdzie *{IDE}* może być  *Visual Studio*, *{wersja}* został wersji programu Visual Studio, takich jak *14.0*, i *{SKU}* jest *społeczności*, *Pro*, lub *Enterprise*. Aby przeprowadzić migrację ustawień do NuGet 4.0 +, po prostu skopiuj plik konfiguracji do % ProgramFiles(x86) % \NuGet\Config. Na Linus, to poprzedniej lokalizacji został /etc/opt, a dla komputerów Mac, Library/Application Support.
+- Dla 2.6 NuGet do 3.x, pliku konfiguracji na poziomie komputera w systemie Windows znajduje się w lokalizacji % ProgramData%\NuGet\Config [\\{IDE} [\\{wersja} [\\{SKU}]]]\NuGet.Config, gdzie *{IDE}* może być  *Visual Studio*, *{wersja}* został wersji programu Visual Studio, takich jak *14.0*, i *{SKU}* jest *społeczności*, *Pro*, lub *Enterprise*. Aby przeprowadzić migrację ustawień do NuGet 4.0 +, po prostu skopiuj plik konfiguracji do % ProgramFiles(x86) % \NuGet\Config. W systemie Linux, to poprzedniej lokalizacji został /etc/opt, a dla komputerów Mac, Library/Application Support.
 
 ## <a name="changing-config-settings"></a>Zmiana ustawień konfiguracji
 
@@ -71,7 +71,7 @@ nuget config -set repositoryPath=c:\packages -configfile .\myApp\NuGet.Config
 nuget config -set repositoryPath=c:\packages -configfile %ProgramFiles(x86)%\NuGet\NuGet.Config
 ```
 
-System Mac/Linux:
+Mac/Linux:
 
 ```
 # Set repositoryPath in the user-level config file
@@ -158,7 +158,7 @@ A. użytkownika na poziomie pliku, (%APPDATA%\NuGet\NuGet.Config w systemie Wind
 </configuration>
 ```
 
-Plik B. disk_drive_2/NuGet.Config:
+File B. disk_drive_2/NuGet.Config:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -172,7 +172,7 @@ Plik B. disk_drive_2/NuGet.Config:
 </configuration>
 ```
 
-Plik C. disk_drive_2/Project1/NuGet.Config:
+File C. disk_drive_2/Project1/NuGet.Config:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -188,7 +188,7 @@ Plik C. disk_drive_2/Project1/NuGet.Config:
 </configuration>
 ```
 
-Disk_drive_2/Project2/NuGet.Config D. pliku:
+File D. disk_drive_2/Project2/NuGet.Config:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -219,7 +219,7 @@ NuGet, a następnie ładuje i stosuje ustawienia w następujący sposób, w zale
 >
 > Ponadto, ani `NuGetDefaults.Config` ani innych mechanizmu w NuGet może uniemożliwić dostęp do pakietu źródeł, takich jak nuget.org. Jeśli organizacja chce zablokować takiego dostępu, znacznie użyć innych środków, takich jak zapory w tym celu.
 
-### <a name="nugetdefaultsconfig-location"></a>Lokalizacja NuGetDefaults.Config
+### <a name="nugetdefaultsconfig-location"></a>NuGetDefaults.Config location
 
 System Windows: % ProgramFiles (x86) %\NuGet\Config (2.7 NuGet do NuGet 3.x: % PROGRAMDATA%\NuGet\NuGetDefaults.Config) system Mac/Linux: XDG_DATA_HOME $ (zazwyczaj ~/.local/share) 
 

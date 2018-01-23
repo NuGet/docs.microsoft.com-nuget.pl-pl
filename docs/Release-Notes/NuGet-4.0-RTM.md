@@ -13,11 +13,11 @@ keywords: NuGet 4.0 RTM informacje o wersji, poprawki, znanymi problemami, nowe 
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2cdee8b736fa2c651da803be9a10a6114936134a
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 488b7259f4cc8635d590d35283dc685dc117ad39
+ms.sourcegitcommit: 9ac1fa23a4a8ce098692de93328b1db4136fe3d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="40-rtm-release-notes"></a>4.0 informacje o wersji RTM
 
@@ -51,7 +51,7 @@ Obecnie nie istnieje obejście tego problemu.
 #### <a name="issue"></a>Problem:
 Menedżer pakietów NuGet nie wyświetla składnika DotNetCLITools ani nie zezwala na jego dodawanie/aktualizowanie. [NuGet#4256](https://github.com/NuGet/Home/issues/4256)
 
-* #### <a name="workaround"></a>Obejście problemu:
+#### <a name="workaround"></a>Obejście problemu:
 Należy ręcznie edytować składnik DotNetCLIToolReferences w pliku projektu.
 
 ### <a name="nuget-restore-will-fail-when-you-set-packageid-property-for-projects"></a>Przywracanie NuGet zakończy się niepowodzeniem po ustawieniu właściwości PackageId dla projektów
@@ -365,4 +365,3 @@ Obecnie nie istnieje obejście tego problemu.
 [Lista problemów 3](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0 RC3")  
 [Lista problemów 4](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0 RC2")  
 [Lista problemów 5](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0 RC")
-
