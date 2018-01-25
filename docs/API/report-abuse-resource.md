@@ -11,64 +11,59 @@ ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 148d743a-09e5-4539-8454-675be11902db
 description: "Szablon adresu URL nadużycia raport umożliwia klientom do wyświetlenia łącza nadużycia raportu w jego interfejsie użytkownika."
 keywords: "Interfejs API NuGet zgłaszania nadużyć, NuGet interfejsu API plików zgodne, szablon adres URL raportu NuGet.org"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 7b3413297f5a7fcf0e2c7757036b1f240ed0058a
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: c12be294c71547fbce421c72aa091e0eee15aacd
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
-# <a name="report-abuse-url-template"></a><span data-ttu-id="ade07-104">Szablon adresu URL nadużycia raportu</span><span class="sxs-lookup"><span data-stu-id="ade07-104">Report Abuse URL Template</span></span>
+# <a name="report-abuse-url-template"></a><span data-ttu-id="411a3-104">Szablon adresu URL nadużycia raportu</span><span class="sxs-lookup"><span data-stu-id="411a3-104">Report abuse URL template</span></span>
 
-<span data-ttu-id="ade07-105">Istnieje możliwość dla klienta do tworzenia adresów URL, które mogą być używane przez użytkownika do zgłaszania nadużyć o określonym pakiecie.</span><span class="sxs-lookup"><span data-stu-id="ade07-105">It is possible for a client to build a URL that can be used by the user to report abuse about a specific package.</span></span> <span data-ttu-id="ade07-106">Jest to przydatne, gdy źródło pakietu chce włączyć wszystkie delegować nadużycia raporty do źródła pakietu klienta środowiska (strona nawet 3).</span><span class="sxs-lookup"><span data-stu-id="ade07-106">This is useful when a package source wants to enable all client experiences (even 3rd party) to delegate abuse reports to the package source.</span></span>
+<span data-ttu-id="411a3-105">Istnieje możliwość dla klienta do tworzenia adresów URL, które mogą być używane przez użytkownika do zgłaszania nadużyć o określonym pakiecie.</span><span class="sxs-lookup"><span data-stu-id="411a3-105">It is possible for a client to build a URL that can be used by the user to report abuse about a specific package.</span></span> <span data-ttu-id="411a3-106">Jest to przydatne, gdy źródło pakietu chce włączyć wszystkie delegować nadużycia raporty do źródła pakietu klienta środowiska (strona nawet 3).</span><span class="sxs-lookup"><span data-stu-id="411a3-106">This is useful when a package source wants to enable all client experiences (even 3rd party) to delegate abuse reports to the package source.</span></span>
 
-<span data-ttu-id="ade07-107">Zasób używany do pobierania zawartości pakietu jest `ReportAbuseUriTemplate` można znaleźć zasobu w [indeksu usługi](service-index.md).</span><span class="sxs-lookup"><span data-stu-id="ade07-107">The resource used for fetching package content is the `ReportAbuseUriTemplate` resource found in the [service index](service-index.md).</span></span>
+<span data-ttu-id="411a3-107">Zasób używany do pobierania zawartości pakietu jest `ReportAbuseUriTemplate` można znaleźć zasobu w [indeksu usługi](service-index.md).</span><span class="sxs-lookup"><span data-stu-id="411a3-107">The resource used for fetching package content is the `ReportAbuseUriTemplate` resource found in the [service index](service-index.md).</span></span>
 
-## <a name="versioning"></a><span data-ttu-id="ade07-108">Przechowywanie wersji</span><span class="sxs-lookup"><span data-stu-id="ade07-108">Versioning</span></span>
+## <a name="versioning"></a><span data-ttu-id="411a3-108">Przechowywanie wersji</span><span class="sxs-lookup"><span data-stu-id="411a3-108">Versioning</span></span>
 
-<span data-ttu-id="ade07-109">Następujące `@type` są używane wartości:</span><span class="sxs-lookup"><span data-stu-id="ade07-109">The following `@type` values are used:</span></span>
+<span data-ttu-id="411a3-109">Następujące `@type` są używane wartości:</span><span class="sxs-lookup"><span data-stu-id="411a3-109">The following `@type` values are used:</span></span>
 
-<span data-ttu-id="ade07-110">@typewartość</span><span class="sxs-lookup"><span data-stu-id="ade07-110">@type value</span></span>                       | <span data-ttu-id="ade07-111">Uwagi</span><span class="sxs-lookup"><span data-stu-id="ade07-111">Notes</span></span>
+<span data-ttu-id="411a3-110">@typewartość</span><span class="sxs-lookup"><span data-stu-id="411a3-110">@type value</span></span>                       | <span data-ttu-id="411a3-111">Uwagi</span><span class="sxs-lookup"><span data-stu-id="411a3-111">Notes</span></span>
 --------------------------------- | -----
-<span data-ttu-id="ade07-112">ReportAbuseUriTemplate/3.0.0-beta</span><span class="sxs-lookup"><span data-stu-id="ade07-112">ReportAbuseUriTemplate/3.0.0-beta</span></span> | <span data-ttu-id="ade07-113">Początkowa wersja</span><span class="sxs-lookup"><span data-stu-id="ade07-113">The initial release</span></span>
-<span data-ttu-id="ade07-114">ReportAbuseUriTemplate/3.0.0-rc</span><span class="sxs-lookup"><span data-stu-id="ade07-114">ReportAbuseUriTemplate/3.0.0-rc</span></span>   | <span data-ttu-id="ade07-115">Alias`ReportAbuseUriTemplate/3.0.0-beta`</span><span class="sxs-lookup"><span data-stu-id="ade07-115">Alias of `ReportAbuseUriTemplate/3.0.0-beta`</span></span>
+<span data-ttu-id="411a3-112">ReportAbuseUriTemplate/3.0.0-beta</span><span class="sxs-lookup"><span data-stu-id="411a3-112">ReportAbuseUriTemplate/3.0.0-beta</span></span> | <span data-ttu-id="411a3-113">Początkowa wersja</span><span class="sxs-lookup"><span data-stu-id="411a3-113">The initial release</span></span>
+<span data-ttu-id="411a3-114">ReportAbuseUriTemplate/3.0.0-rc</span><span class="sxs-lookup"><span data-stu-id="411a3-114">ReportAbuseUriTemplate/3.0.0-rc</span></span>   | <span data-ttu-id="411a3-115">Alias`ReportAbuseUriTemplate/3.0.0-beta`</span><span class="sxs-lookup"><span data-stu-id="411a3-115">Alias of `ReportAbuseUriTemplate/3.0.0-beta`</span></span>
 
-## <a name="url-template"></a><span data-ttu-id="ade07-116">Szablon adresu URL</span><span class="sxs-lookup"><span data-stu-id="ade07-116">URL template</span></span>
+## <a name="url-template"></a><span data-ttu-id="411a3-116">Szablon adresu URL</span><span class="sxs-lookup"><span data-stu-id="411a3-116">URL template</span></span>
 
-<span data-ttu-id="ade07-117">Adres URL następujący interfejs API jest wartość `@id` właściwości skojarzone z jedną z wyżej wymienionych zasobów `@type` wartości.</span><span class="sxs-lookup"><span data-stu-id="ade07-117">The URL for the following API is the value of the `@id` property associated with one of the aforementioned resource `@type` values.</span></span>
+<span data-ttu-id="411a3-117">Adres URL następujący interfejs API jest wartość `@id` właściwości skojarzone z jedną z wyżej wymienionych zasobów `@type` wartości.</span><span class="sxs-lookup"><span data-stu-id="411a3-117">The URL for the following API is the value of the `@id` property associated with one of the aforementioned resource `@type` values.</span></span>
 
-## <a name="http-methods"></a><span data-ttu-id="ade07-118">Metody HTTP</span><span class="sxs-lookup"><span data-stu-id="ade07-118">HTTP methods</span></span>
+## <a name="http-methods"></a><span data-ttu-id="411a3-118">Metody HTTP</span><span class="sxs-lookup"><span data-stu-id="411a3-118">HTTP methods</span></span>
 
-<span data-ttu-id="ade07-119">Mimo że klient nie jest przeznaczony na wysyłanie żądań do adresu URL programu report nadużyć w imieniu użytkownika, strony sieci web powinna obsługiwać `GET` metodę umożliwiającą klikniętej adres URL, który można łatwo otworzyć w przeglądarce sieci web.</span><span class="sxs-lookup"><span data-stu-id="ade07-119">Although the client is not intended to make requests to the report abuse URL on behalf of the user, the web page should support the `GET` method to allow a clicked URL to be easily opened in a web browser.</span></span>
+<span data-ttu-id="411a3-119">Mimo że klient nie jest przeznaczony na wysyłanie żądań do adresu URL programu report nadużyć w imieniu użytkownika, strony sieci web powinna obsługiwać `GET` metodę umożliwiającą klikniętej adres URL, który można łatwo otworzyć w przeglądarce sieci web.</span><span class="sxs-lookup"><span data-stu-id="411a3-119">Although the client is not intended to make requests to the report abuse URL on behalf of the user, the web page should support the `GET` method to allow a clicked URL to be easily opened in a web browser.</span></span>
 
-## <a name="construct-the-url"></a><span data-ttu-id="ade07-120">Utworzyć adres URL</span><span class="sxs-lookup"><span data-stu-id="ade07-120">Construct the URL</span></span>
+## <a name="construct-the-url"></a><span data-ttu-id="411a3-120">Utworzyć adres URL</span><span class="sxs-lookup"><span data-stu-id="411a3-120">Construct the URL</span></span>
 
-<span data-ttu-id="ade07-121">Podany identyfikator znanego pakietu i wersję, implementacja klienta można konstruować adresu URL, które umożliwiają dostęp do interfejsu sieci web.</span><span class="sxs-lookup"><span data-stu-id="ade07-121">Given a known package ID and version, the client implementation can construct a URL used to access a web interface.</span></span> <span data-ttu-id="ade07-122">Implementacja klienta powinien być wyświetlany tego utworzony adres URL (lub łączem) użytkownika, dzięki czemu Otwórz przeglądarkę sieci web do adresu URL i żadnych raportów na potrzeby nadużycia.</span><span class="sxs-lookup"><span data-stu-id="ade07-122">The client implementation should display this constructed URL (or clickable link) to the user allowing them to open a web browser to the URL and make any necessary abuse report.</span></span> <span data-ttu-id="ade07-123">Implementacja formularz raportu nadużycia zależy od implementacji serwera.</span><span class="sxs-lookup"><span data-stu-id="ade07-123">The implementation of the abuse report form is determined by the server implementation.</span></span>
+<span data-ttu-id="411a3-121">Podany identyfikator znanego pakietu i wersję, implementacja klienta można konstruować adresu URL, które umożliwiają dostęp do interfejsu sieci web.</span><span class="sxs-lookup"><span data-stu-id="411a3-121">Given a known package ID and version, the client implementation can construct a URL used to access a web interface.</span></span> <span data-ttu-id="411a3-122">Implementacja klienta powinien być wyświetlany tego utworzony adres URL (lub łączem) użytkownika, dzięki czemu Otwórz przeglądarkę sieci web do adresu URL i żadnych raportów na potrzeby nadużycia.</span><span class="sxs-lookup"><span data-stu-id="411a3-122">The client implementation should display this constructed URL (or clickable link) to the user allowing them to open a web browser to the URL and make any necessary abuse report.</span></span> <span data-ttu-id="411a3-123">Implementacja formularz raportu nadużycia zależy od implementacji serwera.</span><span class="sxs-lookup"><span data-stu-id="411a3-123">The implementation of the abuse report form is determined by the server implementation.</span></span>
 
-<span data-ttu-id="ade07-124">Wartość `@id` jest zawierające dowolny z następujących znaczników symbol zastępczy ciągu adresu URL:</span><span class="sxs-lookup"><span data-stu-id="ade07-124">The value of the `@id` is a URL string containing any of the following placeholder tokens:</span></span>
+<span data-ttu-id="411a3-124">Wartość `@id` jest zawierające dowolny z następujących znaczników symbol zastępczy ciągu adresu URL:</span><span class="sxs-lookup"><span data-stu-id="411a3-124">The value of the `@id` is a URL string containing any of the following placeholder tokens:</span></span>
 
-### <a name="url-placeholders"></a><span data-ttu-id="ade07-125">Symbole zastępcze adresu URL</span><span class="sxs-lookup"><span data-stu-id="ade07-125">URL placeholders</span></span>
+### <a name="url-placeholders"></a><span data-ttu-id="411a3-125">Symbole zastępcze adresu URL</span><span class="sxs-lookup"><span data-stu-id="411a3-125">URL placeholders</span></span>
 
-<span data-ttu-id="ade07-126">Nazwa</span><span class="sxs-lookup"><span data-stu-id="ade07-126">Name</span></span>        | <span data-ttu-id="ade07-127">Typ</span><span class="sxs-lookup"><span data-stu-id="ade07-127">Type</span></span>    | <span data-ttu-id="ade07-128">Wymagane</span><span class="sxs-lookup"><span data-stu-id="ade07-128">Required</span></span> | <span data-ttu-id="ade07-129">Uwagi</span><span class="sxs-lookup"><span data-stu-id="ade07-129">Notes</span></span>
+<span data-ttu-id="411a3-126">Nazwa</span><span class="sxs-lookup"><span data-stu-id="411a3-126">Name</span></span>        | <span data-ttu-id="411a3-127">Typ</span><span class="sxs-lookup"><span data-stu-id="411a3-127">Type</span></span>    | <span data-ttu-id="411a3-128">Wymagane</span><span class="sxs-lookup"><span data-stu-id="411a3-128">Required</span></span> | <span data-ttu-id="411a3-129">Uwagi</span><span class="sxs-lookup"><span data-stu-id="411a3-129">Notes</span></span>
 ----------- | ------- | -------- | -----
-`{id}`      | <span data-ttu-id="ade07-130">string</span><span class="sxs-lookup"><span data-stu-id="ade07-130">string</span></span>  | <span data-ttu-id="ade07-131">Brak</span><span class="sxs-lookup"><span data-stu-id="ade07-131">no</span></span>       | <span data-ttu-id="ade07-132">Identyfikator pakietu do zgłaszania nadużyć dla</span><span class="sxs-lookup"><span data-stu-id="ade07-132">The package ID to report abuse for</span></span>
-`{version}` | <span data-ttu-id="ade07-133">string</span><span class="sxs-lookup"><span data-stu-id="ade07-133">string</span></span>  | <span data-ttu-id="ade07-134">Brak</span><span class="sxs-lookup"><span data-stu-id="ade07-134">no</span></span>       | <span data-ttu-id="ade07-135">Wersja pakietu do zgłaszania nadużyć dla</span><span class="sxs-lookup"><span data-stu-id="ade07-135">The package version to report abuse for</span></span>
+`{id}`      | <span data-ttu-id="411a3-130">string</span><span class="sxs-lookup"><span data-stu-id="411a3-130">string</span></span>  | <span data-ttu-id="411a3-131">Brak</span><span class="sxs-lookup"><span data-stu-id="411a3-131">no</span></span>       | <span data-ttu-id="411a3-132">Identyfikator pakietu do zgłaszania nadużyć dla</span><span class="sxs-lookup"><span data-stu-id="411a3-132">The package ID to report abuse for</span></span>
+`{version}` | <span data-ttu-id="411a3-133">string</span><span class="sxs-lookup"><span data-stu-id="411a3-133">string</span></span>  | <span data-ttu-id="411a3-134">Brak</span><span class="sxs-lookup"><span data-stu-id="411a3-134">no</span></span>       | <span data-ttu-id="411a3-135">Wersja pakietu do zgłaszania nadużyć dla</span><span class="sxs-lookup"><span data-stu-id="411a3-135">The package version to report abuse for</span></span>
 
-<span data-ttu-id="ade07-136">`{id}` i `{version}` wartości interpretowane przez implementację serwera musi być uwzględniana wielkość rozróżniają wielkość liter i nie poufne czy normalizowane jest wersja.</span><span class="sxs-lookup"><span data-stu-id="ade07-136">The `{id}` and `{version}` values interpreted by the server implementation must be case insenstive and not sensitive to whether the version is normalized.</span></span>
+<span data-ttu-id="411a3-136">`{id}` i `{version}` wartości interpretowane przez implementację serwera musi być uwzględniana wielkość rozróżniają wielkość liter i nie poufne czy normalizowane jest wersja.</span><span class="sxs-lookup"><span data-stu-id="411a3-136">The `{id}` and `{version}` values interpreted by the server implementation must be case insenstive and not sensitive to whether the version is normalized.</span></span>
 
-<span data-ttu-id="ade07-137">Na przykład szablon nadużycia raportu nuget.org wygląda następująco:</span><span class="sxs-lookup"><span data-stu-id="ade07-137">For example, nuget.org's report abuse template looks like this:</span></span>
+<span data-ttu-id="411a3-137">Na przykład szablon nadużycia raportu nuget.org wygląda następująco:</span><span class="sxs-lookup"><span data-stu-id="411a3-137">For example, nuget.org's report abuse template looks like this:</span></span>
 
-```
-https://www.nuget.org/packages/{id}/{version}/ReportAbuse
-```
+    https://www.nuget.org/packages/{id}/{version}/ReportAbuse
 
-<span data-ttu-id="ade07-138">Jeśli implementacja klienta wymaga do wyświetlenia łącza do formularza nadużycia raport NuGet.Versioning 4.3.0, czy to utworzyć następujący adres URL i przekazywanie ich do użytkownika:</span><span class="sxs-lookup"><span data-stu-id="ade07-138">If the client implementation needs to display a link to the report abuse form for NuGet.Versioning 4.3.0, it would produce the following URL and provide it to the user:</span></span>
+<span data-ttu-id="411a3-138">Jeśli implementacja klienta wymaga do wyświetlenia łącza do formularza nadużycia raport NuGet.Versioning 4.3.0, czy to utworzyć następujący adres URL i przekazywanie ich do użytkownika:</span><span class="sxs-lookup"><span data-stu-id="411a3-138">If the client implementation needs to display a link to the report abuse form for NuGet.Versioning 4.3.0, it would produce the following URL and provide it to the user:</span></span>
 
-```
-https://www.nuget.org/packages/NuGet.Versioning/4.3.0/ReportAbuse
-```
+    https://www.nuget.org/packages/NuGet.Versioning/4.3.0/ReportAbuse
