@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 6f972803-9e17-43f5-b77b-973c3accf695
 description: "Informacje o wersji programu NuGet 2.1 tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
 keywords: NuGet 2.1 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: dafe575eedbfed215c0b1c86795bea281de97252
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 05cdb898cc674ac7eadb238d41896638d8e3488c
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-21-release-notes"></a>Informacje o wersji 2.1 NuGet
 
@@ -101,15 +100,15 @@ Dla aplikacji ze Sklepu Windows 8 identyfikatory wyglądać w następujący spos
 
 |NuGet 2.0 i starsze wersje|NuGet 2.1|
 |----------------|-----------|
-|winRT45. NETCore45|Systemu Windows, Windows8, Windows, Windows 8|
+|winRT45, .NETCore45|Systemu Windows, Windows8, Windows, Windows 8|
 
 <br/>
 W przypadku projektów Windows Phone identyfikatory wyglądać w następujący sposób:
 
 |Phone OS|NuGet 2.0 i starsze wersje|NuGet 2.1
 |----------------|-----------|-----------|
-|Windows Phone 7|silverlight3 wp|WP, WindowsPhone7 wp7, WindowsPhone,|
-|Windows Phone (Mango) w wersji 7.5|silverilght4 wp71|wp71, WindowsPhone71|
+|Windows Phone 7|silverlight3-wp|wp, wp7, WindowsPhone, WindowsPhone7|
+|Windows Phone (Mango) w wersji 7.5|silverilght4-wp71|wp71, WindowsPhone71|
 |Windows Phone 8|(nieobsługiwane)|wp8, WindowsPhone8|
 <br/>
 We wszystkich powyższych zmian stare nazwy framework będzie można w pełni obsługiwane przez NuGet 2.1.  Przenoszenie do przodu, nowych nazw należy używać jak będą bardziej stabilne w przyszłych wersjach odpowiednich platform. Nowe nazwy zostanie *nie* być obsługiwana w wersji NuGet przed 2.1, jednak, dlatego należy planować odpowiednio dla, kiedy należy utworzyć przełącznik.

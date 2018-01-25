@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: c193f1e3-d114-427f-9425-9930cc8e4db3
 description: "Informacje o wersji 2.5 NuGet tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
 keywords: NuGet 2.5 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 8d3bebbbe550645fcffad078538134427103cf98
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: c2c6cf85b9ebccf200be9ef4a2bf96802cffcaea
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-25-release-notes"></a>Informacje o wersji 2,5 NuGet
 
@@ -59,9 +58,9 @@ Dziękujemy następującym osobom również do znajdowania usterki z NuGet 2.5 B
 1. [Tony Wall](https://www.codeplex.com/site/users/view/CodeChief) ([@CodeChief](https://twitter.com/codechief))
     - [#3200](https://nuget.codeplex.com/workitem/3200) — MSTest przerwanie najnowsza NuGet 2.4 i tworzy 2,5
 
-# <a name="notable-features-in-the-release"></a>Ważne funkcje w wersji
+## <a name="notable-features-in-the-release"></a>Ważne funkcje w wersji
 
-## <a name="allow-users-to-overwrite-content-files-that-already-exist"></a>Zezwalaj użytkownikom na zastąpienie plików zawartości, które już istnieją
+### <a name="allow-users-to-overwrite-content-files-that-already-exist"></a>Zezwalaj użytkownikom na zastąpienie plików zawartości, które już istnieją
 
 Jedną z najbardziej pożądanych funkcji cały czas została możliwość zastąpienia plików zawartości, które już istnieją na dysku, gdy uwzględnione w pakiecie NuGet. Począwszy od NuGet 2.5 te konflikty zostaną rozpoznane i pojawi się monit o zastąpienie plików, należy wcześniej zawsze pliki te zostały pominięte.
 
@@ -71,13 +70,13 @@ Jedną z najbardziej pożądanych funkcji cały czas została możliwość zast�
 
 Domyślna akcja należy ustawić, gdy plik z pakietu już istnieje w projekcie docelowym. Wartość "Zastąp" zawsze zastąpienie plików. Wartość "Ignore" Pomiń pliki. Jeśli nie zostanie określony, pojawi się monit o poszczególnych plików powodujących konflikt.
 
-## <a name="automatic-import-of-msbuild-targets-and-props-files"></a>Automatyczne importowanie MSBuild cele i pliki właściwości
+### <a name="automatic-import-of-msbuild-targets-and-props-files"></a>Automatyczne importowanie MSBuild cele i pliki właściwości
 
 Nowy folder konwencjonalnej został utworzony na najwyższym poziomie pakietu NuGet.  Jako elementu równorzędnego do `\lib`, `\content`, i `\tools`, obecnie można uwzględnić `\build` folderu do pakietu.  W tym folderze, możesz umieścić dwoma plikami o stałej nazwie `{packageid}.targets` lub `{packageid}.props`. Te dwa pliki mogą być bezpośrednio w obszarze `build` lub w obszarze określonej struktury folderów, podobnie jak w innych folderach. Reguła dla folderu framework najlepiej dopasowane do pobrania jest dokładnie takie same jak te.
 
 Podczas instalowania NuGet pakietu z plikami \build doda MSBuild `<Import>` elementu w pliku projektu wskazujący `.targets` i `.props` plików. `.props` Plik zostanie dodany u góry, podczas gdy `.targets` plik zostanie dodany do dołu.
 
-## <a name="specify-different-references-per-platform-using-references-element"></a>Określ różne odwołania na platformie za pomocą `<References/>` — element
+### <a name="specify-different-references-per-platform-using-references-element"></a>Określ różne odwołania na platformie za pomocą `<References/>` — element
 
 Przed 2.5 w `.nuspec` pliku użytkownika można określić tylko pliki odwołania, ma zostać dodana dla wszystkich framework. Teraz dzięki tej nowej funkcji 2.5 użytkownika można tworzyć `<reference/>` elementu dla każdej z obsługiwanych platform, na przykład:
 
@@ -105,7 +104,7 @@ Ta nowa funkcja umożliwia autorów pakiet do użycia funkcji odwołań do zasto
 
 Uwaga: należy obecnie używasz pakietu nuget.exe Aby użyć tej funkcji; Eksplorator pakietu NuGet nie obsługuje jeszcze go.
 
-## <a name="update-all-button-to-allow-updating-all-packages-at-once"></a>Zaktualizuj wszystkie przycisk umożliwia jednocześnie aktualizowania wszystkich pakietów
+### <a name="update-all-button-to-allow-updating-all-packages-at-once"></a>Zaktualizuj wszystkie przycisk umożliwia jednocześnie aktualizowania wszystkich pakietów
 
 Wiele osób wiedzieć o polecenia cmdlet programu PowerShell "Pakiet aktualizacji" można zaktualizować wszystkich pakietów; teraz jest prosty sposób, w tym także interfejsu użytkownika.
 
@@ -118,7 +117,7 @@ Aby wypróbować tę funkcję:
 
 ![Zaktualizuj wszystkie przycisk w oknie dialogowym](./media/NuGet-2.5/update-all.png)
 
-## <a name="improved-project-reference-support-for-nugetexe-pack"></a>Odwołanie projektu ulepszone obsługę nuget.exe pakietu
+### <a name="improved-project-reference-support-for-nugetexe-pack"></a>Odwołanie projektu ulepszone obsługę nuget.exe pakietu
 
 Teraz nuget.exe pakiet polecenia procesów przywoływane projekty z następującymi regułami:
 
@@ -132,7 +131,7 @@ Dzięki temu przywoływanego projektu powinien być traktowany jako zależność
 
 Więcej informacji w tym miejscu: [http://nuget.codeplex.com/workitem/936](http://nuget.codeplex.com/workitem/936)
 
-## <a name="add-a-minimum-nuget-version-property-to-packages"></a>Dodaj właściwość "Minimalna wersja narzędzia NuGet" do pakietów
+### <a name="add-a-minimum-nuget-version-property-to-packages"></a>Dodaj właściwość "Minimalna wersja narzędzia NuGet" do pakietów
 
 Nowy atrybut metadanych o nazwie "minClientVersion" można teraz wskazać minimalnej wersji klienta NuGet musieli korzystać z pakietem.
 
@@ -146,7 +145,7 @@ Jeśli użytkownik ma zainstalowane 2.5 NuGet, pakiet zostanie zidentyfikowana j
 
 Poprawia to na istniejące środowisko, gdzie rozpocząć pakietów do zainstalowania, a następnie się nie powieść wskazujący, że wersja schematu nierozpoznany została zidentyfikowana.
 
-## <a name="dependencies-are-no-longer-unnecessarily-updated-during-package-installation"></a>Zależności już niepotrzebnie są aktualizowane podczas instalacji pakietu aktualizacji
+### <a name="dependencies-are-no-longer-unnecessarily-updated-during-package-installation"></a>Zależności już niepotrzebnie są aktualizowane podczas instalacji pakietu aktualizacji
 
 Przed 2.5 NuGet gdy pakiet został zainstalowany, która była uzależniona od pakietu już zainstalowany w projekcie, zależności byłby aktualizowany w ramach nowej instalacji nawet wtedy, gdy istniejąca wersja spełnione zależności.
 
@@ -167,13 +166,13 @@ Począwszy NuGet 2.5, jeśli wersja zależności już jest spełniony, zależno�
 
 W tle więcej na temat tej zmiany, przeczytaj szczegółowe [elementu roboczego](http://nuget.codeplex.com/workitem/1681) oraz powiązanych [wątek dyskusji](http://nuget.codeplex.com/discussions/436712).
 
-## <a name="nugetexe-outputs-http-requests-with-detailed-verbosity"></a>nuget.exe danych wyjściowych żądań http o poziomie szczegółowości szczegółowe
+### <a name="nugetexe-outputs-http-requests-with-detailed-verbosity"></a>nuget.exe danych wyjściowych żądań http o poziomie szczegółowości szczegółowe
 
 Jeśli występuje problem nuget.exe lub po prostu zastanawiasz się, jakie żądania HTTP są wprowadzane podczas operacji, '-szczegółowości szczegółowe "przełącznika teraz dane wyjściowe obejmują wszystkie żądania HTTP.
 
 ![Dane wyjściowe nuget.exe HTTP](./media/NuGet-2.5/verbosity.png)
 
-## <a name="nugetexe-push-now-supports-unc-and-folder-sources"></a>wypychania nuget.exe obsługuje teraz źródeł UNC i folderów
+### <a name="nugetexe-push-now-supports-unc-and-folder-sources"></a>wypychania nuget.exe obsługuje teraz źródeł UNC i folderów
 
 Przed NuGet 2.5 podczas próby uruchomienia "nuget.exe push" do źródła pakietu na podstawie ścieżki UNC lub folderu lokalnego powiadomienia wypychanego nie powiedzie się. Z funkcją ostatnio dodane konfiguracji hierarchiczna stało się często nuget.exe trzeba objęcie źródła UNC lub folder lub galerii NuGet oparte na protokole HTTP.
 
@@ -185,7 +184,7 @@ Teraz działa następujące polecenie:
 nuget push -source \\mycompany\repo\ mypackage.1.0.0.nupkg
 ```
 
-## <a name="nugetexe-supports-explicitly-specified-config-files"></a>nuget.exe obsługuje jawnie określić pliki konfiguracji
+### <a name="nugetexe-supports-explicitly-specified-config-files"></a>nuget.exe obsługuje jawnie określić pliki konfiguracji
 
 polecenia nuget.exe, które uzyskują dostęp do konfiguracji (wszystkie z wyjątkiem "spec" oraz "pakiet"), teraz obsługują nowy "-ConfigFile" opcja, która wymusza konfiguracji określonego pliku do użycia zamiast domyślnego pliku konfiguracji % AppData%\nuget\Nuget.Config.
 
@@ -195,7 +194,7 @@ Przykład:
 nuget sources add -name test -source http://test -ConfigFile C:\test\.nuget\Nuget.Config
 ```
 
-## <a name="support-for-native-projects"></a>Pomoc techniczna dla projektów natywnych
+### <a name="support-for-native-projects"></a>Pomoc techniczna dla projektów natywnych
 
 Z NuGet 2.5 narzędzia NuGet jest teraz dostępna dla projektów natywnych w programie Visual Studio. Oczekujemy najbardziej natywnego pakietów korzystanie z funkcji importów MSBuild powyżej, przy użyciu narzędzia utworzone przez [projektu CoApp](http://coapp.org). Aby uzyskać więcej informacji, przeczytaj [szczegółowe informacje o narzędziu](http://coapp.org/news/2013-03-27-The-Long-Awaited-post.html) na coapp.org witryny sieci Web.
 

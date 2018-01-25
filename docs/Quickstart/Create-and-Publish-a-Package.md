@@ -3,30 +3,24 @@ title: "Przewodnik wprowadzający do tworzenia i pakietu NuGet publikowania | Do
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/3/2017
+ms.date: 10/03/2017
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 91781ed6-da5c-49f0-b973-16dd8ad84229
 description: "Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet przy użyciu interfejsu wiersza polecenia nuget.exe i Visual Studio."
 keywords: Tworzenie pakietu NuGet, pakietu NuGet publikowania, samouczek NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 9ec7091b0984c53fb883bbace9ee55d10ece773c
-ms.sourcegitcommit: 9ac1fa23a4a8ce098692de93328b1db4136fe3d2
+ms.openlocfilehash: 53d29283c9e786fc27e9a608d7d251d8d0b5b0b2
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="create-and-publish-a-package"></a>Tworzenie i publikowanie pakietu
 
-Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET i opublikowania go w usłudze nuget.org. W poniższych krokach objaśniono proces, za pomocą NuGet interfejsu wiersza polecenia (CLI) i Visual Studio:
-
-- [Wymagania wstępne](#install-pre-requisites)
-- [Utwórz plik manifestu pakietu .nuspec](#create-the-nuspec-package-manifest-file)
-- [Uruchom polecenie pakietu](#run-the-pack-command)
-- [Publikowanie pakietu](#publish-the-package)
+Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET i opublikowania go w usłudze nuget.org. Ten artykuł przeprowadzi Cię przez proces, korzystając z NuGet interfejsu wiersza polecenia (CLI) i Visual Studio.
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 
@@ -48,7 +42,7 @@ Każdy pakiet NuGet musi manifestu&mdash; `.nuspec` pliku&mdash;do opisywania za
 
 1. Uruchamianie interfejsu wiersza polecenia NuGet `spec` polecenie, aby wygenerować manifest, nosi nazwę po projektu, takie jak `AppLogger.nuspec`:
 
-    ```
+    ```cli
     nuget spec
     ```
 
@@ -102,7 +96,7 @@ Każdy pakiet NuGet musi manifestu&mdash; `.nuspec` pliku&mdash;do opisywania za
 
 Aby utworzyć pakiet NuGet ( `.nupkg` plik) z projektem, uruchom `pack` polecenia:
 
-```
+```cli
 nuget pack AppLogger.csproj
 ```
 
@@ -130,13 +124,13 @@ Po utworzeniu `.nupkg` pliku opublikowaniu go przy użyciu nuget.org `push` pole
 
 1. W wierszu polecenia, uruchom następujące polecenie określając nazwę pakietu i zastępowanie klucza o wartości skopiowany w kroku 4:
 
-    ```
+    ```cli
     nuget push AppLogger.1.0.0.0.nupkg 47be3377-c434-4c29-8576-af7f6993a54b -Source https://api.nuget.org/v3/index.json
     ```
 
 1. nuget.exe wyświetla wyniki procesu publikowania:
 
-    ```
+    ```output
     Pushing AppLogger.1.0.0.0.nupkg to 'https://www.nuget.org/api/v2/package'...
         PUT https://www.nuget.org/api/v2/package/
         Created https://www.nuget.org/api/v2/package/ 6829ms

@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 70316f35-f046-4f72-98e0-736de172e918
 description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.2 NuGet."
 keywords: NuGet 3.2 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 551a54482f83803a2e5e5b6ba57a1bf3dd06db8a
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 1728a5c0d83be84686e7ab1394cfc4f8f809987c
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-32-release-notes"></a>Informacje o wersji 3.2 NuGet
 

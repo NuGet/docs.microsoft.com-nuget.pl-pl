@@ -3,35 +3,26 @@ title: "NuGet pakietu i ich przywracania docelowych elementów MSBuild | Dokumen
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 4/3/2017
+ms.date: 04/03/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 86f7e724-2509-4d7d-aa8d-4a3fb913ded6
 description: "Pakiet NuGet i przywracania może współpracować bezpośrednio jako docelowych elementów MSBuild nuget 4.0 +."
 keywords: NuGet i MSBuild, docelowy pakietu NuGet, docelowy przywracania NuGet
 ms.reviewer: karann-msft
-ms.openlocfilehash: d4778a21a96de6d76d7a20ff9a305960dd6c2bf1
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 169d73709eeb17aade7d99da66bbb4f346f8093f
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracania jako docelowych elementów MSBuild
 
-*NuGet 4.0 +*
+*NuGet 4.0+*
 
-NuGet 4.0 + może współpracować bezpośrednio z informacji w `.csproj` pliku bez konieczności oddzielnego `.nuspec` lub `project.json` pliku. Metadane, które wcześniej były przechowywane w tych plikach konfiguracji, które mogą być zamiast tego przechowywane w `.csproj` pliku bezpośrednio, zgodnie z opisem w tym miejscu.
+W formacie PackageReference NuGet 4.0 + mogą przechowywać wszystkie manifestu metadanych bezpośrednio w pliku projektu, zamiast używać oddzielnego `.nuspec` pliku.
 
 Przy użyciu programu MSBuild 15.1 +, NuGet jest również najwyższej jakości obywateli MSBuild z `pack` i `restore` celem zgodnie z poniższym opisem. Następujących elementów docelowych umożliwiają pracę z programem NuGet, tak jak inne zadanie programu MSBuild lub docelowego. (Programu NuGet 3.x i wcześniej, użyj [pakietu](../tools/cli-ref-pack.md) i [przywrócić](../tools/cli-ref-restore.md) zamiast tego polecenia za pomocą interfejsu wiersza polecenia NuGet.)
-
-W tym temacie:
-
-- [Kolejność kompilowania obiektów docelowych](#target-build-order)
-- [docelowy pakiet](#pack-target)
-- [scenariusze z dodatkiem Service Pack](#pack-scenarios)
-- [Lokalizacja docelowa przywracania](#restore-target)
-- [PackageTargetFallback](#packagetargetfallback)
 
 ## <a name="target-build-order"></a>Kolejność kompilowania obiektów docelowych
 
@@ -50,25 +41,24 @@ Podobnie można zapisać zadania programu MSBuild, napisać własny docelowych i
 
 ## <a name="pack-target"></a>docelowy pakiet
 
-Korzystając z docelowym pakietu, oznacza to, `msbuild /t:pack`, MSBuild rysuje wejścia z `.csproj` pliku zamiast `project.json` lub `.nuspec` plików. W poniższej tabeli opisano właściwości programu MSBuild, które mogą zostać dodane do `.csproj` pliku w pierwszym `<PropertyGroup>` węzła. Wprowadź te zmiany łatwe w Visual Studio 2017 i później przez kliknięcie prawym przyciskiem myszy projekt i wybierając **edytować {nazwa_projektu}** w menu kontekstowym. Dla wygody tabeli jest zorganizowana według równoważne właściwości w [ `.nuspec` pliku](../schema/nuspec.md).
+Korzystając z docelowym pakietu, oznacza to, `msbuild /t:pack`, MSBuild rysuje wejścia z pliku projektu. W poniższej tabeli opisano właściwości programu MSBuild, które mogą zostać dodane do pliku projektu w pierwszym `<PropertyGroup>` węzła. Wprowadź te zmiany łatwe w Visual Studio 2017 i później przez kliknięcie prawym przyciskiem myszy projekt i wybierając **edytować {nazwa_projektu}** w menu kontekstowym. Dla wygody tabeli jest zorganizowana według równoważne właściwości w [ `.nuspec` pliku](../schema/nuspec.md).
 
 Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są obsługiwane przy użyciu programu MSBuild.
 
-
 | Wartość atrybutu/NuSpec. | Właściwości programu MSBuild | Domyślny | Uwagi |
 |--------|--------|--------|--------|
-| Identyfikator | PackageId | AssemblyName | $(AssemblyName) z MSBuild |
+| Id | PackageId | AssemblyName | $(AssemblyName) z MSBuild |
 | Wersja | PackageVersion | Wersja | Jest to zgodne, na przykład "1.0.0", "1.0.0-beta" lub "1.0.0-beta-00345" programu semver |
-| VersionPrefix | PackageVersionPrefix | empty | Ustawienie PackageVersion spowoduje zastąpienie PackageVersionPrefix |
-| VersionSuffix | PackageVersionSuffix | empty | $(VersionSuffix) z programu MSBuild. Ustawienie PackageVersion spowoduje zastąpienie PackageVersionSuffix | 
+| VersionPrefix | PackageVersionPrefix | empty | Ustawienie PackageVersion zastępuje PackageVersionPrefix |
+| VersionSuffix | PackageVersionSuffix | empty | $(VersionSuffix) z programu MSBuild. Ustawienie PackageVersion zastępuje PackageVersionSuffix |
 | Autorzy | Autorzy | Nazwa bieżącego użytkownika | |
 | Właściciele | Brak | Nie istnieje w pliku NuSpec | |
 | Tytuł | Tytuł | PackageId| |
 | Opis | Opis | "Opis pakietu" | |
-| Prawa autorskie | Prawa autorskie | empty | |
+| Copyright | Copyright | empty | |
 | RequireLicenseAcceptance | PackageRequireLicenseAcceptance | false | |
-| licenseUrl | PackageLicenseUrl | empty | |
-| adresem projectUrl | PackageProjectUrl | empty | |
+| LicenseUrl | PackageLicenseUrl | empty | |
+| ProjectUrl | PackageProjectUrl | empty | |
 | iconUrl | PackageIconUrl | empty | |
 | Znaczniki | PackageTags | empty | Tagi są rozdzielone średnikami. |
 | releaseNotes | PackageReleaseNotes | empty | |
@@ -77,7 +67,6 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 | PackageType | `<PackageType>DotNetCliTool, 1.0.0.0;Dependency, 2.0.0.0</PackageType>` | | |
 | Podsumowanie | Nieobsługiwane | | |
 
-
 ### <a name="pack-target-inputs"></a>dane wejściowe docelowego pakietu
 
 - IsPackable
@@ -85,7 +74,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 - PackageId
 - Autorzy
 - Opis
-- Prawa autorskie
+- Copyright
 - PackageRequireLicenseAcceptance
 - DevelopmentDependency
 - PackageLicenseUrl
@@ -93,7 +82,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 - PackageIconUrl
 - PackageReleaseNotes
 - PackageTags
-- Ścieżki PackageOutputPath
+- PackageOutputPath
 - IncludeSymbols
 - IncludeSource
 - PackageTypes
@@ -158,7 +147,7 @@ Aby uwzględnić zawartość, należy dodać dodatkowe metadane do istniejącej 
 Domyślnie pobiera wszystkie elementy dodane do katalogu głównego `content` i `contentFiles\any\<target_framework>` folderu w ramach pakietu i zachowuje struktury folder względny, o ile nie zostanie określona ścieżka pakietu:
 
 ```xml
-<Content Include="..\win7-x64\libuv.txt">        
+<Content Include="..\win7-x64\libuv.txt">
     <Pack>true</Pack>
     <PackagePath>content\myfiles\</PackagePath>
 </Content>
@@ -179,9 +168,8 @@ Istnieje również właściwość MSBuild `$(IncludeContentInPack)`, jakie nie `
 
 Zawiera inne metadane określonego pakietu, które można ustawić na żadnym z powyższych elementów ```<PackageCopyToOutput>``` i ```<PackageFlatten>``` który określa ```CopyToOutput``` i ```Flatten``` wartości na ```contentFiles``` wpisu w pliku nuspec danych wyjściowych.
 
-
 > [!Note]
-> Oprócz elementy zawartości `<Pack>` i `<PackagePath>` metadanych można również ustawić na pliki z akcją kompilacji w kompilacji, EmbeddedResource, ApplicationDefinition, strony, zasobów, ekranu powitalnego, DesignData, DesignDataWithDesignTimeCreatableTypes, CodeAnalysisDictionary AndroidAsset, AndroidResource, BundleResource lub None.
+> Oprócz elementy zawartości `<Pack>` i `<PackagePath>` metadanych można również ustawić na pliki z akcją kompilacji w kompilacji, EmbeddedResource, ApplicationDefinition, strony, zasobów, ekranu powitalnego, DesignData, DesignDataWithDesignTimeCreateableTypes , CodeAnalysisDictionary, AndroidAsset, AndroidResource, BundleResource lub None.
 >
 > Pakiet można dołączyć nazwę pliku do ścieżki pakietu przy użyciu globbing wzorców ścieżka do pakietu musi być zakończona z folderu znak separatora, w przeciwnym razie Ścieżka pakietu jest traktowana jako pełna ścieżka, łącznie z nazwą pliku.
 
@@ -209,13 +197,13 @@ Można użyć `.nuspec` plik można spakować projektu, pod warunkiem, że masz 
 
 Jeśli przy użyciu `dotnet.exe` pakowania projektu, użyj polecenia podobnie do następującej:
 
-```
+```cli
 dotnet pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:NuspecProperties=<> /p:NuspecBasePath=<Base path> 
 ```
 
 Jeśli pakiet projektu za pomocą programu MSBuild, należy użyć polecenia podobne do poniższych:
 
-```
+```cli
 msbuild /t:pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:NuspecProperties=<> /p:NuspecBasePath=<Base path> 
 ```
 
@@ -229,7 +217,6 @@ msbuild /t:pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:Nu
 1. Uruchamianie przywracania
 1. Pobieranie pakietów
 1. Zapis plików zasobów, cele i właściwości
-
 
 ### <a name="restore-properties"></a>Przywróć właściwości
 
@@ -247,11 +234,11 @@ Przywróć dodatkowe ustawienia mogą pochodzić z właściwości programu MSBui
 | RestoreGraphProjectInput | Rozdzielana średnikami lista projektów do przywrócenia, powinna ona zawierać ścieżek bezwzględnych. |
 | RestoreOutputPath | Folder wyjściowy, przyjęty `obj` folderu. |
 
-**Przykłady**
+#### <a name="examples"></a>Przykłady
 
 Wiersz polecenia:
 
-```
+```cli
 msbuild /t:restore /p:RestoreConfigFile=<path>
 ```
 
@@ -273,10 +260,9 @@ Przywracanie tworzy następujące pliki w kompilacji `obj` folderu:
 | `{projectName}.projectFileExtension.nuget.g.props` | Odwołania do właściwości programu MSBuild zawartych w pakietach |
 | `{projectName}.projectFileExtension.nuget.g.targets` | Odwołania do zawartych w pakietach docelowych elementów MSBuild |
 
+### <a name="packagetargetfallback"></a>PackageTargetFallback
 
-### <a name="packagetargetfallback"></a>PackageTargetFallback 
-
-`PackageTargetFallback` Element służy do określenia zestawu zgodne cele, które mają być użyte podczas przywracania pakietów (odpowiednik [ `imports` w `project.json` ](../schema/project-json.md#imports)). Został zaprojektowany tak, aby umożliwić pakiety, które używają dotnet [TxM](../schema/target-frameworks.md) do pracy z pakietami zgodne, które nie deklaruje dotnet TxM. Oznacza to, jeśli projekt używa dotnet TxM, następnie wszystkie pakiety zależy on od musi również mieć dotnet TxM, chyba że dodasz `<PackageTargetFallback>` do projektu, aby umożliwić platformy dotnet z systemem innym niż był zgodny z dotnet. 
+`PackageTargetFallback` Element służy do określenia zestawu zgodne cele, które mają być użyte podczas przywracania pakietów. Został zaprojektowany tak, aby umożliwić pakiety, które używają dotnet [TxM](../schema/target-frameworks.md) do pracy z pakietami zgodne, które nie deklaruje dotnet TxM. Oznacza to, jeśli projekt używa dotnet TxM, następnie wszystkie pakiety zależy on od musi również mieć dotnet TxM, chyba że dodasz `<PackageTargetFallback>` do projektu, aby umożliwić platformy dotnet z systemem innym niż był zgodny z dotnet.
 
 Na przykład, jeśli projekt używa `netstandard1.6` TxM i zależny pakiet zawiera tylko `lib/net45/a.dll` i `lib/portable-net45+win81/a.dll`, projekt zakończy się niepowodzeniem do kompilacji. Jeśli chcesz przenieść jest ostatnim biblioteki DLL, a następnie można dodać `PackageTargetFallback` w następujący sposób, aby oznacza, że `portable-net45+win81` zgodnego biblioteki DLL:
 
@@ -293,7 +279,6 @@ Aby zadeklarować używane dla wszystkich elementów docelowych w projekcie, poz
     $(PackageTargetFallback);portable-net45+win81
 </PackageTargetFallback >
 ```
-
 
 ### <a name="replacing-one-library-from-a-restore-graph"></a>Zastępowanie jedną bibliotekę z wykresu przywracania
 

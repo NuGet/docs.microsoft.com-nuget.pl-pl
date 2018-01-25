@@ -3,21 +3,20 @@ title: "Wielowersyjność kodu dla pakietów NuGet | Dokumentacja firmy Microsof
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 9/27/2017
+ms.date: 09/27/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 2646ffcd-83ae-4086-8915-a7fba3f53e45
 description: "Opis różnych metod pod kątem wiele wersji .NET Framework z w ramach jednego pakietu NuGet."
 keywords: Pakiet NuGet przeznaczonych dla platformy .NET Framework, NuGet i .NET przeznaczonych dla wielu struktur, tworzenia pakietu NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: d23158c6dab838b723764994e94fc21cab52f553
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 5a04116aaceaa21a4c57a617d942daec09686bfe
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="supporting-multiple-net-framework-versions"></a>Obsługa wielu wersje programu .NET framework
 
@@ -26,15 +25,6 @@ ms.lasthandoff: 12/14/2017
 Wiele bibliotek docelowe określonej wersji programu .NET Framework. Na przykład może być jedną wersję biblioteki, które są specyficzne dla platformy uniwersalnej systemu Windows i inną wersję, która korzysta z funkcji .NET Framework 4.6.
 
 Aby zmieścił się w tym celu NuGet obsługuje wprowadzanie wielu wersji tego samego biblioteki w jednym pakiecie przy korzystaniu z opartych na konwencjach pracy katalogu metody opisane w [utworzenie pakietu](../create-packages/creating-a-package.md#from-a-convention-based-working-directory).
-
-W tym temacie:
-
-- [Struktura folderów wersji Framework](#framework-version-folder-structure)
-- [Zgodnych wersji zestawu i platforma docelowa projektu](#matching-assembly-versions-and-the-target-framework-in-a-project)
-- [Zestawy grupowania przez framework w wersji](#grouping-assemblies-by-framework-version)
-- [Określanie, która docelowa NuGet do użycia](#determining-which-nuget-target-to-use)
-- [Pliki zawartości i skryptów programu PowerShell](#content-files-and-powershell-scripts)
-
 
 ## <a name="framework-version-folder-structure"></a>Struktura folderów wersji Framework
 
@@ -83,7 +73,6 @@ Jeśli masz zestawy architektury, oznacza to, oddzielne zestawy przeznaczonych d
 
 Zobacz [tworzenie pakietów platformy uniwersalnej systemu Windows](../Guides/Create-UWP-Packages.md) przykład odwołujące się do tych plików w `.nuspec` manifestu.
 
-
 ## <a name="matching-assembly-versions-and-the-target-framework-in-a-project"></a>Zgodnych wersji zestawu i platforma docelowa projektu
 
 Podczas instalowania pakietu, który ma wiele wersji zestawu NuGet próbuje zgodna z nazwą framework zestawu z platformy docelowej projektu.
@@ -97,7 +86,6 @@ Na przykład wziąć pod uwagę następujące struktury folderów w pakiecie:
             \MyAssembly.dll
         \net461
             \MyAssembly.dll
-
 
 Podczas instalowania tego pakietu w projekcie, przeznaczonego dla programu .NET Framework 4.6, NuGet instaluje zestaw w `net45` folderu, ponieważ jest to najwyższa wersja dostępne, która jest mniejsza niż 4.6.
 
@@ -144,7 +132,7 @@ Podczas tworzenia pakietów bibliotek przeznaczonych przenośnej biblioteki klas
 ## <a name="content-files-and-powershell-scripts"></a>Pliki zawartości i skryptów programu PowerShell
 
 > [!Warning]
-> Modyfikowalne pliki zawartości i wykonywanie skryptu są dostępne z `packages.config` tylko format; są one przestarzałe, korzystając z `project.json` i PackagesReference formatuje i powinien nie powinna być używana dla dowolnego nowego pakietu.
+> Modyfikowalne pliki zawartości i wykonywanie skryptu są dostępne z `packages.config` tylko format; zostały uznane za przestarzałe w innych formatach i nie powinna być używana dla dowolnego nowego pakietu.
 
 Z `packages.config`, zawartości plików i skryptów programu PowerShell można przedstawić w rozbiciu platformy docelowej przy użyciu tej samej Konwencji folder wewnątrz `content` i `tools` folderów. Na przykład:
 

@@ -13,40 +13,22 @@ keywords: Tworzenie pakietu NuGet, tworzenie pakietu, nuspec manifest, konwencje
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6675d21a2900a1b61e17c08518b328732f4472c5
-ms.sourcegitcommit: 1cb047b24b3b69d80e808c23b2ace0d98d2dfdcc
+ms.openlocfilehash: 170cb933d3e09a8c80b869f6a3ddc2e0ebcb3405
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
-Niezależnie od tego, czego pakiet lub jego kodu zawiera, użyj `nuget.exe` do tej funkcji do składnika, który można udostępniać i używane przez dowolną liczbę inni deweloperzy pakietu. Aby zainstalować `nuget.exe`, zobacz [instalowania NuGet CLI](../guides/Install-NuGet.md#nuget-cli). Należy pamiętać, że program Visual Studio nie ma automatycznie `nuget.exe`.
+Niezależnie od tego, czego pakiet lub jego kodu zawiera, użyj `nuget.exe` do tej funkcji do składnika, który można udostępniać i używane przez dowolną liczbę inni deweloperzy pakietu. Aby zainstalować `nuget.exe`, zobacz [instalowania NuGet CLI](../install-nuget-client-tools.md#nugetexe-cli). Należy pamiętać, że program Visual Studio nie ma automatycznie `nuget.exe`.
 
-Jak to działa, pakiet NuGet jest tylko plik ZIP, który jest zastępowana `.nupkg` rozszerzenia i których zawartość odpowiada niektórych Konwencji. W tym temacie opisano szczegółowe proces tworzenia pakietu, który spełnia te Konwencji. Wskazówki ukierunkowanych, można znaleźć w temacie [tworzenie i publikowanie szybkiego startu pakiet](../quickstart/create-and-publish-a-package.md).
+Jak to działa, pakiet NuGet jest tylko plik ZIP, który jest zastępowana `.nupkg` rozszerzenia i których zawartość odpowiada niektórych Konwencji. W tym temacie opisano szczegółowe proces tworzenia pakietu, który spełnia te Konwencji. Wskazówki ukierunkowanych, można znaleźć w temacie [Szybki Start: tworzenie i publikowanie pakietu](../quickstart/create-and-publish-a-package.md).
 
-OPAKOWYWANIE rozpoczyna się od skompilowanego kodu (zestawy), symbole i/lub innych plików, które mają zostać dostarczone jako pakiet (zobacz [Przegląd i przepływ pracy](Overview-and-Workflow.md)). Ten proces jest niezależna od kompilowania lub w przeciwnym razie generowania plików, które są przekazywane do pakietu, chociaż można używać rysowania z informacji w pliku projektu w celu synchronizowania assemblines skompilowany i pakietów.
-
-W tym temacie:
-
-- [Przy wyborze zestawy, które do pakietu](#deciding-which-assemblies-to-package)
-- [Rola i struktura `.nuspec` pliku](#the-role-and-structure-of-the-nuspec-file)
-- [Tworzenie `.nuspec` pliku](#creating-the-nuspec-file) z:
-    - [Katalog roboczy opartych na konwencjach](#from-a-convention-based-working-directory)
-    - [Zestaw biblioteki DLL](#from-an-assembly-dll)
-    - [Projektu programu Visual Studio](#from-a-visual-studio-project)
-    - [Nowy plik z wartościami domyślnymi](#new-file-with-default-values)    
-- [Wybieranie identyfikator unikatowy pakiet i ustawianie numeru wersji](#choosing-a-unique-package-identifier-and-setting-the-version-number)
-- [Ustawienie typu pakietu](#setting-a-package-type) (NuGet 3.5 i nowsze)
-- [Dodawanie pliku readme i innych plików](#adding-a-readme-and-other-files)
-- [W tym właściwości programu MSBuild i obiektów docelowych w pakiecie](#including-msbuild-props-and-targets-in-a-package)
-- [Tworzenie pakietów, które zawierają zestawy międzyoperacyjne COM](#authoring-packages-with-com-interop-assemblies)
-- [Z dodatkiem Service pack nuget, aby wygenerować plik .nupkg](#running-nuget-pack-to-generate-the-nupkg-file)
-
-Po te podstawowe kroki, można zastosować wiele innych funkcji, jak wspomniano wcześniej w tej dokumentacji. Zobacz [następne kroki](#next-steps) poniżej.
+OPAKOWYWANIE rozpoczyna się od skompilowanego kodu (zestawy), symbole i/lub innych plików, które mają zostać dostarczone jako pakiet (zobacz [Przegląd i przepływ pracy](overview-and-workflow.md)). Ten proces jest niezależna od kompilowania lub w przeciwnym razie generowania plików, które są przekazywane do pakietu, chociaż można używać pobierane z informacji w pliku projektu w celu synchronizowania skompilowane zestawy i pakiety.
 
 > [!Note]
-> W tym temacie dotyczą projektów typu innego niż projektów .NET Core za pomocą programu Visual Studio 2017 i NuGet 4.0 +. W tych projektach platformy .NET Core NuGet informacje są używane w `.csproj` pliku bezpośrednio. Aby uzyskać więcej informacji, zobacz [utworzyć .NET Standard pakiety z programu Visual Studio 2017](../guides/create-net-standard-packages-vs2017.md) i [NuGet pakietu i ich przywracania docelowych elementów MSBuild](../schema/msbuild-targets.md).
+> W tym temacie dotyczą projektów typu innego niż projektów .NET Core za pomocą programu Visual Studio 2017 i NuGet 4.0 +. W tych projektach platformy .NET Core NuGet używa informacji w pliku projektu bezpośrednio. Aby uzyskać więcej informacji, zobacz [utworzyć .NET Standard pakiety z programu Visual Studio 2017](../guides/create-net-standard-packages-vs2017.md) i [NuGet pakietu i ich przywracania docelowych elementów MSBuild](../schema/msbuild-targets.md).
 
 ## <a name="deciding-which-assemblies-to-package"></a>Przy wyborze zestawy, które do pakietu
 
@@ -55,7 +37,8 @@ Najbardziej ogólnego przeznaczenia pakietów zawiera jeden lub więcej zestawó
 - Ogólnie rzecz biorąc najlepiej jeden zestaw na pakietu NuGet, pod warunkiem, że każdy zestaw przydaje się niezależnie. Na przykład, jeśli masz `Utilities.dll` to zależy od `Parser.dll`, i `Parser.dll` przydaje się samodzielnie, a następnie utworzyć jeden pakiet dla każdego. Dzięki temu deweloperom używanie `Parser.dll` niezależnie od `Utilities.dll`.
 
 - Jeśli biblioteki składa się z wielu zestawów, które nie są przydatne niezależnie, jest poprawnie połączyć je w jeden pakiet. W poprzednim przykładzie, jeśli `Parser.dll` zawiera kod, który jest używany tylko przez `Utilities.dll`, a następnie; można zachować `Parser.dll` w tym samym pakiecie.
-    - Podobnie jeśli `Utilities.dll` zależy od `Utilities.resources.dll`, gdzie ponownie nie jest on przydatny samodzielnie, następnie umieść zarówno w tym samym pakiecie.
+
+- Podobnie jeśli `Utilities.dll` zależy od `Utilities.resources.dll`, gdzie ponownie nie jest on przydatny samodzielnie, następnie umieść zarówno w tym samym pakiecie.
 
 Zasoby są w rzeczywistości w szczególnych przypadkach. Po zainstalowaniu pakietu w projekcie NuGet automatycznie dodaje odwołania do zestawów do biblioteki dll pakietu, *z wyłączeniem* te, które są nazywane `.resources.dll` ponieważ one muszą być zlokalizowane zestawy satelickie (zobacz [ Tworzenie zlokalizowanych pakietów](creating-localized-packages.md)). Z tego powodu należy unikać `.resources.dll` plików, które w przeciwnym razie zawiera istotne pakiet kodu.
 
@@ -81,7 +64,7 @@ Wymagane właściwości:
 
 Wspólne właściwości opcjonalne:
 
-- Informacje o wersji
+- Uwagi do wersji
 - Informacje o prawach autorskich
 - Krótki opis [interfejsu użytkownika Menedżera pakietów w programie Visual Studio](../Tools/Package-Manager-UI.md)
 - Identyfikator ustawień regionalnych
@@ -146,11 +129,11 @@ Poniżej przedstawiono typowe (ale fikcyjne) `.nuspec` pliku z komentarzami opis
 </package>
 ```
 
-Szczegółowe informacje o deklarowanie zależności i określanie numerów wersji, zobacz [wersji pakietu](../reference/package-versioning.md). Możliwe jest również do powierzchni zasoby z zależnościami bezpośrednio w pakiecie przy użyciu `include` i `exclude` atrybutów na `dependency` elementu. Zobacz [.nuspec — odwołanie do zależności](../Schema/nuspec.md#dependencies).
+Szczegółowe informacje o deklarowanie zależności i określanie numerów wersji, zobacz [wersji pakietu](../reference/package-versioning.md). Możliwe jest również do powierzchni zasoby z zależnościami bezpośrednio w pakiecie przy użyciu `include` i `exclude` atrybutów na `dependency` elementu. Zobacz [.nuspec — odwołanie do zależności](../schema/nuspec.md#dependencies).
 
 Ponieważ manifestu jest uwzględniony w pakiecie z niej utworzyć, dowolną liczbę dodatkowe przykłady można znaleźć, sprawdzając istniejące pakiety. Dobrym źródłem jest pamięć podręczna globalnej pakietu na komputerze, lokalizację, jest zwracany za pomocą następującego polecenia:
 
-```
+```cli
 nuget locals -list global-packages
 ```
 
@@ -188,7 +171,7 @@ Konwencje folderu są następujące:
 | Folder | Opis | Akcja po instalacji |
 | --- | --- | --- |
 | (root) | Lokalizacja readme.txt | Visual Studio Wyświetla plik readme.txt w folderze głównym pakietu, gdy pakiet jest zainstalowany. |
-| lib / {tfm} | Zestaw (`.dll`), dokumentacji (`.xml`) oraz symbol (`.pdb`) plików dla danego docelowej Framework Moniker (TFM) | Zestawy są dodawane jako odwołania; `.xml` i `.pdb` kopiowane do folderów projektu. Zobacz [obsługujący wiele platform docelowych](Supporting-Multiple-Target-Frameworks.md) tworzenia framework podfoldery specyficznych dla obiektu docelowego. |
+| lib/{tfm} | Zestaw (`.dll`), dokumentacji (`.xml`) oraz symbol (`.pdb`) plików dla danego docelowej Framework Moniker (TFM) | Zestawy są dodawane jako odwołania; `.xml` i `.pdb` kopiowane do folderów projektu. Zobacz [obsługujący wiele platform docelowych](Supporting-Multiple-Target-Frameworks.md) tworzenia framework podfoldery specyficznych dla obiektu docelowego. |
 | środowisk uruchomieniowych | Zestaw architektury (`.dll`), symbol (`.pdb`), a zasób macierzysty (`.pri`) plików | Zestawy są dodawane jako odwołania; inne pliki są kopiowane do folderów projektu. Zobacz [obsługujący wiele platform docelowych](Supporting-Multiple-Target-Frameworks.md). |
 | zawartość | Wybrane pliki | Zawartość jest kopiowana do katalogu głównego projektu. Pomyśl o **zawartości** folder jako katalog główny aplikacji docelowej, który ostatecznie wykorzystuje pakiet. Aby dodać obraz w aplikacji pakietu */obrazy* folderu, umieść go w pakiecie *zawartości/obrazów* folderu. |
 | kompilacja | MSBuild `.targets` i `.props` plików | Automatycznie dodaje do pliku projektu (NuGet 2.x) lub `project.lock.json` (NuGet 3.x+). |
@@ -198,7 +181,7 @@ Struktury folderu może zawierać dowolną liczbę zestawów dla dowolnej liczby
 
 W każdym przypadku, gdy struktura odpowiedni folder w miejscu, uruchom następujące polecenie w tym folderze, aby utworzyć `.nuspec` pliku:
 
-```
+```cli
 nuget spec
 ```
 
@@ -208,7 +191,7 @@ Ponownie wygenerowanego `.nuspec` nie zawiera żadnych jawnych odwołań do plik
 
 W przypadku prostego tworzenia pakietu z zestawu, można wygenerować `.nuspec` pliku z metadanych w zestawie przy użyciu następującego polecenia:
 
-```
+```cli
 nuget spec <assembly-name>.dll
 ```
 
@@ -218,7 +201,7 @@ Za pomocą tego formularza zastępuje kilka symbole zastępcze w manifeście z o
 
 Tworzenie `.nuspec` z `.csproj` lub `.vbproj` plik jest wygodne, ponieważ inne pakiety, które zostały zainstalowane w projekcie tych odwołuje się automatycznie jako zależności. W tym samym folderze co plik projektu, po prostu użyj następującego polecenia:
 
-```
+```cli
 # Use in a folder containing a project file <project-name>.csproj or <project-name>.vbproj
 nuget spec
 ```
@@ -241,7 +224,7 @@ Należy pamiętać, że dostępnych jest kilka dodatkowych pakietów opcji dost�
 
 *NuGet tylko 2.x. Nie jest dostępna w NuGet 3.0 +.*
 
-NuGet 2.x obsługiwane podstawowe pojęcie w zakresie rozwiązania na poziomie pakietu, który instaluje narzędzia lub dodatkowych poleceń dla konsoli Menedżera pakietów (zawartość `tools` folderu), ale nie dodać odwołania do zawartości, lub utworzyć dostosowań do żadnych projektów rozwiązanie. Takie pakiety zawierają żadne pliki w jego bezpośrednio `lib`, `content`, lub `build` folderów, a żaden z jego zależności są pliki w odpowiednich `lib`, `content`, lub `build` folderów. 
+NuGet 2.x obsługiwane podstawowe pojęcie w zakresie rozwiązania na poziomie pakietu, który instaluje narzędzia lub dodatkowych poleceń dla konsoli Menedżera pakietów (zawartość `tools` folderu), ale nie dodać odwołania do zawartości, lub utworzyć dostosowań do żadnych projektów rozwiązanie. Takie pakiety zawierają żadne pliki w jego bezpośrednio `lib`, `content`, lub `build` folderów, a żaden z jego zależności są pliki w odpowiednich `lib`, `content`, lub `build` folderów.
 
 Śledzi NuGet zainstalowane pakiety poziomu rozwiązania w `packages.config` w pliku `.nuget` , zamiast folderu projektu `packages.config` pliku.
 
@@ -249,7 +232,7 @@ NuGet 2.x obsługiwane podstawowe pojęcie w zakresie rozwiązania na poziomie p
 
 Poniższe polecenie tworzy manifest domyślny z symbole zastępcze, co zapewnia spełnienie rozpoczynać struktura prawidłowego pliku:
 
-```
+```cli
 nuget spec [<package-name>]
 ```
 
@@ -286,11 +269,9 @@ Nuget 3.5 +, można oznaczyć pakiety z określonym *typu* wskazująca jego prze
 
 - `DotnetCliTool`rozszerzenia są pakiety typu [.NET CLI](/dotnet/articles/core/tools/index) i są wywoływane z poziomu wiersza polecenia. Takie pakiety można zainstalować tylko w projektach platformy .NET Core i nie mają wpływu na operacje przywracania. Więcej informacji na temat tych rozszerzeń dla projektu są dostępne w [rozszerzenia architektury .NET Core](/dotnet/articles/core/tools/extensibility#per-project-based-extensibility) dokumentacji.
 
-    Po zainstalowaniu pakietu DotnetCliTool programu Visual Studio umieszcza pakietu w `project.json` `tools` węzła zamiast `dependencies` węzła.
-
 - Typ niestandardowy pakietów, użyj identyfikatora dowolnego typu, który odpowiada te same zasady stosowania formatu w pakiecie identyfikatorów. Dowolny typ innych niż `Dependency` i `DotnetCliTool`, jednak nie są rozpoznawane przez Menedżera pakietów NuGet w programie Visual Studio.
 
-Typy pakietów są ustawiane albo w `.nuspec` pliku lub `project.json`. W obu przypadkach jest najlepsze dla zapewnienia zgodności do *nie* jawnie ustawione `Dependency` wpisz i zamiast tego polegać na NuGet zakładając, że ten typ, jeśli żaden typ nie jest określona.
+Typy pakietów są ustawiane w `.nuspec` pliku. Najlepiej dla zapewnienia zgodności do *nie* jawnie ustawione `Dependency` wpisz i zamiast tego polegać na NuGet zakładając, że ten typ, jeśli żaden typ nie jest określona.
 
 - `.nuspec`: Określ typ pakietu w `packageTypes\packageType` węźle `<metadata>` elementu:
 
@@ -304,17 +285,6 @@ Typy pakietów są ustawiane albo w `.nuspec` pliku lub `project.json`. W obu pr
         </packageTypes>
         </metadata>
     </package>
-    ```
-
-- `project.json`: Określ typ pakietu w `packOptions.packageType` właściwości json:
-
-    ```json
-    {
-        // ...
-        "packOptions": {
-        "packageType": "DotnetCliTool"
-        }
-    }
     ```
 
 ## <a name="adding-a-readme-and-other-files"></a>Dodawanie pliku readme i innych plików
@@ -387,7 +357,7 @@ Nuget 3.x, elementy docelowe nie zostaną dodane do projektu, ale zamiast tego s
 
 Pakiety, które zawierają zestawy międzyoperacyjne COM musi zawierać odpowiednie [plik elementów docelowych](#including-msbuild-props-and-targets-in-a-package) , aby poprawny `EmbedInteropTypes` metadanych jest dodawana do projektów przy użyciu formatu PackageReference. Domyślnie `EmbedInteropTypes` metadanych zawsze ma wartość false dla wszystkich zestawów stosowania PackageReference tak jawnie dodaje plik elementów docelowych tych metadanych. Aby uniknąć konfliktów, nazwa docelowego powinna być unikatowa; najlepiej, jeśli jest użycie kombinacji nazwę pakietu i zestaw są osadzone, zastępując `{InteropAssemblyName}` w przykładzie poniżej tej wartości. (Zobacz też [NuGet.Samples.Interop](https://github.com/NuGet/Samples/tree/master/NuGet.Samples.Interop) np.)
 
-```xml      
+```xml
 <Target Name="EmbeddingAssemblyNameFromPackageId" AfterTargets="ResolveReferences" BeforeTargets="FindReferenceAssembliesForReferences">
   <PropertyGroup>
     <_InteropAssemblyFileName>{InteropAssemblyName}</_InteropAssemblyFileName>
@@ -402,7 +372,7 @@ Pakiety, które zawierają zestawy międzyoperacyjne COM musi zawierać odpowied
 
 Należy pamiętać, że przy użyciu `packages.config` format odwołania Dodawanie odwołania do zestawów z pakietów powoduje NuGet i Visual Studio sprawdzić zestawy międzyoperacyjne COM i ustaw `EmbedInteropTypes` na wartość true w pliku projektu. W takim przypadku elementy docelowe są zastąpione.
 
-Ponadto domyślnie [zasoby kompilacji nie przepływu przechodnie](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets). Pakiety utworzone zgodnie z opisem w tym miejscu pracy inaczej, gdy są one pobierane jako zależność przechodnie z odwołaniem projektu do projektu. Konsument pakietu zezwolić im na przepływ, zmieniając wartość domyślną PrivateAssets, aby nie był uwzględniany kompilacji.  
+Ponadto domyślnie [zasoby kompilacji nie przepływu przechodnie](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets). Pakiety utworzone zgodnie z opisem w tym miejscu pracy inaczej, gdy są one pobierane jako zależność przechodnie z odwołaniem projektu do projektu. Konsument pakietu zezwolić im na przepływ, zmieniając wartość domyślną PrivateAssets, aby nie był uwzględniany kompilacji.
 
 <a name="creating-the-package"></a>
 
@@ -410,13 +380,13 @@ Ponadto domyślnie [zasoby kompilacji nie przepływu przechodnie](../consume-pac
 
 Korzystając z zestawu lub katalog roboczy opartych na konwencjach, Utwórz pakiet, uruchamiając `nuget pack` z Twojej `.nuspec` pliku, zastępując `<manifest-name>` z Twojej określonej nazwy pliku:
 
-```
+```cli
 nuget pack <project-name>.nuspec
 ```
 
 Korzystając z projektu programu Visual Studio, uruchom `nuget pack` z pliku projektu, który automatycznie ładuje projektu `.nuspec` pliku i zastępuje wszystkie tokeny w nim przy użyciu wartości w pliku projektu:
 
-```
+```cli
 nuget pack <project-name>.csproj
 ```
 
@@ -440,7 +410,7 @@ Czy masz kilka typowych z projektów Visual Studio są następujące opcje:
 
 - **Odwołanie do projektów**: Jeśli projekt odwołuje się do innych projektów, możesz dodać przywoływane projekty jako część pakietu lub zależności, za pomocą `-IncludeReferencedProjects` opcji:
 
-    ```
+    ```cli
     nuget pack MyProject.csproj -IncludeReferencedProjects
     ```
 
@@ -450,13 +420,13 @@ Czy masz kilka typowych z projektów Visual Studio są następujące opcje:
 
 - **Konfiguracja kompilacji**: domyślnie NuGet używa domyślnej konfiguracji kompilacji ustawione w pliku projektu, zwykle *debugowania*. Można spakować pliki z różnych kompilacji konfiguracji, takich jak *wersji*, użyj `-properties` opcji konfiguracji:
 
-    ```
+    ```cli
     nuget pack MyProject.csproj -properties Configuration=Release
     ```
 
 - **Symbole**: Aby dołączać symbole, umożliwiających konsumentów do wykonania kroków opisanych w debugerze kodu pakietu, należy użyć `-Symbols` opcji:
 
-    ```
+    ```cli
     nuget pack MyProject.csproj -symbols
     ```
 

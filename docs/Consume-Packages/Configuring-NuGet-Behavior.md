@@ -7,30 +7,22 @@ ms.date: 10/25/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: c1e34826-d07d-4609-a0fd-123459ae89c5
 description: "Pliki NuGet.Config kontrolowania zachowania NuGet, globalnie i na podstawie na projekt i są modyfikowane za pomocą polecenia konfiguracyjnego nuget."
 keywords: "Pliki konfiguracji programu NuGet, NuGet ustawienia zachowania NuGet, konfigurowanie ustawień NuGet, Nuget.Config, NuGetDefaults.Config, wartości domyślne"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 9269180241a880d3b796b79a13dbcd45627d74d7
-ms.sourcegitcommit: 9ac1fa23a4a8ce098692de93328b1db4136fe3d2
+ms.openlocfilehash: 84bd351a8ce850d281f60dfd675a284d5de17645
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="configuring-nuget-behavior"></a>Konfigurowanie zachowania NuGet
 
 Zachowanie NuGet jest wymuszany przez wszystkich ustawień w co najmniej jednej `NuGet.Config` plików (XML), może istnieć projektu, użytkownika i komputera poziomów. Globalny `NuGetDefaults.Config` pliku (2.7 +) konfiguruje również specjalnie źródeł pakietów. Ustawienia stosowane do wszystkich poleceń wykonania interfejsu wiersza polecenia, w konsoli Menedżera pakietów i interfejsu użytkownika Menedżera pakietów.
 
-W tym temacie:
-
-- [Lokalizacje pliku NuGet.Config i używa](#config-file-locations-and-uses)
-- [Zmiana ustawień](#changing-config-settings)
-- [Jak są stosowane ustawienia](#how-settings-are-applied)
-- [NuGetDefaults.Config file](#nuget-defaults-file)
-
-## <a name="nugetconfig-file-locations-and-uses"></a>Lokalizacje pliku NuGet.Config i używa
+## <a name="config-file-locations-and-uses"></a>Lokalizacje plików konfiguracji i używa
 
 | Zakres | Lokalizacja pliku NuGet.Config. | Opis |
 | --- | --- | --- |
@@ -59,7 +51,7 @@ Ustawienia są zarządzane przy użyciu interfejsu wiersza polecenia NuGet [pole
 
 System Windows:
 
-```
+```cli
 # Set repositoryPath in the user-level config file
 nuget config -set repositoryPath=c:\packages 
 
@@ -73,7 +65,7 @@ nuget config -set repositoryPath=c:\packages -configfile %ProgramFiles(x86)%\NuG
 
 Mac/Linux:
 
-```
+```cli
 # Set repositoryPath in the user-level config file
 nuget config -set repositoryPath=/home/packages 
 
@@ -92,7 +84,7 @@ nuget config -set repositoryPath=/home/packages -configfile $XDG_DATA_HOME/NuGet
 
 Aby usunąć wartość, należy określić klucz o wartości pustej.
 
-```
+```cli
 # Windows
 nuget config -set repositoryPath= -configfile c:\my.Config
 
@@ -109,8 +101,6 @@ Kopiowanie szablonu poniżej do nowego pliku, a następnie użyć `nuget config 
 <configuration>
 </configuration>
 ```
-
-<br/>
 
 ## <a name="how-settings-are-applied"></a>Jak są stosowane ustawienia
 
@@ -163,7 +153,7 @@ File B. disk_drive_2/NuGet.Config:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-    <config>        
+    <config>
         <add key="repositoryPath" value="disk_drive_2/tmp" />
     </config>
     <packageRestore>

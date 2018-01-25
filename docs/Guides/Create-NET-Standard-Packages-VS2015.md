@@ -3,21 +3,20 @@ title: "Tworzenie pakietów NuGet standardowe .NET z programem Visual Studio 201
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 1/9/2017
+ms.date: 01/09/2017
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 29b3bceb-0f35-4cdd-bbc3-a04eb823164c
 description: "Przewodnik end-to-end tworzenia pakietów NuGet programu .NET Standard przy użyciu narzędzia NuGet 3.x i programu Visual Studio 2015."
 keywords: "Tworzenie pakietu, .NET Standard pakietów, .NET Standard tabeli mapowania"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: e02888bf552997afe25e967f13e021e78e40d48d
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 24089eba93d80dca32632a8c1e174aef849ee72d
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="create-net-standard-packages-with-visual-studio-2015"></a>Utwórz pakiety .NET Standard z programem Visual Studio 2015
 
@@ -35,7 +34,6 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu nuget przeznaczo
 1. [.NET standard tabeli mapowania](#net-standard-mapping-table)
 1. [Tematy pokrewne](#related-topics)
 
-
 ## <a name="pre-requisites"></a>Wymagania wstępne
 
 1. Visual Studio 2015. Bezpłatnie zainstalować Community edition z [visualstudio.com](https://www.visualstudio.com/); oczywiście można również wersje Professional i Enterprise.
@@ -45,8 +43,6 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu nuget przeznaczo
 > [!Note]
 > nuget.exe to narzędzie interfejsu wiersza polecenia, nie Instalatora, dlatego należy Zapisz pobrany plik z przeglądarki, a jego uruchomieniem.
 
-
-
 ## <a name="create-the-class-library-project"></a>Tworzenie projektu biblioteki klas
 
 1. W programie Visual Studio **Plik > Nowy > projektu**, rozwiń węzeł **Visual C# > Windows** węzła, wybierz opcję **biblioteki klas (przenośna)**, Zmień nazwę na AppLogger i kliknij przycisk OK.
@@ -54,11 +50,13 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu nuget przeznaczo
     ![Tworzenie nowego projektu biblioteki klas](media/NetStandard-NewProject.png)
 
 1. W **dodać przenośnej biblioteki klas** okno dialogowe zostanie wyświetlone, wybierz `.NET Framework 4.6` i `ASP.NET Core 1.0` opcje.
+
 1. Kliknij prawym przyciskiem myszy `AppLogger (Portable)` w Eksploratorze rozwiązań wybierz **właściwości**, wybierz pozycję **biblioteki** , a następnie kliknij **docelowej platformy .NET Standard** w **Przeznaczonych dla** sekcji. Ten monit o potwierdzenie, po którym można wybrać `.NET Standard 1.4` z listy rozwijanej:
 
     ![Ustawienie docelowej platformy .NET Standard 1.4](media/NetStandard-ChangeTarget.png)
 
 1. Polecenie **kompilacji** Zmień **konfiguracji** do `Release`i pole wyboru dla **pliku dokumentacji XML**.
+
 1. Dodaj swój kod do składnika, na przykład:
 
     ```cs
@@ -80,7 +78,7 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu nuget przeznaczo
 
 1. Otwórz wiersz polecenia, przejdź do folderu zawierającego `AppLogg.csproj` folder (jeden poziom w dół where `.sln` pliku), i uruchom NuGet `spec` polecenie, aby utworzyć pierwszy `AppLogger.nuspec` pliku:
 
-```
+```cli
 nuget spec
 ```
 
@@ -116,12 +114,11 @@ nuget spec
 
 1. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz **Kompiluj rozwiązanie** do wygenerowania wszystkich plików w pakiecie.
 
-
 ## <a name="package-the-component"></a>Pakiet składnika
 
 Z ukończonej `.nuspec` odwołuje się do wszystkich plików, które należy uwzględnić w pakiecie, wszystko jest gotowe do uruchomienia `pack` polecenia:
 
-```
+```cli
 nuget pack AppLogger.nuspec
 ```
 
@@ -205,11 +202,8 @@ Aby uzyskać więcej informacji na temat używania tej metody, zobacz [obsługi 
 
 W niektórych przypadkach można dodać elementów docelowych niestandardowej kompilacji lub właściwości w projektach używające pakietu, takie jak uruchomienie niestandardowego narzędzia lub procesu podczas kompilacji. Aby to zrobić, dodanie plików w `\build` folderu zgodnie z opisem w poniższych krokach. Podczas instalowania pakietu z plikami \build NuGet dodaje element programu MSBuild w pliku projektu wskazujące pliki .targets i .props.
 
-> [!Note]
-> Korzystając z `project.json`, elementy docelowe nie zostaną dodane do projektu, ale są udostępniane za pośrednictwem `project.lock.json`.
-
-
 1. W projekcie folder zawierający Twoje `.nuspec` plików, Utwórz folder o nazwie `build`.
+
 1. Wewnątrz `build`, tworzenie folderów dla każdego obsługiwane i umieść w obrębie tych sieci `.targets` i `.props` plików:
 
         \build
@@ -236,7 +230,6 @@ W niektórych przypadkach można dodać elementów docelowych niestandardowej ko
 1. Utwórz pakiet ponownie, używając `nuget pack AppLogger.nuspec`.
 
 Aby uzyskać więcej informacji, zapoznaj się [właściwości MSBuild obejmują i obiektów docelowych w pakiecie](../create-packages/creating-a-package.md#including-msbuild-props-and-targets-in-a-package).
-
 
 ### <a name="creating-localized-packages"></a>Tworzenie zlokalizowanych pakietów
 
@@ -283,14 +276,12 @@ Aby utworzyć zlokalizowane wersje biblioteki, można utworzyć oddzielne pakiet
 
 1. Utwórz pakiet ponownie, używając `nuget pack AppLogger.nuspec`.
 
-
 ### <a name="adding-a-readme"></a>Dodawanie pliku readme
 
 Jeśli dołączysz `readme.txt` w katalogu głównym pakietu Visual Studio zostanie wyświetlona po zainstalowaniu pakietu bezpośrednio.
 
 > [!Note]
 > Pliki Readme nie są wyświetlane pakiety, które są zainstalowane jako zależność lub .NET Core projektów.
-
 
 W tym celu należy utworzyć użytkownika `readme.txt` pliku, umieść go w folderze głównym projektu i odwołuje się do niego w `.nuspec` pliku:
 
@@ -305,7 +296,6 @@ W tym celu należy utworzyć użytkownika `readme.txt` pliku, umieść go w fold
 </package>
 ```
 
-
 ## <a name="net-standard-mapping-table"></a>.NET standard tabeli mapowania
 
 |Nazwa platformy |Alias|
@@ -318,8 +308,6 @@ W tym celu należy utworzyć użytkownika `readme.txt` pliku, umieść go w fold
 |Windows| win| &#x2192;| 8.0| 8.1|
 |Windows Phone| WPA| &#x2192;| &#x2192;|8.1|
 |Windows Phone Silverlight| WP| 8.0|
-
-
 
 ## <a name="related-topics"></a>Tematy pokrewne
 

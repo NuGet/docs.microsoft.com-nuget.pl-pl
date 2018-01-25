@@ -3,35 +3,28 @@ title: "Tworzenie pakietów NuGet 2.0 standardowe .NET z programu Visual Studio 
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 5/23/2017
+ms.date: 05/23/2017
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 2c1de334-fdc9-4e1e-8ef6-a90b3e77ff0f
 description: "Przewodnik end-to-end tworzenia pakietów NuGet programu .NET Standard 2.0 przy użyciu narzędzia NuGet 4.x i Visual Studio 2017 r."
 keywords: "Utwórz pakiet, .NET Standard pakietów platformy .NET Core"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 5b48ad2f062fd3a9b99985dbda6f89e6039dac4d
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: aae38dd141c688a6eccc18cabea9e8245dbc36c5
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="create-net-standard-20-packages-with-visual-studio-2017"></a>Utwórz pakiety .NET 2.0 standardowe z programu Visual Studio 2017 r.
 
-*Dotyczy NuGet 4.x+ i MSBuild 15 ustęp 3 + zgodnie z programu Visual Studio 2017 Update 3. W przypadku wcześniejszych wersji programu Visual Studio 2017 te instrukcje dotyczą 1.4 standardowe .NET do wersji 1.6, zmieniając \<TargetFramework\> właściwości. Zobacz też [utworzyć .NET Standard pakiety z programem Visual Studio 2015](../guides/create-net-standard-packages-vs2015.md) do pracy z NuGet 3.x+.*
+*Dotyczy NuGet 4.x+ i MSBuild 15 ustęp 3 + zgodnie z programu Visual Studio 2017 aktualizacji 3 lub nowszym. W przypadku wcześniejszych wersji programu Visual Studio 2017 te instrukcje dotyczą 1.4 standardowe .NET do wersji 1.6, zmieniając \<TargetFramework\> właściwości. Zobacz też [utworzyć .NET Standard pakiety z programem Visual Studio 2015](../guides/create-net-standard-packages-vs2015.md) do pracy z NuGet 3.x+.*
 
 [Biblioteki standardowej .NET](/dotnet/articles/standard/library) jest formalną specyfikację interfejsów API architektury .NET mają być dostępne na wszystkich środowisk uruchomieniowych .NET, w związku z tym ustanawianie większej jednolitości w ekosystemie .NET. Standardowa biblioteka .NET definiuje zestaw uniform BCL (Biblioteka klasy podstawowej) interfejsów API dla wszystkich platform .NET zaimplementować, niezależnie od obciążenia. Go umożliwia deweloperom tworzenia PCLs, które będą używać dla wszystkich programów .NET, i zmniejsza Jeśli nie eliminuje dyrektywy kompilacja warunkowa specyficzne dla platformy w kodzie udostępnionego.
 
-Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu nuget przeznaczonych dla platformy .NET Standard biblioteki 2.0 z Visual Studio 2017 Update 3 i NuGet 4.0.
-
-1. [Wymagania wstępne](#pre-requisites)
-1. [Tworzenie projektu biblioteki klas](#create-the-netstandard-class-library-project)
-1. [Edytuj metadane w pliku .csproj](#edit-metadata-in-the-csproj-file)
-1. [Pakiet składnika](#package-the-component)
-1. [Tematy pokrewne](#related-topics)
+Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu nuget przeznaczonych dla platformy .NET Standard biblioteki 2.0 z programu Visual Studio 2017.
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 
@@ -88,7 +81,6 @@ Z projektów NuGet 4.0 i .NET Core, metadane pakietów znajduje się bezpośredn
     ```
 
 1. Zapisz projekt, a następnie kliknij rozwiązanie prawym przyciskiem myszy i wybierz **Kompiluj rozwiązanie** można ponownie wygenerować wszystkich plików w pakiecie, tym razem z prawidłowych metadanych.
-
 
 ## <a name="package-the-component"></a>Pakiet składnika
 

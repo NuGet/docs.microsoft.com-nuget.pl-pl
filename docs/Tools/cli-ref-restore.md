@@ -3,41 +3,36 @@ title: Polecenie restore interfejsu wiersza polecenia NuGet | Dokumentacja firmy
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/24/2017
+ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 6ee41020-e548-4e61-b8cd-c82b77ac6af7
 description: "Informacje dotyczące polecenia restore nuget.exe"
 keywords: "nuget przywrócić odwołania, przywrócić pakiety, polecenie"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b435a3c2ffe08e3c2f8fc6a4dacb06cf674e4fb9
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 93d7b6967d9297ee822df1583351385210775173
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="restore-command-nuget-cli"></a>polecenie Restore (NuGet CLI)
 
 **Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 2.7 +
 
-NuGet 2.7 +: Pobiera i instaluje wszystkie pakiety brakuje `packages` folderu.
+Pobiera i instaluje wszystkie pakiety brakuje `packages` folderu. W przypadku użycia z NuGet 4.0 + i PackageReference format, generuje `<project>.nuget.props` pliku, w razie potrzeby w `obj` folderu. (Plik można pominąć z kontroli źródła).
 
-NuGet 3.3 + z projektami za pomocą `project.json`: generuje `project.lock.json` pliku i `<project>.nuget.props` plików, jeśli to konieczne. (Oba pliki można pominąć z kontroli źródła).
-
-NuGet 4.0 + z projektem, w którym pakiecie odwołania znajdują się w pliku projektu bezpośrednio: generuje `<project>.nuget.props` pliku, w razie potrzeby w `obj` folderu. (Plik można pominąć z kontroli źródła).
-
-Mac OS x i Linux z poziomu interfejsu wiersza polecenia na Mono Przywracanie pakietów nie jest obsługiwane w formacie PackageReference.
+Mac OS x i Linux z poziomu interfejsu wiersza polecenia na Mono Przywracanie pakietów nie jest obsługiwany z PackageReference.
 
 ## <a name="usage"></a>Użycie
 
-```
+```cli
 nuget restore <projectPath> [options]
 ```
 
-gdzie `<projectPath>` Określa lokalizację rozwiązania, `packages.config` pliku, lub `project.json` pliku. Zobacz [uwagi](#remarks) poniżej behawioralnej szczegółowe informacje.
+gdzie `<projectPath>` Określa lokalizację rozwiązania lub `packages.config` pliku. Zobacz [uwagi](#remarks) poniżej behawioralnej szczegółowe informacje.
 
 ## <a name="options"></a>Opcje
 
@@ -47,7 +42,7 @@ gdzie `<projectPath>` Określa lokalizację rozwiązania, `packages.config` plik
 | DirectDownload | *(4.0 +)*  Pobiera pakiety bezpośrednio, bez wypełnianie pamięci podręczne z plików binarnych lub metadanych. |
 | DisableParallelProcessing | Wyłącza Przywracanie wielu pakietów równolegle. |
 | FallbackSource | *(3.2 +)*  Lista źródła pakietów do użycia jako przejścia, w przypadku, gdy nie można znaleźć pakietu w podstawowej lub źródło domyślne. |
-| ForceEnglishOutput | *(3.5 +)*  Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
+| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | MSBuildPath | *(4.0 +)*  Określa ścieżkę MSBuild do użycia z poleceniem pierwszeństwo `-MSBuildVersion`. |
 | MSBuildVersion | *(3.2 +)*  Określa wersję programu MSBuild ma być używany z tego polecenia. Obsługiwane wartości to 4, 12, 14, 15. Domyślnie jest wybierany MSBuild w ścieżce w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
@@ -61,7 +56,7 @@ gdzie `<projectPath>` Określa lokalizację rozwiązania, `packages.config` plik
 | RequireConsent | Sprawdza, czy Przywracanie pakietów jest włączona przed pobierania i instalowania pakietów. Aby uzyskać więcej informacji, zobacz [przywracania pakietów](../consume-packages/package-restore.md). |
 | SolutionDirectory | Określa folder rozwiązania. Nieprawidłowy gdy trwa przywracanie pakietów dla rozwiązania. |
 | Źródło | Określa listę źródła pakietu (jako adresy URL) do użycia na potrzeby przywracania. W przypadku jego pominięcia polecenie używa źródeł dostarczone w plikach konfiguracji, zobacz [NuGet Konfigurowanie zachowania](../Consume-Packages/Configuring-NuGet-Behavior.md). |
-| Szczegółowość |> określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe (2.5 +)*. |
+| Szczegółowość |> określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
 
 Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
 
@@ -74,15 +69,14 @@ Polecenie restore wykonuje następujące czynności:
     | --- | --- |
     Rozwiązania (folder) | Wyszukuje NuGet `.sln` pliku i korzysta z jeśli je znaleziono; w przeciwnym razie zwraca błąd. `(SolutionDir)\.nuget`jest używana jako folder początkowy.
     `.sln`plik | Przywracanie pakietów zidentyfikowane przez rozwiązanie; Zwraca błąd, jeśli `-SolutionDirectory` jest używany. `$(SolutionDir)\.nuget`jest używana jako folder początkowy.
-    `packages.config`, `project.json`, lub plik projektu | Przywróć pakiety wymienione w pliku rozwiązania i instalowanie zależności.
+    `packages.config`lub pliku projektu | Przywróć pakiety wymienione w pliku rozwiązania i instalowanie zależności.
     Innego typu pliku | Plik zakłada się, że `.sln` plik jako powyżej; Jeśli nie jest to rozwiązanie zapewnia NuGet błąd.
     (nie określono projectPath) | -NuGet wyszukuje pliki rozwiązania w bieżącym folderze. Jeśli zostanie znaleziony jeden plik, że jeden służy do przywracania pakietów; w przypadku znalezienia wielu rozwiązań NuGet zawiera błąd.
-    |— Jeśli nie ma żadnych plików rozwiązania, NuGet szuka `packages.config` lub `project.json` i użyty pod kątem przywracania pakietów.
-    |— Jeśli plik rozwiązania nie `packages.config`, lub `project.json` zostanie znaleziony, NuGet zawiera błąd.
+    |— Jeśli nie ma żadnych plików rozwiązania, NuGet szuka `packages.config` i użyty pod kątem przywracania pakietów.
+    |— Jeśli żadne rozwiązanie lub `packages.config` plik zostanie znaleziony, NuGet zawiera błąd.
 
 1. Określ folder pakietów przy użyciu następującej kolejności priorytet (NuGet zwraca błąd, jeśli żadnego z tych folderów nie są znaleziono):
 
-    - `%userprofile%\.nuget\packages` Wartość w `project.json`.
     - Folder określony za pomocą `-PackagesDirectory`.
     - `repositoryPath` Vale w`Nuget.Config`
     - Folder określony za pomocą`-SolutionDirectory`
@@ -95,7 +89,7 @@ Polecenie restore wykonuje następujące czynności:
 
 ## <a name="examples"></a>Przykłady
 
-```
+```cli
 # Restore packages for a solution file
 nuget restore a.sln
 

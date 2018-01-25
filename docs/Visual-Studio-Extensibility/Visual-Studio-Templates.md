@@ -3,7 +3,7 @@ title: Pakiety NuGet w szablony Visual Studio | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 1/3/2018
+ms.date: 01/03/2018
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
@@ -12,11 +12,11 @@ keywords: "NuGet w Visual Studio, szablony projektu Visual Studio, szablony elem
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 45a2ca2c08660be650f9cf38301f628923e1f8be
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 65b914e1fa59c28615f195b470880a12bf80efbb
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="packages-in-visual-studio-templates"></a>Pakiety w szablony programu Visual Studio
 
@@ -149,4 +149,4 @@ Zestawy SDK, które są instalowane za pomocą Instalatora MSI można zainstalow
 
 1. Wymagaj szablonów projektu/elementu można zapisać przy tworzeniu, umieszczając w niej [ `<PromptForSaveOnCreation>true</PromptForSaveOnCreation>` ](/visualstudio/extensibility/promptforsaveoncreation-element-visual-studio-templates) w `.vstemplate` pliku.
 
-1. Szablony nie zawierają `packages.config` lub `project.json` pliku, a nie dołączaj lub żadnych odwołań do zawartości lub zostanie dodany podczas instalowania pakietów NuGet.
+1. Szablony nie zawierają `packages.config` pliku, a nie dołączaj lub żadnych odwołań do zawartości lub zostanie dodany podczas instalowania pakietów NuGet.

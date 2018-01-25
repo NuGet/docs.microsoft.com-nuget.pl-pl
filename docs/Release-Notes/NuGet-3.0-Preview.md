@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 6762b6f8-82b7-4bab-a1f0-cd25e5dc1fb4
 description: "Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.0 NuGet w wersji zapoznawczej."
 keywords: NuGet 3.0 w wersji zapoznawczej informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: ae137af6f9722c454458fdcb4f20760c08d6e8bb
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: e07bcad2bf713deee0add72663c84b9979f8c5c4
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-30-preview-release-notes"></a>Informacje o wersji NuGet 3.0 w wersji zapoznawczej
 
@@ -25,7 +24,7 @@ ms.lasthandoff: 01/05/2018
 
 12 listopada 2014 r. w ramach wersji programu Visual Studio 2015 Preview został wydany NuGet 3.0 w wersji zapoznawczej. Firma Microsoft opublikowała program NuGet 3.0 w wersji zapoznawczej. Jest to duży wersji firmie Microsoft (chociaż wersja zapoznawcza), i radością zacznij uzyskiwać opinie na temat naszych zmian.
 
-## <a name="visual-studio-2012"></a>Visual Studio 2012 +
+## <a name="visual-studio-2012"></a>Visual Studio 2012+
 
 Podgląd NuGet 3.0 znajduje się w programie Visual Studio 2015 Preview. Pracujemy, aby uzyskać podgląd porzucania dla programu Visual Studio 2012 i Visual Studio 2013 bardzo szybko. Wcześniej poinformowaliśmy naszych zamiarze [przerwanie aktualizacji dla programu Visual Studio 2010](http://blog.nuget.org/20141002/visual-studio-2010.html), i wykonujemy tej decyzji trudne.
 

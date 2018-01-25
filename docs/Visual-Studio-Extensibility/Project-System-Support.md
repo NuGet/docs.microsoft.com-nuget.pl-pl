@@ -3,21 +3,20 @@ title: "Obsługa NuGet System projektu programu Visual Studio | Dokumentacja fir
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 1/9/2017
+ms.date: 01/09/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 9d7fa7f6-82ed-4df6-9734-f43a3d8e3b98
 description: "Integracja programu NuGet do systemu projektu programu Visual Studio dla typów projektów innych firm."
 keywords: "NuGet w Visual Studio, projektu niestandardowe typy projektów Visual Studio"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 9c8cad46f18578bec41bd9280985e42972a9b3c1
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: e2f7c4a32f80b96360f08d04efb8af639af2ddd3
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-support-for-the-visual-studio-project-system"></a>Obsługa NuGet system projektu programu Visual Studio
 
@@ -25,20 +24,18 @@ Do obsługi typów innych firm projektu w programie Visual Studio, obsługuje Nu
 
 Aby zintegrować z NuGet, system projektu musi anonsują własną obsługę możliwości projektu opisanych w tym temacie.
 
-
-> [!NOTE]
-> Nie deklaruj możliwości, które projektu nie ma faktycznego ze względu na włączenie pakietów do zainstalowania w projekcie. Wiele funkcji programu Visual Studio i inne rozszerzenia są zależne od możliwości projektu oprócz klienta NuGet. Fałszywie anonsowanie możliwości projektu może prowadzić te składniki mogą działać nieprawidłowo i doświadczenia użytkowników zmniejszenie.
+> [!Note]
+> Nie należy deklarować możliwości, które projektu nie ma faktycznego ze względu na włączenie pakietów do zainstalowania w projekcie. Wiele funkcji programu Visual Studio i inne rozszerzenia są zależne od możliwości projektu oprócz klienta NuGet. Fałszywie anonsowanie możliwości projektu może prowadzić te składniki mogą działać nieprawidłowo i doświadczenia użytkowników zmniejszenie.
 
 ## <a name="advertise-project-capabilities"></a>Anonsowanie możliwości projektu
 
 Klienta NuGet Określa, które pakiety są zgodne z danego typu projektu na podstawie [możliwości projektu](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/about_project_capabilities.md), zgodnie z opisem w poniższej tabeli.
 
-
-|Możliwość|Opis|
-|----------------|-----------|
-|Właściwości AssemblyReferences|Oznacza, że projekt obsługuje odwołań do zestawu (w odróżnieniu od WinRTReferences)|
-|DeclaredSourceItems|Wskazuje, że projekt jest typowy projektu MSBuild (nie DNX), w tym deklaruje elementów źródła w samym projekcie (zamiast `project.json` pliku, który przyjmuje wszystkie pliki w folderze są częścią kompilacji).|
-|UserSourceItems|Wskazuje, czy użytkownik może dodać dowolne pliki do ich projektu.|
+| Możliwość | Opis |
+| --- | --- |
+| Właściwości AssemblyReferences | Oznacza, że projekt obsługuje odwołań do zestawu (w odróżnieniu od WinRTReferences). |
+| DeclaredSourceItems | Wskazuje, że projekt jest typowy projektu MSBuild (nie DNX), w tym deklaruje elementów źródła w samym projekcie. |
+| UserSourceItems|Wskazuje, czy użytkownik może dodać dowolne pliki do ich projektu. |
 
 Dla systemów opartych na CPS projektu szczegóły implementacji dla projektu możliwości opisane w dalszej części tej sekcji zostały wykonane dla Ciebie. Zobacz [deklarowania możliwości projektu w projektach CPS](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/about_project_capabilities.md#how-to-declare-project-capabilities-in-your-project).
 
@@ -76,9 +73,8 @@ public interface IVsBooleanSymbolPresenceChecker
 }
 ```
 
-
 Przykładowe zastosowanie tego interfejsu przestaną być:
-    
+
 ```cs
 class VsProjectCapabilitiesPresenceChecker : IVsBooleanSymbolPresenceChecker
 {

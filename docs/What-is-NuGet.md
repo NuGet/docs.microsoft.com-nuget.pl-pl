@@ -12,11 +12,11 @@ keywords: "Menedżer pakietów NuGet, użycie, tworzenia pakietu pakiet hostingu
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 73c5af1fd06cae3c162446ad56c39a88bfdc3a1d
-ms.sourcegitcommit: d576d84fb4b6a178eb2ac11f55deb08ac771ba1c
+ms.openlocfilehash: e670fa6174f8dc9954ef9eebc06f61e84112117d
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do NuGet
 
@@ -86,15 +86,12 @@ Z tylko listę odwołań NuGet ponownie zainstalować&mdash;oznacza to, *przywr�
 
 Komputer, który odbiera projektu, takich jak serwer kompilacji, uzyskując kopię projektu jako część systemu automatycznego wdrażania zapyta, po prostu NuGet, aby przywrócić zależności zawsze, gdy są potrzebne. Stworzyć systemy, takie jak Visual Studio Team Services zawierają opis etapów "Przywracanie NuGet", w tym celu dokładnego. Podobnie, gdy deweloperzy uzyskać kopię projektu (tak jak w przypadku klonowania repozytorium), ich wywołania polecenia, takich jak `nuget restore` (NuGet interfejsu wiersza polecenia), `dotnet restore` (dotnet interfejsu wiersza polecenia) lub `Install-Package` (Konsola Menedżera pakietów), aby uzyskać wszystkie niezbędne pakiety. Podczas kompilowania projektu programu Visual Studio, ze swojej strony automatycznie przywraca pakietów.
 
-Wyraźnie widać następnie podstawową rolą NuGet, których dotyczy to deweloperom jest utrzymanie tej listy odwołania w imieniu projektu i umożliwianie wydajnie przywrócić (i zaktualizować) tych pakietów do którego istnieje odwołanie.
-
-Jak dokładnie dzieje się to powstał przez różne wersje programu NuGet, co w kilku *pakietu zarządzania formaty*, jak są nazywane:
+Wyraźnie widać następnie podstawową rolą NuGet, których dotyczy to deweloperom jest utrzymanie tej listy odwołania w imieniu projektu i umożliwianie wydajnie przywrócić (i zaktualizować) tych pakietów do którego istnieje odwołanie. Ta lista jest przechowywana w jednym z dwóch *pakietu zarządzania formaty*, jak są nazywane:
 
 - [`packages.config`](Schema/packages-config.md): *(NuGet 1.0 +)* pliku XML, który przechowuje to płaska lista wszystkie zależności w projekcie, wraz z zależnościami innych zainstalowanych pakietów.
 - [PackageReference](Consume-Packages/Package-References-in-Project-Files.md) (lub "odwołań w projekcie plików pakietu") | *(NuGet 4.0 +)* przechowuje listę najwyższego poziomu zależności projektu bezpośrednio w pliku projektu, więc nie jest wymagane nie oddzielny plik. Skojarzony plik `project.assets.json`, generowane dynamicznie do zarządzania ogólną wykresu zależności.
-- [`project.json`](Schema/project-json.md): *(przestarzałe)* pliku A JSON, który przechowuje listę zależności projektu z ogólną wykres pakietu w skojarzony plik `project.lock.json`. Ten format jest zastąpiona PackageReference.
 
-Zatrudnienia format pakietu administracyjnego w żadnym konkretnym projektem zależy od typu projektu i dostępna wersja NuGet (i/lub Visual Studio). Aby sprawdzić, jakie format jest używany, po prostu wyszukaj `packages.config` lub `project.json` w katalogu głównym projektu po zainstalowaniu pakietu pierwszy. Jeśli nie widzisz albo plikiem, poszukaj w pliku projektu bezpośrednio dla &lt;PackageReference&gt;elementu.
+Zatrudnienia format pakietu administracyjnego w żadnym konkretnym projektem zależy od typu projektu i dostępna wersja NuGet (i/lub Visual Studio). Aby sprawdzić, jakie format jest używany, po prostu wyszukaj `packages.config` w katalogu głównym projektu po zainstalowaniu pakietu pierwszy. Jeśli nie tego pliku, poszukaj w pliku projektu bezpośrednio dla &lt;PackageReference&gt;elementu.
 
 ## <a name="what-else-does-nuget-do"></a>Co działa NuGet?
 

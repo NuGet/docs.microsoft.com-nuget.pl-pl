@@ -3,21 +3,20 @@ title: "Tworzenie pakietów NuGet dla platformy uniwersalnej systemu Windows | D
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 7/17/2017
+ms.date: 07/17/2017
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: d98524b1-a674-4803-8ac5-3c6bce867f86
 description: "End-to-end Przewodnik tworzenia pakietów NuGet dla platformy uniwersalnej systemu Windows przy użyciu składnika środowiska wykonawczego systemu Windows."
 keywords: "Utwórz pakiet, pakietów dla platformy uniwersalnej systemu Windows, składników środowiska wykonawczego systemu Windows"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0513ad063d01e573672b6c84a9e819b6df516f03
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: ef0343fcf6c156a8597df42fe006f9f805903714
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="create-uwp-packages"></a>Tworzenie pakietów platformy uniwersalnej systemu Windows
 
@@ -38,7 +37,6 @@ W tym przewodniku utworzysz pakietu NuGet natywnego platformy uniwersalnej syste
 
 > [!Note]
 > nuget.exe to narzędzie interfejsu wiersza polecenia, nie Instalatora, dlatego należy Zapisz pobrany plik z przeglądarki, a jego uruchomieniem.
-
 
 ## <a name="create-a-uwp-windows-runtime-component"></a>Tworzenie składnika środowiska wykonawczego systemu Windows platformy uniwersalnej systemu Windows
 
@@ -63,7 +61,6 @@ W tym przewodniku utworzysz pakietu NuGet natywnego platformy uniwersalnej syste
 > [!Note]
 > W tym przewodniku użyjesz artefakty debugowania dla pakietu. Dla pakietu bez debugowania zamiast tego Sprawdź opcje wersji w oknie dialogowym Tworzenie partii i zapoznaj się wynikowy folderów wersji w kolejnych krokach.
 
-
 ## <a name="create-and-update-the-nuspec-file"></a>Tworzenie i aktualizowanie pliku .nuspec
 
 Aby utworzyć pierwszy `.nuspec` plików, wykonaj poniższe trzy kroki. Sekcje, które należy wykonać, a następnie przedstawiono inne niezbędne aktualizacje.
@@ -71,7 +68,7 @@ Aby utworzyć pierwszy `.nuspec` plików, wykonaj poniższe trzy kroki. Sekcje, 
 1. Otwórz wiersz polecenia i przejdź do folderu zawierającego `ImageEnhancer.vcxproj` (są to podfolder poniżej, gdzie to plik rozwiązania).
 1. Uruchom NuGet `spec` polecenie, aby wygenerować `ImageEnhancer.nuspec` (nazwa pliku jest pobierana z nazwy `.vcxproj` plików):
 
-    ```
+    ```cli
     nuget spec
     ```
 
@@ -97,8 +94,6 @@ Aby utworzyć pierwszy `.nuspec` plików, wykonaj poniższe trzy kroki. Sekcje, 
 
 > [!Note]
 > Skompilowany dla publicznych zużycia pakietów, należy zwrócić szczególną uwagę na `<tags>` element, jak te znaczniki ułatwiała innym pakietu odnaleźć i zrozumieć, jakie operacje.
-
-
 
 ### <a name="adding-windows-metadata-to-the-package"></a>Dodawanie metadanych systemu Windows do pakietu
 
@@ -247,12 +242,11 @@ Twoje final `.nuspec` pliku powinna wyglądać podobnie do następującego: gdzi
 </package>
 ```
 
-
 ## <a name="package-the-component"></a>Pakiet składnika
 
 Z ukończonej `.nuspec` odwołuje się do wszystkich plików, które należy uwzględnić w pakiecie, wszystko jest gotowe do uruchomienia `pack` polecenia:
 
-```
+```cli
 nuget pack ImageEnhancer.nuspec
 ```
 

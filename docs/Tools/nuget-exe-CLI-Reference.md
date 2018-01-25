@@ -3,21 +3,20 @@ title: Dokumentacja interfejsu wiersza polecenia (CLI) NuGet | Dokumentacja firm
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/24/2017
+ms.date: 01/23/2018
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: d777c424-0cf3-4bc0-8abd-7ca16c22192b
 description: Indeks wiersza polecenia dla nuget.exe interfejsu wiersza polecenia
 keywords: "Indeks odwołań nuget.exe, interfejsu wiersza polecenia nuget.exe, nuget.exe interfejsu wiersza polecenia, polecenia nuget"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 5dba358b1dda46f551721461e0460219f8210f9a
-ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
+ms.openlocfilehash: 8b1ee17702f5a54a77dc2cd663e13729a9b4a39f
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-cli-reference"></a>Odwołanie do interfejsu wiersza polecenia NuGet
 
@@ -31,11 +30,16 @@ Ta dokumentacja odzwierciedla najnowszą wersję interfejsu wiersza polecenia Nu
 
 [!INCLUDE[install-cli](../includes/install-cli.md)]
 
+> [!Tip]
+> Aby udostępnić interfejsu wiersza polecenia NuGet w konsoli Menedżera pakietów w programie Visual Studio, zobacz [przy użyciu nuget.exe interfejsu wiersza polecenia w konsoli](package-manager-console.md#using-the-nugetexe-cli-in-the-console).
+
 ## <a name="availability"></a>Dostępność
 
+Zobacz [dostępność funkcji](../install-nuget-client-tools.md#feature-availability) dokładne szczegółowe informacje.
+
 - Wszystkie polecenia są dostępne w systemie Windows.
-- Wszystkie polecenia pracy z [nuget.exe systemem Mono](../guides/install-nuget.md#mac-osx-and-linux) z wyjątkiem określić `pack`, `restore`, i `update`.
-- `pack`, `restore`, `delete`, `locals`, I `push` polecenia są również dostępne na Mac i Linux za pomocą [dotnet interfejsu wiersza polecenia](dotnet-Commands.md).
+- Wszystkie polecenia pracy z systemem Mono oprócz wskazanych dla nuget.exe `pack`, `restore`, i `update`.
+- `pack`, `restore`, `delete`, `locals`, I `push` polecenia są również dostępne na Mac i Linux za pomocą dotnet interfejsu wiersza polecenia.
 
 ## <a name="commands-and-applicability"></a>Polecenia i zastosowania
 
@@ -51,7 +55,6 @@ Dostępne polecenia i zastosowanie do tworzenia pakietu, użycie pakietu i/lub p
 | [restore](cli-ref-restore.md) | Zużycie | 2.7+ | Przywraca wszystkie pakiety odwołuje się format odwołania pakietu w użyciu. W przypadku uruchamiania na Mono, przywracanie pakietów przy użyciu formatu PackageReference nie jest obsługiwana. |
 | [setapikey](cli-ref-setapikey.md) | Publikowanie i zużycia | Wszystkie | Zapisuje klucz interfejsu API dla danego pakietu źródła, kiedy źródła pakietu wymaga klucza dostępu. |
 | [spec](cli-ref-spec.md) | Tworzenie | Wszystkie | Generuje `.nuspec` plików przy użyciu tokenów, jeżeli generuje plik z projektu programu Visual Studio. |
-
 
 | Dodatkowej poleceń | Odpowiednich ról | Wersja narzędzia NuGet | Opis |
 | --- | --- | --- | --- |

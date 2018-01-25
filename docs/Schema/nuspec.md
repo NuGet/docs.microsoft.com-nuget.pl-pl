@@ -3,22 +3,21 @@ title: "Odwołanie do pliku .nuspec programu NuGet | Dokumentacja firmy Microsof
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 8/29/2017
+ms.date: 08/29/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: d4a4db9b-5c2d-46aa-9107-d2b01733df7c
 description: "Plik .nuspec zawiera metadane pakietów używane podczas tworzenia pakietu i podaj informacje dla konsumentów pakietu."
 keywords: "Odwołanie nuspec, metadane pakietów NuGet, manifestu pakietu NuGet, nuspec schematu"
 ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b8c286b9a5705526e2e8fcf259c6503d48e5d181
-ms.sourcegitcommit: d576d84fb4b6a178eb2ac11f55deb08ac771ba1c
+ms.openlocfilehash: 95f86d8cd11bce8f0f1fed068370311f575601de
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -68,7 +67,7 @@ Dla wyczyść wizualną reprezentację schematu, otwórz plik schematu w program
 
 | Atrybut | Wymagane | Opis |
 | --- | --- | --- | 
-| **minClientVersion** | Nie | *(2.5 +)*  Określa minimalną wersję klienta NuGet, który można zainstalować ten pakiet, wymuszane przez nuget.exe i Menedżer pakietów programu Visual Studio. To jest używana zawsze, gdy pakiet jest zależny od konkretnych cech `.nuspec` plików, które zostały dodane w przypadku konkretnej wersji klienta NuGet. Na przykład pakietu za pomocą `developmentDependency` atrybut powinien określać "2.8" dla `minClientVersion`. Podobnie, pakietu za pomocą `contentFiles` (zobacz następną sekcję) należy ustawić element `minClientVersion` do "3.3". Należy zauważyć, że ponieważ klientów NuGet przed 2.5 nie rozpoznają tej flagi one *zawsze* odmówić można zainstalować pakietu, niezależnie od tego, co `minClientVersion` zawiera. |
+| **minClientVersion** | Nie | Określa minimalną wersję klienta NuGet, który można zainstalować ten pakiet, wymuszane przez nuget.exe i Menedżer pakietów programu Visual Studio. To jest używana zawsze, gdy pakiet jest zależny od konkretnych cech `.nuspec` plików, które zostały dodane w przypadku konkretnej wersji klienta NuGet. Na przykład pakietu za pomocą `developmentDependency` atrybut powinien określać "2.8" dla `minClientVersion`. Podobnie, pakietu za pomocą `contentFiles` (zobacz następną sekcję) należy ustawić element `minClientVersion` do "3.3". Należy zauważyć, że ponieważ klientów NuGet przed 2.5 nie rozpoznają tej flagi one *zawsze* odmówić można zainstalować pakietu, niezależnie od tego, co `minClientVersion` zawiera. |
 
 ### <a name="required-metadata-elements"></a>Elementy wymagane metadane
 
@@ -260,8 +259,6 @@ Podobnie jawne odwołania mogą być używane dla platform testów jednostkowych
 
 ### <a name="reference-groups"></a>Grupy odwołania
 
-*W wersji 2.5 +*
-
 Alternatywą dla pojedynczego płaska lista odwołań można określić zgodnie z profil platformy docelowej projektu przy użyciu `<group>` elementów w obrębie `<references>`.
 
 Każda grupa ma atrybut o nazwie `targetFramework` i zawiera zero lub więcej `<reference>` elementów. Te odwołania są dodawane do projektu, gdy platforma docelowa jest zgodny z profilem framework projektu.
@@ -331,7 +328,7 @@ Aby pominąć to działanie automatyczne i jawnie kontrolować pliki, które są
 </files>
 ```
 
-Nuget 2.x i wcześniej i projektów przy użyciu `packages.config`, `<files>` elementu służy również do obejmuje niezmienne plików zawartości, gdy jest zainstalowany pakiet. NuGet 3.3 + i projektami za pomocą `project.json` pr PackageReference, `<contentFiles>` zamiast tego użyć elementu. Zobacz [plików zawartości w tym](#including-content-files) poniżej szczegółowe informacje.
+Nuget 2.x i wcześniej i projektów przy użyciu `packages.config`, `<files>` elementu służy również do obejmuje niezmienne plików zawartości, gdy jest zainstalowany pakiet. Z projektów PackageReference i NuGet 3.3 + `<contentFiles>` zamiast tego użyć elementu. Zobacz [plików zawartości w tym](#including-content-files) poniżej szczegółowe informacje.
 
 ### <a name="file-element-attributes"></a>Atrybuty elementu
 
@@ -416,7 +413,7 @@ Pliki zawartości są niezmienne pliki pakietu musi zawierać się w projekcie. 
 - Skrypty, które muszą być dołączone do danych wyjściowych kompilacji projektu
 - Pliki konfiguracji pakietu, które należy uwzględnić w projekcie, ale nie ma potrzeby zmiany specyficznego dla projektu
 
-Zawartości plików znajdują się w pakietu przy użyciu `<files>` elementu, określając `content` folderu w `target` atrybutu. Jednak takie pliki są ignorowane, gdy pakiet jest zainstalowany w projekcie przy użyciu `project.json` systemu NuGet 3.3 + lub PackageReference w NuGet 4 +, którego użyje `<contentFiles>` elementu.
+Zawartości plików znajdują się w pakietu przy użyciu `<files>` elementu, określając `content` folderu w `target` atrybutu. Jednak takie pliki są ignorowane, gdy pakiet jest zainstalowany w projekcie przy użyciu PackageReference, którego użyje `<contentFiles>` elementu.
 
 Maksymalną zgodność z używania projektów pakietu w idealnym przypadku określa pliki zawartości w obu elementów.
 
@@ -533,7 +530,7 @@ W takim przypadku ponieważ pasuje do rozszerzenia plików źródłowych i docel
 
 ### <a name="using-the-contentfiles-element-for-content-files"></a>Za pomocą elementu pliki plików zawartości
 
-*Wersja 3.3 + z pliku project.json i 4.0 + z PackageReference*
+*NuGet 4.0 + z PackageReference*
 
 Domyślnie pakiet umieszcza zawartość `contentFiles` folder (patrz poniżej) i `nuget pack` uwzględnione wszystkie pliki w tym folderze przy użyciu atrybutów domyślnych. W takim przypadku nie jest konieczne jest stosowanie `contentFiles` w węźle `.nuspec` wcale.
 

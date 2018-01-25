@@ -11,26 +11,22 @@ ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 2f6d6cf2-53fb-417a-b1d8-e0ac591c1699
 description: "Indeks usługi jest punkt wejścia interfejsu API HTTP NuGet i wylicza możliwości serwera."
 keywords: "Punkt wejścia NuGet interfejsu API, NuGetA PI odnajdowania punktu końcowego"
 ms.reviewer:
 - karann
 - unnir
-ms.openlocfilehash: 0c43a09d8564964bd0140b9ac5deb9d3063e4dc5
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 9d0bb421c163520df4a1f0e9f3f71aab823aace3
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="service-index"></a>Indeks usługi
 
 Indeks usługi jest dokumentem JSON, który jest punkt wejścia dla źródła pakietów NuGet i umożliwia implementacja klienta wykryć możliwości źródła pakietu. Indeks usługi jest obiektem JSON z dwóch wymaganych właściwości: `version` (wersja schematu indeksu service) i `resources` (punktów końcowych lub możliwości źródła pakietu).
 
-Indeks usługi nuget.org znajduje się tutaj:
-```
-https://api.nuget.org/v3/index.json
-```
+Indeks usługi nuget.org znajduje się pod adresem `https://api.nuget.org/v3/index.json`.
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
@@ -63,9 +59,7 @@ komentarz       | string | Brak       | Czytelny dla ludzi opis zasobu
 
 `@type` Służy do identyfikowania określonych protokół do użycia podczas interakcji z zasobów. Typ zasobu jest ciągiem nieprzezroczyste, ale ma zazwyczaj format:
 
-```
-{RESOURCE_NAME}/{RESOURCE_VERSION}
-```
+    {RESOURCE_NAME}/{RESOURCE_VERSION}
 
 Klienci powinni twardych kodu `@type` wartości zrozumieć i wyszukiwanie w indeksie usługi źródła pakietu. Dokładnie `@type` wartości w obecnie są wyliczane w dokumentach odwołanie pojedynczego zasobu, na liście [Przegląd interfejsu API](overview.md#resources-and-schema).
 
@@ -75,9 +69,7 @@ Nie jest wymagane czy każdy zasób ma unikatową `@id` lub `@type`. Jest implem
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
 GET https://api.nuget.org/v3/index.json
-```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 

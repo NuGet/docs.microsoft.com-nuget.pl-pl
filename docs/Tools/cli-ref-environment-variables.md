@@ -3,21 +3,20 @@ title: "Zmienne środowiskowe interfejsu wiersza polecenia NuGet | Dokumentacja 
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/24/2017
+ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 1f5c31ca-fa0a-4798-a906-110f2c73d00b
 description: "Informacje dotyczące zmiennych środowiskowych nuget.exe"
 keywords: "zmienne środowiskowe nuget"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0a1dc2a928da657b0d222c2adc02fbd850b66704
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 516a66103d6159a3d68b5383090e8e3b519a5588
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-cli-environment-variables"></a>Zmienne środowiskowe NuGet interfejsu wiersza polecenia
 
@@ -27,7 +26,7 @@ Ogólnie rzecz biorąc, opcje określone bezpośrednio w wierszu polecenia lub w
 
 | Zmienna | Opis | Uwagi |
 | --- | --- | --- |
-| że | Serwer proxy HTTP używany do wykonywania operacji NuGet HTTP. | Może to być określone jako `http://<username>:<password>@proxy.com`. |
+| http_proxy | Serwer proxy HTTP używany do wykonywania operacji NuGet HTTP. | Może to być określone jako `http://<username>:<password>@proxy.com`. |
 | no_proxy | Konfiguruje domen do pominięcia z przy użyciu serwera proxy. | Określony jako domen rozdzielonych przecinkami (,). |
 | EnableNuGetPackageRestore | Flaga dla, jeśli NuGet niejawnie należy udzielić zgody, jeśli jest to wymagane pakietu podczas przywracania. | Określona flaga jest określona. | jako *true* lub *1*, inne wartość traktowane jako flagi nie została określona. |
 | NUGET_EXE_NO_PROMPT | Zapobiega exe dla monit o podanie poświadczeń.| Żadnej wartości, z wyjątkiem null lub pusty ciąg będzie traktowany jako flagi zestawu/wartość true. |

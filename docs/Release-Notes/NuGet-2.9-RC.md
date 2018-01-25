@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 04d76a22-63b0-41d1-9c27-799f4b35058f
 description: "Informacje o wersji programu NuGet 2.9 RC tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
 keywords: NuGet 2.9 informacje o wersji RC, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 64b4cd17394ddb902c7101b9117039f381dc8488
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 0e73b54ab7bbf97806269834c67ad0a159c9065b
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-29-rc-release-notes"></a>Informacje o wersji 2.9 RC NuGet
 

@@ -3,29 +3,27 @@ title: "Tworzenie pakietów NuGet symbol | Dokumentacja firmy Microsoft"
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 9/12/2017
+ms.date: 09/12/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 4667a70d-5a17-4f1e-b2f2-b8d0c6af3882
 description: "Jak tworzyć pakiety NuGet, które zawierają tylko symbole, aby zapewnić obsługę debugowania innych pakietów NuGet w programie Visual Studio."
 keywords: "Pakiety symboli NuGet, pakietu NuGet, debugowanie, obsługi debugowania pakietu symboli, symbol konwencje pakietów NuGet"
 ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2bdb8a2c946618b0c297c70bf7fcf6a9038b2a02
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: e25c34442861c36e9002120afc03cb39ea396f54
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="creating-symbol-packages"></a>Tworzenie pakietów — symbol
 
 Oprócz tworzenia pakietów dla nuget.org lub innych źródeł, NuGet również obsługuje tworzenie pakietów skojarzone symboli i publikowania ich do [repozytorium SymbolSource](http://www.symbolsource.org/Public).
 
 Konsumenci pakiet można następnie dodać `http://srv.symbolsource.org/pdb/Public` źródła symbol w programie Visual Studio, umożliwia wykonywanie krok po kroku do pakietu kodu w debugerze programu Visual Studio. Zobacz [Określ symboli (.pdb) i plików źródłowych w debugerze programu Visual Studio](/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger) szczegółowe informacje na temat tego procesu.
-
 
 ## <a name="creating-a-symbol-package"></a>Tworzenie pakietu symboli
 
@@ -36,7 +34,7 @@ Aby utworzyć pakiet symboli, zgodne z konwencjami te:
 
 Możesz utworzyć oba pakiety z `-Symbols` opcji, albo z `.nuspec` pliku lub pliku projektu:
 
-```
+```cli
 nuget pack MyPackage.nuspec -Symbols
 
 nuget pack MyProject.csproj -Symbols
@@ -108,13 +106,13 @@ Pakiet symboli mogą być wbudowane w Konwencji z struktury folderów, zgodnie z
 
 1. Dla wygody, najpierw zapisać klucz interfejsu API z programem NuGet (zobacz [opublikowania pakietu](../create-packages/publish-a-package.md), która będzie stosowana do nuget.org i symbolsource.org, ponieważ symbolsource.org będzie sprawdzać z nuget.org do sprawdzenia, czy jesteś właścicielem pakietu.
 
-    ```
+    ```cli
     nuget SetApiKey Your-API-Key
     ```
 
 1. Po opublikowaniu pakietu podstawowego do nuget.org, push pakietu symboli, które będą automatycznie używać symbolsource.org jako element docelowy z powodu `.symbols` w nazwie pliku:
 
-    ```
+    ```cli
     nuget push MyPackage.symbols.nupkg
     ```
 > [!Note]
@@ -122,13 +120,13 @@ Pakiet symboli mogą być wbudowane w Konwencji z struktury folderów, zgodnie z
 
 1. Publikowanie do repozytorium inny symbol lub push pakietu symboli, który nie będzie zgodna z konwencją nazewnictwa, należy użyć `-Source` opcji:
 
-    ```
+    ```cli
     nuget push MyPackage.symbols.nupkg -source https://nuget.smbsrc.net/
     ```
 
 1. Możesz również push podstawowych i symboli w tym samym czasie, za pomocą następujących pakietów do obu repozytoria:
 
-    ```
+    ```cli
     nuget push MyPackage.nupkg
     ```
 
@@ -136,4 +134,4 @@ W takim przypadku opublikuje NuGet `MyPackage.symbols.nupkg`, jeśli jest obecny
 
 ## <a name="see-also"></a>Zobacz też
 
- - <a href="https://www.symbolsource.org/Public/Wiki/Using" target="_blank">Za pomocą SymbolSource</a> (symbolsource.org)
+[Za pomocą SymbolSource](https://www.symbolsource.org/Public/Wiki/Using) (symbolsource.org)

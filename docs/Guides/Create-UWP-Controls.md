@@ -3,41 +3,38 @@ title: Formanty porady pakietu platformy uniwersalnej systemu Windows z programe
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 3/21/2017
+ms.date: 03/21/2017
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 1f9de20a-f394-4cf2-8e40-ba0f4239cd5e
 description: "Tworzenie pakietów NuGet, które zawierają platformy uniwersalnej systemu Windows steruje tym niezbędne metadane i pliki pomocnicze dla programu Visual Studio i Blend projektantów."
 keywords: Formanty NuGet platformy uniwersalnej systemu Windows, programu Visual Studio XAML designer, projektanta programu Blend, formanty niestandardowe
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 8756ce472c11a05370914841245295361b3f179b
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 3af17121f73b878decd5f0c933696fc1b0c786d7
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="creating-uwp-controls-as-nuget-packages"></a>Tworzenie formantów platformy uniwersalnej systemu Windows w postaci pakietów NuGet
 
 Z programu Visual Studio 2017 r można korzystać z możliwości dodane dla formantów platformy uniwersalnej systemu Windows, które dostarczają w pakietach NuGet. Ten przewodnik przeprowadzi Cię przez te funkcje przy użyciu [próbki ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage). 
 
-## <a name="pre-requisites"></a>Wymagania wstępne:
+## <a name="pre-requisites"></a>Wymagania wstępne
 
-1.  Visual Studio 2017
-1.  Opis sposobu [tworzenia pakietów platformy uniwersalnej systemu Windows](create-uwp-packages.md)
+1. Visual Studio 2017
+1. Opis sposobu [tworzenia pakietów platformy uniwersalnej systemu Windows](create-uwp-packages.md)
 
 ## <a name="add-toolboxassets-pane-support-for-xaml-controls"></a>Obsługę przybornika/zasoby okienka kontrolki XAML
 
 Aby wymusić formantowi XAML w przyborniku projektanta XAML w Visual Studio i w okienku zasobów programu Blend, Utwórz `VisualStudioToolsManifest.xml` pliku w folderze głównym `tools` folderu projektu pakietu. Ten plik nie jest wymagane, jeśli nie ma potrzeby wyglądać w przyborniku lub w okienku zasoby.
 
-```
-\build
-\lib
-\tools
-    \VisualStudioToolsManifest.xml
-```    
+    \build
+    \lib
+    \tools
+        VisualStudioToolsManifest.xml
 
 Struktura pliku jest następujący:
 
@@ -98,22 +95,18 @@ W poniższym przykładzie projekt zawiera plik o nazwie "ManagedPackage.MyCustom
 
 Pakiety platformy uniwersalnej systemu Windows zawierają TargetPlatformVersion (TPV) i TargetPlatformMinVersion (TPMinV), które definiują górne i dolne granice wersji systemu operacyjnego zainstalowaną aplikację. Dalsze TPV Określa wersję zestawu SDK, względem której aplikacja jest wbudowana. Można w trosce o te właściwości, podczas tworzenia pakietu platformy uniwersalnej systemu Windows: poza granicami wersje platformy zdefiniowanych w aplikacji przy użyciu interfejsów API spowoduje niepowodzenie kompilacji lub aplikację, aby zakończyć się niepowodzeniem w czasie wykonywania.
 
-Na przykład załóżmy, że ustawiono TPMinV pakietu formantów systemu Windows 10 Anniversary Edition (10.0; Kompilacja 14393), tak aby mieć pewność, że pakiet jest używany tylko przez platformy uniwersalnej systemu Windows projekcję pasujących obniżyć powiązane z. Aby umożliwić pakietu jest używane przez `project.json` na podstawie projektów uniwersalnych systemu Windows, należy spakować formantów z następującymi nazwami folderu:
+Na przykład załóżmy, że ustawiono TPMinV pakietu formantów systemu Windows 10 Anniversary Edition (10.0; Kompilacja 14393), tak aby mieć pewność, że pakiet jest używany tylko przez platformy uniwersalnej systemu Windows projekcję pasujących obniżyć powiązane z. Umożliwia pakietu zużywanych przez projekty platformy uniwersalnej systemu Windows, należy spakować formantów z następującymi nazwami folderu:
 
-```
-\lib\uap10.0\*
-\ref\uap10.0\*
-```
+    \lib\uap10.0\*
+    \ref\uap10.0\*
 
 Aby wymusić odpowiednie wyboru TPMinV, Utwórz [plik elementów docelowych MSBuild](/visualstudio/msbuild/msbuild-targets) i pakietu go w folderze kompilacji (zastępując "your_assembly_name" o nazwie z określonego zestawu):
 
-```
-\build
-    \uap10.0
+    \build
+      \uap10.0
         your_assembly_name.targets
-\lib
-\tools
-```
+    \lib
+    \tools
 
 Oto przykład jak powinien wyglądać plik elementów docelowych:
 
@@ -135,22 +128,18 @@ Oto przykład jak powinien wyglądać plik elementów docelowych:
 
 Aby skonfigurować, których właściwości wyświetlane w Inspektora właściwości, Dodaj niestandardowego modułu definiowania układu kodu itp., umieść Twojej `design.dll` pliku wewnątrz `lib\<platform>\Design` folderu odpowiednio do platformy docelowej. Ponadto aby upewnić się, że  **[Edytuj szablon > edytowania kopii](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)**  działa funkcja musi zawierać `Generic.xaml` i słowników zasobów, które w scaleń `<AssemblyName>\Themes` folderu. (Ten plik nie ma wpływu na zachowanie środowiska uruchomieniowego formantu.)
 
-
-```
-\build
-\lib
-    \uap10.0.14393.0
+    \build
+    \lib
+      \uap10.0.14393.0
         \Design
-            \MyControl.design.dll
+          \MyControl.design.dll
         \your_assembly_name
-            \Themes     
-                Generic.xaml
-\tools
-```
+          \Themes
+            Generic.xaml
+    \tools
 
 > [!Note]
 > Domyślnie właściwości formantu będą widoczne w różnych kategorii w Inspektora właściwości.
-
 
 ## <a name="use-strings-and-resources"></a>Użyj ciągów i zasobów
 
@@ -162,15 +151,13 @@ Na przykład dotyczą [MyCustomControl.cs](https://github.com/NuGet/Samples/blob
 
 Do pakietu zawartości, takich jak obrazy, które mogą być używane przez formant lub odbierającą projektu platformy uniwersalnej systemu Windows. Dodaj te pliki `lib\uap10.0.14393.0` folderu w następujący sposób ("your_assembly_name" ponownie powinien odpowiadać określonego formantu):
 
-```
-\build
-\lib
-    \uap10.0.14393.0
+    \build
+    \lib
+      \uap10.0.14393.0
         \Design
-        \your_assembly_name
-\contosoSampleImage.jpg
-\tools
-```
+          \your_assembly_name
+    \contosoSampleImage.jpg
+    \tools
 
 Mogą również tworzyć[plik elementów docelowych MSBuild](/visualstudio/msbuild/msbuild-targets) zapewnienie element zawartości jest kopiowany do folderu wyjściowego odbierającą projektu:
 
@@ -188,4 +175,4 @@ Mogą również tworzyć[plik elementów docelowych MSBuild](/visualstudio/msbui
 ## <a name="see-also"></a>Zobacz także
 
 - [Tworzenie pakietów platformy UWP](create-uwp-packages.md)
-- [Przykładowe ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage)
+- [ExtensionSDKasNuGetPackage sample](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage)

@@ -3,31 +3,27 @@ title: "Źródło i konfiguracji pliku przekształcenia pakietów NuGet | Dokume
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 4/24/2017
+ms.date: 04/24/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 20991d69-9e2e-4881-bbf2-96ae634e1872
 description: "Szczegóły możliwości pakietów NuGet do przekształcania kodu źródłowego i konfiguracji plików (XML) podczas instalacji."
 keywords: "Instalacja pakietu NuGet, przekształcenia pakietu NuGet, modyfikowanie plików konfiguracyjnych, modyfikowania kodu źródłowego"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
 - anangaur
-ms.openlocfilehash: 89a55716ccbc9043cfce4c7f38ec8ab9a0e2f768
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 1340e8440c62f8037c931667c6e2f7fc9d1590c4
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="transforming-source-code-and-configuration-files"></a>Przekształcanie plików źródłowych kodem i konfiguracją
 
-Dla projektów przy użyciu `packages.config` lub `project.json`NuGet obsługuje możliwość przekształcenia do kodu źródłowego i plików konfiguracji w pakiecie instalowania i odinstalowywania razy.
+Dla projektów przy użyciu `packages.config`NuGet obsługuje możliwość przekształcenia do kodu źródłowego i plików konfiguracji w pakiecie instalowania i odinstalowywania razy. Przekształcenia nie są stosowane, gdy pakiet jest zainstalowany w projekcie przy użyciu [PackageReference](../Consume-Packages/Package-References-in-Project-Files.md).
 
-> [!Note]
-> Przekształcenia pliku źródłowego i konfiguracji nie są stosowane, gdy pakiet jest zainstalowany w projekcie przy użyciu [odwołania do pakietu w plikach projektu](../Consume-Packages/Package-References-in-Project-Files.md). 
-
-A **źródła kodu transformacji** jednokierunkowe zastępujący tokenu jest stosowana do plików w pakiecie `content` folderu, gdy pakiet jest zainstalowany, gdy tokeny odnoszą się do programu Visual Studio [właściwości projektu](/dotnet/api/vslangproj.projectproperties?redirectedfrom=MSDN&view=visualstudiosdk-2017#properties_) . Dzięki temu można wstawić plik do projektu przestrzeni nazw lub Dostosuj kod, który zazwyczaj przejdzie do `global.asax` w projekcie programu ASP.NET.
+A **źródła kodu transformacji** jednokierunkowe zastępujący tokenu jest stosowana do plików w pakiecie `content` folderu, gdy pakiet jest zainstalowany, gdy tokeny odnoszą się do programu Visual Studio [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) . Dzięki temu można wstawić plik do projektu przestrzeni nazw lub Dostosuj kod, który zazwyczaj przejdzie do `global.asax` w projekcie programu ASP.NET.
 
 A **transformacji pliku config** umożliwia modyfikowanie plików, które już istnieją w projekcie docelowym, takich jak `web.config` i `app.config`. Na przykład pakiet może być konieczne dodanie elementu `modules` sekcji w pliku konfiguracji. Ta transformacja odbywa się przy tym specjalne pliki w pakiecie, który opisano sekcjach, aby dodać do plików konfiguracji. Po odinstalowaniu pakietu te same zmiany są następnie wycofać, co to dwukierunkowe przekształcania.
 
@@ -57,7 +53,7 @@ A **transformacji pliku config** umożliwia modyfikowanie plików, które już i
 
     Podczas instalacji, zastępuje NuGet `$rootnamespace$` z `Fabrikam` przy założeniu projektu docelowego obiektu, którego przestrzeń nazw głównego `Fabrikam`.
 
-`$rootnamespace$` Token jest właściwość projektu najczęściej używane; pozostałe są wymienione w [właściwości projektu](/dotnet/api/vslangproj.projectproperties?redirectedfrom=MSDN&view=visualstudiosdk-2017#properties_) dokumentacji w witrynie MSDN. Można, mając na uwadze, że niektóre właściwości mogą być specyficzne dla typu projektu.
+`$rootnamespace$` Token jest właściwość projektu najczęściej używane; pozostałe są wymienione w [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7). Można, mając na uwadze, że niektóre właściwości mogą być specyficzne dla typu projektu.
 
 ## <a name="specifying-config-file-transformations"></a>Określenie konfiguracji pliku przekształcenia
 
@@ -124,7 +120,7 @@ Aby zobaczyć efekt Instalowanie i odinstalowanie pakietu, należy utworzyć now
 
 ### <a name="xdt-transforms"></a>Przekształca XDT
 
-2.6 NuGet i nowsze, można zmodyfikować plików konfiguracji przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Może także zawierać NuGet Zastąp tokeny z [właściwości projektu](/dotnet/api/vslangproj.projectproperties?redirectedfrom=MSDN&view=visualstudiosdk-2017#properties_) przez dołączenie nazwy właściwości w `$` ograniczników (bez uwzględniania wielkości liter).
+2.6 NuGet i nowsze, można zmodyfikować plików konfiguracji przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Może także zawierać NuGet Zastąp tokeny z [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) przez dołączenie nazwy właściwości w `$` ograniczników (bez uwzględniania wielkości liter).
 
 Na przykład następująca `app.config.install.xdt` pliku zostanie wstawiona `appSettings` element do `app.config` zawierający `FullPath`, `FileName`, i `ActiveConfigurationSettings` wartości z projektu:
 

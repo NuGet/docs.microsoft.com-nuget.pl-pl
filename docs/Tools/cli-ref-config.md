@@ -3,21 +3,20 @@ title: Polecenie konfiguracji interfejsu wiersza polecenia NuGet | Dokumentacja 
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/24/2017
+ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: a50295ff-8be9-47d9-a260-822e899334cb
 description: "Informacje dotyczące polecenia konfiguracyjnego nuget.exe"
 keywords: "Odwołanie do konfiguracji nuget, config, polecenie"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: f49751d9747687177e3b6c1890ee9d2919be8d0e
-ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
+ms.openlocfilehash: 31abc5c1ade0aff9a2f23ec89ec7082acedb3653
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="config-command-nuget-cli"></a>polecenie konfiguracji (NuGet CLI)
 
@@ -27,7 +26,7 @@ Pobiera lub ustawia wartości konfiguracji NuGet. Aby uzyskać dodatkowe obcią�
 
 ## <a name="usage"></a>Użycie
 
-```
+```cli
 nuget config -Set <name>=[<value>] [<name>=<value> ...] [options]
 nuget config -AsPath <name> [options]
 ```
@@ -43,17 +42,17 @@ W NuGet 3.4 + `<value>` można użyć [zmiennych środowiskowych](cli-ref-enviro
 | Opcja | Opis |
 | --- | --- |
 | AsPath | Zwraca wartość konfiguracji jako ścieżka, zignorowane, kiedy `-Set` jest używany. |
-| ConfigFile | *(2.5 +)*  NuGet pliku konfiguracji do zmodyfikowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
-| ForceEnglishOutput | *(3.5 +)*  Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
+| ConfigFile | Plik konfiguracji NuGet do zmodyfikowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe (2.5 +)*. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
 
 Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
 
 ### <a name="examples"></a>Przykłady
 
-```
+```cli
 nuget config -Set repositoryPath=c:\packages -configfile c:\my.config
 
 nuget config -Set repositoryPath=

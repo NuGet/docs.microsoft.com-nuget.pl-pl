@@ -3,7 +3,7 @@ title: Zainstaluj pakiet NuGet w programie PowerShell | Dokumentacja firmy Micro
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 6/1/2017
+ms.date: 06/01/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
@@ -13,11 +13,11 @@ keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershel
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 5da523d8b517a6867a86998dceaa1eba7b55b5fc
-ms.sourcegitcommit: 51eae111f0fec4fbb21e5e702629beaa3e8abc2b
+ms.openlocfilehash: d6b0c20545ecb82b0c2fa5214508381c0279c7cd
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="install-package-package-manager-console-in-visual-studio"></a>Install-Package (Konsola Menedżera pakietów w programie Visual Studio)
 
@@ -45,7 +45,7 @@ NuGet 2.7 i starszych zwraca błąd informujący o tym, że jest już zainstalow
 
 | Parametr | Opis |
 | --- | --- |
-| Identyfikator | (Wymagane) Identyfikator pakietu do zainstalowania. (*3.0 +*) identyfikator może być ścieżka lub adres URL `packages.config` pliku lub `.nupkg` pliku. Id przełącznika sam jest opcjonalna. |
+| Id | (Wymagane) Identyfikator pakietu do zainstalowania. (*3.0 +*) identyfikator może być ścieżka lub adres URL `packages.config` pliku lub `.nupkg` pliku. Id przełącznika sam jest opcjonalna. |
 | IgnoreDependencies | Zainstaluj tylko ten pakiet, bez jego zależności. |
 | ProjectName | Projekt, do którego można zainstalować pakietu, domyślnie używany do projektu domyślnego. |
 | Źródło | Adres URL lub folder ścieżka do źródła pakietu do wyszukania. Ścieżki folderu lokalnego może być bezwzględny, lub względem bieżącego folderu. Pominięcie `Install-Package` wyszukiwania w obecnie wybranym źródle pakietów. |
@@ -53,7 +53,7 @@ NuGet 2.7 i starszych zwraca błąd informujący o tym, że jest już zainstalow
 | IncludePrerelease | Uwzględnia pakiety wersji wstępnej instalacji. W przypadku jego pominięcia są traktowane jako tylko pakiety w wersji stabilnej. |
 | FileConflictAction | Akcja wykonywana po otrzymaniu monitu, aby zastąpić, lub przycisk Ignoruj istniejące pliki odwołuje się projekt. Możliwe wartości to *zastępowania, Ignoruj, brak OverwriteAll*, i *(3.0 +)* *IgnoreAll*. |
 | DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższa* (domyślnie): Najniższa wersja</li><li>*HighestPatch*: wersja z najniższą głównych, najniższy niewielkie, najwyższy poziom poprawki</li><li>*HighestMinor*: wersja z najniższą głównych, najwyższy niewielkie, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie pakiet aktualizacji bez parametrów): najnowsza wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../Schema/nuget-config-file.md#config-section) w `Nuget.Config` pliku. |
-| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez rzeczywistego wykonania instalacji. |
+| WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez rzeczywistego wykonania instalacji. |
 
 Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
 

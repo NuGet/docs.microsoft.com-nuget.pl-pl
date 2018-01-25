@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 39ceaeb3-2d33-4b1c-b195-eba36c6cbf9a
 description: "Informacje o wersji programu NuGet 2.2.1 tym — znane problemy, poprawki, dodatkowe funkcje i dcr."
 keywords: NuGet 2.2.1 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c31150572b4b6e066643ebcf0d92be16b25c6e19
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: c3e912dcabeb3a26c880b42560a3cec6f7bf2db9
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-221-release-notes"></a>Informacje o wersji NuGet 2.2.1
 
@@ -33,7 +32,7 @@ Interfejs użytkownika i konsoli programu PowerShell w narzędziu NuGet są zlok
 1. Chiński uproszczony
 1. Chiński (tradycyjny)
 1. czeski
-1. angielski
+1. Angielski
 1. francuski
 1. niemiecki
 1. Włoski

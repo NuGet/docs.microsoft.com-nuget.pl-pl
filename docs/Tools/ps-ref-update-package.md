@@ -7,17 +7,16 @@ ms.date: 12/07/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: b4aa92a9-ce47-4d23-ae51-d5683e08a9d5
 description: "Odwołanie do polecenia programu PowerShell pakietu aktualizacji w konsoli Menedżera pakietów NuGet w programie Visual Studio."
 keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, pakiet aktualizacji"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 71f5cd7061e0f765d8808db8a3798657a941ba14
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 768fdb4d7c785b4f3ed9e70958390676ea965794
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="update-package-package-manager-console-in-visual-studio"></a>Pakiet aktualizacji (Konsola Menedżera pakietów w programie Visual Studio)
 
@@ -45,7 +44,7 @@ NuGet 2.7 i starszych zwraca błąd informujący o tym, że jest już zainstalow
 
 |  Parametr | Opis |
 | --- | --- |
-| Identyfikator | Identyfikator pakietu do zaktualizowania. Pominięcie aktualizuje wszystkie pakiety. Id przełącznika sam jest opcjonalna. |
+| Id | Identyfikator pakietu do zaktualizowania. Pominięcie aktualizuje wszystkie pakiety. Id przełącznika sam jest opcjonalna. |
 | IgnoreDependencies | Pomija zależności pakietu aktualizacji. |
 | ProjectName | Nazwa projektu zawierającego pakietów aktualizacji, domyślnie używany do wszystkich projektów. |
 | Wersja | Wersja do użycia podczas uaktualniania, domyślnie używany do najnowszej wersji. W NuGet 3.0 + wartość wersji musi być jedną z *najniższy, najwyższa, HighestMinor*, lub *HighestPatch* (równoważne - bezpieczny). |
@@ -57,7 +56,7 @@ NuGet 2.7 i starszych zwraca błąd informujący o tym, że jest już zainstalow
 | DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższa* (domyślnie): Najniższa wersja</li><li>*HighestPatch*: wersja z najniższą głównych, najniższy niewielkie, najwyższy poziom poprawki</li><li>*HighestMinor*: wersja z najniższą głównych, najwyższy niewielkie, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie pakiet aktualizacji bez parametrów): najnowsza wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../Schema/nuget-config-file.md#config-section) w `Nuget.Config` pliku. |
 | ToHighestPatch | Ogranicza uaktualnienia do tylko wersji z tej samej wersji pomocniczej jako aktualnie zainstalowany pakiet. |
 | Tohighestminor powoduje aktualizację | Ogranicza uaktualnienia do tylko wersji z taką samą wersję główną jako aktualnie zainstalowany pakiet. |
-| Instrukcja WhatIf | Pokazuje, co się stanie, uruchamiając polecenie bez rzeczywistego wykonania aktualizacji. |
+| WhatIf | Pokazuje, co się stanie, uruchamiając polecenie bez rzeczywistego wykonania aktualizacji. |
 
 Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
 

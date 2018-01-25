@@ -7,18 +7,17 @@ ms.date: 12/08/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 6ee3c826-dd3a-4fa9-863f-1fd80bc4230f
 description: "Dokładne szczegóły dotyczące określania numery wersji i zakresy dla innych pakietów, od którego zależy od pakietu NuGet i jak zależności są zainstalowane."
 keywords: "przechowywanie wersji, zależności pakietów NuGet, wersje zależności NuGet, numery wersji NuGet, wersja pakietu NuGet, zakresy wersji, specyfikacji wersji, numery wersji znormalizowane"
 ms.reviewer:
 - anandr
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: cb5624a2fd99e8afd8a8226fd786343f485041c4
-ms.sourcegitcommit: c27e565de485cbe836e6c2a66e44a50b35b487ff
+ms.openlocfilehash: 70472d7d97d073009237a047e0fdf528b221dfd0
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="package-versioning"></a>Przechowywanie wersji pakietu
 
@@ -42,12 +41,11 @@ Numer wersji ma postać *Wersja_główna.WERSJA_POMOCNICZA.poprawka [-sufiks]*, 
 - *-Sufiks* (opcjonalnie): łącznika następuje ciąg oznaczający wersji wstępnej (następujące [Wersjonowania semantycznego lub 1.0 programu SemVer Konwencji](http://semver.org/spec/v1.0.0.html)).
 
 **Przykłady:**
-```
-1.0.1
-6.11.1231
-4.3.1-rc
-2.2.44-beta1
-```
+
+    1.0.1
+    6.11.1231
+    4.3.1-rc
+    2.2.44-beta1
 
 > [!Important]
 > nuget.org odrzuca wszystkie przekazywanie pakietu, który nie ma numer wersji dokładne. Wersja musi być określony w `.nuspec` lub plik projektu używany do utworzenia pakietu.
@@ -67,16 +65,14 @@ Inaczej mówiąc, deweloperzy pakietu należy wykonać rozpoznanym konwencji naz
 
 Podczas rozpoznawania odwołania do pakietu i wiele wersji pakietu różnią się jedynie sufiks, NuGet wybierze wersji bez sufiksu najpierw, a następnie stosuje pierwszeństwo wersji wstępnych w odwrotnej kolejności alfabetycznej. Na przykład w pokazanej kolejności dokładne zostałaby wybrana następujące wersje:
 
-```
-1.0.1
-1.0.1-zzz
-1.0.1-rc
-1.0.1-open
-1.0.1-beta
-1.0.1-alpha2
-1.0.1-alpha
-1.0.1-aaa
-```
+    1.0.1
+    1.0.1-zzz
+    1.0.1-rc
+    1.0.1-open
+    1.0.1-beta
+    1.0.1-alpha2
+    1.0.1-alpha
+    1.0.1-aaa
 
 ## <a name="semantic-versioning-200"></a>Wersjonowania semantycznego 2.0.0
 
@@ -123,7 +119,7 @@ W odniesieniu do zależności pakietów NuGet obsługuje przy użyciu notacji in
 | [1.0,2.0) | 1.0 ≤ x < 2.0 | Mieszane z wartościami granicznymi minimalna i wyłącznego maksymalna wersja |
 | (1.0)    | nieprawidłowe | nieprawidłowe |
 
-Korzystając z PackageReference lub `project.json` pakietu NuGet odwołanie formatów również obsługuje za pomocą notacji symboli wieloznacznych, \*, główna, pomocnicze, poprawki i sufiks wersji wstępnej części numeru. Symbole wieloznaczne nie są obsługiwane przez `packages.config` format.
+Gdy w formacie PackageReference NuGet obsługuje również za pomocą notacji symboli wieloznacznych, \*, główna, pomocnicze, poprawki i sufiks wersji wstępnej części numeru. Symbole wieloznaczne nie są obsługiwane przez `packages.config` format.
 
 > [!Note]
 > Wersje wstępne nie są uwzględniane podczas rozpoznawania zakresu. Wersji wstępnych *są* uwzględnione przy użyciu symbolu wieloznacznego (\*). Zakres wersji *[1.0,2.0]*, na przykład nie zawiera wersji 2.0 beta, ale notacji symbolu wieloznacznego _2.0-*_ jest. Zobacz [wystawiać 912](https://github.com/NuGet/Home/issues/912) dla dalszego omówione symboli wieloznacznych wersji wstępnej.
@@ -228,18 +224,14 @@ Uzyskiwanie pakietów z repozytorium podczas instalacji, ponowne zainstalowanie 
 
 - Zera wiodące są usuwane z numerów wersji:
 
-    ```
-    1.00 is treated as 1.0
-    1.01.1 is treated as 1.1.1
-    1.00.0.1 is treated as 1.0.0.1
-    ```
+        1.00 is treated as 1.0
+        1.01.1 is treated as 1.1.1
+        1.00.0.1 is treated as 1.0.0.1
 
 - Zero w czwartym część numeru wersji zostaną pominięte.
 
-    ```
-    1.0.0.0 is treated as 1.0.0
-    1.0.01.0 is treated as 1.0.1
-    ```
+        1.0.0.0 is treated as 1.0.0
+        1.0.01.0 is treated as 1.0.1
 
 Ta wartość nie wpływa na numery wersji pakietów. ma wpływ na sposób NuGet jest zgodny tylko wersje podczas rozpoznawania zależności.
 

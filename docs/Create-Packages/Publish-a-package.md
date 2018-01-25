@@ -3,22 +3,21 @@ title: "Jak opublikować pakietu NuGet | Dokumentacja firmy Microsoft"
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/5/2017
+ms.date: 10/05/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 2342aabd-983e-4db1-9230-57c84fa36969
 description: "Szczegółowe instrukcje dotyczące sposobu publikowania pakietu NuGet nuget.org lub prywatnej źródeł danych i jak zarządzać własność pakietu na nuget.org."
 keywords: "Publikowanie pakietu NuGet, publikowania pakietu NuGet, własność pakietu NuGet, publikować nuget.org, prywatnego źródeł danych NuGet"
 ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: fab25931165afb65aa3fd09c5bc37492ce814a49
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 2b57845d79c3ba45aa06a934a30d41e6f4d3057e
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="publishing-packages"></a>Publikowanie pakietów
 
@@ -35,38 +34,39 @@ Dla nuget.org, należy najpierw [zarejestrować bezpłatne konto](https://www.nu
 
 ![Rejestracja NuGet i zalogować się w lokalizacji](media/publish_NuGetSignIn.png)
 
-Następnie możesz przekazać pakiet w portalu sieci web nuget.org, wypychać do nuget.org za pomocą wiersza polecenia lub opublikować jako część procesu CI/CD za pomocą programu Visual Studio Team Services, zgodnie z opisem w poniższych sekcjach.
+Następnie można albo przekaż pakiet w portalu sieci web nuget.org, wypychać do nuget.org za pomocą wiersza polecenia (wymaga `nuget.exe` 4.1.0+), lub Opublikuj jako część procesu CI/CD za pomocą programu Visual Studio Team Services, zgodnie z opisem w poniższych sekcjach.
 
-### <a name="web-portal-use-the-upload-package-tab-on-nugetorg"></a>Portal sieci Web: karta przekaż pakiet na nuget.org:
+### <a name="web-portal-use-the-upload-package-tab-on-nugetorg"></a>Portal sieci Web: karta przekaż pakiet na nuget.org
 
 ![Przekaż pakiet z Menedżera pakietów NuGet](media/publish_UploadYourPackage.PNG)
 
-### <a name="command-line"></a>Wiersz polecenia:
+### <a name="command-line"></a>Wiersz polecenia
+
 > [!Important]
 > Pakiety wypychania do nuget.org musi używać [nuget.exe v4.1.0 lub nowszej](https://www.nuget.org/downloads), który implementuje wymaganych [protokołów NuGet](../api/nuget-protocols.md).
 
 1. Kliknij nazwę użytkownika, aby przejść do ustawień konta.
-2. W obszarze **klucz interfejsu API**, kliknij przycisk **Kopiuj do Schowka** można pobrać dostępu do klucza będziesz potrzebować na platformie interfejsu wiersza polecenia:
+1. W obszarze **klucz interfejsu API**, kliknij przycisk **Kopiuj do Schowka** można pobrać dostępu do klucza będziesz potrzebować na platformie interfejsu wiersza polecenia:
 
     ![Kopiowanie klucza interfejsu API z ustawienia konta](media/publish_APIKey.png)
 
-3. W wierszu polecenia Uruchom następujące polecenie:
+1. W wierszu polecenia Uruchom następujące polecenie:
 
-    ```
+    ```cli
     nuget setApiKey Your-API-Key
     ```
 
     Klucz interfejsu API to przechowuje na komputerze, dzięki czemu nie muszą wykonać ten krok ponownie na tym samym komputerze.
 
-4. Wypychanie do pakietu do galerii NuGet za pomocą polecenia:
+1. Wypychanie do pakietu do galerii NuGet za pomocą polecenia:
 
-    ```
+    ```cli
     nuget push YourPackage.nupkg -Source https://api.nuget.org/v3/index.json
     ```
 
-5. Przed upubliczniona są wszystkie pakiety przekazane do nuget.org są skanowany w poszukiwaniu wirusów i odrzucone w przypadku znalezienia wirusów. Wszystkie pakiety wymienione na nuget.org również są skanowane okresowo.
+1. Przed upubliczniona są wszystkie pakiety przekazane do nuget.org są skanowany w poszukiwaniu wirusów i odrzucone w przypadku znalezienia wirusów. Wszystkie pakiety wymienione na nuget.org również są skanowane okresowo.
 
-6. Na koncie nuget.org, kliknij przycisk **Moje pakiety zarządzania** aby zobaczyć ten właśnie opublikowane; otrzymasz również wiadomość e-mail z potwierdzeniem. Należy pamiętać, że może upłynąć trochę czasu pakietu indeksowane i wyświetlane w wynikach wyszukiwania, gdzie inne osoby mogą znaleźć go w tym czasie na stronie pakiet zostanie wyświetlony następujący komunikat:
+1. Na koncie nuget.org, kliknij przycisk **Moje pakiety zarządzania** aby zobaczyć ten właśnie opublikowane; otrzymasz również wiadomość e-mail z potwierdzeniem. Należy pamiętać, że może upłynąć trochę czasu pakietu indeksowane i wyświetlane w wynikach wyszukiwania, gdzie inne osoby mogą znaleźć go w tym czasie na stronie pakiet zostanie wyświetlony następujący komunikat:
 
     ![Komunikat wskazujący, że pakiet nie jest jeszcze indeksowanym.](media/publish_NotYetIndexed.png)
 
@@ -78,7 +78,7 @@ Sprawdzanie poprawności pakietu i indeksowania zazwyczaj trwa poniżej 15 minut
 
 ### <a name="visual-studio-team-services-cicd"></a>Visual Studio Team Services (CI/CD)
 
-Jeśli pakiety są Wypychanie do nuget.org jako część procesu ciągłej integracji/wdrożenia przy użyciu programu Visual Studio Team Services, należy użyć nuget.exe 4.1 lub nowszej w zadaniach NuGet. Szczegółowe informacje można znaleźć w [za pomocą najnowszej NuGet w kompilacji](https://blogs.msdn.microsoft.com/devops/2017/09/29/using-the-latest-nuget-in-your-build/) (blog DevOps firmy Microsoft).
+Jeśli pakiety są Wypychanie do nuget.org jako część procesu ciągłej integracji/wdrożenia przy użyciu programu Visual Studio Team Services, należy użyć `nuget.exe` 4.1 lub nowszej w zadaniach NuGet. Szczegółowe informacje można znaleźć w [za pomocą najnowszej NuGet w kompilacji](https://blogs.msdn.microsoft.com/devops/2017/09/29/using-the-latest-nuget-in-your-build/) (blog DevOps firmy Microsoft).
 
 ## <a name="managing-package-owners-on-nugetorg"></a>Zarządzanie właścicielami pakietu na nuget.org
 

@@ -11,17 +11,16 @@ ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: ec68b5d1-a684-4995-b1a6-6210dbb24875
 description: "Adres podstawowy pakiet jest prosty interfejs używany do pobierania samego pakietu."
 keywords: "Płaskie NuGet kontenera, adres podstawowy pakietu NuGet, NuGet nupkg interfejsu API, wersje pakietu NuGet interfejsu API, interfejsu API NuGet nieznajdujące się na liście pakietów, nuspec pobierania NuGet interfejsu API"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: a581f9854410bc1a84d65310b38928a1d889ece2
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: c2e631dc0bba95ac849430d77142f27ef591f741
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="package-content"></a>Zawartość pakietu
 
@@ -52,9 +51,7 @@ Jeśli klient zna identyfikator pakietu i chce dowiedzieć się, które pakietu 
 > [!Note]
 > Ta lista zawiera obie wersje pakietu listy i spoza niej.
 
-```
-GET {@id}/{LOWER_ID}/index.json
-```
+    GET {@id}/{LOWER_ID}/index.json
 
 ### <a name="request-parameters"></a>Parametry żądania
 
@@ -80,9 +77,7 @@ Celem jest, że ciągów wersji znaleziony w tej tablicy mogą być używane ver
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
-GET https://api.nuget.org/v3-flatcontainer/owin/index.json
-```
+    GET https://api.nuget.org/v3-flatcontainer/owin/index.json
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -92,9 +87,7 @@ GET https://api.nuget.org/v3-flatcontainer/owin/index.json
 
 Jeśli klient zna identyfikator pakietu i wersję i chce pobrać zawartość pakietu, potrzebują tylko utworzyć następujący adres URL:
 
-```
-GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.{LOWER_VERSION}.nupkg
-```
+    GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.{LOWER_VERSION}.nupkg
 
 ### <a name="request-parameters"></a>Parametry żądania
 
@@ -115,9 +108,7 @@ Jeśli pakiet nie istnieje w źródle pakietu, zwracany jest kod stanu 404.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
-GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg
-```
+    GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -127,9 +118,7 @@ Strumień binarny jest .nupkg dla Newtonsoft.Json 9.0.1.
 
 Jeśli klient zna identyfikator pakietu i wersję i chce pobrać plik manifestu pakietu, potrzebują tylko utworzyć następujący adres URL:
 
-```
-GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.nuspec
-```
+    GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.nuspec
 
 ### <a name="request-parameters"></a>Parametry żądania
 
@@ -150,9 +139,7 @@ Jeśli pakiet nie istnieje w źródle pakietu, zwracany jest kod stanu 404.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
-GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/6.0.4/newtonsoft.json.nuspec
-```
+    GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/6.0.4/newtonsoft.json.nuspec
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 

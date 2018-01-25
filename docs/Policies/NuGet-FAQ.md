@@ -7,36 +7,22 @@ ms.date: 01/11/2018
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 199a915d-9595-4ae2-a1fb-b15da6d7735a
 description: "Typowe pytania i odpowiedzi przy użyciu narzędzia NuGet w wierszu polecenia, a w programie Visual Studio i pracy z galerii NuGet."
 keywords: "Wersje pakietu NuGet pytań i odpowiedzi, pytania i odpowiedzi, typowe problemy, wersje NuGet"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: f029af78edfcc5e542c5df2d4d6db8eeaebc3068
-ms.sourcegitcommit: d576d84fb4b6a178eb2ac11f55deb08ac771ba1c
+ms.openlocfilehash: 9bbd73643b830b1e63de18324667e1b1b88eaf3e
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet często zadawane pytania
 
-W tym temacie:
-
-- [Wprowadzenie](#getting-started)
-- [NuGet w programie Visual Studio](#nuget-in-visual-studio)
-- [Wiersz polecenia NuGet](#nuget-command-line)
-- [NuGet Package Manager Console](#nuget-package-manager-console)
-- [Tworzenie i publikowanie pakietów](#creating-and-publishing-packages)
-- [Praca z pakietami](#working-with-packages)
-- [Zarządzanie pakietami na nuget.org](#managing-packages-on-nugetorg)
-- [nuget.org niedostępny](#nugetorg-not-accessible)
-
-## <a name="getting-started"></a>Wprowadzenie
-
 **Co to jest wymagany do uruchamiania NuGet?**
 
-Wszystkie informacje dotyczące narzędzia wiersza polecenia i interfejsu użytkownika są dostępne w [Przewodnik instalacji](../guides/install-nuget.md).
+Wszystkie informacje dotyczące narzędzia wiersza polecenia i interfejsu użytkownika są dostępne w [Przewodnik instalacji](../install-nuget-client-tools.md).
 
 **NuGet obsługuje Mono?**
 
@@ -85,13 +71,13 @@ Aby zaktualizować samego szablonu, należy ręcznie zaktualizować repozytorium
 
 **Można użyć NuGet poza programu Visual Studio?**
 
-Tak, NuGet działa bezpośrednio z poziomu wiersza polecenia. Zobacz [Przewodnik instalacji](../guides/install-nuget.md) i [odwołania interfejsu wiersza polecenia](../tools/nuget-exe-CLI-Reference.md).
+Tak, NuGet działa bezpośrednio z poziomu wiersza polecenia. Zobacz [Przewodnik instalacji](../install-nuget-client-tools.md) i [odwołania interfejsu wiersza polecenia](../tools/nuget-exe-CLI-Reference.md).
 
 ## <a name="nuget-command-line"></a>Wiersz polecenia NuGet
 
 **Jak uzyskać najnowszą wersję narzędzia wiersza polecenia NuGet?**
 
-Zobacz [Przewodnik instalacji](../guides/install-nuget.md).
+Zobacz [Przewodnik instalacji](../install-nuget-client-tools.md).
 
 **Co to jest licencja na nuget.exe?**
 

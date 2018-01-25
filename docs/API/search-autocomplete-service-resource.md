@@ -11,17 +11,16 @@ ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: ead5cf7a-e51e-4cbb-8798-58226f4c853f
 description: "Usługa autouzupełniania wyszukiwania obsługuje Odnajdowanie interaktywne pakietu identyfikatorów i wersje."
 keywords: "Interfejs API autouzupełniania NuGet, identyfikator pakietu NuGet wyszukiwania, podciąg identyfikator pakietu"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 313ceb630947b46c34b98e14044ecf121b725087
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 7c984ca61799293d7832851b80cf3fefc4734288
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="autocomplete"></a>Funkcji AutoComplete
 
@@ -51,9 +50,7 @@ Pierwszy autouzupełniania interfejsu API obsługuje wyszukiwanie część ciąg
 
 Pakiet o tylko wersje nieznajdujące się na liście nie będą wyświetlane w wynikach.
 
-```
-GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
-```
+    GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
 
 ### <a name="request-parameters"></a>Parametry żądania
 
@@ -90,9 +87,7 @@ dane      | Tablica ciągów | Tak      | Identyfikatory są dopasowane wg żąd
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
 GET https://api-v2v3search-0.nuget.org/autocomplete?q=storage&prerelease=true
-```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -104,9 +99,7 @@ Po identyfikator pakietu został odnaleziony przy użyciu poprzedniej interfejsu
 
 Wersja pakietu, który jest nieznajdujące się na liście nie będą widoczne w wynikach.
 
-```
-GET {@id}?id={ID}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
-```
+    GET {@id}?id={ID}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
 
 ### <a name="request-parameters"></a>Parametry żądania
 
@@ -134,9 +127,7 @@ Wersje pakietu w `data` Tablica może zawierać metadane kompilacji programu Sem
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
-GET https://api-v2v3search-0.nuget.org/autocomplete?id=nuget.protocol&prerelease=true
-```
+    GET https://api-v2v3search-0.nuget.org/autocomplete?id=nuget.protocol&prerelease=true
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 

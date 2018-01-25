@@ -7,19 +7,18 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 3ec1ff28-18fc-4d53-bd43-208619a7270a
 description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr NuGet w wersji 1.5."
 keywords: NuGet w wersji 1.5 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 29792f4c7399155bcf5fb3361d7f10ddd1b18ca1
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 261cfbbd262bad28f142b0c3dff8a541641d9fda
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
- # <a name="nuget-15-release-notes"></a>Informacje o wersji 1.5 NuGet
+# <a name="nuget-15-release-notes"></a>Informacje o wersji 1.5 NuGet
 
 [Informacje o wersji NuGet 1.4](../release-notes/nuget-1.4.md) | [NuGet w wersji 1.6 informacje o wersji](../release-notes/nuget-1.6.md)
 
@@ -35,6 +34,7 @@ Szablon projektu programu ASP.NET MVC 3 zawiera zestaw pakietów NuGet, które z
 Aby uzyskać więcej informacji na temat tej funkcji przeczytaj [wpis w blogu przez dewelopera funkcji](http://blogs.msdn.com/b/marcinon/archive/2011/07/08/project-templates-and-preinstalled-nuget-packages.aspx).
 
 ### <a name="explicit-assembly-references"></a>Odwołania do zestawów jawne
+
 Dodano nową `<references />` element używany do określenia jawnie zestawy, które w pakiecie ma być utworzone odwołanie.
 
 Jeśli na przykład dodaj następujący kod:

@@ -11,17 +11,16 @@ ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 11ca2092-67dc-41a9-a7af-afe610d8febb
 description: "Usługa wyszukiwania umożliwia klientom w zapytaniu dla pakietów według słów kluczowych i do wyników filtrowania dla niektórych pól pakietu."
 keywords: "Interfejs API wyszukiwania NuGet, NuGet odnajdywanie pakietów, interfejs API do pakietów NuGet zapytania, aby przeglądać pakiety NuGet"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 8b37c1bfb66290de49641a8b6197cb83cd35318a
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 612ce0f46b654335a29bb36a64b27525994162ed
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="search"></a>Wyszukaj
 
@@ -51,9 +50,7 @@ Wyszukiwanie interfejsu API umożliwia klientowi zapytania dla strony pakietów 
 
 Pakiet nieznajdujące się na liście nigdy nie powinny być wyświetlane w wynikach wyszukiwania.
 
-```
-GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
-```
+    GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
 
 ### <a name="request-parameters"></a>Parametry żądania
 
@@ -103,7 +100,7 @@ Autorzy        | ciąg lub tablica ciągów | Brak       |
 iconUrl        | string                     | Brak       | 
 licenseUrl     | string                     | Brak       | 
 Właściciele         | ciąg lub tablica ciągów | Brak       | 
-adresem projectUrl     | string                     | Brak       | 
+projectUrl     | string                     | Brak       | 
 rejestracja   | string                     | Brak       | Bezwzględny adres URL do skojarzonego [indeksu rejestracji](registration-base-url-resource.md#registration-index)
 podsumowanie        | string                     | Brak       | 
 tagi           | ciąg lub tablica ciągów | Brak       | 
@@ -123,9 +120,7 @@ Pliki do pobrania | integer | Tak      | Liczbę pobrań dla tej wersji określo
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
-GET https://api-v2v3search-0.nuget.org/query?q=NuGet.Versioning&prerelease=false
-```
+    GET https://api-v2v3search-0.nuget.org/query?q=NuGet.Versioning&prerelease=false
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 

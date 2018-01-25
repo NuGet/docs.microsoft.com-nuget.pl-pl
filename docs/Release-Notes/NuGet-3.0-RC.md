@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: cd0c102f-bc33-4aa2-a921-61fa21d42b28
 description: "Informacje o wersji programu NuGet 3.0 RC tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
 keywords: NuGet 3.0 informacje o wersji RC, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 5d0eeae479617bc30901b599251628f72950cc67
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 4693fd8884283e01d3c0a8ad74e0692c1ca00659
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-30-rc-release-notes"></a>Informacje o wersji RC NuGet 3.0
 

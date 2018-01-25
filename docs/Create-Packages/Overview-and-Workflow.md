@@ -7,17 +7,16 @@ ms.date: 07/26/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: feb7918c-4709-48a4-a106-8d65c41014dc
 description: "Omówienie procesu tworzenia i publikowania pakietu NuGet, wraz z łączami do innych części określonego procesu."
 keywords: "Tworzenie pakietu NuGet, Przegląd tworzenia NuGet, przepływ pracy tworzenia NuGet, przepływ pracy tworzenia pakietu, omówienie tworzenia pakietu."
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 25822d22c53c07e4c1a2f4ab310c4a5da09b7661
-ms.sourcegitcommit: 122bf7ce308365ea45da018b0768f0536de76a1f
+ms.openlocfilehash: 4e6cb7d4849b02240247e62043d0ed594240fd8e
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="package-creation-workflow"></a>Przepływ pracy tworzenia pakietu
 
@@ -30,22 +29,22 @@ Pakiet mogą również służyć tylko ściągania we wszystkich innych zależno
 
 Niezależnie od przypadku utworzenie pakietu zaczyna się od podejmowaniu decyzji, które zestawy i inne pliki do pakietu. Następnie można utworzyć pliku manifestu, nazywane `.nuspec` pliku do opisywania zawartość pakietu wraz z jego identyfikatorem, numer wersji, informacje o prawach autorskich, właściwości programu MSBuild i elementów docelowych i wiele innych.
 
-Kiedy zostały przygotowane wszystkie niezbędne pliki w odpowiednie foldery i utworzono odpowiednie `.nuspec` pliku, następnie należy użyć `nuget pack` polecenia (lub [docelowy programu MSBuild pakiet](../Schema/msbuild-targets.md)) do sobą wszystkie elementy `.nupkg` pliku. Następnie możesz wdrożyć pakiet do dowolnego hosta umożliwia dostęp do niego innymi deweloperami.
+Kiedy zostały przygotowane wszystkie niezbędne pliki w odpowiednie foldery i utworzono odpowiednie `.nuspec` pliku, następnie należy użyć `nuget pack` polecenia (lub [docelowy programu MSBuild pakiet](../schema/msbuild-targets.md)) do sobą wszystkie elementy `.nupkg` pliku. Następnie możesz wdrożyć pakiet do dowolnego hosta umożliwia dostęp do niego innymi deweloperami.
 
 > [!Tip]
 > Pakiet NuGet o `.nupkg` rozszerzenie jest po prostu pliku ZIP. Aby łatwo sprawdzić zawartość dowolnego pakietu, zmień rozszerzenie do `.zip` i rozwiń jego zawartość w zwykły sposób. Po prostu upewnij się, zmień rozszerzenie do `.nupkg` przed podjęciem próby przekazania jej do hosta.
 
-Aby dowiedzieć się i zrozumieć proces tworzenia, rozpoczynać [utworzenie pakietu](../create-packages/creating-a-package.md) który przeprowadzi Cię przez podstawowe procesy wspólnej do wszystkich pakietów. 
+Aby dowiedzieć się i zrozumieć proces tworzenia, rozpoczynać [utworzenie pakietu](../create-packages/creating-a-package.md) który przeprowadzi Cię przez podstawowe procesy wspólnej do wszystkich pakietów.
 
 Z tego miejsca należy wziąć pod uwagę wiele innych opcji pakietu:
 
--  [Obsługujący wiele platform docelowych](../create-packages/supporting-multiple-target-frameworks.md) opisuje sposób tworzenia pakietu z wieloma odmianami dla różnych platform .NET Framework.
--  [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md) opisuje struktury pakietu z wielu zasobów językowych oraz korzystanie z osobnych satelity zlokalizowanych pakietów.
--  [Pakiety wersji wstępnej](../create-packages/prerelease-packages.md) pokazano, jak wersji alfa, beta i rc pakietów do klientów, którzy są zainteresowani.
--  [Źródło i przekształcenia pliku Config](../create-packages/source-and-config-file-transformations.md) w tym artykule opisano, jak zarówno jednokierunkowe tokenu zamienianie w plikach, które są dodawane do projektu i zmodyfikować `web.config` i `app.config` z ustawień, które są również obsługiwane się po odinstalowaniu pakietu .
--  [Symbol pakiety](../create-packages/symbol-packages.md) zawiera wskazówki dotyczące dostarczanie symboli dla biblioteki, umożliwiające konsumentom wkroczyć do kodu podczas debugowania.
--  [Przechowywanie wersji pakietu](../reference/package-versioning.md) omówiono sposób zidentyfikować dokładną wersję, umożliwiające zależności (inne pakiety, które korzystanie z pakietu).
--  [Oryginalne pakiety](../create-packages/native-packages.md) opisano proces tworzenia pakietu w konsumentach napisanych w języku C++.
+- [Obsługujący wiele platform docelowych](../create-packages/supporting-multiple-target-frameworks.md) opisuje sposób tworzenia pakietu z wieloma odmianami dla różnych platform .NET Framework.
+- [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md) opisuje struktury pakietu z wielu zasobów językowych oraz korzystanie z osobnych satelity zlokalizowanych pakietów.
+- [Pakiety wersji wstępnej](../create-packages/prerelease-packages.md) pokazano, jak wersji alfa, beta i rc pakietów do klientów, którzy są zainteresowani.
+- [Źródło i przekształcenia pliku Config](../create-packages/source-and-config-file-transformations.md) w tym artykule opisano, jak zarówno jednokierunkowe tokenu zamienianie w plikach, które są dodawane do projektu i zmodyfikować `web.config` i `app.config` z ustawień, które są również obsługiwane się po odinstalowaniu pakietu .
+- [Symbol pakiety](../create-packages/symbol-packages.md) zawiera wskazówki dotyczące dostarczanie symboli dla biblioteki, umożliwiające konsumentom wkroczyć do kodu podczas debugowania.
+- [Przechowywanie wersji pakietu](../reference/package-versioning.md) omówiono sposób zidentyfikować dokładną wersję, umożliwiające zależności (inne pakiety, które korzystanie z pakietu).
+- [Oryginalne pakiety](../create-packages/native-packages.md) opisano proces tworzenia pakietu w konsumentach napisanych w języku C++.
 
 Jeśli następnie możesz przystąpić do publikowania pakietu nuget.org, wykonaj prosty proces w [opublikowania pakietu](../create-packages/publish-a-package.md).
 

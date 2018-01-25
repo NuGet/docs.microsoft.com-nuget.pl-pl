@@ -7,17 +7,16 @@ ms.date: 06/06/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 3c60f920-457d-4f43-9efe-210c514e5242
 description: "Omówienie procesu eksploatującego pakietów NuGet w projekcie, wraz z łączami do innych części określonego procesu."
 keywords: "Użycie pakietu NuGet, omówienie zużycia NuGet, przepływ pracy zużycia NuGet, przepływu pracy przez pakiet, omówienie zużycie pakietu"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c48351cb6fed0ac94bd437d9443811f46c032bd0
-ms.sourcegitcommit: 122bf7ce308365ea45da018b0768f0536de76a1f
+ms.openlocfilehash: f59309b87141453ccfa4de76f33a3a34d3fb3263
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="package-consumption-workflow"></a>Przepływ pracy zużycie pakietu
 
@@ -27,7 +26,7 @@ Między nuget.org i prywatnej pakietu galerii, które organizacja może ustanawi
 
 \*_z wyjątkiem z `nuget install` z wiersza polecenia, w którym to przypadku należy edytować konfigurację pliki ręcznie. Zobacz [zainstalować poleceń](../tools/cli-ref-install.md)._
 
-NuGet pamięta tożsamości oraz numeru wersji każdego zainstalowanego pakietu nagrywania albo `packages.config`, plik projektu lub `project.json` pliku w katalogu głównym projektu, w zależności od używanej wersji programu NuGet i typ projektu. Nuget 4.0 + [przechowywanie zależności w pliku projektu](../consume-packages/package-references-in-project-files.md) jest ustawieniem domyślnym (z wyjątkiem projekty platformy UWP przeznaczonych dla systemu Windows 10 RS1). W każdym przypadku można przeglądać odpowiedniego pliku w dowolnym momencie, aby zobaczyć pełną listę zależności dla projektu.
+NuGet pamięta tożsamości oraz numeru wersji każdego zainstalowanego pakietu nagrywania albo `packages.config` lub pliku projektu, w zależności od używanej wersji programu NuGet i typ projektu. Nuget 4.0 + [przechowywanie zależności w pliku projektu lub PackageReference](../consume-packages/package-references-in-project-files.md) zazwyczaj jest ustawieniem domyślnym, chociaż jest to można skonfigurować w programie Visual Studio za pomocą [opcji interfejsu użytkownika Menedżera pakietów](../tools/package-manager-ui.md). W każdym przypadku można przeglądać odpowiedniego pliku w dowolnym momencie, aby zobaczyć pełną listę zależności dla projektu.
 
 > [!Tip]
 > Zaleca się sprawdzać licencja na każdy pakiet, który ma być używany w oprogramowaniu. Znajdziesz nuget.org, **informacje dotyczące licencji** łącza w prawej części strony opis każdego pakietu. Jeśli pakiet nie określa postanowienia licencyjne, skontaktuj się z właścicielem pakietu bezpośrednio za pomocą **skontaktuj się z właścicieli** łącze na stronie pakiet. Microsoft nie licencji jakiejkolwiek własności intelektualnej użytkownikowi od innych dostawców pakietu i nie jest odpowiedzialny za informacji dostarczonych przez strony trzecie.
@@ -40,7 +39,7 @@ Podczas dodawania kodu projektu do repozytorium źródłowe, zwykle nie uwzględ
 
 ![Trwa przywracanie pakietów NuGet w klonowania repozytorium, a następnie użyć polecenia restore przepływu](media/Overview-02-RestoreFlow.png)
 
-[Przywracanie pakietów](../consume-packages/package-restore.md) używa tych informacji w pliku projektu `packages.config`, `project.json` ponownie zainstalować wszystkie zależności. Należy pamiętać, że istnieją różnice w procesie związane, zgodnie z opisem w [rozpoznawania zależności](../consume-packages/dependency-resolution.md).
+[Przywracanie pakietów](../consume-packages/package-restore.md) używa tych informacji w pliku projektu lub `packages.config` ponownie zainstalować wszystkie zależności. Należy pamiętać, że istnieją różnice w procesie związane, zgodnie z opisem w [rozpoznawania zależności](../consume-packages/dependency-resolution.md).
 
 Czasami zachodzi konieczność ponownie zainstaluj pakiety, które znajdują się już w projekcie, mogą również ponownie zainstalować zależności. Jest to łatwo zrobić przy użyciu `reinstall` polecenia za pomocą wiersza polecenia NuGet lub konsoli Menedżera pakietów NuGet. Aby uzyskać więcej informacji, zobacz [ponowne zainstalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md).
 

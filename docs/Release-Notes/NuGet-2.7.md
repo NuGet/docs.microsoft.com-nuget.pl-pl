@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: ba2edaad-4795-47a0-a572-d0e1716bd540
 description: "Informacje o wersji 2.7 NuGet tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
 keywords: NuGet 2.7 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 502cb5e68f905e9ad8f4003bb0690d3e676f6bb7
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: b0e12f7e2cffa6e721dd13c117b7b3727cfcb5d7
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-27-release-notes"></a>Informacje o wersji 2.7 NuGet
 
@@ -53,7 +52,7 @@ Chcielibyśmy Dziękujemy następujące współautorzy zewnętrznych dla ich zna
     - [#3307](http://nuget.codeplex.com/workitem/3307) -Poprawka usterki `NuGet.targets` nie przekazuje $(Platform) do nuget.exe podczas przywracania pakietów.
 1. [Brianowi Federici](http://www.codeplex.com/site/users/view/benerdin)
     - [#3294](http://nuget.codeplex.com/workitem/3294) -Poprawka usterki w poleceniu pakietu nuget.exe, który umożliwi dodawanie plików z tej samej nazwy, ale innej wielkości znaków, powodując wyjątek "Istnieje już element".
-1. [Danielowi Cazzulino](http://www.codeplex.com/site/users/view/dcazzulino) ([@kzu](https://twitter.com/kzu))
+1. [Daniel Cazzulino](http://www.codeplex.com/site/users/view/dcazzulino) ([@kzu](https://twitter.com/kzu))
     - [#2990](http://nuget.codeplex.com/workitem/2990) -wersji Dodaj właściwość do klasy NetPortableProfile.
 1. [Simner Dominik](https://www.codeplex.com/site/users/view/DavidSimner)
     - [#3460](https://nuget.codeplex.com/workitem/3460) — w razie Usuń usterki NullReferenceException requireApiKey = true, ale nagłówek X-NUGET-APIKEY nie jest obecny
@@ -103,7 +102,7 @@ NuGet 2.7 wprowadzono nową funkcję dla nuget.exe:`nuget.exe restore`
 
 To nowe polecenie Restore umożliwia łatwo przywrócić wszystkich pakietów dla rozwiązania za pomocą jednego polecenia, zatwierdzając rozwiązania plik lub folder jako argument. Ponadto ten argument jest niejawnego, jeśli istnieje tylko jedno rozwiązanie w bieżącym folderze. Oznacza to, że wszystkie następujące działania z folderu, który zawiera plik pojedyncze rozwiązanie (MySolution.sln):
 
-1. Przywracanie nuget.exe MySolution.sln
+1. nuget.exe restore MySolution.sln
 1. nuget.exe przywracania.
 1. Przywracanie nuget.exe
 

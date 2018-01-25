@@ -3,21 +3,20 @@ title: "Dostawcy poświadczeń NuGet dla programu Visual Studio | Dokumentacja f
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 1/9/2017
+ms.date: 01/09/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 9c7f6d16-f437-47c4-82d4-6c996e0b18ec
 description: "NuGet dostawcy poświadczeń uwierzytelniania za pomocą źródła zaimplementowanie interfejsu IVsCredentialProvider rozszerzenia programu Visual Studio."
 keywords: "Dostawcy poświadczeń NuGet, uwierzytelniania za pomocą kanału informacyjnego, uwierzytelniania za pomocą galerii NuGet rozszerzenie programu visual studio"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 8d7360205387d4813f95560018e2ac68f71f5603
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: ff143526c814c69f1a133a62c1ad1a8f5fbedd60
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="authenticating-feeds-in-visual-studio-with-nuget-credential-providers"></a>Źródła danych w programie Visual Studio za pomocą NuGet dostawcy poświadczeń uwierzytelniania
 
@@ -52,7 +51,7 @@ Podczas przejęcia poświadczeń usługa poświadczeń spróbuje dostawcy poświ
 1. Wszyscy inni dostawcy poświadczeń wtyczki zostaną sprawdzone po kolei.
 1. Jeśli żadne poświadczenia nie zostały nabyte jeszcze, użytkownik będzie monitowany o poświadczenia, za pomocą okna dialogowego standardowe uwierzytelnianie podstawowe.
 
-### <a name="implementing-ivscredentialprovidergetcredentialsasync"></a>Implementowanie IVsCredentialProvider.GetCredentialsAsync
+### <a name="implementing-ivscredentialprovidergetcredentialsasync"></a>Implementing IVsCredentialProvider.GetCredentialsAsync
 
 Aby utworzyć dostawcę poświadczeń NuGet dla programu Visual Studio, utworzyć rozszerzenie Visual Studio, które udostępnia publiczne eksportu MEF implementacja `IVsCredentialProvider` wpisz i stosuje zasady opisane poniżej.
 

@@ -7,21 +7,20 @@ ms.author:
 - joelverhagen
 - kraigb
 manager: skofman
-ms.date: 11/2/2017
+ms.date: 11/02/2017
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 5d017cd4-3d75-4341-ba90-3c57be093b7d
 description: "Przy użyciu interfejsu API programu NuGet, można wysyłać zapytania dotyczące wszystkich pakietów opublikowane nuget.org i aktualności wraz z upływem czasu."
 keywords: "Interfejs API NuGet wyliczyć wszystkie pakiety, replikowania pakiety NuGet interfejsu API, najnowszych pakietów opublikowany nuget.org"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 5559a7cd104861b1a10aa8d1513696e609c51c15
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: eb5374916f1afcd7a6758b3af03fd2abb88332c1
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="query-for-all-packages-published-to-nugetorg"></a>Zapytania dla wszystkich pakietów opublikowane nuget.org
 
@@ -64,27 +63,21 @@ DateTime cursor = DateTime.UtcNow.AddHours(-1);
 
 Lokalizację każdego zasobu (punkt końcowy) w interfejsie API NuGet powinny zostać wykryte przy użyciu [indeksu usługi](../../api/service-index.md). Ponieważ ten przewodnik koncentruje się na nuget.org, będziemy używać indeksu usługi nuget.org.
 
-```
-GET https://api.nuget.org/v3/index.json
-```
+    GET https://api.nuget.org/v3/index.json
 
-Dokument usługi jest zawierająca wszystkie zasoby na nuget.org dokumentu JSON. Wyszukaj o zasobów `@type` wartość właściwości `Catalog/3.0.0`. Skojarzony `@id` wartość właściwości jest adres URL, który sam indeks katalogu.
+Dokument usługi jest zawierająca wszystkie zasoby na nuget.org dokumentu JSON. Wyszukaj o zasobów `@type` wartość właściwości `Catalog/3.0.0`. Skojarzony `@id` wartość właściwości jest adres URL, który sam indeks katalogu. 
 
 ## <a name="find-new-catalog-leaves"></a>Znajdowanie nowych pozostawia katalogu
 
 Przy użyciu `@id` indeks katalogu pobierania wartości właściwości w poprzednim kroku:
 
-```
-GET https://api.nuget.org/v3/catalog0/index.json
-```
+    GET https://api.nuget.org/v3/catalog0/index.json
 
 Deserializacja [indeks katalogu](../../api/catalog-resource.md#catalog-index). Wszystkie odfiltrowane [katalogowania obiektów strony](../../api/catalog-resource.md#catalog-page-object-in-the-index) z `commitTimeStamp` mniejsza niż bieżąca wartość kursora.
 
 W przypadku pozostałych stron katalogu, Pobierz przy użyciu pełnego dokumentu `@id` właściwości.
 
-```
-GET https://api.nuget.org/v3/catalog0/page2926.json
-```
+    GET https://api.nuget.org/v3/catalog0/page2926.json
 
 Deserializacja [strona katalogu](../../api/catalog-resource.md#catalog-page). Wszystkie odfiltrowane [katalogowania obiektów typu liść](../../api/catalog-resource.md#catalog-item-object-in-a-page) z `commitTimeStamp` mniejsza niż bieżąca wartość kursora.
 
@@ -96,9 +89,7 @@ W tym momencie można wykonywać żadnych niestandardowych przetwarzania, które
 
 Jeśli interesuje Cię w metadanych o pakiecie (na przykład opis, zależności, rozmiar .nupkg, itp.), można pobrać [dokumentu liścia katalogu](../../api/catalog-resource.md#catalog-leaf) przy użyciu `@id` właściwości.
 
-```
-GET https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
-```
+    GET https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
 
 Ten dokument zawiera wszystkie zawarte w metadanych [pakietu zasobów metadanych](../../api/registration-base-url-resource.md)i nie tylko!
 
@@ -122,14 +113,13 @@ Ponieważ katalog jest zestawem dokumentów JSON, które są dostępne za pośre
 
 Przykłady dotyczące języka C# są dostępne w [repozytorium NuGet/przykłady](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample).
 
-```
+```cli
 git clone https://github.com/NuGet/Samples.git
 ```
 
 ### <a name="catalog-sdk"></a>W katalogu zestawu SDK
 
-Najprostszym sposobem korzystania z katalogu jest użycie pakietu SDK katalogu .NET wersji wstępnej: [NuGet.Protocol.Catalog](https://dotnet.myget.org/feed/nuget-build/package/nuget/NuGet.Protocol.Catalog).
-Ten pakiet jest dostępny na `nuget-build` MyGet źródła danych, dla którego używają adres URL źródła pakietu NuGet `https://dotnet.myget.org/F/nuget-build/api/v3/index.json`.
+Najprostszym sposobem korzystania z katalogu jest użycie pakietu SDK katalogu .NET wersji wstępnej: [NuGet.Protocol.Catalog](https://dotnet.myget.org/feed/nuget-build/package/nuget/NuGet.Protocol.Catalog). Ten pakiet jest dostępny na `nuget-build` MyGet źródła danych, dla którego używają adres URL źródła pakietu NuGet `https://dotnet.myget.org/F/nuget-build/api/v3/index.json`.
 
 Ten pakiet można zainstalować na projekt niezgodny z `netstandard1.3` lub nowszej (na przykład .NET Framework 4.6).
 
@@ -137,7 +127,7 @@ Przykład za pomocą tego pakietu jest dostępna w witrynie GitHub w [projektu N
 
 #### <a name="sample-output"></a>Przykładowe dane wyjściowe
 
-```
+```output
 2017-11-10T22:16:44.8689025+00:00: Found package details leaf for xSkrape.APIWrapper.REST 1.0.2.
 2017-11-10T22:16:54.6972769+00:00: Found package details leaf for xSkrape.APIWrapper.REST 1.0.1.
 2017-11-10T22:19:20.6385542+00:00: Found package details leaf for Platform.EnUnity 1.0.8.
@@ -171,14 +161,13 @@ warn: NuGet.Protocol.Catalog.CatalogProcessor[0]
 
 ### <a name="minimal-sample"></a>Minimalny próbki
 
-Na przykład z zależnościami mniej ilustrujący interakcji z katalogu bardziej szczegółowo w temacie [CatalogReaderExample przykładowy projekt](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample/CatalogReaderExample).
-Obiekty docelowe projektu `netcoreapp2.0` i zależy od [NuGet.Protocol 4.4.0](https://www.nuget.org/packages/NuGet.Protocol/4.4.0) (na potrzeby rozpoznawania indeksu service) i [Newtonsoft.Json 9.0.1](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) (w przypadku deserializacji JSON).
+Na przykład z zależnościami mniej ilustrujący interakcji z katalogu bardziej szczegółowo w temacie [CatalogReaderExample przykładowy projekt](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample/CatalogReaderExample). Obiekty docelowe projektu `netcoreapp2.0` i zależy od [NuGet.Protocol 4.4.0](https://www.nuget.org/packages/NuGet.Protocol/4.4.0) (na potrzeby rozpoznawania indeksu service) i [Newtonsoft.Json 9.0.1](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) (w przypadku deserializacji JSON).
 
 Logiki główny kodu jest widoczny w [pliku Program.cs](https://github.com/NuGet/Samples/blob/master/CatalogReaderExample/CatalogReaderExample/Program.cs).
 
 #### <a name="sample-output"></a>Przykładowe dane wyjściowe
 
-```
+```output
 No cursor found. Defaulting to 11/2/2017 9:41:28 PM.
 Fetched catalog index https://api.nuget.org/v3/catalog0/index.json.
 Fetched catalog page https://api.nuget.org/v3/catalog0/page2935.json.

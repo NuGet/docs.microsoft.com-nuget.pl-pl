@@ -11,17 +11,16 @@ ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 148d743a-09e5-4539-8454-675be11902db
 description: "Szablon adresu URL nadużycia raport umożliwia klientom do wyświetlenia łącza nadużycia raportu w jego interfejsie użytkownika."
 keywords: "Interfejs API NuGet zgłaszania nadużyć, NuGet interfejsu API plików zgodne, szablon adres URL raportu NuGet.org"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 7b3413297f5a7fcf0e2c7757036b1f240ed0058a
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: c12be294c71547fbce421c72aa091e0eee15aacd
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="report-abuse-url-template"></a>Szablon adresu URL nadużycia raportu
 
@@ -63,12 +62,8 @@ Nazwa        | Typ    | Wymagane | Uwagi
 
 Na przykład szablon nadużycia raportu nuget.org wygląda następująco:
 
-```
-https://www.nuget.org/packages/{id}/{version}/ReportAbuse
-```
+    https://www.nuget.org/packages/{id}/{version}/ReportAbuse
 
 Jeśli implementacja klienta wymaga do wyświetlenia łącza do formularza nadużycia raport NuGet.Versioning 4.3.0, czy to utworzyć następujący adres URL i przekazywanie ich do użytkownika:
 
-```
-https://www.nuget.org/packages/NuGet.Versioning/4.3.0/ReportAbuse
-```
+    https://www.nuget.org/packages/NuGet.Versioning/4.3.0/ReportAbuse

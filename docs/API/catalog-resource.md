@@ -11,17 +11,16 @@ ms.date: 10/30/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: cfd338b5-6253-48c0-88ba-17c6b98fc935
 description: "Katalog jest indeks wszystkich pakietów utworzony i usunięty w nuget.org."
 keywords: "Interfejsu API w wersji 3 NuGet katalogu, nuget.org dziennika transakcji, replikacji NuGet.org, clone NuGet.org, tylko Dołącz rekord NuGet.org"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 4c98b7cbd92575f6905e98a5bca5602a4d8ac0dd
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: d1a24be68a60085a40361c374ffb34dc221f09c4
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="catalog"></a>Katalogu
 
@@ -39,7 +38,7 @@ Następujące `@type` jest używana wartość:
 
 @typewartość   | Uwagi
 ------------- | -----
-CATALOG/3.0.0 | Początkowa wersja
+Catalog/3.0.0 | Początkowa wersja
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
@@ -73,9 +72,7 @@ Elementy katalogu są zawsze dodawane do katalogu w kolejności rosnącej monoto
 
 Następujące żądania pobiera indeks katalogu.
 
-```
-GET {@id}
-```
+    GET {@id}
 
 Indeks katalogu jest dokumentem JSON, który zawiera obiekt z następującymi właściwościami:
 
@@ -107,9 +104,7 @@ Contrast do [pakietu zasobów metadanych](registration-base-url-resource.md) co 
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
-GET https://api.nuget.org/v3/catalog0/index.json
-```
+    GET https://api.nuget.org/v3/catalog0/index.json
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -161,9 +156,7 @@ Aby uzyskać więcej informacji o oznacza każdy typ, zobacz [odpowiadającego e
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-```
-GET https://api.nuget.org/v3/catalog0/page2926.json
-```
+    GET https://api.nuget.org/v3/catalog0/page2926.json
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -179,7 +172,7 @@ Nazwa                    | Typ                       | Wymagane | Uwagi
 ----------------------- | -------------------------- | -------- | -----
 @type                   | ciąg lub tablica ciągów | Tak      | Typy elementów katalogu
 katalog: commitId        | string                     | Tak      | Identyfikator zatwierdzenia skojarzone z tym elementem katalogu
-katalog: commitTimeStamp | string                     | Tak      | Sygnatura czasowa zatwierdzania tego elementu katalogu
+catalog:commitTimeStamp | string                     | Tak      | Sygnatura czasowa zatwierdzania tego elementu katalogu
 identyfikator                      | string                     | Tak      | Identyfikator pakietu element katalogu
 Opublikowane               | string                     | Tak      | Data opublikowania elementu katalogu pakietu
 version                 | string                     | Tak      | Wersja pakietu elementu katalogu
@@ -221,7 +214,7 @@ Element MinClientVersion        | string                     | Brak       |
 packageHash             | string                     | Tak      | Skrót pakietu, kodowanie przy użyciu [standardowe base 64.](https://tools.ietf.org/html/rfc4648#section-4)
 packageHashAlgorithm    | string                     | Tak      |
 packageSize             | integer                    | Tak      | Rozmiar .nupkg pakietu w bajtach
-adresem projectUrl              | string                     | Brak       |
+projectUrl              | string                     | Brak       |
 releaseNotes            | string                     | Brak       |
 requireLicenseAgreement | wartość logiczna                    | Brak       | Załóżmy `false` Jeśli wyłączone
 podsumowanie                 | string                     | Brak       |
@@ -242,9 +235,7 @@ Pakiet `version` właściwość jest ciągiem znormalizowane pełnej wersji. Ozn
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 
-```
 GET https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
-```
 
 #### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -265,9 +256,7 @@ Elementy katalogu usuwania pakietu mają nie dodatkowych właściwości [włącz
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 
-```
 GET https://api.nuget.org/v3/catalog0/data/2017.11.02.00.40.00/netstandard1.4_lib.1.0.0-test.json
-```
 
 #### <a name="sample-response"></a>Przykładowa odpowiedź
 

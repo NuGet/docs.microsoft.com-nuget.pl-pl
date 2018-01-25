@@ -3,21 +3,20 @@ title: Polecenie pakietu NuGet interfejsu wiersza polecenia | Dokumentacja firmy
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 12/08/2017
+ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 55e9e4d2-8039-4e9b-bdd9-c8b3eb0e894b
 description: "Informacje dotyczące polecenia pakiet nuget.exe"
 keywords: "Odwołanie do pakietu nuget, polecenie pakietu"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0dbecb8f01acf781ab8d2e77e8df7fa405f74cf1
-ms.sourcegitcommit: d576d84fb4b6a178eb2ac11f55deb08ac771ba1c
+ms.openlocfilehash: 732a712f88c6267caae361673a05af0781877cf4
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="pack-command-nuget-cli"></a>polecenie pakietu (NuGet CLI)
 
@@ -30,7 +29,7 @@ Tworzy oparte na określony pakiet NuGet `.nuspec` lub pliku projektu. `dotnet p
 
 ## <a name="usage"></a>Użycie
 
-```
+```cli
 nuget pack <nuspecPath | projectPath> [options]
 ```
 
@@ -57,7 +56,7 @@ gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub odpowiednio projekt
 | Suffix | *(3.4.4+)*  Dołącza sufiks z numerem wersji wewnętrznie generowane zwykle używany w przypadku dołączania kompilacji lub innych identyfikatorów w wersji wstępnej. Na przykład za pomocą `-suffix nightly` utworzy pakiet z podobne do numeru wersji `1.2.3-nightly`. Sufiksy musi rozpoczynać się od litery, aby uniknąć potencjalnych niezgodności z różnymi wersjami programu NuGet i Menedżer pakietów NuGet, błędy i ostrzeżenia. |
 | Symbole | Określa, że pakiet zawiera źródła i symbole. W przypadku użycia z `.nuspec` pliku, tworzy zwykły plik pakietu NuGet i odpowiedniego pakietu symboli. |
 | Narzędzie | Określa, że pliki wyjściowe projektu powinna zostać umieszczona w `tool` folderu. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe (2.5 +)*. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
 | Wersja | Zastępuje numer wersji z `.nuspec` pliku. |
 
 Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
@@ -83,7 +82,7 @@ Dla tego projektu, pakiet utworzony przez `nuget pack` będzie zależy od `jQuer
 
 ## <a name="examples"></a>Przykłady
 
-```
+```cli
 nuget pack
 
 nuget pack foo.nuspec

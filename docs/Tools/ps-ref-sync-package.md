@@ -7,17 +7,16 @@ ms.date: 12/07/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 1b980b93-fa58-430c-b663-78ce069b1603
 description: "Odwołanie do polecenia programu PowerShell synchronizacji pakietu w konsoli Menedżera pakietów NuGet w programie Visual Studio."
 keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, pakiet synchronizacji"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 4dc542714f14f0e6d3e827292f8fce06561fe270
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 02233cd0532fab2338e65e0d58b9afc3e2dab6af
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="sync-package-package-manager-console-in-visual-studio"></a>Synchronizacja — pakiet (Konsola Menedżera pakietów w programie Visual Studio)
 
@@ -37,7 +36,7 @@ Sync-Package [-Id] <string> [-IgnoreDependencies] [-ProjectName <string>] [[-Ver
 
 | Parametr | Opis |
 | --- | --- |
-| Identyfikator | (Wymagane) Identyfikator pakietu do synchronizacji. Id przełącznika sam jest opcjonalna. |
+| Id | (Wymagane) Identyfikator pakietu do synchronizacji. Id przełącznika sam jest opcjonalna. |
 | IgnoreDependencies | Zainstaluj tylko ten pakiet, bez jego zależności. |
 | ProjectName | Projekt do zsynchronizowania pakietu, domyślnie używany do projektu domyślnego. |
 | Wersja | Wersja pakietu do synchronizacji, w obecnie zainstalowanej wersji przyjęto wartość domyślną. |
@@ -45,7 +44,7 @@ Sync-Package [-Id] <string> [-IgnoreDependencies] [-ProjectName <string>] [[-Ver
 | IncludePrerelease | Zawiera pakiety wersji wstępnej synchronizacji. |
 | FileConflictAction | Akcja wykonywana po otrzymaniu monitu, aby zastąpić, lub przycisk Ignoruj istniejące pliki odwołuje się projekt. Możliwe wartości to *zastępowania, Ignoruj, brak OverwriteAll*, i *(3.0 +)* *IgnoreAll*. |
 | DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższa* (domyślnie): Najniższa wersja</li><li>*HighestPatch*: wersja z najniższą głównych, najniższy niewielkie, najwyższy poziom poprawki</li><li>*HighestMinor*: wersja z najniższą głównych, najwyższy niewielkie, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie pakiet aktualizacji bez parametrów): najnowsza wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../Schema/nuget-config-file.md#config-section) w `Nuget.Config` pliku. |
-| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez rzeczywistego wykonania synchronizacji. |
+| WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez rzeczywistego wykonania synchronizacji. |
 
 Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
 

@@ -3,21 +3,20 @@ title: "Zarządzanie NuGet projektu | Dokumentacja firmy Microsoft"
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 1/9/2017
+ms.date: 01/18/2018
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 94c088ce-ec96-4876-a210-fbdae743942c
 description: "Model ładu NuGet, w tym role i obowiązki committers, współautorzy i użytkowników."
 keywords: "Zarządzanie NuGet, dictator dobroczynne NuGet, obowiązki zatwierdzający, obowiązki współautora, obowiązki użytkownika"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0437b7d41f965da6a7ad44a7d0675916ed655fe1
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: ea1ddcc3e145afe3b905b23db37e1e61500200bb
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-governance"></a>Zarządzanie NuGet
 
@@ -31,7 +30,7 @@ To zadanie dictator dobroczynne rozwiązywanie sporów, w ramach społeczności 
 
 Istnieją cztery role opisane tutaj: dobroczynne Dictator, Committers, współautorzy i użytkowników.
 
-### <a name="benevolent-dictator"></a>Dobroczynne Dictator
+### <a name="benevolent-dictator"></a>Dobroczynne dictator
 
 Zespół core NuGet jest własnym wyznaczone jako realizacji dobroczynne Dictator lub projekt. Jednak ponieważ społeczności zawsze ma możliwość rozwidlenia, zespół jest pełni którą można odpowiedzieć społeczności. Realizacji projektu powinien zrozumieć Wspólnoty jako całości i dążyć do zaspokojenia potrzeb wiele powodujące konflikt jak to możliwe, zapewniając, że projekt przeżyje w perspektywie długoterminowej.
 
@@ -55,8 +54,8 @@ Przed wprowadzeniem poprawek pierwszy dla współautorów do repozytorium, nale�
 
 Jako współtwórca, należy przesłać żądanie ściągnięcia do jednej z następujących repozytoria:
 
-- [Klienta NuGet](https://github.com/NuGet/NuGet.Client)
-- [Galeria NuGet](https://github.com/nuget/nugetgallery)
+- [NuGet Client](https://github.com/NuGet/NuGet.Client)
+- [NuGet Gallery](https://github.com/nuget/nugetgallery)
 - [Dokumentacja NuGet](https://github.com/nuget/nugetdocs)
 
 Szczegółowe proces przesyłania żądania ściągnięcia jest zależna od repozytorium:
@@ -81,21 +80,22 @@ Użytkownicy jest wspierany brać udziału w cyklu życia NuGet i możliwie spo�
 Użytkownicy, którzy współpracować z projektu i jego społeczności w dalszym ciągu będzie często muszą się staje się coraz bardziej zaangażowany. Takie użytkowników może następnie przejdź do stają się współautorzy, zgodnie z powyższym opisem.
 
 ## <a name="package-succession-under-special-circumstances"></a>Kolejne pakietu w obszarze specjalne okoliczności
+
 W sytuacji niefortunne, których właścicielem konta NuGet jest unieruchomionych lub zmarły, będzie współpracujemy z społeczności, aby dodać odpowiedni właściciel/s do pakietu, gdy wspomnianej konto ma wyłącznie własność, a pakiet jest opublikowana w obszarze [OSI zatwierdzone licencji](https://opensource.org/licenses/alphabetical). Aby zażądać własność, musisz wysłać nam następujących dokumentach:
 
-1.  Fotokopię Twojego identyfikatora fotografii wystawiony dla instytucji rządowych.
-2.  Jeden z następujących dokumentach potwierdzających poprzedniego właściciela konta: 
+1. Fotokopię Twojego identyfikatora fotografii wystawiony dla instytucji rządowych.
+1. Jeden z następujących dokumentach potwierdzających poprzedniego właściciela konta: 
     - Certyfikat śmierci urzędnika, wystawiony dla instytucji rządowych, jeśli poprzednie właścicielem konta jest śmierci, lub,
     - Certyfikowanych dokument, takich jak certyfikatu podpisanego przez medyczne odpowiedzialnym za opieki posiadacz niezdolny konta.
-3.  Jeden z następujących dokumentów, co dowodzi prawo własności: 
+1. Jeden z następujących dokumentów, co dowodzi prawo własności: 
     - Certyfikatu unieważnienie wskazującego, czy masz poprawny współmałżonka właściciela konta
     - Podpisem power of prawnikiem,
     - Kopię dokumentu zostanie lub relacji zaufania nazewnictwa jako moduł wykonujący lub beneficjent,
     - Certyfikat urodzenia dla właściciela konta, jeśli ich nadrzędnego, lub
     - Opieki dokumentacji w przypadku prawnych ochrona właściciela konta.
-    
+
 Jeśli okaże się, wymaga wywołania tych zasad, Wyślij nam wiadomość e-mail na [ support@nuget.org ](mailto:support@nuget.org) o identyfikatorze i wersję pakietu.
-    
+
 ## <a name="transparency"></a>Przezroczystość
 
 Tworzenie zaufania społeczności w zarządzanie projekt typu open source jest niezbędne do jej powodzenie. W tym celu należy w sposób przezroczysty, otwórz podejmowania decyzji. Omówienie projektu kierunek musi odbywać się publicznie. Społeczności nigdy nie powinien podlegać zaskoczyć decyzją przez dobroczynne Dictator. Ponadto omówienie decyzje dotyczące projektu należy zarchiwizować, przez co członków społeczności zrozumiałe dla całej historii decyzji i jego kontekstu.

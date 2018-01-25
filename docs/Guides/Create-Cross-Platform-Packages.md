@@ -3,27 +3,26 @@ title: "Tworzenie pakietów NuGet i Platform (dla systemu iOS, Android i Windows
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 1/9/2017
+ms.date: 01/09/2017
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: ae24824b-a138-4d12-a810-1f653ddffd32
 description: "Przewodnik end-to-end tworzenia pakietów NuGet dla platformy Xamarin w systemie macierzystych interfejsów API dla systemu iOS, Android i Windows."
 keywords: "Utwórz pakiet, pakietów dla platformy Xamarin, pakietów i platform"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: f372856232f151efcf972881cffbe7d4bb7ed6ee
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: fbb1c3fccf04202dedc686583b3a2f27f105266a
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="create-cross-platform-packages"></a>Tworzenie pakietów i platform
 
 Pakiet wieloplatformowych zawiera kod, który używa macierzystych interfejsów API w systemach iOS, Android i Windows, w zależności od środowiska wykonawczego systemu operacyjnego. Chociaż jest to prosty zrobić, zaleca się pozwala deweloperom korzystać z pakietu z PCL lub powierzchnia .NET standardowych bibliotek za pośrednictwem wspólnego interfejsu API.
 
-W tym przewodniku utworzysz wieloplatformowych pakietu NuGet, który może być używana w przenośnych projekty w systemach iOS, Android i Windows.
+W tym przewodniku tworzenia pakietu NuGet i platform, który może być używana w przenośnych projekty w systemach iOS, Android i Windows.
 
 1. [Wymagania wstępne](#pre-requisites)
 1. [Tworzenie projektu kodu struktury i abstrakcji](#create-the-project-structure-and-abstraction-code)
@@ -39,7 +38,6 @@ W tym przewodniku utworzysz wieloplatformowych pakietu NuGet, który może być 
 
 > [!Note]
 > nuget.exe to narzędzie interfejsu wiersza polecenia, nie Instalatora, dlatego należy Zapisz pobrany plik z przeglądarki, a jego uruchomieniem.
-
 
 ## <a name="create-the-project-structure-and-abstraction-code"></a>Tworzenie projektu kodu struktury i abstrakcji
 
@@ -110,12 +108,11 @@ Aby zaimplementować implementacja specyficzna dla platformy `ILoggingLibrary` i
 > [!Note]
 > Aby utworzyć dla systemu iOS należy Mac sieciowe podłączone do programu Visual Studio, zgodnie z opisem w [wprowadzenie do platformy Xamarin.iOS dla programu Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/introduction_to_xamarin_ios_for_visual_studio/). Jeśli nie masz dostępnych Mac, należy wyczyścić projektu systemu iOS w programie configuration manager (krok 3 powyżej).
 
-
 ## <a name="create-and-update-the-nuspec-file"></a>Tworzenie i aktualizowanie pliku .nuspec
 
 1. Otwórz wiersz polecenia, przejdź do `LoggingLibrary` folderu o jeden poziom poniżej where `.sln` pliku jest i uruchom NuGet `spec` polecenie, aby utworzyć pierwszy `Package.nuspec` pliku:
 
-```
+```cli
 nuget spec
 ```
 
@@ -139,7 +136,7 @@ nuget spec
         </metadata>
     </package>
     ```
-    
+
 > [!Tip]
 > Można sufiks wersji pakietu z `-alpha`, `-beta` lub `-rc` aby oznaczyć do pakietu jako wersji wstępnej, sprawdź [wersje wstępne](../create-packages/prerelease-packages.md) uzyskać więcej informacji o wersji wstępnych.
 
@@ -172,7 +169,6 @@ Aby uwzględnić zestawy referencyjne specyficzne dla platformy, Dodaj następuj
 
 > [!Note]
 > Aby skrócić nazwy plików DLL i kod XML, kliknij prawym przyciskiem myszy na żadnym konkretnym projektem, wybierz opcję **biblioteki** , a następnie zmień nazwy zestawu.
-
 
 ### <a name="add-dependencies"></a>Dodaj zależności
 
@@ -259,7 +255,7 @@ Twoje final `.nuspec` pliku powinna wyglądać podobnie do następującego: gdzi
 
 Z ukończonej `.nuspec` odwołuje się do wszystkich plików, które należy uwzględnić w pakiecie, wszystko jest gotowe do uruchomienia `pack` polecenia:
 
-```
+```cli
 nuget pack LoggingLibrary.nuspec
 ```
 
@@ -269,7 +265,6 @@ Spowoduje to wygenerowanie `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`. Otwarcie tego
 
 > [!Tip]
 > A `.nupkg` plik jest tylko plik ZIP zawierający inne rozszerzenie. Można również sprawdzić zawartość pakietu, następnie zmieniając `.nupkg` do `.zip`, ale pamiętaj, aby przywrócić rozszerzenia przed przekazaniem do nuget.org pakietu.
-
 
 Aby udostępnić pakietu inni deweloperzy, postępuj zgodnie z instrukcjami [opublikowania pakietu](../create-packages/publish-a-package.md).
 

@@ -3,21 +3,20 @@ title: NuGet w programie PowerShell | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/2/2017
+ms.date: 10/02/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: cd08b869-44c6-480e-90f7-494a6d08e6d0
 description: "Pełną dokumentację poleceń programu PowerShell dostępne w konsoli Menedżera pakietów NuGet w programie Visual Studio."
 keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 64450a8bcca7f6028d4ce389d51ac35e9209cfae
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 0cbd9b13b34bd93fea6c6684c03bca9cff5d9e5e
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="powershell-reference"></a>W programie PowerShell
 
@@ -41,7 +40,7 @@ Konsola Menedżera pakietów zawiera interfejsu programu PowerShell w programie 
 | [Add-BindingRedirect](ps-ref-add-bindingredirect.md) | Sprawdza wszystkie zestawy w ścieżce wyjściowej dla projektu i dodaje przekierowania powiązania do `app.config` lub `web.config` w miarę potrzeby. | Wszystkie |
 | [Get-Project](ps-ref-get-project.md) | Wyświetla informacje o domyślnych lub określony projekt. | 3.0+ |
 | [Open-PackagePage](ps-ref-open-packagepage.md) | Uruchamia domyślnej przeglądarki z projektu, licencji lub adresu URL programu report nadużyć dla określonego pakietu. | Przestarzałe w 3.0 + |
-| [Rejestr TabExpansion](ps-ref-register-tabexpansion.md) | Rejestruje rozszerzenia kartę parametrów polecenia umożliwiające tworzenie dostosowanego rozszerzenia dla wartości parametrów najczęściej używanych. | Wszystkie |
+| [Register-TabExpansion](ps-ref-register-tabexpansion.md) | Rejestruje rozszerzenia kartę parametrów polecenia umożliwiające tworzenie dostosowanego rozszerzenia dla wartości parametrów najczęściej używanych. | Wszystkie |
 | [Sync-Package](ps-ref-sync-package.md) | Pobierz wersję zainstalowanego pakietu z określony projekt i synchronizuje wersję z resztą projektów w rozwiązaniu. | 3.0+ |
 | [Uninstall-Package](ps-ref-uninstall-package.md) | Usuwa pakiet z projektu, opcjonalnie usunięcie jego zależności. | Wszystkie |
 

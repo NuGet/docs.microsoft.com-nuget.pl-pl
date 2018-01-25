@@ -3,21 +3,20 @@ title: Interfejs wiersza polecenia NuGet Dodaj polecenie | Dokumentacja firmy Mi
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/24/2017
+ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 4f68a016-ad4e-41fc-b869-88910fc5121e
 description: "Dodaj odwołanie do nuget.exe — polecenie"
 keywords: "Dodaj odwołanie nuget, należy dodać polecenie pakietu"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: bf9a6e51dfbf1716ba40273487b76ae04c18e948
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 70c86f8d240bd308224f6b7887b630cc1e953bf8
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="add-command-nuget-cli"></a>Dodawanie polecenia (NuGet CLI)
 
@@ -38,7 +37,7 @@ Aby rozwinąć wszystkie pliki w pakiecie do docelowego źródła pakietu, nale�
 
 ## <a name="usage"></a>Użycie
 
-```
+```cli
 nuget add <packagePath> -Source <sourcePath> [options]
 ```
 
@@ -50,7 +49,7 @@ gdzie `<packagePath>` jest ścieżka do pakietu, aby dodać, a `<sourcePath>` ok
 | --- | --- |
 | ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany.| 
 | Rozwiń węzeł | Dodaje wszystkie pliki w pakiecie do źródła pakietu. |
-| ForceEnglishOutput | *(3.5 +)*  Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
+| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
 | Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
@@ -59,7 +58,7 @@ Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
 
 ## <a name="examples"></a>Przykłady
 
-```
+```cli
 nuget add foo.nupkg -Source c:\bar\
 
 nuget add foo.nupkg -Source \\bar\packages\

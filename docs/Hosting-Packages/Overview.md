@@ -7,18 +7,17 @@ ms.date: 08/25/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 97577ddd-c294-432d-81a7-b4aebe88bd1c
 description: "Przegląd otwiera do obsługi własnych źródeł danych pakietu NuGet lub galerie lokalnie lub zdalnie."
 keywords: "NuGet źródła danych, Galeria NuGet pakietu niestandardowego źródła danych, NuGet.Server"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
 - anangaur
-ms.openlocfilehash: c3c6b17cdeb4fe959adbc56bdc6ace73202a98fc
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 628a36572846c652d648b45e0b18b63aac9a606e
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="hosting-your-own-nuget-feeds"></a>Hosting NuGet własnych źródeł danych
 

@@ -3,21 +3,20 @@ title: Polecenie help NuGet interfejsu wiersza polecenia | Dokumentacja firmy Mi
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 10/24/2017
+ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 780d7f52-d6c6-45cd-8a62-218ff8c0b270
 description: "Dokumentacja dotycząca nuget.exe polecenie Pomoc"
 keywords: Dokumentacja pomocy nuget, polecenie Pomoc
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 55dc263fedd7ed5a3e48b76dbc9a3ccc220655cf
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 97f72e1be0df6e97f8b06696b2b3861800e4ea08
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="help-or--command-nuget-cli"></a>Pomoc lub? polecenia (NuGet CLI)
 
@@ -27,7 +26,7 @@ Przedstawia ogólne informacje i pomoc dotyczącą określonego polecenia.
 
 ## <a name="usage"></a>Użycie
 
-```
+```cli
 nuget help [command] [options]
 nuget ? [command] [options]
 ```
@@ -42,18 +41,18 @@ gdzie [polecenie] identyfikuje danego polecenia, do których chcesz wyświetlić
 | Opcja | Opis |
 | --- | --- |
 | Wszystkie | Drukowanie szczegółową pomoc dla dostępnych poleceń; ignorowane, jeśli podano określonego polecenia. |
-| ConfigFile | *(2.5 +)*  Pliku konfiguracji NuGet w celu zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
-| ForceEnglishOutput | *(3.5 +)*  Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla samo polecenie Pomoc. |
 | Język znaczników markdown | Drukowanie szczegółową pomoc w formacie markdown, gdy jest używany z `-All`. W przeciwnym razie ignorowane. |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe (2.5 +)*. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
 
 Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
 
 ## <a name="examples"></a>Przykłady
 
-```
+```cli
 nuget help
 nuget help push
 nuget ?

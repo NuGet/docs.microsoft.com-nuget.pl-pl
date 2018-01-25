@@ -7,7 +7,6 @@ ms.date: 12/08/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 62f6962b-7b84-4452-ae0d-a9e1ef1fc6f0
 f1_keywords:
 - vs.toolsoptionspages.nuget_package_manager
 - vs.toolsoptionspages.nuget_package_manager.general
@@ -18,11 +17,11 @@ keywords: "Interfejs użytkownika NuGet, Menedżer pakietów NuGet interfejsu u�
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 39ce53184755887c419c8872148a6c13dc2c65ec
-ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
+ms.openlocfilehash: 0ff60c3cecee5fd9b7f698d2abed7553f5d89c1d
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-package-manager-ui"></a>Interfejs użytkownika Menedżera pakietów NuGet
 
@@ -137,7 +136,7 @@ Aby zarządzać źródła pakietów:
 
 ## <a name="package-manager-options-control"></a>Kontrolki opcji Menedżera pakietów
 
-Po wybraniu pakietu interfejsu użytkownika Menedżera pakietów wyświetla mały rozwijania **opcje** kontroli poniżej selektora wersji (przedstawione zarówno zwinięte i rozwinięte). Należy pamiętać, że dla niektórych typów, takich jak oprogramowanie .NET Core i korzystających z projektu `project.json` format odwołania tylko **Pokaż okno podglądu** podano opcję.
+Po wybraniu pakietu interfejsu użytkownika Menedżera pakietów wyświetla mały rozwijania **opcje** kontroli poniżej selektora wersji (przedstawione zarówno zwinięte i rozwinięte). Należy pamiętać, że dla projektu niektórych typów tylko **Pokaż okno podglądu** podano opcję.
 
 ![Opcje Menedżera pakietów](media/PackageManagerUIOptions.png)
 

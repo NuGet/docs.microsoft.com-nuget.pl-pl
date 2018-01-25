@@ -3,28 +3,27 @@ title: Tworzenie zlokalizowanego pakietu NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 1/9/2017
+ms.date: 01/18/2018
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 824c3f45-c6c2-4c82-9d6d-62a19bfdc4a4
 description: "Szczegółowe informacje na dwa sposoby tworzenia zlokalizowane pakiety NuGet, w tym wszystkie zestawy w jednym pakiecie lub publikowanie osobnych zestawów."
 keywords: "Lokalizacja pakietu NuGet, zestawy satelickie NuGet, tworzenie zlokalizowanych pakietów NuGet konwencje lokalizacji"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: aa48e77bd0e64cf45292687a2d4cada198ff5749
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: efe2cde93b30c5fc2f4ee7ebe6a1a0c84645e070
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="creating-localized-nuget-packages"></a>Tworzenie zlokalizowanych pakietów NuGet
 
 Istnieją dwa sposoby tworzenia zlokalizowane wersje biblioteki:
 
 1. Uwzględnij wszystkie zestawy zlokalizowanych zasobów w jednym pakiecie.
-2. Utwórz oddzielne satelity zlokalizowanych pakietów (NuGet 1,8 i nowsze), wykonując obowiązek ścisłego przestrzegania Konwencji.
+1. Utwórz oddzielne satelity zlokalizowanych pakietów (NuGet 1,8 i nowsze), wykonując obowiązek ścisłego przestrzegania Konwencji.
 
 Obie metody ma swoje zalety i wady, zgodnie z opisem w poniższych sekcjach.
 
@@ -80,19 +79,18 @@ Z tych folderów w miejscu zostanie następnie odwołać wszystkie pliki w Twoje
 
 Jeden pakiet przykładzie, który korzysta z tej metody jest [Microsoft.Data.OData 5.4.0](http://nuget.org/packages/Microsoft.Data.OData/5.4.0).
 
-### <a name="advantages-and-disadvantages"></a>Zalety i wady
+### <a name="advantages-and-disadvantages-localized-resource-assemblies"></a>Zalety i wady (zestawy zlokalizowanych zasobów)
 
 Tworzenie pakietów wszystkie języki w jednym pakiecie ma kilka wady:
 
 1. **Udostępnione metadanych**: ponieważ pakietu NuGet może zawierać tylko jeden `.nuspec` plików, można zapewnić metadane tylko jeden język. Oznacza to, że NuGet nie stanowi obsługuje zlokalizowanych metadanych.
-2. **Rozmiar pakietu**: w zależności od liczby obsługiwanych języków, biblioteki może stać się znacznie duży, który spowalnia Instalowanie i przywracanie pakietu.
-3. **Zwalnia równoczesne**: tworzenie pakietów zlokalizowane pliki w jednym pakiecie wymaga wersji wszystkie zasoby w tym pakiecie jednocześnie, zamiast możliwość oddzielnie wersji każdej lokalizacji. Ponadto żadnych aktualizacji do dowolnej lokalizacji co wymaga nowej wersji cały pakiet.
+1. **Rozmiar pakietu**: w zależności od liczby obsługiwanych języków, biblioteki może stać się znacznie duży, który spowalnia Instalowanie i przywracanie pakietu.
+1. **Zwalnia równoczesne**: tworzenie pakietów zlokalizowane pliki w jednym pakiecie wymaga wersji wszystkie zasoby w tym pakiecie jednocześnie, zamiast możliwość oddzielnie wersji każdej lokalizacji. Ponadto żadnych aktualizacji do dowolnej lokalizacji co wymaga nowej wersji cały pakiet.
 
 Jednak także ma kilka korzyści:
 
 1. **Prostota**: konsumentów pakietu pobrać wszystkich obsługiwanych języków w jednej instalacji, zamiast instalować oddzielnie każdego języka. Pojedynczy pakiet jest również łatwiej znaleźć na nuget.org.
-2. **Sprzężona wersji**: ponieważ wszystkie zestawy zasobów znajdują się w tym samym pakiecie jako podstawowy zestaw, wszystkie mają ten sam numer wersji i nie uruchamiaj ryzyko błędnego pobierania całkowicie niezależna.
-
+1. **Sprzężona wersji**: ponieważ wszystkie zestawy zasobów znajdują się w tym samym pakiecie jako podstawowy zestaw, wszystkie mają ten sam numer wersji i nie uruchamiaj ryzyko błędnego pobierania całkowicie niezależna.
 
 ## <a name="localized-satellite-packages"></a>Pakiety satelity zlokalizowanych
 
@@ -127,11 +125,11 @@ Gdy są spełnione wszystkie następujące konwencje NuGet rozpozna pakietu jako
 
 Należy utworzyć dodatkowe zestawy satelickie w taki sam sposób dla każdego obsługiwanego języka. Na przykład sprawdź zestaw pakietów platformy ASP.NET MVC:
 
-* [Microsoft.AspNet.Mvc](http://nuget.org/packages/Microsoft.AspNet.Mvc) (podstawowy w języku angielskim)
-* [Microsoft.AspNet.Mvc.de](http://nuget.org/packages/Microsoft.AspNet.Mvc.de) (wersja niemiecka)
-* [Microsoft.AspNet.Mvc.ja](http://nuget.org/packages/Microsoft.AspNet.Mvc.ja) (wersja japońska)
-* [Microsoft.AspNet.Mvc.zh Hans](http://nuget.org/packages/Microsoft.AspNet.Mvc.zh-Hans) (chiński (uproszczony))
-* [Microsoft.AspNet.Mvc.zh Hant](http://nuget.org/packages/Microsoft.AspNet.Mvc.zh-Hant) (chiński (tradycyjny))
+- [Microsoft.AspNet.Mvc](http://nuget.org/packages/Microsoft.AspNet.Mvc) (podstawowy w języku angielskim)
+- [Microsoft.AspNet.Mvc.de](http://nuget.org/packages/Microsoft.AspNet.Mvc.de) (German)
+- [Microsoft.AspNet.Mvc.ja](http://nuget.org/packages/Microsoft.AspNet.Mvc.ja) (Japanese)
+- [Microsoft.AspNet.Mvc.zh-Hans](http://nuget.org/packages/Microsoft.AspNet.Mvc.zh-Hans) (Chinese (Simplified))
+- [Microsoft.AspNet.Mvc.zh-Hant](http://nuget.org/packages/Microsoft.AspNet.Mvc.zh-Hant) (Chinese (Traditional))
 
 ### <a name="summary-of-required-conventions"></a>Podsumowanie konwencje wymagane
 
@@ -141,16 +139,16 @@ Należy utworzyć dodatkowe zestawy satelickie w taki sam sposób dla każdego o
 - Pakiet satelity należy zadeklarować zależność dokładnej wersji głównej przy użyciu notacji [] w jego `.nuspec` pliku. Zakresy nie są obsługiwane.
 - Pakiet satelity należy umieścić pliki w `lib\[{framework}\]{language}` folderu, która dokładnie odpowiada `{language}` w nazwie pliku.
 
-### <a name="advantages-and-disadvantages"></a>Zalety i wady
+### <a name="advantages-and-disadvantages-satellite-packages"></a>Zalety i wady (satelity pakietów)
 
 Używanie pakietów satelity ma kilka korzyści:
 
 1. **Rozmiar pakietu**: jest zminimalizowany ogólną rozmiaru pakiet główny i konsumentów tylko ponoszenia kosztów każdego języka będą wykorzystywane.
-2. **Oddzielne metadanych**: każdy pakiet satelity ma własną `.nuspec` pliku i w związku z tym zlokalizowanych metadanych ponieważ. Może to umożliwić niektórych konsumentów łatwiej znaleźć pakietów, wyszukując nuget.org z warunkami zlokalizowane.
-3. **Całkowicie niezależna wersjach**: zestawy satelickie może być zwolnione wraz z upływem czasu, a nie w całości, umożliwiając rozłożenia wysiłków lokalizacji.
+1. **Oddzielne metadanych**: każdy pakiet satelity ma własną `.nuspec` pliku i w związku z tym zlokalizowanych metadanych ponieważ. Może to umożliwić niektórych konsumentów łatwiej znaleźć pakietów, wyszukując nuget.org z warunkami zlokalizowane.
+1. **Całkowicie niezależna wersjach**: zestawy satelickie może być zwolnione wraz z upływem czasu, a nie w całości, umożliwiając rozłożenia wysiłków lokalizacji.
 
 Jednak pakiety satelity mieć własny zestaw wady:
 
 1. **Bałaganu**: zamiast pojedynczy pakiet ma wiele pakietów, które mogą prowadzić do dużej liczby wyników nuget.org i długą listę odwołań w projekcie programu Visual Studio.
-2. **Konwencje Strict**. Pakiety satelity musi dokładnie zgodne z konwencjami lub zlokalizowane wersje nie zostać pobrana prawidłowo.
-3. **Przechowywanie wersji**: każdy pakiet satelity musi mieć zależność dokładnej wersji głównej pakietu. Oznacza to, że aktualizacji pakietu głównej mogą wymagać aktualizacji wszystkich pakietów satelity również nawet wtedy, gdy nie zmienił się zasoby.
+1. **Konwencje Strict**. Pakiety satelity musi dokładnie zgodne z konwencjami lub zlokalizowane wersje nie zostać pobrana prawidłowo.
+1. **Przechowywanie wersji**: każdy pakiet satelity musi mieć zależność dokładnej wersji głównej pakietu. Oznacza to, że aktualizacji pakietu głównej mogą wymagać aktualizacji wszystkich pakietów satelity również nawet wtedy, gdy nie zmienił się zasoby.

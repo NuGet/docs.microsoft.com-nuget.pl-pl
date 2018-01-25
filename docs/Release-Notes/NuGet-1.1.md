@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 0e7688f7-09d2-4477-9fdf-0e27f572a4de
 description: "Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr 1.1 NuGet."
 keywords: NuGet 1.1 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 593848b3e5e063816fbbec8b4d11e6fc789d05cd
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 68c3415fe328fe6d9db91757a7fc180da8489a9f
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-10-and-11-release-notes"></a>Informacje o wersji NuGet 1.0 i 1.1
 
@@ -241,7 +240,7 @@ Poniżej znajduje się lista funkcji i usterki, które zostały usunięte NuGet 
 * [Nowy pakiet nie powiodło się "Nie można dodać części dla określonego identyfikatora URI, ponieważ jest już w pakiecie."](http://nuget.codeplex.com/workitem/32)
 * [Usuń parametry "NuPack" z programu Visual Studio graficznego interfejsu użytkownika](http://nuget.codeplex.com/workitem/35)
 * [Dodaj plik Apache nagłówka do COPYRIGHT.txt](http://nuget.codeplex.com/workitem/36)
-* [Usuń polecenie Update-PackageSource](http://nuget.codeplex.com/workitem/37)
+* [Remove Update-PackageSource Command](http://nuget.codeplex.com/workitem/37)
 * [Nie można użyć podczas ładowania profilu Menedżera pakietów zgłasza wyjątek](http://nuget.codeplex.com/workitem/39)
 * [init.ps1 i install.ps1, uninstall.ps1 konieczność odbierania dodatkowe stanu](http://nuget.codeplex.com/workitem/41)
 * [Łączenie konsoli i pakietów graficznego interfejsu użytkownika w jednym zestawie](http://nuget.codeplex.com/workitem/42)

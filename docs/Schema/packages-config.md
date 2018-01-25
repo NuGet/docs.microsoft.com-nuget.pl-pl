@@ -7,17 +7,16 @@ ms.date: 12/07/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 207b9547-4558-41dc-9f3f-4bbdfb1d74e3
 description: "W niektórych typów projektów packages.config przechowuje listę pakiety NuGet służące do projektu."
 keywords: "Pliku packages.config NuGet, odwołania do pakietu NuGet, zależności NuGet"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: d851a09fad45ca25edc95ecee496bbf399f5e255
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 3523b108f4d3ef86436e2bda89b5a656c11000b6
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="packagesconfig-reference"></a>Odwołanie do pliku Packages.config
 

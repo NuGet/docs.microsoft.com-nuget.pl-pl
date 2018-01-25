@@ -7,17 +7,16 @@ ms.date: 12/07/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 42476008-64b3-480e-a966-98b2fa38b681
 description: "Dokumentacja dotycząca polecenia PowerShell Get-pakietu w konsoli Menedżera pakietów NuGet w programie Visual Studio."
 keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, Pobierz pakiet"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 632936fe4dd9736f7c3740a2f763173dc725424a
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: c38e0da2e98d2e5bf5b4fc165462e9abcfdd73c0
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="get-package-package-manager-console-in-visual-studio"></a>Get-Package (Konsola Menedżera pakietów w programie Visual Studio)
 
@@ -40,7 +39,7 @@ Bez parametrów `Get-Package` Wyświetla listę pakietów zainstalowanych w proj
 | Parametr | Opis |
 | --- | --- |
 | Źródło | Ścieżka adresu URL lub folderu pakietu. Ścieżki folderu lokalnego może być bezwzględny, lub względem bieżącego folderu. Pominięcie `Get-Package` wyszukiwania w obecnie wybranym źródle pakietów. W przypadku korzystania z flagą-ListAvailable, wartość domyślna to nuget.org. |
-| Flagą ListAvailable | Wyświetla listę dostępnych pakietów ze źródła pakietu przyjęty nuget.org. Pokazuje domyślnie 50 pakietów, chyba że określono - PageSize i/lub - pierwszy. |
+| ListAvailable | Wyświetla listę dostępnych pakietów ze źródła pakietu przyjęty nuget.org. Pokazuje domyślnie 50 pakietów, chyba że określono - PageSize i/lub - pierwszy. |
 | Aktualizacje | Wyświetla listę pakietów, które mają jest dostępna aktualizacja w źródle pakietów. |
 | ProjectName | Projekt, z którego ma zostać pobrane zainstalowane pakiety. Pominięcie zwraca zainstalowane projekty dla całego rozwiązania. |
 | Filtr | Ciąg filtru używany do zawężania listy pakietów, uwzględniając identyfikator pakietu, opisie i tagach. |
@@ -48,7 +47,7 @@ Bez parametrów `Get-Package` Wyświetla listę pakietów zainstalowanych w proj
 | Skip | Pominięto pierwszy &lt;int&gt; pakiety z wyświetlonej listy.  |
 | AllVersions | Wyświetla wszystkie dostępne wersje każdego pakietu, a nie tylko najnowszą wersję. |
 | IncludePrerelease | Zawiera pakiety wersji wstępnej w wynikach. |
-| Wartość PageSize | *(3.0 +)*  Podczas używane z flagą-ListAvailable (wymagane), liczba pakietów, aby wyświetlić listę przed przekazaniem wiersza, aby kontynuować. |
+| PageSize | *(3.0 +)*  Podczas używane z flagą-ListAvailable (wymagane), liczba pakietów, aby wyświetlić listę przed przekazaniem wiersza, aby kontynuować. |
 
 Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
 
@@ -83,4 +82,3 @@ Get-Package -Updates
 # Lists packages installed in a specific project that have available updates
 Get-Package -Updates -ProjectName MyProject
 ```
-

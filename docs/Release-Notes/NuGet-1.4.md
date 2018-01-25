@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: e4856d0a-b408-4c60-ac51-f80ea06d9f79
 description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 1.4 NuGet."
 keywords: NuGet 1.4 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c4c27861c8697c75a06712b8ca6243b3b206cbb3
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: a69f4f5c7172817d711fa5e995cf6db3875c4810
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-14-release-notes"></a>Informacje o wersji 1.4 NuGet
 
@@ -150,10 +149,10 @@ Pełną listę prac elementów usunięto w wersji NuGet 1.4, sprawdź widok [NuG
 * [Problem 1036](http://nuget.codeplex.com/workitem/1036): dodawanie `NuGet Pack SomeProject.csproj` do po kompilacji już zdarzeń powoduje nieskończoną pętlę.
 * [Problem 961](http://nuget.codeplex.com/workitem/961): `-Source` flagi obsługuje ścieżek względnych.
 
-# <a name="nuget-14-update"></a>Aktualizacja NuGet 1.4
+## <a name="nuget-14-update"></a>Aktualizacja NuGet 1.4
 Wkrótce po wersji NuGet 1.4 znaleziono kilka problemów, które są ważne rozwiązać problem.
 Numer wersji tej aktualizacji 1.4 jest 1.4.20615.9020.
 
-## <a name="bug-fixes"></a>Poprawki błędów
+### <a name="bug-fixes"></a>Poprawki błędów
 * [Problem 1220](http://nuget.codeplex.com/workitem/1220): pakiet aktualizacji nie jest wykonywana `install.ps1` / `uninstall.ps1` we wszystkich projektach, jeśli istnieje więcej niż jednego projektu
 * [Problem 1156](http://nuget.codeplex.com/workitem/1156): konsoli Menedżera pakietów jest zablokowany na W2K3/XP (Jeśli nie zainstalowano programu Powershell 2)

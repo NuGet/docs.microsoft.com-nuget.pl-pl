@@ -1,32 +1,31 @@
 ---
-title: NuGet PackageReference w plikach projektu programu Visual Studio | Dokumentacja firmy Microsoft
+title: "Format NuGet PackageReference (odwołania do pakietu w plikach projektu) | Dokumentacja firmy Microsoft"
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 7/17/2017
+ms.date: 07/17/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 5a554e9d-1266-48c2-92e8-6dd00b1d6810
-description: "Szczegółowe informacje o NuGet PackageReference w plikach projektu obsługiwana przez NuGet 4.0 + i VS2017"
-keywords: "Zależności pakietów NuGet, odwołania do pakietu, projektu packages.config pliki, PackageReference, project.json, VS2017, Visual Studio 2017, NuGet 4"
+description: "Szczegółowe informacje o NuGet PackageReference w plikach projektu jako obsługiwany przez NuGet 4.0 +, VS2017 i .NET Core 2.0"
+keywords: NuGet package dependencies, package references, project files, PackageReference, packages.config, VS2017, Visual Studio 2017, NuGet 4, .NET Core 2.0
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 275957c94e4a4bb45f359cd48816acf4f286ebad
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 24a977f9de535559dcb0392749298ea502c3c7ce
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 
-Pakiet odwołań, za pomocą `PackageReference` węzła, umożliwiają zarządzanie zależności NuGet bezpośrednio w ramach plików projektu, zamiast konieczności oddzielnego `packages.config` lub `project.json` pliku. Ta metoda nie ma wpływu na inne aspekty NuGet; na przykład ustawienia w `NuGet.Config` plików (w tym źródeł pakietów) nadal są stosowane zgodnie z objaśnieniem w [Konfigurowanie zachowania NuGet](Configuring-NuGet-Behavior.md).
+Pakiet odwołań, za pomocą `PackageReference` węzła, umożliwiają zarządzanie zależności NuGet bezpośrednio w ramach plików projektu, zamiast konieczności oddzielnego `packages.config` pliku. Ta metoda nie ma wpływu na inne aspekty NuGet; na przykład ustawienia w `NuGet.Config` plików (w tym źródeł pakietów) nadal są stosowane zgodnie z objaśnieniem w [Konfigurowanie zachowania NuGet](Configuring-NuGet-Behavior.md).
 
 > [!Important]
 > Obecnie odwołania do pakietu są obsługiwane w Visual Studio 2017 tylko dla projektów .NET Core, .NET Standard projektów i projekty platformy UWP przeznaczonych dla systemu Windows 10 kompilacji 15063 (twórców aktualizacji).
 
-`PackageReference` Podejście pozwala na warunki MSBuild umożliwia wybieranie odwołania do pakietu dla platformy docelowej, konfiguracji, platformy lub inne grupy. Umożliwia on również precyzyjną kontrolę nad zależności i zawartości przepływu. Pod względem zachowania i [rozpoznawania zależności](Dependency-Resolution.md), jest taka sama jak `project.json`.
+`PackageReference` Podejście pozwala na warunki MSBuild umożliwia wybieranie odwołania do pakietu dla platformy docelowej, konfiguracji, platformy lub inne grupy. Umożliwia on również precyzyjną kontrolę nad zależności i zawartości przepływu.
 
 Więcej szczegółów o integracji programu MSBuild z odwołaniami do pakietu w plikach projektu, zobacz [NuGet pakietu i ich przywracania docelowych elementów MSBuild](../schema/msbuild-targets.md).
 
@@ -37,14 +36,14 @@ Dodawanie zależności w pliku projektu, używając następującej składni:
 ```xml
 <ItemGroup>
     <!-- ... -->
-    <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />    
+    <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
     <!-- ... -->
 </ItemGroup>
 ```
 
 ## <a name="controlling-dependency-version"></a>Kontrolowanie wersję zależności
 
-Konwencja określania wersji pakietu jest taka sama jak przy użyciu `packages.config` lub `project.json`:
+Konwencja określania wersji pakietu jest taka sama jak przy użyciu `packages.config`:
 
 ```xml
 <ItemGroup>
@@ -90,9 +89,8 @@ Następujących tagów metadanych kontrolować zależności zasobów:
 | Tag | Opis | Wartość domyślna |
 | --- | --- | --- |
 | IncludeAssets | Te zasoby będą używane. | wszystkie |
-| ExcludeAssets | Te zasoby nie będą używane. | brak | 
-| PrivateAssets | Te zasoby będą działały, ale nie będą przepływać do projektu nadrzędnego | pliki; analizatorów kompilacji |
-
+| ExcludeAssets | Te zasoby nie będą używane. | brak |
+| PrivateAssets | Te zasoby będą działały, ale nie będą przepływać do projektu nadrzędnego | contentfiles;analyzers;build |
 
 Dopuszczalne wartości tych tagów są następujące, z wieloma wartościami oddzielone średnikami z wyjątkiem z `all` i `none` której musi występować samodzielnie:
 
@@ -134,7 +132,7 @@ Na przykład docelowych `netstandard1.4` oraz `net452` , ale ma zależność, kt
 ```xml
 <ItemGroup>
     <!-- ... -->
-    <PackageReference Include="Newtonsoft.json" Version="9.0.1" Condition="'$(TargetFramework)' == 'net452'" />    
+    <PackageReference Include="Newtonsoft.json" Version="9.0.1" Condition="'$(TargetFramework)' == 'net452'" />
     <!-- ... -->
 </ItemGroup>
 ```

@@ -7,18 +7,17 @@ ms.date: 10/30/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: ba1d9742-9f1c-42ff-8c30-8e953e23c501
 description: "Protokoły nuget.org zmieniające się do interakcji z klientów NuGet."
 ms.reviewer:
 - kraigb
 - karann-msft
-ms.openlocfilehash: 0bc71795d120256b9eb14ca64141f0b69f01e620
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: 488a86a36a6bc83c91f0182bf437ddb83e707e31
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
-# <a name="nugetorg-protocols"></a>Protokoły nuget.org
+# <a name="nugetorg-protocols"></a>protokoły nuget.org
 
 Wchodzić w interakcje z nuget.org, klienci muszą wykonać niektórych protokołów. Ponieważ rozwijają zachować te protokoły, klienci muszą identyfikują wersja protokołu używanego podczas wywoływania metody nuget.org określonych interfejsów API. Dzięki temu nuget.org wprowadzenie zmian w sposób nierozdzielające starego klientów.
 
@@ -39,9 +38,7 @@ Sprawdzanie poprawności temu klucze interfejsu API utworzonych przez użytkowni
 
 Klienci są wymagane do przekazania następujący nagłówek, podczas tworzenia wywołań interfejsu API **wypychania** pakietów do nuget.org:
 
-```
-X-NuGet-Protocol-Version: 4.1.0
-```
+    X-NuGet-Protocol-Version: 4.1.0
 
 Należy pamiętać, że `X-NuGet-Client-Version` przypomina semantykę nagłówka, ale jest zarezerwowany do użycia tylko przez oficjalnego klienta NuGet. Innej klienci powinni używać `X-NuGet-Protocol-Version` nagłówek i podaną wartość.
 
@@ -53,9 +50,7 @@ Jeśli klient współdziała z usług zewnętrznych i należy sprawdzić, czy pa
 
 Ten interfejs API jest używany do pobierania klucz, sprawdź, czy zakres autora nuget.org, można sprawdzić poprawności pakietu posiadanych przez nią.
 
-```
-POST api/v2/package/create-verification-key/{ID}/{VERSION}
-```
+    POST api/v2/package/create-verification-key/{ID}/{VERSION}
 
 #### <a name="request-parameters"></a>Parametry żądania
 
@@ -63,11 +58,11 @@ Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------- | ------ | ------ | -------- | -----
 ID             | Adres URL    | string | Tak      | Identidier pakiet, dla którego wymagany jest klucz Sprawdź zakres
 WERSJA        | Adres URL    | string | Brak       | Wersja pakietu
-ApiKey-X-NuGet | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
+X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
 
 #### <a name="response"></a>Odpowiedź
 
-```
+```json
 {
     "Key": "{Verify scope key from nuget.org}",
     "Expires": "{Date}"
@@ -78,9 +73,7 @@ ApiKey-X-NuGet | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: 
 
 Ten interfejs API jest używany do sprawdzania poprawności klucza zakresu Sprawdź posiadane przez autora nuget.org pakietu.
 
-```
-GET api/v2/verifykey/{ID}/{VERSION}
-```
+    GET api/v2/verifykey/{ID}/{VERSION}
 
 #### <a name="request-parameters"></a>Parametry żądania
 
@@ -88,7 +81,7 @@ Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------  | ------ | ------ | -------- | -----
 ID             | Adres URL    | string | Tak      | Identyfikator pakietu, dla którego wymagany jest klucz Sprawdź zakres
 WERSJA        | Adres URL    | string | Brak       | Wersja pakietu
-ApiKey-X-NuGet | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {VERIFY_SCOPE_KEY}`
+X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {VERIFY_SCOPE_KEY}`
 
 > [!Note]
 > Ten klucz interfejsu API zakresu Sprawdź utraci ważność za dni lub przy pierwszym użyciu cokolwiek nastąpi najpierw.

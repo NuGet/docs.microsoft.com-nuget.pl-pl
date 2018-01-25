@@ -1,4 +1,4 @@
 1. W systemie Mac i Linux, należy zainstalować [Mono 4.4.2 lub nowszym](http://www.mono-project.com/docs/getting-started/install/).
-2. Odwiedź stronę [nuget.org/downloads](https://nuget.org/downloads) i wybierz wersję programu NuGet ma.
-3. Każda wersja jest `nuget.exe` pliku bezpośrednio. Poinstruuj przeglądarkę, aby zapisać plik w folderze wybranych przez użytkownika. Plik jest *nie* Instalator; uruchomiona z poziomu przeglądarki nic nie wyświetla.
+2. Odwiedź stronę [nuget.org/downloads](https://nuget.org/downloads) i wybierz NuGet 3.3 lub nowszej (2.8.6 nie jest zgodny z Mono). Zaleca się zawsze najnowszą wersję, a 4.1.0+ jest wymagana do publikowania pakietów nuget.org.
+3. Każda wersja jest `nuget.exe` pliku bezpośrednio. Poinstruuj przeglądarkę, aby zapisać plik w folderze wybranych przez użytkownika. Plik jest *nie* usługi Instalatora; nie znajdziesz już niczego po uruchomieniu bezpośrednio z przeglądarki.
 4. Dodaj folder, w którym została umieszczona `nuget.exe` Twojego zmiennej środowiskowej ŚCIEŻKA korzystać z narzędzia interfejsu wiersza polecenia z dowolnego miejsca.

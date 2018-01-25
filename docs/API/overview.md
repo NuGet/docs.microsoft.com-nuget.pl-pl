@@ -11,17 +11,16 @@ ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 8c81f1ac-18c7-44d1-b2e3-584fe85dee6f
 description: "Interfejs API NuGet jest zestaw punktów końcowych HTTP, które mogą służyć do pobierania pakietów, pobrać metadanych, publikowanie nowych pakietów itp."
 keywords: "Interfejsu API w wersji 3 NuGet, interfejsu API w wersji 2 NuGet, NuGet JSON, interfejsu API rejestracji NuGet, kontenera prosty interfejs API NuGet, nupkg NuGet interfejsu API, NuGet metadanych interfejsu API, wyszukiwanie NuGet interfejsu API, wypychania NuGet interfejsu API, interfejs API publikowania NuGe, NuGet usunąć interfejsu API, NuGet unlist interfejsu API, protokół NuGet"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 05ed17f12f413d29d97a253d7d55f154d4910834
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: c28b0912be6dbccab06078100cb71821c3658e08
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-api"></a>NuGet interfejsu API
 
@@ -81,7 +80,7 @@ Wszystkie sygnatury czasowe zwracane przez interfejs API są UTC lub w przeciwny
 
 Zlecenie   | Zastosowanie
 ------ | -----------
-POBIERZ    | Wykonuje operację tylko do odczytu, zazwyczaj podczas pobierania danych.
+GET    | Wykonuje operację tylko do odczytu, zazwyczaj podczas pobierania danych.
 HEAD   | Pobiera nagłówki odpowiedzi dla odpowiedniego `GET` żądania.
 UMIEŚĆ    | Tworzy z zasobem, który nie istnieje lub, jeśli istnieje, aktualizuje. Niektóre zasoby mogą nie obsługiwać aktualizacji.
 DELETE | Usuwa lub unlists zasobu.
@@ -112,8 +111,8 @@ W przypadku kodu stanu 500 poziomu klienta można zaimplementować mechanizm pon
 
 Nazwa                     | Opis
 ------------------------ | -----------
-ApiKey-X-NuGet           | Wymagane do wypychania i usuwania, zobacz [ `PackagePublish` zasobów](package-publish-resource.md)
-X--wersji klienta NuGet   | **Przestarzałe** i zastąpione przez`X-NuGet-Protocol-Version`
+X-NuGet-ApiKey           | Wymagane do wypychania i usuwania, zobacz [ `PackagePublish` zasobów](package-publish-resource.md)
+X-NuGet-Client-Version   | **Przestarzałe** i zastąpione przez`X-NuGet-Protocol-Version`
 X-NuGet-Protocol-Version | W niektórych przypadkach tylko na nuget.org wymagane, zobacz [protokołów nuget.org](NuGet-Protocols.md)
 
 ## <a name="authentication"></a>Uwierzytelnianie

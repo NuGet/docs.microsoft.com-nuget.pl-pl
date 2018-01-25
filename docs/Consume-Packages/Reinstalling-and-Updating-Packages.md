@@ -13,11 +13,11 @@ keywords: "NuGet pakietu instalacji, ponowna instalacja pakietu NuGet, Przywraca
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6a198b371c86166e2bcdee7f6cf2a6c971bea0a3
-ms.sourcegitcommit: bdcd2046b1b187d8b59716b9571142c02181c8fb
+ms.openlocfilehash: 75d53bb6d2fecf6ba4c44ea3f03af6834e3fd46c
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak zainstalować i pakietów aktualizacji
 
@@ -25,7 +25,7 @@ Istnieje wiele sytuacji opisanego poniżej w sekcji [kiedy należy ponownie zain
 
 Aktualizowanie i ponowne zainstalowanie pakietów odbywa się w następujący sposób:
 
-| Metoda | Aktualizacja | Zainstaluj ponownie | 
+| Metoda | Aktualizacja | Zainstaluj ponownie |
 | --- | --- | --- |
 | Konsola Menedżera pakietów (opisany w [pakiet aktualizacji przy użyciu](#using-update-package)) | `Update-Package`polecenie | `Update-Package -reinstall`polecenie |
 | Interfejs użytkownika Menedżera pakietów | Na **aktualizacje** , wybierz jeden lub więcej pakietów i zaznacz **aktualizacji** | Na **zainstalowana** , wybierz pakiet, zapisz jego nazwę, a następnie wybierz **Odinstaluj**. Przełącz się do **Przeglądaj** , wyszukaj nazwę pakietu, wybierz go, a następnie wybierz **zainstalować**). |
@@ -63,7 +63,7 @@ Aby ustawić ograniczenie, otwórz `packages.config` w edytorze tekstów, zlokal
 
 We wszystkich przypadkach Notacja opisanego w [wersji pakietu](../reference/package-versioning.md#version-ranges-and-wildcards).
 
-## <a name="using-update-package"></a>Przy użyciu pakietu aktualizacji
+## <a name="using-update-package"></a>Using Update-Package
 
 Trwa mając na uwadze [zagadnienia](#considerations) opisane poniżej, można łatwo ponownie zainstalować wszystkie pakietu przy użyciu [polecenia pakiet aktualizacji](../Tools/ps-ref-update-package.md) w konsoli Menedżera pakietów programu Visual Studio (**narzędzia**  >  **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**):
 
@@ -85,6 +85,7 @@ Domyślnie `Update-Package` ma wpływ na wszystkie pakiety w rozwiązaniu. Aby o
 # Reinstall the package in just MyProject
 Update-Package <package_name> -ProjectName MyProject -reinstall
 ```
+
 Do *aktualizacji* wszystkie pakiety w projekcie (lub ponownej instalacji przy użyciu `-reinstall`), użyj `-ProjectName` bez określania dowolnego określonego pakietu:
 
 ```ps
@@ -98,7 +99,7 @@ Aby zaktualizować wszystkich pakietów w rozwiązaniu, wystarczy użyć `Update
 Update-Package 
 ```
 
-Aktualizowanie pakietów w projekt lub rozwiązanie przy użyciu `project.json` lub [pakietu odwołań w plikach projektu](../Consume-Packages/Package-References-in-Project-Files.md) zawsze aktualizacji do najnowszej wersji pakietu (z wyjątkiem pakiety wersji wstępnej). Projekty używające `packages.config` w razie potrzeby można ograniczyć wersje aktualizacji zgodnie z poniższym opisem w [wersji uaktualnienie Constraining](#constraining-upgrade-versions).
+Aktualizowanie pakietów w projekt lub rozwiązanie przy użyciu [PackageReference](../Consume-Packages/Package-References-in-Project-Files.md) zawsze aktualizacji do najnowszej wersji pakietu (z wyjątkiem pakiety wersji wstępnej). Projekty używające `packages.config` w razie potrzeby można ograniczyć wersje aktualizacji zgodnie z poniższym opisem w [wersji uaktualnienie Constraining](#constraining-upgrade-versions).
 
 Aby uzyskać szczegółowe informacje o poleceniu, zobacz [pakiet aktualizacji](../Tools/ps-ref-update-package.md) odwołania.
 
@@ -122,4 +123,3 @@ Następujące może mieć wpływ na podczas ponownej instalacji pakietu:
 
 1. **Ponowne instalowanie pakietów w przypadku wersji zależne**
     - Zgodnie z powyższymi wskazówkami, ponowna instalacja pakietu nie zmienia wersji wszystkie zainstalowane pakiety, które od niego zależne. Jest to możliwe, a następnie tej zależności ponowna instalacja może spowodować przerwanie zależnego pakietu.
-

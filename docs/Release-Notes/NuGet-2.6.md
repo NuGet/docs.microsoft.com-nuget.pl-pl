@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: d99bbf29-2b9a-4dc5-a823-5eb4f9e30f7f
 description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 2.6 NuGet."
 keywords: NuGet 2.6 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b34c0049a5ba42f6bcd5b36fa5b0ba261e27ecd5
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: c2df9721e6941c110948af1a2d4ec4b7aeb476dd
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-26-release-notes"></a>Informacje o wersji version 2.6 NuGet
 
@@ -36,9 +35,9 @@ Aby zapewnić najlepsze możliwe pomocy technicznej dla programu Visual Studio 2
 Począwszy od wersji 2.6 NuGet, firma Microsoft będzie publikować dwóch rozszerzeń, jak pokazano poniżej:
 
 1. [Menedżer pakietów NuGet](https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManager) (dotyczy programu Visual Studio 2010 i 2012)
-1. [Menedżer pakietów NuGet dla programu Visual Studio 2013](https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2013)
+1. [NuGet Package Manager for Visual Studio 2013](https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2013)
 
-Z tego podziału [nuget.org](https://nuget.org) przycisk "Instalowania NuGet" Strona główna teraz nastąpi przekierowanie do [instalowania NuGet](../guides/install-nuget.md) strony, gdzie można znaleźć więcej informacji na temat instalacji różnych klientów NuGet.
+Z tego podziału [nuget.org](https://nuget.org) przycisk "Instalowania NuGet" Strona główna umożliwia przejście do [instalowania NuGet](../install-nuget-client-tools.md) strony, gdzie można znaleźć więcej informacji na temat instalacji różnych klientów NuGet.
 
 <a name="xdt"></a>
 
@@ -53,8 +52,8 @@ W przypadku kwietnia 2013 wprowadziliśmy dwóch big ogłoszenia dotyczące NuGe
 Aby skorzystać z pomocy technicznej XDT NuGet, sposobu podobne do tych [bieżącej konfiguracji funkcji przekształcenia](../create-packages/source-and-config-file-transformations.md).
 Pliki transformacji zostaną dodane do folderu zawartości pakietu. Jednak przekształcenia konfiguracji używanie jednego pliku dla instalacji i dezinstalacji, przekształcenia XDT Włącz precyzyjną kontrolę nad obu tych procesów przy użyciu następujących plików:
 
-- Web.config.Install.XDT
-- Web.config.Uninstall.XDT
+- Web.config.install.xdt
+- Web.config.uninstall.xdt
 
 Ponadto NuGet używa sufiks pliku w celu określenia, który aparat Uruchom dla przekształceń, aby pakiety przy użyciu istniejących web.config.transforms będą nadal działać. Przekształcenia XDT można również będą stosowane do dowolnego pliku XML (nie tylko plik web.config), więc można wykorzystać to dla innych aplikacji w projekcie.
 
@@ -71,8 +70,8 @@ NuGet 2.6 rozszerza logikę Konfigurowanie NuGet wyszukując hierarchii folder n
 
 1. %ProgramData%\NuGet\Config\*.config
 2. %ProgramData%\NuGet\Config\{IDE}\*.config
-3. %ProgramData%\NuGet\Config\{IDE}\{wersji}\*.config
-4. %ProgramData%\NuGet\Config\{IDE}\{wersji}\{SKU}\*.config
+3. %ProgramData%\NuGet\Config\{IDE}\{Version}\*.config
+4. %ProgramData%\NuGet\Config\{IDE}\{Version}\{SKU}\*.config
 
 Na tej liście symbol zastępczy {IDE} dotyczy IDE, w którym jest uruchomiona NuGet, tak więc w przypadku programu Visual Studio będzie "VisualStudio". {{Wersja} i {SKU} symbole zastępcze są udostępniane przez IDE (np. "11.0" i "WDExpress", "VWDExpress" i "Zaawansowany", odpowiednio). Folder następnie może zawierać wiele różnych *.config plików.
 W związku z tym firmy składnika xyz w ramach ich Instalatora produktu, dodać źródło niestandardowe pakietu, które będą widoczne tylko w wersjach Professional i Ultimate programu Visual Studio 2012, tworząc następująca ścieżka pliku:

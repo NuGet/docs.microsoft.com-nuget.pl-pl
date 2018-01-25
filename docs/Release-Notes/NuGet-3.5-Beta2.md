@@ -7,19 +7,18 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 0b76064f-0607-438a-bbf8-dd862690f48e
 description: "Informacje o wersji programu NuGet 3.5 Beta 2 tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
 keywords: 3.5 NuGet w wersji Beta 2 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6dd388e52308d2f3cd32d4d6c66c2868f0ae2a41
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 4073b669c19f9e96ebd35ba269919b5f42313e7c
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
-# <a name="35-beta2-release-notes"></a>3.5 informacje o wersji Beta2
+# <a name="nuget-35-beta2-release-notes"></a>Informacje o wersji 3.5 Beta2 NuGet
 
 [Informacje o wersji 3.5 Beta NuGet](../release-notes/nuget-3.5-Beta.md) | [informacje o wersji 3.5 RC NuGet](../release-notes/nuget-3.5-RC.md)
 
@@ -28,8 +27,6 @@ NuGet 3.5 Beta 2 RTM wydania dla programu Visual Studio 2013 i nuget.exe 27 czer
 [Pełny wykaz zmian](https://github.com/NuGet/NuGet.Client/compare/release-3.5.0-beta...release-3.5.0-beta2)
 
 [Lista problemów](https://github.com/Nuget/Home/issues?q=is%3Aissue+milestone%3A%223.5+Beta2%22+is%3Aclosed)
-
-# <a name="notable-changes"></a>Ważne zmiany
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 

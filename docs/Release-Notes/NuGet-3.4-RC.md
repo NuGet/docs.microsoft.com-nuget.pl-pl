@@ -7,17 +7,16 @@ ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 239d3d95-5a72-4fac-8389-b6deac27884d
 description: "Informacje o wersji programu NuGet 3.4 RC tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
 keywords: NuGet 3.4 informacje o wersji RC, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 86c37d516eede2ac5e6e5e842f687a8f3b17c0a4
-ms.sourcegitcommit: d0ba99bfe019b779b75731bafdca8a37e35ef0d9
+ms.openlocfilehash: 749068683d6e2a3fd9dd29c69d9ff50137acdd46
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="nuget-34-rc-release-notes"></a>Informacje o wersji 3.4 RC NuGet
 
@@ -25,9 +24,9 @@ ms.lasthandoff: 12/14/2017
 
 NuGet 3.4-RC został wydany 3 marca 2016 obok programu Visual Studio 2015 Update 2 RC i został skompilowany z kilka rozwiązań w umysły:
 
-*  Obsługa Platform
-*  Ulepszenia wydajności
-*  Drobne ulepszenia interfejsu użytkownika
+* Obsługa Platform
+* Ulepszenia wydajności
+* Drobne ulepszenia interfejsu użytkownika
 
 Następujące funkcje są dostępne w tej wersji RC z planowane 3.4 ostatecznej wersji.
 

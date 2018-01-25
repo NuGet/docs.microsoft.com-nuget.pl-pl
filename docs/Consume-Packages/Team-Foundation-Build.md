@@ -3,35 +3,35 @@ title: "Wskazówki pakietu NuGet Przywracanie z Team Foundation Build | Dokument
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 1/9/2017
+ms.date: 01/09/2017
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
-ms.assetid: 3113cccd-35f7-4980-8a6e-fc06556b5064
 description: "Przewodnik jak przywracanie z z Team Foundation Build (TFS i Visual Studio Team Services) pakietów NuGet."
 keywords: "Przywracanie pakietu NuGet, NuGet i TFS, NuGet i programu VSTS systemów kompilacji NuGet, team foundation build, niestandardowych projektów MSBuild, tworzenia chmury, ciągłej integracji"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 82decfa1a39cb99c405840a8f13b0bc993111c09
-ms.sourcegitcommit: a40c1c1cc05a46410f317a72f695ad1d80f39fa2
+ms.openlocfilehash: a90b4bb9bd3a5b9200179ab16f16b276abcda981
+ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="setting-up-package-restore-with-team-foundation-build"></a>Konfigurowanie Przywracanie pakietu z Team Foundation Build
 
-> Dotyczy:
->  - W dowolnej wersji programu TFS niestandardowych projektów MSBuild
->  - Team Foundation Server 2012 lub starszy
->  - Team Foundation kompilacji procesu szablonów niestandardowych migracji do programu TFS 2013 lub nowszej
->  - Szablony procesu kompilacji z zestawem funkcji Przywracanie Nuget
->
-> Jeśli używasz programu Visual Studio Team Services lub lokalnymi Team Foundation Server 2013 z jego szablony procesu kompilacji, następuje automatyczne przywracanie pakietu jako część procesu kompilacji.
-
-W tej sekcji zawierają szczegółowe wskazówki dotyczące przywracania pakietów w ramach [Team Services Build](/vsts/build-release/index) zarówno dla Git i kontroli wersji programu Team Services.
+Ten artykuł zawiera szczegółowy przewodnik na temat pod kątem przywracania pakietów w ramach [Team Services Build](/vsts/build-release/index) zarówno dla Git i kontroli wersji programu Team Services.
 
 Chociaż ten przewodnik jest specyficzna dla scenariusza za pomocą programu Visual Studio Team Services, również zastosować do innych kontroli wersji i kompilacji systemu.
+
+Dotyczy:
+
+- W dowolnej wersji programu TFS niestandardowych projektów MSBuild
+- Team Foundation Server 2012 lub starszy
+- Team Foundation kompilacji procesu szablonów niestandardowych migracji do programu TFS 2013 lub nowszej
+- Szablony procesu kompilacji z zestawem funkcji Przywracanie Nuget
+
+Jeśli używasz programu Visual Studio Team Services lub Team Foundation Server 2013 z jego szablony procesu kompilacji, odbywa się Przywracanie pakietu automatycznych jako część procesu kompilacji.
 
 ## <a name="the-general-approach"></a>Metody ogólne
 
@@ -43,7 +43,7 @@ Obsługiwał NuGet [Przywracanie pakietów](../consume-packages/package-restore.
 
 Utrwalenie tego problemu jest upewnienie się, że pakiety zostaną przywrócone jako pierwszy krok w procesie kompilacji. NuGet 2.7 + ułatwia to uproszczona wiersza polecenia:
 
-```
+```cli
 nuget restore path\to\solution.sln
 ```
 
@@ -87,7 +87,7 @@ Firma Microsoft jednak zaewidencjonowania `nuget.exe` jest wymagana podczas komp
 
 Kod źródłowy jest w obszarze `src` folderu. Mimo że nasze pokaz używa tylko pojedyncze rozwiązanie, należy sobie wyobrazić, że ten folder zawiera więcej niż jedno rozwiązanie.
 
-### <a name="ignore-files"></a>Ignoruj plików
+### <a name="ignore-files"></a>Pliki ignorowanych
 
 > [!Note]
 > Obecnie [znaną usterką w kliencie programu NuGet](https://nuget.codeplex.com/workitem/4072) który powoduje, że klient nadal dodawać `packages` folder z kontrolą wersji. Obejście tego problemu jest wyłączenie integracji kontroli źródła. Aby to zrobić, musisz `Nuget.Config ` w pliku `.nuget` folderu, który jest zbliżony do rozwiązania. Ten folder nie istnieje, należy go utworzyć. W [ `Nuget.Config` ](../consume-packages/configuring-nuget-behavior.md), dodaj następującą zawartość:
@@ -100,8 +100,7 @@ Kod źródłowy jest w obszarze `src` folderu. Mimo że nasze pokaz używa tylko
 </configuration>
 ```
 
-
-Aby komunikować się do systemu kontroli wersji, że firma Microsoft nie opcje do wyboru w **pakiety** folderów, również po dodaniu ignorowania plików dla obu git (`.gitignore`) oraz TF kontroli wersji (`.tfignore`). Te pliki w tym artykule opisano wzorców plików, których nie chcesz do zaewidencjonowania.
+Do komunikowania się do systemu kontroli wersji, że firma Microsoft nie opcje do wyboru w **pakiety** folderów, również po dodaniu ignorowania plików dla obu git (`.gitignore`) oraz TF kontroli wersji (`.tfignore`). Te pliki w tym artykule opisano wzorców plików, których nie chcesz do zaewidencjonowania.
 
 `.gitignore` Pliku wygląda następująco:
 
@@ -127,7 +126,7 @@ Kontrola wersji TF obsługuje mechanizm bardzo podobne za pośrednictwem [.tfign
     obj
     packages
 
-## <a name="buildproj"></a>Build.Proj
+## <a name="buildproj"></a>build.proj
 
 W naszym pokaz możemy przechowywać proces kompilacji dość proste. Utworzymy projektu MSBuild, która tworzy wszystkie rozwiązania oraz zapewnienie, że pakiety są przywracane przed kompilacją rozwiązania.
 
