@@ -12,11 +12,11 @@ keywords: "Pliki konfiguracji programu NuGet, NuGet ustawienia zachowania NuGet,
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 84bd351a8ce850d281f60dfd675a284d5de17645
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
+ms.openlocfilehash: 834f0181573f8ae793ddb5f246b90e5448ee31ae
+ms.sourcegitcommit: 24997b5345a997501fff846c9bd73610245ae0a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configuring-nuget-behavior"></a>Konfigurowanie zachowania NuGet
 
