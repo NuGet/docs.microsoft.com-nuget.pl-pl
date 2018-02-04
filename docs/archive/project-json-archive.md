@@ -12,11 +12,11 @@ keywords: Plik project.json NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 1cca7304ee3dbecaed3fbb337ad2d31f383f4c43
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
+ms.openlocfilehash: 42a40c6c637839c13effc9e476ac5702a92cfd2a
+ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="projectjson-archive"></a>archiwum Project.JSON
 
@@ -60,19 +60,19 @@ Współpracuje z `project.json`.
 
 ## <a name="dependency-resolution-with-packagereference"></a>Rozpoznawanie zależności z PackageReference
 
-*Pierwotnie w [rozpoznawania zależności](../Consume-Packages/dependency-resolution.md#dependency-resolution-with-packagereference).*
+*Pierwotnie w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#dependency-resolution-with-packagereference).*
 
 Zachowanie PackageReference dotyczą również `project.json`. Przywracanie NuGet zapisuje wykresu zależności w pliku o nazwie `project.lock.json` obok `project.json`.
 
 ## <a name="managing-dependency-assets"></a>Zarządzanie zasobami zależności
 
-*Pierwotnie w [rozpoznawania zależności](../Consume-Packages/dependency-resolution.md#managing-dependency-assets).*
+*Pierwotnie w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#managing-dependency-assets).*
 
 Korzystając z `project.json` format, można kontrolować, które zasoby z przepływu zależności w projekcie najwyższego poziomu. Aby uzyskać więcej informacji, zobacz [project.json](project-json.md).
 
 ## <a name="excluding-references"></a>Z wyjątkiem odwołania
 
-*Pierwotnie w [rozpoznawania zależności](../Consume-Packages/dependency-resolution.md#excluding-references).*
+*Pierwotnie w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#excluding-references).*
 
 - `project.json`: Dodaj `"exclude" : "all"` w zależność PackageC:
 
@@ -89,21 +89,21 @@ Korzystając z `project.json` format, można kontrolować, które zasoby z przep
 
 ## <a name="resolving-incompatible-package-errors"></a>Rozwiązywanie błędów niezgodne pakietu
 
-*Pierwotnie w [rozpoznawania zależności](../Consume-Packages/dependency-resolution.md#resolving-incompatible-package-errors).*
+*Pierwotnie w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#resolving-incompatible-package-errors).*
 
 Dodano sposób rozwiązywaniu problemów z błędami:
 
-- **Nie zaleca się**: jako rozwiązanie tymczasowe podczas pracy z autorem pakietu, projektów przeznaczonych dla `netcore`, `netstandard`, i `netcoreapp` są oznaczane innych platform, jako niezgodna, umożliwiając pakietów przeznaczonych dla tych innych platform, które mają być używane. Zobacz [importuje project.json](project-json.md#imports) i [docelowy programu MSBuild przywracania PackageTargetFallback](../schema/msbuild-targets.md#packagetargetfallback). Może to spowodować nieoczekiwane wyniki, więc ponownie najlepiej rozwiązać niezgodności pakietu przy pracy z autorem pakietu podczas aktualizacji.
+- **Nie zaleca się**: jako rozwiązanie tymczasowe podczas pracy z autorem pakietu, projektów przeznaczonych dla `netcore`, `netstandard`, i `netcoreapp` są oznaczane innych platform, jako niezgodna, umożliwiając pakietów przeznaczonych dla tych innych platform, które mają być używane. Zobacz [importuje project.json](project-json.md#imports) i [docelowy programu MSBuild przywracania PackageTargetFallback](../reference/msbuild-targets.md#packagetargetfallback). Może to spowodować nieoczekiwane wyniki, więc ponownie najlepiej rozwiązać niezgodności pakietu przy pracy z autorem pakietu podczas aktualizacji.
 
 ## <a name="target-frameworks"></a>Docelowych platform
 
-*Pierwotnie w [platform docelowych](../schema/target-frameworks.md).*
+*Pierwotnie w [platform docelowych](../reference/target-frameworks.md).*
 
 - [Project.JSON](project-json.md): `frameworks` wersji framework, które mogą być kompilowane projektu przed określa węzła.
 
 ## <a name="creating-a-package"></a>Tworzenie pakietu
 
-*Pierwotnie w [tworzenia pakietu](../Create-Packages/creating-a-package.md)*
+*Pierwotnie w [tworzenia pakietu](../create-packages/creating-a-package.md)*
 
 ### <a name="setting-a-package-type"></a>Ustawienie typu pakietu
 
@@ -136,24 +136,24 @@ Korzystając z `project.json` formacie NuGet również obsługuje za pomocą not
 
 ### <a name="nugetconfig-reference"></a>Odwołanie do pliku NuGet.Config.
 
-*Pierwotnie w [odwołanie do pliku NuGet.Config](../schema/nuget-config-file.md).*
+*Pierwotnie w [odwołanie do pliku NuGet.Config](../reference/nuget-config-file.md).*
 
 `globalPackagesFolder`dotyczy tylko `project.json`.
 
 ### <a name="nuspec-file-reference"></a>Odwołanie do pliku nuspec
 
-*Pierwotnie w [odwołania nuspec](../schema/nuspec.md).*
+*Pierwotnie w [odwołania nuspec](../reference/nuspec.md).*
 
 `<contentFiles>` Element jest używany zamiast `<files>` z `project.json`.
 
 ### <a name="package-manager-options-control"></a>Kontrolki opcji Menedżera pakietów
 
-*Pierwotnie w [informacje o interfejsie użytkownika Menedżera pakietów](../tools/Package-Manager-UI.md).*
+*Pierwotnie w [informacje o interfejsie użytkownika Menedżera pakietów](../tools/package-manager-ui.md).*
 
 Projektów przy użyciu `project.json` odwoływać się tylko format Pokaż **Pokaż okno podglądu** opcji.
 
 ### <a name="visual-studio-templates"></a>Szablony Visual Studio
 
-*Pierwotnie w [pakietów NuGet w szablony Visual Studio](../Visual-Studio-Extensibility/visual-studio-templates.md).*
+*Pierwotnie w [pakietów NuGet w szablony Visual Studio](../visual-studio-extensibility/visual-studio-templates.md).*
 
 Najlepsze rozwiązania: szablony nie zawierają `project.json` pliku, a nie dołączaj lub żadnych odwołań do zawartości lub zostanie dodany podczas instalowania pakietów NuGet.

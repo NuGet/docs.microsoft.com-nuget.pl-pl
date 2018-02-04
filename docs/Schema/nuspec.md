@@ -14,10 +14,10 @@ ms.reviewer:
 - karann-msft
 - unniravindranathan
 ms.openlocfilehash: 95f86d8cd11bce8f0f1fed068370311f575601de
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
+ms.sourcegitcommit: 24997b5345a997501fff846c9bd73610245ae0a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/31/2018
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 

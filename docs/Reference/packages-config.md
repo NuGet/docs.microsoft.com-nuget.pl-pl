@@ -12,11 +12,11 @@ keywords: "Pliku packages.config NuGet, odwołania do pakietu NuGet, zależnośc
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 3523b108f4d3ef86436e2bda89b5a656c11000b6
-ms.sourcegitcommit: 24997b5345a997501fff846c9bd73610245ae0a6
+ms.openlocfilehash: 1839ca4761f6f35d0a650cdc2e3cf36b1b08ef2d
+ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="packagesconfig-reference"></a>Odwołanie do pliku Packages.config
 
@@ -30,7 +30,7 @@ Schemat jest prosty: następujące standardowy nagłówek XML jest jeden `<packa
 | --- | --- | --- |
 | identyfikator | Tak | Identyfikator pakietu, takich jak Newtonsoft.json lub Microsoft.AspNet.Mvc. | 
 | version | Tak | Dokładną wersję pakietu do zainstalowania, takich jak 3.1.1 lub 4.2.5.11-beta. Ciąg wersji musi mieć co najmniej trzech cyfr; czwarty jest opcjonalne, jak jest sufiksem wersji wstępnej. Zakresy są niedozwolone. | 
-| targetFramework | Nie | [Target framework moniker (TFM)](Target-Frameworks.md) do zastosowania podczas instalowania pakietu. To jest ustawiany do projektu docelowego podczas instalowania pakietu. Dzięki temu różnych `<package>` elementy mogą mieć różne TFMs. Na przykład jeśli tworzysz projekt przeznaczony dla platformy .NET w wersji 4.5.2 pakiety zainstalowane w tym momencie użyje TFM z net452. Jeśli użytkownik; później Przekieruj projektu 4.6 .NET i dodać więcej pakietów użyje tych TFM net46. Niezgodność między docelowym projektu i `targetFramework` atrybutami spowoduje wygenerowanie ostrzeżenia, w tym przypadku można ponownie zainstalować odpowiednich pakietów. | 
+| targetFramework | Nie | [Target framework moniker (TFM)](target-frameworks.md) do zastosowania podczas instalowania pakietu. To jest ustawiany do projektu docelowego podczas instalowania pakietu. Dzięki temu różnych `<package>` elementy mogą mieć różne TFMs. Na przykład jeśli tworzysz projekt przeznaczony dla platformy .NET w wersji 4.5.2 pakiety zainstalowane w tym momencie użyje TFM z net452. Jeśli użytkownik; później Przekieruj projektu 4.6 .NET i dodać więcej pakietów użyje tych TFM net46. Niezgodność między docelowym projektu i `targetFramework` atrybutami spowoduje wygenerowanie ostrzeżenia, w tym przypadku można ponownie zainstalować odpowiednich pakietów. | 
 | allowedVersions | Nie | Dla zakresu dozwolonych wersji tego pakietu zastosowane podczas aktualizacji pakietu (zobacz [wersji uaktualnienie Constraining](../consume-packages/reinstalling-and-updating-packages.md#constraining-upgrade-versions). Robi *nie* wpływają na jakie pakietu jest instalowana podczas instalacji lub operację przywracania. Zobacz [wersji pakietu](../reference/package-versioning.md#version-ranges-and-wildcards) składni. Interfejs użytkownika PackageManager dodatkowo wyłącza wszystkie wersje poza dozwolonym zakresem. | 
 | DevelopmentDependency | Nie | Jeśli korzystanie z projektu sam tworzy pakietu NuGet, ustawienie to `true` dla zależności uniemożliwia dołączanie po utworzeniu pakietu odbierającą tego pakietu. Wartość domyślna to `false`. | 
 

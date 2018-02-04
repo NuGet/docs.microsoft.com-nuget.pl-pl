@@ -12,11 +12,11 @@ keywords: "Utwórz pakiet, pakietów dla platformy Xamarin, pakietów i platform
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: fbb1c3fccf04202dedc686583b3a2f27f105266a
-ms.sourcegitcommit: 24997b5345a997501fff846c9bd73610245ae0a6
+ms.openlocfilehash: 2f0131e4f447e2e0ab5a1d17e476a425eaa01b61
+ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-cross-platform-packages"></a>Tworzenie pakietów i platform
 
@@ -48,9 +48,9 @@ W tym przewodniku tworzenia pakietu NuGet i platform, który może być używana
 
 Wynikowa rozwiązania zawiera dwa projekty PCL, wraz z różnych projektów specyficzne dla platformy:
 
-- PCL o nazwie `Plugin.LoggingLibrary.Abstractions (Portable)`, w tym przypadku definiuje interfejs publiczny (powierzchni interfejsu API) składnika `ILoggingLibrary` zawarte w pliku ILoggingLibrary.cs interfejsu. Jest to, gdy będziesz definiować interfejs do biblioteki.
+- PCL o nazwie `Plugin.LoggingLibrary.Abstractions (Portable)`, w tym przypadku definiuje interfejs publiczny (powierzchni interfejsu API) składnika `ILoggingLibrary` zawarte w pliku ILoggingLibrary.cs interfejsu. Jest to, gdzie zdefiniować interfejs do biblioteki.
 - Inne PCL `Plugin.LoggingLibrary (Portable)`, zawiera kod w CrossLoggingLibrary.cs, który będzie zlokalizować specyficzne dla platformy implementację abstrakcyjnej interfejsu w czasie wykonywania. Zwykle nie należy do modyfikowania tego pliku.
-- Projekty poszczególnych platform, takich jak `Plugin.LoggingLibrary.Android`, każdy zawiera zawierają natywnych implementacji interfejsu w ich odpowiednich plików LoggingLibraryImplementation.cs. Jest to, gdzie będzie kompilacji kodu biblioteki.
+- Projekty poszczególnych platform, takich jak `Plugin.LoggingLibrary.Android`, każdy zawiera zawierają natywnych implementacji interfejsu w ich odpowiednich plików LoggingLibraryImplementation.cs. Jest to, które służy do tworzenia biblioteki kodu.
 
 Domyślnie plik ILoggingLibrary.cs projektu abstrakcje zawiera definicję interfejsu, ale żadnych metod. Na potrzeby tego przewodnika, Dodaj `Log` metody w następujący sposób:
 
@@ -103,7 +103,7 @@ Aby zaimplementować implementacja specyficzna dla platformy `ILoggingLibrary` i
 1. Powtórz tej implementacji w projektach dla wszystkich platform, które mają być obsługiwane.
 1. Kliknij prawym przyciskiem myszy projekt iOS, wybierz **właściwości**, kliknij przycisk **kompilacji** i Usuń "\iPhone" z **ścieżka wyjściowa** i **pliku dokumentacji XML**  ustawienia. Dotyczy to tylko nowsze wygodę w tym przewodniku. Zapisz plik po zakończeniu.
 1. Kliknij prawym przyciskiem myszy rozwiązanie, wybierz **programu Configuration Manager...** i sprawdź **kompilacji** pól PCLs i poszczególnych platform w przypadku obsługi.
-1. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz **Kompiluj rozwiązanie** Sprawdź swoją pracę i utworzyć artefaktów, które będzie pakietu w polu. Jeśli występują błędy dotyczące brakujących odwołań, kliknij prawym przyciskiem myszy rozwiązanie, wybierz **przywracania pakietów NuGet** zainstalować zależności i skompiluj ponownie.
+1. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz **Kompiluj rozwiązanie** Sprawdź swoją pracę i utworzyć artefaktów, które można następnie pakietu. Jeśli występują błędy dotyczące brakujących odwołań, kliknij prawym przyciskiem myszy rozwiązanie, wybierz **przywracania pakietów NuGet** zainstalować zależności i skompiluj ponownie.
 
 > [!Note]
 > Aby utworzyć dla systemu iOS należy Mac sieciowe podłączone do programu Visual Studio, zgodnie z opisem w [wprowadzenie do platformy Xamarin.iOS dla programu Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/introduction_to_xamarin_ios_for_visual_studio/). Jeśli nie masz dostępnych Mac, należy wyczyścić projektu systemu iOS w programie configuration manager (krok 3 powyżej).
@@ -117,7 +117,7 @@ nuget spec
 ```
 
 1. Zmień nazwę tego pliku do `LoggingLibrary.nuspec` i otwórz go w edytorze.
-1. Zaktualizuj plik zgodnie z poniższym, zamieniając twoje_imie odpowiednią wartość. `<id>` Wartość, w szczególności musi być unikatowa w nuget.org (konwencje nazewnictwa opisane w temacie [utworzenie pakietu](../create-packages/creating-a-package.md#choosing-a-unique-package-identifier-and-setting-the-version-number)). Należy również zauważyć, że należy również zaktualizować tagi autora oraz opis lub zostanie wyświetlony błąd podczas wykonywania kroku pakowania.
+1. Zaktualizuj plik zgodnie z poniższym, zamieniając twoje_imie odpowiednią wartość. `<id>` Wartość, w szczególności musi być unikatowa w nuget.org (konwencje nazewnictwa opisane w temacie [utworzenie pakietu](../create-packages/creating-a-package.md#choosing-a-unique-package-identifier-and-setting-the-version-number)). Należy również zauważyć, że należy również zaktualizować tagi autora oraz opis lub wystąpi błąd podczas wykonywania kroku pakowania.
 
     ```xml
     <?xml version="1.0"?>
@@ -259,7 +259,7 @@ Z ukończonej `.nuspec` odwołuje się do wszystkich plików, które należy uwz
 nuget pack LoggingLibrary.nuspec
 ```
 
-Spowoduje to wygenerowanie `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`. Otwarcie tego pliku w narzędzia, takiego jak [Explorer pakietu NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzanie wszystkich węzłów, zobaczysz następującą zawartość:
+Spowoduje to wygenerowanie `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`. Otwarcie tego pliku w narzędzia, takiego jak [Explorer pakietu NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzanie wszystkich węzłów, zobacz następującą zawartość:
 
 ![Wyświetlanie pakietu LoggingLibrary Explorer pakietu NuGet](media/Cross-Platform-PackageExplorer.png)
 
@@ -270,7 +270,7 @@ Aby udostępnić pakietu inni deweloperzy, postępuj zgodnie z instrukcjami [opu
 
 ## <a name="related-topics"></a>Tematy pokrewne
 
-- [Plik Nuspec odwołania](../schema/nuspec.md)
+- [Plik Nuspec odwołania](../reference/nuspec.md)
 - [Pakiety symboli](../create-packages/symbol-packages.md)
 - [Przechowywanie wersji pakietu](../reference/package-versioning.md)
 - [Obsługa wielu wersje programu .NET Framework](../create-packages/supporting-multiple-target-frameworks.md)

@@ -13,19 +13,19 @@ ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c69ff6efca2dcc4a5c1242277f537012e9f4610f
-ms.sourcegitcommit: 24997b5345a997501fff846c9bd73610245ae0a6
+ms.openlocfilehash: dbeec1d3332571d8e9616dfe9675b5fcf3c85589
+ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="target-frameworks"></a>Docelowych platform
 
 NuGet używa odwołań platformy docelowej w różnych miejscach w szczególności identyfikacji i izolowanie składników zależnych od framework pakietu:
 
-- [.nuspec manifest](../schema/nuspec.md): pakietu można określić różne pakiety, które mają zostać uwzględnione w projekcie, w zależności od platformy docelowej projektu.
+- [.nuspec manifest](../reference/nuspec.md): pakietu można określić różne pakiety, które mają zostać uwzględnione w projekcie, w zależności od platformy docelowej projektu.
 - [Nazwa folderu .nupkg](../create-packages/creating-a-package.md#from-a-convention-based-working-directory): folderów w pakiecie `lib` folder może być nazwany zgodnie z platformy docelowej, z których każdy zawiera bibliotek DLL i innej zawartości, które są odpowiednie dla tej struktury.
-- [Packages.config](../schema/packages-config.md): `targetframework` atrybut zależności określa wariant pakiet do zainstalowania.
+- [Packages.config](../reference/packages-config.md): `targetframework` atrybut zależności określa wariant pakiet do zainstalowania.
 
 > [!Note]
 > Kod źródłowy klienta NuGet, który oblicza w poniższej tabeli znajduje się w następujących lokalizacjach:

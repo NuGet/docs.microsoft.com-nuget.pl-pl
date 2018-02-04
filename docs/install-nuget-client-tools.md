@@ -12,15 +12,15 @@ keywords: "DotNet.exe CLI, nuget.exe interfejsu wiersza polecenia narzędzia kli
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b94da0ea6a6b7f1e269767a7395d81c3a97a2d0c
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
-ms.translationtype: MT
+ms.openlocfilehash: 07ca66b44a981f7fcc108e1b4d97c0cf5e206a6f
+ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="installing-nuget-client-tools"></a>Instalowanie narzędzi klienta NuGet
 
-> **Wyszukiwanie, aby zainstalować pakiet? Zobacz [Szybki Start - Użyj pakietu](quickstart/use-a-package.md).**
+> **Wyszukiwanie, aby zainstalować pakiet? Zobacz [sposobów, aby zainstalować pakietów NuGet](consume-packages/ways-to-install-a-package.md).**
 
 Aby pracować z NuGet, jako pakiet klienta lub twórcą, można użyć [międzyplatformowego interfejsu wiersza polecenia (CLI) narzędzia](#cli-tools) oraz [funkcji NuGet w programie Visual Studio](#visual-studio). W tym artykule krótko opisano możliwości różnych narzędzi, jak zainstalować i ich porównawczych [dostępność funkcji](#feature-availability).
 
@@ -30,7 +30,7 @@ Aby pracować z NuGet, jako pakiet klienta lub twórcą, można użyć [międzyp
 | [nuget.exe](#nugetexe-cli) | Zawiera wszystkie funkcje NuGet w systemach Windows i większość funkcji uruchamiania [Mono](http://www.mono-project.com/docs/getting-started/install/) na Mac i Linux. | [nuget.exe](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe) |
 | [Visual Studio](#visual-studio) | Zapewnia możliwości NuGet za pomocą interfejsu użytkownika Menedżera pakietów i konsoli Menedżera pakietów. | [Visual Studio 2017](https://www.visualstudio.com/downloads/) |
 
-[Interfejsu wiersza polecenia programu MSBuild](schema/msbuild-targets.md) udostępnia możliwość przywracania i tworzenia pakietów, która jest szczególnie przydatna na serwerach kompilacji. Program MSBuild nie jest w przeciwnym razie ogólnego przeznaczenia narzędzia do pracy z programem NuGet.
+[Interfejsu wiersza polecenia programu MSBuild](reference/msbuild-targets.md) udostępnia możliwość przywracania i tworzenia pakietów, która jest szczególnie przydatna na serwerach kompilacji. Program MSBuild nie jest w przeciwnym razie ogólnego przeznaczenia narzędzia do pracy z programem NuGet.
 
 ## <a name="cli-tools"></a>Narzędzi interfejsu wiersza polecenia
 

@@ -12,11 +12,11 @@ keywords: "Zależności NuGet, NuGet i platformy uniwersalnej systemu Windows, p
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0063c959a6d638d7ba1d579d35ff660dccae282c
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
+ms.openlocfilehash: f1ec086d6404c441ca5ad53028af2265a2344905
+ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="projectjson-and-uwp"></a>pliku Project.JSON i platformy uniwersalnej systemu Windows
 
@@ -75,7 +75,7 @@ MSBuild zna do wyszukania tych plików i automatycznie importowane na początku 
 
 ## <a name="lib-and-ref"></a>Lib i Ref
 
-Zachowanie `lib` folderu nie zmieniła się znacznie w NuGet w wersji 3. Jednak wszystkie zestawy muszą się znajdować w podfoldery o nazwie po TxM i nie można umieścić bezpośrednio pod `lib` folderu. TxM jest nazwą platformy, który ma działać w przypadku danej zawartości w pakiecie. Logicznie rozszerzenia elementu docelowego Framework monikerów (TFM) są to np. `net45`, `net46`, `netcore50`, i `dnxcore50` należą do nich TxMs (zobacz [docelowych platform](../Schema/Target-Frameworks.md). TxM mogą odwoływać się do struktury (TFM) oraz innych obszarach powierzchni specyficzne dla platformy. Na przykład TxM platformy uniwersalnej systemu Windows (`uap10.0`) reprezentuje powierzchni .NET, a także powierzchni systemu Windows dla aplikacji platformy uniwersalnej systemu Windows.
+Zachowanie `lib` folderu nie zmieniła się znacznie w NuGet w wersji 3. Jednak wszystkie zestawy muszą się znajdować w podfoldery o nazwie po TxM i nie można umieścić bezpośrednio pod `lib` folderu. TxM jest nazwą platformy, który ma działać w przypadku danej zawartości w pakiecie. Logicznie rozszerzenia elementu docelowego Framework monikerów (TFM) są to np. `net45`, `net46`, `netcore50`, i `dnxcore50` należą do nich TxMs (zobacz [docelowych platform](../reference/target-frameworks.md). TxM mogą odwoływać się do struktury (TFM) oraz innych obszarach powierzchni specyficzne dla platformy. Na przykład TxM platformy uniwersalnej systemu Windows (`uap10.0`) reprezentuje powierzchni .NET, a także powierzchni systemu Windows dla aplikacji platformy uniwersalnej systemu Windows.
 
 Przykład struktury lib:
 
