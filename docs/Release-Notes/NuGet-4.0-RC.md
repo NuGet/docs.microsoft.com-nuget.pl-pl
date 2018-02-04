@@ -9,12 +9,13 @@ ms.prod: nuget
 ms.technology: 
 description: "Informacje o wersji programu NuGet 4.0 RC tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
 keywords: NuGet 4.0 informacje o wersji RC, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer: kraigb
+ms.reviewer:
+- kraigb
 ms.openlocfilehash: 9156f75edc9cf72cbb1d122f01d8a071ed56a124
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
+ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/02/2018
 ---
 # <a name="nuget-40-rc-release-notes"></a>Informacje o wersji RC NuGet 4.0
 

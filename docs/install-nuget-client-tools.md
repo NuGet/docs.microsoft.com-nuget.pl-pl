@@ -12,11 +12,11 @@ keywords: "DotNet.exe CLI, nuget.exe interfejsu wiersza polecenia narzędzia kli
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 07ca66b44a981f7fcc108e1b4d97c0cf5e206a6f
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
-ms.translationtype: HT
+ms.openlocfilehash: ec8de83c9e05981016215e487888ab68a616d977
+ms.sourcegitcommit: dbcb872ec10430e1d761f34b851650e31c87a96d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="installing-nuget-client-tools"></a>Instalowanie narzędzi klienta NuGet
 
@@ -59,7 +59,7 @@ Instalacja:
 > Użyj `nuget update -self` do zaktualizowania istniejącej nuget.exe do najnowszej wersji.
 
 > [!Note]
-> Zalecane najnowszej interfejsu wiersza polecenia NuGet jest zawsze dostępna w `https://dist.nuget.org/win-x86-commandline/latest/nuget.exe`. Do celów zgodności ze starszymi systemami ciągłej integracji, poprzedniego adresu URL `https://nuget.org/nuget.exe` zawsze zapewnia 2.8.6 narzędzia interfejsu wiersza polecenia.
+> Zalecane najnowszej interfejsu wiersza polecenia NuGet jest zawsze dostępna w `https://dist.nuget.org/win-x86-commandline/latest/nuget.exe`. Do celów zgodności ze starszymi systemami ciągłej integracji, poprzedniego adresu URL `https://nuget.org/nuget.exe` obecnie udostępnia 2.8.6 narzędzia interfejsu wiersza polecenia. [Ta opcja jest przestarzała](https://github.com/NuGet/NuGetGallery/issues/5381).
 
 ## <a name="visual-studio"></a>Visual Studio
 
