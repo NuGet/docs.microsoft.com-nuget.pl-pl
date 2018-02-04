@@ -13,14 +13,14 @@ ms.reviewer:
 - karann-msft
 - unniravindranathan
 ms.openlocfilehash: 9d69819f5f2080fa48afdcc3d9c97fe291c81648
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
+ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/02/2018
 ---
-# <a name="nuget-311-release-notes"></a><span data-ttu-id="eb643-104">Informacje o wersji NuGet 3.1.1</span><span class="sxs-lookup"><span data-stu-id="eb643-104">NuGet 3.1.1 Release Notes</span></span>
+# <a name="nuget-311-release-notes"></a><span data-ttu-id="57a36-104">Informacje o wersji NuGet 3.1.1</span><span class="sxs-lookup"><span data-stu-id="57a36-104">NuGet 3.1.1 Release Notes</span></span>
 
-<span data-ttu-id="eb643-105">[Informacje o wersji NuGet 3.1](../release-notes/nuget-3.1.md) | [informacje o wersji 3.2 RC NuGet](../release-notes/nuget-3.2-RC.md)</span><span class="sxs-lookup"><span data-stu-id="eb643-105">[NuGet 3.1 Release Notes](../release-notes/nuget-3.1.md) | [NuGet 3.2-RC Release Notes](../release-notes/nuget-3.2-RC.md)</span></span>
+<span data-ttu-id="57a36-105">[Informacje o wersji NuGet 3.1](../release-notes/nuget-3.1.md) | [informacje o wersji 3.2 RC NuGet](../release-notes/nuget-3.2-RC.md)</span><span class="sxs-lookup"><span data-stu-id="57a36-105">[NuGet 3.1 Release Notes](../release-notes/nuget-3.1.md) | [NuGet 3.2-RC Release Notes](../release-notes/nuget-3.2-RC.md)</span></span>
 
-<span data-ttu-id="eb643-106">Została wydana NuGet 3.1.1 27 lipca 2015 roku jako poprawkę aktualizacji do 3.1 VSIX z poprawki właściwe dla usterkę, która realizowane implementacji zasad programu Powershell.</span><span class="sxs-lookup"><span data-stu-id="eb643-106">NuGet 3.1.1 was released July 27, 2015 as a patch update to the 3.1 VSIX with fix specific to a bug that effected Powershell policy implementation.</span></span>
-[<span data-ttu-id="eb643-107">https://github.com/NuGet/Home/issues/974</span><span class="sxs-lookup"><span data-stu-id="eb643-107">https://github.com/NuGet/Home/issues/974</span></span>](https://github.com/NuGet/Home/issues/974)
+<span data-ttu-id="57a36-106">Została wydana NuGet 3.1.1 27 lipca 2015 roku jako poprawkę aktualizacji do 3.1 VSIX z poprawki właściwe dla usterkę, która realizowane implementacji zasad programu Powershell.</span><span class="sxs-lookup"><span data-stu-id="57a36-106">NuGet 3.1.1 was released July 27, 2015 as a patch update to the 3.1 VSIX with fix specific to a bug that effected Powershell policy implementation.</span></span>
+[<span data-ttu-id="57a36-107">https://github.com/NuGet/Home/issues/974</span><span class="sxs-lookup"><span data-stu-id="57a36-107">https://github.com/NuGet/Home/issues/974</span></span>](https://github.com/NuGet/Home/issues/974)
