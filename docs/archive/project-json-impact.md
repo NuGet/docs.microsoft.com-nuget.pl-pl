@@ -12,11 +12,11 @@ keywords: "Pakiet NuGet i project.json, wpływ project.json tworzenia zagadnieni
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6104b4dac330869bc5724ffcf15cc0ac9ee26c1f
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
+ms.openlocfilehash: b732d48b169825764d614c338658f8c6ef45e765
+ms.sourcegitcommit: eabd401616a98dda2ae6293612acb3b81b584967
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="impact-of-projectjson-when-creating-packages"></a>Wpływ project.json podczas tworzenia pakietów
 
@@ -61,7 +61,7 @@ Pakiety, które próbuje zmodyfikować projektu, aby ułatwić uruchamiania zwyk
 
 Większość istniejących pakietów nie jest konieczna Użyj formatu pakietu opisane poniżej.
 
-Format umożliwia natywnego zawartości jako pierwszej klasie scenariusza. Oznacza to, że zarządzane zestawy w zależności od bliski implementacje sprzętu na potrzeby wysłania binarne implementacje równolegle z zarządzanych zestawów oparte na platformie docelowej. Na przykład pakiet System.IO.Compression jest przy użyciu tej technologii. [https://www.nuget.org/packages/System.IO.Compression](https://www.nuget.org/packages/System.IO.Compression)
+Format umożliwia natywnego zawartości jako pierwszej klasie scenariusza. Oznacza to, że zarządzanych zestawów są zależne od bliski implementacje sprzętu na potrzeby wysłania binarne implementacje równolegle z zarządzanych zestawów oparte na platformie docelowej. Na przykład pakiet System.IO.Compression jest przy użyciu tej technologii. [https://www.nuget.org/packages/System.IO.Compression](https://www.nuget.org/packages/System.IO.Compression)
 
 W podsumowaniu Jeśli powyżej funkcji nie jest to konieczne, zalecamy spełni format istniejącego pakietu, format opisany jest obsługiwana tylko przez NuGet 3.x+.
 
