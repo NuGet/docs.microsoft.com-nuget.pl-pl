@@ -12,17 +12,17 @@ keywords: "Pliku NuGet.Config, NuGet konfiguracji odwołania, opcje konfiguracji
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 9a183b67ae18f4fa5c042f1806f8abcc9b799b77
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: df602cb561a19f0eac085695de80db1fbaa1a313
+ms.sourcegitcommit: 33436d122873249dbb20616556cd8c6783f38909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="nugetconfig-reference"></a>Odwołanie do pliku NuGet.Config.
 
 Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` plików zgodnie z opisem w [Konfigurowanie zachowania NuGet](../consume-packages/configuring-nuget-behavior.md).
 
-`NuGet.Config`jest to plik XML zawierający najwyższego poziomu `<configuration>` węzła, który następnie zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej `<add>` elementy o `key` i `value` atrybutów. Zobacz [pliku konfiguracji przykłady](#example-config-file). Ustawienie nazwy jest rozróżniana wielkość liter, a wartości można użyć [zmiennych środowiskowych](#using-environment-variables).
+`NuGet.Config` jest to plik XML zawierający najwyższego poziomu `<configuration>` węzła, który następnie zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej `<add>` elementy o `key` i `value` atrybutów. Zobacz [pliku konfiguracji przykłady](#example-config-file). Ustawienie nazwy jest rozróżniana wielkość liter, a wartości można użyć [zmiennych środowiskowych](#using-environment-variables).
 
 W tym temacie:
 
@@ -48,7 +48,7 @@ W tym temacie:
 
 Zawiera ustawienia dodatkowych konfiguracji, które można ustawić za pomocą [ `nuget config` polecenia](../tools/cli-ref-config.md).
 
-Uwaga: `dependencyVersion` i `repositoryPath` stosowania tylko dla projektów przy użyciu `packages.config`. `globalPackagesFolder`dotyczy tylko projektów przy użyciu formatu PackageReference.
+Uwaga: `dependencyVersion` i `repositoryPath` stosowania tylko dla projektów przy użyciu `packages.config`. `globalPackagesFolder` dotyczy tylko projektów przy użyciu formatu PackageReference.
 
 | Key | Wartość |
 | --- | --- |
@@ -131,7 +131,7 @@ Należy zauważyć, że adres URL źródła dla nuget.org `https://api.nuget.org
 
 ### <a name="packagesources"></a>packageSources
 
-Wyświetla wszystkie źródła pakietów znane.
+Wyświetla wszystkie źródła pakietów znane. Kolejność jest ignorowany podczas operacji przywracania, a w przypadku projektów przy użyciu formatu PackageReference. Kolejność źródeł instalacji szanuje NuGet i operacje aktualizacji z projektami za pomocą `packages.config`.
 
 | Key | Wartość |
 | --- | --- |
@@ -157,7 +157,7 @@ Przechowywane nazwy użytkowników i hasła dla źródeł, zazwyczaj określana 
 | Hasło | Zaszyfrowane hasło dla tego źródła. |
 | cleartextpassword | Hasło nieszyfrowane źródła. |
 
-**Przykład:**
+Przykład:
 
 W pliku konfiguracyjnym `<packageSourceCredentials>` element zawiera węzły podrzędne dla każdej nazwy odpowiednich źródła (spacje w nazwie są zastępowane `_x0020+`). Oznacza to, że dla źródeł o nazwie "Contoso" i "Źródła testów", plik konfiguracji zawiera następujące przy użyciu hasła szyfrowane:
 
@@ -213,7 +213,7 @@ Rozpoznane źródła aktualnie wyłączone. Może być pusta.
 | --- | --- |
 | (nazwa źródła) | Wartość logiczna wskazująca, czy źródło jest wyłączone. |
 
-**Przykład:**
+Przykład:
 
 ```xml
 <disabledPackageSources>
@@ -232,7 +232,7 @@ Identyfikuje do aktywnego źródła lub wskazuje agregacji wszystkich źródeł.
 
 | Key | Wartość |
 | --- | --- |
-| (nazwa źródła) lub`All` | Jeśli klucz jest nazwę źródła, wartość jest ścieżka źródłowa lub adres URL. Jeśli `All`, wartość powinna być `(Aggregate source)` połączyć wszystkie źródła pakietów, które nie zostały wyłączone w przeciwnym razie wartość. |
+| (nazwa źródła) lub `All` | Jeśli klucz jest nazwę źródła, wartość jest ścieżka źródłowa lub adres URL. Jeśli `All`, wartość powinna być `(Aggregate source)` połączyć wszystkie źródła pakietów, które nie zostały wyłączone w przeciwnym razie wartość. |
 
 **Przykład**:
 
