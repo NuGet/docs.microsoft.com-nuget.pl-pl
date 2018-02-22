@@ -22,11 +22,11 @@ ms.prod: nuget
 ms.technology: 
 ms.reviewer:
 - karann-msft
-ms.openlocfilehash: 901327a37f378e16210d4e0272fa3d5638af9bff
-ms.sourcegitcommit: 33436d122873249dbb20616556cd8c6783f38909
+ms.openlocfilehash: 9af8cd5bd3333c8e47e363ad449057d18803ee58
+ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 02/20/2018
 ---
 <div id="main" class="v2">
 <div class="container">
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/12/2018
                                             </div>
                                         </div>
                                         <div class="cardText">
-                                            <h3>Szybki start: Tworzenie pakietu</h3>
+                                            <h3>Szybki start tworzenie pakietu</h3>
                                             <p>Omówienie narzędzi i funkcji NuGet do tworzenia pakietów (wskazówki są dostępne zarówno dla interfejsu wiersza polecenia platformy dotnet, jak i programu Visual Studio).</p>
                                         </div>
                                     </div>
