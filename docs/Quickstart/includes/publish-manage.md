@@ -1,6 +1,6 @@
 Z profilu nuget.org, wybierz **Zarządzaj pakietami** można znaleźć w jednym opublikowana. Otrzymasz również wiadomość e-mail z potwierdzeniem. Należy pamiętać, że może upłynąć trochę czasu pakietu indeksowane i wyświetlana w wynikach wyszukiwania, gdzie innym go znaleźć. W tym czasie stronę pakietu zawiera następujący komunikat:
 
-    ![This package has not been indexed yet. It will appear in search results and will be available for install/restore after indexing is complete.](../media/QS_Create-03-NotIndexed.png)
+![Ten pakiet nie ma jeszcze indeksowania. Zostanie wyświetlony w wynikach wyszukiwania, a będą dostępne do instalacji i przywracania po zakończeniu indeksowania.](../media/QS_Create-03-NotIndexed.png)
 
 I to już wszystko! Został właśnie opublikowany pierwszy pakiet NuGet do nuget.org, który innych deweloperzy mogą używać w ich własnych projektów.
 

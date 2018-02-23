@@ -11,11 +11,11 @@ description: "Pakiet NuGet i przywracania może współpracować bezpośrednio j
 keywords: NuGet i MSBuild, docelowy pakietu NuGet, docelowy przywracania NuGet
 ms.reviewer:
 - karann-msft
-ms.openlocfilehash: 6c488f49e12b014e7bd197d57041745387a4d7b4
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: 4d448af3d31e0907cba223c0ccec55604e94f055
+ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracania jako docelowych elementów MSBuild
 
@@ -63,8 +63,10 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 | iconUrl | PackageIconUrl | empty | |
 | Znaczniki | PackageTags | empty | Tagi są rozdzielone średnikami. |
 | releaseNotes | PackageReleaseNotes | empty | |
-| RepositoryUrl | RepositoryUrl | empty | |
-| RepositoryType | RepositoryType | empty | |
+| Adres Url i repozytorium | RepositoryUrl | empty | Adres URL repozytorium jest używany do klonowania lub pobrać kodu źródłowego. Example: *https://github.com/NuGet/NuGet.Client.git* |
+| Repozytorium/typ | RepositoryType | empty | Typ repozytorium. Przykłady: *git*, *tfs*. |
+| Repozytorium/gałęzi | RepositoryBranch | empty | Informacje o gałęzi repozytorium opcjonalne. *RepositoryUrl* musi być także określona dla tej właściwości, które zostaną uwzględnione. Przykład: *wzorca* (NuGet 4.7.0+) |
+| Repozytorium/zatwierdzeniu | RepositoryCommit | empty | Opcjonalne repozytorium zatwierdzania lub zestaw zmian, aby wskazać, który źródła pakietu został skompilowany przy. *RepositoryUrl* musi być także określona dla tej właściwości, które zostaną uwzględnione. Example: *0e4d1b598f350b3dc675018d539114d1328189ef* (NuGet 4.7.0+) |
 | PackageType | `<PackageType>DotNetCliTool, 1.0.0.0;Dependency, 2.0.0.0</PackageType>` | | |
 | Podsumowanie | Nieobsługiwane | | |
 
@@ -90,6 +92,8 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 - IsTool
 - RepositoryUrl
 - RepositoryType
+- RepositoryBranch
+- RepositoryCommit
 - NoPackageAnalysis
 - Element MinClientVersion
 - IncludeBuildOutput
@@ -108,7 +112,7 @@ Zmiana w ramach [2582 problem NuGet](https://github.com/NuGet/Home/issues/2582),
 
 ### <a name="output-assemblies"></a>Zestawy danych wyjściowych
 
-`nuget pack`kopiuje dane wyjściowe pliki z rozszerzeniami `.exe`, `.dll`, `.xml`, `.winmd`, `.json`, i `.pri`. Pliki wyjściowe, które są kopiowane są zależne od MSBuild zapewnia z `BuiltOutputProjectGroup` docelowej.
+`nuget pack` kopiuje dane wyjściowe pliki z rozszerzeniami `.exe`, `.dll`, `.xml`, `.winmd`, `.json`, i `.pri`. Pliki wyjściowe, które są kopiowane są zależne od MSBuild zapewnia z `BuiltOutputProjectGroup` docelowej.
 
 Istnieją dwie właściwości programu MSBuild, które są dostępne w pliku projektu lub wiersza polecenia w celu sterowania gdzie zestawy danych wyjściowych:
 
@@ -156,7 +160,7 @@ Domyślnie pobiera wszystkie elementy dodane do katalogu głównego `content` i 
 
 Jeśli chcesz skopiować wszystkie zawartość tylko z określonym główny folderów (zamiast `content` i `contentFiles` oba), można użyć właściwości programu MSBuild `ContentTargetFolders`, jakie nie "zawartość; pliki", ale może być ustawiony na inne nazwy folderu. Należy pamiętać, że po prostu określenie "pliki" w `ContentTargetFolders` umieszcza pliki objęte `contentFiles\any\<target_framework>` lub `contentFiles\<language>\<target_framework>` na podstawie `buildAction`.
 
-`PackagePath`może być rozdzielone średnikami zbiór ścieżek docelowych. Określenie ścieżki pusty pakietu dodać plik w katalogu głównym pakietu. Na przykład dodaje następujące `libuv.txt` do `content\myfiles`, `content\samples`i katalog główny pakietu:
+`PackagePath` może być rozdzielone średnikami zbiór ścieżek docelowych. Określenie ścieżki pusty pakietu dodać plik w katalogu głównym pakietu. Na przykład dodaje następujące `libuv.txt` do `content\myfiles`, `content\samples`i katalog główny pakietu:
 
 ```xml
 <Content Include="..\win7-x64\libuv.txt">
@@ -210,7 +214,7 @@ msbuild /t:pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:Nu
 
 ## <a name="restore-target"></a>Lokalizacja docelowa przywracania
 
-`MSBuild /t:restore`(który `nuget restore` i `dotnet restore` za pomocą platformy .NET Core projektów), przywraca pakietów, do których odwołuje się w pliku projektu w następujący sposób:
+`MSBuild /t:restore` (który `nuget restore` i `dotnet restore` za pomocą platformy .NET Core projektów), przywraca pakietów, do których odwołuje się w pliku projektu w następujący sposób:
 
 1. Przeczytaj wszystkich odwołań do projektu do projektu
 1. Właściwości projektu, aby znaleźć pośredniego struktury folderów i obiekt docelowy do odczytu
@@ -257,7 +261,7 @@ Przywracanie tworzy następujące pliki w kompilacji `obj` folderu:
 
 | Plik | Opis |
 |--------|--------|
-| `project.assets.json` | Wcześniej`project.lock.json` |
+| `project.assets.json` | Wcześniej `project.lock.json` |
 | `{projectName}.projectFileExtension.nuget.g.props` | Odwołania do właściwości programu MSBuild zawartych w pakietach |
 | `{projectName}.projectFileExtension.nuget.g.targets` | Odwołania do zawartych w pakietach docelowych elementów MSBuild |
 

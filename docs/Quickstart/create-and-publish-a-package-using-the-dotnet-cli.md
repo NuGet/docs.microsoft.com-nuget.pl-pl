@@ -1,5 +1,5 @@
 ---
-title: "Przewodnik wprowadzający do tworzenia i publikowania pakietu NuGet dotnet interfejsu wiersza polecenia | Dokumentacja firmy Microsoft"
+title: Tworzenie i publikowanie pakietu NuGet dotnet interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
@@ -12,11 +12,11 @@ keywords: Pakiet NuGet tworzenie, publikowanie pakietu NuGet, samouczek NuGet pa
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c9f46cafafcdc238e43979d6f05521e19bf3d7f6
-ms.sourcegitcommit: eabd401616a98dda2ae6293612acb3b81b584967
+ms.openlocfilehash: 32cbe5dea180daa5b9d21102b996bf160d4ee511
+ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="create-and-publish-a-package"></a>Tworzenie i publikowanie pakietu
 
@@ -94,7 +94,6 @@ Po utworzeniu `.nupkg` pliku opublikowaniu go przy użyciu nuget.org `dotnet nug
 ### <a name="publish-errors"></a>Publikowanie błędów
 
 [!INCLUDE[publish-errors](includes/publish-errors.md)]
-
 
 ### <a name="manage-the-published-package"></a>Zarządzanie opublikowanego pakietu
 

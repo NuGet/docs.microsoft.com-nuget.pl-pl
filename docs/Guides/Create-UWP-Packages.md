@@ -12,11 +12,11 @@ keywords: "Utwórz pakiet, pakietów dla platformy uniwersalnej systemu Windows,
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6d35b484ff708d7174c19791ab1ad7904bea0d2f
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.openlocfilehash: 6787704d41364a165270d56e8980f24d311b07b3
+ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="create-uwp-packages"></a>Tworzenie pakietów platformy uniwersalnej systemu Windows
 
@@ -156,7 +156,7 @@ W ramach składnika, logiki core typu ImageEnhancer jest w kodzie natywnym, któ
 
 ### <a name="adding-targets"></a>Dodawanie .targets
 
-Następnie projektów C++ i JavaScript, które mogą korzystać z pakietu NuGet muszą pliku .targets w celu identyfikowania niezbędne pliki zestawu i winmd. (C# i Visual Basic, projekty w tym automatycznie.) Utwórz ten plik przez skopiowanie poniższy tekst do `ImageEnhancer.targets` i zapisz go w tym samym folderze co `.nuspec` pliku:
+Następnie projektów C++ i JavaScript, które mogą korzystać z pakietu NuGet muszą pliku .targets w celu identyfikowania niezbędne pliki zestawu i winmd. (C# i Visual Basic, projekty w tym automatycznie.) Utwórz ten plik przez skopiowanie poniższy tekst do `ImageEnhancer.targets` i zapisz go w tym samym folderze co `.nuspec` pliku. _Uwaga_: to `.targets` pliku musi mieć taką samą nazwę jak identyfikator pakietu (np. `<Id>` element `.nupspec` pliku):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

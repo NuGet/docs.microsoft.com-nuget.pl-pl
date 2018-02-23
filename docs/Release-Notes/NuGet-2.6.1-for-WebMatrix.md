@@ -13,23 +13,23 @@ keywords: "NuGet 2.6.1 informacje o wersji programu WebMatrix, poprawki, znanych
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6150fc34dd05c2e7ce132d2d6744b823daeb1a07
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.openlocfilehash: 633b71011dd1bc897ad95fd706337cef3aeef34c
+ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="nuget-261-for-webmatrix-release-notes"></a>2.6.1 NuGet, aby uzyskać informacje o wersji programu WebMatrix
 
 [Informacje o wersji NuGet 2.6](../release-notes/nuget-2.6.md) | [NuGet 2.7 informacje o wersji](../release-notes/nuget-2.7.md)
 
-Zespół NuGet wydany zaktualizowane rozszerzenie NuGet Package Manager dla programu WebMatrix 26 marca 2014 r.  Tę aktualizację można zainstalować z [galerii rozszerzeń programu WebMatrix](http://extensions.webmatrix.com/packages/NuGetPackageManager/) wykonując następujące czynności:
+Zespół NuGet wydany zaktualizowane rozszerzenie NuGet Package Manager dla programu WebMatrix 26 marca 2014 r.  Tę aktualizację można zainstalować z [galerii rozszerzeń programu WebMatrix](https://blogs.iis.net/webmatrix/retiring-the-webmatrix-extensions-gallery) wykonując następujące czynności:
 
 1. Otwórz program WebMatrix 3
-2. Kliknij ikonę rozszerzeń na Wstążce głównej
-3. Wybierz kartę aktualizacji
-4. Kliknij, aby zaktualizować Menedżera pakietów NuGet do 2.6.1
-6. Zamknij i uruchom ponownie program WebMatrix 3
+1. Kliknij ikonę rozszerzeń na Wstążce głównej
+1. Wybierz kartę aktualizacji
+1. Kliknij, aby zaktualizować Menedżera pakietów NuGet do 2.6.1
+1. Zamknij i uruchom ponownie program WebMatrix 3
 
 ## <a name="notable-changes"></a>Ważne zmiany
 

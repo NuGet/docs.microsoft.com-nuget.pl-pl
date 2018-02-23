@@ -13,11 +13,11 @@ ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: dbeec1d3332571d8e9616dfe9675b5fcf3c85589
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: 7e3621f01312e3b4fdbef116e5044869416b851c
+ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="target-frameworks"></a>Docelowych platform
 
@@ -129,7 +129,7 @@ Liczba struktur są powiązane z i zgodne ze sobą, ale nie jest równorzędny m
 ## <a name="portable-class-libraries"></a>Biblioteki klas przenośnych
 
 > [!Warning]
-> **Nie zaleca się PCLs**. PCLs są obsługiwane, autorzy pakietu należy zamiast tego obsługuje krótkich nazw netstandard. Dla platformy .NET Standard jest rozwój PCLs i reprezentuje przenośność binarnego na platformach przy użyciu pojedynczego krótkiej nazwy statyczne, takie jak, takich jak elementy nie jest związane *przenośnych-+ b + c* monikerów.
+> **Nie zaleca się PCLs**. PCLs są obsługiwane, autorzy pakietu należy zamiast tego obsługuje krótkich nazw netstandard. Dla platformy .NET Standard jest rozwój PCLs i reprezentuje przenośność binarnego na platformach przy użyciu pojedynczego krótkiej nazwy, która nie jest powiązana z biblioteką statyczną, takich jak *przenośnych-+ b + c* monikerów.
 
 Aby zdefiniować docelowe środowisko, które odwołuje się do wielu podrzędnych docelowych platform `portable` użyj słowa kluczowego używany do prefiksu lista platform do którego istnieje odwołanie. Unikaj, łącznie z sztucznie dodatkowy platform, które nie są bezpośrednio kompilowane przed ponieważ może spowodować niezamierzone skutki uboczne w tych środowisk.
 
