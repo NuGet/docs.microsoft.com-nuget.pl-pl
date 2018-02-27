@@ -13,11 +13,11 @@ ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 56cb9d5b40bbfbd722e611e0e86945eddbe9d19a
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: c52d0a7c0da507cb9688c8a7b2c4eaf54a8ca5c2
+ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -94,14 +94,14 @@ Te elementy mogą być widoczne w `<metadata>` elementu.
 | **Właściciele** | Rozdzielana przecinkami lista twórców pakietu przy użyciu nazwy profilu na nuget.org. Jest to często jak w tej samej listy `authors`i jest ignorowane w przypadku przekazywania pakietu do nuget.org. Zobacz [Zarządzanie właścicieli pakietu na nuget.org](../create-packages/publish-a-package.md#managing-package-owners-on-nugetorg). |
 | **projectUrl** | Wyświetla adres URL strony głównej pakietu, często są wyświetlane w interfejsie użytkownika oraz nuget.org. |
 | **licenseUrl** | Adres URL wyświetlany w wyświetla interfejsu użytkownika, a także nuget.org licencji pakietu. |
-| **iconUrl** | Adres URL obrazu 64 x 64, przezroczystość tła ma być używana jako ikonę pakietu w wyświetlania interfejsu użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* , a nie adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, użyj plik raw, takie jak adres URL `https://github.com/<username>/<repository>/raw/<branch>/<logo.png>`. |
+| **iconUrl** | Adres URL obrazu 64 x 64, przezroczystość tła ma być używana jako ikonę pakietu w wyświetlania interfejsu użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* , a nie adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, użyj plik raw, takie jak adres URL *https://github.com/\<username\>/\<repozytorium\>/raw/\<gałęzi\> / \<logo.png\>*. |
 | **requireLicenseAcceptance** | Wartość logiczna, określając, czy klient musi monitować o konsumenta, aby zaakceptować licencji pakietu przed zainstalowaniem pakietu. |
-| **developmentDependency** | *(2.8 +)*  Wartość logiczna A, określając, czy pakiet jest oznaczone jako programowanie — tylko zależność, która zapobiega włączaniu jako zależności w innych pakietach pakietu. |
+| **DevelopmentDependency** | *(2.8 +)*  Wartość logiczna A, określając, czy pakiet jest oznaczone jako programowanie — tylko zależność, która zapobiega włączaniu jako zależności w innych pakietach pakietu. |
 | **Podsumowanie** | Krótki opis pakietu do wyświetlenia interfejsu użytkownika. Pominięcie skrócona wersja `description` jest używany. |
 | **releaseNotes** | *(w wersji 1.5 +)*  Opis zmian wprowadzonych w tej wersji pakietu, często używany w interfejsie użytkownika, takich jak **aktualizacje** kartę programu Visual Studio Menedżer pakietów zamiast Opis pakietu. |
 | **copyright** | *(w wersji 1.5 +)*  Copyright szczegóły pakietu. |
-| **język** | Identyfikator ustawień regionalnych dla pakietu. Zobacz [tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md). |
-| **tagi** | Rozdzieloną spacjami listę tagów i słów kluczowych, które opisują odnajdywania pakietu i pomocy pakietów za pomocą wyszukiwania i filtrowania. |
+| **Język** | Identyfikator ustawień regionalnych dla pakietu. Zobacz [tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md). |
+| **Tagi** | Rozdzieloną spacjami listę tagów i słów kluczowych, które opisują odnajdywania pakietu i pomocy pakietów za pomocą wyszukiwania i filtrowania. |
 | **serviceable** | *(3.3 +)*  Programu NuGet wewnętrznego użytku. |
 
 #### <a name="collection-elements"></a>Elementy kolekcji
@@ -109,9 +109,9 @@ Te elementy mogą być widoczne w `<metadata>` elementu.
 | Element | Opis |
 | --- | --- |
 **packageTypes** | *(3.5 +)*  Kolekcji zero lub więcej `<packageType>` elementy określenie typu pakietu, jeśli inne niż tradycyjne zależności pakietu. Każdy packageType ma atrybuty *nazwa* i *wersji*. Zobacz [ustawienie typu pakietu](../create-packages/creating-a-package.md#setting-a-package-type). |
-| **zależności** | Kolekcja zero lub więcej `<dependency>` elementy określania zależności dla pakietu. Poszczególne zależności ma atrybuty *identyfikator*, *wersji*, *obejmują* (3.x+) i *wykluczyć* (3.x+). Zobacz [zależności](#dependencies) poniżej. |
+| **Zależności** | Kolekcja zero lub więcej `<dependency>` elementy określania zależności dla pakietu. Poszczególne zależności ma atrybuty *identyfikator*, *wersji*, *obejmują* (3.x+) i *wykluczyć* (3.x+). Zobacz [zależności](#dependencies) poniżej. |
 | **frameworkAssemblies** | *(1.2 +)*  Kolekcji zero lub więcej `<frameworkAssembly>` elementy identyfikowanie odwołań zestawu .NET Framework, które wymaga tego pakietu, który zapewnia dodania odwołań do projektów korzystających z pakietu. Każdy frameworkAssembly ma *assemblyName* i *targetFramework* atrybutów. Zobacz [określenie zestawu struktury odwołuje się do pamięci podręcznej GAC](#specifying-framework-assembly-references-gac) poniżej. |
-| **odwołania** | *(w wersji 1.5 +)*  Kolekcji zero lub więcej `<reference>` elementy nazw zestawów, w tym pakiecie `lib` folderów, które są dodawane jako odwołania do projektu. Odwołanie do każdego ma *pliku* atrybutu. `<references>`może również zawierać `<group>` element z *targetFramework* atrybut, który następnie zawiera `<reference>` elementów. Pominięcie wszystkie odwołania w `lib` są uwzględniane. Zobacz [odwołania do zestawów jawne określenie](#specifying-explicit-assembly-references) poniżej. |
+| **Odwołania** | *(w wersji 1.5 +)*  Kolekcji zero lub więcej `<reference>` elementy nazw zestawów, w tym pakiecie `lib` folderów, które są dodawane jako odwołania do projektu. Odwołanie do każdego ma *pliku* atrybutu. `<references>` może również zawierać `<group>` element z *targetFramework* atrybut, który następnie zawiera `<reference>` elementów. Pominięcie wszystkie odwołania w `lib` są uwzględniane. Zobacz [odwołania do zestawów jawne określenie](#specifying-explicit-assembly-references) poniżej. |
 | **contentFiles** | *(3.3 +)*  Kolekcja `<files>` elementy identyfikujące pliki zawartości do uwzględnienia w projekcie odbierającą. Te pliki są określane za pomocą zestawu atrybutów, które opisują jak powinny być używane w ramach systemu projektu. Zobacz [określenie plików do uwzględnienia w pakiecie](#specifying-files-to-include-in-the-package) poniżej. |
 
 ### <a name="files-element"></a>Element Pliki
@@ -554,8 +554,8 @@ Projekt pakietu wymagana struktura zawartości przy użyciu następującego wzor
 
     /contentFiles/{codeLanguage}/{TxM}/{any?}
 
-- `codeLanguages`może być `cs`, `vb`, `fs`, `any`, lub małe odpowiednikiem danego`$(ProjectLanguage)`
-- `TxM`jest żadnych moniker platformy docelowej prawnych, która obsługuje NuGet (zobacz [platform docelowych](../reference/target-frameworks.md)).
+- `codeLanguages` może być `cs`, `vb`, `fs`, `any`, lub małe odpowiednikiem danego `$(ProjectLanguage)`
+- `TxM` jest żadnych moniker platformy docelowej prawnych, która obsługuje NuGet (zobacz [platform docelowych](../reference/target-frameworks.md)).
 - Dowolnej struktury folderów może dołączany na końcu tej składni.
 
 Na przykład:
@@ -677,7 +677,7 @@ Można użyć puste foldery `.` rezygnacji z zawarto dla niektórych kombinacji 
 W tym przykładzie poniżej są zainstalowane dla określonego projektu celów:
 
 - .NET4 -> `System.Web`, `System.Net`
-- . NET4 -> Client Profile`System.Net`
-- -> Silverlight 3`System.Json`
-- -> Programu Silverlight 4`System.Windows.Controls.DomainServices`
-- WindowsPhone ->`Microsoft.Devices.Sensors`
+- . NET4 -> Client Profile `System.Net`
+- -> Silverlight 3 `System.Json`
+- -> Programu Silverlight 4 `System.Windows.Controls.DomainServices`
+- WindowsPhone -> `Microsoft.Devices.Sensors`
