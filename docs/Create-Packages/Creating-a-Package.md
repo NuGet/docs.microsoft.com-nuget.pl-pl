@@ -13,11 +13,11 @@ keywords: Tworzenie pakietu NuGet, tworzenie pakietu, nuspec manifest, konwencje
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 81305b889bb3d988c98c0eee04126e432053c5ef
-ms.sourcegitcommit: a40a6ce6897b2d9411397b2e29b1be234eb6e50c
+ms.openlocfilehash: 613e3eb9d08a0da96340f32b13c486508fa32439
+ms.sourcegitcommit: df21fe770900644d476d51622a999597a6f20ef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -174,7 +174,7 @@ Konwencje folderu są następujące:
 | lib/{tfm} | Zestaw (`.dll`), dokumentacji (`.xml`) oraz symbol (`.pdb`) plików dla danego docelowej Framework Moniker (TFM) | Zestawy są dodawane jako odwołania; `.xml` i `.pdb` kopiowane do folderów projektu. Zobacz [obsługujący wiele platform docelowych](supporting-multiple-target-frameworks.md) tworzenia framework podfoldery specyficznych dla obiektu docelowego. |
 | środowisk uruchomieniowych | Zestaw architektury (`.dll`), symbol (`.pdb`), a zasób macierzysty (`.pri`) plików | Zestawy są dodawane jako odwołania; inne pliki są kopiowane do folderów projektu. Zobacz [obsługujący wiele platform docelowych](supporting-multiple-target-frameworks.md). |
 | zawartość | Wybrane pliki | Zawartość jest kopiowana do katalogu głównego projektu. Pomyśl o **zawartości** folder jako katalog główny aplikacji docelowej, który ostatecznie wykorzystuje pakiet. Aby dodać obraz w aplikacji pakietu */obrazy* folderu, umieść go w pakiecie *zawartości/obrazów* folderu. |
-| kompilacja | MSBuild `.targets` i `.props` plików | Automatycznie dodaje do pliku projektu (NuGet 2.5 +) lub `project.lock.json` (NuGet 3.x+). |
+| kompilacja | MSBuild `.targets` i `.props` plików | Automatycznie dodaje do pliku projektu lub `project.lock.json` (NuGet 3.x+). |
 | narzędzia | Skrypty programu PowerShell i programy dostępne w konsoli Menedżera pakietów | `tools` Folderu zostanie dodany do `PATH` zmiennej środowiskowej tylko za pomocą konsoli Menedżera pakietów (w szczególności *nie* do `PATH` zgodnie z ustaleniami dla MSBuild podczas kompilowania projektu). |
 
 Struktury folderu może zawierać dowolną liczbę zestawów dla dowolnej liczby docelowych platform, ta metoda jest niezbędne, podczas tworzenia pakietów, które obsługuje wiele platform 
@@ -349,9 +349,9 @@ Następnie w `.nuspec` pliku, pamiętaj odwołać się do tych plików w `<files
 </package>
 ```
 
-W tym właściwości programu MSBuild i obiektów docelowych w pakiecie jest funkcją, która była tylko [wprowadzonych w wersji NuGet 2.5](../release-notes/NuGet-2.5.md#automatic-import-of-msbuild-targets-and-props-files), dlatego zalecane jest dodawanie `minClientVersion="2.5"` atrybutu `metadata` element, aby wskazać Minimalna wersja klienta NuGet musieli korzystać z pakietu.
+W tym właściwości programu MSBuild i obiektów docelowych w pakiecie został [wprowadzone w systemie NuGet 2.5](../release-notes/NuGet-2.5.md#automatic-import-of-msbuild-targets-and-props-files), dlatego zalecane jest dodawanie `minClientVersion="2.5"` atrybutu `metadata` element, aby wskazać minimalnej wersji klienta NuGet wymaganej do Korzystanie z pakietu.
 
-Gdy NuGet 2.5 + instaluje pakiet o `\build` pliki, dodaje MSBuild `<Import>` elementów w pliku projektu wskazujący `.targets` i `.props` plików. (`.props` dodaje się u góry pliku projektu; `.targets` zostanie dodany na dole.)
+Gdy NuGet instaluje pakiet o `\build` pliki, dodaje MSBuild `<Import>` elementów w pliku projektu wskazujący `.targets` i `.props` plików. (`.props` dodaje się u góry pliku projektu; `.targets` zostanie dodany na dole.)
 
 Nuget 3.x, elementy docelowe nie zostaną dodane do projektu, ale zamiast tego stają się dostępne za pośrednictwem `project.lock.json`.
 
@@ -441,7 +441,7 @@ Testowanie instalacji ręcznie w programie Visual Studio lub w wierszu polecenia
 Do testów automatycznych podstawowy proces przebiega w następujący sposób:
 
 1. Kopiuj `.nupkg` plik do folderu lokalnego.
-1. Dodaj folder do źródła pakietu przy użyciu `nuget sources -name <name> -source <path>` polecenia (zobacz [źródeł nuget](../tools/cli-ref-sources.md)). Należy pamiętać, że tylko należy ustawić tego lokalnego źródła raz na dowolnym komputerze z danym.
+1. Dodaj folder do źródła pakietu przy użyciu `nuget sources add -name <name> -source <path>` polecenia (zobacz [źródeł nuget](../tools/cli-ref-sources.md)). Należy pamiętać, że tylko należy ustawić tego lokalnego źródła raz na dowolnym komputerze z danym.
 1. Zainstaluj pakiet z tego źródła za pomocą `nuget install <packageID> -source <name>` gdzie `<name>` jest zgodna z nazwą źródła przydzieloną `nuget sources`. Określanie źródła zapewnia zainstalowanie pakietu z tego samego źródła.
 1. Sprawdź, czy system plików, aby sprawdzić, czy pliki są zainstalowane poprawnie.
 

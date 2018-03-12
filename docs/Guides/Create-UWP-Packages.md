@@ -12,11 +12,11 @@ keywords: "Utwórz pakiet, pakietów dla platformy uniwersalnej systemu Windows,
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6787704d41364a165270d56e8980f24d311b07b3
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: af650b6cd67855a67d0f49cdbd9f510bf90a60f6
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-uwp-packages"></a>Tworzenie pakietów platformy uniwersalnej systemu Windows
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/20/2018
 
 W tym przewodniku tworzenia pakietu NuGet z natywnego platformy uniwersalnej systemu Windows składnika (w tym formancie XAML) używanego w zarządzanego i natywnego projektów.
 
-## <a name="pre-requisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
 1. 2017 usługi Visual Studio lub Visual Studio 2015. Bezpłatnie zainstalować 2017 Community edition z [visualstudio.com](https://www.visualstudio.com/); można także wersje Professional i Enterprise.
 

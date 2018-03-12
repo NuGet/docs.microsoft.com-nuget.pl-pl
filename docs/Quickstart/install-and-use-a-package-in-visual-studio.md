@@ -12,11 +12,11 @@ keywords: "instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGe
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c0030877803ac7403f26e27ac3c5a0303d69c489
-ms.sourcegitcommit: eabd401616a98dda2ae6293612acb3b81b584967
+ms.openlocfilehash: b2cfe2d9b929d43f733fd28ba7336c0b04f718e6
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="install-and-use-a-package-in-visual-studio"></a>Zainstaluj i użyj pakietu w programie Visual Studio
 
@@ -27,7 +27,7 @@ Po zakończeniu instalacji można znaleźć pakietu w kodzie z `using <namespace
 > [!Tip]
 > **Rozpoczynać nuget.org**: nuget.org przeglądania jest jak .NET deweloperzy zazwyczaj znaleźć składników może zostać ponownie użyty we własnych aplikacjach. Można wyszukiwać nuget.org bezpośrednio lub znaleźć i zainstalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
 
-## <a name="pre-requisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
 - Visual Studio 2017 z obciążeniem rozwoju platformy uniwersalnej systemu Windows, lub
 - Visual Studio 2015 Update 3 z narzędzia dla uniwersalnych aplikacji systemu Windows.

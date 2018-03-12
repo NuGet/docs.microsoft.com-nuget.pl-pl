@@ -13,11 +13,11 @@ keywords: "NuGet pakietu instalacji, ponowna instalacja pakietu NuGet, Przywraca
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c2d62f34819138c51bd9ccc698a8a2495a45824d
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: e2875630b24fbe04fc7bcab52335d849e54160de
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak zainstalować i pakietów aktualizacji
 
@@ -41,7 +41,7 @@ W tym artykule:
 1. **Uszkodzenie odwołań po przywróceniu pakietu**: Jeśli już otwarty projekt i przywrócić pakietów NuGet, ale nadal odwołania Zobacz uszkodzony, spróbuj ponownie zainstalować każdego z tych pakietów.
 1. **Projekt jest uszkodzony z powodu usuniętych plików**: NuGet nie uniemożliwiają usunięcie elementów dodanych z pakietów, więc łatwo przypadkowo modyfikowanie zawartości zainstalowane z pakietu i przerwać projektu. Aby przywrócić projekt, zainstaluj ponownie odpowiednich pakietów.
 1. **Aktualizacja pakietu spowodowało przerwanie projektu**: Jeśli aktualizacja pakietu dzieli projektu, awarii jest zazwyczaj spowodowane pakietu zależności, które mogą również zostały zaktualizowane. Aby przywrócić stan zależności, ponownej instalacji tego określonego pakietu.
-1. **Projekt przekierowania lub Uaktualnij**: może to być przydatne, gdy projekt został przekierować lub uaktualnić, a pakiet wymaga ponownej instalacji z powodu zmiany w platformie docelowej. NuGet 2.7 i nowszym pokazuje błąd kompilacji w takich przypadkach natychmiast po przekierowania projektu i ostrzeżenia kompilacji kolejnych informacją o tym, że pakiet może być konieczne ponowne zainstalowanie. Do uaktualnienia projektu NuGet pokazuje błąd w dzienniku uaktualnić projekt.
+1. **Projekt przekierowania lub Uaktualnij**: może to być przydatne, gdy projekt został przekierować lub uaktualnić, a pakiet wymaga ponownej instalacji z powodu zmiany w platformie docelowej. NuGet przedstawia błąd kompilacji w takich przypadkach natychmiast po przekierowania projektu oraz ostrzeżenia kompilacji kolejnych informacją o tym, że pakiet może być konieczne ponowne zainstalowanie. Do uaktualnienia projektu NuGet pokazuje błąd w dzienniku uaktualnić projekt.
 1. **Ponowna instalacja pakietu podczas jego tworzenia**: autorów pakietu często konieczne ponowne zainstalowanie tej samej wersji pakietu, tworzony jest do testowania zachowanie. `Install-Package` Polecenia nie zapewnia opcję, aby wymusić konieczności ponownej instalacji, należy więc `Update-Package -reinstall` zamiast tego.
 
 ## <a name="constraining-upgrade-versions"></a>Ograniczający uaktualniania wersji

@@ -12,17 +12,17 @@ keywords: Pakiet NuGet tworzenie, publikowanie pakietu NuGet, samouczek NuGet pa
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 32cbe5dea180daa5b9d21102b996bf160d4ee511
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 086de5378fe4ae928e6bd00cd3a87afd7c366a01
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-and-publish-a-package"></a>Tworzenie i publikowanie pakietu
 
 Jest to prosty proces tworzenia pakietów NuGet z biblioteki klas .NET i opublikować go za pomocą nuget.org `dotnet` interfejsu wiersza polecenia (CLI).
 
-## <a name="pre-requisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Zainstaluj [.NET Core SDK](https://www.microsoft.com/net/download/), która obejmuje `dotnet` interfejsu wiersza polecenia.
 
@@ -106,3 +106,4 @@ Po utworzeniu `.nupkg` pliku opublikowaniu go przy użyciu nuget.org `dotnet nug
 - [Obsługuje wiele platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
+- [Podpisywanie pakietów](../create-packages/Sign-a-package.md)

@@ -16,11 +16,11 @@ keywords: "Punkt wejścia NuGet interfejsu API, NuGetA PI odnajdowania punktu ko
 ms.reviewer:
 - karann
 - unnir
-ms.openlocfilehash: 9d0bb421c163520df4a1f0e9f3f71aab823aace3
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: 8de0bc15edc358d091d84da54b8b67c085f29645
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="service-index"></a>Indeks usługi
 
@@ -30,12 +30,11 @@ Indeks usługi nuget.org znajduje się pod adresem `https://api.nuget.org/v3/ind
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-`version` Wartość jest ciągiem parseable wersji programu SemVer 2.0.0, co oznacza wersji schematu indeksu usługi.
-Interfejs API wymaga, że ciąg wersji ma numer wersji głównej `3`. Nierozdzielające zmiany do schematu indeksu usługi, zostanie zwiększona wersja pomocnicza ciąg wersji.
+`version` Wartość jest ciągiem parseable wersji programu SemVer 2.0.0, co oznacza wersji schematu indeksu usługi. Interfejs API wymaga, że ciąg wersji ma numer wersji głównej `3`. Nierozdzielające zmiany do schematu indeksu usługi, zostanie zwiększona wersja pomocnicza ciąg wersji.
 
 Każdy zasób w indeksie usługi jest kontrolą wersji niezależnie od wersji schematu indeksu usługi.
 
-Bieżąca wersja schematu jest `3.0.0-beta.1`.
+Bieżąca wersja schematu jest `3.0.0`. `3.0.0` Jest funkcjonalnym odpowiednikiem starszej wersji `3.0.0-beta.1` wersji, ale powinien być preferowany, jak komunikuje się bardziej precyzyjnie stabilny, definicja schematu.
 
 ## <a name="http-methods"></a>Metody HTTP
 

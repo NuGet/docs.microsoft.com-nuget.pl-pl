@@ -11,11 +11,11 @@ description: "Pakiet NuGet i przywracania może współpracować bezpośrednio j
 keywords: NuGet i MSBuild, docelowy pakietu NuGet, docelowy przywracania NuGet
 ms.reviewer:
 - karann-msft
-ms.openlocfilehash: 4d448af3d31e0907cba223c0ccec55604e94f055
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 798b3550718294072d86b6e4827ec5017178d2cc
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracania jako docelowych elementów MSBuild
 
@@ -55,7 +55,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 | Autorzy | Autorzy | Nazwa bieżącego użytkownika | |
 | Właściciele | Brak | Nie istnieje w pliku NuSpec | |
 | Tytuł | Tytuł | PackageId| |
-| Opis | Opis | "Opis pakietu" | |
+| Opis | PackageDescription | "Opis pakietu" | |
 | Copyright | Copyright | empty | |
 | RequireLicenseAcceptance | PackageRequireLicenseAcceptance | false | |
 | LicenseUrl | PackageLicenseUrl | empty | |
@@ -222,6 +222,9 @@ msbuild /t:pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:Nu
 1. Uruchamianie przywracania
 1. Pobieranie pakietów
 1. Zapis plików zasobów, cele i właściwości
+
+> [!Note]
+> `restore` Działa tylko dla projektów przy użyciu programu MSBuild `PackageReference` elementów i nie powoduje przywrócenia pakietów odwoływać się przy użyciu `packages.config` pliku.
 
 ### <a name="restore-properties"></a>Przywróć właściwości
 

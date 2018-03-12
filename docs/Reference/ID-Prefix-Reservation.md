@@ -13,15 +13,15 @@ ms.reviewer:
 - ananguar
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: bee215fcc88b03dbdde6c15d1583898bdf205952
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.openlocfilehash: f74ea3c772a129f4b9cd286a77cf3e88eba2d33b
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="package-id-prefix-reservation"></a>Rezerwacji prefiks Identyfikatora pakietu
 
-Właściciele pakietu można zastrzec i chronić swoją tożsamość przez zarezerwowanie prefiksy identyfikator. Konsumenci pakietu są dostarczane z dodatkowymi informacjami korzystanie z pakietami, które pakiet, w którym są one konsumowania nie są w ich właściwości identyfikujących fałszywych. 
+Właściciele pakietu można zarezerwować i chronić swoją tożsamość przez zarezerwowanie prefiksy identyfikator. Konsumenci pakietu są dostarczane z dodatkowymi informacjami korzystanie z pakietami, które pakiet, w którym są one konsumowania nie są w ich właściwości identyfikujących fałszywych. 
 
 [nuget.org](https://www.nuget.org/) i Visual Studio 2017 wersji 15,4 lub nowszej Pokaż visual wskaźnika dla pakietów, które są przesyłane przez właścicieli z prefiksem Identyfikatora pakietu zastrzeżone tak długo, jak pakiet jest zgodny z Identyfikatorem zastrzeżonego prefiksu wzorzec nazewnictwa. Przesunięcie wyjaśniono wymaga rezerwacji prefiks Identyfikatora i jak poprosić właściciela o prefiks Identyfikatora.
 

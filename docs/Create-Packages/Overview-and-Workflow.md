@@ -12,11 +12,11 @@ keywords: "Tworzenie pakietu NuGet, Przegląd tworzenia NuGet, przepływ pracy t
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6dcb531fc0c8a2fc68372b78af7de1a3bc592bc0
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 84587ad1f511416cc03b6fee153d1df44d0e7aa7
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="package-creation-workflow"></a>Przepływ pracy tworzenia pakietu
 
@@ -45,6 +45,7 @@ Z tego miejsca należy wziąć pod uwagę wiele innych opcji pakietu:
 - [Symbol pakiety](../create-packages/symbol-packages.md) zawiera wskazówki dotyczące dostarczanie symboli dla biblioteki, umożliwiające konsumentom wkroczyć do kodu podczas debugowania.
 - [Przechowywanie wersji pakietu](../reference/package-versioning.md) omówiono sposób zidentyfikować dokładną wersję, umożliwiające zależności (inne pakiety, które korzystanie z pakietu).
 - [Oryginalne pakiety](../create-packages/native-packages.md) opisano proces tworzenia pakietu w konsumentach napisanych w języku C++.
+- [Podpisywanie pakietów](../create-packages/sign-a-package.md) opisano proces dodawania podpisu cyfrowego do pakietu.
 
 Jeśli następnie możesz przystąpić do publikowania pakietu nuget.org, wykonaj prosty proces w [opublikowania pakietu](../create-packages/publish-a-package.md).
 

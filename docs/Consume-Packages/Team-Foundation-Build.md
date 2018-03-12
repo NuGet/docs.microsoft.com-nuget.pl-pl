@@ -12,11 +12,11 @@ keywords: "Przywracanie pakietu NuGet, NuGet i TFS, NuGet i programu VSTS system
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b18cdab2c32ad135c0fc07fa0cf976ee33880a19
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 9e3ef6e3bcc55705315fcb6ccf3e917963c62250
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="setting-up-package-restore-with-team-foundation-build"></a>Konfigurowanie Przywracanie pakietu z Team Foundation Build
 
@@ -41,7 +41,7 @@ Jest to szczególnie interesujące, jeśli używasz [rozproszonych kontroli wers
 
 Obsługiwał NuGet [Przywracanie pakietów](../consume-packages/package-restore.md) jako część kompilacji długi czas teraz. Poprzedniej implementacji wystąpił problem kurczaka jajecznych pakietów, które chcesz rozszerzyć proces kompilacji, ponieważ NuGet przywrócić pakiety podczas kompilowania projektu. Jednak program MSBuild nie zezwala na rozszerzanie kompilacji podczas kompilacji; co można argumentowało tego problemu w programie MSBuild, ale I argumentowało, że jest to problemu związanego z używaniem. W zależności od tego, które aspekt należy rozszerzyć może być za późno można zarejestrować do czasu, który zostanie przywrócony do pakietu.
 
-Utrwalenie tego problemu jest upewnienie się, że pakiety zostaną przywrócone jako pierwszy krok w procesie kompilacji. NuGet 2.7 + ułatwia to uproszczona wiersza polecenia:
+Utrwalenie tego problemu jest zapewnienie, że pakiety zostaną przywrócone jako pierwszy krok w procesie kompilacji:
 
 ```cli
 nuget restore path\to\solution.sln
@@ -100,7 +100,7 @@ Kod źródłowy jest w obszarze `src` folderu. Mimo że nasze pokaz używa tylko
 </configuration>
 ```
 
-Do komunikowania się do systemu kontroli wersji, że firma Microsoft nie opcje do wyboru w **pakiety** folderów, również po dodaniu ignorowania plików dla obu git (`.gitignore`) oraz TF kontroli wersji (`.tfignore`). Te pliki w tym artykule opisano wzorców plików, których nie chcesz do zaewidencjonowania.
+Do komunikowania się do systemu kontroli wersji, że firma Microsoft nie opcje do wyboru w **pakiety** folderów, również po dodaniu ignorowania plików dla obu git (`.gitignore`) oraz TF kontroli wersji (`.tfignore`). Te pliki opisano wzorców plików, których nie chcesz do zaewidencjonowania.
 
 `.gitignore` Pliku wygląda następująco:
 

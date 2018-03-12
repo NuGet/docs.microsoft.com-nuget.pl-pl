@@ -13,23 +13,23 @@ ms.reviewer:
 - karann-msft
 - unniravindranathan
 - anangaur
-ms.openlocfilehash: 8bcf054a497e1069a11f96ba675853fb0f2ed667
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 47d02d160a7e40f323edcbd87e2c8642905b8ddf
+ms.sourcegitcommit: df21fe770900644d476d51622a999597a6f20ef8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="transforming-source-code-and-configuration-files"></a>Przekształcanie plików źródłowych kodem i konfiguracją
 
-Dla projektów przy użyciu `packages.config`NuGet obsługuje możliwość przekształcenia do kodu źródłowego i plików konfiguracji w pakiecie instalowania i odinstalowywania razy. Przekształcenia nie są stosowane, gdy pakiet jest zainstalowany w projekcie przy użyciu [PackageReference](../consume-packages/package-references-in-project-files.md).
+Dla projektów przy użyciu `packages.config`NuGet obsługuje możliwość przekształcenia do kodu źródłowego i plików konfiguracji w pakiecie instalowania i odinstalowywania razy. Tylko źródła kodu przekształceń są stosowane, gdy pakiet jest zainstalowany w projekcie przy użyciu [PackageReference](../consume-packages/package-references-in-project-files.md).
 
-A **źródła kodu transformacji** jednokierunkowe zastępujący tokenu jest stosowana do plików w pakiecie `content` folderu, gdy pakiet jest zainstalowany, gdy tokeny odnoszą się do programu Visual Studio [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) . Dzięki temu można wstawić plik do projektu przestrzeni nazw lub Dostosuj kod, który zazwyczaj przejdzie do `global.asax` w projekcie programu ASP.NET.
+A **źródła kodu transformacji** jednokierunkowe zastępujący tokenu jest stosowana do plików w pakiecie `content` lub `contentFiles` folder (`content` dla klientów korzystających z `packages.config` i `contentFiles` dla `PackageReference`) po zainstalowaniu pakietu, gdy tokeny odnoszą się do programu Visual Studio [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7). Dzięki temu można wstawić plik do projektu przestrzeni nazw lub Dostosuj kod, który zazwyczaj przejdzie do `global.asax` w projekcie programu ASP.NET.
 
 A **transformacji pliku config** umożliwia modyfikowanie plików, które już istnieją w projekcie docelowym, takich jak `web.config` i `app.config`. Na przykład pakiet może być konieczne dodanie elementu `modules` sekcji w pliku konfiguracji. Ta transformacja odbywa się przy tym specjalne pliki w pakiecie, który opisano sekcjach, aby dodać do plików konfiguracji. Po odinstalowaniu pakietu te same zmiany są następnie wycofać, co to dwukierunkowe przekształcania.
 
 ## <a name="specifying-source-code-transformations"></a>Określanie przekształcenia kodu źródłowego
 
-1. Pliki, które ma zostać wstawiony z pakietu w projekcie musi znajdować się w pakiecie `content` folderu. Na przykład, jeśli chcesz, aby plik o nazwie `ContosoData.cs` ma być zainstalowany w `Models` folder docelowy projekt, musi znajdować się wewnątrz `content\Models` folderu w pakiecie.
+1. Pliki, które ma zostać wstawiony z pakietu w projekcie musi znajdować się w pakiecie `content` i `contentFiles` folderów. Na przykład, jeśli chcesz, aby plik o nazwie `ContosoData.cs` ma być zainstalowany w `Models` folder docelowy projekt, musi znajdować się wewnątrz `content\Models` i `contentFiles\{lang}\{tfm}\Models` folderów w pakiecie.
 
 1. Aby nakazać NuGet, aby zastosować zastępujący tokenu w czasie instalacji, należy dołączyć `.pp` nazwy pliku kodu źródłowego. Po zakończeniu instalacji, nie ma pliku `.pp` rozszerzenia.
 
@@ -60,7 +60,7 @@ A **transformacji pliku config** umożliwia modyfikowanie plików, które już i
 Zgodnie z opisem w poniższych sekcjach, przekształcenia pliku konfiguracji można zrobić na dwa sposoby:
 
 - Obejmują `app.config.transform` i `web.config.transform` plików do pakietu `content` folder, gdzie `.transform` rozszerzenie informuje NuGet, że te pliki zawierają XML do scalenia z istniejących plików konfiguracji, gdy pakiet jest zainstalowany. Po odinstalowaniu pakietu tego samego XML zostaną usunięte.
-- (NuGet 2.6 lub nowszej) Obejmują `app.config.install.xdt` i `web.config.install.xdt` plików do pakietu `content` folderu, za pomocą [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx) do opisywania żądane zmiany. Po wybraniu tej opcji możesz również uwzględnić `.uninstall.xdt` plik, aby cofnąć zmiany, gdy pakiet zostanie usunięty z projektu.
+- Obejmują `app.config.install.xdt` i `web.config.install.xdt` plików do pakietu `content` folderu, za pomocą [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx) do opisywania żądane zmiany. Po wybraniu tej opcji możesz również uwzględnić `.uninstall.xdt` plik, aby cofnąć zmiany, gdy pakiet zostanie usunięty z projektu.
 
 > [!Note]
 > Przekształcenia nie są stosowane do `.config` plików jako łącze w programie Visual Studio.
@@ -120,7 +120,7 @@ Aby zobaczyć efekt Instalowanie i odinstalowanie pakietu, należy utworzyć now
 
 ### <a name="xdt-transforms"></a>Przekształca XDT
 
-2.6 NuGet i nowsze, można zmodyfikować plików konfiguracji przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Może także zawierać NuGet Zastąp tokeny z [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) przez dołączenie nazwy właściwości w `$` ograniczników (bez uwzględniania wielkości liter).
+Można zmodyfikować plików konfiguracji przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Może także zawierać NuGet Zastąp tokeny z [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) przez dołączenie nazwy właściwości w `$` ograniczników (bez uwzględniania wielkości liter).
 
 Na przykład następująca `app.config.install.xdt` pliku zostanie wstawiona `appSettings` element do `app.config` zawierający `FullPath`, `FileName`, i `ActiveConfigurationSettings` wartości z projektu:
 

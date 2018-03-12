@@ -13,11 +13,11 @@ keywords: "NuGet pakietu zużycia, odnajdywania pakietu NuGet, najlepiej pakiet�
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: fe49d3c5548da2bde1bfdf4515b49232f6933e18
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 0c52fa237a663fcf227e8336534d344e432523b4
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocena pakietów NuGet dla projektu
 
@@ -73,11 +73,9 @@ W programie Visual Studio i przy użyciu interfejsu wiersza polecenia NuGet NuGe
 
 ### <a name="native-c-packages"></a>Oryginalne pakiety języka C++
 
-NuGet (2.5 +) obsługuje natywnych języka C++ pakietów można używane w projektach C++ w programie Visual Studio. Dzięki temu **Zarządzaj pakietami NuGet** polecenia menu kontekstowe projektów, wprowadza `native` platformy docelowej i zapewnia integrację programu MSBuild.
+NuGet obsługuje natywnych języka C++ pakietów można używane w projektach C++ w programie Visual Studio. Dzięki temu **Zarządzaj pakietami NuGet** polecenia menu kontekstowe projektów, wprowadza `native` platformy docelowej i zapewnia integrację programu MSBuild.
 
 Można znaleźć natywnego pakietów na [nuget.org](https://www.nuget.org/packages), wyszukiwanie przy użyciu `tag:native`. Takie pakiety zwykle zapewniają `.targets` i `.props` pliki, które NuGet importuje automatycznie, gdy pakiet zostanie dodany do projektu.
-
-Informacje na temat tworzenia pakietów macierzystego, zobacz [natywnego pakiety](../create-packages/native-packages.md).
 
 ## <a name="evaluating-packages"></a>Ocena pakietów
 

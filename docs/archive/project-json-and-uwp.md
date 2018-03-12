@@ -12,11 +12,11 @@ keywords: "Zależności NuGet, NuGet i platformy uniwersalnej systemu Windows, p
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: f1ec086d6404c441ca5ad53028af2265a2344905
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: 3ef3703b2be92f84d37866bce9934ebcfed3a9f7
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="projectjson-and-uwp"></a>pliku Project.JSON i platformy uniwersalnej systemu Windows
 
@@ -31,7 +31,7 @@ Jeśli masz istniejący pakiet i chcesz dodać obsługę aplikacji platformy uni
 
 ## <a name="i-already-target-netcore45"></a>Mogę wskazać już netcore45
 
-W przypadku skierowania `netcore45` już i nie trzeba korzystać z funkcji w tym miejscu, nie jest potrzebne nie działanie. `netcore45`pakiety mogą być używane przez aplikacje platformy uniwersalnej systemu Windows.
+W przypadku skierowania `netcore45` już i nie trzeba korzystać z funkcji w tym miejscu, nie jest potrzebne nie działanie. `netcore45` pakiety mogą być używane przez aplikacje platformy uniwersalnej systemu Windows.
 
 ## <a name="i-want-to-take-advantage-of-windows-10-specific-apis"></a>Chcę korzystać z określonych interfejsów API systemu Windows 10
 
@@ -61,11 +61,11 @@ Pakiety NuGet, w tym formacie mają następujące dobrze znany folder i zachowan
 | Folder | Zachowania |
 | --- | --- |
 | Kompilacja | Zawiera MSBuild cele i pliki właściwości w tym folderze są zintegrowane z inną nazwę projektu, ale w przeciwnym razie nie została zmieniona. |
-| Narzędzia | `install.ps1`i `uninstall.ps1` nie są uruchamiane. `init.ps1`działa jako zawsze ma. |
+| Narzędzia | `install.ps1` i `uninstall.ps1` nie są uruchamiane. `init.ps1` działa jako zawsze ma. |
 | Zawartość | Zawartość nie jest kopiowana automatycznie do użytkownika projektu. Obsługa zawartości uwzględnienie w projekcie jest planowane w nowszej wersji. |
 | Lib | Wiele pakietów `lib` działa tak samo w NuGet 2.x, ale bez opcji rozwinięte jakie nazwy może być używany w go i lepsze logiki dla pobrania poprawne podfolderu w przypadku uzyskiwania dostępu do pakietów. Jednak w przypadku używania w połączeniu z `ref`, `lib` folder zawiera zestawy, które implementuje powierzchni zdefiniowane przez zestawy w `ref` folderu. |
-| REF | `ref`jest opcjonalny folder zawierający zestawy .NET Definiowanie publicznego powierzchni (typy publiczne i metody) do kompilacji dla aplikacji. Zestawy w tym folderze może mieć żadnej implementacji, czysto są one używane do definiowania powierzchni dla kompilatora. Jeśli nie ma pakietu `ref` folder, a następnie `lib` jest odwołanie do zestawu i zestawu implementacji. |
-| środowisk uruchomieniowych | `runtimes`jest opcjonalny folder zawierający kod określonego systemu operacyjnego, takie jak architektura Procesora i systemu operacyjnego określonego lub w inny sposób zależny od platformy plików binarnych. |
+| REF | `ref` jest opcjonalny folder zawierający zestawy .NET Definiowanie publicznego powierzchni (typy publiczne i metody) do kompilacji dla aplikacji. Zestawy w tym folderze może mieć żadnej implementacji, czysto są one używane do definiowania powierzchni dla kompilatora. Jeśli nie ma pakietu `ref` folder, a następnie `lib` jest odwołanie do zestawu i zestawu implementacji. |
+| środowisk uruchomieniowych | `runtimes` jest opcjonalny folder zawierający kod określonego systemu operacyjnego, takie jak architektura Procesora i systemu operacyjnego określonego lub w inny sposób zależny od platformy plików binarnych. |
 
 ## <a name="msbuild-targets-and-props-files-in-packages"></a>MSBuild cele i pliki właściwości w pakiety
 
@@ -121,7 +121,7 @@ W tym przykładzie zestawów w `ref` katalogów wszystkie będą identyczne.
 
 Folder środowisk uruchomieniowych zawiera zestawy i natywnych bibliotek wymaganych do uruchomienia na określonym "środowisk uruchomieniowych", które są zazwyczaj definiowane przez architekturę systemu operacyjnego i procesora CPU. Te programy obsługi są identyfikowane za pomocą [identyfikatorów środowiska uruchomieniowego (RID)](/dotnet/core/rid-catalog) takich jak `win`, `win-x86`, `win7-x86`, `win8-64`itp.
 
-## <a name="native-light-up"></a>Natywny światła w górę
+## <a name="native-helpers-to-use-platform-specific-apis"></a>Natywny pomocników użycia interfejsów API specyficzne dla platformy
 
 W poniższym przykładzie przedstawiono czysto zarządzaną implementację dla różnych platform, które używa pomocników macierzystego w systemie Windows 8, gdzie może wywołać do natywnych interfejsów API systemu Windows 8 określonego pakietu.
 
@@ -187,7 +187,7 @@ Jeśli chcesz utworzyć pakiet, który może być zużyte przez projektów przy 
 
 - REF i środowisk uruchomieniowych tylko pracy nad NuGet 3. Są one zarówno ignorowane przez NuGet 2.
 
-- Nie należy polegać na `install.ps1` lub `uninstall.ps1` funkcji. Wykonanie tych plików przy użyciu `packages.config`, ale są ignorowane z `project.json`. Dlatego pakietu musi być możliwe bez ich uruchamiania. `init.ps1`nadal działa na NuGet 3.
+- Nie należy polegać na `install.ps1` lub `uninstall.ps1` funkcji. Wykonanie tych plików przy użyciu `packages.config`, ale są ignorowane z `project.json`. Dlatego pakietu musi być możliwe bez ich uruchamiania. `init.ps1` nadal działa na NuGet 3.
 
 - Cele i właściwości instalacji jest inny, dlatego należy upewnić się, że pakiet działa zgodnie z oczekiwaniami na obu komputerach klienckich.
 

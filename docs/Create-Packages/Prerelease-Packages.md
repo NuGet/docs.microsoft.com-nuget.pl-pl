@@ -12,11 +12,11 @@ keywords: "przechowywanie wersji, przechowywanie wersji pakietu NuGet, wersje ws
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: f07b4a0428685b036640a7153190fd8454885608
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: 03f744a96841a8c49d9f1dde89620b85de968d6f
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="building-pre-release-packages"></a>Tworzenie pakiety wersji wstępnej
 
@@ -30,7 +30,7 @@ Do obsługi cyklu życia wersji oprogramowania, NuGet w wersji 1.6 lub nowszym u
 
 Można określić takie wersji na dwa sposoby:
 
-- `.nuspec`Plik: zawiera sufiksu wersją semantyczną w `version` elementu:
+- `.nuspec` Plik: zawiera sufiksu wersją semantyczną w `version` elementu:
 
     ```xml
     <version>1.0.1-alpha</version>
@@ -79,7 +79,7 @@ Pamiętając o tym warto zazwyczaj wykonaj rozpoznanym konwencji nazewnictwa, ta
 - `-rc`: Wersji release candidate, zwykle potencjalnie ostateczną zlecenia (stable), chyba że wyłonić znaczących usterki.
 
 > [!Note]
-> NuGet nie obsługuje [zgodnego programu SemVer (v2.0.0)](http://semver.org/spec/v2.0.0.html) wersja wstępna liczby za pomocą kropkowego, podobnie jak w `1.0.1-build.23`. Można użyć formularza, takich jak `1.0.1-build23` , ale jest to zawsze uważane za wersji wstępnej.
+> Obsługuje NuGet 4.3.0+ [v2.0.0 Wersjonowania semantycznego](http://semver.org/spec/v2.0.0.html), który obsługuje numerów wersji wstępnej mają kropkowego, podobnie jak w `1.0.1-build.23`. Kropkowego nie jest obsługiwany w wersjach NuGet przed 4.3.0. We wcześniejszych wersjach programu NuGet, można użyć formularza, takich jak `1.0.1-build23` , ale zawsze uznano wersji wstępnej.
 
 Niezależnie od sufiksy, jednak należy użyć, NuGet zapewni ich pierwszeństwo w odwrotnej kolejności alfabetycznej:
 

@@ -12,11 +12,11 @@ keywords: "Utwórz pakiet, pakietów dla platformy Xamarin, pakietów i platform
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2f0131e4f447e2e0ab5a1d17e476a425eaa01b61
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: 185a0e1e424d1ceb2d8bacbcc1502b38412c4c41
+ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-cross-platform-packages"></a>Tworzenie pakietów i platform
 
@@ -24,14 +24,14 @@ Pakiet wieloplatformowych zawiera kod, który używa macierzystych interfejsów 
 
 W tym przewodniku tworzenia pakietu NuGet i platform, który może być używana w przenośnych projekty w systemach iOS, Android i Windows.
 
-1. [Wymagania wstępne](#pre-requisites)
+1. [Wymagania wstępne](#prerequisites)
 1. [Tworzenie projektu kodu struktury i abstrakcji](#create-the-project-structure-and-abstraction-code)
 1. [Wpisz swój kod specyficzne dla platformy](#write-your-platform-specific-code)
 1. [Tworzenie i aktualizowanie pliku .nuspec](#create-and-update-the-nuspec-file)
 1. [Pakiet składnika](#package-the-component)
 1. [Tematy pokrewne](#related-topics)
 
-## <a name="pre-requisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Visual Studio 2015 z platformy uniwersalnej systemu Windows (UWP) i Xamarin. Bezpłatnie zainstalować Community edition z [visualstudio.com](https://www.visualstudio.com/); oczywiście można również wersje Professional i Enterprise. Aby dołączyć narzędzia platformy uniwersalnej systemu Windows i program Xamarin, wybierz Instalacja niestandardowa, a następnie wybierz odpowiednie opcje.
 1. Interfejs wiersza polecenia NuGet. Pobierz najnowszą wersję nuget.exe z [nuget.org/downloads](https://nuget.org/downloads), zapisać go do wybranej lokalizacji. Dodać tej lokalizacji do Twojej zmiennej środowiskowej PATH, gdy nie jest jeszcze.
@@ -272,7 +272,7 @@ Aby udostępnić pakietu inni deweloperzy, postępuj zgodnie z instrukcjami [opu
 
 - [Plik Nuspec odwołania](../reference/nuspec.md)
 - [Pakiety symboli](../create-packages/symbol-packages.md)
-- [Przechowywanie wersji pakietu](../reference/package-versioning.md)
+- [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Obsługa wielu wersje programu .NET Framework](../create-packages/supporting-multiple-target-frameworks.md)
 - [W tym właściwości programu MSBuild i obiektów docelowych w pakiecie](../create-packages/creating-a-package.md#including-msbuild-props-and-targets-in-a-package)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
