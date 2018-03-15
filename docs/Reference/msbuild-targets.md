@@ -3,7 +3,7 @@ title: "NuGet pakietu i ich przywracania docelowych elementów MSBuild | Dokumen
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 04/03/2017
+ms.date: 03/13/2018
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
@@ -11,11 +11,11 @@ description: "Pakiet NuGet i przywracania może współpracować bezpośrednio j
 keywords: NuGet i MSBuild, docelowy pakietu NuGet, docelowy przywracania NuGet
 ms.reviewer:
 - karann-msft
-ms.openlocfilehash: 798b3550718294072d86b6e4827ec5017178d2cc
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: bb0ade1b0f5f81d7c8822d3c2b2f9dd45745fb8d
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracania jako docelowych elementów MSBuild
 
@@ -42,7 +42,9 @@ Podobnie można zapisać zadania programu MSBuild, napisać własny docelowych i
 
 ## <a name="pack-target"></a>docelowy pakiet
 
-Korzystając z docelowym pakietu, oznacza to, `msbuild /t:pack`, MSBuild rysuje wejścia z pliku projektu. W poniższej tabeli opisano właściwości programu MSBuild, które mogą zostać dodane do pliku projektu w pierwszym `<PropertyGroup>` węzła. Wprowadź te zmiany łatwe w Visual Studio 2017 i później przez kliknięcie prawym przyciskiem myszy projekt i wybierając **edytować {nazwa_projektu}** w menu kontekstowym. Dla wygody tabeli jest zorganizowana według równoważne właściwości w [ `.nuspec` pliku](../reference/nuspec.md).
+Dla platformy .NET Standard projektów przy użyciu formatu PackageReference, używając `msbuild /t:pack` pobiera dane wejściowe z pliku projektu do użycia podczas tworzenia pakietu NuGet.
+
+W poniższej tabeli opisano właściwości programu MSBuild, które mogą zostać dodane do pliku projektu w pierwszym `<PropertyGroup>` węzła. Wprowadź te zmiany łatwe w Visual Studio 2017 i później przez kliknięcie prawym przyciskiem myszy projekt i wybierając **edytować {nazwa_projektu}** w menu kontekstowym. Dla wygody tabeli jest zorganizowana według równoważne właściwości w [ `.nuspec` pliku](../reference/nuspec.md).
 
 Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są obsługiwane przy użyciu programu MSBuild.
 
@@ -63,7 +65,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 | iconUrl | PackageIconUrl | empty | |
 | Znaczniki | PackageTags | empty | Tagi są rozdzielone średnikami. |
 | releaseNotes | PackageReleaseNotes | empty | |
-| Adres Url i repozytorium | RepositoryUrl | empty | Adres URL repozytorium jest używany do klonowania lub pobrać kodu źródłowego. Example: *https://github.com/NuGet/NuGet.Client.git* |
+| Adres Url i repozytorium | RepositoryUrl | empty | Adres URL repozytorium jest używany do klonowania lub pobrać kodu źródłowego. Przykład: *https://github.com/NuGet/NuGet.Client.git* |
 | Repozytorium/typ | RepositoryType | empty | Typ repozytorium. Przykłady: *git*, *tfs*. |
 | Repozytorium/gałęzi | RepositoryBranch | empty | Informacje o gałęzi repozytorium opcjonalne. *RepositoryUrl* musi być także określona dla tej właściwości, które zostaną uwzględnione. Przykład: *wzorca* (NuGet 4.7.0+) |
 | Repozytorium/zatwierdzeniu | RepositoryCommit | empty | Opcjonalne repozytorium zatwierdzania lub zestaw zmian, aby wskazać, który źródła pakietu został skompilowany przy. *RepositoryUrl* musi być także określona dla tej właściwości, które zostaną uwzględnione. Example: *0e4d1b598f350b3dc675018d539114d1328189ef* (NuGet 4.7.0+) |
@@ -194,7 +196,7 @@ Korzystając z `MSBuild /t:pack /p:IsTool=true`, wszystkie dane wyjściowe pliki
 
 ### <a name="packing-using-a-nuspec"></a>Przy użyciu .nuspec pakowania
 
-Można użyć `.nuspec` plik można spakować projektu, pod warunkiem, że masz plik projektu do zaimportowania `NuGet.Build.Tasks.Pack.targets` , dzięki czemu mogą być wykonywane zadanie pakietów. Następujące trzy właściwości programu MSBuild mają zastosowanie do pakowania przy użyciu `.nuspec`:
+Można użyć `.nuspec` plik można spakować projektu, pod warunkiem, że masz SDK plik projektu do zaimportowania `NuGet.Build.Tasks.Pack.targets` , dzięki czemu mogą być wykonywane zadanie pakietów. Nadal potrzebujesz przywrócić projekt przed można pliku nuspec. Platforma docelowa pliku projektu nie ma znaczenia, a nie używany podczas pakowania nuspec. Następujące trzy właściwości programu MSBuild mają zastosowanie do pakowania przy użyciu `.nuspec`:
 
 1. `NuspecFile`: ścieżka względna lub bezwzględna do `.nuspec` pliku używany na potrzeby pakowania.
 1. `NuspecProperties`: Rozdzielana średnikami lista klucz = pary wartości. Ze względu na sposób działania analizy wiersza polecenia programu MSBuild, wiele właściwości musi być następujący: `/p:NuspecProperties=\"key1=value1;key2=value2\"`.  
@@ -212,6 +214,23 @@ Jeśli pakiet projektu za pomocą programu MSBuild, należy użyć polecenia pod
 msbuild /t:pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:NuspecProperties=<> /p:NuspecBasePath=<Base path> 
 ```
 
+Należy pamiętać, pakowanie nuspec przy użyciu dotnet.exe lub msbuild również prowadzi do tworzenia projektu domyślnie. Można tego uniknąć przez przekazanie ```--no-build``` dotnet.exe, który jest odpowiednikiem ustawienie dla właściwości ```<NoBuild>true</NoBuild> ``` w pliku projektu oraz ustawienie ```<IncludeBuildOutput>false</IncludeBuildOutput> ``` w pliku projektu
+
+Przykładowy plik csproj, można spakować plik nuspec to:
+
+```
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <NoBuild>true</NoBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NuspecFile>PATH_TO_NUSPEC_FILE</NuspecFile>
+    <NuspecProperties>add nuspec properties here</NuspecProperties>
+    <NuspecBasePath>optional to provide</NuspecBasePath>
+  </PropertyGroup>
+</Project>
+```
+
 ## <a name="restore-target"></a>Lokalizacja docelowa przywracania
 
 `MSBuild /t:restore` (który `nuget restore` i `dotnet restore` za pomocą platformy .NET Core projektów), przywraca pakietów, do których odwołuje się w pliku projektu w następujący sposób:
@@ -223,8 +242,7 @@ msbuild /t:pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:Nu
 1. Pobieranie pakietów
 1. Zapis plików zasobów, cele i właściwości
 
-> [!Note]
-> `restore` Działa tylko dla projektów przy użyciu programu MSBuild `PackageReference` elementów i nie powoduje przywrócenia pakietów odwoływać się przy użyciu `packages.config` pliku.
+`restore` Docelowy działa **tylko** dla projektów w formacie PackageReference. Robi **nie** pracy dla projektów przy użyciu `packages.config` sformatować; użyj [Przywracanie nuget](../tools/cli-ref-restore.md) zamiast tego.
 
 ### <a name="restore-properties"></a>Przywróć właściwości
 

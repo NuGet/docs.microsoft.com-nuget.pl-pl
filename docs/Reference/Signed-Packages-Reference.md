@@ -13,11 +13,11 @@ ms.reviewer:
 - ananguar
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 4763b0dde0153f9e8ea840d5e788b5a3d96b9bd8
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: 9bf9885aaf42bedb681a5d916202fa8b26749a0c
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="signed-packages"></a>Pakiety podpisem
 
@@ -27,7 +27,7 @@ Pakiety NuGet mogą zawierać podpis cyfrowy, który zapewnia ochronę przed zmo
 
 Pakiety podpisem udostępnienia najwyższy weryfikacji end-to-end. Autor podpis gwarantuje, że pakiet nie został zmodyfikowany od czasu autora podpisania pakietu, niezależnie od którego repozytorium lub co metoda jest dostarczany pakiet transportu.
 
-Użytkowników potrzebujących środowisku zablokowany może wymagać pakiety podpisane za pomocą certyfikatu określonego autora.
+Użytkowników potrzebujących środowisku zablokowany może wymagać pakiety podpisane przy użyciu certyfikatu określonego autora.
 
 Ponadto pakiety podpisane przez autora udostępniają mechanizm uwierzytelniania dodatkowego do potoku publikowania nuget.org, ponieważ certyfikat podpisywania musi być zarejestrowana wcześniejsze.
 
@@ -51,7 +51,7 @@ Prawidłowe certyfikaty mogą być uzyskane z urzędów certyfikacji publicznej,
 - [Comodo](https://www.comodo.com/e-commerce/code-signing/code-signing-certificate.php)
 - [Certum](https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml) 
 
-Pełna lista urzędów certyfikacji ufa systemu Windows można uzyskać z [http://aka.ms/trustcertpartners](http://aka.ms/trustcertpartners).
+Pełna lista urzędów certyfikacji ufa systemu Windows można uzyskać z [ http://aka.ms/trustcertpartners ](http://aka.ms/trustcertpartners).
 
 ## <a name="create-a-test-certificate"></a>Tworzenie certyfikatu testowego
 

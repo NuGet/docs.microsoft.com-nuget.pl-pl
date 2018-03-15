@@ -13,11 +13,11 @@ ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c52d0a7c0da507cb9688c8a7b2c4eaf54a8ca5c2
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 90693b09fce966e3bc28ca24360a3fb4e1f73386
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -94,7 +94,7 @@ Te elementy mogą być widoczne w `<metadata>` elementu.
 | **Właściciele** | Rozdzielana przecinkami lista twórców pakietu przy użyciu nazwy profilu na nuget.org. Jest to często jak w tej samej listy `authors`i jest ignorowane w przypadku przekazywania pakietu do nuget.org. Zobacz [Zarządzanie właścicieli pakietu na nuget.org](../create-packages/publish-a-package.md#managing-package-owners-on-nugetorg). |
 | **projectUrl** | Wyświetla adres URL strony głównej pakietu, często są wyświetlane w interfejsie użytkownika oraz nuget.org. |
 | **licenseUrl** | Adres URL wyświetlany w wyświetla interfejsu użytkownika, a także nuget.org licencji pakietu. |
-| **iconUrl** | Adres URL obrazu 64 x 64, przezroczystość tła ma być używana jako ikonę pakietu w wyświetlania interfejsu użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* , a nie adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, użyj plik raw, takie jak adres URL *https://github.com/\<username\>/\<repozytorium\>/raw/\<gałęzi\> / \<logo.png\>*. |
+| **iconUrl** | Adres URL obrazu 64 x 64, przezroczystość tła ma być używana jako ikonę pakietu w wyświetlania interfejsu użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* , a nie adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, użyj plik raw, takie jak adres URL  *https://github.com/ \<username\>/\<repozytorium\>/raw/\<gałęzi\> / \<logo.png\>*. |
 | **requireLicenseAcceptance** | Wartość logiczna, określając, czy klient musi monitować o konsumenta, aby zaakceptować licencji pakietu przed zainstalowaniem pakietu. |
 | **DevelopmentDependency** | *(2.8 +)*  Wartość logiczna A, określając, czy pakiet jest oznaczone jako programowanie — tylko zależność, która zapobiega włączaniu jako zależności w innych pakietach pakietu. |
 | **Podsumowanie** | Krótki opis pakietu do wyświetlenia interfejsu użytkownika. Pominięcie skrócona wersja `description` jest używany. |
@@ -143,9 +143,10 @@ Z wyjątkiem produktów `$configuration$`, wartości w projekcie są używane za
 
 | Token | Wartość źródła | Wartość
 | --- | --- | ---
-| **$id$** | plik projektu | AssemblyName z pliku projektu |
+| **$id$** | plik projektu | AssemblyName (tytuł) z pliku projektu |
 | **$version$** | AssemblyInfo | AssemblyInformationalVersion, jeśli jest obecna, w przeciwnym razie AssemblyVersion |
 | **$author$** | AssemblyInfo | AssemblyCompany |
+| **$title$** | AssemblyInfo | AssemblyTitle |
 | **$description$** | AssemblyInfo | AssemblyDescription |
 | **$copyright$** | AssemblyInfo | AssemblyCopyright |
 | **$configuration$** | Zestaw biblioteki DLL | Konfiguracja używany do tworzenia zestawu, domyślnie używany do debugowania. Pamiętaj, że do utworzenia pakietu przy użyciu konfiguracji wydanie, zawsze używać `-properties Configuration=Release` w wierszu polecenia. |
@@ -543,7 +544,7 @@ Te pliki są określane za pomocą zestawu atrybutów, które opisują jak powin
 | **include** | (Wymagane) Lokalizacja pliku lub plików do uwzględnienia, mogą ulec wykluczenia określony przez `exclude` atrybutu. Ścieżka jest względem `.nuspec` pliku, chyba że określony jest ścieżką bezwzględną. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
 | **exclude** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Wieloznaczny `*` jest dozwolone i podwójne symbol wieloznaczny `**` oznacza cyklicznego folderu wyszukiwania. |
 | **buildAction** | Akcja kompilacji można przypisać do elementu zawartości dla programu MSBuild, takich jak `Content`, `None`, `Embedded Resource`, `Compile`itp. Wartość domyślna to `Compile`. |
-| **copyToOutput** | Wartość logiczna wskazująca, czy skopiować elementy zawartości do folderu wyjściowego kompilacji. Wartością domyślną jest false. |
+| **copyToOutput** | Wartość logiczna wskazująca, czy skopiować elementy zawartości do kompilacji (lub opublikować) folder wyjściowy. Wartością domyślną jest false. |
 | **spłaszczanie** | Wartość logiczna wskazująca, czy można skopiować elementy zawartości do pojedynczego folderu w danych wyjściowych kompilacji (true) czy zachowanie struktury folderów w pakiecie (false). Ta flaga działa tylko wtedy, gdy copyToOutput flaga jest ustawiona na true. Wartością domyślną jest false. |
 
 Podczas instalowania pakietu, NuGet stosuje elementy podrzędne `<contentFiles>` od góry do dołu. Jeśli wiele wpisów pasuje do tego samego pliku wszystkie wpisy są stosowane. Wpis najwyższy przesłania wpisy niższe konflikt dla tego samego atrybutu.

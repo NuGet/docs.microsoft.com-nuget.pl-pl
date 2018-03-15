@@ -12,11 +12,11 @@ keywords: "nuget zweryfikować odwołania, sprawdź, polecenie"
 ms.reviewer:
 - karann
 - rmpablos
-ms.openlocfilehash: 2747491eb35d8685a44e86fcc1b572013982c754
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: 096c79670267d9b602dd6ad30640e832441c31c5
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="verify-command-nuget-cli"></a>Sprawdź polecenia (NuGet CLI)
 
@@ -38,7 +38,7 @@ gdzie `<package(s)>` jest co najmniej jeden `.nupkg` plików.
 | --- | --- |
 | Wszystkie | Określa, że wszystkie sprawdzenia możliwe powinien być wykonywany na pakietów. |
 | CertificateFingerprint | Określa co najmniej jeden algorytm SHA-256 certyfikatu odciski palców certyfikatów (s), które podpisem pakiety muszą być podpisane przy. Odcisk palca certyfikatu algorytmu SHA-256 jest Skrót SHA-256 certyfikatu. Wielu danych wejściowych powinny być oddzielone średnikami. |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | ForceEnglishOutput | Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |

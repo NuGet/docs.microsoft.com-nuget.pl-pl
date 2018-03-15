@@ -12,11 +12,11 @@ keywords: "Odwołanie do konfiguracji nuget, config, polecenie"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 34d156a29207122bac3c21c3307cbe7373b5f031
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 7cf7c06000904a617752567ed7612c0c48042db9
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="config-command-nuget-cli"></a>polecenie konfiguracji (NuGet CLI)
 
@@ -42,7 +42,7 @@ W NuGet 3.4 + `<value>` można użyć [zmiennych środowiskowych](cli-ref-enviro
 | Opcja | Opis |
 | --- | --- |
 | AsPath | Zwraca wartość konfiguracji jako ścieżka, zignorowane, kiedy `-Set` jest używany. |
-| ConfigFile | Plik konfiguracji NuGet do zmodyfikowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| ConfigFile | Plik konfiguracji NuGet do zmodyfikowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |

@@ -12,11 +12,11 @@ keywords: "Tworzenie pakietu, .NET Standard pakietów, .NET Standard tabeli mapo
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c15ffd709856fc9d5b9a9fb2fe87c0029b82650d
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: abf6a56cbc84bdd066e31e77c7883825a8456144
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="create-net-standard-packages-with-visual-studio-2015"></a>Utwórz pakiety .NET Standard z programem Visual Studio 2015
 
@@ -70,29 +70,29 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
 
 1. Otwórz wiersz polecenia, przejdź do folderu zawierającego `AppLogger.csproj` folder (jeden poziom w dół where `.sln` pliku), i uruchom NuGet `spec` polecenie, aby utworzyć pierwszy `AppLogger.nuspec` pliku:
 
-```cli
-nuget spec
-```
+    ```cli
+    nuget spec
+    ```
 
 1. Otwórz `AppLogger.nuspec` w edytorze i zaktualizować je zgodnie z poniższym, zamieniając twoje_imie odpowiednią wartość. `<id>` Wartość, w szczególności musi być unikatowa w nuget.org (konwencje nazewnictwa opisane w temacie [utworzenie pakietu](../create-packages/creating-a-package.md#choosing-a-unique-package-identifier-and-setting-the-version-number). Należy również zauważyć, że należy również zaktualizować tagi autora oraz opis lub wystąpi błąd podczas wykonywania kroku pakowania.
 
-```xml
-<?xml version="1.0"?>
-<package >
-    <metadata>
-    <id>AppLogger.YOUR_NAME</id>
-    <version>1.0.0</version>
-    <title>AppLogger</title>
-    <authors>YOUR_NAME</authors>
-    <owners>YOUR_NAME</owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Awesome application logging utility</description>
-    <releaseNotes>First release</releaseNotes>
-    <copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
-    <tags>logger logging logs</tags>
-    </metadata>
-</package>
-```
+    ```xml
+    <?xml version="1.0"?>
+    <package >
+        <metadata>
+        <id>AppLogger.YOUR_NAME</id>
+        <version>1.0.0</version>
+        <title>AppLogger</title>
+        <authors>YOUR_NAME</authors>
+        <owners>YOUR_NAME</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Awesome application logging utility</description>
+        <releaseNotes>First release</releaseNotes>
+        <copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
+        <tags>logger logging logs</tags>
+        </metadata>
+    </package>
+    ```
 
 1. Dodaj zestawy odwołań `.nuspec` plików, to znaczy biblioteki DLL i pliku IntelliSense XML:
 

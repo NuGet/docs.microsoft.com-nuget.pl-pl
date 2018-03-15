@@ -12,11 +12,11 @@ keywords: "Pliku NuGet.Config, NuGet konfiguracji odwołania, opcje konfiguracji
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: c76ebcb06adc5e5b862647de6b6f4e19bde87b91
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: 6a5be1ebcca0accafcdaf32f0b1b7ca66ec53425
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="nugetconfig-reference"></a>Odwołanie do pliku NuGet.Config.
 
@@ -86,8 +86,6 @@ Określa, czy NuGet nie przekierowania powiązania automatyczne, gdy jest zainst
 ```
 
 ## <a name="packagerestore-section"></a>sekcja packageRestore
-
-*Ignorowane wszystkich bieżących wersji (2.7 +)*
 
 Formanty Przywracanie pakietów podczas kompilacji.
 
@@ -159,7 +157,7 @@ Przechowywane nazwy użytkowników i hasła dla źródeł, zazwyczaj określana 
 
 **Przykład:**
 
-W pliku konfiguracyjnym `<packageSourceCredentials>` element zawiera węzły podrzędne dla każdej nazwy odpowiednich źródła (spacje w nazwie są zastępowane `_x0020+`). Oznacza to, że dla źródeł o nazwie "Contoso" i "Źródła testów", plik konfiguracji zawiera następujące przy użyciu hasła szyfrowane:
+W pliku konfiguracyjnym `<packageSourceCredentials>` element zawiera węzły podrzędne dla każdej nazwy odpowiednich źródła (spacje w nazwie są zastępowane `_x0020_`). Oznacza to, że dla źródeł o nazwie "Contoso" i "Źródła testów", plik konfiguracji zawiera następujące przy użyciu hasła szyfrowane:
 
 ```xml
 <packageSourceCredentials>

@@ -12,15 +12,15 @@ ms.topic: reference
 ms.prod: nuget
 ms.technology: 
 description: "Szablon adresu URL nadużycia raport umożliwia klientom do wyświetlenia łącza nadużycia raportu w jego interfejsie użytkownika."
-keywords: "Interfejs API NuGet zgłaszania nadużyć, NuGet interfejsu API plików zgodne, szablon adres URL raportu NuGet.org"
+keywords: "Interfejs API NuGet zgłaszania nadużyć, NuGet interfejsu API plików zgodne, szablon adres URL raportu nuget.org"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: c12be294c71547fbce421c72aa091e0eee15aacd
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: efbe5704e6e6028f9382fea3fe5ec453f573a2e9
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="report-abuse-url-template"></a>Szablon adresu URL nadużycia raportu
 
@@ -32,10 +32,10 @@ Zasób używany do pobierania zawartości pakietu jest `ReportAbuseUriTemplate` 
 
 Następujące `@type` są używane wartości:
 
-@typewartość                       | Uwagi
+@type Wartość                       | Uwagi
 --------------------------------- | -----
 ReportAbuseUriTemplate/3.0.0-beta | Początkowa wersja
-ReportAbuseUriTemplate/3.0.0-rc   | Alias`ReportAbuseUriTemplate/3.0.0-beta`
+ReportAbuseUriTemplate/3.0.0-rc   | Alias `ReportAbuseUriTemplate/3.0.0-beta`
 
 ## <a name="url-template"></a>Szablon adresu URL
 
@@ -58,7 +58,7 @@ Nazwa        | Typ    | Wymagane | Uwagi
 `{id}`      | string  | Brak       | Identyfikator pakietu do zgłaszania nadużyć dla
 `{version}` | string  | Brak       | Wersja pakietu do zgłaszania nadużyć dla
 
-`{id}` i `{version}` wartości interpretowane przez implementację serwera musi być uwzględniana wielkość rozróżniają wielkość liter i nie poufne czy normalizowane jest wersja.
+`{id}` i `{version}` wartości interpretowane przez implementację serwera musi być bez uwzględniania wielkości liter i nie poufne czy normalizowane jest wersja.
 
 Na przykład szablon nadużycia raportu nuget.org wygląda następująco:
 

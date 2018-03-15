@@ -12,18 +12,17 @@ keywords: "nuget źródeł odwołania, źródłem polecenia"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 1e8204f5e1bf712f65d8efb14ca2a4bd802e3f90
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: 139a9494e1ea898c90ce79d5990530fbe08642bd
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="sources-command-nuget-cli"></a>polecenie źródeł (NuGet CLI)
 
 **Dotyczy:** zużycie pakietu, publikowanie &bullet; **obsługiwane wersje:** wszystkie
 
-Zarządza listy źródeł znajduje się w pliku konfiguracji zakresu użytkownika lub pliku konfiguracyjnym. Plik konfiguracji zakresu użytkownika znajduje się w `%APPDATA%\NuGet\NuGet.Config` w systemie Windows oraz w `~/.nuget/NuGet.Config` w systemie Mac/Linux.
-
+Zarządza listy źródeł znajduje się w pliku konfiguracji zakresu użytkownika lub pliku konfiguracyjnym. Plik konfiguracji zakresu użytkownika znajduje się w `%APPDATA%\NuGet\NuGet.Config` (system Windows) i `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux).
 
 Należy zauważyć, że adres URL źródła dla nuget.org `https://api.nuget.org/v3/index.json`.
 
@@ -39,7 +38,7 @@ gdzie `<operation>` jest jednym z *listy, dodawanie, usuwanie, włączanie i wy�
 
 | Opcja | Opis |
 | --- | --- |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Format | Dotyczy `list` akcji i może być `Detailed` (ustawienie domyślne) lub `Short`. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |

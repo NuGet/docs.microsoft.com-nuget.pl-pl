@@ -12,11 +12,11 @@ keywords: "instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGe
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b2cfe2d9b929d43f733fd28ba7336c0b04f718e6
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: ff905fec6d6af4fa40fd4331cb970121b6eb0879
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="install-and-use-a-package-in-visual-studio"></a>Zainstaluj i użyj pakietu w programie Visual Studio
 
@@ -40,7 +40,7 @@ Można zainstalować pakietów NuGet w projekcie .NET określonego rodzaju. Dla 
 
 ## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodaj pakiet Newtonsoft.Json NuGet
 
-Aby zainstalować pakiet, należy użyć interfejsu użytkownika Menedżera pakietów lub konsoli Menedżera pakietów.
+Aby zainstalować pakiet, należy użyć interfejsu użytkownika Menedżera pakietów lub konsoli Menedżera pakietów. Po zainstalowaniu pakietu NuGet rejestruje zależności w jednym pliku projektu lub `packages.config` pliku. Aby uzyskać więcej informacji, zobacz [pakietu omówienie zużycia i przepływ pracy](../consume-packages/Overview-and-Workflow.md).
 
 ### <a name="package-manager-ui"></a>Interfejs użytkownika Menedżera pakietów
 

@@ -12,11 +12,11 @@ keywords: "Wersje pakietu NuGet pytań i odpowiedzi, pytania i odpowiedzi, typow
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: ccad93c72ff20ef3bc197280b5602ec2b2d40199
-ms.sourcegitcommit: df7158169e84900d135416cd5e52f937df0beb52
+ms.openlocfilehash: 3782fe5dcf8df002d99446aa7548a6eacc62211c
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet często zadawane pytania
 
@@ -156,7 +156,7 @@ To nie jest problem przy użyciu PackageReference, ponieważ każdy plik projekt
 **Nuget.org nie jest wyświetlane na liście repozytoriów, jak pobrać go ponownie?**
 
 - Dodaj `https://api.nuget.org/v3/index.json` do listy źródeł, lub
-- Usuń `%appdata%\.nuget\NuGet.Config` i pozwól NuGet, utwórz go ponownie.
+- Usuń `%appdata%\.nuget\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) i pozwól NuGet, utwórz go ponownie.
 
 **Jakie są domyślne licencji warunki Jeśli pakietu nie zawierają informacje o licencji określonego?**
 

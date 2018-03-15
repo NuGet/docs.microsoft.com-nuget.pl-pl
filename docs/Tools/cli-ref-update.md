@@ -12,11 +12,11 @@ keywords: "Odwołanie do aktualizacji nuget, polecenie pakietu aktualizacji"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6a788244d23354b980e8fa86fa170740c18f17b2
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.openlocfilehash: 6acf3a74e5c26bc4e2cef9b0db4a72442d311449
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="update-command-nuget-cli"></a>polecenie aktualizacji (NuGet CLI)
 
@@ -42,7 +42,7 @@ gdzie `<configPath>` identyfikuje albo `packages.config` lub plik rozwiązania, 
 
 | Opcja | Opis |
 | --- | --- |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | FileConflictAction | Określa akcję wykonywaną po otrzymaniu monitu, aby zastąpić, lub przycisk Ignoruj istniejące pliki odwołuje się projekt. Wartości są *zastępowania, zignorować, Brak*. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |

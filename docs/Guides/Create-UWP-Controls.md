@@ -3,7 +3,7 @@ title: Formanty porady pakietu platformy uniwersalnej systemu Windows z programe
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 03/21/2017
+ms.date: 03/14/2018
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
@@ -12,17 +12,17 @@ keywords: Formanty NuGet platformy uniwersalnej systemu Windows, programu Visual
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 3af17121f73b878decd5f0c933696fc1b0c786d7
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: 1af5118eb71836d8b8bcfa8ff713d9fef3c86374
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="creating-uwp-controls-as-nuget-packages"></a>Tworzenie formantów platformy uniwersalnej systemu Windows w postaci pakietów NuGet
 
 Z programu Visual Studio 2017 r można korzystać z możliwości dodane dla formantów platformy uniwersalnej systemu Windows, które dostarczają w pakietach NuGet. Ten przewodnik przeprowadzi Cię przez te funkcje przy użyciu [próbki ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage). 
 
-## <a name="pre-requisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Visual Studio 2017
 1. Opis sposobu [tworzenia pakietów platformy uniwersalnej systemu Windows](create-uwp-packages.md)
@@ -100,13 +100,7 @@ Na przykład załóżmy, że ustawiono TPMinV pakietu formantów systemu Windows
     \lib\uap10.0\*
     \ref\uap10.0\*
 
-Aby wymusić odpowiednie wyboru TPMinV, Utwórz [plik elementów docelowych MSBuild](/visualstudio/msbuild/msbuild-targets) i pakietu go w folderze kompilacji (zastępując "your_assembly_name" o nazwie z określonego zestawu):
-
-    \build
-      \uap10.0
-        your_assembly_name.targets
-    \lib
-    \tools
+Aby wymusić odpowiednie wyboru TPMinV, Utwórz [plik elementów docelowych MSBuild](/visualstudio/msbuild/msbuild-targets) i pakietu w `build\uap10.0" folder as `.targets < your_assembly_name >`, replacing `< your_assembly_name > "na nazwę konkretnej zestaw.
 
 Oto przykład jak powinien wyglądać plik elementów docelowych:
 
@@ -114,7 +108,7 @@ Oto przykład jak powinien wyglądać plik elementów docelowych:
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Target Name="TPMinVCheck" BeforeTargets="Build;ReBuild" Condition="'$(TargetPlatformMinVersion)' != ''">
+  <Target Name="TPMinVCheck" BeforeTargets="ResolveAssemblyReferences" Condition="'$(TargetPlatformMinVersion)' != ''">
     <PropertyGroup>
       <RequiredTPMinV>10.0.14393</RequiredTPMinV>
       <ActualTPMinV>$(TargetPlatformMinVersion)</ActualTPMinV>
@@ -126,17 +120,15 @@ Oto przykład jak powinien wyglądać plik elementów docelowych:
 
 ## <a name="add-design-time-support"></a>Dodawanie obsługi w czasie projektowania
 
-Aby skonfigurować, których właściwości wyświetlane w Inspektora właściwości, Dodaj niestandardowego modułu definiowania układu kodu itp., umieść Twojej `design.dll` pliku wewnątrz `lib\<platform>\Design` folderu odpowiednio do platformy docelowej. Ponadto aby upewnić się, że  **[Edytuj szablon > edytowania kopii](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)**  działa funkcja musi zawierać `Generic.xaml` i słowników zasobów, które w scaleń `<AssemblyName>\Themes` folderu. (Ten plik nie ma wpływu na zachowanie środowiska uruchomieniowego formantu.)
+Aby skonfigurować, których właściwości wyświetlane w Inspektora właściwości, Dodaj niestandardowego modułu definiowania układu kodu itp., umieść Twojej `design.dll` pliku wewnątrz `lib\uap10.0\Design` folderu odpowiednio do platformy docelowej. Ponadto aby upewnić się, że  **[Edytuj szablon > edytowania kopii](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)**  działa funkcja musi zawierać `Generic.xaml` i słowników zasobów, które w scaleń `<your_assembly_name>\Themes` folder (ponownie, używając Nazwa zestawu rzeczywiste). (Ten plik nie ma wpływu na zachowanie środowiska uruchomieniowego formantu.) Struktura folderów w związku z tym będzie wyglądać następująco:
 
-    \build
     \lib
-      \uap10.0.14393.0
+      \uap10.0
         \Design
           \MyControl.design.dll
         \your_assembly_name
           \Themes
             Generic.xaml
-    \tools
 
 > [!Note]
 > Domyślnie właściwości formantu będą widoczne w różnych kategorii w Inspektora właściwości.
@@ -149,23 +141,15 @@ Na przykład dotyczą [MyCustomControl.cs](https://github.com/NuGet/Samples/blob
 
 ## <a name="package-content-such-as-images"></a>Pakiet zawartości, takich jak obrazy
 
-Do pakietu zawartości, takich jak obrazy, które mogą być używane przez formant lub odbierającą projektu platformy uniwersalnej systemu Windows. Dodaj te pliki `lib\uap10.0.14393.0` folderu w następujący sposób ("your_assembly_name" ponownie powinien odpowiadać określonego formantu):
+Do pakietu zawartości, takich jak obrazy, które mogą być używane przez formant lub odbierającą projektu platformy uniwersalnej systemu Windows, należy umieścić te pliki w obrębie `lib\uap10.0` folderu.
 
-    \build
-    \lib
-      \uap10.0.14393.0
-        \Design
-          \your_assembly_name
-    \contosoSampleImage.jpg
-    \tools
-
-Mogą również tworzyć[plik elementów docelowych MSBuild](/visualstudio/msbuild/msbuild-targets) zapewnienie element zawartości jest kopiowany do folderu wyjściowego odbierającą projektu:
+Mogą również tworzyć [plik elementów docelowych MSBuild](/visualstudio/msbuild/msbuild-targets) zapewnienie element zawartości jest kopiowany do folderu wyjściowego odbierającą projektu:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <ItemGroup Condition="'$(TargetPlatformIdentifier)' == 'UAP'">
-        <Content Include="$(MSBuildThisFileDirectory)..\..\lib\uap10.0.14393.0\contosoSampleImage.jpg">
+        <Content Include="$(MSBuildThisFileDirectory)..\..\lib\uap10.0\contosoSampleImage.jpg">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>

@@ -1,26 +1,26 @@
 ---
-title: "Przewodnik wprowadzający do tworzenia i publikowania pakietu NuGet, za pomocą programu Visual Studio | Dokumentacja firmy Microsoft"
+title: "Przewodnik wprowadzający do tworzenia i publikowania pakietu NuGet standardowe .NET przy użyciu programu Visual Studio | Dokumentacja firmy Microsoft"
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 02/02/2018
+ms.date: 03/18/2018
 ms.topic: get-started-article
 ms.prod: nuget
 ms.technology: 
-description: "Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet przy użyciu programu Visual Studio 2017 r."
+description: "Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet standardowe .NET przy użyciu programu Visual Studio 2017 r."
 keywords: "Pakiet NuGet tworzenie, publikowanie pakietu NuGet, samouczek NuGet programu Visual Studio Utwórz pakiet NuGet, pakiet programu msbuild"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 75cc425263447e2ca90db705c3bf314250dacb06
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: 733fee616601e1d15d8fb5814b5bfb7905ff4a33
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="create-and-publish-a-package-using-visual-studio"></a>Tworzenie i publikowanie pakietu programu Visual Studio
+# <a name="create-and-publish-a-package-using-visual-studio-net-standard"></a>Tworzenie i publikowanie pakietu programu Visual Studio (.NET Standard)
 
-Jest to prosty proces, aby utworzyć pakiet NuGet z biblioteki klas .NET w programie Visual Studio, a następnie opublikować nuget.org za pomocą narzędzia interfejsu wiersza polecenia.
+Jest to prosty proces, aby utworzyć pakiet NuGet z standardowa biblioteka klas programu .NET w programie Visual Studio, a następnie opublikować nuget.org za pomocą narzędzia interfejsu wiersza polecenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ Jest to prosty proces, aby utworzyć pakiet NuGet z biblioteki klas .NET w progr
 
 ## <a name="create-a-class-library-project"></a>Tworzenie projektu biblioteki klas
 
-Można użyć istniejącego projektu biblioteki klas .NET dla kodu, który ma być pakietu lub Utwórz proste w następujący sposób:
+Można użyć istniejącego projektu standardowa biblioteka klas programu .NET dla kodu, który ma być pakietu lub Utwórz proste w następujący sposób:
 
 1. W programie Visual Studio, wybierz **Plik > Nowy > Projekt**, rozwiń węzeł **Visual C# > .NET Standard** węzła, wybierz szablon "Biblioteki klas (.NET Standard)", nazwa projektu AppLogger i kliknij przycisk **OK**.
 
@@ -60,7 +60,7 @@ namespace AppLogger
 
 ## <a name="configure-package-properties"></a>Konfigurowanie właściwości pakietu
 
-1. Wybierz **projektu > właściwości** menu polecenie, a następnie wybierz **pakietu** karty:
+1. Wybierz **projektu > właściwości** menu polecenie, a następnie wybierz **pakietu** kartę. ( **Pakietu** karta jest wyświetlana tylko dla projektów biblioteki klas .NET Standard; jeśli ma być przeznaczona dla .NET Framework, zobacz [tworzenie i publikowanie pakietu .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) zamiast.)
 
     ![Właściwości pakietu NuGet w projekcie programu Visual Studio](media/qs_create-vs-01-package-properties.png)
 
@@ -95,7 +95,7 @@ namespace AppLogger
 
 ### <a name="alternate-option-pack-with-msbuild"></a>Opcja alternatywny: pakiet przy użyciu programu MSBuild
 
-Przy użyciu dyskietki **pakietu** polecenia menu, NuGet 4.x+ i obsługuje MSBuild 15.1 + `pack` docelowych, jeśli projekt zawiera dane niezbędne pakietu:
+Przy użyciu dyskietki **pakietu** polecenia menu, NuGet 4.x+ i obsługuje MSBuild 15.1 + `pack` docelowych, jeśli projekt zawiera dane niezbędne pakietu. Otwórz wiersz polecenia, przejdź do folderu projektu i uruchom następujące polecenie. (Zazwyczaj ma się rozpocząć "Developer wiersz polecenia dla programu Visual Studio" z Start menu, jak będzie można skonfigurować z wszystkie niezbędne ścieżki programu MSBuild.)
 
 ```cli
 msbuild /t:pack /p:Configuration=Release
@@ -119,7 +119,7 @@ Po utworzeniu `.nupkg` pliku opublikowaniu go za pomocą nuget.org `nuget.exe` i
 
 Ten krok jest to alternatywa dla użycia `dotnet.exe`.
 
-1. Zmień folder zawierający `.nupkg` pliku...
+1. Zmień folder zawierający `.nupkg` pliku.
 
 1. Uruchom następujące polecenie, określając nazwę pakietu i zamianę klucza wartość klucza interfejsu API:
 

@@ -1,5 +1,5 @@
 ---
-title: "Tworzenie pakietów NuGet i Platform (dla systemu iOS, Android i Windows) | Dokumentacja firmy Microsoft"
+title: "Tworzenie pakietów NuGet dla platformy Xamarin (dla systemu iOS, Android i Windows) | Dokumentacja firmy Microsoft"
 author: kraigb
 ms.author: kraigb
 manager: ghogen
@@ -12,13 +12,13 @@ keywords: "Utwórz pakiet, pakietów dla platformy Xamarin, pakietów i platform
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 185a0e1e424d1ceb2d8bacbcc1502b38412c4c41
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: 3e1460de060980365a5eaa2ef91c052cc359bb70
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="create-cross-platform-packages"></a>Tworzenie pakietów i platform
+# <a name="create-packages-for-xamarin"></a>Tworzenie pakietów dla platformy Xamarin
 
 Pakiet wieloplatformowych zawiera kod, który używa macierzystych interfejsów API w systemach iOS, Android i Windows, w zależności od środowiska wykonawczego systemu operacyjnego. Chociaż jest to prosty zrobić, zaleca się pozwala deweloperom korzystać z pakietu z PCL lub powierzchnia .NET standardowych bibliotek za pośrednictwem wspólnego interfejsu API.
 
@@ -112,9 +112,9 @@ Aby zaimplementować implementacja specyficzna dla platformy `ILoggingLibrary` i
 
 1. Otwórz wiersz polecenia, przejdź do `LoggingLibrary` folderu o jeden poziom poniżej where `.sln` pliku jest i uruchom NuGet `spec` polecenie, aby utworzyć pierwszy `Package.nuspec` pliku:
 
-```cli
-nuget spec
-```
+    ```cli
+    nuget spec
+    ```
 
 1. Zmień nazwę tego pliku do `LoggingLibrary.nuspec` i otwórz go w edytorze.
 1. Zaktualizuj plik zgodnie z poniższym, zamieniając twoje_imie odpowiednią wartość. `<id>` Wartość, w szczególności musi być unikatowa w nuget.org (konwencje nazewnictwa opisane w temacie [utworzenie pakietu](../create-packages/creating-a-package.md#choosing-a-unique-package-identifier-and-setting-the-version-number)). Należy również zauważyć, że należy również zaktualizować tagi autora oraz opis lub wystąpi błąd podczas wykonywania kroku pakowania.

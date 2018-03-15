@@ -12,11 +12,11 @@ keywords: Dokumentacja pomocy nuget, polecenie Pomoc
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b4255c353e412cf1d1a59590ee816b7887c90653
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.openlocfilehash: 281c6ccc7c58d153280441430be063d9ee89955d
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="help-or--command-nuget-cli"></a>Pomoc lub? polecenia (NuGet CLI)
 
@@ -41,7 +41,7 @@ gdzie [polecenie] identyfikuje danego polecenia, do których chcesz wyświetlić
 | Opcja | Opis |
 | --- | --- |
 | Wszystkie | Drukowanie szczegółową pomoc dla dostępnych poleceń; ignorowane, jeśli podano określonego polecenia. |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla samo polecenie Pomoc. |
 | Język znaczników markdown | Drukowanie szczegółową pomoc w formacie markdown, gdy jest używany z `-All`. W przeciwnym razie ignorowane. |

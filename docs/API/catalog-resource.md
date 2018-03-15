@@ -12,15 +12,15 @@ ms.topic: reference
 ms.prod: nuget
 ms.technology: 
 description: "Katalog jest indeks wszystkich pakietów utworzony i usunięty w nuget.org."
-keywords: "Interfejsu API w wersji 3 NuGet katalogu, nuget.org dziennika transakcji, replikacji NuGet.org, clone NuGet.org, tylko Dołącz rekord NuGet.org"
+keywords: "Interfejsu API w wersji 3 NuGet katalogu, nuget.org dziennika transakcji, replikacji nuget.org nuget.org klonowania tylko Dołącz rekord nuget.org"
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: d1a24be68a60085a40361c374ffb34dc221f09c4
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: be30b21d488c323c439a59fff290a95adaefd902
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="catalog"></a>Katalogu
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/02/2018
 
 Następujące `@type` jest używana wartość:
 
-@typewartość   | Uwagi
+@type Wartość   | Uwagi
 ------------- | -----
 Catalog/3.0.0 | Początkowa wersja
 
@@ -50,7 +50,7 @@ Wszystkie adresy URL w obsługę katalogu zasobów znaleziono tylko metod HTTP `
 
 ## <a name="catalog-index"></a>Indeks katalogu
 
-Indeks katalogu jest dokumentu w dobrze znanej lokalizacji, która zawiera listę elementów katalogu, uporządkowanych cronologically. Jest punkt wejścia do zasobu katalogu.
+Indeks katalogu jest dokumentu w dobrze znanej lokalizacji, która zawiera listę elementów katalogu, uporządkowanych w porządku chronologicznym. Jest punkt wejścia do zasobu katalogu.
 
 Indeks składa się z katalogu stron. Każda strona katalogu zawiera elementy katalogu. Każdy element katalogu reprezentuje zdarzenia dotyczące pojedynczego pakietu w punkcie w czasie. Element katalogu może reprezentować pakietu, który został utworzony, nieznajdujące się na liście, ponownie wystawiony lub usunięty ze źródła pakietu. Przetwarzanie elementy katalogu w kolejności chronologicznej, klient można tworzyć aktualny widok każdy pakiet, który istnieje w źródle pakietów w wersji 3.
 
@@ -128,7 +128,7 @@ Nadrzędny          | string           | Tak      | Adres URL do indeksu katalog
 
 Każdy element `items` tablica jest obiekt z niektórych minimalnego szczegółowe informacje o elemencie katalogu. Te obiekty elementu nie zawierają wszystkie dane elementu katalogu. Kolejność elementów na stronie `items` tablicy nie jest zdefiniowany. Elementy może zostać określona przez klienta w pamięci przy użyciu ich `commitTimeStamp` właściwości.
 
-Liczba elementów katalogu, na stronie zdefiniowano przez implementację serwera. Dla nuget.org ma co najwyżej 550 elementów w każdej stronie, mimo że rzeczywista liczba może być mniejsza dla niektórych dependong stron na rozmiar następną partię zatwierdzania w punkcie w czasie.
+Liczba elementów katalogu, na stronie zdefiniowano przez implementację serwera. Dla nuget.org ma co najwyżej 550 elementów w każdej stronie, mimo że rzeczywista liczba może być mniejsza dla niektórych stron, zależnie od wielkości następną partię zatwierdzania w punkcie w czasie.
 
 Ponieważ wprowadzane są nowe elementy, `count` jest zwiększany i nowego katalogu elementu obiekty są wyświetlane w `items` tablicy.
 
@@ -164,7 +164,7 @@ Aby uzyskać więcej informacji o oznacza każdy typ, zobacz [odpowiadającego e
 
 ## <a name="catalog-leaf"></a>Liścia katalogu
 
-Liścia katalogu zawiera metadanych o identyfikatorze określonego pakietu i wersja w pewnym momencie w czasie. Jest to dokument pobierane przy użyciu `@id` wartość znajduje się na stronie katalogu. Adres URL, który liścia katalogu nie jest przeznaczona do predictedable i powinny zostać wykryte przy użyciu strony katalogu.
+Liścia katalogu zawiera metadanych o identyfikatorze określonego pakietu i wersja w pewnym momencie w czasie. Jest to dokument pobierane przy użyciu `@id` wartość znajduje się na stronie katalogu. Adres URL, który liścia katalogu nie jest przeznaczona do przewidywalną i powinny zostać wykryte przy użyciu strony katalogu.
 
 Dokument liścia katalogu jest obiekt JSON z następującymi właściwościami:
 
@@ -226,7 +226,7 @@ Pakiet `version` właściwość jest ciągiem znormalizowane pełnej wersji. Ozn
 
 `created` Jest sygnatury czasowej, gdy pakiet został najpierw odbierany przez źródło pakietu, w którym jest zwykle przez krótki czas przed sygnatury czasowej zatwierdzania element katalogu.
 
-`packageHashAlgorithm` Jest ciąg zdefiniowany przez represeting implementacji serwera algorytmu wyznaczania wartości skrótu używany w celu utworzenia `packageHash`. zawsze używana usługa nuget.org `packageHashAlgorithm` wartość `SHA512`.
+`packageHashAlgorithm` Jest zdefiniowany przez implementację serwera reprezentujący algorytmu wyznaczania wartości skrótu używany w celu utworzenia `packageHash`. zawsze używana usługa nuget.org `packageHashAlgorithm` wartość `SHA512`.
 
 `published` Sygnatury czasowej to czas, kiedy pakiet został wymieniony ostatnio.
 
@@ -235,7 +235,7 @@ Pakiet `version` właściwość jest ciągiem znormalizowane pełnej wersji. Ozn
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 
-GET https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
+POBIERZ https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
 
 #### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -256,7 +256,7 @@ Elementy katalogu usuwania pakietu mają nie dodatkowych właściwości [włącz
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 
-GET https://api.nuget.org/v3/catalog0/data/2017.11.02.00.40.00/netstandard1.4_lib.1.0.0-test.json
+POBIERZ https://api.nuget.org/v3/catalog0/data/2017.11.02.00.40.00/netstandard1.4_lib.1.0.0-test.json
 
 #### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -307,7 +307,7 @@ Z tego algorytmu podstawowe implementacja klienta można tworzyć kompletne wido
 
 ### <a name="dependent-cursors"></a>Kursory zależne
 
-Załóżmy, że istnieją dwa klientów katalogu mający inherant zależności, których danych wyjściowych jednego klienta zależy od innego klienta w danych wyjściowych. 
+Załóżmy, że istnieją dwa klientów katalogu mający związanego z używaniem zależności, których danych wyjściowych jednego klienta zależy od innego klienta w danych wyjściowych. 
 
 #### <a name="example"></a>Przykład
 
@@ -317,7 +317,7 @@ Ponieważ oba zasoby są tworzone wylogowuje katalogu kursora klienta katalogu, 
 
 #### <a name="algorithm"></a>Algorytm
 
-Aby zaimplementować to ograniczenie, prosty zmodyfikować powyżej, aby być algorytmu:
+Aby zaimplementować to ograniczenie, po prostu zmodyfikuj powyżej, aby być algorytmu:
 
 1. Pobierz wartość kursora zarejestrowane z lokalnego magazynu.
 1. Pobierz i deserializacji indeks katalogu.

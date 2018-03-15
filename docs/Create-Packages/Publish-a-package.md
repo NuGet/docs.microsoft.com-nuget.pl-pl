@@ -13,11 +13,11 @@ ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 610b20831b17ca5c1bae07546fde6eff3e2e43cc
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.openlocfilehash: 6cb582c036392ae2792f2fa4d307370e91c4f961
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="publishing-packages"></a>Publikowanie pakietów
 
@@ -72,9 +72,9 @@ Następnie można albo przekaż pakiet w portalu sieci web nuget.org, wypychać 
 
 ### <a name="package-validation-and-indexing"></a>Sprawdzanie poprawności pakietu i indeksowania
 
-Pakiety do NuGet.org przechodzą kilku operacji sprawdzania poprawności. Po upływie wszystkie testy sprawdzania poprawności pakietu może upłynąć trochę czasu na jej indeksowane i wyświetlane w wynikach wyszukiwania. Po zakończeniu indeksowania otrzymasz wiadomość e-mail z potwierdzeniem, że pakiet został pomyślnie opublikowany. W przypadku niepowodzenia sprawdzenia poprawności pakietu na stronie Szczegóły pakietu zostanie zaktualizowana, aby wyświetlić skojarzony błąd i otrzymasz wiadomość e-mail powiadomienia użytkownika o nim.
+Pakiety do nuget.org przechodzą kilku operacji sprawdzania poprawności. Po upływie wszystkie testy sprawdzania poprawności pakietu może upłynąć trochę czasu na jej indeksowane i wyświetlane w wynikach wyszukiwania. Po zakończeniu indeksowania otrzymasz wiadomość e-mail z potwierdzeniem, że pakiet został pomyślnie opublikowany. W przypadku niepowodzenia sprawdzenia poprawności pakietu na stronie Szczegóły pakietu zostanie zaktualizowana, aby wyświetlić skojarzony błąd i otrzymasz wiadomość e-mail powiadomienia użytkownika o nim.
 
-Sprawdzanie poprawności pakietu i indeksowania zazwyczaj trwa poniżej 15 minut. Publikowanie pakietu trwa dłużej niż oczekiwano, odwiedź stronę [status.nuget.org](https://status.nuget.org/) do sprawdzenia, czy NuGet.org występują żadnych przerw w działaniu. Jeśli pakiet nie został pomyślnie opublikowany w ciągu godziny są wszystkie systemy operacyjne, zaloguj się do NuGet.org i skontaktuj się z nami za pomocą łącza Skontaktuj się z pomocą techniczną na stronie pakiet.
+Sprawdzanie poprawności pakietu i indeksowania zazwyczaj trwa poniżej 15 minut. Publikowanie pakietu trwa dłużej niż oczekiwano, odwiedź stronę [status.nuget.org](https://status.nuget.org/) do sprawdzenia, czy nuget.org występują żadnych przerw w działaniu. Jeśli pakiet nie został pomyślnie opublikowany w ciągu godziny są wszystkie systemy operacyjne, zaloguj się do nuget.org i skontaktuj się z nami za pomocą łącza Skontaktuj się z pomocą techniczną na stronie pakiet.
 
 ### <a name="visual-studio-team-services-cicd"></a>Visual Studio Team Services (CI/CD)
 

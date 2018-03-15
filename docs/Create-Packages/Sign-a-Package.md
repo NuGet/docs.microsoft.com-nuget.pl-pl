@@ -12,11 +12,11 @@ keywords: "Pakiet NuGet podpisywania zabezpieczeń NuGet, tworzenie pakietów po
 ms.reviewer:
 - karann-msft
 - anangaur
-ms.openlocfilehash: 226b2af13a4559dfc7266e941617dca25ccd2245
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.openlocfilehash: aaf6ab7d7a9e66d4d9519d8aa79f0d0fac646d3a
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="signing-nuget-packages"></a>Podpisywanie pakietów NuGet
 
@@ -31,7 +31,7 @@ Podpisywanie pakietu jest procesem, który sprawia, że pakiet nie został zmody
 1. [Certyfikat podpisywania kodu](../reference/signed-packages-reference.md#get-a-code-signing-certificate).
 
 > [!Warning]
-> NuGet.org nie akceptuje obecnie podpisanych pakietów. Możesz zarejestrować pakietów do publikowania do niestandardowych źródeł danych.
+> nuget.org nie akceptuje obecnie podpisanych pakietów. Możesz zarejestrować pakietów do publikowania do niestandardowych źródeł danych.
 
 ## <a name="sign-a-package"></a>Podpisywanie pakietu
 

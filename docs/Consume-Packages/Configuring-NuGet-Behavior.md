@@ -12,11 +12,11 @@ keywords: "Pliki konfiguracji programu NuGet, NuGet ustawienia zachowania NuGet,
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2ab3e6dad852214ac9bb93f7df0a8c3fef10b9dc
-ms.sourcegitcommit: df21fe770900644d476d51622a999597a6f20ef8
+ms.openlocfilehash: c46f23fcbec5dfcb6122434d43097212f6230fb0
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="configuring-nuget-behavior"></a>Konfigurowanie zachowania NuGet
 
@@ -27,8 +27,8 @@ Zachowanie NuGet jest wymuszany przez wszystkich ustawień w co najmniej jednej 
 | Zakres | Lokalizacja pliku NuGet.Config. | Opis |
 | --- | --- | --- |
 | Projekt | Bieżący folder (alias folderu projektu) lub dowolnego folderu do katalogu głównego dysku.| W folderze projektu ustawienia mają zastosowanie tylko do tego projektu. W folderów nadrzędnych zawierających wiele projektów podfolderów ustawienia mają zastosowanie do wszystkich projektów w tych podfolderach. |
-| Użytkownik | Windows: %APPDATA%\NuGet\NuGet.Config<br/>Mac/Linux: ~/.nuget/NuGet.Config | Ustawienia stosowane do wszystkich operacji, ale są zastępowane przez wszystkie ustawienia na poziomie projektu. |
-| Komputer | Windows: %ProgramFiles(x86)%\NuGet\Config<br/>System Mac/Linux: XDG_DATA_HOME $ (zazwyczaj ~/.local/share) | Ustawienia stosowane do wszystkich operacji na komputerze, ale zostały zastąpione przez wszystkie ustawienia na poziomie użytkownika lub projektu. |
+| Użytkownik | System Windows: `%APPDATA%\NuGet\NuGet.Config`<br/>Mac/Linux: `~/.nuget/NuGet/NuGet.Config` | Ustawienia stosowane do wszystkich operacji, ale są zastępowane przez wszystkie ustawienia na poziomie projektu. |
+| Komputer | System Windows: `%ProgramFiles(x86)%\NuGet\Config`<br/>System Mac/Linux: `$XDG_DATA_HOME` (zazwyczaj `~/.local/share`) | Ustawienia stosowane do wszystkich operacji na komputerze, ale zostały zastąpione przez wszystkie ustawienia na poziomie użytkownika lub projektu. |
 
 Uwagi dotyczące starszych wersji programu NuGet:
 - NuGet 3.3 i wcześniej używany `.nuget` folder ustawienia dotyczące całego rozwiązania. Ten plik nie jest używany w NuGet 3.4 +.
@@ -137,7 +137,7 @@ Załóżmy, że masz następujące struktury folderów na dwóch oddzielnych dys
 
 Następnie możesz wybrać cztery `NuGet.Config` pliki w następujących lokalizacjach z danej zawartości. (Plik poziomie komputera jest niedostępna w tym przykładzie, ale czy zachowują się podobnie do pliku na poziomie użytkownika).
 
-A. użytkownika na poziomie pliku, (%APPDATA%\NuGet\NuGet.Config w systemie Windows, ~/.nuget/NuGet.Config na system Mac/Linux):
+A. użytkownika na poziomie pliku (`%APPDATA%\NuGet\NuGet.Config` w systemie Windows, `~/.nuget/NuGet/NuGet.Config` na system Mac/Linux):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

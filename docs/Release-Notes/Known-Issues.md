@@ -12,11 +12,11 @@ keywords: "Znane problemy i problemów NuGet NuGet"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2b9190c058215d9e63894de45c0c55c8ddae0e0f
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.openlocfilehash: ac00e3f11c54290a31319e7f2946fd965a0a9288
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="known-issues-with-nuget"></a>Znane problemy dotyczące programu NuGet
 
@@ -45,7 +45,7 @@ W NuGet 3.4 i 3.4.1 używając dodatku NuGet żadnych źródeł są zgłaszane j
 
 ![Konfiguracja NuGet z żadnymi źródłami](./media/knownIssue-34-NoSources.PNG)
 
-`NuGet.Config` Plików w sieci `%AppData%\NuGet\` przypadkowo został opróżniony folderu. Aby rozwiązać ten problem: Zamknij Visual Studio 2015, Usuń `NuGet.Config` w pliku `%AppData%\NuGet\` folderu i ponownie uruchom Visual Studio.  Nowy `NuGet.Config` zostanie utworzony plik i można kontynuować.
+`NuGet.Config` Plików w sieci `%AppData%\NuGet\` (system Windows) lub `~/.nuget/` przypadkowo został opróżniony folder (system Mac/Linux). Aby rozwiązać ten problem: Zamknij program Visual Studio (w systemie Windows, jeśli ma to zastosowanie), Usuń `NuGet.Config` plik i spróbuj ponownie wykonać operację. NuGet wygenerował nowy `NuGet.Config` i powinno być możliwe kontynuować.
 
 ## <a name="error-installing-packages-with-nuget-27"></a>Błąd podczas instalowania pakietów z NuGet 2.7
 
@@ -96,7 +96,7 @@ Jeśli korzystasz z VS 2010 z dodatkiem SP1, możesz napotkać komunikat o błę
 Podczas wyświetlania dzienniki, można napotkać informację o `SignatureMismatchException`.
 
 Aby temu zapobiec, jest [poprawki programu Visual Studio 2010 z dodatkiem SP1](http://bit.ly/vsixcertfix) można zainstalować.
-Alternatywnie obejściem jest po prostu Odinstaluj NuGet (podczas uruchamiania programu Visual Studio jako Administrator), a następnie zainstalować go z galerii rozszerzeń programu VS.  Zobacz [http://support.microsoft.com/kb/2581019](http://support.microsoft.com/kb/2581019) Aby uzyskać więcej informacji.
+Alternatywnie obejściem jest po prostu Odinstaluj NuGet (podczas uruchamiania programu Visual Studio jako Administrator), a następnie zainstalować go z galerii rozszerzeń programu VS.  Zobacz [ http://support.microsoft.com/kb/2581019 ](http://support.microsoft.com/kb/2581019) Aby uzyskać więcej informacji.
 
 ## <a name="package-manager-console-throws-an-exception-when-the-reflector-visual-studio-add-in-is-also-installed"></a>Konsola Menedżera pakietów zgłasza wyjątek, gdy reflektora Visual Studio dodatek jest również instalowany.
 
@@ -165,7 +165,7 @@ Jeśli użytkownik próbuje odinstalować NuGet Menedżera rozszerzenia za pomoc
 
 ## <a name="the-package-manager-console-crashes-when-i-open-it-in-windows-xp-whats-wrong"></a>Konsola Menedżera pakietów ulega awarii podczas otwierania go w systemie Windows XP. Co jest nie tak?
 
-NuGet wymaga środowiska uruchomieniowego programu Powershell 2.0. Windows XP, domyślnie nie ma programu Powershell 2.0. Możesz pobrać środowiska uruchomieniowego programu Powershell 2.0 z [http://support.microsoft.com/kb/968929](http://support.microsoft.com/kb/968929). Po jej zainstalowaniu, uruchom ponownie program Visual Studio i powinno być możliwe otworzyć konsolę Menedżera pakietów.
+NuGet wymaga środowiska uruchomieniowego programu Powershell 2.0. Windows XP, domyślnie nie ma programu Powershell 2.0. Możesz pobrać środowiska uruchomieniowego programu Powershell 2.0 z [ http://support.microsoft.com/kb/968929 ](http://support.microsoft.com/kb/968929). Po jej zainstalowaniu, uruchom ponownie program Visual Studio i powinno być możliwe otworzyć konsolę Menedżera pakietów.
 
 ## <a name="visual-studio-2010-sp1-beta-crashes-on-exit-if-the-package-manager-console-is-open"></a>Visual Studio 2010 z dodatkiem SP1 Beta ulega awarii przy zamykaniu, jeśli konsola Menedżera pakietów jest otwarty.
 
@@ -213,7 +213,7 @@ Jest to znany problem. Zamiast wywoływania Write-Error, spróbuj wywołać thro
 
 ## <a name="installing-nuget-with-restricted-access-on-windows-2003-can-crash-visual-studio"></a>Instalowania NuGet z ograniczonym dostępem w systemie Windows 2003 można awarię programu Visual Studio
 
-Podczas próby zainstalowania NuGet za pomocą Menedżera rozszerzenia programu Visual Studio i nie jest uruchomiona jako administrator, &#8220; Uruchom jako &#8221; zostanie wyświetlone okno dialogowe z pola wyboru &#8220; Uruchom ten program z ograniczonym dostępem &#8221; Domyślnie zaznaczone.
+Podczas próby zainstalowania NuGet za pomocą Menedżera rozszerzenia programu Visual Studio i nie jest uruchomiona jako administrator, &#8220;Uruchom jako&#8221; z pola wyboru zostanie wyświetlone okno dialogowe &#8220;uruchomienia tego programu z ograniczonym dostępem&#8221; sprawdzana przez domyślne.
 
 ![Uruchom jako ograniczeniami okna dialogowego](./media/RunAsRestricted.png)
 
@@ -231,4 +231,4 @@ Zgodnie z opisem długości na [ten problem GitHub](https://github.com/Particula
 
 ## <a name="reporting-issues"></a>Zgłaszanie problemów
 
-Aby zgłosić problemy NuGet, odwiedź stronę [https://github.com/nuget/home/issues](https://github.com/nuget/home/issues).
+Aby zgłosić problemy NuGet, odwiedź stronę [ https://github.com/nuget/home/issues ](https://github.com/nuget/home/issues).

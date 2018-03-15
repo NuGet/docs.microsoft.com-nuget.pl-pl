@@ -12,11 +12,11 @@ keywords: "Odwołanie do logowania nuget, polecenie logowania"
 ms.reviewer:
 - karann
 - rmpablos
-ms.openlocfilehash: 109b0f6aca0ebaae2ea56fbb45226bc1b14f2ea1
-ms.sourcegitcommit: df7158169e84900d135416cd5e52f937df0beb52
+ms.openlocfilehash: f600a0830472703f40ef62f1b1538c53671703a9
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="sign-command-nuget-cli"></a>znak polecenia (NuGet CLI)
 
@@ -44,7 +44,7 @@ gdzie `<package(s)>` jest co najmniej jeden `.nupkg` plików.
 | CertificateStoreLocation | Określa nazwę Użyj magazynu certyfikatu X.509 do wyszukiwania certyfikatu. Wartość domyślna to "CurrentUser" magazynu certyfikatu X.509, używanego przez bieżącego użytkownika. Tej opcji należy używać podczas określania certyfikatu przy użyciu opcji - CertificateSubjectName lub - CertificateFingerprint. |
 | CertificateStoreName | Określa nazwę magazynu certyfikatu X.509 do służy do wyszukiwania certyfikatu. Wartość domyślna to "My", X.509 magazynu certyfikatów osobistych. Tej opcji należy używać podczas określania certyfikatu przy użyciu opcji - CertificateSubjectName lub - CertificateFingerprint. |
 | CertificateSubjectName | Określa nazwę podmiotu certyfikatu używanego do wyszukiwania lokalnego magazynu certyfikatów dla certyfikatu.  Wyszukiwanie jest porównania bez uwzględniania wielkości liter ciągów za pomocą podana wartość, która znajdzie wszystkie certyfikaty z nazwą podmiotu, zawierającą ten ciąg, niezależnie od innych wartości podmiotu.  Magazyn certyfikatów można określić opcji - CertificateStoreName i - CertificateStoreLocation. |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | ForceEnglishOutput | Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | HashAlgorithm | Algorytm wyznaczania wartości skrótu, który ma być używany do podpisywania pakietu. Wartość domyślna to SHA256. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |

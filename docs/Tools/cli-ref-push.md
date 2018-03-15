@@ -12,11 +12,11 @@ keywords: "Odwołanie do wypychania nuget, polecenie wypychania"
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: df8ef42f650a20b92a281fff3e597ac8d484544e
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.openlocfilehash: 095e81406df3db5fbfc6c5202362894b2c6d7cf8
+ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="push-command-nuget-cli"></a>polecenie wypychania (NuGet CLI)
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/14/2018
 
 Wypychanie pakietu do źródła pakietu i publikuje ją.
 
-NuGet domyślnej konfiguracji są uzyskiwane przez ładowanie `%AppData%\NuGet\NuGet.Config`, a następnie ładowania `Nuget.Config` lub `.nuget\Nuget.Config` pliki, począwszy od katalogu głównego dysku i kończący się w bieżącym katalogu (zobacz [Konfigurowanie zachowania NuGet](../consume-packages/configuring-nuget-behavior.md))
+Konfiguracja domyślna NuGet są uzyskiwane przez załadowanie `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux), następnie ładowania żadnych `Nuget.Config` lub `.nuget\Nuget.Config` pliki, począwszy od katalogu głównego dysku i kończący się w bieżącym katalogu (zobacz [Konfigurowanie Zachowanie NuGet](../consume-packages/configuring-nuget-behavior.md))
 
 ## <a name="usage"></a>Użycie
 
@@ -41,8 +41,8 @@ gdzie `<packagePath>` identyfikuje pakiet do serwera.
 
 | Opcja | Opis |
 | --- | --- |
-| apiKey | Klucz interfejsu API dla repozytorium docelowej. Jeśli nie występuje, określony w *%AppData%\NuGet\NuGet.Config* jest używany. |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany. |
+| apiKey | Klucz interfejsu API dla repozytorium docelowej. Jeśli nie istnieje określony w pliku konfiguracji jest używany. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | DisableBuffering | Wyłącza buforowanie przypadku wypychania do serwera HTTP (s), aby zmniejszyć użycia pamięci. Uwaga: Jeśli ta opcja jest używana, zintegrowane uwierzytelnianie systemu Windows może nie działać. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
