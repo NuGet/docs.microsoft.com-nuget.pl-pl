@@ -3,8 +3,9 @@
 # Przewodniki Szybki Start
 ## [Instalowanie i używanie pakietu (wiersz polecenia dotnet)](quickstart/install-and-use-a-package-using-the-dotnet-cli.md)
 ## [Instalowanie i używanie pakietu (Visual Studio)](quickstart/install-and-use-a-package-in-visual-studio.md)
-## [Tworzenie i publikowanie pakietu (wiersz polecenia dotnet)](quickstart/create-and-publish-a-package-using-the-dotnet-cli.md)
-## [Tworzenie i publikowanie pakietu (Visual Studio)](quickstart/create-and-publish-a-package-using-visual-studio.md)
+## [Tworzenie i publikowanie pakietu platformy .NET Standard (interfejs wiersza polecenia dotnet)](quickstart/create-and-publish-a-package-using-the-dotnet-cli.md)
+## [Tworzenie i publikowanie pakietu platformy .NET Standard (Visual Studio)](quickstart/create-and-publish-a-package-using-visual-studio.md)
+## [Tworzenie i publikowanie pakietu platformy .NET Framework (Visual Studio)](quickstart/create-and-publish-a-package-using-visual-studio-net-framework.md)
 # Korzystanie z pakietów
 ## [Omówienie i przepływ pracy](consume-packages/overview-and-workflow.md)
 ## [Znajdowanie i wybieranie pakietów](consume-packages/finding-and-choosing-packages.md)
