@@ -3,7 +3,7 @@ title: "Format NuGet PackageReference (odwołania do pakietu w plikach projektu)
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 07/17/2017
+ms.date: 03/16/2018
 ms.topic: article
 ms.prod: nuget
 ms.technology: 
@@ -12,11 +12,11 @@ keywords: NuGet package dependencies, package references, project files, Package
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 679871a280c158c863e0daf790af1b7cef509943
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.openlocfilehash: e1880c9b294e19ef1b71c7b17b02df8ff1cf1b73
+ms.sourcegitcommit: 718e6cb88e45fa07c85d653f216bf92eaaf81625
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/20/2018
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 
@@ -24,7 +24,7 @@ Pakiet odwołań, za pomocą `PackageReference` węzła, zarządzanie zależnoś
 
 Z PackageReference można również użyć warunki MSBuild do wybrania odwołania do pakietu dla platformy docelowej, konfiguracji, platformy lub inne grupy. Umożliwia on również precyzyjną kontrolę nad zależności i zawartości przepływu. (Aby uzyskać więcej informacji, zobacz [NuGet pakietu i ich przywracania docelowych elementów MSBuild](../reference/msbuild-targets.md).)
 
-Domyślnie PackageReference służy do projektów platformy .NET Core, .NET Standard projektów i projekty platformy UWP przeznaczonych dla systemu Windows 10 kompilacji 15063 (twórców aktualizacji) lub nowszy. Projekty pełna platformy .NET obsługuje PackageReference, ale obecnie domyślnie `packages.config`. Aby użyć PackageReference, należy przeprowadzić migrację zależności z `packages.config` w pliku projektu, a następnie usuń pliku packages.config.
+Domyślnie PackageReference jest używany dla platformy .NET Core projektów, .NET Standard projektów i projekty platformy UWP przeznaczonych dla systemu Windows 10 kompilacji 15063 (twórców aktualizacji), a później, z wyjątkiem projektów C++ platformy uniwersalnej systemu Windows. Projekty pełna platformy .NET obsługuje PackageReference, ale obecnie domyślnie `packages.config`. Aby użyć PackageReference, należy przeprowadzić migrację zależności z `packages.config` w pliku projektu, a następnie usuń pliku packages.config.
 
 ## <a name="adding-a-packagereference"></a>Dodawanie PackageReference
 
@@ -94,7 +94,7 @@ Dopuszczalne wartości tych tagów są następujące, z wieloma wartościami odd
 | Wartość | Opis |
 | --- | ---
 | Kompilacji | Zawartość `lib` folderu |
-| środowisko uruchomieniowe | Zawartość `runtime` folderu |
+| środowisko uruchomieniowe | Zawartość `runtimes` folderu |
 | Pliki | Zawartość `contentfiles` folderu |
 | kompilacja | Właściwości i elementów docelowych w `build` folderu |
 | Analizatory | Analizatory .NET |
