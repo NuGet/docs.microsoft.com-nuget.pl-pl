@@ -17,7 +17,6 @@
 ## [Zarządzanie pamięcią podręczną pakietu NuGet](consume-packages/managing-the-nuget-cache.md)
 ## [Konfigurowanie zachowania pakietu NuGet](consume-packages/configuring-nuget-behavior.md)
 ## [Rozwiązywanie zależności](consume-packages/dependency-resolution.md)
-## [Odwołania do pakietu w plikach projektu](consume-packages/package-references-in-project-files.md)
 # Tworzenie pakietów
 ## [Omówienie i przepływ pracy](create-packages/overview-and-workflow.md)
 ## [Tworzenie pakietu](create-packages/creating-a-package.md)
@@ -74,6 +73,7 @@
 ## [Polecenia dotnet](tools/dotnet-Commands.md)
 # Tematy pomocy
 ## [.nuspec](reference/nuspec.md)
+## [Odwołania do pakietu w plikach projektu](consume-packages/package-references-in-project-files.md)
 ## [packages.config](reference/packages-config.md)
 ## [Przechowywanie wersji pakietów](reference/package-versioning.md)
 ## [Plik Nuget.Config](reference/nuget-config-file.md)
