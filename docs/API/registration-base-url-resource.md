@@ -10,17 +10,20 @@ manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Pakiet rejestracyjny podstawowy adres URL umożliwia pobieranie metadanych dotyczących pakietów."
-keywords: "Metadane pakietów NuGet interfejsu API, NuGet interfejsu API rejestracji, interfejsu API NuGet nieznajdujące się na liście pakietów"
+ms.technology: ''
+description: Pakiet rejestracyjny podstawowy adres URL umożliwia pobieranie metadanych dotyczących pakietów.
+keywords: Metadane pakietów NuGet interfejsu API, NuGet interfejsu API rejestracji, interfejsu API NuGet nieznajdujące się na liście pakietów
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: c098d70d58011bad7f9829f0c95c87c1339dd362
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: c7b32e1d2bb9250de1e0b707405a75184b2bd8b4
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="package-metadata"></a>Metadane pakietów
 
@@ -32,11 +35,11 @@ Kolekcja dokumentów omówionych w artykule `RegistrationsBaseUrl` są często n
 
 Następujące `@type` są używane wartości:
 
-@typewartość                     | Uwagi
+@type Wartość                     | Uwagi
 ------------------------------- | -----
 RegistrationsBaseUrl            | Początkowa wersja
-RegistrationsBaseUrl/3.0.0-beta | Alias`RegistrationsBaseUrl`
-RegistrationsBaseUrl/3.0.0-rc   | Alias`RegistrationsBaseUrl`
+RegistrationsBaseUrl/3.0.0-beta | Alias `RegistrationsBaseUrl`
+RegistrationsBaseUrl/3.0.0-rc   | Alias `RegistrationsBaseUrl`
 RegistrationsBaseUrl/3.4.0      | Odpowiedzi w formacie gzip
 RegistrationsBaseUrl/3.6.0      | Zawiera pakiety programu SemVer 2.0.0
 
@@ -146,7 +149,7 @@ Nazwa                     | Typ                       | Wymagane | Uwagi
 ------------------------ | -------------------------- | -------- | -----
 @id                      | string                     | Tak      | Adres URL do dokumentu, używany do utworzenia tego obiektu
 Autorzy                  | ciąg lub tablica ciągów | Brak       | 
-dependencyGroups         | Tablica obiektów           | Brak       | Adres URL do zawartości pakietów (.nupkg)
+dependencyGroups         | Tablica obiektów           | Brak       | Zależności pakietu, pogrupowane według platformy docelowej
 opis              | string                     | Brak       | 
 iconUrl                  | string                     | Brak       | 
 identyfikator                       | string                     | Tak      | Identyfikator pakietu

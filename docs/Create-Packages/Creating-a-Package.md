@@ -1,23 +1,25 @@
 ---
-title: "Jak utworzyć pakiet NuGet | Dokumentacja firmy Microsoft"
+title: Jak utworzyć pakiet NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 12/12/2017
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-ms.assetid: 456797cb-e3e4-4b88-9b01-8b5153cee802
-description: "Szczegółowy przewodnik dotyczący proces projektowania i tworzenia pakietu NuGet, w tym punkty decyzyjne klucza, takich jak pliki i przechowywania wersji."
+ms.technology: ''
+description: Szczegółowy przewodnik dotyczący proces projektowania i tworzenia pakietu NuGet, w tym punkty decyzyjne klucza, takich jak pliki i przechowywania wersji.
 keywords: Tworzenie pakietu NuGet, tworzenie pakietu, nuspec manifest, konwencje pakietu NuGet, wersja pakietu NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 613e3eb9d08a0da96340f32b13c486508fa32439
-ms.sourcegitcommit: df21fe770900644d476d51622a999597a6f20ef8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 7bb7e16a317aff908effe0b6c603ea53c9e8a563
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -131,7 +133,7 @@ Poniżej przedstawiono typowe (ale fikcyjne) `.nuspec` pliku z komentarzami opis
 
 Szczegółowe informacje o deklarowanie zależności i określanie numerów wersji, zobacz [wersji pakietu](../reference/package-versioning.md). Możliwe jest również do powierzchni zasoby z zależnościami bezpośrednio w pakiecie przy użyciu `include` i `exclude` atrybutów na `dependency` elementu. Zobacz [.nuspec — odwołanie do zależności](../reference/nuspec.md#dependencies).
 
-Ponieważ manifestu jest uwzględniony w pakiecie z niej utworzyć, dowolną liczbę dodatkowe przykłady można znaleźć, sprawdzając istniejące pakiety. Dobrym źródłem jest pamięć podręczna globalnej pakietu na komputerze, lokalizację, jest zwracany za pomocą następującego polecenia:
+Ponieważ manifestu jest uwzględniony w pakiecie z niej utworzyć, dowolną liczbę dodatkowe przykłady można znaleźć, sprawdzając istniejące pakiety. Jest dobrym źródłem *globalne pakiety* folderu na komputerze, lokalizację, jest zwracany za pomocą następującego polecenia:
 
 ```cli
 nuget locals -list global-packages
@@ -351,7 +353,9 @@ Następnie w `.nuspec` pliku, pamiętaj odwołać się do tych plików w `<files
 
 W tym właściwości programu MSBuild i obiektów docelowych w pakiecie został [wprowadzone w systemie NuGet 2.5](../release-notes/NuGet-2.5.md#automatic-import-of-msbuild-targets-and-props-files), dlatego zalecane jest dodawanie `minClientVersion="2.5"` atrybutu `metadata` element, aby wskazać minimalnej wersji klienta NuGet wymaganej do Korzystanie z pakietu.
 
-Gdy NuGet instaluje pakiet o `\build` pliki, dodaje MSBuild `<Import>` elementów w pliku projektu wskazujący `.targets` i `.props` plików. (`.props` dodaje się u góry pliku projektu; `.targets` zostanie dodany na dole.)
+Gdy NuGet instaluje pakiet o `\build` pliki, dodaje MSBuild `<Import>` elementów w pliku projektu wskazujący `.targets` i `.props` plików. (`.props` dodaje się u góry pliku projektu; `.targets` zostanie dodany na dole.) Oddzielne MSBuild warunkowego `<Import>` element jest dodawany do każdej platformy docelowej.
+
+MSBuild `.props` i `.targets` plików dla framework między celem można umieścić w `\buildCrossTargeting` folderu. Podczas instalacji pakietu NuGet dodaje odpowiadającego `<Import>` elementy do pliku projektu z warunkiem, że platforma docelowa nie jest ustawiona (właściwość MSBuild `$(TargetFramework)` może być pusta).
 
 Nuget 3.x, elementy docelowe nie zostaną dodane do projektu, ale zamiast tego stają się dostępne za pośrednictwem `project.lock.json`.
 
@@ -372,7 +376,7 @@ Pakiety, które zawierają zestawy międzyoperacyjne COM musi zawierać odpowied
 </Target>
 ```
 
-Należy pamiętać, że przy użyciu `packages.config` format odwołania Dodawanie odwołania do zestawów z pakietów powoduje NuGet i Visual Studio sprawdzić zestawy międzyoperacyjne COM i ustaw `EmbedInteropTypes` na wartość true w pliku projektu. W takim przypadku elementy docelowe są zastąpione.
+Należy pamiętać, że przy użyciu `packages.config` format zarządzania Dodawanie odwołania do zestawów z pakietów powoduje NuGet i Visual Studio sprawdzić zestawy międzyoperacyjne COM i ustaw `EmbedInteropTypes` na wartość true w pliku projektu. W takim przypadku elementy docelowe są zastąpione.
 
 Ponadto domyślnie [zasoby kompilacji nie przepływu przechodnie](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets). Pakiety utworzone zgodnie z opisem w tym miejscu pracy inaczej, gdy są one pobierane jako zależność przechodnie z odwołaniem projektu do projektu. Konsument pakietu zezwolić im na przepływ, zmieniając wartość domyślną PrivateAssets, aby nie był uwzględniany kompilacji.
 

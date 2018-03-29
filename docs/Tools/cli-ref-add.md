@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Dodaj odwołanie do nuget.exe — polecenie"
-keywords: "Dodaj odwołanie nuget, należy dodać polecenie pakietu"
+ms.technology: ''
+description: Dodaj odwołanie do nuget.exe — polecenie
+keywords: Dodaj odwołanie nuget, należy dodać polecenie pakietu
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 70c86f8d240bd308224f6b7887b630cc1e953bf8
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 48e093cbae2cecb1652e17a9b26920107aa8aef7
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="add-command-nuget-cli"></a>Dodawanie polecenia (NuGet CLI)
 
@@ -47,7 +50,7 @@ gdzie `<packagePath>` jest ścieżka do pakietu, aby dodać, a `<sourcePath>` ok
 
 | Opcja | Opis |
 | --- | --- |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, *%AppData%\NuGet\NuGet.Config* jest używany.| 
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | Rozwiń węzeł | Dodaje wszystkie pliki w pakiecie do źródła pakietu. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |

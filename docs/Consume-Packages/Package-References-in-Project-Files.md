@@ -1,22 +1,25 @@
 ---
-title: "Format NuGet PackageReference (odwołania do pakietu w plikach projektu) | Dokumentacja firmy Microsoft"
+title: Format NuGet PackageReference (odwołania do pakietu w plikach projektu) | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 03/16/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Szczegółowe informacje o NuGet PackageReference w plikach projektu jako obsługiwany przez NuGet 4.0 +, VS2017 i .NET Core 2.0"
+ms.technology: ''
+description: Szczegółowe informacje o NuGet PackageReference w plikach projektu jako obsługiwany przez NuGet 4.0 +, VS2017 i .NET Core 2.0
 keywords: NuGet package dependencies, package references, project files, PackageReference, packages.config, VS2017, Visual Studio 2017, NuGet 4, .NET Core 2.0
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: e1880c9b294e19ef1b71c7b17b02df8ff1cf1b73
-ms.sourcegitcommit: 718e6cb88e45fa07c85d653f216bf92eaaf81625
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 99caf371ca1bd85e6af4e879741e3e2caab6e860
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 

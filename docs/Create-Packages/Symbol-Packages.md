@@ -1,23 +1,26 @@
 ---
-title: "Tworzenie pakietów NuGet symbol | Dokumentacja firmy Microsoft"
+title: Tworzenie pakietów NuGet symbol | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 09/12/2017
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Jak tworzyć pakiety NuGet, które zawierają tylko symbole, aby zapewnić obsługę debugowania innych pakietów NuGet w programie Visual Studio."
-keywords: "Pakiety symboli NuGet, pakietu NuGet, debugowanie, obsługi debugowania pakietu symboli, symbol konwencje pakietów NuGet"
+ms.technology: ''
+description: Jak tworzyć pakiety NuGet, które zawierają tylko symbole, aby zapewnić obsługę debugowania innych pakietów NuGet w programie Visual Studio.
+keywords: Pakiety symboli NuGet, pakietu NuGet, debugowanie, obsługi debugowania pakietu symboli, symbol konwencje pakietów NuGet
 ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: e1d90009c739a7f358e9581c7032523b8b284936
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 6b6ddb0ca8ac5d7589dc5cb6de66ee3aa5faf8b6
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="creating-symbol-packages"></a>Tworzenie pakietów — symbol
 

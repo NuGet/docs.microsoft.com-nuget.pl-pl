@@ -4,19 +4,22 @@ author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/24/2018
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.prod: nuget
-ms.technology: 
-description: "Samouczek wskazówki na temat tworzenia i publikowania za pomocą .NET Core CLI, platformy dotnet pakietu NuGet."
+ms.technology: ''
+description: Samouczek wskazówki na temat tworzenia i publikowania za pomocą .NET Core CLI, platformy dotnet pakietu NuGet.
 keywords: Pakiet NuGet tworzenie, publikowanie pakietu NuGet, samouczek NuGet pakietu NuGet publikowania dotnet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 086de5378fe4ae928e6bd00cd3a87afd7c366a01
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 536e39ae64649ca1c11afa95c20872515e9e4c83
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-publish-a-package"></a>Tworzenie i publikowanie pakietu
 
@@ -59,14 +62,14 @@ Każdy pakiet NuGet musi manifestu, który opisuje zawartość pakietu i zależn
 
 ## <a name="run-the-pack-command"></a>Uruchom polecenie pakietu
 
-Aby utworzyć pakiet NuGet ( `.nupkg` pliku) w projekcie, uruchom `dotnet pack` polecenia:
+Aby utworzyć pakiet NuGet ( `.nupkg` pliku) w projekcie, uruchom `dotnet pack` polecenia, które również automatycznie tworzy projekt:
 
 ```cli
 # Uses the project file in the current folder by default
 dotnet pack
 ```
 
-Dane wyjściowe będą pokazywały ścieżkę do `.nupkg` pliku:
+Dane wyjściowe zawierają ścieżki do `.nupkg` pliku:
 
 ```output
 Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
@@ -75,6 +78,14 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Restore completed in 29.91 ms for D:\proj\AppLoggerNet\AppLogger\AppLogger.csproj.
   AppLogger -> D:\proj\AppLoggerNet\AppLogger\bin\Debug\netstandard2.0\AppLogger.dll
   Successfully created package 'D:\proj\AppLoggerNet\AppLogger\bin\Debug\AppLogger.1.0.0.nupkg'.
+```
+
+### <a name="automatically-generate-package-on-build"></a>Automatyczne generowanie pakietu podczas kompilacji
+
+Aby automatycznie uruchomić `dotnet pack` po uruchomieniu `dotnet build`, Dodaj następujący wiersz w pliku projektu w `<PropertyGroup>`:
+
+```xml
+<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 ```
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu

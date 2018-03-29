@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 01/18/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Szczegółowe informacje na dwa sposoby tworzenia zlokalizowane pakiety NuGet, w tym wszystkie zestawy w jednym pakiecie lub publikowanie osobnych zestawów."
-keywords: "Lokalizacja pakietu NuGet, zestawy satelickie NuGet, tworzenie zlokalizowanych pakietów NuGet konwencje lokalizacji"
+ms.technology: ''
+description: Szczegółowe informacje na dwa sposoby tworzenia zlokalizowane pakiety NuGet, w tym wszystkie zestawy w jednym pakiecie lub publikowanie osobnych zestawów.
+keywords: Lokalizacja pakietu NuGet, zestawy satelickie NuGet, tworzenie zlokalizowanych pakietów NuGet konwencje lokalizacji
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 5946ba6b43d3c418a1624aeb27d12b385d66b2fb
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 39ff6d300ec1a1f7941cad5953599f25f55117f4
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="creating-localized-nuget-packages"></a>Tworzenie zlokalizowanych pakietów NuGet
 

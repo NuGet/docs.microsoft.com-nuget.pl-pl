@@ -1,22 +1,25 @@
 ---
-title: "NuGet często zadawane pytania | Dokumentacja firmy Microsoft"
+title: NuGet często zadawane pytania | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/11/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Typowe pytania i odpowiedzi przy użyciu narzędzia NuGet w wierszu polecenia, a w programie Visual Studio i pracy z galerii NuGet."
-keywords: "Wersje pakietu NuGet pytań i odpowiedzi, pytania i odpowiedzi, typowe problemy, wersje NuGet"
+ms.technology: ''
+description: Typowe pytania i odpowiedzi przy użyciu narzędzia NuGet w wierszu polecenia, a w programie Visual Studio i pracy z galerii NuGet.
+keywords: Wersje pakietu NuGet pytań i odpowiedzi, pytania i odpowiedzi, typowe problemy, wersje NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 3782fe5dcf8df002d99446aa7548a6eacc62211c
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 33e4776054b1cdd874dcd7e955552ef873dbbf5b
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet często zadawane pytania
 

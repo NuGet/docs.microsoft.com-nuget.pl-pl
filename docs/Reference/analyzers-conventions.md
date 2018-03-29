@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 01/09/2017
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Konwencje dotyczące analizatorów .NET, które są umieszczone i rozpowszechnianej za pomocą pakietów NuGet, które implementują interfejs API lub biblioteki."
+ms.technology: ''
+description: Konwencje dotyczące analizatorów .NET, które są umieszczone i rozpowszechnianej za pomocą pakietów NuGet, które implementują interfejs API lub biblioteki.
 keywords: Konwencje analizator NuGet, analizatory .NET, NuGet i platformy kompilatora .NET, NuGet i Roslyn
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: e44cfa609c14422d50769e512108844cbd2f96a4
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 26e40346b1d76d2f4f0e4177dbe0670f10db164c
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="analyzer-nuget-formats"></a>Analizator NuGet formatów
 
@@ -51,7 +54,7 @@ Korzystanie z `analyzers` folder jest podobny do celów [platform docelowych](..
 
     $/analyzers/{framework_name}{version}/{supported_architecture}/{supported_language}}/{analyzer_name}.dll
 
-- **framework_name**: *opcjonalne* powierzchni interfejsu API programu .NET Framework zawartej biblioteki DLL potrzebne do uruchomienia. `dotnet`nie ma obecnie jedyną prawidłową wartością ponieważ Roslyn jest tylko hosta, który można uruchomić analizatorów. Jeśli docelowy nie zostanie określony, biblioteki DLL uznaje się, że dotyczą *wszystkie* elementy docelowe.
+- **framework_name**: *opcjonalne* powierzchni interfejsu API programu .NET Framework zawartej biblioteki DLL potrzebne do uruchomienia. `dotnet` nie ma obecnie jedyną prawidłową wartością ponieważ Roslyn jest tylko hosta, który można uruchomić analizatorów. Jeśli docelowy nie zostanie określony, biblioteki DLL uznaje się, że dotyczą *wszystkie* elementy docelowe.
 - **supported_language**: język, dla którego plik DLL, który ma zastosowanie, jeden z `cs` (C#) i `vb` (Visual Basic), a `fs` (F #). Język wskazuje, że analizatora powinny być ładowane tylko do projektu przy użyciu tego języka. Jeśli język nie zostanie określony, a następnie przyjęto, że biblioteka DLL dotyczą *wszystkie* języków, które obsługują analizatorów.
 - **analyzer_name**: Określa bibliotek DLL analizatora. Jeśli potrzebujesz dodatkowych plików poza biblioteki DLL muszą być dodane przez pliki elementów docelowych lub właściwości.
 

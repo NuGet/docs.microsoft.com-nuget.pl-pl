@@ -1,23 +1,25 @@
 ---
-title: "Ponowne instalowanie i aktualizowanie pakietów NuGet | Dokumentacja firmy Microsoft"
+title: Ponowne instalowanie i aktualizowanie pakietów NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 12/07/2017
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-ms.assetid: 2785879b-97f0-4a85-b3cc-bf4eaa5c39bf
-description: "Szczegółowe informacje na gdy jest konieczne ponowne zainstalowanie i aktualizację pakietów, tak jak w przypadku odwołania do pakietu przerwane w programie Visual Studio."
-keywords: "NuGet pakietu instalacji, ponowna instalacja pakietu NuGet, Przywracanie pakietu NuGet, aktualizowanie pakietu, przywracanie pakietów, ustalania przerwanymi odwołaniami"
+ms.technology: ''
+description: Szczegółowe informacje na gdy jest konieczne ponowne zainstalowanie i aktualizację pakietów, tak jak w przypadku odwołania do pakietu przerwane w programie Visual Studio.
+keywords: NuGet pakietu instalacji, ponowna instalacja pakietu NuGet, Przywracanie pakietu NuGet, aktualizowanie pakietu, przywracanie pakietów, ustalania przerwanymi odwołaniami
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: e2875630b24fbe04fc7bcab52335d849e54160de
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 9da385f51abf5877589c29ebdeffefc9a1a20a2e
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak zainstalować i pakietów aktualizacji
 
@@ -48,7 +50,7 @@ W tym artykule:
 
 Domyślnie, ponownej instalacji lub aktualizacji pakietu *zawsze* instaluje najnowszą wersję dostępne w źródle pakietów.
 
-W projektach przy użyciu `packages.config` format odwołania, w szczególności ograniczyć zakres wersji. Na przykład jeśli wiadomo, że aplikacja działa tylko z wersją 1.x pakietu ale nie 2.0 i nowszych, prawdopodobnie z powodu istotne zmiany w pakiecie interfejsu API, możesz warto, aby ograniczyć uaktualnienia do wersji 1.x. Pozwala to zapobiec przypadkowemu aktualizacje, które spowoduje przerwanie aplikacji.
+W projektach przy użyciu `packages.config` format zarządzania, w szczególności ograniczyć zakres wersji. Na przykład jeśli wiadomo, że aplikacja działa tylko z wersją 1.x pakietu ale nie 2.0 i nowszych, prawdopodobnie z powodu istotne zmiany w pakiecie interfejsu API, możesz warto, aby ograniczyć uaktualnienia do wersji 1.x. Pozwala to zapobiec przypadkowemu aktualizacje, które spowoduje przerwanie aplikacji.
 
 Aby ustawić ograniczenie, otwórz `packages.config` w edytorze tekstów, zlokalizuj w zależności, a następnie dodaj `allowedVersions` atrybut z zakres wersji. Na przykład, aby ograniczyć aktualizacji do wersji 1.x, ustaw `allowedVersions` do `[1,2)`:
 

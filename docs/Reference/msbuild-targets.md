@@ -1,21 +1,25 @@
 ---
-title: "NuGet pakietu i ich przywracania docelowych elementów MSBuild | Dokumentacja firmy Microsoft"
+title: NuGet pakietu i ich przywracania docelowych elementów MSBuild | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 03/13/2018
+ms.date: 03/23/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Pakiet NuGet i przywracania może współpracować bezpośrednio jako docelowych elementów MSBuild nuget 4.0 +."
+ms.technology: ''
+description: Pakiet NuGet i przywracania może współpracować bezpośrednio jako docelowych elementów MSBuild nuget 4.0 +.
 keywords: NuGet i MSBuild, docelowy pakietu NuGet, docelowy przywracania NuGet
 ms.reviewer:
 - karann-msft
-ms.openlocfilehash: bb0ade1b0f5f81d7c8822d3c2b2f9dd45745fb8d
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+- unniravindranathan
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: a9c2c2229d717dff8472dce0ba568e4a21900b19
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracania jako docelowych elementów MSBuild
 
@@ -110,7 +114,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 
 ### <a name="packageiconurl"></a>PackageIconUrl
 
-Zmiana w ramach [2582 problem NuGet](https://github.com/NuGet/Home/issues/2582), `PackageIconUrl` po pewnym czasie zostaną zmienione na `PackageIconUri` i może być względna ścieżka do pliku ikony, które zostaną uwzględnione w katalogu głównym wynikowy pakiet.
+Zmiana w ramach [352 problem NuGet](https://github.com/NuGet/Home/issues/352), `PackageIconUrl` po pewnym czasie zostaną zmienione na `PackageIconUri` i może być względna ścieżka do pliku ikony, które zostaną uwzględnione w katalogu głównym wynikowy pakiet.
 
 ### <a name="output-assemblies"></a>Zestawy danych wyjściowych
 
@@ -231,6 +235,61 @@ Przykładowy plik csproj, można spakować plik nuspec to:
 </Project>
 ```
 
+### <a name="advanced-extension-points-to-create-customized-package"></a>Zaawansowane punktów rozszerzenia, aby utworzyć dostosowany pakiet
+
+`pack` Docelowy zawiera dwa punkty rozszerzeń uruchamianych w wewnętrznej, określonej kompilacji framework docelowej. Punkty rozszerzenia pomocy technicznej oraz docelowego framework określone zestawy w pakiecie:
+
+- `TargetsForTfmSpecificBuildOutput` docelowy: pliki znajdujące się na użytek `lib` folder lub folder, określić przy użyciu `BuildOutputTargetFolder`.
+- `TargetsForTfmSpecificContentInPackage` docelowy: Użyj dla plików znajdujących się poza `BuildOutputTargetFolder`.
+
+#### <a name="targetsfortfmspecificbuildoutput"></a>TargetsForTfmSpecificBuildOutput
+
+Zapisz niestandardowe docelowych i określ go jako wartość `$(TargetsForTfmSpecificBuildOutput)` właściwości. Pliki, które muszą przejść do `BuildOutputTargetFolder` (domyślnie lib), element docelowy należy zapisać te pliki do ItemGroup `BuildOutputInPackage` i ustaw następujące dwie wartości metadanych:
+
+- `FinalOutputPath`: Ścieżka bezwzględna plików; Jeśli nie podano tożsamości jest używane do analizowania ścieżki źródłowej.
+- `TargetPath`: (Opcjonalnie) ustawić, gdy trzeba przejdź do podfolderu w pliku `lib\<TargetFramework>` , takie jak towarzyszącej zestawy tego Przejdź w folderach ich odpowiednich kultury. Wartość domyślna to nazwa pliku.
+
+Przykład:
+
+```
+<PropertyGroup>
+  <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetMyPackageFiles</TargetsForTfmSpecificBuildOutput>
+</PropertyGroup>
+
+<Target Name="GetMyPackageFiles">
+  <ItemGroup>
+    <BuildOutputInPackage Include="$(OutputPath)cs\$(AssemblyName).resources.dll">
+        <TargetPath>cs</TargetPath>
+    </BuildOutputInPackage>
+  </ItemGroup>
+</Target>
+```
+
+#### <a name="targetsfortfmspecificcontentinpackage"></a>TargetsForTfmSpecificContentInPackage
+
+Zapisz niestandardowe docelowych i określ go jako wartość `$(TargetsForTfmSpecificContentInPackage)` właściwości. W przypadku plików do uwzględnienia w pakiecie docelowy należy zapisać te pliki do ItemGroup `TfmSpecificPackageFile` i ustaw następujące opcjonalne metadane:
+
+- `PackagePath`: Ścieżka, gdy ten plik powinien być dane wyjściowe w pakiecie. NuGet wygeneruje ostrzeżenie, jeśli więcej niż jeden plik został dodany do tej samej ścieżki pakietu.
+- `BuildAction`: Akcja kompilacji do przypisania do plików, jest wymagany tylko wtedy, jeśli ścieżka pakietu znajduje się w `contentFiles` folderu. Wartość domyślna to "None".
+
+Przykład:
+```
+<PropertyGroup>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);CustomContentTarget</TargetsForTfmSpecificContentInPackage>
+</PropertyGroup>
+
+<Target Name=""CustomContentTarget"">
+    <ItemGroup>
+      <TfmSpecificPackageFile Include=""abc.txt"">
+        <PackagePath>mycontent/$(TargetFramework)</PackagePath>
+      </TfmSpecificPackageFile>
+      <TfmSpecificPackageFile Include=""Extensions/ext.txt"" Condition=""'$(TargetFramework)' == 'net46'"">
+        <PackagePath>net46content</PackagePath>
+      </TfmSpecificPackageFile>  
+    </ItemGroup>
+  </Target>  
+```
+
 ## <a name="restore-target"></a>Lokalizacja docelowa przywracania
 
 `MSBuild /t:restore` (który `nuget restore` i `dotnet restore` za pomocą platformy .NET Core projektów), przywraca pakietów, do których odwołuje się w pliku projektu w następujący sposób:
@@ -254,7 +313,7 @@ Przywróć dodatkowe ustawienia mogą pochodzić z właściwości programu MSBui
 | RestorePackagesPath | Ścieżka folderu pakietów użytkownika. |
 | RestoreDisableParallel | Limit pobiera pojedynczo. |
 | RestoreConfigFile | Ścieżka do `Nuget.Config` pliku w celu zastosowania. |
-| RestoreNoCache | Jeśli PRAWDA, pozwala uniknąć przy użyciu pamięci podręcznej sieci web. |
+| RestoreNoCache | Jeśli PRAWDA, pozwala uniknąć za pomocą pakietów pamięci podręcznej. Zobacz [Zarządzanie globalne pakietów i foldery pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). |
 | RestoreIgnoreFailedSources | Jeśli PRAWDA, ignoruje wystąpił błąd lub Brak źródeł pakietów. |
 | RestoreTaskAssemblyFile | Ścieżka do `NuGet.Build.Tasks.dll`. |
 | RestoreGraphProjectInput | Rozdzielana średnikami lista projektów do przywrócenia, powinna ona zawierać ścieżek bezwzględnych. |
@@ -282,7 +341,7 @@ Przywracanie tworzy następujące pliki w kompilacji `obj` folderu:
 
 | Plik | Opis |
 |--------|--------|
-| `project.assets.json` | Wcześniej `project.lock.json` |
+| `project.assets.json` | Zawiera wykres zależności wszystkie odwołania do pakietu. |
 | `{projectName}.projectFileExtension.nuget.g.props` | Odwołania do właściwości programu MSBuild zawartych w pakietach |
 | `{projectName}.projectFileExtension.nuget.g.targets` | Odwołania do zawartych w pakietach docelowych elementów MSBuild |
 

@@ -1,22 +1,25 @@
 ---
-title: "Rozwiązywanie problemów z pakietu NuGet przywracania w programie Visual Studio | Dokumentacja firmy Microsoft"
+title: Rozwiązywanie problemów z pakietu NuGet przywracania w programie Visual Studio | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 03/13/2018
+ms.date: 03/16/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Opis wspólnej NuGet Przywracanie błędy w Visual Studio i sposoby ich rozwiązywania."
-keywords: "Przywracanie pakietu NuGet, przywracanie pakietów, rozwiązywania problemów, rozwiązywanie problemów"
+ms.technology: ''
+description: Opis wspólnej NuGet Przywracanie błędy w Visual Studio i sposoby ich rozwiązywania.
+keywords: Przywracanie pakietu NuGet, przywracanie pakietów, rozwiązywania problemów, rozwiązywanie problemów
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 8efaed497a596921af3c73ab919831c73bf598e0
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 27a43ceaefdf3a7842183a64ea57d05416d6cb02
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshooting-package-restore-errors"></a>Rozwiązywanie problemów z błędami przywracania pakietu
 
@@ -48,7 +51,10 @@ This project references NuGet package(s) that are missing on this computer.
 Use NuGet Package Restore to download them. The missing file is {name}.
 ```
 
-Ten błąd występuje przystąpieniem do tworzenia projektu, który zawiera odwołania do co najmniej jednego pakietu NuGet, ale pakiety nie są obecnie buforowane w projekcie. (Pakiety są buforowane w `packages` folder w katalogu głównym rozwiązanie, jeśli projekt używa `packages.config`, lub `obj/project.assets.json` plik, jeśli projekt używa formatu PackageReference.)
+Ten błąd występuje przystąpieniem do tworzenia projektu, który zawiera odwołania do co najmniej jednego pakietu NuGet, ale pakiety nie są obecnie zainstalowane na komputerze lub w projekcie.
+
+- Podczas korzystania z formatu zarządzania PackageReference, błąd oznacza, że pakiet nie jest zainstalowany w *globalne pakiety* folderu zgodnie z opisem na zgodnie z opisem na [Zarządzanie globalne pakietów i pamięci podręcznej folderów](managing-the-global-packages-and-cache-folders.md).
+- Korzystając z `packages.config`, ten błąd oznacza, że pakiet nie jest zainstalowany w `packages` folder w katalogu głównym rozwiązania.
 
 Taka sytuacja często występuje, gdy uzyskać kod źródłowy projektu z kontroli źródła lub innego pobierania. Pakiety są zwykle pominięto z kontroli źródła lub pliki do pobrania, ponieważ pliki mogą zostać przywrócone z pakietu źródeł danych, takich jak nuget.org (zobacz [pakietów i kontroli źródła](Packages-and-Source-Control.md)). Włączenie ich w przeciwnym razie będzie wybrzuszanie repozytorium lub Utwórz plików zip niepotrzebnie.
 
@@ -59,7 +65,7 @@ Użyj jednej z następujących metod w celu przywrócenia pakietów:
 - W wierszu polecenia Uruchom `nuget restore` (z wyjątkiem projektów utworzonych za pomocą `dotnet`, w którym to przypadku użycia `dotnet restore`).
 - W wierszu polecenia z projektami przy użyciu formatu PackageReference Uruchom `msbuild /t:restore`.
 
-Po pomyślnym przywracania, powinna zostać wyświetlona albo `packages` folder (przy użyciu `packages.config`) lub `obj/project.assets.json` plików (w przypadku używania PackageReference). Projekt powinien teraz kompilacji pomyślnie. Jeśli nie, [pliku problemu w serwisie GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) , firma Microsoft możesz skomunikować się z Tobą.
+Po przywróceniu pomyślnie, powinien znajdować się w pakiecie *globalne pakiety* folderu. W przypadku projektów przy użyciu PackageReference przywracania należy ponownie utworzyć `obj/project.assets.json` pliku; dla projektów przy użyciu `packages.config`, pakiet powinien zostać wyświetlony w projekcie `packages` folderu. Projekt powinien teraz kompilacji pomyślnie. Jeśli nie, [pliku problemu w serwisie GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) , firma Microsoft możesz skomunikować się z Tobą.
 
 <a name="assets"></a>
 
@@ -71,7 +77,9 @@ Pełny komunikat:
 Assets file '<path>\project.assets.json' not found. Run a NuGet package restore to generate this file.
 ```
 
-Ten błąd występuje z powodów zgodnie z objaśnieniem w [poprzedniej sekcji](#missing), i ma takie same środki zaradcze. Na przykład uruchomiona `msbuild` na .NET Core projektu został uzyskany z kontroli źródła nie będzie automatycznie przywrócić pakiety. W takim przypadku uruchom `msbuild /t:restore` następuje `msbuild`, lub użyj `dotnet build` (co spowoduje przywrócenie pakietów automatycznie).
+`project.assets.json` Pliku przechowuje wykresu zależności projektu, gdy w formacie PackageReference zarządzania, który jest używany, aby upewnić się, że wszystkie niezbędne pakiety są zainstalowane na komputerze. Ponieważ ten plik jest generowany dynamicznie za pośrednictwem Przywracanie pakietu, zwykle nie został dodany do kontroli źródła. W związku z tym, że ten błąd występuje podczas kompilowania projektu za pomocą narzędzia, takie jak `msbuild` który nie automatycznie przywrócić pakiety.
+
+W takim przypadku uruchom `msbuild /t:restore` następuje `msbuild`, lub użyj `dotnet build` (co spowoduje przywrócenie pakietów automatycznie). Można również użyć dowolnej z metod przywracania pakietu w [poprzedniej sekcji](#missing).
 
 <a name="consent"></a>
 
@@ -103,11 +111,12 @@ Można również edytować tych ustawień bezpośrednio w odpowiednich `nuget.co
 </configuration>
 ```
 
-Należy pamiętać, że po zmodyfikowaniu `packageRestore` ustawienia bezpośrednio w `nuget.config`, uruchom ponownie program Visual Studio, opcje — Okno dialogowe zawiera bieżące wartości.
+> [!Important]
+> Po zmodyfikowaniu `packageRestore` ustawienia bezpośrednio w `nuget.config`, uruchom ponownie program Visual Studio, opcje — Okno dialogowe zawiera bieżące wartości.
 
 ## <a name="other-potential-conditions"></a>Inne potencjalne warunki
 
-- Mogą wystąpić błędy kompilacji z powodu braku plików z komunikat z informacją, użyj polecenia NuGet restore, aby je pobrać. Jednak Uruchamianie przywracania może powiedzieć "wszystkie pakiety są już zainstalowane i nie ma niczego do przywrócenia." W takim przypadku usuń `packages` folder (przy użyciu `packages.config`) lub `obj/project.assets.json` plików (w przypadku używania PackageReference) i uruchom ponownie przywracania.
+- Mogą wystąpić błędy kompilacji z powodu braku plików z komunikat z informacją, użyj polecenia NuGet restore, aby je pobrać. Jednak Uruchamianie przywracania może powiedzieć "wszystkie pakiety są już zainstalowane i nie ma niczego do przywrócenia." W takim przypadku usuń `packages` folder (przy użyciu `packages.config`) lub `obj/project.assets.json` plików (w przypadku używania PackageReference) i uruchom ponownie przywracania. Jeśli błąd będzie nadal występować, użyj `nuget locals all -clear` lub `dotnet locals all --clear` z poziomu wiersza polecenia, aby wyczyścić *globalne pakiety* i pamięci podręcznej folderów, zgodnie z opisem na [Zarządzanie globalne pakietów i pamięci podręcznej folderów](managing-the-global-packages-and-cache-folders.md).
 
 - Podczas uzyskiwania projektu z kontroli źródła, folderów projektu może być równa tylko do odczytu. Zmień uprawnienia do folderu i spróbuj ponownie przywrócić pakiety.
 

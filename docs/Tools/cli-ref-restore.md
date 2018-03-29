@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Informacje dotyczące polecenia restore nuget.exe"
-keywords: "nuget przywrócić odwołania, przywrócić pakiety, polecenie"
+ms.technology: ''
+description: Informacje dotyczące polecenia restore nuget.exe
+keywords: nuget przywrócić odwołania, przywrócić pakiety, polecenie
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2416ad652244e0ea60651147ad74a1513cdb75ff
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 64f12fdedc8fbfcee15c1dcddc445148f458c030
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="restore-command-nuget-cli"></a>polecenie Restore (NuGet CLI)
 
@@ -46,15 +49,15 @@ gdzie `<projectPath>` Określa lokalizację rozwiązania lub `packages.config` p
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | MSBuildPath | *(4.0 +)*  Określa ścieżkę MSBuild do użycia z poleceniem pierwszeństwo `-MSBuildVersion`. |
 | MSBuildVersion | *(3.2 +)*  Określa wersję programu MSBuild ma być używany z tego polecenia. Obsługiwane wartości to 4, 12, 14, 15. Domyślnie jest wybierany MSBuild w ścieżce w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
-| NoCache | Zapobiega z pamięci podręcznej komputera lokalnego za pomocą pakietów NuGet. |
+| NoCache | Zapobiega przy użyciu pamięci podręcznej pakietów NuGet. Zobacz [Zarządzanie globalne pakietów i foldery pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
-| OutputDirectory | Określa folder, w którym są zainstalowane pakiety. Jeśli folder nie jest określony, używany jest bieżący folder. |
+| OutputDirectory | Określa folder, w którym są zainstalowane pakiety. Jeśli folder nie jest określony, używany jest bieżący folder. Wymagana, gdy przywrócenie za pomocą `packages.config` pliku, chyba że `PackagesDirectory` lub `SolutionDirectory` jest używany.|
 | PackageSaveMode | Określa typy plików, aby zapisać po zainstalowaniu pakietu: jeden z `nuspec`, `nupkg`, lub `nuspec;nupkg`. |
-| PackagesDirectory | Taki sam jak `OutputDirectory`. |
+| PackagesDirectory | Taki sam jak `OutputDirectory`. Wymagana, gdy przywrócenie za pomocą `packages.config` pliku, chyba że `OutputDirectory` lub `SolutionDirectory` jest używany. |
 | Project2ProjectTimeOut | Limit czasu w sekundach dla rozpoznawania odwołań projektu do projektu. |
 | Cykliczne | *(4.0 +)*  Przywraca wszystkie projekty odwołań dla projektów uniwersalnych systemu Windows i .NET Core. Nie ma zastosowania do projektów przy użyciu `packages.config`. |
 | RequireConsent | Sprawdza, czy Przywracanie pakietów jest włączona przed pobierania i instalowania pakietów. Aby uzyskać więcej informacji, zobacz [przywracania pakietów](../consume-packages/package-restore.md). |
-| SolutionDirectory | Określa folder rozwiązania. Nieprawidłowy gdy trwa przywracanie pakietów dla rozwiązania. |
+| SolutionDirectory | Określa folder rozwiązania. Nieprawidłowy gdy trwa przywracanie pakietów dla rozwiązania. Wymagana, gdy przywrócenie za pomocą `packages.config` pliku, chyba że `PackagesDirectory` lub `OutputDirectory` jest używany. |
 | Źródło | Określa listę źródła pakietu (jako adresy URL) do użycia na potrzeby przywracania. W przypadku jego pominięcia polecenie używa źródeł dostarczone w plikach konfiguracji, zobacz [NuGet Konfigurowanie zachowania](../consume-packages/configuring-nuget-behavior.md). |
 | Szczegółowość |> określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
 

@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 12/07/2017
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Odwołanie do polecenia programu PowerShell pakietu aktualizacji w konsoli Menedżera pakietów NuGet w programie Visual Studio."
-keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, pakiet aktualizacji"
+ms.technology: ''
+description: Odwołanie do polecenia programu PowerShell pakietu aktualizacji w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+keywords: NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, pakiet aktualizacji
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 293d9a7fdcce633eb5a97e5f76398deb5c13bdb4
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 05772159d62f73e7d25f71ad36809f5ae8ef6aae
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-package-package-manager-console-in-visual-studio"></a>Pakiet aktualizacji (Konsola Menedżera pakietów w programie Visual Studio)
 
@@ -47,7 +50,7 @@ Update-Package Microsoft.AspNet.MVC -Version 5.0.0.
 | ProjectName | Nazwa projektu zawierającego pakietów aktualizacji, domyślnie używany do wszystkich projektów. |
 | Wersja | Wersja do użycia podczas uaktualniania, domyślnie używany do najnowszej wersji. W NuGet 3.0 + wartość wersji musi być jedną z *najniższy, najwyższa, HighestMinor*, lub *HighestPatch* (równoważne - bezpieczny). |
 | Bezpieczne | Ogranicza uaktualnienia do wersji tylko z tej samej wersji głównej i pomocniczej jako aktualnie zainstalowany pakiet. |
-| Źródło | Adres URL lub folder ścieżka do źródła pakietu do wyszukania. Ścieżki folderu lokalnego może być bezwzględny, lub względem bieżącego folderu. Pominięcie `Uninstall-Package` wyszukiwania w obecnie wybranym źródle pakietów. |
+| Źródło | Adres URL lub folder ścieżka do źródła pakietu do wyszukania. Ścieżki folderu lokalnego może być bezwzględny, lub względem bieżącego folderu. Pominięcie `Update-Package` wyszukiwania w obecnie wybranym źródle pakietów. |
 | IncludePrerelease | Zawiera pakiety wersji wstępnej aktualizacji. |
 | Zainstaluj ponownie | Pakiety Resintalls przy użyciu ich obecnie zainstalowanej wersji. Zobacz [ponowne zainstalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md). |
 | FileConflictAction | Akcja wykonywana po otrzymaniu monitu, aby zastąpić, lub przycisk Ignoruj istniejące pliki odwołuje się projekt. Możliwe wartości to *zastępowania, Ignoruj, brak OverwriteAll*, i *IgnoreAll* (3.0 +). |

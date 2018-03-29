@@ -1,26 +1,29 @@
 ---
-title: "Przewodnik wprowadzający do korzystania z pakietów NuGet z poziomu programu Visual Studio | Dokumentacja firmy Microsoft"
+title: Przewodnik wprowadzający do korzystania z pakietów NuGet z poziomu programu Visual Studio | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/23/2018
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.prod: nuget
-ms.technology: 
-description: "Samouczek wskazówki dotyczące procesu instalacji i przy użyciu pakietu NuGet w projekcie programu Visual Studio."
-keywords: "instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGet, odwołania do pakietu NuGet, za pomocą pakietów NuGet"
+ms.technology: ''
+description: Samouczek wskazówki dotyczące procesu instalacji i przy użyciu pakietu NuGet w projekcie programu Visual Studio.
+keywords: instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGet, odwołania do pakietu NuGet, za pomocą pakietów NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: ff905fec6d6af4fa40fd4331cb970121b6eb0879
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 4205893cc02cffff8926513a555393d10c046f43
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-and-use-a-package-in-visual-studio"></a>Zainstaluj i użyj pakietu w programie Visual Studio
 
-Pakiety NuGet zawiera kod wielokrotnego użytku, który inni deweloperzy udostępnić użytkownikowi do użycia w projektach. Zobacz [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są zainstalowane do projektu programu Visual Studio przy użyciu interfejsu użytkownika Menedżera pakietów lub konsoli Menedżera pakietów, zgodnie z opisem w tym artykule popularnych [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakietu i projektu Windows platformy Uniwersalnej.
+Pakiety NuGet zawiera kod wielokrotnego użytku, który inni deweloperzy udostępnić użytkownikowi do użycia w projektach. Zobacz [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są zainstalowane w projekcie programu Visual Studio przy użyciu interfejsu użytkownika Menedżera pakietów lub konsoli Menedżera pakietów. W tym artykule przedstawiono proces, korzystając z popularnych [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakietu i projektu Windows platformy Uniwersalnej. Ten sam proces ma zastosowanie do innych projektów .NET lub .NET Core.
 
 Po zakończeniu instalacji można znaleźć pakietu w kodzie z `using <namespace>` gdzie \<przestrzeni nazw\> jest przeznaczony dla pakietu używasz. Po odniesienia, można wywołać pakietu za pośrednictwem jej interfejsu API.
 
@@ -36,7 +39,9 @@ Można zainstalować 2017 Community edition bezpłatnie z [visualstudio.com](htt
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
-Można zainstalować pakietów NuGet w projekcie .NET określonego rodzaju. Dla tego przewodnika możesz użyć prostej aplikacji uniwersalnych systemu Windows (UWP). Tworzenie projektu za pomocą programu Visual Studio **Plik > Nowy projekt...**  i wybierając **uniwersalnych systemu Windows > Pusta aplikacja (uniwersalna systemu Windows)**. Zaakceptuj wartości domyślne dla wersji docelowej i minimalna wersja po wyświetleniu monitu.
+Można zainstalować pakietów NuGet w przypadku projektów .NET, pod warunkiem, że pakiet obsługuje samą platformę docelową jako projekt.
+
+W ramach tego przewodnika należy użyć prostej aplikacji uniwersalnych systemu Windows (UWP). Tworzenie projektu za pomocą programu Visual Studio **Plik > Nowy projekt...**  i wybierając **uniwersalnych systemu Windows > Pusta aplikacja (uniwersalna systemu Windows)**. Zaakceptuj wartości domyślne dla wersji docelowej i minimalna wersja po wyświetleniu monitu.
 
 ## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodaj pakiet Newtonsoft.Json NuGet
 
@@ -56,7 +61,7 @@ Aby zainstalować pakiet, należy użyć interfejsu użytkownika Menedżera paki
 
 1. (Visual Studio 2017) Jeśli zostanie wyświetlony monit, aby wybrać format pakietu zarządzania, wybierz **PackageReference w pliku projektu**:
 
-    ![Wybieranie formatu odwołanie do pakietu](media/QS_Use-03b-SelectFormat.png)
+    ![Wybierając format pakietu administracyjnego](media/QS_Use-03b-SelectFormat.png)
 
 1. Jeśli zostanie wyświetlony monit o przegląd zmian dokonanych, wybierz **OK**.
 

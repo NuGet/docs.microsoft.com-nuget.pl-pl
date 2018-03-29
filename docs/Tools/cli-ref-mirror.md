@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Informacje dotyczące polecenia dublowanie nuget.exe"
+ms.technology: ''
+description: Informacje dotyczące polecenia dublowanie nuget.exe
 keywords: nuget duplikatu odniesienia, polecenie dublowanie
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0c1969cc04b2e2cead5e9dadf9739fdabdf65f6c
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 512bd72d568cda81eb7c6a1555c36ead66b5c438
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="mirror-command-nuget-cli"></a>polecenie dublowanie (NuGet CLI)
 
@@ -45,7 +48,7 @@ Jeśli repozytorium docelowy znajduje się na `https://machine/repo` systemem [N
 | --- | --- |
 | apiKey | Klucz interfejsu API dla repozytorium docelowej. Jeśli nie występuje, określony w pliku konfiguracyjnym jest używana (`%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux)). |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| NoCache | Zapobiega z pamięci podręcznej komputera lokalnego za pomocą pakietów NuGet. |
+| NoCache | Zapobiega przy użyciu pamięci podręcznej pakietów NuGet. Zobacz [Zarządzanie globalne pakietów i foldery pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). |
 | Operacja | Rejestruje co będą wykonywane, ale nie wykonuje akcji; Założono powodzenie operacji wypychania. |
 | Wydanie wstępne | Zawiera pakiety wersji wstępnej w operacji dublowania. |
 | Źródło | Lista źródła pakietów w celu utworzenia duplikatów. Jeśli nie określono żadnych źródeł, te zdefiniowane w pliku konfiguracyjnym (zobacz powyżej ApiKey) są używane, przyjęty nuget.org, jeśli żaden nie jest określony. |

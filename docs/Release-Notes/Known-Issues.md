@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Znane problemy związane z tym instalacji pakietu aktualizacji, uwierzytelniania i narzędzia NuGet."
-keywords: "Znane problemy i problemów NuGet NuGet"
+ms.technology: ''
+description: Znane problemy związane z tym instalacji pakietu aktualizacji, uwierzytelniania i narzędzia NuGet.
+keywords: Znane problemy i problemów NuGet NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: ac00e3f11c54290a31319e7f2946fd965a0a9288
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: c36da5dc73dddbd540a36d171583cbf542e0678f
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="known-issues-with-nuget"></a>Znane problemy dotyczące programu NuGet
 
@@ -227,7 +230,7 @@ Narzędzia Windows Phone nie ma obsługi Menedżera rozszerzeń dla programu Vis
 
 ## <a name="changing-the-capitalization-of-nuget-package-ids-breaks-package-restore"></a>Zmiana wielkości liter identyfikatorów pakietów NuGet dzieli przywracania pakietu
 
-Zgodnie z opisem długości na [ten problem GitHub](https://github.com/Particular/NServiceBus/issues/1271#issuecomment-20865932), zmiana wielkości liter pakietów NuGet może odbywać się przy pomocy technicznej NuGet, ale komplikacji powoduje, że podczas przywracania pakietu dla użytkowników, którzy mają istniejących, inaczej — z uwzględnieniem wielkości liter, pakiety w ich lokalną pamięć podręczną pakietów. Zaleca się tylko żądania zmiany wielkości, jeśli masz sposób komunikowania się z istniejących użytkowników do pakietu o przerwie, który może wystąpić, aby przywrócić ich czas kompilacji pakietu.
+Zgodnie z opisem długości na [ten problem GitHub](https://github.com/Particular/NServiceBus/issues/1271#issuecomment-20865932), zmiana wielkości liter pakietów NuGet może odbywać się przy pomocy technicznej NuGet, ale komplikacji powoduje, że podczas przywracania pakietu dla użytkowników, którzy mają istniejących, inaczej — z uwzględnieniem wielkości liter, pakiety w ich *globalne pakiety* folderu. Zaleca się tylko żądania zmiany wielkości, jeśli masz sposób komunikowania się z istniejących użytkowników do pakietu o przerwie, który może wystąpić, aby przywrócić ich czas kompilacji pakietu.
 
 ## <a name="reporting-issues"></a>Zgłaszanie problemów
 

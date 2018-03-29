@@ -1,23 +1,26 @@
 ---
-title: "Odwołanie do pakietu NuGet w wersji | Dokumentacja firmy Microsoft"
+title: Odwołanie do pakietu NuGet w wersji | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 12/08/2017
+ms.date: 03/23/2018
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Dokładne szczegóły dotyczące określania numery wersji i zakresy dla innych pakietów, od którego zależy od pakietu NuGet i jak zależności są zainstalowane."
-keywords: "przechowywanie wersji, zależności pakietów NuGet, wersje zależności NuGet, numery wersji NuGet, wersja pakietu NuGet, zakresy wersji, specyfikacji wersji, numery wersji znormalizowane"
+ms.technology: ''
+description: Dokładne szczegóły dotyczące określania numery wersji i zakresy dla innych pakietów, od którego zależy od pakietu NuGet i jak zależności są zainstalowane.
+keywords: przechowywanie wersji, zależności pakietów NuGet, wersje zależności NuGet, numery wersji NuGet, wersja pakietu NuGet, zakresy wersji, specyfikacji wersji, numery wersji znormalizowane
 ms.reviewer:
 - anandr
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 70472d7d97d073009237a047e0fdf528b221dfd0
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 678ad79d9106a9f592ae4f47bc93cc117496e2c9
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="package-versioning"></a>Przechowywanie wersji pakietu
 
@@ -109,8 +112,8 @@ W odniesieniu do zależności pakietów NuGet obsługuje przy użyciu notacji in
 
 | Notacja | Reguła zastosowana | Opis |
 |----------|--------------|-------------|
-| 1.0 | 1.0 ≤ x | Minimalna wersja włącznie |
-| (1.0,) | 1.0 < x | Minimalna wersja wyłączności |
+| 1.0 | x ≥ 1.0 | Minimalna wersja włącznie |
+| (1.0,) | x > 1.0 | Minimalna wersja wyłączności |
 | [1.0] | x == 1.0 | Wersja dokładnego dopasowania |
 | (,1.0] | x ≤ 1.0 | Maksymalna wersja włącznie |
 | (,1.0) | x < 1.0 | Maksymalna wersja wyłączności |

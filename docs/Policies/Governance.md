@@ -1,22 +1,25 @@
 ---
-title: "Zarządzanie NuGet projektu | Dokumentacja firmy Microsoft"
+title: Zarządzanie NuGet projektu | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/18/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Model ładu NuGet, w tym role i obowiązki committers, współautorzy i użytkowników."
-keywords: "Zarządzanie NuGet, dictator dobroczynne NuGet, obowiązki zatwierdzający, obowiązki współautora, obowiązki użytkownika"
+ms.technology: ''
+description: Model ładu NuGet, w tym role i obowiązki committers, współautorzy i użytkowników.
+keywords: Zarządzanie NuGet, dictator dobroczynne NuGet, obowiązki zatwierdzający, obowiązki współautora, obowiązki użytkownika
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: ea1ddcc3e145afe3b905b23db37e1e61500200bb
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: aa48b95482c65de47d54daff142402dd2ff6558a
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nuget-governance"></a>Zarządzanie NuGet
 
@@ -40,7 +43,7 @@ Ponadto personel .NET Foundation należy wziąć pod uwagę realizacji projektu 
 
 ### <a name="committers"></a>Committers
 
-Committers są współautorzy, którzy wprowadził utrzymujących wartościowych wpisów NuGet i są wyznaczone przez dobroczynne Dictator. Jeden wyznaczony, committers są stosowane do pisania kodu bezpośrednio do repozytorium i ekranu wkładów innych osób. Committers są często deweloperów, ale może przyczynić się w inny sposób.
+Committers są współautorzy, którzy wprowadził utrzymujących wartościowych wpisów NuGet i są wyznaczone przez dobroczynne Dictator. Mianowany committers są stosowane do pisania kodu bezpośrednio do repozytorium i ekranu wkładów innych osób. Committers są często deweloperów, ale może przyczynić się w inny sposób.
 
 Zazwyczaj zatwierdzający koncentruje się na konkretnych aspektów projektu i oferuje poziomu doświadczenie i opis przynosi ich przestrzegania społeczności i realizacji projektu. Rola zatwierdzający nie jest oficjalną, jest po prostu pozycji znaczenie członków społeczności założono, jak wygląda realizacji projektu do nich wskazówki i pomocy technicznej.
 

@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
+ms.technology: ''
 description: Dokumentacja dla polecenia install nuget.exe
-keywords: "nuget zainstalować odwołania, należy zainstalować pakiet polecenia"
+keywords: nuget zainstalować odwołania, należy zainstalować pakiet polecenia
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 8d5f53c833fb42c9fe37d0629eab33e8f0bc70d7
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 121d7b50767f1d466d6d0d8494f324b02d8ff6f1
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-command-nuget-cli"></a>Zainstaluj polecenia (NuGet CLI)
 
@@ -27,7 +30,7 @@ Pobiera i instaluje pakiet w projekcie, domyślnie używany do bieżącego folde
 > [!Tip]
 > Aby pobrać pakiet bezpośrednio poza kontekstem projektu, odwiedź stronę pakietu na [nuget.org](https://www.nuget.org) i wybierz **Pobierz** łącza.
 
-Jeśli nie określono żadnych źródeł, wymienione w pliku konfigurację globalną `%APPDATA%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux), są używane. Zobacz [NuGet Konfigurowanie zachowania](../consume-packages/configuring-nuget-behavior.md) dodatkowe szczegóły.
+Jeśli nie określono żadnych źródeł, wymienione w pliku konfigurację globalną `%appdata%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux), są używane. Zobacz [NuGet Konfigurowanie zachowania](../consume-packages/configuring-nuget-behavior.md) dodatkowe szczegóły.
 
 Jeśli nie określono żadnych określonych pakietów, `install` instaluje wszystkie pakiety wymienione w projekcie `packages.config` plików, dzięki czemu podobny do [ `restore` ](cli-ref-restore.md).
 
@@ -55,7 +58,7 @@ gdzie `<packageID>` nazwy pakietu do zainstalowania (przy użyciu najnowszej wer
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Framework | *(4.4 +)*  Platformy docelowej służy do wybierania zależności. Wartość domyślna to "Any" Jeśli nie zostanie określony. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| NoCache | Zapobiega z pamięci podręcznej komputera lokalnego za pomocą pakietów NuGet. |
+| NoCache | Zapobiega przy użyciu pamięci podręcznej pakietów NuGet. Zobacz [Zarządzanie globalne pakietów i foldery pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
 | OutputDirectory | Określa folder, w którym są zainstalowane pakiety. Jeśli folder nie jest określony, używany jest bieżący folder. |
 | PackageSaveMode | Określa typy plików, aby zapisać po zainstalowaniu pakietu: jeden z `nuspec`, `nupkg`, lub `nuspec;nupkg`. |

@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 1.8 NuGet."
+ms.technology: ''
+description: Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 1.8 NuGet.
 keywords: NuGet 1.8 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 139c30e29d8148eab7298329a07d8e412259e595
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: b94382f79143cac6bd5deccb5e5253ba8c6f60ec
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nuget-18-release-notes"></a>Informacje o wersji 1.8 NuGet
 
@@ -27,7 +30,7 @@ NuGet 1.8 został wydany 23 maj 2012.
 ## <a name="known-installation-issue"></a>Znane problem
 Jeśli korzystasz z VS 2010 z dodatkiem SP1, możesz napotkać błąd instalacji podczas próby uaktualnienia NuGet, jeśli masz starszą wersję zainstalowane.
 
-Obejście jest po prostu odinstalować NuGet, a następnie zainstaluj go z galerii rozszerzeń programu VS.  Zobacz [http://support.microsoft.com/kb/2581019](http://support.microsoft.com/kb/2581019) uzyskać więcej informacji, lub [przejdź bezpośrednio do poprawki VS](http://bit.ly/vsixcertfix).
+Obejście jest po prostu odinstalować NuGet, a następnie zainstaluj go z galerii rozszerzeń programu VS.  Zobacz [ http://support.microsoft.com/kb/2581019 ](http://support.microsoft.com/kb/2581019) uzyskać więcej informacji, lub [przejdź bezpośrednio do poprawki VS](http://bit.ly/vsixcertfix).
 
 Uwaga: Jeśli program Visual Studio nie pozwalają na odinstalować rozszerzenia (przycisk Odinstaluj jest wyłączony), następnie prawdopodobnie konieczne ponowne uruchomienie programu Visual Studio za pomocą polecenia "Uruchom jako Administrator".
 
@@ -60,7 +63,7 @@ Ponadto podczas instalowania pakietu satelity, NuGet również rozpoznaje konwen
 
 Jedną istniejącą usterkę zauważyć z pakietami satelity jest NuGet nie kopiuje zlokalizowanych zasobów do `bin` folderu dla projektów witryny sieci Web.  Ten problem zostanie rozwiązany w następnej wersji programu NuGet.
 
-Dla kompletnego przykładu pokazuje sposób tworzenia i używania pakietów satelity, zobacz [https://github.com/NuGet/SatellitePackageSample](https://github.com/NuGet/SatellitePackageSample).
+Dla kompletnego przykładu pokazuje sposób tworzenia i używania pakietów satelity, zobacz [ https://github.com/NuGet/SatellitePackageSample ](https://github.com/NuGet/SatellitePackageSample).
 
 ### <a name="package-restore-consent"></a>Zgody przywracania pakietu
 W 1.8 NuGet możemy ustanowić przygotowuje obsługi ważne ograniczenia na Przywracanie pakietu, aby chronić prywatność użytkowników. To ograniczenie wymaga deweloperom tworzenie projektów i rozwiązań, które używają Przywracanie pakietu do jawnie wyrażenia zgody na przywracanie pakietów na przechodzenie do trybu online, aby pobrać pakiety ze źródeł pakietów skonfigurowanych.

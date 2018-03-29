@@ -1,26 +1,29 @@
 ---
-title: "Pakiety NuGet i kontroli źródła | Dokumentacja firmy Microsoft"
+title: Pakiety NuGet i kontroli źródła | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 07/17/2017
+ms.date: 03/16/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Zagadnienia dotyczące sposobu traktowania pakietów NuGet w ramach systemów kontroli źródła i kontroli wersji oraz sposób Pomiń pakiety z usługi git i TFVC."
-keywords: "Repozytoria kontrolę NuGet do kontroli źródła, NuGet kontroli wersji, NuGet i git, NuGet i TFS, NuGet i TFVC, pomijając pakietów, repozytoria kontroli źródła, wersja"
+ms.technology: ''
+description: Zagadnienia dotyczące sposobu traktowania pakietów NuGet w ramach systemów kontroli źródła i kontroli wersji oraz sposób Pomiń pakiety z usługi git i TFVC.
+keywords: Repozytoria kontrolę NuGet do kontroli źródła, NuGet kontroli wersji, NuGet i git, NuGet i TFS, NuGet i TFVC, pomijając pakietów, repozytoria kontroli źródła, wersja
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6261625d5d7eaa748f9ad15510b7b2af3c814e44
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 43fc1653616091b0f974903147645c0c99c8f57b
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="omitting-nuget-packages-in-source-control-systems"></a>Pominięcie pakietów NuGet w systemów kontroli źródła
 
-Deweloperzy zazwyczaj Pomiń pakietów NuGet z ich repozytoria kontroli źródła i zamiast tego zależne [Przywracanie pakietów](../consume-packages/package-restore.md) ponowna instalacja zależności projektu przed kompilacji.
+Deweloperzy zazwyczaj Pomiń pakietów NuGet z ich repozytoria kontroli źródła i zamiast tego zależne [Przywracanie pakietów](package-restore.md) ponowna instalacja zależności projektu przed kompilacji.
 
 Dostępne są następujące przyczyny polegania na Przywracanie pakietu:
 
@@ -29,11 +32,11 @@ Dostępne są następujące przyczyny polegania na Przywracanie pakietu:
 1. Staje się on trudniejsze do czyszczenia rozwiązania do pakietu nieużywanych folderów, jak należy upewnić się, że nie usuwaj pakietu foldery nadal w użyciu.
 1. Pomijając pakietów, możesz zachować między kodu i pakiety od innych, zależnych od czystą granice własności. Wiele pakietów NuGet są już obsługiwane w ich własnych repozytoria kontroli źródła.
 
-Mimo że Przywracanie pakietu nuget zachowanie domyślne, niektóre czynności ręcznych jest niezbędne pominąć pakiety&mdash;mianowicie `packages` folder w projekcie&mdash;z kontroli źródła, zgodnie z opisem w poniższych sekcjach.
+Mimo że Przywracanie pakietu nuget zachowanie domyślne, niektóre czynności ręcznych jest niezbędne pominąć pakiety&mdash;mianowicie `packages` folder w projekcie&mdash;z kontroli źródła, zgodnie z opisem w tym artykule.
 
 ## <a name="omitting-packages-with-git"></a>Pominięcie pakietów za pomocą narzędzia Git
 
-Użyj [pliku .gitignore](https://git-scm.com/docs/gitignore) Aby uniknąć, włączając `packages` folderem w kontroli źródła. Aby informacje, zobacz [próbki `.gitignore` dla projektów programu Visual Studio](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
+Użyj [pliku .gitignore](https://git-scm.com/docs/gitignore) zignorowanie pakietów NuGet (`.nupkg`) `packages` folderu, i `project.assets.json`, między innymi. Aby informacje, zobacz [próbki `.gitignore` dla projektów programu Visual Studio](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore):
 
 Ważne części `.gitignore` plików są:
 
@@ -41,20 +44,24 @@ Ważne części `.gitignore` plików są:
 # Ignore NuGet Packages
 *.nupkg
 
-# Ignore the packages folder
-**/packages/*
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
 
-# Include packages/build/, which is used as an MSBuild target
-!**/packages/build/
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
 
-# Uncomment if necessary; generally it's regenerated when needed
-#!**/packages/repositories.config
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/[Pp]ackages/repositories.config
+
+# NuGet v3's project.json files produces more ignorable files
+*.nuget.props
+*.nuget.targets
 
 # Ignore other intermediate files that NuGet might create. project.lock.json is used in conjunction
-# with project.json; project.assets.json is used in conjunction with the PackageReference format.
+# with project.json (NuGet v3); project.assets.json is used in conjunction with the PackageReference
+# format (NuGet v4 and .NET Core).
 project.lock.json
 project.assets.json
-*.nuget.props
 ```
 
 ## <a name="omitting-packages-with-team-foundation-version-control"></a>Pominięcie pakiety z Team Foundation Version Control
@@ -92,7 +99,7 @@ Aby wyłączyć integracji kontroli źródła z TFVC dla wybranych plików:
    # with additional folder names if it's not in the same folder as .tfignore.   
    packages
 
-   # Include package target files which may be required for MSBuild, again prefixing the folder name as needed.
+   # Exclude package target files which may be required for MSBuild, again prefixing the folder name as needed.
    !packages/*.targets
 
    # Omit temporary files

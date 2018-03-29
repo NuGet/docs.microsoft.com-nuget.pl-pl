@@ -1,28 +1,31 @@
 ---
-title: "Polecenie źródła interfejsu wiersza polecenia NuGet | Dokumentacja firmy Microsoft"
+title: Polecenie źródła interfejsu wiersza polecenia NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/18/2018
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Dokumentacja dotycząca nuget.exe źródeł polecenia"
-keywords: "nuget źródeł odwołania, źródłem polecenia"
+ms.technology: ''
+description: Dokumentacja dotycząca nuget.exe źródeł polecenia
+keywords: nuget źródeł odwołania, źródłem polecenia
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 139a9494e1ea898c90ce79d5990530fbe08642bd
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: f682a5209556ec6741473ccf2648e8f38bb568b9
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sources-command-nuget-cli"></a>polecenie źródeł (NuGet CLI)
 
 **Dotyczy:** zużycie pakietu, publikowanie &bullet; **obsługiwane wersje:** wszystkie
 
-Zarządza listy źródeł znajduje się w pliku konfiguracji zakresu użytkownika lub pliku konfiguracyjnym. Plik konfiguracji zakresu użytkownika znajduje się w `%APPDATA%\NuGet\NuGet.Config` (system Windows) i `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux).
+Zarządza listy źródeł znajduje się w pliku konfiguracji zakresu użytkownika lub pliku konfiguracyjnym. Plik konfiguracji zakresu użytkownika znajduje się w `%appdata%\NuGet\NuGet.Config` (system Windows) i `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux).
 
 Należy zauważyć, że adres URL źródła dla nuget.org `https://api.nuget.org/v3/index.json`.
 

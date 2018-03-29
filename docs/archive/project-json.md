@@ -1,32 +1,35 @@
 ---
-title: "Odwołanie do pliku Project.JSON programu NuGet | Dokumentacja firmy Microsoft"
+title: Odwołanie do pliku Project.JSON programu NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 07/27/2017
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "W niektórych typów projektów project.json przechowuje listę pakiety NuGet służące do projektu."
-keywords: "Odwołania do pakietu NuGet, zależności NuGet, plikiem project.lock.json w pliku project.json NuGet"
+ms.technology: ''
+description: W niektórych typów projektów project.json przechowuje listę pakiety NuGet służące do projektu.
+keywords: Odwołania do pakietu NuGet, zależności NuGet, plikiem project.lock.json w pliku project.json NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2e2c521b18dd67e49942cc20eafef0be7f91573a
-ms.sourcegitcommit: 262d026beeffd4f3b6fc47d780a2f701451663a8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 21542a219faa3d1fa0c32a838645d4471c5aa935
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="projectjson-reference"></a>Odwołanie do pliku Project.JSON
 
 *NuGet 3.x+*
 
-`project.json` Pliku przechowuje listę pakietów używane w projekcie, znany jako formatu odwołanie do pakietu. Zastępuje ona `packages.config` , ale z kolei został zastąpiony przez [PackageReference](../consume-packages/package-references-in-project-files.md) nuget 4.0 +.
+`project.json` Pliku przechowuje listę pakietów używane w projekcie, znane jako formatu pakietu zarządzania. Zastępuje ona `packages.config` , ale z kolei został zastąpiony przez [PackageReference](../consume-packages/package-references-in-project-files.md) nuget 4.0 +.
 
 [ `project.lock.json` ](#projectlockjson) Pliku (opisanych poniżej) służy także projektów wykorzystujących `project.json`.
 
-`project.json`ma następującą strukturę podstawowe, gdzie każdy z czterech obiektów najwyższego poziomu może mieć dowolną liczbę obiektów podrzędnych:
+`project.json` ma następującą strukturę podstawowe, gdzie każdy z czterech obiektów najwyższego poziomu może mieć dowolną liczbę obiektów podrzędnych:
 
 ```json
 {
@@ -122,7 +125,7 @@ Wyświetla listę platform, których projekt używa, takich jak `net45`, `netcor
     }
  ```
 
-Tylko jeden wpis jest dozwolony w `frameworks` sekcji. (Wyjątkiem jest `project.json` pliki projektów ASP.NET, które są kompilowane z przestarzałe DNX łańcuch narzędzi, co umożliwia obsługę wielu elementów docelowych.)
+Tylko jeden wpis jest dozwolony w `frameworks` sekcji. (Wyjątkiem jest `project.json` pliki projektów ASP.NET, które są kompilowane z DNX przestarzałe narzędzie łańcucha, co umożliwia obsługę wielu elementów docelowych.)
 
 ## <a name="runtimes"></a>środowisk uruchomieniowych
 
@@ -184,4 +187,4 @@ W NuGet 3 + deweloperzy najprawdopodobniej nie ręcznie edytować `project.json`
 
 `project.lock.json` Plik został wygenerowany w trakcie przywracania pakietów NuGet w projektach, które używają `project.json`. Przechowuje migawkę wszystkie informacje, które są generowane zgodnie z NuGet przedstawia wykres pakietów i zawiera wersję, zawartość i zależności wszystkich pakietów w projekcie. System kompilacji używa go do wybierz pakiety z globalnej lokalizacji, które mają zastosowanie podczas kompilowania projektu zamiast w zależności od folderem lokalnym pakietów w samym projekcie. Powoduje to zwiększyć wydajność kompilacji, ponieważ jest tylko do odczytu `project.lock.json` zamiast wielu oddzielnych `.nuspec` plików.
 
-`project.lock.json`jest generowana automatycznie na Przywracanie pakietu, dlatego można je pominąć z kontroli źródła, dodając go do `.gitignore` i `.tfignore` plików (zobacz [pakietów i kontroli źródła](../consume-packages/packages-and-source-control.md). Jednak jeśli uwzględniony w kontroli źródła, historii zmian przedstawia zmiany w zależnościach rozwiązał w czasie.
+`project.lock.json` jest generowana automatycznie na Przywracanie pakietu, dlatego można je pominąć z kontroli źródła, dodając go do `.gitignore` i `.tfignore` plików (zobacz [pakietów i kontroli źródła](../consume-packages/packages-and-source-control.md). Jednak jeśli uwzględniony w kontroli źródła, historii zmian przedstawia zmiany w zależnościach rozwiązał w czasie.

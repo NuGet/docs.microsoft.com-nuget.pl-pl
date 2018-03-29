@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 01/23/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Krótkie odwołanie poleceń związanych z NuGet przy użyciu interfejsu wiersza polecenia platformy dotnet."
+ms.technology: ''
+description: Krótkie odwołanie poleceń związanych z NuGet przy użyciu interfejsu wiersza polecenia platformy dotnet.
 keywords: polecenia NuGet DotNet dotnet, przywracania dotnet, zmienne lokalne nuget dotnet, dotnet nuget wypychania, pakowanie dotnet nuget delete
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 2851938cd43b35454d8e4ad595fbd93229d4dd72
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 352145701fba509e21e774a429d227e7427a1f0d
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="dotnet-commands"></a>polecenia dotNet
 
@@ -29,7 +32,7 @@ Aby uzyskać pełne informacje na `dotnet`, zobacz [narzędzi interfejsu wiersza
 - [**DotNet Dodaj pakiet**](/dotnet/core/tools/dotnet-add-package): Dodaje odwołanie pakietu do pliku projektu, a następnie uruchamia `dotnet restore` do zainstalowania pakietu.
 - [**DotNet usunąć pakiet**](/dotnet/core/tools/dotnet-remove-package): Usuwa odwołanie do pakietu z pliku projektu.
 - [**Przywracanie DotNet**](/dotnet/core/tools/dotnet-restore?tabs=netcore2x): przywraca zależności i narzędzia do projektu. Począwszy od NuGet 4.0 uruchomienie tego samego kodu jako `nuget restore`.
-- [**Zmienne lokalne nuget DotNet**](/dotnet/core/tools/dotnet-nuget-locals): usuwa lub wyświetla ich listę zasobów lokalnych NuGet pamięci podręcznej żądania http, tymczasowego pamięci podręcznej i folderu pakietów globalne dla komputera.
+- [**Zmienne lokalne nuget DotNet**](/dotnet/core/tools/dotnet-nuget-locals): Wyświetla lokalizacje *globalne pakiety*, *pamięci podręcznej http*, i *temp* folderów i czyści zawartość te foldery.
 
 ## <a name="package-creation"></a>Tworzenie pakietu
 

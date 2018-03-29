@@ -1,55 +1,76 @@
 ---
-title: "Sposoby można zainstalować pakietów NuGet | Dokumentacja firmy Microsoft"
+title: Sposoby można zainstalować pakietów NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 02/12/2018
-ms.topic: get-started-article
+ms.topic: overview
 ms.prod: nuget
-ms.technology: 
-description: "W tym artykule opisano proces instalowania pakietów NuGet do projektu, w tym, co się dzieje na dysku oraz pliki dotyczy projektu."
-keywords: "instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGet, odwołania do pakietu NuGet"
+ms.technology: ''
+description: W tym artykule opisano proces instalowania pakietów NuGet do projektu, w tym, co się dzieje na dysku oraz pliki dotyczy projektu.
+keywords: instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGet, odwołania do pakietu NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 3bae03e148a366388c10d08e83c89dac6ff56d06
-ms.sourcegitcommit: 33436d122873249dbb20616556cd8c6783f38909
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: b8cce7bd6c1bd73eb018b8891ddd72b2f4432d55
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="different-ways-to-install-a-nuget-package"></a>Różne sposoby, można zainstalować pakietu NuGet
 
-Pakiety NuGet zostaną pobrane i zainstalowane przy użyciu dowolnej z następujących metod (zobacz [NuGet zainstalować narzędzia klienta](../install-nuget-client-tools.md) Jeśli nie są już zainstalowane):
+Pakiety NuGet zostaną pobrane i zainstalowane przy użyciu dowolnej z metod w poniższej tabeli (zobacz [NuGet zainstalować narzędzia klienta](../install-nuget-client-tools.md) Jeśli nie są już zainstalowane). Pakiet można pobrać z pamięci podręcznej zamiast pobrane.
 
 | Metoda | Opis |
 | --- | --- |
-| DotNet.exe interfejsu wiersza polecenia<br/>`dotnet install <package_name>` | (Wszystkie platformy) Pobiera pakiet identyfikowane przez \<nazwa_pakietu\>rozszerza jego zawartość do folderu w bieżącym katalogu i dodaje odwołanie do pliku projektu. Również pobiera i instaluje zależności.<ul><li>[Instalowanie i używanie pakietu (wiersz polecenia dotnet)](../quickstart/install-and-use-a-package-using-the-dotnet-cli.md)</li><li>[Polecenia dotnet](../tools/dotnet-commands.md)</li></ul> |
-| Interfejs użytkownika Menedżera pakietów (Visual Studio) | (System Windows i Mac) Udostępnia interfejs, za pomocą którego można wybrać, wybierz i zainstaluj pakietów oraz ich zależności w projekcie. Dodaje odwołania do zainstalowanych pakietów do pliku projektu.<ul><li>[Instalowanie i używanie pakietu (Visual Studio)](../quickstart/install-and-use-a-package-in-visual-studio.md)</li><li>[Informacje o interfejsie użytkownika Menedżera pakietów (system Windows)](../tools/package-manager-ui.md)</li><li>[W tym pakietu NuGet w projekcie (Mac)](/visualstudio/mac/nuget-walkthrough)</li></ul> |
-| Konsola Menedżera pakietów (Visual Studio)<br/>`Install-Package <package_name>` | (Tylko system Windows) Pobiera i instaluje pakiet identyfikowane przez \<nazwa_pakietu\> do określonego projektu w rozwiązaniu, a następnie dodaje odwołanie do pliku projektu. Również pobiera i instaluje zależności.<ul><li>[Instalowanie i używanie pakietu (Visual Studio)](../quickstart/install-and-use-a-package-in-visual-studio.md)</li><li>[Przewodnik Konsola Menedżera pakietów](../tools/package-manager-console.md)</li></ul> |
-| nuget.exe interfejsu wiersza polecenia<br/>`nuget install <package_name>` | (Wszystkie platformy) Pobiera pakiet identyfikowane przez \<nazwa_pakietu\> i rozwija jego zawartość do folderu w bieżącym katalogu; można również pobrać wszystkie pakiety wymienione w `packages.config` pliku. Również pobiera i instaluje zależności, ale nie zmienia plików projektu.<ul><li>[polecenie instalacji](../tools/cli-ref-install.md)</li></ul> |
+| DotNet.exe interfejsu wiersza polecenia<br/>`dotnet add package <package_name>` | (Wszystkie platformy) Pobiera pakiet identyfikowane przez \<nazwa_pakietu\>rozszerza jego zawartość do folderu w bieżącym katalogu i dodaje odwołanie do pliku projektu. Ponadto pobiera i instaluje zależności.<ul><li>[Instalowanie i używanie pakietu (wiersz polecenia dotnet)](../quickstart/install-and-use-a-package-using-the-dotnet-cli.md)</li><li>[polecenie pakietu dodać DotNet](/dotnet/core/tools/dotnet-add-package)</li></ul> |
+| Interfejs użytkownika Menedżera pakietów (Visual Studio) | (System Windows i Mac) Udostępnia interfejs użytkownika za pośrednictwem której można wybrać, wybierz i zainstalować pakietów oraz ich zależności w projekcie ze źródła określonego pakietu. Dodaje odwołania do zainstalowanych pakietów do pliku projektu.<ul><li>[Instalowanie i używanie pakietu (Visual Studio)](../quickstart/install-and-use-a-package-in-visual-studio.md)</li><li>[Informacje o interfejsie użytkownika Menedżera pakietów (system Windows)](../tools/package-manager-ui.md)</li><li>[W tym pakietu NuGet w projekcie (Mac)](/visualstudio/mac/nuget-walkthrough)</li></ul> |
+| Konsola Menedżera pakietów (Visual Studio)<br/>`Install-Package <package_name>` | (Tylko system Windows) Pobiera i instaluje pakiet identyfikowane przez \<nazwa_pakietu\> z wybranego źródła do określonego projektu w rozwiązaniu, a następnie dodaje odwołanie do pliku projektu. Ponadto pobiera i instaluje zależności.<ul><li>[Instalowanie i używanie pakietu (Visual Studio)](../quickstart/install-and-use-a-package-in-visual-studio.md)</li><li>[Przewodnik Konsola Menedżera pakietów](../tools/package-manager-console.md)</li></ul> |
+| nuget.exe interfejsu wiersza polecenia<br/>`nuget install <package_name>` | (Wszystkie platformy) Pobiera pakiet identyfikowane przez \<nazwa_pakietu\> i rozwija jego zawartość do folderu w bieżącym katalogu; można również pobrać wszystkie pakiety wymienione w `packages.config` pliku. Również pobiera i instaluje zależności, ale nie zmienia pliki projektu lub `packages.config`.<ul><li>[polecenie instalacji](../tools/cli-ref-install.md)</li></ul> |
 
-## <a name="general-install-process"></a>Proces instalacji ogólne
+## <a name="what-happens-when-a-package-is-installed"></a>Co się dzieje, gdy pakiet jest zainstalowany
 
-Ogólnie rzecz biorąc NuGet wykonuje następujące pytanie, aby zainstalować pakiet:
+Prostu, różnych narzędzi NuGet zwykle utworzyć odwołanie do pakietu w pliku projektu lub `packages.config`, następnie wykonaj operację przywracania pakietu, które skutecznie instaluje pakiet. Wyjątek stanowi `nuget install`, która rozszerza tylko pakietu do `packages` folderu i inne pliki nie modyfikować.
+
+Ogólny proces wygląda następująco:
+
+1. (Wszystkie narzędzia, z wyjątkiem `nuget.exe`) rekord identyfikator pakietu i wersja pliku projektu lub `packages.config`.
 
 1. Pobieranie pakietu:
-    - Sprawdź, czy żądany pakiet już istnieje w pamięci podręcznej (zobacz [Zarządzanie pamięci podręcznej NuGet](managing-the-nuget-cache.md)).
-    - Jeśli pakiet nie jest w pamięci podręcznej, próby pobrania pakietu ze źródeł na liście [pliki konfiguracji](Configuring-NuGet-Behavior.md).
-      - Dla projektów przy użyciu `packages.config` format odwołania, NuGet wykorzystuje kolejność źródeł w konfiguracji.
-      - W przypadku projektów przy użyciu formatu PackageReference NuGet kontroli źródła, które są najpierw folderów lokalnych kontroli źródła w udziałach sieciowych, a następnie sprawdza źródła HTTP (Internet).
+    - Sprawdź, czy pakiet (przez dokładne identyfikatorem oraz numer wersji) jest już zainstalowany w *globalne pakiety* folderu zgodnie z opisem na [Zarządzanie globalne pakietów i foldery pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
+
+    - Jeśli pakiet nie znajduje się w *globalne pakiety* folderu, próbują pobrać go ze źródeł wymienionych na liście [pliki konfiguracji](Configuring-NuGet-Behavior.md). Dla źródeł online próbował najpierw pobrać pakiet z pamięci podręcznej, chyba że `-NoCache` zostanie określony z `nuget.exe` polecenia lub `--no-cache` zostanie określony z `dotnet restore`. (Visual Studio i `dotnet add package` zawsze używać pamięci podręcznej.) Jeśli pakiet jest używany z pamięci podręcznej, "Pamięci PODRĘCZNEJ" pojawia się w danych wyjściowych. Pamięć podręczna zawiera czas wygaśnięcia 30 minut.
+
+    - Jeśli pakiet nie jest w pamięci podręcznej, próba go pobrać ze źródła w konfiguracji. Jeśli pakiet zostanie pobrany "GET" i "OK", są wyświetlane w danych wyjściowych.
+
+    - Jeśli pakiet nie może zostać pomyślnie pobrany z żadnymi źródłami, instalacja nie powiedzie się w tym punkcie z powodu błędu takie jak [NU1103](../reference/errors-and-warnings.md#nu1103). Uwaga tego błędów z `nuget.exe` Pokaż polecenia zaznaczone tylko ostatni źródła, ale oznacza, że pakiet nie była dostępna z dowolnego źródła.
+
+    Podczas pobierania pakietu, mogą stosować kolejność źródeł w konfiguracji NuGet:
+      - W przypadku projektów przy użyciu formatu PackageReference NuGet sprawdza źródła lokalnego folderu i udziałów sieciowych przed zaewidencjonowaniem źródła HTTP.
+      - Dla projektów przy użyciu `packages.config` format zarządzania, NuGet używa kolejność źródeł w konfiguracji. Wyjątek operacje przywracania, w którym to przypadku porządkowania źródła jest ignorowana i NuGet korzysta z pakietu z innego źródła odpowiada w pierwszej kolejności.
       - Ogólnie rzecz biorąc kolejność, w którym NuGet kontroli źródła nie jest szczególnie przydatne, ponieważ wszystkie danego pakietu o określoną liczbę identyfikator i wersja jest dokładnie taka sama niezależnie od źródła został znaleziony.
-    - Jeśli pakiet jest pomyślnie uzyskano z jednego ze źródeł, NuGet dodaje go do pamięci podręcznej. W przeciwnym razie instalacja nie powiedzie się.
 
-1. Rozwiń pakiet w projekcie.
-    - Rozszerzanie oznacza rozpakować zawartość pakietu do odpowiedniego podfolderu. Kopię `.nupkg` również znajduje się w podfolderze.
-    - Jeśli pakiet jest instalowany do projektu programu Visual Studio lub .NET Core, tylko te pliki, które są odpowiednie do platformy docelowej projektu zostaną rozwinięte. Podczas instalacji przy użyciu wiersza polecenia nuget.exe zostaną rozwinięte wszystkie zestawy.
+1. (Wszystkie narzędzia, z wyjątkiem `nuget.exe`) Zapisz kopię pakietu oraz inne informacje w *pamięci podręcznej http* folderu zgodnie z opisem na [Zarządzanie globalne pakietów i foldery pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
 
-1. Jeśli pakiet jest zainstalowany w programie Visual Studio lub platformy dotnet interfejsu wiersza polecenia, odwołanie zostanie dodany do pliku odpowiedni projekt (lub `packages.config` dla niektórych typów projektów programu Visual Studio).
+1. Jeśli pobrano, zainstaluj pakiet w poszczególnych użytkowników *globalne pakiety* folderu. NuGet tworzy podfolder dla każdego identyfikatora pakietu, a następnie tworzy oddzielne podfoldery dla każdej zainstalowanej wersji pakietu.
 
-## <a name="related-topics"></a>Tematy pokrewne
+1. Aktualizacja innych projektów plików i folderów:
+
+    - Dla projektów przy użyciu PackageReference, zaktualizuj wykresu zależności pakietu, które są przechowywane w `obj/project.assets.json`. Zawartość pakietu, same nie są kopiowane do folderu projektu.
+    - Dla projektów przy użyciu `packages.config`, skopiuj części pakietu rozwinięte zgodne platformy docelowej projektu do projektu `packages` folderu. (Przy użyciu `nuget install`, cały pakiet rozszerzonej jest kopiowana, ponieważ `nuget.exe` nie bada pliki projektu, aby zidentyfikować platformy docelowej.)
+    - Aktualizacja `app.config` i/lub `web.config` Jeśli pakiet używa [źródła i konfiguracji pliku przekształcenia](../create-packages/source-and-config-file-transformations.md).
+
+1. Zainstaluj wszelkie zależności niższego poziomu Jeśli nie są jeszcze zainstalowane w projekcie. Ten proces może zaktualizować wersje pakietu w procesie, zgodnie z opisem w [rozpoznawania zależności](../consume-packages/dependency-resolution.md).
+
+1. (Tylko w programie visual Studio) Wyświetl plik readme pakietu, jeśli są dostępne w oknie programu Visual Studio.
+
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Omówienie i przepływ pracy zużycia pakietu](../consume-packages/overview-and-workflow.md)
 - [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md)
+- [Zarządzanie folderami pamięci podręcznej i globalnych pakietów NuGet](managing-the-global-packages-and-cache-folders.md)
 - [Konfigurowanie zachowania pakietu NuGet](../consume-packages/configuring-nuget-behavior.md)
-- [Zarządzanie pamięcią podręczną pakietu NuGet](managing-the-nuget-cache.md)

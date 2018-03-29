@@ -1,27 +1,30 @@
 ---
-title: "Informacje o interfejsie użytkownika Menedżera pakietów NuGet | Dokumentacja firmy Microsoft"
+title: Informacje o interfejsie użytkownika Menedżera pakietów NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 12/08/2017
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
+ms.technology: ''
 f1_keywords:
 - vs.toolsoptionspages.nuget_package_manager
 - vs.toolsoptionspages.nuget_package_manager.general
 - vs.toolsoptionspages.nuget_package_manager.package_sources
 - vs.nuget.packagemanager.ui
-description: "Instrukcje dotyczące używania interfejsu użytkownika Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami NuGet."
-keywords: "Interfejs użytkownika NuGet, Menedżer pakietów NuGet interfejsu użytkownika, NuGet w programie Visual Studio, Zarządzanie pakietami NuGet, NuGet interfejsu użytkownika Menedżera pakietów w programie Visual Studio"
+description: Instrukcje dotyczące używania interfejsu użytkownika Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami NuGet.
+keywords: Interfejs użytkownika NuGet, Menedżer pakietów NuGet interfejsu użytkownika, NuGet w programie Visual Studio, Zarządzanie pakietami NuGet, NuGet interfejsu użytkownika Menedżera pakietów w programie Visual Studio
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 35bb856ccff43c77af7eac67da4614d83dcdc533
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: ad36c2ab0c6e62c7fe624b35d92e852303ecfdfb
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nuget-package-manager-ui"></a>Interfejs użytkownika Menedżera pakietów NuGet
 
@@ -37,7 +40,7 @@ W tym temacie:
 - [Kontrolki opcji Menedżera pakietów](#package-manager-options-control)
 
 > [!Note]
-> Sprawdź, czy jest Brak Menedżera pakietów NuGet w programie Visual Studio 2015, **Narzędzia > rozszerzenia i aktualizacje...**  i wyszukaj *Menedżera pakietów NuGet* rozszerzenia. Jeśli nie można użyć Instalatora rozszerzeń programu Visual Studio, pobierz rozszerzenie bezpośrednio z [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html).
+> Sprawdź, czy jest Brak Menedżera pakietów NuGet w programie Visual Studio 2015, **Narzędzia > rozszerzenia i aktualizacje...**  i wyszukaj *Menedżera pakietów NuGet* rozszerzenia. Jeśli nie można użyć Instalatora rozszerzeń programu Visual Studio, pobierz rozszerzenie bezpośrednio z [ https://dist.nuget.org/index.html ](https://dist.nuget.org/index.html).
 >
 > W programie Visual Studio 2017 r. NuGet i Menedżer pakietów NuGet są automatycznie instalowane ze wszystkimi. Obciążenia związane z sieci. Zainstalować oddzielnie, wybierając **pojedynczych składników > narzędzia Code > Menedżera pakietów NuGet** opcji w Instalatorze programu Visual Studio 2017 r.
 
@@ -125,7 +128,7 @@ Aby zarządzać źródła pakietów:
 
     ![Opcje źródła pakietów](media/options.png)
 
-1. Aby dodać źródła, wybierz  **+** , umożliwia edytowanie nazwy, wprowadź adres URL lub ścieżkę w **źródła** kontroli i wybierz **aktualizacji**. Źródło jest teraz wyświetlany w selektorze listy rozwijanej.
+1. Aby dodać źródła, wybierz **+**, umożliwia edytowanie nazwy, wprowadź adres URL lub ścieżkę w **źródła** kontroli i wybierz **aktualizacji**. Źródło jest teraz wyświetlany w selektorze listy rozwijanej.
 1. Aby zmienić źródło pakietu, wybierz ją, wprowadź zmiany w **nazwa** i **źródła** pola, a następnie wybierz **aktualizacji**.
 1. Aby wyłączyć źródła pakietu, usuń zaznaczenie pola nazwy na liście z lewej strony.
 1. Aby usunąć źródło pakietu, wybierz go, a następnie wybierz **X** przycisku.

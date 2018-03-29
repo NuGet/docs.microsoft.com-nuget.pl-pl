@@ -1,22 +1,25 @@
 ---
-title: "Rozpoznawanie zależności pakietu NuGet | Dokumentacja firmy Microsoft"
+title: Rozpoznawanie zależności pakietu NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 08/14/2017
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Szczegółowe informacje na temat procesu za pomocą którego rozwiązany i zainstalowane w obu NuGet zależności pakietu NuGet 2.x i NuGet 3.x+."
-keywords: "Zależności pakietów NuGet, przechowywanie wersji NuGet, wersje zależności, wykres wersji, rozdzielczość wersji, przechodnie przywracania"
+ms.technology: ''
+description: Szczegółowe informacje na temat procesu za pomocą którego rozwiązany i zainstalowane w obu NuGet zależności pakietu NuGet 2.x i NuGet 3.x+.
+keywords: Zależności pakietów NuGet, przechowywanie wersji NuGet, wersje zależności, wykres wersji, rozdzielczość wersji, przechodnie przywracania
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: aa2537a2538d0ea665944784ef183dc12faa9b38
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: d387acd369c88a64abaa2cb94a913fe211df8da1
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-nuget-resolves-package-dependencies"></a>Jak NuGet jest rozpoznawany jako zależności pakietów
 
@@ -24,7 +27,7 @@ Dowolnej chwili pakiet jest zainstalowany lub ponownej instalacji, w tym instalo
 
 Te zależności natychmiastowego następnie również zainstalować zależności na ich własnych, które mogą w dalszym dowolnego głębokość. Daje to tak zwany *wykresu zależności* , który opisuje relacje między pakietami na wszystkich poziomach.
 
-Jeśli tego samego zależności wielu pakietów, następnie ten sam identyfikator pakietu może występować na wykresie wiele razy potencjalnie z ograniczeniami innej wersji. Jednak tylko jedna wersja danego pakietu można w projekcie, dlatego należy wybrać NuGet, która wersja jest używana. Dokładne proces zależy od używany format odwołanie do pakietu.
+Jeśli tego samego zależności wielu pakietów, następnie ten sam identyfikator pakietu może występować na wykresie wiele razy potencjalnie z ograniczeniami innej wersji. Jednak tylko jedna wersja danego pakietu można w projekcie, dlatego należy wybrać NuGet, która wersja jest używana. Dokładne proces zależy od używany format zarządzania pakietu.
 
 ## <a name="dependency-resolution-with-packagereference"></a>Rozpoznawanie zależności z PackageReference
 
@@ -109,7 +112,7 @@ Z `packages.config`, próbuje rozwiązywania konfliktów zależności podczas in
 
 Domyślnie program NuGet 2.8 szuka Najniższa wersja poprawki (zobacz [wersji NuGet 2.8](../release-notes/nuget-2.8.md#patch-resolution-for-dependencies)). Można kontrolować, to ustawienie za pomocą `DependencyVersion` atrybutu w `Nuget.Config` i `-DependencyVersion` przełącznik w wierszu polecenia.  
 
-`packages.config` Przetworzyć dla rozpoznawania zależności pobiera skomplikowane dla większych wykresy zależności. Każda nowa instalacja pakietu wymaga przechodzenie całego grafu i zwiększa prawdopodobieństwo wystąpienia konfliktów wersji. Gdy wystąpi konflikt, instalacja zostanie zatrzymana, pozostawiając projektu w stanie nieokreślonym, szczególnie w przypadku potencjalnych zmiany w samym pliku projektu. To nie jest problem, korzystając z innych formatów odwołanie do pakietu.
+`packages.config` Przetworzyć dla rozpoznawania zależności pobiera skomplikowane dla większych wykresy zależności. Każda nowa instalacja pakietu wymaga przechodzenie całego grafu i zwiększa prawdopodobieństwo wystąpienia konfliktów wersji. Gdy wystąpi konflikt, instalacja zostanie zatrzymana, pozostawiając projektu w stanie nieokreślonym, szczególnie w przypadku potencjalnych zmiany w samym pliku projektu. To nie jest problem, korzystając z formatów pakietu zarządzania.
 
 ## <a name="managing-dependency-assets"></a>Zarządzanie zasobami zależności
 
@@ -121,7 +124,7 @@ Gdy najwyższego poziomu projektu jest pakietem, również mają kontrolę nad t
 
 Istnieją scenariusze, w których zestawów o tej samej nazwie może być więcej niż jedno odwołanie w projekcie zwracające błędy czasu projektowania i czas kompilacji. Należy wziąć pod uwagę projekt, który zawiera niestandardową wersję `C.dll`i odwołuje się C pakietu, który zawiera także `C.dll`. W tym samym czasie, projekt zależy również od B pakietu, który również jest zależny od pakietu C i `C.dll`. W związku z tym NuGet nie może określić, które `C.dll` do użycia, ale po prostu nie można usunąć zależności projektu C pakietu, ponieważ pakiet B również zależy od niego.
 
-Aby rozwiązać ten problem, należy bezpośrednio odwoływać `C.dll` mają (lub użyj innego pakietu, który odwołuje się do właściwego), a następnie dodać zależność C pakietu, który wyklucza wszystkie jego zasoby. W zależności od formatu używanego odwołanie do pakietu odbywa się w następujący sposób:
+Aby rozwiązać ten problem, należy bezpośrednio odwoływać `C.dll` mają (lub użyj innego pakietu, który odwołuje się do właściwego), a następnie dodać zależność C pakietu, który wyklucza wszystkie jego zasoby. W zależności od formatu używanego pakietu zarządzania odbywa się w następujący sposób:
 
 - [PackageReference](../consume-packages/package-references-in-project-files.md): Dodaj `Exclude="All"` w zależności:
 

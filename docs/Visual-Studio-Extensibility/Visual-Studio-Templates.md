@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 01/03/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Instrukcje dotyczące tym pakiety NuGet jako część programu Visual Studio szablonów projektów i elementów."
-keywords: "NuGet w Visual Studio, szablony projektu Visual Studio, szablony elementów Visual Studio, pakiety w szablonach projektu, pakiety w szablonach elementów"
+ms.technology: ''
+description: Instrukcje dotyczące tym pakiety NuGet jako część programu Visual Studio szablonów projektów i elementów.
+keywords: NuGet w Visual Studio, szablony projektu Visual Studio, szablony elementów Visual Studio, pakiety w szablonach projektu, pakiety w szablonach elementów
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 65b914e1fa59c28615f195b470880a12bf80efbb
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 8c1751ba9caf5e71ace7a81575e4e5448b1e4185
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="packages-in-visual-studio-templates"></a>Pakiety w szablony programu Visual Studio
 
@@ -50,7 +53,7 @@ Kroki pakiety mają być dołączane w szablonie:
     </WizardExtension>
     ```
 
-    `NuGet.VisualStudio.Interop.dll`jest zestaw, który zawiera tylko `TemplateWizard` klasy, która jest proste otoki, który odwołuje się do rzeczywistego wykonania w `NuGet.VisualStudio.dll`. Wersja zestawu nigdy nie zmieni się tak, aby kontynuować pracę z nowymi wersjami programu NuGet szablonów projektu/elementu.
+    `NuGet.VisualStudio.Interop.dll` jest zestaw, który zawiera tylko `TemplateWizard` klasy, która jest proste otoki, który odwołuje się do rzeczywistego wykonania w `NuGet.VisualStudio.dll`. Wersja zestawu nigdy nie zmieni się tak, aby kontynuować pracę z nowymi wersjami programu NuGet szablonów projektu/elementu.
 
 1. Dodaj listę pakietów, aby zainstalować w projekcie:
 
@@ -62,7 +65,7 @@ Kroki pakiety mają być dołączane w szablonie:
     </WizardData>
     ```
 
-    *(NuGet 2.2.1+)*  Kreator obsługuje wielu `<package>` elementy do obsługi wielu źródeł pakietów. Zarówno `id` i `version` atrybuty są wymagane, co oznacza, że określonej wersji pakietu zostanie zainstalowany, nawet jeśli jest dostępna nowsza wersja. Zapobiega to fundamentalne szablonu, pozostawiając wyboru do zaktualizowania pakietu do deweloperów za pomocą szablonu pakietu aktualizacji.
+    Kreator obsługuje wielu `<package>` elementy do obsługi wielu źródeł pakietów. Zarówno `id` i `version` atrybuty są wymagane, co oznacza, że określonej wersji pakietu zostanie zainstalowany, nawet jeśli jest dostępna nowsza wersja. Zapobiega to fundamentalne szablonu, pozostawiając wyboru do zaktualizowania pakietu do deweloperów za pomocą szablonu pakietu aktualizacji.
 
 1. Określ repozytorium, gdzie NuGet można znaleźć pakiety, zgodnie z opisem w poniższych sekcjach.
 
@@ -118,7 +121,7 @@ Zestawy SDK, które są instalowane za pomocą Instalatora MSI można zainstalow
 
 1. Zapisu klucza rejestru, aby określić lokalizację pakietu:
 
-    - Lokalizacji klucza: albo dla komputera `HKEY_LOCAL_MACHINE\SOFTWARE[\Wow6432Node]\NuGet\Repository` lub jeśli jest zainstalowana na użytkownika szablonów i pakietów, można również użyć`HKEY_CURRENT_USER\SOFTWARE\NuGet\Repository`
+    - Lokalizacji klucza: albo dla komputera `HKEY_LOCAL_MACHINE\SOFTWARE[\Wow6432Node]\NuGet\Repository` lub jeśli jest zainstalowana na użytkownika szablonów i pakietów, można również użyć `HKEY_CURRENT_USER\SOFTWARE\NuGet\Repository`
     - Nazwa klucza: Użyj nazwy, która jest unikatowa dla Ciebie. Na przykład szablony ASP.NET MVC 4 VS 2012 używają `AspNetMvc4VS11`.
     - Wartości: Pełna ścieżka do folderu pakietów.
 

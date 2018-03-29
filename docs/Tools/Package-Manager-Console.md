@@ -1,24 +1,27 @@
 ---
-title: "Przewodnik konsoli Menedżera pakietów NuGet | Dokumentacja firmy Microsoft"
+title: Przewodnik konsoli Menedżera pakietów NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 hms.author: kraigb
 manager: ghogen
 ms.date: 01/23/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
+ms.technology: ''
 f1_keywords:
 - vs.nuget.packagemanager.console
-description: "Instrukcje dotyczące używania konsoli Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami."
-keywords: "Konsoli Menedżera pakietów NuGet, programu NuGet powershell zarządzać pakietami NuGet"
+description: Instrukcje dotyczące używania konsoli Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami.
+keywords: Konsoli Menedżera pakietów NuGet, programu NuGet powershell zarządzać pakietami NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 60c7edd0497e162cc511424e9acfbbfd6f53fd46
-ms.sourcegitcommit: a40a6ce6897b2d9411397b2e29b1be234eb6e50c
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: af22a524f6b4a41a4c24077fe396846da6fb1ff8
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="package-manager-console"></a>Konsola Menedżera pakietów
 
@@ -80,19 +83,10 @@ Install-Package Elmah -ProjectName UtilitiesLib
 
 Zobacz [Install-Package](../tools/ps-ref-install-package.md).
 
-Instalowanie pakietu wykonuje następujące czynności:
+Instalowanie pakietu w konsoli wykonuje te same kroki, zgodnie z opisem na [co się stanie po zainstalowaniu pakietu](../consume-packages/ways-to-install-a-package.md#what-happens-when-a-package-is-installed), z następującymi dodatkami:
 
-- Wyświetla odpowiednich postanowieniach licencyjnych w oknie konsoli umowę domyślnych. Jeśli nie akceptujesz postanowień, należy odinstalować pakiet natychmiast.
-- Dodaje odwołanie do projektu w dowolnie wybrany format odwołania jest w użyciu. Następnie odwołania są wyświetlane w Eksploratorze rozwiązań i plik formatu dotyczy odwołanie. Należy jednak pamiętać, że z PackageReference, należy zapisać projekt, aby wyświetlić zmiany w pliku projektu bezpośrednio.
-- Buforuje pakietu:
-  - PackageReference: pakiet zostanie zbuforowana w `%USERPROFILE%\.nuget\packages` i blokady pliku, np. `project.assets.json` jest aktualizowany.
-  - `packages.config`: tworzy `packages` folder główny rozwiązania i kopie do podfolderu w nim pliki pakietu. `package.config` Plik został zaktualizowany.
-- Aktualizacje `app.config` i/lub `web.config` Jeśli pakiet używa [źródła i konfiguracji pliku przekształcenia](../create-packages/source-and-config-file-transformations.md).
-- Instaluje wszystkie zależności, jeśli jeszcze nie istnieje w projekcie. To może zaktualizować wersje pakietu w procesie, zgodnie z opisem w [rozpoznawania zależności](../consume-packages/dependency-resolution.md).
-- Wyświetla plik readme pakietu, jeśli są dostępne w oknie programu Visual Studio.
-
-> [!Tip]
-> Jedną z zalet głównej instalowania pakietów z `Install-Package` polecenie w konsoli jest, który dodaje odwołanie do projektu, podobnie jak w przypadku korzystania z interfejsu użytkownika Menedżera pakietów. Z kolei `nuget install` tylko pliki do pobrania pakietu polecenia interfejsu wiersza polecenia i nie powoduje automatycznego dodania odwołania.
+- W konsoli są wyświetlani odpowiednich postanowieniach licencyjnych w jego oknie umowę domyślnych. Jeśli nie akceptujesz postanowień, należy odinstalować pakiet natychmiast.
+- Również odwołanie do pakietu są dodawane do pliku projektu i pojawia się w **Eksploratora rozwiązań** w obszarze **odwołania** węzła, musisz zapisać projekt, aby wyświetlić zmiany w pliku projektu bezpośrednio.
 
 ## <a name="uninstalling-a-package"></a>Odinstalowywanie pakietu
 
@@ -111,12 +105,9 @@ Zobacz [Odinstaluj pakiet](../tools/ps-ref-uninstall-package.md). Użyj [Get-Pac
 
 Odinstalowywanie pakietu wykonuje następujące czynności:
 
-- Usuwa odwołania do pakietu z projektu (i jest używany format niezależnie od odwołania). Odwołania nie są widoczne w Eksploratorze rozwiązań. (Konieczne może być ponownie skompilować projekt, aby zobaczyć, usunąć je z **Bin** folderu.)
+- Usuwa odwołania do pakietu z projektu (i jest używany format niezależnie od zarządzania). Odwołania nie są widoczne w **Eksploratora rozwiązań**. (Konieczne może być ponownie skompilować projekt, aby zobaczyć, usunąć je z **Bin** folderu.)
 - Odwraca wszelkie zmiany wprowadzone do `app.config` lub `web.config` Jeśli pakiet został zainstalowany.
 - Usuwa wcześniej zainstalowane zależności nie pozostałych pakietów użycie tych zależności.
-
-> [!Tip]
-> Podobnie jak `Install-Package`, `Uninstall-Package` polecenie ma zaletą Zarządzanie odwołaniami w projekcie, w odróżnieniu od `nuget uninstall` polecenia interfejsu wiersza polecenia.
 
 ## <a name="updating-a-package"></a>Aktualizowanie pakietu
 
@@ -159,7 +150,7 @@ Zobacz [Znajdź pakiet](../tools/ps-ref-find-package.md). W programie Visual Stu
 
 W programie Visual Studio 2017 r. NuGet i Menedżer pakietów NuGet są instalowane automatycznie po wybraniu dowolnego. Obciążeń związanych z NET; można także zainstalować go indywidualnie sprawdzając **pojedynczych składników > Code Narzędzia > Menedżera pakietów NuGet** opcji w Instalatorze programu Visual Studio 2017 r.
 
-Ponadto jeśli jest Brak Menedżera pakietów NuGet w programie Visual Studio 2015 i starszych wersji, sprawdź **Narzędzia > rozszerzenia i aktualizacje...**  i wyszukaj rozszerzenie NuGet Package Manager. Jeśli nie możesz użyć Instalatora rozszerzeń programu Visual Studio, możesz pobrać rozszerzenia bezpośrednio z [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html).
+Ponadto jeśli jest Brak Menedżera pakietów NuGet w programie Visual Studio 2015 i starszych wersji, sprawdź **Narzędzia > rozszerzenia i aktualizacje...**  i wyszukaj rozszerzenie NuGet Package Manager. Jeśli nie możesz użyć Instalatora rozszerzeń programu Visual Studio, możesz pobrać rozszerzenia bezpośrednio z [ https://dist.nuget.org/index.html ](https://dist.nuget.org/index.html).
 
 Konsola Menedżera pakietów nie jest obecnie dostępna w programie Visual Studio dla komputerów Mac. Jednak równoważnych poleceń są dostępne za pośrednictwem [interfejsu wiersza polecenia NuGet](nuget-exe-CLI-reference.md). Visual Studio dla komputerów Mac mają interfejsu użytkownika do zarządzania pakietami NuGet. Zobacz [pakietu w tym NuGet w projekcie](/visualstudio/mac/nuget-walkthrough).
 

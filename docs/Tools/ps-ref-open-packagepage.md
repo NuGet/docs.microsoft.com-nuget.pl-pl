@@ -1,22 +1,25 @@
 ---
-title: "Open — PackagePage NuGet w programie PowerShell | Dokumentacja firmy Microsoft"
+title: Open — PackagePage NuGet w programie PowerShell | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 12/07/2017
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Odwołanie do polecenia programu PowerShell PackagePage Otwórz w konsoli Menedżera pakietów NuGet w programie Visual Studio."
-keywords: "NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, otwórz PackagePage"
+ms.technology: ''
+description: Odwołanie do polecenia programu PowerShell PackagePage Otwórz w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+keywords: NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, otwórz PackagePage
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 4cc645d9a2779fd6b1b329e9aac4777d50f75d16
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 5e0955e58daacf381666c676c8fcf22c698e9db6
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="open-packagepage-package-manager-console-in-visual-studio"></a>Open — PackagePage (Konsola Menedżera pakietów w programie Visual Studio)
 

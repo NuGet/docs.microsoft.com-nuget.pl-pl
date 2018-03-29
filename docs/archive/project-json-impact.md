@@ -1,22 +1,25 @@
 ---
-title: "Project.JSON wpływ na autora pakietu NuGet | Dokumentacja firmy Microsoft"
+title: Project.JSON wpływ na autora pakietu NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/18/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Więcej informacji na temat formatu implementacja project.json w NuGet 3.x wpływa na autora pakietu, takich jak nieobsługiwane funkcje zawartości i pakietu."
-keywords: "Pakiet NuGet i project.json, wpływ project.json tworzenia zagadnienia, funkcje project.json"
+ms.technology: ''
+description: Więcej informacji na temat formatu implementacja project.json w NuGet 3.x wpływa na autora pakietu, takich jak nieobsługiwane funkcje zawartości i pakietu.
+keywords: Pakiet NuGet i project.json, wpływ project.json tworzenia zagadnienia, funkcje project.json
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: b732d48b169825764d614c338658f8c6ef45e765
-ms.sourcegitcommit: eabd401616a98dda2ae6293612acb3b81b584967
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 6e8af98504a2866106e84943989aeb91f2e9c1fb
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="impact-of-projectjson-when-creating-packages"></a>Wpływ project.json podczas tworzenia pakietów
 
@@ -51,7 +54,7 @@ Obsługa zawartości jest obecnie wyłączona podobnych przyczyn dla skryptów i
 
 Zawartość plików może nadal znajdować się wewnątrz pakietów i są ignorowane obecnie, jednak użytkownik końcowy może nadal skopiuj je do odpowiednim miejscem.
 
-Znajduje się propozycje ponownie Przywracanie plików zawartości i wykonaj jego postępu, w tym miejscu: [https://github.com/NuGet/Home/issues/627](https://github.com/NuGet/Home/issues/627).
+Znajduje się propozycje ponownie Przywracanie plików zawartości i wykonaj jego postępu, w tym miejscu: [ https://github.com/NuGet/Home/issues/627 ](https://github.com/NuGet/Home/issues/627).
 
 ## <a name="impact-for-package-authors"></a>Wpływ dla autorów pakietu
 

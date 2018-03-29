@@ -1,22 +1,25 @@
 ---
-title: "Wskazówki pakietu NuGet Przywracanie z Team Foundation Build | Dokumentacja firmy Microsoft"
+title: Wskazówki pakietu NuGet Przywracanie z Team Foundation Build | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/09/2017
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Przewodnik jak przywracanie z z Team Foundation Build (TFS i Visual Studio Team Services) pakietów NuGet."
-keywords: "Przywracanie pakietu NuGet, NuGet i TFS, NuGet i programu VSTS systemów kompilacji NuGet, team foundation build, niestandardowych projektów MSBuild, tworzenia chmury, ciągłej integracji"
+ms.technology: ''
+description: Przewodnik jak przywracanie z z Team Foundation Build (TFS i Visual Studio Team Services) pakietów NuGet.
+keywords: Przywracanie pakietu NuGet, NuGet i TFS, NuGet i programu VSTS systemów kompilacji NuGet, team foundation build, niestandardowych projektów MSBuild, tworzenia chmury, ciągłej integracji
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 9e3ef6e3bcc55705315fcb6ccf3e917963c62250
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: f46a7402214bf965918a5195605027913a8c60c2
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="setting-up-package-restore-with-team-foundation-build"></a>Konfigurowanie Przywracanie pakietu z Team Foundation Build
 
@@ -110,6 +113,9 @@ Do komunikowania się do systemu kontroli wersji, że firma Microsoft nie opcje 
     bin
     obj
     packages
+    *.nupkg
+    project.lock.json
+    project.assets.json
 
 `.gitignore` Plik jest [bardzo zaawansowane](https://www.kernel.org/pub/software/scm/git/docs/gitignore.html). Na przykład, jeśli chcesz zazwyczaj nie zaewidencjonowania zawartość `packages` folder, ale chcesz przejść z poprzednich wskazówek kontroli `.targets` plików może mieć następujące reguły, zamiast tego:
 
@@ -125,6 +131,9 @@ Kontrola wersji TF obsługuje mechanizm bardzo podobne za pośrednictwem [.tfign
     bin
     obj
     packages
+    *.nupkg
+    project.lock.json
+    project.assets.json
 
 ## <a name="buildproj"></a>build.proj
 

@@ -1,5 +1,5 @@
 ---
-title: "Przegląd, NuGet interfejsu API | Dokumentacja firmy Microsoft"
+title: Przegląd, NuGet interfejsu API | Dokumentacja firmy Microsoft
 author:
 - joelverhagen
 - kraigb
@@ -10,17 +10,20 @@ manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Interfejs API NuGet jest zestaw punktów końcowych HTTP, które mogą służyć do pobierania pakietów, pobrać metadanych, publikowanie nowych pakietów itp."
-keywords: "Interfejsu API w wersji 3 NuGet, interfejsu API w wersji 2 NuGet, NuGet JSON, interfejsu API rejestracji NuGet, kontenera prosty interfejs API NuGet, nupkg NuGet interfejsu API, NuGet metadanych interfejsu API, wyszukiwanie NuGet interfejsu API, wypychania NuGet interfejsu API, interfejs API publikowania NuGe, NuGet usunąć interfejsu API, NuGet unlist interfejsu API, protokół NuGet"
+ms.technology: ''
+description: Interfejs API NuGet jest zestaw punktów końcowych HTTP, które mogą służyć do pobierania pakietów, pobrać metadanych, publikowanie nowych pakietów itp.
+keywords: Interfejsu API w wersji 3 NuGet, interfejsu API w wersji 2 NuGet, NuGet JSON, interfejsu API rejestracji NuGet, kontenera prosty interfejs API NuGet, nupkg NuGet interfejsu API, NuGet metadanych interfejsu API, wyszukiwanie NuGet interfejsu API, wypychania NuGet interfejsu API, interfejs API publikowania NuGe, NuGet usunąć interfejsu API, NuGet unlist interfejsu API, protokół NuGet
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: c28b0912be6dbccab06078100cb71821c3658e08
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 7053a971c80a94cf035e8f149c332b36e66a9ea9
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nuget-api"></a>NuGet interfejsu API
 
@@ -32,8 +35,7 @@ Należy pamiętać, w niektórych przypadkach nuget.org ma dodatkowe wymagania, 
 
 ## <a name="service-index"></a>Indeks usługi
 
-Punkt wejścia dla interfejsu API jest dokumentem JSON w znanej lokalizacji. Ten dokument jest nazywany **indeksu usługi**.
-Lokalizacja indeks usługi nuget.org jest `https://api.nuget.org/v3/index.json`.
+Punkt wejścia dla interfejsu API jest dokumentem JSON w znanej lokalizacji. Ten dokument jest nazywany **indeksu usługi**. Lokalizacja indeks usługi nuget.org jest `https://api.nuget.org/v3/index.json`.
 
 Ten dokument JSON zawiera listę *zasobów* co mieć inne funkcje i spełnienia innych przypadków użycia.
 
@@ -112,8 +114,9 @@ W przypadku kodu stanu 500 poziomu klienta można zaimplementować mechanizm pon
 Nazwa                     | Opis
 ------------------------ | -----------
 X-NuGet-ApiKey           | Wymagane do wypychania i usuwania, zobacz [ `PackagePublish` zasobów](package-publish-resource.md)
-X-NuGet-Client-Version   | **Przestarzałe** i zastąpione przez`X-NuGet-Protocol-Version`
+X-NuGet-Client-Version   | **Przestarzałe** i zastąpione przez `X-NuGet-Protocol-Version`
 X-NuGet-Protocol-Version | W niektórych przypadkach tylko na nuget.org wymagane, zobacz [protokołów nuget.org](NuGet-Protocols.md)
+X-NuGet-Session-Id       | *Opcjonalne*. NuGet klientów v4.7 + zidentyfikować żądania HTTP, które są częścią tej samej sesji klienta NuGet. Aby uzyskać `PackageReference` operacji przywracania nie jest identyfikatorem jednej sesji w innych sytuacjach, takich jak automatyczne uzupełnianie, i `packages.config` przywracania może istnieć kilka różnych identyfikatora sesji przez ze względu na sposób kod jest brana pod uwagę.
 
 ## <a name="authentication"></a>Uwierzytelnianie
 

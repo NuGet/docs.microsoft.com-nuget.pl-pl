@@ -4,19 +4,22 @@ author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 03/14/2018
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.prod: nuget
-ms.technology: 
-description: "Tworzenie pakietów NuGet, które zawierają platformy uniwersalnej systemu Windows steruje tym niezbędne metadane i pliki pomocnicze dla programu Visual Studio i Blend projektantów."
+ms.technology: ''
+description: Tworzenie pakietów NuGet, które zawierają platformy uniwersalnej systemu Windows steruje tym niezbędne metadane i pliki pomocnicze dla programu Visual Studio i Blend projektantów.
 keywords: Formanty NuGet platformy uniwersalnej systemu Windows, programu Visual Studio XAML designer, projektanta programu Blend, formanty niestandardowe
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 1af5118eb71836d8b8bcfa8ff713d9fef3c86374
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: f024fd1823c77d57d30c4f841bf03494194c8339
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="creating-uwp-controls-as-nuget-packages"></a>Tworzenie formantów platformy uniwersalnej systemu Windows w postaci pakietów NuGet
 
@@ -120,7 +123,7 @@ Oto przykład jak powinien wyglądać plik elementów docelowych:
 
 ## <a name="add-design-time-support"></a>Dodawanie obsługi w czasie projektowania
 
-Aby skonfigurować, których właściwości wyświetlane w Inspektora właściwości, Dodaj niestandardowego modułu definiowania układu kodu itp., umieść Twojej `design.dll` pliku wewnątrz `lib\uap10.0\Design` folderu odpowiednio do platformy docelowej. Ponadto aby upewnić się, że  **[Edytuj szablon > edytowania kopii](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)**  działa funkcja musi zawierać `Generic.xaml` i słowników zasobów, które w scaleń `<your_assembly_name>\Themes` folder (ponownie, używając Nazwa zestawu rzeczywiste). (Ten plik nie ma wpływu na zachowanie środowiska uruchomieniowego formantu.) Struktura folderów w związku z tym będzie wyglądać następująco:
+Aby skonfigurować, których właściwości wyświetlane w Inspektora właściwości, Dodaj niestandardowego modułu definiowania układu kodu itp., umieść Twojej `design.dll` pliku wewnątrz `lib\uap10.0\Design` folderu odpowiednio do platformy docelowej. Ponadto aby upewnić się, że **[Edytuj szablon > edytowania kopii](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)** działa funkcja musi zawierać `Generic.xaml` i słowników zasobów, które w scaleń `<your_assembly_name>\Themes` folder (ponownie, używając Nazwa zestawu rzeczywiste). (Ten plik nie ma wpływu na zachowanie środowiska uruchomieniowego formantu.) Struktura folderów w związku z tym będzie wyglądać następująco:
 
     \lib
       \uap10.0

@@ -1,23 +1,25 @@
 ---
-title: "Wyszukiwanie i Wybieranie pakietów NuGet | Dokumentacja firmy Microsoft"
+title: Wyszukiwanie i Wybieranie pakietów NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 12/07/2017
+ms.date: 03/16/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-ms.assetid: 8886f899-797b-4704-9d16-820b55b71186
-description: "Przegląd jak znaleźć i wybrać najlepsze pakietów NuGet dla projektu, w tym informacji o składni wyszukiwania NuGet."
-keywords: "NuGet pakietu zużycia, odnajdywania pakietu NuGet, najlepiej pakietów NuGet, podejmowania decyzji o dla pakietów, korzystanie z pakietów, oceny pakietu NuGet wyszukiwanie składni"
+ms.technology: ''
+description: Przegląd jak znaleźć i wybrać najlepsze pakietów NuGet dla projektu, w tym informacji o składni wyszukiwania NuGet.
+keywords: NuGet pakietu zużycia, odnajdywania pakietu NuGet, najlepiej pakietów NuGet, podejmowania decyzji o dla pakietów, korzystanie z pakietów, oceny pakietu NuGet wyszukiwanie składni
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 0c52fa237a663fcf227e8336534d344e432523b4
-ms.sourcegitcommit: 8f26d10bdf256f72962010348083ff261dae81b9
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 319361623e60b8bdfe3c2dbc9bdcae65783a17e3
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocena pakietów NuGet dla projektu
 
@@ -31,7 +33,7 @@ Podczas odwiedzania nuget.org lub otworzyć Interfejs użytkownika Menedżera pa
 
 Powiadomienie **Uwzględnij wersję wstępną** opcji w prawym górnym rogu strony. Po wybraniu nuget.org zawiera wszystkie wersje pakietów, w tym w wersji beta oraz inne wersje wczesne. Aby wyświetlić tylko stabilne zwolnione, wyczyść pole wyboru.
 
-Do określonych potrzeb wyszukiwanie według znaczników (w Menedżerze pakietu Visual Studio lub w portalu, takich jak nuget.org) jest najbardziej typowe metody odnajdowania odpowiedniego pakietu. Na przykład wyszukiwanie "json" zawiera listę wszystkich pakietów NuGet, które są oznaczane tego słowa kluczowego i w związku z tym niektóre relacją do formatu JSON danych.
+Do określonych potrzeb wyszukiwanie według znaczników (Menedżera pakietów w Visual Studio lub w portalu, takich jak nuget.org) jest najbardziej typowe metody odnajdowania odpowiedniego pakietu. Na przykład wyszukiwanie "json" zawiera listę wszystkich pakietów NuGet, które są oznaczane tego słowa kluczowego i w związku z tym niektóre relacją do formatu JSON danych.
 
 ![Wyniki wyszukiwania dla "json" na nuget.org](media/Finding-02-SearchResults.png)
 
@@ -41,7 +43,7 @@ W tej chwili wyniki wyszukiwania są posortowane tylko według przydatności, dl
 
 ### <a name="does-the-package-support-my-projects-target-framework"></a>Pakiet obsługuje platformy docelowej mój projekt?
 
-NuGet instaluje pakiet w projekcie tylko wtedy, gdy platforma docelowa projektu obejmują obsługiwanych platform tego pakietu. (Zobacz [obsługujący wiele platform docelowych](../create-packages/supporting-multiple-target-frameworks.md) dla jak odbywa się podczas tworzenia pakietu.) Jeśli pakiet nie jest zgodny, NuGet problemy z błędem.
+NuGet instaluje pakiet w projekcie tylko wtedy, gdy platforma docelowa projektu obejmują obsługiwanych platform tego pakietu. Jeśli pakiet nie jest zgodny, NuGet problemy z błędem.
 
 Niektóre pakiety listy ich obsługiwanych platform bezpośrednio w galerii nuget.org, ale takich danych nie jest wymagane, wiele pakietów nie zawierają tej listy. Obecnie jest sposób wyszukiwania nuget.org pakietów obsługujące platformę określony element docelowy (Ta funkcja jest pod uwagę, zobacz [NuGet problem 2936](https://github.com/NuGet/NuGetGallery/issues/2936)).
 
@@ -59,7 +61,7 @@ Domyślnie nuget.org zawiera pakiety wersji wstępnej w wynikach wyszukiwania. A
 
 ![Obejmują wstępnej wyboru na nuget.org](media/Finding-06-include-prerelease.png)
 
-W programie Visual Studio i przy użyciu interfejsu wiersza polecenia NuGet NuGet nie zawiera wersji wstępnych domyślnie. Aby zmienić to zachowanie, wykonaj następujące czynności:
+W programie Visual Studio, a podczas korzystania z narzędzi interfejsu wiersza polecenia NuGet i dotnet NuGet nie ma domyślnie wersje wstępne. Aby zmienić to zachowanie, wykonaj następujące czynności:
 
 - **Interfejs użytkownika Menedżera pakietów w programie Visual Studio**: W **Zarządzaj pakietami NuGet** interfejsu użytkownika, ustaw **Uwzględnij wersję wstępną** pole. Ustawienie lub usunięcie zaznaczenia tego pola odświeża interfejsu użytkownika Menedżera pakietów i listę dostępnych wersji, które można zainstalować.
 
@@ -67,7 +69,9 @@ W programie Visual Studio i przy użyciu interfejsu wiersza polecenia NuGet NuGe
 
 - **Konsola Menedżera pakietów**: Użyj `-IncludePrerelease` przełącznik z `Find-Package`, `Get-Package`, `Install-Package`, `Sync-Package`, i `Update-Package` poleceń. Zapoznaj się [w programie PowerShell](../tools/powershell-reference.md).
 
-- **Interfejs wiersza polecenia NuGet**: Użyj `-prerelease` przełącznik z `install`, `update`, `delete`, i `mirror` poleceń. Zapoznaj się [odwołanie NuGet interfejsu wiersza polecenia](../tools/nuget-exe-cli-reference.md)
+- **nuget.exe CLI**: Użyj `-prerelease` przełącznik z `install`, `update`, `delete`, i `mirror` poleceń. Zapoznaj się [odwołanie NuGet interfejsu wiersza polecenia](../tools/nuget-exe-cli-reference.md)
+
+- **DotNet.exe CLI**: Określ za pomocą dokładnej wersji wstępnej `-v` argumentu. Zapoznaj się [dotnet Dodaj odwołanie do pakietu](/dotnet/core/tools/dotnet-add-package).
 
 <a name="native-cpp-packages"></a>
 
@@ -79,7 +83,7 @@ Można znaleźć natywnego pakietów na [nuget.org](https://www.nuget.org/packag
 
 ## <a name="evaluating-packages"></a>Ocena pakietów
 
-Najlepszym sposobem oceny przydatność pakietu jest aby go pobrać i wypróbować w kodzie. Po wszystkich każdy pakiet bardzo popularny otrzymano wprowadzenie do korzystania z niego tylko kilka deweloperzy i może być jednym z pierwszych użytkowników! (Należy pamiętać, że wszystkie pakiety na nuget.org rutynowo są skanowane pod kątem wirusów).
+Najlepszym sposobem oceny przydatność pakietu jest aby go pobrać i wypróbować w kodzie (wszystkie pakiety na nuget.org są regularnie skanowany w poszukiwaniu wirusów, sposobem). Po wszystkich każdy pakiet bardzo popularny otrzymano wprowadzenie do korzystania z niego tylko kilka deweloperzy i może być jednym z pierwszych użytkowników!
 
 W tym samym czasie przy użyciu pakietu NuGet oznacza, że przyjmowanie zależności, tak aby zapewnić, że jest niezawodna. Instalowanie i testowanie bezpośrednio pakietu jest czasochłonne, można także zapoznać się znacznie jakości pakietu, korzystając z informacji na stronie listy pakietu:
 
@@ -93,7 +97,7 @@ W tym samym czasie przy użyciu pakietu NuGet oznacza, że przyjmowanie zależno
 
 - *Instaluje najnowsze*: na stronie pakiet w obszarze **statystyki**, wybierz pozycję **Wyświetl pełne statystyki**. Strona pełne statystyki przedstawia pakiet instaluje w ciągu ostatnich sześciu tygodni, przez numer wersji. Pakiet, który aktywnie korzystają z innymi deweloperami zazwyczaj jest lepszym rozwiązaniem niż jeden, który nie jest.
 
-- *Obsługuje*: na stronie pakiet w obszarze **informacji**, wybierz pozycję **witryny projektu** (jeśli jest dostępny) aby zobaczyć, jakie opcje pomocy technicznej są dostępne. Projekt o dedykowanej witryny zazwyczaj lepiej jest obsługiwane.
+- *Obsługuje*: na stronie pakiet w obszarze **informacji**, wybierz pozycję **witryny projektu** (jeśli jest dostępny) aby zobaczyć, jakie Obsługa opcje Autor zawiera. Projekt o dedykowanej witryny zazwyczaj lepiej jest obsługiwane.
 
 - *Historia Developer*: na stronie pakiet w obszarze **właścicieli**, wybierz tego właściciela, aby zobaczyć, jakie inne pakiety opublikowanych przez nich. Z wielu pakietów są bardziej prawdopodobne zachować obsługę pracy w przyszłości.
 
@@ -108,29 +112,19 @@ W tym samym czasie przy użyciu pakietu NuGet oznacza, że przyjmowanie zależno
 
 Wyszukaj pakiet NuGet działa tak samo nuget.org, z poziomu interfejsu wiersza polecenia NuGet, a w ramach rozszerzenia Menedżera pakietów NuGet w programie Visual Studio. Ogólnie rzecz biorąc wyszukiwanie jest stosowany do słów kluczowych, a także opisy pakietu.
 
-- **Słowa kluczowe**: wyszukiwania wyszukuje odpowiednie pakiety, które zawierają wszystkie podane słowa kluczowe. Przykład:
-
-    ```
-    modern UI javascript
-    ```
-
-- **Wyrażenia**: wprowadzania terminów w cudzysłowie wyszukuje dokładne dopasowania bez uwzględniania wielkości liter w tych warunkach. Przykład:
-
-    ```
-    "modern UI" package
-    ```
-
+- **Słowa kluczowe**: wyszukiwania wyszukuje odpowiednie pakiety, które zawierają wszystkie podane słowa kluczowe. Przykład: `modern UI javascript`
+- **Wyrażenia**: wprowadzania terminów w cudzysłowie wyszukuje dokładne dopasowania bez uwzględniania wielkości liter w tych warunkach. Przykład: `"modern UI" package`
 - **Filtrowanie**: wyszukiwanego terminu może dotyczyć określoną właściwość przy użyciu składni `<property>:<term>` gdzie `<property>` (bez uwzględniania wielkości liter) może być `id`, `packageid`, `version`, `title`, `tags`, `author`, `description`, `summary`, i `owner`. Warunki mogą być zawarte w cudzysłowie, jeśli to konieczne, i można wyszukiwać wiele właściwości, w tym samym czasie. Ponadto wyszukuje `id` właściwości są dopasowania podciąg, podczas gdy `packageid` używa dokładnego dopasowania. Przykłady:
 
     ```
-    id:NuGet.Core                //Match any part of the id property
+    id:NuGet.Core                # Match any part of the id property
     Id:"Nuget.Core"
     ID:jQuery
-    title:jquery                 //Searches title as shown on the package listing
-    PackageId:jquery             //Match the package id exactly
-    id:jquery id:ui              //Search for multiple terms in the id
-    id:jquery tags:validation    //Search multiple properties
-    id:"jquery.ui"               //Phrase search
-    invalid:jquery ui            //Unsupported properties are ignored, so this
-                                 //is the same as searching on jquery ui
+    title:jquery                 # Searches title as shown on the package listing
+    PackageId:jquery             # Match the package id exactly
+    id:jquery id:ui              # Search for multiple terms in the id
+    id:jquery tags:validation    # Search multiple properties
+    id:"jquery.ui"               # Phrase search
+    invalid:jquery ui            # Unsupported properties are ignored, so this
+                                 # is the same as searching on jquery ui
     ```

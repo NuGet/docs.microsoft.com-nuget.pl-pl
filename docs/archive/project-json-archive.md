@@ -1,26 +1,29 @@
 ---
-title: "Zawartość archiwum project.json NuGet | Dokumentacja firmy Microsoft"
+title: Zawartość archiwum project.json NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/17/2018
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Różne bity usunięte z innych części dokumentacji NuGet zawartość pliku project.json."
+ms.technology: ''
+description: Różne bity usunięte z innych części dokumentacji NuGet zawartość pliku project.json.
 keywords: Plik project.json NuGet
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 42a40c6c637839c13effc9e476ac5702a92cfd2a
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 16361fe16d8ecc7064af4b6d636435a31a5663dc
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="projectjson-archive"></a>archiwum Project.JSON
 
-`project.json` Format odwołania wprowadzono w systemie NuGet 3.x i używana do pewnych typów projektów. Go została uznana za przestarzałą wraz z wprowadzeniem PackageReference format, w którym zależności są wymienione bezpośrednio w pliku projektu.
+`project.json` Format zarządzania wprowadzono w systemie NuGet 3.x i używana do pewnych typów projektów. Go została uznana za przestarzałą wraz z wprowadzeniem PackageReference format, w którym zależności są wymienione bezpośrednio w pliku projektu.
 
 Zobacz też:
 
@@ -28,11 +31,11 @@ Zobacz też:
 - [Project.JSON wpływ na autora pakietu](project-json-impact.md)
 - [Plik project.json i platforma UWP](project-json-and-uwp.md)
 
-## <a name="projectjson-reference-format"></a>format odwołania do pliku Project.JSON
+## <a name="projectjson-management-format"></a>format zarządzania Project.JSON
 
 *Pierwotnie w [Przywracanie pakietu](../what-is-nuget.md).*
 
-Na liście formatów odwołania:
+Na liście formatów zarządzania:
 
 - [`project.json`](project-json.md): *(przestarzałe)* pliku A JSON, który przechowuje listę zależności projektu z ogólną wykres pakietu w skojarzony plik `project.lock.json`. Ten format jest zastąpiona PackageReference.
 
@@ -54,7 +57,7 @@ Współpracuje z `project.json`.
 
 ## <a name="nuget-cli-commands"></a>Polecenia interfejsu wiersza polecenia NuGet
 
-- `nuget install`nie działa z `project.json`.
+- `nuget install` nie działa z `project.json`.
 - `nuget restore`: z projektami za pomocą `project.json`, generuje `project.lock.json` pliku i `<project>.nuget.props` plików, jeśli to konieczne. (Oba pliki można pominąć z kontroli źródła). `<projectPath>` Argument może wskazywać `project.json` plików i zachowanie jest takie samo jak wskazujący `packages.config` lub pliku projektu. W kolejności priorytetu do folderów pakietów `%userprofile%\.nuget\packages` przeszukiwane są najpierw przy użyciu `project.json`.
 - `nuget update`: Na Mono, to polecenie nie działa z projektami za pomocą `project.json`.
 
@@ -138,7 +141,7 @@ Korzystając z `project.json` formacie NuGet również obsługuje za pomocą not
 
 *Pierwotnie w [odwołanie do pliku NuGet.Config](../reference/nuget-config-file.md).*
 
-`globalPackagesFolder`dotyczy tylko `project.json`.
+`globalPackagesFolder` dotyczy tylko `project.json`. (Dodanie uwagi: odnosi się także do PackageReference.)
 
 ### <a name="nuspec-file-reference"></a>Odwołanie do pliku nuspec
 
@@ -150,7 +153,7 @@ Korzystając z `project.json` formacie NuGet również obsługuje za pomocą not
 
 *Pierwotnie w [informacje o interfejsie użytkownika Menedżera pakietów](../tools/package-manager-ui.md).*
 
-Projektów przy użyciu `project.json` odwoływać się tylko format Pokaż **Pokaż okno podglądu** opcji.
+Projektów przy użyciu `project.json` zarządzania format Pokaż tylko **Pokaż okno podglądu** opcji.
 
 ### <a name="visual-studio-templates"></a>Szablony Visual Studio
 

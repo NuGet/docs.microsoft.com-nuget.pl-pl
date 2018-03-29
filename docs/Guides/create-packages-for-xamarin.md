@@ -1,28 +1,31 @@
 ---
-title: "Tworzenie pakietów NuGet dla platformy Xamarin (dla systemu iOS, Android i Windows) | Dokumentacja firmy Microsoft"
+title: Tworzenie pakietów NuGet dla platformy Xamarin (dla systemu iOS, Android i Windows) z programem Visual Studio 2015 | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 01/09/2017
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.prod: nuget
-ms.technology: 
-description: "Przewodnik end-to-end tworzenia pakietów NuGet dla platformy Xamarin w systemie macierzystych interfejsów API dla systemu iOS, Android i Windows."
-keywords: "Utwórz pakiet, pakietów dla platformy Xamarin, pakietów i platform"
+ms.technology: ''
+description: Przewodnik end-to-end tworzenia pakietów NuGet dla platformy Xamarin w systemie macierzystych interfejsów API dla systemu iOS, Android i Windows.
+keywords: Utwórz pakiet, pakietów dla platformy Xamarin, pakietów i platform
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 3e1460de060980365a5eaa2ef91c052cc359bb70
-ms.sourcegitcommit: 74c21b406302288c158e8ae26057132b12960be8
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: e101ca2d124a19d2cf758776717b3680aa5bbdd8
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-packages-for-xamarin"></a>Tworzenie pakietów dla platformy Xamarin
+# <a name="create-packages-for-xamarin-with-visual-studio-2015"></a>Tworzenie pakietów dla platformy Xamarin z programem Visual Studio 2015
 
-Pakiet wieloplatformowych zawiera kod, który używa macierzystych interfejsów API w systemach iOS, Android i Windows, w zależności od środowiska wykonawczego systemu operacyjnego. Chociaż jest to prosty zrobić, zaleca się pozwala deweloperom korzystać z pakietu z PCL lub powierzchnia .NET standardowych bibliotek za pośrednictwem wspólnego interfejsu API.
+Pakiet dla platformy Xamarin zawiera kod, który używa macierzystych interfejsów API w systemach iOS, Android i Windows, w zależności od środowiska wykonawczego systemu operacyjnego. Chociaż jest to prosty zrobić, zaleca się pozwala deweloperom korzystać z pakietu z PCL lub powierzchnia .NET standardowych bibliotek za pośrednictwem wspólnego interfejsu API.
 
-W tym przewodniku tworzenia pakietu NuGet i platform, który może być używana w przenośnych projekty w systemach iOS, Android i Windows.
+W tym przewodniku, którego używasz programu Visual Studio 2015 utworzyć i platform pakietu NuGet, który może być używana w przenośnych projekty w systemach iOS, Android i Windows.
 
 1. [Wymagania wstępne](#prerequisites)
 1. [Tworzenie projektu kodu struktury i abstrakcji](#create-the-project-structure-and-abstraction-code)

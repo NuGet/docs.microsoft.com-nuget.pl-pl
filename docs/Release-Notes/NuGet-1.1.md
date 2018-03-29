@@ -6,17 +6,20 @@ manager: ghogen
 ms.date: 11/11/2016
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr 1.1 NuGet."
+ms.technology: ''
+description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr 1.1 NuGet.
 keywords: NuGet 1.1 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: 6a596e61f144e7269f703f2dba3dddb4fd338e6a
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: dd320df2d725e58182cd908ce621571ea018b350
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nuget-10-and-11-release-notes"></a>Informacje o wersji NuGet 1.0 i 1.1
 
@@ -49,7 +52,7 @@ Aby użyć tego [najnowszej wersji](http://nuget.codeplex.com/releases/view/5201
 
 * Najpierw należy odinstalować starsze kompilacji. Musisz uruchomić VS jako administrator, aby to zrobić.
 * Usuń wszystkie istniejące źródła danych, które masz.
-* Dodaj nowe źródło danych wskazujące [http://go.microsoft.com/fwlink/?LinkId=206669](http://go.microsoft.com/fwlink/?LinkId=206669).
+* Dodaj nowe źródło danych wskazujące [ http://go.microsoft.com/fwlink/?LinkId=206669 ](http://go.microsoft.com/fwlink/?LinkId=206669).
 
 ## <a name="nuget-11"></a>NuGet 1.1
 
@@ -135,7 +138,7 @@ Poniżej przedstawiono zmiany wprowadzone w tej wersji Release Candidate od CTP 
 
 Najbardziej znaczących zmian wprowadzonych w wersji CTP 2 są następujące:
 
-* Przełączono pakietu źródła danych z ATOM punkt końcowy usługi OData: po uaktualnieniu do wersji CTP2 programu NuGet, należy dodać następujący adres URL jako źródło pakietów: https://feed.nuget.org/ctp2/odata/v1/.
+* Przełączono pakietu źródła danych z ATOM punkt końcowy usługi OData: po uaktualnieniu do wersji CTP2 programu NuGet, należy dodać następujący adres URL jako źródło pakietów: `https://feed.nuget.org/ctp2/odata/v1/`.
 * Zmieniona polecenie Add-Package *Install-Package*.
 * Zaktualizowano `.nuspec` Format. `.nuspec` Zawiera teraz format *iconUrl* pole służący do określania 32 x 32 ikona png, które będzie widoczne w oknie dialogowym Dodaj pakiet. Dlatego należy ustawić go do odróżnienia pakietu. `.nuspec` Format zawiera również nowe *adresem projectUrl* pola, które służy do punktu do strony sieci web, która zapewnia więcej informacji na temat pakietu.
 

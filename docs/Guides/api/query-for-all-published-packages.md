@@ -1,5 +1,5 @@
 ---
-title: "Zapytania dla wszystkich pakietów opublikowane nuget.org | Dokumentacja firmy Microsoft"
+title: Zapytania dla wszystkich pakietów opublikowane nuget.org | Dokumentacja firmy Microsoft
 author:
 - joelverhagen
 - kraigb
@@ -8,19 +8,22 @@ ms.author:
 - kraigb
 manager: skofman
 ms.date: 11/02/2017
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.prod: nuget
-ms.technology: 
-description: "Przy użyciu interfejsu API programu NuGet, można wysyłać zapytania dotyczące wszystkich pakietów opublikowane nuget.org i aktualności wraz z upływem czasu."
-keywords: "Interfejs API NuGet wyliczyć wszystkie pakiety, replikowania pakiety NuGet interfejsu API, najnowszych pakietów opublikowany nuget.org"
+ms.technology: ''
+description: Przy użyciu interfejsu API programu NuGet, można wysyłać zapytania dotyczące wszystkich pakietów opublikowane nuget.org i aktualności wraz z upływem czasu.
+keywords: Interfejs API NuGet wyliczyć wszystkie pakiety, replikowania pakiety NuGet interfejsu API, najnowszych pakietów opublikowany nuget.org
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: ce25680f3b591e9c6b0234b6ac30b82205d10ad3
-ms.sourcegitcommit: 7969f6cd94eccfee5b62031bb404422139ccc383
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 5ea11e1b4edd87b6d30d3838986ca60aaa77870f
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="query-for-all-packages-published-to-nugetorg"></a>Zapytania dla wszystkich pakietów opublikowane nuget.org
 

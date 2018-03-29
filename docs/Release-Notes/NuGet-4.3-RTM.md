@@ -6,18 +6,21 @@ manager: unniravindranathan
 ms.date: 08/14/2017
 ms.topic: article
 ms.prod: nuget
-ms.technology: 
-description: "Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr RTM 4.3 NuGet."
+ms.technology: ''
+description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr RTM 4.3 NuGet.
 keywords: NuGet 4.3 RTM informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
 ms.reviewer:
 - karann-msft
 - unniravindranathan
 - anangaur
-ms.openlocfilehash: a2b61d854f4a5f1490832dab9a272c3a13b56adf
-ms.sourcegitcommit: b0af28d1c809c7e951b0817d306643fcc162a030
+ms.workload:
+- dotnet
+- aspnet
+ms.openlocfilehash: 3c798bde11548b866cad62697315e907dea91aa5
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nuget-43-rtm-release-notes"></a>Informacje o wersji 4.3 RTM NuGet
 

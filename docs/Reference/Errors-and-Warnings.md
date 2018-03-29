@@ -1,18 +1,21 @@
 ---
-title: "NuGet błędy i ostrzeżenia odwołania | Dokumentacja firmy Microsoft"
+title: NuGet błędy i ostrzeżenia odwołania | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
 ms.date: 03/06/2018
 ms.topic: reference
 ms.prod: nuget
-ms.technology: 
-description: "Pełną dokumentację dla ostrzeżeń i błędów wystawiony na podstawie NuGet podczas różne operacje NuGet."
-keywords: "NuGet błędy, ostrzeżenia NuGet diagnostyki"
+ms.technology: ''
+description: Pełną dokumentację dla ostrzeżeń i błędów wystawiony na podstawie NuGet podczas różne operacje NuGet.
+keywords: NuGet błędy, ostrzeżenia NuGet diagnostyki
 ms.reviewer:
 - anangaur
 - karann-msft
 - unniravindranathan
+ms.workload:
+- dotnet
+- aspnet
 f1_keywords:
 - NU1000
 - NU1001
@@ -50,11 +53,11 @@ f1_keywords:
 - NU3008
 - NU3018
 - NU3028
-ms.openlocfilehash: 59bbe37d1a965e5167800148603869645fc5e0b2
-ms.sourcegitcommit: df21fe770900644d476d51622a999597a6f20ef8
+ms.openlocfilehash: 020e31dc8646c43b86bcee555f1772e8b1db7761
+ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
 
@@ -136,7 +139,7 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | --- | --- |
 | **Problem** | Identyfikator pakietu został znaleziony, lecz nie można odnaleźć wersji w zakresie określonym zależności na żadnym z źródeł. Pakiet, a użytkownik nie może być określony zakres. |
 | **Przykładowy komunikat** | *Nie można odnaleźć pakietu NuGet.Versioning z wersją (> = 9.0.1)<br/> — wersje 30 znalezione w usłudze nuget.org [najbliższej wersji: 4.0.0]<br/> — wersje znaleziono 10 w dotnet buildtools [najbliższej wersji: 4.0.0-rc-2129]<br/> -znaleziono 9 wersje w NuGetVolatile [najbliższej wersji: 3.0.0-beta-00032]<br/> -znaleziono wersje 0 w podstawowej platformy dotnet<br/> -znaleziono wersje 0 w dotnet roslyn* |
-| **Rozwiązanie** | Edytuj plik projektu lub `packages.config` można poprawić wersji pakietu. Sprawdź także, czy [Konfiguracja nuget projektu](../consume-packages/Configuring-NuGet-Behavior.md) identyfikuje źródła pakietów w sieci spodziewać się przy użyciu. Konieczne może być zmiana wersji requeted, jeśli ten pakiet jest bezpośrednio wywoływany przez projekt. |
+| **Rozwiązanie** | Edytuj plik projektu, aby poprawić wersji pakietu. Sprawdź także, czy [Konfiguracja nuget projektu](../consume-packages/Configuring-NuGet-Behavior.md) identyfikuje źródła pakietów w sieci spodziewać się przy użyciu. Konieczne może być zmiana wersji requeted, jeśli ten pakiet jest bezpośrednio wywoływany przez projekt. |
 
 ### <a name="nu1103"></a>NU1103
 
@@ -144,7 +147,7 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | --- | --- |
 | **Problem** | Projekt określony stabilną wersję dla zakresu zależności, ale w zakresie nie znaleziono żadnych wersji stabilnej. Wersje wstępne znaleziono, ale nie są dozwolone. |
 | **Przykładowy komunikat** | *Nie można odnaleźć pakietu stabilna NuGet.Versioning z wersją (> = 3.0.0)<br/> — wersje znaleziono 10 w dotnet buildtools [najbliższej wersji: 4.0.0-rc-2129]<br/> -znaleziono 9 wersje w NuGetVolatile [najbliższej wersji: 3.0.0-beta-00032] <br/> -Znaleziono wersje 0 w podstawowej platformy dotnet<br/> -znaleziono wersje 0 w dotnet roslyn* |
-| **Rozwiązanie** |  Edytuj zakres wersji w pliku projektu lub `packages.config` uwzględnienie wersje wstępne. Zobacz [wersji pakietu](../reference/Package-Versioning.md). |
+| **Rozwiązanie** |  Edytuj zakres wersji w pliku projektu, aby uwzględnić wersje wstępne. Zobacz [wersji pakietu](../reference/Package-Versioning.md). |
 
 ### <a name="nu1104"></a>NU1104
 
@@ -167,8 +170,8 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | | |
 | --- | --- |
 | **Problem** | Nie można rozpoznać zależności ograniczenia. |
-| **Przykładowy komunikat** | *Nie można zrealizować żądań będących w konflikcie dla {id}: {konflikt path} Framework: {docelowy wykres}* 
-| **Rozwiązanie** | Edytuj plik projektu lub `packages.config` do określenia bardziej uniwersalnym zakresy dla zależności, a nie dokładnej wersji. |
+| **Przykładowy komunikat** | *Nie można zrealizować żądań będących w konflikcie dla {id}: {konflikt path} Framework: {docelowy wykres}* |
+| **Rozwiązanie** | Edytuj plik projektu, aby określić bardziej uniwersalnym zakresy dla zależności, a nie dokładnej wersji. |
 |
 
 <a name="nu1107"></a>
@@ -179,7 +182,7 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | --- | --- |
 | **Problem** | Nie można rozpoznać ograniczenia zależności między pakietami. |
 | **Przykładowy komunikat** | *Konflikt wersji dla NuGet.Versioning wykryte. Pakiet odwoływać się bezpośrednio z projektu, aby rozwiązać ten problem.<br/>  NuGet.Versioning (= 3.5.0) -> NuGet.Packaging 3.5.0<br/> NuGet.Configuration 4.0.0 -> NuGet.Versioning (= 4.0.0)* |
-| **Rozwiązanie** | Pakiety z ograniczeniami zależności na dokładną wersję nie zezwalają na inne pakiety w razie potrzeby zwiększyć wersji. Dodaj odwołanie do projektu bezpośrednio (w pliku projektu lub `packages.config`) na dokładną wersję wymaganą. |
+| **Rozwiązanie** | Pakiety z ograniczeniami zależności na dokładną wersję nie zezwalają na inne pakiety w razie potrzeby zwiększyć wersji. Dodaj odwołanie do projektu bezpośrednio (w pliku projektu) na dokładną wersję wymaganą. |
 
 <a name="nu1108"></a>
 
