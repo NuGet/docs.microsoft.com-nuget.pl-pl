@@ -14,7 +14,7 @@
 ### [Rozwiązywanie problemów](consume-packages/package-restore-troubleshooting.md)
 ## [Ponowne instalowanie i aktualizowanie pakietów](consume-packages/reinstalling-and-updating-packages.md)
 ## [Pakiety i kontrola źródła](consume-packages/packages-and-source-control.md)
-## [Zarządzanie pamięcią podręczną pakietu NuGet](consume-packages/managing-the-nuget-cache.md)
+## [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](consume-packages/managing-the-global-packages-and-cache-folders.md)
 ## [Konfigurowanie zachowania pakietu NuGet](consume-packages/configuring-nuget-behavior.md)
 ## [Rozwiązywanie zależności](consume-packages/dependency-resolution.md)
 # Tworzenie pakietów
@@ -31,8 +31,8 @@
 ## Przewodniki
 ### [Tworzenie pakietów platformy UWP](guides/create-uwp-packages.md)
 ### [Tworzenie kontrolek platformy UWP jako pakietów NuGet](guides/create-uwp-controls.md)
-### [Tworzenie pakietów NET Standard (Visual Studio 2015)](guides/create-net-standard-packages-vs2015.md)
-### [Tworzenie pakietów dla platformy Xamarin](guides/create-packages-for-xamarin.md)
+### [Tworzenie pakietów platformy NET Standard/NET Framework za pomocą programu Visual Studio 2015](guides/create-net-standard-packages-vs2015.md)
+### [Tworzenie pakietów dla platformy Xamarin za pomocą programu Visual Studio 2015](guides/create-packages-for-xamarin.md)
 # Hostowanie pakietów
 ## [Omówienie](hosting-packages/overview.md)
 ## [Lokalne źródła danych](hosting-packages/local-feeds.md)
@@ -88,7 +88,7 @@
 ### [Dostawcy poświadczeń programu NuGet dla programu Visual Studio](reference/extensibility/nuget-credential-providers-for-visual-studio.md)
 ### [Dostawcy poświadczeń programu nuget.exe](reference/extensibility/nuget-exe-credential-providers.md)
 ## Zawartość zarchiwizowana
-### [Format odwołań pliku project.json](archive/project-json.md)
+### [Format zarządzania project.json](archive/project-json.md)
 ### [Plik project.json i platforma UWP](archive/project-json-and-uwp.md)
 ### [Wpływ pliku project.json](archive/project-json-impact.md)
 # interfejs API
