@@ -15,11 +15,11 @@ ms.reviewer:
 ms.workload:
 - dotnet
 - aspnet
-ms.openlocfilehash: 99caf371ca1bd85e6af4e879741e3e2caab6e860
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 7844ace0565b2e70f8f68e6e61548f0f28171689
+ms.sourcegitcommit: 5b223c5814799caa6309e95792a2d338df692778
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/04/2018
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 
@@ -96,8 +96,8 @@ Dopuszczalne wartości tych tagów są następujące, z wieloma wartościami odd
 
 | Wartość | Opis |
 | --- | ---
-| Kompilacji | Zawartość `lib` folderu |
-| środowisko uruchomieniowe | Zawartość `runtimes` folderu |
+| Kompilacji | Zawartość `lib` folder i formanty czy projektu można kompilować z zestawów znajdujących się w folderze |
+| środowisko uruchomieniowe | Zawartość `lib` i `runtimes` folder i formanty czy te zestawy będzie kopiowana do kompilacji output katalogu |
 | Pliki | Zawartość `contentfiles` folderu |
 | kompilacja | Właściwości i elementów docelowych w `build` folderu |
 | Analizatory | Analizatory .NET |

@@ -74,6 +74,7 @@
 # Tematy pomocy
 ## [.nuspec](reference/nuspec.md)
 ## [Odwołania do pakietu w plikach projektu](consume-packages/package-references-in-project-files.md)
+## [Migrowanie pliku packages.config do elementu PackageReference](reference/migrate-packages-config-to-package-reference.md)
 ## [packages.config](reference/packages-config.md)
 ## [Przechowywanie wersji pakietów](reference/package-versioning.md)
 ## [Plik Nuget.Config](reference/nuget-config-file.md)
