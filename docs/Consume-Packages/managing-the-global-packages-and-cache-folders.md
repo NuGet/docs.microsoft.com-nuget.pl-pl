@@ -12,11 +12,11 @@ keywords: Globalne dzaj pakietami folderu, pamięć podręczną pakietów NuGet,
 ms.reviewer:
 - karann-msft
 - unniravindranathan
-ms.openlocfilehash: e9f4383a3f1700b96e3d6fe9ea4c0a7c24daa45a
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 46cd233dcf36745d9ba556c86088f640923cd063
+ms.sourcegitcommit: 55433d3bda7684d978f26d559f801878223675fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="managing-the-global-packages-cache-and-temp-folders"></a>Zarządzanie pakietów globalnej pamięci podręcznej i folderów tymczasowych
 
@@ -24,9 +24,9 @@ Zawsze, gdy zainstalować, zaktualizować lub przywracanie pakietu NuGet zarząd
 
 | Nazwa | Opis i lokalizację (dla poszczególnych użytkowników)|
 | --- | --- |
-| globalne&#8209;pakietów | *Globalne pakiety* jest folder, gdzie NuGet instaluje wszystkie pobranego pakietu. Każdy pakiet jest w pełni rozwinięta do podfolderu zgodny identyfikator pakietu i numer wersji. Projektów przy użyciu PackageReference zawsze formatu Użyj pakietów bezpośrednio z tego folderu. Korzystając z `packages.config`, pakiety są instalowane na *globalne pakiety* folderu, następnie kopiowane do projektu `packages` folderu.<br/><ul><li>System Windows: `%userprofile%\.nuget\packages`</li><li>Mac/Linux: `~/.nuget/packages`</li><li>Override, za pomocą zmiennej środowiskowej NUGET_PACKAGES, `globalPackagesFolder` lub `repositoryPath` [ustawienia konfiguracji](../reference/nuget-config-file.md#config-section) (przy użyciu PackageReference i `packages.config`odpowiednio), lub `RestorePackagesPath` MSBuild Właściwość (MSBuild tylko). Zmienna środowiskowa mają pierwszeństwo przed ustawieniem konfiguracji.</li></ul> |
-| http&#8209;cache | Menedżer pakietów programu Visual Studio (NuGet 3.x+) i `dotnet` narzędzia przechowują kopie pobrane pakiety w pamięci podręcznej (zapisane jako `.dat` plików), są organizowane w podfolderach dla każdego źródła pakietu. Pakiety nie zostaną rozwinięte, a pamięć podręczna zawiera czas wygaśnięcia 30 minut.<br/><ul><li>System Windows: `%localappdata%\NuGet\v3-cache`</li><li>Mac/Linux: `~/.local/share/NuGet/v3-cache`</li><li>Override, za pomocą zmiennej środowiskowej NUGET_HTTP_CACHE_PATH.</li></ul> |
-| Temp | Folder, w którym NuGet przechowuje pliki tymczasowe podczas jego różnych operacji.<br/><li>System Windows: `%temp%\NuGetScratch`</li><li>Mac/Linux: `/tmp/NuGetScratch`</li></ul> |
+| globalne&#8209;pakietów | *Globalne pakiety* jest folder, gdzie NuGet instaluje wszystkie pobranego pakietu. Każdy pakiet jest w pełni rozwinięta do podfolderu zgodny identyfikator pakietu i numer wersji. Projektów przy użyciu PackageReference zawsze formatu Użyj pakietów bezpośrednio z tego folderu. Korzystając z `packages.config`, pakiety są instalowane na *globalne pakiety* folderu, następnie kopiowane do projektu `packages` folderu.<br/><ul><li>System Windows: `%userprofile%\.nuget\packages`</li><li>System Mac/Linux: `~/.nuget/packages`</li><li>Override, za pomocą zmiennej środowiskowej NUGET_PACKAGES, `globalPackagesFolder` lub `repositoryPath` [ustawienia konfiguracji](../reference/nuget-config-file.md#config-section) (przy użyciu PackageReference i `packages.config`odpowiednio), lub `RestorePackagesPath` MSBuild Właściwość (MSBuild tylko). Zmienna środowiskowa mają pierwszeństwo przed ustawieniem konfiguracji.</li></ul> |
+| http&#8209;cache | Menedżer pakietów programu Visual Studio (NuGet 3.x+) i `dotnet` narzędzia przechowują kopie pobrane pakiety w pamięci podręcznej (zapisane jako `.dat` plików), są organizowane w podfolderach dla każdego źródła pakietu. Pakiety nie zostaną rozwinięte, a pamięć podręczna zawiera czas wygaśnięcia 30 minut.<br/><ul><li>System Windows: `%localappdata%\NuGet\v3-cache`</li><li>System Mac/Linux: `~/.local/share/NuGet/v3-cache`</li><li>Override, za pomocą zmiennej środowiskowej NUGET_HTTP_CACHE_PATH.</li></ul> |
+| Temp | Folder, w którym NuGet przechowuje pliki tymczasowe podczas jego różnych operacji.<br/><li>System Windows: `%temp%\NuGetScratch`</li><li>System Mac/Linux: `/tmp/NuGetScratch`</li></ul> |
 
 > [!Note]
 > NuGet 3.5 i wcześniejszych zastosowań *pamięci podręcznej pakiety* zamiast *pamięci podręcznej http*, który znajduje się w `%localappdata%\NuGet\Cache`.
@@ -99,7 +99,7 @@ nuget locals all -clear
 
 Wszystkie pakiety używane w projektach, które są aktualnie otwarte w programie Visual Studio nie są usuwane z *globalne pakiety* folderu.
 
-W programie Visual Studio, użyj **Narzędzia > Menedżera pakietów NuGet > Ustawienia Menedżera pakietów** menu polecenie, a następnie wybierz **wyczyść wszystkie Cache(s) NuGet**. Zarządzanie pamięcią podręczną nie jest obecnie dostępna za pośrednictwem konsoli Menedżera pakietów.
+W programie Visual Studio 2017 r, użyj **Narzędzia > Menedżera pakietów NuGet > Ustawienia Menedżera pakietów** menu polecenie, a następnie wybierz **wyczyść wszystkie Cache(s) NuGet**. Zarządzanie pamięcią podręczną nie jest obecnie dostępna za pośrednictwem konsoli Menedżera pakietów. W programie Visual Studio 2015 należy użyć poleceń interfejsu wiersza polecenia.
 
 ![Polecenia NuGet opcję czyszczenia pamięci podręcznych](media/options-clear-caches.png)
 

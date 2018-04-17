@@ -15,11 +15,11 @@ ms.reviewer:
 ms.workload:
 - dotnet
 - aspnet
-ms.openlocfilehash: 9da385f51abf5877589c29ebdeffefc9a1a20a2e
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: fc1417941f1293f39da05552adc3a80352a8c83b
+ms.sourcegitcommit: 55433d3bda7684d978f26d559f801878223675fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak zainstalować i pakietów aktualizacji
 
@@ -65,7 +65,7 @@ Aby ustawić ograniczenie, otwórz `packages.config` w edytorze tekstów, zlokal
 
 We wszystkich przypadkach Notacja opisanego w [wersji pakietu](../reference/package-versioning.md#version-ranges-and-wildcards).
 
-## <a name="using-update-package"></a>Using Update-Package
+## <a name="using-update-package"></a>Przy użyciu pakietu aktualizacji
 
 Trwa mając na uwadze [zagadnienia](#considerations) opisane poniżej, można łatwo ponownie zainstalować wszystkie pakietu przy użyciu [polecenia pakiet aktualizacji](../Tools/ps-ref-update-package.md) w konsoli Menedżera pakietów programu Visual Studio (**narzędzia**  >  **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**):
 
@@ -81,7 +81,7 @@ Takie same polecenie bez `-reinstall` aktualizuje pakiet do nowszej wersji, jeś
 Update-Package <package_name>
 ```
 
-Domyślnie `Update-Package` ma wpływ na wszystkie pakiety w rozwiązaniu. Aby ograniczyć akcji do określonego projektu, użyj `-ProjectName` przełącznika, przy użyciu nazwy projektu, pojawiającą się w Eksploratorze rozwiązań:
+Domyślnie `Update-Package` ma wpływ na wszystkie projekty w rozwiązaniu. Aby ograniczyć akcji do określonego projektu, użyj `-ProjectName` przełącznika, przy użyciu nazwy projektu, pojawiającą się w Eksploratorze rozwiązań:
 
 ```ps
 # Reinstall the package in just MyProject

@@ -3,7 +3,7 @@ title: Instalowanie narzędzi klienta NuGet | Dokumentacja firmy Microsoft
 author: kraigb
 ms.author: kraigb
 manager: ghogen
-ms.date: 01/24/2018
+ms.date: 04/09/2018
 ms.topic: quickstart
 ms.prod: nuget
 ms.technology: ''
@@ -15,17 +15,17 @@ ms.reviewer:
 ms.workload:
 - dotnet
 - aspnet
-ms.openlocfilehash: e4dfe1102d1e0e2013136b0ae4975e5036e34642
-ms.sourcegitcommit: ecb598c790d4154366bc92757ec7db1a51c34faf
+ms.openlocfilehash: 7976ba94448c15e3d8b45a3630bd49b7ec66b8ae
+ms.sourcegitcommit: 55433d3bda7684d978f26d559f801878223675fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="installing-nuget-client-tools"></a>Instalowanie narzędzi klienta NuGet
 
 > **Wyszukiwanie, aby zainstalować pakiet? Zobacz [sposobów, aby zainstalować pakietów NuGet](consume-packages/ways-to-install-a-package.md).**
 
-Aby pracować z NuGet, jako pakiet klienta lub twórcą, można użyć [narzędzi interfejsu wiersza polecenia (CLI)](#cli-tools) oraz [funkcji NuGet w programie Visual Studio](#visual-studio). W tym artykule krótko opisano możliwości różnych narzędzi, jak zainstalować i ich porównawczych [dostępność funkcji](#feature-availability).
+Aby pracować z NuGet, jako pakiet klienta lub twórcą, można użyć [narzędzi interfejsu wiersza polecenia (CLI)](#cli-tools) oraz [funkcji NuGet w programie Visual Studio](#visual-studio). W tym artykule krótko opisano możliwości różnych narzędzi, jak zainstalować i ich porównawczych [dostępność funkcji](#feature-availability). Aby rozpocząć pracę, aby korzystać z pakietów przy użyciu narzędzia NuGet, zobacz [instalacji i używania pakietu (.NET interfejsu wiersza polecenia)](quickstart/install-and-use-a-package-using-the-dotnet-cli.md) i [instalacji i używania pakietu (Visual Studio)](quickstart/install-and-use-a-package-in-visual-studio.md). Aby rozpocząć tworzenie pakietów NuGet, zobacz [tworzenie i publikowanie pakietu NET Standard (dotnet interfejsu wiersza polecenia)](quickstart/create-and-publish-a-package-using-the-dotnet-cli.md) i [tworzenie i publikowanie pakietu NET Standard (Visual Studio)](quickstart/create-and-publish-a-package-using-visual-studio.md).
 
 | Narzędzie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Opis | Pobierz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |:------------- |:-------------|:-----|
@@ -81,7 +81,7 @@ Instalacja:
 
 ## <a name="feature-availability"></a>Dostępność funkcji
 
-| Funkcja | DotNet interfejsu wiersza polecenia | nuget interfejsu wiersza polecenia (system Windows) | nuget interfejsu wiersza polecenia (Mono) | Visual Studio (Windows) | Visual Studio for Mac |
+| Funkcja | DotNet interfejsu wiersza polecenia | nuget interfejsu wiersza polecenia (system Windows) | nuget interfejsu wiersza polecenia (Mono) | Visual Studio (z systemem Windows) | Visual Studio for Mac |
 | --- | --- | --- | --- | --- | --- |
 | Pakiety wyszukiwania |  | &#10004; | &#10004; | &#10004; | &#10004; |
 | Instalowanie/Odinstalowywanie pakietów | &#10004;(1) | &#10004;(2) | &#10004; | &#10004; | &#10004; |
