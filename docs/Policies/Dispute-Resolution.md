@@ -1,22 +1,16 @@
 ---
-title: "Rozwiązywanie sporów nazwa pakietu NuGet | Dokumentacja firmy Microsoft"
+title: Rozwiązywanie sporów nazwa pakietu NuGet
+description: Proces rozwiązywanie sporów między związane z znakowania, znaków towarowych i innych konfliktów wydawcy pakietu NuGet.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Proces rozwiązywanie sporów między związane z znakowania, znaków towarowych i innych konfliktów wydawcy pakietu NuGet."
-keywords: "Sporów pakietu NuGet, rozwiązywanie sporów NuGet, proces rozpoznawania sporów"
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 589fe4e7d2b05f3d589dcc70e78e7199d7e717c8
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 39fe993d73f11ca4b83ae07b1e8b93ae0682d519
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="resolving-disputes-over-nuget-package-names"></a>Rozwiązywanie sporów nazwy pakietu NuGet
 
@@ -31,5 +25,5 @@ Wykonując z procesem opisanym niżej Northwind i Irena mogą współdziałać z
 ## <a name="process"></a>Proces
 
 1. Skontaktuj się z właściciele pakietu masz sporów przy użyciu **właścicieli skontaktuj się z** łącze na stronie Szczegóły pakietu. Opis problemu w rodzaju i w sposób bezpośredni.
-1. Wyślij kopię wiadomości [ support@nuget.org ](mailto:support@nuget.org) tak, aby NuGet i .NET Foundation wiedzą z sporów.
-1. Poczekaj maksymalnie 30 dni rozwiązanie problemu, a następnie powiadom [ support@nuget.org ](mailto:support@nuget.org) ponownie. Nuget.org zespołem pomocy technicznej będzie angażowanie i spróbuj pracy za pośrednictwem sporów z obu stron.
+2. Wyślij kopię wiadomości [ support@nuget.org ](mailto:support@nuget.org) tak, aby NuGet i .NET Foundation wiedzą z sporów.
+3. Poczekaj maksymalnie 30 dni rozwiązanie problemu, a następnie powiadom [ support@nuget.org ](mailto:support@nuget.org) ponownie. Nuget.org zespołem pomocy technicznej będzie angażowanie i spróbuj pracy za pośrednictwem sporów z obu stron.

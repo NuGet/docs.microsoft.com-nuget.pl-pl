@@ -1,27 +1,18 @@
 ---
-title: Przewodnik wprowadzający do korzystania z pakietów NuGet z poziomu programu Visual Studio | Dokumentacja firmy Microsoft
+title: Przewodnik wprowadzający do korzystania z pakietów NuGet z poziomu programu Visual Studio
+description: Samouczek wskazówki dotyczące procesu instalacji i przy użyciu pakietu NuGet w projekcie programu Visual Studio.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.prod: nuget
-ms.technology: ''
-description: Samouczek wskazówki dotyczące procesu instalacji i przy użyciu pakietu NuGet w projekcie programu Visual Studio.
-keywords: instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGet, odwołania do pakietu NuGet, za pomocą pakietów NuGet
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 4205893cc02cffff8926513a555393d10c046f43
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: c61f8929d34bc9ff1a84ee186636543da5bcee63
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
-# <a name="install-and-use-a-package-in-visual-studio"></a>Zainstaluj i użyj pakietu w programie Visual Studio
+# <a name="quickstart-install-and-use-a-package-in-visual-studio"></a>Szybki Start: Instalowanie i użyj pakietu w programie Visual Studio
 
 Pakiety NuGet zawiera kod wielokrotnego użytku, który inni deweloperzy udostępnić użytkownikowi do użycia w projektach. Zobacz [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są zainstalowane w projekcie programu Visual Studio przy użyciu interfejsu użytkownika Menedżera pakietów lub konsoli Menedżera pakietów. W tym artykule przedstawiono proces, korzystając z popularnych [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakietu i projektu Windows platformy Uniwersalnej. Ten sam proces ma zastosowanie do innych projektów .NET lub .NET Core.
 

@@ -1,25 +1,16 @@
 ---
-title: Project.JSON wpływ na autora pakietu NuGet | Dokumentacja firmy Microsoft
+title: Project.JSON wpływ na autorzy pakietów NuGet
+description: Więcej informacji na temat formatu implementacja project.json w NuGet 3.x wpływa na autora pakietu, takich jak nieobsługiwane funkcje zawartości i pakietu.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Więcej informacji na temat formatu implementacja project.json w NuGet 3.x wpływa na autora pakietu, takich jak nieobsługiwane funkcje zawartości i pakietu.
-keywords: Pakiet NuGet i project.json, wpływ project.json tworzenia zagadnienia, funkcje project.json
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 6e8af98504a2866106e84943989aeb91f2e9c1fb
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: 6163297075f741a4132afd748974498fa1600fbb
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="impact-of-projectjson-when-creating-packages"></a>Wpływ project.json podczas tworzenia pakietów
 

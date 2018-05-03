@@ -1,25 +1,16 @@
 ---
-title: Polecenie restore interfejsu wiersza polecenia NuGet | Dokumentacja firmy Microsoft
+title: Polecenie restore NuGet interfejsu wiersza polecenia
+description: Informacje dotyczące polecenia restore nuget.exe
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Informacje dotyczące polecenia restore nuget.exe
-keywords: nuget przywrócić odwołania, przywrócić pakiety, polecenie
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 64f12fdedc8fbfcee15c1dcddc445148f458c030
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: dd0a74c9ed9b879643ed24cbddacff87310dfd6b
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="restore-command-nuget-cli"></a>polecenie Restore (NuGet CLI)
 
@@ -68,24 +59,23 @@ Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
 Polecenie restore wykonuje następujące czynności:
 
 1. Określ tryb działania polecenia restore.
-    Typ pliku projectPath | Zachowanie
-    | --- | --- |
-    Rozwiązania (folder) | Wyszukuje NuGet `.sln` pliku i korzysta z jeśli je znaleziono; w przeciwnym razie zwraca błąd. `(SolutionDir)\.nuget` jest używana jako folder początkowy.
-    `.sln` Plik | Przywracanie pakietów zidentyfikowane przez rozwiązanie; Zwraca błąd, jeśli `-SolutionDirectory` jest używany. `$(SolutionDir)\.nuget` jest używana jako folder początkowy.
-    `packages.config` lub pliku projektu | Przywróć pakiety wymienione w pliku rozwiązania i instalowanie zależności.
-    Innego typu pliku | Plik zakłada się, że `.sln` plik jako powyżej; Jeśli nie jest to rozwiązanie zapewnia NuGet błąd.
-    (nie określono projectPath) | -NuGet wyszukuje pliki rozwiązania w bieżącym folderze. Jeśli zostanie znaleziony jeden plik, że jeden służy do przywracania pakietów; w przypadku znalezienia wielu rozwiązań NuGet zawiera błąd.
-    |— Jeśli nie ma żadnych plików rozwiązania, NuGet szuka `packages.config` i użyty pod kątem przywracania pakietów.
-    |— Jeśli żadne rozwiązanie lub `packages.config` plik zostanie znaleziony, NuGet zawiera błąd.
 
-1. Określ folder pakietów przy użyciu następującej kolejności priorytet (NuGet zwraca błąd, jeśli żadnego z tych folderów nie są znaleziono):
+   | Typ pliku projectPath | Zachowanie |
+   | --- | --- |
+   | Rozwiązania (folder) | Wyszukuje NuGet `.sln` pliku i korzysta z jeśli je znaleziono; w przeciwnym razie zwraca błąd. `(SolutionDir)\.nuget` jest używana jako folder początkowy. |
+   | `.sln` Plik | Przywracanie pakietów zidentyfikowane przez rozwiązanie; Zwraca błąd, jeśli `-SolutionDirectory` jest używany. `$(SolutionDir)\.nuget` jest używana jako folder początkowy. |
+   | `packages.config` lub pliku projektu | Przywróć pakiety wymienione w pliku rozwiązania i instalowanie zależności. |
+   | Innego typu pliku | Plik zakłada się, że `.sln` plik jako powyżej; Jeśli nie jest to rozwiązanie zapewnia NuGet błąd. |
+   | (nie określono projectPath) | <ul><li>NuGet wyszukuje pliki rozwiązania w bieżącym folderze. Jeśli zostanie znaleziony jeden plik, że jeden służy do przywracania pakietów; w przypadku znalezienia wielu rozwiązań NuGet zawiera błąd.</li><li>Jeśli nie ma żadnych plików rozwiązania, NuGet szuka `packages.config` i użyty pod kątem przywracania pakietów.</li><li>Jeśli żadne rozwiązanie lub `packages.config` plik zostanie znaleziony, NuGet zawiera błąd.</ul> |
+
+2. Określ folder pakietów przy użyciu następującej kolejności priorytet (NuGet zwraca błąd, jeśli żadnego z tych folderów nie są znaleziono):
 
     - Folder określony za pomocą `-PackagesDirectory`.
     - `repositoryPath` Vale w `Nuget.Config`
     - Folder określony za pomocą `-SolutionDirectory`
     - `$(SolutionDir)\packages`
 
-1. Trwa przywracanie pakietów dla rozwiązania, NuGet wykonuje następujące czynności:
+3. Trwa przywracanie pakietów dla rozwiązania, NuGet wykonuje następujące czynności:
     - Ładuje plik rozwiązania.
     - Przywraca poziomu pakietów rozwiązania na liście `$(SolutionDir)\.nuget\packages.config` do `packages` folderu.
     - Przywracanie pakietów na liście `$(ProjectDir)\packages.config` do `packages` folderu. Dla każdego pakietu określony Przywracanie pakietu równolegle, chyba że `-DisableParallelProcessing` jest określona.

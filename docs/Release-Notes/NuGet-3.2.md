@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 3.2 | Dokumentacja firmy Microsoft
+title: Informacje o wersji 3.2 NuGet
+description: Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.2 NuGet.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.2 NuGet."
-keywords: NuGet 3.2 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 1728a5c0d83be84686e7ab1394cfc4f8f809987c
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 938104c50fee19ee398de49c786bbb4963ba1429
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-32-release-notes"></a>Informacje o wersji 3.2 NuGet
 
@@ -45,7 +39,7 @@ Wprowadziliśmy wiele ulepszeń w celu ulepszenia obsługi awarie sieci podczas 
 * Skorygowane polecenia restore NuGet poprawnie zwracane 1 w przypadku wystąpienia błędu - [1186](https://github.com/NuGet/Home/issues/1186)
 * Teraz ponawianie próby połączenia sieciowe co 200 MS maksymalnie 5 prób w przypadku HTTP 5xx błędy — [1120](https://github.com/NuGet/Home/issues/1120)
 * Ulepszona obsługa odpowiedzi przekierowania serwera podczas polecenie wypychania - [1051](https://github.com/NuGet/Home/issues/1051)
-* `nuget install -source`adres URL lub repozytorium nazwy z pliku Nuget.Config jako argument - obsługuje teraz [1046](https://github.com/NuGet/Home/issues/1046)
+* `nuget install -source` adres URL lub repozytorium nazwy z pliku Nuget.Config jako argument - obsługuje teraz [1046](https://github.com/NuGet/Home/issues/1046)
 * Brakuje pakietów, które nie znajdowały się w repozytorium podczas przywracania są teraz raportowane klientowi jako błędy zamiast ostrzeżenia [1038](https://github.com/NuGet/Home/issues/1038)
 * Poprawiona obsługa multipartwebrequest \r\n dla scenariuszy systemu Unix/Linux — [776](https://github.com/NuGet/Home/issues/776)
 
@@ -120,4 +114,4 @@ Pełną listę problemów skierowana dla rozszerzenia Visual Studio można znale
 
 ## <a name="known-issues"></a>Znane problemy
 
-W dalszym ciągu do śledzenia problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+W dalszym ciągu śledzenie problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

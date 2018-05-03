@@ -1,25 +1,16 @@
 ---
-title: Rozwiązywanie problemów z pakietu NuGet przywracania w programie Visual Studio | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z Przywracanie pakietu NuGet w programie Visual Studio
+description: Opis wspólnej NuGet Przywracanie błędy w Visual Studio i sposoby ich rozwiązywania.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 03/16/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Opis wspólnej NuGet Przywracanie błędy w Visual Studio i sposoby ich rozwiązywania.
-keywords: Przywracanie pakietu NuGet, przywracanie pakietów, rozwiązywania problemów, rozwiązywanie problemów
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 27a43ceaefdf3a7842183a64ea57d05416d6cb02
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: c552941c896d1a7136310c0a8bc6755d5974809a
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="troubleshooting-package-restore-errors"></a>Rozwiązywanie problemów z błędami przywracania pakietu
 

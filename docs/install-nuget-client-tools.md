@@ -1,25 +1,16 @@
 ---
-title: Instalowanie narzędzi klienta NuGet | Dokumentacja firmy Microsoft
+title: Instalowanie narzędzi klienta NuGet
+description: Wskazówki dotyczące instalacji narzędzi klienta dotnet i nuget interfejsy wiersza polecenia (CLI) i Menedżer pakietów dla programu Visual Studio.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 04/09/2018
 ms.topic: quickstart
-ms.prod: nuget
-ms.technology: ''
-description: Wskazówki dotyczące instalacji narzędzi klienta dotnet i nuget interfejsy wiersza polecenia (CLI) i Menedżer pakietów dla programu Visual Studio.
-keywords: DotNet.exe CLI, nuget.exe interfejsu wiersza polecenia narzędzia klienta NuGet, Menedżer pakietów NuGet, konsoli Menedżera pakietów NuGet, NuGet dla programu Visual Studio, NuGet w wersji beta kanału
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 7976ba94448c15e3d8b45a3630bd49b7ec66b8ae
-ms.sourcegitcommit: 55433d3bda7684d978f26d559f801878223675fa
+ms.openlocfilehash: 6681c910768bc705f5e09340e04e4d368fde5efe
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="installing-nuget-client-tools"></a>Instalowanie narzędzi klienta NuGet
 
@@ -56,7 +47,7 @@ Interfejsu wiersza polecenia NuGet `nuget.exe`, to narzędzie wiersza polecenia 
 
 Instalacja:
 
-[!INCLUDE[install-cli](includes/install-cli.md)]
+[!INCLUDE [install-cli](includes/install-cli.md)]
 
 > [!Tip]
 > Użyj `nuget update -self` w systemie Windows, aby zaktualizować istniejące nuget.exe do najnowszej wersji.

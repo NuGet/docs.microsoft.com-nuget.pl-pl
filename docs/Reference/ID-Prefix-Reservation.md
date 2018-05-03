@@ -1,26 +1,17 @@
 ---
-title: Prefiks Identyfikatora rezerwacji odwołania | Dokumentacja firmy Microsoft
+title: Prefiks Identyfikatora rezerwacji odwołania
+description: Opis funkcji rezerwacji prefiks Identyfikatora pakietu i przewodnik autora.
 author: diverdan92
 ms.author: diverdan92
-manager: unniravindranathan
+manager: unnir
 ms.date: 10/09/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Opis funkcji rezerwacji prefiks Identyfikatora pakietu i przewodnik autora.
-keywords: Identyfikator pakietu NuGet, prefiks, zastrzeżenia
-ms.reviewer:
-- ananguar
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 7b1956612bd48a1c59503418f1a4d7d9dee900f5
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.reviewer: ananguar
+ms.openlocfilehash: 63f442ae25b92aacbbf5af7d9b3ea1a5dafe5fc9
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="package-id-prefix-reservation"></a>Rezerwacji prefiks Identyfikatora pakietu
 
@@ -74,9 +65,9 @@ Jeśli pakiet pochodzi z zarezerwowanym prefiksem, zobacz poniżej visual wskaź
 
 1. Przejrzyj akceptacji [kryteria rezerwacji Identyfikatora prefiks](#id-prefix-reservation-criteria).
 
-1. Określić obszarów nazw do zarezerwowania, oprócz żadnego [zaawansowanych scenariuszy rezerwacji prefiks](#advanced-prefix-reservation-scenarios) może wymagać.
+2. Określić obszarów nazw do zarezerwowania, oprócz żadnego [zaawansowanych scenariuszy rezerwacji prefiks](#advanced-prefix-reservation-scenarios) może wymagać.
 
-1. Wysyłanie poczty do [ account@nuget.org ](mailto:account@nuget.org) z właścicielem nazwy wyświetlanej na [nuget.org](https://www.nuget.org/), a także wszystkie zastrzeżone prefiksy żądania dostępu. Jeśli prefiks podzestawy są delegowanie do wielu właścicieli, upewnij się, zawierać wszystkie nazwy wyświetlane właściciela i prefiksu podzestawy.
+3. Wysyłanie poczty do [ account@nuget.org ](mailto:account@nuget.org) z właścicielem nazwy wyświetlanej na [nuget.org](https://www.nuget.org/), a także wszystkie zastrzeżone prefiksy żądania dostępu. Jeśli prefiks podzestawy są delegowanie do wielu właścicieli, upewnij się, zawierać wszystkie nazwy wyświetlane właściciela i prefiksu podzestawy.
 
 Po przesłaniu aplikacji, użytkownik jest powiadamiany o zatwierdzenia lub odrzucenia (za pomocą kryteriów powodujących odrzucenia). Firma Microsoft może być konieczne pytania dodatkowe identyfikujące potwierdzić tożsamość właściciela.
 

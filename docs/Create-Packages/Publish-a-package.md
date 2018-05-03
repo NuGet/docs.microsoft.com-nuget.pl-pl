@@ -1,26 +1,17 @@
 ---
-title: Jak opublikować pakietu NuGet | Dokumentacja firmy Microsoft
+title: Jak opublikować pakietu NuGet
+description: Szczegółowe instrukcje dotyczące sposobu publikowania pakietu NuGet nuget.org lub prywatnej źródeł danych i jak zarządzać własność pakietu na nuget.org.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 03/19/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Szczegółowe instrukcje dotyczące sposobu publikowania pakietu NuGet nuget.org lub prywatnej źródeł danych i jak zarządzać własność pakietu na nuget.org.
-keywords: Publikowanie pakietu NuGet, publikowania pakietu NuGet, własność pakietu NuGet, publikować nuget.org, prywatnego źródeł danych NuGet
-ms.reviewer:
-- anangaur
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 68db25276297353fab03258adecd9169149dbe51
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.reviewer: anangaur
+ms.openlocfilehash: 539ac9485e6062a0bdc3bb86dac0f028a2de7821
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="publishing-packages"></a>Publikowanie pakietów
 
@@ -59,11 +50,11 @@ Pakiety wypychania do nuget.org musi używać [nuget.exe v4.1.0 lub nowszej](htt
 
 #### <a name="create-api-keys"></a>Tworzenie kluczy interfejsu API
 
-[!INCLUDE[publish-api-key](../quickstart/includes/publish-api-key.md)]
+[!INCLUDE [publish-api-key](../quickstart/includes/publish-api-key.md)]
 
 #### <a name="publish-with-dotnet-nuget-push"></a>Publikowanie za pomocą wypychania nuget dotnet
 
-[!INCLUDE[publish-dotnet](../quickstart/includes/publish-dotnet.md)]
+[!INCLUDE [publish-dotnet](../quickstart/includes/publish-dotnet.md)]
 
 #### <a name="publish-with-nuget-push"></a>Publikowanie za pomocą wypychania nuget
 

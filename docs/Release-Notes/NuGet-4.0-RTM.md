@@ -1,25 +1,16 @@
 ---
-title: Informacje o wersji RC NuGet 4.0 | Dokumentacja firmy Microsoft
+title: Informacje o wersji RC NuGet 4.0
+description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr RTM 4.0 NuGet.
 author: anangaur
 ms.author: anangaur
-manager: unniravindranathan
+manager: unnir
 ms.date: 03/03/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr RTM 4.0 NuGet.
-keywords: NuGet 4.0 RTM informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 75ce757c209afd74f8d4f45d58d4e13a23b3b743
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: f1c5408f75966068e8fa11e63118426bbf562047
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="nuget-40-rtm-release-notes"></a>Informacje o wersji 4.0 RTM NuGet
 
@@ -165,7 +156,8 @@ Obecnie nie istnieje obejście tego problemu.
 
 - Dodaj polecenie pakietu należy dodać wersji jako atrybut zamiast elementu - [#4325](https://github.com/NuGet/Home/issues/4325)
 
-- Przywróć DotNet foo.sln — kończy się niepowodzeniem, podczas konfiguracji w SLN spowodować wykresu przywracania — projekty zduplikowaną (ale różnicowego config) [#4316](https://github.com/NuGet/Home/issues/4316)
+- DotNet
+  - foo.sln przywracania dotnetcore--kończy się niepowodzeniem, podczas konfiguracji w SLN spowodować wykresu przywracania — projekty zduplikowaną (ale różnicowego config) [#4316](https://github.com/NuGet/Home/issues/4316)
 
 - Zawartości tylko pakiety - [#3668](https://github.com/NuGet/Home/issues/3668)
 
@@ -183,7 +175,8 @@ Obecnie nie istnieje obejście tego problemu.
 
 - Pathtoolongexception — podczas próby dodania pakiet NuGet do pustych aplikacji sieci web platformy ASP.NET Core - [#4391](https://github.com/NuGet/Home/issues/4391)
 
-- Pakiet jest uruchamiany zbyt często — dotnet pakietu zakończy się niepowodzeniem z nim to zależność cykliczną w docelowym zależności wykres obejmujące docelowej "Pakiet" - [#4381](https://github.com/NuGet/Home/issues/4381)
+- Pakiet jest uruchamiany zbyt często — dotnet
+  - zależność cykliczną w docelowym zależności wykres obejmujące docelowej "Pakiet" — jest dotnetcore pakietu zakończy się niepowodzeniem z nim [#4381](https://github.com/NuGet/Home/issues/4381)
 
 - Pakiet jest uruchamiany zbyt często — pakiet NuGet Generowanie nie zawiera wszystkie konfiguracje - [#4380](https://github.com/NuGet/Home/issues/4380)
 
@@ -231,7 +224,8 @@ Obecnie nie istnieje obejście tego problemu.
 
 - NuGet 3.5.0 nie rozpakowywania `.targets` z pakietu - [#4171](https://github.com/NuGet/Home/issues/4171)
 
-- Pakiet DotNet nie obsługuje tytuł w `.csproj`  -  [#4150](https://github.com/NuGet/Home/issues/4150)
+- DotNet
+  - Pakiet dotnetcore nie obsługuje tytuł w `.csproj`  -  [#4150](https://github.com/NuGet/Home/issues/4150)
 
 - Pakiet instalacyjny powoduje okna dialogowego błędu w wersji VS2017 RC - [#4127](https://github.com/NuGet/Home/issues/4127)
 
@@ -239,7 +233,8 @@ Obecnie nie istnieje obejście tego problemu.
 
 - Poprawa ostrzeżenie nierozpoznane odwołanie - [#3955](https://github.com/NuGet/Home/issues/3955)
 
-- Pakiet DotNet — informacje o wersji — utraci ProjectReference [#3953](https://github.com/NuGet/Home/issues/3953)
+- DotNet
+  - Pakiet dotnetcore — informacje o wersji — utraci ProjectReference [#3953](https://github.com/NuGet/Home/issues/3953)
 
 - Tworzenie aplikacji platformy uniwersalnej systemu Windows tworzenia projektu i Odbuduj regresji całkowity czas — [#3873](https://github.com/NuGet/Home/issues/3873)
 
@@ -277,7 +272,8 @@ Obecnie nie istnieje obejście tego problemu.
 
 - Migracja zgłasza "Obiektu odwołania wyjątek" w NuGet.PackageManagement.VisualStudio.SolutionRestoreWorker - [#4067](https://github.com/NuGet/Home/issues/4067)
 
-- Pakiet DotNet powinien pakietu narzędzi z wersjami, które pakiet został utworzony przed - [#4063](https://github.com/NuGet/Home/issues/4063)
+- DotNet
+  - Pakiet dotnetcore powinien pakietu narzędzi z wersjami, które pakiet został utworzony przed - [#4063](https://github.com/NuGet/Home/issues/4063)
 
 - Nowe przywracania tła zapisuje milisekund pasek gdy trwa sekund, aby przywrócić - stanu [#4036](https://github.com/NuGet/Home/issues/4036)
 
@@ -287,7 +283,8 @@ Obecnie nie istnieje obejście tego problemu.
 
 - Nie można odnaleźć zainstalowanych pakietów w pakiecie menedżera interfejsu użytkownika — [#4015](https://github.com/NuGet/Home/issues/4015)
 
-- DotNet pakietu nie powiedzie się, gdy PackagePath jest pusty — [#3993](https://github.com/NuGet/Home/issues/3993)
+- DotNet
+  - dotnetcore pakietu nie powiedzie się, gdy PackagePath jest pusty — [#3993](https://github.com/NuGet/Home/issues/3993)
 
 - Przywróć zadań kończy się niepowodzeniem w scenariuszu użytkownik multi - [#3897](https://github.com/NuGet/Home/issues/3897)
 
@@ -301,9 +298,11 @@ Obecnie nie istnieje obejście tego problemu.
 
 - Zadanie pakietów umieszcza pliki zawartości zarówno w "zawartości /" i "pliki /"- [#3718](https://github.com/NuGet/Home/issues/3718)
 
-- DotNet dodatkiem Service Pack 3 bardzo tagu dzielenia - [#3701](https://github.com/NuGet/Home/issues/3701)
+- DotNet
+  - dotnetcore dodatkiem Service Pack 3 bardzo tagu dzielenia - [#3701](https://github.com/NuGet/Home/issues/3701)
 
-- Pakiet DotNet: pakowania projektów z pakietem odwołuje się do wyników w ostrzeżenie zduplikowane import - [#3665](https://github.com/NuGet/Home/issues/3665)
+- DotNet
+  - Pakiet dotnetcore: pakowania projektów z pakietem odwołuje się do wyników w ostrzeżenie zduplikowane import - [#3665](https://github.com/NuGet/Home/issues/3665)
 
 - Przywróć rejestrowania w programie VS nie zawsze pokazuj - [#3633](https://github.com/NuGet/Home/issues/3633)
 
@@ -331,11 +330,14 @@ Obecnie nie istnieje obejście tego problemu.
 
 - Sprawdzenia pod kątem problemów z spacji końcowych lub początkowych - PackTask [#3906](https://github.com/NuGet/Home/issues/3906)
 
-- Pakiet DotNet jest pakowania z obj nie bin - [#3880](https://github.com/NuGet/Home/issues/3880)
+- DotNet
+  - Pakiet dotnetcore jest pakowania z obj nie bin - [#3880](https://github.com/NuGet/Home/issues/3880)
 
-- Pakiet DotNet zawsze wydaje się, że wartość elementu ProjectReference w wersji 1.0.0 - [#3874](https://github.com/NuGet/Home/issues/3874)
+- DotNet
+  - Pakiet dotnetcore zawsze wydaje się, że wartość elementu ProjectReference w wersji 1.0.0 - [#3874](https://github.com/NuGet/Home/issues/3874)
 
-- Pakiet DotNet kończy się niepowodzeniem z odwołań do projektu i <TargetFramework>  -  [#3865](https://github.com/NuGet/Home/issues/3865)
+- DotNet
+  - Pakiet dotnetcore kończy się niepowodzeniem z odwołań do projektu i <TargetFramework>  -  [#3865](https://github.com/NuGet/Home/issues/3865)
 
 - LockRecursionException w ProjectSystemCache.TryGetProjectNameByShortName - [#3861](https://github.com/NuGet/Home/issues/3861)
 
@@ -386,8 +388,8 @@ Obecnie nie istnieje obejście tego problemu.
 - Odizolowanego wersji VSSDK w kompilacji rozwiązania NuGet.Clients - [#3890](https://github.com/NuGet/Home/issues/3890)
 
 ## <a name="links-to-github-issues-fixed-in-rtm"></a>Łącza do GitHub problemy rozwiązane w wersji RTM
-[Lista problemów 1](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0 RTM")  
-[Lista problemów 2](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0 RC4")  
-[Lista problemów 3](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0 RC3")  
-[Lista problemów 4](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0 RC2")  
-[Lista problemów 5](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0 RC")
+[Lista problemów 1](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0%20RTM")  
+[Lista problemów 2](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0%20RC4")  
+[Lista problemów 3](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0%20RC3")  
+[Lista problemów 4](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0%20RC2")  
+[Lista problemów 5](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0%20RC")

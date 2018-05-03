@@ -1,21 +1,17 @@
 ---
-title: Informacje o wersji RC NuGet 4.0 | Dokumentacja firmy Microsoft
+title: Informacje o wersji RC NuGet 4.0
+description: Informacje o wersji programu NuGet 4.0 RC tym znanych problemów, poprawki, dodatkowe funkcje i dcr.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
-ms.date: 11/17/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji programu NuGet 4.0 RC tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
-keywords: NuGet 4.0 informacje o wersji RC, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- kraigb
-ms.openlocfilehash: 9156f75edc9cf72cbb1d122f01d8a071ed56a124
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.author: karann
+manager: unnir
+ms.date: 02/03/2017
+ms.topic: conceptual
+ms.reviewer: ananguar
+ms.openlocfilehash: 8124b11d0489a2c72ffcfdde28e8528c1da1f677
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-40-rc-release-notes"></a>Informacje o wersji RC NuGet 4.0
 
@@ -39,7 +35,8 @@ ms.lasthandoff: 02/02/2018
 
 - Zmodyfikuj elementy docelowe NuGet do rejestrowania źródeł pakietów jako wysoki poziom szczegółowości zamiast normalny - [#3719](https://github.com/NuGet/Home/issues/3719)
 
-- DotNet dodatkiem Service Pack 3 powinna zawierać dokumentację XML domyślnie - [#3698](https://github.com/NuGet/Home/issues/3698)
+- DotNet
+  - dotnetcore dodatkiem Service Pack 3 powinna zawierać dokumentację XML domyślnie - [#3698](https://github.com/NuGet/Home/issues/3698)
 
 - Wsadowe aktualizacji nie powiedzie się z poziomu interfejsu użytkownika po wybraniu wszystkich źródła - i źródła bez pakietu zostanie najpierw [#3696](https://github.com/NuGet/Home/issues/3696)
 
@@ -59,7 +56,7 @@ ms.lasthandoff: 02/02/2018
 
 - System.Xml.XmlException: Nierozpoznany element główny w części Core Properties. Wiersz 2, pozycji 2. - [#2718](https://github.com/NuGet/Home/issues/2718)
 
-- `.nuspec`o znaczeniu zmienionym &lt; lub &gt; pól w tekście już kompilacje - [#2651](https://github.com/NuGet/Home/issues/2651)
+- `.nuspec` o znaczeniu zmienionym &lt; lub &gt; pól w tekście już kompilacje - [#2651](https://github.com/NuGet/Home/issues/2651)
 
 - Usuń nuget.exe nie monit o podanie poświadczeń (jest w trybie nieinterakcyjnym) - [#2626](https://github.com/NuGet/Home/issues/2626)
 
@@ -69,7 +66,8 @@ ms.lasthandoff: 02/02/2018
 
 - Visual Studio awarii próby po zmianie zaznaczenia w Menedżerze pakietów - [#2551](https://github.com/NuGet/Home/issues/2551)
 
-- Przywracanie DotNet wykonuje wyszukiwań identyfikator z uwzględnieniem wielkości liter na płaski listy repozytoriów lokalnych stosowania przestawne wersji — [#2516](https://github.com/NuGet/Home/issues/2516)
+- DotNet
+  - Przywracanie dotnetcore wykonuje wyszukiwań identyfikator z uwzględnieniem wielkości liter na płaski listy repozytoriów lokalnych stosowania przestawne wersji — [#2516](https://github.com/NuGet/Home/issues/2516)
 
 - Usuń nuget.exe został przerwany dla źródła danych w wersji 2 - [#2509](https://github.com/NuGet/Home/issues/2509)
 
@@ -155,7 +153,8 @@ ms.lasthandoff: 02/02/2018
 
 - Przywracanie do projektu z jednym TargetFramework musi nie warunku właściwości — [#3588](https://github.com/NuGet/Home/issues/3588)
 
-- DotNet restore3 foo.csproj należy wykonaj projectref zależności i przywrócić te zbyt. Podobnie jak kompilacji. - [#3577](https://github.com/NuGet/Home/issues/3577)
+- DotNet
+  - dotnetcore restore3 foo.csproj należy wykonaj projectref zależności i przywrócić te zbyt. Podobnie jak kompilacji. - [#3577](https://github.com/NuGet/Home/issues/3577)
 
 - "type": "platformy" zależności reprezentowane jako "type": "pakietu" w pliku blokady - [#2695](https://github.com/NuGet/Home/issues/2695)
 

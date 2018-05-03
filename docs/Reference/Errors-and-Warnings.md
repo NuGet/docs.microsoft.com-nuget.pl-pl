@@ -1,21 +1,12 @@
 ---
-title: NuGet błędy i ostrzeżenia odwołania | Dokumentacja firmy Microsoft
+title: NuGet błędy i ostrzeżenia odwołania
+description: Pełną dokumentację dla ostrzeżeń i błędów wystawiony na podstawie NuGet podczas różne operacje NuGet.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 03/06/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Pełną dokumentację dla ostrzeżeń i błędów wystawiony na podstawie NuGet podczas różne operacje NuGet.
-keywords: NuGet błędy, ostrzeżenia NuGet diagnostyki
-ms.reviewer:
-- anangaur
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
+ms.reviewer: anangaur
 f1_keywords:
 - NU1000
 - NU1001
@@ -53,11 +44,11 @@ f1_keywords:
 - NU3008
 - NU3018
 - NU3028
-ms.openlocfilehash: 020e31dc8646c43b86bcee555f1772e8b1db7761
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: dcff20e35adc0a3dbcc7bef482f81a937cf059c5
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
 

@@ -1,26 +1,17 @@
 ---
-title: Informacje o wersji RTM NuGet 4.4 | Dokumentacja firmy Microsoft
-author: karann-msft
-ms.author: karann-msft
-manager: unniravindranathan
-ms.date: 08/14/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
+title: Informacje o wersji 4.4 RTM NuGet
 description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr RTM 4.3 NuGet.
-keywords: NuGet 4.3 RTM informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-- anangaur
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 6c122dc3d9b576a2ea5f094746a830e5fab5637e
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+author: karann-msft
+ms.author: karann
+manager: unnir
+ms.date: 08/14/2017
+ms.topic: conceptual
+ms.reviewer: anangaur
+ms.openlocfilehash: 3e969274e69de03ca9851d31a627919dcc46bb7d
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-44-rtm-release-notes"></a>Informacje o wersji 4.4 RTM NuGet
 
@@ -118,7 +109,8 @@ Obecnie nie istnieje obejście tego problemu.
 
 - GetRestoreDotnetCliToolsTask ulegnie awarii, gdy brak metadanych wersji - [#5716](https://github.com/NuGet/Home/issues/5716)
 
-- Dodaj DotNet pakietu można wyczyścić puste wiersze z csproj - [#5697](https://github.com/NuGet/Home/issues/5697)
+- DotNet
+  - Dodaj dotnetcore pakietu można wyczyścić puste wiersze z csproj - [#5697](https://github.com/NuGet/Home/issues/5697)
 
 - Nazwy źródeł ustawień poświadczeń w pliku NuGet.Config jest uwzględniana wielkość liter - [#5695](https://github.com/NuGet/Home/issues/5695)
 
@@ -132,7 +124,8 @@ Obecnie nie istnieje obejście tego problemu.
 
 - Aktualizowanie pakietów w aktualizacji rozwiązania/instaluje we wszystkich projektach — [#5508](https://github.com/NuGet/Home/issues/5508)
 
-- Pakiet DotNet zachowuje się inaczej w zależności od vs TargetFramework TargetFrameworks - [#5281](https://github.com/NuGet/Home/issues/5281)
+- DotNet
+  - Pakiet dotnetcore zachowuje się inaczej w zależności od vs TargetFramework TargetFrameworks - [#5281](https://github.com/NuGet/Home/issues/5281)
 
 - Objąć biblioteki DLL narzędzia folderu throw ostrzeżenia - [#5020](https://github.com/NuGet/Home/issues/5020)
 

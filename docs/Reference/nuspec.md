@@ -1,26 +1,17 @@
 ---
-title: Odwołanie do pliku .nuspec programu NuGet | Dokumentacja firmy Microsoft
+title: Odwołanie do pliku .nuspec programu NuGet
+description: Plik .nuspec zawiera metadane pakietów używane podczas tworzenia pakietu i podaj informacje dla konsumentów pakietu.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 08/29/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Plik .nuspec zawiera metadane pakietów używane podczas tworzenia pakietu i podaj informacje dla konsumentów pakietu.
-keywords: Odwołanie nuspec, metadane pakietów NuGet, manifestu pakietu NuGet, nuspec schematu
-ms.reviewer:
-- anangaur
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 086826b47402bb5e7066c7a10b1e2ff246fd58ea
-ms.sourcegitcommit: ecb598c790d4154366bc92757ec7db1a51c34faf
+ms.reviewer: anangaur
+ms.openlocfilehash: c11b50aa1637c00f0f0e71a6e20ce5d435db402b
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -93,18 +84,18 @@ Te elementy mogą być widoczne w `<metadata>` elementu.
 
 | Element | Opis |
 | --- | --- |
-| **title** | Tytuł przyjaznych dla człowieka pakietu, zwykle używanych w wyświetla interfejsu użytkownika na nuget.org i Menedżera pakietów w programie Visual Studio. Jeśli nie zostanie określony, identyfikator pakietu jest używany. |
+| **Tytuł** | Tytuł przyjaznych dla człowieka pakietu, zwykle używanych w wyświetla interfejsu użytkownika na nuget.org i Menedżera pakietów w programie Visual Studio. Jeśli nie zostanie określony, identyfikator pakietu jest używany. |
 | **Właściciele** | Rozdzielana przecinkami lista twórców pakietu przy użyciu nazwy profilu na nuget.org. Jest to często jak w tej samej listy `authors`i jest ignorowane w przypadku przekazywania pakietu do nuget.org. Zobacz [Zarządzanie właścicieli pakietu na nuget.org](../create-packages/publish-a-package.md#managing-package-owners-on-nugetorg). |
 | **projectUrl** | Wyświetla adres URL strony głównej pakietu, często są wyświetlane w interfejsie użytkownika oraz nuget.org. |
 | **licenseUrl** | Adres URL wyświetlany w wyświetla interfejsu użytkownika, a także nuget.org licencji pakietu. |
-| **iconUrl** | Adres URL obrazu 64 x 64, przezroczystość tła ma być używana jako ikonę pakietu w wyświetlania interfejsu użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* , a nie adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, użyj plik raw, takie jak adres URL  *https://github.com/ \<username\>/\<repozytorium\>/raw/\<gałęzi\> / \<logo.png\>*. |
+| **iconUrl** | Adres URL obrazu 64 x 64, przezroczystość tła ma być używana jako ikonę pakietu w wyświetlania interfejsu użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* , a nie adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, użyj plik raw, takie jak adres URL  <em>https://github.com/ \<username\>/\<repozytorium\>/raw/\<gałęzi\> / \<logo.png\></em>. |
 | **requireLicenseAcceptance** | Wartość logiczna, określając, czy klient musi monitować o konsumenta, aby zaakceptować licencji pakietu przed zainstalowaniem pakietu. |
 | **DevelopmentDependency** | *(2.8 +)*  Wartość logiczna A, określając, czy pakiet jest oznaczone jako programowanie — tylko zależność, która zapobiega włączaniu jako zależności w innych pakietach pakietu. |
 | **Podsumowanie** | Krótki opis pakietu do wyświetlenia interfejsu użytkownika. Pominięcie skrócona wersja `description` jest używany. |
 | **releaseNotes** | *(w wersji 1.5 +)*  Opis zmian wprowadzonych w tej wersji pakietu, często używany w interfejsie użytkownika, takich jak **aktualizacje** kartę programu Visual Studio Menedżer pakietów zamiast Opis pakietu. |
 | **copyright** | *(w wersji 1.5 +)*  Copyright szczegóły pakietu. |
 | **Język** | Identyfikator ustawień regionalnych dla pakietu. Zobacz [tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md). |
-| **Tagi** | Rozdzieloną spacjami listę tagów i słów kluczowych, które opisują odnajdywania pakietu i pomocy pakietów za pomocą wyszukiwania i filtrowania. |
+| **Tagi**  | Rozdzieloną spacjami listę tagów i słów kluczowych, które opisują odnajdywania pakietu i pomocy pakietów za pomocą wyszukiwania i filtrowania. |
 | **serviceable** | *(3.3 +)*  Programu NuGet wewnętrznego użytku. |
 
 #### <a name="collection-elements"></a>Elementy kolekcji
@@ -183,8 +174,8 @@ I kompilacji zestawu których `AssemblyName` jest `LoggingLibrary` z `Release` k
 
 | Dołączania/wykluczania tag | Odpowiednie foldery elementu docelowego |
 | --- | --- |
-| Pliki | Zawartość  |
-| środowisko uruchomieniowe | Środowisko uruchomieniowe, zasobów i FrameworkAssemblies  |
+| Pliki | Zawartość |
+| środowisko uruchomieniowe | Środowisko uruchomieniowe, zasobów i FrameworkAssemblies |
 | Kompilacji | lib |
 | kompilacja | Kompilacja (właściwości programu MSBuild i elementy docelowe) |
 | natywne | natywne |

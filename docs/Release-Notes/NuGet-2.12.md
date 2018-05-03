@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 2.12 | Dokumentacja firmy Microsoft
+title: Informacje o wersji 2.12 NuGet
+description: Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 2.12 NuGet.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 2.12 NuGet."
-keywords: NuGet 2.12 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 69055ed174d36a34c588a6e677d1459bea8896b5
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 407360a1147cc3f1a6a23a9efccb17b745ca70d1
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-212-release-notes"></a>Informacje o wersji 2.12 NuGet
 

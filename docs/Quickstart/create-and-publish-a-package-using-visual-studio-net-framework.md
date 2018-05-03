@@ -1,24 +1,18 @@
 ---
-title: Przewodnik wprowadzający do tworzenia i publikowania pakietu NuGet .NET Framework za pomocą programu Visual Studio | Dokumentacja firmy Microsoft
+title: Przewodnik wprowadzający do tworzenia i publikowania pakietu NuGet .NET Framework za pomocą programu Visual Studio
+description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet programu .NET Framework za pomocą programu Visual Studio 2017 r.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 03/13/2018
-ms.topic: get-started-article
-ms.prod: nuget
-ms.technology: ''
-description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet programu .NET Framework za pomocą programu Visual Studio 2017 r.
-keywords: Pakiet NuGet tworzenie, publikowanie pakietu NuGet, samouczek NuGet programu Visual Studio Utwórz pakiet NuGet, pakiet programu msbuild
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 613cb6e8cf5762f354d69aa271c1e2f0d4851c97
-ms.sourcegitcommit: 718e6cb88e45fa07c85d653f216bf92eaaf81625
+ms.topic: quickstart
+ms.openlocfilehash: 01760034a121b1ff6f227e006415779898c4cf6d
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-and-publish-a-package-using-visual-studio-net-framework"></a>Tworzenie i publikowanie pakietu programu Visual Studio (.NET Framework)
+# <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework"></a>Szybki Start: Tworzenie i publikowanie pakietu programu Visual Studio (.NET Framework)
 
 Tworzenie pakietu NuGet w bibliotece klas programu .NET Framework obejmuje tworzenie biblioteki DLL w programie Visual Studio, a następnie tworzyć i publikować pakietu przy użyciu narzędzia wiersza polecenia nuget.exe.
 
@@ -140,11 +134,11 @@ Uruchomienie `nuget spec` tylko jeden raz, aby wygenerować manifest początkowe
 
 Po utworzeniu `.nupkg` pliku opublikowaniu go przy użyciu nuget.org `nuget.exe` przy użyciu klucza interfejsu API uzyskane z nuget.org. W przypadku nuget.org należy użyć `nuget.exe` 4.1.0 lub nowszej.
 
-[!INCLUDE[publish-notes](includes/publish-notes.md)]
+[!INCLUDE [publish-notes](includes/publish-notes.md)]
 
 ### <a name="acquire-your-api-key"></a>Uzyskanie klucza interfejsu API
 
-[!INCLUDE[publish-api-key](includes/publish-api-key.md)]
+[!INCLUDE [publish-api-key](includes/publish-api-key.md)]
 
 ### <a name="publish-with-nuget-push"></a>Publikowanie za pomocą wypychania nuget
 
@@ -169,16 +163,17 @@ Zobacz [wypychania nuget](../tools/cli-ref-push.md).
 
 ### <a name="publish-errors"></a>Publikowanie błędów
 
-[!INCLUDE[publish-errors](includes/publish-errors.md)]
+[!INCLUDE [publish-errors](includes/publish-errors.md)]
 
 ### <a name="manage-the-published-package"></a>Zarządzanie opublikowanego pakietu
 
-[!INCLUDE[publish-manage](includes/publish-manage.md)]
+[!INCLUDE [publish-manage](includes/publish-manage.md)]
 
 ## <a name="related-topics"></a>Tematy pokrewne
 
 - [Tworzenie pakietu](../create-packages/creating-a-package.md)
 - [Publikowanie pakietu](../create-packages/publish-a-package.md)
+- [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługuje wiele platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)

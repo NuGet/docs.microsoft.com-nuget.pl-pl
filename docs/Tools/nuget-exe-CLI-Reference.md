@@ -1,22 +1,16 @@
 ---
-title: Dokumentacja interfejsu wiersza polecenia (CLI) NuGet | Dokumentacja firmy Microsoft
+title: Odwołanie do NuGet interfejsu wiersza polecenia (CLI)
+description: Indeks wiersza polecenia dla nuget.exe interfejsu wiersza polecenia
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/23/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: 
-description: Indeks wiersza polecenia dla nuget.exe interfejsu wiersza polecenia
-keywords: "Indeks odwołań nuget.exe, interfejsu wiersza polecenia nuget.exe, nuget.exe interfejsu wiersza polecenia, polecenia nuget"
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 8b1ee17702f5a54a77dc2cd663e13729a9b4a39f
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.openlocfilehash: ed91a31505ab1de9447cdbeb87c8ad08f7ba56d8
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="nuget-cli-reference"></a>Odwołanie do interfejsu wiersza polecenia NuGet
 
@@ -28,7 +22,7 @@ Ta dokumentacja odzwierciedla najnowszą wersję interfejsu wiersza polecenia Nu
 
 ## <a name="installing-nugetexe"></a>Instalowanie nuget.exe
 
-[!INCLUDE[install-cli](../includes/install-cli.md)]
+[!INCLUDE [install-cli](../includes/install-cli.md)]
 
 > [!Tip]
 > Aby udostępnić interfejsu wiersza polecenia NuGet w konsoli Menedżera pakietów w programie Visual Studio, zobacz [przy użyciu nuget.exe interfejsu wiersza polecenia w konsoli](package-manager-console.md#using-the-nugetexe-cli-in-the-console).
@@ -51,8 +45,8 @@ Dostępne polecenia i zastosowanie do tworzenia pakietu, użycie pakietu i/lub p
 | [push](cli-ref-push.md) | Publikowanie | Wszystkie | Publikuje pakiet do źródła pakietu. |
 | [config](cli-ref-config.md) | Wszystkie | Wszystkie | Pobiera lub ustawia wartości konfiguracji NuGet. |
 | [help lub ?](cli-ref-help.md) | Wszystkie | Wszystkie | Wyświetla Pomoc informacje i pomoc dla polecenia. |
-| [locals](cli-ref-locals.md) | Zużycie | 3.3+ | Usuwa listy pakietów w różnych pamięci podręcznych lub w folderze pakietów globalnych lub identyfikuje te foldery. |
-| [restore](cli-ref-restore.md) | Zużycie | 2.7+ | Przywraca wszystkie pakiety odwołuje się format odwołania pakietu w użyciu. W przypadku uruchamiania na Mono, przywracanie pakietów przy użyciu formatu PackageReference nie jest obsługiwana. |
+| [locals](cli-ref-locals.md) | Zużycie | 3.3+ | Wyświetla lokalizacje *globalne pakiety*, *pamięci podręcznej http*, i *temp* folderów i czyści zawartość tych folderów. |
+| [restore](cli-ref-restore.md) | Zużycie | 2.7+ | Przywraca wszystkie pakiety odwołuje się formatu używanego pakietu zarządzania. W przypadku uruchamiania na Mono, przywracanie pakietów przy użyciu formatu PackageReference nie jest obsługiwana. |
 | [setapikey](cli-ref-setapikey.md) | Publikowanie i zużycia | Wszystkie | Zapisuje klucz interfejsu API dla danego pakietu źródła, kiedy źródła pakietu wymaga klucza dostępu. |
 | [spec](cli-ref-spec.md) | Tworzenie | Wszystkie | Generuje `.nuspec` plików przy użyciu tokenów, jeżeli generuje plik z projektu programu Visual Studio. |
 
