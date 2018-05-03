@@ -1,29 +1,17 @@
 ---
-title: Katalog, API NuGet w wersji 3 | Dokumentacja firmy Microsoft
-author:
-- joelverhagen
-- kraigb
-ms.author:
-- joelverhagen
-- kraigb
+title: Zasób katalogu, interfejsu API NuGet w wersji 3
+description: Katalog jest indeks wszystkich pakietów utworzony i usunięty w nuget.org.
+author: joelverhagen
+ms.author: jver
 manager: skofman
 ms.date: 10/30/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Katalog jest indeks wszystkich pakietów utworzony i usunięty w nuget.org.
-keywords: Interfejsu API w wersji 3 NuGet katalogu, nuget.org dziennika transakcji, replikacji nuget.org nuget.org klonowania tylko Dołącz rekord nuget.org
-ms.reviewer:
-- karann
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 61ed502eee498f5ad0a014e3338503f2855396a5
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.reviewer: kraigb
+ms.openlocfilehash: 464b252ca318a5bd3487c723dbf4c7062e4698a3
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="catalog"></a>Katalogu
 
@@ -175,7 +163,7 @@ Nazwa                    | Typ                       | Wymagane | Uwagi
 ----------------------- | -------------------------- | -------- | -----
 @type                   | ciąg lub tablica ciągów | Tak      | Typy elementów katalogu
 katalog: commitId        | string                     | Tak      | Identyfikator zatwierdzenia skojarzone z tym elementem katalogu
-catalog:commitTimeStamp | string                     | Tak      | Sygnatura czasowa zatwierdzania tego elementu katalogu
+katalog: commitTimeStamp | string                     | Tak      | Sygnatura czasowa zatwierdzania tego elementu katalogu
 identyfikator                      | string                     | Tak      | Identyfikator pakietu element katalogu
 Opublikowane               | string                     | Tak      | Data opublikowania elementu katalogu pakietu
 version                 | string                     | Tak      | Wersja pakietu elementu katalogu

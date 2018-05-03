@@ -1,25 +1,16 @@
 ---
-title: Tworzenie zlokalizowanego pakietu NuGet | Dokumentacja firmy Microsoft
+title: Tworzenie zlokalizowanych pakietów NuGet
+description: Szczegółowe informacje na dwa sposoby tworzenia zlokalizowane pakiety NuGet, w tym wszystkie zestawy w jednym pakiecie lub publikowanie osobnych zestawów.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Szczegółowe informacje na dwa sposoby tworzenia zlokalizowane pakiety NuGet, w tym wszystkie zestawy w jednym pakiecie lub publikowanie osobnych zestawów.
-keywords: Lokalizacja pakietu NuGet, zestawy satelickie NuGet, tworzenie zlokalizowanych pakietów NuGet konwencje lokalizacji
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 39ff6d300ec1a1f7941cad5953599f25f55117f4
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: 017957a349f3c53822225f885e32b7068f1c1c34
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="creating-localized-nuget-packages"></a>Tworzenie zlokalizowanych pakietów NuGet
 
@@ -129,7 +120,7 @@ Gdy są spełnione wszystkie następujące konwencje NuGet rozpozna pakietu jako
 Należy utworzyć dodatkowe zestawy satelickie w taki sam sposób dla każdego obsługiwanego języka. Na przykład sprawdź zestaw pakietów platformy ASP.NET MVC:
 
 - [Microsoft.AspNet.Mvc](http://nuget.org/packages/Microsoft.AspNet.Mvc) (podstawowy w języku angielskim)
-- [Microsoft.AspNet.Mvc.de](http://nuget.org/packages/Microsoft.AspNet.Mvc.de) (German)
+- [Microsoft.AspNet.Mvc.de](http://nuget.org/packages/Microsoft.AspNet.Mvc.de) (wersja niemiecka)
 - [Microsoft.AspNet.Mvc.ja](http://nuget.org/packages/Microsoft.AspNet.Mvc.ja) (Japanese)
 - [Microsoft.AspNet.Mvc.zh-Hans](http://nuget.org/packages/Microsoft.AspNet.Mvc.zh-Hans) (Chinese (Simplified))
 - [Microsoft.AspNet.Mvc.zh-Hant](http://nuget.org/packages/Microsoft.AspNet.Mvc.zh-Hant) (Chinese (Traditional))

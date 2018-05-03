@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 3.1 | Dokumentacja firmy Microsoft
+title: Informacje o wersji 3.1 NuGet
+description: Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.1 NuGet.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.1 NuGet."
-keywords: NuGet 3.1 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: a7aa43b8701b3bbef8f6ebce9a5d636ee1bc6abe
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: d14455da6f8af4db92f7105ea1b0e88eb9e71600
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-31-release-notes"></a>Informacje o wersji 3.1 NuGet
 
@@ -32,7 +26,7 @@ Problemy i funkcji w tej wersji są oznaczone w serwisie GitHub z [punkt kontrol
 
 ### <a name="new-features"></a>Nowe funkcje
 
-* `project.json`Obsługa pomocy technicznej systemu Windows i programu ASP.NET 5
+* `project.json` Obsługa pomocy technicznej systemu Windows i programu ASP.NET 5
 * Instalacja pakietu przechodnie
 
 Opis i definicji pojęć dotyczących tych funkcji można znaleźć w innym miejscu, w dokumentacji.
@@ -45,10 +39,10 @@ Następujące funkcje nie są już dostępne dla programu Visual Studio 2015:
 
 Następujące funkcje nie są już dostępne dla programu Visual Studio 2015 i projekty, które używają `project.json` specyfikacji
 
-* `install.ps1`i `uninstall.ps1` -te skrypty zostaną zignorowane podczas instalacji pakietu, przywracania, aktualizacji i odinstalowywania
+* `install.ps1` i `uninstall.ps1` -te skrypty zostaną zignorowane podczas instalacji pakietu, przywracania, aktualizacji i odinstalowywania
 * Transformacje konfiguracji zostaną zignorowane.
 * Zawartość będzie wykonywane, ale nie został skopiowany do projektu.
-    * Zespół pracuje nad ponownie zaimplementować tę funkcję, wykonaj dyskusji i postępu w: [https://github.com/NuGet/Home/issues/627](https://github.com/NuGet/Home/issues/627)
+    * Zespół pracuje nad ponownie zaimplementować tę funkcję, wykonaj dyskusji i postępu na: [https://github.com/NuGet/Home/issues/627](https://github.com/NuGet/Home/issues/627)
 
 
 ### <a name="known-issues"></a>Znane problemy
@@ -59,7 +53,7 @@ Wystąpiły znane problemy występujące w dostarczone w tej wersji.
 
 ## <a name="nuget-command-line"></a>NuGet wiersza polecenia
 
-Plik wykonywalny wiersza polecenia NuGet został zaktualizowany i przeniesione do nowej lokalizacji dystrybucyjnego historię wersji nuget.exe mogą w dalszym ciągu udostępnione.  Możesz pobrać dla systemu operacyjnego Windows w wersji 3.1 beta nuget.exe: [http://dist.nuget.org/win-x86-commandline/v3.1.0-beta/nuget.exe](http://dist.nuget.org/win-x86-commandline/v3.1.0-beta/nuget.exe)
+Plik wykonywalny wiersza polecenia NuGet został zaktualizowany i przeniesione do nowej lokalizacji dystrybucyjnego historię wersji nuget.exe mogą w dalszym ciągu udostępnione.  Można pobrać wersji 3.1 beta nuget.exe dla systemu Windows na: [http://dist.nuget.org/win-x86-commandline/v3.1.0-beta/nuget.exe](http://dist.nuget.org/win-x86-commandline/v3.1.0-beta/nuget.exe)
 
 Nową lokalizację dystrybucyjnego znajduje się na tym hoście dist.nuget.org ze strukturą folder znajdujący się tego szablonu:
 
@@ -68,7 +62,7 @@ Nową lokalizację dystrybucyjnego znajduje się na tym hoście dist.nuget.org z
 ### <a name="new-features"></a>Nowe funkcje
 
 * nuget.exe można przywrócić i zainstalować pakiety w projektach, które używają `project.json` pliku.
-* łączyć się i korzystać z protokołu NuGet w wersji 3 w nuget.exe: [https://api.nuget.org/v3/index.json](https://api.nuget.org/v3/index.json)
+* nuget.exe łączyć się i korzystać z protokołu NuGet w wersji 3 w: [https://api.nuget.org/v3/index.json](https://api.nuget.org/v3/index.json)
 
 ## <a name="known-issues"></a>Znane problemy ##
 

@@ -1,25 +1,16 @@
 ---
-title: Interfejs wiersza polecenia NuGet Dodaj polecenie | Dokumentacja firmy Microsoft
+title: Interfejs wiersza polecenia NuGet Dodaj — polecenie
+description: Dodaj odwołanie do nuget.exe — polecenie
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Dodaj odwołanie do nuget.exe — polecenie
-keywords: Dodaj odwołanie nuget, należy dodać polecenie pakietu
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 48e093cbae2cecb1652e17a9b26920107aa8aef7
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 4a4201a321ffe0f7fb61f4e98012a1a2d7d8fda4
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="add-command-nuget-cli"></a>Dodawanie polecenia (NuGet CLI)
 

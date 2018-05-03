@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 2.8 | Dokumentacja firmy Microsoft
+title: Informacje o wersji 2,8 NuGet
+description: Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 2.8 NuGet.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 2.8 NuGet."
-keywords: NuGet 2.8 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 39b885adc9e23eb815f65639875c4a4c27d61a4c
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 9f472f1370bfedaf04ebe889c0da01155b8aec22
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="nuget-28-release-notes"></a>Informacje o wersji 2,8 NuGet
 
@@ -28,21 +22,21 @@ NuGet 2.8 został wydany 29 stycznia 2014 roku.
 
 1. [Llewellyn Pritchard](https://www.codeplex.com/site/users/view/leppie) ([@leppie](https://twitter.com/leppie))
     - [#3466](https://nuget.codeplex.com/workitem/3466) — podczas pakowania pakietów, weryfikowanie identyfikator zależności pakietów.
-1. [Maarten Balliauw](https://www.codeplex.com/site/users/view/maartenba) ([@maartenballiauw](https://twitter.com/maartenballiauw))
+2. [Maarten Balliauw](https://www.codeplex.com/site/users/view/maartenba) ([@maartenballiauw](https://twitter.com/maartenballiauw))
     - [#2379](https://nuget.codeplex.com/workitem/2379) -usuń sufiks $metadata, gdy persistening podawania poświadczeń.
-1. [Filip De Vos](https://www.codeplex.com/site/users/view/FilipDeVos) ([@foxtricks](https://twitter.com/foxtricks))
+3. [Filip De Vos](https://www.codeplex.com/site/users/view/FilipDeVos) ([@foxtricks](https://twitter.com/foxtricks))
     - [#3538](http://nuget.codeplex.com/workitem/3538) — obsługa określania pliku projektu dla polecenia update nuget.exe.
-1. [Juan Gonzales](https://www.codeplex.com/site/users/view/jjgonzalez)
+4. [Juan Gonzales](https://www.codeplex.com/site/users/view/jjgonzalez)
     - [#3536](http://nuget.codeplex.com/workitem/3536) -tokeny zamiany nie zostały przekazane z - IncludeReferencedProjects.
-1. [Dominik Poole](https://www.codeplex.com/site/users/view/Sarkie) ([@Sarkie_Dave](https://twitter.com/Sarkie_Dave))
+5. [Dominik Poole](https://www.codeplex.com/site/users/view/Sarkie) ([@Sarkie_Dave](https://twitter.com/Sarkie_Dave))
     - [#3677](http://nuget.codeplex.com/workitem/3677) -Usuń nuget.push zgłaszanie OutOfMemoryException, gdy wypychanie duży pakiet.
-1. [Wouter Ouwens](https://www.codeplex.com/site/users/view/Despotes)
+6. [Wouter Ouwens](https://www.codeplex.com/site/users/view/Despotes)
     - [#3666](http://nuget.codeplex.com/workitem/3666) -ścieżki docelowej niepoprawny poprawka gdy projekt odwołuje się do innego projektu interfejsu wiersza polecenia/C++.
-1. [ADAM Ralph](http://www.codeplex.com/site/users/view/adamralph) ([@adamralph](https://twitter.com/adamralph))
+7. [ADAM Ralph](http://www.codeplex.com/site/users/view/adamralph) ([@adamralph](https://twitter.com/adamralph))
     - [#3639](https://nuget.codeplex.com/workitem/3639) — Zezwalaj na pakiety instalowanego jako zależności programowanie domyślnie
-1. [Dominik Fowler](https://www.codeplex.com/site/users/view/dfowler) ([@davidfowl](https://twitter.com/davidfowl))
+8. [Dominik Fowler](https://www.codeplex.com/site/users/view/dfowler) ([@davidfowl](https://twitter.com/davidfowl))
     - [#3717](https://nuget.codeplex.com/workitem/3717) -Usuń niejawne uaktualnienia do najnowszej wersji poprawki
-1. [Gregory Vandenbrouck](https://www.codeplex.com/site/users/view/vdbg)
+9. [Gregory Vandenbrouck](https://www.codeplex.com/site/users/view/vdbg)
     - Kilka usterek poprawki i poprawki dotyczące NuGet.Server, polecenie dublowanie nuget.exe i inne.
     - Praca ta została wykonana przez kilka miesięcy, z Gregory współpracę nad chronometrażu prawo do integracji główny 2.8.
 

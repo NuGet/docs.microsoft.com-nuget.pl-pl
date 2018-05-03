@@ -1,25 +1,16 @@
 ---
-title: Informacje o wersji NuGet 3.0 w wersji zapoznawczej | Dokumentacja firmy Microsoft
-author: karann-msft
-ms.author: karann-msft
-manager: ghogen
-ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
+title: Informacje o wersji NuGet 3.0 w wersji zapoznawczej
 description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.0 NuGet w wersji zapoznawczej.
-keywords: NuGet 3.0 w wersji zapoznawczej informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: f9f979e041ea6c7ba2f61603b1ea5848edc28f0c
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+author: karann-msft
+ms.author: karann
+manager: unnir
+ms.date: 11/11/2016
+ms.topic: conceptual
+ms.openlocfilehash: 67c217e52d975ed8f6889cd69f9b7e0d52b3a119
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-30-preview-release-notes"></a>Informacje o wersji NuGet 3.0 w wersji zapoznawczej
 

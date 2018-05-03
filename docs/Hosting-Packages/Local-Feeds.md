@@ -1,22 +1,16 @@
 ---
-title: "Konfigurowanie lokalnych źródeł danych NuGet | Dokumentacja firmy Microsoft"
+title: Konfigurowanie lokalnych źródeł danych NuGet
+description: Jak utworzyć lokalnego źródła danych za pomocą folderów w sieci lokalnej pakietów NuGet
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 12/06/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Jak utworzyć lokalnego źródła danych za pomocą folderów w sieci lokalnej pakietów NuGet"
-keywords: "NuGet źródła danych, Galeria NuGet, pakiet lokalny źródła danych"
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 0b8633db78b19fecddeb057a9f287ef971aef27a
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 4710a6fd13bdd89492e2a7246d1e15f6c01a5368
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="local-feeds"></a>Lokalne źródła danych
 

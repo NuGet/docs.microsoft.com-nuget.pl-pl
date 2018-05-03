@@ -1,31 +1,25 @@
 ---
-title: Interfejs wiersza polecenia NuGet Sprawdź polecenie | Dokumentacja firmy Microsoft
+title: Sprawdź NuGet interfejsu wiersza polecenia, polecenie
+description: Dokumentacja dotycząca nuget.exe Sprawdź polecenie
 author: dtivel
 ms.author: dtivel
 manager: doronm
 ms.date: 03/06/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Dokumentacja dotycząca nuget.exe Sprawdź polecenie
-keywords: nuget zweryfikować odwołania, sprawdź, polecenie
-ms.reviewer:
-- karann
-- rmpablos
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 4423e491e0ab5dc1e13982440db42bc9b0e85c38
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.reviewer: rmpablos
+ms.openlocfilehash: c2c31b71358bc50a1fb9aab8905c279cd1235b07
+ms.sourcegitcommit: 5fcd6d664749aa720359104ef7a66d38aeecadc2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/27/2018
 ---
 # <a name="verify-command-nuget-cli"></a>Sprawdź polecenia (NuGet CLI)
 
 **Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 4.6 +
 
 Sprawdza, czy pakiet.
+
+Weryfikacja podpisanych pakietów nie jest jeszcze obsługiwana w .NET Core, w obszarze Mono lub na różnych platformach z systemem innym niż Windows.
 
 ## <a name="usage"></a>Użycie
 

@@ -1,25 +1,16 @@
 ---
-title: Rozpoznawanie zależności pakietu NuGet | Dokumentacja firmy Microsoft
+title: Rozpoznawanie zależności pakietu NuGet
+description: Szczegółowe informacje na temat procesu za pomocą którego rozwiązany i zainstalowane w obu NuGet zależności pakietu NuGet 2.x i NuGet 3.x+.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 08/14/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Szczegółowe informacje na temat procesu za pomocą którego rozwiązany i zainstalowane w obu NuGet zależności pakietu NuGet 2.x i NuGet 3.x+.
-keywords: Zależności pakietów NuGet, przechowywanie wersji NuGet, wersje zależności, wykres wersji, rozdzielczość wersji, przechodnie przywracania
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: d387acd369c88a64abaa2cb94a913fe211df8da1
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: bfe6e348fa9a8f5df7f28509098260128920c528
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="how-nuget-resolves-package-dependencies"></a>Jak NuGet jest rozpoznawany jako zależności pakietów
 

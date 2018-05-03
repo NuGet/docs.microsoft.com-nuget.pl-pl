@@ -1,22 +1,16 @@
 ---
-title: "Dostawcy poświadczeń nuget.exe | Dokumentacja firmy Microsoft"
+title: Dostawcy poświadczeń nuget.exe
+description: nuget.exe dostawcy poświadczeń uwierzytelniania za pomocą źródło danych i są zaimplementowane jako zgodne z konwencjami określone elementy wykonywalne wiersza polecenia.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 12/12/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "nuget.exe dostawcy poświadczeń uwierzytelniania za pomocą źródło danych i są zaimplementowane jako zgodne z konwencjami określone elementy wykonywalne wiersza polecenia."
-keywords: "dostawcy poświadczeń nuget.exe, Dostawca poświadczeń interfejsu API, uwierzytelniania za pomocą kanału informacyjnego, uwierzytelniania za pomocą galerii"
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 88ce0106ad4e628ba8120f94b7951c7746ab67f3
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 494ea83007895e973585395e0cfe05b7226c4c3e
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="authenticating-feeds-with-nugetexe-credential-providers"></a>Źródła danych za pomocą nuget.exe dostawcy poświadczeń uwierzytelniania
 

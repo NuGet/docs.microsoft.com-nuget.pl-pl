@@ -1,22 +1,16 @@
 ---
-title: "Usunięcie pakietów NuGet z nuget.org | Dokumentacja firmy Microsoft"
+title: Usunięcie pakietów NuGet z nuget.org
+description: Zasady unlisting pakietów z nuget.org; trwałe usuwanie nie jest obsługiwany z wyjątkiem na pakiety narusza inne zasady.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Zasady unlisting pakietów z nuget.org; trwałe usuwanie nie jest obsługiwany z wyjątkiem na pakiety narusza inne zasady."
-keywords: "Usuwanie pakietu NuGet, pakiet NuGet unlisting, zabronione zastosowania pakietów"
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 6169e46e55176757bc1ad471a3d80885cb50e403
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: bea4f1589f184d38da27e5d82c3ce17a183fbdd1
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="deleting-packages"></a>Usunięcie pakietów
 

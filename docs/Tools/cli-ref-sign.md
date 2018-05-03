@@ -1,25 +1,17 @@
 ---
-title: Polecenie logowania interfejsu wiersza polecenia NuGet | Dokumentacja firmy Microsoft
+title: Polecenie znak NuGet interfejsu wiersza polecenia
+description: Informacje dotyczące polecenia znak nuget.exe
 author: dtivel
 ms.author: dtivel
 manager: doronm
 ms.date: 03/06/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Informacje dotyczące polecenia znak nuget.exe
-keywords: Odwołanie do logowania nuget, polecenie logowania
-ms.reviewer:
-- karann
-- rmpablos
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 9c83e5abae0e70cdc62917861c1febfce4f792c7
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.reviewer: rmpablos
+ms.openlocfilehash: 7e84d794b802cfd69c785f720280fd5c022a46f6
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="sign-command-nuget-cli"></a>znak polecenia (NuGet CLI)
 
@@ -27,7 +19,7 @@ ms.lasthandoff: 03/28/2018
 
 Rejestruje wszystkie pakiety dopasowania pierwszy argument przy użyciu certyfikatu. Z plikiem lub zainstalowanego w magazynie certyfikatów, podając nazwę podmiotu i odcisk palca certyfikatu można uzyskać certyfikatu z kluczem prywatnym.
 
-Podpisywanie pakietu nie jest jeszcze obsługiwana w obszarze Mono lub na różnych platformach z systemem innym niż Windows.
+Podpisywanie pakietu nie jest jeszcze obsługiwana w .NET Core, w obszarze Mono lub na różnych platformach z systemem innym niż Windows.
 
 ## <a name="usage"></a>Użycie
 
@@ -49,7 +41,7 @@ gdzie `<package(s)>` jest co najmniej jeden `.nupkg` plików.
 | CertificateSubjectName | Określa nazwę podmiotu certyfikatu używanego do wyszukiwania lokalnego magazynu certyfikatów dla certyfikatu.  Wyszukiwanie jest porównania bez uwzględniania wielkości liter ciągów za pomocą podana wartość, która znajdzie wszystkie certyfikaty z nazwą podmiotu, zawierającą ten ciąg, niezależnie od innych wartości podmiotu.  Magazyn certyfikatów można określić opcji - CertificateStoreName i - CertificateStoreLocation. |
 | ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
 | ForceEnglishOutput | Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
-| HashAlgorithm | Algorytm wyznaczania wartości skrótu, który ma być używany do podpisywania pakietu. Wartość domyślna to SHA256. |
+| Algorytm skrótu | Algorytm wyznaczania wartości skrótu, który ma być używany do podpisywania pakietu. Wartość domyślna to SHA256. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
 | OutputDirectory | Określa katalog, w którym ma zostać zapisany pakiet podpisem. Domyślnie oryginalnego pakietu jest zastępowany przez pakiet podpisem. |

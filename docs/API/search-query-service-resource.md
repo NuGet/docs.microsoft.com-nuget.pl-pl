@@ -1,26 +1,17 @@
 ---
-title: Wyszukiwanie, NuGet interfejsu API | Dokumentacja firmy Microsoft
-author:
-- joelverhagen
-- kraigb
-ms.author:
-- joelverhagen
-- kraigb
+title: Wyszukiwanie, NuGet interfejsu API
+description: Usługa wyszukiwania umożliwia klientom w zapytaniu dla pakietów według słów kluczowych i do wyników filtrowania dla niektórych pól pakietu.
+author: joelverhagen
+ms.author: jver
 manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: 
-description: "Usługa wyszukiwania umożliwia klientom w zapytaniu dla pakietów według słów kluczowych i do wyników filtrowania dla niektórych pól pakietu."
-keywords: "Interfejs API wyszukiwania NuGet, NuGet odnajdywanie pakietów, interfejs API do pakietów NuGet zapytania, aby przeglądać pakiety NuGet"
-ms.reviewer:
-- karann
-- unniravindranathan
-ms.openlocfilehash: 612ce0f46b654335a29bb36a64b27525994162ed
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.reviewer: kraigb
+ms.openlocfilehash: 76600ee916305ee01ddfb675c83c184e980c5a42
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="search"></a>Wyszukaj
 
@@ -30,11 +21,11 @@ Istnieje możliwość wyszukiwania pakiety, które są dostępne w źródle paki
 
 Następujące `@type` są używane wartości:
 
-@typewartość                   | Uwagi
+@type Wartość                   | Uwagi
 ----------------------------- | -----
 SearchQueryService            | Początkowa wersja
-SearchQueryService/3.0.0-beta | Alias`SearchQueryService`
-SearchQueryService/3.0.0-rc   | Alias`SearchQueryService`
+SearchQueryService/3.0.0-beta | Alias `SearchQueryService`
+SearchQueryService/3.0.0-rc   | Alias `SearchQueryService`
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
@@ -59,7 +50,7 @@ Nazwa        | W     | Typ    | Wymagane | Uwagi
 q           | Adres URL    | string  | Brak       | Wyszukiwane terminy używane do filtrowania pakietów
 Pomiń        | Adres URL    | integer | Brak       | Liczba wyników, aby pominąć dla podział na strony
 podejmij        | Adres URL    | integer | Brak       | Liczba wyników do zwrócenia do podział na strony
-wydanie wstępne  | Adres URL    | wartość logiczna | Brak       | `true`lub `false` określającą, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
+wydanie wstępne  | Adres URL    | wartość logiczna | Brak       | `true` lub `false` określającą, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
 semVerLevel | Adres URL    | string  | Brak       | Ciąg wersji programu SemVer 1.0.0 
 
 Zapytania wyszukiwania `q` jest analizowana w taki sposób, który jest zdefiniowany przez implementację serwera. obsługuje nuget.org podstawowe filtrowanie [wiele pól](../consume-packages/finding-and-choosing-packages.md#search-syntax). Jeśli nie `q` została podana, wszystkie pakiety powinny być zwracane w granicach powodowanego przez skip i take. Dzięki temu karta "Przeglądaj" w środowisku NuGet programu Visual Studio.
@@ -82,7 +73,7 @@ Główny obiekt JSON ma następujące właściwości:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-totalHits | integer          | Tak      | Całkowita liczba dopasowania, bez uwzględnienia `skip` i`take`
+totalHits | integer          | Tak      | Całkowita liczba dopasowania, bez uwzględnienia `skip` i `take`
 dane      | Tablica obiektów | Tak      | Wyniki wyszukiwania są dopasowane wg żądania
 
 ### <a name="search-result"></a>wynik wyszukiwania

@@ -1,25 +1,16 @@
 ---
-title: Zainstaluj pakiet NuGet w programie PowerShell | Dokumentacja firmy Microsoft
+title: Zainstaluj pakiet NuGet w programie PowerShell
+description: Odwołanie do polecenia programu PowerShell Install-Package w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 06/01/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Odwołanie do polecenia programu PowerShell Install-Package w konsoli Menedżera pakietów NuGet w programie Visual Studio.
-keywords: NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, Install-Package
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 99c965c2f8c12c7a59ee48e270172b719c1482ea
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 5adfbcae0affcaa402f7981c12e108490d546511
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="install-package-package-manager-console-in-visual-studio"></a>Install-Package (Konsola Menedżera pakietów w programie Visual Studio)
 
@@ -53,7 +44,7 @@ Install-Package Microsoft.AspNet.MVC -Version 5.0.0.
 | IncludePrerelease | Uwzględnia pakiety wersji wstępnej instalacji. W przypadku jego pominięcia są traktowane jako tylko pakiety w wersji stabilnej. |
 | FileConflictAction | Akcja wykonywana po otrzymaniu monitu, aby zastąpić, lub przycisk Ignoruj istniejące pliki odwołuje się projekt. Możliwe wartości to *zastępowania, Ignoruj, brak OverwriteAll*, i *(3.0 +)* *IgnoreAll*. |
 | DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższa* (domyślnie): Najniższa wersja</li><li>*HighestPatch*: wersja z najniższą głównych, najniższy niewielkie, najwyższy poziom poprawki</li><li>*HighestMinor*: wersja z najniższą głównych, najwyższy niewielkie, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie pakiet aktualizacji bez parametrów): najnowsza wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../reference/nuget-config-file.md#config-section) w `Nuget.Config` pliku. |
-| WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez rzeczywistego wykonania instalacji. |
+| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez rzeczywistego wykonania instalacji. |
 
 Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
 

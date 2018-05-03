@@ -1,22 +1,16 @@
 ---
-title: "Dostawcy poświadczeń NuGet dla programu Visual Studio | Dokumentacja firmy Microsoft"
+title: Dostawcy poświadczeń NuGet dla programu Visual Studio
+description: NuGet dostawcy poświadczeń uwierzytelniania za pomocą źródła zaimplementowanie interfejsu IVsCredentialProvider rozszerzenia programu Visual Studio.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/09/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "NuGet dostawcy poświadczeń uwierzytelniania za pomocą źródła zaimplementowanie interfejsu IVsCredentialProvider rozszerzenia programu Visual Studio."
-keywords: "Dostawcy poświadczeń NuGet, uwierzytelniania za pomocą kanału informacyjnego, uwierzytelniania za pomocą galerii NuGet rozszerzenie programu visual studio"
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: ff143526c814c69f1a133a62c1ad1a8f5fbedd60
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 740df87b0d663aac482d888e916662528ce27030
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="authenticating-feeds-in-visual-studio-with-nuget-credential-providers"></a>Źródła danych w programie Visual Studio za pomocą NuGet dostawcy poświadczeń uwierzytelniania
 

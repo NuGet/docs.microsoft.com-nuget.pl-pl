@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 3.4 | Dokumentacja firmy Microsoft
+title: NuGet 3.4 informacje o wersji
+description: Informacje o wersji programu NuGet 3.4, w tym znanych problemów, poprawki, dodatkowe funkcje i dcr.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji programu NuGet 3.4, w tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
-keywords: NuGet 3.4 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 515fb888aca2a8eb138c8fea1fb5b3f5a8f4e275
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 3f2a945b628022bdcc6e69a7a4b1be6c53b65626
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-34-release-notes"></a>NuGet 3.4 informacje o wersji
 
@@ -24,9 +18,9 @@ ms.lasthandoff: 02/02/2018
 
 NuGet 3.4 jako część programu Visual Studio 2015 Update 2 i Visual Studio 15 Preview wersji wydanej 30 marca 2016 i został skompilowany z kilka rozwiązań w umysły:
 
-*  Obsługa Platform
-*  Ulepszenia wydajności
-*  Drobne ulepszenia interfejsu użytkownika
+* Obsługa Platform
+* Ulepszenia wydajności
+* Drobne ulepszenia interfejsu użytkownika
 
 Następujące funkcje zostały wcześniej dodane w wersji RC i zostały zaktualizowane lub zakończona w wersji 3.4:
 
@@ -72,4 +66,4 @@ Niestandardowe repozytoria NuGet, które przekierowują żądania do alternatywn
 * **Obejście problemu:** Aby obejść ten problem, należy skonfigurować identyfikator URI repozytorium pakietów w ustawieniach, aby wskazać lokalizację serwera po przekierowaniu.
 Aby uzyskać więcej informacji, zobacz [żądania ściągnięcia GitHub #387](https://github.com/NuGet/NuGet.Client/pull/387).
 
-W dalszym ciągu do śledzenia problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+W dalszym ciągu śledzenie problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

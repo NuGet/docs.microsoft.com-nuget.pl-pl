@@ -1,25 +1,16 @@
 ---
-title: Przy użyciu NuGet.Server do hostowania NuGet źródeł | Dokumentacja firmy Microsoft
+title: Przy użyciu NuGet.Server do hostowania NuGet źródeł danych
+description: Jak tworzyć i obsługiwać pakietu NuGet źródła danych na każdym serwerze z programem IIS za pomocą NuGet.Server, udostępniając pakiety za pośrednictwem protokołu HTTP i OData.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 03/13/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Jak tworzyć i obsługiwać pakietu NuGet źródła danych na każdym serwerze z programem IIS za pomocą NuGet.Server, udostępniając pakiety za pośrednictwem protokołu HTTP i OData.
-keywords: NuGet źródła danych, Galeria NuGet pakietu zdalnego źródła danych, NuGet.Server
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: a8996fed537e5745a1dbeb1c3d12b2a0670e744d
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: 55501eedf6c5fdf054a602536ee8c03e7048d5d5
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nugetserver"></a>NuGet.Server
 

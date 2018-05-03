@@ -1,25 +1,16 @@
 ---
-title: Polecenie wypychania interfejsu wiersza polecenia NuGet | Dokumentacja firmy Microsoft
+title: Polecenie wypychania NuGet interfejsu wiersza polecenia
+description: Informacje dotyczące polecenia wypychania nuget.exe
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Informacje dotyczące polecenia wypychania nuget.exe
-keywords: Odwołanie do wypychania nuget, polecenie wypychania
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 832f7aeb2b485acbb83e5213916fc3423df961ab
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 959b539fc20bc47f38946cb660375a6652582a0d
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="push-command-nuget-cli"></a>polecenie wypychania (NuGet CLI)
 

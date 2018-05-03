@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 3.2.1 | Dokumentacja firmy Microsoft
+title: Informacje o wersji NuGet 3.2.1
+description: Informacje o wersji programu NuGet 3.2.1 tym — znane problemy, poprawki, dodatkowe funkcje i dcr.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji programu NuGet 3.2.1 tym — znane problemy, poprawki, dodatkowe funkcje i dcr."
-keywords: NuGet 3.2.1 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 7c9c2457c33eb3630f632c98bf0cf96703c3a548
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 039fabaaacfdffd76fa88ff8183548e97cd4719b
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-321-release-notes"></a>Informacje o wersji NuGet 3.2.1
 
@@ -41,4 +35,4 @@ Pełną listę problemów skierowana dla rozszerzenia wiersza polecenia i Visual
 
 ## <a name="known-issues"></a>Znane problemy
 
-W dalszym ciągu do śledzenia problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+W dalszym ciągu śledzenie problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji Beta NuGet 3.5 | Dokumentacja firmy Microsoft
+title: Informacje o wersji 3.5 Beta NuGet
+description: Informacje o wersji programu NuGet 3.5 tym znanych problemów, poprawki, dodatkowe funkcje i dcr.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji programu NuGet 3.5 tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
-keywords: NuGet 3.5 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: ee78ceb2ff032c05c0f8ef9a6623b94cc56ee0a9
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: cdb540229cae0e6e952ac2a0c00c8801ccbbb28d
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-35-release-notes"></a>Informacje o wersji 3.5 NuGet
 
@@ -80,7 +74,7 @@ ms.lasthandoff: 02/02/2018
 
 * Żadne informacje nie podano, gdy wywoływanie nuget.exe *.csproj aktualizacji podczas projektu nie ma `packages.config`  -  [#1496](https://github.com/NuGet/Home/issues/1496)
 
-* `packages.config`Przywracanie nie ponów 5xx kodów stanu ze źródeł V2 - [#1217](https://github.com/NuGet/Home/issues/1217)
+* `packages.config` Przywracanie nie ponów 5xx kodów stanu ze źródeł V2 - [#1217](https://github.com/NuGet/Home/issues/1217)
 
 * Dwie kropki w pliku src w `.nuspec` nie działa — [#2947](https://github.com/NuGet/Home/issues/2947)
 
@@ -144,11 +138,11 @@ ms.lasthandoff: 02/02/2018
 
 * Nuget Install wszystkie źródła pakietów, ale brakuje 1 źródła pakietu nie powiodło się — [#2322](https://github.com/NuGet/Home/issues/2322)
 
-* [PerfWatson] UIDelay: nuget.packagemanagement.visualstudio.dll!NuGet.PackageManagement.VisualStudio.VSMSBuildNuGetProjectSystem+*lt;&gt;c__DisplayClass_0+&lt;&lt;AddReference&gt;b__&gt;d.MoveNext - [#2285](https://github.com/NuGet/Home/issues/2285)
+* [PerfWatson] UIDelay: nuget.packagemanagement.visualstudio.dll! NuGet.PackageManagement.VisualStudio.VSMSBuildNuGetProjectSystem+*lt; &gt;c__DisplayClass_0 +&lt;&lt;AddReference&gt;b__&gt;d.MoveNext - [#2285](https://github.com/NuGet/Home/issues/2285)
 
 * Zainstaluj bloków, jeśli pojedyncze źródło odmawia autoryzacji - [#2034](https://github.com/NuGet/Home/issues/2034)
 
-* `.nuspec`Wersja zakresu powinny zastępować wersja - IncludeReferencedProjects - [#1983](https://github.com/NuGet/Home/issues/1983)
+* `.nuspec` Wersja zakresu powinny zastępować wersja - IncludeReferencedProjects - [#1983](https://github.com/NuGet/Home/issues/1983)
 
 * Pakiet aktualizacji super powolna — "Próba zebrania informacji zależności" - [#1909](https://github.com/NuGet/Home/issues/1909)
 
@@ -196,7 +190,7 @@ ms.lasthandoff: 02/02/2018
 
 * Plik -> Nowy Projekt -> projektu biblioteki klas (przenośna) kończy się niepowodzeniem w programie VS2015 i Dev15 - [#3094](https://github.com/NuGet/Home/issues/3094)
 
-* Błąd nuGet — 1.0.0-* nie jest prawidłowym ciągiem wersji - [#3070](https://github.com/NuGet/Home/issues/3070)
+* Błąd NuGet — 1.0.0-* nie jest prawidłowym ciągiem wersji - [#3070](https://github.com/NuGet/Home/issues/3070)
 
 * Znajdź pakietu nie powiedzie się do wyświetlania, ale działa Install-Package - [#3068](https://github.com/NuGet/Home/issues/3068)
 
@@ -226,7 +220,7 @@ ms.lasthandoff: 02/02/2018
 
 * Dodatek poświadczeń został zakończony z powodu błędu -1 / błąd podczas pobierania pakietu podczas używania dostawcy poświadczeń z wielu źródeł - [#2885](https://github.com/NuGet/Home/issues/2885)
 
-* `project.json`Przywracanie nuget powoduje ponowną kompilację, gdy nie zmienić - [#2817](https://github.com/NuGet/Home/issues/2817)
+* `project.json` Przywracanie nuget powoduje ponowną kompilację, gdy nie zmienić - [#2817](https://github.com/NuGet/Home/issues/2817)
 
 * Symbole pakietów nie należy nigdy używać w instalacji lub aktualizacji - [#2807](https://github.com/NuGet/Home/issues/2807)
 

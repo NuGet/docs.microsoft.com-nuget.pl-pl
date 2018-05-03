@@ -1,25 +1,16 @@
 ---
-title: Tworzenie .NET Standard i pakiety NuGet programu .NET Framework przy użyciu programu Visual Studio 2015 | Dokumentacja firmy Microsoft
+title: Tworzenie .NET Standard i pakiety NuGet programu .NET Framework przy użyciu programu Visual Studio 2015
+description: Przewodnik end-to-end tworzenia pakietów platformy .NET Standard i NuGet programu .NET Framework za pomocą NuGet 3.x i programu Visual Studio 2015.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 02/02/2018
 ms.topic: tutorial
-ms.prod: nuget
-ms.technology: ''
-description: Przewodnik end-to-end tworzenia pakietów platformy .NET Standard i NuGet programu .NET Framework za pomocą NuGet 3.x i programu Visual Studio 2015.
-keywords: Utwórz pakiet, .NET Standard pakiety, pakiety .NET Framework
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: dbe0a0788b5fc9ba37f7db601bd51c3e4f78f5b8
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: a77d977b2abc4cfd8be48e97e4c811e68e09bd61
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="create-net-standard-and-net-framework-packages-with-visual-studio-2015"></a>Utwórz pakiety .NET Standard i .NET Framework z programem Visual Studio 2015
 

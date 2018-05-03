@@ -1,26 +1,17 @@
 ---
-title: Funkcji AutoComplete, NuGet interfejsu API | Dokumentacja firmy Microsoft
-author:
-- joelverhagen
-- kraigb
-ms.author:
-- joelverhagen
-- kraigb
+title: Funkcji AutoComplete, NuGet interfejsu API
+description: Usługa autouzupełniania wyszukiwania obsługuje Odnajdowanie interaktywne pakietu identyfikatorów i wersje.
+author: joelverhagen
+ms.author: jver
 manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: 
-description: "Usługa autouzupełniania wyszukiwania obsługuje Odnajdowanie interaktywne pakietu identyfikatorów i wersje."
-keywords: "Interfejs API autouzupełniania NuGet, identyfikator pakietu NuGet wyszukiwania, podciąg identyfikator pakietu"
-ms.reviewer:
-- karann
-- unniravindranathan
-ms.openlocfilehash: 7c984ca61799293d7832851b80cf3fefc4734288
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.reviewer: kraigb
+ms.openlocfilehash: d5e1936c6c5406a1a376c16b2bad5351320dfb4f
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="autocomplete"></a>Funkcji AutoComplete
 
@@ -30,11 +21,11 @@ Istnieje możliwość tworzenia pakietu identyfikator i wersja autouzupełniania
 
 Następujące `@type` są używane wartości:
 
-@typewartość                          | Uwagi
+@type Wartość                          | Uwagi
 ------------------------------------ | -----
 SearchAutocompleteService            | Początkowa wersja
-SearchAutocompleteService/3.0.0-beta | Alias`SearchAutocompleteService`
-SearchAutocompleteService/3.0.0-rc   | Alias`SearchAutocompleteService`
+SearchAutocompleteService/3.0.0-beta | Alias `SearchAutocompleteService`
+SearchAutocompleteService/3.0.0-rc   | Alias `SearchAutocompleteService`
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
@@ -59,7 +50,7 @@ Nazwa        | W     | Typ    | Wymagane | Uwagi
 q           | Adres URL    | string  | Brak       | Ciąg, aby porównać pakietu identyfikatorów
 Pomiń        | Adres URL    | integer | Brak       | Liczba wyników, aby pominąć dla podział na strony
 podejmij        | Adres URL    | integer | Brak       | Liczba wyników do zwrócenia do podział na strony
-wydanie wstępne  | Adres URL    | wartość logiczna | Brak       | `true`lub `false` określającą, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
+wydanie wstępne  | Adres URL    | wartość logiczna | Brak       | `true` lub `false` określającą, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
 semVerLevel | Adres URL    | string  | Brak       | Ciąg wersji programu SemVer 1.0.0 
 
 Zapytanie autouzupełniania `q` jest analizowana w taki sposób, który jest zdefiniowany przez implementację serwera. nuget.org obsługuje wyszukiwanie prefiks tokeny Identyfikatora pakietu będące części identyfikatora utworzonego przez spliting oryginalnej camel znakami wielkość liter i symboli.
@@ -82,12 +73,12 @@ Główny obiekt JSON ma następujące właściwości:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-totalHits | integer          | Tak      | Całkowita liczba dopasowania, bez uwzględnienia `skip` i`take`
+totalHits | integer          | Tak      | Całkowita liczba dopasowania, bez uwzględnienia `skip` i `take`
 dane      | Tablica ciągów | Tak      | Identyfikatory są dopasowane wg żądania pakietu
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-GET https://api-v2v3search-0.nuget.org/autocomplete?q=storage&prerelease=true
+POBIERZ https://api-v2v3search-0.nuget.org/autocomplete?q=storage&prerelease=true
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -106,7 +97,7 @@ Wersja pakietu, który jest nieznajdujące się na liście nie będą widoczne w
 Nazwa        | W     | Typ    | Wymagane | Uwagi
 ----------- | ------ | ------- | -------- | -----
 identyfikator          | Adres URL    | string  | Tak      | Identyfikator pakietu, który można pobrać wersji
-wydanie wstępne  | Adres URL    | wartość logiczna | Brak       | `true`lub `false` określającą, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
+wydanie wstępne  | Adres URL    | wartość logiczna | Brak       | `true` lub `false` określającą, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
 semVerLevel | Adres URL    | string  | Brak       | Ciąg wersji programu SemVer 2.0.0 
 
 Jeśli `prerelease` nie zostanie podany, pakiety wersji wstępnej są wyłączone.

@@ -1,26 +1,16 @@
 ---
-title: Informacje o wersji RTM NuGet 4.6 | Dokumentacja firmy Microsoft
+title: Informacje o wersji 4.6 RTM NuGet
+description: Informacje o wersji programu NuGet 4.6.0 tym — znane problemy, poprawki, dodatkowe funkcje i dcr.
 author: anangaur
 ms.author: anangaur
 manager: unnir
 ms.date: 3/7/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Informacje o wersji programu NuGet 4.6.0 tym — znane problemy, poprawki, dodatkowe funkcje i dcr.
-keywords: NuGet 4.6.0 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-- anangaur
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 004ad16018443292840b00fa88aa78350e371414
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: d8fc374167e5c7f601c41887c4844854d0177ccb
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-46-rtm-release-notes"></a>Informacje o wersji 4.6 RTM NuGet
 

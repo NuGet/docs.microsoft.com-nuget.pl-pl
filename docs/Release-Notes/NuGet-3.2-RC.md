@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji RC NuGet 3.2 | Dokumentacja firmy Microsoft
+title: Informacje o wersji RC NuGet 3.2
+description: Informacje o wersji programu NuGet 3.2 RC tym znanych problemów, poprawki, dodatkowe funkcje i dcr.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji programu NuGet 3.2 RC tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
-keywords: NuGet 3.2 informacje o wersji RC, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: b19f62217ed79689ce067107dd64dfffe2c59291
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 0310bac6fdb3ef92176f9224ace1620a230664af
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-32-rc-release-notes"></a>Informacje o wersji RC NuGet 3.2
 
@@ -27,7 +21,7 @@ NuGet 3.2 w wersji release candidate wydanej wersji 2 września 2015 roku jako k
 ## <a name="new-features"></a>Nowe funkcje
 
 * Teraz można mają inne projekty, które znajdują się w tym samym folderze `project.json` pliki w tym folderze, które są specyficzne dla każdego projektu.  Dla każdego projektu nazwa `project.json` pliku `{ProjectName}.project.json` i NuGet odwołują się prawidłowo i odpowiednio użyć tej zawartości dla każdego projektu.  Ułatwia to nowa funkcja [1102](https://github.com/NuGet/Home/issues/1102)
-* `NuGet.Config`obsługuje teraz wartość globalPackagesFolder w postaci ścieżki względnej - [1062](https://github.com/NuGet/Home/issues/1062)
+* `NuGet.Config` obsługuje teraz wartość globalPackagesFolder w postaci ścieżki względnej - [1062](https://github.com/NuGet/Home/issues/1062)
 
 ## <a name="command-line-updates"></a>Aktualizacje wiersza polecenia
 
@@ -45,7 +39,7 @@ Jest to pierwsza wersja klienta nuget.exe, który obsługuje serwery NuGet w wer
 * Skorygowane polecenia restore NuGet poprawnie zwracane 1 w przypadku wystąpienia błędu - [1186](https://github.com/NuGet/Home/issues/1186)
 * Teraz ponawianie próby połączenia sieciowe co 200 MS maksymalnie 5 prób w przypadku HTTP 5xx błędy — [1120](https://github.com/NuGet/Home/issues/1120)
 * Ulepszona obsługa odpowiedzi przekierowania serwera podczas polecenie wypychania - [1051](https://github.com/NuGet/Home/issues/1051)
-* `nuget install -source`adres URL lub repozytorium nazwy z pliku Nuget.Config jako argument - obsługuje teraz [1046](https://github.com/NuGet/Home/issues/1046)
+* `nuget install -source` adres URL lub repozytorium nazwy z pliku Nuget.Config jako argument - obsługuje teraz [1046](https://github.com/NuGet/Home/issues/1046)
 * Brakuje pakietów, które nie znajdowały się w repozytorium podczas przywracania są teraz raportowane klientowi jako błędy zamiast ostrzeżenia [1038](https://github.com/NuGet/Home/issues/1038)
 * Poprawiona obsługa multipartwebrequest \r\n dla scenariuszy systemu Unix/Linux — [776](https://github.com/NuGet/Home/issues/776)
 
@@ -122,4 +116,4 @@ Pełną listę problemów skierowana dla rozszerzenia Visual Studio można znale
 
 ## <a name="known-issues"></a>Znane problemy
 
-W dalszym ciągu do śledzenia problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+W dalszym ciągu śledzenie problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

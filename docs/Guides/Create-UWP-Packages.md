@@ -1,25 +1,16 @@
 ---
-title: Tworzenie pakietów NuGet dla platformy uniwersalnej systemu Windows | Dokumentacja firmy Microsoft
+title: Tworzenie pakietów NuGet dla platformy uniwersalnej systemu Windows
+description: End-to-end Przewodnik tworzenia pakietów NuGet dla platformy uniwersalnej systemu Windows przy użyciu składnika środowiska wykonawczego systemu Windows.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 03/21/2017
 ms.topic: tutorial
-ms.prod: nuget
-ms.technology: ''
-description: End-to-end Przewodnik tworzenia pakietów NuGet dla platformy uniwersalnej systemu Windows przy użyciu składnika środowiska wykonawczego systemu Windows.
-keywords: Utwórz pakiet, pakietów dla platformy uniwersalnej systemu Windows, składników środowiska wykonawczego systemu Windows
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 6923cdc87b0a550abb51316e384c79137eeaf63a
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 86fbeea0b815d40ffae016a5f76b96d5baf3ff1b
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="create-uwp-packages"></a>Tworzenie pakietów platformy uniwersalnej systemu Windows
 
@@ -35,7 +26,7 @@ W tym przewodniku tworzenia pakietu NuGet z natywnego platformy uniwersalnej sys
 
 ## <a name="create-a-uwp-windows-runtime-component"></a>Tworzenie składnika środowiska wykonawczego systemu Windows platformy uniwersalnej systemu Windows
 
-1. W programie Visual Studio, wybierz **Plik > Nowy > projektu**, rozwiń węzeł **Visual C++ > Windows > uniwersalnych** węzła, wybierz opcję **składnika środowiska wykonawczego systemu Windows (uniwersalny system Windows)**szablonu, Zmień nazwę na ImageEnhancer, a następnie kliknij przycisk OK. Zaakceptuj wartości domyślne dla wersji docelowej i minimalna wersja po wyświetleniu monitu.
+1. W programie Visual Studio, wybierz **Plik > Nowy > projektu**, rozwiń węzeł **Visual C++ > Windows > uniwersalnych** węzła, wybierz opcję **składnika środowiska wykonawczego systemu Windows (uniwersalny system Windows)** szablonu, Zmień nazwę na ImageEnhancer, a następnie kliknij przycisk OK. Zaakceptuj wartości domyślne dla wersji docelowej i minimalna wersja po wyświetleniu monitu.
 
     ![Tworzenie nowego projektu składnika środowiska wykonawczego systemu Windows platformy uniwersalnej systemu Windows](media/UWP-NewProject.png)
 

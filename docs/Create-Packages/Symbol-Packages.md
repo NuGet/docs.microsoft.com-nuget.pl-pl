@@ -1,26 +1,17 @@
 ---
-title: Tworzenie pakietów NuGet symbol | Dokumentacja firmy Microsoft
+title: Tworzenie pakietów NuGet symbol
+description: Jak tworzyć pakiety NuGet, które zawierają tylko symbole, aby zapewnić obsługę debugowania innych pakietów NuGet w programie Visual Studio.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 09/12/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Jak tworzyć pakiety NuGet, które zawierają tylko symbole, aby zapewnić obsługę debugowania innych pakietów NuGet w programie Visual Studio.
-keywords: Pakiety symboli NuGet, pakietu NuGet, debugowanie, obsługi debugowania pakietu symboli, symbol konwencje pakietów NuGet
-ms.reviewer:
-- anangaur
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 6b6ddb0ca8ac5d7589dc5cb6de66ee3aa5faf8b6
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.reviewer: anangaur
+ms.openlocfilehash: cf8761ac4c994d864cd49a8fb31b3be626d4c0a6
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="creating-symbol-packages"></a>Tworzenie pakietów — symbol
 
@@ -113,21 +104,22 @@ Pakiet symboli mogą być wbudowane w Konwencji z struktury folderów, zgodnie z
     nuget SetApiKey Your-API-Key
     ```
 
-1. Po opublikowaniu pakietu podstawowego do nuget.org, push pakietu symboli, które będą automatycznie używać symbolsource.org jako element docelowy z powodu `.symbols` w nazwie pliku:
+2. Po opublikowaniu pakietu podstawowego do nuget.org, push pakietu symboli, które będą automatycznie używać symbolsource.org jako element docelowy z powodu `.symbols` w nazwie pliku:
 
     ```cli
     nuget push MyPackage.symbols.nupkg
     ```
-> [!Note]
-> Z nuget.exe 4.5.0 lub powyżej symbole pakiety nie są automatycznie przypisany do symbolsource.org. Będzie potrzebny do dystrybuowania pakietów symbole oddzielnie zgodnie z objaśnieniem w następnym kroku.
 
-1. Publikowanie do repozytorium inny symbol lub push pakietu symboli, który nie będzie zgodna z konwencją nazewnictwa, należy użyć `-Source` opcji:
+   > [!Note]
+   > Z nuget.exe 4.5.0 lub powyżej symbole pakiety nie są automatycznie przypisany do symbolsource.org. Będzie potrzebny do dystrybuowania pakietów symbole oddzielnie zgodnie z objaśnieniem w następnym kroku.
+
+3. Publikowanie do repozytorium inny symbol lub push pakietu symboli, który nie będzie zgodna z konwencją nazewnictwa, należy użyć `-Source` opcji:
 
     ```cli
     nuget push MyPackage.symbols.nupkg -source https://nuget.smbsrc.net/
     ```
 
-1. Możesz również push podstawowych i symboli w tym samym czasie, za pomocą następujących pakietów do obu repozytoria:
+4. Możesz również push podstawowych i symboli w tym samym czasie, za pomocą następujących pakietów do obu repozytoria:
 
     ```cli
     nuget push MyPackage.nupkg

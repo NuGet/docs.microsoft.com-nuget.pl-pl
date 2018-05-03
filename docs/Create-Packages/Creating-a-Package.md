@@ -1,25 +1,16 @@
 ---
-title: Jak utworzyć pakiet NuGet | Dokumentacja firmy Microsoft
+title: Jak utworzyć pakiet NuGet
+description: Szczegółowy przewodnik dotyczący proces projektowania i tworzenia pakietu NuGet, w tym punkty decyzyjne klucza, takich jak pliki i przechowywania wersji.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 12/12/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Szczegółowy przewodnik dotyczący proces projektowania i tworzenia pakietu NuGet, w tym punkty decyzyjne klucza, takich jak pliki i przechowywania wersji.
-keywords: Tworzenie pakietu NuGet, tworzenie pakietu, nuspec manifest, konwencje pakietu NuGet, wersja pakietu NuGet
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 7bb7e16a317aff908effe0b6c603ea53c9e8a563
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: c1e3bfd1c7e80c7deb505ef732d73c2edf3e32f7
+ms.sourcegitcommit: 5fcd6d664749aa720359104ef7a66d38aeecadc2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/27/2018
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -27,7 +18,7 @@ Niezależnie od tego, czego pakiet lub jego kodu zawiera, użyj `nuget.exe` do t
 
 Jak to działa, pakiet NuGet jest tylko plik ZIP, który jest zastępowana `.nupkg` rozszerzenia i których zawartość odpowiada niektórych Konwencji. W tym temacie opisano szczegółowe proces tworzenia pakietu, który spełnia te Konwencji. Wskazówki ukierunkowanych, można znaleźć w temacie [Szybki Start: tworzenie i publikowanie pakietu](../quickstart/create-and-publish-a-package.md).
 
-OPAKOWYWANIE rozpoczyna się od skompilowanego kodu (zestawy), symbole i/lub innych plików, które mają zostać dostarczone jako pakiet (zobacz [Przegląd i przepływ pracy](overview-and-workflow.md)). Ten proces jest niezależna od kompilowania lub w przeciwnym razie generowania plików, które są przekazywane do pakietu, chociaż można używać pobierane z informacji w pliku projektu w celu synchronizowania skompilowane zestawy i pakiety.
+OPAKOWYWANIE rozpoczyna się od skompilowanego kodu (zestawy), symbole i/lub innych plików, które mają zostać dostarczone jako pakiet (zobacz [Przegląd i przepływ pracy](overview-and-workflow.md)). Ten proces jest niezależna od kompilowania lub w przeciwnym razie generowania plików, które są przekazywane do pakietu, mimo że można narysować z informacji w pliku projektu w celu synchronizowania skompilowane zestawy i pakietów.
 
 > [!Note]
 > W tym temacie dotyczą projektów typu innego niż projektów .NET Core za pomocą programu Visual Studio 2017 i NuGet 4.0 +. W tych projektach platformy .NET Core NuGet używa informacji w pliku projektu bezpośrednio. Aby uzyskać więcej informacji, zobacz [utworzyć .NET Standard pakiety z programu Visual Studio 2017](../guides/create-net-standard-packages-vs2017.md) i [NuGet pakietu i ich przywracania docelowych elementów MSBuild](../reference/msbuild-targets.md).
@@ -81,47 +72,53 @@ Poniżej przedstawiono typowe (ale fikcyjne) `.nuspec` pliku z komentarzami opis
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
     <metadata>
-    <!-- The identifier that must be unique within the hosting gallery -->
-    <id>Contoso.Utility.UsefulStuff</id>
+        <!-- The identifier that must be unique within the hosting gallery -->
+        <id>Contoso.Utility.UsefulStuff</id>
 
-    <!-- The package version number that is used when resolving dependencies -->
-    <version>1.8.3-beta</version>
+        <!-- The package version number that is used when resolving dependencies -->
+        <version>1.8.3-beta</version>
 
-    <!-- Authors contain text that appears directly on the gallery -->
-    <authors>Dejana Tesic, Rajeev Dey</authors>
+        <!-- Authors contain text that appears directly on the gallery -->
+        <authors>Dejana Tesic, Rajeev Dey</authors>
 
-    <!-- Owners are typically nuget.org identities that allow gallery
-            users to easily find other packages by the same owners.  -->
-    <owners>dejanatc, rjdey</owners>
+        <!-- 
+            Owners are typically nuget.org identities that allow gallery
+            users to easily find other packages by the same owners.  
+        -->
+        <owners>dejanatc, rjdey</owners>
 
-    <!-- License and project URLs provide links for the gallery -->
-    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
-    <projectUrl>http://github.com/contoso/UsefulStuff</projectUrl>
+         <!-- License and project URLs provide links for the gallery -->
+        <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+        <projectUrl>http://github.com/contoso/UsefulStuff</projectUrl>
 
-    <!-- The icon is used in Visual Studio's package manager UI -->
-    <iconUrl>http://github.com/contoso/UsefulStuff/nuget_icon.png</iconUrl>
+        <!-- The icon is used in Visual Studio's package manager UI -->
+        <iconUrl>http://github.com/contoso/UsefulStuff/nuget_icon.png</iconUrl>
 
-    <!-- If true, this value prompts the user to accept the license when
-            installing the package. -->
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <!-- 
+            If true, this value prompts the user to accept the license when
+            installing the package. 
+        -->
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
-    <!-- Any details about this particular release -->
-    <releaseNotes>Bug fixes and performance improvements</releaseNotes>
+        <!-- Any details about this particular release -->
+        <releaseNotes>Bug fixes and performance improvements</releaseNotes>
 
-    <!-- The description can be used in package manager UI. Note that the
-            nuget.org gallery uses information you add in the portal. -->
-    <description>Core utility functions for web applications</description>
+        <!-- 
+            The description can be used in package manager UI. Note that the
+            nuget.org gallery uses information you add in the portal. 
+        -->
+        <description>Core utility functions for web applications</description>
 
-    <!-- Copyright information -->
-    <copyright>Copyright ©2016 Contoso Corporation</copyright>
+        <!-- Copyright information -->
+        <copyright>Copyright ©2016 Contoso Corporation</copyright>
 
-    <!-- Tags appear in the gallery and can be used for tag searches -->
-    <tags>web utility http json url parsing</tags>
+        <!-- Tags appear in the gallery and can be used for tag searches -->
+        <tags>web utility http json url parsing</tags>
 
-    <!-- Dependencies are automatically installed when the package is installed -->
-    <dependencies>
-        <dependency id="Newtonsoft.Json" version="9.0" />
-    </dependencies>
+        <!-- Dependencies are automatically installed when the package is installed -->
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="9.0" />
+        </dependencies>
     </metadata>
 
     <!-- A readme.txt to display when the package is installed -->
@@ -300,11 +297,11 @@ Aby określić bezpośrednio plików do uwzględnienia w pakiecie, należy uży�
     <!-- ... -->
     </metadata>
     <files>
-    <!-- Add a readme -->
-    <file src="readme.txt" target="" />
+        <!-- Add a readme -->
+        <file src="readme.txt" target="" />
 
-    <!-- Add files from an arbitrary folder that's not necessarily in the project -->
-    <file src="..\..\SomeRoot\**\*.*" target="" />
+        <!-- Add files from an arbitrary folder that's not necessarily in the project -->
+        <file src="..\..\SomeRoot\**\*.*" target="" />
     </files>
 </package>
 ```
@@ -342,11 +339,11 @@ Następnie w `.nuspec` pliku, pamiętaj odwołać się do tych plików w `<files
     <!-- ... -->
     </metadata>
     <files>
-    <!-- Include everything in \build -->
-    <file src="build\**" target="build" />
+        <!-- Include everything in \build -->
+        <file src="build\**" target="build" />
 
-    <!-- Other files -->
-    <!-- ... -->
+        <!-- Other files -->
+        <!-- ... -->
     </files>
 </package>
 ```

@@ -1,25 +1,16 @@
 ---
-title: Informacje o wersji NuGet 1.2 | Dokumentacja firmy Microsoft
-author: karann-msft
-ms.author: karann-msft
-manager: ghogen
-ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
+title: Informacje o wersji 1.2 NuGet
 description: Informacje o wersji NuGet 1.2 tym znanych problemów, poprawki, dodatkowe funkcje i dcr.
-keywords: Wersji NuGet 1.2 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 0d95f41c5bc5d490764c9f128ee621e1037cef66
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+author: karann-msft
+ms.author: karann
+manager: unnir
+ms.date: 11/11/2016
+ms.topic: conceptual
+ms.openlocfilehash: 9267374775887889b063c844063988504a541a38
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-12-release-notes"></a>Informacje o wersji 1.2 NuGet
 

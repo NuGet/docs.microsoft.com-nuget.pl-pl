@@ -1,22 +1,16 @@
 ---
-title: "Omówienie ekosystemu NuGet | Dokumentacja firmy Microsoft"
+title: Omówienie ekosystemu NuGet
+description: Kompleksowe zasoby w ekosystemie NuGet, w tym źródeł NuGet, Microsoft NuGet projektów, narzędzia i materiałów szkoleniowych.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Kompleksowe zasoby w ekosystemie NuGet, w tym źródeł NuGet, Microsoft NuGet projektów, narzędzia i materiałów szkoleniowych."
-keywords: "Ekosystem NuGet, Microsoft NuGet projektów, NuGet typu open source, narzędzia NuGet, materiałów szkoleniowych NuGet"
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 7c1e457c034f239fbea4e75f24851ea38182a294
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: c2ad662659487bf3875dbdaf76529f1834ca82ca
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="an-overview-of-the-nuget-ecosystem"></a>Omówienie ekosystemu NuGet
 
@@ -30,7 +24,7 @@ Wszystkie te projekty mogą innowacji z powodu wkładów developer. Tak samo, ja
 
 NuGet zapewnia system zarządzania pakiet wolnego typu open source platformy programistycznej Microsoft. Składa się z kilku narzędzi klienta, a także zestaw usług wchodzących w skład [oficjalnego galerii NuGet](http://www.nuget.org). Połączone, te tworzą projektu NuGet, który podlega [.NET Foundation](http://www.dotnetfoundation.org/).
 
-Organizacja NuGet zawiera różne repozytoria w witrynie GitHub. [https://github.com/Nuget/Home](https://github.com/Nuget/Home) zapewnia przegląd wszystkich repozytoriów i gdzie można znaleźć różne składniki NuGet.
+Organizacja NuGet zawiera różne repozytoria w witrynie GitHub. [https://github.com/Nuget/Home](https://github.com/Nuget/Home) Zawiera omówienie wszystkie repozytoria i gdzie można znaleźć różne składniki NuGet.
 
 ## <a name="microsoft-projects"></a>Projekty Microsoft
 
@@ -79,7 +73,7 @@ Za pomocą nowego narzędzia lub technologii zwykle zawiera naukę. Szczęście 
 Który powiedział, tworzenie pakietów — i szczególnie dobre pakiety — wraz z obejmujący NuGet w zautomatyzowanych procesów kompilacji i wdrożenia, wymaga nieco więcej czasu z następującymi zasobami wydatków:
 
 - [NuGet Blog](http://blog.nuget.org/)
-- [Zespół NuGet w serwisie Twitter,@nuget](http://twitter.com/nuget)
+- [Zespół NuGet w serwisie Twitter, @nuget](http://twitter.com/nuget)
 - Książki:
   - [NuGet Apress Pro](http://bit.ly/ProNuGet)
   - [NuGet 2 Essentials](http://www.amazon.com/NuGet-2-Essentials-Damir-Arh-ebook/dp/B00GTQD5M4)

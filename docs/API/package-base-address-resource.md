@@ -1,26 +1,17 @@
 ---
-title: "Pakiet zawartości, NuGet interfejsu API | Dokumentacja firmy Microsoft"
-author:
-- joelverhagen
-- kraigb
-ms.author:
-- joelverhagen
-- kraigb
+title: Zawartość pakietu, NuGet interfejsu API
+description: Adres podstawowy pakiet jest prosty interfejs używany do pobierania samego pakietu.
+author: joelverhagen
+ms.author: jver
 manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: 
-description: "Adres podstawowy pakiet jest prosty interfejs używany do pobierania samego pakietu."
-keywords: "Płaskie NuGet kontenera, adres podstawowy pakietu NuGet, NuGet nupkg interfejsu API, wersje pakietu NuGet interfejsu API, interfejsu API NuGet nieznajdujące się na liście pakietów, nuspec pobierania NuGet interfejsu API"
-ms.reviewer:
-- karann
-- unniravindranathan
-ms.openlocfilehash: c2e631dc0bba95ac849430d77142f27ef591f741
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.reviewer: kraigb
+ms.openlocfilehash: a6ac40368f30d33f35d4ca0b6cc18ce4bd6efee5
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="package-content"></a>Zawartość pakietu
 
@@ -32,7 +23,7 @@ Ten zasób jest często określana jako albo "Pakiet podstawowy adres" lub "kont
 
 Następujące `@type` jest używana wartość:
 
-@typewartość              | Uwagi
+@type Wartość              | Uwagi
 ------------------------ | -----
 PackageBaseAddress/3.0.0 | Początkowa wersja
 

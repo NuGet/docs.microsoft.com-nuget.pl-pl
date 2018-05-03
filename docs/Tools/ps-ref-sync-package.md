@@ -1,25 +1,16 @@
 ---
-title: Synchronizacja — pakiet NuGet w programie PowerShell | Dokumentacja firmy Microsoft
+title: Synchronizacja — pakiet NuGet w programie PowerShell
+description: Odwołanie do polecenia programu PowerShell synchronizacji pakietu w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 12/07/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Odwołanie do polecenia programu PowerShell synchronizacji pakietu w konsoli Menedżera pakietów NuGet w programie Visual Studio.
-keywords: NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, pakiet synchronizacji
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 0297015c3f1b8a8aced2545b4c4c3e6ccb1c7146
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 424c4fbe3ff4b61c665bf7353976d4fb09268185
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="sync-package-package-manager-console-in-visual-studio"></a>Synchronizacja — pakiet (Konsola Menedżera pakietów w programie Visual Studio)
 
@@ -47,7 +38,7 @@ Sync-Package [-Id] <string> [-IgnoreDependencies] [-ProjectName <string>] [[-Ver
 | IncludePrerelease | Zawiera pakiety wersji wstępnej synchronizacji. |
 | FileConflictAction | Akcja wykonywana po otrzymaniu monitu, aby zastąpić, lub przycisk Ignoruj istniejące pliki odwołuje się projekt. Możliwe wartości to *zastępowania, Ignoruj, brak OverwriteAll*, i *(3.0 +)* *IgnoreAll*. |
 | DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższa* (domyślnie): Najniższa wersja</li><li>*HighestPatch*: wersja z najniższą głównych, najniższy niewielkie, najwyższy poziom poprawki</li><li>*HighestMinor*: wersja z najniższą głównych, najwyższy niewielkie, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie pakiet aktualizacji bez parametrów): najnowsza wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../reference/nuget-config-file.md#config-section) w `Nuget.Config` pliku. |
-| WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez rzeczywistego wykonania synchronizacji. |
+| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez rzeczywistego wykonania synchronizacji. |
 
 Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
 

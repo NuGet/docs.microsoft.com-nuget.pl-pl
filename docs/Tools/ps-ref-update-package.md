@@ -1,25 +1,16 @@
 ---
-title: Pakiet aktualizacji NuGet w programie PowerShell | Dokumentacja firmy Microsoft
+title: Pakiet aktualizacji NuGet w programie PowerShell
+description: Odwołanie do polecenia programu PowerShell pakietu aktualizacji w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 12/07/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Odwołanie do polecenia programu PowerShell pakietu aktualizacji w konsoli Menedżera pakietów NuGet w programie Visual Studio.
-keywords: NuGet konsoli Menedżera pakietów, poleceń programu NuGet Powershell NuGet w programie PowerShell, pakiet aktualizacji
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 05772159d62f73e7d25f71ad36809f5ae8ef6aae
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 621e59633117a29c58fe643860ee7e2b40a4fbe2
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="update-package-package-manager-console-in-visual-studio"></a>Pakiet aktualizacji (Konsola Menedżera pakietów w programie Visual Studio)
 
@@ -57,7 +48,7 @@ Update-Package Microsoft.AspNet.MVC -Version 5.0.0.
 | DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższa* (domyślnie): Najniższa wersja</li><li>*HighestPatch*: wersja z najniższą głównych, najniższy niewielkie, najwyższy poziom poprawki</li><li>*HighestMinor*: wersja z najniższą głównych, najwyższy niewielkie, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie pakiet aktualizacji bez parametrów): najnowsza wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../reference/nuget-config-file.md#config-section) w `Nuget.Config` pliku. |
 | ToHighestPatch | Ogranicza uaktualnienia do tylko wersji z tej samej wersji pomocniczej jako aktualnie zainstalowany pakiet. |
 | Tohighestminor powoduje aktualizację | Ogranicza uaktualnienia do tylko wersji z taką samą wersję główną jako aktualnie zainstalowany pakiet. |
-| WhatIf | Pokazuje, co się stanie, uruchamiając polecenie bez rzeczywistego wykonania aktualizacji. |
+| Instrukcja WhatIf | Pokazuje, co się stanie, uruchamiając polecenie bez rzeczywistego wykonania aktualizacji. |
 
 Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
 

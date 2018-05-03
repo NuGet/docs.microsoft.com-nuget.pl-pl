@@ -1,25 +1,16 @@
 ---
-title: Wskazówki pakietu NuGet Przywracanie z Team Foundation Build | Dokumentacja firmy Microsoft
+title: Wskazówki Przywracanie pakietu NuGet z Team Foundation Build
+description: Przewodnik jak przywracanie z z Team Foundation Build (TFS i Visual Studio Team Services) pakietów NuGet.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/09/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Przewodnik jak przywracanie z z Team Foundation Build (TFS i Visual Studio Team Services) pakietów NuGet.
-keywords: Przywracanie pakietu NuGet, NuGet i TFS, NuGet i programu VSTS systemów kompilacji NuGet, team foundation build, niestandardowych projektów MSBuild, tworzenia chmury, ciągłej integracji
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: f46a7402214bf965918a5195605027913a8c60c2
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: 5eb8e68b800f623ef41a164f18efff2281e7c7cc
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="setting-up-package-restore-with-team-foundation-build"></a>Konfigurowanie Przywracanie pakietu z Team Foundation Build
 
@@ -135,7 +126,7 @@ Kontrola wersji TF obsługuje mechanizm bardzo podobne za pośrednictwem [.tfign
     project.lock.json
     project.assets.json
 
-## <a name="buildproj"></a>build.proj
+## <a name="buildproj"></a>Build.Proj
 
 W naszym pokaz możemy przechowywać proces kompilacji dość proste. Utworzymy projektu MSBuild, która tworzy wszystkie rozwiązania oraz zapewnienie, że pakiety są przywracane przed kompilacją rozwiązania.
 

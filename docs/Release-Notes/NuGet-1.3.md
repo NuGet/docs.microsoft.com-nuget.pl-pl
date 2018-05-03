@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 1.3 | Dokumentacja firmy Microsoft
+title: Informacje o wersji 1.3 NuGet
+description: Informacje o wersji programu NuGet 1.3 tym znanych problemów, poprawki, dodatkowe funkcje i dcr.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji programu NuGet 1.3 tym znanych problemów, poprawki, dodatkowe funkcje i dcr."
-keywords: NuGet 1.3 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: 59169be5b39ba4436e13e0935a0ad6efa724e08e
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: c0284fe0afb11bf6465897132cccd160674ea3e1
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-13-release-notes"></a>Informacje o wersji 1.3 NuGet
 
@@ -30,7 +24,7 @@ NuGet 1.3 został wydany 25 kwietnia 2011.
 
 Zespół NuGet we współpracy z pracowników w [SymbolSource.org](http://www.symbolsource.org/) oferowanie naprawdę prosty sposób publikowania źródeł, a w pliku PDB wraz z pakietem. Umożliwia klientom pakietu krok do źródła pakietu w debugerze. Aby uzyskać więcej informacji, przeczytaj [tworzenie i publikowanie pakietu symboli](../create-packages/symbol-packages.md) łatwy sposób, aby opublikować pakiety NuGet ze źródła. Można również obejrzeć na żywo pokaz tej funkcji jako część programu NuGet szczegółowo porozmawiać na Mix11. Ta funkcja jest pełni wykazać, zaczynając od znaku 20 minut wideo.
 
-### <a name="open-packagepage-command"></a>`Open-PackagePage`Polecenie
+### <a name="open-packagepage-command"></a>`Open-PackagePage` polecenie
 
 Tego polecenia można łatwo uzyskać dostęp do strony projektu dla pakietu z poziomu konsoli Menedżera pakietów. Umożliwia także opcje, aby otworzyć adres URL licencji i na stronie nadużycia raportów dla pakietu.
 Składnia polecenia jest następująca:

@@ -1,26 +1,17 @@
 ---
-title: Odwołanie do pakietu NuGet w wersji | Dokumentacja firmy Microsoft
+title: Odwołanie do pakietu NuGet w wersji
+description: Dokładne szczegóły dotyczące określania numery wersji i zakresy dla innych pakietów, od którego zależy od pakietu NuGet i jak zależności są zainstalowane.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 03/23/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Dokładne szczegóły dotyczące określania numery wersji i zakresy dla innych pakietów, od którego zależy od pakietu NuGet i jak zależności są zainstalowane.
-keywords: przechowywanie wersji, zależności pakietów NuGet, wersje zależności NuGet, numery wersji NuGet, wersja pakietu NuGet, zakresy wersji, specyfikacji wersji, numery wersji znormalizowane
-ms.reviewer:
-- anandr
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 678ad79d9106a9f592ae4f47bc93cc117496e2c9
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.reviewer: anangaur
+ms.openlocfilehash: d17d964ac73075f05678b9727e90d481a30da62e
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="package-versioning"></a>Przechowywanie wersji pakietu
 
@@ -96,7 +87,8 @@ Po wysłaniu pakietu v2.0.0 specyficzne dla programu SemVer do nuget.org pakiet 
 - NuGet 4.3.0+
 - Visual Studio 2017 wersji 15 ustęp 3 +
 - Visual Studio 2015 z [v3.6.0 NuGet VSIX](https://dist.nuget.org/visualstudio-2015-vsix/latest/NuGet.Tools.vsix)
-- DotNet.exe (2.0.0+ zestawu .NET SDK)
+- DotNet
+  - dotnetcore.exe (2.0.0+ zestawu .NET SDK)
 
 Klienci innych firm:
 

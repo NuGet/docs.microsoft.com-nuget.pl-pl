@@ -1,25 +1,16 @@
 ---
-title: Zarządzanie NuGet projektu | Dokumentacja firmy Microsoft
+title: Zarządzanie NuGet projektu
+description: Model ładu NuGet, w tym role i obowiązki committers, współautorzy i użytkowników.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Model ładu NuGet, w tym role i obowiązki committers, współautorzy i użytkowników.
-keywords: Zarządzanie NuGet, dictator dobroczynne NuGet, obowiązki zatwierdzający, obowiązki współautora, obowiązki użytkownika
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: aa48b95482c65de47d54daff142402dd2ff6558a
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: 37bfd146eefd52fd0332f3b99fa36651fc5c93d4
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-governance"></a>Zarządzanie NuGet
 
@@ -58,7 +49,7 @@ Przed wprowadzeniem poprawek pierwszy dla współautorów do repozytorium, nale�
 Jako współtwórca, należy przesłać żądanie ściągnięcia do jednej z następujących repozytoria:
 
 - [NuGet Client](https://github.com/NuGet/NuGet.Client)
-- [NuGet Gallery](https://github.com/nuget/nugetgallery)
+- [Galeria NuGet](https://github.com/nuget/nugetgallery)
 - [Dokumentacja NuGet](https://github.com/nuget/nugetdocs)
 
 Szczegółowe proces przesyłania żądania ściągnięcia jest zależna od repozytorium:

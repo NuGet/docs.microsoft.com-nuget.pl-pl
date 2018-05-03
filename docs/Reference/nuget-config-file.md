@@ -1,31 +1,22 @@
 ---
-title: Odwołanie do pliku NuGet.Config. | Dokumentacja firmy Microsoft
+title: Odwołanie do pliku nuget.config.
+description: Odwołanie do pliku NuGet.Config łącznie z sekcji konfiguracji, bindingRedirects packageRestore, rozwiązanie i packageSource.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 10/25/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Odwołanie do pliku NuGet.Config łącznie z sekcji konfiguracji, bindingRedirects packageRestore, rozwiązanie i packageSource.
-keywords: Pliku NuGet.Config, NuGet konfiguracji odwołania, opcje konfiguracji NuGet
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: e2a9d4f10ac6af4e5bc7386d4f78e18c2a5752c4
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 871cd05ed010d2a31348151de6b7e225ed2dc915
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
-# <a name="nugetconfig-reference"></a>Odwołanie do pliku NuGet.Config.
+# <a name="nugetconfig-reference"></a>Odwołanie do pliku nuget.config.
 
 Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` plików zgodnie z opisem w [Konfigurowanie zachowania NuGet](../consume-packages/configuring-nuget-behavior.md).
 
-`NuGet.Config` jest to plik XML zawierający najwyższego poziomu `<configuration>` węzła, który następnie zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej `<add>` elementy o `key` i `value` atrybutów. Zobacz [pliku konfiguracji przykłady](#example-config-file). Ustawienie nazwy jest rozróżniana wielkość liter, a wartości można użyć [zmiennych środowiskowych](#using-environment-variables).
+`nuget.config` jest to plik XML zawierający najwyższego poziomu `<configuration>` węzła, który następnie zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej `<add>` elementy o `key` i `value` atrybutów. Zobacz [pliku konfiguracji przykłady](#example-config-file). Ustawienie nazwy jest rozróżniana wielkość liter, a wartości można użyć [zmiennych środowiskowych](#using-environment-variables).
 
 W tym temacie:
 
@@ -56,8 +47,8 @@ Zawiera ustawienia dodatkowych konfiguracji, które można ustawić za pomocą [
 | Key | Wartość |
 | --- | --- |
 | dependencyVersion (`packages.config` tylko) | Wartość domyślna `DependencyVersion` wartość instalacji pakietu, przywracania i aktualizacji, gdy `-DependencyVersion` przełącznik nie jest określony bezpośrednio. Ta wartość jest także używana przez interfejs użytkownika Menedżera pakietów NuGet. Wartości są `Lowest`, `HighestPatch`, `HighestMinor`, `Highest`. |
-| wartość globalPackagesFolder (przy użyciu PackageReference tylko projekty) | Lokalizacja domyślny folder globalne pakietów. Wartość domyślna to `%userprofile%\.nuget\packages` (system Windows) lub `~/.nuget/packages` (system Mac/Linux). Ścieżka względna mogą być używane w specyficznego dla projektu `Nuget.Config` plików. To ustawienie jest zastępowany przez zmienną środowiskową NUGET_PACKAGES pierwszeństwo. |
-| repositoryPath (`packages.config` tylko) | Lokalizacja, w którym można zainstalować pakietów NuGet, zamiast domyślnej `$(Solutiondir)/packages` folderu. Ścieżka względna mogą być używane w specyficznego dla projektu `Nuget.Config` plików. To ustawienie jest zastępowany przez zmienną środowiskową NUGET_PACKAGES pierwszeństwo. |
+| wartość globalPackagesFolder (przy użyciu PackageReference tylko projekty) | Lokalizacja domyślny folder globalne pakietów. Wartość domyślna to `%userprofile%\.nuget\packages` (system Windows) lub `~/.nuget/packages` (system Mac/Linux). Ścieżka względna mogą być używane w specyficznego dla projektu `nuget.config` plików. To ustawienie jest zastępowany przez zmienną środowiskową NUGET_PACKAGES pierwszeństwo. |
+| repositoryPath (`packages.config` tylko) | Lokalizacja, w którym można zainstalować pakietów NuGet, zamiast domyślnej `$(Solutiondir)/packages` folderu. Ścieżka względna mogą być używane w specyficznego dla projektu `nuget.config` plików. To ustawienie jest zastępowany przez zmienną środowiskową NUGET_PACKAGES pierwszeństwo. |
 | defaultPushSource | Określa adres URL lub ścieżkę źródła pakietu, które mają być używane jako domyślne, jeśli inne źródła pakietu nie znaleziono dla operacji. |
 | że http_proxy.user http_proxy.password no_proxy | Ustawienia serwera proxy do użycia podczas połączenia ze źródła pakietów; `http_proxy` powinien być w formacie `http://<username>:<password>@<domain>`. Hasła są szyfrowane i nie można dodać ręcznie. Aby uzyskać `no_proxy`, wartość jest rozdzielaną przecinkami listę domen obejścia serwera proxy. Można również używać zmiennych środowiskowych że i no_proxy, dla tych wartości. Aby uzyskać więcej informacji, zobacz [ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com). |
 
@@ -108,7 +99,7 @@ Formanty Przywracanie pakietów podczas kompilacji.
 
 ## <a name="solution-section"></a>sekcji rozwiązania
 
-Formanty czy `packages` folderu rozwiązania jest uwzględniona w kontroli źródła. W tej sekcji działa tylko w `Nuget.Config` pliki w folderze rozwiązania.
+Formanty czy `packages` folderu rozwiązania jest uwzględniona w kontroli źródła. W tej sekcji działa tylko w `nuget.config` pliki w folderze rozwiązania.
 
 | Key | Wartość |
 | --- | --- |
@@ -154,7 +145,7 @@ Przechowywane nazwy użytkowników i hasła dla źródeł, zazwyczaj określana 
 
 | Key | Wartość |
 | --- | --- |
-| username | Nazwa użytkownika dla źródła w postaci zwykłego tekstu. |
+| Nazwa użytkownika | Nazwa użytkownika dla źródła w postaci zwykłego tekstu. |
 | Hasło | Zaszyfrowane hasło dla tego źródła. |
 | cleartextpassword | Hasło nieszyfrowane źródła. |
 
@@ -249,7 +240,7 @@ Identyfikuje do aktywnego źródła lub wskazuje agregacji wszystkich źródeł.
 
 ## <a name="using-environment-variables"></a>Korzystanie ze zmiennych środowiskowych
 
-Można używać zmiennych środowiskowych w `NuGet.Config` wartości (NuGet 3.4 +) w celu zastosowania ustawień w czasie wykonywania.
+Można używać zmiennych środowiskowych w `nuget.config` wartości (NuGet 3.4 +) w celu zastosowania ustawień w czasie wykonywania.
 
 Na przykład jeśli `HOME` ustawiono zmiennej środowiskowej w systemie Windows `c:\users\username`, wartość `%HOME%\NuGetRepository` w konfiguracji pliku jest rozpoznawana jako `c:\users\username\NuGetRepository`.
 
@@ -259,7 +250,7 @@ Jeśli zmienna środowiskowa nie zostanie znaleziony, NuGet korzysta z wartości
 
 ## <a name="example-config-file"></a>Przykładowy plik konfiguracji
 
-Poniżej znajduje się przykład `NuGet.Config` pliku, który przedstawia liczbę ustawień:
+Poniżej znajduje się przykład `nuget.config` pliku, który przedstawia liczbę ustawień:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

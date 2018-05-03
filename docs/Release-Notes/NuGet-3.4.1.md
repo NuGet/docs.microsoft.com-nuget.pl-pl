@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 3.4.1 | Dokumentacja firmy Microsoft
+title: Informacje o wersji NuGet 3.4.1
+description: Informacje o wersji programu NuGet 3.4.1 tym — znane problemy, poprawki, dodatkowe funkcje i dcr.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji programu NuGet 3.4.1 tym — znane problemy, poprawki, dodatkowe funkcje i dcr."
-keywords: NuGet 3.4.1 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: c2e22b6c22c55fd51bd1d20d52b4b7b07c5a205c
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: d492afc59fe2f9237aaf54dca56e09f9148a0dcf
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-341-release-notes"></a>Informacje o wersji NuGet 3.4.1
 
@@ -27,7 +21,7 @@ NuGet 3.4.1 został wydany 30 marca 2016 w tym samym czasie jako Visual Studio 2
 ## <a name="updates-and-improvements"></a>Aktualizacje i usprawnienia
 
 * Poprawiony, problem, który uniemożliwił Przeglądanie pakietów z interfejsu użytkownika programu Visual Studio z minimalnej instalacji programu Visual Studio
-* Rozwiązany problem dotyczący lokalizowania Visual Studio`lucene.net.dll`
+* Rozwiązany problem dotyczący lokalizowania Visual Studio `lucene.net.dll`
 * Wszystkie źródła nie może być domyślne źródło repozytorium, po rozszerzenie NuGet instalacji lub aktualizacji.  Użytkownik może wyrazić zgodę na tej funkcji z ustawień konfiguracji.
 
-W dalszym ciągu do śledzenia problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+W dalszym ciągu śledzenie problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

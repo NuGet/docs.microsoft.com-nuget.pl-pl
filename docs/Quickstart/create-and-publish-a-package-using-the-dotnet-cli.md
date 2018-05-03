@@ -1,27 +1,18 @@
 ---
-title: Tworzenie i publikowanie pakietu NuGet dotnet interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
+title: Tworzenie i publikowanie pakietu NuGet dotnet interfejsu wiersza polecenia
+description: Samouczek wskazówki na temat tworzenia i publikowania za pomocą .NET Core CLI, platformy dotnet pakietu NuGet.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/24/2018
 ms.topic: quickstart
-ms.prod: nuget
-ms.technology: ''
-description: Samouczek wskazówki na temat tworzenia i publikowania za pomocą .NET Core CLI, platformy dotnet pakietu NuGet.
-keywords: Pakiet NuGet tworzenie, publikowanie pakietu NuGet, samouczek NuGet pakietu NuGet publikowania dotnet
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 536e39ae64649ca1c11afa95c20872515e9e4c83
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: e47eb5f9b3cd7e915db82f043ebb6190b656fb28
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-and-publish-a-package"></a>Tworzenie i publikowanie pakietu
+# <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki Start: Tworzenie i publikowanie pakietu (dotnet CLI)
 
 Jest to prosty proces tworzenia pakietów NuGet z biblioteki klas .NET i opublikować go za pomocą nuget.org `dotnet` interfejsu wiersza polecenia (CLI).
 
@@ -92,28 +83,29 @@ Aby automatycznie uruchomić `dotnet pack` po uruchomieniu `dotnet build`, Dodaj
 
 Po utworzeniu `.nupkg` pliku opublikowaniu go przy użyciu nuget.org `dotnet nuget push` polecenia wraz z kluczem interfejsu API z nuget.org.
 
-[!INCLUDE[publish-notes](includes/publish-notes.md)]
+[!INCLUDE [publish-notes](includes/publish-notes.md)]
 
 ### <a name="acquire-your-api-key"></a>Uzyskanie klucza interfejsu API
 
-[!INCLUDE[publish-api-key](includes/publish-api-key.md)]
+[!INCLUDE [publish-api-key](includes/publish-api-key.md)]
 
 ### <a name="publish-with-dotnet-nuget-push"></a>Publikowanie za pomocą wypychania nuget dotnet
 
-[!INCLUDE[publish-dotnet](includes/publish-dotnet.md)]
+[!INCLUDE [publish-dotnet](includes/publish-dotnet.md)]
 
 ### <a name="publish-errors"></a>Publikowanie błędów
 
-[!INCLUDE[publish-errors](includes/publish-errors.md)]
+[!INCLUDE [publish-errors](includes/publish-errors.md)]
 
 ### <a name="manage-the-published-package"></a>Zarządzanie opublikowanego pakietu
 
-[!INCLUDE[publish-manage](includes/publish-manage.md)]
+[!INCLUDE [publish-manage](includes/publish-manage.md)]
 
 ## <a name="related-topics"></a>Tematy pokrewne
 
 - [Tworzenie pakietu](../create-packages/creating-a-package.md)
 - [Publikowanie pakietu](../create-packages/publish-a-package.md)
+- [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługuje wiele platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)

@@ -1,26 +1,17 @@
 ---
-title: Podpisane pakiety odwołania | Dokumentacja firmy Microsoft
+title: Podpisana odwołanie pakietów NuGet
+description: Wymagania dotyczące podpisywania pakietu NuGet.
 author: rido-min
 ms.author: rido-min
-manager: unniravindranathan
-ms.date: 03/06/2018
+manager: unnir
+ms.date: 04/24/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Podpisana opis funkcji pakietów.
-keywords: Znak pakietu NuGet, podpisu certyfikatu
-ms.reviewer:
-- ananguar
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: a2a338596f7d98ded11da6fb02bafba3521249ab
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.reviewer: ananguar
+ms.openlocfilehash: 751a8ff14bdc3a647985da4f908ad1a0fd0def9a
+ms.sourcegitcommit: 5fcd6d664749aa720359104ef7a66d38aeecadc2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/27/2018
 ---
 # <a name="signed-packages"></a>Pakiety podpisem
 
@@ -38,6 +29,9 @@ Aby uzyskać więcej informacji na temat tworzenia podpisanego pakietu, zobacz [
 
 > [!Important]
 > nuget.org nie akceptuje obecnie podpisanych pakietów. Możesz zarejestrować pakietów do publikowania do niestandardowych źródeł danych.
+
+> [!Important]
+> Podpisywanie pakietu jest obecnie obsługiwany tylko w przypadku używania nuget.exe w systemie Windows. Weryfikacja podpisanych pakietów jest obecnie obsługiwany tylko w przypadku używania nuget.exe lub Visual Studio w systemie Windows.
 
 ## <a name="certificate-requirements"></a>Wymagania certyfikatu
 

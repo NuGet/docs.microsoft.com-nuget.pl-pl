@@ -1,25 +1,16 @@
 ---
-title: Ponowne instalowanie i aktualizowanie pakietów NuGet | Dokumentacja firmy Microsoft
+title: Ponowne instalowanie i aktualizowanie pakietów NuGet
+description: Szczegółowe informacje na gdy jest konieczne ponowne zainstalowanie i aktualizację pakietów, tak jak w przypadku odwołania do pakietu przerwane w programie Visual Studio.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 12/07/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Szczegółowe informacje na gdy jest konieczne ponowne zainstalowanie i aktualizację pakietów, tak jak w przypadku odwołania do pakietu przerwane w programie Visual Studio.
-keywords: NuGet pakietu instalacji, ponowna instalacja pakietu NuGet, Przywracanie pakietu NuGet, aktualizowanie pakietu, przywracanie pakietów, ustalania przerwanymi odwołaniami
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: fc1417941f1293f39da05552adc3a80352a8c83b
-ms.sourcegitcommit: 55433d3bda7684d978f26d559f801878223675fa
+ms.topic: conceptual
+ms.openlocfilehash: fc2c1a58f787da61041c644085058355de4f12ea
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak zainstalować i pakietów aktualizacji
 

@@ -1,25 +1,16 @@
 ---
-title: Polecenie instalowania NuGet interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
+title: Polecenie install NuGet interfejsu wiersza polecenia
+description: Dokumentacja dla polecenia install nuget.exe
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Dokumentacja dla polecenia install nuget.exe
-keywords: nuget zainstalować odwołania, należy zainstalować pakiet polecenia
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 121d7b50767f1d466d6d0d8494f324b02d8ff6f1
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 615f2beca1eb288417f2345fcdf25e323942d300
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="install-command-nuget-cli"></a>Zainstaluj polecenia (NuGet CLI)
 

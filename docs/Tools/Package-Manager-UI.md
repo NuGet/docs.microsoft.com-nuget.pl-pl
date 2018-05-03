@@ -1,30 +1,21 @@
 ---
-title: Informacje o interfejsie użytkownika Menedżera pakietów NuGet | Dokumentacja firmy Microsoft
+title: Informacje o interfejsie użytkownika Menedżera pakietów NuGet
+description: Instrukcje dotyczące używania interfejsu użytkownika Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami NuGet.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 12/08/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
+ms.topic: conceptual
 f1_keywords:
 - vs.toolsoptionspages.nuget_package_manager
 - vs.toolsoptionspages.nuget_package_manager.general
 - vs.toolsoptionspages.nuget_package_manager.package_sources
 - vs.nuget.packagemanager.ui
-description: Instrukcje dotyczące używania interfejsu użytkownika Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami NuGet.
-keywords: Interfejs użytkownika NuGet, Menedżer pakietów NuGet interfejsu użytkownika, NuGet w programie Visual Studio, Zarządzanie pakietami NuGet, NuGet interfejsu użytkownika Menedżera pakietów w programie Visual Studio
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: ad36c2ab0c6e62c7fe624b35d92e852303ecfdfb
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 99bd51798460a56cb8515d46791a9e75d9e630cc
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="nuget-package-manager-ui"></a>Interfejs użytkownika Menedżera pakietów NuGet
 
@@ -59,7 +50,7 @@ W tym temacie:
     ![Odwołania w Eksploratorze rozwiązań](media/References.png)
 
 > [!Tip]
-    > Aby w wyszukiwaniu uwzględnić wersje wstępne i udostępnić wersje wstępne w wersji listy rozwijanej, wybierz **Uwzględnij wersję wstępną** opcji.
+> Aby w wyszukiwaniu uwzględnić wersje wstępne i udostępnić wersje wstępne w wersji listy rozwijanej, wybierz **Uwzględnij wersję wstępną** opcji.
 
 ## <a name="uninstalling-a-package"></a>Odinstalowywanie pakietu
 

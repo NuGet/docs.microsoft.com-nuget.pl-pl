@@ -1,26 +1,17 @@
 ---
-title: "Wypychanie i usunąć NuGet interfejsu API | Dokumentacja firmy Microsoft"
-author:
-- joelverhagen
-- kraigb
-ms.author:
-- joelverhagen
-- kraigb
+title: Wypychanie i usunąć NuGet interfejsu API
+description: Usługa publikowania zezwala klientom na publikowanie nowych pakietów i unlist lub usunąć istniejące pakiety.
+author: joelverhagen
+ms.author: jver
 manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: 
-description: "Usługa publikowania zezwala klientom na publikowanie nowych pakietów i unlist lub usunąć istniejące pakiety."
-keywords: "Pakiet wypychania NuGet interfejsu API, interfejsu API NuGet usunąć pakiet, interfejsu API NuGet unlist pakietu NuGet API przekazywania pakietu, NuGet interfejsu API tworzenia pakietu"
-ms.reviewer:
-- karann
-- unniravindranathan
-ms.openlocfilehash: f8051ca57fccae77917567d8c9f2f8a120a8d884
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.reviewer: kraigb
+ms.openlocfilehash: 911c8238624f806b1fbb5c7938d02b6bdfbd8614
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="push-and-delete"></a>Wypychanie i usuwania
 
@@ -30,7 +21,7 @@ Istnieje możliwość push, Usuń (lub unlist, w zależności od implementacji s
 
 Następujące `@type` jest używana wartość:
 
-@typewartość          | Uwagi
+@type Wartość          | Uwagi
 -------------------- | -----
 PackagePublish/2.0.0 | Początkowa wersja
 

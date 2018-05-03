@@ -1,25 +1,16 @@
 ---
-title: Omówienie i przepływ pracy tworzenia pakietów NuGet | Dokumentacja firmy Microsoft
+title: Omówienie i przepływ pracy tworzenia pakietów NuGet
+description: Omówienie procesu tworzenia i publikowania pakietu NuGet, wraz z łączami do innych części określonego procesu.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 07/26/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Omówienie procesu tworzenia i publikowania pakietu NuGet, wraz z łączami do innych części określonego procesu.
-keywords: Tworzenie pakietu NuGet, Przegląd tworzenia NuGet, przepływ pracy tworzenia NuGet, przepływ pracy tworzenia pakietu, omówienie tworzenia pakietu.
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: df08e15c2632a88ea7cc3333d64f4844c78c278d
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: a9dd4439f2aa72424187eaa2d9555d5af0e7843d
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="package-creation-workflow"></a>Przepływ pracy tworzenia pakietu
 

@@ -1,25 +1,16 @@
 ---
-title: Polecenie pakietu NuGet interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
+title: Polecenie pakietu NuGet interfejsu wiersza polecenia
+description: Informacje dotyczące polecenia pakiet nuget.exe
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/18/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Informacje dotyczące polecenia pakiet nuget.exe
-keywords: Odwołanie do pakietu nuget, polecenie pakietu
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 14ecf724477f652275eb68a090bb57b8640d4a8a
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: a2468b099a822e69298ea78c80cfd1d5d5c09938
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="pack-command-nuget-cli"></a>polecenie pakietu (NuGet CLI)
 
@@ -33,7 +24,7 @@ Tworzy oparte na określony pakiet NuGet `.nuspec` lub pliku projektu. `dotnet p
 ## <a name="usage"></a>Użycie
 
 ```cli
-nuget pack <nuspecPath | projectPath> [options]
+nuget pack <nuspecPath | projectPath> [options] [-Properties ...]
 ```
 
 gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub odpowiednio projektu pliku.
@@ -55,7 +46,7 @@ gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub odpowiednio projekt
 | NoDefaultExcludes | Zapobiega domyślne wykluczenie NuGet pakiet plików i pliki i foldery rozpoczynający się kropką, na przykład `.svn` i `.gitignore`. |
 | NoPackageAnalysis | Określa, że pakiet nie należy uruchamiać analizy pakietu po utworzeniu pakietu. |
 | OutputDirectory | Określa folder, w którym przechowywany jest utworzony pakiet. Jeśli folder nie jest określony, używany jest bieżący folder. |
-| Właściwości | Określa listę właściwości, które przesłaniają wartości w pliku projektu. zobacz [wspólne właściwości projektów MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazwy właściwości. Argument właściwości w tym miejscu znajduje się lista tokenu = pary wartości, oddziel je średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostaną zastąpione podanej wartości. Możliwe wartości ciągów w cudzysłowy. Należy pamiętać, że dla właściwości "Konfiguracja", wartość domyślna to "Debug". Aby zmienić konfigurację, wersji, należy użyć `-Properties Configuration=Release`. |
+| Właściwości | Powinna zostać wyświetlona ostatniego wiersza polecenia po innych opcji. Określa listę właściwości, które przesłaniają wartości w pliku projektu. zobacz [wspólne właściwości projektów MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazwy właściwości. Argument właściwości w tym miejscu znajduje się lista tokenu = pary wartości, oddziel je średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostaną zastąpione podanej wartości. Możliwe wartości ciągów w cudzysłowy. Należy pamiętać, że dla właściwości "Konfiguracja", wartość domyślna to "Debug". Aby zmienić konfigurację, wersji, należy użyć `-Properties Configuration=Release`. |
 | Suffix | *(3.4.4+)*  Dołącza sufiks z numerem wersji wewnętrznie generowane zwykle używany w przypadku dołączania kompilacji lub innych identyfikatorów w wersji wstępnej. Na przykład za pomocą `-suffix nightly` utworzy pakiet z podobne do numeru wersji `1.2.3-nightly`. Sufiksy musi rozpoczynać się od litery, aby uniknąć potencjalnych niezgodności z różnymi wersjami programu NuGet i Menedżer pakietów NuGet, błędy i ostrzeżenia. |
 | Symbole | Określa, że pakiet zawiera źródła i symbole. W przypadku użycia z `.nuspec` pliku, tworzy zwykły plik pakietu NuGet i odpowiedniego pakietu symboli. |
 | Narzędzie | Określa, że pliki wyjściowe projektu powinna zostać umieszczona w `tool` folderu. |
@@ -96,8 +87,8 @@ nuget pack foo.csproj -Properties Configuration=Release
 
 nuget pack foo.csproj -Build -Symbols -Properties owners=janedoe,xiaop;version="1.0.5"
 
-# create a package from project foo.csproj, using MSBuild version 12 to build the project
-nuget pack foo.csproj -Build -Symbols -Properties owners=janedoe,xiaop;version="1.0.5" -MSBuildVersion 12
+# Create a package from project foo.csproj, using MSBuild version 12 to build the project
+nuget pack foo.csproj -Build -Symbols -MSBuildVersion 12 -Properties owners=janedoe,xiaop;version="1.0.5
 
 nuget pack foo.nuspec -Version 2.1.0
 

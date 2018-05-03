@@ -1,22 +1,16 @@
 ---
-title: Informacje o wersji NuGet 3.4.4 | Dokumentacja firmy Microsoft
+title: Informacje o wersji NuGet 3.4.4
+description: Informacje o wersji programu NuGet 3.4.4 tym — znane problemy, poprawki, dodatkowe funkcje i dcr.
 author: karann-msft
-ms.author: karann-msft
-manager: ghogen
+ms.author: karann
+manager: unnir
 ms.date: 11/11/2016
-ms.topic: article
-ms.prod: nuget
-ms.technology: 
-description: "Informacje o wersji programu NuGet 3.4.4 tym — znane problemy, poprawki, dodatkowe funkcje i dcr."
-keywords: NuGet 3.4.4 informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.openlocfilehash: fabc10ae5c8e0bd43581f85c7763eb23e9483aaf
-ms.sourcegitcommit: 4651b16a3a08f6711669fc4577f5d63b600f8f58
+ms.topic: conceptual
+ms.openlocfilehash: 891d5c7ee884d31f405118739b57a169b9cd93b3
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-344-release-notes"></a>Informacje o wersji NuGet 3.4.4
 
@@ -35,7 +29,7 @@ Możesz pobrać zarówno VSIX, jak i nuget.exe [tutaj](https://dist.nuget.org/in
 ### <a name="changes"></a>Zmiany
 
 - Ulepszenia pakietu: Ulepszenia pakowanie symboli, pakowanie z `project.json` i więcej [ \#606](https://github.com/NuGet/NuGet.Client/pull/606)
-- Wyświetlanie wyjątku po awarii, znajdowanie projekty w poleceniu aktualizacji [\#605] (https://github.com/NuGet/NuGet.Client/pull/605
+- Wyświetlanie wyjątku po awarii, znajdowanie projekty w poleceniu aktualizacji [\#605] ()https://github.com/NuGet/NuGet.Client/pull/605
 - Typ pakietu do odczytu z wejścia `.nuspec` i `project.json` podczas pakowania [ \#603](https://github.com/NuGet/NuGet.Client/pull/603)
 - Należy NuGet.Shared nie w projekcie. [\#602](https://github.com/NuGet/NuGet.Client/pull/602)
 - Użyj limit wypychania jako limitu czasu odpowiedzi HTTP [ \#599](https://github.com/NuGet/NuGet.Client/pull/599)

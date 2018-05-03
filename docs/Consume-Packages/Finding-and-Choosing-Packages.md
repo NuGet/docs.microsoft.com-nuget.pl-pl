@@ -1,25 +1,16 @@
 ---
-title: Wyszukiwanie i Wybieranie pakietów NuGet | Dokumentacja firmy Microsoft
+title: Wyszukiwanie i Wybieranie pakietów NuGet
+description: Przegląd jak znaleźć i wybrać najlepsze pakietów NuGet dla projektu, w tym informacji o składni wyszukiwania NuGet.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 03/16/2018
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Przegląd jak znaleźć i wybrać najlepsze pakietów NuGet dla projektu, w tym informacji o składni wyszukiwania NuGet.
-keywords: NuGet pakietu zużycia, odnajdywania pakietu NuGet, najlepiej pakietów NuGet, podejmowania decyzji o dla pakietów, korzystanie z pakietów, oceny pakietu NuGet wyszukiwanie składni
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 319361623e60b8bdfe3c2dbc9bdcae65783a17e3
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: 94d851cfbc860e50b02ca99595ca41bbf4ce21ef
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocena pakietów NuGet dla projektu
 
@@ -104,6 +95,8 @@ W tym samym czasie przy użyciu pakietu NuGet oznacza, że przyjmowanie zależno
 - *Otwórz wkładów źródła*: wiele pakietów są obsługiwane w repozytoria open source, co umożliwia deweloperom w zależności od ich bezpośrednio współtworzenia poprawek usterek i funkcji ulepszenia. Historia wkład dowolnego danego pakietu jest również dobry wskaźnik ile Deweloperzy są aktywnego udziału użytkownika.
 
 - *Przeprowadzenie rozmów z właścicielami*: nowych deweloperów na pewno może być jednakowo zatwierdzone do produkcji dużą pakietów do użycia i zaleca się nadanie im możliwość dostosowania inną ekosystemem NuGet. Pamiętając o tym, dotrzeć bezpośrednio do deweloperów pakietu za pomocą **właścicieli skontaktuj się z** opcję w obszarze **informacji** na stronie listy. To, aby były przyjemnością do pracy z potrzebami!
+
+- *Zastrzeżone prefiksy identyfikator pakietu*: wiele właścicieli pakietu zostały zastosowane do i przyznano [pakietu zastrzeżony prefiks Identyfikatora](../reference/id-prefix-reservation.md). Po wyświetleniu visual znacznik wyboru obok identyfikator pakietu na [nuget.org](https://www.nuget.org/), lub w programie Visual Studio, oznacza to spełnienia właściciela pakietu naszych [kryteria](../reference/id-prefix-reservation.md#id-prefix-reservation-criteria) dla Identyfikatora prefiksu rezerwacji. Oznacza to, że właściciel pakietu jest w trakcie wyczyść na identyfikowaniu nimi i ich pakietu.
 
 > [!Note]
 > Zawsze zachować ostrożność, z warunkami licencji pakietu, które można wyświetlić, wybierając **informacje dotyczące licencji** na stronie listy pakietu w nuget.org. Jeśli pakiet nie określa postanowienia licencyjne, skontaktuj się z właścicielem pakietu bezpośrednio za pomocą **skontaktuj się z właścicieli** łącze na stronie pakiet. Microsoft nie licencji jakiejkolwiek własności intelektualnej użytkownikowi od innych dostawców pakietu i nie jest odpowiedzialny za informacji dostarczonych przez strony trzecie.

@@ -1,26 +1,16 @@
 ---
-title: Informacje o wersji RTM NuGet 4.5 | Dokumentacja firmy Microsoft
+title: Informacje o wersji 4.5 RTM NuGet
+description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr RTM 4.5 NuGet.
 author: anangaur
 ms.author: anangaur
-manager: unniravindranathan
+manager: unnir
 ms.date: 12/4/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr RTM 4.5 NuGet.
-keywords: NuGet 4.5 RTM informacje o wersji, poprawki, znanymi problemami, nowe funkcje, dcr
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-- anangaur
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: dbde7256ed5526761107272792d7c7cdc324a3ef
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.openlocfilehash: 1d04c508d029a6d92bbd480fe3bd7dc14727970e
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-45-rtm-release-notes"></a>Informacje o wersji 4.5 RTM NuGet
 
@@ -76,7 +66,8 @@ Problemy rozwiązane w wersji RTM 4.4 NuGet, można znaleźć na stronie [NuGet 
 - Po przywróceniu — Brak zasobów z pakietów [#5995](https://github.com/NuGet/Home/issues/5995)
 - Dostawcy poświadczeń wtyczki nie współpracujesz z zawierających spacje identyfikatorów URI - [#5982](https://github.com/NuGet/Home/issues/5982)
 - Jeśli nie można przywrócić pakietu, powinien zostać wydrukowany błąd w danych wyjściowych, nawet w przypadku ON minimalny poziom szczegółowości - [#5658](https://github.com/NuGet/Home/issues/5658)
-- DotNet przywracania na poziomie rozwiązania nie wykonać ProjectReference z ReferenceOutputAssembly wiodące false, aby błędy kompilacji losowe — [#5490](https://github.com/NuGet/Home/issues/5490)
+- DotNet
+  - dotnetcore przywracania na poziomie rozwiązania nie wykonać ProjectReference z ReferenceOutputAssembly wiodące false, aby błędy kompilacji losowe — [#5490](https://github.com/NuGet/Home/issues/5490)
 - Funkcja automatycznego uzupełniania w PMC działa nieprawidłowo za pomocą metod obiektu - [#4800](https://github.com/NuGet/Home/issues/4800)
 - Przywracanie nuget.exe kończy się niepowodzeniem z zestawu narzędzi programu Visual Studio 2015 - [#4713](https://github.com/NuGet/Home/issues/4713)
 - wydajności - pmc jest kosztowna, można utworzyć wystąpienia w vs2017 - [#4205](https://github.com/NuGet/Home/issues/4205)

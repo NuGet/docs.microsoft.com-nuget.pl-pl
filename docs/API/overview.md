@@ -1,29 +1,17 @@
 ---
-title: Przegląd, NuGet interfejsu API | Dokumentacja firmy Microsoft
-author:
-- joelverhagen
-- kraigb
-ms.author:
-- joelverhagen
-- kraigb
+title: Omówienie programu NuGet interfejsu API
+description: Interfejs API NuGet jest zestaw punktów końcowych HTTP, które mogą służyć do pobierania pakietów, pobrać metadanych, publikowanie nowych pakietów itp.
+author: joelverhagen
+ms.author: jver
 manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Interfejs API NuGet jest zestaw punktów końcowych HTTP, które mogą służyć do pobierania pakietów, pobrać metadanych, publikowanie nowych pakietów itp.
-keywords: Interfejsu API w wersji 3 NuGet, interfejsu API w wersji 2 NuGet, NuGet JSON, interfejsu API rejestracji NuGet, kontenera prosty interfejs API NuGet, nupkg NuGet interfejsu API, NuGet metadanych interfejsu API, wyszukiwanie NuGet interfejsu API, wypychania NuGet interfejsu API, interfejs API publikowania NuGe, NuGet usunąć interfejsu API, NuGet unlist interfejsu API, protokół NuGet
-ms.reviewer:
-- karann
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 7053a971c80a94cf035e8f149c332b36e66a9ea9
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.reviewer: kraigb
+ms.openlocfilehash: a638dba005c14bff4b2e668e2d6ca527a67b94a9
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="nuget-api"></a>NuGet interfejsu API
 
@@ -82,7 +70,7 @@ Wszystkie sygnatury czasowe zwracane przez interfejs API są UTC lub w przeciwny
 
 Zlecenie   | Zastosowanie
 ------ | -----------
-GET    | Wykonuje operację tylko do odczytu, zazwyczaj podczas pobierania danych.
+POBIERZ    | Wykonuje operację tylko do odczytu, zazwyczaj podczas pobierania danych.
 HEAD   | Pobiera nagłówki odpowiedzi dla odpowiedniego `GET` żądania.
 UMIEŚĆ    | Tworzy z zasobem, który nie istnieje lub, jeśli istnieje, aktualizuje. Niektóre zasoby mogą nie obsługiwać aktualizacji.
 DELETE | Usuwa lub unlists zasobu.

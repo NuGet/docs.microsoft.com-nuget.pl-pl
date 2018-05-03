@@ -1,25 +1,16 @@
 ---
-title: Konfigurowanie zachowania NuGet | Dokumentacja firmy Microsoft
+title: Konfigurowanie zachowania NuGet
+description: Pliki NuGet.Config kontrolowania zachowania NuGet, globalnie i na podstawie na projekt i są modyfikowane za pomocą polecenia konfiguracyjnego nuget.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 10/25/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Pliki NuGet.Config kontrolowania zachowania NuGet, globalnie i na podstawie na projekt i są modyfikowane za pomocą polecenia konfiguracyjnego nuget.
-keywords: Pliki konfiguracji programu NuGet, NuGet ustawienia zachowania NuGet, konfigurowanie ustawień NuGet, Nuget.Config, NuGetDefaults.Config, wartości domyślne
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 88f10cf15e16013ac99f315e572f932fd3948f73
-ms.sourcegitcommit: ecb598c790d4154366bc92757ec7db1a51c34faf
+ms.topic: conceptual
+ms.openlocfilehash: c8cc78be1bd48adc603b9447282a6c4bef7f942f
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="configuring-nuget-behavior"></a>Konfigurowanie zachowania NuGet
 

@@ -1,27 +1,18 @@
 ---
-title: Wprowadzenie do przewodnika za pomocą pakietów NuGet przez dotnet interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
+title: Przewodnik wprowadzający się za pomocą NuGet pakiety za pośrednictwem dotnet interfejsu wiersza polecenia
+description: Samouczek wskazówki na proces instalowania i używania pakietu NuGet w projekcie platformy .NET Core.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.prod: nuget
-ms.technology: ''
-description: Samouczek wskazówki na proces instalowania i używania pakietu NuGet w projekcie platformy .NET Core.
-keywords: instalowania NuGet użycia pakietu NuGet, instalowanie pakietów NuGet, odwołania do pakietu NuGet, za pomocą pakietów NuGet
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: 87a37a733ebbbbf9bc161247b657a69f30ed4fb3
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.openlocfilehash: 41a249394a8a0504cc8841d3bdb67ad29ec2dc26
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="install-and-use-a-package-using-the-dotnet-cli"></a>Zainstalować i używać pakietu przy użyciu dotnet interfejsu wiersza polecenia
+# <a name="quickstart-install-and-use-a-package-using-the-dotnet-cli"></a>Szybki Start: Instalacji i używania pakietu platformy dotnet interfejsu wiersza polecenia
 
 Pakiety NuGet zawiera kod wielokrotnego użytku, który inni deweloperzy udostępnić użytkownikowi do użycia w projektach. Zobacz [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są zainstalowane w projekcie platformy .NET Core za pomocą `dotnet add package` polecenia zgodnie z opisem w tym artykule popularnych [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakietu.
 
@@ -56,12 +47,12 @@ Można zainstalować pakietów NuGet w projekcie .NET określonego rodzaju. W ra
     dotnet add package Newtonsoft.Json
     ```
 
-1. Po zakończeniu działania polecenia Otwórz `.csproj` plik, aby wyświetlić odwołania dodane:
+2. Po zakończeniu działania polecenia Otwórz `.csproj` plik, aby wyświetlić odwołania dodane:
 
     ```xml
-  <ItemGroup>
+   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-  </ItemGroup>
+   </ItemGroup>
     ```
 
 ## <a name="use-the-newtonsoftjson-api-in-the-app"></a>Użyj Newtonsoft.Json interfejsu API w aplikacji

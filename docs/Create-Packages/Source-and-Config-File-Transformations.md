@@ -1,26 +1,17 @@
 ---
-title: Źródło i konfiguracji pliku przekształcenia pakietów NuGet | Dokumentacja firmy Microsoft
+title: Przekształcenia pliku źródłowego i konfiguracji dla pakietów NuGet
+description: Szczegóły możliwości pakietów NuGet do przekształcania kodu źródłowego i konfiguracji plików (XML) podczas instalacji.
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 04/24/2017
-ms.topic: article
-ms.prod: nuget
-ms.technology: ''
-description: Szczegóły możliwości pakietów NuGet do przekształcania kodu źródłowego i konfiguracji plików (XML) podczas instalacji.
-keywords: Instalacja pakietu NuGet, przekształcenia pakietu NuGet, modyfikowanie plików konfiguracyjnych, modyfikowania kodu źródłowego
-ms.reviewer:
-- karann-msft
-- unniravindranathan
-- anangaur
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: b2c25acdd37489a2965d29356742a826b62afa2c
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: conceptual
+ms.reviewer: anangaur
+ms.openlocfilehash: 863bf22780313a34690617dd6a1604531272808b
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="transforming-source-code-and-configuration-files"></a>Przekształcanie plików źródłowych kodem i konfiguracją
 

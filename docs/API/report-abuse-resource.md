@@ -1,29 +1,17 @@
 ---
-title: Zgłoś nadużycie szablon adresu URL, NuGet interfejsu API | Dokumentacja firmy Microsoft
-author:
-- joelverhagen
-- kraigb
-ms.author:
-- joelverhagen
-- kraigb
+title: Szablon raportu do adresu URL nadużyć, NuGet interfejsu API
+description: Szablon adresu URL nadużycia raport umożliwia klientom do wyświetlenia łącza nadużycia raportu w jego interfejsie użytkownika.
+author: joelverhagen
+ms.author: jver
 manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
-description: Szablon adresu URL nadużycia raport umożliwia klientom do wyświetlenia łącza nadużycia raportu w jego interfejsie użytkownika.
-keywords: Interfejs API NuGet zgłaszania nadużyć, NuGet interfejsu API plików zgodne, szablon adres URL raportu nuget.org
-ms.reviewer:
-- karann
-- unniravindranathan
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: ded861e3eaf73e45b8d4bd80b96d54bfeb38e9d6
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.reviewer: kraigb
+ms.openlocfilehash: 15cf0953391489d9dd9b5d609c3f4c8f66748f19
+ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="report-abuse-url-template"></a>Szablon adresu URL nadużycia raportu
 
