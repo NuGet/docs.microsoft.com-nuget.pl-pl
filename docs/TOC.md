@@ -77,7 +77,7 @@
 ## [Migrowanie pliku packages.config do elementu PackageReference](reference/migrate-packages-config-to-package-reference.md)
 ## [packages.config](reference/packages-config.md)
 ## [Przechowywanie wersji pakietów](reference/package-versioning.md)
-## [Plik Nuget.Config](reference/nuget-config-file.md)
+## [Plik nuget.config](reference/nuget-config-file.md)
 ## [Obiekty docelowe w programie MSBuild](reference/msbuild-targets.md)
 ## [Platformy docelowe](reference/target-frameworks.md)
 ## [Konwencje analizatorów](reference/analyzers-conventions.md)
@@ -85,6 +85,7 @@
 ## [Rezerwowanie prefiksów identyfikatorów](reference/id-prefix-reservation.md)
 ## [Zestaw SDK klienta programu NuGet](reference/nuget-client-sdk.md)
 ## [Dokumentacja podpisanych pakietów](reference/signed-packages-reference.md)
+## [Organizacje w witrynie nuget.org](reference/organizations-on-nuget-org.md)
 ## Rozszerzalność
 ### [Dostawcy poświadczeń programu NuGet dla programu Visual Studio](reference/extensibility/nuget-credential-providers-for-visual-studio.md)
 ### [Dostawcy poświadczeń programu nuget.exe](reference/extensibility/nuget-exe-credential-providers.md)

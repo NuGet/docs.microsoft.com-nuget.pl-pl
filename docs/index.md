@@ -1,35 +1,18 @@
 ---
-layout: HubPage
-hide_bc: ''
-title: Dokumentacja programu NuGet | Microsoft Docs
+title: Dokumentacja programu NuGet
 description: NuGet to menedżer pakietów dla platform programistycznych firmy Microsoft, w tym .NET. Narzędzia klienta programu NuGet dają możliwość tworzenia pakietów i korzystania z nich.
-keywords:
-- nuget
-- menedżer nuget
-- nupkg
-- eksplorator pakietów nuget
-- pakiet nuget
-- rozszerzenie nuget
-- nuget.exe
-- wiersz polecenia nuget
-- interfejs wiersza polecenia nuget
 author: kraigb
 ms.author: kraigb
-manager: ghogen
+manager: douge
 ms.date: 02/12/2018
-ms.topic: hub-page
-ms.prod: nuget
-ms.technology: ''
-ms.reviewer:
-- karann-msft
-ms.workload:
-- dotnet
-- aspnet
-ms.openlocfilehash: c5b1a1b10ea74aa7ad47ecc94918a72486094828
-ms.sourcegitcommit: beb229893559824e8abd6ab16707fd5fe1c6ac26
+ms.topic: overview
+layout: HubPage
+hide_bc: true
+ms.openlocfilehash: 534d9969c7ad73b9eaf4df64834cb46140085507
+ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 <div id="main" class="v2">
 <div class="container">
@@ -48,8 +31,7 @@ ms.lasthandoff: 03/28/2018
                                     <div class="card">
                                         <div class="cardImageOuter">
                                             <div class="cardImage  bgdAccent1">
-                                                <img src="media/hub/nuget-get-started-what-is-nuget.svg" alt="" />        
-                                            </div>
+                                                <img src="media/hub/nuget-get-started-what-is-nuget.svg" alt="" /><br/>                                            </div>
                                         </div>
                                         <div class="cardText">
                                             <h3>Co to jest NuGet?</h3>
@@ -91,7 +73,7 @@ ms.lasthandoff: 03/28/2018
                                         </div>
                                         <div class="cardText">
                                             <h3>Szybki start tworzenie pakietu</h3>
-                                            <p>Omówienie narzędzi i funkcji NuGet do tworzenia pakietów (wskazówki są dostępne zarówno dla interfejsu wiersza polecenia platformy dotnet, jak i programu Visual Studio).</p>
+                                            <p>Omówienie narzędzi i funkcji usługi NuGet do tworzenia pakietów (przewodniki są dostępne zarówno dla interfejsu wiersza polecenia platformy dotnet, jak i programu Visual Studio).</p>
                                         </div>
                                     </div>
                                 </div>
