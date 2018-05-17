@@ -6,11 +6,11 @@ ms.author: kraigb
 manager: douge
 ms.date: 12/12/2017
 ms.topic: conceptual
-ms.openlocfilehash: df1673875441ea3274ba0826c4cef168b74583d1
-ms.sourcegitcommit: 055248d790051774c892b220eca12015babbd668
-ms.translationtype: HT
+ms.openlocfilehash: 1657479e1a87f7022caa2fd991127b4ca702cdac
+ms.sourcegitcommit: 00c4c809c69c16fcf4d81012eb53ea22f0691d0b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -147,7 +147,7 @@ Tworzenie manifestu pełną zwykle zaczyna się od podstawowego `.nuspec` plik w
 
 - [Katalog roboczy opartych na konwencjach](#from-a-convention-based-working-directory)
 - [Zestaw biblioteki DLL](#from-an-assembly-dll)
-- [Projektu programu Visual Studio](#from-a-visual-studio-project)    
+- [A Visual Studio project](#from-a-visual-studio-project)    
 - [Nowy plik z wartościami domyślnymi](#new-file-with-default-values)
 
 Możesz następnie przeprowadź edycję pliku ręcznie tak aby dokładnie zawartość, którą chcesz w ostatnim pakiecie.
@@ -157,7 +157,7 @@ Możesz następnie przeprowadź edycję pliku ręcznie tak aby dokładnie zawart
 
 ### <a name="from-a-convention-based-working-directory"></a>Z katalogu roboczego opartych na konwencjach
 
-Ponieważ pakiet NuGet jest tylko plik ZIP, który jest zastępowana `.nupkg` rozszerzenia jego często najłatwiej Utwórz strukturę folderów ma w systemie plików, następnie utwórz `.nuspec` pliku bezpośrednio z tej struktury. `nuget pack` Polecenia następnie automatycznie dodaje wszystkie pliki w tej struktury folderów (z wyłączeniem wszelkich folderów zaczynające się `.`, co pozwala przechowywać pliki prywatne w tej samej struktury).
+Ponieważ pakiet NuGet jest tylko plik ZIP, który jest zastępowana `.nupkg` rozszerzenia jego często najłatwiej Utwórz strukturę folderów w lokalnym systemie plików, następnie utwórz `.nuspec` pliku bezpośrednio z tej struktury. `nuget pack` Polecenia następnie automatycznie dodaje wszystkie pliki w tej struktury folderów (z wyłączeniem wszelkich folderów zaczynające się `.`, co pozwala przechowywać pliki prywatne w tej samej struktury).
 
 Zaletą tej metody jest, że nie należy określić w manifeście pliki, które mają zostać uwzględnione w pakiecie (zgodnie z objaśnieniem w dalszej części tego tematu). Program może po prostu utworzyć strukturę folderów dokładne, który jest przesyłany w pakiecie procesu kompilacji i łatwo może zawierać inne pliki, które mogą być częścią projektu w przeciwnym razie:
 
@@ -378,7 +378,7 @@ Ponadto domyślnie [zasoby kompilacji nie przepływu przechodnie](../consume-pac
 
 ## <a name="running-nuget-pack-to-generate-the-nupkg-file"></a>Z dodatkiem Service pack nuget, aby wygenerować plik .nupkg
 
-Korzystając z zestawu lub katalog roboczy opartych na konwencjach, Utwórz pakiet, uruchamiając `nuget pack` z Twojej `.nuspec` pliku, zastępując `<manifest-name>` z Twojej określonej nazwy pliku:
+Korzystając z zestawu lub katalog roboczy opartych na konwencjach, Utwórz pakiet, uruchamiając `nuget pack` z Twojej `.nuspec` pliku, zastępując `<project-name>` z Twojej określonej nazwy pliku:
 
 ```cli
 nuget pack <project-name>.nuspec

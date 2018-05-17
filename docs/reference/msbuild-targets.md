@@ -6,11 +6,11 @@ ms.author: kraigb
 manager: douge
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 73885256c5d5ea67140051bf63ff470991978928
-ms.sourcegitcommit: 055248d790051774c892b220eca12015babbd668
-ms.translationtype: HT
+ms.openlocfilehash: 00d763bcfdd2f3db50378a1e7774eae7a2e1fcd1
+ms.sourcegitcommit: 00c4c809c69c16fcf4d81012eb53ea22f0691d0b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracania jako docelowych elementów MSBuild
 
@@ -52,12 +52,12 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 | Autorzy | Autorzy | Nazwa bieżącego użytkownika | |
 | Właściciele | Brak | Nie istnieje w pliku NuSpec | |
 | Tytuł | Tytuł | PackageId| |
-| Opis | PackageDescription | "Opis pakietu" | |
+| Opis | Opis | "Opis pakietu" | |
 | Prawa autorskie | Prawa autorskie | empty | |
 | RequireLicenseAcceptance | PackageRequireLicenseAcceptance | false | |
 | LicenseUrl | PackageLicenseUrl | empty | |
 | ProjectUrl | PackageProjectUrl | empty | |
-| iconUrl | PackageIconUrl | empty | |
+| IconUrl | PackageIconUrl | empty | |
 | Znaczniki | PackageTags | empty | Tagi są rozdzielone średnikami. |
 | releaseNotes | PackageReleaseNotes | empty | |
 | Adres Url i repozytorium | RepositoryUrl | empty | Adres URL repozytorium jest używany do klonowania lub pobrać kodu źródłowego. Przykład: *https://github.com/NuGet/NuGet.Client.git* |
@@ -92,7 +92,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 - RepositoryBranch
 - RepositoryCommit
 - NoPackageAnalysis
-- Element MinClientVersion
+- MinClientVersion
 - IncludeBuildOutput
 - IncludeContentInPack
 - BuildOutputTargetFolder

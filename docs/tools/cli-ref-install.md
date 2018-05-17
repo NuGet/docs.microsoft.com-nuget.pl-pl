@@ -6,11 +6,11 @@ ms.author: kraigb
 manager: douge
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 615f2beca1eb288417f2345fcdf25e323942d300
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
-ms.translationtype: HT
+ms.openlocfilehash: 1c6ec1181f2f619eb8a4f2d87f7910f25b98e0f4
+ms.sourcegitcommit: 00c4c809c69c16fcf4d81012eb53ea22f0691d0b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="install-command-nuget-cli"></a>install command, polecenie (interfejs wiersza polecenia NuGet)
 
@@ -27,7 +27,7 @@ Jeśli nie określono żadnych określonych pakietów, `install` instaluje wszys
 
 `install` Polecenia nie modyfikuje plik projektu lub `packages.config`; w ten sposób jest podobna do `restore` w tym go tylko dodaje pakiety do dysku, ale nie zmienia zależności projektu.
 
-Aby dodać zależność, Dodaj projekt za pomocą Menedżera pakietów interfejsu użytkownika lub konsoli w programie Visual Studio lub zmodyfikować `packages.config` , a następnie uruchom albo `install` lub `restore`.
+Aby dodać zależność, Dodaj pakiet za pomocą Menedżera pakietów interfejsu użytkownika lub konsoli w programie Visual Studio, albo zmodyfikować `packages.config` , a następnie uruchom albo `install` lub `restore`.
 
 ## <a name="usage"></a>Użycie
 
