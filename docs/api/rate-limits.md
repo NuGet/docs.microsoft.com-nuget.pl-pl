@@ -10,11 +10,11 @@ ms.reviewer:
 - skofman
 - anangaur
 - kraigb
-ms.openlocfilehash: e236d685a700d0f47480336cece8edfd44c28863
-ms.sourcegitcommit: 68c8a494a11c892ac671fec3170ba7be97fb044d
+ms.openlocfilehash: c5d3cf68ac6a96a6c14eb5e652bcf72698b6a8e8
+ms.sourcegitcommit: 8f0bb8bb9cb91d27d660963ed9b0f32642f420fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="rate-limits"></a>Limity szybkości
 
@@ -46,5 +46,5 @@ W poniższej tabeli wymieniono limity szybkości dla interfejsu API NuGet.org.
 
 | interfejs API | Typ limitu | Wartość limitu | Przypadków użycia interfejsu API | 
 |:---|:---|:---|:--- |
-**UMIEŚĆ** `/api/v2/package` | Klucz interfejsu API | 100 na minutę | Przekaż nowy pakiet NuGet (wersja) za pośrednictwem punktu końcowego wypychania v2 
-**USUŃ** `/api/v2/package/{id}/{version}` | Klucz interfejsu API | 100 na minutę | Unlist pakietu NuGet (wersja) za pośrednictwem punktu końcowego v2 
+**UMIEŚĆ** `/api/v2/package` | Klucz interfejsu API | 250 / godzina | Przekaż nowy pakiet NuGet (wersja) za pośrednictwem punktu końcowego wypychania v2 
+**USUŃ** `/api/v2/package/{id}/{version}` | Klucz interfejsu API | 250 / godzina | Unlist pakietu NuGet (wersja) za pośrednictwem punktu końcowego v2 

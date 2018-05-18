@@ -6,11 +6,11 @@ ms.author: karann
 manager: unnir
 ms.date: 5/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: a37b7fd9cb44d485250deb18d7630d47c68e0517
-ms.sourcegitcommit: 00c4c809c69c16fcf4d81012eb53ea22f0691d0b
+ms.openlocfilehash: f23cc2973fa6370d9b7513d415fd8151b822c104
+ms.sourcegitcommit: 8f0bb8bb9cb91d27d660963ed9b0f32642f420fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="nuget-47-rtm-release-notes"></a>Informacje o wersji RTM 4,7 NuGet
 
@@ -23,6 +23,22 @@ ms.lasthandoff: 05/16/2018
 * Z 15.7 wersji programu Visual Studio, wprowadzono ma możliwość [migracji istniejących projektów, które używają formatu pliku packages.config, aby używać PackageReference](https://docs.microsoft.com/en-us/nuget/reference/migrate-packages-config-to-package-reference) zamiast tego.
 
 ## <a name="known-issues"></a>Znane problemy
+
+### <a name="the-migrate-packagesconfig-to-packagereference-option-is-not-available-in-the-right-click-context-menu"></a>`Migrate packages.config to PackageReference...` Opcja nie jest dostępne w menu kontekstowym kliknij prawym przyciskiem myszy
+
+#### <a name="issue"></a>Problem
+
+Przy pierwszym otwarciu projektu, NuGet może nie mieć zainicjować aż operacja NuGet jest wykonywana. Powoduje to możliwość migracji nie pojawiają się w menu kontekstowym kliknij prawym przyciskiem myszy na `packages.config` lub `References`.
+
+#### <a name="workaround"></a>Obejście
+
+Wykonać jedną z następujących akcji NuGet:
+* Otwórz Menedżera pakietów interfejsu użytkownika — kliknij prawym przyciskiem myszy `References` i wybierz pozycję `Manage NuGet Packages...`
+* Otwórz konsolę Menedżera pakietów — z `Tools > NuGet Package Manager`, wybierz pozycję `Package Manager Console`
+* Uruchom NuGet Przywracanie — kliknij prawym przyciskiem myszy w węźle rozwiązania w Eksploratorze rozwiązań i wybierz `Restore NuGet Packages`
+* Skompiluj projekt, który wyzwala również Przywracanie NuGet
+
+Teraz można wyświetlić opcji migracji. Należy pamiętać, że ta opcja nie jest obsługiwane i nie będą widoczne dla typów projektów programu ASP.NET i C++.
 
 ### <a name="issues-with-net-standard-20-with-net-framework--nuget"></a>Problemy z platformą .NET 2.0 standardowe z .NET Framework & NuGet
 
