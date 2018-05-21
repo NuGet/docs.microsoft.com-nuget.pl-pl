@@ -12,7 +12,7 @@ ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/26/2018
 ---
-# <a name="help-or--command-nuget-cli"></a>Pomoc lub? command, polecenie (interfejs wiersza polecenia NuGet)
+# <a name="help-or--command-nuget-cli"></a>help or ? command, polecenie (interfejs wiersza polecenia NuGet)
 
 **Dotyczy:** wszystkie &bullet; **obsługiwane wersje**: wszystkie
 
