@@ -10,13 +10,11 @@ Zachowania mogą się nieco różnić przy dystrybucji systemu operacyjnego.
 
 1. Zainstaluj [Mono 4.4.2 lub nowszym](http://www.mono-project.com/docs/getting-started/install/).
 
-1. Uruchom następujące polecenia w wierszu polecenia powłoki:
+1. Uruchom następujące polecenie w wierszu polecenia powłoki:
 
     ```bash
     # Download the latest stable `nuget.exe` to `/usr/local/bin`
     sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-    # Give the file permissions to execute
-    sudo chmod 755 /usr/local/bin/nuget.exe
     ```
 
 1. Utwórz alias, dodając następujący skrypt do odpowiedniego pliku dla Twojego systemu operacyjnego (zazwyczaj `~/.bash_aliases` lub `~/.bash_profile`):
