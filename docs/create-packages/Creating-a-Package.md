@@ -1,16 +1,17 @@
 ---
 title: Jak utworzyć pakiet NuGet
 description: Szczegółowy przewodnik dotyczący proces projektowania i tworzenia pakietu NuGet, w tym punkty decyzyjne klucza, takich jak pliki i przechowywania wersji.
-author: kraigb
-ms.author: kraigb
-manager: douge
+author: karann-msft
+ms.author: karann
+manager: unnir
 ms.date: 12/12/2017
 ms.topic: conceptual
-ms.openlocfilehash: 1657479e1a87f7022caa2fd991127b4ca702cdac
-ms.sourcegitcommit: 00c4c809c69c16fcf4d81012eb53ea22f0691d0b
+ms.openlocfilehash: 435db2d0cddcfd6b9db530cb384cf7facb9170dd
+ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818467"
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -147,7 +148,7 @@ Tworzenie manifestu pełną zwykle zaczyna się od podstawowego `.nuspec` plik w
 
 - [Katalog roboczy opartych na konwencjach](#from-a-convention-based-working-directory)
 - [Zestaw biblioteki DLL](#from-an-assembly-dll)
-- [A Visual Studio project](#from-a-visual-studio-project)    
+- [Projektu programu Visual Studio](#from-a-visual-studio-project)    
 - [Nowy plik z wartościami domyślnymi](#new-file-with-default-values)
 
 Możesz następnie przeprowadź edycję pliku ręcznie tak aby dokładnie zawartość, którą chcesz w ostatnim pakiecie.

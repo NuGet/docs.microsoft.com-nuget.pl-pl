@@ -1,9 +1,9 @@
 ---
 title: NuGet błędy i ostrzeżenia odwołania
 description: Pełną dokumentację dla ostrzeżeń i błędów wystawiony na podstawie NuGet podczas różne operacje NuGet.
-author: kraigb
-ms.author: kraigb
-manager: douge
+author: karann-msft
+ms.author: karann
+manager: unnir
 ms.date: 05/18/2018
 ms.topic: reference
 ms.reviewer: anangaur
@@ -44,11 +44,12 @@ f1_keywords:
 - NU3008
 - NU3018
 - NU3028
-ms.openlocfilehash: 748c2746a61886617e2eefe3e6c4a2e2a5b9d4d3
-ms.sourcegitcommit: 8127dd73ff8481a1a01acd9b7004dd131a9d84e7
+ms.openlocfilehash: 368a9554c5caf92b709f9b29e16b8a7cdb264eec
+ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818519"
 ---
 # <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
 
@@ -173,7 +174,7 @@ Błędy i ostrzeżenia wymienione w tym miejscu są dostępne tylko w przypadku 
 | --- | --- |
 | **Problem** | Nie można rozpoznać ograniczenia zależności między pakietami. |
 | **Przykładowy komunikat** | *Konflikt wersji dla NuGet.Versioning wykryte. Pakiet odwoływać się bezpośrednio z projektu, aby rozwiązać ten problem.<br/>  NuGet.Versioning (= 3.5.0) -> NuGet.Packaging 3.5.0<br/> NuGet.Configuration 4.0.0 -> NuGet.Versioning (= 4.0.0)* |
-| **Rozwiązanie** | Pakiety z ograniczeniami zależności na dokładną wersję nie zezwalają na inne pakiety w razie potrzeby zwiększyć wersji. Dodaj odwołanie do projektu bezpośrednio (w pliku projektu) na dokładną wersję wymaganą. |
+| **Rozwiązanie** | Pakiety z ograniczeniami zależności na dokładną wersję nie zezwalają na inne pakiety w razie potrzeby zwiększyć wersji. Dodaj odwołanie do pakietu bezpośrednio (w pliku projektu) na dokładną wersję wymaganą. |
 
 <a name="nu1108"></a>
 

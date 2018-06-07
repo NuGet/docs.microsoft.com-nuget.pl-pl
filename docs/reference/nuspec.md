@@ -1,17 +1,18 @@
 ---
 title: Odwołanie do pliku .nuspec programu NuGet
 description: Plik .nuspec zawiera metadane pakietów używane podczas tworzenia pakietu i podaj informacje dla konsumentów pakietu.
-author: kraigb
-ms.author: kraigb
-manager: douge
+author: karann-msft
+ms.author: karann
+manager: unnir
 ms.date: 08/29/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: c0717418e1efcdcaf407bec6ab50f43e5396421e
-ms.sourcegitcommit: 8f0bb8bb9cb91d27d660963ed9b0f32642f420fe
+ms.openlocfilehash: 2ff83538f9f1cf3bd4ed616ec8f5f1aef3ffd9d6
+ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818545"
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 

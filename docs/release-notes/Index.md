@@ -1,16 +1,17 @@
 ---
 title: Uwagi do wersji
 description: Indeks informacji o wersji dla programu NuGet i znane problemy dla wszystkich wersji.
-author: kraigb
-ms.author: kraigb
-manager: douge
+author: karann-msft
+ms.author: karann
+manager: unnir
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: 8534074f22b58f8ed4b22c19fe2ea38d68113434
-ms.sourcegitcommit: 00c4c809c69c16fcf4d81012eb53ea22f0691d0b
-ms.translationtype: HT
+ms.openlocfilehash: e960218d4594599d017ffbe1ec262fda43ba0283
+ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818493"
 ---
 # <a name="release-notes"></a>Uwagi do wersji
 
