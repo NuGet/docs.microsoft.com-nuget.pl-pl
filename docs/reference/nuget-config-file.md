@@ -1,58 +1,59 @@
 ---
 title: Odwołanie do pliku nuget.config.
 description: Odwołanie do pliku NuGet.Config łącznie z sekcji konfiguracji, bindingRedirects packageRestore, rozwiązanie i packageSource.
-author: kraigb
-ms.author: kraigb
-manager: douge
+author: karann-msft
+ms.author: karann
+manager: unnir
 ms.date: 10/25/2017
 ms.topic: reference
-ms.openlocfilehash: e57d17c5bf393a05b8915b9a1a7af0b659a04716
-ms.sourcegitcommit: 055248d790051774c892b220eca12015babbd668
+ms.openlocfilehash: 3d6741b2d724b967e76ba65547e84adcd461a521
+ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818404"
 ---
-# <a name="nugetconfig-reference"></a><span data-ttu-id="25e8c-103">Odwołanie do pliku nuget.config.</span><span class="sxs-lookup"><span data-stu-id="25e8c-103">nuget.config reference</span></span>
+# <a name="nugetconfig-reference"></a><span data-ttu-id="57e2d-103">Odwołanie do pliku nuget.config.</span><span class="sxs-lookup"><span data-stu-id="57e2d-103">nuget.config reference</span></span>
 
-<span data-ttu-id="25e8c-104">Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` plików zgodnie z opisem w [Konfigurowanie zachowania NuGet](../consume-packages/configuring-nuget-behavior.md).</span><span class="sxs-lookup"><span data-stu-id="25e8c-104">NuGet behavior is controlled by settings in different `NuGet.Config` files as described in [Configuring NuGet Behavior](../consume-packages/configuring-nuget-behavior.md).</span></span>
+<span data-ttu-id="57e2d-104">Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` plików zgodnie z opisem w [Konfigurowanie zachowania NuGet](../consume-packages/configuring-nuget-behavior.md).</span><span class="sxs-lookup"><span data-stu-id="57e2d-104">NuGet behavior is controlled by settings in different `NuGet.Config` files as described in [Configuring NuGet Behavior](../consume-packages/configuring-nuget-behavior.md).</span></span>
 
-<span data-ttu-id="25e8c-105">`nuget.config` jest to plik XML zawierający najwyższego poziomu `<configuration>` węzła, który następnie zawiera elementy sekcji opisane w tym temacie.</span><span class="sxs-lookup"><span data-stu-id="25e8c-105">`nuget.config` is an XML file containing a top-level `<configuration>` node, which then contains the section elements described in this topic.</span></span> <span data-ttu-id="25e8c-106">Każda sekcja zawiera zero lub więcej `<add>` elementy o `key` i `value` atrybutów.</span><span class="sxs-lookup"><span data-stu-id="25e8c-106">Each section contains zero or more `<add>` elements with `key` and `value` attributes.</span></span> <span data-ttu-id="25e8c-107">Zobacz [pliku konfiguracji przykłady](#example-config-file).</span><span class="sxs-lookup"><span data-stu-id="25e8c-107">See the [examples config file](#example-config-file).</span></span> <span data-ttu-id="25e8c-108">Ustawienie nazwy jest rozróżniana wielkość liter, a wartości można użyć [zmiennych środowiskowych](#using-environment-variables).</span><span class="sxs-lookup"><span data-stu-id="25e8c-108">Setting names are case-insensitive, and values can use [environment variables](#using-environment-variables).</span></span>
+<span data-ttu-id="57e2d-105">`nuget.config` jest to plik XML zawierający najwyższego poziomu `<configuration>` węzła, który następnie zawiera elementy sekcji opisane w tym temacie.</span><span class="sxs-lookup"><span data-stu-id="57e2d-105">`nuget.config` is an XML file containing a top-level `<configuration>` node, which then contains the section elements described in this topic.</span></span> <span data-ttu-id="57e2d-106">Każda sekcja zawiera zero lub więcej `<add>` elementy o `key` i `value` atrybutów.</span><span class="sxs-lookup"><span data-stu-id="57e2d-106">Each section contains zero or more `<add>` elements with `key` and `value` attributes.</span></span> <span data-ttu-id="57e2d-107">Zobacz [pliku konfiguracji przykłady](#example-config-file).</span><span class="sxs-lookup"><span data-stu-id="57e2d-107">See the [examples config file](#example-config-file).</span></span> <span data-ttu-id="57e2d-108">Ustawienie nazwy jest rozróżniana wielkość liter, a wartości można użyć [zmiennych środowiskowych](#using-environment-variables).</span><span class="sxs-lookup"><span data-stu-id="57e2d-108">Setting names are case-insensitive, and values can use [environment variables](#using-environment-variables).</span></span>
 
-<span data-ttu-id="25e8c-109">W tym temacie:</span><span class="sxs-lookup"><span data-stu-id="25e8c-109">In this topic:</span></span>
+<span data-ttu-id="57e2d-109">W tym temacie:</span><span class="sxs-lookup"><span data-stu-id="57e2d-109">In this topic:</span></span>
 
-- [<span data-ttu-id="25e8c-110">Sekcja konfiguracyjna</span><span class="sxs-lookup"><span data-stu-id="25e8c-110">config section</span></span>](#config-section)
-- [<span data-ttu-id="25e8c-111">sekcja bindingRedirects</span><span class="sxs-lookup"><span data-stu-id="25e8c-111">bindingRedirects section</span></span>](#bindingredirects-section)
-- [<span data-ttu-id="25e8c-112">sekcja packageRestore</span><span class="sxs-lookup"><span data-stu-id="25e8c-112">packageRestore section</span></span>](#packagerestore-section)
-- [<span data-ttu-id="25e8c-113">sekcji rozwiązania</span><span class="sxs-lookup"><span data-stu-id="25e8c-113">solution section</span></span>](#solution-section)
-- <span data-ttu-id="25e8c-114">[Pakiet sekcje źródła](#package-source-sections):</span><span class="sxs-lookup"><span data-stu-id="25e8c-114">[Package source sections](#package-source-sections):</span></span>
-  - [<span data-ttu-id="25e8c-115">packageSources</span><span class="sxs-lookup"><span data-stu-id="25e8c-115">packageSources</span></span>](#packagesources)
-  - [<span data-ttu-id="25e8c-116">packageSourceCredentials</span><span class="sxs-lookup"><span data-stu-id="25e8c-116">packageSourceCredentials</span></span>](#packagesourcecredentials)
-  - [<span data-ttu-id="25e8c-117">apikeys</span><span class="sxs-lookup"><span data-stu-id="25e8c-117">apikeys</span></span>](#apikeys)
-  - [<span data-ttu-id="25e8c-118">disabledPackageSources</span><span class="sxs-lookup"><span data-stu-id="25e8c-118">disabledPackageSources</span></span>](#disabledpackagesources)
-  - [<span data-ttu-id="25e8c-119">activePackageSource</span><span class="sxs-lookup"><span data-stu-id="25e8c-119">activePackageSource</span></span>](#activepackagesource)
-- [<span data-ttu-id="25e8c-120">Korzystanie ze zmiennych środowiskowych</span><span class="sxs-lookup"><span data-stu-id="25e8c-120">Using environment variables</span></span>](#using-environment-variables)
-- [<span data-ttu-id="25e8c-121">Przykładowy plik konfiguracji</span><span class="sxs-lookup"><span data-stu-id="25e8c-121">Example config file</span></span>](#example-config-file)
+- [<span data-ttu-id="57e2d-110">Sekcja konfiguracyjna</span><span class="sxs-lookup"><span data-stu-id="57e2d-110">config section</span></span>](#config-section)
+- [<span data-ttu-id="57e2d-111">sekcja bindingRedirects</span><span class="sxs-lookup"><span data-stu-id="57e2d-111">bindingRedirects section</span></span>](#bindingredirects-section)
+- [<span data-ttu-id="57e2d-112">sekcja packageRestore</span><span class="sxs-lookup"><span data-stu-id="57e2d-112">packageRestore section</span></span>](#packagerestore-section)
+- [<span data-ttu-id="57e2d-113">sekcji rozwiązania</span><span class="sxs-lookup"><span data-stu-id="57e2d-113">solution section</span></span>](#solution-section)
+- <span data-ttu-id="57e2d-114">[Pakiet sekcje źródła](#package-source-sections):</span><span class="sxs-lookup"><span data-stu-id="57e2d-114">[Package source sections](#package-source-sections):</span></span>
+  - [<span data-ttu-id="57e2d-115">packageSources</span><span class="sxs-lookup"><span data-stu-id="57e2d-115">packageSources</span></span>](#packagesources)
+  - [<span data-ttu-id="57e2d-116">packageSourceCredentials</span><span class="sxs-lookup"><span data-stu-id="57e2d-116">packageSourceCredentials</span></span>](#packagesourcecredentials)
+  - [<span data-ttu-id="57e2d-117">apikeys</span><span class="sxs-lookup"><span data-stu-id="57e2d-117">apikeys</span></span>](#apikeys)
+  - [<span data-ttu-id="57e2d-118">disabledPackageSources</span><span class="sxs-lookup"><span data-stu-id="57e2d-118">disabledPackageSources</span></span>](#disabledpackagesources)
+  - [<span data-ttu-id="57e2d-119">activePackageSource</span><span class="sxs-lookup"><span data-stu-id="57e2d-119">activePackageSource</span></span>](#activepackagesource)
+- [<span data-ttu-id="57e2d-120">Korzystanie ze zmiennych środowiskowych</span><span class="sxs-lookup"><span data-stu-id="57e2d-120">Using environment variables</span></span>](#using-environment-variables)
+- [<span data-ttu-id="57e2d-121">Przykładowy plik konfiguracji</span><span class="sxs-lookup"><span data-stu-id="57e2d-121">Example config file</span></span>](#example-config-file)
 
 <a name="dependencyVersion"></a>
 <a name="globalPackagesFolder"></a>
 <a name="repositoryPath"></a>
 <a name="proxy-settings"></a>
 
-## <a name="config-section"></a><span data-ttu-id="25e8c-122">Sekcja konfiguracyjna</span><span class="sxs-lookup"><span data-stu-id="25e8c-122">config section</span></span>
+## <a name="config-section"></a><span data-ttu-id="57e2d-122">Sekcja konfiguracyjna</span><span class="sxs-lookup"><span data-stu-id="57e2d-122">config section</span></span>
 
-<span data-ttu-id="25e8c-123">Zawiera ustawienia dodatkowych konfiguracji, które można ustawić za pomocą [ `nuget config` polecenia](../tools/cli-ref-config.md).</span><span class="sxs-lookup"><span data-stu-id="25e8c-123">Contains miscellaneous configuration settings, which can be set using the [`nuget config` command](../tools/cli-ref-config.md).</span></span>
+<span data-ttu-id="57e2d-123">Zawiera ustawienia dodatkowych konfiguracji, które można ustawić za pomocą [ `nuget config` polecenia](../tools/cli-ref-config.md).</span><span class="sxs-lookup"><span data-stu-id="57e2d-123">Contains miscellaneous configuration settings, which can be set using the [`nuget config` command](../tools/cli-ref-config.md).</span></span>
 
-<span data-ttu-id="25e8c-124">`dependencyVersion` i `repositoryPath` stosowania tylko dla projektów przy użyciu `packages.config`.</span><span class="sxs-lookup"><span data-stu-id="25e8c-124">`dependencyVersion` and `repositoryPath` apply only to projects using `packages.config`.</span></span> <span data-ttu-id="25e8c-125">`globalPackagesFolder` dotyczy tylko projektów przy użyciu formatu PackageReference.</span><span class="sxs-lookup"><span data-stu-id="25e8c-125">`globalPackagesFolder` applies only to projects using the PackageReference format.</span></span>
+<span data-ttu-id="57e2d-124">`dependencyVersion` i `repositoryPath` stosowania tylko dla projektów przy użyciu `packages.config`.</span><span class="sxs-lookup"><span data-stu-id="57e2d-124">`dependencyVersion` and `repositoryPath` apply only to projects using `packages.config`.</span></span> <span data-ttu-id="57e2d-125">`globalPackagesFolder` dotyczy tylko projektów przy użyciu formatu PackageReference.</span><span class="sxs-lookup"><span data-stu-id="57e2d-125">`globalPackagesFolder` applies only to projects using the PackageReference format.</span></span>
 
-| <span data-ttu-id="25e8c-126">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-126">Key</span></span> | <span data-ttu-id="25e8c-127">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-127">Value</span></span> |
+| <span data-ttu-id="57e2d-126">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-126">Key</span></span> | <span data-ttu-id="57e2d-127">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-127">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-128">dependencyVersion (`packages.config` tylko)</span><span class="sxs-lookup"><span data-stu-id="25e8c-128">dependencyVersion (`packages.config` only)</span></span> | <span data-ttu-id="25e8c-129">Wartość domyślna `DependencyVersion` wartość instalacji pakietu, przywracania i aktualizacji, gdy `-DependencyVersion` przełącznik nie jest określony bezpośrednio.</span><span class="sxs-lookup"><span data-stu-id="25e8c-129">The default `DependencyVersion` value for package install, restore, and update, when the `-DependencyVersion` switch is not specified directly.</span></span> <span data-ttu-id="25e8c-130">Ta wartość jest także używana przez interfejs użytkownika Menedżera pakietów NuGet.</span><span class="sxs-lookup"><span data-stu-id="25e8c-130">This value is also used by the NuGet Package Manager UI.</span></span> <span data-ttu-id="25e8c-131">Wartości są `Lowest`, `HighestPatch`, `HighestMinor`, `Highest`.</span><span class="sxs-lookup"><span data-stu-id="25e8c-131">Values are `Lowest`, `HighestPatch`, `HighestMinor`, `Highest`.</span></span> |
-| <span data-ttu-id="25e8c-132">wartość globalPackagesFolder (przy użyciu PackageReference tylko projekty)</span><span class="sxs-lookup"><span data-stu-id="25e8c-132">globalPackagesFolder (projects using PackageReference only)</span></span> | <span data-ttu-id="25e8c-133">Lokalizacja domyślny folder globalne pakietów.</span><span class="sxs-lookup"><span data-stu-id="25e8c-133">The location of the default global packages folder.</span></span> <span data-ttu-id="25e8c-134">Wartość domyślna to `%userprofile%\.nuget\packages` (system Windows) lub `~/.nuget/packages` (system Mac/Linux).</span><span class="sxs-lookup"><span data-stu-id="25e8c-134">The default is `%userprofile%\.nuget\packages` (Windows) or `~/.nuget/packages` (Mac/Linux).</span></span> <span data-ttu-id="25e8c-135">Ścieżka względna mogą być używane w specyficznego dla projektu `nuget.config` plików.</span><span class="sxs-lookup"><span data-stu-id="25e8c-135">A relative path can be used in project-specific `nuget.config` files.</span></span> <span data-ttu-id="25e8c-136">To ustawienie jest zastępowany przez zmienną środowiskową NUGET_PACKAGES pierwszeństwo.</span><span class="sxs-lookup"><span data-stu-id="25e8c-136">This setting is overridden by the NUGET_PACKAGES environment variable, which takes precedence.</span></span> |
-| <span data-ttu-id="25e8c-137">repositoryPath (`packages.config` tylko)</span><span class="sxs-lookup"><span data-stu-id="25e8c-137">repositoryPath (`packages.config` only)</span></span> | <span data-ttu-id="25e8c-138">Lokalizacja, w którym można zainstalować pakietów NuGet, zamiast domyślnej `$(Solutiondir)/packages` folderu.</span><span class="sxs-lookup"><span data-stu-id="25e8c-138">The location in which to install NuGet packages instead of the default `$(Solutiondir)/packages` folder.</span></span> <span data-ttu-id="25e8c-139">Ścieżka względna mogą być używane w specyficznego dla projektu `nuget.config` plików.</span><span class="sxs-lookup"><span data-stu-id="25e8c-139">A relative path can be used in project-specific `nuget.config` files.</span></span> <span data-ttu-id="25e8c-140">To ustawienie jest zastępowany przez zmienną środowiskową NUGET_PACKAGES pierwszeństwo.</span><span class="sxs-lookup"><span data-stu-id="25e8c-140">This setting is overridden by the NUGET_PACKAGES environment variable, which takes precedence.</span></span> |
-| <span data-ttu-id="25e8c-141">defaultPushSource</span><span class="sxs-lookup"><span data-stu-id="25e8c-141">defaultPushSource</span></span> | <span data-ttu-id="25e8c-142">Określa adres URL lub ścieżkę źródła pakietu, które mają być używane jako domyślne, jeśli inne źródła pakietu nie znaleziono dla operacji.</span><span class="sxs-lookup"><span data-stu-id="25e8c-142">Identifies the URL or path of the package source that should be used as the default if no other package sources are found for an operation.</span></span> |
-| <span data-ttu-id="25e8c-143">że http_proxy.user http_proxy.password no_proxy</span><span class="sxs-lookup"><span data-stu-id="25e8c-143">http_proxy http_proxy.user http_proxy.password no_proxy</span></span> | <span data-ttu-id="25e8c-144">Ustawienia serwera proxy do użycia podczas połączenia ze źródła pakietów; `http_proxy` powinien być w formacie `http://<username>:<password>@<domain>`.</span><span class="sxs-lookup"><span data-stu-id="25e8c-144">Proxy settings to use when connecting to package sources; `http_proxy` should be in the format `http://<username>:<password>@<domain>`.</span></span> <span data-ttu-id="25e8c-145">Hasła są szyfrowane i nie można dodać ręcznie.</span><span class="sxs-lookup"><span data-stu-id="25e8c-145">Passwords are encrypted and cannot be added manually.</span></span> <span data-ttu-id="25e8c-146">Aby uzyskać `no_proxy`, wartość jest rozdzielaną przecinkami listę domen obejścia serwera proxy.</span><span class="sxs-lookup"><span data-stu-id="25e8c-146">For `no_proxy`, the value is a comma-separated list of domains the bypass the proxy server.</span></span> <span data-ttu-id="25e8c-147">Można również używać zmiennych środowiskowych że i no_proxy, dla tych wartości.</span><span class="sxs-lookup"><span data-stu-id="25e8c-147">You can alternately use the http_proxy and no_proxy environment variables for those values.</span></span> <span data-ttu-id="25e8c-148">Aby uzyskać więcej informacji, zobacz [ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com).</span><span class="sxs-lookup"><span data-stu-id="25e8c-148">For additional details, see [NuGet proxy settings](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com).</span></span> |
+| <span data-ttu-id="57e2d-128">dependencyVersion (`packages.config` tylko)</span><span class="sxs-lookup"><span data-stu-id="57e2d-128">dependencyVersion (`packages.config` only)</span></span> | <span data-ttu-id="57e2d-129">Wartość domyślna `DependencyVersion` wartość instalacji pakietu, przywracania i aktualizacji, gdy `-DependencyVersion` przełącznik nie jest określony bezpośrednio.</span><span class="sxs-lookup"><span data-stu-id="57e2d-129">The default `DependencyVersion` value for package install, restore, and update, when the `-DependencyVersion` switch is not specified directly.</span></span> <span data-ttu-id="57e2d-130">Ta wartość jest także używana przez interfejs użytkownika Menedżera pakietów NuGet.</span><span class="sxs-lookup"><span data-stu-id="57e2d-130">This value is also used by the NuGet Package Manager UI.</span></span> <span data-ttu-id="57e2d-131">Wartości są `Lowest`, `HighestPatch`, `HighestMinor`, `Highest`.</span><span class="sxs-lookup"><span data-stu-id="57e2d-131">Values are `Lowest`, `HighestPatch`, `HighestMinor`, `Highest`.</span></span> |
+| <span data-ttu-id="57e2d-132">wartość globalPackagesFolder (przy użyciu PackageReference tylko projekty)</span><span class="sxs-lookup"><span data-stu-id="57e2d-132">globalPackagesFolder (projects using PackageReference only)</span></span> | <span data-ttu-id="57e2d-133">Lokalizacja domyślny folder globalne pakietów.</span><span class="sxs-lookup"><span data-stu-id="57e2d-133">The location of the default global packages folder.</span></span> <span data-ttu-id="57e2d-134">Wartość domyślna to `%userprofile%\.nuget\packages` (system Windows) lub `~/.nuget/packages` (system Mac/Linux).</span><span class="sxs-lookup"><span data-stu-id="57e2d-134">The default is `%userprofile%\.nuget\packages` (Windows) or `~/.nuget/packages` (Mac/Linux).</span></span> <span data-ttu-id="57e2d-135">Ścieżka względna mogą być używane w specyficznego dla projektu `nuget.config` plików.</span><span class="sxs-lookup"><span data-stu-id="57e2d-135">A relative path can be used in project-specific `nuget.config` files.</span></span> <span data-ttu-id="57e2d-136">To ustawienie jest zastępowany przez zmienną środowiskową NUGET_PACKAGES pierwszeństwo.</span><span class="sxs-lookup"><span data-stu-id="57e2d-136">This setting is overridden by the NUGET_PACKAGES environment variable, which takes precedence.</span></span> |
+| <span data-ttu-id="57e2d-137">repositoryPath (`packages.config` tylko)</span><span class="sxs-lookup"><span data-stu-id="57e2d-137">repositoryPath (`packages.config` only)</span></span> | <span data-ttu-id="57e2d-138">Lokalizacja, w którym można zainstalować pakietów NuGet, zamiast domyślnej `$(Solutiondir)/packages` folderu.</span><span class="sxs-lookup"><span data-stu-id="57e2d-138">The location in which to install NuGet packages instead of the default `$(Solutiondir)/packages` folder.</span></span> <span data-ttu-id="57e2d-139">Ścieżka względna mogą być używane w specyficznego dla projektu `nuget.config` plików.</span><span class="sxs-lookup"><span data-stu-id="57e2d-139">A relative path can be used in project-specific `nuget.config` files.</span></span> <span data-ttu-id="57e2d-140">To ustawienie jest zastępowany przez zmienną środowiskową NUGET_PACKAGES pierwszeństwo.</span><span class="sxs-lookup"><span data-stu-id="57e2d-140">This setting is overridden by the NUGET_PACKAGES environment variable, which takes precedence.</span></span> |
+| <span data-ttu-id="57e2d-141">defaultPushSource</span><span class="sxs-lookup"><span data-stu-id="57e2d-141">defaultPushSource</span></span> | <span data-ttu-id="57e2d-142">Określa adres URL lub ścieżkę źródła pakietu, które mają być używane jako domyślne, jeśli inne źródła pakietu nie znaleziono dla operacji.</span><span class="sxs-lookup"><span data-stu-id="57e2d-142">Identifies the URL or path of the package source that should be used as the default if no other package sources are found for an operation.</span></span> |
+| <span data-ttu-id="57e2d-143">że http_proxy.user http_proxy.password no_proxy</span><span class="sxs-lookup"><span data-stu-id="57e2d-143">http_proxy http_proxy.user http_proxy.password no_proxy</span></span> | <span data-ttu-id="57e2d-144">Ustawienia serwera proxy do użycia podczas połączenia ze źródła pakietów; `http_proxy` powinien być w formacie `http://<username>:<password>@<domain>`.</span><span class="sxs-lookup"><span data-stu-id="57e2d-144">Proxy settings to use when connecting to package sources; `http_proxy` should be in the format `http://<username>:<password>@<domain>`.</span></span> <span data-ttu-id="57e2d-145">Hasła są szyfrowane i nie można dodać ręcznie.</span><span class="sxs-lookup"><span data-stu-id="57e2d-145">Passwords are encrypted and cannot be added manually.</span></span> <span data-ttu-id="57e2d-146">Aby uzyskać `no_proxy`, wartość jest rozdzielaną przecinkami listę domen obejścia serwera proxy.</span><span class="sxs-lookup"><span data-stu-id="57e2d-146">For `no_proxy`, the value is a comma-separated list of domains the bypass the proxy server.</span></span> <span data-ttu-id="57e2d-147">Można również używać zmiennych środowiskowych że i no_proxy, dla tych wartości.</span><span class="sxs-lookup"><span data-stu-id="57e2d-147">You can alternately use the http_proxy and no_proxy environment variables for those values.</span></span> <span data-ttu-id="57e2d-148">Aby uzyskać więcej informacji, zobacz [ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com).</span><span class="sxs-lookup"><span data-stu-id="57e2d-148">For additional details, see [NuGet proxy settings](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com).</span></span> |
 
-<span data-ttu-id="25e8c-149">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="25e8c-149">**Example**:</span></span>
+<span data-ttu-id="57e2d-149">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="57e2d-149">**Example**:</span></span>
 
 ```xml
 <config>
@@ -63,15 +64,15 @@ ms.lasthandoff: 05/14/2018
 </config>
 ```
 
-## <a name="bindingredirects-section"></a><span data-ttu-id="25e8c-150">sekcja bindingRedirects</span><span class="sxs-lookup"><span data-stu-id="25e8c-150">bindingRedirects section</span></span>
+## <a name="bindingredirects-section"></a><span data-ttu-id="57e2d-150">sekcja bindingRedirects</span><span class="sxs-lookup"><span data-stu-id="57e2d-150">bindingRedirects section</span></span>
 
-<span data-ttu-id="25e8c-151">Określa, czy NuGet nie przekierowania powiązania automatyczne, gdy jest zainstalowany pakiet.</span><span class="sxs-lookup"><span data-stu-id="25e8c-151">Configures whether NuGet does automatic binding redirects when a package is installed.</span></span>
+<span data-ttu-id="57e2d-151">Określa, czy NuGet nie przekierowania powiązania automatyczne, gdy jest zainstalowany pakiet.</span><span class="sxs-lookup"><span data-stu-id="57e2d-151">Configures whether NuGet does automatic binding redirects when a package is installed.</span></span>
 
-| <span data-ttu-id="25e8c-152">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-152">Key</span></span> | <span data-ttu-id="25e8c-153">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-153">Value</span></span> |
+| <span data-ttu-id="57e2d-152">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-152">Key</span></span> | <span data-ttu-id="57e2d-153">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-153">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-154">Pomiń</span><span class="sxs-lookup"><span data-stu-id="25e8c-154">skip</span></span> | <span data-ttu-id="25e8c-155">Wartość logiczna wskazująca, czy pominąć przekierowania powiązania automatycznego.</span><span class="sxs-lookup"><span data-stu-id="25e8c-155">A Boolean indicating whether to skip automatic binding redirects.</span></span> <span data-ttu-id="25e8c-156">Wartością domyślną jest false.</span><span class="sxs-lookup"><span data-stu-id="25e8c-156">The default is false.</span></span> |
+| <span data-ttu-id="57e2d-154">Pomiń</span><span class="sxs-lookup"><span data-stu-id="57e2d-154">skip</span></span> | <span data-ttu-id="57e2d-155">Wartość logiczna wskazująca, czy pominąć przekierowania powiązania automatycznego.</span><span class="sxs-lookup"><span data-stu-id="57e2d-155">A Boolean indicating whether to skip automatic binding redirects.</span></span> <span data-ttu-id="57e2d-156">Wartością domyślną jest false.</span><span class="sxs-lookup"><span data-stu-id="57e2d-156">The default is false.</span></span> |
 
-<span data-ttu-id="25e8c-157">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="25e8c-157">**Example**:</span></span>
+<span data-ttu-id="57e2d-157">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="57e2d-157">**Example**:</span></span>
 
 ```xml
 <bindingRedirects>
@@ -79,16 +80,16 @@ ms.lasthandoff: 05/14/2018
 </bindingRedirects>
 ```
 
-## <a name="packagerestore-section"></a><span data-ttu-id="25e8c-158">sekcja packageRestore</span><span class="sxs-lookup"><span data-stu-id="25e8c-158">packageRestore section</span></span>
+## <a name="packagerestore-section"></a><span data-ttu-id="57e2d-158">sekcja packageRestore</span><span class="sxs-lookup"><span data-stu-id="57e2d-158">packageRestore section</span></span>
 
-<span data-ttu-id="25e8c-159">Formanty Przywracanie pakietów podczas kompilacji.</span><span class="sxs-lookup"><span data-stu-id="25e8c-159">Controls package restore during builds.</span></span>
+<span data-ttu-id="57e2d-159">Formanty Przywracanie pakietów podczas kompilacji.</span><span class="sxs-lookup"><span data-stu-id="57e2d-159">Controls package restore during builds.</span></span>
 
-| <span data-ttu-id="25e8c-160">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-160">Key</span></span> | <span data-ttu-id="25e8c-161">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-161">Value</span></span> |
+| <span data-ttu-id="57e2d-160">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-160">Key</span></span> | <span data-ttu-id="57e2d-161">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-161">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-162">włączone</span><span class="sxs-lookup"><span data-stu-id="25e8c-162">enabled</span></span> | <span data-ttu-id="25e8c-163">Wartość logiczna wskazująca, czy NuGet można wykonać przywracania automatycznie.</span><span class="sxs-lookup"><span data-stu-id="25e8c-163">A Boolean indicating whether NuGet can perform automatic restore.</span></span> <span data-ttu-id="25e8c-164">Można również ustawić `EnableNuGetPackageRestore` zmienną środowiskową o wartości `True` zamiast ustawienie tego klucza w pliku konfiguracji.</span><span class="sxs-lookup"><span data-stu-id="25e8c-164">You can also set the `EnableNuGetPackageRestore` environment variable with a value of `True` instead of setting this key in the config file.</span></span> |
-| <span data-ttu-id="25e8c-165">automatyczne</span><span class="sxs-lookup"><span data-stu-id="25e8c-165">automatic</span></span> | <span data-ttu-id="25e8c-166">Wartość logiczna wskazująca, czy NuGet należy sprawdzić, czy brakujących pakietów podczas kompilacji.</span><span class="sxs-lookup"><span data-stu-id="25e8c-166">A Boolean indicating whether NuGet should check for missing packages during a build.</span></span> |
+| <span data-ttu-id="57e2d-162">włączone</span><span class="sxs-lookup"><span data-stu-id="57e2d-162">enabled</span></span> | <span data-ttu-id="57e2d-163">Wartość logiczna wskazująca, czy NuGet można wykonać przywracania automatycznie.</span><span class="sxs-lookup"><span data-stu-id="57e2d-163">A Boolean indicating whether NuGet can perform automatic restore.</span></span> <span data-ttu-id="57e2d-164">Można również ustawić `EnableNuGetPackageRestore` zmienną środowiskową o wartości `True` zamiast ustawienie tego klucza w pliku konfiguracji.</span><span class="sxs-lookup"><span data-stu-id="57e2d-164">You can also set the `EnableNuGetPackageRestore` environment variable with a value of `True` instead of setting this key in the config file.</span></span> |
+| <span data-ttu-id="57e2d-165">automatyczne</span><span class="sxs-lookup"><span data-stu-id="57e2d-165">automatic</span></span> | <span data-ttu-id="57e2d-166">Wartość logiczna wskazująca, czy NuGet należy sprawdzić, czy brakujących pakietów podczas kompilacji.</span><span class="sxs-lookup"><span data-stu-id="57e2d-166">A Boolean indicating whether NuGet should check for missing packages during a build.</span></span> |
 
-<span data-ttu-id="25e8c-167">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="25e8c-167">**Example**:</span></span>
+<span data-ttu-id="57e2d-167">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="57e2d-167">**Example**:</span></span>
 
 ```xml
 <packageRestore>
@@ -97,15 +98,15 @@ ms.lasthandoff: 05/14/2018
 </packageRestore>
 ```
 
-## <a name="solution-section"></a><span data-ttu-id="25e8c-168">sekcji rozwiązania</span><span class="sxs-lookup"><span data-stu-id="25e8c-168">solution section</span></span>
+## <a name="solution-section"></a><span data-ttu-id="57e2d-168">sekcji rozwiązania</span><span class="sxs-lookup"><span data-stu-id="57e2d-168">solution section</span></span>
 
-<span data-ttu-id="25e8c-169">Formanty czy `packages` folderu rozwiązania jest uwzględniona w kontroli źródła.</span><span class="sxs-lookup"><span data-stu-id="25e8c-169">Controls whether the `packages` folder of a solution is included in source control.</span></span> <span data-ttu-id="25e8c-170">W tej sekcji działa tylko w `nuget.config` pliki w folderze rozwiązania.</span><span class="sxs-lookup"><span data-stu-id="25e8c-170">This section works only in `nuget.config` files in a solution folder.</span></span>
+<span data-ttu-id="57e2d-169">Formanty czy `packages` folderu rozwiązania jest uwzględniona w kontroli źródła.</span><span class="sxs-lookup"><span data-stu-id="57e2d-169">Controls whether the `packages` folder of a solution is included in source control.</span></span> <span data-ttu-id="57e2d-170">W tej sekcji działa tylko w `nuget.config` pliki w folderze rozwiązania.</span><span class="sxs-lookup"><span data-stu-id="57e2d-170">This section works only in `nuget.config` files in a solution folder.</span></span>
 
-| <span data-ttu-id="25e8c-171">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-171">Key</span></span> | <span data-ttu-id="25e8c-172">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-172">Value</span></span> |
+| <span data-ttu-id="57e2d-171">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-171">Key</span></span> | <span data-ttu-id="57e2d-172">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-172">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-173">disableSourceControlIntegration</span><span class="sxs-lookup"><span data-stu-id="25e8c-173">disableSourceControlIntegration</span></span> | <span data-ttu-id="25e8c-174">Wartość logiczna wskazująca, czy Ignoruj folderu pakietów podczas pracy z kontroli źródła.</span><span class="sxs-lookup"><span data-stu-id="25e8c-174">A Boolean indicating whether to ignore the packages folder when working with source control.</span></span> <span data-ttu-id="25e8c-175">Wartość domyślna to false.</span><span class="sxs-lookup"><span data-stu-id="25e8c-175">The default value is false.</span></span> |
+| <span data-ttu-id="57e2d-173">disableSourceControlIntegration</span><span class="sxs-lookup"><span data-stu-id="57e2d-173">disableSourceControlIntegration</span></span> | <span data-ttu-id="57e2d-174">Wartość logiczna wskazująca, czy Ignoruj folderu pakietów podczas pracy z kontroli źródła.</span><span class="sxs-lookup"><span data-stu-id="57e2d-174">A Boolean indicating whether to ignore the packages folder when working with source control.</span></span> <span data-ttu-id="57e2d-175">Wartość domyślna to false.</span><span class="sxs-lookup"><span data-stu-id="57e2d-175">The default value is false.</span></span> |
 
-<span data-ttu-id="25e8c-176">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="25e8c-176">**Example**:</span></span>
+<span data-ttu-id="57e2d-176">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="57e2d-176">**Example**:</span></span>
 
 ```xml
 <solution>
@@ -113,23 +114,23 @@ ms.lasthandoff: 05/14/2018
 </solution>
 ```
 
-## <a name="package-source-sections"></a><span data-ttu-id="25e8c-177">Sekcje źródła pakietu</span><span class="sxs-lookup"><span data-stu-id="25e8c-177">Package source sections</span></span>
+## <a name="package-source-sections"></a><span data-ttu-id="57e2d-177">Sekcje źródła pakietu</span><span class="sxs-lookup"><span data-stu-id="57e2d-177">Package source sections</span></span>
 
-<span data-ttu-id="25e8c-178">`packageSources`, `packageSourceCredentials`, `apikeys`, `activePackageSource`, I `disabledPackageSources` wszystkie działają razem, konfigurowanie, jak NuGet współpracuje z repozytoriów pakietu podczas instalacji, przywracania i operacje aktualizacji.</span><span class="sxs-lookup"><span data-stu-id="25e8c-178">The `packageSources`, `packageSourceCredentials`, `apikeys`, `activePackageSource`, and `disabledPackageSources` all work together to configure how NuGet works with package repositories during install, restore, and update operations.</span></span>
+<span data-ttu-id="57e2d-178">`packageSources`, `packageSourceCredentials`, `apikeys`, `activePackageSource`, I `disabledPackageSources` wszystkie działają razem, konfigurowanie, jak NuGet współpracuje z repozytoriów pakietu podczas instalacji, przywracania i operacje aktualizacji.</span><span class="sxs-lookup"><span data-stu-id="57e2d-178">The `packageSources`, `packageSourceCredentials`, `apikeys`, `activePackageSource`, and `disabledPackageSources` all work together to configure how NuGet works with package repositories during install, restore, and update operations.</span></span>
 
-<span data-ttu-id="25e8c-179">[ `nuget sources` Polecenia](../tools/cli-ref-sources.md) jest zazwyczaj używany do zarządzania te ustawienia, z wyjątkiem `apikeys` której odbywa się przy użyciu [ `nuget setapikey` polecenia](../tools/cli-ref-setapikey.md).</span><span class="sxs-lookup"><span data-stu-id="25e8c-179">The [`nuget sources` command](../tools/cli-ref-sources.md) is generally used to manage these settings, except for `apikeys` which is managed using the [`nuget setapikey` command](../tools/cli-ref-setapikey.md).</span></span>
+<span data-ttu-id="57e2d-179">[ `nuget sources` Polecenia](../tools/cli-ref-sources.md) jest zazwyczaj używany do zarządzania te ustawienia, z wyjątkiem `apikeys` której odbywa się przy użyciu [ `nuget setapikey` polecenia](../tools/cli-ref-setapikey.md).</span><span class="sxs-lookup"><span data-stu-id="57e2d-179">The [`nuget sources` command](../tools/cli-ref-sources.md) is generally used to manage these settings, except for `apikeys` which is managed using the [`nuget setapikey` command](../tools/cli-ref-setapikey.md).</span></span>
 
-<span data-ttu-id="25e8c-180">Należy zauważyć, że adres URL źródła dla nuget.org `https://api.nuget.org/v3/index.json`.</span><span class="sxs-lookup"><span data-stu-id="25e8c-180">Note that the source URL for nuget.org is `https://api.nuget.org/v3/index.json`.</span></span>
+<span data-ttu-id="57e2d-180">Należy zauważyć, że adres URL źródła dla nuget.org `https://api.nuget.org/v3/index.json`.</span><span class="sxs-lookup"><span data-stu-id="57e2d-180">Note that the source URL for nuget.org is `https://api.nuget.org/v3/index.json`.</span></span>
 
-### <a name="packagesources"></a><span data-ttu-id="25e8c-181">packageSources</span><span class="sxs-lookup"><span data-stu-id="25e8c-181">packageSources</span></span>
+### <a name="packagesources"></a><span data-ttu-id="57e2d-181">packageSources</span><span class="sxs-lookup"><span data-stu-id="57e2d-181">packageSources</span></span>
 
-<span data-ttu-id="25e8c-182">Wyświetla wszystkie źródła pakietów znane.</span><span class="sxs-lookup"><span data-stu-id="25e8c-182">Lists all known package sources.</span></span> <span data-ttu-id="25e8c-183">Kolejność jest ignorowany podczas operacji przywracania, a w przypadku projektów przy użyciu formatu PackageReference.</span><span class="sxs-lookup"><span data-stu-id="25e8c-183">The order is ignored during restore operations and with any project using the PackageReference format.</span></span> <span data-ttu-id="25e8c-184">Kolejność źródeł instalacji szanuje NuGet i operacje aktualizacji z projektami za pomocą `packages.config`.</span><span class="sxs-lookup"><span data-stu-id="25e8c-184">NuGet respects the order of sources for install and update operations with projects using `packages.config`.</span></span>
+<span data-ttu-id="57e2d-182">Wyświetla wszystkie źródła pakietów znane.</span><span class="sxs-lookup"><span data-stu-id="57e2d-182">Lists all known package sources.</span></span> <span data-ttu-id="57e2d-183">Kolejność jest ignorowany podczas operacji przywracania, a w przypadku projektów przy użyciu formatu PackageReference.</span><span class="sxs-lookup"><span data-stu-id="57e2d-183">The order is ignored during restore operations and with any project using the PackageReference format.</span></span> <span data-ttu-id="57e2d-184">Kolejność źródeł instalacji szanuje NuGet i operacje aktualizacji z projektami za pomocą `packages.config`.</span><span class="sxs-lookup"><span data-stu-id="57e2d-184">NuGet respects the order of sources for install and update operations with projects using `packages.config`.</span></span>
 
-| <span data-ttu-id="25e8c-185">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-185">Key</span></span> | <span data-ttu-id="25e8c-186">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-186">Value</span></span> |
+| <span data-ttu-id="57e2d-185">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-185">Key</span></span> | <span data-ttu-id="57e2d-186">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-186">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-187">(nazwa można przypisać do źródła pakietu)</span><span class="sxs-lookup"><span data-stu-id="25e8c-187">(name to assign to the package source)</span></span> | <span data-ttu-id="25e8c-188">Ścieżka lub adres URL źródła pakietu.</span><span class="sxs-lookup"><span data-stu-id="25e8c-188">The path or URL of the package source.</span></span> |
+| <span data-ttu-id="57e2d-187">(nazwa można przypisać do źródła pakietu)</span><span class="sxs-lookup"><span data-stu-id="57e2d-187">(name to assign to the package source)</span></span> | <span data-ttu-id="57e2d-188">Ścieżka lub adres URL źródła pakietu.</span><span class="sxs-lookup"><span data-stu-id="57e2d-188">The path or URL of the package source.</span></span> |
 
-<span data-ttu-id="25e8c-189">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="25e8c-189">**Example**:</span></span>
+<span data-ttu-id="57e2d-189">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="57e2d-189">**Example**:</span></span>
 
 ```xml
 <packageSources>
@@ -139,19 +140,19 @@ ms.lasthandoff: 05/14/2018
 </packageSources>
 ```
 
-### <a name="packagesourcecredentials"></a><span data-ttu-id="25e8c-190">packageSourceCredentials</span><span class="sxs-lookup"><span data-stu-id="25e8c-190">packageSourceCredentials</span></span>
+### <a name="packagesourcecredentials"></a><span data-ttu-id="57e2d-190">packageSourceCredentials</span><span class="sxs-lookup"><span data-stu-id="57e2d-190">packageSourceCredentials</span></span>
 
-<span data-ttu-id="25e8c-191">Przechowywane nazwy użytkowników i hasła dla źródeł, zazwyczaj określana z `-username` i `-password` zmienia z `nuget sources`.</span><span class="sxs-lookup"><span data-stu-id="25e8c-191">Stores usernames and passwords for sources, typically specified with the `-username` and `-password` switches with `nuget sources`.</span></span> <span data-ttu-id="25e8c-192">Hasła są szyfrowane domyślnie, chyba że `-storepasswordincleartext` również używana jest opcja.</span><span class="sxs-lookup"><span data-stu-id="25e8c-192">Passwords are encrypted by default unless the `-storepasswordincleartext` option is also used.</span></span>
+<span data-ttu-id="57e2d-191">Przechowywane nazwy użytkowników i hasła dla źródeł, zazwyczaj określana z `-username` i `-password` zmienia z `nuget sources`.</span><span class="sxs-lookup"><span data-stu-id="57e2d-191">Stores usernames and passwords for sources, typically specified with the `-username` and `-password` switches with `nuget sources`.</span></span> <span data-ttu-id="57e2d-192">Hasła są szyfrowane domyślnie, chyba że `-storepasswordincleartext` również używana jest opcja.</span><span class="sxs-lookup"><span data-stu-id="57e2d-192">Passwords are encrypted by default unless the `-storepasswordincleartext` option is also used.</span></span>
 
-| <span data-ttu-id="25e8c-193">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-193">Key</span></span> | <span data-ttu-id="25e8c-194">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-194">Value</span></span> |
+| <span data-ttu-id="57e2d-193">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-193">Key</span></span> | <span data-ttu-id="57e2d-194">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-194">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-195">Nazwa użytkownika</span><span class="sxs-lookup"><span data-stu-id="25e8c-195">username</span></span> | <span data-ttu-id="25e8c-196">Nazwa użytkownika dla źródła w postaci zwykłego tekstu.</span><span class="sxs-lookup"><span data-stu-id="25e8c-196">The user name for the source in plain text.</span></span> |
-| <span data-ttu-id="25e8c-197">Hasło</span><span class="sxs-lookup"><span data-stu-id="25e8c-197">password</span></span> | <span data-ttu-id="25e8c-198">Zaszyfrowane hasło dla tego źródła.</span><span class="sxs-lookup"><span data-stu-id="25e8c-198">The encrypted password for the source.</span></span> |
-| <span data-ttu-id="25e8c-199">cleartextpassword</span><span class="sxs-lookup"><span data-stu-id="25e8c-199">cleartextpassword</span></span> | <span data-ttu-id="25e8c-200">Hasło nieszyfrowane źródła.</span><span class="sxs-lookup"><span data-stu-id="25e8c-200">The unencrypted password for the source.</span></span> |
+| <span data-ttu-id="57e2d-195">Nazwa użytkownika</span><span class="sxs-lookup"><span data-stu-id="57e2d-195">username</span></span> | <span data-ttu-id="57e2d-196">Nazwa użytkownika dla źródła w postaci zwykłego tekstu.</span><span class="sxs-lookup"><span data-stu-id="57e2d-196">The user name for the source in plain text.</span></span> |
+| <span data-ttu-id="57e2d-197">Hasło</span><span class="sxs-lookup"><span data-stu-id="57e2d-197">password</span></span> | <span data-ttu-id="57e2d-198">Zaszyfrowane hasło dla tego źródła.</span><span class="sxs-lookup"><span data-stu-id="57e2d-198">The encrypted password for the source.</span></span> |
+| <span data-ttu-id="57e2d-199">cleartextpassword</span><span class="sxs-lookup"><span data-stu-id="57e2d-199">cleartextpassword</span></span> | <span data-ttu-id="57e2d-200">Hasło nieszyfrowane źródła.</span><span class="sxs-lookup"><span data-stu-id="57e2d-200">The unencrypted password for the source.</span></span> |
 
-<span data-ttu-id="25e8c-201">**Przykład:**</span><span class="sxs-lookup"><span data-stu-id="25e8c-201">**Example:**</span></span>
+<span data-ttu-id="57e2d-201">**Przykład:**</span><span class="sxs-lookup"><span data-stu-id="57e2d-201">**Example:**</span></span>
 
-<span data-ttu-id="25e8c-202">W pliku konfiguracyjnym `<packageSourceCredentials>` element zawiera węzły podrzędne dla każdej nazwy odpowiednich źródła (spacje w nazwie są zastępowane `_x0020_`).</span><span class="sxs-lookup"><span data-stu-id="25e8c-202">In the config file, the `<packageSourceCredentials>` element contains child nodes for each applicable source name (spaces in the name are replaced with `_x0020_`).</span></span> <span data-ttu-id="25e8c-203">Oznacza to, że dla źródeł o nazwie "Contoso" i "Źródła testów", plik konfiguracji zawiera następujące przy użyciu hasła szyfrowane:</span><span class="sxs-lookup"><span data-stu-id="25e8c-203">That is, for sources named "Contoso" and "Test Source", the config file contains the following when using encrypted passwords:</span></span>
+<span data-ttu-id="57e2d-202">W pliku konfiguracyjnym `<packageSourceCredentials>` element zawiera węzły podrzędne dla każdej nazwy odpowiednich źródła (spacje w nazwie są zastępowane `_x0020_`).</span><span class="sxs-lookup"><span data-stu-id="57e2d-202">In the config file, the `<packageSourceCredentials>` element contains child nodes for each applicable source name (spaces in the name are replaced with `_x0020_`).</span></span> <span data-ttu-id="57e2d-203">Oznacza to, że dla źródeł o nazwie "Contoso" i "Źródła testów", plik konfiguracji zawiera następujące przy użyciu hasła szyfrowane:</span><span class="sxs-lookup"><span data-stu-id="57e2d-203">That is, for sources named "Contoso" and "Test Source", the config file contains the following when using encrypted passwords:</span></span>
 
 ```xml
 <packageSourceCredentials>
@@ -166,7 +167,7 @@ ms.lasthandoff: 05/14/2018
 </packageSourceCredentials>
 ```
 
-<span data-ttu-id="25e8c-204">Podczas używania niezaszyfrowane hasła:</span><span class="sxs-lookup"><span data-stu-id="25e8c-204">When using unencrypted passwords:</span></span>
+<span data-ttu-id="57e2d-204">Podczas używania niezaszyfrowane hasła:</span><span class="sxs-lookup"><span data-stu-id="57e2d-204">When using unencrypted passwords:</span></span>
 
 ```xml
 <packageSourceCredentials>
@@ -181,15 +182,15 @@ ms.lasthandoff: 05/14/2018
 </packageSourceCredentials>
 ```
 
-### <a name="apikeys"></a><span data-ttu-id="25e8c-205">apikeys</span><span class="sxs-lookup"><span data-stu-id="25e8c-205">apikeys</span></span>
+### <a name="apikeys"></a><span data-ttu-id="57e2d-205">apikeys</span><span class="sxs-lookup"><span data-stu-id="57e2d-205">apikeys</span></span>
 
-<span data-ttu-id="25e8c-206">Przechowuje klucze źródeł, które korzystają z uwierzytelniania klucza interfejsu API, zgodnie z [ `nuget setapikey` polecenia](../tools/cli-ref-setapikey.md).</span><span class="sxs-lookup"><span data-stu-id="25e8c-206">Stores keys for sources that use API key authentication, as set with the [`nuget setapikey` command](../tools/cli-ref-setapikey.md).</span></span>
+<span data-ttu-id="57e2d-206">Przechowuje klucze źródeł, które korzystają z uwierzytelniania klucza interfejsu API, zgodnie z [ `nuget setapikey` polecenia](../tools/cli-ref-setapikey.md).</span><span class="sxs-lookup"><span data-stu-id="57e2d-206">Stores keys for sources that use API key authentication, as set with the [`nuget setapikey` command](../tools/cli-ref-setapikey.md).</span></span>
 
-| <span data-ttu-id="25e8c-207">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-207">Key</span></span> | <span data-ttu-id="25e8c-208">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-208">Value</span></span> |
+| <span data-ttu-id="57e2d-207">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-207">Key</span></span> | <span data-ttu-id="57e2d-208">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-208">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-209">(adres URL źródła)</span><span class="sxs-lookup"><span data-stu-id="25e8c-209">(source URL)</span></span> | <span data-ttu-id="25e8c-210">Zaszyfrowany klucz interfejsu API.</span><span class="sxs-lookup"><span data-stu-id="25e8c-210">The encrypted API key.</span></span> |
+| <span data-ttu-id="57e2d-209">(adres URL źródła)</span><span class="sxs-lookup"><span data-stu-id="57e2d-209">(source URL)</span></span> | <span data-ttu-id="57e2d-210">Zaszyfrowany klucz interfejsu API.</span><span class="sxs-lookup"><span data-stu-id="57e2d-210">The encrypted API key.</span></span> |
 
-<span data-ttu-id="25e8c-211">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="25e8c-211">**Example**:</span></span>
+<span data-ttu-id="57e2d-211">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="57e2d-211">**Example**:</span></span>
 
 ```xml
 <apikeys>
@@ -197,15 +198,15 @@ ms.lasthandoff: 05/14/2018
 </apikeys>
 ```
 
-### <a name="disabledpackagesources"></a><span data-ttu-id="25e8c-212">disabledPackageSources</span><span class="sxs-lookup"><span data-stu-id="25e8c-212">disabledPackageSources</span></span>
+### <a name="disabledpackagesources"></a><span data-ttu-id="57e2d-212">disabledPackageSources</span><span class="sxs-lookup"><span data-stu-id="57e2d-212">disabledPackageSources</span></span>
 
-<span data-ttu-id="25e8c-213">Rozpoznane źródła aktualnie wyłączone.</span><span class="sxs-lookup"><span data-stu-id="25e8c-213">Identified currently disabled sources.</span></span> <span data-ttu-id="25e8c-214">Może być pusta.</span><span class="sxs-lookup"><span data-stu-id="25e8c-214">May be empty.</span></span>
+<span data-ttu-id="57e2d-213">Rozpoznane źródła aktualnie wyłączone.</span><span class="sxs-lookup"><span data-stu-id="57e2d-213">Identified currently disabled sources.</span></span> <span data-ttu-id="57e2d-214">Może być pusta.</span><span class="sxs-lookup"><span data-stu-id="57e2d-214">May be empty.</span></span>
 
-| <span data-ttu-id="25e8c-215">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-215">Key</span></span> | <span data-ttu-id="25e8c-216">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-216">Value</span></span> |
+| <span data-ttu-id="57e2d-215">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-215">Key</span></span> | <span data-ttu-id="57e2d-216">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-216">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-217">(nazwa źródła)</span><span class="sxs-lookup"><span data-stu-id="25e8c-217">(name of source)</span></span> | <span data-ttu-id="25e8c-218">Wartość logiczna wskazująca, czy źródło jest wyłączone.</span><span class="sxs-lookup"><span data-stu-id="25e8c-218">A Boolean indicating whether the source is disabled.</span></span> |
+| <span data-ttu-id="57e2d-217">(nazwa źródła)</span><span class="sxs-lookup"><span data-stu-id="57e2d-217">(name of source)</span></span> | <span data-ttu-id="57e2d-218">Wartość logiczna wskazująca, czy źródło jest wyłączone.</span><span class="sxs-lookup"><span data-stu-id="57e2d-218">A Boolean indicating whether the source is disabled.</span></span> |
 
-<span data-ttu-id="25e8c-219">**Przykład:**</span><span class="sxs-lookup"><span data-stu-id="25e8c-219">**Example:**</span></span>
+<span data-ttu-id="57e2d-219">**Przykład:**</span><span class="sxs-lookup"><span data-stu-id="57e2d-219">**Example:**</span></span>
 
 ```xml
 <disabledPackageSources>
@@ -216,17 +217,17 @@ ms.lasthandoff: 05/14/2018
 <disabledPackageSources />
 ```
 
-### <a name="activepackagesource"></a><span data-ttu-id="25e8c-220">activePackageSource</span><span class="sxs-lookup"><span data-stu-id="25e8c-220">activePackageSource</span></span>
+### <a name="activepackagesource"></a><span data-ttu-id="57e2d-220">activePackageSource</span><span class="sxs-lookup"><span data-stu-id="57e2d-220">activePackageSource</span></span>
 
-<span data-ttu-id="25e8c-221">*(tylko 2.x; 3.x+ przestarzałe w)*</span><span class="sxs-lookup"><span data-stu-id="25e8c-221">*(2.x only; deprecated in 3.x+)*</span></span>
+<span data-ttu-id="57e2d-221">*(tylko 2.x; 3.x+ przestarzałe w)*</span><span class="sxs-lookup"><span data-stu-id="57e2d-221">*(2.x only; deprecated in 3.x+)*</span></span>
 
-<span data-ttu-id="25e8c-222">Identyfikuje do aktywnego źródła lub wskazuje agregacji wszystkich źródeł.</span><span class="sxs-lookup"><span data-stu-id="25e8c-222">Identifies to the currently active source or indicates the aggregate of all sources.</span></span>
+<span data-ttu-id="57e2d-222">Identyfikuje do aktywnego źródła lub wskazuje agregacji wszystkich źródeł.</span><span class="sxs-lookup"><span data-stu-id="57e2d-222">Identifies to the currently active source or indicates the aggregate of all sources.</span></span>
 
-| <span data-ttu-id="25e8c-223">Key</span><span class="sxs-lookup"><span data-stu-id="25e8c-223">Key</span></span> | <span data-ttu-id="25e8c-224">Wartość</span><span class="sxs-lookup"><span data-stu-id="25e8c-224">Value</span></span> |
+| <span data-ttu-id="57e2d-223">Key</span><span class="sxs-lookup"><span data-stu-id="57e2d-223">Key</span></span> | <span data-ttu-id="57e2d-224">Wartość</span><span class="sxs-lookup"><span data-stu-id="57e2d-224">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="25e8c-225">(nazwa źródła) lub `All`</span><span class="sxs-lookup"><span data-stu-id="25e8c-225">(name of source) or `All`</span></span> | <span data-ttu-id="25e8c-226">Jeśli klucz jest nazwę źródła, wartość jest ścieżka źródłowa lub adres URL.</span><span class="sxs-lookup"><span data-stu-id="25e8c-226">If key is the name of a source, the value is the source path or URL.</span></span> <span data-ttu-id="25e8c-227">Jeśli `All`, wartość powinna być `(Aggregate source)` połączyć wszystkie źródła pakietów, które nie zostały wyłączone w przeciwnym razie wartość.</span><span class="sxs-lookup"><span data-stu-id="25e8c-227">If `All`, value should be `(Aggregate source)` to combine all package sources that are not otherwise disabled.</span></span> |
+| <span data-ttu-id="57e2d-225">(nazwa źródła) lub `All`</span><span class="sxs-lookup"><span data-stu-id="57e2d-225">(name of source) or `All`</span></span> | <span data-ttu-id="57e2d-226">Jeśli klucz jest nazwę źródła, wartość jest ścieżka źródłowa lub adres URL.</span><span class="sxs-lookup"><span data-stu-id="57e2d-226">If key is the name of a source, the value is the source path or URL.</span></span> <span data-ttu-id="57e2d-227">Jeśli `All`, wartość powinna być `(Aggregate source)` połączyć wszystkie źródła pakietów, które nie zostały wyłączone w przeciwnym razie wartość.</span><span class="sxs-lookup"><span data-stu-id="57e2d-227">If `All`, value should be `(Aggregate source)` to combine all package sources that are not otherwise disabled.</span></span> |
 
-<span data-ttu-id="25e8c-228">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="25e8c-228">**Example**:</span></span>
+<span data-ttu-id="57e2d-228">**Przykład**:</span><span class="sxs-lookup"><span data-stu-id="57e2d-228">**Example**:</span></span>
 
 ```xml
 <activePackageSource>
@@ -238,19 +239,19 @@ ms.lasthandoff: 05/14/2018
 </activePackageSource>
 ```
 
-## <a name="using-environment-variables"></a><span data-ttu-id="25e8c-229">Korzystanie ze zmiennych środowiskowych</span><span class="sxs-lookup"><span data-stu-id="25e8c-229">Using environment variables</span></span>
+## <a name="using-environment-variables"></a><span data-ttu-id="57e2d-229">Korzystanie ze zmiennych środowiskowych</span><span class="sxs-lookup"><span data-stu-id="57e2d-229">Using environment variables</span></span>
 
-<span data-ttu-id="25e8c-230">Można używać zmiennych środowiskowych w `nuget.config` wartości (NuGet 3.4 +) w celu zastosowania ustawień w czasie wykonywania.</span><span class="sxs-lookup"><span data-stu-id="25e8c-230">You can use environment variables in `nuget.config` values (NuGet 3.4+) to apply settings at run time.</span></span>
+<span data-ttu-id="57e2d-230">Można używać zmiennych środowiskowych w `nuget.config` wartości (NuGet 3.4 +) w celu zastosowania ustawień w czasie wykonywania.</span><span class="sxs-lookup"><span data-stu-id="57e2d-230">You can use environment variables in `nuget.config` values (NuGet 3.4+) to apply settings at run time.</span></span>
 
-<span data-ttu-id="25e8c-231">Na przykład jeśli `HOME` ustawiono zmiennej środowiskowej w systemie Windows `c:\users\username`, wartość `%HOME%\NuGetRepository` w konfiguracji pliku jest rozpoznawana jako `c:\users\username\NuGetRepository`.</span><span class="sxs-lookup"><span data-stu-id="25e8c-231">For example, if the `HOME` environment variable on Windows is set to `c:\users\username`, then the value of `%HOME%\NuGetRepository` in the configuration file resolves to `c:\users\username\NuGetRepository`.</span></span>
+<span data-ttu-id="57e2d-231">Na przykład jeśli `HOME` ustawiono zmiennej środowiskowej w systemie Windows `c:\users\username`, wartość `%HOME%\NuGetRepository` w konfiguracji pliku jest rozpoznawana jako `c:\users\username\NuGetRepository`.</span><span class="sxs-lookup"><span data-stu-id="57e2d-231">For example, if the `HOME` environment variable on Windows is set to `c:\users\username`, then the value of `%HOME%\NuGetRepository` in the configuration file resolves to `c:\users\username\NuGetRepository`.</span></span>
 
-<span data-ttu-id="25e8c-232">Podobnie jeśli `HOME` na system Mac/Linux jest ustawiona na `/home/myStuff`, następnie `%HOME%/NuGetRepository` w konfiguracji pliku jest rozpoznawana jako `/home/myStuff/NuGetRepository`.</span><span class="sxs-lookup"><span data-stu-id="25e8c-232">Similarly, if `HOME` on Mac/Linux is set to `/home/myStuff`, then `%HOME%/NuGetRepository` in the configuration file resolves to `/home/myStuff/NuGetRepository`.</span></span>
+<span data-ttu-id="57e2d-232">Podobnie jeśli `HOME` na system Mac/Linux jest ustawiona na `/home/myStuff`, następnie `%HOME%/NuGetRepository` w konfiguracji pliku jest rozpoznawana jako `/home/myStuff/NuGetRepository`.</span><span class="sxs-lookup"><span data-stu-id="57e2d-232">Similarly, if `HOME` on Mac/Linux is set to `/home/myStuff`, then `%HOME%/NuGetRepository` in the configuration file resolves to `/home/myStuff/NuGetRepository`.</span></span>
 
-<span data-ttu-id="25e8c-233">Jeśli zmienna środowiskowa nie zostanie znaleziony, NuGet korzysta z wartości literału z pliku konfiguracji.</span><span class="sxs-lookup"><span data-stu-id="25e8c-233">If an environment variable is not found, NuGet uses the literal value from the configuration file.</span></span>
+<span data-ttu-id="57e2d-233">Jeśli zmienna środowiskowa nie zostanie znaleziony, NuGet korzysta z wartości literału z pliku konfiguracji.</span><span class="sxs-lookup"><span data-stu-id="57e2d-233">If an environment variable is not found, NuGet uses the literal value from the configuration file.</span></span>
 
-## <a name="example-config-file"></a><span data-ttu-id="25e8c-234">Przykładowy plik konfiguracji</span><span class="sxs-lookup"><span data-stu-id="25e8c-234">Example config file</span></span>
+## <a name="example-config-file"></a><span data-ttu-id="57e2d-234">Przykładowy plik konfiguracji</span><span class="sxs-lookup"><span data-stu-id="57e2d-234">Example config file</span></span>
 
-<span data-ttu-id="25e8c-235">Poniżej znajduje się przykład `nuget.config` pliku, który przedstawia liczbę ustawień:</span><span class="sxs-lookup"><span data-stu-id="25e8c-235">Below is an example `nuget.config` file that illustrates a number of settings:</span></span>
+<span data-ttu-id="57e2d-235">Poniżej znajduje się przykład `nuget.config` pliku, który przedstawia liczbę ustawień:</span><span class="sxs-lookup"><span data-stu-id="57e2d-235">Below is an example `nuget.config` file that illustrates a number of settings:</span></span>
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
