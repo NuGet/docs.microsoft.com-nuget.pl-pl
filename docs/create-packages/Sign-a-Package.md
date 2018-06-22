@@ -12,6 +12,7 @@ ms.sourcegitcommit: 8127dd73ff8481a1a01acd9b7004dd131a9d84e7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/22/2018
+ms.locfileid: "34449607"
 ---
 # <a name="signing-nuget-packages"></a><span data-ttu-id="75855-103">Podpisywanie pakietów NuGet</span><span class="sxs-lookup"><span data-stu-id="75855-103">Signing NuGet Packages</span></span>
 

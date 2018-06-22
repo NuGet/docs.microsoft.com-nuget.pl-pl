@@ -11,6 +11,7 @@ ms.sourcegitcommit: 8f0bb8bb9cb91d27d660963ed9b0f32642f420fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34225973"
 ---
 # <a name="nuget-47-rtm-release-notes"></a><span data-ttu-id="a2262-103">Informacje o wersji RTM 4,7 NuGet</span><span class="sxs-lookup"><span data-stu-id="a2262-103">NuGet 4.7 RTM Release Notes</span></span>
 

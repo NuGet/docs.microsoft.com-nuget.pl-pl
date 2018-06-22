@@ -10,7 +10,7 @@ layout: HubPage
 hide_bc: true
 ms.openlocfilehash: 8458f936caedeb761f8775e354c2848cb5b56c9a
 ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/06/2018
 ms.locfileid: "34818480"

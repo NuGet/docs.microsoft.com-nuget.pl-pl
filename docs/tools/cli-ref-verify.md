@@ -12,6 +12,7 @@ ms.sourcegitcommit: c8485dc61469511485367d2067b97d6f74b49f6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/23/2018
+ms.locfileid: "34462855"
 ---
 # <a name="verify-command-nuget-cli"></a><span data-ttu-id="f4bac-103">verify command, polecenie (interfejs wiersza polecenia NuGet)</span><span class="sxs-lookup"><span data-stu-id="f4bac-103">verify command (NuGet CLI)</span></span>
 
