@@ -1,0 +1,17 @@
+<span data-ttu-id="521b5-101">Swój profil w witrynie nuget.org, zaznacz **Zarządzanie pakietami** można znaleźć w właśnie opublikowany.</span><span class="sxs-lookup"><span data-stu-id="521b5-101">From your profile on nuget.org, select **Manage Packages** to see the one you just published.</span></span> <span data-ttu-id="521b5-102">Otrzymasz również wiadomość e-mail z potwierdzeniem.</span><span class="sxs-lookup"><span data-stu-id="521b5-102">You also receive a confirmation email.</span></span> <span data-ttu-id="521b5-103">Należy pamiętać, że może upłynąć trochę czasu pakietu do indeksowania i wyświetlone w wynikach wyszukiwania, gdy inne go znaleźć.</span><span class="sxs-lookup"><span data-stu-id="521b5-103">Note that it might take a while for your package to be indexed and appear in search results where others can find it.</span></span> <span data-ttu-id="521b5-104">W tym czasie stronę pakietu zawiera następujący komunikat:</span><span class="sxs-lookup"><span data-stu-id="521b5-104">During that time your package page shows the message below:</span></span>
+
+![Ten pakiet nie ma jeszcze indeksowane.](../media/QS_Create-03-NotIndexed.png)
+
+<span data-ttu-id="521b5-107">I to wszystko!</span><span class="sxs-lookup"><span data-stu-id="521b5-107">And that's it!</span></span> <span data-ttu-id="521b5-108">Na stronie nuget.org, używanego przez innych programistów we własnych projektach, został właśnie opublikowany pierwszego pakietu NuGet.</span><span class="sxs-lookup"><span data-stu-id="521b5-108">You've just published your first NuGet package to nuget.org that other developers can use in their own projects.</span></span>
+
+<span data-ttu-id="521b5-109">Jeśli w tym instruktażu utworzono pakiet, który nie jest faktycznie przydatne (na przykład pakiet utworzony za pomocą biblioteki pustą klasę) należy *wyrejestrowanie* pakietu, aby je ukryć z wyników wyszukiwania:</span><span class="sxs-lookup"><span data-stu-id="521b5-109">If in this walkthrough you created a package that isn't actually useful (such as a package created with an empty class library), you should *unlist* the package to hide it from search results:</span></span>
+
+1. <span data-ttu-id="521b5-110">W witrynie nuget.org, wybierz swoją nazwę użytkownika (prawym górnym rogu strony), a następnie wybierz **Zarządzanie pakietami**.</span><span class="sxs-lookup"><span data-stu-id="521b5-110">On nuget.org, select your user name (upper right of the page), then select **Manage Packages**.</span></span>
+
+1. <span data-ttu-id="521b5-111">Zlokalizować pakiet, który ma być wyrejestrowanie w obszarze **opublikowano** i wybierz ikonę Kosza na śmieci po prawej stronie:</span><span class="sxs-lookup"><span data-stu-id="521b5-111">Locate the package you want to unlist under **Published** and select the trash can icon on the right:</span></span>
+
+    ![Ikona pokazywana pakietu, w witrynie nuget.org Kosza.](../media/qs_create-vs-03-trash-can.png)
+
+1. <span data-ttu-id="521b5-113">Na kolejnej stronie, wyczyść pole wyboru o nazwie **listy (nazwa pakietu) w wynikach wyszukiwania** i wybierz **Zapisz**:</span><span class="sxs-lookup"><span data-stu-id="521b5-113">On the subsequent page, clear the box labeled **List (package-name) in search results** and select **Save**:</span></span>
+
+    ![Usuwając zaznaczenie pola wyboru listy pakietu w witrynie nuget.org](../media/qs_create-vs-04-unlist.png)
