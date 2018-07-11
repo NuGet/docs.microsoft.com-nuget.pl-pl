@@ -1,38 +1,40 @@
 ---
 title: Omówienie obsługi źródła NuGet
-description: Przegląd otwiera do obsługi własnych źródeł danych pakietu NuGet lub galerie lokalnie lub zdalnie.
+description: Przegląd zostanie otwarta do hostowania własnych kanały informacyjne pakietu NuGet lub we własnych galeriach, lokalnie lub zdalnie.
 author: karann-msft
 ms.author: karann
 manager: unnir
 ms.date: 08/25/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 48ebddb26aa6c236609691e099a82db80075944e
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: b72369efb906f6d186c914fa3d8dd1da0be94641
+ms.sourcegitcommit: 6cffa6ef59b922df2d87aa9c24034d00542983cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818428"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37948372"
 ---
-# <a name="hosting-your-own-nuget-feeds"></a>Hosting NuGet własnych źródeł danych
+# <a name="hosting-your-own-nuget-feeds"></a>Hosting NuGet własne źródła danych
 
-Zamiast wprowadzania publicznie dostępnych pakietów, można zwolnić pakietów się tylko ograniczone odbiorców, takich jak organizacji lub grupy roboczej. Ponadto niektóre firmy mogą chcieć ograniczyć innych firm, które ma być biblioteki ich deweloperzy mogą przy użyciu, a w związku z tym bezpośrednie tych deweloperzy ma być rysowany od źródła pakietu ograniczone zamiast nuget.org.
+Zamiast udostępniania pakietów publicznie, możesz chcieć wersji pakietów wyłącznie ograniczonej grupie osób, takich jak Twojej organizacji lub grupy roboczej. Ponadto niektóre firmy mogą chcieć ograniczyć bibliotek innych firm, które może używać deweloperów, a ten sposób kierowania tych deweloperów, które ma być rysowany od źródła pakietu ograniczona, a nie adres nuget.org.
 
-W tym celu NuGet obsługuje Konfigurowanie źródła pakietów prywatnych w następujący sposób:
+W tych celach NuGet obsługuje konfigurowanie prywatnych źródeł pakietów w następujący sposób:
 
-- Lokalne źródła danych: pakiety są po prostu dotyczącymi odpowiedniego sieciowego udziału plików, najlepiej przy użyciu `nuget init` i `nuget add` tworzenia struktury hierarchicznej folder (NuGet 3.3 +). Aby uzyskać więcej informacji, zobacz [lokalnych źródeł danych](../hosting-packages/local-feeds.md).
-- NuGet.Server: Pakiety są udostępniane za pomocą lokalnego serwera HTTP. Aby uzyskać więcej informacji, zobacz [NuGet.Server](../hosting-packages/nuget-server.md).
-- Galeria NuGet: Pakiety znajdują się na serwerze Internetu za pomocą [projektu galerii NuGet](https://github.com/NuGet/NuGetGallery#build-and-run-the-gallery-in-arbitrary-number-easy-steps) (witryną github.com). Galeria NuGet zawiera Zarządzanie użytkownikami i funkcje, takie jak szeroką gamę interfejsu użytkownika, który umożliwia wyszukiwanie i Przeglądanie pakietów z poziomu przeglądarki, podobnie jak nuget.org sieci web.
+- Lokalne źródła danych: pakiety są po prostu umieszczane w odpowiedniej sieciowym udziale plików, najlepiej przy użyciu `nuget init` i `nuget add` do utworzenia hierarchicznej struktury folderów (NuGet 3.3 +). Aby uzyskać więcej informacji, zobacz [ze źródeł lokalnych](../hosting-packages/local-feeds.md).
+- NuGet.Server: Pakiety są udostępniane za pośrednictwem lokalnego serwera HTTP. Aby uzyskać więcej informacji, zobacz [NuGet.Server](../hosting-packages/nuget-server.md).
+- Galeria NuGet: Pakiety są hostowane w serwera internetowego przy użyciu [projektu galerii NuGet](https://github.com/NuGet/NuGetGallery#build-and-run-the-gallery-in-arbitrary-number-easy-steps) (github.com). Galeria NuGet zawiera zarządzania użytkownikami i ich funkcje, takie jak rozbudowana interfejsu użytkownika, która umożliwia wyszukiwanie i eksplorowanie pakietów z przeglądarki, podobnie jak nuget.org.
 
-Dostępne są również kilka innych NuGet hosting produkty, które obsługują zdalnego prywatnych źródeł danych, takie jak następujące:
+Dostępne są również kilka innych NuGet hostingu produktami, które obsługują zdalny prywatnej źródła danych, takie jak następujące:
 
-- [Visual Studio Team Services pakietu zarządzania](https://www.visualstudio.com/docs/package/nuget/publish), która jest również dostępna na Team Foundation Server 2017 lub nowszy.
+- [Visual Studio Team Services Management pakietu](https://www.visualstudio.com/docs/package/nuget/publish), który jest także dostępny w Team Foundation Server 2017 i nowsze.
 - [MyGet](http://myget.org)
 - [ProGet](http://inedo.com/proget) z Inedo
-- [Serwer NuGet](http://nugetserver.net/), projekt społeczności z Inedo
-- [Serwer NuGet (otwórz źródłowy)](http://nuget-server.net), podobnie jak w Inedo NuGet serwera implementację open source
+- [Serwer NuGet](http://nugetserver.net/), to projekt Społecznościowy z Inedo
+- [Serwer NuGet (Otwórz źródło)](http://nuget-server.net), podobnie jak serwer NuGet Inedo przez implementację typu open-source
+- [LiGet](https://github.com/ai-traders/liget), implementacją open source serwera NuGet w wersji 2, który jest uruchamiany na kestrel na platformie docker
+- [BaGet](https://github.com/loic-sharma/BaGet), od implementacji typu open source serwera NuGet w wersji 3 za pomocą platformy .NET Core
 - [Artifactory](https://www.jfrog.com/artifactory/) z JFrog.
-- [Węzła](http://www.sonatype.org/nexus/) z Sonatype.
-- [TeamCity](https://www.jetbrains.com/teamcity/) z JetBrains.
+- [Nexus](http://www.sonatype.org/nexus/) z Sonatype.
+- [TeamCity](https://www.jetbrains.com/teamcity/) firmy JetBrains.
 
-Niezależnie od tego, jak znajdują się pakiety, możesz uzyskać do nich dostęp przez dodanie ich do listy dostępnych źródeł w `NuGet.Config`. Można to zrobić w programie Visual Studio zgodnie z opisem w [źródła pakietów](../tools/package-manager-ui.md#package-sources), lub z wiersza polecenia przy użyciu [ `nuget sources` ](../tools/cli-ref-sources.md). Ścieżka do źródła może być nazwą ścieżki lokalnej folderu, Nazwa sieciowa lub adres URL.
+Niezależnie od tego, w jaki sposób są hostowane pakiety, możesz uzyskiwać do nich dostęp, dodając je do listy dostępnych źródeł w `NuGet.Config`. Można to zrobić w programie Visual Studio zgodnie z opisem w [źródeł pakietów](../tools/package-manager-ui.md#package-sources), lub z wiersza polecenia przy użyciu [ `nuget sources` ](../tools/cli-ref-sources.md). Ścieżka do źródła może być nazwą ścieżki folderu lokalnego, Nazwa sieciowa lub adres URL.

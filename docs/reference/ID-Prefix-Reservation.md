@@ -1,60 +1,60 @@
 ---
 title: Prefiks Identyfikatora rezerwacji odwołania
-description: Opis funkcji rezerwacji prefiks Identyfikatora pakietu i przewodnik autora.
+description: Przewodnik dotyczący autor i opis funkcji rezerwacji prefiks Identyfikatora pakietu.
 author: diverdan92
 ms.author: diverdan92
 manager: unnir
 ms.date: 10/09/2017
 ms.topic: reference
 ms.reviewer: ananguar
-ms.openlocfilehash: 63f442ae25b92aacbbf5af7d9b3ea1a5dafe5fc9
-ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
+ms.openlocfilehash: 10d017d67cf2bd49812c5d54f9fca063f32cc052
+ms.sourcegitcommit: 6cffa6ef59b922df2d87aa9c24034d00542983cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32044855"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37948398"
 ---
-# <a name="package-id-prefix-reservation"></a>Rezerwacji prefiks Identyfikatora pakietu
+# <a name="package-id-prefix-reservation"></a>Rezerwowanie prefiksów identyfikatorów pakietu
 
-Właściciele pakietu można zarezerwować i chronić swoją tożsamość przez zarezerwowanie prefiksy identyfikator. Konsumenci pakietu są dostarczane z dodatkowymi informacjami korzystanie z pakietami, które pakiet, w którym są one konsumowania nie są w ich właściwości identyfikujących fałszywych. 
+Właściciele pakietu zarezerwować i chronić swoją tożsamość, rezerwując prefiksy identyfikator. Użytkownicy pakietu są dostarczane z dodatkowymi informacjami korzystanie z pakietów, która pakiet, w którym są one używania nie są oszukańczym w ich identyfikujące właściwości. 
 
-[nuget.org](https://www.nuget.org/) i Visual Studio 2017 wersji 15,4 lub nowszej Pokaż visual wskaźnika dla pakietów, które są przesyłane przez właścicieli z prefiksem Identyfikatora pakietu zastrzeżone tak długo, jak pakiet jest zgodny z Identyfikatorem zastrzeżonego prefiksu wzorzec nazewnictwa. Przesunięcie wyjaśniono wymaga rezerwacji prefiks Identyfikatora i jak poprosić właściciela o prefiks Identyfikatora.
+[nuget.org](https://www.nuget.org/) i Visual Studio 2017 w wersji 15.4 lub nowszej Pokaż wizualny wskaźnik informujący dla pakietów, które są przesyłane przez właścicieli z prefiksem Identyfikatora pakietu zarezerwowane, tak długo, jak pakietu jest zgodny z Identyfikatorem zastrzeżony prefiks wzorca nazewnictwa. Poniżej odniesienia wyjaśnia, co rezerwowanie prefiksów identyfikatorów pociąga za sobą i jak poprosić właściciela o prefiks Identyfikatora.
 
 ## <a name="id-prefix-reservation-details"></a>Szczegóły rezerwacji prefiks Identyfikatora
 
-Gdy jest zastrzeżony prefiks Identyfikatora pakietu, ma miejsce na kilka rzeczy [nuget.org](https://www.nuget.org/) galerii, jak również w programie Visual Studio. Ponadto są zaawansowane scenariusze, które są obsługiwane przez zastrzeżenia prefiks Identyfikatora, takie jak ustawienie prefiksu jako "public" delegowanie podzestawy prefiksu do wielu właścicieli.
+Gdy jest zastrzeżony prefiks Identyfikatora pakietu, kilka działań wykonanych na [nuget.org](https://www.nuget.org/) galerii, jak również tak jak w programie Visual Studio. Ponadto są zaawansowane scenariusze, które są obsługiwane przez zastrzeżenia prefiks Identyfikatora, takie jak ustawianie prefiksu jako "public" delegowanie podzestawy prefiks wielu właścicielom.
 
-### <a name="id-prefix-reservation-on-nugetorg"></a>Identyfikator rezerwacji prefiks na nuget.org
+### <a name="id-prefix-reservation-on-nugetorg"></a>Rezerwowanie prefiksów identyfikatorów w witrynie nuget.org
 
-Gdy prefiks jest zarezerwowana na [nuget.org](https://www.nuget.org/), nastąpi następujące:
+Gdy prefiks, który jest zarezerwowana na [nuget.org](https://www.nuget.org/), będą wykonywane następujące czynności:
 
-1. Zastrzeżenie prefiks jest skojarzony z właścicielem lub zbiór właścicieli na [nuget.org](https://www.nuget.org/).
+1. Rezerwowanie prefiksów identyfikatorów jest skojarzony z właścicielem lub zestawu właścicieli na [nuget.org](https://www.nuget.org/).
 
-1. Zawsze, gdy pakiet jest przesyłany do [nuget.org](https://www.nuget.org/) o identyfikatorze, który odpowiada zastrzeżony prefiks Identyfikatora, pakiet zostanie odrzucony, o ile nie pochodzi z jego właściciela, która zastrzeżony prefiks Identyfikatora.
+1. Zawsze, gdy pakiet jest przesyłany do usługi [nuget.org](https://www.nuget.org/) z Identyfikatorem, który odpowiada zastrzeżony prefiks Identyfikatora, pakiet zostanie odrzucony, o ile nie pochodzi z jego właściciela, która zarezerwowana prefiks Identyfikatora.
 
-1. Pakiet zgodny zastrzeżony prefiks Identyfikatora i pochodzi z jego właściciela, która zastrzeżony prefiks Identyfikatora będzie mieć visual wskaźnika w wersji Visual Studio 2017 15,4 lub nowszej, a na [nuget.org](https://www.nuget.org/) wskazujący, że pakiet jest w obszarze zastrzeżony prefiks Identyfikatora. Dotyczy to zarówno nowe przesłanych pakietów, jak i istniejące pakiety w jego właściciela. **Uwaga:** wskaźnika w programie Visual Studio jest wyświetlana tylko wtedy, gdy wybrano pojedynczego źródła danych jako źródła pakietu.
+1. Dowolny pakiet, który odpowiada zastrzeżony prefiks Identyfikatora i pochodzi z jego właściciela, która zarezerwowana prefiks Identyfikatora odniesie wizualny wskaźnik informujący w programie Visual Studio 2017 w wersji 15.4 lub nowszej, a na [nuget.org](https://www.nuget.org/) wskazująca, że pakiet jest w obszarze zastrzeżony prefiks Identyfikatora. Dotyczy to zarówno nowe przesłanych pakietów, jak i istniejące pakiety w ramach jego właściciela. **Uwaga:** wskaźnika w programie Visual Studio pojawia się tylko wtedy, gdy pojedynczy kanał informacyjny został wybrany jako źródło pakietów.
 
-1. Wszystkie istniejące pakiety zgodne zastrzeżony prefiks Identyfikatora, ale są *nie* należących do właściciela zarezerwowanego prefiks pozostanie bez zmian (nie będzie nieznajdujące się na liście, ale mogą również mieć visual wskaźnika). Ponadto właścicieli tych pakietów nadal będzie mógł przesłać nowe wersje pakietu.
+1. Wszystkie uprzednio istniejące pakiety, które odpowiadają zastrzeżony prefiks Identyfikatora, ale są one *nie* należące do właściciela zarezerwowanego prefiks pozostanie niezmieniona (nie będzie nieznajdujące się na liście, ale mogą także mieć wizualny wskaźnik informujący). Ponadto właścicieli tych pakietów nadal będzie można przesłać nowe wersje pakietu.
 
-Te zmiany są oparte na następujących warunkach i nałożyć kilka dodatkowych ograniczeń:
+Zmiany te zależą od następujących warunków i nakłada kilku dodatkowe ograniczenia:
 
-- Tylko jeden właściciel pakietu musi mieć zastrzeżony prefiks visual wskaźnika (w przypadku pakietów z wielu właścicieli) i pojawienie się.
+- Tylko jeden właściciel pakietu musi mieć zastrzeżony prefiks dla wizualny wskaźnik informujący (dla pakietów z właścicielami wielu).
 
-- Jeśli istnieje więcej niż jednego właściciela pakietu, gdy jeden lub więcej właścicieli ma zastrzeżony prefiks i jednego lub więcej właścicieli ma zastrzeżony prefiks, właściciele z zarezerwowanym prefiksem można usunąć inne armatora(-ów) z zarezerwowanym prefiksem. Właścicieli, którzy nie mają zastrzeżony prefiks nie może usunąć właścicieli się od zastrzeżonego prefiksu. Będą oni mogli nadal usunąć inne właścicieli, które nie mają również zastrzeżony prefiks.
+- Jeśli istnieje więcej niż jeden właściciel pakietu, gdy co najmniej jednego właściciela ma zastrzeżony prefiks i co najmniej jednego właściciela ma zastrzeżony prefiks, tylko właściciele z zastrzeżonym prefiksem można usunąć inne właściciele z zastrzeżonym prefiksem. Właścicieli, którzy nie mają prefiksu zastrzeżone nie można usunąć właścicieli z prefiksem zastrzeżone. Mogą nadal usuwać innych właścicieli, którzy nie mają też zastrzeżony prefiks.
 
-- Pakiet ma wizualne wskaźnika, powinien *zawsze* visual wskaźnik (zagwarantowanie, że co najmniej jeden właściciel z zarezerwowanym prefiksem zawsze będzie właściciela)
+- Gdy pakiet ma wizualny wskaźnik informujący, należy *zawsze* mają wizualny wskaźnik informujący (zagwarantowanie, że co najmniej jednego właściciela z zastrzeżonym prefiksem zawsze będzie pozostawać właściciela)
 
-### <a name="advanced-prefix-reservation-scenarios"></a>Prefiks zaawansowanych scenariuszy zastrzeżenia
+### <a name="advanced-prefix-reservation-scenarios"></a>Scenariusze rezerwacji prefiks zaawansowane
 
-Istnieje kilka bardziej zaawansowanych scenariuszy rezerwacji prefiks opisane poniżej, w tym delegowanie subprefix i prefiksy oznaczanie jako public. Poniżej przedstawiono bardziej zaawansowanych, które można podjąć rezerwacji prefiks. 
+Istnieje kilka bardziej zaawansowanych scenariuszy rezerwacji prefiks opisane poniżej, w tym delegowanie subprefix i prefiksy oznaczanie jako publiczne. Poniżej przedstawiono bardziej zaawansowanych rezerwacje prefiksu, które mogą być wykonane. 
 
-- Podczas rezerwacji prefiks właściciela mogą żądać delegowania podzestawy prefiksu (lub prefiks) do innych właścicieli. Na przykład jeśli '[Microsoft](https://www.nuget.org/profiles/microsoft)"właścicielem" firmy Microsoft.\*", ale"[aspnet](https://www.nuget.org/profiles/aspnet)"chce zarezerwować" Microsoft.AspNet.\*","[Microsoft](https://www.nuget.org/profiles/microsoft)"może Wybierz delegować "Microsoft.AspNet. \*"do [aspnet](https://www.nuget.org/profiles/aspnet) konta.
+- Podczas rezerwowanie prefiksów identyfikatorów Właściciel może żądanie delegowania podzestawy prefiksu (lub prefiks) innych właścicieli. Na przykład jeśli "[Microsoft](https://www.nuget.org/profiles/microsoft)" właścicielem "firmy Microsoft.\*", ale "[aspnet](https://www.nuget.org/profiles/aspnet)" chce, aby zarezerwować "Microsoft.AspNet.\*','[Microsoft](https://www.nuget.org/profiles/microsoft)" może możliwość delegowania "Microsoft.AspNet. \*"Aby [aspnet](https://www.nuget.org/profiles/aspnet) konta.
 
-- Podczas rezerwacji prefiks właściciela można udostępnić prefiksu. Nadal zapewni ich wizualnej pokazujący, że pakiet pochodzi z zarezerwowanym prefiksem, ale będzie **nie** zablokować przesłanych przyszłych pakietu na prefiksie dla dowolnego właściciela. Jest to przydatne w przypadku projektów typu open source z wielu współautorzy — współautorzy top lub core może mieć prefiksu zastrzeżone, ale nadal może być otwarty dla wszystkich uczestników. 
+- Podczas rezerwowanie prefiksów identyfikatorów właściciela można upublicznić prefiksu. Nadal zapewni to ich wizualny wskaźnik informujący, pokazujący, że pakiet pochodzi z zastrzeżonego prefiksu, ale będzie **nie** block zgłoszenia przyszłych pakietu na prefiksie dla dowolnego właściciela. Jest to przydatne w przypadku projektów typu open source wielu uczestników — współautorzy top lub core może mieć prefiksu zarezerwowane, ale nadal może być otwarty, aby wszyscy współautorzy. 
 
-### <a name="prefix-reservation-visual-indicator"></a>Prefiks rezerwacji wizualnej
+### <a name="prefix-reservation-visual-indicator"></a>Prefiks wizualny wskaźnik informujący rezerwacji
 
-Jeśli pakiet pochodzi z zarezerwowanym prefiksem, zobacz poniżej visual wskaźników [nuget.org](https://www.nuget.org/) galerii w Visual Studio 2017 wersji 15,4 lub nowszy:
+Jeśli pakiet pochodzi z zastrzeżonym prefiksem, zobacz poniżej visual wskaźników [nuget.org](https://www.nuget.org/) galerii w programie Visual Studio 2017 w wersji 15.4 lub nowszej:
 
 **nuget.org Gallery**
 ![nuget.org Gallery](media/nuget-gallery-reserved-prefix.png)
@@ -64,30 +64,34 @@ Jeśli pakiet pochodzi z zarezerwowanym prefiksem, zobacz poniżej visual wskaź
 
 ## <a name="id-prefix-reservation-application-process"></a>Proces aplikacji rezerwacji prefiks Identyfikatora
 
-1. Przejrzyj akceptacji [kryteria rezerwacji Identyfikatora prefiks](#id-prefix-reservation-criteria).
+1. Przejrzyj akceptacji [kryteria prefiks Identyfikatora rezerwacji](#id-prefix-reservation-criteria).
 
-2. Określić obszarów nazw do zarezerwowania, oprócz żadnego [zaawansowanych scenariuszy rezerwacji prefiks](#advanced-prefix-reservation-scenarios) może wymagać.
+2. Ustalić obszary nazw, które mają zostać zarezerwowane dodatek do wszelkich [zaawansowanych scenariuszy rezerwacji prefiks](#advanced-prefix-reservation-scenarios) może wymagać.
 
-3. Wysyłanie poczty do [ account@nuget.org ](mailto:account@nuget.org) z właścicielem nazwy wyświetlanej na [nuget.org](https://www.nuget.org/), a także wszystkie zastrzeżone prefiksy żądania dostępu. Jeśli prefiks podzestawy są delegowanie do wielu właścicieli, upewnij się, zawierać wszystkie nazwy wyświetlane właściciela i prefiksu podzestawy.
+3. Wyślij wiadomość e-mail do [ account@nuget.org ](mailto:account@nuget.org) z właścicielem nazwy wyświetlanej na [nuget.org](https://www.nuget.org/), a także wszelkie zastrzeżone prefiksy zażądano. Jeśli są delegowania podzestawy prefiks wielu właścicielom, upewnij się, wspomnieć o wszystkich nazw wyświetlanych właściciela i prefiksu podzbiory.
 
-Po przesłaniu aplikacji, użytkownik jest powiadamiany o zatwierdzenia lub odrzucenia (za pomocą kryteriów powodujących odrzucenia). Firma Microsoft może być konieczne pytania dodatkowe identyfikujące potwierdzić tożsamość właściciela.
+Po przesłaniu wniosku otrzymasz powiadomienie o zaakceptowaniu lub odrzuceniu (przy użyciu kryteriów, które spowodowały odrzucenie). Firma Microsoft może być konieczne zadać pytania identyfikujące potwierdzenie tożsamości właściciela.
 
 ### <a name="id-prefix-reservation-criteria"></a>Kryterium rezerwacji prefiks Identyfikatora
 
-Podczas przeglądania dowolnej aplikacji dla rezerwacji prefiks Identyfikatora, [nuget.org](https://www.nuget.org/) zespołu będą oceniać aplikację przed poniżej kryteriów. Nie wszystkie kryteria musi spełnić prefiksu do zarezerwowania, ale aplikacja jest niedozwolony, jeśli nie jest dowód kryteriów spełniane (wraz z wyjaśnieniem, podane):
+Podczas przeglądania wniosek o rezerwowanie prefiksów identyfikatorów [nuget.org](https://www.nuget.org/) zespołu będą oceniać aplikację przed poniższe kryteria. Nie wszystkie kryteria musi być spełnione dla prefiksu mają zostać zarezerwowane, ale aplikacja jest niedozwolony, jeśli nie jest dowód kryteria są spełniane (wraz z wyjaśnieniem, biorąc pod uwagę):
 
-1. Prefiks Identyfikatora pakietu poprawnie i jasno identyfikuje właściciela pakietu?
+1. Prefiks Identyfikatora pakietu prawidłowo i jednoznacznie identyfikuje właściciel pakietu?
 
-1. Czy duża liczba pakietów, które już zostały przesłane przez właściciela, w obszarze prefiks Identyfikatora pakietu?
+1. Czy znaczna liczba pakietów, które już zostały przesłane przez właściciela, w obszarze prefiks Identyfikatora pakietu?
 
-1. Prefiks Identyfikatora pakietu jest coś wspólnego, które nie powinny należeć do dowolnej poszczególnych właściciel lub organizacja?
+1. Prefiks Identyfikatora pakietu jest wspólne coś, co nie powinny należeć do dowolnej poszczególnych właściciel lub organizacja?
 
-1. Czy *nie* rezerwowania prefiks Identyfikatora pakietu powodować niejednoznaczności i nieporozumień wśród społeczności?
+1. Czy *nie* zarezerwowanie prefiks Identyfikatora pakietu powodować niejednoznaczności i niejasności dla społeczności?
 
-1. Czy właściwości identyfikujących pakiety, które odpowiada pakietu prefiks Identyfikatora wyczyść i spójny (szczególnie Autor pakietu)?
+1. Czy właściwości identyfikujących pakiety, które odpowiadają pakietu prefiks Identyfikatora czytelne i spójne (szczególnie Autor pakietu)?
 
-## <a name="third-party-feed-provider-scenarios"></a>Scenariusze dostawcy źródła danych innych firm
+## <a name="third-party-feed-provider-scenarios"></a>Innych firm, źródła danych dostawcy scenariuszy
 
-Jeśli innych firm, źródła danych dostawcy jest zainteresowana Implementowanie własne usługi, aby umożliwić zastrzeżenia prefiksu, możesz to zrobić, modyfikując źródła danych usługi wyszukiwania w wersji 3 NuGet dostawców. Dodatek do usługi wyszukiwania źródła jest dodanie *zweryfikować* właściwości wraz z przykładami dla źródeł danych w wersji 3 poniżej. Klienta NuGet w wersji 2, źródła danych, nie będzie obsługiwał dodanej właściwości.
+Jeśli innych firm, dostawca strumieniowych źródeł jest zainteresowana implementowania usługi zapewnienie rezerwacje prefiksu, możesz to zrobić, modyfikując źródła danych usługi search w wersji 3 NuGet dostawców. Dodatek do usługi wyszukiwania kanału informacyjnego jest dodanie *zweryfikować* właściwości wraz z przykładami dla źródeł danych w wersji 3 poniżej. Klienta programu NuGet nie będzie obsługiwać dodanej właściwości w wersji 2, źródła danych.
 
-Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą Usługa wyszukiwania w interfejsie API](../api/search-query-service-resource.md).
+Aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu API usługi wyszukiwania](../api/search-query-service-resource.md).
+
+## <a name="package-id-prefix-reservation-dispute-policy"></a>Pakiet prefiks Identyfikatora rezerwacji sporu zasad
+Jeśli uważasz, że właściciel na [NuGet.org](https://www.nuget.org) przypisano pakietu rezerwowanie prefiksów identyfikatorów, według kryteriów wymienionych powyżej, czy też narusza na dowolnym znakami towarowymi lub praw autorskich, poczty e-mail [ support@nuget.org ](mailto:support@nuget.org)z danego prefiks Identyfikatora, właściciel prefiks Identyfikatora i przyczynę sporu rezerwacji przypisane prefiks.
+
