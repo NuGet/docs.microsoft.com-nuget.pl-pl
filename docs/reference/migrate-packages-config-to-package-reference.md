@@ -6,12 +6,12 @@ ms.author: karann
 manager: unnir
 ms.date: 03/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1ca97e1c2dfba876aefe6b06eab10def67b8d848
-ms.sourcegitcommit: 8e3546ab630a24cde8725610b6a68f8eb87afa47
+ms.openlocfilehash: 4f42403abbf07c2c48ce13c70c49f7f3c15c40e4
+ms.sourcegitcommit: a76ecc58f41c2c5b3536ff4a3f3fcbdf5258177c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37843397"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072369"
 ---
 # <a name="migrate-from-packagesconfig-to-packagereference"></a>Migracja z pliku packages.config do elementu PackageReference
 
@@ -41,7 +41,7 @@ Przy pierwszym otwarciu projektu, NuGet może nie mieć zainicjowany, dopóki ni
 
 #### <a name="workaround"></a>Obejście 
 
-Wykonać jedną z następujących czynności NuGet: 
+Wykonaj jeden z następujących akcji NuGet: 
 * Otwórz interfejs użytkownika Menedżera pakietów — kliknij prawym przyciskiem myszy `References` i wybierz pozycję `Manage NuGet Packages...` 
 * Otwórz konsolę Menedżera pakietów — z `Tools > NuGet Package Manager`, wybierz opcję `Package Manager Console` 
 * Uruchom Przywracanie pakietów NuGet — kliknij prawym przyciskiem myszy na węzeł rozwiązania w Eksploratorze rozwiązań i wybierz pozycję `Restore NuGet Packages` 
@@ -58,7 +58,7 @@ Teraz można wyświetlić opcji migracji. Należy zauważyć, że ta opcja nie j
 
 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **odwołania** węzła lub `packages.config` plik i wybierz **Migrovat packages.config na PackageReference...** .
 
-1. Migrator analizuje odwołania do pakietu NuGet projektu i spróbuje je do kategoryzowania **najwyższego poziomu zależności** (tego katalogu można zainstalować pakietów NuGet) i **przechodnie zależności**(pakietów, które zostały zainstalowane jako zależności pakietów najwyższego poziomu).
+1. Migrator analizuje odwołania do pakietu NuGet projektu i spróbuje je do kategoryzowania **najwyższego poziomu zależności** (pakiety NuGet, które zostały bezpośrednio zainstalowane) i **przechodnie zależności** (pakiety, które zostały zainstalowane jako zależności pakietów najwyższego poziomu).
 
    > [!Note]
    > PackageReference obsługuje przywracania pakietów przechodnich i jest rozpoznawana jako zależności dynamicznie, co oznacza przechodnie zależności muszą nie zainstalowania jawnie.
