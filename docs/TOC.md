@@ -58,6 +58,7 @@
 ### [update](tools/cli-ref-update.md)
 ### [verify](tools/cli-ref-verify.md)
 ### [Zmienne środowiskowe](tools/cli-ref-environment-variables.md)
+### [Obsługa długich ścieżek](tools/cli-ref-long-path.md)
 ## [Interfejs użytkownika menedżera pakietów](tools/package-manager-ui.md)
 ## [Konsola menedżera pakietów](tools/package-manager-console.md)
 ## [Dokumentacja programu PowerShell](tools/powershell-reference.md)
