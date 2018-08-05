@@ -6,12 +6,12 @@ ms.author: karann
 manager: unnir
 ms.date: 05/13/2018
 ms.topic: quickstart
-ms.openlocfilehash: ffa2128b577673e980f4115f37f8685858c36250
-ms.sourcegitcommit: 6cffa6ef59b922df2d87aa9c24034d00542983cd
+ms.openlocfilehash: c537ee97b79648428df2c1b52894f536f5626a9e
+ms.sourcegitcommit: 4d139cb54a46616ae48d1768fa108ae3bf450d5b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37963162"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39508260"
 ---
 # <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki Start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
 
@@ -114,12 +114,12 @@ Możesz uruchomić `nuget spec` tylko raz, aby wygenerować manifest początkowe
 
 ## <a name="edit-the-manifest"></a>Edytuj manifest
 
-1. NuGet generuje błąd, Jeśli spróbujesz utworzyć pakiet z wartościami domyślnymi w swojej `.nuspec` plików, dlatego należy zmodyfikować następujące pola, przed kontynuowaniem. Zobacz [odwołanie do pliku .nuspec — pojedyncze elementy](../reference/nuspec.md#single-elements) opis jak są one używane.
+1. NuGet generuje błąd, Jeśli spróbujesz utworzyć pakiet z wartościami domyślnymi w swojej `.nuspec` plików, dlatego należy zmodyfikować następujące pola, przed kontynuowaniem. Zobacz [odwołanie do pliku .nuspec — elementy opcjonalne metadane](../reference/nuspec.md#optional-metadata-elements) opis jak są one używane.
 
     - licenseUrl
     - projectUrl
-    - iconUrl
-    - releaseNotes
+    - IconUrl
+    - ReleaseNotes
     - tagi
 
 1. Pakiety utworzone do użytku publicznego, należy zwrócić szczególną uwagę na **tagi** właściwości, jak tagi pomóc innym odnaleźć pakietu na źródeł, takich jak nuget.org i zrozumieć, co robi.

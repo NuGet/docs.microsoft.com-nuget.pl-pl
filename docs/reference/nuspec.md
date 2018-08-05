@@ -7,12 +7,12 @@ manager: unnir
 ms.date: 08/29/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 142f82386395b8ab2ed1d57218db9bc1d2e98638
-ms.sourcegitcommit: 8e3546ab630a24cde8725610b6a68f8eb87afa47
+ms.openlocfilehash: 6d190d9fdb26d76fa8e46b7d283c1857cfab26e9
+ms.sourcegitcommit: 4d139cb54a46616ae48d1768fa108ae3bf450d5b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37843449"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39508039"
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -27,7 +27,7 @@ W tym temacie:
 - [Odwołania zestawu](#framework-assembly-references)
 - [W tym pliki zestawu](#including-assembly-files)
 - [W tym pliki zawartości](#including-content-files)
-- [Przykłady](#examples)
+- [Przykład nuspec plików](#example-nuspec-files)
 
 ## <a name="general-form-and-schema"></a>Ogólna postać i schematu
 
@@ -58,12 +58,6 @@ Wizualnych reprezentacji schematu, otwórz plik schematu w programie Visual Stud
 
 ### <a name="metadata-attributes"></a>Atrybuty metadanych
 
-`<metadata>` Obsługuje element atrybutów opisanych w poniższej tabeli.
-
-| Atrybut | Wymagane | Opis |
-| --- | --- | --- | 
-| **minClientVersion** | Nie | Określa minimalną wersję klienta NuGet, który można zainstalować ten pakiet, wymuszane przez nuget.exe oraz Menedżera pakietów programu Visual Studio. Jest on używany zawsze wtedy, gdy pakiet jest zależny od określonych funkcji `.nuspec` plików, które zostały dodane w konkretnej wersji klienta programu NuGet. Na przykład pakiet przy użyciu `developmentDependency` atrybut należy określić "2.8" dla `minClientVersion`. Podobnie, pakiet przy użyciu `contentFiles` (zobacz następną sekcję) należy ustawić element `minClientVersion` do "3.3". Należy zauważyć, że ponieważ klienci programu NuGet przed 2.5 nie rozpoznają tej flagi należy ich *zawsze* odmówić można zainstalować pakietu, niezależnie od tego, co `minClientVersion` zawiera. |
-
 ### <a name="required-metadata-elements"></a>Elementy wymagane metadane
 
 Mimo że następujące elementy są minimalne wymagania dotyczące pakietu, należy rozważyć dodanie [elementy opcjonalne metadane](#optional-metadata-elements) usprawniających atrakcyjniejsze środowisko pracy deweloperzy muszą z pakietem.
@@ -79,39 +73,51 @@ Te elementy muszą znajdować się w `<metadata>` elementu.
 
 ### <a name="optional-metadata-elements"></a>Elementy opcjonalne metadane
 
-Te elementy mogą być widoczne w `<metadata>` elementu.
+#### <a name="title"></a>Tytuł
+Tytuł przyjaznego dla człowieka pakietu, zwykle używanych w interfejsie użytkownika wyświetla w witrynach nuget.org i Menedżera pakietów w programie Visual Studio. Jeśli nie zostanie określony, identyfikator pakietu jest używany. 
+#### <a name="owners"></a>Właściciele
+Rozdzielana przecinkami lista twórców pakietów przy użyciu nazwy profilu w witrynie nuget.org. Jest to często tej samej listy podobnie jak w `authors`i jest ignorowana podczas przekazywania pakietu na stronie nuget.org. Zobacz [właścicieli pakietu zarządzania w witrynie nuget.org](../create-packages/publish-a-package.md#managing-package-owners-on-nugetorg). 
+#### <a name="projecturl"></a>projectUrl
+Adres URL strony głównej pakietu, często wyświetlany w użytkownika, jak również adres nuget.org. 
+#### <a name="licenseurl"></a>licenseUrl
+Adres URL licencji pakietu, często wyświetlany w użytkownika, jak również adres nuget.org.
+#### <a name="iconurl"></a>IconUrl
+Adres URL obrazu 64 x 64 z przezroczystość tła do użycia jako ikona dla pakietu wyświetlania w interfejsie użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* a nie jej adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, należy użyć plik raw, takie jak adres URL <em>https://github.com/\<username\>/\<repository\>/raw/\<branch\>/\<logo.png\></em>. 
 
-#### <a name="single-elements"></a>Pojedyncze elementy
-
-| Element | Opis |
-| --- | --- |
-| **Tytuł** | Tytuł przyjaznego dla człowieka pakietu, zwykle używanych w interfejsie użytkownika wyświetla w witrynach nuget.org i Menedżera pakietów w programie Visual Studio. Jeśli nie zostanie określony, identyfikator pakietu jest używany. |
-| **Właściciele** | Rozdzielana przecinkami lista twórców pakietów przy użyciu nazwy profilu w witrynie nuget.org. Jest to często tej samej listy podobnie jak w `authors`i jest ignorowana podczas przekazywania pakietu na stronie nuget.org. Zobacz [właścicieli pakietu zarządzania w witrynie nuget.org](../create-packages/publish-a-package.md#managing-package-owners-on-nugetorg). |
-| **projectUrl** | Adres URL strony głównej pakietu, często wyświetlany w użytkownika, jak również adres nuget.org. |
-| **licenseUrl** | Adres URL licencji pakietu, często wyświetlany w użytkownika, jak również adres nuget.org. |
-| **iconUrl** | Adres URL obrazu 64 x 64 z przezroczystość tła do użycia jako ikona dla pakietu wyświetlania w interfejsie użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* a nie jej adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, należy użyć plik raw, takie jak adres URL <em>https://github.com/\<username\>/\<repository\>/raw/\<branch\>/\<logo.png\></em>. |
-| **requireLicenseAcceptance** | Wartość logiczna określająca, czy klient musi monitować konsumenta o zaakceptowanie licencji pakietu przed zainstalowaniem pakietu. |
-| **developmentDependency** | *(2.8 +)*  Wartość logiczna określająca, czy pakiet jest oznaczone jako — tylko zależnością programistyczną, co zapobiega uwzględniane jako zależności w innych pakietach pakietu. |
-| **Podsumowanie** | Krótki opis pakietu do wyświetlania w interfejsie użytkownika. Jeśli argument jest pominięty, skróconą wersję `description` jest używany. |
-| **releaseNotes** | *(w wersji 1.5 +)*  Opis zmian wprowadzonych w tej wersji pakietu, często używany w interfejsie użytkownika, takich jak **aktualizacje** kartę z Menedżera pakietów Visual Studio zamiast opisu pakietu. |
-| **copyright** | *(w wersji 1.5 +)*  Copyright szczegóły pakietu. |
-| **Język** | Identyfikator ustawień regionalnych dla pakietu. Zobacz [tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md). |
-| **tagi**  | Rozdzielany spacjami lista tagów i słów kluczowych, które opisują możliwości pakietu i pomocy pakietów za pomocą wyszukiwania i filtrowania. |
-| **serviceable** | *(3.3 +)*  NuGet wewnętrznego użytku tylko. |
-| **repozytorium** | Metadane repozytorium, składający się z czterech atrybuty opcjonalne: *typu* i *adresu url* *(4.0 i nowsze)*, i *gałęzi* i  *zatwierdzenie* *(4.6 +)*. Te atrybuty zezwalać na mapowanie .nupkg do repozytorium, którego kompilacja, z których można pobrać jak wyjaśniono, jak poszczególne gałęzi lub zatwierdzania, który skompilowany pakiet. |
+#### <a name="requirelicenseacceptance"></a>requireLicenseAcceptance
+Wartość logiczna określająca, czy klient musi monitować konsumenta o zaakceptowanie licencji pakietu przed zainstalowaniem pakietu.
+#### <a name="developmentdependency"></a>DevelopmentDependency
+*(2.8 +)*  Wartość logiczna określająca, czy pakiet jest oznaczone jako — tylko zależnością programistyczną, co zapobiega uwzględniane jako zależności w innych pakietach pakietu.
+#### <a name="summary"></a>podsumowanie
+Krótki opis pakietu do wyświetlania w interfejsie użytkownika. Jeśli argument jest pominięty, skróconą wersję `description` jest używany.
+#### <a name="releasenotes"></a>ReleaseNotes
+*(w wersji 1.5 +)*  Opis zmian wprowadzonych w tej wersji pakietu, często używany w interfejsie użytkownika, takich jak **aktualizacje** kartę z Menedżera pakietów Visual Studio zamiast opisu pakietu.
+#### <a name="copyright"></a>informacji o prawach autorskich,
+*(w wersji 1.5 +)*  Copyright szczegóły pakietu.
+#### <a name="language"></a>język
+Identyfikator ustawień regionalnych dla pakietu. Zobacz [tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md).
+#### <a name="tags"></a>tagi
+Rozdzielany spacjami lista tagów i słów kluczowych, które opisują możliwości pakietu i pomocy pakietów za pomocą wyszukiwania i filtrowania. 
+#### <a name="serviceable"></a>zdatne do użytku 
+*(3.3 +)*  NuGet wewnętrznego użytku tylko.
+#### <a name="repository"></a>repozytorium
+Metadane repozytorium, składający się z czterech atrybuty opcjonalne: *typu* i *adresu url* *(4.0 i nowsze)*, i *gałęzi* i  *zatwierdzenie* *(4.6 +)*. Te atrybuty zezwalać na mapowanie .nupkg do repozytorium, którego kompilacja, z których można pobrać jak wyjaśniono, jak poszczególne gałęzi lub zatwierdzania, który skompilowany pakiet. Powinna to być publicznie dostępnego adresu url, który może być wywoływany bezpośrednio przez oprogramowania do kontroli wersji. Ponieważ jest on przeznaczony dla komputera nie powinna być strony html. Łącze do strony projektu, użyj `projectUrl` pola zamiast. |
+#### <a name="minclientversion"></a>Atrybut MinClientVersion
+Określa minimalną wersję klienta NuGet, który można zainstalować ten pakiet, wymuszane przez nuget.exe oraz Menedżera pakietów programu Visual Studio. Jest on używany zawsze wtedy, gdy pakiet jest zależny od określonych funkcji `.nuspec` plików, które zostały dodane w konkretnej wersji klienta programu NuGet. Na przykład pakiet przy użyciu `developmentDependency` atrybut należy określić "2.8" dla `minClientVersion`. Podobnie, pakiet przy użyciu `contentFiles` (zobacz następną sekcję) należy ustawić element `minClientVersion` do "3.3". Należy zauważyć, że ponieważ klienci programu NuGet przed 2.5 nie rozpoznają tej flagi należy ich *zawsze* odmówić można zainstalować pakietu, niezależnie od tego, co `minClientVersion` zawiera.
 
 #### <a name="collection-elements"></a>Elementy kolekcji
 
-| Element | Opis |
-| --- | --- |
-**packageTypes** | *(3.5 +)*  Zbiór zero lub więcej `<packageType>` elementów, określając typ pakietu, jeśli inne niż tradycyjne zależności pakietu. Każdy packageType ma atrybuty *nazwa* i *wersji*. Zobacz [ustawienie typu pakietu](../create-packages/creating-a-package.md#setting-a-package-type). |
-| **zależności** | Kolekcja zero lub więcej `<dependency>` elementy określenie zależności dotyczących pakietu. Poszczególne zależności ma atrybuty *identyfikator*, *wersji*, *obejmują* (3.x+) i *wykluczyć* (3.x+). Zobacz [zależności](#dependencies) poniżej. |
-| **frameworkAssemblies** | *(1.2 +)*  Zbiór zero lub więcej `<frameworkAssembly>` elementów identyfikowanie odwołania do zestawów .NET Framework, które wymaga tego pakietu, dzięki któremu czy odwołania są dodawane do projektów, korzystanie z pakietu. Została każda frameworkAssembly *assemblyName* i *targetFramework* atrybutów. Zobacz [określenie zestawu struktury odwołuje się do globalnej pamięci podręcznej zestawów](#specifying-framework-assembly-references-gac) poniżej. |
-| **odwołania** | *(w wersji 1.5 +)*  Zbiór zero lub więcej `<reference>` elementy nazewnictwa zestawów, w tym pakiecie `lib` folderu, które są dodawane jako odwołania do projektu. Każde odwołanie zawiera *pliku* atrybutu. `<references>` może również zawierać `<group>` element z *targetFramework* atrybut, który następnie zawiera `<reference>` elementów. Jeśli argument jest pominięty, wszystkie odwołania w `lib` są uwzględniane. Zobacz [odwołania do zestawów jawne określenie](#specifying-explicit-assembly-references) poniżej. |
-| **contentFiles** | *(3.3 +)*  Zbiór `<files>` elementy, które identyfikują plików zawartości do uwzględnienia w projekcie odbierająca komunikaty. Te pliki są określane przy użyciu zestawu atrybutów, które opisują, jak powinna być używana w ramach systemu projektu. Zobacz [określenie plików do uwzględnienia w pakiecie](#specifying-files-to-include-in-the-package) poniżej. |
-
-### <a name="files-element"></a>Element Pliki
-
+#### <a name="packagetypes"></a>PackageTypes
+*(3.5 +)*  Zbiór zero lub więcej `<packageType>` elementów, określając typ pakietu, jeśli inne niż tradycyjne zależności pakietu. Każdy packageType ma atrybuty *nazwa* i *wersji*. Zobacz [ustawienie typu pakietu](../create-packages/creating-a-package.md#setting-a-package-type).
+#### <a name="dependencies"></a>zależności
+Kolekcja zero lub więcej `<dependency>` elementy określenie zależności dotyczących pakietu. Poszczególne zależności ma atrybuty *identyfikator*, *wersji*, *obejmują* (3.x+) i *wykluczyć* (3.x+). Zobacz [zależności](#dependencies-element) poniżej.
+#### <a name="frameworkassemblies"></a>frameworkAssemblies
+*(1.2 +)*  Zbiór zero lub więcej `<frameworkAssembly>` elementów identyfikowanie odwołania do zestawów .NET Framework, które wymaga tego pakietu, dzięki któremu czy odwołania są dodawane do projektów, korzystanie z pakietu. Została każda frameworkAssembly *assemblyName* i *targetFramework* atrybutów. Zobacz [określenie zestawu struktury odwołuje się do globalnej pamięci podręcznej zestawów](#specifying-framework-assembly-references-gac) poniżej. |
+#### <a name="references"></a>odwołania
+*(w wersji 1.5 +)*  Zbiór zero lub więcej `<reference>` elementy nazewnictwa zestawów, w tym pakiecie `lib` folderu, które są dodawane jako odwołania do projektu. Każde odwołanie zawiera *pliku* atrybutu. `<references>` może również zawierać `<group>` element z *targetFramework* atrybut, który następnie zawiera `<reference>` elementów. Jeśli argument jest pominięty, wszystkie odwołania w `lib` są uwzględniane. Zobacz [odwołania do zestawów jawne określenie](#specifying-explicit-assembly-references) poniżej.
+#### <a name="contentfiles"></a>Pliki
+*(3.3 +)*  Zbiór `<files>` elementy, które identyfikują plików zawartości do uwzględnienia w projekcie odbierająca komunikaty. Te pliki są określane przy użyciu zestawu atrybutów, które opisują, jak powinna być używana w ramach systemu projektu. Zobacz [określenie plików do uwzględnienia w pakiecie](#specifying-files-to-include-in-the-package) poniżej.
+#### <a name="files"></a>— pliki 
 `<package>` Węzeł może zawierać `<files>` węzeł jako element równorzędny do `<metadata>`, a lub `<contentFiles>` podrzędne w ramach `<metadata>`, aby określić, które pliki zestawu i zawartości do uwzględnienia w pakiecie. Zobacz [w tym pliki zestawu](#including-assembly-files) i [pliki zawartości w tym](#including-content-files) później w tym temacie, aby uzyskać szczegółowe informacje.
 
 ## <a name="replacement-tokens"></a>Zastąpienia tokenów
@@ -139,7 +145,7 @@ Z wyjątkiem produktów `$configuration$`, wartości w projekcie są używane za
 
 | Token | Wartość źródła | Wartość
 | --- | --- | ---
-| **$id$** | Plik projektu | AssemblyName (tytuł) z pliku projektu |
+| **$id$** | plik projektu | AssemblyName (tytuł) z pliku projektu |
 | **$version$** | AssemblyInfo | AssemblyInformationalVersion, jeśli jest obecna, w przeciwnym razie AssemblyVersion |
 | **$author$** | AssemblyInfo | AssemblyCompany |
 | **$title$** | AssemblyInfo | AssemblyTitle |
@@ -163,7 +169,7 @@ I kompilowania zestawu którego `AssemblyName` jest `LoggingLibrary` z `Release`
 </files>
 ```
 
-## <a name="dependencies"></a>Zależności
+## <a name="dependencies-element"></a>Element zależności
 
 `<dependencies>` Elemencie `<metadata>` zawiera dowolną liczbę `<dependency>` elementy, które identyfikują innych pakietów, od których zależy Pakiet najwyższego poziomu. Atrybuty dla każdego `<dependency>` są następujące:
 
@@ -178,7 +184,7 @@ I kompilowania zestawu którego `AssemblyName` jest `LoggingLibrary` z `Release`
 | --- | --- |
 | Pliki | Zawartość |
 | środowisko uruchomieniowe | Środowisko uruchomieniowe, zasobów i FrameworkAssemblies |
-| kompilacji | lib |
+| Kompilacji | lib |
 | kompilacja | Kompilacja (cele i właściwości programu MSBuild) |
 | natywne | natywne |
 | brak | Brak folderów |
@@ -334,7 +340,7 @@ Każdy `<file>` element określa następujące atrybuty:
 | Atrybut | Opis |
 | --- | --- |
 | **src** | Lokalizacja pliku lub plików, obejmujący podlegają wykluczenia określonego przez `exclude` atrybutu. Ścieżka jest względem `.nuspec` pliku, chyba że określony jest ścieżką bezwzględną. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
-| **docelowy** | Względna ścieżka do folderu, w pakiecie, gdzie są umieszczone pliki źródłowe, musi zaczynać się od `lib`, `content`, `build`, lub `tools`. Zobacz [tworzenie .nuspec z katalogu roboczego oparty na Konwencji](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). |
+| **Docelowy** | Względna ścieżka do folderu, w pakiecie, gdzie są umieszczone pliki źródłowe, musi zaczynać się od `lib`, `content`, `build`, lub `tools`. Zobacz [tworzenie .nuspec z katalogu roboczego oparty na Konwencji](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). |
 | **exclude** | Rozdzieloną średnikami listę plików lub wzorce plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
 
 ### <a name="examples"></a>Przykłady
@@ -594,7 +600,7 @@ Puste foldery można użyć `.` zrezygnować z dostarczanie zawartości dla niek
 </contentFiles>
 ```
 
-## <a name="example-nuspec-files"></a>Przykład .nuspec plików
+## <a name="example-nuspec-files"></a>Przykład nuspec plików
 
 **Prosty `.nuspec` nie określające zależności lub plików**
 

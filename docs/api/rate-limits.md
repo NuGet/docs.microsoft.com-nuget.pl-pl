@@ -1,6 +1,6 @@
 ---
-title: Limity, NuGet interfejsu API szybkości
-description: Interfejsy API NuGet będzie wymusić limity szybkości, aby uniemożliwić nadużycia.
+title: Limity, interfejs API programu NuGet szybkości
+description: Interfejsy API NuGet zostanie wymusić limity szybkości, aby zapobiec nadużyciu.
 author: cmanu
 ms.author: cmanu
 manager: skofman
@@ -10,16 +10,16 @@ ms.reviewer:
 - skofman
 - anangaur
 - kraigb
-ms.openlocfilehash: c5d3cf68ac6a96a6c14eb5e652bcf72698b6a8e8
-ms.sourcegitcommit: 8f0bb8bb9cb91d27d660963ed9b0f32642f420fe
+ms.openlocfilehash: a55eb49318b766028d1579a4d33618617bbd8801
+ms.sourcegitcommit: 4d139cb54a46616ae48d1768fa108ae3bf450d5b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34225947"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39508130"
 ---
 # <a name="rate-limits"></a>Limity szybkości
 
-Interfejs API NuGet.org wymusza, aby uniemożliwić nadużycia limitów szybkości. Żądania, które przekraczają limit szybkości zwrócił następujący błąd: 
+Interfejs API NuGet.org wymusza, ograniczania szybkości, aby zapobiec nadużyciu. Żądania, które przekraczają limit szybkości zwrócenie następującego błędu: 
 
   ~~~
     {
@@ -28,24 +28,33 @@ Interfejs API NuGet.org wymusza, aby uniemożliwić nadużycia limitów szybkoś
     }
   ~~~
 
+Oprócz ograniczania, przy użyciu ograniczeń liczby wywołań żądań niektóre interfejsy API wymuszania limitu przydziału. Żądania, które przekraczają limit przydziału zwrócenie następującego błędu:
+
+  ~~~
+    {
+      "statusCode": 403,
+      "message": "Quota exceeded."
+    }
+  ~~~
+
 W poniższej tabeli wymieniono limity szybkości dla interfejsu API NuGet.org.
 
-## <a name="package-search"></a>Wyszukaj pakiet
+## <a name="package-search"></a>Wyszukiwanie pakietu
 
 > [!Note]
-> Firma Microsoft zaleca używanie NuGet.org [interfejsów API w wersji 3](https://docs.microsoft.com/nuget/api/search-query-service-resource) wyszukiwania, wydajności i nie ma żadnych obecnie ograniczenia. V1 i V2 wyszukiwania interfejsów API, followins ograniczenia:
+> Firma Microsoft zaleca używanie usługi NuGet.org [interfejsów API w wersji 3](https://docs.microsoft.com/nuget/api/search-query-service-resource) wyszukiwania, które są wydajne i nie ma żadnych obecnie ograniczenia. Aby V1 i V2 Wyszukaj interfejsów API, limity followins mają zastosowanie:
 
 
-| interfejs API | Typ limitu | Wartość limitu | Przypadków użycia interfejsu API |
+| interfejs API | Typ ograniczenia | Wartość limitu | Usecase interfejsu API |
 |:---|:---|:---|:---|
-**POBIERZ** `/api/v1/Packages` | IP | 1000 na minutę | Zapytanie metadanych pakietu NuGet za pośrednictwem v1 OData `Packages` kolekcji |
-**POBIERZ** `/api/v1/Search()` | IP | 3000 na minutę | Wyszukaj pakietów NuGet za pośrednictwem punktu końcowego wyszukiwania v1 | 
-**POBIERZ** `/api/v2/Packages` | IP | 20000 na minutę | Zapytanie metadanych pakietu NuGet za pośrednictwem v2 OData `Packages` kolekcji | 
-**POBIERZ** `/api/v2/Packages/$count` | IP | 100 na minutę | Zapytanie liczby pakietów NuGet za pośrednictwem v2 OData `Packages` kolekcji | 
+**POBIERZ** `/api/v1/Packages` | IP | 1000 / minutę | Zapytanie metadanych pakietu NuGet za pomocą protokołu OData v1 `Packages` kolekcji |
+**POBIERZ** `/api/v1/Search()` | IP | 3000 / minutę | Wyszukaj pakiety NuGet, za pośrednictwem punktu końcowego wyszukiwania 1 | 
+**POBIERZ** `/api/v2/Packages` | IP | 20000 / minutę | Zapytanie metadanych pakietu NuGet za pośrednictwem usługi OData w wersji 2 `Packages` kolekcji | 
+**POBIERZ** `/api/v2/Packages/$count` | IP | 100 / minutę | Liczba pakietów NuGet za pośrednictwem usługi OData w wersji 2 zapytań `Packages` kolekcji | 
 
-## <a name="package-push-and-unlist"></a>Pakiet wypychania i Unlist
+## <a name="package-push-and-unlist"></a>Pakiet wypychania i wyrejestrowanie
 
-| interfejs API | Typ limitu | Wartość limitu | Przypadków użycia interfejsu API | 
+| interfejs API | Typ ograniczenia | Wartość limitu | Usecase interfejsu API | 
 |:---|:---|:---|:--- |
-**UMIEŚĆ** `/api/v2/package` | Klucz interfejsu API | 250 / godzina | Przekaż nowy pakiet NuGet (wersja) za pośrednictwem punktu końcowego wypychania v2 
-**USUŃ** `/api/v2/package/{id}/{version}` | Klucz interfejsu API | 250 / godzina | Unlist pakietu NuGet (wersja) za pośrednictwem punktu końcowego v2 
+**PUT** `/api/v2/package` | Klucz interfejsu API | 250 / godzinę | Przekazywanie nowego pakietu NuGet (wersja) za pośrednictwem punktu końcowego wypychania v2 
+**USUŃ** `/api/v2/package/{id}/{version}` | Klucz interfejsu API | 250 / godzinę | Wyrejestrowanie pakietu NuGet (wersja) za pośrednictwem punktu końcowego v2 

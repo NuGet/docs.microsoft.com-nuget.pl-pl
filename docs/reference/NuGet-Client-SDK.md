@@ -1,28 +1,39 @@
 ---
-title: Klient w wersji 3 NuGet i interfejsów API NuGetGallery
-description: NuGet i interfejsów API NuGetGallery są zmieniające się i nie jest jeszcze udokumentowane, ale przykłady są dostępne w blogu Dave Glick.
+title: Zestaw SDK klienta programu NuGet
+description: Interfejs API jest rozwijającą się i nie jest jeszcze udokumentowane, ale przykłady są dostępne na blogu Dave Glick.
 author: karann-msft
 ms.author: karann
 manager: unnir
 ms.date: 01/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: b3b912b4af388a578378c15ad9241ed8ec0de75e
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: f814b0c0e7fac719e4221a8d8e945de703348aba
+ms.sourcegitcommit: 4d139cb54a46616ae48d1768fa108ae3bf450d5b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817115"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39508065"
 ---
-# <a name="nuget-client-sdk"></a>Klienta NuGet zestawu SDK
-
-Stale ewoluuje NuGet w wersji 3 klienta i interfejsów API NuGetGallery i pracujemy nad o stabilna powierzchni tego będziemy wkrótce dokumentu.
-
-Do tego czasu można znaleźć przykłady i dokumentację dla niektórych interfejsu API w z następującego cyklu blogów przez Dave Glick:
-
-- [Eksploracja NuGet w wersji 3 bibliotek, część 1: wprowadzenie i pojęć](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-1)
-- [Eksploracja NuGet w wersji 3 bibliotek, część 2: wyszukiwanie pakietów](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-2)
-- [Eksploracja NuGet w wersji 3 bibliotek, część 3: Instalowanie pakietów](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-3)
+# <a name="nuget-client-sdk"></a>Zestaw SDK klienta programu NuGet
 
 > [!Note]
-> Wpisy na blogu napisanych wkrótce po **3.4.3** wersja programu NuGet wydane pakietów SDK klienta.
-> Nowsze wersje pakietów mogą być niezgodne z informacjami w blogach.
+> Nie należy mylić z [NuGet *Web* interfejsu API](https://docs.microsoft.com/en-us/nuget/api/overview)
+
+*Zestawu SDK klienta usługi NuGet* odnosi się do grupy bibliotek .NET, a ich tematyka wokół [NuGet.Client](https://www.nuget.org/packages/NuGet.Client), [Nuget.Packaging](https://www.nuget.org/packages/NuGet.Packaging), i [NuGet.Protocol](https://www.nuget.org/packages/NuGet.Protocol). Te pakiety Zastąp wcześniej [NuGet.Core](https://www.nuget.org/packages/NuGet.Core/) biblioteki.
+
+Pracujemy nad o stabilne powierzchni, firma Microsoft wkrótce dokumentu.
+
+## <a name="source-code"></a>Kod źródłowy
+
+Kod źródłowy jest opublikowany w usłudze GitHub w projekcie [NuGet/NuGet.Client](https://github.com/NuGet/NuGet.Client).
+
+## <a name="third-party-documentation"></a>Dokumentacja usługi innych firm
+
+Przykłady i dokumentację dla niektórych interfejsu API można znaleźć w następującego cyklu blogów przez Dave Glick, opublikowane 2016:
+
+- [Eksplorowanie NuGet w wersji 3 biblioteki, część 1: wprowadzenie i pojęcia](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-1)
+- [Eksplorowanie NuGet w wersji 3 biblioteki, część 2: wyszukiwanie pakietów](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-2)
+- [Eksplorowanie NuGet w wersji 3 biblioteki, część 3: Instalowanie pakietów](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-3)
+
+> [!Note]
+> Wpisy na blogu zostały napisane wkrótce po **3.4.3** wersji pakietu NuGet zostały wydane pakiety zestawu SDK klienta.
+> Nowsze wersje pakietów mogą być niezgodne z informacjami w wpisów w blogu.
