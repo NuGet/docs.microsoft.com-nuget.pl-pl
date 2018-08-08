@@ -30,7 +30,7 @@ Możesz pobrać zarówno VSIX, jak i nuget.exe [tutaj](https://dist.nuget.org/in
 ### <a name="changes"></a>Zmiany
 
 - Ulepszenia pakietu: Ulepszenia pakowanie symboli, pakowanie z `project.json` i więcej [ \#606](https://github.com/NuGet/NuGet.Client/pull/606)
-- Wyświetlanie wyjątku po awarii, znajdowanie projekty w poleceniu aktualizacji [\#605] ()https://github.com/NuGet/NuGet.Client/pull/605
+- Wyświetlanie wyjątku po awarii, znajdowanie projekty w poleceniu aktualizacji [\#605](https://github.com/NuGet/NuGet.Client/pull/605)
 - Typ pakietu do odczytu z wejścia `.nuspec` i `project.json` podczas pakowania [ \#603](https://github.com/NuGet/NuGet.Client/pull/603)
 - Należy NuGet.Shared nie w projekcie. [\#602](https://github.com/NuGet/NuGet.Client/pull/602)
 - Użyj limit wypychania jako limitu czasu odpowiedzi HTTP [ \#599](https://github.com/NuGet/NuGet.Client/pull/599)
