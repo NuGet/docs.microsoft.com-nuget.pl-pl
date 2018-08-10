@@ -7,35 +7,35 @@ manager: unnir
 ms.date: 05/18/2018
 ms.topic: reference
 ms.reviewer: ananguar
-ms.openlocfilehash: 72fb1a87c13160c53f632d2ef87a12a4e9bc02a3
-ms.sourcegitcommit: 8127dd73ff8481a1a01acd9b7004dd131a9d84e7
+ms.openlocfilehash: 992097281e21cd8cf37edf67fb1968b70c2b359b
+ms.sourcegitcommit: e9c58dbfc1af2876337dcc37b1b070e8ddec0388
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2018
-ms.locfileid: "34449594"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40020521"
 ---
-# <a name="signed-packages"></a>Pakiety podpisem
+# <a name="signed-packages"></a>Podpisanych pakietów
 
-*NuGet 4.6.0+ i Visual Studio 2017 wersji 15.6 i nowsze*
+*NuGet 4.6.0+ i Visual Studio 2017 w wersji 15.6 i nowszych*
 
-Pakiety NuGet mogą zawierać podpis cyfrowy, który zapewnia ochronę przed zmodyfikowany zawartości. Ta sygnatura jest tworzony z certyfikatu X.509, który dodaje również dowody autentyczności do rzeczywistego źródła pakietu.
+Pakiety NuGet może zawierać podpis cyfrowy, który zapewnia ochronę przed zmodyfikowany zawartości. Ta sygnatura jest generowany z certyfikat X.509, który dodaje również autentyczności dowody do rzeczywistego źródła pakietu.
 
-Pakiety podpisem udostępnienia najwyższy weryfikacji end-to-end. Autor podpis gwarantuje, że pakiet nie został zmodyfikowany od czasu autora podpisania pakietu, niezależnie od którego repozytorium lub co metoda jest dostarczany pakiet transportu.
+Podpisanych pakietów zapewnia najsilniejszą weryfikacji end-to-end. Istnieją dwa różne typy podpisów NuGet:
+- **Tworzenie sygnatury**. Autor podpis gwarantuje, że pakiet nie został zmodyfikowany od czasu Autor podpisania pakietu, niezależnie od którego repozytorium lub co transportu metody jest dostarczany w pakiecie. Ponadto podpisane przez autora pakietów zapewniają mechanizm uwierzytelniania dodatkowego do potoku publikowania w witrynie nuget.org, ponieważ certyfikatu podpisywania musi być zarejestrowany wcześniej. Aby uzyskać więcej informacji, zobacz [rejestrowanie certyfikatów](#register-certificate-on-nugetorg).
+- **Podpis repozytorium**. Podpisy repozytorium zapewniają gwarancji spójności dla **wszystkich** pakietów w repozytorium, czy są one podpisane lub nie, autor, nawet wtedy, gdy te pakiety są uzyskiwane z innej lokalizacji niż oryginalny repozytorium, gdzie znajdowały się podpisany.   
 
-Ponadto pakiety podpisane przez autora udostępniają mechanizm uwierzytelniania dodatkowego do potoku publikowania nuget.org, ponieważ certyfikat podpisywania musi być zarejestrowana wcześniejsze. Aby uzyskać więcej informacji, zobacz [rejestrowanie certyfikatów](#register-certificate-on-nugetorg).
-
-Aby uzyskać więcej informacji na temat tworzenia podpisanego pakietu, zobacz [podpisywania pakietów](../create-packages/Sign-a-package.md) i [polecenia nuget znak](../tools/cli-ref-sign.md).
+Aby uzyskać szczegółowe informacje na temat tworzenia pakietu podpisem autora, zobacz [podpisywanie pakietów](../create-packages/Sign-a-package.md) i [polecenie logowania nuget](../tools/cli-ref-sign.md).
 
 > [!Important]
-> Podpisywanie pakietu jest obecnie obsługiwany tylko w przypadku używania nuget.exe w systemie Windows. Weryfikacja podpisanych pakietów jest obecnie obsługiwany tylko w przypadku używania nuget.exe lub Visual Studio w systemie Windows.
+> Podpisywanie pakietów jest obecnie obsługiwana tylko wtedy, gdy za pomocą nuget.exe na Windows. Weryfikacja podpisanych pakietów jest obecnie obsługiwana tylko wtedy, gdy za pomocą nuget.exe lub Visual Studio na Windows.
 
 ## <a name="certificate-requirements"></a>Wymagania certyfikatu
 
-Podpisywanie pakietu wymaga podpisywania certyfikatu, który jest specjalny typ certyfikatu, który jest prawidłowy dla kodu `id-kp-codeSigning` cel [[RFC 5280 sekcji 4.2.1.12](https://tools.ietf.org/html/rfc5280#section-4.2.1.12)]. Ponadto certyfikat musi mieć publiczny długość klucza RSA 2048 bitów lub nowszej.
+Podpisywanie pakietów wymaga podpisywania certyfikatu, który to specjalny typ certyfikatu, który nadaje się do kodu `id-kp-codeSigning` cel [[RFC 5280 sekcji 4.2.1.12](https://tools.ietf.org/html/rfc5280#section-4.2.1.12)]. Ponadto certyfikat musi mieć publicznego długość klucza RSA 2048 bitów lub nowszej.
 
 ## <a name="get-a-code-signing-certificate"></a>Uzyskaj certyfikat podpisywania kodu
 
-Prawidłowe certyfikaty można uzyskać od urzędu certyfikacji publicznej, takich jak:
+Prawidłowe certyfikaty mogą być uzyskane z publicznego urzędu certyfikacji takich jak:
 
 - [Symantec](https://trustcenter.websecurity.symantec.com/process/trust/productOptions?productType=SoftwareValidationClass3)
 - [DigiCert](https://www.digicert.com/code-signing/)
@@ -44,11 +44,11 @@ Prawidłowe certyfikaty można uzyskać od urzędu certyfikacji publicznej, taki
 - [Comodo](https://www.comodo.com/e-commerce/code-signing/code-signing-certificate.php)
 - [Certum](https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml) 
 
-Pełna lista urzędów certyfikacji ufa systemu Windows można uzyskać z [ http://aka.ms/trustcertpartners ](http://aka.ms/trustcertpartners).
+Pełną listę urzędy certyfikacji używane przez Windows można uzyskać z [ http://aka.ms/trustcertpartners ](http://aka.ms/trustcertpartners).
 
-## <a name="create-a-test-certificate"></a>Tworzenie certyfikatu testowego
+## <a name="create-a-test-certificate"></a>Utwórz certyfikat testowy
 
-Wystawiony samodzielnie Certyfikaty służy do celów testowych. Aby utworzyć certyfikat wystawiony samodzielnie, użyj [polecenia New-SelfSignedCertificate PowerShell](/powershell/module/pkiclient/new-selfsignedcertificate.md).
+Można użyć własnym wystawionych certyfikatów do celów testowych. Aby utworzyć własny wystawionego certyfikatu, użyj [polecenia PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate.md).
 
 ```ps
 New-SelfSignedCertificate -Subject "CN=NuGet Test Developer, OU=Use for testing purposes ONLY" `
@@ -62,57 +62,57 @@ New-SelfSignedCertificate -Subject "CN=NuGet Test Developer, OU=Use for testing 
                           -CertStoreLocation "Cert:\CurrentUser\My" 
 ```
 
-To polecenie tworzy testowania dostępny certyfikat w magazynie certyfikatów osobistych bieżącego użytkownika. Można otworzyć magazynu certyfikatów, uruchamiając `certmgr.msc` wyświetlić nowo utworzony certyfikat.
+To polecenie tworzy certyfikat testowania dostępności w magazynie certyfikatów osobistych bieżącego użytkownika. Można otworzyć magazynu certyfikatów, uruchamiając `certmgr.msc` aby zobaczyć nowo utworzonego certyfikatu.
 
 > [!Warning]
-> nuget.org nie akceptuje pakietów podpisane własnym wystawionych certyfikatów.
+> nuget.org nie akceptuje pakietów podpisany przy użyciu własnym wystawionych certyfikatów.
 
-## <a name="timestamp-requirements"></a>Wymagania dotyczące sygnatury czasowej
+## <a name="timestamp-requirements"></a>Wymagania dotyczące znacznik czasu:
 
-Pakiety podpisem powinna zawierać znaczników czasu RFC 3161 do zapewnienia walidacji podpisu poza okres ważności certyfikatu podpisywania pakietu. Certyfikat używany do podpisywania sygnatura czasowa musi być prawidłowy dla `id-kp-timeStamping` cel [[RFC 5280 sekcji 4.2.1.12](https://tools.ietf.org/html/rfc5280#section-4.2.1.12)]. Ponadto certyfikat musi mieć publiczny długość klucza RSA 2048 bitów lub nowszej.
+Podpisanych pakietów powinien zawierać znacznik czasu RFC 3161 w celu zapewnienia walidacji podpisu poza podpisywania okresu ważności certyfikatu pakietu. Certyfikat używany do podpisywania to sygnatura czasowa muszą być prawidłowe dla `id-kp-timeStamping` cel [[RFC 5280 sekcji 4.2.1.12](https://tools.ietf.org/html/rfc5280#section-4.2.1.12)]. Ponadto certyfikat musi mieć publicznego długość klucza RSA 2048 bitów lub nowszej.
 
-Dodatkowe szczegóły techniczne można znaleźć w [specyfikacji technicznej podpisu pakietu](https://github.com/NuGet/Home/wiki/Package-Signatures-Technical-Details) (GitHub).
+Dodatkowe szczegóły techniczne można znaleźć w [specyfikacje techniczne podpisu pakietu](https://github.com/NuGet/Home/wiki/Package-Signatures-Technical-Details) (GitHub).
 
-## <a name="signature-requirements-on-nugetorg"></a>Wymagania dotyczące podpisu na nuget.org
+## <a name="signature-requirements-on-nugetorg"></a>Wymagania dotyczące podpisu w witrynie nuget.org
 
-nuget.org ma dodatkowe wymagania dotyczące akceptowania podpisanego pakietu:
+nuget.org ma dodatkowe wymagania dotyczące zaakceptowanie podpisanych pakietów:
 
-- Podpis podstawowy musi być podpis autora.
-- Podpis podstawowy musi mieć pojedynczy prawidłowy sygnatury czasowej.
-- Certyfikaty X.509 dla podpisu autora i podpis sygnatura czasowa:
-  - Musi mieć klucza publicznego RSA 2048 bitów lub większej.
-  - Musi być w okresie ważności na bieżący czas UTC podczas sprawdzania poprawności pakietu na nuget.org.
-  - Muszą być powiązane z zaufanego głównego urzędu zaufanej domyślnie w systemie Windows. Pakiety podpisane własnym wystawione certyfikaty są odrzucane.
-  - Musi być prawidłową celowi: 
+- Podpis podstawowy musi mieć podpis autora.
+- Podpis podstawowy musi mieć pojedynczy prawidłową sygnaturę czasową.
+- Certyfikaty X.509 dla podpisu autora i jeho signatura sygnatura czasowa:
+  - Musi mieć klucz publiczny RSA 2048 bitów lub nowszej.
+  - Musi być w okresie ważności na bieżący czas UTC, podczas weryfikacji pakietu w witrynie nuget.org.
+  - Muszą być powiązane z zaufanego głównego urzędu certyfikacji, który jest zaufany domyślnie w systemie Windows. Pakiety podpisany przy użyciu własnym wystawionych certyfikatów są odrzucane.
+  - Musi być ważny przez jej przeznaczenie: 
     - Tworzenie certyfikatu podpisywania musi być prawidłowy do podpisywania kodu.
-    - Sygnatura czasowa certyfikatu musi być prawidłowy dla użycia.
-  - Nie musi zostać odwołany podczas podpisywania czasu. (To nie będzie knowable podczas przesyłania, więc nuget.org okresowo sprawdza ponownie stanu odwołania).
+    - Znacznik czasu: musi to być nieprawidłowy dla użycia.
+  - Nie musi zostać cofnięta podczas podpisywania czasu. (To nie będzie knowable w chwili przesyłania, więc nuget.org okresowo sprawdza ponownie stanu odwołania).
 
-## <a name="register-certificate-on-nugetorg"></a>Zarejestruj certyfikat na nuget.org
+## <a name="register-certificate-on-nugetorg"></a>Zarejestruj certyfikat w witrynie nuget.org
 
-Aby przesłać pakiet podpisem, najpierw należy zarejestrować certyfikat z nuget.org. Wymagany jest certyfikat jako `.cer` pliku w formacie binarnym DER. Możesz wyeksportować istniejącego certyfikatu na format binarny DER przy użyciu Kreatora eksportu certyfikatów.
+Aby przesłać pakiet podpisem, należy zarejestrować certyfikat za pomocą nuget.org. Wymagany certyfikat jako `.cer` pliku w formacie binarnym DER. Możesz wyeksportować istniejący certyfikat na format binarny DER, za pomocą Kreatora eksportu certyfikatów.
 
 ![Kreator eksportu certyfikatów](media/CertificateExportWizard.png)
 
-Użytkownicy wersji Advanced można wyeksportować certyfikat przy użyciu [polecenia programu PowerShell eksportu certyfikatu](/powershell/module/pkiclient/export-certificate.md).
+Zaawansowani użytkownicy można wyeksportować certyfikatu za pomocą [polecenia PowerShell eksportu certyfikatu](/powershell/module/pkiclient/export-certificate.md).
 
-Aby zarejestrować certyfikat z nuget.org, przejdź do `Certificates` sekcji na `Account settings` (lub strona Ustawienia organizacji) i wybierz `Register new certificate`.
+Aby zarejestrować certyfikat za pomocą nuget.org, przejdź do `Certificates` sekcji na `Account settings` stronie (lub na stronie Ustawienia w organizacji) i wybierz `Register new certificate`.
 
-![Zarejestrowane certyfikaty](media/registered-certs.png)
+![Certyfikaty zarejestrowane](media/registered-certs.png)
 
 > [!Tip]
-> Jeden z użytkowników mogą przesyłać wiele certyfikatów i tego samego certyfikatu można zarejestrowanych przez wielu użytkowników.
+> Jeden użytkownik może przesłać ten sam certyfikat i wielu certyfikatów, które mogą być rejestrowane przez wielu użytkowników.
 
-Gdy użytkownik ma certyfikat zarejestrowany, wszystkie przyszłe pakietu przesłanych **musi** podpisywany z jednego z certyfikatów.
+Po użytkownik ma zarejestrowane certyfikatu, wszystkie przyszłe pakietu przesłania **musi** być podpisane przy użyciu jednego z certyfikatów.
 
-Użytkownicy mogą również usuwać zarejestrowany certyfikat z konta. Po usunięciu certyfikatu z takim podpisem pakietów się nie powieść w przesyłania. Nie ma wpływu na istniejące pakiety.
+Użytkownicy mogą również usuwać certyfikat zarejestrowany z konta. Po usunięciu certyfikatu na przesłanie się nie powieść pakietów podpisane przy użyciu tego certyfikatu. Nie ma wpływu na istniejące pakiety.
 
 ## <a name="configure-package-signing-requirements"></a>Skonfiguruj wymagania dotyczące podpisywania pakietu
 
-Jeśli jesteś jedynym właścicielem pakietu jest wymagany podpis. Oznacza to, że służy wszelkie zarejestrowane certyfikaty do podpisywania pakietów i przedstawia nuget.org.
+Jeśli jesteś jedynym właścicielem pakietu, jest to wymagane osoby podpisującej. Oznacza to, że umożliwia dowolny zarejestrowane certyfikaty podpisywania pakietów i przekazywania na stronie nuget.org.
 
-Jeżeli pakiet zawiera wiele właścicieli, domyślnie, "Wszystkie" właściciel certyfikaty mogą służyć do podpisania pakietu. Jako współwłaściciel pakietu można zastąpić "Dowolnego" siebie lub wszelkie inne współwłaściciel jako wymagany podpis. Jeśli wprowadzisz właściciela, który nie ma żadnych certyfikatów zarejestrowanych pakietów niepodpisane będą dozwolone. 
+Jeżeli pakiet zawiera wiele właścicieli, domyślnie, certyfikaty "Dowolna" właściciel może służyć do podpisania pakietu. Jako współwłaściciela pakietu można zastąpić "Dowolne", przy użyciu samodzielnie lub wszelkie inne współwłaścicielem jako wymagane osoby podpisującej. W przypadku wprowadzenia właściciela, który nie ma żadnych certyfikatów zarejestrowanych pakietów niepodpisane będą dozwolone. 
 
-Podobnie, jeśli wartość domyślna "Wszystkie" zaznaczono opcję pakiet gdzie jednego właściciela ma certyfikat, który został zarejestrowany i innemu właścicielowi nie ma żadnych certyfikatów zarejestrowanych, następnie nuget.org akceptuje podpisanego pakietu za pomocą podpisu w zarejestrowany za pomocą jednej z jego właścicieli lub Niepodpisany pakiet (ponieważ jeden właścicieli nie ma żadnych certyfikatów zarejestrowanych).
+Podobnie, jeśli wartość domyślna "Dowolna" opcja jest zaznaczona dla pakietu, w której jeden właściciel ma certyfikat zarejestrowany i innego właściciela nie ma żadnych certyfikatów zarejestrowanych, następnie nuget.org akceptuje podpisanych pakietów za pomocą podpisu zarejestrowany za pomocą jednej z jego właścicieli lub Niepodpisany pakietu (ponieważ jest to jeden z właścicieli nie ma żadnych certyfikatów zarejestrowanych).
 
-![Skonfiguruj pakietów osoby podpisujące](media/configure-package-signers.png)
+![Konfigurowanie pakietów, które podpisały](media/configure-package-signers.png)
