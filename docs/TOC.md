@@ -161,6 +161,7 @@
 ## [Metadane pakietu](api/registration-base-url-resource.md)
 ## [Zawartość pakietu](api/package-base-address-resource.md)
 ## [Adres URL do zgłaszania nadużyć](api/report-abuse-resource.md)
+## [Podpisy repozytorium](api/repository-signatures-resource.md)
 ## [Wykaz](api/catalog-resource.md)
 ## [Limit szybkości](api/rate-limits.md)
 ## [Protokoły nuget.org](api/nuget-protocols.md)
