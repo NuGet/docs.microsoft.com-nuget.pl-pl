@@ -7,12 +7,12 @@ manager: unnir
 ms.date: 03/06/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 8bbbc785a50e49530bbbd4e88bbd71a8a7bfe911
-ms.sourcegitcommit: 4d139cb54a46616ae48d1768fa108ae3bf450d5b
+ms.openlocfilehash: 0679b60179760d6626e7ce42bfdbdfa266677ce6
+ms.sourcegitcommit: c643dd2c44e085601551ff7079d696bcc3ad2b49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39508182"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42793564"
 ---
 # <a name="signing-nuget-packages"></a>Podpisywanie pakietów NuGet
 
@@ -56,7 +56,7 @@ nuget verify -signature MyPackage.nupkg
 
 ## <a name="install-a-signed-package"></a>Zainstaluj pakiet podpisem
 
-Podpisanych pakietów nie wymagają żadnych określone działanie prowadzące do zainstalowania; jednak zawartość została zmodyfikowana po podpisaniu, instalacja będzie zablokowany, a następnie tworzy [błąd NU3008](../reference/errors-and-warnings/NU3008.md).
+Podpisanych pakietów nie wymagają żadnych określone działanie prowadzące do zainstalowania; Jeśli jednak zawartość została zmodyfikowana po podpisaniu, instalacja jest zablokowana i tworzy [błąd NU3008](../reference/errors-and-warnings/NU3008.md).
 
 > [!Warning]
 > Pakiety podpisany przy użyciu niezaufane certyfikaty są traktowane jako jako bez znaku i są instalowane bez żadnych ostrzeżeń ani błędów, takich jak każdy inny pakiet bez znaku.

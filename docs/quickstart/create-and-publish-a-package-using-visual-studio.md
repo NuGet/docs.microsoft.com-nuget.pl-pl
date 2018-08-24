@@ -6,12 +6,12 @@ ms.author: karann
 manager: unnir
 ms.date: 05/18/2018
 ms.topic: quickstart
-ms.openlocfilehash: e97773d79b22db1f08d868190895a9417b12c924
-ms.sourcegitcommit: 6cffa6ef59b922df2d87aa9c24034d00542983cd
+ms.openlocfilehash: af6e6e015f2e4adccd99171abb37e7291551351c
+ms.sourcegitcommit: 8d5121af528e68789485405e24e2100fda2868d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37963090"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42794102"
 ---
 # <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki Start: Tworzenie i publikowanie pakietu NuGet za pomocą programu Visual Studio (.NET Standard, tylko Windows)
 
@@ -149,6 +149,26 @@ Ten krok jest alternatywa dla użycia `nuget.exe`.
 ### <a name="manage-the-published-package"></a>Zarządzanie opublikowany pakiet
 
 [!INCLUDE [publish-manage](includes/publish-manage.md)]
+
+## <a name="adding-a-readme-and-other-files"></a>Dodawanie pliku readme i inne pliki
+
+Aby bezpośrednio określić pliki do dołączenia w pakiecie, Edytuj plik projektu i użyj `content` właściwości:
+
+```xml
+<ItemGroup>
+  <Content Include="readme.txt">
+    <Pack>true</Pack>
+    <PackagePath>\</PackagePath>
+  </Content>
+</ItemGroup>
+```
+
+To będzie zawierać plik o nazwie `readme.txt` w katalogu głównym pakietu. Visual Studio Wyświetla zawartość tego pliku jako zwykły tekst od razu po zainstalowaniu pakietu bezpośrednio. (Pliki Readme nie są wyświetlane dla pakietów zainstalowanych jako zależności). Na przykład poniżej przedstawiono sposób wyświetlania pliku readme pakietu HtmlAgilityPack:
+
+![Wyświetlanie pliku readme podczas instalacji pakietu NuGet](../create-packages/media/Create_01-ShowReadme.png)
+
+> [!Note]
+> Jedynie Dodawanie readme.txt w katalogu głównym projektu nie spowoduje jego ona dołączana do pakietu wynikowego.
 
 ## <a name="related-topics"></a>Tematy pokrewne
 

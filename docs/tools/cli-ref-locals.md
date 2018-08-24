@@ -1,23 +1,23 @@
 ---
-title: Polecenie zmiennych lokalnych NuGet interfejsu wiersza polecenia
-description: Dokumentacja dotycząca nuget.exe polecenia zmiennych lokalnych
+title: Polecenie lokalne interfejs wiersza polecenia NuGet
+description: Dokumentacja dotycząca polecenia nuget.exe zmiennych lokalnych
 author: karann-msft
 ms.author: karann
 manager: unnir
 ms.date: 03/19/2018
 ms.topic: reference
-ms.openlocfilehash: 90e8c85e7a3e0e9520933e2ddd6dd84447475f2b
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 38d8b9366fb2749b77c987c950da3aa9e7f029fc
+ms.sourcegitcommit: 8d5121af528e68789485405e24e2100fda2868d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818204"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42794138"
 ---
 # <a name="locals-command-nuget-cli"></a>locals command, polecenie (interfejs wiersza polecenia NuGet)
 
 **Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 3.3 +
 
-Czyści lub wyświetla ich listę zasobów lokalnych NuGet takich jak *pamięci podręcznej http*, *globalne pakiety* folder i folderu tymczasowego. `locals` Polecenia można również wyświetlić listę tych lokalizacjach. Aby uzyskać więcej informacji, zobacz [Zarządzanie globalne pakietów i foldery pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md).
+Usuwa lub wyświetla ich listę zasobów lokalnych NuGet takich jak *pamięci podręcznej http*, *globalnymi pakietami* folder i folderu tymczasowego. `locals` Polecenia można również wyświetlić listę tych lokalizacjach. Aby uzyskać więcej informacji, zobacz [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md).
 
 ## <a name="usage"></a>Użycie
 
@@ -25,21 +25,21 @@ Czyści lub wyświetla ich listę zasobów lokalnych NuGet takich jak *pamięci 
 nuget locals <folder> [options]
 ```
 
-gdzie `<folder>` jest jednym z `all`, `http-cache`, `packages-cache` *(3.5 i wcześniejszymi)*, `global-packages`, i `temp` *(3.4 +)*.
+gdzie `<folder>` jest jednym z `all`, `http-cache`, `packages-cache` *(3.5 i starszych)*, `global-packages`, `temp` *(3.4 i nowsze)*, i `plugins-cache` *(4.8 +)*.
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
-| Wyczyść | Usuwa określony folder. |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
+| Usuń zaznaczenie | Usuwa określony folder. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) jest używany.|
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| Lista | Wyświetla lokalizację określony folder lub lokalizacje wszystkich folderów, gdy jest używany z *wszystkich*. |
-| Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
+| Lista | Wyświetla listę lokalizacji wskazanym folderze lub lokalizacje wszystkich folderów, gdy jest używane z *wszystkich*. |
+| Nieinterakcyjnym | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
-Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
+Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 
 ## <a name="examples"></a>Przykłady
 
@@ -48,4 +48,4 @@ nuget locals all -list
 nuget locals http-cache -clear
 ```
 
-Aby uzyskać dodatkowe przykłady, zobacz [Zarządzanie globalne pakietów i foldery pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md).
+Aby uzyskać więcej przykładów, zobacz [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md).

@@ -7,12 +7,12 @@ manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: fe843a121e2f1aae376f3e30a7b911792057688f
-ms.sourcegitcommit: e9c58dbfc1af2876337dcc37b1b070e8ddec0388
+ms.openlocfilehash: 0cb40a640a0bab63a63b3b690a34f1f8cbf7fcb8
+ms.sourcegitcommit: c643dd2c44e085601551ff7079d696bcc3ad2b49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40020534"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42793570"
 ---
 # <a name="nuget-api"></a>Interfejs API programu NuGet
 
@@ -21,6 +21,8 @@ Interfejs API NuGet jest zestaw punktów końcowych HTTP, które można pobrać 
 Ten interfejs API jest używany przez klienta programu NuGet w Visual Studio, nuget.exe oraz interfejsu wiersza polecenia platformy .NET do wykonywania operacji NuGet, takich jak [ `dotnet restore` ](/dotnet/articles/core/preview3/tools/dotnet-restore), wyszukiwanie w interfejsie użytkownika Visual Studio i [ `nuget.exe push` ](../tools/cli-ref-push.md).
 
 Należy pamiętać, w niektórych przypadkach nuget.org ma dodatkowe wymagania, które nie są wymuszane przez inne źródła pakietu. Te różnice są opisane przez [protokoły nuget.org](nuget-protocols.md).
+
+Wyliczenie proste i pobierania nuget.exe dostępnych wersji, zobacz [tools.json](tools-json.md) punktu końcowego.
 
 ## <a name="service-index"></a>Indeks usług
 
