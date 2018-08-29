@@ -87,19 +87,19 @@ Adres URL obrazu 64 x 64 z przezroczystość tła do użycia jako ikona dla paki
 #### <a name="requirelicenseacceptance"></a>requireLicenseAcceptance
 Wartość logiczna określająca, czy klient musi monitować konsumenta o zaakceptowanie licencji pakietu przed zainstalowaniem pakietu.
 #### <a name="developmentdependency"></a>DevelopmentDependency
-*(2.8 +)*  Wartość logiczna określająca, czy pakiet jest oznaczone jako — tylko zależnością programistyczną, co zapobiega uwzględniane jako zależności w innych pakietach pakietu.
+*(2.8+)* Wartość logiczna określająca, czy pakiet jest oznaczone jako — tylko zależnością programistyczną, co zapobiega uwzględniane jako zależności w innych pakietach pakietu.
 #### <a name="summary"></a>podsumowanie
 Krótki opis pakietu do wyświetlania w interfejsie użytkownika. Jeśli argument jest pominięty, skróconą wersję `description` jest używany.
 #### <a name="releasenotes"></a>ReleaseNotes
-*(w wersji 1.5 +)*  Opis zmian wprowadzonych w tej wersji pakietu, często używany w interfejsie użytkownika, takich jak **aktualizacje** kartę z Menedżera pakietów Visual Studio zamiast opisu pakietu.
+*(w wersji 1.5+)* Opis zmian wprowadzonych w tej wersji pakietu, często używany w interfejsie użytkownika, takich jak **aktualizacje** kartę z Menedżera pakietów Visual Studio zamiast opisu pakietu.
 #### <a name="copyright"></a>informacji o prawach autorskich,
-*(w wersji 1.5 +)*  Copyright szczegóły pakietu.
+*(w wersji 1.5+)* Copyright szczegóły pakietu.
 #### <a name="language"></a>język
 Identyfikator ustawień regionalnych dla pakietu. Zobacz [tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md).
 #### <a name="tags"></a>tagi
 Rozdzielany spacjami lista tagów i słów kluczowych, które opisują możliwości pakietu i pomocy pakietów za pomocą wyszukiwania i filtrowania. 
 #### <a name="serviceable"></a>zdatne do użytku 
-*(3.3 +)*  NuGet wewnętrznego użytku tylko.
+*(3.3+)* NuGet wewnętrznego użytku tylko.
 #### <a name="repository"></a>repozytorium
 Metadane repozytorium, składający się z czterech atrybuty opcjonalne: *typu* i *adresu url* *(4.0 i nowsze)*, i *gałęzi* i  *zatwierdzenie* *(4.6 +)*. Te atrybuty zezwalać na mapowanie .nupkg do repozytorium, którego kompilacja, z których można pobrać jak wyjaśniono, jak poszczególne gałęzi lub zatwierdzania, który skompilowany pakiet. Powinna to być publicznie dostępnego adresu url, który może być wywoływany bezpośrednio przez oprogramowania do kontroli wersji. Ponieważ jest on przeznaczony dla komputera nie powinna być strony html. Łącze do strony projektu, użyj `projectUrl` pola zamiast tego.
 
