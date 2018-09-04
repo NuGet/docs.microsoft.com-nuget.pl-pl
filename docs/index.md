@@ -3,17 +3,16 @@ title: Dokumentacja programu NuGet
 description: NuGet to menedżer pakietów dla platform programistycznych firmy Microsoft, w tym .NET. Narzędzia klienta programu NuGet dają możliwość tworzenia pakietów i korzystania z nich.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 02/12/2018
 ms.topic: overview
 layout: HubPage
 hide_bc: true
-ms.openlocfilehash: 8458f936caedeb761f8775e354c2848cb5b56c9a
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 6e2f00c14433e75323e2b185067e110bc554084c
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818480"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43550038"
 ---
 <div id="main" class="v2">
 <div class="container">
