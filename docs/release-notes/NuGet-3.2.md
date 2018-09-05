@@ -1,118 +1,117 @@
 ---
 title: Informacje o wersji 3.2 NuGet
-description: Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.2 NuGet.
+description: Informacje o wersji programu NuGet 3.2, w tym znanych problemów, poprawki, funkcje dodane i DCRs.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 938104c50fee19ee398de49c786bbb4963ba1429
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: 5bdd2aa5621eead9ce79794052663cc2f8a63d45
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31821619"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43549525"
 ---
 # <a name="nuget-32-release-notes"></a>Informacje o wersji 3.2 NuGet
 
-[Informacje o wersji 3.2 RC NuGet](../release-notes/nuget-3.2-RC.md) | [NuGet 3.2.1 informacje o wersji](../release-notes/nuget-3.2.1.md)
+[Informacje o wersji 3.2 RC NuGet](../release-notes/nuget-3.2-RC.md) | [informacjach o wersji NuGet 3.2.1](../release-notes/nuget-3.2.1.md)
 
-NuGet 3.2 wydanej wersji 16 września 2015 roku jako kolekcja ulepszeń i poprawek dla 3.1.1 i jest dostępny z obu [dist.nuget.org](http://dist.nuget.org/index.html) i [galerii programu Visual Studio](https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2015).
+NuGet 3.2 wydanej wersji 16 września 2015 roku jako kolekcja ulepszenia i poprawki dla 3.1.1 i jest dostępny z obu [dist.nuget.org](http://dist.nuget.org/index.html) i [galerii Visual Studio](https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2015).
 
 ## <a name="new-features"></a>Nowe funkcje
 
-* Teraz można mają inne projekty, które znajdują się w tym samym folderze `project.json` pliki w tym folderze, które są specyficzne dla każdego projektu.  Dla każdego projektu nazwa `project.json` pliku `{ProjectName}.project.json` i NuGet odpowiednio zapewni preferencji w tej konfiguracji dla każdego projektu.  Jest to możliwe tylko z zainstalowany - narzędzi systemu Windows 10 w wersji 1.1 [1102](https://github.com/NuGet/Home/issues/1102)
-* Klienci NuGet obsługuje określanie globalnych zmiennej środowiskowej NUGET_PACKAGES do określenia lokalizacji folderu udostępnionego pakietów globalnego używane w `project.json` zarządzanych projektów z narzędzi systemu Windows 10 w wersji 1.1.
+* Projekty, które znajdują się w tym samym folderze mogą teraz zawierać różne `project.json` pliki w tym folderze, które są specyficzne dla każdego projektu.  Dla każdego projektu, nazwij `project.json` pliku `{ProjectName}.project.json` i NuGet odpowiednio zapewni preferencji w tej konfiguracji dla każdego projektu.  Jest to obsługiwane tylko za pomocą installed — narzędzia dla systemu Windows 10 w wersji 1.1 [1102](https://github.com/NuGet/Home/issues/1102)
+* Klienci programu NuGet obsługuje określanie globalnych zmiennej środowiskowej NUGET_PACKAGES do określenia lokalizacji folderu udostępnionego globalnymi pakietami używane w `project.json` zarządzanych projektów za pomocą narzędzi systemu Windows 10 w wersji 1.1.
 
 ## <a name="command-line-updates"></a>Aktualizacje wiersza polecenia
 
-Jest to pierwsza wersja klienta nuget.exe, który obsługuje serwery NuGet w wersji 3 i przywracanie pakietów dla projektów zarządzanych za pomocą `project.json` pliku.
+Jest to pierwsza wersja klienta nuget.exe, który obsługuje serwery v3 NuGet i przywracanie pakietów dla projektów zarządzanych przy użyciu `project.json` pliku.
 
-Znaleziono wiele uwierzytelnionych źródła problemów, które zostały opisane w tej wersji w celu zwiększenia interakcji z klientem.
+Wystąpiło wiele uwierzytelnionych kanału informacyjnego problemy, które zostały rozwiązane w tej wersji w celu interakcji z klientem.
 
-* Zainstaluj / przywracania interakcje kierować tylko poświadczenia początkowe żądanie uwierzytelniony podawanie - [1300](https://github.com/NuGet/Home/issues/1300), [456](https://github.com/NuGet/Home/issues/456)
-* Polecenie wypychania nie rozpoznaje poświadczeń z konfiguracji — [1248](https://github.com/NuGet/Home/issues/1248)
-* Agent użytkownika i nagłówków, teraz są przesyłane do repozytoria NuGet, które ułatwiają monitorowanie statystyki — [929](https://github.com/NuGet/Home/issues/929)
+* Instalowanie / przywracania interakcje przesłać tylko poświadczenia na potrzeby początkowego żądania do uwierzytelnionego kanał — [1300](https://github.com/NuGet/Home/issues/1300), [456](https://github.com/NuGet/Home/issues/456)
+* Polecenie wypychania nie zostanie rozpoznana poświadczeń z konfiguracji — [1248](https://github.com/NuGet/Home/issues/1248)
+* Agent użytkownika i nagłówki są teraz przesyłane do repozytoria NuGet ułatwiające wykonywanie śledzenia statystyki - [929](https://github.com/NuGet/Home/issues/929)
 
-Wprowadziliśmy wiele ulepszeń w celu ulepszenia obsługi awarie sieci podczas próby pracować ze zdalnego repozytorium NuGet:
+Wprowadziliśmy wiele ulepszeń efektywniej obsługiwać awarie sieci podczas próby wykonania do pracy ze zdalnym repozytorium NuGet:
 
-* Ulepszone komunikaty o błędach, gdy nie można nawiązać zdalnego źródła danych - [1238](https://github.com/NuGet/Home/issues/1238)
-* Skorygowane polecenia restore NuGet poprawnie zwracane 1 w przypadku wystąpienia błędu - [1186](https://github.com/NuGet/Home/issues/1186)
-* Teraz ponawianie próby połączenia sieciowe co 200 MS maksymalnie 5 prób w przypadku HTTP 5xx błędy — [1120](https://github.com/NuGet/Home/issues/1120)
-* Ulepszona obsługa odpowiedzi przekierowania serwera podczas polecenie wypychania - [1051](https://github.com/NuGet/Home/issues/1051)
-* `nuget install -source` adres URL lub repozytorium nazwy z pliku Nuget.Config jako argument - obsługuje teraz [1046](https://github.com/NuGet/Home/issues/1046)
-* Brakuje pakietów, które nie znajdowały się w repozytorium podczas przywracania są teraz raportowane klientowi jako błędy zamiast ostrzeżenia [1038](https://github.com/NuGet/Home/issues/1038)
-* Poprawiona obsługa multipartwebrequest \r\n dla scenariuszy systemu Unix/Linux — [776](https://github.com/NuGet/Home/issues/776)
+* Ulepszone komunikaty o błędach, gdy nie można nawiązać zdalnego źródła danych — [1238](https://github.com/NuGet/Home/issues/1238)
+* Poprawione polecenie przywracania NuGet, aby prawidłowo zwraca wartość 1, jeśli wystąpi błąd - [1186](https://github.com/NuGet/Home/issues/1186)
+* Teraz ponawianie próby połączenia sieciowego każdego 200 ms dla maksymalnie 5 próbach w przypadku awarii 5xx protokołu HTTP - [1120](https://github.com/NuGet/Home/issues/1120)
+* Ulepszona obsługa odpowiedzi przekierowania serwera podczas polecenia push - [1051](https://github.com/NuGet/Home/issues/1051)
+* `nuget install -source` obsługuje teraz nazwę adresu URL lub repozytorium z pliku Nuget.Config jako argument - [1046](https://github.com/NuGet/Home/issues/1046)
+* Brakujące pakiety, które nie znajdowały się w repozytorium podczas przywracania teraz są zgłaszane jako błędy ostrzeżenia — zamiast [1038](https://github.com/NuGet/Home/issues/1038)
+* Poprawiona obsługa multipartwebrequest \r\n scenariuszach systemu Unix/Linux — [776](https://github.com/NuGet/Home/issues/776)
 
-Istnieje wiele poprawek problemy z różnych poleceń:
+Istnieje szereg poprawek na problemy z różnymi poleceniami:
 
-* Polecenie wypychania już nie GET przed PUT względem źródła pakietu - [1237](https://github.com/NuGet/Home/issues/1237)
-* Lista polecenie powtarza już numery wersji - [1185](https://github.com/NuGet/Home/issues/1185)
-* Pakiet z argumentem - kompilacji teraz poprawnie obsługuje C# w wersji 6.0 - [1107](https://github.com/NuGet/Home/issues/1107)
-* Poprawiony problemów podjęto próbę pakiecie projektów F # skompilowanej za pomocą programu Visual Studio 2015 - [1048](https://github.com/NuGet/Home/issues/1048)
-* Przywróć teraz nie-ops podczas pakietów już istnieje — [1040](https://github.com/NuGet/Home/issues/1040)
-* Ulepszone komunikaty o błędach podczas `packages.config` pliku jest nieprawidłowo sformułowany - [1034](https://github.com/NuGet/Home/issues/1034)
-* Skorygowane polecenia restore z przełącznikiem - SolutionDirectory do pracy z ścieżek względnych - [992](https://github.com/NuGet/Home/issues/992)
-* Ulepszone polecenie zaktualizowane do obsługi aktualizacji całym rozwiązaniu — [924](https://github.com/NuGet/Home/issues/924)
+* Polecenie wypychania już nie występuje GET przed PUT względem źródła pakietu - [1237](https://github.com/NuGet/Home/issues/1237)
+* Lista, polecenie nie jest już powtarza numery wersji - [1185](https://github.com/NuGet/Home/issues/1185)
+* Pakietu z argumentem - kompilacji teraz poprawnie obsługuje język C# 6.0 — [1107](https://github.com/NuGet/Home/issues/1107)
+* Poprawiony problemów próby pakietu projektu języka F # utworzonych za pomocą programu Visual Studio 2015 — [1048](https://github.com/NuGet/Home/issues/1048)
+* Przywrócenie żadnych operacji teraz, gdy pakiety już istnieje — [1040](https://github.com/NuGet/Home/issues/1040)
+* Ulepszone komunikaty o błędach podczas `packages.config` plik jest źle sformułowany - [1034](https://github.com/NuGet/Home/issues/1034)
+* Poprawione polecenia restore z przełącznikiem - SolutionDirectory do pracy z ścieżek względnych - [992](https://github.com/NuGet/Home/issues/992)
+* Ulepszone polecenie zaktualizowany do obsługi całego rozwiązania update - [924](https://github.com/NuGet/Home/issues/924)
 
-Pełna lista problemów, które zostały omówione w tej wersji można znaleźć w witrynie NuGet GitHub [wiersza polecenia punkt kontrolny](https://github.com/nuget/home/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A3.2.0-commandline+is%3Aclosed+-label%3AClosedAs%3ADuplicate).
+Pełną listę problemów rozwiązanych w tej wersji można znaleźć w witrynie NuGet GitHub [wiersza polecenia punkt kontrolny](https://github.com/nuget/home/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A3.2.0-commandline+is%3Aclosed+-label%3AClosedAs%3ADuplicate).
 
-## <a name="visual-studio-extension-updates"></a>Aktualizacje rozszerzenia usługi Visual Studio
+## <a name="visual-studio-extension-updates"></a>Aktualizacje rozszerzeń programu Visual Studio
 
 ### <a name="new-features-in-visual-studio"></a>Nowe funkcje w programie Visual Studio
 
-* Nowy element menu kontekstowe został dodany do Eksploratora rozwiązań w węźle rozwiązanie umożliwiający pakietów do przywrócenia bez tworzenia rozwiązania ([1274](https://github.com/NuGet/Home/issues/1274)).
+* Nowy element menu kontekstowego został dodany do Eksploratora rozwiązań w węźle rozwiązania, który zezwala na pakiety do przywrócenia bez kompilowania rozwiązania ([1274](https://github.com/NuGet/Home/issues/1274)).
 
-![Nowy "Przywracania pakietów" w Menu kontekstowym](./media/NuGet-3.2/newContextMenu.png)
+![Nowy element Menu kontekstowego "Przywracanie pakietów"](./media/NuGet-3.2/newContextMenu.png)
 
-### <a name="updates-and-fixes-in-visual-studio"></a>Aktualizacje i poprawki programu Visual Studio
+### <a name="updates-and-fixes-in-visual-studio"></a>Aktualizacje i poprawki w programie Visual Studio
 
-Poprawki dla źródeł uwierzytelnionych zostały rzutowane i rozwiązany również do rozszerzenia.  Następujące elementy uwierzytelniania również zostały uwzględnione w rozszerzeniu:
+Poprawki dla uwierzytelnione kanały informacyjne były rzutowane i które zostały rozwiązane w również rozszerzenie.  Następujące elementy uwierzytelniania również zostało zmodyfikowanych w rozszerzeniu:
 
-* Teraz prawidłowo traktowanie NuGet w wersji 3 uwierzytelniony źródła poprawnie, zamiast jako źródła danych - uwierzytelniona v2 [1216](https://github.com/NuGet/Home/issues/1216)
-* Żądanie poprawiony poświadczeń uwierzytelniania w projektach przy użyciu `project.json` i komunikacji z źródeł danych w wersji 2 - [1082](https://github.com/NuGet/Home/issues/1082)
+* Teraz poprawnie traktowanie NuGet w wersji 3 uwierzytelnione kanały informacyjne prawidłowo, a nie jako v2 uwierzytelnione kanały informacyjne - [1216](https://github.com/NuGet/Home/issues/1216)
+* Poprawiony żądanie dotyczące poświadczeń uwierzytelniania w projektach przy użyciu `project.json` i komunikacji z kanałów informacyjnych w wersji 2 - [1082](https://github.com/NuGet/Home/issues/1082)
 
-Połączenie sieciowe ma wpływ na interfejs użytkownika w programie Visual Studio, a rozwiązaliśmy to następujące poprawki:
+Łączność sieciowa miała wpływ na interfejs użytkownika w programie Visual Studio, a następnie rozwiązaliśmy to następujące poprawki:
 
-* Ulepszone konserwacji w lokalnej pamięci podręcznej wersji pakietu - [1096](https://github.com/NuGet/Home/issues/1096)
-* Zmienić zachowanie niepowodzenia podczas nawiązywania połączenia v3, źródła danych do już próba traktować go jako źródło danych w wersji 2 - [1253](https://github.com/NuGet/Home/issues/1253)
-* Zapobieganie teraz zainstalować błędy podczas instalowania pakietu z wieloma źródłami pakietu — [1183](https://github.com/NuGet/Home/issues/1183)
+* Ulepszone konserwację w lokalnej pamięci podręcznej wersji pakietu - [1096](https://github.com/NuGet/Home/issues/1096)
+* Zmienić zachowanie błąd podczas nawiązywania połączenia v3, kanał informacyjny do już próba jej traktowała jako źródło danych w wersji 2 - [1253](https://github.com/NuGet/Home/issues/1253)
+* Teraz uniemożliwić instalowanie błędy podczas instalowania pakietu z wieloma źródłami pakietów - [1183](https://github.com/NuGet/Home/issues/1183)
 
-Firma Microsoft Ulepszona obsługa interakcji z operacji kompilacji:
+Wprowadziliśmy ulepszoną obsługę interakcji z operacji kompilacji:
 
-* Teraz kontynuowanie w projektach kompilacji, jeśli trwa przywracanie pakietów dla jednego projektu nie powiodło się — [1169](https://github.com/NuGet/Home/issues/1169)
-* Instalowanie pakietu do projektu, który jest zależny od innego projektu w rozwiązaniu wymusza kompilowania rozwiązania — [981](https://github.com/NuGet/Home/issues/981)
-* Skorygowane instaluje pakietu nie powiodło się, aby poprawnie wycofać zmian na projekt — [1265](https://github.com/NuGet/Home/issues/1265)
-* Skorygowane przypadkowego usunięcia `developmentDependency` atrybut pakietu w `packages.config`  -  [1263](https://github.com/NuGet/Home/issues/1263)
-* Wywołuje się `install.ps1` ma poprawne `$package.AssemblyReferences` obiekt przekazany - [1245](https://github.com/NuGet/Home/issues/1245)
-* Nie uniemożliwia odinstalowuje pakietów w projektach platformy uniwersalnej systemu Windows, gdy projekt jest w złym stanie - [1128](https://github.com/NuGet/Home/issues/1128)
-* Rozwiązania, zawierające kombinację `packages.config` i `project.json` są teraz prawidłowo skompilowane projekty bez konieczności drugiej kompilacji operacji - [1122](https://github.com/NuGet/Home/issues/1122)
-* Poprawnie lokalizowanie plików app.config, jeśli są połączone lub znajduje się w innym folderze - [1111](https://github.com/NuGet/Home/issues/1111), [894](https://github.com/NuGet/Home/issues/894)
-* Projekty platformy UWP mogą teraz instalować pakiety nieznajdujące się na liście - [1109](https://github.com/NuGet/Home/issues/1109)
-* Przywracanie pakietu teraz jest dozwolone, gdy rozwiązanie nie jest w stanie zapisanym - [1081](https://github.com/NuGet/Home/issues/1081)
+* Teraz kompilowanie projektów, jeśli trwa przywracanie pakietów dla jednego projektu nie powiodło się — w dalszym ciągu [1169](https://github.com/NuGet/Home/issues/1169)
+* Instalowanie pakietu do projektu, który jest zależna od innego projektu w rozwiązaniu wymusza ponownej kompilacji rozwiązań — [981](https://github.com/NuGet/Home/issues/981)
+* Poprawione instaluje pakietu nie powiodło się, aby poprawnie wycofać zmian do projektu — [1265](https://github.com/NuGet/Home/issues/1265)
+* Poprawione przypadkowego usunięcia `developmentDependency` atrybut pakiet w `packages.config`  -  [1263](https://github.com/NuGet/Home/issues/1263)
+* Wywołania `install.ps1` powstał odpowiedniego `$package.AssemblyReferences` obiekt przekazany - [1245](https://github.com/NuGet/Home/issues/1245)
+* Zabrania już odinstalowuje pakietów w projektach platformy uniwersalnej systemu Windows, gdy projekt jest w nieprawidłowym stanie - [1128](https://github.com/NuGet/Home/issues/1128)
+* Rozwiązania zawierającego kombinację `packages.config` i `project.json` są teraz prawidłowo skompilowane projekty bez konieczności sekundy kompilacji operacji - [1122](https://github.com/NuGet/Home/issues/1122)
+* Lokalizowanie pliki app.config prawidłowo, jeśli są one połączone lub znajduje się w innym folderze — [1111](https://github.com/NuGet/Home/issues/1111), [894](https://github.com/NuGet/Home/issues/894)
+* Projekty platformy uniwersalnej systemu Windows można teraz zainstalować nieznajdujące się na liście pakietów - [1109](https://github.com/NuGet/Home/issues/1109)
+* Przywracanie pakietu teraz jest dozwolona, gdy to rozwiązanie nie jest w stanie zapisanym - [1081](https://github.com/NuGet/Home/issues/1081)
 
 Obsługa aktualizacji konfiguracji, które pliki są usuwane:
 
-* Nie jest już usunięcie pliku elementy docelowe dostarczone z pakietu w kolejnych wersjach systemu `project.json` zarządzanego projektu - [1288](https://github.com/NuGet/Home/issues/1288)
-* Nie jest już modyfikowania pliku Nuget.Config plików podczas kompilowania rozwiązania ASP.NET 5 - [1201](https://github.com/NuGet/Home/issues/1201)
+* Nie jest już usuwania pliku obiektów docelowych dostarczanych z poziomu pakietu na kolejne kompilacje `project.json` zarządzanego projektu - [1288](https://github.com/NuGet/Home/issues/1288)
+* Nie jest już modyfikacji plików Nuget.Config podczas kompilacji rozwiązania platformy ASP.NET 5 - [1201](https://github.com/NuGet/Home/issues/1201)
 * Można już zmienić ograniczenia wersji podczas aktualizacji pakietu - [1130](https://github.com/NuGet/Home/issues/1130)
-* Pliki blokady teraz pozostać zablokowane podczas kompilacji - [1127](https://github.com/NuGet/Home/issues/1127)
-* Obecnie modyfikuje `packages.config` i nie ponowne zapisywanie podczas aktualizacji - [585](https://github.com/NuGet/Home/issues/585)
+* Blokowanie plików teraz pozostać zablokowane podczas kompilacji - [1127](https://github.com/NuGet/Home/issues/1127)
+* Obecnie modyfikuje `packages.config` i nie ponowne napisanie podczas aktualizacji - [585](https://github.com/NuGet/Home/issues/585)
 
-Zwiększona interakcji z kontroli źródła TFS:
+Zwiększono interakcji z kontroli źródła w programie TFS:
 
-* Nie jest już niepowodzenie instalacji dla pakietów, które są powiązane z programem TFS - [1164](https://github.com/NuGet/Home/issues/1164), [980](https://github.com/NuGet/Home/issues/980)
-* Poprawiony interfejs użytkownika NuGet, które umożliwiają integrację TFS 2013 — [1071](https://github.com/NuGet/Home/issues/1071)
-* Usunąć odwołania do pakietów przywrócone prawidłowo pochodzą z folderu pakietów - [1004](https://github.com/NuGet/Home/issues/1004)
+* Nie jest już niepowodzenie instalacji pakietów, które są powiązane z TFS — [1164](https://github.com/NuGet/Home/issues/1164), [980](https://github.com/NuGet/Home/issues/980)
+* Poprawiony interfejsu użytkownika NuGet umożliwia integrację z programem TFS 2013 — [1071](https://github.com/NuGet/Home/issues/1071)
+* Poprawione odwołania do pakietów przywrócić prawidłowo pochodzą packages folder - [1004](https://github.com/NuGet/Home/issues/1004)
 
-Na koniec mamy ulepszono również te elementy:
+Na koniec poprawiono również następujące elementy:
 
-* Zmniejszona szczegółowości komunikaty dziennika `project.json` zarządzane projektów - [1163](https://github.com/NuGet/Home/issues/1163)
-* Teraz prawidłowo wyświetlanie zainstalowanych wersji pakietu w interfejsie użytkownika - [1061](https://github.com/NuGet/Home/issues/1061)
-* Pakiety z zakresu zależności określonego ich nuspec teraz zawierają wersje wstępne tych zależności zainstalowanych wersji pakietu stabilna - [1304](https://github.com/NuGet/Home/issues/1304)
+* Poziom szczegółowości komunikaty w dzienniku zmniejszone dla `project.json` zarządzanych projektów — [1163](https://github.com/NuGet/Home/issues/1163)
+* Teraz poprawnie wyświetlanie zainstalowanej wersji pakietu w interfejsie użytkownika - [1061](https://github.com/NuGet/Home/issues/1061)
+* Pakiety z zakresami zależności określona w ich nuspec teraz mieć wersje wstępne tych zależności zainstalowana wersja stabilny pakiet - [1304](https://github.com/NuGet/Home/issues/1304)
 
-Pełną listę problemów skierowana dla rozszerzenia Visual Studio można znaleźć w witrynie NuGet GitHub [3.2 punktu kontrolnego](https://github.com/nuget/home/issues?q=is%3Aissue+is%3Aclosed+-label%3AClosedAs%3ADuplicate+milestone%3A3.2)
+Pełną listę problemów rozwiązanych dla rozszerzenia programu Visual Studio można znaleźć w witrynie NuGet GitHub [3,2 punkt kontrolny](https://github.com/nuget/home/issues?q=is%3Aissue+is%3Aclosed+-label%3AClosedAs%3ADuplicate+milestone%3A3.2)
 
 ## <a name="known-issues"></a>Znane problemy
 
-W dalszym ciągu śledzenie problemów w naszej listy problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+W dalszym ciągu śledzenia problemów na naszej liście problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

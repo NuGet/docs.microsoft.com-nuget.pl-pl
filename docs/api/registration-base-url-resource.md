@@ -1,24 +1,23 @@
 ---
-title: Metadane pakietów, NuGet interfejsu API
+title: Metadane pakietu, interfejs API programu NuGet
 description: Pakiet rejestracyjny podstawowy adres URL umożliwia pobieranie metadanych dotyczących pakietów.
 author: joelverhagen
 ms.author: jver
-manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 50064e1450232e9cdedcc042a09c08860f802e76
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: a64c5844a58213415671ab0d202a75bc0ececc89
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31822242"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43546787"
 ---
-# <a name="package-metadata"></a>Metadane pakietów
+# <a name="package-metadata"></a>Metadane pakietu
 
-Istnieje możliwość pobrania metadane dotyczące pakiety dostępne w źródle pakietu przy użyciu interfejsu API w wersji 3 NuGet. Te metadane mogą być pobierane przy użyciu `RegistrationsBaseUrl` można znaleźć zasobu w [indeksu usługi](service-index.md).
+Istnieje możliwość pobrania metadanych o pakietach, które są dostępne w źródle pakietu przy użyciu interfejsu API programu NuGet w wersji 3. Te metadane mogą być pobierane przy użyciu `RegistrationsBaseUrl` można znaleźć zasobu w [indeks usług](service-index.md).
 
-Kolekcja dokumentów omówionych w artykule `RegistrationsBaseUrl` są często nazywane "rejestracji" lub "obiekty BLOB rejestracji". Zestaw dokumentów pod jedną `RegistrationsBaseUrl` nazywa się "hive rejestracji". Gałąź rejestracji zawiera wszystkie metadane dotyczące każdy pakiet dostępne w źródle pakietu.
+Zbiór dokumentów, znajdują się w `RegistrationsBaseUrl` są często nazywane "rejestracje" lub "obiektów blob rejestracji". Zestaw dokumentów w ramach pojedynczej `RegistrationsBaseUrl` jest określany jako "gałąź rejestracji". Gałąź rejestracji zawiera wszystkie metadane dotyczące każdego pakietu dostępne w źródle pakietu.
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
@@ -26,52 +25,52 @@ Następujące `@type` są używane wartości:
 
 @type Wartość                     | Uwagi
 ------------------------------- | -----
-RegistrationsBaseUrl            | Początkowa wersja
+RegistrationsBaseUrl            | Wersja początkowa
 RegistrationsBaseUrl/3.0.0-beta | Alias `RegistrationsBaseUrl`
 RegistrationsBaseUrl/3.0.0-rc   | Alias `RegistrationsBaseUrl`
 RegistrationsBaseUrl/3.4.0      | Odpowiedzi w formacie gzip
-RegistrationsBaseUrl/3.6.0      | Zawiera pakiety programu SemVer 2.0.0
+RegistrationsBaseUrl/3.6.0      | Zawiera pakiety SemVer 2.0.0
 
-Reprezentuje trzy różne rejestracji gałęzie dostępne dla różnych wersji klienta.
+Reprezentuje trzech odrębnych rejestracji gałęzie dostępne dla różnych wersji klienta.
 
 ### <a name="registrationsbaseurl"></a>RegistrationsBaseUrl
 
-Te nie są kompresowane (co oznacza korzystają z domniemanym `Content-Encoding: identity`). Pakiety programu SemVer 2.0.0 **wykluczone** z tej gałęzi.
+Nieskompresowane tyto registrace (co oznacza, korzystają z domniemanym `Content-Encoding: identity`). Pakiety SemVer 2.0.0 **wykluczone** z tej gałęzi.
 
 ### <a name="registrationsbaseurl340"></a>RegistrationsBaseUrl/3.4.0
 
-Te są skompresowane za pomocą `Content-Encoding: gzip`. Pakiety programu SemVer 2.0.0 **wykluczone** z tej gałęzi.
+Tyto registrace są kompresowane, za pomocą `Content-Encoding: gzip`. Pakiety SemVer 2.0.0 **wykluczone** z tej gałęzi.
 
 ### <a name="registrationsbaseurl360"></a>RegistrationsBaseUrl/3.6.0
 
-Te są skompresowane za pomocą `Content-Encoding: gzip`. Pakiety programu SemVer 2.0.0 **uwzględnione** w tej gałęzi.
-Aby uzyskać więcej informacji na temat programu SemVer 2.0.0, zobacz [obsługę programu SemVer 2.0.0 nuget.org](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29).
+Tyto registrace są kompresowane, za pomocą `Content-Encoding: gzip`. Pakiety SemVer 2.0.0 **uwzględnione** w tej gałęzi.
+Aby uzyskać więcej informacji na temat SemVer 2.0.0 zobacz [SemVer 2.0.0 obsługę nuget.org](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29).
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
-Bazowy adres URL dla następujących interfejsów API jest wartością `@id` właściwości skojarzonej z wyżej wymienionych zasobów `@type` wartości. W następującym dokumencie symbol zastępczy bazowy adres URL `{@id}` będą używane.
+Podstawowy adres URL dla następujących interfejsów API jest wartością `@id` właściwości skojarzonej z wyżej wymienionych zasobów `@type` wartości. W następującym dokumencie symbol zastępczy bazowy adres URL `{@id}` będą używane.
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Wszystkie adresy URL w obsługę zasobów rejestracji znaleziono metod HTTP `GET` i `HEAD`.
+Wszystkie adresy URL, znaleziono w obsłudze zasobów rejestracji metod HTTP `GET` i `HEAD`.
 
 ## <a name="registration-index"></a>Indeks rejestracji
 
-Grupy zasobów rejestracji pakietu metadanych według identyfikatora pakietu. Nie jest możliwe uzyskać dane o więcej niż jeden identyfikator pakietu w czasie. Ten zasób zapewnia nie można odnaleźć identyfikatorów pakietów. Zamiast tego klient zakłada się, że już znany identyfikator żądanego pakietu. Dostępne metadane dotyczące poszczególnych wersji pakietu jest zależna od implementacji serwera. Obiekty BLOB rejestracji pakietu ma następującą strukturę hierarchiczną:
+Grupy zasobów rejestracji pakietu metadanych według identyfikatora pakietu. Nie jest możliwe uzyskać dane o więcej niż jeden identyfikator pakietu w danym momencie. Ten zasób zapewnia sposób odnajdywania identyfikatorów pakietu. Zamiast tego klient zakłada się, że już znasz identyfikator żądanego pakietu. Dostępne metadane dotyczące każdej wersji pakietu jest zależna od implementacji serwera. Obiekty BLOB rejestracji pakietu mają następującą strukturę hierarchiczną:
 
-- **Indeks**: punkt wejścia dla metadane pakietów, współużytkowana przez wszystkie pakiety w źródle z tego samego identyfikatora pakietu.
-- **Strona**: Grupa wersje pakietów. Numer wersji pakietu na stronie zdefiniowano przez implementację serwera.
-- **Liścia**: właściwe dla wersji pakietu pojedynczego dokumentu.
+- **Indeks**: punkt wejścia dla metadanych pakietu, współużytkowane przez wszystkie pakiety w źródle, przy użyciu tego samego identyfikatora pakietu.
+- **Strona**: grupowanie wersji pakietu. Numer wersji pakietu na stronie jest definiowany przez implementację serwera.
+- **Liścia**: dokument wersji jednym pakiecie.
 
-Adres URL rejestracji indeksu jest atrybutem wartości prognozowanych i można określić przez klienta podany identyfikator pakietu i zasobów rejestracji `@id` wartości z indeksu usługi. Adresy URL strony rejestracji i pozostawia są odnajdywane przez badanie indeksu rejestracji.
+Adres URL indeksu rejestracji jest przewidywalne oraz można określić przez klienta podany identyfikator pakietu i zasobów rejestracji `@id` wartość indeksu usługi. Adresy URL strony rejestracji i pozostawia są wykrywane, sprawdzając indeksu rejestracji.
 
 ### <a name="registration-pages-and-leaves"></a>Strony rejestracji i pozostawia
 
-Chociaż nie ściśle są wymagane dla wdrożenia serwera do przechowywania się, że rejestracja liści w dokumentach strony rejestracji odrębnych, jest zalecaną praktyką w celu zachowywania pamięci po stronie klienta. Zamiast ze śródwierszowaniem wszystkich rejestracji pozostawia w lub od razu przechowywania pozostawia w dokumentach strony indeksu, zaleca się, że implementacją serwera zdefiniować niektóre heurystyki wybrać dwa podejścia na podstawie numeru wersji pakietu lub pozostawia całkowity rozmiar pakietu.
+Chociaż nie jest właściwie ma wymagane dla implementacji serwera, do przechowywania że rejestracji liści w dokumentach strony rejestracji odrębnych, jest zalecaną praktyką w celu zachowywania pamięci po stronie klienta. Zamiast wszystkich wbudowanie rejestracji pozostawia w indeksie lub od razu przechowywania pozostawia w dokumentach strony, zaleca się, że implementacja serwera zdefiniować niektóre heurystyki do wyboru dwie metody oparte na liczbie wersji pakietów lub pozostawia całkowity rozmiar pakietu.
 
-Przechowywanie wszystkich wersji pakietu (pozostawia) w rejestracji zapisuje indeksu liczby żądań HTTP niezbędne do pobrania pakietu metadanych, ale oznacza, że jest większy dokument musi zostać pobrana i musi być przydzielona większa ilość pamięci klienta. Z drugiej strony jeśli implementacja serwera natychmiast przechowuje rejestracji pozostawia w dokumentach na osobnej stronie, klienta należy wykonać więcej żądań HTTP, aby uzyskać informacje, które są niezbędne.
+Przechowywanie wszystkich wersji pakietu (pozostawia) w zapisuje indeksu rejestracji liczby żądań HTTP niezbędne do pobierania pakietu metadanych, ale oznacza, że dokumentu większe należy go najpierw pobrać i muszą być przydzielane więcej pamięci klienta. Z drugiej strony jeśli implementacja serwera natychmiast przechowuje rejestracji pozostawia w dokumentach na osobnej stronie, klienta, należy wykonać więcej żądań HTTP, aby uzyskać informacje, których potrzebuje.
 
-Heurystyka, który używa nuget.org wygląda następująco: Jeśli istnieje co najmniej 128 wersji pakietu, Podziel liści na stronach o rozmiarze 64. Jeśli dostępne są wersje mniej niż 128, wbudowanego wszystkich pozostawia do indeksu rejestracji.
+Algorytm heurystyczny, który używa nuget.org jest następująca: Jeśli istnieje co najmniej 128 wersji pakietu, przerwania liści do stron o rozmiarze 64. W przypadku wersji mniej niż 128 wszystkie wbudowane pozostawia do indeksu rejestracji.
 
     GET {@id}/{LOWER_ID}/index.json
 
@@ -79,56 +78,56 @@ Heurystyka, który używa nuget.org wygląda następująco: Jeśli istnieje co n
 
 Nazwa     | W     | Typ    | Wymagane | Uwagi
 -------- | ------ | ------- | -------- | -----
-LOWER_ID | Adres URL    | string  | Tak      | Identyfikator pakietu małej
+LOWER_ID | Adres URL    | string  | Tak      | Identyfikator pakietu pisany małymi literami
 
-`LOWER_ID` Wartość jest małej, za pomocą reguł wdrożonych przez identyfikator żądanego pakietu. W sieci [ `System.String.ToLowerInvariant()` ](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) metody.
+`LOWER_ID` Wartość jest pisany małymi literami, za pomocą reguł wdrożonych przez identyfikator żądanego pakietu. NET firmy [ `System.String.ToLowerInvariant()` ](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) metody.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź jest dokumentem JSON, który ma główny obiekt z następującymi właściwościami:
+Odpowiedź jest dokumentem JSON, który jest obiektem głównym, z następującymi właściwościami:
 
 Nazwa  | Typ             | Wymagane | Uwagi
 ----- | ---------------- | -------- | -----
 count | integer          | Tak      | Liczba stron rejestracji w indeksie
 Elementy | Tablica obiektów | Tak      | Tablica stron rejestracji
 
-Każdego elementu w obiekcie indeksu `items` tablica jest obiekt JSON reprezentujący stronę rejestracji.
+Każdy element w obiekcie indeksu `items` tablica jest obiektem JSON reprezentujący stronę rejestracji.
 
 #### <a name="registration-page-object"></a>Obiekt strony rejestracji
 
-Obiekt strony rejestracji w indeksie rejestracyjnych ma następujące właściwości:
+Obiekt strony rejestracji w indeksie rejestracji ma następujące właściwości:
 
 Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
 @id    | string           | Tak      | Adres URL do strony rejestracji
 count  | integer          | Tak      | Numer rejestracji pozostawia na stronie
-Elementy  | Tablica obiektów | Brak       | Tablica rejestracji pozostawia i ich Skojarz metadanych
-Niższe  | string           | Tak      | Najniższa wersja programu SemVer 2.0.0 na stronie (włącznie)
+Elementy  | Tablica obiektów | Brak       | Tablica pozostawia rejestracji i ich kojarzenie metadanych
+Niższy  | string           | Tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 Nadrzędny | string           | Brak       | Adres URL do indeksu rejestracji
-górny  | string           | Tak      | Najwyższa wersja programu SemVer 2.0.0 na stronie (włącznie)
+górny  | string           | Tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
-`lower` i `upper` granice obiektu strony są przydatne, gdy potrzebne jest metadanych dla wersji określonej strony.
-Te granice można pobrać strony rejestracji tylko wymagane. Ciągi wersja zgodna [reguły wersji NuGet](../reference/package-versioning.md). Ciągi wersji są znormalizowany i nie zawierają metadanych kompilacji. Zgodnie ze wszystkimi wersjami w ekosystemie NuGet porównania ciągów wersji jest implementowane za pomocą [reguły pierwszeństwo wersji programu SemVer 2.0.0's](http://semver.org/spec/v2.0.0.html#spec-item-11).
+`lower` i `upper` granice obiektu strony są przydatne, jeśli potrzebne są metadane dla określonej strony wersji.
+Te granice może służyć do pobrania na stronie rejestracji tylko potrzebne. Ciągi wersji stosować [reguły wersji NuGet](../reference/package-versioning.md). Ciągi wersji są znormalizowane i nie zawierają metadanych kompilacji. Zgodnie ze wszystkimi wersjami należący do ekosystemu NuGet Porównanie ciągów wersji jest implementowany przy użyciu [reguły pierwszeństwa wersji SemVer 2.0.0's](http://semver.org/spec/v2.0.0.html#spec-item-11).
 
-`parent` Właściwość będą wyświetlane tylko, jeśli obiekt strony rejestracji zawiera `items` właściwości.
+`parent` Właściwości będą wyświetlane tylko wtedy, jeśli obiekt strony rejestracji ma `items` właściwości.
 
-Jeśli `items` nie ma właściwości w obiekcie strony rejestracji, adres URL określony w `@id` musi być używany do pobierania metadanych dotyczących wersje poszczególnych pakietów. `items` Tablicy czasami jest wykluczony z obiektu strony do optymalizacji. W przypadku bardzo dużej liczby wersji identyfikator pojedynczy pakiet rejestracji w dokumencie indeksu zostaną masowych i niepotrzebne do procesu klienta, który tylko dba o określonej wersji lub małe zakres wersji.
+Jeśli `items` właściwość nie jest obecny w obiekcie strony rejestracji, adres URL określony w `@id` musi być używane do pobierania metadanych dotyczących wersje poszczególnych pakietów. `items` Tablicy czasami jest wykluczony z obiektu strony w ramach optymalizacji. W przypadku bardzo dużej liczby wersji identyfikator pojedynczy pakiet rejestracji dokumentu indeksu zostaną masowych i marnotrawstwa do procesu dla klienta, który tylko dba o określonej wersji lub niewielki zakres wersji.
 
-Należy pamiętać, że jeśli `items` ma właściwość `@id` właściwości nie może być używany, ponieważ wszystkie dane strony są już wbudowanego w `items` właściwości.
+Należy pamiętać, że jeśli `items` właściwość jest obecny, `@id` muszą nie można użyć właściwości, ponieważ wszystkie dane strony jest już śródwierszowe w `items` właściwości.
 
-Każdego elementu w obiekcie strony `items` tablicy jest obiekt JSON reprezentuje liścia rejestracji i ma skojarzone metadane.
+Każdy element w obiekcie strony `items` tablicy jest obiektem JSON reprezentujący liścia rejestracji i skojarzony z nim metadane.
 
 #### <a name="registration-leaf-object-in-a-page"></a>Obiekt typu liść rejestracji na stronie
 
-Obiekt typu liść rejestracji na stronie rejestracji znaleziono ma następujące właściwości:
+Obiekt typu liść rejestracji znaleźć na stronie rejestracji ma następujące właściwości:
 
 Nazwa           | Typ   | Wymagane | Uwagi
 -------------- | ------ | -------- | -----
-@id            | string | Tak      | Adres URL, który liścia rejestracji
-catalogEntry   | object | Tak      | Wpis katalogu zawierającego metadane pakietów
+@id            | string | Tak      | Adres URL rejestracji typu liść
+catalogEntry   | object | Tak      | Wpis katalogu, zawierający metadane pakietu
 packageContent | string | Tak      | Adres URL do zawartości pakietów (.nupkg)
 
-Każdy obiekt typu liść rejestracji reprezentuje dane związane z wersją pojedynczy pakiet.
+Każdy obiekt typu liść rejestracji reprezentuje dane skojarzone z wersją w jednym pakiecie.
 
 #### <a name="catalog-entry"></a>Wpis katalogu
 
@@ -136,24 +135,24 @@ Każdy obiekt typu liść rejestracji reprezentuje dane związane z wersją poje
 
 Nazwa                     | Typ                       | Wymagane | Uwagi
 ------------------------ | -------------------------- | -------- | -----
-@id                      | string                     | Tak      | Adres URL do dokumentu, używany do utworzenia tego obiektu
-Autorzy                  | ciąg lub tablica ciągów | Brak       | 
+@id                      | string                     | Tak      | Adres URL, aby dokument użyty do utworzenia tego obiektu
+Autorzy                  | ciąg lub tablicę ciągów | Brak       | 
 dependencyGroups         | Tablica obiektów           | Brak       | Zależności pakietu, pogrupowane według platformy docelowej
 opis              | string                     | Brak       | 
-iconUrl                  | string                     | Brak       | 
+IconUrl                  | string                     | Brak       | 
 identyfikator                       | string                     | Tak      | Identyfikator pakietu
 licenseUrl               | string                     | Brak       | 
-wymienione                   | wartość logiczna                    | Brak       | Należy traktować jak wymienionych w przypadku braku
-Element MinClientVersion         | string                     | Brak       | 
+wymienione                   | wartość logiczna                    | Brak       | Powinny być traktowane jako wymienionych Jeśli go nie ma
+Atrybut MinClientVersion         | string                     | Brak       | 
 projectUrl               | string                     | Brak       | 
-Opublikowane                | string                     | Brak       | Ciąg zawierający ISO 8601 sygnatura czasowa kiedy został opublikowany pakiet
+Opublikowane                | string                     | Brak       | Ciąg zawierający ISO 8601 sygnaturę czasową gdy pakiet został opublikowany
 requireLicenseAcceptance | wartość logiczna                    | Brak       | 
 podsumowanie                  | string                     | Brak       | 
 tagi                     | ciąg lub tablica ciągów  | Brak       | 
 Tytuł                    | string                     | Brak       | 
 version                  | string                     | Tak      | Wersja pakietu
 
-`dependencyGroups` Właściwość jest Tablica obiektów reprezentująca zależności pakietu, pogrupowane według platformy docelowej. Jeśli pakiet nie ma żadnych zależności `dependencyGroups` właściwości brakuje pustą tablicę lub `dependencies` właściwości wszystkich grup jest pusty lub Brak.
+`dependencyGroups` Właściwość jest Tablica obiektów reprezentująca zależności pakietu, pogrupowane według wartości docelowej. Jeśli pakiet nie ma zależności, `dependencyGroups` brakuje właściwości, pusta tablica lub `dependencies` właściwość wszystkich grup jest pusta lub Brak.
 
 #### <a name="package-dependency-group"></a>Grupa zależności pakietu
 
@@ -161,12 +160,12 @@ Każdy obiekt grupy zależności ma następujące właściwości:
 
 Nazwa            | Typ             | Wymagane | Uwagi
 --------------- | ---------------- | -------- | -----
-targetFramework | string           | Brak       | Docelowe środowisko, które dotyczą te zależności
+targetFramework | string           | Brak       | Platforma docelowa, które dotyczą te zależności
 zależności    | Tablica obiektów | Brak       |
 
-`targetFramework` Ciąg w formacie zaimplementowana przez bibliotekę .NET NuGet [NuGet.Frameworks](https://www.nuget.org/packages/NuGet.Frameworks/). Jeśli nie `targetFramework` określono grupy zależności dotyczy wszystkich platform docelowych.
+`targetFramework` Ciąg w formacie implementowany przez NuGet biblioteki .NET [NuGet.Frameworks](https://www.nuget.org/packages/NuGet.Frameworks/). Jeśli nie `targetFramework` jest określona grupa zależności, który ma zastosowanie do wszystkich platform docelowych.
 
-`dependencies` Właściwość jest Tablica obiektów, reprezentujący zależności pakietu bieżącego pakietu.
+`dependencies` Właściwość jest Tablica obiektów, każdy reprezentuje zależność pakietu bieżącego pakietu.
 
 #### <a name="package-dependency"></a>Zależność pakietu
 
@@ -176,9 +175,9 @@ Nazwa         | Typ   | Wymagane | Uwagi
 ------------ | ------ | -------- | -----
 identyfikator           | string | Tak      | Identyfikator zależności pakietu
 range        | object | Brak       | Dozwolona [zakres wersji](../reference/package-versioning.md#version-ranges-and-wildcards) zależności
-rejestracja | string | Brak       | Adres URL do indeksu rejestracji tej zależności
+rejestracja | string | Brak       | Adres URL do indeksu rejestracji dla tej zależności
 
-Jeśli `range` właściwości jest wyłączona lub pusty ciąg, klient powinien domyślny zakres wersji `(, )`. Oznacza to, że dowolna wersja zależność jest dozwolone.
+Jeśli `range` właściwość jest wyłączona lub pustym ciągiem, klient powinien domyślnych do zakresu wersji `(, )`. Oznacza to, że dowolną wersję zależność jest dozwolone.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
@@ -188,24 +187,24 @@ Jeśli `range` właściwości jest wyłączona lub pusty ciąg, klient powinien 
 
 [!code-JSON [package-registration-index.json](./_data/package-registration-index.json)]
 
-W tym przypadku indeks rejestracji ma wbudowane strony rejestracji, więc nie są wymagane żadne dodatkowe żądania można pobrać metadanych dotyczących wersje poszczególnych pakietów.
+W tym konkretnym przypadku indeks rejestracji ma śródwierszowych strony rejestracji, dzięki czemu żadne dodatkowe żądania są wymagane do pobierania metadanych dotyczących wersje poszczególnych pakietów.
 
-## <a name="registration-page"></a>Strony rejestracji
+## <a name="registration-page"></a>Strona rejestracji
 
-Strony rejestracji zawiera pozostawia rejestracji. Adres URL, aby pobrać strony rejestracji jest określany przez `@id` właściwości w [obiekt strony rejestracji](#registration-page-object) wymienionych powyżej.
+Strona rejestracji zawiera pozostawia rejestracji. Adres URL, aby pobrać strony rejestracji jest określana przez `@id` właściwość [obiektu strony rejestracji](#registration-page-object) wymienionych powyżej.
 
-Gdy `items` tablicy nie jest dostępny w indeksie rejestracyjnych, żądanie HTTP GET z `@id` wartość, którą będzie zwracać dokumentu JSON, który ma obiekt jako elementem głównym. Obiekt ma następujące właściwości:
+Gdy `items` tablicy nie zostanie podany w indeksie rejestracji, żądanie HTTP GET z `@id` wartość zwróci dokument JSON, który ma obiektu jako jego katalogu głównego. Obiekt ma następujące właściwości:
 
 Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
 @id    | string           | Tak      | Adres URL do strony rejestracji
 count  | integer          | Tak      | Numer rejestracji pozostawia na stronie
-Elementy  | Tablica obiektów | Tak      | Tablica rejestracji pozostawia i ich Skojarz metadanych
-Niższe  | string           | Tak      | Najniższa wersja programu SemVer 2.0.0 na stronie (włącznie)
+Elementy  | Tablica obiektów | Tak      | Tablica pozostawia rejestracji i ich kojarzenie metadanych
+Niższy  | string           | Tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 Nadrzędny | string           | Tak      | Adres URL do indeksu rejestracji
-górny  | string           | Tak      | Najwyższa wersja programu SemVer 2.0.0 na stronie (włącznie)
+górny  | string           | Tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
-Kształt obiektów typu liść rejestracji jest taki sam jak indeks rejestracji [powyżej](#registration-leaf-object-in-a-page).
+Kształt obiektów typu liść rejestracji jest taka sama, jak indeksu rejestracji [powyżej](#registration-leaf-object-in-a-page).
 
 ## <a name="sample-request"></a>Przykładowe żądanie
 
@@ -215,25 +214,25 @@ Kształt obiektów typu liść rejestracji jest taki sam jak indeks rejestracji 
 
 [!code-JSON [package-registration-page.json](./_data/package-registration-page.json)]
 
-## <a name="registration-leaf"></a>Liścia rejestracji
+## <a name="registration-leaf"></a>Rejestracja typu liść
 
-Liścia rejestracji zawiera informacje o określonym identyfikatorze i wersji. Metadane dotyczące określonej wersji nie mogą być dostępne w tym dokumencie. Metadane pakietów mają być pobierane z [indeksu rejestracji](#registration-index) lub [strony rejestracji](#registration-page) (który został odnaleziony przy użyciu indeksu rejestracji).
+Liścia rejestracji zawiera informacje o identyfikatorze określonego pakietu i wersję. Metadane dotyczące określonej wersji może nie być dostępne w tym dokumencie. Metadane pakietu mają zostać pobrane z [indeksu rejestracji](#registration-index) lub [strony rejestracji](#registration-page) (który został odnaleziony przy użyciu indeksu rejestracji).
 
-Adres URL, aby pobrać liścia rejestracji są uzyskiwane z `@id` właściwości obiektu typu liść rejestracji w indeksie rejestracyjnych lub strony rejestracji.
+Adres URL, aby pobrać liścia rejestracji jest uzyskiwana z `@id` właściwości obiektu typu liść rejestracji w rejestracji indeksu lub strona rejestracji.
 
-Liścia rejestracji jest dokumentem JSON z obiektem głównym z następującymi właściwościami:
+Liścia rejestracji to dokument JSON z obiektem głównym, z następującymi właściwościami:
 
 Nazwa           | Typ    | Wymagane | Uwagi
 -------------- | ------- | -------- | -----
-@id            | string  | Tak      | Adres URL, który liścia rejestracji
-catalogEntry   | string  | Brak       | Adres URL do wpisu wykazu wytworzonego te liścia
-wymienione         | wartość logiczna | Brak       | Należy traktować jak wymienionych w przypadku braku
+@id            | string  | Tak      | Adres URL rejestracji typu liść
+catalogEntry   | string  | Brak       | Adres URL wpisu wykazu, który te typu liść
+wymienione         | wartość logiczna | Brak       | Powinny być traktowane jako wymienionych Jeśli go nie ma
 packageContent | string  | Brak       | Adres URL do zawartości pakietów (.nupkg)
-Opublikowane      | string  | Brak       | Ciąg zawierający ISO 8601 sygnatura czasowa kiedy został opublikowany pakiet
+Opublikowane      | string  | Brak       | Ciąg zawierający ISO 8601 sygnaturę czasową gdy pakiet został opublikowany
 rejestracja   | string  | Brak       | Adres URL do indeksu rejestracji
 
 > [!Note]
-> Na nuget.org `published` ma wartość roku 1900, gdy pakiet jest nieznajdujące się na liście.
+> W witrynie nuget.org `published` ma wartość roku 1900, gdy pakiet jest nieobecne na liście.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 

@@ -1,28 +1,27 @@
 ---
-title: Polecenie wypychania NuGet interfejsu wiersza polecenia
-description: Informacje dotyczące polecenia wypychania nuget.exe
+title: Polecenie wypychania interfejs wiersza polecenia NuGet
+description: Dokumentacja dotycząca poleceń wypychania nuget.exe
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 05cafa981ecf42829d1b3d8b8988ed51449d9d86
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 125671ca3f695f82bd74f8097e590c3972003e22
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817194"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43548346"
 ---
-# <a name="push-command-nuget-cli"></a>polecenie wypychania (NuGet CLI)
+# <a name="push-command-nuget-cli"></a>polecenie wypychania (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** publikowania pakietu &bullet; **obsługiwane wersje:** wszystkie; 4.1.0+ wymagane dla nuget.org
+**Dotyczy:** pakietu publikowania &bullet; **obsługiwane wersje:** wszystkie; 4.1.0+ wymagane dla repozytorium nuget.org
 
 > [!Important]
-> Aby wysyłać pakietów do nuget.org należy użyć nuget.exe v4.1.0 +, która implementuje wymaganych [protokołów NuGet](../api/nuget-protocols.md).
+> Aby wypychania pakietów na stronie nuget.org należy użyć nuget.exe verze 4.1.0 +, która implementuje wymagane [protokołów NuGet](../api/nuget-protocols.md).
 
-Wypychanie pakietu do źródła pakietu i publikuje ją.
+Wypychanie pakietu do źródła pakietu i publikuje go.
 
-Konfiguracja domyślna NuGet są uzyskiwane przez załadowanie `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux), następnie ładowania żadnych `Nuget.Config` lub `.nuget\Nuget.Config` pliki, począwszy od katalogu głównego dysku i kończący się w bieżącym katalogu (zobacz [Konfigurowanie Zachowanie NuGet](../consume-packages/configuring-nuget-behavior.md))
+NuGet domyślnej konfiguracji można uzyskać przez ładowanie `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux), następnie ładowania wszelkie `Nuget.Config` lub `.nuget\Nuget.Config` plików od głównego dysku i kończący się w bieżącym katalogu (zobacz [Konfigurowanie Zachowania programu NuGet](../consume-packages/configuring-nuget-behavior.md))
 
 ## <a name="usage"></a>Użycie
 
@@ -30,26 +29,26 @@ Konfiguracja domyślna NuGet są uzyskiwane przez załadowanie `%AppData%\NuGet\
 nuget push <packagePath> [options]
 ```
 
-gdzie `<packagePath>` identyfikuje pakiet do serwera.
+gdzie `<packagePath>` identyfikuje pakiet do wypychania do serwera.
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
-| apiKey | Klucz interfejsu API dla repozytorium docelowej. Jeśli nie istnieje określony w pliku konfiguracji jest używany. |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
-| DisableBuffering | Wyłącza buforowanie przypadku wypychania do serwera HTTP (s), aby zmniejszyć użycia pamięci. Uwaga: Jeśli ta opcja jest używana, zintegrowane uwierzytelnianie systemu Windows może nie działać. |
+| ApiKey | Klucz interfejsu API w repozytorium docelowym. Jeśli nie występuje, określony w pliku konfiguracji jest używany. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) jest używany.|
+| DisableBuffering | Wyłącza buforowanie podczas wypychania do serwera HTTP (s) w celu zmniejszenia użycia pamięci. Uwaga: Jeśli ta opcja jest używana, zintegrowane uwierzytelnianie Windows może nie działać. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
-| NoSymbols | *(3.5 +)*  Jeśli istnieje pakietu symboli, nie zostanie on przekazany do serwera symboli. |
-| Źródło | Określa adres URL serwera. NuGet identyfikuje UNC lub lokalny folder źródłowy i po prostu kopiuje plik zamiast wypychanie go przy użyciu protokołu HTTP.  Ponadto, począwszy od NuGet 3.4.2, jest to parametr obowiązkowy chyba że `NuGet.Config` plik Określa *DefaultPushSource* wartość (zobacz [NuGet Konfigurowanie zachowania](../consume-packages/configuring-nuget-behavior.md)). |
-| SymbolSource | *(3.5 +)*  Określa adres URL serwera symboli; nuget.smbsrc.net jest używana w przypadku wypychania w nuget.org |
+| Nieinterakcyjnym | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
+| NoSymbols | *(3.5 +)*  Jeżeli istnieje pakiet symboli, nie będą jej wypychane do serwera symboli. |
+| Źródło | Określa adres URL serwera. NuGet identyfikuje UNC lub lokalny folder źródłowy i po prostu kopiuje plik zamiast wypychanie go przy użyciu protokołu HTTP.  Ponadto, począwszy od NuGet 3.4.2, jest to parametr obowiązkowy chyba że `NuGet.Config` plik Określa *DefaultPushSource* wartości (zobacz [zachowania programu NuGet Konfigurowanie](../consume-packages/configuring-nuget-behavior.md)). |
+| SymbolSource | *(3.5 +)*  Określa adres URL serwera symboli; nuget.smbsrc.net jest używany podczas wypychania do repozytorium nuget.org |
 | SymbolApiKey | *(3.5 +)*  Określa klucz interfejsu API dla adresu URL określonego w `-SymbolSource`. |
-| Limit czasu | Określa limit czasu w sekundach, do wypychania do serwera. Wartość domyślna to 300 sekund (5 minut). |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
+| limit czasu | Określa limit czasu w sekundach, wypychania do serwera. Wartość domyślna to 300 sekund (5 minut). |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
-Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
+Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 
 ## <a name="examples"></a>Przykłady
 

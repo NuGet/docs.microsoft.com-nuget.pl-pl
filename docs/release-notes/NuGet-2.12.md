@@ -1,29 +1,28 @@
 ---
 title: Informacje o wersji 2.12 NuGet
-description: Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 2.12 NuGet.
+description: Informacje o wersji programu NuGet 2.12 tym znanych problemów, poprawki, funkcje dodane i DCRs.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 407360a1147cc3f1a6a23a9efccb17b745ca70d1
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: bbdcff9c283e8f2e5799f5fdfb2272c70be484fd
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31821164"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43551817"
 ---
 # <a name="nuget-212-release-notes"></a>Informacje o wersji 2.12 NuGet
 
-NuGet 2.12 RTM wydania dla programu Visual Studio 2013 27 czerwca 2016 r.
+NuGet 2.12 RTM został wydany 27 czerwca 2016 r dla programu Visual Studio 2013
 
-### <a name="updates-in-this-release"></a>Aktualizacje w tej wersji
+### <a name="updates-in-this-release"></a>Zaktualizowane w tej wersji
 
-* Pełna krótkich nazw NetStandard i NetCoreApp obsługę VS2013.
-* Dodawanie dołączania/wykluczania do `.nuspec` wpisy zależności.
-* Dodaj obsługę "no_proxy" określić wyjątki proxy.
-* Poprawki dotyczące serwera TFS.
+* Pełne NetStandard i NetCoreApp obsługę VS2013.
+* Dodawanie/wykluczania do `.nuspec` wpisy zależności.
+* Dodanie obsługi "no_proxy" określić wyjątki serwera proxy.
+* Poprawek związanych z TFS.
 
-Lista poprawek w tej wersji można znaleźć w witrynie GitHub w [2.12 punktu kontrolnego](https://github.com/NuGet/Home/issues?q=milestone%3A2.12+is%3Aclosed)
+Lista poprawek w tej wersji można znaleźć w witrynie GitHub w [2.12 punkt kontrolny](https://github.com/NuGet/Home/issues?q=milestone%3A2.12+is%3Aclosed)
 
 Pobierz rozszerzenie z Narzędzia -> rozszerzenia i aktualizacje w programie Visual Studio

@@ -1,23 +1,22 @@
 ---
-title: Open — PackagePage NuGet w programie PowerShell
-description: Odwołanie do polecenia programu PowerShell PackagePage Otwórz w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Dokumentacja programu PowerShell NuGet Open-PackagePage
+description: Dokumentacja polecenia PowerShell PackagePage otwarcie w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: e64a83c01a7baac330c99fe40ba52f328a2133b8
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 0325aa4ddd718a901dd6a09cdf86cae260e326ab
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817723"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43547171"
 ---
 # <a name="open-packagepage-package-manager-console-in-visual-studio"></a>Open-PackagePage (konsola menedżera pakietów w programie Visual Studio)
 
-*Przestarzałe w 3.0 +; dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio w systemie Windows.*
+*Przestarzałe w 3.0 +; dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio na Windows.*
 
-Uruchamia domyślnej przeglądarki z projektu, licencji lub adresu URL programu report nadużyć dla określonego pakietu.
+Uruchamia domyślną przeglądarkę z projektem, licencji lub adres URL do raportu nadużyć dla określonego pakietu.
 
 ## <a name="syntax"></a>Składnia
 
@@ -30,18 +29,18 @@ Open-PackagePage [-Id] <string> [-Version] [-Source] [-License] [-ReportAbuse]
 
 | Parametr | Opis |
 | --- | --- |
-| Id | Identyfikator pakietu żądanego pakietu. Id przełącznika sam jest opcjonalna. |
-| Wersja | Wersja pakietu, domyślnie używany do najnowszej wersji. |
-| Źródło | Źródło pakietu domyślnie wybrane źródło w lokalizacji źródłowej listy rozwijanej. |
-| Licencji | Otwiera przeglądarkę, aby adres URL licencji pakietu. Jeśli nie - licencji - ReportAbuse określono ani, w przeglądarce zostanie otwarty adres URL projektu pakietu. |
-| ReportAbuse | Otwiera przeglądarkę do adresu URL nadużycia raport pakietu. Jeśli nie - licencji - ReportAbuse określono ani, w przeglądarce zostanie otwarty adres URL projektu pakietu. |
+| Id | Identyfikator pakietu żądanego pakietu. — Identyfikator samym przełączniku jest opcjonalne. |
+| Wersja | Wersja pakietu, ustawiając domyślnie do najnowszej wersji. |
+| Źródło | Źródło pakietu przyjęty wybranego źródła w źródle listy rozwijanej. |
+| Licencja | Zostanie otwarta w przeglądarce adres URL licencji pakietu. Jeśli określono - licencji ani - ReportAbuse przeglądarki otwiera adres URL projektu pakietu. |
+| ReportAbuse | Zostanie otwarta w przeglądarce adres URL nadużyć raport pakietu. Jeśli określono - licencji ani - ReportAbuse przeglądarki otwiera adres URL projektu pakietu. |
 | Przekazywanie | Wyświetla adres URL; za pomocą - WhatIf do pomijania otwierania przeglądarki. |
 
-Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
+Żaden z tych parametrów akceptuje znaków potoku danych wejściowych lub symbol wieloznaczny.
 
 ## <a name="common-parameters"></a>Wspólne parametry
 
-`Open-PackagePage` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja błędu ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
+`Open-PackagePage` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

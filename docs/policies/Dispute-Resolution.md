@@ -1,30 +1,29 @@
 ---
 title: Rozwiązywanie sporów nazwa pakietu NuGet
-description: Proces rozwiązywanie sporów między związane z znakowania, znaków towarowych i innych konfliktów wydawcy pakietu NuGet.
+description: Proces rozstrzygania sporów między wydawcy pakietu NuGet związanych z znakowanie, znaków towarowych i innych sytuacjach konflikt.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 01/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: f7749dec0726162f122db91397e9581cfad23890
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: a2f1fed578f1635296892ab925219f0f27883c02
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817548"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43550375"
 ---
-# <a name="resolving-disputes-over-nuget-package-names"></a>Rozwiązywanie sporów nazwy pakietu NuGet
+# <a name="resolving-disputes-over-nuget-package-names"></a>Rozwiązywanie sporów nazwy pakietów NuGet
 
-W tym artykule przedstawiono proces zalecane rozwiązanie członkom społeczności, rozwiązywanie sporów z innych wydawców NuGet.
+Ten artykuł zawiera zalecane rozwiązanie procesu dla członków społeczności rozstrzygania sporów identyfikatorami różnych wydawców NuGet.
 
-Na przykład załóżmy, że Northwind Traders sprawia, że systemu CRM, dla którego zapewniają sterowników klienta jako MSI do pobrania z witryny sieci Web. Irena, niezależnie od dewelopera wymaga ułatwić korzystanie z biblioteki klienta firmy Northwind i konwertuje go na pakietu NuGet o nazwie `NorthwindTraders.Client`. Później Northwind chce utworzyć oficjalnego pakietu NuGet w swoich własnych ich biblioteki klienta i w związku z tym chcesz rozstrzygania własność firmy Irena nazwę pakietu.
+Na przykład załóżmy, że Northwind Traders sprawia, że system CRM, dla którego zapewniają sterowników klienta jako do pobrania plik MSI z ich witryny sieci Web. Nancy, niezależny Deweloper chce ułatwić używanie biblioteki klienckiej firmy Northwind i konwertuje go na pakiet NuGet o nazwie `NorthwindTraders.Client`. Później Northwind chce utworzyć oficjalne pakietu NuGet własne ich biblioteki klienta usługi, a w związku z tym chce rozstrzygania Ireny własności nazwy pakietu.
 
-W tym scenariuszu Irena nie wydaje się być działające z zamiarów zły, ale raczej obsługuje narzędzia i klientów firmy Northwind, podając własne czasu i kod. W tym samym czasie Northwind jest uzasadnione właścicielem nazwy Northwind.
+W tym scenariuszu Nancy wydaje się być działające z zamiarów zły, ale raczej obsługuje narzędzia firmy Northwind i klientów, przekazując własne czasu i kod. W tym samym czasie Northwind jest prawowitym właścicielem nazwy Northwind.
 
-Wykonując z procesem opisanym niżej Northwind i Irena mogą współdziałać ze sobą odpowiedniego rozwiązania, ponieważ zarówno zainteresowani obsługująca społeczności deweloperów. Zwykle nie jest niezbędna dla zespołu NuGet do angażowania; Współpraca zwykle działa się najlepiej. W rzeczywistości co sporów zespołu NuGet uwagi do daty została działał bez zespołu konieczności przekazać ocenie.
+Postępując zgodnie z procesem opisanym niżej, Northwind i Nancy mogą pracować razem odpowiednie rozwiązanie, ponieważ oba są zainteresowani obsługująca społeczności deweloperów. Zazwyczaj nie jest konieczne dla zespołu NuGet do angażowania; współpraca zazwyczaj działa najlepiej. W rzeczywistości sporów, każdy zespół NuGet uwagi do daty wypracowała zostało bez zespołu konieczności przekazywania orzeczenia.
 
 ## <a name="process"></a>Proces
 
-1. Skontaktuj się z właściciele pakietu masz sporów przy użyciu **właścicieli skontaktuj się z** łącze na stronie Szczegóły pakietu. Opis problemu w rodzaju i w sposób bezpośredni.
-2. Wyślij kopię wiadomości [ support@nuget.org ](mailto:support@nuget.org) tak, aby NuGet i .NET Foundation wiedzą z sporów.
-3. Poczekaj maksymalnie 30 dni rozwiązanie problemu, a następnie powiadom [ support@nuget.org ](mailto:support@nuget.org) ponownie. Nuget.org zespołem pomocy technicznej będzie angażowanie i spróbuj pracy za pośrednictwem sporów z obu stron.
+1. Skontaktuj się z właścicielami pakietu mają sporu przy użyciu **skontaktuj się z właścicielami** łącze na stronie szczegółów pakietu. Opis problemu w rodzaju i w sposób bezpośredni.
+2. Wyślij kopię wiadomości dla [ support@nuget.org ](mailto:support@nuget.org) tak, aby NuGet i .NET Foundation świadomość spór.
+3. Poczekaj maksymalnie 30 dni na rozwiązanie problemu, a następnie powiadom [ support@nuget.org ](mailto:support@nuget.org) ponownie. Zespół pomocy technicznej w witrynie nuget.org będzie Dołącz do społeczności, a następnie spróbuj do pracy za pośrednictwem sporu z obu stron.

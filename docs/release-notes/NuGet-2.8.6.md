@@ -1,29 +1,28 @@
 ---
 title: Informacje o wersji NuGet 2.8.6
-description: Informacje o wersji programu NuGet 2.8.6 tym — znane problemy, poprawki, dodatkowe funkcje i dcr.
+description: Informacje o wersji programu NuGet 2.8.6 tym — znane problemy, poprawki, funkcje dodane i DCRs.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: ee801a0edfe22888d65506cea557fd9c79dcf7bd
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: d57c658999ed3c79b962de84fd973276833ef3fd
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31819721"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43546494"
 ---
 # <a name="nuget-286-release-notes"></a>Informacje o wersji NuGet 2.8.6
 
-[Informacje o wersji NuGet 2.8.5](../release-notes/nuget-2.8.5.md) | [NuGet 2.8.7 informacje o wersji](../release-notes/nuget-2.8.7.md)
+[Informacje o wersji NuGet 2.8.5](../release-notes/nuget-2.8.5.md) | [informacjach o wersji NuGet 2.8.7](../release-notes/nuget-2.8.7.md)
 
-Została wydana NuGet 2.8.6 20 lipca 2015 roku jako pomocnicza aktualizacji do naszej 2.8.5 VSIX niektóre docelowe poprawki i ulepszenia umożliwiające obsługę pakietów, które mogą być dostarczone z obsługą modelu programowania platformy uniwersalnej systemu Windows do systemu Windows 10.
+NuGet 2.8.6 został wydany 20 lipca 2015 roku jako aktualizację pomocniczą do naszych 2.8.5 VSIX z niektórymi docelowe poprawek i udoskonaleń do obsługi pakietów, które mogą być dostarczane z obsługą model programowania platformy uniwersalnej systemu Windows do systemu Windows 10.
 
-Ta wersja rozszerzenia Menedżera pakietów NuGet zapewnia obsługę programu Visual Studio 2013 tylko.
+Ta wersja rozszerzenia Menedżera pakietów NuGet zapewniają obsługę programu Visual Studio 2013 tylko.
 
-W tej wersji okno dialogowe Menedżer pakietów NuGet nie dodano obsługę:
+W tej wersji okno Menedżera pakietów NuGet nie dodano dla pomocy technicznej:
 
-* Wprowadzono Moniker platformy docelowej UAP do obsługi systemu Windows 10 dla deweloperów aplikacji.
-* Punkty końcowe w wersji 3 protokołu NuGet
-* Obsługa [Nuget.Config](../consume-packages/configuring-nuget-behavior.md) atrybut właściwość protocolVersion w źródłach repozytoriów. Wartość domyślna to "2"
-* Nastąpi powrót do zdalnego repozytorium, jeśli wersja wymagany pakiet nie jest dostępny w lokalnej pamięci podręcznej
+* Wprowadzono UAP krótką nazwę platformy docelowej do obsługi systemu Windows 10 dla deweloperów aplikacji.
+* Punkty końcowe programu NuGet protocol w wersji 3
+* Obsługa [Nuget.Config](../consume-packages/configuring-nuget-behavior.md) właściwość protocolVersion atrybutu w źródłach repozytoriów. Wartość domyślna to "2"
+* Nastąpi powrót do repozytorium zdalnego, jeśli wersja wymagany pakiet nie jest dostępna w lokalnej pamięci podręcznej

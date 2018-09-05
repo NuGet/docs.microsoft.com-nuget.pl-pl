@@ -1,37 +1,36 @@
 ---
 title: Wielowersyjność kodu dla pakietów NuGet
-description: Opis różnych metod pod kątem wiele wersji .NET Framework z w ramach jednego pakietu NuGet.
+description: Opis różnych metod pod kątem wiele wersji .NET Framework z w obrębie jednego pakietu NuGet.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 09/27/2017
 ms.topic: conceptual
-ms.openlocfilehash: 429b9743ea678cd500b6f51630d03aac7812441e
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 0b22d48b9151b903a5307beafa5ccef14e5fecf3
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34816959"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43551709"
 ---
-# <a name="supporting-multiple-net-framework-versions"></a>Obsługa wielu wersje programu .NET framework
+# <a name="supporting-multiple-net-framework-versions"></a>Obsługiwanie wielu wersji programu .NET framework
 
-*Dla platformy .NET Core projektów przy użyciu narzędzia NuGet 4.0 +, zobacz [NuGet pakietu i ich przywracania docelowych elementów MSBuild](../reference/msbuild-targets.md) szczegółowe informacje dotyczące różnych elementów docelowych.*
+*Dla projektów .NET Core za pomocą narzędzia NuGet 4.0 +, zobacz [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md) szczegółowe informacje na temat określania wartości docelowej dla wielu.*
 
-Wiele bibliotek docelowe określonej wersji programu .NET Framework. Na przykład może być jedną wersję biblioteki, które są specyficzne dla platformy uniwersalnej systemu Windows i inną wersję, która korzysta z funkcji .NET Framework 4.6.
+Wiele bibliotek docelowej określonej wersji programu .NET Framework. Na przykład Niewykluczone, że jedna wersja biblioteki, które są specyficzne dla platformy uniwersalnej systemu Windows, a inna wersja, która korzysta z funkcji .NET Framework 4.6.
 
-Aby zmieścił się w tym celu NuGet obsługuje wprowadzanie wielu wersji tego samego biblioteki w jednym pakiecie przy korzystaniu z opartych na konwencjach pracy katalogu metody opisane w [utworzenie pakietu](../create-packages/creating-a-package.md#from-a-convention-based-working-directory).
+Aby uwzględnić w efekcie NuGet obsługuje wprowadzanie wielu wersji tej samej biblioteki w jednym pakiecie, korzystając z oparty na Konwencji pracy katalogu metody opisanej w [Tworzenie pakietu](../create-packages/creating-a-package.md#from-a-convention-based-working-directory).
 
 ## <a name="framework-version-folder-structure"></a>Struktura folderów wersji Framework
 
-Podczas tworzenia pakietu, który zawiera tylko jedną wersję biblioteki lub docelowej wielu struktur, zawsze utworzyć podfoldery `lib` przy użyciu różnych framework z uwzględnieniem wielkości liter nazwy z następującą konwencją:
+Podczas tworzenia pakietu zawierającego tylko jedna wersja biblioteki lub docelowej wielu platform, zawsze tworzyć podfoldery `lib` przy użyciu różnych framework uwzględniana wielkość liter nazwy przy użyciu następującej konwencji:
 
     lib\{framework name}[{version}]
 
-Aby uzyskać pełną listę obsługiwanych nazw, zobacz [odwołania docelowych platform](../reference/target-frameworks.md#supported-frameworks).
+Aby uzyskać pełną listę obsługiwanych nazw, zobacz [odwoływać się do platform docelowych](../reference/target-frameworks.md#supported-frameworks).
 
-Nigdy nie powinien mieć wersji biblioteki, który nie jest specyficzne dla struktury i umieszczony bezpośrednio w folderze głównym `lib` folderu. (Ta funkcja jest obsługiwana tylko w przypadku `packages.config`). W ten sposób może zapewnić zgodność z platformy docelowej biblioteki i umożliwić mu można zainstalować w dowolnym miejscu, prawdopodobnie powodujące błędy podczas wykonywania nieoczekiwany. Dodawanie zestawów w folderze głównym (takich jak `lib\abc.dll`) lub podfolderów (takie jak `lib\abc\abc.dll`) jest przestarzała i jest ignorowane w przypadku przy użyciu formatu PackagesReference.
+Nigdy nie powinny mieć wersję biblioteki, która nie jest przeznaczone do struktury i umieszczone bezpośrednio w katalogu głównym `lib` folderu. (Ta funkcja była obsługiwana tylko w przypadku `packages.config`). Ten sposób będzie dzięki bibliotece zgodny z dowolnej platformy docelowej i zezwolenie na można zainstalować w dowolnym miejscu, prawdopodobnie skutkuje nieoczekiwane błędy. Dodawanie zestawów w katalogu głównym (takie jak `lib\abc.dll`) lub jego podfolderach (takie jak `lib\abc\abc.dll`) jest przestarzały i jest ignorowana, gdy przy użyciu formatu PackagesReference.
 
-Na przykład następujące struktury folderów obsługuje cztery wersji zestawu, które są specyficzne dla framework:
+Na przykład następującą strukturę folderów obsługuje cztery wersji zestawu, które są specyficzne dla framework:
 
     \lib
         \net46
@@ -43,7 +42,7 @@ Na przykład następujące struktury folderów obsługuje cztery wersji zestawu,
         \netcore
             \MyAssembly.dll
 
-Aby łatwo obejmują wszystkie te pliki, podczas tworzenia pakietu, należy użyć cyklicznej `**` symbolu wieloznacznego w `<files>` części Twojego `.nuspec`:
+Aby łatwo dołączyć te pliki, podczas tworzenia pakietu, należy użyć cyklicznej `**` symbolu wieloznacznego w `<files>` części Twojej `.nuspec`:
 
 ```xml
 <files>
@@ -53,7 +52,7 @@ Aby łatwo obejmują wszystkie te pliki, podczas tworzenia pakietu, należy uży
 
 ### <a name="architecture-specific-folders"></a>Foldery architektury
 
-Jeśli masz zestawy architektury, oznacza to, oddzielne zestawy przeznaczonych dla ARM, x 86 i x64, trzeba je umieścić w folderze o nazwie `runtimes` w podfoldery o nazwie `{platform}-{architecture}\lib\{framework}` lub `{platform}-{architecture}\native`. Na przykład następujące struktury folderów może pomieścić natywnych i zarządzanych biblioteki dll przeznaczonych dla systemu Windows 10 i `uap10.0` framework:
+W przypadku architektury zestawów, czyli oddzielne zestawy, których platformą docelową ARM, x 86 i x64, trzeba je umieścić w folderze o nazwie `runtimes` w podfolderach o nazwie `{platform}-{architecture}\lib\{framework}` lub `{platform}-{architecture}\native`. Na przykład następującą strukturę folderów może pomieścić natywnych i zarządzanych bibliotek DLL, przeznaczonych dla systemu Windows 10 i `uap10.0` framework:
 
     \runtimes
         \win10-arm
@@ -66,15 +65,15 @@ Jeśli masz zestawy architektury, oznacza to, oddzielne zestawy przeznaczonych d
             \native
             \lib\uap10.0
 
-Zobacz [tworzenie pakietów platformy uniwersalnej systemu Windows](../guides/create-uwp-packages.md) przykład odwołujące się do tych plików w `.nuspec` manifestu.
+Zobacz [tworzenie pakietów platformy UWP](../guides/create-uwp-packages.md) przykład odwołuje się do tych plików w `.nuspec` manifestu.
 
-## <a name="matching-assembly-versions-and-the-target-framework-in-a-project"></a>Zgodnych wersji zestawu i platforma docelowa projektu
+## <a name="matching-assembly-versions-and-the-target-framework-in-a-project"></a>Zgodne wersje zestawów i platformy docelowej w projekcie
 
-Podczas instalowania pakietu, który ma wiele wersji zestawu NuGet próbuje zgodna z nazwą framework zestawu z platformy docelowej projektu.
+Podczas instalowania pakietu, który ma wiele wersji zestawu NuGet próbuje dopasować nazwę framework zestawu za pomocą platformy docelowej projektu.
 
-Jeśli nie, NuGet kopiuje zestawu dla najwyższa wersja, która jest mniejsza lub równa platformy docelowej projektu, jeśli jest dostępna. Jeśli nie zgodny zestaw zostanie znaleziony, NuGet zwraca odpowiedni komunikat o błędzie.
+Jeśli nie zostanie znalezione dopasowanie, NuGet kopiuje zestawu dla najwyższa wersja, która jest mniejsza lub równa platformy docelowej projektu, jeśli jest dostępny. Jeśli zestawy zgodna, nie zostanie znaleziony, NuGet zwraca odpowiedni komunikat o błędzie.
 
-Na przykład wziąć pod uwagę następujące struktury folderów w pakiecie:
+Na przykład rozważmy następującą strukturę folderów w pakiecie:
 
     \lib
         \net45
@@ -82,15 +81,15 @@ Na przykład wziąć pod uwagę następujące struktury folderów w pakiecie:
         \net461
             \MyAssembly.dll
 
-Podczas instalowania tego pakietu w projekcie, przeznaczonego dla programu .NET Framework 4.6, NuGet instaluje zestaw w `net45` folderu, ponieważ jest to najwyższa wersja dostępne, która jest mniejsza niż 4.6.
+Podczas instalowania tego pakietu w projekcie, który jest przeznaczony dla .NET Framework 4.6, NuGet instaluje zestaw w `net45` folderu, ponieważ jest to najnowsza wersja dostępna o rozmiarze mniejszym niż 4.6.
 
 Jeśli projekt jest przeznaczony dla platformy .NET Framework 4.6.1, z drugiej strony, NuGet instaluje zestaw w `net461` folderu.
 
-Jeśli projekt jest przeznaczony dla środowiska .NET framework 4.0 lub starszym, NuGet zgłasza odpowiedni komunikat o błędzie dla nie wyszukuje zgodny zestaw.
+Jeśli projekt jest przeznaczony dla .NET framework 4.0 i starszych, NuGet zgłasza odpowiedni komunikat o błędzie dla nie wyszukuje zgodny zestawu.
 
-## <a name="grouping-assemblies-by-framework-version"></a>Zestawy grupowania przez framework w wersji
+## <a name="grouping-assemblies-by-framework-version"></a>Zestawy są grupowane według framework w wersji
 
-NuGet kopiuje zestawy z tylko jedna biblioteka folderu w pakiecie. Na przykład załóżmy, że pakiet ma następującą strukturę folderów:
+NuGet kopiuje zestawy z tylko jedna biblioteka folder w pakiecie. Na przykład załóżmy, że pakiet ma następującą strukturę folderów:
 
     \lib
         \net40
@@ -99,37 +98,37 @@ NuGet kopiuje zestawy z tylko jedna biblioteka folderu w pakiecie. Na przykład 
         \net45
             \MyAssembly.dll (v2.0)
 
-Podczas instalowania pakietu w projekcie, przeznaczonego dla programu .NET Framework 4.5, `MyAssembly.dll` (w wersji 2.0) to zestaw tylko zainstalowany. `MyAssembly.Core.dll` (1.0) nie jest zainstalowany, ponieważ nie znajduje się w `net45` folderu. NuGet działa w ten sposób, ponieważ `MyAssembly.Core.dll` może mieć scalonego w wersji 2.0 `MyAssembly.dll`.
+Gdy pakiet jest zainstalowany w projekcie, który jest przeznaczony dla .NET Framework 4.5, `MyAssembly.dll` (w wersji 2.0) to zestaw tylko zainstalowane. `MyAssembly.Core.dll` (w wersji 1.0) nie jest zainstalowany, ponieważ nie znajduje się w `net45` folderu. NuGet zachowuje się w ten sposób, ponieważ `MyAssembly.Core.dll` może mieć scalonego w wersji 2.0 programu `MyAssembly.dll`.
 
-Jeśli chcesz `MyAssembly.Core.dll` zainstalowania programu .NET Framework 4.5, Umieść kopię w `net45` folderu.
+Jeśli chcesz `MyAssembly.Core.dll` konieczności instalowania programu .NET Framework 4.5, Umieść kopię w `net45` folderu.
 
 ## <a name="grouping-assemblies-by-framework-profile"></a>Zestawy grupowania w ramach profilu
 
-NuGet obsługuje również przeznaczonych dla określonej platformy profil przez dołączenie kreska i nazwa profilu w celu folderu.
+NuGet obsługuje także przeznaczonych dla profilu określonego framework, dodając kreską i nazwę profilu w celu folderu.
 
     lib\{framework name}-{profile}
 
 Profile obsługiwane są następujące:
 
 - `client`: Profil klienta
-- `full`: Full Profile
+- `full`: Pełny profil
 - `wp`: Windows Phone
 - `cf`: Compact Framework
 
-## <a name="determining-which-nuget-target-to-use"></a>Określanie, która docelowa NuGet do użycia
+## <a name="determining-which-nuget-target-to-use"></a>Określenie, która docelowa NuGet do użycia
 
-Podczas tworzenia pakietów bibliotek przeznaczonych przenośnej biblioteki klas może być trudnych do określenia docelowej NuGet, których należy używać w nazwach folderów i `.nuspec` plik, zwłaszcza, jeśli celem tylko podzestaw PCL. Następujące zasoby zewnętrzne mogą pomóc w tym:
+Gdy bibliotek tworzenia pakietów przeznaczonych dla biblioteki klas przenośnych może być trudne do określenia docelowej NuGet, które należy używać w nazwach folderów i `.nuspec` pliku, zwłaszcza, jeśli jest to obsługiwane tylko podzbiór PCL. Następujące zasoby zewnętrzne pomoże Ci w tym:
 
-- [Profile Framework w .NET](http://blog.stephencleary.com/2012/05/framework-profiles-in-net.html) (stephenclearly.com)
-- [Profile biblioteki klas przenośnych](http://embed.plnkr.co/03ck2dCtnJogBKHJ9EjY/preview) (plnkr.co): Tabela wyliczanie profilów PCL i ich równoważne celów NuGet
-- [Przenośnej biblioteki klas profile narzędzie](https://github.com/StephenCleary/PortableLibraryProfiles) (witryną github.com): narzędzie wiersza polecenia, określając PCL profile dostępna w systemie
+- [Profile Framework na platformie .NET](http://blog.stephencleary.com/2012/05/framework-profiles-in-net.html) (stephenclearly.com)
+- [Przenośne biblioteki klas profile](http://embed.plnkr.co/03ck2dCtnJogBKHJ9EjY/preview) (plnkr.co): Tabela wyliczania ich równoważne cele NuGet i profile PCL
+- [Przenośne biblioteki klas profilów narzędzia](https://github.com/StephenCleary/PortableLibraryProfiles) (github.com): narzędzie wiersza polecenia umożliwiające określanie PCL profile dostępna w systemie
 
 ## <a name="content-files-and-powershell-scripts"></a>Pliki zawartości i skryptów programu PowerShell
 
 > [!Warning]
-> Modyfikowalne pliki zawartości i wykonywanie skryptu są dostępne z `packages.config` tylko format; zostały uznane za przestarzałe w innych formatach i nie powinna być używana dla dowolnego nowego pakietu.
+> Modyfikowalne pliki zawartości i wykonywanie skryptu są dostępne z `packages.config` formatowania tylko; zostały zaniechane w innych formatach i nie powinna być używana dla żadnych nowych pakietów.
 
-Z `packages.config`, zawartości plików i skryptów programu PowerShell można przedstawić w rozbiciu platformy docelowej przy użyciu tej samej Konwencji folder wewnątrz `content` i `tools` folderów. Na przykład:
+Za pomocą `packages.config`zawartości, pliki i skrypty programu PowerShell można grupować według platformy docelowej przy użyciu tych samych konwencji folder wewnątrz `content` i `tools` folderów. Na przykład:
 
     \content
         \net46
@@ -148,7 +147,7 @@ Z `packages.config`, zawartości plików i skryptów programu PowerShell można 
             install.ps1
             uninstall.ps1
 
-Jeśli w folderze struktury jest puste, NuGet nie dodać odwołania do zestawów ani plików zawartości i uruchamiać skrypty programu PowerShell dla tej struktury.
+Jeśli folder struktury jest puste, NuGet nie jest dodawanie odwołań do zestawów lub plików zawartości i uruchamiaj skrypty programu PowerShell dla tej struktury.
 
 > [!Note]
-> Ponieważ `init.ps1` jest wykonywany rozwiązania poziomu i nie jest zależna od projektu, należy umieścić bezpośrednio pod `tools` folderu. Jest ona ignorowana, jeśli umieszczony w folderze struktury.
+> Ponieważ `init.ps1` jest wykonywany w rozwiązaniu poziomu i nie jest zależny od projektu musi zostać umieszczony bezpośrednio pod `tools` folderu. Jest on ignorowany, jeśli umieszczony w folderze framework.

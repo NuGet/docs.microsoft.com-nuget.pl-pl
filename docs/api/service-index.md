@@ -1,62 +1,61 @@
 ---
-title: Indeks usługi, NuGet interfejsu API
-description: Indeks usługi jest punkt wejścia interfejsu API HTTP NuGet i wylicza możliwości serwera.
+title: Usługa Index, interfejs API programu NuGet
+description: Indeks usług jest punkt wejścia interfejsu API protokołu HTTP NuGet i wylicza możliwości serwera.
 author: joelverhagen
 ms.author: jver
-manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 84e623e8480e4d17edad2ec3b2da6dcb6e53d21b
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: 478b74f98caafdc7c6b69423b9f9d72890c8d7cb
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31822097"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43545260"
 ---
-# <a name="service-index"></a>Indeks usługi
+# <a name="service-index"></a>Indeks usług
 
-Indeks usługi jest dokumentem JSON, który jest punkt wejścia dla źródła pakietów NuGet i umożliwia implementacja klienta wykryć możliwości źródła pakietu. Indeks usługi jest obiektem JSON z dwóch wymaganych właściwości: `version` (wersja schematu indeksu service) i `resources` (punktów końcowych lub możliwości źródła pakietu).
+Indeks usług to dokument JSON, który jest punktem wejścia dla źródła pakietów NuGet i umożliwia implementacji klienta odkryć możliwości źródła pakietu. Indeks usług jest obiekt JSON z dwoma wymagane właściwości: `version` (wersja schematu indeksu service) i `resources` (punkty końcowe lub możliwości źródła pakietu).
 
-Indeks usługi nuget.org znajduje się pod adresem `https://api.nuget.org/v3/index.json`.
+Indeks usług usługi nuget.org znajduje się w `https://api.nuget.org/v3/index.json`.
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-`version` Wartość jest ciągiem parseable wersji programu SemVer 2.0.0, co oznacza wersji schematu indeksu usługi. Interfejs API wymaga, że ciąg wersji ma numer wersji głównej `3`. Nierozdzielające zmiany do schematu indeksu usługi, zostanie zwiększona wersja pomocnicza ciąg wersji.
+`version` Wartość jest ciągiem wersji parseable SemVer 2.0.0, który wskazuje wersję schematu indeksu usługi. Interfejs API określającemu, że ciąg wersji zawiera numer wersji głównej `3`. Wprowadzaniu zmian niepowodujących niezgodności na schemat indeksu service, wersja pomocnicza ciąg wersji zostanie zwiększona.
 
-Każdy zasób w indeksie usługi jest kontrolą wersji niezależnie od wersji schematu indeksu usługi.
+Każdy zasób w indeksie usługi jest numery wersji niezależne od wersji schematu indeksu usługi.
 
-Bieżąca wersja schematu jest `3.0.0`. `3.0.0` Jest funkcjonalnym odpowiednikiem starszej wersji `3.0.0-beta.1` wersji, ale powinien być preferowany, jak komunikuje się bardziej precyzyjnie stabilny, definicja schematu.
+Bieżąca wersja schematu to `3.0.0`. `3.0.0` Wersja jest funkcjonalnie równoważny ze starszą wersją `3.0.0-beta.1` wersji, ale powinien być preferowany, jak wyraźniej komunikuje się ona stabilny, definicja schematu.
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Indeks usługa jest dostępna przy użyciu metody HTTP `GET` i `HEAD`.
+Indeks usług jest dostępna przy użyciu metod HTTP `GET` i `HEAD`.
 
-## <a name="resources"></a>Zasoby
+## <a name="resources"></a>Resources
 
-`resources` Właściwość zawiera tablicę obsługiwane przez to źródło pakietu zasobów.
+`resources` Właściwość zawiera szereg zasobów obsługiwana przez tego źródła pakietów.
 
 ### <a name="resource"></a>Zasób
 
-Zasób jest obiektem w `resources` tablicy. Reprezentuje on określonej wersji możliwości źródła pakietu. Zasób ma następujące właściwości:
+Zasób jest obiektem w `resources` tablicy. Reprezentuje wersjonowany możliwości źródła pakietu. Zasób ma następujące właściwości:
 
 Nazwa          | Typ   | Wymagane | Uwagi
 ------------- | ------ | -------- | -----
 @id           | string | Tak      | Adres URL do zasobu
-@type         | string | Tak      | Stała ciąg reprezentujący typ zasobu
-komentarz       | string | Brak       | Czytelny dla ludzi opis zasobu
+@type         | string | Tak      | Stała typu string, reprezentujący typ zasobu
+komentarz       | string | Brak       | Ludzi, czytelny opis zasobu
 
-`@id` Jest adres URL, który musi być bezwzględnym i musi mieć schemat HTTP lub HTTPS.
+`@id` Jest adres URL, który musi być bezwzględna i muszą mieć schemat HTTP lub HTTPS.
 
-`@type` Służy do identyfikowania określonych protokół do użycia podczas interakcji z zasobów. Typ zasobu jest ciągiem nieprzezroczyste, ale ma zazwyczaj format:
+`@type` Służy do identyfikowania określonych protokół do użycia podczas interakcji z zasobów. Typ zasobu to nieprzezroczysty ciąg, ale zazwyczaj ma następujący format:
 
     {RESOURCE_NAME}/{RESOURCE_VERSION}
 
-Klienci powinni twardych kodu `@type` wartości zrozumieć i wyszukiwanie w indeksie usługi źródła pakietu. Dokładnie `@type` wartości w obecnie są wyliczane w dokumentach odwołanie pojedynczego zasobu, na liście [Przegląd interfejsu API](overview.md#resources-and-schema).
+Klienci powinni kodowi twardych `@type` wartości zrozumieć i wyszukiwać w indeksie usługi źródła pakietu. Dokładnie `@type` wartości w obecnie są wyliczane na dokumenty referencyjne poszczególnych zasobów, które są wymienione w [omówienie interfejsu API](overview.md#resources-and-schema).
 
-Dla niniejszej dokumentacji dokumentację dotyczącą różnych zasobów będą zasadniczo pogrupowane według `{RESOURCE_NAME}` znalezionych w indeksie usługi, która jest analogiczna do grupowania według scenariusza. 
+Dla tej dokumentacji dokumentacji dotyczącej różnych zasobów zasadniczo można grupować według `{RESOURCE_NAME}` znaleziony w indeksie usługi, która jest analogiczna do grupowania według scenariusza. 
 
-Nie jest wymagane czy każdy zasób ma unikatową `@id` lub `@type`. Jest implementacja klienta, aby określić, którego zasobu należy użyć zamiast innego. Jest to jedna implementacja możliwe, że zasoby o tej samej lub zgodne `@type` mogą być używane w okrężne w przypadku awarii lub serwera błąd połączenia.
+Nie jest wymagane, że każdy zasób ma unikatową `@id` lub `@type`. Jest implementacji klienta, aby określić zasoby, które preferowanie za pośrednictwem innego. Jest to jedna implementacja to możliwe, że zasoby o tej samej lub zgodny `@type` mogą być używane w okrężne w razie awarii lub serwera błąd połączenia.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 

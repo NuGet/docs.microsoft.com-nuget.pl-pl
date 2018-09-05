@@ -1,27 +1,26 @@
 ---
-title: Odwołanie do pliku Project.JSON programu NuGet
-description: W niektórych typów projektów project.json przechowuje listę pakiety NuGet służące do projektu.
+title: Odwołanie do pliku Project.JSON do NuGet
+description: W niektórych typach projektów project.json przechowuje listę pakietów NuGet, używany w projekcie.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 07/27/2017
 ms.topic: reference
-ms.openlocfilehash: e558bdb969d4c70f85a3c89a426f1c7b11525402
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: e4d8b5b9ab4605516827ead8939f278d110c7a48
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817128"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43547787"
 ---
 # <a name="projectjson-reference"></a>Odwołanie do pliku Project.JSON
 
 *NuGet 3.x+*
 
-`project.json` Pliku przechowuje listę pakietów używane w projekcie, znane jako formatu pakietu zarządzania. Zastępuje ona `packages.config` , ale z kolei został zastąpiony przez [PackageReference](../consume-packages/package-references-in-project-files.md) nuget 4.0 +.
+`project.json` Pliku prowadzi listę pakietów używanych w projekcie, znane jako format pakietu zarządzania. Zastępuje ona `packages.config` , ale są kolejno zastępowane [PackageReference](../consume-packages/package-references-in-project-files.md) nuget 4.0 +.
 
-[ `project.lock.json` ](#projectlockjson) Pliku (opisanych poniżej) służy także projektów wykorzystujących `project.json`.
+[ `project.lock.json` ](#projectlockjson) Pliku (opisanych poniżej) jest również używane w projektach wykorzystujących `project.json`.
 
-`project.json` ma następującą strukturę podstawowe, gdzie każdy z czterech obiektów najwyższego poziomu może mieć dowolną liczbę obiektów podrzędnych:
+`project.json` ma podstawowe następującą strukturę, w którym każdy z czterech obiektów najwyższego poziomu może mieć dowolną liczbę obiektów podrzędnych:
 
 ```json
 {
@@ -42,7 +41,7 @@ ms.locfileid: "34817128"
 
 ## <a name="dependencies"></a>Zależności
 
-Zawiera listę zależności pakietu NuGet projektu w następującej postaci:
+Zawiera listę zależności pakietów NuGet projektu w następującej postaci:
 
 ```json
 "PackageID" : "version_constraint"
@@ -57,31 +56,31 @@ Na przykład:
 }
 ```
 
-`dependencies` Sekcja jest, gdy okno dialogowe Menedżer pakietów NuGet dodaje zależności pakietów do projektu.
+`dependencies` Sekcja jest, gdy okno Menedżera pakietów NuGet dodaje zależności pakietów do projektu.
 
-Identyfikator pakietu identyfikatorowi pakietu na nuget.org, taki sam jak identyfikator używany w konsoli Menedżera pakietów: `Install-Package Microsoft.NETCore`.
+Identyfikator pakietu odnosi się do identyfikatora pakietu w witrynie nuget.org, taki sam jak identyfikator używany w konsoli Menedżera pakietów: `Install-Package Microsoft.NETCore`.
 
-Podczas przywracania pakietów, ograniczenie wersji `"5.0.0"` oznacza `>= 5.0.0`. Oznacza to, że jeśli 5.0.0 nie jest dostępny na serwerze, ale jest 5.0.1, NuGet instaluje 5.0.1 i ostrzega użytkownika o uaktualnienie. NuGet, w przeciwnym razie wybiera Najniższa wersja możliwe na serwerze ograniczenie dopasowania.
+Podczas przywracania pakietów, ograniczenie wersji `"5.0.0"` oznacza `>= 5.0.0`. Oznacza to jeśli 5.0.0 nie jest dostępny na serwerze, ale jest 5.0.1, NuGet instaluje 5.0.1 i ostrzega o uaktualnieniu. NuGet, w przeciwnym razie wybiera najniższa możliwa wersja na serwerze, pasujących do ograniczenia.
 
-Zobacz [rozpoznawania zależności](../consume-packages/dependency-resolution.md) uzyskać więcej informacji na temat reguł rozwiązywania.
+Zobacz [rozpoznawania zależności](../consume-packages/dependency-resolution.md) więcej informacji na temat reguł rozwiązywania.
 
 ### <a name="managing-dependency-assets"></a>Zarządzanie zasobami zależności
 
-Które zasoby z zależnościami przepływać do projektu najwyższego poziomu jest kontrolowany przez podanie rozdzielana przecinkami zestawu tagów w `include` i `exclude` właściwości zależności odwołania. Tagi są wymienione w poniższej tabeli:
+Które zasoby z zależnościami przepływać do najwyższego poziomu projektu jest kontrolowany przez określenie zestawu rozdzielonych przecinkami tagów w `include` i `exclude` właściwości odwołania zależności. Tagi są wymienione w poniższej tabeli:
 
-| Dołączania/wykluczania tag | Odpowiednie foldery elementu docelowego |
+| Uwzględnianie/wykluczanie znaczników | Odpowiednie foldery elementu docelowego |
 | --- | --- |
 | Pliki | Zawartość  |
 | środowisko uruchomieniowe | Środowisko uruchomieniowe, zasobów i FrameworkAssemblies  |
 | Kompilacji | lib |
-| kompilacja | Kompilacja (właściwości programu MSBuild i elementy docelowe) |
+| kompilacja | Kompilacja (cele i właściwości programu MSBuild) |
 | natywne | natywne |
 | brak | Brak folderów |
 | wszystkie | Wszystkie foldery |
 
 Określony za pomocą tagów `exclude` pierwszeństwo określony za pomocą `include`. Na przykład `include="runtime, compile" exclude="compile"` jest taka sama jak `include="runtime"`.
 
-Na przykład, aby uwzględnić `build` i `native` foldery zależności, należy użyć następującego:
+Na przykład w celu uwzględnienia `build` i `native` folderów zależność, należy użyć następującego:
 
 ```json
 {
@@ -94,7 +93,7 @@ Na przykład, aby uwzględnić `build` i `native` foldery zależności, należy 
 }
 ```
 
-Aby wykluczyć `content` i `build` foldery zależności, należy użyć następującego:
+Aby wykluczyć `content` i `build` folderów zależność, należy użyć następującego:
 
 ```json
 {
@@ -109,7 +108,7 @@ Aby wykluczyć `content` i `build` foldery zależności, należy użyć następu
 
 ## <a name="frameworks"></a>Struktury
 
-Wyświetla listę platform, których projekt używa, takich jak `net45`, `netcoreapp`, `netstandard`.
+Wyświetla listę struktur, w których działa projektu, taki jak `net45`, `netcoreapp`, `netstandard`.
 
 ```json
 "frameworks": {
@@ -117,11 +116,11 @@ Wyświetla listę platform, których projekt używa, takich jak `net45`, `netcor
     }
  ```
 
-Tylko jeden wpis jest dozwolony w `frameworks` sekcji. (Wyjątkiem jest `project.json` pliki projektów ASP.NET, które są kompilowane z DNX przestarzałe narzędzie łańcucha, co umożliwia obsługę wielu elementów docelowych.)
+Tylko pojedynczy wpis jest dozwolona w `frameworks` sekcji. (Wyjątek stanowi `project.json` plików dla projektów programu ASP.NET, które są kompilowane przy użyciu środowiska DNX przestarzałe narzędzie łańcucha, który pozwala na wiele obiektów docelowych.)
 
-## <a name="runtimes"></a>środowisk uruchomieniowych
+## <a name="runtimes"></a>środowiska uruchomieniowe
 
-Zawiera listę systemów operacyjnych i architektur, których aplikacja będzie działać, takich jak `win10-arm`, `win8-x64`, `win8-x86`.
+Zawiera listę systemów operacyjnych i architektur, które aplikacja działa w systemie, takie jak `win10-arm`, `win8-x64`, `win8-x86`.
 
 ```json
 "runtimes": {
@@ -134,14 +133,14 @@ Zawiera listę systemów operacyjnych i architektur, których aplikacja będzie 
 }
 ```
 
-Pakiet zawierający PCL, która może działać na dowolnym środowiska uruchomieniowego nie trzeba określić środowisko uruchomieniowe. Musi to być także spełnione wszystkie zależności, w przeciwnym razie należy określić środowisk uruchomieniowych.
+Pakiet zawierający wersję PCL, która może działać na dowolnym środowiska uruchomieniowego nie należy określić środowisko uruchomieniowe. Musi to być również wartość true, wszystkie zależności, w przeciwnym razie należy określić środowisk uruchomieniowych.
 
 
 ## <a name="supports"></a>Obsługuje
 
-Definiuje zestaw sprawdza, czy zależności pakietów. Można określić, którego można spodziewać się PCL lub uruchamiania aplikacji. Definicje nie są restrykcyjne kodu mogą być w stanie do uruchamiania innych miejscach. Ale określenie kontrole powoduje, że NuGet, sprawdź, czy wszystkie zależności na liście TxMs. Przykładowe wartości tej sytuacji należą: `net46.app`, `uwp.10.0.app`itp.
+Definiuje zestaw sprawdza, czy zależności pakietów. Można zdefiniować, którego można spodziewać się PCL lub aplikacja była uruchomiona. Definicje są restrykcyjna, jak Twój kod może być mogą być uruchamiane w innym miejscu. Ale określenie tych sprawdzeń sprawia, że NuGet, sprawdź, czy wszystkie zależności na liście TxMs. Przykładowe wartości do tego są: `net46.app`, `uwp.10.0.app`itp.
 
-W tej sekcji powinny zostać wypełnione automatycznie po wybraniu pozycji w oknie dialogowym elementy docelowe przenośnej biblioteki klas.
+W tej sekcji powinno zostać automatycznie wypełnione, po wybraniu wpisu w oknie dialogowym cele Portable Class Library.
 
 ```json
 "supports": {
@@ -152,7 +151,7 @@ W tej sekcji powinny zostać wypełnione automatycznie po wybraniu pozycji w okn
 
 ## <a name="imports"></a>Importy
 
-Importy pozwalają pakiety, które używają `dotnet` TxM do pracy z pakietami, które nie deklaruje dotnet TxM. Jeśli w twoim projekcie są używani `dotnet` TxM, a następnie wszystkie pakiety zależą od musi mieć również `dotnet` TxM, chyba że Dodaj następujący kod do Twojej `project.json` umożliwia z systemem innym niż `dotnet` platformy, aby był zgodny z `dotnet`:
+Importy pozwalają pakiety, które używają `dotnet` TxM do pracy z pakietami, które nie deklarują dotnet TxM. Jeśli w twoim projekcie są używani `dotnet` TxM, a następnie wszystkich pakietów, na których polegasz musi również mieć `dotnet` TxM, chyba że dodasz następujące polecenie, aby Twoje `project.json` umożliwia bez `dotnet` platform, aby był zgodny z `dotnet`:
 
 ```json
 "frameworks": {
@@ -160,23 +159,23 @@ Importy pozwalają pakiety, które używają `dotnet` TxM do pracy z pakietami, 
 }
 ```
 
-Jeśli używasz `dotnet` TxM następnie system projektu PCL dodaje odpowiednie `imports` instrukcji na podstawie obsługiwanych celów.
+Jeśli używasz `dotnet` TxM następnie system projektu PCL dodaje odpowiednie `imports` oświadczenie na podstawie obsługiwanych celów.
 
-## <a name="differences-from-portable-apps-and-web-projects"></a>Różnice z przenośnym aplikacji i projekty sieci web
+## <a name="differences-from-portable-apps-and-web-projects"></a>Różnice z przenośnym aplikacje oraz projekty sieci web
 
-`project.json` Plik używany przez narzędzie NuGet jest podzbiorem wykryte w projektach platformy ASP.NET Core. W przypadku platformy ASP.NET Core `project.json` służy do metadanych projektu, informacje o kompilacji i zależności. Gdy są używane w innych systemach projektu, te trzy elementy są podzielone na osobne pliki i `project.json` zawiera mniej informacji. Istotnych różnic obejmują:
+`project.json` Plik używany przez NuGet jest podzbiorem wykrytym w projektach ASP.NET Core. W programie ASP.NET Core `project.json` służy do metadanych projektu, informacje o kompilacji i zależności. Gdy jest używana w innych systemach projektu, te trzy elementy są podzielone na osobne pliki i `project.json` zawiera mniej informacji. Istotne różnice obejmują:
 
-- Może istnieć tylko jeden framework w `frameworks` sekcji.
+- Może istnieć tylko jeden struktura w systemie `frameworks` sekcji.
 
-- Plik nie może zawierać zależności, opcje kompilacji, itp., który pojawi się w DNX `project.json` plików. Biorąc pod uwagę, że może istnieć tylko jeden framework go nie ma sensu wprowadzenia zależności określonej struktury.
+- Plik nie może zawierać zależności, opcji kompilacji, itp., widoczny w środowiska DNX `project.json` plików. Biorąc pod uwagę, że może istnieć tylko jedną strukturę nie ma sensu wprowadzenia zależności określonej platformy.
 
-- Kompilacja jest obsługiwany przez MSBuild tak definiuje opcje kompilacji preprocesora, itp. to części pliku projektu MSBuild i nie `project.json`.
+- Kompilacja jest obsługiwany przez program MSBuild, więc definiuje opcje kompilacji preprocesora, itp. są częścią pliku projektu MSBuild i nie `project.json`.
 
-W NuGet 3 + deweloperzy najprawdopodobniej nie ręcznie edytować `project.json`, ponieważ zawartość manipuluje interfejsu użytkownika Menedżera pakietów w programie Visual Studio. Inaczej mówiąc, na pewno można edytować plik, ale musisz go skompilować projekt, aby uruchomić Przywracanie pakietu lub wywołanie przywracania w inny sposób. Zobacz [Przywracanie pakietu](../consume-packages/package-restore.md).
+W pakiecie NuGet 3 +, deweloperzy najprawdopodobniej nie ręcznie edytować `project.json`, ponieważ interfejs użytkownika Menedżera pakietów w programie Visual Studio obsługuje zawartość. Inaczej mówiąc, plik pewno można edytować, ale należy utworzyć projekt, aby rozpocząć przywracanie pakietu lub wywołaj przywracania w inny sposób. Zobacz [Przywracanie pakietu](../consume-packages/package-restore.md).
 
 
 ## <a name="projectlockjson"></a>project.lock.json
 
-`project.lock.json` Plik został wygenerowany w trakcie przywracania pakietów NuGet w projektach, które używają `project.json`. Przechowuje migawkę wszystkie informacje, które są generowane zgodnie z NuGet przedstawia wykres pakietów i zawiera wersję, zawartość i zależności wszystkich pakietów w projekcie. System kompilacji używa go do wybierz pakiety z globalnej lokalizacji, które mają zastosowanie podczas kompilowania projektu zamiast w zależności od folderem lokalnym pakietów w samym projekcie. Powoduje to zwiększyć wydajność kompilacji, ponieważ jest tylko do odczytu `project.lock.json` zamiast wielu oddzielnych `.nuspec` plików.
+`project.lock.json` Plik jest generowany w trakcie przywracania pakietów NuGet w projektach korzystających z `project.json`. Przechowuje migawki wszystkie informacje, które są generowane zgodnie z narzędzi przedstawia wykres pakietów NuGet i zawiera wersję, zawartość i zależności dla wszystkich pakietów w projekcie. System kompilacji używa tej wartości do wyboru pakietów globalnej lokalizacji, które mają zastosowanie podczas kompilowania projektu, a nie w zależności od folderem lokalnym pakietów w samym projekcie. Skutkuje to zwiększyć wydajność kompilacji ponieważ tylko do odczytu `project.lock.json` zamiast wiele oddzielnych `.nuspec` plików.
 
-`project.lock.json` jest generowana automatycznie na Przywracanie pakietu, dlatego można je pominąć z kontroli źródła, dodając go do `.gitignore` i `.tfignore` plików (zobacz [pakietów i kontroli źródła](../consume-packages/packages-and-source-control.md). Jednak jeśli uwzględniony w kontroli źródła, historii zmian przedstawia zmiany w zależnościach rozwiązał w czasie.
+`project.lock.json` jest generowany automatycznie na Przywracanie pakietu, dzięki czemu może być pominięty z kontroli źródła, dodając ją do `.gitignore` i `.tfignore` plików (zobacz [pakiety i kontrola źródła](../consume-packages/packages-and-source-control.md). Jednak jeśli uwzględniony w kontroli źródła, historię zmian przedstawia zmiany w zależnościach rozwiązane wraz z upływem czasu.

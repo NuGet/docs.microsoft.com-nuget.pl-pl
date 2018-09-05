@@ -1,25 +1,24 @@
 ---
-title: NuGet BindingRedirect w programie PowerShell
-description: Odwołanie do polecenia programu PowerShell Dodaj BindingRedirect w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Dokumentacja programu PowerShell NuGet BindingRedirect
+description: Dokumentacja poleceń programu PowerShell Dodaj BindingRedirect w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: f3addd95b64d78eac201deeb2c64915ea935cd71
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: dec7db04c5cf239863b9c00e9f5bc0dde42c7e47
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817626"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43551660"
 ---
 # <a name="add-bindingredirect-package-manager-console-in-visual-studio"></a>Add-BindingRedirect (konsola menedżera pakietów w programie Visual Studio)
 
-*Dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio w systemie Windows.*
+*Dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio na Windows.*
 
-Sprawdza wszystkie zestawy w ścieżce wyjściowej dla projektu i dodaje przekierowania powiązania do pliku konfiguracji aplikacji lub sieci web, w miarę potrzeby. To polecenie jest uruchamiane automatycznie podczas instalowania pakietu.
+Sprawdza, czy wszystkie zestawy w ramach ścieżki wyjściowej dla projektu, a następnie dodaje przekierowania powiązań do pliku konfiguracji sieci web lub aplikacji, gdy jest to konieczne. To polecenie jest wykonywane automatycznie podczas instalowania pakietu.
 
-Aby uzyskać szczegółowe informacje na powiązanie przekierowania i dlaczego ich użycia, zobacz [przekierowywanie wersji zestawu](/dotnet/framework/configure-apps/redirect-assembly-versions) w dokumentacji programu .NET.
+Aby uzyskać szczegółowe informacje dotyczące powiązania przekierowania i dlaczego są one używane, zobacz [Redirecting Assembly Versions](/dotnet/framework/configure-apps/redirect-assembly-versions) w dokumentacji platformy .NET.
 
 ## <a name="syntax"></a>Składnia
 
@@ -31,13 +30,13 @@ Add-BindingRedirect [-ProjectName] <string> [<CommonParameters>]
 
 | Parametr | Opis |
 | --- | --- |
-| ProjectName | (Wymagane) Projekt, do którego mają zostać dodane przekierowania wiązań. Przełącznika - NazwaProjektu sam jest opcjonalna. |
+| ProjectName | (Wymagane) Projekt, do którego chcesz dodać przekierowania powiązań. Sam przełącznik - ProjectName jest opcjonalne. |
 
-Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
+Żaden z tych parametrów akceptuje znaków potoku danych wejściowych lub symbol wieloznaczny.
 
 ## <a name="common-parameters"></a>Wspólne parametry
 
-`Add-BindingRedirect` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja błędu ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
+`Add-BindingRedirect` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

@@ -1,23 +1,22 @@
 ---
-title: Pakiet aktualizacji NuGet w programie PowerShell
-description: Odwołanie do polecenia programu PowerShell pakietu aktualizacji w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Dokumentacja programu PowerShell Update pakiet NuGet
+description: Odniesienie do polecenia PowerShell pakietu aktualizacji w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: aa039f3ffcc0a7323178dae846733559c0f689b5
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: d47e1978ab7d827e0b8b97cd4e7237019185b50f
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817102"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43546079"
 ---
 # <a name="update-package-package-manager-console-in-visual-studio"></a>Update-Package (konsola menedżera pakietów w programie Visual Studio)
 
-*Dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio w systemie Windows.*
+*Dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio na Windows.*
 
-Aktualizuje pakiet i jego zależności lub wszystkie pakiety w projekcie do nowszej wersji.
+Aktualizuje pakiet i jego zależności lub wszystkich pakietów w projekcie do nowszej wersji.
 
 ## <a name="syntax"></a>Składnia
 
@@ -27,7 +26,7 @@ Update-Package [-Id] <string> [-IgnoreDependencies] [-ProjectName <string>] [-Ve
     [-DependencyVersion] [-ToHighestPatch] [-ToHighestMinor] [-WhatIf] [<CommonParameters>]
 ```
 
-W NuGet 2.8 + `Update-Package` można obniżyć istniejący pakiet w projekcie. Na przykład jeśli masz zainstalowany 5.1.0-rc1 Microsoft.AspNet.MVC następujące polecenie spowoduje obniżyć go 5.0.0:
+W pakiecie NuGet 2.8 + `Update-Package` może służyć do obniżenia poziomu istniejący pakiet w projekcie. Na przykład w przypadku 5.1.0-rc1 Microsoft.AspNet.MVC zainstalowane następujące polecenie będzie obniżyć do 5.0.0:
 
 ```ps
 Update-Package Microsoft.AspNet.MVC -Version 5.0.0.
@@ -37,25 +36,25 @@ Update-Package Microsoft.AspNet.MVC -Version 5.0.0.
 
 |  Parametr | Opis |
 | --- | --- |
-| Id | Identyfikator pakietu do zaktualizowania. Pominięcie aktualizuje wszystkie pakiety. Id przełącznika sam jest opcjonalna. |
-| IgnoreDependencies | Pomija zależności pakietu aktualizacji. |
-| ProjectName | Nazwa projektu zawierającego pakietów aktualizacji, domyślnie używany do wszystkich projektów. |
-| Wersja | Wersja do użycia podczas uaktualniania, domyślnie używany do najnowszej wersji. W NuGet 3.0 + wartość wersji musi być jedną z *najniższy, najwyższa, HighestMinor*, lub *HighestPatch* (równoważne - bezpieczny). |
-| Bezpieczne | Ogranicza uaktualnienia do wersji tylko z tej samej wersji głównej i pomocniczej jako aktualnie zainstalowany pakiet. |
-| Źródło | Adres URL lub folder ścieżka do źródła pakietu do wyszukania. Ścieżki folderu lokalnego może być bezwzględny, lub względem bieżącego folderu. Pominięcie `Update-Package` wyszukiwania w obecnie wybranym źródle pakietów. |
-| IncludePrerelease | Zawiera pakiety wersji wstępnej aktualizacji. |
+| Id | Identyfikator pakiet do zaktualizowania. W przypadku pominięcia aktualizuje wszystkie pakiety. — Identyfikator samym przełączniku jest opcjonalne. |
+| IgnoreDependencies | Pomija aktualizowanie zależności pakietów. |
+| ProjectName | Nazwa projektu zawierający pakiety do aktualizacji, przyjęto wartość domyślną dla wszystkich projektów. |
+| Wersja | Wersja do użycia podczas uaktualniania, ustawiając domyślnie do najnowszej wersji. Nuget 3.0 +, wartość wersji musi mieć jedną z *najniższy, najwyższa, HighestMinor*, lub *HighestPatch* (równoważne — bezpieczna). |
+| Bezpieczne | Ogranicza uaktualnienia do wersji tylko przy użyciu tej samej wersji głównych i pomocniczych, co obecnie zainstalowanego pakietu. |
+| Źródło | Adres URL lub folder ścieżka do źródła pakietu do wyszukania. Ścieżki folderu lokalnego, może być ścieżką bezwzględną, lub względną do bieżącego folderu. W przypadku pominięcia `Update-Package` przeszukuje źródło obecnie wybranego pakietu. |
+| IncludePrerelease | Obejmuje pakiety w wersjach wstępnych dla aktualizacji. |
 | Zainstaluj ponownie | Pakiety Resintalls przy użyciu ich obecnie zainstalowanej wersji. Zobacz [ponowne zainstalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md). |
-| FileConflictAction | Akcja wykonywana po otrzymaniu monitu, aby zastąpić, lub przycisk Ignoruj istniejące pliki odwołuje się projekt. Możliwe wartości to *zastępowania, Ignoruj, brak OverwriteAll*, i *IgnoreAll* (3.0 +). |
-| DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższa* (domyślnie): Najniższa wersja</li><li>*HighestPatch*: wersja z najniższą głównych, najniższy niewielkie, najwyższy poziom poprawki</li><li>*HighestMinor*: wersja z najniższą głównych, najwyższy niewielkie, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie pakiet aktualizacji bez parametrów): najnowsza wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../reference/nuget-config-file.md#config-section) w `Nuget.Config` pliku. |
-| ToHighestPatch | Ogranicza uaktualnienia do tylko wersji z tej samej wersji pomocniczej jako aktualnie zainstalowany pakiet. |
-| Tohighestminor powoduje aktualizację | Ogranicza uaktualnienia do tylko wersji z taką samą wersję główną jako aktualnie zainstalowany pakiet. |
-| Instrukcja WhatIf | Pokazuje, co się stanie, uruchamiając polecenie bez rzeczywistego wykonania aktualizacji. |
+| FileConflictAction | Akcja do wykonania po wyświetleniu monitu o zastąpienie lub zignorować istniejące pliki przywoływanego przez projekt. Możliwe wartości to *zastąpienia, Zignoruj, None, OverwriteAll*, i *IgnoreAll* (3.0 i nowsze). |
+| DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższy* (ustawienie domyślne): Najniższa wersja</li><li>*HighestPatch*: wersja przy najniższe główne, najniższą pomocnicza, najwyższy poziom poprawki</li><li>*HighestMinor*: wersji z najniższą główne, najwyższy pomocnicza, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie dla pakietu aktualizacji bez parametrów): najwyższa wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../reference/nuget-config-file.md#config-section) ustawienie w `Nuget.Config` pliku. |
+| ToHighestPatch | Ogranicza uaktualnień tylko wersje z tej samej wersji pomocniczej jako aktualnie zainstalowany pakiet. |
+| ToHighestMinor | Ogranicza uaktualnień tylko wersje z taką samą wersję główną jako aktualnie zainstalowany pakiet. |
+| WhatIf | Pokazuje, co się stanie, podczas uruchamiania polecenia bez rzeczywistego wykonania aktualizacji. |
 
-Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
+Żaden z tych parametrów akceptuje znaków potoku danych wejściowych lub symbol wieloznaczny.
 
 ### <a name="common-parameters"></a>Wspólne parametry
 
-`Update-Package` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja błędu ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
+`Update-Package` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
 
 ### <a name="examples"></a>Przykłady
 

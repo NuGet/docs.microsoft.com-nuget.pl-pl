@@ -1,121 +1,120 @@
 ---
-title: Zapytania dla wszystkich pakietów opublikowane nuget.org
-description: Przy użyciu interfejsu API programu NuGet, można wysyłać zapytania dotyczące wszystkich pakietów opublikowane nuget.org i aktualności wraz z upływem czasu.
+title: Wykonywanie zapytania o wszystkie pakiety opublikowane w witrynie nuget.org
+description: Za pomocą interfejsu API programu NuGet, można wykonywać zapytania o wszystkie pakiety opublikowane w witrynie nuget.org i najnowsze informacje wraz z upływem czasu.
 author: joelverhagen
 ms.author: jver
-manager: skofman
 ms.date: 11/02/2017
 ms.topic: tutorial
 ms.reviewer: kraigb
-ms.openlocfilehash: 4190cfb500127f117ea1067f0679e5c248bffb3d
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: 0bd21c427b5b89ae9e5f1500d75e1bf63a96e828
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31821372"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43551081"
 ---
-# <a name="query-for-all-packages-published-to-nugetorg"></a>Zapytania dla wszystkich pakietów opublikowane nuget.org
+# <a name="query-for-all-packages-published-to-nugetorg"></a>Wykonywanie zapytania o wszystkie pakiety opublikowane w witrynie nuget.org
 
-Jeden wspólnego wzorca zapytania na starszego interfejsu API 2 OData został wyliczania wszystkie pakiety opublikowane nuget.org, uporządkowanych według Jeśli pakiet został opublikowany. Scenariusze wymagające tego rodzaju zapytania dotyczącego nuget.org różnią się znacznie:
+Jeden typowy wzorzec zapytania w starszej wersji interfejsu API OData w wersji 2 została wyliczanie wszystkie pakiety opublikowane w witrynie nuget.org, uporządkowane według, gdy pakiet został opublikowany. Scenariusze wymagające tego rodzaju zapytania względem nuget.org są bardzo zróżnicowane:
 
 - Replikowanie całkowicie nuget.org
-- Wykrywanie, gdy pakiety zawierają nowe wersje wydane
-- Znajdowanie pakiety, które są zależne od pakietu
+- Wykrywanie, gdy nowe wersje wydane pakiety
+- Wyszukuje pakietów, które są zależne od pakietu
 
-Starsze sposobów to zwykle była uzależniona od sortowania jednostką OData pakietu przez sygnaturę czasową i stronicowania na ogromną wynik ustawić za pomocą `skip` i `top` parametrów (rozmiar strony). Niestety ta metoda ma kilka wad:
+Starszy sposób zrobić to zwykle zależą sortowanie jednostką pakietu OData przez sygnaturę czasową i stronicowanie w wyniku ogromnej, można ustawić przy użyciu `skip` i `top` parametrów (rozmiar strony). Niestety to podejście ma pewne wady:
 
-- Możliwość brakujących pakietów, ponieważ zapytania są określane na dane, które często jest zmiana kolejności
-- Powolna czas odpowiedzi na zapytanie, ponieważ nie są zoptymalizowane (najbardziej zoptymalizowane zapytania są scenariusza połączeniach klienta NuGet oficjalny)
-- Użyj interfejsu API przestarzałe i nieudokumentowanej, co oznacza obsługę tych zapytań w przyszłości nie jest gwarantowana.
-- Brak możliwości powtarzania historii dokładnie w takiej kolejności, która okazało się
+- Możliwość brakujących pakietów, ponieważ zapytania są wykonywane na danych, które często jest zmiana kolejności
+- Wolne czas odpowiedzi na zapytanie, ponieważ nie są zoptymalizowane (najbardziej zoptymalizowane zapytania są te, które obsługuje scenariusz linii głównej dla oficjalne klienta programu NuGet)
+- Korzystanie z interfejsu API przestarzałe i nieudokumentowane, co oznacza obsługę takich zapytań w przyszłości nie ma żadnej gwarancji.
+- Brak możliwości odtworzenia historii dokładnie w takiej kolejności, które okazało się
 
-Z tego powodu następującymi wskazówkami można wykonać w celu rozwiązania scenariuszy wyżej wymienione w sposób bardziej niezawodne i zabezpieczenie przyszłych potrzeb.
+Z tego powodu można wykonać następującymi wskazówkami dla scenariuszy wyżej w sposób bardziej niezawodne i Zadbaj o przyszłość.
 
 ## <a name="overview"></a>Omówienie
 
-W Centrum w tym przewodniku jest zasobem w [NuGet API](../../api/overview.md) o nazwie **katalogu**. Katalog jest tylko do dołączania interfejsu API, który umożliwia obiekt wywołujący, aby wyświetlić pełną historię pakietów dodawać, modyfikować i usunięty z nuget.org. Jeśli interesuje Cię wszystkich lub nawet podzbiór pakietów opublikowane nuget.org, katalog jest to dobry sposób na bieżąco z zestawem pakiety aktualnie dostępne w.
+W środkowej części tego przewodnika jest zasobem w [NuGet API](../../api/overview.md) o nazwie **katalogu**. Katalog jest tylko do dołączania interfejsu API, który umożliwia obiektowi wywołującemu wyświetlić pełną historię pakietów, dodawać, modyfikacji i usunąć z repozytorium nuget.org. Jeśli interesuje Cię w całości lub nawet podzbiór pakiety opublikowane w witrynie nuget.org, katalog jest doskonałym sposobem na bieżąco, korzystając z zestawu dostępnych pakietów w.
 
-Ten przewodnik jest przeznaczony ogólnym opisem, ale jeśli planuje się szczegóły szczegółowe dzielenie katalogu, zobacz jego [dokumentu odwołania API](../../api/catalog-resource.md).
+Ten przewodnik jest przeznaczony ogólnym opisem, ale jeśli interesują Cię szczegóły dokładną katalogu, zobacz jego [dokument referencyjny dotyczący interfejsu API](../../api/catalog-resource.md).
 
-Poniższe kroki można zaimplementować w dowolnym języku programowania wybranych przez użytkownika. Jeśli chcesz pełny przykład uruchomione, Przyjrzyjmy się [próbki C#](#c-sample-code) wymienione poniżej.
+Następujące kroki można zaimplemetować w taki sposób, w dowolnym języku programowania wybranych przez użytkownika. Jeśli chcesz, aby uzyskać pełną próbkę uruchomione, Przyjrzyj się [przykładowy języka C#](#c-sample-code) wymienione poniżej.
 
-W przeciwnym razie wykonaj przewodnik poniżej do utworzenia czytnika niezawodnej katalogu.
+W przeciwnym razie wykonaj przewodnik poniższe tworzenia czytnika niezawodne katalogu.
 
 ## <a name="initialize-a-cursor"></a>Inicjowanie kursora
 
-Pierwszym krokiem podczas tworzenia czytnika niezawodnej katalogu implementuje kursora. Aby uzyskać szczegółowe informacje dotyczące projektowania kursora katalogu, zobacz [katalogu odwołania dokumentu](../../api/catalog-resource.md#cursor). Krótko mówiąc kursor jest punkt w czasie, do której zostały przetworzone zdarzenia w katalogu. Zdarzenia w katalogu pakietu reprezentują publikuje i zmienia inny pakiet. Jeśli interesują wszystkie pakiety kiedykolwiek opublikowane NuGet (od początku czasu), może ustawić kursor do sygnatury czasowej "minimalna wartość" (np. `DateTime.MinValue` w .NET). Jeśli Cię interesuje tylko pakiety opublikowane już teraz, można użyć jako wartość początkowego kursora bieżącą sygnaturę czasową.
+Pierwszym krokiem w tworzeniu czytnik niezawodne katalogu implementuje kursora. Aby uzyskać szczegółowe informacje dotyczące projektowania kursora katalogu, zobacz [dokument referencyjny dotyczący katalogu](../../api/catalog-resource.md#cursor). Krótko mówiąc kursor znajduje się punkt w czasie, do której zostały przetworzone zdarzenia w wykazie. Publikuje zdarzenia w pakiecie reprezentują wykazu, i zmienia się inny pakiet. W przypadku interesujące Cię wszystkie pakiety, które kiedykolwiek publikowane NuGet (od początku czasu), użytkownik może ustawić kursor do sygnatury czasowej "wartość minimalna" (np. `DateTime.MinValue` na platformie .NET). Jeśli interesujące Cię tylko pakiety opublikowane już teraz, należy użyć bieżącą sygnaturę czasową jako wartość początkowego kursora.
 
-Tego przewodnika firma Microsoft będzie zainicjować naszych kursora prowadzącego do sygnatury czasowej godzinę temu. Teraz Zapisz ten znacznik w pamięci.
+W tym przewodniku firma Microsoft będzie zainicjować naszych kursor do sygnatury czasowej godzinę temu. Teraz po prostu zapisz tej sygnatury czasowej w pamięci.
 
 ```cs
 DateTime cursor = DateTime.UtcNow.AddHours(-1);
 ```
 
-## <a name="determine-catalog-index-url"></a>Określić adres URL katalogu indeksu
+## <a name="determine-catalog-index-url"></a>Określenia adresu URL indeksu katalogu
 
-Lokalizację każdego zasobu (punkt końcowy) w interfejsie API NuGet powinny zostać wykryte przy użyciu [indeksu usługi](../../api/service-index.md). Ponieważ ten przewodnik koncentruje się na nuget.org, będziemy używać indeksu usługi nuget.org.
+Lokalizację każdego zasobu (punkt końcowy) w interfejsie API NuGet powinny zostać wykryte przy użyciu [indeks usług](../../api/service-index.md). Ponieważ ten przewodnik skupia się w witrynie nuget.org, będziemy używać indeks usług w witrynie nuget.org.
 
     GET https://api.nuget.org/v3/index.json
 
-Dokument usługi jest zawierająca wszystkie zasoby na nuget.org dokumentu JSON. Wyszukaj o zasobów `@type` wartość właściwości `Catalog/3.0.0`. Skojarzony `@id` wartość właściwości jest adres URL, który sam indeks katalogu. 
+Dokument usługi jest dokument JSON zawierający wszystkie zasoby w witrynie nuget.org. Poszukaj zasobów having `@type` wartość właściwości `Catalog/3.0.0`. Skojarzone `@id` wartość właściwości jest adres URL, który indeks katalogu sam. 
 
-## <a name="find-new-catalog-leaves"></a>Znajdowanie nowych pozostawia katalogu
+## <a name="find-new-catalog-leaves"></a>Znajdź nowe liście katalogu
 
-Przy użyciu `@id` indeks katalogu pobierania wartości właściwości w poprzednim kroku:
+Za pomocą `@id` wartości właściwości w poprzednim kroku, Pobierz indeks katalogu:
 
     GET https://api.nuget.org/v3/catalog0/index.json
 
-Deserializacja [indeks katalogu](../../api/catalog-resource.md#catalog-index). Wszystkie odfiltrowane [katalogowania obiektów strony](../../api/catalog-resource.md#catalog-page-object-in-the-index) z `commitTimeStamp` mniejsza niż bieżąca wartość kursora.
+Deserializacji [indeks katalogu](../../api/catalog-resource.md#catalog-index). Odfiltrować wszystkie [strony obiektów katalogu](../../api/catalog-resource.md#catalog-page-object-in-the-index) z `commitTimeStamp` mniejsza niż bieżąca wartość kursora.
 
-W przypadku pozostałych stron katalogu, Pobierz przy użyciu pełnego dokumentu `@id` właściwości.
+W przypadku pozostałych stron wykazu, Pobierz pełny dokument, za pomocą `@id` właściwości.
 
     GET https://api.nuget.org/v3/catalog0/page2926.json
 
-Deserializacja [strona katalogu](../../api/catalog-resource.md#catalog-page). Wszystkie odfiltrowane [katalogowania obiektów typu liść](../../api/catalog-resource.md#catalog-item-object-in-a-page) z `commitTimeStamp` mniejsza niż bieżąca wartość kursora.
+Deserializacji [strona katalogu](../../api/catalog-resource.md#catalog-page). Odfiltrować wszystkie [liścia obiektów katalogu](../../api/catalog-resource.md#catalog-item-object-in-a-page) z `commitTimeStamp` mniejsza niż bieżąca wartość kursora.
 
-Po pobraniu wszystkich stron katalogu nie odfiltrowany istnieje zestaw obiektów typu liść katalogu reprezentujących pakiety, które zostały opublikowane, nieznajdujące się na liście, listy lub usunięte w okresie między sygnatury czasowej użytkownika kursora, a teraz.
+Po pobraniu wszystkich stron wykazu nie odfiltrowany masz zestaw obiektów typu liść katalogu reprezentujących pakiety, które zostały opublikowane, nieznajdujące się na liście, listy lub usunięte w okresie między Twoja sygnatura czasowa kursora, a teraz.
 
-## <a name="process-catalog-leaves"></a>Pozostawia katalogu procesu
+## <a name="process-catalog-leaves"></a>Pozostawia proces katalogu
 
-W tym momencie można wykonywać żadnych niestandardowych przetwarzania, które mają na elementów katalogu. Jeśli wszystko, czego potrzebujesz Identyfikatora i wersję pakietu, możesz sprawdzić `nuget:id` i `nuget:version` znalezionych na stronach elementu właściwości w katalogu. Upewnij się, że przyjrzeć się `@type` właściwości, aby dowiedzieć się, jeśli element katalogu dotyczy istniejącego pakietu lub usuniętych pakietów.
+W tym momencie można wykonywać niestandardowe przetwarzania, które Twoim zdaniem na elementy katalogu. Jeśli potrzebna jest Identyfikatorem i wersją pakietu, można sprawdzić `nuget:id` i `nuget:version` właściwości w wykazie elementów znalezionych na stronach. Pamiętaj przyjrzeć się `@type` właściwości, aby dowiedzieć się, jeśli element katalogu dotyczy istniejącego pakietu lub usuniętych pakietów.
 
-Jeśli interesuje Cię w metadanych o pakiecie (na przykład opis, zależności, rozmiar .nupkg, itp.), można pobrać [dokumentu liścia katalogu](../../api/catalog-resource.md#catalog-leaf) przy użyciu `@id` właściwości.
+Jeśli interesuje Cię w metadanych o pakiecie (na przykład na opis, zależności, rozmiar .nupkg, itp.), możesz pobrać [dokumentu liścia katalogu](../../api/catalog-resource.md#catalog-leaf) przy użyciu `@id` właściwości.
 
     GET https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
 
-Ten dokument zawiera wszystkie zawarte w metadanych [pakietu zasobów metadanych](../../api/registration-base-url-resource.md)i nie tylko!
+Ten dokument zawiera wszystkie metadane objęte [zasób metadanych pakietu](../../api/registration-base-url-resource.md)i nie tylko!
 
-Ten krok polega na tym, gdzie wdrożyć niestandardowej logiki. Pozostałe kroki w tym przewodniku są implementowane w pretty znacznie taki sam sposób niezależnie od tego, czynności z liśćmi katalogu.
+Ten krok polega na tym, gdzie wdrożyć logikę niestandardowego. Kroki opisane w tym przewodniku są implementowane w pretty podobnie sposób niezależnie od tego, co robisz z liśćmi katalogu.
 
 ### <a name="downloading-the-nupkg"></a>Pobieranie .nupkg
 
-Jeśli interesuje Cię w czasie pobierania pakietów .nupkg odnaleziono w katalogu, można użyć [pakietu zawartości zasobów](../../api/package-base-address-resource.md). Jednak należy pamiętać, że krótkie opóźnienie podczas pakietu znajduje się w katalogu i gdy jest dostępny w zasobie zawartości pakietu. W związku z tym jeśli wystąpią `404 Not Found` podczas próby pobrania .nupkg dla pakietu, który można znaleźć w katalogu, po prostu ponownie przez krótki czas później. Ustalenie to opóźnienie jest śledzony przez problem GitHub [3455 # NuGet/NuGetGallery](https://github.com/NuGet/NuGetGallery/issues/3455).
+Jeśli interesuje Cię pobierania pakietów .nupkg znalezione w wykazie, można użyć [pakietu zawartości zasobów](../../api/package-base-address-resource.md). Jednak należy pamiętać, że krótkie opóźnienie podczas pakietu znajduje się w katalogu i gdy jest on dostępny w zasób zawartości pakietu. W związku z tym jeśli wystąpią `404 Not Found` podczas próby pobierania .nupkg pakietu w katalogu, po prostu ponownie przez krótki czas później. Naprawianie to opóźnienie jest śledzona przez problem w usłudze GitHub [3455 # NuGet/NuGetGallery](https://github.com/NuGet/NuGetGallery/issues/3455).
 
-## <a name="move-the-cursor-forward"></a>Przeniesienie kursora do przodu
+## <a name="move-the-cursor-forward"></a>Przenieś kursor do przodu
 
-Po pomyślnie zostały przetworzone elementy katalogu, należy określić nową wartość kursora do zapisania. W tym celu Znajdź maksymalną (najnowsze porządku chronologicznym) `commitTimeStamp` wszystkich elementów katalogu, które zostanie przetworzone. Jest to z nową wartością kursora. Zapisz go w niektórych magazynu trwałego, takich jak bazy danych, system plików lub magazynu obiektów blob. Aby uzyskać więcej elementów katalogu, należy po prostu Rozpocznij od [pierwszy krok](#initialize-a-cursor) przez inicjowanie wartość kursora z tego magazynu trwałego.
+Po pomyślnym przetworzeniu elementów katalogu należy określić nową wartość kursor do zapisania. W tym celu należy znaleźć maksymalną (najnowsze chronologicznie) `commitTimeStamp` wszystkich elementów katalogu, które zostanie przetworzone. Jest to nowa wartość kursora. Zapisz go niektóre magazynu trwałego, takich jak bazy danych, system plików lub usługi blob storage. Aby uzyskać więcej elementów katalogu, należy po prostu zacznij od [pierwszego kroku](#initialize-a-cursor) przez inicjowanie wartość kursora z tego magazynu trwałego.
 
-Jeśli aplikacja zgłasza wyjątek lub błędy, nie przenoś kursora do przodu. Przesuń kursor do przodu ma znaczenie, nigdy nie ponownie potrzebne do przetwarzania elementów katalogu przed kursor.
+Jeśli aplikacja zgłasza wyjątek lub błędów, nie przenoś kursora do przodu. Przenoszenie do przodu kursora ma co oznacza, że nie będą już ponownie potrzebne do przetwarzania elementów katalogu przed kursor.
 
-Jeśli z jakiegoś powodu masz pozostawia na usterkę w sposób przetwarzania katalogu, możesz po prostu przesuń wskaźnik do tyłu w czasie i kodu tak ponownie przetworzyć starych elementów katalogu.
+Jeśli z jakiegoś powodu masz pozostawia usterkę w sposób przetwarzania wykazu, możesz po prostu przesuń kursor w tył i kodu ponownie przetworzyć starych elementów katalogu.
 
-## <a name="c-sample-code"></a>Przykładowy kod C#
+## <a name="c-sample-code"></a>Przykładowy kod języka C#
 
-Ponieważ katalog jest zestawem dokumentów JSON, które są dostępne za pośrednictwem protokołu HTTP, może być interakcji z przy użyciu dowolnego języka programowania, klient HTTP i deserializacji JSON.
+Ponieważ katalog jest zestaw dokumentów JSON, które są dostępne za pośrednictwem protokołu HTTP, może być interakcji z przy użyciu dowolnego języka programowania, którego klient HTTP i JSON Deserializator.
 
-Przykłady dotyczące języka C# są dostępne w [repozytorium NuGet/przykłady](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample).
+Przykłady w języku C# są dostępne w [repozytorium NuGet/Samples](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample).
 
 ```cli
 git clone https://github.com/NuGet/Samples.git
 ```
 
-### <a name="catalog-sdk"></a>W katalogu zestawu SDK
+### <a name="catalog-sdk"></a>Katalog zestawu SDK
 
-Najprostszym sposobem korzystania z katalogu jest użycie pakietu SDK katalogu .NET wersji wstępnej: [NuGet.Protocol.Catalog](https://dotnet.myget.org/feed/nuget-build/package/nuget/NuGet.Protocol.Catalog). Ten pakiet jest dostępny na `nuget-build` MyGet źródła danych, dla którego używają adres URL źródła pakietu NuGet `https://dotnet.myget.org/F/nuget-build/api/v3/index.json`.
+Najprostszym sposobem korzystania z wykazu jest użyć pakietu SDK katalogu .NET wersji wstępnej: [NuGet.Protocol.Catalog](https://dotnet.myget.org/feed/nuget-build/package/nuget/NuGet.Protocol.Catalog). Ten pakiet jest dostępny na `nuget-build` MyGet źródła danych, dla którego możesz użyć pakietu NuGet źródłowy adres URL `https://dotnet.myget.org/F/nuget-build/api/v3/index.json`.
 
-Ten pakiet można zainstalować na projekt niezgodny z `netstandard1.3` lub nowszej (na przykład .NET Framework 4.6).
+Ten pakiet można zainstalować na projekt niezgodny z `netstandard1.3` lub nowszej (np. .NET Framework 4.6).
 
-Przykład za pomocą tego pakietu jest dostępna w witrynie GitHub w [projektu NuGet.Protocol.Catalog.Sample](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample/NuGet.Protocol.Catalog.Sample).
+Przykład za pomocą tego pakietu jest dostępny w witrynie GitHub w [projektu NuGet.Protocol.Catalog.Sample](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample/NuGet.Protocol.Catalog.Sample).
 
 #### <a name="sample-output"></a>Przykładowe dane wyjściowe
 
@@ -151,11 +150,11 @@ warn: NuGet.Protocol.Catalog.CatalogProcessor[0]
 2017-11-10T23:10:09.0574930+00:00: Found package details leaf for xSkrape.APIWrapper.REST.Sample 1.0.3.
 ```
 
-### <a name="minimal-sample"></a>Minimalny próbki
+### <a name="minimal-sample"></a>Minimalny przykładowy
 
-Na przykład z zależnościami mniej ilustrujący interakcji z katalogu bardziej szczegółowo w temacie [CatalogReaderExample przykładowy projekt](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample/CatalogReaderExample). Obiekty docelowe projektu `netcoreapp2.0` i zależy od [NuGet.Protocol 4.4.0](https://www.nuget.org/packages/NuGet.Protocol/4.4.0) (na potrzeby rozpoznawania indeksu service) i [Newtonsoft.Json 9.0.1](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) (w przypadku deserializacji JSON).
+Aby uzyskać przykład zależności w mniej ilustrujący interakcji z katalogu, które bardziej szczegółowo, zobacz [CatalogReaderExample przykładowy projekt](https://github.com/NuGet/Samples/tree/master/CatalogReaderExample/CatalogReaderExample). Projekt jest ukierunkowany `netcoreapp2.0` i zależy od [NuGet.Protocol 4.4.0](https://www.nuget.org/packages/NuGet.Protocol/4.4.0) (w przypadku rozwiązywania indeks usług) i [Newtonsoft.Json 9.0.1](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) (w przypadku deserializacji JSON).
 
-Logiki główny kodu jest widoczny w [pliku Program.cs](https://github.com/NuGet/Samples/blob/master/CatalogReaderExample/CatalogReaderExample/Program.cs).
+Główne logikę kodu jest widoczna w [pliku Program.cs](https://github.com/NuGet/Samples/blob/master/CatalogReaderExample/CatalogReaderExample/Program.cs).
 
 #### <a name="sample-output"></a>Przykładowe dane wyjściowe
 

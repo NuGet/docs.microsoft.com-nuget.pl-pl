@@ -1,30 +1,29 @@
 ---
 title: Konfigurowanie lokalnych źródeł danych NuGet
-description: Jak utworzyć lokalnego źródła danych za pomocą folderów w sieci lokalnej pakietów NuGet
+description: Jak utworzyć lokalnego źródła danych dla pakietów NuGet za pomocą folderów w sieci lokalnej
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 12/06/2017
 ms.topic: conceptual
-ms.openlocfilehash: 5d86657bdf26452d027593b953168e28694acf82
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 91c072c8895ab4267c64fd04deae010ae5af4d37
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818688"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43545455"
 ---
 # <a name="local-feeds"></a>Lokalne źródła danych
 
-Lokalne źródła danych pakietu NuGet są struktury po prostu hierarchiczna folderów w sieci lokalnej (lub nawet po prostu swojego komputera), w którym zostanie umieszczony pakietów. Te źródła danych mogą następnie służyć jako źródła pakietów z innymi operacjami NuGet przy użyciu interfejsu wiersza polecenia, interfejs użytkownika Menedżera pakietów i konsoli Menedżera pakietów.
+Lokalne źródła danych pakietu NuGet są po prostu hierarchiczne folder struktury w sieci lokalnej (lub nawet tylko Twój własny komputer), w których umieszczane są pakiety. Te źródła danych mogą być następnie używane jako źródła pakietu z innymi operacjami NuGet za pomocą interfejsu wiersza polecenia, interfejs użytkownika Menedżera pakietów i konsoli Menedżera pakietów.
 
-Aby włączyć źródła, dodaj jego pathname (takich jak `\\myserver\packages`) do listy źródeł za pomocą [interfejsu użytkownika Menedżera pakietów](../tools/package-manager-ui.md#package-sources) lub [ `nuget sources` ](../tools/cli-ref-sources.md) polecenia.
+Aby włączyć źródłowego, Dodaj swoją nazwę ścieżki (takie jak `\\myserver\packages`) do listy źródeł przy użyciu [interfejs użytkownika Menedżera pakietów](../tools/package-manager-ui.md#package-sources) lub [ `nuget sources` ](../tools/cli-ref-sources.md) polecenia.
 
 > [!Note]
-> Struktury folderów hierarchicznych są obsługiwane w NuGet 3.3 +. Starsze wersje programu NuGet Użyj tylko pojedynczy folder zawierający pakiety, z którymi jest znacznie niższa niż strukturę hierarchiczną wydajności.
+> Folder hierarchicznej struktury są obsługiwane w pakiecie NuGet 3.3 +. Starsze wersje pakietu nuget, użyj tylko pojedynczy folder zawierający pakiety, których wydajność jest znacznie niższa niż hierarchicznej struktury.
 
 ## <a name="initializing-and-maintaining-hierarchical-folders"></a>Inicjowanie i utrzymywanie folderów hierarchicznych
 
-Hierarchiczna folder z kontrolą wersji drzewa ma następującą strukturę ogólne:
+Drzewo hierarchiczne folderów numerów wersji ma następującą strukturę ogólne:
 
     \\myserver\packages
       └─<packageID>
@@ -40,10 +39,10 @@ nuget add new_package.1.0.0.nupkg -source \\myserver\packages
 
 `nuget add` Polecenia współpracuje z jednym pakiecie w czasie, który może być niewygodne, podczas konfigurowania źródła danych z wielu pakietów.
 
-W takiej sytuacji należy użyć [ `nuget init` ](../tools/cli-ref-init.md) polecenie, aby skopiować wszystkie pakiety w folderze do źródła danych, jak w przypadku uruchomienia `nuget add` na każdej z nich osobno. Na przykład następujące polecenie kopiuje wszystkie pakiety z `c:\packages` hierarchiczne drzewa na `\\myserver\packages`:
+W takiej sytuacji należy użyć [ `nuget init` ](../tools/cli-ref-init.md) polecenie, aby skopiować wszystkie pakiety w folderze w strumieniowym źródle danych, jak w przypadku uruchomienia `nuget add` na każdym z nich osobno. Na przykład następujące polecenie kopiuje wszystkie pakiety z `c:\packages` do drzewa hierarchicznego na `\\myserver\packages`:
 
 ```cli
 nuget init c:\packages \\myserver\packages
 ```
 
-Jak `add` polecenia `init` tworzy folder dla każdej identyfikator pakietu, folder numer wersji, z których każdy zawiera poziomu czyli odpowiedniego pakietu.
+Podobnie jak w przypadku `add` polecenia `init` tworzy folder dla każdego pakietu identyfikator folderu numeru wersji, z których każdy zawiera poziomu będący odpowiedniego pakietu.

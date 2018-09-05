@@ -1,47 +1,46 @@
 ---
-title: Wypychanie i usunąć NuGet interfejsu API
-description: Usługa publikowania zezwala klientom na publikowanie nowych pakietów i unlist lub usunąć istniejące pakiety.
+title: Wypychanie i usuwanie, interfejs API programu NuGet
+description: Usługa publikowania umożliwia klientom Opublikuj nowe pakiety i wyrejestrowanie lub usuń istniejące pakiety.
 author: joelverhagen
 ms.author: jver
-manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 911c8238624f806b1fbb5c7938d02b6bdfbd8614
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: ad66d8e0ffda13aaef744104c213863b0e111e0e
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31819484"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43547524"
 ---
-# <a name="push-and-delete"></a>Wypychanie i usuwania
+# <a name="push-and-delete"></a>Wypychanie i usuwanie
 
-Istnieje możliwość push, Usuń (lub unlist, w zależności od implementacji serwera) i ponownie wystaw pakiety przy użyciu interfejsu API programu NuGet w wersji 3. Operacje te są oparte na off z `PackagePublish` można znaleźć zasobu w [indeksu usługi](service-index.md).
+Istnieje możliwość wypychania, Usuń (lub wyrejestrowanie, w zależności od implementacji serwera) i ponownie wystaw pakietów przy użyciu interfejsu API programu NuGet w wersji 3. Te operacje opierają się wylogować się z `PackagePublish` można znaleźć zasobu w [indeks usług](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-Następujące `@type` jest używana wartość:
+Następujące `@type` zostanie użyta wartość:
 
 @type Wartość          | Uwagi
 -------------------- | -----
-PackagePublish/2.0.0 | Początkowa wersja
+PackagePublish/2.0.0 | Wersja początkowa
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
-Bazowy adres URL dla następujących interfejsów API jest wartością `@id` właściwość `PackagePublish/2.0.0` zasobów w źródle pakietów [indeksu usługi](service-index.md). Poniżej dokumentację nuget.org adres URL jest używany. Należy wziąć pod uwagę `https://www.nuget.org/api/v2/package` jako symbol zastępczy `@id` wartość znajduje się w indeksie usługi.
+Podstawowy adres URL dla następujących interfejsów API jest wartością `@id` właściwość `PackagePublish/2.0.0` zasobów w źródle pakietu [indeks usług](service-index.md). Poniższą dokumentacją używany jest adres URL usługi nuget.org. Należy wziąć pod uwagę `https://www.nuget.org/api/v2/package` jako symbol zastępczy `@id` znaleziono wartości w indeksie usługi.
 
-Należy pamiętać, że ten adres URL wskazuje do tej samej lokalizacji co starszego punktu końcowego wypychania V2, ponieważ protokół jest taka sama.
+Należy pamiętać, że ten adres URL wskazuje do tej samej lokalizacji, co starsze wypychania punktu końcowego V2, ponieważ protokół jest taka sama.
 
 ## <a name="http-methods"></a>Metody HTTP
 
-`PUT`, `POST` i `DELETE` metod HTTP obsługiwanych przez ten zasób. Dla metod, które są obsługiwane na każdym punkcie końcowym są wymienione poniżej.
+`PUT`, `POST` i `DELETE` metod HTTP obsługiwanych przez ten zasób. Dla metody, które są obsługiwane dla każdego punktu końcowego zobacz poniżej.
 
 ## <a name="push-a-package"></a>Wypychanie pakietu
 
 > [!Note]
-> ma nuget.org [dodatkowe wymagania](NuGet-Protocols.md) do interakcji z punktem końcowym wypychania.
+> ma adres nuget.org [dodatkowe wymagania](NuGet-Protocols.md) do interakcji z punktem końcowym wypychania.
 
-nuget.org obsługuje położenia nowe pakiety przy użyciu następujących interfejsu API. Jeśli pakiet o identyfikatorze podana i wersji już istnieje, nuget.org spowoduje odrzucenie powiadomienia wypychanego. Inne źródła pakietu może obsługiwać, zastępując istniejący pakiet.
+nuget.org obsługuje wypychania nowych pakietów przy użyciu następujących interfejsu API. Jeśli pakiet o identyfikatorze podana i wersji już istnieje, nuget.org odrzuci wypychania. Inne źródła pakietu może obsługiwać, zastępując istniejący pakiet.
 
     PUT https://www.nuget.org/api/v2/package
 
@@ -51,29 +50,29 @@ Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------- | ------ | ------ | -------- | -----
 X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
 
-Klucz interfejsu API jest ciąg z ogólnym opisem zaakceptujesz ze źródła pakietów przez użytkownika i skonfigurowane do klienta. Nie określony ciąg formatu jest obowiązkowe, ale długość klucza interfejsu API nie może przekraczać uzasadnione rozmiaru dla wartości nagłówka HTTP.
+Klucz interfejsu API to nieprzezroczysty ciąg uzyskane ze źródła pakietu przez użytkownika i skonfigurowane do klienta. Nie określonego ciągu formatu jest upoważnione, ale długość klucza interfejsu API nie może przekraczać rozmiaru uzasadnione wartości nagłówka HTTP.
 
 ### <a name="request-body"></a>Treść żądania
 
-Treść żądania musi występować w następującym formacie:
+Treść żądania musi występować w następującej postaci:
 
 #### <a name="multipart-form-data"></a>Wieloczęściowych danych formularza
 
-Nagłówek żądania `Content-Type` jest `multipart/form-data` i raw bajtów .nupkg przekazywanej pierwszego elementu w treści żądania. Kolejne elementy treści wieloczęściowej wiadomości są ignorowane. Nazwa pliku lub inne nagłówki elementów wieloczęściowego są ignorowane.
+Nagłówek żądania `Content-Type` jest `multipart/form-data` i pierwszy element w treści żądania ma bajtów raw .nupkg wypychania. Kolejne elementy treści wieloczęściowej wiadomości są ignorowane. Nazwa pliku lub innych nagłówków w wieloczęściowych elementów są ignorowane.
 
 ### <a name="response"></a>Odpowiedź
 
-Kod stanu | Znaczenie
+Kod stanu: | Znaczenie
 ----------- | -------
-201, 202    | Pakiet został pomyślnie przypisany.
+201, 202    | Pakiet został pomyślnie wypchnięto
 400         | Podany pakiet jest nieprawidłowy
 409         | Pakiet o identyfikatorze podana i wersji już istnieje.
 
-Implementacje serwera różnią się od kod stanu Powodzenie zwracany, gdy pakiet zostanie pomyślnie przeniesiona.
+Implementacje Server różnią się na kod stanu powodzenia, które są zwracane, gdy pakiet zostanie pomyślnie przypisany.
 
-## <a name="delete-a-package"></a>Usuwanie pakietu
+## <a name="delete-a-package"></a>Usuń pakiet
 
-nuget.org interpretowane jako żądanie usunięcia pakietu jako "unlist". Oznacza to, że pakiet jest nadal dostępny dla istniejących konsumentów pakietu, ale pakiet nie będzie już wyświetlana w wynikach wyszukiwania lub interfejs sieci web. Aby uzyskać więcej informacji o tym rozwiązaniem, zobacz [usunięte pakiety](../policies/deleting-packages.md) zasad. Inne implementacje serwera mogą interpretować tego sygnału jako usuwania twardych, usunąć soft lub unlist. Na przykład [NuGet.Server](https://www.nuget.org/packages/NuGet.Server) (serwer obsługujący tylko starsze interfejsu API w wersji 2) obsługuje obsługi tego żądania jako unlist lub usuwania twardych, na podstawie opcji konfiguracji.
+nuget.org interpretuje żądanie usunięcia pakietu jako wiadomość "wyrejestrowanie". Oznacza to, że pakiet jest nadal dostępna dla istniejących konsumentów pakietu, ale pakiet nie jest już wyświetlany w wynikach wyszukiwania lub w interfejsie sieci web. Aby uzyskać więcej informacji na temat tej praktyką, zobacz [usunięte pakiety](../policies/deleting-packages.md) zasad. Inne implementacje serwera są bezpłatne do interpretowania ten sygnał jako twardych delete, usuwanie nietrwałe lub wyrejestrowanie. Na przykład [NuGet.Server](https://www.nuget.org/packages/NuGet.Server) obsługuje (tylko Obsługa starszych interfejsy API wersji 2 implementacji serwera), obsługujący żądanie jako unlist lub usuwania twardych na podstawie opcji konfiguracji.
 
     DELETE https://www.nuget.org/api/v2/package/{ID}/{VERSION}
 
@@ -87,14 +86,14 @@ X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: 
 
 ### <a name="response"></a>Odpowiedź
 
-Kod stanu | Znaczenie
+Kod stanu: | Znaczenie
 ----------- | -------
 204         | Pakiet został usunięty.
-404         | Nie pakietu z dostarczonych `ID` i `VERSION` istnieje
+404         | Nie pakietu z dostępnego `ID` i `VERSION` istnieje
 
-## <a name="relist-a-package"></a>Wystaw ponownie pakietu
+## <a name="relist-a-package"></a>Wystaw ponownie pakiet
 
-Jeśli pakiet jest nieznajdujące się na liście, istnieje możliwość ponownie wyświetlić tego pakietu w wynikach wyszukiwania przy użyciu punktu końcowego "Wystaw ponownie". Ten punkt końcowy ma ten sam kształt co [usunąć (unlist) punktu końcowego](#delete-a-package) , ale `POST` HTTP zamiast metody `DELETE` metody.
+Jeśli pakiet jest nieobecne na liście, jest możliwe ten pakiet ponownie widoczne w wynikach wyszukiwania przy użyciu punktu końcowego "Wystaw ponownie". Ten punkt końcowy ma ten sam kształt co [Usuń (wyrejestrowanie) punktu końcowego](#delete-a-package) , ale używa `POST` protokołu HTTP zamiast metody `DELETE` metody.
 
 Jeśli pakiet jest już na liście, żądanie nadal powiedzie się.
 
@@ -110,7 +109,7 @@ X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: 
 
 ### <a name="response"></a>Odpowiedź
 
-Kod stanu | Znaczenie
+Kod stanu: | Znaczenie
 ----------- | -------
-200         | Pakiet zostanie wyświetlony
-404         | Nie pakietu z dostarczonych `ID` i `VERSION` istnieje
+200         | Pakiet znajduje się teraz
+404         | Nie pakietu z dostępnego `ID` i `VERSION` istnieje

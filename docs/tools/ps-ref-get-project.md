@@ -1,23 +1,22 @@
 ---
-title: Get projekt NuGet w programie PowerShell
-description: Odwołanie do polecenia programu GetProject PowerShell w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Dokumentacja programu PowerShell Get projekt NuGet
+description: Dokumentacja poleceń programu GetProject PowerShell w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: afdf9f762bbd34531f9d9093238a2fed27e3f4d3
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 849261711fafcadbab38bf6fe99340c4b79e1e21
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817759"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43550440"
 ---
 # <a name="get-project-package-manager-console-in-visual-studio"></a>Get-Project (konsola menedżera pakietów w programie Visual Studio)
 
-*Dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio w systemie Windows.*
+*Dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio na Windows.*
 
-Wyświetla informacje o domyślnych lub określony projekt. `Get-Project` w szczególności zwraca obiekt obsługujący w obiekt Visual Studio DTE (Development Tools Environment) dla projektu.
+Wyświetla informacje o domyślnej lub określony projekt. `Get-Project` w szczególności zwraca obiekt obsługujący obiektowi Visual Studio DTE (środowisko programistyczne narzędzia) dla projektu.
 
 ## <a name="syntax"></a>Składnia
 
@@ -29,14 +28,14 @@ Get-Project [[-Name] <string>] [-All] [<CommonParameters>]
 
 | Parametr | Opis |
 | --- | --- |
-| Nazwa | Określa projekt do wyświetlenia, domyślnie używany będzie domyślny projekt wybrany w konsoli Menedżera pakietów. -Name przełącznik jest opcjonalne. |
+| Nazwa | Określa projekt do wyświetlenia, domyślnie używany będzie domyślny projekt wybrany w konsoli Menedżera pakietów. — Nazwa przełącznika jest opcjonalne. |
 | Wszystkie | Wyświetla informacje dla każdego projektu w rozwiązaniu; kolejność projektów nie jest deterministyczna. |
 
-Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
+Żaden z tych parametrów akceptuje znaków potoku danych wejściowych lub symbol wieloznaczny.
 
 ## <a name="common-parameters"></a>Wspólne parametry
 
-`Get-Project` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja błędu ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
+`Get-Project` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

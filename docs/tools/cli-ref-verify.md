@@ -1,26 +1,25 @@
 ---
-title: Sprawdź NuGet interfejsu wiersza polecenia, polecenie
-description: Dokumentacja dotycząca nuget.exe Sprawdź polecenie
+title: Sprawdź interfejs wiersza polecenia NuGet, polecenie
+description: Dokumentacja dotycząca nuget.exe sprawdź polecenia
 author: dtivel
 ms.author: dtivel
-manager: doronm
 ms.date: 03/06/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: c80334104f7d8b2ccbf16ea2c11dc37b39408eeb
-ms.sourcegitcommit: c8485dc61469511485367d2067b97d6f74b49f6e
+ms.openlocfilehash: 127f7a549c0a213f319c8820293646b302830436
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2018
-ms.locfileid: "34462855"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43545216"
 ---
 # <a name="verify-command-nuget-cli"></a>verify command, polecenie (interfejs wiersza polecenia NuGet)
 
 **Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 4.6 +
 
-Sprawdza, czy pakiet.
+Weryfikuje pakietu.
 
-Weryfikacja podpisanych pakietów nie jest jeszcze obsługiwana w .NET Core, w obszarze Mono lub na różnych platformach z systemem innym niż Windows.
+Weryfikacja podpisanych pakietów nie jest jeszcze obsługiwana w platformę .NET Core, w ramach platformy Mono lub na platformach innych niż Windows.
 
 ## <a name="usage"></a>Użycie
 
@@ -28,30 +27,30 @@ Weryfikacja podpisanych pakietów nie jest jeszcze obsługiwana w .NET Core, w o
 nuget verify <-All|-Signatures> <package(s)> [options]
 ```
 
-gdzie `<package(s)>` jest co najmniej jeden `.nupkg` plików.
+gdzie `<package(s)>` ma jeden lub więcej `.nupkg` plików.
 
-## <a name="nuget-verify--all"></a>Sprawdź nuget — wszystkie
+## <a name="nuget-verify--all"></a>Weryfikuj nuget — wszystkie
 
-Określa, że wszystkie sprawdzenia możliwe powinien być wykonywany na pakietów.
+Określa, że wszystkie sprawdzenia możliwe powinno być przeprowadzane w pakiety.
 
-## <a name="nuget-verify--signatures"></a>Sprawdź nuget - podpisów
+## <a name="nuget-verify--signatures"></a>Sprawdzanie nuget — podpisów
 
-Określa, należy wykonać weryfikacji podpisu pakietu.
+Określa, że powinno być przeprowadzane Weryfikacja podpisu pakietu.
 
-## <a name="options-for-verify--signatures"></a>Opcje "Weryfikuj - podpisów"
+## <a name="options-for-verify--signatures"></a>Opcje "Weryfikuj - sygnatury"
 
 | Opcja | Opis |
 | --- | --- |
-| CertificateFingerprint | Określa co najmniej jeden algorytm SHA-256 certyfikatu odciski palców certyfikatów (s), które podpisem pakiety muszą być podpisane przy. Odcisk palca certyfikatu algorytmu SHA-256 jest Skrót SHA-256 certyfikatu. Wielu danych wejściowych powinny być oddzielone średnikami. |
+| CertificateFingerprint | Określa co najmniej jeden algorytm SHA-256 certyfikatu odcisków palców certyfikatów (s), które podpisane pakiety muszą być podpisane za pomocą. Odcisk palca certyfikatu SHA-256 jest Skrót SHA-256 wymagany certyfikat. Wielu danych wejściowych powinien być średnikami. |
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
-| ForceEnglishOutput | Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) jest używany.|
+| ForceEnglishOutput | Wymusza nuget.exe do uruchamiania przy użyciu kultury niezmiennej, oparte na język angielski. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
 ## <a name="examples"></a>Przykłady
 

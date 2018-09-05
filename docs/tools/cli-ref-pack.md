@@ -1,26 +1,25 @@
 ---
 title: Polecenie pakietu NuGet interfejsu wiersza polecenia
-description: Informacje dotyczące polecenia pakiet nuget.exe
+description: Dokumentacja dotycząca poleceń pakietu nuget.exe
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 3140d56ac827d932c2323182ad040b8a4d14da5c
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: db236b0eaac34ca9f6f67fd15ca3ad6884f6a18d
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818042"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43549099"
 ---
 # <a name="pack-command-nuget-cli"></a>pack command, polecenie (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** pakietu tworzenia &bullet; **obsługiwane wersje:** 2.7 +
+**Dotyczy:** Tworzenie pakietu &bullet; **obsługiwane wersje:** 2.7 +
 
-Tworzy oparte na określony pakiet NuGet `.nuspec` lub pliku projektu. `dotnet pack` Polecenia (zobacz [polecenia dotnet](dotnet-Commands.md)) i `msbuild /t:pack` (zobacz [docelowych elementów MSBuild](../reference/msbuild-targets.md)) może być używany jako alternatyw.
+Tworzy pakiet NuGet na podstawie `.nuspec` lub pliku projektu. `dotnet pack` Polecenia (zobacz [polecenia dotnet](dotnet-Commands.md)) i `msbuild /t:pack` (zobacz [elementów docelowych MSBuild](../reference/msbuild-targets.md)) może być używany jako wersje alternatywne.
 
 > [!Important]
-> W obszarze Mono Tworzenie pakietu z pliku projektu nie jest obsługiwane. Należy również dostosować innego niż lokalne ścieżki w `.nuspec` plików do ścieżek typu Unix, jak nuget.exe nie konwertuje nazwy ścieżek systemu Windows, sama.
+> W obszarze platformy Mono Tworzenie pakietu z pliku projektu nie jest obsługiwane. Trzeba będzie również dostosować ścieżek inną niż lokalna w `.nuspec` plików do ścieżek typu Unix nuget.exe nie konwertuje nazwy ścieżek Windows, sam.
 
 ## <a name="usage"></a>Użycie
 
@@ -28,41 +27,41 @@ Tworzy oparte na określony pakiet NuGet `.nuspec` lub pliku projektu. `dotnet p
 nuget pack <nuspecPath | projectPath> [options] [-Properties ...]
 ```
 
-gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub odpowiednio projektu pliku.
+gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub projektu pliku, odpowiednio.
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
 | BasePath | Ustawia ścieżki podstawowej plików zdefiniowanych w `.nuspec` pliku. |
-| Kompilacja | Określa, czy projekt powinien skompilowany przed zbudowaniem pakietu. |
-| Wyklucz | Określa jeden lub więcej wzorców symboli wieloznacznych, które mają zostać wykluczone podczas tworzenia pakietu. Aby określić więcej niż jeden wzorzec, powtórz flagi - Exclude. Zobacz poniższy przykład. |
+| Kompilacja | Określa, czy projektu powinny zostać skompilowane przed kompilacją pakietu. |
+| Wyklucz | Określa jeden lub więcej wzorców symboli wieloznacznych, które mają zostać wykluczone podczas tworzenia pakietu. Aby określić więcej niż jeden wzorzec, powtórz flagi - wykluczania. Zobacz przykład poniżej. |
 | ExcludeEmptyDirectories | Uniemożliwia włączenie puste katalogi, podczas tworzenia pakietu. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| IncludeReferencedProjects | Wskazuje, że wbudowanych pakiet powinien zawierać przywoływane projekty jako zależności lub jako część pakietu. Jeśli przywoływanego projektu ma odpowiadające mu `.nuspec` pliku, który ma taką samą nazwę jak projekt, do którego istnieje odwołanie projektu jest dodawana jako zależność. W przeciwnym razie przywoływanego projektu jest dodawana jako część pakietu. |
-| Element MinClientVersion | Ustaw *minClientVersion* atrybutu utworzonego pakietu. Ta wartość zastępuje wartość istniejącej *minClientVersion* atrybutu (jeśli istnieją) w `.nuspec` pliku. |
-| MSBuildPath | *(4.0 +)*  Określa ścieżkę MSBuild do użycia z poleceniem pierwszeństwo `-MSBuildVersion`. |
-| MSBuildVersion | *(3.2 +)*  Określa wersję programu MSBuild ma być używany z tego polecenia. Obsługiwane wartości to 4, 12, 14, 15. Domyślnie jest wybierany MSBuild w ścieżce w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
-| NoDefaultExcludes | Zapobiega domyślne wykluczenie NuGet pakiet plików i pliki i foldery rozpoczynający się kropką, na przykład `.svn` i `.gitignore`. |
+| IncludeReferencedProjects | Wskazuje, że utworzone pakiet powinien zawierać przywoływane projekty, jako zależności lub jako część pakietu. Jeśli przywoływany projekt ma odpowiadające mu `.nuspec` pliku, który ma taką samą nazwę jak projektu, a następnie przywoływanego projektu zostanie dodany jako zależność. W przeciwnym razie przywoływany projekt jest dodawany jako część pakietu. |
+| Atrybut MinClientVersion | Ustaw *atrybutu minClientVersion* atrybut utworzony pakiet. Ta wartość zastępuje wartość istniejącej *atrybutu minClientVersion* atrybutu (jeśli istnieją) w `.nuspec` pliku. |
+| MSBuildPath | *(4.0 +)*  Określa ścieżkę program MSBuild będzie używać za pomocą polecenia pierwszeństwo `-MSBuildVersion`. |
+| MSBuildVersion | *(3.2 +)*  Określa numer wersji MSBuild ma być używany za pomocą tego polecenia. Obsługiwane wartości to 4, 12, 14, 15. Domyślnie program MSBuild w ścieżce jest pobierana w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
+| NoDefaultExcludes | Zapobiega domyślne wykluczenia pakietu nuget pakowanie plików i plików i folderów, rozpoczynając od kropki, takich jak `.svn` i `.gitignore`. |
 | NoPackageAnalysis | Określa, że pakiet nie należy uruchamiać analizy pakietu po utworzeniu pakietu. |
-| OutputDirectory | Określa folder, w którym przechowywany jest utworzony pakiet. Jeśli folder nie jest określony, używany jest bieżący folder. |
-| Właściwości | Powinna zostać wyświetlona ostatniego wiersza polecenia po innych opcji. Określa listę właściwości, które przesłaniają wartości w pliku projektu. zobacz [wspólne właściwości projektów MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazwy właściwości. Argument właściwości w tym miejscu znajduje się lista tokenu = pary wartości, oddziel je średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostaną zastąpione podanej wartości. Możliwe wartości ciągów w cudzysłowy. Należy pamiętać, że dla właściwości "Konfiguracja", wartość domyślna to "Debug". Aby zmienić konfigurację, wersji, należy użyć `-Properties Configuration=Release`. |
-| Suffix | *(3.4.4+)*  Dołącza sufiks z numerem wersji wewnętrznie generowane zwykle używany w przypadku dołączania kompilacji lub innych identyfikatorów w wersji wstępnej. Na przykład za pomocą `-suffix nightly` utworzy pakiet z podobne do numeru wersji `1.2.3-nightly`. Sufiksy musi rozpoczynać się od litery, aby uniknąć potencjalnych niezgodności z różnymi wersjami programu NuGet i Menedżer pakietów NuGet, błędy i ostrzeżenia. |
-| Symbole | Określa, że pakiet zawiera źródła i symbole. W przypadku użycia z `.nuspec` pliku, tworzy zwykły plik pakietu NuGet i odpowiedniego pakietu symboli. |
-| Narzędzie | Określa, że pliki wyjściowe projektu powinna zostać umieszczona w `tool` folderu. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
+| OutputDirectory | Określa folder, w którym utworzono pakiet jest przechowywany. Jeśli żaden folder jest określony, używany jest bieżącego folderu. |
+| Właściwości | Powinien zostać wyświetlony ostatni wiersz polecenia po innych opcji. Określa listę właściwości, które zastępują wartości w pliku projektu. zobacz [wspólne właściwości projektów MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazw właściwości. Argument właściwości w tym miejscu znajduje się lista token = pary wartości, oddziel je średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostaną zastąpione danej wartości. Możliwe wartości ciągów w znaki cudzysłowu. Należy pamiętać, że dla właściwości "Konfiguracja", wartość domyślna to "Debug". Aby zmienić konfigurację wydania, należy użyć `-Properties Configuration=Release`. |
+| Suffix | *(3.4.4+)*  Dołącza sufiks numerowi wersji wewnętrznie generowane, zwykle używane do wykonania operacji dołączania kompilacji lub innych identyfikatorów w wersji wstępnej. Na przykład za pomocą `-suffix nightly` spowoduje utworzenie pakietu z podobny do numeru wersji `1.2.3-nightly`. Sufiksy musi zaczynać się literą, aby uniknąć ostrzeżenia, błędy i potencjalnych niezgodności z użyciem różnych wersji programu NuGet i Menedżer pakietów NuGet. |
+| Symbole | Określa, że pakiet zawiera źródła i symboli. Gdy jest używane z `.nuspec` pliku, spowoduje to utworzenie pliku pakietu NuGet regularnych oraz odpowiednich symboli pakietu. |
+| Narzędzie | Określa, że pliki wyjściowe projektu, należy umieścić w `tool` folderu. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 | Wersja | Zastępuje numer wersji z `.nuspec` pliku. |
 
-Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
+Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 
-## <a name="excluding-development-dependencies"></a>Z wyjątkiem programowanie zależności
+## <a name="excluding-development-dependencies"></a>Z wyjątkiem tworzenia zależności
 
-Niektóre pakiety NuGet są przydatne jako programowanie zależności, które ułatwiają tworzenie własnych biblioteki, ale niekoniecznie nie są wymagane jako zależności pakietów rzeczywiste.
+Niektóre pakiety NuGet są przydatne jako zależności programowania, które pomagają tworzyć własne biblioteki, ale niekoniecznie nie są wymagane jako zależności pakietów rzeczywistych.
 
-`pack` Zignoruje polecenia `package` wpisów w `packages.config` zawierających `developmentDependency` ustawić atrybutu `true`. Te wpisy nie będzie zawierał jako zależności w pakiecie utworzony.
+`pack` Polecenie będzie ignorować `package` wpisów w `packages.config` , które mają `developmentDependency` ustawioną wartość atrybutu `true`. Te wpisy nie zostaną uwzględnione jako zależności w pakiecie utworzony.
 
-Na przykład, należy wziąć pod uwagę następujące `packages.config` plik w projekcie źródła:
+Na przykład, należy wziąć pod uwagę następujące `packages.config` pliku w projekcie źródła:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -73,7 +72,7 @@ Na przykład, należy wziąć pod uwagę następujące `packages.config` plik w 
 </packages>
 ```
 
-Dla tego projektu, pakiet utworzony przez `nuget pack` będzie zależy od `jQuery` i `microsoft-web-helpers` , ale nie `netfx-Guard`.
+Dla tego projektu, pakiet utworzony przez `nuget pack` będzie mieć zależność na `jQuery` i `microsoft-web-helpers` , ale nie `netfx-Guard`.
 
 ## <a name="examples"></a>Przykłady
 

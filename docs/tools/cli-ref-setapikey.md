@@ -1,23 +1,22 @@
 ---
-title: Polecenie setapikey NuGet interfejsu wiersza polecenia
-description: Informacje dotyczące polecenia setapikey nuget.exe
+title: Polecenie setapikey interfejs wiersza polecenia NuGet
+description: Dokumentacja dotycząca poleceń setapikey nuget.exe
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 66fc62074b4e7c39ff2ed6b515eee9f821530536
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: b00e8b1f7a6fda9c1a0c079069fa8ee08a45b419
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817687"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43549223"
 ---
-# <a name="setapikey-command-nuget-cli"></a>polecenie setapikey (NuGet CLI)
+# <a name="setapikey-command-nuget-cli"></a>polecenie setapikey (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** zużycie pakietu, publikowanie &bullet; **obsługiwane wersje:** wszystkie
+**Dotyczy:** zużycie pakietów, publikowania &bullet; **obsługiwane wersje:** wszystkie
 
-Zapisuje klucz interfejsu API dla danego adresu URL podanego serwera do `NuGet.Config` tak, aby nie trzeba wprowadzać dla kolejnych poleceń.
+Zapisuje klucz interfejsu API dla danego serwera adresu URL do `NuGet.Config` tak, aby nie trzeba wprowadzić używane przy kolejnych poleceniach.
 
 ## <a name="usage"></a>Użycie
 
@@ -25,19 +24,19 @@ Zapisuje klucz interfejsu API dla danego adresu URL podanego serwera do `NuGet.C
 nuget setapikey <key> -Source <url> [options]
 ```
 
-gdzie `<source>` identyfikuje serwer i `<key>` to klucz lub hasło, aby zapisać. Jeśli `<source>` jest pominięty, zakłada nuget.org.
+gdzie `<source>` identyfikuje serwer i `<key>` jest klucz lub hasło, aby zapisać. Jeśli `<source>` jest pominięty, zakłada nuget.org.
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) jest używany.|
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
+| Nieinterakcyjnym | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
-Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
+Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 
 ## <a name="examples"></a>Przykłady
 

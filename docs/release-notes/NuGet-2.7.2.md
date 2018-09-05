@@ -1,30 +1,29 @@
 ---
 title: Informacje o wersji NuGet 2.7.2
-description: Informacje o wersji programu NuGet 2.7.2 tym — znane problemy, poprawki, dodatkowe funkcje i dcr.
+description: Informacje o wersji NuGet 2.7.2, w tym — znane problemy, poprawki, funkcje dodane i DCRs.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 0cb99e4e1ae9238286dc4fab7b8d34e5b117ed64
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: 3e63944a05f66d5dadf17c5d4b91d3bc4478bb33
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31820238"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43550073"
 ---
 # <a name="nuget-272-release-notes"></a>Informacje o wersji NuGet 2.7.2
 
-[Informacje o wersji NuGet 2.7.1](../release-notes/nuget-2.7.1.md) | [NuGet 2.8 informacje o wersji](../release-notes/nuget-2.8.md)
+[Informacje o wersji NuGet 2.7.1](../release-notes/nuget-2.7.1.md) | [informacjach o wersji NuGet 2.8](../release-notes/nuget-2.8.md)
 
-NuGet 2.7.2 została wydana 11 listopad 2013.
+NuGet 2.7.2 została wydana 11 listopada 2013 r.
 
-## <a name="noteworthy-bug-fixes-and-features"></a>Warte wymienienia poprawki i funkcje
+## <a name="noteworthy-bug-fixes-and-features"></a>Warte zauważenia poprawki i funkcje
 
 ### <a name="license-text"></a>Tekst licencji
-Przez jakiś czas Microsoft uwzględniła pakietów NuGet dla kilku popularnych bibliotek open source jako część domyślnych szablonów dla projektów aplikacji sieci Web w programie Visual Studio. dobrze znane przykładem tego typu biblioteki jest prawdopodobnie jQuery. Z powodu umowy pomocy technicznej, skojarzone ze składnikami, które są dostarczane wraz z produktem plik skryptu pakietu zawiera tekst innej licencji niż plik skryptu znalezione w pakiecie w galerii nuget.org publicznych. Ta różnica w tekście można zapobiec aktualizacji pakietu z kontynuowaniem wyniku bloki tekstu innej licencji powoduje plików skryptów przeznaczonych do wartości skrótu zawartości innego (i dlatego powinien być traktowany jako zmodyfikowane w projekcie).
+Przez jakiś czas firma Microsoft dołączyła pakietów NuGet dla kilku popularnych bibliotek typu open source w ramach domyślnych szablonów projektów aplikacji sieci Web w programie Visual Studio. jQuery prawdopodobnie jest dobrze znanych przykład tego typu biblioteki. Ze względu na umowy dotyczącej pomocy technicznej, skojarzone ze składnikami, które są dostarczane wraz z produktem pliku skryptu pakietu zawiera tekst innej licencji, niż w pliku skryptu znaleziono w tym samym pakiecie galerii publicznej witrynie nuget.org. Ta różnica w tekście można zapobiec aktualizacjami pakietów z kontynuowaniem wyniku bloki tekstu innej licencji, powodując pliki skryptów, które mogą mieć różne wartości skrótów zawartości wartości (i dlatego powinien być traktowany jako zmodyfikowane w projekcie).
 
-Aby uniknąć tego problemu, NuGet 2.7.2 umożliwia autorowi skryptu obejmują bloku tekstu licencji w ramach sekcji specjalnie oznaczony, która wygląda w następujący sposób.
+Aby rozwiązać ten problem, NuGet 2.7.2 umożliwia Autor skryptu dołączyć blok tekstu licencji w ramach sekcji specjalnie oznaczony, który wygląda w następujący sposób.
 
     /************** NUGET: BEGIN LICENSE TEXT **************
      * The following code is licensed under the MIT license
@@ -32,18 +31,18 @@ Aby uniknąć tego problemu, NuGet 2.7.2 umożliwia autorowi skryptu obejmują b
      * only.
      ************** NUGET: END LICENSE TEXT ***************/
 
-Podczas aktualizacji pakietów z zawartością pliki zawierające ten blok NuGet nie uwzględnić zawartość bloku podczas porównywania wersji w galerii NuGet i w związku z tym usunąć i zaktualizować zawartości pliku tak, jakby było zgodne z oryginalną kopię.
+Podczas aktualizowania pakietów zawartości pliki zawierające ten blok NuGet nie uwzględnić zawartość bloku porównanie z wersją w galerii NuGet i można w związku z tym usuwanie i aktualizowanie zawartości pliku tak, jakby on zgodny oryginał.
 
-Ten blok jest identyfikowane przez tekstem "NUGET: Rozpocznij licencji" i "NUGET: koniec licencji TEXT" występujących w dowolnym miejscu na początku i końcowych wierszy.  Inne formatowania nie istnieją żadne wymagania, dzięki czemu ta funkcja umożliwia dowolny typ pliku tekstowego, niezależnie od języka.
+Ten blok jest identyfikowany przez tekst "NUGET: Rozpocznij licencji TEXT" i "NUGET: koniec licencji TEXT" występujących w dowolnym miejscu na początku i końcowych wierszy.  Brak innych wymagań formatowania istnieje, dzięki czemu tej funkcji, które zostaną użyte w dowolnego typu pliku tekstowego, niezależnie od języka.
 
-### <a name="add-binding-redirects-for-non-framework-assemblies"></a>Dodaj przekierowania powiązania dla zestawów bez struktury
-Dla zestawów, które są częścią programu .NET Framework NuGet pomija Dodawanie przekierowania powiązania do pliku konfiguracji aplikacji, podczas aktualizowania pakietu. Ta poprawka eliminuje Regresja w 2.7 NuGet zgodnie z którymi przekierowania powiązania nie są dodano w programie niektóre zestawy, nawet jeśli te zestawy nie są uznawane za częścią programu .NET Framework. NuGet 2.7.2 przywraca poprzedniej 2.5 NuGet i zachowanie 2.6 i dodaje przekierowania wiązań.
+### <a name="add-binding-redirects-for-non-framework-assemblies"></a>Dodaj powiązanie przekierowuje zestawy bez struktury
+Dla zestawów, które są częścią programu .NET Framework NuGet pomija dodanie przekierowań powiązań do pliku konfiguracji aplikacji, podczas aktualizowania pakietu. Ta poprawka eliminuje Regresja w wersji 2.7 NuGet, według której przekierowania powiązań nie utrudniał dla niektórych zestawów, nawet jeśli te zestawy nie są uważana za część .NET Framework. NuGet 2.7.2 przywrócenie poprzedniej wersji NuGet 2.5 i 2.6 zachowanie i dodanie przekierowań powiązań.
 
-### <a name="installing-portable-libraries-with-xamarin-tools-installed"></a>Instalowanie przenośnych bibliotek z zainstalowanymi narzędziami Xamarin
-Po zainstalowaniu na komputerze narzędzia do programowania dla platformy Xamarin modyfikują dane konfiguracji obsługiwanych platform, aby określić zgodność istniejących kombinacji framework docelowych i platform Xamarin. Wersją 2.7.2 NuGet zna teraz tych zasad zgodności niejawne i w związku z tym ułatwia dla deweloperów korzystających platformy Xamarin zainstalować przenośnych bibliotek, które są zgodne z Xamarin, ale nie zostało oznaczone jako takie w pakiecie metadane samej siebie.
+### <a name="installing-portable-libraries-with-xamarin-tools-installed"></a>Instalowanie bibliotek przenośnych z zainstalowanymi narzędziami platformy Xamarin
+Po zainstalowaniu narzędzi programistycznych platformy Xamarin na komputerze mogą modyfikować dane konfiguracji obsługiwanych platform, aby określić zgodność między istniejących target framework kombinacji i platformy Xamarin. Za pomocą wersji 2.7.2 NuGet jest teraz pamiętać o tych reguł niejawnych zgodności i w związku z tym można łatwo dla deweloperów platformy Xamarin do zainstalowania bibliotek przenośnych, które są zgodne z platformy Xamarin, ale nie zostały jawnie oznaczone jako takie w pakiecie metadane sam.
 
-### <a name="machine-wide-configuration-settings-honored"></a>Ustawienia konfiguracji komputera honorowane
-Używając hierarchiczna pliki Nuget.Config, klucz repositoryPath nie został jest honorowane plików Nuget.Config najbardziej zbliżony do katalogu głównego rozwiązania. W programie Visual Studio 2013 NuGet instaluje niestandardowego pliku Nuget.Config na %ProgramData%\NuGet\Config\VisualStudio\12.0\Microsoft.VisualStudio.config aby można było dodać źródła pakietu "Microsoft i .NET". W związku z tym obejścia dla przy użyciu niestandardowych repositoryPath w rozwiązaniu było usunąć plik Nuget.Config poziom maszyny — co oznaczało, również usunięcie źródła pakietu "Microsoft i .NET". NuGet 2.7.2 teraz honoruje reguły pierwszeństwo repositoryPath korzystania z plików Nuget.Config hierarchicznej.
+### <a name="machine-wide-configuration-settings-honored"></a>Ustawienia konfiguracji komputera, honorowane
+Korzystając z hierarchicznej plików w pliku Nuget.Config, klucz repositoryPath został nie już brane pod uwagę najbliżej katalog główny rozwiązania w pliku Nuget.Config plików. W programie Visual Studio 2013 NuGet instaluje niestandardowy plik Nuget.Config w %ProgramData%\NuGet\Config\VisualStudio\12.0\Microsoft.VisualStudio.config, aby można było dodać źródła pakietu "Firmy Microsoft i platformy .NET". W wyniku obejście dotyczące korzystania z niestandardowych repositoryPath w rozwiązaniu było usunąć maszyn na poziomie pliku Nuget.Config — co oznaczało, usuwając źródła pakietu "Firmy Microsoft i platformy .NET". NuGet 2.7.2 teraz honoruje reguły pierwszeństwa repositoryPath, korzystając z hierarchicznej plików w pliku Nuget.Config.
 
 ## <a name="all-changes"></a>Wszystkie zmiany
-Pełną listę prac elementów usunięto w wersji NuGet 2.7.2, sprawdź widok [NuGet Tracker problem w tej wersji](https://nuget.codeplex.com/workitem/list/advanced?keyword=&status=All&type=All&priority=All&release=NuGet%202.7.2&assignedTo=All&component=All&sortField=LastUpdatedDate&sortDirection=Descending&page=0&reasonClosed=Fixed).
+Pełną listę prac elementy rozwiązane w NuGet 2.7.2, sprawdź widok [NuGet narzędzie do śledzenia problemów w tej wersji](https://nuget.codeplex.com/workitem/list/advanced?keyword=&status=All&type=All&priority=All&release=NuGet%202.7.2&assignedTo=All&component=All&sortField=LastUpdatedDate&sortDirection=Descending&page=0&reasonClosed=Fixed).

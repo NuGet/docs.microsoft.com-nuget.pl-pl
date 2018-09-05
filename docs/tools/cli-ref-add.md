@@ -1,23 +1,22 @@
 ---
-title: Interfejs wiersza polecenia NuGet Dodaj — polecenie
-description: Dodaj odwołanie do nuget.exe — polecenie
+title: Interfejs wiersza polecenia NuGet, Dodaj polecenie
+description: Dokumentacja dotycząca nuget.exe dodaj — polecenie
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: f229ca100463c556f9c4cefc49f52724a9c4ba77
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 7a72186e1dece082cd200a03849a0b12c751a645
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817613"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43545837"
 ---
 # <a name="add-command-nuget-cli"></a>add command, polecenie (interfejs wiersza polecenia NuGet)
 
 **Dotyczy**: publikowanie pakietu &bullet; **obsługiwane wersje**: 3.3 +
 
-Dodaje określony pakiet do źródła pakietu protokołu HTTP (folder lub ścieżka UNC) w układzie hierarchicznym, w którym są tworzone foldery numeru identyfikator i wersję pakietu. Na przykład:
+Dodaje określony pakiet do źródła pakietu protokołu HTTP (folder lub ścieżka UNC) w układzie hierarchicznym, w którym są tworzone foldery dla pakietu ID i numeru wersji. Na przykład:
 
     \\myserver\packages
       └─<packageID>
@@ -26,9 +25,9 @@ Dodaje określony pakiet do źródła pakietu protokołu HTTP (folder lub ście�
           ├─<packageID>.<version>.nupkg.sha512
           └─<packageID>.nuspec
 
-Podczas przywracania lub aktualizowania źródle pakietu, hierarchiczna układ zapewnia znacznie wyższą wydajność.
+Podczas przywracania lub aktualizowanie względem źródła pakietu, w układzie hierarchicznym zapewnia znacznie lepszą wydajność.
 
-Aby rozwinąć wszystkie pliki w pakiecie do docelowego źródła pakietu, należy użyć `-Expand` przełącznika. Zazwyczaj powoduje to dodatkowe podfolderów znajdujących się w lokalizacji docelowej, takie jak `tools` i `lib`.
+Aby rozwinąć wszystkie pliki w pakiecie do docelowego źródła pakietu, należy użyć `-Expand` przełącznika. Zazwyczaj powoduje to dodatkowe podfolderów znajdujących się w miejscu docelowym, takich jak `tools` i `lib`.
 
 ## <a name="usage"></a>Użycie
 
@@ -36,20 +35,20 @@ Aby rozwinąć wszystkie pliki w pakiecie do docelowego źródła pakietu, nale�
 nuget add <packagePath> -Source <sourcePath> [options]
 ```
 
-gdzie `<packagePath>` jest ścieżka do pakietu, aby dodać, a `<sourcePath>` określa źródła pakietu na podstawie folderu, do którego zostanie dodany pakiet. Źródła HTTP nie są obsługiwane.
+gdzie `<packagePath>` jest nazwa ścieżki do pakietu, aby dodać, a `<sourcePath>` określa źródła pakietu na podstawie folderu, do którego zostanie dodany pakietu. Źródła HTTP nie są obsługiwane.
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
-| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
+| ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) jest używany.|
 | Rozwiń węzeł | Dodaje wszystkie pliki w pakiecie do źródła pakietu. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
+| Nieinterakcyjnym | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
-Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
+Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 
 ## <a name="examples"></a>Przykłady
 

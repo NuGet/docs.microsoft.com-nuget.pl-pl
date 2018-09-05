@@ -1,23 +1,22 @@
 ---
-title: NuGet Register-TabExpansion w programie PowerShell
-description: Odwołanie do polecenia programu PowerShell rejestrowanie TabExpansion w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Dokumentacja programu NuGet Register-TabExpansion programu PowerShell
+description: Dokumentacja polecenia PowerShell TabExpansion Zarejestruj się w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 8011c0e6aa951a32114d460803c493810964a7e0
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 98171c598bd4a3468bd23e2d6060e267c38021b4
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818421"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43546608"
 ---
 # <a name="register-tabexpansion-package-manager-console-in-visual-studio"></a>Register-TabExpansion (Konsola Menedżera pakietów w programie Visual Studio)
 
-*Dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio w systemie Windows.*
+*Dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio na Windows.*
 
-Rejestruje rozszerzenie kartę parametrów określone polecenie tak, aby w przypadku karty po wprowadzeniu polecenia rozwinięte wartości są wyświetlane jako dostępne opcje dla danego parametru. Wszelkie poprzednie rozszerzenia dla polecenia zostaną zastąpione.
+Rejestruje rozwijania karcie Parametry określone polecenie w taki sposób, że gdy karta jest używana, po wprowadzeniu polecenia, rozwinięte wartości są wyświetlane jako opcje dostępne dla danego parametru. Wszelkie poprzednie rozszerzeń dla polecenia zostaną zastąpione.
 
 ## <a name="syntax"></a>Składnia
 
@@ -29,25 +28,25 @@ Register-TabExpansion [-Name] <String> [-Definition] <Object> [<CommonParameters
 
 | Parametr | Opis |
 | --- | --- |
-| Nazwa | (Wymagane) Polecenie, do którego ma zostać zarejestrowany rozszerzenia. -Name przełącznika sam jest opcjonalna. |
-| Definicja | (Wymagane) Obiekt opisujący argument w składni `@{'<parameter>' = {'<value1>', '<value2>', ...}}` gdzie `<parameter>` jest nazwą parametru do modyfikowania i każdego `<value>` zawiera określone rozszerzenia. Pojedyncze i podwójne cudzysłowy są akceptowane. |
+| Nazwa | (Wymagane) Polecenie, do którego ma zostać zarejestrowany rozszerzenia. -Name samym przełączniku jest opcjonalne. |
+| Definicja | (Wymagane) Obiekt opisujący argument w składni `@{'<parameter>' = {'<value1>', '<value2>', ...}}` gdzie `<parameter>` jest nazwą parametru, aby zmodyfikować, a każdy `<value>` zawiera określone rozszerzenia. Pojedyncze i podwójne cudzysłowy są akceptowane. |
 
-Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.
+Żaden z tych parametrów akceptuje znaków potoku danych wejściowych lub symbol wieloznaczny.
 
 ## <a name="common-parameters"></a>Wspólne parametry
 
-`Register-TabExpansion` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja błędu ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
+`Register-TabExpansion` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 
-Należy wziąć pod uwagę rozwiązanie, które zawiera trzy projekty nazwy EventManager, narzędzia i SpecialParser. Deweloper często używa `Update-Package` polecenia w różnym czasie z każdym z tych projektów. Użytkownik uzna wygodny mają `Update-Package` polecenia podaj rozszerzenia automatycznego uzupełniania dla `-ProjectName` argumentu, więc nie musi ona przeprowadzać wpisywania nazwy projektu zawsze. 
+Należy wziąć pod uwagę rozwiązanie, które zawiera trzy nazwy projektów EventManager, narzędzia i SpecialParser. Deweloper często używane `Update-Package` polecenia w różnym czasie z każdą z tych projektów. Odnajduje on wygodne mają `Update-Package` polecenia zapewniają rozszerzeń automatycznego uzupełniania dla `-ProjectName` argumentu, więc nie potrzebuje do wpisywania nazwy projektu każdorazowo. 
 
-Następujące polecenie, następnie rejestruje nazwy tych trzech projektu jako rozszerzenia dla `-ProjectName` parametru:
+Następujące polecenie, następnie rejestruje te nazwy trzy projektu jako rozszerzenie dla `-ProjectName` parametru:
 
 ```ps
 Register-TabExpansion Update-Package @{'ProjectName' = {'EventManager', 'Utilities', 'SpecialParser'}}    
 ```
 
-Deweloper może następnie wpisz `Update-Package -ProjectName `, a następnie naciśnij klawisz Tab i rozszerzenia przedstawiane jako opcje automatycznego uzupełniania w temacie:
+Deweloper może następnie wpisz `Update-Package -ProjectName `, a następnie naciśnij klawisz Tab i Zobacz rozszerzenia przedstawiane jako opcje automatycznego uzupełniania:
 
 ![Przykład użycia TabExpansion rejestru](media/Register-TabExpansion-Example.png)

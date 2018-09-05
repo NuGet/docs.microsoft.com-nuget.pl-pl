@@ -1,23 +1,22 @@
 ---
 title: Polecenie konfiguracji interfejsu wiersza polecenia NuGet
-description: Informacje dotyczące polecenia konfiguracyjnego nuget.exe
+description: Dokumentacja dotycząca poleceń konfiguracji nuget.exe
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 9deab9fcca740ea99da61b7d54700a29c1813e88
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 376b69186ad22d4d94a1df51146b833a1f6f9bd9
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818168"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43546481"
 ---
-# <a name="config-command-nuget-cli"></a>polecenie konfiguracji (NuGet CLI)
+# <a name="config-command-nuget-cli"></a>polecenie config (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** wszystkie &bullet; **obsługiwane wersje**: wszystkie
+**Dotyczy:** wszystkich &bullet; **obsługiwane wersje**: wszystkie
 
-Pobiera lub ustawia wartości konfiguracji NuGet. Aby uzyskać dodatkowe obciążenie, zobacz [Konfigurowanie zachowania NuGet](../consume-packages/configuring-nuget-behavior.md). Szczegółowe informacje dotyczące nazwami kluczy, zapoznaj się [odwołania do pliku config NuGet](../reference/nuget-config-file.md).
+Pobiera lub ustawia wartości konfiguracji NuGet. Aby uzyskać dodatkowe użycie, zobacz [Konfigurowanie zachowania pakietu NuGet](../consume-packages/configuring-nuget-behavior.md). Szczegółowe informacje dotyczące dopuszczalny rozmiar nazwy kluczy, można znaleźć [odwołanie do pliku config NuGet](../reference/nuget-config-file.md).
 
 ## <a name="usage"></a>Użycie
 
@@ -26,24 +25,24 @@ nuget config -Set <name>=[<value>] [<name>=<value> ...] [options]
 nuget config -AsPath <name> [options]
 ```
 
-gdzie `<name>` i `<value>` określ parę klucz wartość można ustawić w konfiguracji. Można określić dowolną liczbę par zgodnie z potrzebami. Aby usunąć wartość, określ nazwę i `=` logowania, ale żadnej wartości.
+gdzie `<name>` i `<value>` określ parę klucz wartość należy ustawić w konfiguracji. Można określić dowolną liczbę par zgodnie z potrzebami. Aby usunąć wartość, określ nazwę i `=` logowania, ale bez wartości.
 
-Dopuszczalne nazw kluczy, zobacz [odwołania do pliku config NuGet](../reference/nuget-config-file.md).
+Dopuszczalny rozmiar klucza nazwy opisano w artykule [odwołanie do pliku config NuGet](../reference/nuget-config-file.md).
 
-W NuGet 3.4 + `<value>` można użyć [zmiennych środowiskowych](cli-ref-environment-variables.md).
+W pakiecie NuGet 3.4 + `<value>` służy [zmienne środowiskowe](cli-ref-environment-variables.md).
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
-| AsPath | Zwraca wartość konfiguracji jako ścieżka, zignorowane, kiedy `-Set` jest używany. |
-| ConfigFile | Plik konfiguracji NuGet do zmodyfikowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` (system Mac/Linux) jest używany.|
+| AsPath | Zwraca wartość konfiguracji w postaci ścieżki, ignorowane, gdy `-Set` jest używany. |
+| ConfigFile | Plik konfiguracyjny NuGet do zmodyfikowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) jest używany.|
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
-| Nieinterakcyjne | Pomija wyświetla monit o dane wejściowe użytkownika lub potwierdzeń. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *quiet*, *szczegółowe*. |
+| Nieinterakcyjnym | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
-Zobacz też [zmienne środowiskowe](cli-ref-environment-variables.md)
+Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 
 ### <a name="examples"></a>Przykłady
 

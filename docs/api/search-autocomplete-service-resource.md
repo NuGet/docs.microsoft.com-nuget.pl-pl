@@ -1,22 +1,21 @@
 ---
-title: Funkcji AutoComplete, NuGet interfejsu API
-description: Usługa autouzupełniania wyszukiwania obsługuje Odnajdowanie interaktywne pakietu identyfikatorów i wersje.
+title: Autouzupełnianie, interfejs API programu NuGet
+description: Usługa wyszukiwania w funkcji autouzupełniania obsługuje Odnajdowanie interaktywne pakietu identyfikatorów i wersji.
 author: joelverhagen
 ms.author: jver
-manager: skofman
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: d5e1936c6c5406a1a376c16b2bad5351320dfb4f
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: 01f919dc3bbfb6752c8f8e055a3cd473ad194e75
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31822139"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43549086"
 ---
-# <a name="autocomplete"></a>Funkcji AutoComplete
+# <a name="autocomplete"></a>Autouzupełnianie
 
-Istnieje możliwość tworzenia pakietu identyfikator i wersja autouzupełniania środowisko przy użyciu interfejsu API w wersji 3. Zasoby używane do wykonywania kwerend autouzupełniania `SearchAutocompleteService` można znaleźć zasobu w [indeksu usługi](service-index.md).
+Jest możliwe utworzenie pakietu identyfikator i wersja autouzupełniania doświadczenie w korzystaniu z interfejsu API w wersji 3. Zasób używane na potrzeby wykonywania zapytań autouzupełniania jest `SearchAutocompleteService` można znaleźć zasobu w [indeks usług](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
@@ -24,23 +23,23 @@ Następujące `@type` są używane wartości:
 
 @type Wartość                          | Uwagi
 ------------------------------------ | -----
-SearchAutocompleteService            | Początkowa wersja
+SearchAutocompleteService            | Wersja początkowa
 SearchAutocompleteService/3.0.0-beta | Alias `SearchAutocompleteService`
 SearchAutocompleteService/3.0.0-rc   | Alias `SearchAutocompleteService`
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
-Bazowy adres URL dla następujących interfejsów API jest wartością `@id` właściwości skojarzone z jedną z wyżej wymienionych zasobów `@type` wartości. W następującym dokumencie symbol zastępczy bazowy adres URL `{@id}` będą używane.
+Podstawowy adres URL dla następujących interfejsów API jest wartością `@id` właściwości skojarzonej z jedną z wyżej wymienionych zasobów `@type` wartości. W następującym dokumencie symbol zastępczy bazowy adres URL `{@id}` będą używane.
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Wszystkie adresy URL w obsługę zasobów rejestracji znaleziono metod HTTP `GET` i `HEAD`.
+Wszystkie adresy URL, znaleziono w obsłudze zasobów rejestracji metod HTTP `GET` i `HEAD`.
 
 ## <a name="search-for-package-ids"></a>Wyszukaj pakiet identyfikatorów
 
-Pierwszy autouzupełniania interfejsu API obsługuje wyszukiwanie część ciągu Identyfikatora pakietu. Jest to doskonały, gdy chcesz zapewnić funkcji typeahead pakietu w interfejsie użytkownika zintegrowany ze źródłem pakietu NuGet.
+Autouzupełnianie pierwszy interfejs API obsługuje wyszukiwanie część ciągu Identyfikatora pakietu. Jest to doskonałe, gdy chcesz udostępnić funkcję typeahead pakietu w interfejsie użytkownika, zintegrowany z źródła pakietu NuGet.
 
-Pakiet o tylko wersje nieznajdujące się na liście nie będą wyświetlane w wynikach.
+Pakiet wersjom tylko nieznajdujące się na liście będą widoczne w wynikach.
 
     GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
 
@@ -48,34 +47,34 @@ Pakiet o tylko wersje nieznajdujące się na liście nie będą wyświetlane w w
 
 Nazwa        | W     | Typ    | Wymagane | Uwagi
 ----------- | ------ | ------- | -------- | -----
-q           | Adres URL    | string  | Brak       | Ciąg, aby porównać pakietu identyfikatorów
-Pomiń        | Adres URL    | integer | Brak       | Liczba wyników, aby pominąć dla podział na strony
-podejmij        | Adres URL    | integer | Brak       | Liczba wyników do zwrócenia do podział na strony
-wydanie wstępne  | Adres URL    | wartość logiczna | Brak       | `true` lub `false` określającą, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
-semVerLevel | Adres URL    | string  | Brak       | Ciąg wersji programu SemVer 1.0.0 
+q           | Adres URL    | string  | Brak       | Ciąg do porównania pakietu identyfikatorów
+Pomiń        | Adres URL    | integer | Brak       | Liczba wyników do pominięcia do dzielenia na strony
+Wypełnij        | Adres URL    | integer | Brak       | Liczba wyników do zwrócenia do dzielenia na strony
+wersja wstępna  | Adres URL    | wartość logiczna | Brak       | `true` lub `false` określająca, czy dołączać [pakiety w wersji wstępnej](../create-packages/prerelease-packages.md)
+semVerLevel | Adres URL    | string  | Brak       | Ciąg wersji SemVer 1.0.0 
 
-Zapytanie autouzupełniania `q` jest analizowana w taki sposób, który jest zdefiniowany przez implementację serwera. nuget.org obsługuje wyszukiwanie prefiks tokeny Identyfikatora pakietu będące części identyfikatora utworzonego przez spliting oryginalnej camel znakami wielkość liter i symboli.
+Zapytanie autouzupełniania `q` jest analizowany w taki sposób, który jest definiowany przez implementację serwera. nuget.org obsługuje zapytania dla prefiksu tokeny Identyfikatora pakietu będące rodzajów identyfikator, który został utworzony przez spliting oryginalny pisane znakami wielkość liter i symboli.
 
-`skip` Domyślne wartości parametrów na 0.
+`skip` Domyślnych wartości parametrów na 0.
 
-`take` Parametr powinien być liczbą całkowitą większą niż zero. Implementacja serwera może nałożyć wartości maksymalnej.
+`take` Parametr powinien być liczbą całkowitą większą niż zero. Implementacja serwera może nałożyć wartość maksymalna.
 
-Jeśli `prerelease` nie zostanie podany, pakiety wersji wstępnej są wyłączone.
+Jeśli `prerelease` nie zostanie podana, pakiety w wersji wstępnej są wyłączone.
 
-`semVerLevel` Parametru zapytania jest używana do wyrazić zgodę na [pakiety programu SemVer 2.0.0](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29#identifying-semver-v200-packages).
-Jeśli ten parametr zapytania jest wyłączone, zostaną zwrócone tylko pakiet identyfikatory zgodne wersje programu SemVer 1.0.0 (z [standardowe versioning NuGet](../reference/package-versioning.md) ostrzeżenia, na przykład ciągi wersji z 4 elementy liczba całkowita).
-Jeśli `semVerLevel=2.0.0` została podana, zostanie zwrócony zarówno programu SemVer 1.0.0 i pakiety zgodne programu SemVer 2.0.0. Zobacz [obsługę programu SemVer 2.0.0 nuget.org](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29) Aby uzyskać więcej informacji.
+`semVerLevel` Parametru zapytania jest używana do wyrażenia zgody na [pakietów SemVer 2.0.0](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29#identifying-semver-v200-packages).
+Jeśli ten parametr zapytania jest wyłączona, zostaną zwrócone tylko pakiet identyfikatory o SemVer 1.0.0 zgodne wersje (z [standardowych wersji NuGet](../reference/package-versioning.md) zastrzeżenia, takich jak ciągi wersji z 4 elementów liczba całkowita).
+Jeśli `semVerLevel=2.0.0` zostanie podana, zostaną zwrócone SemVer 1.0.0 i pakiety zgodne SemVer 2.0.0. Zobacz [SemVer 2.0.0 obsługę nuget.org](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29) Aby uzyskać więcej informacji.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź jest dokument JSON zawierający do `take` autouzupełniania wyników.
+Odpowiedź jest dokument JSON zawierający do `take` wyniki funkcji autouzupełniania.
 
 Główny obiekt JSON ma następujące właściwości:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-totalHits | integer          | Tak      | Całkowita liczba dopasowania, bez uwzględnienia `skip` i `take`
-dane      | Tablica ciągów | Tak      | Identyfikatory są dopasowane wg żądania pakietu
+totalHits | integer          | Tak      | Całkowita liczba dopasowań, pomijając `skip` i `take`
+dane      | Tablica ciągów | Tak      | Identyfikatory dopasowane przez żądania pakietu
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
@@ -87,9 +86,9 @@ POBIERZ https://api-v2v3search-0.nuget.org/autocomplete?q=storage&prerelease=tru
 
 ## <a name="enumerate-package-versions"></a>Wyliczenie wersji pakietu
 
-Po identyfikator pakietu został odnaleziony przy użyciu poprzedniej interfejsu API, klient może używać automatycznego uzupełniania interfejsu API wyliczyć wersji pakietu identyfikatora podany pakiet.
+Po odnalezieniu Identyfikatora pakietu za pomocą poprzedniej interfejsu API klient może używać interfejsu API automatycznego uzupełniania wyliczyć wersji pakietu dla identyfikatora podanego pakietu
 
-Wersja pakietu, który jest nieznajdujące się na liście nie będą widoczne w wynikach.
+Wersja pakietu, który jest nieobecne na liście będą widoczne w wynikach.
 
     GET {@id}?id={ID}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
 
@@ -97,25 +96,25 @@ Wersja pakietu, który jest nieznajdujące się na liście nie będą widoczne w
 
 Nazwa        | W     | Typ    | Wymagane | Uwagi
 ----------- | ------ | ------- | -------- | -----
-identyfikator          | Adres URL    | string  | Tak      | Identyfikator pakietu, który można pobrać wersji
-wydanie wstępne  | Adres URL    | wartość logiczna | Brak       | `true` lub `false` określającą, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
-semVerLevel | Adres URL    | string  | Brak       | Ciąg wersji programu SemVer 2.0.0 
+identyfikator          | Adres URL    | string  | Tak      | Identyfikator pakietu można pobrać wersji
+wersja wstępna  | Adres URL    | wartość logiczna | Brak       | `true` lub `false` określająca, czy dołączać [pakiety w wersji wstępnej](../create-packages/prerelease-packages.md)
+semVerLevel | Adres URL    | string  | Brak       | Ciąg wersji SemVer 2.0.0 
 
-Jeśli `prerelease` nie zostanie podany, pakiety wersji wstępnej są wyłączone.
+Jeśli `prerelease` nie zostanie podana, pakiety w wersji wstępnej są wyłączone.
 
-`semVerLevel` Parametru zapytania jest używana w celu pakietów programu SemVer 2.0.0. Jeśli ten parametr zapytania jest wyłączone, zostaną zwrócone tylko wersje programu SemVer 1.0.0. Jeśli `semVerLevel=2.0.0` została podana, zostanie zwrócony zarówno programu SemVer 1.0.0 i wersje programu SemVer 2.0.0. Zobacz [obsługę programu SemVer 2.0.0 nuget.org](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29) Aby uzyskać więcej informacji.
+`semVerLevel` Parametru zapytania jest używana do wyrażenia zgody na pakiety SemVer 2.0.0. Jeśli ten parametr zapytania jest wyłączona, zostaną zwrócone tylko wersje SemVer 1.0.0. Jeśli `semVerLevel=2.0.0` zostanie podana, zostanie zwrócony SemVer 1.0.0 i SemVer 2.0.0 wersji. Zobacz [SemVer 2.0.0 obsługę nuget.org](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29) Aby uzyskać więcej informacji.
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź jest dokument JSON zawierający wszystkie wersje pakietu identyfikatora podany pakiet, filtrowanie według parametry określonego zapytania.
+Odpowiedź jest dokument JSON zawierający wszystkie wersje pakietu identyfikatora podanego pakietu, filtrowanie według parametrów określonego zapytania.
 
 Główny obiekt JSON ma następującą właściwość:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-dane      | Tablica ciągów | Tak      | Wersje pakietów, które są dopasowane wg żądania
+dane      | Tablica ciągów | Tak      | Wersje pakietów dopasowane przez żądanie
 
-Wersje pakietu w `data` Tablica może zawierać metadane kompilacji programu SemVer 2.0.0 (np. `1.0.0+metadata`) Jeśli `semVerLevel=2.0.0` podany w ciągu zapytania.
+Wersje pakietów w `data` tablicy mogą zawierać metadane kompilacji SemVer 2.0.0 (np. `1.0.0+metadata`) Jeśli `semVerLevel=2.0.0` została podana w ciągu zapytania.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 

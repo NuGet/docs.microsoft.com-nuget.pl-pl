@@ -1,119 +1,118 @@
 ---
-title: Co to jest NuGet i jakie zadania wykonuje?
-description: Obszerne jakie NuGet jest i jest
+title: Co to jest NuGet i czego?
+description: Obszerne jakie NuGet jest i wykonuje
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 01/10/2018
 ms.topic: overview
-ms.openlocfilehash: b8929baa9022b7c40acbeb8a4f868fa5532ec13b
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 0b7105ea5d183d139c8bac915378924ba9c0874a
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818363"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43548822"
 ---
-# <a name="an-introduction-to-nuget"></a>Wprowadzenie do NuGet
+# <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
-Podstawowe narzędzie dla dowolnej platformy nowoczesnych programowanie jest mechanizm, za pośrednictwem której deweloperzy można utworzyć, udostępniania oraz korzystać z kodu przydatne. Często taki kod jest połączone w "packages" zawierające skompilowanego kodu (w postaci bibliotek DLL) wraz z inną zawartość w projektach, które wykorzystać te pakiety.
+Niezbędne narzędzia dla dowolnej platformy nowoczesne tworzenie oprogramowania to mechanizm, za pomocą których deweloperzy mogą utworzyć, współdzielenie i używanie przydatne kodu. Często takiego kodu jest zawarte w pakiecie do "packages", które zawierają skompilowany kod (jako biblioteki dll) wraz z inną zawartością potrzebne w projektach, korzystających z tych pakietów.
 
-Dla platformy .NET (w tym oprogramowanie .NET Core), jest obsługiwane przez firmę Microsoft mechanizm udostępnianie kodu **NuGet**, który definiuje sposób pakietów dla platformy .NET są tworzone, obsługiwane i używane i udostępnia narzędzia dla każdej z tych ról.
+Dla platformy .NET (w tym .NET Core), jest mechanizm obsługiwane przez firmę Microsoft do udostępniania kodu **NuGet**, który definiuje sposób pakietów dla platformy .NET są tworzone, hostowanych i używane i udostępnia narzędzia do każdej z tych ról.
 
-Po prostu umieść NuGet pakiet jest pojedynczy plik ZIP z `.nupkg` rozszerzenie zawiera skompilowanego kodu (dll), inne pliki związane z tym kodem i opisową manifestu, który zawiera informacje, takie jak numer wersji pakietu. Deweloperom kodu, aby udostępnić tworzenia pakietów i opublikuj je na hoście publicznych lub prywatnych. Konsumenci pakietu uzyskać te pakiety z odpowiednich hostów, dodaj je do projektów, a następnie wywołać funkcji pakietu w ich kod projektu. NuGet sama obsługuje wszystkie szczegóły pośrednich.
+Najprościej mówiąc, NuGet pakiet jest pojedynczym pliku ZIP z `.nupkg` rozszerzenia, która zawiera skompilowanego kodu (dll), inne pliki związane z tym kodem i opisowe manifestu, który zawiera informacje, takie jak numer wersji pakietu. Deweloperom kodu do udostępniania tworzenie pakietów i opublikuj je na hoście publicznych lub prywatnych. Konsumentów pakietu uzyskać te pakiety z odpowiednie hosty, dodaj je do swoich projektów i wywoływać funkcje pakietu w ich kodzie projektu. NuGet, sama obsługuje wszystkie szczegóły pośrednich.
 
-Ponieważ NuGet obsługuje hostów prywatnych obok hosta nuget.org publiczne, można użyć pakietów NuGet udostępnianie kodu, który jest na wyłączność dla organizacji lub grupie roboczej. Umożliwia także pakietów NuGet to wygodny sposób składników kodu do użycia w żadnej zawartości ale własnych projektów. Krótko mówiąc, pakiet NuGet kodu, możliwe do udostępnienia jednostki, ale nie jest wymagają ani oznaczać środków określonego udostępniania.
+Ponieważ NuGet obsługuje hostów prywatnych wraz z hosta publicznego repozytorium nuget.org, można użyć pakiety NuGet umożliwiające udostępnianie kodu, która jest dostępna wyłącznie dla organizacji lub grupie roboczej. Można również użyć pakietów NuGet to wygodny sposób, aby uwzględnić kod do użycia w nothing, ale własnych projektów. W skrócie pakietu NuGet jest możliwa do udostępniania kodu, jednostki, ale nie wymagają ani nie oznaczają wykrywają określonego udostępniania.
 
-## <a name="the-flow-of-packages-between-creators-hosts-and-consumers"></a>Przepływu pakietów między twórców, hostów i konsumentów
+## <a name="the-flow-of-packages-between-creators-hosts-and-consumers"></a>Przepływu pakietów między dla twórców, hosty i klientów
 
-W roli jako publiczny hosta NuGet sam przechowuje ponad 100 000 pakietów unikatowy w centralnym repozytorium [nuget.org](https://www.nuget.org). Te pakiety są zatrudnieni przez miliony deweloperów.NET/.NET Core każdego dnia. NuGet można również do hostowania pakietów przez użytkowników w chmurze (takich jak w programie Visual Studio Team Services), w sieci prywatnej, lub nawet po prostu lokalnego systemu plików. W ten sposób te pakiety są dostępne tylko deweloperów, które mają dostęp do hosta, dzięki czemu mogą udostępnić pakietów do określonej grupy konsumentów. Opcje zostały wyjaśnione w [Hosting źródła NuGet](hosting-packages/overview.md). Za pomocą opcji konfiguracji można też kontrolować dokładnie hosty, które są dostępne dla dowolnego danego komputera, zapewniając, że pakiety są uzyskiwane z określonego źródła zamiast publicznego repozytorium, takich jak nuget.org.
+W swojej roli jako publiczny hosta, NuGet, sam przechowuje centralne repozytorium ponad 100 000 pakietów unikatowy w [nuget.org](https://www.nuget.org). Te pakiety są zatrudnieni przez miliony deweloperów.NET/.NET Core każdego dnia. NuGet można również do hostowania pakietów przez użytkowników w chmurze (takie jak w Visual Studio Team Services), w sieci prywatnej lub nawet po prostu lokalnego systemu plików. Dzięki temu te pakiety są dostępne dla tych deweloperów, które mają dostęp do hosta, co daje możliwość udostępnienia pakietów do określonej grupy odbiorców. Opcje zostały wyjaśnione na [hostingu źródła NuGet](hosting-packages/overview.md). Za pomocą opcji konfiguracji można także kontrolować, dokładnie hosta, którego może zostać oceniony przez dowolnego danego komputera, zapewniając, że pakiety są uzyskiwane z konkretnych źródeł, a nie z publicznego repozytorium, np. nuget.org.
 
-Niezależnie od jego natury hosta służy jako punkt połączenia między pakietu *twórców* i pakietu *konsumentów*. Twórcy kompilacji przydatne pakietów NuGet i opublikuj je na hoście. Konsumenci następnie wyszukaj użyteczne i zgodne pakiety na hostach dostępnych, pobieranie i, w tym tych pakietów w swoich projektach. Po zainstalowaniu w projekcie, interfejsy API te pakiety są dostępne z resztą kodu projektu.
+Niezależnie od ich charakter hosta służy jako punkt połączenia między pakietu *twórców* i pakietu *konsumentów*. Twórcy tworzenie przydatne pakietów NuGet i opublikuj je na hoście. Konsumenci Wyszukaj pakiety przydatne i są zgodne na hostach dostępny, pobieranie oraz w swoich projektach, takich jak te pakiety. Po zainstalowaniu w projekcie, interfejsy API te pakiety są dostępne w pozostałej części kodu projektu.
 
-![Relacja między twórców pakietu, pakietu hostów i konsumentów pakietu](media/nuget-roles.png)
+![Relacja między pakietu dla twórców, hosty pakietu oraz klientów pakietu](media/nuget-roles.png)
 
 ## <a name="package-targeting-compatibility"></a>Pakiet przeznaczony dla zgodności
 
-Pakiet "zgodny" oznacza, że zawiera zestawy skompilowany dla co najmniej jeden element docelowy .NET framework, która jest zgodna z platformy docelowej projektu odbierającą. Deweloperzy mogą tworzyć pakiety, które są specyficzne dla jednej platformy, podobnie jak w przypadku kontrolek platformy uniwersalnej systemu Windows lub ich obsługi większej liczby obiektów docelowych. Aby zmaksymalizować pakietu w celu zapewnienia zgodności docelowej deweloperzy [.NET Standard](/dotnet/standard/net-standard), której można korzystać z usług .NET i .NET Core wszystkich projektów. Jest to najbardziej efektywny sposób zarówno twórcy, jak i konsumentów, pojedynczy pakiet (zazwyczaj zawierającej w jednym zestawie) działa w przypadku wszystkich projektów odbierającą.
+Pakiet "zgodne" oznacza, że zawiera zestawy stworzona z myślą o co najmniej jeden element docelowy .NET framework, która jest zgodna z platforma docelowa projektu odbierająca komunikaty. Deweloperzy mogą tworzyć pakiety, które są specyficzne dla jednej struktury, podobnie jak w przypadku kontrolek platformy UWP lub obsługują szerszego zakresu elementów docelowych. Aby zapewnić maksymalną zgodność pakietu, deweloperzy docelowej [.NET Standard](/dotnet/standard/net-standard), które mogą wykorzystywać projektów wszystkich .NET i .NET Core. Jest to najbardziej efektywny sposób oznacza, że zarówno twórcy, jak i konsumentów, pojedynczy pakiet (zazwyczaj zawierający pojedynczy zestaw) działa we wszystkich projektach odbierająca komunikaty.
 
-Pakiet deweloperów, którzy wymagają interfejsów API poza .NET Standard z drugiej strony, Utwórz oddzielne zestawy dla platform inny element docelowy, potrzebnego do obsługi i obejmują wszystkie te zestawy w tym samym pakiecie (co jest nazywane "multi-targeting"). Podczas instalowania klienta taki pakiet NuGet wyodrębnia tylko zestawy, które są wymagane przez projekt. Pozwala to zmniejszyć wpływ pakietu w końcowym aplikacji i/lub zestawy utworzone przez tego projektu. Pakiet wielowersyjności kodu jest oczywiście trudniejsze dla twórcy do obsługi.
+Deweloperów pakietu, którzy wymagają interfejsów API poza .NET Standard z drugiej strony, Utwórz oddzielne zestawy dla platform docelowych różnych, jaki mu pasuje, do obsługi i obejmuje wszystkie te zestawy w tym samym pakiecie (co jest nazywane "multi-targeting"). Podczas instalowania pakietu sieci konsumenta NuGet wyodrębnia tylko zestawy, które są wymagane przez projekt. Pozwoli to zmniejszyć zużycie pakietu w gotowych aplikacji i/lub zestawów generowane przez ten projekt. Pakiet z wielowersyjnością kodu – jest także trudniejsze dla twórcy zachować.
 
 > [!Note]
-> Przeznaczonych dla platformy .NET Standard zastępuje poprzednie podejście przy użyciu różnych celów (PCL) biblioteki klas przenośnych. W tej dokumentacji w związku z tym skupia się na tworzeniu pakietów dla platformy .NET Standard.
+> Przeznaczonych dla platformy .NET Standard widoczne na poprzednim podejście przy użyciu różnych celów (PCL) biblioteka klas przenośnych. Ta dokumentacja w związku z tym koncentruje się na tworzenie pakietów dla platformy .NET Standard.
 
 ## <a name="nuget-tools"></a>Narzędzia NuGet
 
-Oprócz obsługi pomocy technicznej, NuGet zawiera szereg narzędzi używanych przez zarówno twórcy, jak i konsumentów. Zobacz [narzędzia klienta instalowania NuGet](install-nuget-client-tools.md) dotyczące sposobu uzyskania określonych narzędzi.
+Oprócz hostowania pomocy technicznej, NuGet zawiera szereg narzędzi używane zarówno przez twórców i użytkowników. Zobacz [NuGet Instalowanie narzędzi klienckich](install-nuget-client-tools.md) dotyczące sposobu uzyskania określonych narzędzi.
 
-| Narzędzie | Platformy | Scenariusze zastosowania | Opis |
+| Narzędzie | Platformy | Zastosowanie scenariuszy | Opis |
 | --- | --- | --- | --- |
-| [nuget.exe interfejsu wiersza polecenia](tools/nuget-exe-cli-reference.md) | Wszystkie | Tworzenie, zużycia | Zawiera wszystkie funkcje NuGet, z niektórych poleceń stosowania specjalnie do pakietu twórcy, niektóre mające zastosowanie tylko do użytkowników, i inne osoby mające zastosowanie do obu. Na przykład pakiet Użyj twórców `nuget pack` polecenie, aby utworzyć pakiet z różnych zestawów i powiązane pliki, użyj konsumentów pakietu `nuget install` pakiety mają być dołączane w folderze projektu i wszyscy używa `nuget config` konfiguracji NuGet zmienne. Jako narzędzie niezależny od platformy NuGet CLI nie współdziała z projektów Visual Studio. |
-| [DotNet interfejsu wiersza polecenia](tools/dotnet-Commands.md) | Wszystkie | Tworzenie, zużycia | Zapewnia możliwości bezpośrednio w ramach łańcucha narzędzi dla platformy .NET Core niektórych interfejsu wiersza polecenia NuGet. Podobnie jak w przypadku interfejsu wiersza polecenia NuGet dotnet CLI nie współdziała z projektów Visual Studio. |
-| [Konsola menedżera pakietów](tools/package-manager-console.md) | Visual Studio w systemie Windows | Zużycie | Udostępnia [poleceń programu PowerShell](tools/Powershell-Reference.md) instalowania i zarządzania pakietami w projektach Visual Studio. |
-| [Interfejs użytkownika menedżera pakietów](tools/package-manager-ui.md) | Visual Studio w systemie Windows | Zużycie | Zapewnia łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach Visual Studio. |
-| [Zarządzanie NuGet interfejsu użytkownika](/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Zużycie | Podaj łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w programie Visual Studio dla komputerów Mac projektów. |
-| [MSBuild](reference/msbuild-targets.md) | Windows | Tworzenie, zużycia | Zapewnia możliwość tworzenia pakietów i przywrócenia pakietów używane w projekcie bezpośrednio przez łańcuch narzędzi programu MSBuild. |
+| [Interfejs wiersza polecenia nuget.exe](tools/nuget-exe-cli-reference.md) | Wszystkie | Tworzenie i użycia | Zawiera wszystkie funkcje NuGet, z niektórymi poleceniami zastosowanie konkretnie do pakietu dla twórców, niektóre mające zastosowanie tylko do konsumentów, i inne osoby mające zastosowanie do obu. Na przykład pakiet użycia dla twórców `nuget pack` polecenie, aby utworzyć pakiet z różnych zestawów i powiązane pliki, użyj konsumentów pakietu `nuget install` do uwzględnienia pakiety w folderze projektu i wszyscy używa `nuget config` konfiguracji NuGet zmienne. Jako narzędzie niezależne od platformy interfejs wiersza polecenia NuGet nie wchodzi w interakcję z projektów programu Visual Studio. |
+| [Wiersz polecenia DotNet](tools/dotnet-Commands.md) | Wszystkie | Tworzenie i użycia | Udostępnia pewne interfejs wiersza polecenia NuGet możliwości bezpośrednio w ramach łańcucha narzędzi .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia NuGet, wiersz polecenia dotnet nie wchodzi w interakcję z projektów programu Visual Studio. |
+| [Konsola menedżera pakietów](tools/package-manager-console.md) | Visual Studio Windows | Użycie | Udostępnia [poleceń programu PowerShell](tools/Powershell-Reference.md) dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
+| [Interfejs użytkownika menedżera pakietów](tools/package-manager-ui.md) | Visual Studio Windows | Użycie | Zapewnia łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
+| [Zarządzanie NuGet interfejsu użytkownika](/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Użycie | Zapewniają łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w programie Visual Studio dla komputerów Mac projektów. |
+| [MSBuild](reference/msbuild-targets.md) | Windows | Tworzenie i użycia | Umożliwia tworzenie pakietów i przywrócenia pakietów, używany w projekcie bezpośrednio za pomocą łańcucha narzędzi programu MSBuild. |
 
-Jak widać, korzystać z narzędzia NuGet zależą od znacznie Określa, czy podczas tworzenia, wykorzystywanie lub publikowania pakietów i platformy, na którym pracujesz. Twórcy pakietu zazwyczaj są to również użytkowników, zgodnie z ich bazując na funkcje, które istnieje w innych pakietach NuGet. I tych pakietów, mogą z kolei są zależne od nadal innych użytkowników.
+Jak widać, narzędzia NuGet, z którymi pracujesz znacznie zależeć od tego, czy tworzysz, wykorzystywanie czy Publikowanie pakietów i platformy, na którym pracujesz. Pakiet dla twórców zazwyczaj są to również konsumentów, ponieważ są one oparte na funkcji, znajdującą się w innych pakietach NuGet. I pakiety, oczywiście, mogą z kolei zależeć od nadal.
 
-Aby uzyskać więcej informacji, rozpoczynać [przepływ pracy tworzenia pakietu](create-packages/Overview-and-Workflow.md) i [przepływu pracy przez pakiet](consume-packages/Overview-and-Workflow.md) artykułów.
+Aby uzyskać więcej informacji, rozpoczynać się [przepływ pracy tworzenia pakietu](create-packages/Overview-and-Workflow.md) i [przepływ pracy zużyciu pakietu](consume-packages/Overview-and-Workflow.md) artykułów.
 
-## <a name="managing-dependencies"></a>Zarządzanie zależności
+## <a name="managing-dependencies"></a>Zarządzanie zależnościami
 
-Umożliwia łatwe tworzenie w pracy innych jest jednym z najbardziej zaawansowanych funkcji systemu zarządzania pakietu. W związku z tym większość NuGet jest zarządza tym drzewie zależności lub "wykresu" w imieniu projektu. Prostu, użytkownik musi dotyczyć jedynie samodzielnie z tych pakietów, których używasz bezpośrednio w projekcie. Jeśli żadnego z tych samych pakietów korzystać z innych pakietów (które mogą z kolei zużywają nadal innym) NuGet zapewnia obsługę tych zależności niższego poziomu.
+Umożliwia łatwe tworzenie we współpracy z innymi jest jednym z najbardziej zaawansowanych funkcji systemu zarządzania pakietami. W związku z tym większość co to jest NuGet zarządza tym drzewo zależności lub "wykresu" w imieniu projektu. Był wyświetlany, możesz muszą dotyczyć jedynie samodzielnie za pomocą tych pakietów, których używasz bezpośrednio w projekcie. Jeśli wykorzystasz żadnych pakietów, tych samych innych pakietów, (które mogą z kolei korzystać nadal inne osoby), NuGet zajmuje się tych zależności niskiego poziomu.
 
-Na poniższej ilustracji przedstawiono projekt, który jest zależny od pięciu pakietów, które z kolei są zależne od wielu innych.
+Na poniższej ilustracji przedstawiono projekt, który jest zależny od pięciu pakietów, które z kolei zależeć od wielu innych.
 
-![Wykres zależności NuGet przykład dla projektu platformy .NET](media/dependency-graph.png)
+![Przykładowy Graf zależności NuGet dla projektu platformy .NET](media/dependency-graph.png)
 
-Należy zauważyć, że niektóre pakiety występuje wiele razy na wykresie zależności. Na przykład istnieją trzy różne konsumentów pakietu B, a każdy odbiorca może również określić inną wersję tego pakietu (tego nie pokazano). Jest to często dochodzi, szczególnie w przypadku pakietów powszechnie używane. NuGet na szczęście wykonuje całą pracę twarde dokładnie wersji pakietu B spełnia wszystkich użytkowników. NuGet następnie jest taka sama dla wszystkich innych pakietów, niezależnie od tego, jak głęboko na wykresie zależności.
+Należy zauważyć, że niektóre pakiety pojawić się wiele razy w wykresie zależności. Na przykład istnieją trzy różne osoby korzystające z pakietu B, a każdy odbiorca może również określić inną wersję tego pakietu (niewyświetlany). To jest wystąpieniem typowe, szczególnie w przypadku powszechnie używane pakiety. NuGet szczęście wykonuje trudną pracę w dokładnie którą wersję pakietu B spełnia wszyscy odbiorcy. NuGet następnie działa tak samo dla wszystkich innych pakietów, niezależnie od tego, jak głęboką wykres zależności.
 
-Więcej szczegółów w sposób NuGet wykonywania tej usługi, zobacz [rozpoznawania zależności](consume-packages/dependency-resolution.md).
+Aby uzyskać szczegółowe informacje na temat jak NuGet wykonuje tę usługę, zobacz [rozpoznawania zależności](consume-packages/dependency-resolution.md).
 
-## <a name="tracking-references-and-restoring-packages"></a>Odwołań śledzenia i przywracanie pakietów
+## <a name="tracking-references-and-restoring-packages"></a>Śledzenie odwołań i przywracanie pakietów
 
-Ponieważ projekty mogą łatwo przenosić między komputerami deweloperów, repozytoria kontroli źródła, serwery kompilacji i itp., jest bardzo niemożliwe do zachowania binarne zestawy pakietów NuGet bezpośrednio powiązany z projektem. W ten sposób czy każdej kopii niepotrzebnie przeglądarek projektu (i tym samym utratę miejsca w repozytoria kontroli źródła). To spowoduje również, że jego bardzo trudne do plików binarnych pakietu aktualizacji do nowszej wersji, ponieważ miałoby aktualizacje mają być stosowane na wszystkich kartach projektu.
+Ponieważ projekty można łatwo przenosić między komputerami deweloperów, poziomie repozytoriów kontroli źródła, serwery kompilacji i itp., wysoce niepraktycznie jest zapewnienie binarne zestawy pakietów NuGet bezpośrednio powiązany z projektem. Ten sposób będzie każdej kopii projektu niepotrzebnie przeglądarek (i tym samym utratę miejsca w poziomie repozytoriów kontroli źródła). On również zwiększyłoby bardzo trudne zaktualizować pliki binarne pakietu do nowszych wersji, ponieważ miałoby aktualizacje mają być stosowane we wszystkich kopii projektu.
 
-NuGet zamiast niego przechowuje listę proste odwołanie pakietów, od których jest zależna projektu, w tym zależności najwyższego poziomu oraz niższych. Oznacza to, że podczas instalowania pakietu z niektórych hosta do projektu, NuGet rejestruje identyfikator pakietu i numer wersji na liście odwołania. (Odinstalowanie pakietu, usuwa ją z listy.) NuGet następnie udostępnia środki do przywrócenia wszystkich przywoływanych pakietów na żądanie, zgodnie z opisem na [Przywracanie pakietu](consume-packages/package-restore.md).
+NuGet przechowuje zamiast tego prostego listą odwołań do pakietów, od których zależy od projektu, łącznie z zależności najwyższego poziomu i niskiego poziomu. Oznacza to, że zawsze, gdy zainstalujesz pakiet z niektórych hosta do projektu NuGet rejestruje identyfikator pakietu i numeru wersji na liście odwołania. (Odinstalowywanie pakietu, oczywiście, usuwa ją z listy.) NuGet następnie udostępnia środki do przywrócenia wszystkich przywoływanych pakietów na żądanie, zgodnie z opisem na [Przywracanie pakietu](consume-packages/package-restore.md).
 
-![Lista odwołań NuGet jest tworzony w instalacji pakietu i może służyć do przywrócenia pakietów w innym miejscu](media/nuget-restore.png)
+![Lista odwołań NuGet jest tworzona w instalacji pakietu aktualizacji i może służyć do przywrócenia pakietów w innym miejscu](media/nuget-restore.png)
 
-Z tylko listę odwołań NuGet ponownie zainstalować&mdash;oznacza to, *przywrócić*&mdash;wszystkie pakiety z hostów publiczne i prywatne w dowolnym momencie nowsze. Podczas zatwierdzania projekt do kontroli źródła lub udostępnianie w inny sposób, zawierają tylko listę odwołań i Wyklucz wszystkie pliki binarne pakietu (zobacz [pakietów i kontroli źródła](consume-packages/packages-and-source-control.md).)
+Za pomocą tylko listę odwołań NuGet ponownie zainstalować&mdash;oznacza to, *przywrócić*&mdash;wszystkie te pakiety z publiczne i prywatne hostów dowolnym później. Jeśli zobowiążą się projekt do kontroli źródła lub udostępnianie w inny sposób, obejmują tylko listę odwołań i Wyklucz wszystkie pliki binarne pakietu (zobacz [pakiety i kontrola źródła](consume-packages/packages-and-source-control.md).)
 
-Komputer, który odbiera projektu, takich jak serwer kompilacji, uzyskując kopię projektu jako część systemu automatycznego wdrażania zapyta, po prostu NuGet, aby przywrócić zależności zawsze, gdy są potrzebne. Stworzyć systemy, takie jak Visual Studio Team Services zawierają opis etapów "Przywracanie NuGet", w tym celu dokładnego. Podobnie, gdy deweloperzy uzyskać kopię projektu (tak jak w przypadku klonowania repozytorium), ich wywołania polecenia, takich jak `nuget restore` (NuGet interfejsu wiersza polecenia), `dotnet restore` (dotnet interfejsu wiersza polecenia) lub `Install-Package` (Konsola Menedżera pakietów) można uzyskać wymaganych pakietów. Podczas kompilowania projektu programu Visual Studio, ze swojej strony automatycznie przywraca pakietów (pod warunkiem, że włączone automatyczne przywracanie zgodnie z opisem na [Przywracanie pakietu](consume-packages/package-restore.md)).
+Komputer, który otrzyma projektu, takich jak serwer kompilacji, uzyskując kopię projektu jako część systemu automatycznego wdrażania, po prostu pyta, czy rozszerzenie NuGet, aby przywrócić zależności zawsze wtedy, gdy zajdzie taka potrzeba. Tworzenie systemów, takich jak Visual Studio Team Services zawierają opis etapów "Przywracanie pakietów NuGet", w tym celu dokładne. Podobnie, gdy deweloperzy uzyskać kopię projektu (tak jak podczas klonowania repozytorium), wywołują polecenia podobnego `nuget restore` (interfejs wiersza polecenia NuGet), `dotnet restore` (wiersz polecenia dotnet), lub `Install-Package` (Konsola Menedżera pakietów), aby uzyskać niezbędne pakiety. Podczas kompilowania projektu ze swojej strony w programie Visual Studio automatycznie przywraca pakietów (pod warunkiem, że automatycznego przywracania jest włączona, zgodnie z opisem na [Przywracanie pakietu](consume-packages/package-restore.md)).
 
-Wyraźnie widać następnie podstawową rolą NuGet, których dotyczy to deweloperom jest utrzymanie tej listy odwołania w imieniu projektu i umożliwianie wydajnie przywrócić (i zaktualizować) tych pakietów do którego istnieje odwołanie. Ta lista jest przechowywana w jednym z dwóch *pakietu zarządzania formaty*, jak są nazywane:
+Wyraźnie widać następnie podstawową rolą NuGet, których dotyczy to deweloperom utrzymuje tę listę odwołań w imieniu projektu i umożliwianie efektywnie przywracania (i zaktualizować) te pakiety do którego istnieje odwołanie. Ta lista jest przechowywana w jednej z dwóch *pakietu zarządzania formaty*, zgodnie z ich wywołania:
 
-- [`packages.config`](reference/packages-config.md): *(NuGet 1.0 +)* pliku XML, który przechowuje to płaska lista wszystkie zależności w projekcie, wraz z zależnościami innych zainstalowanych pakietów. Pakiety został zainstalowany lub jest przywracane są przechowywane w `packages` folderu.
+- [`packages.config`](reference/packages-config.md): *(NuGet) 1.0 +* pliku XML, który zawiera płaską listę wszystkich zależności w projekcie, w tym zależności innych zainstalowanych pakietów. Zainstalowane lub przywróconej pakiety są przechowywane w `packages` folderu.
 
-- [PackageReference](consume-packages/package-references-in-project-files.md) (lub "odwołań w projekcie plików pakietu") | *(NuGet 4.0 +)* przechowuje listę najwyższego poziomu zależności projektu bezpośrednio w pliku projektu, więc nie jest wymagane nie oddzielny plik. Skojarzony plik `obj/project.assets.json`, generowane dynamicznie do zarządzania ogólną wykresu zależności pakietów, które korzysta z projektem oraz wszystkie zależności niższego poziomu. PackageReference jest zawsze używana w projektach platformy .NET Core.
+- [PackageReference](consume-packages/package-references-in-project-files.md) (lub "odwołania do w plikach projektu pakietu") | *(NuGet 4.0 +)* utrzymuje listę zależności najwyższego poziomu projektu, bezpośrednio w pliku projektu, więc ten sam plik jest potrzebny. Skojarzony plik `obj/project.assets.json`, jest generowana dynamicznie zarządzać ogólną wykres zależności pakietów, do których projekt używa wraz ze wszystkimi zależnościami niskiego poziomu. PackageReference jest zawsze używana w projektach .NET Core.
 
-Zatrudnienia format pakietu administracyjnego w żadnym konkretnym projektem zależy od typu projektu i dostępna wersja NuGet (i/lub Visual Studio). Aby sprawdzić, jakie format jest używany, po prostu wyszukaj `packages.config` w katalogu głównym projektu po zainstalowaniu pakietu pierwszy. Jeśli nie masz tego pliku, poszukaj w pliku projektu bezpośrednio dla \<PackageReference\> elementu.
+Format pakietu zarządzania są stosowane w żadnym konkretnym projektem zależy od tego, typ projektu i dostępnej wersji NuGet (i/lub programu Visual Studio). Aby sprawdzić, jakiego formatu jest używany, po prostu wyszukaj `packages.config` w katalogu głównym projektu po zainstalowaniu pierwszego pakietu. Jeśli nie masz tego pliku, poszukaj w pliku projektu bezpośrednio do \<PackageReference\> elementu.
 
-Jeżeli można wybrać, firma Microsoft zaleca używanie PackageReference. `packages.config` jest obsługiwana dla celów starszej wersji i nie jest już aktywne opracowywane.
+Jeśli masz do wyboru, zaleca się przy użyciu funkcji PackageReference. `packages.config` jest utrzymywana ze względu na starsze celów i nie podlega już aktywnie.
 
 > [!Tip]
-> Różne `nuget.exe` polecenia interfejsu wiersza polecenia, takie jak `nuget install`, nie automatycznie dodawaj pakietu do listy odwołania. Lista jest aktualizowana podczas instalowania pakietu z programu Visual Studio Menedżera pakietów (interfejsu użytkownika lub konsolę) i z `dotnet.exe` interfejsu wiersza polecenia.
+> Różne `nuget.exe` polecenia interfejsu wiersza polecenia, takie jak `nuget install`, nie należy automatycznie dodawać pakietu do listy odwołania. Lista jest aktualizowana podczas instalowania pakietu przy użyciu Menedżera pakietów Visual Studio (interfejsu użytkownika lub konsolę) i za pomocą `dotnet.exe` interfejsu wiersza polecenia.
 
-## <a name="what-else-does-nuget-do"></a>Co działa NuGet?
+## <a name="what-else-does-nuget-do"></a>Do czego służy else NuGet?
 
-Do tej pory znasz następujące właściwości NuGet:
+Do tej pory wyjaśniono następujące właściwości pakietu nuget:
 
-- NuGet udostępnia repozytorium nuget.org centralnej i pomocy technicznej dla prywatnych hostingu.
-- NuGet oferuje deweloperom narzędzia potrzebne do tworzenia, publikowanie i korzystanie z pakietów.
-- Przede wszystkim NuGet przechowuje listę odwołania pakietów używany w projekcie i możliwości przywracania oraz tych pakietów z listy aktualizacji.
+- NuGet zapewnia repozytorium nuget.org centralnej, korzystając z pomocy technicznej do hostowania prywatnych.
+- NuGet oferuje deweloperom narzędzia potrzebne do tworzenia, publikowania i używania pakietów.
+- Co najważniejsze NuGet przechowuje listą odwołań do pakietów używanych w projekcie i zdolność do przywracania i aktualizacji tych pakietów z tej listy.
 
-Aby te procesy wydajną pracę, NuGet ma pewne optymalizacje wewnętrznych. Głównie NuGet zarządza pamięć podręczną pakietów i folder globalne pakietów do instalacji skrótów i ponownej instalacji. Pamięć podręczna pozwala uniknąć pobierania pakietu, który jest już zainstalowany na tym komputerze. Folder globalne pakietów umożliwia wielu projektów udostępnianie tego samego zainstalowanego pakietu, co zmniejsza ogólną miejsca w narzędziu NuGet na komputerze. Pamięci podręcznej i folderu packages globalne są także bardzo przydatne jest często Przywracanie większej liczby pakietów, jak na serwerze kompilacji. Aby uzyskać więcej informacji o tych mechanizmów, zobacz [Zarządzanie globalne pakietów i foldery pamięci podręcznej](consume-packages/managing-the-global-packages-and-cache-folders.md).
+Aby wprowadzić te procesy pracować wydajnie, NuGet wykonuje niektóre optymalizacje w tle. W szczególności NuGet zarządza pamięcią podręczną pakietu oraz folder globalnymi pakietami instalacji skrótów i jego ponowna instalacja. Pamięć podręczna unika się pobieranie pakietu, która jest już zainstalowana na komputerze. Folder globalnymi pakietami umożliwia wielu projektów udostępnić ten sam zainstalowanego pakietu NuGet całkowitego rozmiaru na komputerze, zmniejszając w ten sposób. Pamięć podręczną i folder globalnymi pakietami są także bardzo pomocne jest często Przywracanie większej liczby pakietów, jak na serwerze kompilacji. Aby uzyskać szczegółowe informacje na temat tych mechanizmów, zobacz [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](consume-packages/managing-the-global-packages-and-cache-folders.md).
 
-W ramach pojedynczego projektu NuGet zarządza wykresu zależności ogólną ponownie zawiera wiele odwołań do różnych wersji tego samego pakietu rozwiązania. Jest bardzo często, że projekt ma zależność na co najmniej jeden pakiet, że mają się tym samym zależności. Niektóre z najbardziej przydatne pakiety narzędzia na nuget.org są zatrudnieni przez inne pakiety. Na wykresie zależności całego następnie, można łatwo masz dziesięć różne odwołania do różnych wersji tego samego pakietu. Aby uniknąć pobierania wiele wersji tego pakietu do samej aplikacji, NuGet sortuje się jednej wersji można używany przez wszystkich użytkowników. (Aby uzyskać więcej informacji, zobacz [rozpoznawania zależności](consume-packages/dependency-resolution.md).)
+W ramach pojedynczego projektu NuGet zarządza wykres zależności ogólną ponownie obejmuje rozpoznawanie wiele odwołań do różnych wersji tego samego pakietu. Jest to dość często, że projekt ma zależność na co najmniej jeden pakiet, że same mają ten sam zależności. Niektóre z najbardziej przydatnych pakiety narzędzia w witrynie nuget.org zatrudnionych przez wiele innych pakietów. Na wykresie całego zależności, można łatwo musisz dziesięć różne odwołania do innej wersji tego samego pakietu. Aby uniknąć wprowadzenia wielu wersji tego pakietu w samej aplikacji, NuGet sortuje limit jednej wersji mogą być używane przez wszystkich użytkowników. (Aby uzyskać więcej informacji, zobacz [rozpoznawania zależności](consume-packages/dependency-resolution.md).)
 
-Ponadto NuGet obsługuje wszystkie wymagania dotyczące struktury pakietów (łącznie z [lokalizacja](create-packages/creating-localized-packages.md) i [symbole debugowania](create-packages/symbol-packages.md)) i jak są przywoływane (w tym [ zakresy wersji](reference/package-versioning.md#version-ranges-and-wildcards) i [wersje wstępne](create-packages/prerelease-packages.md).) NuGet także udostępnia różne interfejsy API do pracy z jego usług programowo i zapewnia obsługę dla deweloperów, którzy szablony projektów i rozszerzenia programu Visual Studio.
+Poza tym, NuGet zachowuje wszystkie specyfikacje, które są związane z strukturze pakietów (łącznie z [lokalizacji](create-packages/creating-localized-packages.md) i [symbole debugowania](create-packages/symbol-packages.md)) i jak są przywoływane (w tym [ zakresów wersji](reference/package-versioning.md#version-ranges-and-wildcards) i [wersje wstępne](create-packages/prerelease-packages.md).) NuGet także udostępnia różne interfejsy API pracować programowo z jego usług i zapewnia obsługę dla deweloperów, którzy szablony projektów i rozszerzenia programu Visual Studio.
 
-Poświęć chwilę, aby przeglądać spis treści niniejszej dokumentacji i wyświetlić wszystkie te funkcje reprezentowane istnieje, oraz informacje o wersji sprzed początku NuGet.
+Poświęć chwilę, aby przejrzeć spis treści dla tej dokumentacji, a zobaczysz wszystkie te funkcje reprezentowane, oraz informacje o wersji sięga do początku NuGet.
 
-## <a name="comments-contributions-and-issues"></a>Komentarze, udziały i problemów
+## <a name="comments-contributions-and-issues"></a>Komentarze, wkładu i zagadnienia
 
-Na koniec znacznie prosimy komentarze i udziału w niniejszej dokumentacji&mdash;po prostu wybierz **opinii** i **Edytuj** poleceń w górnej części dowolnej strony lub odwiedź [dokumentów repozytorium](https://github.com/NuGet/docs.microsoft.com-nuget/) i [Lista problemów docs](https://github.com/NuGet/docs.microsoft.com-nuget/issues) w witrynie GitHub.
+Na koniec znacznie zachęcamy komentarze i wkładu do niniejszej dokumentacji&mdash;po prostu wybierz opcję **opinii** i **Edytuj** poleceń u góry dowolnej strony lub odwiedź [docs repozytorium](https://github.com/NuGet/docs.microsoft.com-nuget/) i [Lista problemów docs](https://github.com/NuGet/docs.microsoft.com-nuget/issues) w witrynie GitHub.
 
-Prosimy udział NuGet się za pośrednictwem jego [różnych repozytoriów GitHub](https://github.com/NuGet/Home); Problemy z NuGet można znaleźć w [ https://github.com/NuGet/home/issues ](https://github.com/NuGet/home/issues).
+Zachęcamy także wkład w NuGet, sama za pośrednictwem jego [różnych repozytoriów GitHub](https://github.com/NuGet/Home); Problemy z NuGet można znaleźć na [ https://github.com/NuGet/home/issues ](https://github.com/NuGet/home/issues).
 
-Owocnej środowiska NuGet
+Sprawi NuGet!

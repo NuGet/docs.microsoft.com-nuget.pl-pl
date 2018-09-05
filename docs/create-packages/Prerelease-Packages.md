@@ -1,82 +1,81 @@
 ---
 title: Wersje wstępne w pakietach NuGet
-description: Wskazówki dotyczące tworzenia pakiety wersji wstępnej
+description: Wskazówki dotyczące tworzenia pakiety w wersji wstępnej
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: 498509e03a794878eeeadd46d499521d19415600
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: a47a3a56e1c290c9a2f228ce1d0313cbdf0c4c34
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34818376"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43549209"
 ---
-# <a name="building-pre-release-packages"></a>Tworzenie pakiety wersji wstępnej
+# <a name="building-pre-release-packages"></a>Tworzenie pakietów w wersji wstępnej
 
-Zawsze, gdy zwolnieniu zaktualizowany pakiet z nowym numerem wersji NuGet uzna, że jeden jako "najnowsza stabilna wersja" jak pokazano na przykład w interfejsie użytkownika Menedżera pakietów w programie Visual Studio:
+Zawsze, gdy zwolnieniu zaktualizowany pakiet za pomocą nowego numeru wersji NuGet uzna, że jeden jako "najnowsza stabilna wersja" jak pokazano na przykład w interfejsie użytkownika Menedżera pakietów w programie Visual Studio:
 
-![Interfejs użytkownika Menedżera pakietów przedstawiający najnowsze stabilna wersja](media/Prerelease_01-LatestStable.png)
+![Najnowsza stabilna wersja przedstawiający interfejs użytkownika Menedżera pakietów](media/Prerelease_01-LatestStable.png)
 
-Stabilna wersja to taki, który jest uznawany za niezawodny do użycia w środowisku produkcyjnym. Najnowsze stabilna wersja jest również ten, który zostanie zainstalowany jako aktualizacja pakietu lub w czasie przywracania pakietu (pod warunkiem ograniczenia zgodnie z opisem w [ponowne zainstalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md)).
+Stabilnej wersji jest taki, który jest uznawany za niezawodny, ma być używany w środowisku produkcyjnym. Najnowsza stabilna wersja jest również zainstalowanej aktualizacji pakietu lub podczas przywracania pakietów (podlegających ograniczeniom opisanym w [ponowne zainstalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md)).
 
-Do obsługi cyklu życia wersji oprogramowania, NuGet w wersji 1.6 lub nowszym umożliwia dystrybucji pakiety wersji wstępnej, gdzie numer wersji obejmuje sufiks wersjonowania semantycznego takich jak `-alpha`, `-beta`, lub `-rc`. Aby uzyskać więcej informacji, zobacz [wersji pakietu](../reference/package-versioning.md#pre-release-versions).
+Do obsługi cyklu życia wersji oprogramowania, NuGet w wersji 1.6 i nowszych umożliwia dystrybucja pakiety w wersji wstępnej, numer wersji uwzględniającym sufiks wersji semantycznej takich jak `-alpha`, `-beta`, lub `-rc`. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji pakietów](../reference/package-versioning.md#pre-release-versions).
 
-Można określić takie wersji na dwa sposoby:
+Należy określić taki wersji na dwa sposoby:
 
-- `.nuspec` Plik: zawiera sufiksu wersją semantyczną w `version` elementu:
+- `.nuspec` Plik: zawierać sufiks wersji semantycznej `version` elementu:
 
     ```xml
     <version>1.0.1-alpha</version>
     ```
 
-- Zestawu atrybutów: podczas tworzenia pakietu z projektu programu Visual Studio (`.csproj` lub `.vbproj`), użyj `AssemblyInformationalVersionAttribute` do określania wersji:
+- Zestawu atrybutów: podczas tworzenia pakietu z projektu programu Visual Studio (`.csproj` lub `.vbproj`), użyj `AssemblyInformationalVersionAttribute` do określenia wersji:
 
     ```cs
     [assembly: AssemblyInformationalVersion("1.0.1-beta")]
     ```
 
-    NuGet przejmuje zamiast określona w tym wartości `AssemblyVersion` atrybut, który nie obsługuje wersjonowania semantycznego.
+    NuGet przejmuje tę wartość, a nie określona w `AssemblyVersion` atrybut, który nie obsługuje wersji semantycznej.
 
-Gdy wszystko jest gotowe do wydania stabilną wersję, po prostu usuń sufiks i pakiet ma pierwszeństwo przed wszystkie wersje wstępne. Ponownie, zobacz [wersji pakietu](../reference/package-versioning.md#pre-release-versions).
+Gdy wszystko będzie gotowe do wydania stabilną wersję, po prostu usuń sufiks, a pakiet mają pierwszeństwo przed wszystkie wersje wstępne. Znajduje się w artykule [przechowywanie wersji pakietów](../reference/package-versioning.md#pre-release-versions).
 
-## <a name="installing-and-updating-pre-release-packages"></a>Instalowanie i aktualizowanie pakiety wersji wstępnej
+## <a name="installing-and-updating-pre-release-packages"></a>Instalowanie i aktualizowanie pakietów w wersji wstępnej
 
-Domyślnie podczas pracy z pakietami NuGet nie zawiera wersji wstępnych, ale to zachowanie można zmienić w następujący sposób:
+Domyślnie podczas pracy z pakietami NuGet obejmuje wersje wstępne, ale można zmienić to zachowanie w następujący sposób:
 
 - **Interfejs użytkownika Menedżera pakietów w programie Visual Studio**: W **Zarządzaj pakietami NuGet** interfejsu użytkownika, sprawdź **Uwzględnij wersję wstępną** pola:
 
-    ![Dołącz wstępnej pole wyboru w programie Visual Studio](media/Prerelease_02-CheckPrerelease.png)
+    ![Wstępna pola wyboru Dołącz w programie Visual Studio](media/Prerelease_02-CheckPrerelease.png)
 
-    Ustawienie lub usunięcie zaznaczenia tego pola, zostaną odświeżone interfejsu użytkownika Menedżera pakietów i listę dostępnych wersji, które można zainstalować.
+    Ustawienie lub usunięcie zaznaczenia tego pola spowoduje odświeżenie interfejs użytkownika Menedżera pakietów i listę dostępnych wersji, które można zainstalować.
 
-- **Konsola Menedżera pakietów**: Użyj `-IncludePrerelease` przełącznik z `Find-Package`, `Get-Package`, `Install-Package`, `Sync-Package`, i `Update-Package` poleceń. Zapoznaj się [w programie PowerShell](../tools/powershell-reference.md).
+- **Konsola Menedżera pakietów**: Użyj `-IncludePrerelease` przełącznik z `Find-Package`, `Get-Package`, `Install-Package`, `Sync-Package`, i `Update-Package` poleceń. Zapoznaj się [dokumentacja programu PowerShell](../tools/powershell-reference.md).
 
-- **Interfejs wiersza polecenia NuGet**: Użyj `-prerelease` przełącznik z `install`, `update`, `delete`, i `mirror` poleceń. Zapoznaj się [odwołanie NuGet interfejsu wiersza polecenia](../tools/nuget-exe-cli-reference.md)
+- **Interfejs wiersza polecenia NuGet**: Użyj `-prerelease` przełącznik z `install`, `update`, `delete`, i `mirror` poleceń. Zapoznaj się [dokumentacja interfejsu wiersza polecenia NuGet](../tools/nuget-exe-cli-reference.md)
 
-## <a name="semantic-versioning"></a>Wersjonowania semantycznego
+## <a name="semantic-versioning"></a>Przechowywanie wersji semantyczne
 
-[Wersjonowania semantycznego lub programu SemVer Konwencji](http://semver.org/spec/v1.0.0.html) opisano, jak korzystać z ciągów numery wersji w celu przedstawienia ich znaczenie kodu źródłowego.
+[Konwencji Semantic Versioning lub SemVer](http://semver.org/spec/v1.0.0.html) w tym artykule opisano sposób wykorzystywania ciągi numerów wersji w celu przekazania ich znaczenie odpowiedni kod.
 
-W tym Konwencji każdej wersji ma trzy części `Major.Minor.Patch`, mają następujące znaczenie:
+W niniejszej Konwencji, każda wersja ma trzy części `Major.Minor.Patch`, mają następujące znaczenie:
 
 - `Major`: Zmiany krytyczne
 - `Minor`: Nowe funkcje, ale wstecznie zgodne
-- `Patch`: Wstecznie zgodne wprowadzono poprawki błędów tylko
+- `Patch`: Wstecznie zgodny poprawek błędów oprogramowania tylko
 
-Wersje wstępne następnie są wskazywane przez dodanie łącznika i ciąg po numer poprawki. Jak to działa, można użyć * żadnych * ciągu po łącznika i NuGet, będą traktować pakietu jako wersji wstępnej. Następnie NuGet Wyświetla numer wersji pełnej w odpowiednich interfejsu użytkownika, pozostawiając konsumentów interpretować znaczenie dla siebie.
+Wersje wstępne następnie są wskazywane przez dołączenie łącznika i ciąg po numer poprawki. Technicznie rzecz biorąc, można użyć * wszelkie * ciągu po NuGet i łącznika, będą traktować pakietu jako wersji wstępnej. NuGet następnie wyświetla pełny numer wersji w interfejsie użytkownika dotyczy pozostawienie w konsumentach napisanych interpretacji znaczenie dla siebie.
 
-Pamiętając o tym warto zazwyczaj wykonaj rozpoznanym konwencji nazewnictwa, takie jak następujące:
+Pamiętając o tym, zazwyczaj dobrze jest postępuj zgodnie z rozpoznanym konwencji nazewnictwa, takie jak następujące:
 
-- `-alpha`: Wersja alfa, zwykle używany w przypadku pracy w toku i eksperymenty
-- `-beta`: Wydania beta, zazwyczaj jest pełną Następna funkcja planowane wersji, ale może zawierać znanych błędów.
-- `-rc`: Wersji release candidate, zwykle potencjalnie ostateczną zlecenia (stable), chyba że wyłonić znaczących usterki.
+- `-alpha`: Wydanie alfa, zwykle używane do pracy w toku i eksperymentowanie
+- `-beta`: Wydania beta, zazwyczaj taki, który jest funkcja ukończone przez następne zaplanowane wersji, ale może zawierać znanych błędów.
+- `-rc`: W wersji Release candidate, zwykle wydania jest potencjalnie ostateczne (stable), chyba że wyłaniać znaczące błędy.
 
 > [!Note]
-> Obsługuje NuGet 4.3.0+ [v2.0.0 Wersjonowania semantycznego](http://semver.org/spec/v2.0.0.html), który obsługuje numerów wersji wstępnej mają kropkowego, podobnie jak w `1.0.1-build.23`. Kropkowego nie jest obsługiwany w wersjach NuGet przed 4.3.0. We wcześniejszych wersjach programu NuGet, można użyć formularza, takich jak `1.0.1-build23` , ale zawsze uznano wersji wstępnej.
+> Obsługuje NuGet 4.3.0+ [v2.0.0 Semantic Versioning](http://semver.org/spec/v2.0.0.html), który obsługuje numerów wersji wstępnej przy użyciu notacji z kropką, podobnie jak w `1.0.1-build.23`. Kropkowego jest nieobsługiwane w przypadku wersje NuGet wcześniejsze niż 4.3.0. We wcześniejszych wersjach programu NuGet, można użyć formularza, takich jak `1.0.1-build23` , ale zawsze uznano wersji wstępnej.
 
-Niezależnie od sufiksy, jednak należy użyć, NuGet zapewni ich pierwszeństwo w odwrotnej kolejności alfabetycznej:
+Niezależnie od sufiksów, jednak należy użyć, NuGet da im pierwszeństwo w odwrotnej kolejności alfabetycznej:
 
     1.0.1
     1.0.1-zzz
@@ -88,4 +87,4 @@ Niezależnie od sufiksy, jednak należy użyć, NuGet zapewni ich pierwszeństwo
     1.0.1-alpha2
     1.0.1-alpha
 
-Co zostało pokazane, wersji bez żadnego sufiksu będą zawsze miały pierwszeństwo przed wersje wstępne. Należy pamiętać, że użycie numeryczny sufiksy z tagami wersji wstępnej, którzy mogą korzystać z dwucyfrowych numery (lub więcej), umożliwia zera wiodące beta01 i beta05 upewnij się, że ich sortowania prawidłowo po dłuższego liczby.
+Jak widać, wersji bez dowolny sufiks ma zawsze pierwszeństwo wersje wstępne. Należy zauważyć, jeśli używasz sufiksy wartości liczbowych przy użyciu tagów wersji wstępnej, które mogą używać jednocyfrowy liczb (lub więcej), użyj zer wiodących beta01 i beta05 aby upewnić się, że są poprawne sortowanie podczas uzyskać większej liczby.

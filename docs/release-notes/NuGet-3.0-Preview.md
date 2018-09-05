@@ -1,129 +1,128 @@
 ---
-title: Informacje o wersji NuGet 3.0 w wersji zapoznawczej
-description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr 3.0 NuGet w wersji zapoznawczej.
+title: Informacje o wersji programu NuGet 3.0 (wersja zapoznawcza)
+description: Informacje o wersji programu NuGet 3.0 (wersja zapoznawcza) obejmuje znane problemy, poprawki błędów, funkcje dodane i DCRs.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 67c217e52d975ed8f6889cd69f9b7e0d52b3a119
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: 9389639476172d05556b95d589e429ddfe0e3026
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31821317"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43546468"
 ---
-# <a name="nuget-30-preview-release-notes"></a>Informacje o wersji NuGet 3.0 w wersji zapoznawczej
+# <a name="nuget-30-preview-release-notes"></a>Informacje o wersji programu NuGet 3.0 (wersja zapoznawcza)
 
-[Informacje o wersji RC NuGet 2.9](../release-notes/nuget-2.9-rc.md) | [NuGet 3.0 Beta informacje o wersji](../release-notes/nuget-3.0-beta.md)
+[Informacje o wersji RC NuGet 2.9](../release-notes/nuget-2.9-rc.md) | [informacjach o wersji programu NuGet 3.0 w wersji Beta](../release-notes/nuget-3.0-beta.md)
 
-12 listopada 2014 r. w ramach wersji programu Visual Studio 2015 Preview został wydany NuGet 3.0 w wersji zapoznawczej. Firma Microsoft opublikowała program NuGet 3.0 w wersji zapoznawczej. Jest to duży wersji firmie Microsoft (chociaż wersja zapoznawcza), i radością zacznij uzyskiwać opinie na temat naszych zmian.
+NuGet 3.0 w wersji zapoznawczej został wydany 12 listopada 2014 r. w ramach tej wersji programu Visual Studio 2015 w wersji zapoznawczej. Firma Microsoft opublikowała program NuGet 3.0 w wersji zapoznawczej. Jest to duża zmiana dla nas (chociaż wersja zapoznawcza), i Cieszymy się rozpocząć uzyskiwanie opinii na temat naszych zmian.
 
 ## <a name="visual-studio-2012"></a>Visual Studio 2012+
 
-Podgląd NuGet 3.0 znajduje się w programie Visual Studio 2015 Preview. Pracujemy, aby uzyskać podgląd porzucania dla programu Visual Studio 2012 i Visual Studio 2013 bardzo szybko. Wcześniej poinformowaliśmy naszych zamiarze [przerwanie aktualizacji dla programu Visual Studio 2010](http://blog.nuget.org/20141002/visual-studio-2010.html), i wykonujemy tej decyzji trudne.
+W programie Visual Studio 2015 Preview znajduje się ta NuGet 3.0 w wersji zapoznawczej. Pracujemy nad bój spadnie (wersja zapoznawcza) dla programu Visual Studio 2012 i Visual Studio 2013 bardzo szybko. Wcześniej zaprezentowaliśmy naszym zamiarem [przerwanie aktualizacji dla programu Visual Studio 2010](http://blog.nuget.org/20141002/visual-studio-2010.html), i firma Microsoft została wprowadzona trudne decyzji.
 
-## <a name="brand-new-ui"></a>Nowy interfejsu użytkownika
+## <a name="brand-new-ui"></a>Całkiem nowy interfejs użytkownika
 
-Uwagi dotyczące NuGet 3.0 w wersji zapoznawczej w pierwszej kolejności jest naszego nowego interfejsu użytkownika. Nie jest już modalnego okna dialogowego; teraz jest pełne okno dokumentu programu Visual Studio. Dzięki temu można otworzyć Interfejs użytkownika dla wielu projektów (i/lub rozwiązanie) jednocześnie, wydzielić okna na inny monitor, dock ona jednak czy tak samo, jak itp.
+Pierwszą rzeczą, jaką można zauważyć, że temat NuGet 3.0 w wersji zapoznawczej jest naszym zupełnie nowy interfejs użytkownika. Nie jest już modalne okno dialogowe; teraz jest pełna okno dokumentu programu Visual Studio. Dzięki temu można otworzyć w interfejsie użytkownika dla wielu projektów (i/lub rozwiązania) jednocześnie, wydzielić okna na inny monitor, go zadokować, jednak w przypadku, takie jak itp.
 
 ![Nowy interfejs użytkownika NuGet](./media/NuGet-3.0-Preview/new-ui.png)
 
-Poza różnice użyteczność z powodu porzucanie modalnego okna dialogowego mamy także wiele nowych funkcji w nowych interfejsu użytkownika.
+Po przekroczeniu różnic użyteczność ze względu na porzucenie modalne okno dialogowe mamy też wiele nowych funkcji w nowy interfejs użytkownika.
 
 ### <a name="version-selection"></a>Wybór wersji
 
-Być może najpopularniejszych funkcji interfejsu użytkownika jest wybranie wersji pakietu instalacji i aktualizacji — to jest teraz dostępna.
+Prawdopodobnie najpopularniejszych funkcji interfejsu użytkownika jest umożliwienie wybór wersji programu instalacji pakietu aktualizacji i update — ta opcja jest teraz dostępna.
 
 ![Wybór wersji pakietu](./media/NuGet-3.0-Preview/version-selection.png)
 
-Czy instalowania lub aktualizowania pakietu lista rozwijana wersji pozwala wyświetlić wszystkie dostępne dla pakietu, wersji w pewnych wersjach zauważalne awansowane na początku listy wyboru łatwe. Nie trzeba pobieranie określonych wersji, które nie są najnowsze za pomocą konsoli programu PowerShell.
+Czy instalowanie lub aktualizowanie pakietu, lista rozwijana wersji pozwala wyświetlić wszystkie wersje dostępne do pakietu, w niektórych wersjach istotne przeniesiony na górę listy wyboru łatwe. Nie potrzebujesz już pobieranie określonych wersji, które nie są najnowsze informacje przy użyciu konsoli programu PowerShell.
 
-### <a name="combined-installedonlineupdates-workflows"></a>Połączone przepływy pracy zainstalowany / / aktualizacje w trybie Online
+### <a name="combined-installedonlineupdates-workflows"></a>Połączone zainstalowane na stałe/Online/aktualizacje przepływów pracy
 
-Naszego poprzedniej interfejsu użytkownika miał 3 tabulatory aktualizacji oprogramowania zainstalowany w trybie Online, i. Pakiety wymienione są specyficzne dla tych przepływów pracy i Akcje dostępne zostały określone dla przepływów pracy oraz. Gdy który sprawiał logiczne, możemy heard, że wiele osób może często uzyskać samoczynnie przy tym rozdzielenie.
+Nasze poprzednie interfejsu użytkownika miał 3 karty z zainstalowanym w trybie Online, i aktualizacjach. Pakiety wymienione są specyficzne dla tych przepływów pracy i dostępne akcje zostały określone dla przepływów pracy oraz. Gdy który sprawiał logiczne, a informowało NAS, że wiele osób będzie często uzyskać samoczynnie przy tym rozdzielenie.
 
-Mamy teraz Scalonej doświadczenia, gdzie można zainstalować, zaktualizować lub odinstalować pakiet niezależnie od tego, jak otrzymano pakietu wybranego. Aby ułatwić konkretnych przepływów pracy, mamy teraz listy rozwijanej filtru, umożliwiający filtrowanie pakietów widoczne, ale następnie Akcje dostępne dla pakietu są zgodne.
+W efekcie powstał połączone środowisko, w którym można zainstalować, zaktualizować lub odinstalować pakiet niezależnie od tego, jak masz pakietu wybranego. Aby ułatwić określonych przepływów pracy, mamy listę rozwijaną filtru, która pozwala filtrować te pakiety, które są widoczne, ale następnie Akcje dostępne dla pakietu są spójne.
 
 ![Odinstaluj pakiet](./media/NuGet-3.0-Preview/uninstall-package.png)
 
-Przy użyciu filtru "Installed", możesz łatwo sprawdzić zainstalowanych pakietów, które są dostępne aktualizacje, a następnie możesz odinstalować lub zaktualizować pakiet, zmieniając wybór wersji, aby zobaczyć zmiany dostępnych akcji.
+Za pomocą filtru "Zainstalowano", możesz łatwo sprawdzić, zainstalowane pakiety, które są dostępne aktualizacje, a następnie można odinstalować lub zaktualizować pakiet przez zmianę wersji, aby zobaczyć zmiany dostępnych akcji.
 
 ![Aktualizacja pakietu](./media/NuGet-3.0-Preview/update-package.png)
 
 ### <a name="version-consolidation"></a>Wersja konsolidacji
 
-Jest to często mają tego samego pakietu zainstalowane w wielu projektów w rozwiązaniu. Czasami wersje zainstalowane w każdym projekcie można rozchodzenia się i konieczne jest konsolidacja używane wersje. NuGet 3.0 w wersji zapoznawczej wprowadzono nową funkcję właśnie w tym scenariuszu.
+Jest to często mają ten sam pakiet zainstalowane w wielu projektów w rozwiązaniu. Czasami wersje zainstalowane w każdym projekcie można odstępstw od siebie i jest skonsolidować używanych wersji. NuGet 3.0 w wersji zapoznawczej wprowadzono nową funkcję właśnie w tym scenariuszu.
 
-Okno Zarządzanie rozwiązanie na poziomie pakietu są dostępne przez kliknięcie prawym przyciskiem myszy rozwiązanie i wybierając pozycję Zarządzaj pakietami NuGet dla rozwiązania. Z tego miejsca w przypadku wybrania pakietu, który jest zainstalowany w wielu projektach, ale z różnymi wersjami w użyciu, nowa akcja "Konsoliduj" staje się dostępna. Na ekranie zrzut poniżej `Newtonsoft.Json` został zainstalowany w `SamplesClassLibrary` z wersją `6.0.4` i zainstalowane w `SamplesConsoleApp` z wersją `5.0.4`.
+Okno Zarządzanie poziomie rozwiązania pakietu jest możliwy przez kliknięcie prawym przyciskiem myszy rozwiązanie i wybierając pozycję Zarządzaj pakietami NuGet dla rozwiązania. W tym miejscu po wybraniu pakietu, który jest zainstalowany w wielu projektach, lecz z różnymi wersjami w użyciu, nowa akcja "Konsolidacja" staje się dostępna. W poniższym, zrzucie ekranu `Newtonsoft.Json` został zainstalowany w `SamplesClassLibrary` wersją `6.0.4` i zainstalowane w `SamplesConsoleApp` wersją `5.0.4`.
 
-![Konsolidacja wersjach](./media/NuGet-3.0-Preview/consolidate.png)
+![Konsolidacja wersji](./media/NuGet-3.0-Preview/consolidate.png)
 
-Oto przepływu pracy do konsolidacji na jednej wersji.
+Poniżej przedstawiono przepływ pracy do konsolidacji na tylko jedną jego wersję.
 
 1. Wybierz `Newtonsoft.Json` pakietu na liście
 1. Wybierz `Consolidate` z `Action` listy rozwijanej
-1. Użyj `Version` listy rozwijanej, aby wybrać wersję, aby być konsolidowane
-1. Sprawdź pola dla projektów, które powinny być konsolidowane w tej wersji (należy pamiętać, że projekty już w wybranej wersji będzie wyszarzona)
-1. Kliknij przycisk `Consolidate` przycisku konsolidacji
+1. Użyj `Version` listy rozwijanej wybierz wersję, aby być konsolidowane
+1. Zaznacz pola wyboru dla projektów, które powinny być konsolidowane w tej wersji (należy pamiętać, że projekty znajdujące się na wybranej wersji będą wyszarzone)
+1. Kliknij przycisk `Consolidate` przycisk, aby przeprowadzić konsolidację
 
-### <a name="operation-previews"></a>Operacja podglądy
+### <a name="operation-previews"></a>Wersje zapoznawcze operacji
 
-Niezależnie od tego, która operacja wykonujesz — instalacji/aktualizacji/dezinstalacji — nowy interfejs użytkownika oferuje teraz sposób, aby wyświetlić podgląd zmiany wprowadzone do projektu. Ta wersja zapoznawcza zostaną wyświetlone wszystkie nowe pakiety, które zostaną zainstalowane, pakiety zostaną zaktualizowane, które pakiety, które zostaną odinstalowane wraz z pakietami, które mają być zmienione podczas operacji.
+Niezależnie od operacji, które wykonujesz — instalowanie/aktualizacji/odinstalowywanie — nowy interfejs użytkownika oferuje sposób nad wersją zapoznawczą zmiany wprowadzone do projektu. Ta wersja zapoznawcza zostaną wyświetlone wszystkie nowe pakiety, które zostaną zainstalowane, pakiety, które zostanie zaktualizowana i pakiety, które zostaną odinstalowane wraz z pakietów, które nie zmieni się podczas operacji.
 
-W poniższym przykładzie widać, że instalowanie Microsoft.AspNet.SignalR spowoduje kilka zmian do projektu.
+W poniższym przykładzie widać, że instalowanie Microsoft.AspNet.SignalR spowoduje sporo zmiany do projektu.
 
 ![Instalowanie SignalR w wersji zapoznawczej](./media/NuGet-3.0-Preview/preview.png)
 
 ### <a name="installation-options"></a>Opcje instalacji
 
-Za pomocą konsoli programu PowerShell, użytkownik miał kontrolę nad kilka opcji zauważalne instalacji. W Interfejsie użytkownika również jest teraz dostępna teraz te funkcje. Teraz można kontrolować zachowanie rozpoznawania zależności jak wybrano wersji zależności.
+Za pomocą konsoli programu PowerShell przeznaczono kontrolę nad kilka opcji instalacji istotne. Teraz teraz dostępna w interfejsie użytkownika również te funkcje. Teraz można kontrolować, jak są wybrane wersje zależności zachowanie rozpoznawania zależności.
 
 ![Zachowanie zależności](./media/NuGet-3.0-Preview/dependency-behavior.png)
 
-Można również określić akcję wykonywaną, gdy pliki zawartości z pakietów w konflikcie z plikami już w projekcie.
+Można również określić akcję do wykonania, gdy pliki zawartości z pakietów w konflikcie z plikami już w projekcie.
 
 ![Akcja konflikt pliku](./media/NuGet-3.0-Preview/file-conflict-action.png)
 
-### <a name="infinite-scrolling"></a>Nieskończone przewijania
+### <a name="infinite-scrolling"></a>Nieskończona przewijania
 
-Firma Microsoft używany do pobierania sobą opinii naszych interfejsu użytkownika o konieczności zarówno przewijania i stronicowania wzorcami podczas wyświetlania pakietów. Było bardzo często mają do przewiń w dół krótką listę, kliknij przycisk Dalej numer strony, a następnie przewiń ponownie. Przy użyciu nowego interfejsu użytkownika wdrożyliśmy nieskończone przewijanie w listy pakietów, aby tylko wymagane przewinięcie ekranu — już stronicowania.
+Użyliśmy dość nieco uzyskiwanie opinii na temat naszego interfejsu użytkownika o obu przewijania i stronicowanie paradygmatów podczas wyświetlania listy pakietów. Było dość często mają do przewiń w dół krótką listę, kliknij przycisk Dalej numer strony, a następnie przewiń ponownie. Dzięki nowemu interfejsowi użytkownika wprowadziliśmy nieskończonej przewijanie na liście pakietów, tak że tylko konieczne przewinięcie widoku — nie ma więcej stronicowania.
 
-![Nieskończone przewijania](./media/NuGet-3.0-Preview/infinite-scrolling.png)
+![Nieskończona przewijania](./media/NuGet-3.0-Preview/infinite-scrolling.png)
 
-### <a name="make-it-work-make-it-fast-make-it-pretty"></a>Była pracy, spowodować szybkie, stał się Pretty
+### <a name="make-it-work-make-it-fast-make-it-pretty"></a>Ułatwiają pracę, ułatwiają szybkie, dzięki którym Pretty
 
-Możemy radością uzyskać ten nowy interfejs użytkownika można wypróbować usługę. W tej wersji zapoznawczej punktu kontrolnego, firma Microsoft już zostały następujące dobrej starego adage z "przekształcenia go w pracy, stał się szybkie, stał się bardzo." W tej wersji zapoznawczej firma Microsoft osiągnąć większość tego celu pierwszy — działa. Wiemy, nie jest jeszcze bardzo szybko i wiemy, że nie jest dość pretty jeszcze. Zaufania, że firma Microsoft będzie działać na te cele od chwili wersji RC. W międzyczasie, chcielibyśmy usłyszeć Twoja opinia o *użyteczność* nowy interfejs użytkownika — przepływ pracy, operacje i w jaki sposób go *tak* do użycia nowego interfejsu użytkownika.
+Cieszymy się, można uzyskać ten nowy interfejs użytkownika umożliwiający wypróbowanie. Podczas tego punktu kontrolnego w wersji zapoznawczej, jesteśmy następujące dobre powiedzeniem starego elementu "stał się praca, ułatwiają szybkie, ułatwiają całkiem." W tej wersji zapoznawczej, możemy osiągnąć większość pierwszy celu — działa. Wiemy, nie jest dość szybko jeszcze i wiemy, że nie jest dość dość jeszcze. Ufać, że mamy nad tym pracować te cele między już teraz i w wersji RC. W międzyczasie, dlatego chcielibyśmy poznać Twoją opinię o *użyteczność* nowy interfejs użytkownika — przepływy pracy, operacje i w jaki sposób jej *czuje* korzystać z nowego interfejsu użytkownika.
 
-Istnieje kilka funkcji, które usunięto w porównaniu do starego interfejsu użytkownika. Jeden z nich było zamierzone, a drugi właśnie nie udało się wykonać w czasie.
+Istnieje kilka funkcji, które usunięto w porównaniu do starego interfejsu użytkownika. Jeden z nich było to zamierzone, a druga po prostu nie udało się wykonać w czasie.
 
-#### <a name="searching-all-package-sources"></a>Wyszukiwanie "Wszystkie" źródła pakietów
+#### <a name="searching-all-package-sources"></a>Trwa wyszukiwanie źródła pakietów "All"
 
-Starego interfejsu użytkownika można wykonać wyszukiwanie pakietu przed wszystkie źródła pakietów. Usunęliśmy tej funkcji w interfejsie użytkownika i firma Microsoft nie będzie można jej przejściem w tryb ponownie. Ta funkcja umożliwia wykonywanie operacji wyszukiwania przed wszystkie źródła pakietów, fale wyniki ze sobą i spróbuj kolejność dla wybranego sortowania wyników.
+Stary interfejs użytkownika mogą możesz przeprowadzić wyszukiwanie pakietów przed wszystkie źródła pakietu. Usunęliśmy tę funkcję w interfejsie użytkownika, a firma Microsoft nie będą przynosili go ponownie. Ta funkcja używana do wykonywania operacji wyszukiwania względem wszystkich swoich źródeł pakietów mediów ze sobą wyniki i spróbuj kolejność wyników na podstawie wybranych sortowania.
 
-Znaleziono czy istotność wyszukiwania są naprawdę fale razem. Można wyobrazić wyszukiwania przed Google i Bing i tkaniem wyniki ze sobą? Ponadto ta funkcja była powolne, łatwo *przypadkowo* użycia i firma Microsoft uważają, rzadko została faktycznie przydatne. Z powodu problemów funkcji wprowadzone, odebrano numer na nim raportów usterki, które może nigdy nie został rozwiązany.
+Znaleziono, że trafności wyszukiwania jest bardzo trudne do mediów ze sobą. Można Wyobraź sobie przeprowadzania wyszukiwania względem serwis Google czy Bing i tkania wyniki ze sobą? Ponadto ta funkcja była powoli, można łatwo *przypadkowo* użycia, a firma Microsoft uważa, rzadko było to naprawdę przydatne. Ze względu na problemy wprowadzonej, Odebrano wiele raportów usterek na nim, które nigdy nie może zostać naprawione.
 
 #### <a name="update-all"></a>Aktualizuj wszystkie
 
-My używamy w celu zapewnienia przycisk "Aktualizuj wszystkie" starego interfejsu użytkownika, który nie ma w nowym Interfejsie jeszcze. Firma Microsoft będzie przywracania aktywności tej funkcji w naszym wersji RC.
+Użyliśmy mają przycisk "Aktualizuj wszystkie" w stary interfejs użytkownika, który nie jest dostępne w nowy interfejs użytkownika jeszcze. Firma Microsoft będzie operacji przywracania aktywności tej funkcji dla wersji RC.
 
 ## <a name="new-clientserver-api"></a>Nowy klient/serwer interfejsu API
 
-Oprócz wszystkich nowych funkcji w naszym nowy interfejs zarządzania pakietami będziemy również używane na niektóre szczegóły implementacji protokołu NuGet klient/serwer. Czynności, które firma Microsoft wykonane jest utworzenie "V3 interfejsu API" programu NuGet, który jest zaprojektowana dla wysokiej dostępności dla scenariuszy o kluczowym znaczeniu, takie jak Przywracanie pakietu i instalowania pakietów. Nowy interfejs API jest oparta na REST i wybranych hipermedialnych i my [JSON-LD](http://json-ld.org) jako naszych format zasobów.
+Oprócz wszystkich nowych funkcji w naszej nowej zarządzania pakietami interfejsu użytkownika możemy również pracowano niektórych szczegółów implementacji protokołu klient/serwer NuGet. Dotychczasowej pracy jest utworzenie "Wersji 3 interfejsu API" dla pakietów NuGet zaprojektowany pod kątem wysokiej dostępności dla scenariuszy o kluczowym znaczeniu, takich jak Przywracanie pakietu i instalowania pakietów. Nowy interfejs API jest oparta na REST i wybranych hipermedialnych, a my [JSON-LD](http://json-ld.org) naszych wartość w formacie zasobów.
 
-W bitach NuGet 3.0 w wersji zapoznawczej zobacz temat nowe źródło pakietów o nazwie "preview.nuget.org" w menu rozwijanym źródła pakietu. W przypadku wybrania tego źródła pakietu, użyjemy naszego nowy interfejs API zamiast do nawiązania połączenia nuget.org. Wprowadziliśmy źródła podglądu dostępne w interfejsie użytkownika podczas możemy kontynuować testowanie, popraw i zwiększyć nowy interfejs API. W wersji NuGet 3.0 RC to nowe źródło pakietów na podstawie v3 interfejsu API spowoduje zastąpienie źródła pakietu na podstawie v2 "nuget.org".
+W bitach NuGet 3.0 w wersji zapoznawczej zobaczysz nowe źródło pakietu o nazwie "preview.nuget.org" w menu rozwijanym źródła pakietu. Wybranie tego źródła pakietów, użyjemy naszego nowego interfejsu API zamiast połączyć się z repozytorium nuget.org. Wprowadziliśmy źródła (wersja zapoznawcza) dostępnych w interfejsie użytkownika podczas gdy my będziemy do testowania, poprawiania i poprawić nowego interfejsu API. W programie NuGet 3.0 RC to nowe źródło pakiet w wersji 3 interfejsu API spowoduje zastąpienie źródła pakietu na podstawie v2 "nuget.org".
 
-Pomimo inwestycji, które firma Microsoft jest wprowadzenie do interfejsu API w wersji 3 wprowadziliśmy wszystkie te nowe funkcje również współpracować z naszych istniejącego interfejsu API w wersji 2 protokołu, co oznacza, że będą one działać z istniejącymi źródłami pakietu niż nuget.org również.
+Pomimo inwestycji, w których firma Microsoft jest umieszczenie w wersji 3 interfejsu API które wprowadziliśmy wszystkich tych nowych funkcjach również działać z naszych istniejącego interfejsu API w wersji 2 protokołu, co oznacza, że będą one działać z istniejących źródeł pakietów innych niż również adres nuget.org.
 
 ## <a name="new-features-coming"></a>Nowe funkcje dostępne
 
-Od chwili 3.0 RTM również pracujemy nad niektórych podstawowych nowych NuGet funkcji, poza informacje wyświetlane w interfejsie użytkownika. Poniżej przedstawiono krótką listę obszarów inwestycji istotne:
+Od chwili 3.0 RTM również pracujemy nad podstawowych nowe NuGet funkcje poza to, co widać w interfejsie użytkownika. Poniżej przedstawiono krótką listę inwestycji najważniejsze obszary:
 
-1. Firma Microsoft jest partnerstwo z programem Visual Studio i zespoły MSBuild, aby uzyskać [NuGet zapoznanie się z platformy](http://blog.nuget.org/20141014/in-the-platform.html).
-1. Pracujemy nad abandon konwencje czas instalacji pakietu i zamiast tego stosuje się te konwencje w czasie tworzenia pakietów przez wprowadzenie nowego "autorytatywne" [manifestu pakietu](http://blog.nuget.org/20141023/package-manifests.html).
-1. Pracujemy nad zrefaktoryzuj NuGet codebase dokonanie składniki klienta i serwera może być ponownie używane w różnych domenach poza pakietu zarządzania w programie Visual Studio.
-1. Analizowania pojęcie "zależności prywatnej" gdzie pakietu może wskazać, że ma zależności od innych pakietów dla tylko szczegóły implementacji i tych zależności nie powinny być udostępniane jako zależności najwyższego poziomu.
+1. Nawiązaliśmy partnerstwo firmą za pomocą programu Visual Studio i MSBuild zespoły, aby uzyskać [NuGet większe zagłębienie w platformie](http://blog.nuget.org/20141014/in-the-platform.html).
+1. Pracujemy nad abandon konwencje czas instalacji pakietu i zamiast tego zastosować te konwencje w czasie tworzenia pakietów, wprowadzając nową "autorytatywne" [manifest pakietu](http://blog.nuget.org/20141023/package-manifests.html).
+1. Pracujemy nad zrefaktoryzuj NuGet codebase się składniki klienta i serwera wielokrotnego użytku w różnych domenach poza zarządzania pakietami w programie Visual Studio.
+1. Badamy pojęcie "zależności prywatnej" gdzie pakietu można wskazać, że ma zależności od innych pakietów dla tylko szczegóły dotyczące implementacji i te zależności nie powinny być udostępniane jako zależności najwyższego poziomu.
 
-## <a name="stay-tuned"></a>Wkrótce
+## <a name="stay-tuned"></a>Obserwuj na bieżąco
 
-Można śledzić na [naszym blogu](http://blog.nuget.org) więcej i powiadomień dla NuGet 3.0!
+Można nadzorować [naszym blogu](http://blog.nuget.org) więcej postępu i anonsów dla pakietów NuGet 3.0!

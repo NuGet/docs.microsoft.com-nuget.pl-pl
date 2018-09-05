@@ -1,49 +1,48 @@
 ---
-title: Informacje o wersji 2,8 NuGet
-description: Informacje o wersji dla tym znanych problemów, poprawki, dodatkowe funkcje i dcr 2.8 NuGet.
+title: Informacje o wersji 2.8 NuGet
+description: Informacje o wersji programu NuGet 2.8 tym znanych problemów, poprawki, funkcje dodane i DCRs.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 9f472f1370bfedaf04ebe889c0da01155b8aec22
-ms.sourcegitcommit: a6ca160b1e7e5c58b135af4eba0e9463127a59e8
+ms.openlocfilehash: 98b8b7334738306e6d40ba7c455409a87c4bb822
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32044693"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43547462"
 ---
-# <a name="nuget-28-release-notes"></a>Informacje o wersji 2,8 NuGet
+# <a name="nuget-28-release-notes"></a>Informacje o wersji 2.8 NuGet
 
-[Informacje o wersji NuGet 2.7.2](../release-notes/nuget-2.7.2.md) | [NuGet 2.8.1 informacje o wersji](../release-notes/nuget-2.8.1.md)
+[Informacje o wersji NuGet 2.7.2](../release-notes/nuget-2.7.2.md) | [informacjach o wersji NuGet 2.8.1](../release-notes/nuget-2.8.1.md)
 
 NuGet 2.8 został wydany 29 stycznia 2014 roku.
 
-## <a name="acknowledgements"></a>Potwierdzeń
+## <a name="acknowledgements"></a>Potwierdzanie
 
 1. [Llewellyn Pritchard](https://www.codeplex.com/site/users/view/leppie) ([@leppie](https://twitter.com/leppie))
-    - [#3466](https://nuget.codeplex.com/workitem/3466) — podczas pakowania pakietów, weryfikowanie identyfikator zależności pakietów.
+    - [#3466](https://nuget.codeplex.com/workitem/3466) — w przypadku pakowania pakietów, weryfikowanie identyfikator zależności pakietów.
 2. [Maarten Balliauw](https://www.codeplex.com/site/users/view/maartenba) ([@maartenballiauw](https://twitter.com/maartenballiauw))
     - [#2379](https://nuget.codeplex.com/workitem/2379) -usuń sufiks $metadata, gdy persistening podawania poświadczeń.
 3. [Filip De Vos](https://www.codeplex.com/site/users/view/FilipDeVos) ([@foxtricks](https://twitter.com/foxtricks))
-    - [#3538](http://nuget.codeplex.com/workitem/3538) — obsługa określania pliku projektu dla polecenia update nuget.exe.
+    - [#3538](http://nuget.codeplex.com/workitem/3538) — Określanie pliku projektu dla polecenia update nuget.exe pomocy technicznej.
 4. [Juan Gonzales](https://www.codeplex.com/site/users/view/jjgonzalez)
-    - [#3536](http://nuget.codeplex.com/workitem/3536) -tokeny zamiany nie zostały przekazane z - IncludeReferencedProjects.
-5. [Dominik Poole](https://www.codeplex.com/site/users/view/Sarkie) ([@Sarkie_Dave](https://twitter.com/Sarkie_Dave))
-    - [#3677](http://nuget.codeplex.com/workitem/3677) -Usuń nuget.push zgłaszanie OutOfMemoryException, gdy wypychanie duży pakiet.
+    - [#3536](http://nuget.codeplex.com/workitem/3536) — tokeny zastępowania nie zostały przekazane z - IncludeReferencedProjects.
+5. [David Poole](https://www.codeplex.com/site/users/view/Sarkie) ([@Sarkie_Dave](https://twitter.com/Sarkie_Dave))
+    - [#3677](http://nuget.codeplex.com/workitem/3677) -napraw nuget.push zgłaszanie OutOfMemoryException podczas wypychania duży pakiet.
 6. [Wouter Ouwens](https://www.codeplex.com/site/users/view/Despotes)
-    - [#3666](http://nuget.codeplex.com/workitem/3666) -ścieżki docelowej niepoprawny poprawka gdy projekt odwołuje się do innego projektu interfejsu wiersza polecenia/C++.
+    - [#3666](http://nuget.codeplex.com/workitem/3666) — ścieżka nieprawidłowym elementem docelowym poprawki, jeśli projekt odwołuje się do innego projektu interfejsu wiersza polecenia/C++.
 7. [ADAM Ralph](http://www.codeplex.com/site/users/view/adamralph) ([@adamralph](https://twitter.com/adamralph))
-    - [#3639](https://nuget.codeplex.com/workitem/3639) — Zezwalaj na pakiety instalowanego jako zależności programowanie domyślnie
-8. [Dominik Fowler](https://www.codeplex.com/site/users/view/dfowler) ([@davidfowl](https://twitter.com/davidfowl))
+    - [#3639](https://nuget.codeplex.com/workitem/3639) — Zezwalaj na pakiety do zainstalowania jako zależności rozwoju domyślnie
+8. [David Fowlera](https://www.codeplex.com/site/users/view/dfowler) ([@davidfowl](https://twitter.com/davidfowl))
     - [#3717](https://nuget.codeplex.com/workitem/3717) -Usuń niejawne uaktualnienia do najnowszej wersji poprawki
 9. [Gregory Vandenbrouck](https://www.codeplex.com/site/users/view/vdbg)
-    - Kilka usterek poprawki i poprawki dotyczące NuGet.Server, polecenie dublowanie nuget.exe i inne.
-    - Praca ta została wykonana przez kilka miesięcy, z Gregory współpracę nad chronometrażu prawo do integracji główny 2.8.
+    - Niektóre poprawki błędów i ulepszenia NuGet.Server, polecenie dublowanie nuget.exe i inne.
+    - Tę pracę zostało wykonane w ciągu kilku miesięcy, przy użyciu Gregory współpracę nad chronometrażu prawo do integracji z wzorcem 2.8.
 
-## <a name="patch-resolution-for-dependencies"></a>Poprawka rozpoznawania zależności
+## <a name="patch-resolution-for-dependencies"></a>Rozpoznawanie poprawki dla zależności
 
-Podczas rozpoznawania zależności pakietów, NuGet w przeszłości zaimplementowała strategię wybranie Najniższa wersja pakietu główne i pomocnicze, spełniającego zależności w pakiecie. W odróżnieniu od wersji głównej i pomocniczej jednak wersji poprawki zawsze rozpoznano do najwyższej wersji. Chociaż zachowanie był dobrze tych, utworzyć braku determinizm podczas instalowania pakietów z zależności. Rozważmy następujący przykład:
+Podczas rozpoznawania zależności pakietów, NuGet w przeszłości została zaimplementowana strategii wybierania Najniższa wersja pakietu głównych i pomocniczych, spełniające zależności w pakiecie. W przeciwieństwie do wersji głównych i pomocniczych, wersja poprawki zabezpieczeń był zawsze rozpoznać najwyższa wersja. Chociaż zachowanie było intencjami, utworzyć braku determinizm dla instalowanie pakietów z zależnościami. Rozważmy następujący przykład:
 
     PackageA@1.0.0 -[ >=1.0.0 ]-> PackageB@1.0.0
 
@@ -53,25 +52,25 @@ Podczas rozpoznawania zależności pakietów, NuGet w przeszłości zaimplemento
 
     Developer2 installs PackageA@1.0.0: installed PackageA@1.0.0 and PackageB@1.0.1
 
-W tym przykładzie, nawet jeśli Developer1 i Developer2 zainstalowane PackageA@1.0.0, każdy zakończone się za pomocą innej wersji PackageB. NuGet 2.8 zmienia to zachowanie domyślne, tak, aby był zgodny z zachowanie wersję główną i pomocniczą sposób rozpoznawania zależności dla wersji poprawki. W powyższym przykładzie, a następnie PackageB@1.0.0 zostaną zainstalowane w wyniku instalacji PackageA@1.0.0, niezależnie od nowsza wersja poprawki.
+W tym przykładzie, nawet jeśli Developer1 i Developer2 zainstalowane PackageA@1.0.0, każdy zakończone się w innej wersji PackageB. NuGet 2.8 zmienia to zachowanie domyślne w taki sposób, że sposób rozpoznawania zależności dla wersji poprawki jest zgodne z zachowaniem dla wersji głównych i pomocniczych. W powyższym przykładzie, a następnie PackageB@1.0.0 zostanie zainstalowany w wyniku instalacji PackageA@1.0.0, niezależnie od tego, nowsza wersja poprawki.
 
-## <a name="-dependencyversion-switch"></a>Przełącznika - DependencyVersion
+## <a name="-dependencyversion-switch"></a>DependencyVersion — przełącznik
 
-Chociaż zmienia NuGet 2.8 _domyślne_ zachowanie dla rozpoznawania zależności, dodane również dokładniejszej kontroli nad procesem rozpoznawania zależności za pomocą przełącznika - DependencyVersion w konsoli Menedżera pakietów. Przełącznik umożliwia rozpoznawania zależności Najniższa wersja możliwe (domyślnie), jest najwyższa możliwa wersja najwyższy pomocnicze lub wersji poprawki.  Ta opcja działa tylko dla pakiet instalacyjny polecenia programu powershell.
+Chociaż zmienia NuGet 2.8 _domyślne_ zachowanie dla rozpoznawania zależności, dodaje także bardziej precyzyjną kontrolę nad procesem rozpoznawania zależności za pośrednictwem przełącznika - DependencyVersion w konsoli Menedżera pakietów. Przełącznik umożliwia rozpoznawania zależności, aby Najniższa wersja możliwe (zachowanie domyślne), najnowsza wersja to możliwe, lub najwyższy drobnych lub wersja poprawki zabezpieczeń.  Ta opcja działa tylko dla install-package polecenia programu powershell.
 
 ![Przełącznik DependencyVersion](./media/NuGet-2.8/dependencyversion.png)
 
 ## <a name="dependencyversion-attribute"></a>Atrybut DependencyVersion
 
-Oprócz przełącznika - DependencyVersion wymienione powyżej, mogą również NuGet możliwości można ustawić nowy atrybut w pliku Nuget.Config. Definiowanie co to jest wartość domyślna, gdy w wywołaniu nie został określony przełącznik - DependencyVersion pakiet instalacyjny. Ta wartość zostanie również przestrzegane za pomocą okna dialogowego Menedżer pakietów NuGet dla wszystkich operacji pakietu instalacji. Aby ustawić tę wartość, do pliku Nuget.Config. Dodaj atrybut poniżej:
+Oprócz przełącznika - DependencyVersion szczegóły przedstawiono powyżej, NuGet ma również dozwolone dla możliwości można ustawić nowy atrybut w pliku Nuget.Config Definiowanie co to jest wartość domyślna, jeśli nie określono przełącznika - DependencyVersion w wywołania Install-package. Ta wartość obowiązują również w oknie dialogowym Menedżer pakietów NuGet dla wszystkich operacji pakietu instalacji. Aby ustawić tę wartość, należy dodać atrybut poniżej do pliku Nuget.Config:
 
     <config>
         <add key="dependencyversion" value="Highest" />
     </config>
 
-## <a name="preview-nuget-operations-with--whatif"></a>-Whatif operacji NuGet w wersji zapoznawczej
+## <a name="preview-nuget-operations-with--whatif"></a>-Whatif operacje NuGet w wersji zapoznawczej
 
-Niektóre pakiety NuGet może mieć wykresy zależności bezpośrednich i tak, on być pomocne podczas instalacji, odinstalować ani zaktualizować operacji do najpierw Zobacz, co się stanie. NuGet 2.8 dodaje standardowego przełącznika - whatif programu PowerShell install-package, odinstaluj pakiet i polecenia powodujące włączenie wizualizacja całego zamknięcia pakietów, do których zostaną zastosowane polecenie pakiet aktualizacji. Na przykład uruchomiona `install-package Microsoft.AspNet.WebApi -whatif` w pustym sieci Web ASP.NET aplikacji daje następujące.
+Niektóre pakiety NuGet może mieć wykresy zależności szczegółowe i jako takie on być przydatne podczas instalacji, odinstalowywania i zaktualizować operację, aby najpierw sprawdzić, co się stanie. NuGet 2.8 dodaje standardowego przełącznika - whatif PowerShell install-package, odinstaluj pakiet i polecenia pakietu aktualizacji, aby włączyć, wizualizowanie całego zamknięcia pakietów, do których zostanie zastosowana polecenia. Aby na przykład uruchomić `install-package Microsoft.AspNet.WebApi -whatif` w puste ASP.NET sieci Web aplikacji daje następujące czynności.
 
     PM> install-package Microsoft.AspNet.WebApi -whatif
     Attempting to resolve dependency 'Microsoft.AspNet.WebApi.WebHost (≥ 5.0.0)'.
@@ -84,23 +83,23 @@ Niektóre pakiety NuGet może mieć wykresy zależności bezpośrednich i tak, o
     Install Microsoft.AspNet.WebApi.WebHost 5.0.0
     Install Microsoft.AspNet.WebApi 5.0.0
 
-## <a name="downgrade-package"></a>Zmień wersję pakietu
+## <a name="downgrade-package"></a>Obniżanie wersji pakietu
 
-Nie jest rzadko do zainstalowania wstępnej wersji pakietu w celu zbadania nowe funkcje i zdecydować przywrócić ostatnią stabilną wersję. Przed NuGet 2.8 to proces wieloetapowych odinstalowaniu wersji wstępnej pakiet i jego zależności, a następnie zainstalować starszą wersję. Z 2.8 NuGet jednak pakiet aktualizacji teraz cofnie zamknięcia całego pakietu (np. drzewo zależności pakietu) do poprzedniej wersji.
+Nie jest niczym niezwykłym, aby zainstalować wstępną wersję pakietu w celu zbadania nowe funkcje i zdecydować wycofać do ostatniego stabilnej wersji. Przed NuGet 2.8 to wieloetapowy proces odinstalowywania wstępną wersję pakietu oraz jego zależności, a następnie zainstaluj starszą wersję. Za pomocą NuGet 2.8, pakiet aktualizacji będzie teraz wycofać zamknięcia cały pakiet (np. drzewo zależności pakietu) do poprzedniej wersji.
 
-## <a name="development-dependencies"></a>Programowanie zależności
+## <a name="development-dependencies"></a>Tworzenie zależności
 
-Wiele różnych typów możliwości mogą być dostarczane jako pakiety NuGet — w tym narzędzia, które są używane do optymalizacji procesu tworzenia. Te składniki mogą być instrumentalnego w tworzeniu nowego pakietu, nie należy traktować jako zależność nowy pakiet publikowanych później. NuGet 2.8 umożliwia pakietu w celu identyfikacji w `.nuspec` pliku jako developmentDependency. Po zainstalowaniu tych metadanych również zostaną dodane do `packages.config` pliku projektu, w którym został zainstalowany pakiet. Gdy który `packages.config` zależności NuGet podczas dalszej analizy pliku `nuget.exe pack`, spowoduje wykluczenie tych zależności oznaczona jako programowanie zależności.
+Wiele różnych typów funkcji mogą być dostarczane jako pakietów NuGet — w tym narzędzia, które są używane do optymalizacji procesu rozwoju. Te składniki mogą być zarejestrowana w tworzeniu nowego pakietu, nie należy rozważyć zależność nowego pakietu po opublikowaniu go później. NuGet 2.8 umożliwia pakietu do identyfikacji w `.nuspec` pliku jako developmentDependency. Po zainstalowaniu tych metadanych także zostaną dodane do `packages.config` pliku projektu, do którego pakiet został zainstalowany. Gdy, `packages.config` zależności NuGet podczas dalszej analizy pliku `nuget.exe pack`, spowoduje wykluczenie, te zależności, oznaczone jako zależności rozwoju.
 
-## <a name="individual-packagesconfig-files-for-different-platforms"></a>Packages.config poszczególnych plików na różnych platformach
+## <a name="individual-packagesconfig-files-for-different-platforms"></a>Pliki poszczególnych packages.config na różnych platformach
 
-Opracowywanie aplikacji dla wielu platform docelowych, jest często mają różne pliki projektów dla poszczególnych środowisk odpowiednich kompilacji. Również jest często użycie różnych pakietów NuGet w plikach projektu różnych pakietów mają różne poziomy wsparcia dla różnych platform. NuGet 2.8 zapewnia ulepszoną obsługę tego scenariusza, tworząc różnych `packages.config` plików dla plików inny projekt specyficzne dla platformy.
+Podczas opracowywania aplikacji dla wielu platform docelowych jest często mają różne pliki projektów dla poszczególnych środowisk odpowiednich kompilacji. Jest również typowe korzystanie z różnych pakietach NuGet w plikach inny projekt, pakiety są dostępne dla różnych poziomów pomocy technicznej dla różnych platform. NuGet 2.8 zapewnia ulepszoną obsługę tego scenariusza, tworząc różne `packages.config` plików dla plików do innego projektu specyficznego dla platformy.
 
-![Wiele plików package.config](./media/NuGet-2.8/multiple-packageconfigs.png)
+![Wiele plików package.config plików](./media/NuGet-2.8/multiple-packageconfigs.png)
 
 ## <a name="fallback-to-local-cache"></a>Powrót do lokalnej pamięci podręcznej
 
-Chociaż pakiety NuGet są zazwyczaj używane z galerii zdalnego takich jak [galerii NuGet](http://www.nuget.org/) połączenia z siecią, istnieje wiele scenariuszy, w których klient nie jest połączony. Bez połączenia sieciowego klienta NuGet nie może pomyślnie zainstalować pakiety — nawet wtedy, gdy pakiety zostały już na komputerze klienckim w lokalnej pamięci podręcznej NuGet. NuGet 2.8 dodaje automatyczne pamięci podręcznej powrotu do konsoli Menedżera pakietów. Na przykład gdy odłączenie karty sieciowej oraz jest instalowany jQuery, konsoli znajdują się:
+Chociaż pakiety NuGet są zwykle używane z galerii zdalnego takich jak [galerii pakietów NuGet](http://www.nuget.org/) połączenia z siecią, istnieje wiele scenariuszy, w których klient nie jest połączony. Bez połączenia sieciowego klienta programu NuGet nie mógł pomyślnie zainstalować pakiety — nawet wtedy, gdy te pakiety zostały już na komputerze klienckim, w lokalnej pamięci podręcznej narzędzia NuGet. NuGet 2.8 dodaje automatyczne rezerwowego pamięci podręcznej do konsoli Menedżera pakietów. Na przykład podczas odłączenie karty sieciowej i instalowanie jQuery, w konsoli wyświetlone zostaną następujące:
 
     PM> Install-Package jquery
     The source at nuget.org [https://www.nuget.org/api/v2/] is unreachable. Falling back to NuGet Local Cache at C:\Users\me\AppData\Local\NuGet\Cache
@@ -109,24 +108,24 @@ Chociaż pakiety NuGet są zazwyczaj używane z galerii zdalnego takich jak [gal
     Adding 'jQuery 2.0.3' to WebApplication18.
     Successfully added 'jQuery 2.0.3' to WebApplication18.
 
-Funkcja rezerwowej pamięci podręcznej nie wymaga żadnych argumentów danego polecenia. Ponadto rezerwowej pamięci podręcznej jest obecnie obsługiwane tylko w konsoli Menedżera pakietów — zachowanie aktualnie nie działa w oknie dialogowym Menedżer pakietów.
+Funkcja rezerwowego pamięci podręcznej nie wymaga żadnych argumentów. Ponadto pamięć podręczna rezerwowego obecnie działa tylko w konsoli Menedżera pakietów — zachowanie aktualnie nie działa w oknie dialogowym Menedżer pakietów.
 
-## <a name="webmatrix-nuget-client-updates"></a>Aktualizacje klienta NuGet programu WebMatrix
+## <a name="webmatrix-nuget-client-updates"></a>Aktualizacje klienta programu NuGet programu WebMatrix
 
-Wraz z NuGet 2.8 rozszerzenie NuGet dla programu WebMatrix Zaktualizowano również uwzględnienie wielu najważniejszych funkcji, które są oferowane przez [NuGet 2.5](../release-notes/nuget-2.5.md). Zawiera nowe funkcje takie jak "Aktualizuj wszystkie", "Minimalna wersja narzędzia NuGet" i zezwala na zastępowanie plików zawartości.
+Wraz z NuGet 2.8 rozszerzenie NuGet dla programu WebMatrix został także zaktualizowany obejmujący wiele główne funkcje oferowane przez [NuGet 2.5](../release-notes/nuget-2.5.md). Nowe możliwości obejmują te, takich jak "Update All", "Minimalna NuGet w wersji" i pozwalając na zastąpienie plików zawartości.
 
 Aby zaktualizować rozszerzenia Menedżera pakietów NuGet w programie WebMatrix 3:
 
 1. Otwórz program WebMatrix 3
-1. Kliknij ikonę rozszerzeń na Wstążce
-1. Wybierz kartę aktualizacji
+1. Kliknij ikonę rozszerzenia na Wstążce
+1. Wybierz kartę Aktualizacje
 1. Kliknij, aby zaktualizować Menedżera pakietów NuGet do 2.5.0
-1. Zamknij i uruchom ponownie program WebMatrix 3
+1. Zamknij i ponownie uruchom program WebMatrix 3
 
-Jest to zespołu NuGet pierwszej wersji rozszerzenia Menedżera pakietów NuGet dla programu WebMatrix.  Ten kod został ostatnio zamieszczone przez firmę Microsoft do projektu NuGet open source. Poprzednio integracji z programem NuGet został utworzony w programie WebMatrix i nie może zostać zaktualizowana poza pasmem z programu WebMatrix.  Mamy teraz możliwość dalszego aktualizacji wraz z resztą narzędzia klienta NuGet.
+Jest to zespół NuGet pierwsza wersja rozszerzenia Menedżera pakietów NuGet dla programu WebMatrix.  Kod został niedawno zamieszczone przez firmę Microsoft do projektu NuGet typu open source. Wcześniej integracji NuGet został utworzony w programie WebMatrix i nie może zostać zaktualizowana poza pasmem z programu WebMatrix.  Teraz mamy możliwość dalszego zaktualizować go razem z pozostałymi narzędziami klienckimi NuGet.
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 
-Jeden z głównych poprawki wprowadzone jest zwiększenie wydajności w pakiecie aktualizacji-Zainstaluj ponownie polecenie.
+Jedną z głównych poprawki wprowadzone był poprawę wydajności w pakiecie aktualizacji-Zainstaluj ponownie polecenie.
 
-Oprócz tych funkcji i popraw wyżej wymienione wydajności ta wersja programu NuGet zawiera również inne poprawki błędów. Znaleziono 181 całkowita problemy rozwiązane w wersji. Pełną listę prac elementów ustalone w NuGet 2.8, sprawdź widok [NuGet Tracker problem w tej wersji](https://nuget.codeplex.com/workitem/list/advanced?release=NuGet%202.8&status=all).
+Oprócz te funkcje i poprawki wymienione wyżej wydajności ta wersja programu NuGet obejmuje wiele poprawek błędów. Wystąpiły 181 Suma problemów, które zostały rozwiązane w wydaniu. Aby uzyskać pełną listę prac elementy rozwiązane w NuGet 2.8, widok [NuGet narzędzie do śledzenia problemów w tej wersji](https://nuget.codeplex.com/workitem/list/advanced?release=NuGet%202.8&status=all).

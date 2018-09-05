@@ -1,51 +1,50 @@
 ---
 title: Protokoły nuget.org
-description: Protokoły nuget.org zmieniające się do interakcji z klientów NuGet.
+description: Protokoły nuget.org rozwijające się do interakcji z klientami NuGet.
 author: anangaur
 ms.author: anangaur
-manager: unnir
 ms.date: 10/30/2017
 ms.topic: conceptual
 ms.reviewer: kraigb
-ms.openlocfilehash: cc6d52617ea8b69d5b18b831ddf8a1a85dd6798f
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: d0add777040dbb8bcde6d8e385a4feab568e5cdd
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31822581"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43547276"
 ---
 # <a name="nugetorg-protocols"></a>protokoły nuget.org
 
-Wchodzić w interakcje z nuget.org, klienci muszą wykonać niektórych protokołów. Ponieważ rozwijają zachować te protokoły, klienci muszą identyfikują wersja protokołu używanego podczas wywoływania metody nuget.org określonych interfejsów API. Dzięki temu nuget.org wprowadzenie zmian w sposób nierozdzielające starego klientów.
+Do interakcji z repozytorium nuget.org, klienci muszą wykonać pewne protokołów. Ponieważ Utrzymaj rozwijające się tych protokołów, klienci muszą zidentyfikować wersja protokołu używanego podczas wywoływania określonych nuget.org interfejsów API. Dzięki temu nuget.org do wprowadzenia zmian w sposób niepowodujących niezgodności starych klientów.
 
 > [!Note]
-> Interfejsy API udokumentowany na tej stronie są specyficzne dla nuget.org i nie ma żadnych oczekiwania w innych implementacjach serwera NuGet dodać te interfejsy API. 
+> Interfejsy API opisane na tej stronie są specyficzne dla nuget.org i nie ma żadnych oczekiwania dotyczące innych implementacji serwera NuGet wprowadzić te interfejsy API. 
 
-Informacje o interfejsie API NuGet szeroko implementowany w ekosystemie NuGet, zobacz [Przegląd interfejsu API](overview.md).
+Aby uzyskać informacje o interfejsie API NuGet szeroko zaimplementowane w ekosystemie NuGet, zobacz [omówienie interfejsu API](overview.md).
 
-Ten temat zawiera listę różnych protokołów, jak i kiedy zaczynają istnienia.
+Ten temat zawiera listę różnych protokołów, jak i kiedy pochodzą istnienia.
 
-## <a name="nuget-protocol-version-410"></a>Wersja protokołu NuGet 4.1.0
+## <a name="nuget-protocol-version-410"></a>Protokołu NuGet w wersji 4.1.0
 
-4.1.0 protokołu Określa użycie kluczy Sprawdź zakres do interakcji z usługami innych niż nuget.org pakietu do konta nuget.org. Należy pamiętać, że `4.1.0` wersji liczba to ciąg nieprzezroczyste, ale dzieje się pokrywa się z pierwszej wersji oficjalnego klienta NuGet, który obsługuje tego protokołu.
+4.1.0 protokołu Określa użycie kluczy Sprawdź zakres do interakcji z usługami innymi niż nuget.org pakietu do konta w witrynie nuget.org. Należy pamiętać, że `4.1.0` wersji liczba to nieprzezroczysty ciąg, ale dzieje się pokrywają się z pierwszą wersję oficjalne klienta NuGet, który obsługuje ten protokół.
 
-Sprawdzanie poprawności temu klucze interfejsu API utworzonych przez użytkownika są używane tylko z nuget.org i tej weryfikacji lub Weryfikacja od usługi innej firmy jest obsługiwana za pomocą kluczy Sprawdź zakres jednorazowego użytku. Te klucze Sprawdź zakres może służyć do sprawdzania, czy pakiet należy do określonego użytkownika (konto) na nuget.org.
+Sprawdzanie poprawności gwarantuje, że klucze interfejsu API utworzonej przez użytkownika są używane tylko w witrynie nuget.org, i tej weryfikacji lub Weryfikacja z usługi innej firmy odbywa się przy użyciu kluczy Sprawdź zakres jednorazowego użytku. Te klucze Sprawdź zakres może służyć do sprawdzania, czy pakiet należy do określonego użytkownika (konto) w witrynie nuget.org.
 
 ### <a name="client-requirement"></a>Wymagania klienta
 
-Klienci są wymagane do przekazania następujący nagłówek, podczas tworzenia wywołań interfejsu API **wypychania** pakietów do nuget.org:
+Klienci są wymagane do przekazania następujący nagłówek, w momencie wywołania interfejsu API do **wypychania** pakietów nuget.org:
 
     X-NuGet-Protocol-Version: 4.1.0
 
-Należy pamiętać, że `X-NuGet-Client-Version` przypomina semantykę nagłówka, ale jest zarezerwowany do użycia tylko przez oficjalnego klienta NuGet. Innej klienci powinni używać `X-NuGet-Protocol-Version` nagłówek i podaną wartość.
+Należy pamiętać, że `X-NuGet-Client-Version` nagłówka przypomina semantykę, ale jest zarezerwowany do użycia tylko przez oficjalne klienta programu NuGet. Innych firm, klienci powinni używać `X-NuGet-Protocol-Version` nagłówek i podaną wartość.
 
-**Wypychania** samego protokołu jest opisany w dokumentacji dotyczącej [ `PackagePublish` zasobów](package-publish-resource.md).
+**Wypychania** samego protokołu jest opisane w dokumentacji dotyczącej [ `PackagePublish` zasobów](package-publish-resource.md).
 
-Jeśli klient współdziała z usług zewnętrznych i należy sprawdzić, czy pakiet należy do określonego użytkownika (konto), powinna używać protokołu następujące i używać kluczy Sprawdź zakres i nie klucze interfejsu API z nuget.org.
+Jeśli klient korzysta z usług zewnętrznych i należy sprawdzić, czy pakiet należy do określonego użytkownika (konto), powinna używać następujących protokołu i klucze Sprawdź, czy zakres i nie klucze interfejsu API z repozytorium nuget.org.
 
-### <a name="api-to-request-a-verify-scope-key"></a>Interfejs API do żądania klucz Sprawdź zakres
+### <a name="api-to-request-a-verify-scope-key"></a>Interfejs API, aby poprosić o klucz Sprawdź, czy zakres
 
-Ten interfejs API jest używany do pobierania klucz, sprawdź, czy zakres autora nuget.org, można sprawdzić poprawności pakietu posiadanych przez nią.
+Ten interfejs API umożliwia uzyskiwanie klucza Sprawdź, czy zakres dla autora nuget.org do sprawdzania poprawności pakietu posiadanych przez nią.
 
     POST api/v2/package/create-verification-key/{ID}/{VERSION}
 
@@ -53,7 +52,7 @@ Ten interfejs API jest używany do pobierania klucz, sprawdź, czy zakres autora
 
 Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------- | ------ | ------ | -------- | -----
-ID             | Adres URL    | string | Tak      | Identidier pakiet, dla którego wymagany jest klucz Sprawdź zakres
+ID             | Adres URL    | string | Tak      | Identidier pakiet, dla którego żądana jest Sprawdź, czy klucz zakresu
 WERSJA        | Adres URL    | string | Brak       | Wersja pakietu
 X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
 
@@ -66,9 +65,9 @@ X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: 
 }
 ```
 
-### <a name="api-to-verify-the-verify-scope-key"></a>Interfejs API, aby zweryfikować klucz Sprawdź zakres
+### <a name="api-to-verify-the-verify-scope-key"></a>Interfejs API, aby sprawdzić, sprawdź, czy klucz zakresu
 
-Ten interfejs API jest używany do sprawdzania poprawności klucza zakresu Sprawdź posiadane przez autora nuget.org pakietu.
+Ten interfejs API jest używana do zweryfikowania klucza zakresu Sprawdź posiadane przez autora nuget.org pakietu.
 
     GET api/v2/verifykey/{ID}/{VERSION}
 
@@ -76,16 +75,16 @@ Ten interfejs API jest używany do sprawdzania poprawności klucza zakresu Spraw
 
 Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------  | ------ | ------ | -------- | -----
-ID             | Adres URL    | string | Tak      | Identyfikator pakietu, dla którego wymagany jest klucz Sprawdź zakres
+ID             | Adres URL    | string | Tak      | Identyfikator pakietu, dla którego żądana jest Sprawdź, czy klucz zakresu
 WERSJA        | Adres URL    | string | Brak       | Wersja pakietu
 X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {VERIFY_SCOPE_KEY}`
 
 > [!Note]
-> Ten klucz interfejsu API zakresu Sprawdź utraci ważność za dni lub przy pierwszym użyciu cokolwiek nastąpi najpierw.
+> Ten klucz interfejsu API zakresu Sprawdź, czy utraci ważność za dni lub przy pierwszym użyciu zależnie co nastąpi wcześniej.
 
 #### <a name="response"></a>Odpowiedź
 
-Kod stanu | Znaczenie
+Kod stanu: | Znaczenie
 ----------- | -------
 200         | Klucz interfejsu API jest nieprawidłowa
 403         | Klucz interfejsu API jest nieprawidłowa lub nie jest autoryzowany do wypychania na pakiecie

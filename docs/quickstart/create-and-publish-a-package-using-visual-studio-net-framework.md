@@ -3,15 +3,14 @@ title: Tworzenie i publikowanie pakietu platformy .NET Framework, za pomocą pro
 description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet programu .NET Framework za pomocą programu Visual Studio 2017 na Windows.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 05/13/2018
 ms.topic: quickstart
-ms.openlocfilehash: c537ee97b79648428df2c1b52894f536f5626a9e
-ms.sourcegitcommit: 4d139cb54a46616ae48d1768fa108ae3bf450d5b
+ms.openlocfilehash: 68593211da1a34649c7050753a5db0f3a03cb41b
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39508260"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43549631"
 ---
 # <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki Start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
 

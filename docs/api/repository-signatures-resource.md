@@ -1,27 +1,19 @@
 ---
 title: Podpisy repozytorium, interfejs API programu NuGet | Dokumentacja firmy Microsoft
-author:
-- joelverhagen
-- kraigb
-ms.author:
-- joelverhagen
-- kraigb
-manager: skofman
+author: joelverhagen
+ms.author: jver
 ms.date: 3/2/2018
 ms.topic: reference
-ms.prod: nuget
-ms.technology: ''
 description: Zasób podpisów repozytorium umożliwia klientom źródła pakietu zawiera informacje o repozytorium, ich możliwości podpisywania.
-keywords: Podpisy repozytorium NuGet interfejsu API, nuget.org podpisywania certyfikatów, podpisywanie pakietów nuget.org
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 32dd2ee19261488a2b1b92724095a11ced69ae68
-ms.sourcegitcommit: c643dd2c44e085601551ff7079d696bcc3ad2b49
+ms.openlocfilehash: 50f309b99d4bf59e14f3e29b6b0421d8c3e8aa5a
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42793592"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43547984"
 ---
 # <a name="repository-signatures"></a>Podpisy repozytorium
 

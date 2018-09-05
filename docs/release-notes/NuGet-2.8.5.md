@@ -1,31 +1,30 @@
 ---
 title: Informacje o wersji NuGet 2.8.5
-description: Informacje o wersji programu NuGet 2.8.5 tym — znane problemy, poprawki, dodatkowe funkcje i dcr.
+description: Informacje o wersji programu NuGet 2.8.5 tym — znane problemy, poprawki, funkcje dodane i DCRs.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 40557035e445d07e7acf301e34b750b329ba9990
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: aa03b00a0043a4805f33900124c13b0777c2b7a3
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31820082"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43548628"
 ---
 # <a name="nuget-285-release-notes"></a>Informacje o wersji NuGet 2.8.5
 
-[Informacje o wersji NuGet 2.8.3](../release-notes/nuget-2.8.3.md) | [NuGet 2.8.6 informacje o wersji](../release-notes/nuget-2.8.6.md)
+[Informacje o wersji programu NuGet 2.8.3](../release-notes/nuget-2.8.3.md) | [informacjach o wersji NuGet 2.8.6](../release-notes/nuget-2.8.6.md)
 
-NuGet 2.8.5 wydanej w dniu 30 marca 2015 roku. Jest to aktualizacja pomocnicza do naszej 2.8.3 VSIX niektóre docelowe poprawki.
+NuGet 2.8.5 został wydany 30 marca 2015 r. Jest aktualizację pomocniczą do naszych wersji 2.8.3 VSIX z niektórymi docelowe poprawki.
 
-W tej wersji dodano obsługę dla okna dialogowego Menedżer pakietów NuGet [DNX docelowej Framework monikerów](https://github.com/aspnet/dnx).  Te nowe monikerów framework, które są obsługiwane następujące:
+W tej wersji dodano obsługę dla okna dialogowego Menedżer pakietów NuGet [środowiska DNX Target Framework monikerów](https://github.com/aspnet/dnx).  Te nowe krótkie nazwy framework, które są obsługiwane, obejmują:
 
-* **core50** — "base" target framework moniker (TFM) zgodny z Core CLR.
-* **dnx452** — A TFM aplikacji określonym na podstawie DNX przy użyciu 4.5.2 pełnej wersji platformy
-* **dnx46** — A TFM aplikacji określonym na podstawie DNX przy użyciu 4.6 pełnej wersji platformy
-* **dnxcore50** — A TFM aplikacji określonym na podstawie środowiska DNX za pomocą wersji Core 5.0 Framework
+* **core50** — "base" docelowe moniker struktury (TFM), która jest zgodna z Core CLR.
+* **dnx452** — TFM specyficzne dla środowiska DNX na podstawie używających 4.5.2 pełną wersję platformy
+* **dnx46** — TFM specyficzne dla środowiska DNX na podstawie używających 4.6 pełną wersję platformy
+* **dnxcore50** — TFM: specyficzne dla środowiska DNX na podstawie aplikacji przy użyciu wersji Core 5.0 framework
 
-Jeden błąd został rozwiązany tego uniemożliwił pakietów instalacji do projektów języka FSharp prawidłowo:
+Jeden błąd został naprawiony tego uniemożliwił pakietów instalacji do projektów języka FSharp prawidłowo:
 
 https://nuget.codeplex.com/workitem/4400

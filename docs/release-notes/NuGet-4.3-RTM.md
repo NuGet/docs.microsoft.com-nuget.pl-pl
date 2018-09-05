@@ -1,22 +1,21 @@
 ---
 title: Informacje o wersji 4.3 RTM NuGet
-description: Informacje o tym znanych problemów, poprawki, dodatkowe funkcje i dcr RTM 4.3 NuGet.
+description: Informacje o wersji programu NuGet 4.3 RTM, w tym znanych problemów, poprawki, funkcje dodane i DCRs.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 08/14/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: cb44f47ef0b3bd086f0a681cb2fedc7c5afc42fa
-ms.sourcegitcommit: 3eab9c4dd41ea7ccd2c28bb5ab16f6fbbec13708
+ms.openlocfilehash: 4bee32995884f4c003ebb963d2fd5b2d04363bab
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31822659"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43551627"
 ---
 # <a name="nuget-43-rtm-release-notes"></a>Informacje o wersji 4.3 RTM NuGet
 
-[Visual Studio 2017 15 ustęp 3 RTW](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) jest dostarczany z RTM 4.3 NuGet, który dodaje obsługę nowych scenariuszy, takich jak .NET Standard 2.0/.NET Core 2.0, zawiera wiele poprawek jakości i zwiększa wydajność. Tej wersji wprowadzono również kilka ulepszeń, takich jak obsługa Wersjonowania semantycznego 2.0.0, integracja MSBuild NuGet ostrzeżeń i błędów i więcej.
+[Visual Studio 2017 15.3 RTW](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) dołączono RTM 4.3 NuGet, który dodaje obsługę nowych scenariuszy, takich jak .NET Standard 2.0/.NET Core 2.0, zawiera wiele poprawki jakości i poprawia wydajność. Ta wersja oferuje również kilka udoskonaleń, takich jak obsługa Semantic Versioning 2.0.0, integrację MSBuild NuGet ostrzeżeń i błędów i innych.
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -24,9 +23,9 @@ ms.locfileid: "31822659"
 
 #### <a name="issue"></a>Problem
 
-Następujące techniki wiersza polecenia przywracania traktować pakiety wyłączone źródła jako włączona. [NuGet#5704](https://github.com/NuGet/Home/issues/5704)
+Następujące techniki przywracania wiersza polecenia traktowały wyłączone źródła pakietów jako włączone. [NuGet#5704](https://github.com/NuGet/Home/issues/5704)
 - `msbuild /t:restore`
-- `dotnet restore` (albo dotnet.exe dostarczaną z programem VS lub ten, który jest dostarczany z zestawem SDK NetCore 2.0.0)
+- `dotnet restore` (albo za pomocą dotnet.exe dostarczanego z programem VS lub ten, który jest dostarczany z zestawem SDK NetCore 2.0.0)
 
 #### <a name="workaround"></a>Obejście
 
@@ -42,9 +41,9 @@ Czasami klawisz Enter nie działa w konsoli Menedżera pakietów. Jeśli tak si�
 
 #### <a name="workaround"></a>Obejście
 
-Uruchom ponownie program Visual Studio, a następnie otwórz konsolę zarządzania pakietami przed otwarciem rozwiązania. Alternatywnie, spróbuj usunąć `project.lock.json` i przywracanie ponownie.
+Uruchom ponownie program Visual Studio, a następnie otwórz konsolę zarządzania pakietami przed otwarciem rozwiązania. Alternatywnie, spróbuj usunąć `project.lock.json` i przywrócić go ponownie.
 
-### <a name="you-are-unable-to-view-add-or-update-dotnetclitools-using-nuget-package-manager"></a>Nie można wyświetlić, dodać lub zaktualizować DotNetCLITools, za pomocą Menedżera pakietów Nuget
+### <a name="you-are-unable-to-view-add-or-update-dotnetclitools-using-nuget-package-manager"></a>Nie można wyświetlić, dodać ani zaktualizować składnika DotNetCLITools przy użyciu Menedżera pakietów Nuget
 
 #### <a name="issue"></a>Problem
 
@@ -64,65 +63,65 @@ Przekierowanie wersji platformy docelowej może prowadzić do niekompletnej funk
 
 Wykonaj przywracanie ręczne.
 
-## <a name="issues-fixed-in-nuget-43-rtm-timeframe"></a>Problemy, które usunięto w wersji RTM programu NuGet 4.3 przedziale czasu
+## <a name="issues-fixed-in-nuget-43-rtm-timeframe"></a>Problemy rozwiązane w wersji RTM 4.3 NuGet przedział czasu
 
-[NuGet 4.0 RTM informacje o wersji](../release-notes/nuget-4.0-RTM.md) -Wyświetla wszystkie problemy, które są rozwiązywane RTM 4.0 NuGet
+[4.0 RTM informacjach o wersji NuGet](../release-notes/nuget-4.0-RTM.md) -Wyświetla wszystkie problemy rozwiązane programu NuGet 4.0 RTM
 
 ### <a name="features"></a>Funkcje
 
-- Poprawa wydajności przywracania NuGet — wdrożenie operacja inteligentny dla wiersza polecenia przywracania - i VS [#5080](https://github.com/NuGet/Home/issues/5080)
+- Poprawa wydajności przywracania NuGet — Implementowanie inteligentniejsze aktualizujący nie działa dla wiersza polecenia przywraca — i VS [#5080](https://github.com/NuGet/Home/issues/5080)
 
-- NET Core 2.0: Programu VS/Dotnet interfejsu wiersza polecenia należy rozpocząć korzystanie z istniejące funkcje NuGet: rezerwowy foldery - [#4939](https://github.com/NuGet/Home/issues/4939)
+- .NET Core 2.0: Programu VS/wiersz polecenia Dotnet powinien rozpocząć korzystanie z istniejących funkcji NuGet: rezerwowy foldery - [#4939](https://github.com/NuGet/Home/issues/4939)
 
-- NET Core 2.0: Umożliwić użytkownikom Ignoruj ostrzeżenia dotyczące przywracania określonego (lub podniesienia uprawnień do błędu) - [#4898](https://github.com/NuGet/Home/issues/4898)
+- .NET Core 2.0: Umożliwianie użytkownikom Ignoruj ostrzeżenia o określonych przywracania (albo podnoszenie poziomu do błędów) - [#4898](https://github.com/NuGet/Home/issues/4898)
 
-- NET Core 2.0: CLI zlokalizowane zestawy - [#4896](https://github.com/NuGet/Home/issues/4896)
+- .NET Core 2.0: Interfejs wiersza polecenia zlokalizowane zestawy — [#4896](https://github.com/NuGet/Home/issues/4896)
 
-- NET Core 2.0: Zarejestruj wszystkie błędy/ostrzeżenia do pliku zasobów (takich jak PackageTargetFallback) - [#4895](https://github.com/NuGet/Home/issues/4895)
+- .NET Core 2.0: Zarejestruj wszystkie ostrzeżenia/błędy do pliku zasobów (w tym PackageTargetFallback) - [#4895](https://github.com/NuGet/Home/issues/4895)
 
 - Włącz obsługę TFM: NetStandard2.0, Tizen - [#4892](https://github.com/NuGet/Home/issues/4892)
 
-- Zmniejsz liczbę NuGet.Core NuGet.Client projektów (i w związku z tym bibliotek DLL) - [#2446](https://github.com/NuGet/Home/issues/2446)
+- Zmniejsz liczbę NuGet.Core NuGet.Client projektów (i tym samym biblioteki dll) - [#2446](https://github.com/NuGet/Home/issues/2446)
 
-- Dodaj możliwość oznaczyć nuget ostrzeżenia jako błędy — [#2395](https://github.com/NuGet/Home/issues/2395)
+- Dodaj możliwości, aby oznaczyć nuget ostrzeżenia jako błędy — [#2395](https://github.com/NuGet/Home/issues/2395)
 
 ### <a name="bugs"></a>Usterki
 
-- MSBUILD /t:pack kończy się niepowodzeniem z parametrem "DevelopmentDependency" nie jest obsługiwany przez zadanie "PackTask" - [#5584](https://github.com/NuGet/Home/issues/5584)
+- Program MSBuild /t:pack kończy się niepowodzeniem z parametrem "DevelopmentDependency" nie jest obsługiwany przez zadanie "PackTask" — [#5584](https://github.com/NuGet/Home/issues/5584)
 
-- Struktura katalogów plików zawartości spłaszczone jeśli separatora katalogu systemu Windows nie jest dodawany na końcu PackagePath - [#4795](https://github.com/NuGet/Home/issues/4795)
+- Spłaszczone struktury katalogów plików zawartości, jeśli nie zostaną dodane na końcu PackagePath - separatorem katalogu Windows [#4795](https://github.com/NuGet/Home/issues/4795)
 
 - projekty netcore nie obsługuje ustawiania jako developmentDependency - [#4694](https://github.com/NuGet/Home/issues/4694)
 
-- RestoreManagerPackage ładowany synchronicznie co zablokowane wątku interfejsu użytkownika i zakleszczone VS - [#4679](https://github.com/NuGet/Home/issues/4679)
+- RestoreManagerPackage ładowany synchronicznie który zablokowany wątek interfejsu użytkownika, a zakleszczone VS - [#4679](https://github.com/NuGet/Home/issues/4679)
 
-- DotNet
-  - dotnetcore przywracania (i w związku z tym msbuild /t:restore) pomija projektów z zależności projektu rozwiązania jawne [#4578](https://github.com/NuGet/Home/issues/4578)
+- polecenia DotNet
+  - dotnetcore przywracania (i w związku z tym msbuild /t:restore) pomija projektów z zależnością projektu jawne rozwiązanie [#4578](https://github.com/NuGet/Home/issues/4578)
 
-- Jeśli rozwiązania jest projectreferences, która odwołuje się do tego samego projektu o innej wielkości znaków, przywracania może nie działać. Wpływa to również na różnych ścieżek względnych bez różnica wielkością liter - [#4574](https://github.com/NuGet/Home/issues/4574)
+- Jeśli rozwiązanie ma odwołania do projektu, odwołując się do tego samego projektu z inną wielkością liter, Przywracanie może nie działać. Dotyczy to również różnych ścieżek względnych bez różnic w wielkości liter — [#4574](https://github.com/NuGet/Home/issues/4574)
 
-- Pliki wykonywalne przywrócone z pakietów NuGet nie są już pliku wykonywalnego z .NET Core 2.0 - [#4424](https://github.com/NuGet/Home/issues/4424)
+- Pliki wykonywalne przywrócone z pakietów NuGet nie są już pliku wykonywalnego przy użyciu platformy .NET Core 2.0 — [#4424](https://github.com/NuGet/Home/issues/4424)
 
-- NuGet.exe swallows szczegóły wyjątek podczas analizowania pliku rozwiązania — [#4411](https://github.com/NuGet/Home/issues/4411)
+- NuGet.exe obiekt szczegółów wyjątku podczas analizowania pliku rozwiązania — [#4411](https://github.com/NuGet/Home/issues/4411)
 
-- Pakiet umieszcza pliki zawartości w niewłaściwej lokalizacji, jeżeli ContentTargetFolders zawiera ścieżkę, która kończy się z '/' w systemie Windows — [#4407](https://github.com/NuGet/Home/issues/4407)
+- Pakiet umieszcza pliki zawartości w niewłaściwej lokalizacji, jeśli ContentTargetFolders zawiera ścieżkę, która kończy się "/" na Windows - [#4407](https://github.com/NuGet/Home/issues/4407)
 
-- Nie można przywrócić DotNetCliToolReference narzędzia pakietów w tym netcoreapp1.1 cele - [#4396](https://github.com/NuGet/Home/issues/4396)
+- Nie można przywrócić DotNetCliToolReference narzędzia pakietów w tym netcoreapp1.1 cele — [#4396](https://github.com/NuGet/Home/issues/4396)
 
-- Aktualizacja Nuget interfejsu wiersza polecenia pozostawia starego warunek wersji pakietu w pliku projektu (C++) - [#2449](https://github.com/NuGet/Home/issues/2449)
+- Nuget aktualizację interfejsu wiersza polecenia platformy pozostawi stary stan wersji pakietu w pliku projektu (C++) — [#2449](https://github.com/NuGet/Home/issues/2449)
 
-### <a name="dcrs"></a>Dcr
+### <a name="dcrs"></a>DCRs
 
 - DotnetCliToolTargetFramework odczytu z CPS nomation - [#5397](https://github.com/NuGet/Home/issues/5397)
 
-- Sprawdź TPMinV powinny działać uzyskać stylu platformy uniwersalnej systemu Windows - [#4763](https://github.com/NuGet/Home/issues/4763)
+- Sprawdzanie TPMinV powinny działać pj stylu platformy uniwersalnej systemu Windows — [#4763](https://github.com/NuGet/Home/issues/4763)
 
-- Poprawa opis interfejsu użytkownika dla pakietów AutoReferenced - [#4471](https://github.com/NuGet/Home/issues/4471)
+- Poprawa opisu interfejsu użytkownika dla pakietów AutoReferenced - [#4471](https://github.com/NuGet/Home/issues/4471)
 
-- Przywracanie NuGet jest wybranie zasoby kompilacji z sekcji środowiska wykonawczego. - [#4207](https://github.com/NuGet/Home/issues/4207)
+- Przywracanie pakietów NuGet jest wybór zasobów kompilacji w sekcji środowiska uruchomieniowego. - [#4207](https://github.com/NuGet/Home/issues/4207)
 
 - Diagnostyka zależności należy umieścić w pliku blokady - [#1599](https://github.com/NuGet/Home/issues/1599)
 
-## <a name="links-to-github-issues-fixed-in-43-rtm"></a>Łącza do usunięto w wersji 4.3 RTM zagadnienia GitHub
+## <a name="links-to-github-issues-fixed-in-43-rtm"></a>Linki do serwisu GitHub problemy rozwiązane w wersji 4.3 RTM
 
 [Lista problemów](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.3")

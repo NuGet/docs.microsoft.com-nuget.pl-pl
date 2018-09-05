@@ -1,33 +1,32 @@
 ---
 title: polecenia NuGet DotNet
-description: Krótkie odwołanie poleceń związanych z NuGet przy użyciu interfejsu wiersza polecenia platformy dotnet.
+description: Krótkie odniesienie do polecenia związane z NuGet, za pomocą interfejsu wiersza polecenia dotnet.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 01/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: dd30c5d5e29ff7ef7c6622a9b93c32b908198d52
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 88e058be674ecddc500665bfa3517f19acde0cd7
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817024"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43546319"
 ---
 # <a name="dotnet-commands"></a>polecenia DotNet
 
-`dotnet` Interfejsu wiersza polecenia, co jest uruchomiony na systemu Windows, Mac OS X i Linux, zawiera pewną liczbę poleceń podstawowych nuget.exe wymienione poniżej. Jeśli dotnet odpowiada potrzebom użytkownika, nie jest konieczne użycie `nuget.exe`.
+`dotnet` Interfejsu wiersza polecenia, który jest uruchamiany w Windows, Mac OS X i Linux, oferuje pewną liczbę poleceń nuget.exe podstawowe, zgodnie z poniższymi. Jeśli dotnet odpowiada potrzebom użytkownika, nie jest konieczne użycie `nuget.exe`.
 
-Aby uzyskać pełne informacje na `dotnet`, zobacz [narzędzi interfejsu wiersza polecenia (CLI) platformy .NET Core](/dotnet/core/tools/?tabs=netcore2x).
+Aby uzyskać pełne informacje na temat `dotnet`, zobacz [narzędzi interfejsu wiersza polecenia (CLI) platformy .NET Core](/dotnet/core/tools/?tabs=netcore2x).
 
 ## <a name="package-consumption"></a>Użycie pakietu
 
-- [**DotNet Dodaj pakiet**](/dotnet/core/tools/dotnet-add-package): Dodaje odwołanie pakietu do pliku projektu, a następnie uruchamia `dotnet restore` do zainstalowania pakietu.
-- [**DotNet usunąć pakiet**](/dotnet/core/tools/dotnet-remove-package): Usuwa odwołanie do pakietu z pliku projektu.
-- [**Przywracanie DotNet**](/dotnet/core/tools/dotnet-restore?tabs=netcore2x): przywraca zależności i narzędzia do projektu. Począwszy od NuGet 4.0 uruchomienie tego samego kodu jako `nuget restore`.
-- [**Zmienne lokalne nuget DotNet**](/dotnet/core/tools/dotnet-nuget-locals): Wyświetla lokalizacje *globalne pakiety*, *pamięci podręcznej http*, i *temp* folderów i czyści zawartość te foldery.
+- [**polecenia DotNet Dodaj pakiet**](/dotnet/core/tools/dotnet-add-package): Dodaje odwołanie do pakietu do pliku projektu, a następnie uruchamia `dotnet restore` do zainstalowania pakietu.
+- [**polecenia DotNet, usuń pakiet**](/dotnet/core/tools/dotnet-remove-package): Usuwa odwołanie do pakietu z pliku projektu.
+- [**DotNet restore**](/dotnet/core/tools/dotnet-restore?tabs=netcore2x): przywraca zależności i narzędzia do projektu. Począwszy od NuGet 4.0, spowoduje to uruchomienie tego samego kodu jako `nuget restore`.
+- [**Zmienne lokalne nuget DotNet**](/dotnet/core/tools/dotnet-nuget-locals): Wyświetla lokalizacje *globalnymi pakietami*, *pamięci podręcznej http*, i *temp* folderów i czyści zawartość te foldery.
 
 ## <a name="package-creation"></a>Tworzenie pakietu
 
-- [**Pakiet DotNet**](/dotnet/core/tools/dotnet-pack?tabs=netcore2x): pakiety kodu do pakietu NuGet. Począwszy od NuGet 4.0 uruchomienie tego samego kodu jako `nuget pack`.
-- [**wypychania nuget DotNet**](/dotnet/core/tools/dotnet-nuget-push): wypchnięcia pakietu na serwerze i publikuje ją dotyczy nuget.org, Visual Studio Team Services i serwery NuGet innych firm.
-- [**Usuń DotNet nuget**](/dotnet/core/tools/dotnet-nuget-delete): usuwa lub unlists pakietu z hosta i mające zastosowanie do nuget.org, Visual Studio Team Services i serwery NuGet innych firm.
+- [**pakietu DotNet**](/dotnet/core/tools/dotnet-pack?tabs=netcore2x): pakiety kodu do pakietu NuGet. Począwszy od NuGet 4.0, spowoduje to uruchomienie tego samego kodu jako `nuget pack`.
+- [**wypychane nuget DotNet**](/dotnet/core/tools/dotnet-nuget-push): wypychanie pakietu do serwera i publikuje go dotyczy nuget.org, Visual Studio Team Services i innych firm serwery NuGet.
+- [**Usuń DotNet nuget**](/dotnet/core/tools/dotnet-nuget-delete): usuwa lub unlists pakietu z hosta dotyczy nuget.org, Visual Studio Team Services i innych firm serwery NuGet.
