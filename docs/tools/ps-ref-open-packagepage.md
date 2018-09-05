@@ -1,49 +1,48 @@
 ---
-title: Open — PackagePage NuGet w programie PowerShell
-description: Odwołanie do polecenia programu PowerShell PackagePage Otwórz w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Dokumentacja programu PowerShell NuGet Open-PackagePage
+description: Dokumentacja polecenia PowerShell PackagePage otwarcie w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
-manager: unnir
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: e64a83c01a7baac330c99fe40ba52f328a2133b8
-ms.sourcegitcommit: 2a6d200012cdb4cbf5ab1264f12fecf9ae12d769
+ms.openlocfilehash: 0325aa4ddd718a901dd6a09cdf86cae260e326ab
+ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34817723"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43547171"
 ---
-# <a name="open-packagepage-package-manager-console-in-visual-studio"></a><span data-ttu-id="4fc1a-103">Open-PackagePage (konsola menedżera pakietów w programie Visual Studio)</span><span class="sxs-lookup"><span data-stu-id="4fc1a-103">Open-PackagePage (Package Manager Console in Visual Studio)</span></span>
+# <a name="open-packagepage-package-manager-console-in-visual-studio"></a><span data-ttu-id="d50e1-103">Open-PackagePage (konsola menedżera pakietów w programie Visual Studio)</span><span class="sxs-lookup"><span data-stu-id="d50e1-103">Open-PackagePage (Package Manager Console in Visual Studio)</span></span>
 
-<span data-ttu-id="4fc1a-104">*Przestarzałe w 3.0 +; dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio w systemie Windows.*</span><span class="sxs-lookup"><span data-stu-id="4fc1a-104">*Deprecated in 3.0+; available only within the [NuGet Package Manager Console](package-manager-console.md) in Visual Studio on Windows.*</span></span>
+<span data-ttu-id="d50e1-104">*Przestarzałe w 3.0 +; dostępne tylko w obrębie [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio na Windows.*</span><span class="sxs-lookup"><span data-stu-id="d50e1-104">*Deprecated in 3.0+; available only within the [NuGet Package Manager Console](package-manager-console.md) in Visual Studio on Windows.*</span></span>
 
-<span data-ttu-id="4fc1a-105">Uruchamia domyślnej przeglądarki z projektu, licencji lub adresu URL programu report nadużyć dla określonego pakietu.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-105">Launches the default browser with the project, license, or report abuse URL for the specified package.</span></span>
+<span data-ttu-id="d50e1-105">Uruchamia domyślną przeglądarkę z projektem, licencji lub adres URL do raportu nadużyć dla określonego pakietu.</span><span class="sxs-lookup"><span data-stu-id="d50e1-105">Launches the default browser with the project, license, or report abuse URL for the specified package.</span></span>
 
-## <a name="syntax"></a><span data-ttu-id="4fc1a-106">Składnia</span><span class="sxs-lookup"><span data-stu-id="4fc1a-106">Syntax</span></span>
+## <a name="syntax"></a><span data-ttu-id="d50e1-106">Składnia</span><span class="sxs-lookup"><span data-stu-id="d50e1-106">Syntax</span></span>
 
 ```ps
 Open-PackagePage [-Id] <string> [-Version] [-Source] [-License] [-ReportAbuse]
     [-PassThru] [<CommonParameters>]
 ```
 
-## <a name="parameters"></a><span data-ttu-id="4fc1a-107">Parametry</span><span class="sxs-lookup"><span data-stu-id="4fc1a-107">Parameters</span></span>
+## <a name="parameters"></a><span data-ttu-id="d50e1-107">Parametry</span><span class="sxs-lookup"><span data-stu-id="d50e1-107">Parameters</span></span>
 
-| <span data-ttu-id="4fc1a-108">Parametr</span><span class="sxs-lookup"><span data-stu-id="4fc1a-108">Parameter</span></span> | <span data-ttu-id="4fc1a-109">Opis</span><span class="sxs-lookup"><span data-stu-id="4fc1a-109">Description</span></span> |
+| <span data-ttu-id="d50e1-108">Parametr</span><span class="sxs-lookup"><span data-stu-id="d50e1-108">Parameter</span></span> | <span data-ttu-id="d50e1-109">Opis</span><span class="sxs-lookup"><span data-stu-id="d50e1-109">Description</span></span> |
 | --- | --- |
-| <span data-ttu-id="4fc1a-110">Id</span><span class="sxs-lookup"><span data-stu-id="4fc1a-110">Id</span></span> | <span data-ttu-id="4fc1a-111">Identyfikator pakietu żądanego pakietu.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-111">The package ID of the desired package.</span></span> <span data-ttu-id="4fc1a-112">Id przełącznika sam jest opcjonalna.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-112">The -Id switch itself is optional.</span></span> |
-| <span data-ttu-id="4fc1a-113">Wersja</span><span class="sxs-lookup"><span data-stu-id="4fc1a-113">Version</span></span> | <span data-ttu-id="4fc1a-114">Wersja pakietu, domyślnie używany do najnowszej wersji.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-114">The version of the package, defaulting to the latest version.</span></span> |
-| <span data-ttu-id="4fc1a-115">Źródło</span><span class="sxs-lookup"><span data-stu-id="4fc1a-115">Source</span></span> | <span data-ttu-id="4fc1a-116">Źródło pakietu domyślnie wybrane źródło w lokalizacji źródłowej listy rozwijanej.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-116">The package source, defaulting to the selected source in the source drop-down.</span></span> |
-| <span data-ttu-id="4fc1a-117">Licencji</span><span class="sxs-lookup"><span data-stu-id="4fc1a-117">License</span></span> | <span data-ttu-id="4fc1a-118">Otwiera przeglądarkę, aby adres URL licencji pakietu.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-118">Opens the browser to the package's License URL.</span></span> <span data-ttu-id="4fc1a-119">Jeśli nie - licencji - ReportAbuse określono ani, w przeglądarce zostanie otwarty adres URL projektu pakietu.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-119">If neither -License nor -ReportAbuse is specified, the browser opens the package's Project URL.</span></span> |
-| <span data-ttu-id="4fc1a-120">ReportAbuse</span><span class="sxs-lookup"><span data-stu-id="4fc1a-120">ReportAbuse</span></span> | <span data-ttu-id="4fc1a-121">Otwiera przeglądarkę do adresu URL nadużycia raport pakietu.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-121">Opens the browser to the package's Report Abuse URL.</span></span> <span data-ttu-id="4fc1a-122">Jeśli nie - licencji - ReportAbuse określono ani, w przeglądarce zostanie otwarty adres URL projektu pakietu.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-122">If neither -License nor -ReportAbuse is specified, the browser opens the package's Project URL.</span></span> |
-| <span data-ttu-id="4fc1a-123">Przekazywanie</span><span class="sxs-lookup"><span data-stu-id="4fc1a-123">PassThru</span></span> | <span data-ttu-id="4fc1a-124">Wyświetla adres URL; za pomocą - WhatIf do pomijania otwierania przeglądarki.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-124">Displays the URL; use with -WhatIf to suppress opening the browser.</span></span> |
+| <span data-ttu-id="d50e1-110">Id</span><span class="sxs-lookup"><span data-stu-id="d50e1-110">Id</span></span> | <span data-ttu-id="d50e1-111">Identyfikator pakietu żądanego pakietu.</span><span class="sxs-lookup"><span data-stu-id="d50e1-111">The package ID of the desired package.</span></span> <span data-ttu-id="d50e1-112">— Identyfikator samym przełączniku jest opcjonalne.</span><span class="sxs-lookup"><span data-stu-id="d50e1-112">The -Id switch itself is optional.</span></span> |
+| <span data-ttu-id="d50e1-113">Wersja</span><span class="sxs-lookup"><span data-stu-id="d50e1-113">Version</span></span> | <span data-ttu-id="d50e1-114">Wersja pakietu, ustawiając domyślnie do najnowszej wersji.</span><span class="sxs-lookup"><span data-stu-id="d50e1-114">The version of the package, defaulting to the latest version.</span></span> |
+| <span data-ttu-id="d50e1-115">Źródło</span><span class="sxs-lookup"><span data-stu-id="d50e1-115">Source</span></span> | <span data-ttu-id="d50e1-116">Źródło pakietu przyjęty wybranego źródła w źródle listy rozwijanej.</span><span class="sxs-lookup"><span data-stu-id="d50e1-116">The package source, defaulting to the selected source in the source drop-down.</span></span> |
+| <span data-ttu-id="d50e1-117">Licencja</span><span class="sxs-lookup"><span data-stu-id="d50e1-117">License</span></span> | <span data-ttu-id="d50e1-118">Zostanie otwarta w przeglądarce adres URL licencji pakietu.</span><span class="sxs-lookup"><span data-stu-id="d50e1-118">Opens the browser to the package's License URL.</span></span> <span data-ttu-id="d50e1-119">Jeśli określono - licencji ani - ReportAbuse przeglądarki otwiera adres URL projektu pakietu.</span><span class="sxs-lookup"><span data-stu-id="d50e1-119">If neither -License nor -ReportAbuse is specified, the browser opens the package's Project URL.</span></span> |
+| <span data-ttu-id="d50e1-120">ReportAbuse</span><span class="sxs-lookup"><span data-stu-id="d50e1-120">ReportAbuse</span></span> | <span data-ttu-id="d50e1-121">Zostanie otwarta w przeglądarce adres URL nadużyć raport pakietu.</span><span class="sxs-lookup"><span data-stu-id="d50e1-121">Opens the browser to the package's Report Abuse URL.</span></span> <span data-ttu-id="d50e1-122">Jeśli określono - licencji ani - ReportAbuse przeglądarki otwiera adres URL projektu pakietu.</span><span class="sxs-lookup"><span data-stu-id="d50e1-122">If neither -License nor -ReportAbuse is specified, the browser opens the package's Project URL.</span></span> |
+| <span data-ttu-id="d50e1-123">Przekazywanie</span><span class="sxs-lookup"><span data-stu-id="d50e1-123">PassThru</span></span> | <span data-ttu-id="d50e1-124">Wyświetla adres URL; za pomocą - WhatIf do pomijania otwierania przeglądarki.</span><span class="sxs-lookup"><span data-stu-id="d50e1-124">Displays the URL; use with -WhatIf to suppress opening the browser.</span></span> |
 
-<span data-ttu-id="4fc1a-125">Żaden z tych parametrów przyjąć potoku dane wejściowe lub symbolu wieloznacznego znaków.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-125">None of these parameters accept pipeline input or wildcard characters.</span></span>
+<span data-ttu-id="d50e1-125">Żaden z tych parametrów akceptuje znaków potoku danych wejściowych lub symbol wieloznaczny.</span><span class="sxs-lookup"><span data-stu-id="d50e1-125">None of these parameters accept pipeline input or wildcard characters.</span></span>
 
-## <a name="common-parameters"></a><span data-ttu-id="4fc1a-126">Wspólne parametry</span><span class="sxs-lookup"><span data-stu-id="4fc1a-126">Common Parameters</span></span>
+## <a name="common-parameters"></a><span data-ttu-id="d50e1-126">Wspólne parametry</span><span class="sxs-lookup"><span data-stu-id="d50e1-126">Common Parameters</span></span>
 
-<span data-ttu-id="4fc1a-127">`Open-PackagePage` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja błędu ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.</span><span class="sxs-lookup"><span data-stu-id="4fc1a-127">`Open-PackagePage` supports the following [common PowerShell parameters](http://go.microsoft.com/fwlink/?LinkID=113216): Debug, Error Action, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, Verbose, WarningAction, and WarningVariable.</span></span>
+<span data-ttu-id="d50e1-127">`Open-PackagePage` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.</span><span class="sxs-lookup"><span data-stu-id="d50e1-127">`Open-PackagePage` supports the following [common PowerShell parameters](http://go.microsoft.com/fwlink/?LinkID=113216): Debug, Error Action, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, Verbose, WarningAction, and WarningVariable.</span></span>
 
-## <a name="examples"></a><span data-ttu-id="4fc1a-128">Przykłady</span><span class="sxs-lookup"><span data-stu-id="4fc1a-128">Examples</span></span>
+## <a name="examples"></a><span data-ttu-id="d50e1-128">Przykłady</span><span class="sxs-lookup"><span data-stu-id="d50e1-128">Examples</span></span>
 
 ```ps
 # Opens a browser with the Ninject package's project page
