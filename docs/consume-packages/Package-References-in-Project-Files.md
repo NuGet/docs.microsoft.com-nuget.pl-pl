@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9ae8e8dc4e7e901acacffed8b7dfb4162c5ad2b6
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 648b2679538e38b2451d7857beb5d070deeef7c5
+ms.sourcegitcommit: 47858da1103848cc1b15bdc00ac7219c0ee4a6a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551393"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44516207"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 
@@ -18,7 +18,7 @@ Pakiet odwołań, za pomocą `PackageReference` węzła, zarządzanie zależnoś
 
 Za pomocą funkcji PackageReference umożliwia także warunki MSBuild do wyboru na platformę docelową, konfiguracji, platforma lub inne grupy będzie odwoływał się pakiet. Umożliwia ona również szczegółową kontrolę nad tym zależności i zawartości przepływu. (Aby uzyskać więcej informacji, zobacz [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md).)
 
-Domyślnie PackageReference jest używany dla projektów .NET Core, .NET Standard projektów i projektów platformy UWP przeznaczonych dla systemu Windows 10 kompilacja 15063 (Aktualizacja dla twórców) lub nowszy, z wyjątkiem projektów platformy UWP w języku C++. Projekty programu .NET framework pełnej obsługi PackageReference, ale obecnie domyślnie `packages.config`. Aby korzystać z funkcji PackageReference, migracja zależności z `packages.config` do pliku projektu, a następnie usuń packages.config.
+Domyślnie PackageReference jest używany dla projektów .NET Core, .NET Standard projektów i projektów platformy UWP przeznaczonych dla systemu Windows 10 kompilacja 15063 (Aktualizacja dla twórców) lub nowszy, z wyjątkiem projektów platformy UWP w języku C++. Projektów programu .NET framework obsługuje PackageReference, ale obecnie domyślnie `packages.config`. Aby korzystać z funkcji PackageReference, migracja zależności z `packages.config` do pliku projektu, a następnie usuń packages.config.
 
 ## <a name="adding-a-packagereference"></a>Dodawanie odwołanie PackageReference
 
