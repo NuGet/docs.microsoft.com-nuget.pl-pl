@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/23/2018
 ms.topic: tutorial
-ms.openlocfilehash: ce5ad07209a06010150b14092aa1b15ee6f84146
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: dd36987e020c2daa02bb875aa9dbd69c85bba4d3
+ms.sourcegitcommit: 1bd72dca2f85b4267b9924236f1d23dd7b0ed733
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548741"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49951749"
 ---
 # <a name="creating-ui-controls-as-nuget-packages"></a>Tworzenie kontrolek interfejsu użytkownika jako pakietów NuGet
 
@@ -87,7 +87,9 @@ W poniższym przykładzie kontrolki implementowany w `ManagedPackage.winmd` poja
 
 ## <a name="add-custom-icons-to-your-controls"></a>Dodawanie niestandardowych ikon do formantów
 
-Aby wyświetlić ikonę niestandardową, w okienku przybornika/zasoby, należy dodać obraz do projektu lub odpowiednich `design.dll` projektu o nazwie "Namespace.ControlName.extension" i Ustaw akcję kompilacji "Osadzonego zasobu". Obsługiwane formaty to `.png`, `.jpg`, `.jpeg`, `.gif`, i `.bmp`. Rozmiar obrazu zalecane jest 64 pikseli 64 pikseli.
+Aby wyświetlić ikonę niestandardową, w okienku przybornika/zasoby, należy dodać obraz do projektu lub odpowiednich `design.dll` projektu o nazwie "Namespace.ControlName.extension" i Ustaw akcję kompilacji "Osadzonego zasobu". Należy również zagwarantować, że skojarzone `AssemblyInfo.cs` Określa atrybut ProvideMetadata - `[assembly: ProvideMetadata(typeof(RegisterMetadata))]`. Zobacz ten [przykładowe](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/NativePackage.Design/Properties/AssemblyInfo.cs#L20).
+
+Obsługiwane formaty to `.png`, `.jpg`, `.jpeg`, `.gif`, i `.bmp`. Rozmiar obrazu zalecane jest 64 pikseli 64 pikseli.
 
 W poniższym przykładzie projekt zawiera plik o nazwie "ManagedPackage.MyCustomControl.png".
 
