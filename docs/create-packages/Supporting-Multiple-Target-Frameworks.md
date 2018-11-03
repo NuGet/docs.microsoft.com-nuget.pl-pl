@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 09/27/2017
 ms.topic: conceptual
-ms.openlocfilehash: 0b22d48b9151b903a5307beafa5ccef14e5fecf3
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: c59839240935e2a6c590dea3adf623313f79f02f
+ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551709"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981148"
 ---
 # <a name="supporting-multiple-net-framework-versions"></a>Obsługiwanie wielu wersji programu .NET framework
 
@@ -65,7 +65,13 @@ W przypadku architektury zestawów, czyli oddzielne zestawy, których platformą
             \native
             \lib\uap10.0
 
+Te zestawy będą dostępne tylko w czasie wykonywania, więc jeśli chcesz zapewnić odpowiednie także następnie zestawu czasu kompilacji `AnyCPU` zestawu w `/ref{tfm}` folderu. 
+
+Należy pamiętać, NuGet zawsze wybiera te zasoby kompilacji lub środowisko uruchomieniowe z jednego folderu tak w przypadku niektórych zasoby zgodne z `/ref` następnie `/lib` zostanie zignorowana, aby dodać zestawy kompilacji. Podobnie jeśli istnieją pewne zasoby zgodna z `/runtime` , a następnie również `/lib` zostanie zignorowane dla środowiska uruchomieniowego.
+
 Zobacz [tworzenie pakietów platformy UWP](../guides/create-uwp-packages.md) przykład odwołuje się do tych plików w `.nuspec` manifestu.
+
+Zobacz też [pakowania składnika aplikacji Sklepu Windows za pomocą NuGet](https://blogs.msdn.microsoft.com/mim/2013/09/02/packaging-a-windows-store-apps-component-with-nuget-part-2)
 
 ## <a name="matching-assembly-versions-and-the-target-framework-in-a-project"></a>Zgodne wersje zestawów i platformy docelowej w projekcie
 

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/12/2017
 ms.topic: conceptual
-ms.openlocfilehash: 37c2208f0942b12428dba9d664f25e7e4f3c0b72
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 1bc67927ddc463dcc3a0abe80fe20e625e188e63
+ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547377"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981174"
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -170,8 +170,9 @@ Konwencje folderze są następujące:
 | Folder | Opis | Akcja po instalacji pakietu |
 | --- | --- | --- |
 | (root) | Lokalizacja readme.txt | Visual Studio Wyświetla plik readme.txt w katalogu głównym pakietu, gdy pakiet jest zainstalowany. |
-| lib/{tfm} | Zestaw (`.dll`), dokumentacji (`.xml`) i symbol (`.pdb`) plików dla danego Moniker Framework docelowych (TFM) | Zestawy są dodawane jako odwołania; `.xml` i `.pdb` skopiowane do folderów projektu. Zobacz [Obsługa wielu platform docelowych](supporting-multiple-target-frameworks.md) tworzenia framework podfoldery specyficznych dla obiektu docelowego. |
-| środowiska uruchomieniowe | Architektury zestawu (`.dll`), symbol (`.pdb`), a zasób macierzysty (`.pri`) plików | Zestawy są dodawane jako odwołania; inne pliki są kopiowane do folderów projektu. Zobacz [Obsługa wielu platform docelowych](supporting-multiple-target-frameworks.md). |
+| lib/{tfm} | Zestaw (`.dll`), dokumentacji (`.xml`) i symbol (`.pdb`) plików dla danego Moniker Framework docelowych (TFM) | Zestawy są dodawane jako odwołania do kompilacji, jak również środowisko uruchomieniowe `.xml` i `.pdb` skopiowane do folderów projektu. Zobacz [Obsługa wielu platform docelowych](supporting-multiple-target-frameworks.md) tworzenia framework podfoldery specyficznych dla obiektu docelowego. |
+| REF / {tfm} | Zestaw (`.dll`) i symbol (`.pdb`) plików dla danego Moniker Framework docelowych (TFM) | Zestawy są dodawane jako odwołania tylko w przypadku kompilowania; Nic nie zostanie więc skopiowane do folderu bin projektu. |
+| środowiska uruchomieniowe | Architektury zestawu (`.dll`), symbol (`.pdb`), a zasób macierzysty (`.pri`) plików | Zestawy są dodawane jako odwołania tylko dla środowiska uruchomieniowego; inne pliki są kopiowane do folderów projektu. Zawsze powinien istnieć odpowiedni (TFM) `AnyCPU` określony zestaw, w obszarze `/ref/{tfm}` folder w celu zapewnienia odpowiedniego zestawu czasu kompilacji. Zobacz [Obsługa wielu platform docelowych](supporting-multiple-target-frameworks.md). |
 | zawartość | Wybrane pliki | Zawartość jest kopiowana do katalogu głównego projektu. Traktować **zawartości** folder jako katalog główny aplikacji docelowej, który ostatecznie używa pakietu. Do pakietu, Dodaj obraz w aplikacji */obrazy* folder, umieść go w tym pakiecie *zawartości/obrazów* folderu. |
 | kompilacja | Program MSBuild `.targets` i `.props` plików | Automatycznie wstawiany do pliku projektu lub `project.lock.json` (NuGet 3.x+). |
 | narzędzia | Skrypty programu PowerShell i programów dostępne z konsoli Menedżera pakietów | `tools` Folder zostanie dodany do `PATH` zmiennej środowiskowej tylko za pomocą konsoli Menedżera pakietów (w szczególności *nie* do `PATH` według stawki ustalonej dla platformy MSBuild podczas kompilowania projektu). |

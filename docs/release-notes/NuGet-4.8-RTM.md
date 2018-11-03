@@ -5,16 +5,17 @@ author: karann-msft
 ms.author: karann
 ms.date: 5/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: d23c4a8874d3d2e1a9ea721c66b15bb458de88a3
-ms.sourcegitcommit: 47858da1103848cc1b15bdc00ac7219c0ee4a6a0
+ms.openlocfilehash: 641304059c90e360fae4d0956d7b922e34bc6501
+ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44516246"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981122"
 ---
 # <a name="nuget-48-rtm-release-notes"></a>Informacje o wersji RTM 4,8 NuGet
 
 [Visual Studio 2017 15.8 RTW](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) pochodzi z funkcjonalnością NuGet 4.8.
+
 
 Dostępne są wersje wiersza polecenia funkcji:
 * 4.8 - NuGet.exe [nuget.org/downloads](https://nuget.org/downloads)

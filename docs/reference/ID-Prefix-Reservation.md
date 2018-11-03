@@ -6,12 +6,12 @@ ms.author: diverdan92
 ms.date: 10/09/2017
 ms.topic: reference
 ms.reviewer: ananguar
-ms.openlocfilehash: 0711f3ee00b4a387d676ca43c98a9467effed90a
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 32f83bede42f7643a9a4fed593643eefea0453c1
+ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546593"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981005"
 ---
 # <a name="package-id-prefix-reservation"></a>Rezerwowanie prefiksów identyfikatorów pakietu
 
@@ -65,7 +65,7 @@ Jeśli pakiet pochodzi z zastrzeżonym prefiksem, zobacz poniżej visual wskaźn
 
 1. Przejrzyj akceptacji [kryteria prefiks Identyfikatora rezerwacji](#id-prefix-reservation-criteria).
 
-2. Ustalić obszary nazw, które mają zostać zarezerwowane dodatek do wszelkich [zaawansowanych scenariuszy rezerwacji prefiks](#advanced-prefix-reservation-scenarios) może wymagać.
+2. Określić prefiksy, które mają zostać zarezerwowane dodatek do wszelkich [zaawansowanych scenariuszy rezerwacji prefiks](#advanced-prefix-reservation-scenarios) może wymagać.
 
 3. Wyślij wiadomość e-mail do [ account@nuget.org ](mailto:account@nuget.org) z właścicielem nazwy wyświetlanej na [nuget.org](https://www.nuget.org/), a także wszelkie zastrzeżone prefiksy zażądano. Jeśli są delegowania podzestawy prefiks wielu właścicielom, upewnij się, wspomnieć o wszystkich nazw wyświetlanych właściciela i prefiksu podzbiory.
 

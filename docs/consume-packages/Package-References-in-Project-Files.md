@@ -5,16 +5,22 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 648b2679538e38b2451d7857beb5d070deeef7c5
-ms.sourcegitcommit: 47858da1103848cc1b15bdc00ac7219c0ee4a6a0
+ms.openlocfilehash: 71ab5bb464d1513df89ab53e119d9768e880e4e5
+ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44516207"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981031"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 
-Pakiet odwołań, za pomocą `PackageReference` węzła, zarządzanie zależnościami NuGet bezpośrednio z poziomu plików projektu (w przeciwieństwie do oddzielnego `packages.config` pliku). Za pomocą funkcji PackageReference, ponieważ jest to, nie ma wpływu na inne aspekty pakietu nuget; na przykład ustawienia w `NuGet.Config` plików (w tym źródeł pakietów) nadal są stosowane zgodnie z objaśnieniem w [Konfigurowanie zachowania pakietu NuGet](configuring-nuget-behavior.md).
+Pakiet odwołań, za pomocą `PackageReference` węzła, zarządzanie zależnościami NuGet bezpośrednio z poziomu plików projektu (w przeciwieństwie do oddzielnego `packages.config` pliku). Za pomocą funkcji PackageReference, ponieważ jest to, nie ma wpływu na inne aspekty pakietu nuget; na przykład ustawienia "NuGet.
+
+
+
+
+
+fig "plików (w tym źródeł pakietów) nadal są stosowane zgodnie z objaśnieniem w [Konfigurowanie zachowania pakietu NuGet](configuring-nuget-behavior.md).
 
 Za pomocą funkcji PackageReference umożliwia także warunki MSBuild do wyboru na platformę docelową, konfiguracji, platforma lub inne grupy będzie odwoływał się pakiet. Umożliwia ona również szczegółową kontrolę nad tym zależności i zawartości przepływu. (Aby uzyskać więcej informacji, zobacz [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md).)
 
@@ -153,3 +159,85 @@ Warunki mogą być również stosowane przy `ItemGroup` poziomu i będą stosowa
     <!-- ... -->
 </ItemGroup>
 ```
+
+## <a name="locking-dependencies"></a>Blokowanie zależności
+*Ta funkcja jest dostępna z NuGet **4.9** lub w górę i w programie Visual Studio 2017 **15.9 w wersji zapoznawczej 5** lub nowszej.*
+
+Dane wejściowe, aby przywracanie pakietów NuGet jest zestaw odwołania do pakietu z pliku projektu (dependenices najwyższego poziomu lub direct) i dane wyjściowe są pełne zamknięcie wszystkie zależności pakietów wraz z zależnościami przechodnie. NuGet próbuje zawsze powodowało tego samego pełne zamknięcie zależności pakietów, jeśli lista wejściowa PackageReference nie uległy zmianie. Jednak istnieją pewne scenariusze, w którym nie jest w stanie to zrobić. Na przykład:
+
+* Gdy używasz liczb zmiennoprzecinkowych wersji, takich jak `<PackageReference Include="My.Sample.Lib" Version="4.*"/>`. Natomiast tutaj jest float do najnowszej wersji podczas każdego przywracania pakietów, istnieją scenariusze, w której użytkownicy wymagają wykresu zostanie zablokowane do niektórych najnowszej wersji, a wartość zmiennoprzecinkowa do nowszej wersji, jeśli to możliwe, na jawne gestu.
+* Nowsza wersja pakietu zgodnego PackageReference wymagania dotyczące wersji została opublikowana. Np. 
+
+  * Dzień 1: Jeśli określono `<PackageReference Include="My.Sample.Lib" Version="4.0.0"/>` , ale wersje dostępne w repozytoria NuGet 4.1.0, 4.2.0 i 4.3.0. W tym przypadku NuGet czy problem został rozwiązany w celu 4.1.0 (najbliższym minimalna wersja)
+
+  * Dzień 2: Wersji 4.0.0 zostanie opublikowany. NuGet teraz zostanie znalezione dokładne dopasowanie i uruchomienia rozpoznawania 4.0.0
+
+* Wersja dany pakiet zostanie usunięty z repozytorium. Chociaż nuget.org nie zezwala na usunięcia pakietu, nie wszystkie repozytoria pakietu ma tego ograniczenia. Skutkuje to znajdowanie najlepsze dopasowanie, gdy nie można rozpoznać usuniętych wersji NuGet.
+
+### <a name="enabling-lock-file"></a>Włączenie pliku blokady
+Aby zachować pełną zamknięcia zależności pakietów, które użytkownik może wyrazić zgodę na funkcji blokowania plików, ustawiając właściwość MSBuild `RestorePackagesWithLockFile` dla projektu:
+
+```xml
+<PropertyGroup>
+    <!--- ... -->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!--- ... -->
+</PropertyGroup>    
+```
+
+Jeśli ta właściwość jest ustawiona, przywracanie pakietów NuGet, spowoduje wygenerowanie pliku blokady - `packages.lock.json` pliku w katalogu głównym projektu, który znajduje się wykaz zależności pakietów. 
+
+> [!Note]
+> Gdy projekt ma `packages.lock.json` plik w jego katalogu głównego pliku blokady jest zawsze używane przy użyciu przywracania nawet wtedy, gdy właściwość `RestorePackagesWithLockFile` nie jest ustawiona. Dlatego inny sposób, aby wyrazić zgodę na tę funkcję, jest utworzenie pustego fikcyjnego `packages.lock.json` pliku w katalogu głównym projektu.
+
+### <a name="restore-behavior-with-lock-file"></a>`restore` zachowanie przy użyciu pliku blokady
+Jeśli plik blokady jest obecny dla projektu, NuGet używa tego pliku blokady, aby uruchomić `restore`. NuGet jest szybkie sprawdzenie, czy wystąpiły wszelkie zmiany w zależności pakietów, jak wspomniano wcześniej w pliku projektu (lub pliki projektów zależnych), a jeśli nie wprowadzono żadnych zmian po prostu przywraca pakiety wymienione w pliku blokady. Nie ma żadnych ponownej oceny zależności pakietów.
+
+Jeśli NuGet wykryje zmianę dependenices zdefiniowane, jak wspomniano w plikach projektu, ponownie ocenia wykres pakietu i aktualizuje plik blokady w celu odzwierciedlenia nowego zamknięcia pakietu dla projektu.
+
+Ciągła Integracja/ciągłe dostarczanie i inne scenariusze, w których nie chcesz zmienić dependenies pakietu na bieżąco, możesz to zrobić, ustawiając `lockedmode` do `true`:
+
+Aby uzyskać dotnet.exe Uruchom polecenie:
+```
+> dotnet.exe restore --locked-mode
+```
+
+Aby uzyskać msbuild.exe Uruchom polecenie:
+```
+> msbuild.exe /t:restore /p:RestoreLockedMode=true
+```
+
+Można również ustawić właściwość ta warunkowe MSBuild w pliku projektu:
+```xml
+<PropertyGroup>
+    <!--- ... -->
+    <RestoreLockedMode>true</RestoreLockedMode>
+    <!--- ... -->
+</PropertyGroup> 
+```
+
+Jeśli w trybie zablokowanym `true`, przywracania będzie przywrócić dokładnie pakiety wymienione w pliku blokady lub się nie powieść, jeśli zaktualizowane zależności pakietu zdefiniowanych dla projektu, po utworzeniu pliku blokady.
+
+### <a name="make-lock-file-part-of-your-source-repository"></a>Blokowanie pliku częścią repozytorium źródłowym
+Jeśli tworzysz aplikację, plik wykonywalny, a projekt jest na końcu łańcuch zależności następnie zaewidencjonuj pliku blokady do repozytorium kodu źródłowego tak, aby wprowadzić NuGet z niego korzystać podczas przywracania.
+
+Jednakże jeśli projekt jest projekt biblioteki, które nie dostarczaj lub wspólnej projekt kodu, na które inne projekty zależą od tego, możesz **nie powinien** Zaewidencjonuj pliku blokady jako część kodu źródłowego. Nie przynosi żadnych szkód w ochronie pliku blokady, ale zależności pakietu zablokowany dla wspólnego projektu kodu nie można używać, zgodnie z zaleceniami z pliku blokady podczas przywracania/kompilacji projektu, który zależy od tego projektu wspólnego kodu.
+
+Np.
+```
+ProjectA
+  |------> PackageX 2.0.0
+  |------> ProjectB
+             |------>PackageX 1.0.0
+```
+Jeśli `ProjectA` zależny od `PackageX` wersji `2.0.0` i odwołujący się `ProjectB` zależy `PackageX` wersji `1.0.0`, następnie blokada pliku `ProjectB` będzie wyświetlana zależność `PackageX` Wersja `1.0.0`. Jednak, gdy `ProjectA` powstała blokady plik będzie zawierać zależności na `PackageX` wersji **`2.0.0`** i **nie** `1.0.0` wymienionych w pliku blokady `ProjectB`. W związku z tym plik blokady wspólnego projektu kodu ma nieco powiedzieć za pośrednictwem pakietów dla projektów, które zależą od niej.
+
+### <a name="lock-file-extensibility"></a>Rozszerzalność pliku blokady
+Aby sterować różnych zachowań przywracania za pomocą pliku blokady, zgodnie z poniższym opisem:
+
+| Opcja | Opcji równoważne MSBuild | 
+|:---  |:--- |
+| `--use-lock-file` | Bootstraps korzystanie z pliku blokady dla projektu. Można również ustawić `RestorePackagesWithLockFile` właściwość w pliku projektu | 
+| `--locked-mode` | Włącza zablokowany tryb przywracania. Jest to przydatne w scenariuszach ciągłej integracji/ciągłego wdrażania, w której chcesz uzyskać kompilacje erepeatable. Może to być również przez ustawienie `RestoreLockedMode` właściwości programu MSBuild `true` |  
+| `--force-evaluate` | Ta opcja jest przydatna przy użyciu pakietów przy użyciu wersji zmiennoprzecinkowy zdefiniowane w projekcie. Domyślnie, przywracanie pakietów NuGet nie może zaktualizować wersję pakietu automatycznie po każdym przywracania, chyba że uruchomieniu przywracania z `--force-evaluate` opcji. |
+| `--lock-file-path` | Definiuje blokady niestandardowych lokalizacji plików dla projektu. Można to również osiągnąć przez ustawienie właściwości programu MSBuild `NuGetLockFilePath`. Domyślnie obsługuje NuGet `packages.lock.json` w katalogu głównym. Jeśli masz wiele projektów w tym samym katalogu NuGet obsługuje pliku blokady określonego projektu `packages.<project_name>.lock.json` |

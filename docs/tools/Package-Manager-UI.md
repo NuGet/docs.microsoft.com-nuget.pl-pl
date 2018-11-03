@@ -10,12 +10,12 @@ f1_keywords:
 - vs.toolsoptionspages.nuget_package_manager.general
 - vs.toolsoptionspages.nuget_package_manager.package_sources
 - vs.nuget.packagemanager.ui
-ms.openlocfilehash: 651bbe63ec95fcedb8e9504022d08d6ba7f9219e
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 1de6ddeca6295c621a90409807af198bc3c7a068
+ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551760"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981187"
 ---
 # <a name="nuget-package-manager-ui"></a>Interfejs użytkownika Menedżera pakietów NuGet
 
@@ -70,7 +70,11 @@ W tym temacie:
 
     ![Aktualizowanie pakietu](media/UpdatePackages.png)
 
-1. <a name="implicit_reference"></a>W przypadku niektórych pakietów **aktualizacji** przycisk jest niedostępny i zostanie wyświetlony komunikat informujący o tym, że odwołuje się do"niejawnie zestawu SDK" (lub "AutoReferenced"). Komunikat wskazuje, że pakiet, np. pakietów Microsoft.NETCore.App lub Microsoft.NETStandard.Library, jest częścią większej struktury lub zestawu SDK i nie powinny być aktualizowane niezależnie. (Wewnętrznie są oznaczone takie pakiety `<IsImplicitlyDefined>True</IsImplicitlyDefined>`.) Aby zaktualizować pakiet, zaktualizować zestaw SDK do której on należy, wnioskowanie zawierających zestaw SDK z nazwy pakietu. Na przykład pakiet, takich jak pakietów Microsoft.NETCore.App jest częścią zestawu .NET Core SDK, w związku z tym należy zaktualizować instalacji programu .NET Core SDK.
+1. <a name="implicit_reference"></a>W przypadku niektórych pakietów **aktualizacji** przycisk jest niedostępny i zostanie wyświetlony komunikat informujący o tym, że odwołuje się do"niejawnie zestawu SDK" (lub "AutoReferenced"). Ten komunikat oznacza, że pakiet jest częścią większej struktury lub zestawu SDK i nie powinny być aktualizowane niezależnie. (Wewnętrznie są oznaczone takie pakiety `<IsImplicitlyDefined>True</IsImplicitlyDefined>`.) Na przykład `Microsoft.NETCore.App` jest częścią zestawu .NET Core SDK i wersję pakietu nie jest taka sama jak wersja framework środowiska uruchomieniowego używane przez aplikację. Musisz [aktualizacji instalacji platformy .NET Core](https://aka.ms/dotnet-download) można pobrać nowe wersje środowiska uruchomieniowego platformy ASP.NET Core i .NET Core. [Zobacz ten dokument, aby uzyskać więcej informacji na metapakiety platformy .NET Core i przechowywanie wersji](/dotnet/core/packages). Dotyczy to często używane następujące pakiety:
+    * Pakiet
+    * Microsoft.AspNetCore.App
+    * Pakietów Microsoft.NETCore.App
+    * NETStandard.Library
 
     ![Przykład pakietu oznaczenie niejawnie odwołania lub AutoReferenced](media/PackageManagerUIAutoReferenced.png)
 

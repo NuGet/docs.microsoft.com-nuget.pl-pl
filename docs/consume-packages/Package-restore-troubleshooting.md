@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 11acb90b45af73137faac1ec6bc403b109e6e808
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: dacc95c557af016f535bc1b758473d7062f2ad3f
+ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549603"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981018"
 ---
 # <a name="troubleshooting-package-restore-errors"></a>Rozwiązywanie problemów z błędami Przywracanie pakietu
 
@@ -44,7 +44,7 @@ Use NuGet Package Restore to download them. The missing file is {name}.
 
 Ten błąd występuje, próba skompilowania projektu, który zawiera odwołania do co najmniej jednego pakietu NuGet, ale te pakiety nie są obecnie zainstalowane na komputerze lub w projekcie.
 
-- Korzystając z formatu zarządzania PackageReference, ten błąd oznacza, że pakiet nie jest zainstalowana w *globalnymi pakietami* folderu zgodnie z opisem na zgodnie z opisem na [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
+- Korzystając z formatu zarządzania PackageReference, ten błąd oznacza, że pakiet nie jest zainstalowana w *globalnymi pakietami* folderu zgodnie z opisem na [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
 - Korzystając z `packages.config`, ten błąd oznacza, że pakiet nie jest zainstalowany w `packages` folder w katalogu głównym rozwiązania.
 
 Ta sytuacja występuje często, gdy uzyskać kod źródłowy projektu z kontroli źródła lub innego pobierania. Pakiety zazwyczaj zostały pominięte w kontroli źródła lub pliki do pobrania, ponieważ pliki mogą zostać przywrócone z pakietu pakietami, takie jak nuget.org (zobacz [pakiety i kontrola źródła](Packages-and-Source-Control.md)). Uwzględniając je w przeciwnym razie będzie wybrzuszanie repozytorium lub utworzyć pliki zip niepotrzebnie.

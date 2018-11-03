@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: f04c6a62fc3b5056ad82930447b8ba46a8797fd2
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: cfcb52ba7689f1b392c782b4ad42ba820a76c8bf
+ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548094"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981135"
 ---
 # <a name="search"></a>Wyszukaj
 
@@ -99,7 +99,7 @@ Tytuł          | string                     | Brak       |
 totalDownloads | integer                    | Brak       | Tę wartość można wywnioskować przez sumę pliki do pobrania w `versions` tablicy
 Zweryfikowano       | wartość logiczna                    | Brak       | JSON atrybut typu wartość logiczna wskazująca, czy pakiet jest [zweryfikowane](../reference/id-prefix-reservation.md)
 
-W witrynie nuget.org zweryfikowaną pakietu jest taki, który ma identyfikator pakietu dopasowania zastrzeżony prefiks Identyfikatora i należące do właścicieli z zarezerwowaną przestrzenią nazw. Aby uzyskać więcej informacji, zobacz [dokumentacji dotyczącej rezerwowanie prefiksów identyfikatorów](../reference/id-prefix-reservation.md).
+W witrynie nuget.org zweryfikowaną pakietu jest taki, który ma identyfikator pakietu dopasowania zastrzeżony prefiks Identyfikatora i należące do właścicieli zastrzeżony prefiks. Aby uzyskać więcej informacji, zobacz [dokumentacji dotyczącej rezerwowanie prefiksów identyfikatorów](../reference/id-prefix-reservation.md).
 
 Metadane zawartych w obiekcie wynikowym wyszukiwania jest pobierana z najnowszej wersji pakietu. Każdy element na `versions` tablica jest obiekt JSON z następującymi właściwościami:
 
