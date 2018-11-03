@@ -31,7 +31,6 @@
 ## Przewodniki
 ### [Tworzenie pakietów platformy UWP](guides/create-uwp-packages.md)
 ### [Tworzenie kontrolek interfejsu użytkownika jako pakietów NuGet](guides/create-UI-controls.md)
-### [Tworzenie pakietów platformy NET Standard/NET Framework za pomocą programu Visual Studio 2015](guides/create-net-standard-packages-vs2015.md)
 ### [Tworzenie pakietów dla platformy Xamarin za pomocą programu Visual Studio 2015](guides/create-packages-for-xamarin.md)
 # Hostowanie pakietów
 ## [Omówienie](hosting-packages/overview.md)
