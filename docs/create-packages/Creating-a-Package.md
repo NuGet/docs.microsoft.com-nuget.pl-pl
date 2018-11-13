@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/12/2017
 ms.topic: conceptual
-ms.openlocfilehash: 1bc67927ddc463dcc3a0abe80fe20e625e188e63
-ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
+ms.openlocfilehash: 1221631b22eed7d2d8e58bd08ff120d91231d49b
+ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981174"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51580404"
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -51,7 +51,7 @@ Wymagane właściwości:
 
 - Identyfikator pakietu musi być unikatowa w galerii, który jest hostem pakietu.
 - Numer wersji określonej w formie *Wersja_główna.WERSJA_POMOCNICZA.poprawka [-sufiks]* gdzie *-sufiks* identyfikuje [wersje wstępne](prerelease-packages.md)
-- Tytuł pakietu zgodnie z oczekiwaniami pojawia się na hoście (np. nuget.org)
+- Tytuł pakietu, ponieważ powinien pojawić się na hoście (np. nuget.org)
 - Informacje dotyczące autora i właściciela.
 - Długi opis pakietu.
 
@@ -157,7 +157,7 @@ Możesz następnie przeprowadź edycję pliku ręcznie, aby go w tym artykule op
 
 ### <a name="from-a-convention-based-working-directory"></a>Z katalogu roboczego oparty na Konwencji
 
-Ponieważ pakiet NuGet jest po prostu plik ZIP, który jest zastępowana `.nupkg` rozszerzenia jego często łatwiej tworzyć strukturę folderów w lokalnym systemie plików, następnie utwórz `.nuspec` pliku bezpośrednio z tej struktury. `nuget pack` Polecenie następnie automatycznie dodaje wszystkie pliki w tej strukturze folderu (z wyłączeniem wszystkie foldery, które zaczynają się od `.`, dzięki czemu przechowywać pliki prywatne w tej samej struktury).
+Ponieważ pakiet NuGet jest po prostu plik ZIP, który jest zastępowana `.nupkg` rozszerzenia, często łatwiej jest utworzyć strukturę folderów w lokalnym systemie plików, a następnie utwórz `.nuspec` pliku bezpośrednio z tej struktury. `nuget pack` Polecenie następnie automatycznie dodaje wszystkie pliki w tej strukturze folderu (z wyłączeniem wszystkie foldery, które zaczynają się od `.`, dzięki czemu możesz przechowywać pliki prywatne w tej samej struktury).
 
 Zaletą tego podejścia jest to, nie należy określić w manifeście pliki, które mają zostać uwzględnione w pakiecie (opisany w dalszej części tego tematu). Po prostu może mieć proces kompilacji, tworzyć strukturę folderów dokładnie, która przechodzi do pakietu i innych plików, które mogą być częścią projektu w przeciwnym razie można łatwo dołączyć:
 
@@ -177,7 +177,7 @@ Konwencje folderze są następujące:
 | kompilacja | Program MSBuild `.targets` i `.props` plików | Automatycznie wstawiany do pliku projektu lub `project.lock.json` (NuGet 3.x+). |
 | narzędzia | Skrypty programu PowerShell i programów dostępne z konsoli Menedżera pakietów | `tools` Folder zostanie dodany do `PATH` zmiennej środowiskowej tylko za pomocą konsoli Menedżera pakietów (w szczególności *nie* do `PATH` według stawki ustalonej dla platformy MSBuild podczas kompilowania projektu). |
 
-Twoja struktura folderów może zawierać dowolną liczbę zestawów dla dowolnej liczby platform docelowych, ta metoda jest niezbędna, podczas tworzenia pakietów, które obsługują wielu platform 
+Twoja struktura folderów może zawierać dowolną liczbę zestawów dla dowolnej liczby platform docelowych, ta metoda jest niezbędna, podczas tworzenia pakietów, które obsługują wiele platform.
 
 W każdym przypadku, gdy struktura żądany folder w miejscu, uruchom następujące polecenie w tym folderze, aby utworzyć `.nuspec` pliku:
 
@@ -321,7 +321,7 @@ Gdy uwzględnisz plik o nazwie `readme.txt` w katalogu głównym pakietu Visual 
 
 W niektórych przypadkach warto dodać obiekty docelowe kompilacji niestandardowej lub właściwości w projektach korzystających z pakietu, takie jak uruchomienie niestandardowego narzędzia lub procesu podczas kompilacji. Można to zrobić, umieszczanie plików w postaci `<package_id>.targets` lub `<package_id>.props` (takie jak `Contoso.Utility.UsefulStuff.targets`) w ramach `\build` folderu projektu.
 
-Pliki w folderze głównym `\build` folderu są traktowane jako odpowiednie dla wszystkich ustalać platformy docelowe. Aby przekazać pliki określonej platformy, najpierw umieścić te w podfolderach odpowiednie, takie jak następujące:
+Pliki w folderze głównym `\build` folderu są traktowane jako odpowiednie dla wszystkich ustalać platformy docelowe. Do udostępnienia plików określonej platformy, najpierw umieścić je w odpowiednich podfolderach, takie jak następujące:
 
     \build
         \netstandard1.4

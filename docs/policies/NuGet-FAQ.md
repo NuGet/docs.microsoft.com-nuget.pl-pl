@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/11/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8c63abc9971623e0732ae8d973fafcd04c5d9f48
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: c136a3dffac38a68b80f730de1e4c3a3a9c8bd5d
+ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548807"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51580366"
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet — często zadawane pytania
 
@@ -51,7 +51,7 @@ Alternatywnie Uruchom konsolę Menedżera pakietów (**Narzędzia > Menedżer pa
 
 NuGet zwykle działa w przypadku języków .NET i jest przeznaczona do bibliotek .NET do projektu. Ponieważ w niektórych typach projektów są również obsługuje automatyzacji programu MSBuild i Visual Studio, obsługuje ona również innych projektów i języki różnym stopniu.
 
-Najbardziej aktualną wersję pakietu nuget obsługuje C#, Visual Basic, F #, WiX i C++.
+Obsługuje najnowszej wersji pakietu NuGet C#, Visual Basic F#, WiX i C++.
 
 **Szablony projektów, które są obsługiwane przez NuGet?**
 
@@ -166,7 +166,7 @@ NuGet zaleca wszystkich pakietów, były podpisane. Zasady projektowania podpisy
 
 Należy pamiętać, że składników zależnych wymienionych dla pakietu są generowane automatycznie na podstawie pakietu i nie można edytować.
 
-Ponadto przekazywania pakietów do [staging.nuget.org](http://staging.nuget.org) to świetny sposób testować i weryfikować pakietu bez konieczności szukania pakietu dostępne w publicznej galerii.
+Ponadto przekazywania pakietów do [int.nugettest.org](https://int.nugettest.org) to świetny sposób testować i weryfikować pakietu bez konieczności szukania pakietu dostępne w publicznej galerii.
 
 **Czy jest możliwe do zarezerwowania nazwy pakietów, które mają zostać opublikowane w przyszłości?**
 
@@ -182,9 +182,9 @@ Firma Microsoft zachęca do społeczności NuGet, aby współpracują ze sobą w
 
 **Jest zalecane, aby przekazać mój pakietów testowych do nuget.org?**
 
-Do celów testowych możesz użyć [staging.nuget.org](http://staging.nuget.org), lub alternatywne publiczne serwery NuGet, takich jak [portalu myget.org](https://myget.org) lub [Visual Studio Team Services](https://blogs.msdn.microsoft.com/visualstudioalm/2015/08/27/announcing-package-management-support-for-vsotfs/).
+Do celów testowych możesz użyć [int.nugettest.org](https://int.nugettest.org), lub alternatywne publiczne serwery NuGet, takich jak [portalu myget.org](https://myget.org) lub [Visual Studio Team Services](https://blogs.msdn.microsoft.com/visualstudioalm/2015/08/27/announcing-package-management-support-for-vsotfs/).
 
-Należy pamiętać, że pakiety przekazywane do staging.nuget.org mogą nie zostać zachowane. Zobacz [Podgląd Goodbye](http://blog.nuget.org/20130419/goodbye-preview.html).
+Należy pamiętać, że pakiety przekazywane do int.nugettest.org mogą nie zostać zachowane.
 
 **Co to jest maksymalny rozmiar pakietów, który mogę przesłać do repozytorium nuget.org?**
 

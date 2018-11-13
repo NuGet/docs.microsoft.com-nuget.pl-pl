@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: b95c4462a214a78452f9dbe35936620636c4f60b
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: da69181aebe3bebcea6acd6e15fde6b77dd33452
+ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548775"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51580301"
 ---
 # <a name="package-restore"></a>Przywracanie pakietu
 
@@ -62,9 +62,9 @@ Przywracanie pakietu przede wszystkim jest włączana za pomocą **Narzędzia > 
         </packageRestore>
     </configuration>
     ```
-    <br/>
-    > [!Note]
-    >  `packageRestore/enabled` Ustawienie można przesłonić globalny, ustawiając zmienną środowiskową o nazwie **EnableNuGetPackageRestore** o wartości TRUE lub FALSE przed uruchomieniem programu Visual Studio lub uruchamianie kompilacji.
+
+> [!Note]
+>  `packageRestore/enabled` Ustawienie można przesłonić globalny, ustawiając zmienną środowiskową o nazwie **EnableNuGetPackageRestore** o wartości TRUE lub FALSE przed uruchomieniem programu Visual Studio lub uruchamianie kompilacji.
 
 - **Automatyczne sprawdzenie dostępności dla brakujących pakietów podczas kompilacji w programie Visual Studio**: Określa automatycznego przywracania, zmieniając `packageRestore/automatic` w `NuGet.Config` pliku, jak pokazano poniżej (`%AppData%\NuGet\NuGet.Config` na Windows, `~/.nuget/NuGet/NuGet.Config` w systemie Mac/Linux). Gdy ta opcja jest ustawiona, uruchamianie kompilacji w programie Visual Studio automatycznie przywraca wszystkie brakujące pakiety. Opcja nie wpływa na kompilacje uruchamiane z wiersza polecenia, korzystając z programu MSBuild.
 

@@ -6,14 +6,18 @@ ms.author: karann
 ms.date: 09/12/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: ad1cf08437b4802d981f8c1a96ab9dc75425a2f0
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 3321cba9082eb35b53ba693e246db18e5d8e187b
+ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43550618"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51580262"
 ---
-# <a name="creating-symbol-packages"></a>Tworzenie pakietów symboli
+# <a name="creating-symbol-packages-legacy"></a>Tworzenie pakietów symbol (starsza wersja)
+
+> [!Important]
+> Nowy format zalecane pakiety symboli jest .snupkg. Zobacz [tworzenia pakietów symbol (.snupkg)](Symbol-Packages-snupkg.md). </br>
+> . symbols.nupkg nadal jest obsługiwany, ale tylko ze względu na zgodność.
 
 Oprócz tworzenia pakietów nuget.org lub innych źródeł, NuGet również obsługuje tworzenie skojarzone pakiety symboli i publikowania ich w repozytorium SymbolSource.
 

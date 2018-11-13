@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 04/24/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: c2cd61b692b80cdc45fce399483cda3b57d12e5e
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 830714269ac422a4784c15b000e374195f02332f
+ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547688"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51580288"
 ---
 # <a name="transforming-source-code-and-configuration-files"></a>Przekształcanie plików źródłowych kodu i konfiguracji
 
@@ -114,7 +114,7 @@ Aby zobaczyć efekt Instalowanie i odinstalowywanie pakietu, Utwórz nowy projek
 
 ### <a name="xdt-transforms"></a>Przekształca XDT
 
-Można zmodyfikować plików konfiguracji przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Mogą też istnieć NuGet zamienić tokeny przy użyciu [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) , łącznie z nazwą właściwości w ramach `$` ograniczników (bez uwzględniania wielkości liter).
+Można zmodyfikować plików konfiguracji przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Mogą też istnieć NuGet zamienić tokeny przy użyciu [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) , łącznie z nazwą właściwości w ramach `$` ograniczniki (bez uwzględniania wielkości liter).
 
 Na przykład następująca `app.config.install.xdt` pliku zostanie wstawiona `appSettings` elementu do `app.config` zawierający `FullPath`, `FileName`, i `ActiveConfigurationSettings` wartości z projektu:
 

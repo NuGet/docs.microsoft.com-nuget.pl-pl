@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/10/2018
 ms.topic: overview
-ms.openlocfilehash: 0b7105ea5d183d139c8bac915378924ba9c0874a
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: d688aecaa73cecbfee184e3b13801ed22326a852
+ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548822"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51580327"
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
@@ -24,7 +24,7 @@ Ponieważ NuGet obsługuje hostów prywatnych wraz z hosta publicznego repozytor
 
 ## <a name="the-flow-of-packages-between-creators-hosts-and-consumers"></a>Przepływu pakietów między dla twórców, hosty i klientów
 
-W swojej roli jako publiczny hosta, NuGet, sam przechowuje centralne repozytorium ponad 100 000 pakietów unikatowy w [nuget.org](https://www.nuget.org). Te pakiety są zatrudnieni przez miliony deweloperów.NET/.NET Core każdego dnia. NuGet można również do hostowania pakietów przez użytkowników w chmurze (takie jak w Visual Studio Team Services), w sieci prywatnej lub nawet po prostu lokalnego systemu plików. Dzięki temu te pakiety są dostępne dla tych deweloperów, które mają dostęp do hosta, co daje możliwość udostępnienia pakietów do określonej grupy odbiorców. Opcje zostały wyjaśnione na [hostingu źródła NuGet](hosting-packages/overview.md). Za pomocą opcji konfiguracji można także kontrolować, dokładnie hosta, którego może zostać oceniony przez dowolnego danego komputera, zapewniając, że pakiety są uzyskiwane z konkretnych źródeł, a nie z publicznego repozytorium, np. nuget.org.
+W swojej roli jako publiczny hosta, NuGet, sam przechowuje centralne repozytorium ponad 100 000 pakietów unikatowy w [nuget.org](https://www.nuget.org). Te pakiety są zatrudnieni przez miliony deweloperów.NET/.NET Core każdego dnia. NuGet można również do hostowania pakietów przez użytkowników w chmurze (takie jak na DevOps platformy Azure), w sieci prywatnej lub nawet po prostu lokalnego systemu plików. Dzięki temu te pakiety są dostępne dla tych deweloperów, które mają dostęp do hosta, co daje możliwość udostępnienia pakietów do określonej grupy odbiorców. Opcje zostały wyjaśnione na [hostingu źródła NuGet](hosting-packages/overview.md). Za pomocą opcji konfiguracji można także kontrolować, dokładnie hosta, którego może zostać oceniony przez dowolnego danego komputera, zapewniając, że pakiety są uzyskiwane z konkretnych źródeł, a nie z publicznego repozytorium, np. nuget.org.
 
 Niezależnie od ich charakter hosta służy jako punkt połączenia między pakietu *twórców* i pakietu *konsumentów*. Twórcy tworzenie przydatne pakietów NuGet i opublikuj je na hoście. Konsumenci Wyszukaj pakiety przydatne i są zgodne na hostach dostępny, pobieranie oraz w swoich projektach, takich jak te pakiety. Po zainstalowaniu w projekcie, interfejsy API te pakiety są dostępne w pozostałej części kodu projektu.
 
@@ -78,7 +78,7 @@ NuGet przechowuje zamiast tego prostego listą odwołań do pakietów, od który
 
 Za pomocą tylko listę odwołań NuGet ponownie zainstalować&mdash;oznacza to, *przywrócić*&mdash;wszystkie te pakiety z publiczne i prywatne hostów dowolnym później. Jeśli zobowiążą się projekt do kontroli źródła lub udostępnianie w inny sposób, obejmują tylko listę odwołań i Wyklucz wszystkie pliki binarne pakietu (zobacz [pakiety i kontrola źródła](consume-packages/packages-and-source-control.md).)
 
-Komputer, który otrzyma projektu, takich jak serwer kompilacji, uzyskując kopię projektu jako część systemu automatycznego wdrażania, po prostu pyta, czy rozszerzenie NuGet, aby przywrócić zależności zawsze wtedy, gdy zajdzie taka potrzeba. Tworzenie systemów, takich jak Visual Studio Team Services zawierają opis etapów "Przywracanie pakietów NuGet", w tym celu dokładne. Podobnie, gdy deweloperzy uzyskać kopię projektu (tak jak podczas klonowania repozytorium), wywołują polecenia podobnego `nuget restore` (interfejs wiersza polecenia NuGet), `dotnet restore` (wiersz polecenia dotnet), lub `Install-Package` (Konsola Menedżera pakietów), aby uzyskać niezbędne pakiety. Podczas kompilowania projektu ze swojej strony w programie Visual Studio automatycznie przywraca pakietów (pod warunkiem, że automatycznego przywracania jest włączona, zgodnie z opisem na [Przywracanie pakietu](consume-packages/package-restore.md)).
+Komputer, który otrzyma projektu, takich jak serwer kompilacji, uzyskując kopię projektu jako część systemu automatycznego wdrażania, po prostu pyta, czy rozszerzenie NuGet, aby przywrócić zależności zawsze wtedy, gdy zajdzie taka potrzeba. Tworzenie systemów, takich jak DevOps platformy Azure zawierają opis etapów "Przywracanie pakietów NuGet", w tym celu dokładne. Podobnie, gdy deweloperzy uzyskać kopię projektu (tak jak podczas klonowania repozytorium), wywołują polecenia podobnego `nuget restore` (interfejs wiersza polecenia NuGet), `dotnet restore` (wiersz polecenia dotnet), lub `Install-Package` (Konsola Menedżera pakietów), aby uzyskać niezbędne pakiety. Podczas kompilowania projektu ze swojej strony w programie Visual Studio automatycznie przywraca pakietów (pod warunkiem, że automatycznego przywracania jest włączona, zgodnie z opisem na [Przywracanie pakietu](consume-packages/package-restore.md)).
 
 Wyraźnie widać następnie podstawową rolą NuGet, których dotyczy to deweloperom utrzymuje tę listę odwołań w imieniu projektu i umożliwianie efektywnie przywracania (i zaktualizować) te pakiety do którego istnieje odwołanie. Ta lista jest przechowywana w jednej z dwóch *pakietu zarządzania formaty*, zgodnie z ich wywołania:
 

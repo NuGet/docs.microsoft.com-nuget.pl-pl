@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 770173d6b84048cf42a5da46cbc474d8cf604a08
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 7bb5e83b29d1d7e4bf06accfccb73db3aa9ee025
+ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547506"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51580340"
 ---
 # <a name="nuget-api"></a>Interfejs API programu NuGet
 
@@ -49,16 +49,17 @@ Wprowadzono zmiany protokołu bez podziału do interfejsu API od czasu pierwszej
 
 **Indeks usług** zawiera opis różnych zasobów. Bieżący zestaw zasobów, obsługiwane są następujące:
 
-Nazwa zasobu                                                          | Wymagane | Opis
----------------------------------------------------------------------- | -------- | -----------
+Nazwa zasobu                                                           | Wymagane | Opis
+----------------------------------------------------------------------  | -------- | -----------
 [`PackagePublish`](package-publish-resource.md)                        | Tak      | Wypychanie i usuwanie lub wyrejestrowanie pakietów.
 [`SearchQueryService`](search-query-service-resource.md)               | Tak      | Filtr i wyszukiwanie pakietów według słowa kluczowego.
 [`RegistrationsBaseUrl`](registration-base-url-resource.md)            | Tak      | Pobierz metadane pakietów.
 [`PackageBaseAddress`](package-base-address-resource.md)               | Tak      | Pobierz zawartość pakietu (.nupkg).
 [`SearchAutocompleteService`](search-autocomplete-service-resource.md) | Brak       | Odkryj identyfikatorów pakietu i wersje, podciąg.
 [`ReportAbuseUriTemplate`](report-abuse-resource.md)                   | Brak       | Skonstruuj adres URL "Zgłoś nadużycie" strona sieci web.
-[`RepositorySignatures`](repository-signatures-resource.md)            | Brak       | Pobierz certyfikaty używane do podpisywania repozytorium.
-[`Catalog`](catalog-resource.md)                                       | Brak       | Pełną dokumentację wszystkich zdarzeń pakietu.
+[`RepositorySignatures`](repository-signatures-resource.md)             | Brak      | Pobierz certyfikaty używane do podpisywania repozytorium.
+[`Catalog`](catalog-resource.md)                                         | Brak      | Pełną dokumentację wszystkich zdarzeń pakietu.
+[`SymbolPackagePublish`](symbol-package-publish-resource.md)            | Brak      | Wypchnij pakiety symboli.
 
 Ogólnie rzecz biorąc wszystkie dane nieznakowe zwrócony przez zasobu interfejsu API są serializowane, przy użyciu formatu JSON. Schemat odpowiedzi zwrócony przez każdego zasobu w indeksie usługi zdefiniowano indywidualnie dla tego zasobu. Aby uzyskać więcej informacji na temat poszczególnych zasobów zobacz tematy wymienione powyżej.
 

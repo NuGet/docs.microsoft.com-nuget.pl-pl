@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/22/2018
 ms.topic: conceptual
-ms.openlocfilehash: a5807a6895a76a7d6660d218b29e1d3a2802ca28
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 5f52b00e0c45882fb7a4bd1c1a80022192f3be6b
+ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43545051"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51580249"
 ---
 # <a name="package-consumption-workflow"></a>Przepływ pracy zużyciu pakietu
 
@@ -18,7 +18,7 @@ Między nuget.org i galerie prywatne pakietu, które Twoja organizacja może ust
 
 ![Przepływ do źródła pakietu, znajdowanie pakietu, zamontowany w projekcie, a następnie dodanie przy użyciu instrukcji i wywołania interfejsu API pakietu](media/Overview-01-GeneralFlow.png)
 
-\* _Program Visual Studio i dotnet.ex "tylko. Polecenie install nuget nie powoduje modyfikacji plików projektu lub pliku packages.config; wpisy muszą być zarządzane ręcznie._
+\* _Program Visual Studio i `dotnet.exe` tylko. `nuget install` Polecenie nie powoduje modyfikacji plików projektu lub `packages.config` pliku; wpisów, które muszą być zarządzane ręcznie._
 
 Aby uzyskać więcej informacji, zobacz [Znajdowanie i Wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md) i [różne sposoby, aby zainstalować pakiet NuGet](ways-to-install-a-package.md).
 
