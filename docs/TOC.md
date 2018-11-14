@@ -24,8 +24,8 @@
 ## [Przekształcenia pliku źródłowego i pliku konfiguracji](create-packages/source-and-config-file-transformations.md)
 ## [Tworzenie zlokalizowanych pakietów](create-packages/creating-localized-packages.md)
 ## [Pakiety w wersjach wstępnych](create-packages/prerelease-packages.md)
-## [Pakiety natywne](create-packages/native-packages.md)
-## [Pakiety symboli](create-packages/symbol-packages.md)
+## [Tworzenie pakietów natywnych](create-packages/native-packages.md)
+## [Tworzenie pakietów symboli](create-packages/symbol-packages-snupkg.md)
 ## [Podpisywanie pakietów](create-packages/sign-a-package.md)
 ## [Publikowanie pakietu](create-packages/publish-a-package.md)
 ## Przewodniki
@@ -198,6 +198,7 @@
 ## [Instrukcje: Wykonywanie zapytania o wszystkie pakiety za pomocą interfejsu API](guides/api/query-for-all-published-packages.md)
 ## [Indeks usług](api/service-index.md)
 ## [Wypychanie i usuwanie](api/package-publish-resource.md)
+## [Wypychanie pakietów symboli](api/symbol-package-publish-resource.md)
 ## [Wyszukiwanie](api/search-query-service-resource.md)
 ## [Autouzupełnianie](api/search-autocomplete-service-resource.md)
 ## [Metadane pakietu](api/registration-base-url-resource.md)
