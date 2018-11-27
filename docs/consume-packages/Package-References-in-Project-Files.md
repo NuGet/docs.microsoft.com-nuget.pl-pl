@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 71ab5bb464d1513df89ab53e119d9768e880e4e5
-ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
+ms.openlocfilehash: 17960e42a69b00f2524b9ab7d78710d7551b5a9c
+ms.sourcegitcommit: a1846edf70ddb2505d58e536e08e952d870931b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981031"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52303657"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 
@@ -238,6 +238,6 @@ Aby sterować różnych zachowań przywracania za pomocą pliku blokady, zgodnie
 | Opcja | Opcji równoważne MSBuild | 
 |:---  |:--- |
 | `--use-lock-file` | Bootstraps korzystanie z pliku blokady dla projektu. Można również ustawić `RestorePackagesWithLockFile` właściwość w pliku projektu | 
-| `--locked-mode` | Włącza zablokowany tryb przywracania. Jest to przydatne w scenariuszach ciągłej integracji/ciągłego wdrażania, w której chcesz uzyskać kompilacje erepeatable. Może to być również przez ustawienie `RestoreLockedMode` właściwości programu MSBuild `true` |  
+| `--locked-mode` | Włącza zablokowany tryb przywracania. Jest to przydatne w scenariuszach ciągłej integracji/ciągłego wdrażania, w której chcesz uzyskać powtarzalnych kompilacji. Może to być również przez ustawienie `RestoreLockedMode` właściwości programu MSBuild `true` |  
 | `--force-evaluate` | Ta opcja jest przydatna przy użyciu pakietów przy użyciu wersji zmiennoprzecinkowy zdefiniowane w projekcie. Domyślnie, przywracanie pakietów NuGet nie może zaktualizować wersję pakietu automatycznie po każdym przywracania, chyba że uruchomieniu przywracania z `--force-evaluate` opcji. |
 | `--lock-file-path` | Definiuje blokady niestandardowych lokalizacji plików dla projektu. Można to również osiągnąć przez ustawienie właściwości programu MSBuild `NuGetLockFilePath`. Domyślnie obsługuje NuGet `packages.lock.json` w katalogu głównym. Jeśli masz wiele projektów w tym samym katalogu NuGet obsługuje pliku blokady określonego projektu `packages.<project_name>.lock.json` |

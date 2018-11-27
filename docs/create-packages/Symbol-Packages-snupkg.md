@@ -16,12 +16,12 @@ keywords: Pakiety symboli NuGet, pakietów NuGet, debugowanie, obsługa NuGet de
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: a72b59a391ed25e9617ba3ba3656301a2ed90ddc
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: 5bd3d02a9f397b393cc56af815c40f9d718d4023
+ms.sourcegitcommit: a1846edf70ddb2505d58e536e08e952d870931b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580450"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52303628"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symbol (.snupkg)
 
@@ -44,9 +44,9 @@ nuget pack MyPackage.csproj -Symbols -SymbolPackageFormat snupkg
 msbuild /t:pack MyPackage.csproj /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg
 ```
 
-`.snupkgs` nie są tworzone domyślnie. Należy przekazać `SymbolsPackageFormat` właściwości wraz z `-Symbols` przypadku nuget.exe, `--include-symbols` przypadku dotnet.exe, lub `/p:IncludeSymbols` w przypadku programu msbuild.
+`.snupkgs` nie są tworzone domyślnie. Należy przekazać `SymbolPackageFormat` właściwości wraz z `-Symbols` przypadku nuget.exe, `--include-symbols` przypadku dotnet.exe, lub `/p:IncludeSymbols` w przypadku programu msbuild.
 
-Właściwość SymbolsPackageFormat może mieć jedną z dwóch wartości: `symbols.nupkg` (ustawienie domyślne) lub `snupkg`. Jeśli nie określono SymbolsPackageFormat, jego wartość domyślna to `symbols.nupkg` i zostanie utworzony pakiet symboli starszej wersji.
+Właściwość SymbolPackageFormat może mieć jedną z dwóch wartości: `symbols.nupkg` (ustawienie domyślne) lub `snupkg`. Jeśli nie określono SymbolPackageFormat, jego wartość domyślna to `symbols.nupkg` i zostanie utworzony pakiet symboli starszej wersji.
 
 > [!Note]
 > Format starszych `.symbols.nupkg` jest nadal obsługiwane, ale tylko ze względu na zgodność (zobacz [pakiety ze starszych wersji Symbol](Symbol-Packages.md)). Serwer symboli NuGet.org akceptuje tylko na nowy format pakietu symboli — `.snupkg`.
