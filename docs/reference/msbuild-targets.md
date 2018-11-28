@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 07296ce5a9ba85d68eca5f4915d6efea00dc8980
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 7b3fc72ddd3ad6c9185c2bd0f2563df59e77f1c8
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548875"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453549"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -37,7 +37,7 @@ Podobnie można zapisać zadania programu MSBuild, napisać własne docelowe i k
 
 ## <a name="pack-target"></a>Pakiet docelowy
 
-W przypadku projektów .NET Standard przy użyciu formatu PackageReference, przy użyciu `msbuild /t:pack` pobiera dane wejściowe z pliku projektu w celu utworzenia pakietu NuGet.
+W przypadku projektów .NET Standard przy użyciu formatu PackageReference, przy użyciu `msbuild -t:pack` pobiera dane wejściowe z pliku projektu w celu utworzenia pakietu NuGet.
 
 W poniższej tabeli opisano właściwości programu MSBuild, które można dodać do pliku projektu w obrębie pierwszych `<PropertyGroup>` węzła. Zmiany możesz wprowadzić te łatwe w programie Visual Studio 2017 i później, klikając prawym przyciskiem myszy projekt i wybierając polecenie **Edytuj {project_name}** w menu kontekstowym. Dla wygody tabeli jest zorganizowana według równoważne właściwość [ `.nuspec` pliku](../reference/nuspec.md).
 
@@ -55,7 +55,9 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 | Opis | Opis | "Pakiet opis" | |
 | Prawa autorskie | Prawa autorskie | empty | |
 | RequireLicenseAcceptance | PackageRequireLicenseAcceptance | false | |
-| LicenseUrl | PackageLicenseUrl | empty | |
+| Licencja | PackageLicenseExpression | empty | Odnosi się do `<license type="expression">` |
+| Licencja | PackageLicenseFile | empty | Odnosi się do `<license type="file">`. Konieczne może być jawnie pakietu pliku odwołania licencji. |
+| LicenseUrl | PackageLicenseUrl | empty | `licenseUrl` jest on przestarzały, użyj właściwości PackageLicenseExpression lub PackageLicenseFile |
 | ProjectUrl | PackageProjectUrl | empty | |
 | IconUrl | PackageIconUrl | empty | |
 | Znaczniki | PackageTags | empty | Tagi są rozdzielone średnikami. |
@@ -77,6 +79,8 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 - Prawa autorskie
 - PackageRequireLicenseAcceptance
 - DevelopmentDependency
+- PackageLicenseExpression
+- PackageLicenseFile
 - PackageLicenseUrl
 - PackageProjectUrl
 - PackageIconUrl
@@ -177,7 +181,7 @@ Obejmuje inne określonych metadanych pakietu, który dla każdego z powyższych
 
 ### <a name="includesymbols"></a>IncludeSymbols
 
-Korzystając z `MSBuild /t:pack /p:IncludeSymbols=true`, odpowiedni `.pdb` pliki są kopiowane oraz inne pliki wyjściowe (`.dll`, `.exe`, `.winmd`, `.xml`, `.json`, `.pri`). Należy pamiętać, że ustawienie `IncludeSymbols=true` tworzy pakiet regularne *i* pakietu symboli.
+Korzystając z `MSBuild -t:pack -p:IncludeSymbols=true`, odpowiedni `.pdb` pliki są kopiowane oraz inne pliki wyjściowe (`.dll`, `.exe`, `.winmd`, `.xml`, `.json`, `.pri`). Należy pamiętać, że ustawienie `IncludeSymbols=true` tworzy pakiet regularne *i* pakietu symboli.
 
 ### <a name="includesource"></a>IncludeSource
 
@@ -185,28 +189,46 @@ To jest taka sama jak `IncludeSymbols`, chyba że kopiuje pliki źródłowe, wra
 
 Plik typu kompilacji, czy poza folderem projektu, a następnie po prostu dodać go do `src\<ProjectName>\`.
 
+### <a name="packing-a-license-expression-or-a-license-file"></a>Pakowanie wyrażenie licencji lub też pliku licencji
+
+Korzystając z wyrażenia licencji, właściwość PackageLicenseExpression powinna być używana. 
+[Przykładowe wyrażenie licencji](#https://github.com/NuGet/Samples/tree/master/PackageLicenseExpressionExample).
+
+Podczas pakowania pliku licencji, należy użyć właściwości PackageLicenseFile do określenia ścieżki pakietu, względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik znajduje się w pakiecie. Na przykład:
+
+```xml
+<PropertyGroup>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+</PropertyGroup>
+
+<ItemGroup>
+    <None Include="licenses\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+</ItemGroup>
+```
+[Licencja użytkowania przykładowe](#https://github.com/NuGet/Samples/tree/master/PackageLicenseFileExample).
+
 ### <a name="istool"></a>IsTool
 
-Korzystając z `MSBuild /t:pack /p:IsTool=true`, wszystkie dane wyjściowe pliki, jak to określono w [zestawów danych wyjściowych](#output-assemblies) scenariusza, są kopiowane do `tools` folderu zamiast `lib` folderu. Należy pamiętać, że to różni się od `DotNetCliTool` określić, ustawiając `PackageType` w `.csproj` pliku.
+Korzystając z `MSBuild -t:pack -p:IsTool=true`, wszystkie dane wyjściowe pliki, jak to określono w [zestawów danych wyjściowych](#output-assemblies) scenariusza, są kopiowane do `tools` folderu zamiast `lib` folderu. Należy pamiętać, że to różni się od `DotNetCliTool` określić, ustawiając `PackageType` w `.csproj` pliku.
 
 ### <a name="packing-using-a-nuspec"></a>Pakowanie przy użyciu .nuspec
 
 Możesz użyć `.nuspec` pliku do pakietu projektu, pod warunkiem, że masz zestaw SDK plik projektu do zaimportowania `NuGet.Build.Tasks.Pack.targets` tak, aby zadanie pakietów, które mogą być wykonywane. Nadal trzeba przywrócić projektu, zanim można spakować soubor nuspec. Platforma docelowa pliku projektu nie ma znaczenia, a nie używany podczas pakowania nuspec. Następujące trzy właściwości programu MSBuild mają zastosowanie do pakowania, za pomocą `.nuspec`:
 
 1. `NuspecFile`: ścieżka względna lub bezwzględna do `.nuspec` plików używanych na potrzeby pakowania.
-1. `NuspecProperties`: rozdzieloną średnikami listę klucz = wartość pary. Ze względu na sposób MSBuild wiersza polecenia analizy działa wiele właściwości należy określić w następujący sposób: `/p:NuspecProperties=\"key1=value1;key2=value2\"`.  
+1. `NuspecProperties`: rozdzieloną średnikami listę klucz = wartość pary. Ze względu na sposób MSBuild wiersza polecenia analizy działa wiele właściwości należy określić w następujący sposób: `-p:NuspecProperties=\"key1=value1;key2=value2\"`.  
 1. `NuspecBasePath`: Podstawową ścieżkę dla `.nuspec` pliku.
 
 Jeśli przy użyciu `dotnet.exe` umieszczenie projektu, użyj polecenia podobnego do poniższego:
 
 ```cli
-dotnet pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:NuspecProperties=<> /p:NuspecBasePath=<Base path> 
+dotnet pack <path to .csproj file> -p:NuspecFile=<path to nuspec file> -p:NuspecProperties=<> -p:NuspecBasePath=<Base path> 
 ```
 
 Jeśli korzystanie z MSBuild do pakietu projektu, należy użyć polecenie podobne do następującego:
 
 ```cli
-msbuild /t:pack <path to .csproj file> /p:NuspecFile=<path to nuspec file> /p:NuspecProperties=<> /p:NuspecBasePath=<Base path> 
+msbuild -t:pack <path to .csproj file> -p:NuspecFile=<path to nuspec file> -p:NuspecProperties=<> -p:NuspecBasePath=<Base path> 
 ```
 
 Należy pamiętać, pakowanie nuspec przy użyciu dotnet.exe lub msbuild również prowadzi do kompilowania projektu domyślnie. Można tego uniknąć, przekazując ```--no-build``` właściwości dotnet.exe, który jest odpowiednikiem ustawienia ```<NoBuild>true</NoBuild> ``` w pliku projektu oraz ustawienie ```<IncludeBuildOutput>false</IncludeBuildOutput> ``` w pliku projektu
@@ -283,7 +305,7 @@ Przykład:
 
 ## <a name="restore-target"></a>Lokalizacja docelowa przywracania
 
-`MSBuild /t:restore` (który `nuget restore` i `dotnet restore` za pomocą projektów .NET Core), pakiety, do którego odwołuje się plik projektu w następujący sposób:
+`MSBuild -t:restore` (który `nuget restore` i `dotnet restore` za pomocą projektów .NET Core), pakiety, do którego odwołuje się plik projektu w następujący sposób:
 
 1. Odczyt wszystkich odwołań między projektami
 1. Odczyt właściwości projektu, aby znaleźć pośrednich struktur dla folderu docelowego
@@ -296,7 +318,7 @@ Przykład:
 
 ### <a name="restore-properties"></a>Przywracanie właściwości
 
-Ustawienia dodatkowe przywracania mogą pochodzić z właściwości programu MSBuild w pliku projektu. Ponadto można ustawić wartości z wiersza polecenia przy użyciu `/p:` przełącznika (Zobacz przykłady poniżej).
+Ustawienia dodatkowe przywracania mogą pochodzić z właściwości programu MSBuild w pliku projektu. Ponadto można ustawić wartości z wiersza polecenia przy użyciu `-p:` przełącznika (Zobacz przykłady poniżej).
 
 | Właściwość | Opis |
 |--------|--------|
@@ -315,7 +337,7 @@ Ustawienia dodatkowe przywracania mogą pochodzić z właściwości programu MSB
 Wiersz polecenia:
 
 ```cli
-msbuild /t:restore /p:RestoreConfigFile=<path>
+msbuild -t:restore -p:RestoreConfigFile=<path>
 ```
 
 Plik projektu:
