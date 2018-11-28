@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/30/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: d4c13200494ed3c6fa897ce0083a52c13688b44b
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: fd5188c92f8154391359b8da5c8a32f4d5d6f2c0
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547396"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453588"
 ---
 # <a name="catalog"></a>Wykaz
 
@@ -213,7 +213,7 @@ tagi                    | Tablica ciągów           | Brak       |
 Tytuł                   | string                     | Brak       |
 verbatimVersion         | string                     | Brak       | Ciąg wersji, ponieważ pierwotnie został znaleziony w .nuspec
 
-Pakiet `version` właściwości jest ciągiem znormalizowane pełnej wersji. Oznacza to, że dane kompilacji SemVer 2.0.0 można uwzględnić w tym miejscu.
+Pakiet `version` właściwości jest ciągiem pełnej wersji po normalizacji. Oznacza to, że dane kompilacji SemVer 2.0.0 można uwzględnić w tym miejscu.
 
 `created` Sygnatura czasowa jest pakiet najpierw zostało odebrane przez źródło pakietu, który jest zazwyczaj przez krótki czas przed elementami katalogu zatwierdzenia z sygnaturą czasową.
 

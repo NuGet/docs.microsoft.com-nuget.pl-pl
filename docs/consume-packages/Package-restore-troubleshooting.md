@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 51dd78ef7cc427232982df15657d76d117146853
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: b85b586e76e424442dc0ba3acfecbee1e8755345
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580360"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453471"
 ---
 # <a name="troubleshooting-package-restore-errors"></a>Rozwiązywanie problemów z błędami Przywracanie pakietu
 
@@ -57,7 +57,7 @@ Do przywrócenia pakietów, użyj jednej z następujących metod:
 - W programie Visual Studio, należy włączyć Przywracanie pakietu, wybierając **Narzędzia > Menedżer pakietów NuGet > Ustawienia Menedżera pakietów** polecenia menu, ustawianie obu opcji w obszarze **Przywracanie pakietów**i wybierając polecenie  **OK**. Następnie ponownie skompiluj rozwiązanie.
 - Dla projektów .NET Core, uruchom `dotnet restore` lub `dotnet build` (który automatycznie uruchamia przywracania).
 - W wierszu polecenia Uruchom `nuget restore` (z wyjątkiem projekty utworzone za pomocą `dotnet`, w którym to przypadku użycia `dotnet restore`).
-- W wierszu polecenia z projektami przy użyciu formatu PackageReference Uruchom `msbuild /t:restore`.
+- W wierszu polecenia z projektami przy użyciu formatu PackageReference Uruchom `msbuild -t:restore`.
 
 Po pomyślnie przeprowadzić przywrócenie, muszą znajdować się w pakiecie *globalnymi pakietami* folderu. W przypadku projektów przy użyciu funkcji PackageReference przywracania należy ponownie utworzyć `obj/project.assets.json` pliku; dla projektów przy użyciu `packages.config`, pakiet powinien pojawić się w projekcie `packages` folderu. Projekt teraz powinien być kompilowany pomyślnie. W przeciwnym razie [pliku wystąpił problem w serwisie GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) , dzięki czemu możemy wykonać kolejne czynności z Tobą.
 
@@ -73,7 +73,7 @@ Assets file '<path>\project.assets.json' not found. Run a NuGet package restore 
 
 `project.assets.json` Pliku przechowuje wykres zależności projektu, gdy w formacie PackageReference zarządzania, który jest używany, aby upewnić się, że wszystkie niezbędne pakiety są instalowane na komputerze. Ponieważ ten plik jest generowany dynamicznie za pośrednictwem Przywracanie pakietu, nie został zazwyczaj dodany do kontroli źródła. W wyniku ten błąd występuje podczas kompilowania projektu za pomocą narzędzia, takie jak `msbuild` , nie automatycznie przywraca pakietów.
 
-W takim przypadku uruchom `msbuild /t:restore` następuje `msbuild`, lub użyj `dotnet build` (przywraca pakietów automatycznie). Można również użyć dowolnej z metod przywracania pakietów w [poprzedniej sekcji](#missing).
+W takim przypadku uruchom `msbuild -t:restore` następuje `msbuild`, lub użyj `dotnet build` (przywraca pakietów automatycznie). Można również użyć dowolnej z metod przywracania pakietów w [poprzedniej sekcji](#missing).
 
 <a name="consent"></a>
 

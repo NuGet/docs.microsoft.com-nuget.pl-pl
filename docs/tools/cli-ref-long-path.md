@@ -5,12 +5,12 @@ author: zhili1208
 ms.author: lzhi
 ms.date: 07/12/2018
 ms.topic: reference
-ms.openlocfilehash: 7cd387e3eb05d149da9a88cc1c76dc08588d04b5
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 42b5b7d863d22d7aad99a65700ca11bcc2861db1
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547829"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453497"
 ---
 # <a name="long-path-support-nuget-cli"></a>Obsługa długich ścieżek (interfejs wiersza polecenia NuGet)
 
@@ -39,6 +39,6 @@ Kroki:
 > Inne narzędzia NuGet, do obsługi długich ścieżek
 >
 > -   Interfejsu wiersza polecenia DotNet obsługuje długich ścieżek niezależnie od systemu operacyjnego i wersji.
-> -   Visual Studio lub program msbuild /t:restore jeszcze nie obsługuje długich ścieżek.
+> -   Visual Studio lub program msbuild - t: restore nie obsługuje długich ścieżek.
 > -   Oprogramowanie, które korzysta z bibliotek usługi NuGet do wykonania przywracania i innych poleceń będzie obsługiwać długich ścieżek na tych samych systemach NuGet.exe działające w, również ustawić longPathAware w ich systemie windows manifestu i skonfigurować UseLegacyPathHandling na wartość false, za pomocą pliku App.Config [ Zobacz więcej informacji](https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/)
 

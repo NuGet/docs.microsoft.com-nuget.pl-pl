@@ -5,18 +5,18 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 826316bdbce881836836f2a667cfa5297996d14f
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: b5bd8bd30ad134f36433b8e4721ce131425a1483
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580314"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453367"
 ---
 # <a name="pack-command-nuget-cli"></a>pack command, polecenie (interfejs wiersza polecenia NuGet)
 
 **Dotyczy:** Tworzenie pakietu &bullet; **obsługiwane wersje:** 2.7 +
 
-Tworzy pakiet NuGet na podstawie `.nuspec` lub pliku projektu. `dotnet pack` Polecenia (zobacz [polecenia dotnet](dotnet-Commands.md)) i `msbuild /t:pack` (zobacz [elementów docelowych MSBuild](../reference/msbuild-targets.md)) może być używany jako wersje alternatywne.
+Tworzy pakiet NuGet na podstawie `.nuspec` lub pliku projektu. `dotnet pack` Polecenia (zobacz [polecenia dotnet](dotnet-Commands.md)) i `msbuild -t:pack` (zobacz [elementów docelowych MSBuild](../reference/msbuild-targets.md)) może być używany jako wersje alternatywne.
 
 > [!Important]
 > W obszarze platformy Mono Tworzenie pakietu z pliku projektu nie jest obsługiwane. Trzeba będzie również dostosować ścieżek inną niż lokalna w `.nuspec` plików do ścieżek typu Unix nuget.exe nie konwertuje nazwy ścieżek Windows, sam.

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/18/2018
 ms.topic: quickstart
-ms.openlocfilehash: a0bf174e3e27ad6d8fefe18f6213213a4bc77b53
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: faea00372bd387aee1502e388ad1ea88de07b95d
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548941"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453523"
 ---
 # <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki Start: Tworzenie i publikowanie pakietu NuGet za pomocą programu Visual Studio (.NET Standard, tylko Windows)
 
@@ -95,12 +95,12 @@ namespace AppLogger
 Jako alternatywnego za pomocą **pakiet** polecenia menu, NuGet 4.x+ i obsługuje program MSBuild 15.1 + `pack` docelowy, jeśli projekt zawiera dane niezbędne pakietu. Otwórz wiersz polecenia, przejdź do folderu projektu i uruchom następujące polecenie. (Zazwyczaj należy start "Developer wiersz polecenia dla programu Visual Studio" z Start menu, co będzie można skonfigurować wszystkie niezbędne ścieżki programu MSBuild.)
 
 ```cli
-msbuild /t:pack /p:Configuration=Release
+msbuild -t:pack -p:Configuration=Release
 ```
 
 Następnie można znaleźć pakietu w `bin\Release` folderu.
 
-Aby uzyskać dodatkowe opcje z `msbuild /t:pack`, zobacz [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md#pack-target).
+Aby uzyskać dodatkowe opcje z `msbuild -t:pack`, zobacz [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md#pack-target).
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu
 

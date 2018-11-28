@@ -5,22 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 17960e42a69b00f2524b9ab7d78710d7551b5a9c
-ms.sourcegitcommit: a1846edf70ddb2505d58e536e08e952d870931b0
+ms.openlocfilehash: d4f0177183ee3edf595c4ce10d1f26cbaca5755d
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52303657"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453575"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 
-Pakiet odwołań, za pomocą `PackageReference` węzła, zarządzanie zależnościami NuGet bezpośrednio z poziomu plików projektu (w przeciwieństwie do oddzielnego `packages.config` pliku). Za pomocą funkcji PackageReference, ponieważ jest to, nie ma wpływu na inne aspekty pakietu nuget; na przykład ustawienia "NuGet.
-
-
-
-
-
-fig "plików (w tym źródeł pakietów) nadal są stosowane zgodnie z objaśnieniem w [Konfigurowanie zachowania pakietu NuGet](configuring-nuget-behavior.md).
+Pakiet odwołań, za pomocą `PackageReference` węzła, zarządzanie zależnościami NuGet bezpośrednio z poziomu plików projektu (w przeciwieństwie do oddzielnego `packages.config` pliku). Za pomocą funkcji PackageReference, ponieważ jest to, nie ma wpływu na inne aspekty pakietu nuget; na przykład ustawienia w `NuGet.config` plików (w tym źródeł pakietów) nadal są stosowane zgodnie z objaśnieniem w [Konfigurowanie zachowania pakietu NuGet](configuring-nuget-behavior.md).
 
 Za pomocą funkcji PackageReference umożliwia także warunki MSBuild do wyboru na platformę docelową, konfiguracji, platforma lub inne grupy będzie odwoływał się pakiet. Umożliwia ona również szczegółową kontrolę nad tym zależności i zawartości przepływu. (Aby uzyskać więcej informacji, zobacz [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md).)
 
@@ -163,7 +157,7 @@ Warunki mogą być również stosowane przy `ItemGroup` poziomu i będą stosowa
 ## <a name="locking-dependencies"></a>Blokowanie zależności
 *Ta funkcja jest dostępna z NuGet **4.9** lub w górę i w programie Visual Studio 2017 **15.9 w wersji zapoznawczej 5** lub nowszej.*
 
-Dane wejściowe, aby przywracanie pakietów NuGet jest zestaw odwołania do pakietu z pliku projektu (dependenices najwyższego poziomu lub direct) i dane wyjściowe są pełne zamknięcie wszystkie zależności pakietów wraz z zależnościami przechodnie. NuGet próbuje zawsze powodowało tego samego pełne zamknięcie zależności pakietów, jeśli lista wejściowa PackageReference nie uległy zmianie. Jednak istnieją pewne scenariusze, w którym nie jest w stanie to zrobić. Na przykład:
+Dane wejściowe, aby przywracanie pakietów NuGet jest zestaw odwołania do pakietu z pliku projektu (zależności najwyższego poziomu lub direct) i dane wyjściowe są pełne zamknięcie wszystkie zależności pakietów wraz z zależnościami przechodnie. NuGet próbuje zawsze powodowało tego samego pełne zamknięcie zależności pakietów, jeśli lista wejściowa PackageReference nie uległy zmianie. Jednak istnieją pewne scenariusze, w którym nie jest w stanie to zrobić. Na przykład:
 
 * Gdy używasz liczb zmiennoprzecinkowych wersji, takich jak `<PackageReference Include="My.Sample.Lib" Version="4.*"/>`. Natomiast tutaj jest float do najnowszej wersji podczas każdego przywracania pakietów, istnieją scenariusze, w której użytkownicy wymagają wykresu zostanie zablokowane do niektórych najnowszej wersji, a wartość zmiennoprzecinkowa do nowszej wersji, jeśli to możliwe, na jawne gestu.
 * Nowsza wersja pakietu zgodnego PackageReference wymagania dotyczące wersji została opublikowana. Np. 
@@ -193,9 +187,9 @@ Jeśli ta właściwość jest ustawiona, przywracanie pakietów NuGet, spowoduje
 ### <a name="restore-behavior-with-lock-file"></a>`restore` zachowanie przy użyciu pliku blokady
 Jeśli plik blokady jest obecny dla projektu, NuGet używa tego pliku blokady, aby uruchomić `restore`. NuGet jest szybkie sprawdzenie, czy wystąpiły wszelkie zmiany w zależności pakietów, jak wspomniano wcześniej w pliku projektu (lub pliki projektów zależnych), a jeśli nie wprowadzono żadnych zmian po prostu przywraca pakiety wymienione w pliku blokady. Nie ma żadnych ponownej oceny zależności pakietów.
 
-Jeśli NuGet wykryje zmianę dependenices zdefiniowane, jak wspomniano w plikach projektu, ponownie ocenia wykres pakietu i aktualizuje plik blokady w celu odzwierciedlenia nowego zamknięcia pakietu dla projektu.
+Jeśli NuGet wykryje zmianę w zdefiniowanych zależności, jak wspomniano w plikach projektu, ponownie ocenia wykres pakietu i aktualizuje plik blokady w celu odzwierciedlenia nowego zamknięcia pakietu dla projektu.
 
-Ciągła Integracja/ciągłe dostarczanie i inne scenariusze, w których nie chcesz zmienić dependenies pakietu na bieżąco, możesz to zrobić, ustawiając `lockedmode` do `true`:
+Ciągła Integracja/ciągłe dostarczanie i inne scenariusze, w których nie chcesz zmienić zależności pakietów na bieżąco, możesz to zrobić, ustawiając `lockedmode` do `true`:
 
 Aby uzyskać dotnet.exe Uruchom polecenie:
 ```
@@ -204,7 +198,7 @@ Aby uzyskać dotnet.exe Uruchom polecenie:
 
 Aby uzyskać msbuild.exe Uruchom polecenie:
 ```
-> msbuild.exe /t:restore /p:RestoreLockedMode=true
+> msbuild.exe -t:restore -p:RestoreLockedMode=true
 ```
 
 Można również ustawić właściwość ta warunkowe MSBuild w pliku projektu:

@@ -5,12 +5,12 @@ author: nkolev92
 ms.author: nikolev
 ms.date: 07/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: d80339eb81ade1cf2c323a604cc4fac06dcb1012
-ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
+ms.openlocfilehash: b76fab1028ec9a4172d2390083fbf9adb4290a6c
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981057"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453510"
 ---
 # <a name="nuget-cross-platform-authentication-plugin"></a>NuGet cross platform, wtyczki uwierzytelniania
 
@@ -32,7 +32,7 @@ Brak Brak przełącznika interaktywne na `dotnet build` i `dotnet publish`.
 ## <a name="authentication-in-msbuild"></a>Uwierzytelnianie w programie MSBuild
 
 Podobnie jak dotnet.exe MSBuild.exe jest domyślnie nie jest mechanizm uwierzytelniania MSBuild.exe interaktywne, przepływ urządzenia.
-Aby umożliwić Przywracanie wstrzymać i poczekaj na potrzeby uwierzytelniania, wywołania do przywracania `msbuild /t:restore /p:NuGetInteractive="true"`.
+Aby umożliwić Przywracanie wstrzymać i poczekaj na potrzeby uwierzytelniania, wywołania do przywracania `msbuild -t:restore -p:NuGetInteractive="true"`.
 
 ## <a name="creating-a-cross-platform-authentication-plugin"></a>Tworzenie wtyczki uwierzytelniania dla wielu platform
 

@@ -16,12 +16,12 @@ keywords: Pakiety symboli NuGet, pakietów NuGet, debugowanie, obsługa NuGet de
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 5bd3d02a9f397b393cc56af815c40f9d718d4023
-ms.sourcegitcommit: a1846edf70ddb2505d58e536e08e952d870931b0
+ms.openlocfilehash: 48ca4b62e722988b3dfe69306565d7f159805962
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52303628"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453458"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symbol (.snupkg)
 
@@ -41,10 +41,10 @@ nuget pack MyPackage.nuspec -Symbols -SymbolPackageFormat snupkg
 
 nuget pack MyPackage.csproj -Symbols -SymbolPackageFormat snupkg
 
-msbuild /t:pack MyPackage.csproj /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg
+msbuild -t:pack MyPackage.csproj -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
 ```
 
-`.snupkgs` nie są tworzone domyślnie. Należy przekazać `SymbolPackageFormat` właściwości wraz z `-Symbols` przypadku nuget.exe, `--include-symbols` przypadku dotnet.exe, lub `/p:IncludeSymbols` w przypadku programu msbuild.
+`.snupkgs` nie są tworzone domyślnie. Należy przekazać `SymbolPackageFormat` właściwości wraz z `-Symbols` przypadku nuget.exe, `--include-symbols` przypadku dotnet.exe, lub `-p:IncludeSymbols` w przypadku programu msbuild.
 
 Właściwość SymbolPackageFormat może mieć jedną z dwóch wartości: `symbols.nupkg` (ustawienie domyślne) lub `snupkg`. Jeśli nie określono SymbolPackageFormat, jego wartość domyślna to `symbols.nupkg` i zostanie utworzony pakiet symboli starszej wersji.
 
@@ -65,13 +65,13 @@ Właściwość SymbolPackageFormat może mieć jedną z dwóch wartości: `symbo
     nuget push MyPackage.snupkg
     ```
 
-1. Można również wypchnąć podstawowych i symboli pakietów w tej samej chwili poniższego polecenia. Zarówno .nupkg i .snupkg pliki muszą znajdować się w bieżącym folderze.
+1. Można również wypchnąć podstawowych i symboli pakietów w tej samej chwili poniższego polecenia. Pliki .nupkg i .snupkg muszą znajdować się w bieżącym folderze.
 
     ```cli
     nuget push MyPackage.nupkg
     ```
 
-W tym przypadku NuGet będzie publikować na stronie nuget.org `MyPackage.nupkg` najpierw następuje `MyPackage.snupkg`.
+NuGet opublikuje oba pakiety na stronie nuget.org. `MyPackage.nupkg` zostaną opublikowane w pierwszym, następuje `MyPackage.snupkg`.
 
 ## <a name="nugetorg-symbol-server"></a>Serwer symboli NuGet.org
 

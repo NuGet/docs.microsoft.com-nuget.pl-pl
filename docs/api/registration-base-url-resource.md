@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: a64c5844a58213415671ab0d202a75bc0ececc89
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: ba47d6fdeeaa4ee9de83ef4dd990707bd4928063
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546787"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453562"
 ---
 # <a name="package-metadata"></a>Metadane pakietu
 
@@ -150,7 +150,9 @@ requireLicenseAcceptance | wartość logiczna                    | Brak       |
 podsumowanie                  | string                     | Brak       | 
 tagi                     | ciąg lub tablica ciągów  | Brak       | 
 Tytuł                    | string                     | Brak       | 
-version                  | string                     | Tak      | Wersja pakietu
+version                  | string                     | Tak      | Ciąg pełnej wersji po normalizacji
+
+Pakiet `version` właściwości jest ciągiem pełnej wersji po normalizacji. Oznacza to, że dane kompilacji SemVer 2.0.0 można uwzględnić w tym miejscu.
 
 `dependencyGroups` Właściwość jest Tablica obiektów reprezentująca zależności pakietu, pogrupowane według wartości docelowej. Jeśli pakiet nie ma zależności, `dependencyGroups` brakuje właściwości, pusta tablica lub `dependencies` właściwość wszystkich grup jest pusta lub Brak.
 

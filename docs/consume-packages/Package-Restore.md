@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: da69181aebe3bebcea6acd6e15fde6b77dd33452
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: 9acb87a5f5731fb33c91a1ae9b106c6df492ddcd
+ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580301"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52453536"
 ---
 # <a name="package-restore"></a>Przywracanie pakietu
 
@@ -39,7 +39,7 @@ Przywracanie pakietu jest wyzwalany w następujący sposób:
 
 - **Interfejs wiersza polecenia NuGet**: Użyj [Przywracanie pakietów nuget](../tools/cli-ref-restore.md) polecenia, które pakiety wymienione w pliku projektu lub w `packages.config`. Można również określić plik rozwiązania.
 
-- **Program MSBuild**: Użyj [msbuild /t:restore](../reference/msbuild-targets.md#restore-target) polecenia, które przywraca pakietów pakiety wymienione w pliku projektu (tylko PackageReference). Dostępne tylko w NuGet 4.x+ i MSBuild 15.1 +, które są dołączone do programu Visual Studio 2017. `nuget restore` i `dotnet restore` dla projektów dotyczy zarówno Użyj tego polecenia.
+- **Program MSBuild**: Użyj [msbuild - t: Przywracanie](../reference/msbuild-targets.md#restore-target) polecenia, które przywraca pakietów pakiety wymienione w pliku projektu (tylko PackageReference). Dostępne tylko w NuGet 4.x+ i MSBuild 15.1 +, które są dołączone do programu Visual Studio 2017. `nuget restore` i `dotnet restore` dla projektów dotyczy zarówno Użyj tego polecenia.
 
 - **Visual Studio Team Services**: podczas tworzenia definicji kompilacji w usłudze Team Services, obejmują [Przywracanie pakietów NuGet](/vsts/build-release/tasks/package/nuget#restore-nuget-packages) lub [przywracania programu .NET Core](/vsts/build-release/tasks/build/dotnet-core#restore-nuget-packages) zadania w definicji przed dowolnego zadania kompilacji. To zadanie jest domyślnie włączone w wiele szablonów kompilacji.
 
