@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 04/09/2018
 ms.topic: quickstart
-ms.openlocfilehash: b3be75a5af85bd3048c8b0eb71d90238b9349e09
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 9e8aa2250c6fc2843f74a925c56f953be5d48221
+ms.sourcegitcommit: 1591bb230e106b94162a87dd1d86fe427366730a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549725"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52671139"
 ---
 # <a name="installing-nuget-client-tools"></a>Instalowanie narzędzi klienta programu NuGet
 
@@ -75,27 +75,25 @@ Instalacja:
 | Funkcja | Wiersz polecenia DotNet | nuget interfejsu wiersza polecenia platformy (Windows) | nuget interfejsu wiersza polecenia (Mono) | Program Visual Studio (Windows) | Visual Studio for Mac |
 | --- | --- | --- | --- | --- | --- |
 | Wyszukaj pakiety |  | &#10004; | &#10004; | &#10004; | &#10004; |
-| Instalowanie/Odinstalowywanie pakietów | &#10004;(1) | &#10004;(2) | &#10004; | &#10004; | &#10004; |
+| Instalowanie/Odinstalowywanie pakietów | &#10004; | &#10004;(1) | &#10004; | &#10004; | &#10004; |
 | Aktualizowanie pakietów | &#10004; | &#10004; | | &#10004; | &#10004; |
-| Przywracanie pakietów | &#10004; | &#10004; | &#10004;(3) | &#10004; | &#10004; |
+| Przywracanie pakietów | &#10004; | &#10004; | &#10004;(2) | &#10004; | &#10004; |
 | Zarządzanie źródłami pakietów (źródła) | | &#10004; | &#10004; | &#10004; | &#10004; |
-| Zarządzanie pakietami na źródło danych | &#10004;(1) | &#10004; | &#10004; | | |
+| Zarządzanie pakietami na źródło danych | &#10004; | &#10004; | &#10004; | | |
 | Zestaw kluczy interfejsu API dla źródeł danych | | &#10004; | &#10004; | | |
-| Utwórz packages(4) | &#10004; | &#10004; | &#10004;(5) | &#10004; | |
-| Publikowanie pakietów | &#10004;(1) | &#10004; | &#10004; | &#10004; |  |
+| Utwórz packages(3) | &#10004; | &#10004; | &#10004;(4) | &#10004; | |
+| Publikowanie pakietów | &#10004; | &#10004; | &#10004; | &#10004; |  |
 | Replikowanie pakietów |  | &#10004; | &#10004; | | |
 | Zarządzanie *globalny pakiet* i foldery w pamięci podręcznej | &#10004; | &#10004; | &#10004; | | |
 | Zarządzanie konfiguracją NuGet | | &#10004; | &#10004; | | |
 
-(1) pakiety w witrynie nuget.org tylko
+(1) nie wpływa na pliki projektu; Użyj `dotnet.exe` zamiast tego.
 
-(2) nie wpływa na pliki projektu; Użyj `dotnet.exe` zamiast tego.
+(2) działa tylko w przypadku `packages.config` pliku, a nie z rozwiązania (`.sln`) plików.
 
-(3) działa tylko w przypadku `packages.config` pliku, a nie z rozwiązania (`.sln`) plików.
+(3) różne funkcje zaawansowane pakietu są dostępne za pośrednictwem interfejsu wiersza polecenia, tylko wtedy, gdy nie są one reprezentowane w interfejsie użytkownika Visual Studio tools.
 
-(4) różne funkcje zaawansowane pakietu są dostępne za pośrednictwem interfejsu wiersza polecenia, tylko wtedy, gdy nie są one reprezentowane w interfejsie użytkownika Visual Studio tools.
-
-(5) współpracuje z `.nuspec` plików, ale nie z plików projektu.
+(4) współpracuje z `.nuspec` plików, ale nie z plików projektu.
 
 ### <a name="related-topics"></a>Tematy pokrewne
 

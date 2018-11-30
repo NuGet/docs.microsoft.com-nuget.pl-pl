@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/26/2017
 ms.topic: conceptual
-ms.openlocfilehash: f911e24da76880410f8dfaa2891b609c7beb4a61
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 6b41b23df115c45e830404afcf9defa23615bd7c
+ms.sourcegitcommit: ce97dded7715f217ec44f6c8368ab0df19c38342
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547892"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52615759"
 ---
 # <a name="package-creation-workflow"></a>Przepływ pracy tworzenia pakietu
 
@@ -36,7 +36,7 @@ Z tego miejsca można wziąć pod uwagę wiele różnych opcji dla pakietu:
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md) opisuje struktury pakietów przy użyciu wielu zasobów języka oraz korzystanie z oddzielnych satelitarnej zlokalizowanych pakietów.
 - [Wersja wstępna pakietów](../create-packages/prerelease-packages.md) pokazuje, jak zwolnić alpha, beta i rc pakiety do klientów, którzy są zainteresowani.
 - [Źródło i przekształcenia pliku Config](../create-packages/source-and-config-file-transformations.md) w tym artykule opisano, jak zarówno jednokierunkowe zamiany tokenów w plikach, które są dodawane do projektu i zmodyfikować `web.config` i `app.config` przy użyciu ustawień, które są także wspierana się, gdy pakiet został odinstalowany .
-- [Pakiety symboli](../create-packages/symbol-packages.md) zawiera wskazówki dotyczące dostarczenie symboli w bibliotece, które pozwala użytkownikom można wkroczyć do kodu podczas debugowania.
+- [Pakiety symboli](../create-packages/symbol-packages-snupkg.md) zawiera wskazówki dotyczące dostarczenie symboli w bibliotece, które pozwala użytkownikom można wkroczyć do kodu podczas debugowania.
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md) omówiono sposób zidentyfikować dokładną wersję, które umożliwiają zależności (inne pakiety, które zostaną zużyte na podstawie danego pakietu).
 - [Pakiety natywne](../create-packages/native-packages.md) w tym artykule opisano proces tworzenia pakietu dla konsumentów C++.
 - [Podpisywanie pakietów](../create-packages/sign-a-package.md) w tym artykule opisano proces dodawania podpisu cyfrowego do pakietu.
