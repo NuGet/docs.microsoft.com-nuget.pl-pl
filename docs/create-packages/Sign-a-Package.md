@@ -6,60 +6,99 @@ ms.author: rmpablos
 ms.date: 03/06/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: c598461831323ecfcc5da3877df71bd8d69557f6
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: e8955f9d46bab235c8755d5654814a4291d542d6
+ms.sourcegitcommit: 673e580ae749544a4a071b4efe7d42fd2bb6d209
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551981"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52977566"
 ---
 # <a name="signing-nuget-packages"></a>Podpisywanie pakietów NuGet
 
-Podpisywanie pakietu jest procesem, który sprawia, że pakiet nie został zmodyfikowany od czasu jego utworzenia.
+Testy weryfikacji integralności zawartości, które zapewnia ochronę przed naruszeniem zawartości umożliwia podpisanych pakietów. Podpis pakietu również służy jako pojedyncze źródło prawdziwych informacji o rzeczywistego pochodzenia pakietu i klinowe autentyczności pakietu dla konsumentów. W tym przewodniku założono, że już [utworzył pakiet](creating-a-package.md).
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="get-a-code-signing-certificate"></a>Uzyskaj certyfikat podpisywania kodu
 
-1. Pakiet ( `.nupkg` plików) do podpisywania. Zobacz [Tworzenie pakietu](creating-a-package.md).
+Prawidłowe certyfikaty mogą być uzyskane z publicznego urzędu certyfikacji takich jak [Symantec](https://trustcenter.websecurity.symantec.com/process/trust/productOptions?productType=SoftwareValidationClass3), [DigiCert](https://www.digicert.com/code-signing/), [Go Daddy](https://www.godaddy.com/web-security/code-signing-certificate), [globalnego logowania](https://www.globalsign.com/en/code-signing-certificate/), [Comodo](https://www.comodo.com/e-commerce/code-signing/code-signing-certificate.php), [Certum](https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml)itp. Pełną listę urzędy certyfikacji używane przez Windows można uzyskać z [ http://aka.ms/trustcertpartners ](http://aka.ms/trustcertpartners).
 
-1. nuget.exe 4.6.0 lub nowszej. Zobacz jak [zainstalować interfejs wiersza polecenia NuGet](../install-nuget-client-tools.md#nugetexe-cli).
+Można użyć własnym wystawionych certyfikatów do celów testowych. Pakiety podpisany przy użyciu własnym wystawionych certyfikatów nie są akceptowane przez NuGet.org. Dowiedz się więcej o [tworzenia certyfikatu testowego](#create-a-test-certificate)
 
-1. [Certyfikat podpisywania kodu](../reference/signed-packages-reference.md#get-a-code-signing-certificate).
+## <a name="export-the-certificate-file"></a>Eksportuj plik certyfikatu
 
-## <a name="sign-a-package"></a>Podpisywanie pakietu
+* Możesz wyeksportować istniejący certyfikat na format binarny DER, za pomocą Kreatora eksportu certyfikatów.
 
-Aby zarejestrować pakiet, należy użyć [logowania nuget](../tools/cli-ref-sign.md):
+  ![Kreator eksportu certyfikatów](../reference/media/CertificateExportWizard.png)
 
-```cli
-nuget sign MyPackage.nupkg -CertificateSubjectName <MyCertSubjectName> -Timestamper <TimestampServiceURL>
-```
+* Możesz też wyeksportować certyfikat przy użyciu [polecenia PowerShell eksportu certyfikatu](/powershell/module/pkiclient/export-certificate.md).
 
-Zgodnie z opisem w dokumentacji poleceń, można użyć certyfikatu jest dostępny w magazynie certyfikatów lub używany certyfikat z pliku.
+## <a name="sign-the-package"></a>Podpisywanie pakietu
 
-### <a name="common-problems-when-signing-a-package"></a>Typowe problemy podczas podpisywania pakietu
+> [!note]
+> Wymaga nuget.exe 4.6.0 lub nowszej
 
-- Certyfikat nie jest prawidłowy do podpisywania kodu. Upewnij się, że określony certyfikat ma odpowiednią rozszerzone użycie klucza (EKU 1.3.6.1.5.5.7.3.3).
-- Certyfikat nie spełnia wymagania podstawowe, takie jak algorytm podpisu RSA, SHA-256 lub publicznej klucza 2048 bitów lub nowszej.
-- Certyfikat wygasł lub został odwołany.
-- Serwera znacznika czasowego nie spełnia wymagań dotyczących certyfikatów.
-
-> [!Note]
-> Podpisanych pakietów powinien zawierać sygnaturę czasową, aby upewnić się, że podpis pozostaje ważny, gdy wygasł certyfikat podpisywania. Generuje operacji logowania [ostrzeżenie NU3002](../reference/errors-and-warnings/NU3002.md) podczas logowania się bez sygnatury czasowej.
-
-## <a name="verify-a-signed-package"></a>Sprawdź podpisanych pakietów
-
-Użyj [Sprawdź nuget](../tools/cli-ref-verify.md) szczegóły podpisu danego pakietu:
+Zaloguj się przy użyciu pakietu [logowania nuget](../tools/cli-ref-sign.md):
 
 ```cli
-nuget verify -signature MyPackage.nupkg
+nuget sign MyPackage.nupkg -CertificateFilePath <PathToTheCertificate> -Timestamper <TimestampServiceURL>
 ```
 
-## <a name="install-a-signed-package"></a>Zainstaluj pakiet podpisem
+* Można użyć certyfikatu jest dostępny w magazynie certyfikatów lub używany certyfikat z pliku. Zobacz odwołanie do interfejsu wiersza polecenia [logowania nuget](../tools/cli-ref-sign.md).
+* Podpisanych pakietów powinien zawierać sygnaturę czasową, aby upewnić się, że podpis pozostaje ważny, gdy wygasł certyfikat podpisywania. Inne dadzą operacji logowania [ostrzeżenie](../reference/errors-and-warnings/NU3002.md).
+* Można wyświetlić szczegóły podpisu danego pakietu przy użyciu [Sprawdź nuget](../tools/cli-ref-verify.md).
 
-Podpisanych pakietów nie wymagają żadnych określone działanie prowadzące do zainstalowania; Jeśli jednak zawartość została zmodyfikowana po podpisaniu, instalacja jest zablokowana i tworzy [błąd NU3008](../reference/errors-and-warnings/NU3008.md).
+## <a name="register-the-certificate-on-nugetorg"></a>Zarejestruj certyfikat w witrynie NuGet.org
+
+Aby opublikować podpisanych pakietów, należy zarejestrować certyfikat za pomocą NuGet.org. Wymagany certyfikat jako `.cer` pliku w formacie binarnym DER.
+
+1. [Zaloguj się](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) na stronie NuGet.org.
+1. Przejdź do `Account settings` (lub `Manage Organization` **>** `Edit Organziation` Jeśli chcesz zarejestrować certyfikat przy użyciu konta organizacji).
+1. Rozwiń `Certificates` i wybierz pozycję `Register new`.
+1. Przeglądaj i wybierz wyeksportowany wcześniej plik rozszyfrować przy jego użyciu.
+  ![Certyfikaty zarejestrowane](../reference/media/registered-certs.png)
+
+**Uwaga**
+* Jeden użytkownik może przesłać ten sam certyfikat i wielu certyfikatów, które mogą być rejestrowane przez wielu użytkowników.
+* Po użytkownik ma zarejestrowane certyfikatu, wszystkie przyszłe pakietu przesłania **musi** być podpisane przy użyciu jednego z certyfikatów. Zobacz [Zarządzaj podpisywania wymagania dotyczące pakietu w witrynie NuGet.org](#manage-signing-requirements-for-your-package-on-nugetorg)
+* Użytkownicy mogą również usuwać certyfikat zarejestrowany z konta. Po usunięciu certyfikatu nie powiedzie się na przesyłanie nowe pakiety podpisany przy użyciu tego certyfikatu. Nie ma wpływu na istniejące pakiety.
+
+## <a name="publish-the-package"></a>Publikowanie pakietu
+
+Teraz można przystąpić do opublikowania pakietu na stronie NuGet.org. Zobacz [publikowania pakietów](Publish-a-package.md).
+
+## <a name="create-a-test-certificate"></a>Utwórz certyfikat testowy
+
+Można użyć własnym wystawionych certyfikatów do celów testowych. Aby utworzyć własny wystawionego certyfikatu, użyj [polecenia PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate.md).
+
+```ps
+New-SelfSignedCertificate -Subject "CN=NuGet Test Developer, OU=Use for testing purposes ONLY" `
+                          -FriendlyName "NuGetTestDeveloper" `
+                          -Type CodeSigning `
+                          -KeyUsage DigitalSignature `
+                          -KeyLength 2048 `
+                          -KeyAlgorithm RSA `
+                          -HashAlgorithm SHA256 `
+                          -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+                          -CertStoreLocation "Cert:\CurrentUser\My" 
+```
+
+To polecenie tworzy certyfikat testowania dostępności w magazynie certyfikatów osobistych bieżącego użytkownika. Można otworzyć magazynu certyfikatów, uruchamiając `certmgr.msc` aby zobaczyć nowo utworzonego certyfikatu.
 
 > [!Warning]
-> Pakiety podpisany przy użyciu niezaufane certyfikaty są traktowane jako jako bez znaku i są instalowane bez żadnych ostrzeżeń ani błędów, takich jak każdy inny pakiet bez znaku.
+> NuGet.org nie akceptuje pakietów podpisany przy użyciu własnym wystawionych certyfikatów.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="manage-signing-requirements-for-your-package-on-nugetorg"></a>Zarządzanie wymagania podpisywania pakietu w witrynie NuGet.org
+1. [Zaloguj się](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) na stronie NuGet.org.
 
-[Dokumentacja podpisanych pakietów](../reference/Signed-Packages-Reference.md)
+1. Przejdź do `Manage Packages`  
+    ![Konfigurowanie pakietów, które podpisały](../reference/media/configure-package-signers.png)
+
+* Jeśli jesteś jedynym właścicielem pakietu, są wymagane osoby podpisującej tj służy dowolne zarejestrowane certyfikaty do podpisywania i publikowania pakietów NuGet.org.
+
+* Jeżeli pakiet zawiera wiele właścicieli, domyślnie, certyfikaty "Dowolna" właściciel może służyć do podpisania pakietu. Jako współwłaściciela pakietu można zastąpić "Dowolne", przy użyciu samodzielnie lub wszelkie inne współwłaścicielem jako wymagane osoby podpisującej. W przypadku wprowadzenia właściciela, który nie ma żadnych certyfikatów zarejestrowanych pakietów niepodpisane będą dozwolone. 
+
+* Podobnie, jeśli wartość domyślna "Dowolna" opcja jest zaznaczona dla pakietu, w której jeden właściciel ma certyfikat zarejestrowany i innego właściciela nie ma żadnych certyfikatów zarejestrowanych, następnie NuGet.org akceptuje podpisanych pakietów za pomocą podpisu zarejestrowany za pomocą jednej z jego właścicieli lub Niepodpisany pakietu (ponieważ jest to jeden z właścicieli nie ma żadnych certyfikatów zarejestrowanych).
+
+## <a name="related-articles"></a>Powiązane artykuły
+
+- [Instalowanie pakietów podpisem](../consume-packages/installing-signed-packages.md)
+- [Dokumentacja podpisanych pakietów](../reference/Signed-Packages-Reference.md)

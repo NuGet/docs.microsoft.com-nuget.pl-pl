@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 02/12/2018
 ms.topic: overview
-ms.openlocfilehash: 3cb3d5f97e9fb7ce292ddc5a95b61c13f64a17e7
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 955cbdb6766152fd793ed3604cf599987e9805e0
+ms.sourcegitcommit: 673e580ae749544a4a071b4efe7d42fd2bb6d209
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547669"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52977553"
 ---
 # <a name="different-ways-to-install-a-nuget-package"></a>Różne sposoby, aby zainstalować pakiet NuGet
 
@@ -64,6 +64,7 @@ Ogólny proces jest następująca:
 
 ## <a name="related-articles"></a>Powiązane artykuły
 
+- [Instalowanie pakietów podpisem](installing-signed-packages.md)
 - [Omówienie i przepływ pracy zużycia pakietu](../consume-packages/overview-and-workflow.md)
 - [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md)
 - [Zarządzanie folderami pamięci podręcznej i globalnymi pakietami NuGet](managing-the-global-packages-and-cache-folders.md)

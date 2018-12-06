@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/11/2018
 ms.topic: conceptual
-ms.openlocfilehash: c136a3dffac38a68b80f730de1e4c3a3a9c8bd5d
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: 93a22b423b193874c4c69c37ff9c6d9b4489a48d
+ms.sourcegitcommit: 673e580ae749544a4a071b4efe7d42fd2bb6d209
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580366"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52977579"
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet — często zadawane pytania
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji, zobacz [Znajdowanie i Wybieranie pakietów](../
 - Program Visual Studio w Windows obsługuje [interfejs użytkownika Menedżera pakietów](../tools/package-manager-ui.md) i [Konsola Menedżera pakietów](../tools/package-manager-console.md).
 - Program Visual Studio dla komputerów Mac ma wbudowanych funkcji NuGet, zgodnie z opisem na [pakietu w tym NuGet w projekcie](/visualstudio/mac/nuget-walkthrough).
 - Visual Studio Code (wszystkie platformy) nie ma żadnych bezpośrednią integrację z NuGet. Użyj [interfejs wiersza polecenia NuGet](../tools/nuget-exe-cli-reference.md) lub [wiersz polecenia dotnet](../tools/dotnet-commands.md).
-- Visual Studio Team Services zapewnia [krok kompilacji, aby przywrócić pakiety NuGet](/vsts/build-release/tasks/package/nuget). Możesz również [pakiet NuGet prywatnych hosta źródła danych w usłudze Team Services](https://www.visualstudio.com/docs/package/nuget/publish).
+- Azure DevOps zapewnia [krok kompilacji, aby przywrócić pakiety NuGet](/vsts/build-release/tasks/package/nuget). Możesz również [hosta prywatnego pakietu NuGet kanałów informacyjnych w DevOps platformy Azure](https://docs.microsoft.com/azure/devops/artifacts/nuget/publish).
 
 **Jak sprawdzić wersję narzędzia NuGet, które są zainstalowane?**
 
@@ -182,7 +182,7 @@ Firma Microsoft zachęca do społeczności NuGet, aby współpracują ze sobą w
 
 **Jest zalecane, aby przekazać mój pakietów testowych do nuget.org?**
 
-Do celów testowych możesz użyć [int.nugettest.org](https://int.nugettest.org), lub alternatywne publiczne serwery NuGet, takich jak [portalu myget.org](https://myget.org) lub [Visual Studio Team Services](https://blogs.msdn.microsoft.com/visualstudioalm/2015/08/27/announcing-package-management-support-for-vsotfs/).
+Do celów testowych możesz użyć [int.nugettest.org](https://int.nugettest.org), lub alternatywne publiczne serwery NuGet, takich jak [portalu myget.org](https://myget.org) lub [DevOps platformy Azure](https://blogs.msdn.microsoft.com/visualstudioalm/2015/08/27/announcing-package-management-support-for-vsotfs/).
 
 Należy pamiętać, że pakiety przekazywane do int.nugettest.org mogą nie zostać zachowane.
 
