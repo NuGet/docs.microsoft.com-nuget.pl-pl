@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 7bb5e83b29d1d7e4bf06accfccb73db3aa9ee025
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: bb47c72768b0698d8e712c8261321ff38bba2764
+ms.sourcegitcommit: be9c51b4b095aea40ef41bbea7e12ef0a194ee74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580340"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53248432"
 ---
 # <a name="nuget-api"></a>Interfejs API programu NuGet
 
@@ -33,7 +33,7 @@ Klientów, którzy obsługują interfejs API powinna obsługiwać co najmniej je
 
 Aby uzyskać więcej informacji na temat indeks usług zobacz [jego dokumentacja interfejsu API](service-index.md).
 
-## <a name="versioning"></a>Przechowywanie wersji
+## <a name="versioning"></a>Obsługa wersji
 
 Interfejs API jest w wersji 3 NuGet protokołu HTTP. Ten protokół jest czasami określane jako "w wersji 3 interfejsu API." Te dokumenty referencyjne będzie odnosił się do tej wersji protokołu, po prostu jako "interfejsu API."
 
@@ -51,10 +51,10 @@ Wprowadzono zmiany protokołu bez podziału do interfejsu API od czasu pierwszej
 
 Nazwa zasobu                                                           | Wymagane | Opis
 ----------------------------------------------------------------------  | -------- | -----------
-[`PackagePublish`](package-publish-resource.md)                        | Tak      | Wypychanie i usuwanie lub wyrejestrowanie pakietów.
-[`SearchQueryService`](search-query-service-resource.md)               | Tak      | Filtr i wyszukiwanie pakietów według słowa kluczowego.
-[`RegistrationsBaseUrl`](registration-base-url-resource.md)            | Tak      | Pobierz metadane pakietów.
-[`PackageBaseAddress`](package-base-address-resource.md)               | Tak      | Pobierz zawartość pakietu (.nupkg).
+[`PackagePublish`](package-publish-resource.md)                        | tak      | Wypychanie i usuwanie lub wyrejestrowanie pakietów.
+[`SearchQueryService`](search-query-service-resource.md)               | tak      | Filtr i wyszukiwanie pakietów według słowa kluczowego.
+[`RegistrationsBaseUrl`](registration-base-url-resource.md)            | tak      | Pobierz metadane pakietów.
+[`PackageBaseAddress`](package-base-address-resource.md)               | tak      | Pobierz zawartość pakietu (.nupkg).
 [`SearchAutocompleteService`](search-autocomplete-service-resource.md) | Brak       | Odkryj identyfikatorów pakietu i wersje, podciąg.
 [`ReportAbuseUriTemplate`](report-abuse-resource.md)                   | Brak       | Skonstruuj adres URL "Zgłoś nadużycie" strona sieci web.
 [`RepositorySignatures`](repository-signatures-resource.md)             | Brak      | Pobierz certyfikaty używane do podpisywania repozytorium.
@@ -62,6 +62,8 @@ Nazwa zasobu                                                           | Wymagan
 [`SymbolPackagePublish`](symbol-package-publish-resource.md)            | Brak      | Wypchnij pakiety symboli.
 
 Ogólnie rzecz biorąc wszystkie dane nieznakowe zwrócony przez zasobu interfejsu API są serializowane, przy użyciu formatu JSON. Schemat odpowiedzi zwrócony przez każdego zasobu w indeksie usługi zdefiniowano indywidualnie dla tego zasobu. Aby uzyskać więcej informacji na temat poszczególnych zasobów zobacz tematy wymienione powyżej.
+
+W przyszłości w miarę rozwoju protokołu, nowe właściwości mogą być dodawane do odpowiedzi JSON. Dla klienta jako zabezpieczenie przyszłych potrzeb wdrożenia nie należy zakładać, że schemat odpowiedzi jest ostateczne i nie może zawierać dodatkowe dane. Wszystkie właściwości, które nie rozpoznaje wdrożenia mają być ignorowane.
 
 > [!Note]
 > Jeśli źródło nie implementuje `SearchAutocompleteService` każde zachowanie automatycznego uzupełniania, które powinny być wyłączone bezpiecznie. Gdy `ReportAbuseUriTemplate` nie zaimplementowaniu oficjalna powróci klienta NuGet do usługi nuget.org Zgłoś nadużycie adresu URL (śledzonych przez [domowych NuGet #4924](https://github.com/NuGet/Home/issues/4924)). Inni klienci mogą wybrać, czy po prostu nie przedstawiają nadużycie adresu URL raportu użytkownika.
@@ -74,7 +76,7 @@ Wszystkie sygnatury czasowe zwracane przez interfejs API to UTC lub w przeciwnym
 
 zlecenia   | Zastosowanie
 ------ | -----------
-POBIERZ    | Wykonuje operację tylko do odczytu, zazwyczaj podczas pobierania danych.
+GET    | Wykonuje operację tylko do odczytu, zazwyczaj podczas pobierania danych.
 GŁÓWNY   | Pobiera nagłówki odpowiedzi dla odpowiedniego `GET` żądania.
 PUT    | Tworzy zasób, który nie istnieje, lub jeśli istnieje, aktualizuje je. Niektóre zasoby mogą nie obsługiwać aktualizacji.
 DELETE | Usuwa lub unlists zasobu.

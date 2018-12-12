@@ -8,12 +8,12 @@ description: Zasób podpisów repozytorium umożliwia klientom źródła pakietu
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 50f309b99d4bf59e14f3e29b6b0421d8c3e8aa5a
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 81d32a7011268e45136e00cdb7345a95070aae06
+ms.sourcegitcommit: be9c51b4b095aea40ef41bbea7e12ef0a194ee74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547984"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53248445"
 ---
 # <a name="repository-signatures"></a>Podpisy repozytorium
 
@@ -21,16 +21,14 @@ Jeśli źródło pakietu obsługuje dodawanie podpisach repozytorium na opubliko
 
 Zasób, używany do pobierania tych informacji podpisu repozytorium jest `RepositorySignatures` można znaleźć zasobu w [indeks usług](service-index.md).
 
-> [!Note]
-> NuGet.org rozpocznie się ogłoszenie `RepositorySignatures` zasobów w niedalekiej przyszłości.
-
-## <a name="versioning"></a>Przechowywanie wersji
+## <a name="versioning"></a>Obsługa wersji
 
 Następujące `@type` zostanie użyta wartość:
 
 @type Wartość                | Uwagi
 -------------------------- | -----
 RepositorySignatures/4.7.0 | Wersja początkowa
+RepositorySignatures/4.9.0 | Umożliwia włączenie `allRepositorySigned`
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
@@ -59,23 +57,26 @@ Następujące żądanie pobiera indeks sygnatury repozytorium.
 
 Indeks sygnatury repozytorium jest dokumentem JSON, który zawiera obiekt z następującymi właściwościami:
 
-Nazwa                | Typ             | Wymagane
-------------------- | ---------------- | --------
-allRepositorySigned | wartość logiczna          | Tak
-signingCertificates | Tablica obiektów | Tak
+Nazwa                | Typ             | Wymagane | Uwagi
+------------------- | ---------------- | -------- | -----
+allRepositorySigned | wartość logiczna          | tak      | Musi być `false` na 4.7.0 zasobów
+signingCertificates | Tablica obiektów | tak      | 
 
 `allRepositorySigned` Atrybut typu wartość logiczna jest ustawiona na wartość false, jeśli źródło pakietu ma kilka pakietów, dla których brak podpisu w repozytorium. Jeśli wartość logiczna ma wartość true, wszystkie pakiety dostępne na źródło musi mieć podpis repozytorium utworzone za pomocą jednej z certyfikatów podpisywania, o których wspomniano w `signingCertificates`.
+
+> [!Warning]
+> `allRepositorySigned` Logiczna musi mieć wartość false, na 4.7.0 zasobów. Klienci programu NuGet v4.7 na i v4.8 nie może zainstalować pakiety ze źródeł, które mają `allRepositorySigned` ma wartość true.
 
 Powinna istnieć co najmniej jednego certyfikatu podpisywania w `signingCertificates` tablicy, jeśli `allRepositorySigned` atrybut typu wartość logiczna jest ustawiona na wartość true. Jeśli tablica jest pusta i `allRepositorySigned` jest ustawiona na wartość true, wszystkie pakiety ze źródła należy uwzględnić nieprawidłowe, mimo że zasady klienta nadal zezwalają na użycie pakietów. Każdy element w tej tablicy jest obiekt JSON z następującymi właściwościami.
 
 Nazwa         | Typ   | Wymagane | Uwagi
 ------------ | ------ | -------- | -----
-contentUrl   | string | Tak      | Bezwzględny adres URL do algorytmem DER certyfikatu publicznego
-odciski palców | object | Tak      |
-Temat      | string | Tak      | Nazwa wyróżniająca podmiotu z certyfikatu
-issuer       | string | Tak      | Nazwa wyróżniająca wystawcy certyfikatu
-nie wcześniej niż    | string | Tak      | Sygnatura czasowa początkowy okres ważności certyfikatu
-nie później niż     | string | Tak      | Sygnatura czasowa zakończenia okresu ważności certyfikatu
+contentUrl   | string | tak      | Bezwzględny adres URL do algorytmem DER certyfikatu publicznego
+odciski palców | object | tak      |
+Temat      | string | tak      | Nazwa wyróżniająca podmiotu z certyfikatu
+issuer       | string | tak      | Nazwa wyróżniająca wystawcy certyfikatu
+nie wcześniej niż    | string | tak      | Sygnatura czasowa początkowy okres ważności certyfikatu
+nie później niż     | string | tak      | Sygnatura czasowa zakończenia okresu ważności certyfikatu
 
 Należy pamiętać, że `contentUrl` musi być obsługiwana za pośrednictwem protokołu HTTPS. Ten adres URL ma nie określonemu wzorcowi URL i musi zostać dynamicznie odnalezione za pomocą tego dokumentu repozytorium sygnatury indeksu. 
 
@@ -86,7 +87,7 @@ Te właściwości derivable są udostępniane dla wygody, aby zminimalizować li
 
 Nazwa                   | Typ   | Wymagane | Uwagi
 ---------------------- | ------ | -------- | -----
-2.16.840.1.101.3.4.2.1 | string | Tak      | Odcisk palca SHA-256.
+2.16.840.1.101.3.4.2.1 | string | tak      | Odcisk palca SHA-256.
 
 Nazwa klucza `2.16.840.1.101.3.4.2.1` jest OID algorytmu wyznaczania wartości skrótu SHA-256.
 
