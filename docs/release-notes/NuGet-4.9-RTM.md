@@ -5,32 +5,32 @@ author: karann-msft
 ms.author: karann
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3da1056f64b76f27afa662d879ef9f85868e2a07
-ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
+ms.openlocfilehash: 7dcb2e430ad80815f716f5567b511ff08acfe31b
+ms.sourcegitcommit: a9babe261f67da0f714d168d04ea54a66628974b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52453807"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735139"
 ---
 # <a name="nuget-49-release-notes"></a>4.9 wersji NuGet
 
-[Visual Studio 2017 15.9.0 RTW](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) jest dostarczany z NuGet 4.9.0 funkcji.
+NuGet pojazdów dystrybucji:
 
-
-Dostępne są wersje wiersza polecenia funkcji:
-* NuGet.exe 4.9.x - [nuget.org/downloads](https://nuget.org/downloads)
-* DotNet.exe - [platformy .NET Core SDK 2.1.500](https://www.microsoft.com/net/download/visual-studio-sdks)
-
+| NuGet w wersji | Dostępne w wersji programu Visual Studio| Dostępne w zestawów SDK platformy .NET|
+|:---|:---|:---|
+| **4.9.0** | Visual Studio 2017 w wersji 15.9.0 | 2.1.500, 2.2.100 |
+| **4.9.1** | n/d | n/d |
+| [**4.9.2**](https://nuget.org/downloads) |[Visual Studio 2017 w wersji 15.9.4](https://visualstudio.microsoft.com/downloads/) | [2.1.502, 2.2.101](https://www.microsoft.com/net/download/visual-studio-sdks) |
 
 ## <a name="summary-whats-new-in-490"></a>Podsumowanie: What's New in 4.9.0
 
-* Podpisywanie: Włącz ClientPolicies wymagać korzystanie z zestawu zaufanych autorzy i repozytoriów, wymienione w pliku NuGet.Config - [#6961](https://github.com/NuGet/Home/issues/6961)
+* Podpisywania: Włącz ClientPolicies wymagać korzystanie z zestawu zaufanych autorzy i repozytoriów, wymienione w pliku NuGet.Config - [#6961](https://github.com/NuGet/Home/issues/6961), [wpis w blogu](https://blog.nuget.org/20181205/Lock-down-your-dependencies-using-configurable-trust-policies.html)
 
-* Tworzenie plików ".snupkg" zawierają symbole w pakiecie — Zwiększ wypchnięcie, aby zrozumieć nuget protokołu do akceptowania plików snupkg do serwera symboli - [#6878](https://github.com/NuGet/Home/issues/6878)
+* Tworzenie plików ".snupkg" zawierają symbole w pakiecie — Zwiększ wypchnięcie, aby zrozumieć nuget protokołu do akceptowania plików snupkg do serwera symboli - [#6878](https://github.com/NuGet/Home/issues/6878), [wpis w blogu](https://blog.nuget.org/20181116/Improved-debugging-experience-with-the-NuGet-org-symbol-server-and-snupkg.html)
 
 * Wtyczka poświadczeń NuGet w wersji 2 - [#6642](https://github.com/NuGet/Home/issues/6642)
 
-* -License - pakietów programu NuGet niezależna [#4628](https://github.com/NuGet/Home/issues/4628)
+* Pakiety NuGet niezależna - License - [#4628](https://github.com/NuGet/Home/issues/4628), [anonsu](https://github.com/NuGet/Announcements/issues/32)
 
 * Włącz zoptymalizowany pod kątem w metadanych "GeneratePathProperty" na PackageReference do wygenerowania dla właściwości MSBuild pakietu na "Foo.Bar\1.0\" katalogu — [#6949](https://github.com/NuGet/Home/issues/6949)
 
@@ -72,7 +72,7 @@ Dostępne są wersje wiersza polecenia funkcji:
 
 * Komunikat o błędzie zbędny, korzystając z niepoprawnie nuspec tag wersji pakietu nuget — [#2714](https://github.com/NuGet/Home/issues/2714)
 
-* DCR - podpisywania: obsługują protokół NuGet: zasób RepositorySignatures/4.9.0 - [#7421](https://github.com/NuGet/Home/issues/7421)
+* DCR - podpisywania: obsługują protokół NuGet: Zasób RepositorySignatures/4.9.0 - [#7421](https://github.com/NuGet/Home/issues/7421)
 
 * DCR —. zostanie teraz utworzony plik nupkg.metadata podczas wyodrębniania pakietu - zawiera "zawartość hash" - [#7283](https://github.com/NuGet/Home/issues/7283)
 
@@ -94,15 +94,19 @@ Dostępne są wersje wiersza polecenia funkcji:
 
 [Lista wszystkie problemy rozwiązane w tej wersji 4.9.1](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.9.1")
 
+## <a name="summary-whats-new-in-492"></a>Podsumowanie: What's New in 4.9.2
+
+### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
+
+* VS/dotnet.exe/nuget.exe/msbuild.exe przywracania nie używa poświadczeń, gdy nazwa źródła zawiera odstępem - [#7517](https://github.com/NuGet/Home/issues/7517)
+
+* Problemy dotyczące LicenseAcceptanceWindow i dostępności LicenseFileWindow — [#7452](https://github.com/NuGet/Home/issues/7452)
+
+* Usuń formatexception — na przykład DateTime.Parse z DateTimeConverter - [#7539](https://github.com/NuGet/Home/issues/7539)
+
+[Lista wszystkie problemy rozwiązane w tej wersji 4.9.2](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.9.2")
+
 ## <a name="known-issues"></a>Znane problemy
-
-### <a name="dotnetexenugetexe-doesnt-use-credentials-when-source-name-contains-a-whitespace---7517httpsgithubcomnugethomeissues7517"></a>DotNet.exe/nuget.exe nie używa poświadczeń, gdy nazwa źródła zawiera odstępem - [#7517](https://github.com/NuGet/Home/issues/7517)
-
-#### <a name="issue"></a>Problem
-Jeśli nazwa źródła jest odstępem, nuget.exe zgłasza błąd, taki jak `The ' ' character, hexadecimal value 0x20, cannot be included in a name.`
-
-#### <a name="workaround"></a>Obejście
-Zmień nazwę źródła, które ma nie zawierać białych znaków.
 
 ### <a name="dotnet-nuget-push---interactive-gives-an-error-on-mac---7519httpsgithubcomnugethomeissues7519"></a>DotNet nuget push--interaktywne powoduje błąd na komputerze Mac. - [#7519](https://github.com/NuGet/Home/issues/7519)
 
@@ -111,14 +115,6 @@ Zmień nazwę źródła, które ma nie zawierać białych znaków.
 
 #### <a name="workaround"></a>Obejście
 Aby możliwe było uruchamianie dowolnego polecenia dotnet z opcją interaktywnych, takich jak `dotnet restore --interactive` i uwierzytelniania. Uwierzytelnianie, program może być buforowane przez dostawcę poświadczeń. Następnie uruchom `dotnet nuget push`.
-
-### <a name="licenseacceptancewindow-and-licensefilewindow-accessibility-issues---7452httpsgithubcomnugethomeissues7452"></a>Problemy dotyczące LicenseAcceptanceWindow i dostępności LicenseFileWindow — [#7452](https://github.com/NuGet/Home/issues/7452)
-
-#### <a name="issue"></a>Problem
-Okno akceptacja licencji i okno pliku licencji ma problemy ułatwień dostępu za pomocą klawiatury i narracji przy użyciu czytnika zawartości ekranu i JAWS.
-
-#### <a name="workaround"></a>Obejście
-Brak obejścia.
 
 ### <a name="packages-in-fallbackfolders-installed-by-net-core-sdk-are-custom-installed-and-fail-signature-validation---7414httpsgithubcomnugethomeissues7414"></a>Pakiety w FallbackFolders instalowane przez zestaw .NET Core SDK są zainstalowane niestandardowe i wystąpi niepowodzenie weryfikacji podpisu. - [#7414](https://github.com/NuGet/Home/issues/7414)
 

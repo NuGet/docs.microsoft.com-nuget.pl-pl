@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: a9427d87f69a2e942a9802fbdae5193eead1c724
-ms.sourcegitcommit: af58d59669674c3bc0a230d5764e37020a9a3f1e
+ms.openlocfilehash: 878fb582a31667c84f3ae306b554718de72eca7a
+ms.sourcegitcommit: 5c5f0f0e1f79098e27d9566dd98371f6ee16f8b5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52831023"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53645675"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -65,7 +65,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 | Adres Url i repozytorium | RepositoryUrl | empty | Adres URL repozytorium jest używany do klonowania lub pobierania kodu źródłowego. Przykład: *https://github.com/NuGet/NuGet.Client.git* |
 | Repozytorium/typu | RepositoryType | empty | Typ repozytorium. Przykłady: *git*, *tfs*. |
 | Repozytorium/gałąź | RepositoryBranch | empty | Informacje o gałęzi repozytorium opcjonalne. *RepositoryUrl* musi być także określona dla tej właściwości do uwzględnienia. Przykład: *wzorca* (NuGet 4.7.0+) |
-| Repozytorium na zatwierdzenie | RepositoryCommit | empty | Opcjonalne repozytorium zatwierdzenia lub zestaw zmian, aby wskazać, które źródła pakietu została skompilowana. *RepositoryUrl* musi być także określona dla tej właściwości do uwzględnienia. Example: *0e4d1b598f350b3dc675018d539114d1328189ef* (NuGet 4.7.0+) |
+| Repozytorium na zatwierdzenie | RepositoryCommit | empty | Opcjonalne repozytorium zatwierdzenia lub zestaw zmian, aby wskazać, które źródła pakietu została skompilowana. *RepositoryUrl* musi być także określona dla tej właściwości do uwzględnienia. Przykład: *0e4d1b598f350b3dc675018d539114d1328189ef* (NuGet 4.7.0+) |
 | PackageType | `<PackageType>DotNetCliTool, 1.0.0.0;Dependency, 2.0.0.0</PackageType>` | | |
 | Podsumowanie | Nieobsługiwane | | |
 
@@ -202,7 +202,7 @@ Podczas pakowania pliku licencji, należy użyć właściwości PackageLicenseFi
 </PropertyGroup>
 
 <ItemGroup>
-    <None Include="licenses\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+    <None Include="licenses\LICENSE.txt" Pack="true" PackagePath=""/>
 </ItemGroup>
 ```
 [Przykładowy plik licencji](https://github.com/NuGet/Samples/tree/master/PackageLicenseFileExample).
@@ -252,15 +252,15 @@ Przykładowy plik csproj, umieszczenie soubor nuspec jest:
 
 `pack` Docelowy zawiera dwa punkty rozszerzenia, które działają w wewnętrznej, target framework kompilacji. Punkty rozszerzenia obsługi w tym target framework określoną zawartość i zestawy w pakiecie:
 
-- `TargetsForTfmSpecificBuildOutput` docelowy: pliki znajdujące się na użytek `lib` folder lub folder określony za pomocą `BuildOutputTargetFolder`.
-- `TargetsForTfmSpecificContentInPackage` docelowy: używany do plików znajdujących się poza `BuildOutputTargetFolder`.
+- `TargetsForTfmSpecificBuildOutput` Element docelowy: Pliki znajdujące się na użytek `lib` folder lub folder określony za pomocą `BuildOutputTargetFolder`.
+- `TargetsForTfmSpecificContentInPackage` Element docelowy: Na użytek plików poza `BuildOutputTargetFolder`.
 
 #### <a name="targetsfortfmspecificbuildoutput"></a>TargetsForTfmSpecificBuildOutput
 
 Zapisz niestandardowe obiekty docelowe i określ ją jako wartość `$(TargetsForTfmSpecificBuildOutput)` właściwości. Dla wszystkich plików, które muszą przejść do `BuildOutputTargetFolder` (domyślnie lib), element docelowy powinien zapisać te pliki do element ItemGroup `BuildOutputInPackage` i ustaw poniższe dwie wartości metadanych:
 
 - `FinalOutputPath`: Ścieżka bezwzględna pliku. Jeśli nie zostanie podana, tożsamość jest używane do analizowania ścieżki źródłowej.
-- `TargetPath`: (Opcjonalnie) ustawiana, jeśli plik musi przejść do podfolderu w `lib\<TargetFramework>` , takich jak zestawy satelickie tego go w ramach ich odpowiednich kultury folderów. Wartość domyślna to nazwa pliku.
+- `TargetPath`:  (Opcjonalnie) Ustawiana, jeśli plik musi przejść do podfolderu w `lib\<TargetFramework>` , takich jak zestawy satelickie tego go w ramach ich odpowiednich kultury folderów. Wartość domyślna to nazwa pliku.
 
 Przykład:
 
@@ -282,8 +282,8 @@ Przykład:
 
 Zapisz niestandardowe obiekty docelowe i określ ją jako wartość `$(TargetsForTfmSpecificContentInPackage)` właściwości. Dla wszystkich plików do uwzględnienia w pakiecie docelowym powinien zapisać te pliki do element ItemGroup `TfmSpecificPackageFile` i ustaw następujące opcjonalne metadane:
 
-- `PackagePath`: Ścieżka, gdzie plik powinien znajdować się w danych wyjściowych w pakiecie. NuGet generuje ostrzeżenie, jeśli więcej niż jeden plik jest dodawany do tej samej ścieżki pakietu.
-- `BuildAction`: Akcja kompilacji do przypisania do plików, jest wymagany tylko, jeśli ścieżka pakietu jest w `contentFiles` folderu. Wartość domyślna to "None".
+- `PackagePath`: Ścieżka, w którym plik powinien znajdować się w danych wyjściowych w pakiecie. NuGet generuje ostrzeżenie, jeśli więcej niż jeden plik jest dodawany do tej samej ścieżki pakietu.
+- `BuildAction`: Akcja kompilacji, aby przypisać do pliku, jest wymagany tylko, jeśli ścieżka pakietu jest w `contentFiles` folderu. Wartość domyślna to "None".
 
 Przykład:
 ```xml
