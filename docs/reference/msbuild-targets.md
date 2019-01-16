@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 878fb582a31667c84f3ae306b554718de72eca7a
-ms.sourcegitcommit: 5c5f0f0e1f79098e27d9566dd98371f6ee16f8b5
+ms.openlocfilehash: 8132595cbfaf553736fbcc81aada283a44d6cdbf
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53645675"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324854"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -72,6 +72,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 ### <a name="pack-target-inputs"></a>dane wejściowe docelowego pakietu
 
 - IsPackable
+- SuppressDependenciesWhenPacking
 - PackageVersion
 - PackageId
 - Autorzy
@@ -96,7 +97,7 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 - RepositoryBranch
 - RepositoryCommit
 - NoPackageAnalysis
-- Atrybut MinClientVersion
+- MinClientVersion
 - IncludeBuildOutput
 - IncludeContentInPack
 - BuildOutputTargetFolder
@@ -106,6 +107,10 @@ Należy pamiętać, że `Owners` i `Summary` właściwości z `.nuspec` nie są 
 - NuspecProperties
 
 ## <a name="pack-scenarios"></a>scenariusze z dodatkiem Service Pack
+
+### <a name="suppress-dependencies"></a>Pomiń zależności
+
+Aby pominąć zależności pakietów z wygenerowanego pakietu NuGet, należy ustawić `SuppressDependenciesWhenPacking` do `true` co pozwoli pomija wszystkie zależności z nupkg wygenerowany plik.
 
 ### <a name="packageiconurl"></a>PackageIconUrl
 
@@ -193,6 +198,14 @@ Plik typu kompilacji, czy poza folderem projektu, a następnie po prostu dodać 
 
 Korzystając z wyrażenia licencji, właściwość PackageLicenseExpression powinna być używana. 
 [Przykładowe wyrażenie licencji](https://github.com/NuGet/Samples/tree/master/PackageLicenseExpressionExample).
+
+```xml
+<PropertyGroup>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+</PropertyGroup>
+```
+
+[Dowiedz się więcej na temat wyrażeń licencji i licencji, które są akceptowane przez NuGet.org](nuspec.md#license).
 
 Podczas pakowania pliku licencji, należy użyć właściwości PackageLicenseFile do określenia ścieżki pakietu, względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik znajduje się w pakiecie. Na przykład:
 
@@ -309,7 +322,7 @@ Przykład:
 
 1. Odczyt wszystkich odwołań między projektami
 1. Odczyt właściwości projektu, aby znaleźć pośrednich struktur dla folderu docelowego
-1. Przekazywanie danych programu msbuild do NuGet.Build.Tasks.dll
+1. Pass msbuild data to NuGet.Build.Tasks.dll
 1. Uruchom Przywracanie
 1. Pobierz pakiety
 1. Zapisu pliku zasobów, obiektów docelowych i właściwości

@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: b5bd8bd30ad134f36433b8e4721ce131425a1483
-ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
+ms.openlocfilehash: d39ec8caf94caa767b6c502cc475e278aa718b95
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52453367"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324789"
 ---
 # <a name="pack-command-nuget-cli"></a>pack command, polecenie (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** Tworzenie pakietu &bullet; **obsługiwane wersje:** 2.7 +
+**Dotyczy:** Tworzenie pakietu &bullet; **obsługiwane wersje:** 2.7+
 
 Tworzy pakiet NuGet na podstawie `.nuspec` lub pliku projektu. `dotnet pack` Polecenia (zobacz [polecenia dotnet](dotnet-Commands.md)) i `msbuild -t:pack` (zobacz [elementów docelowych MSBuild](../reference/msbuild-targets.md)) może być używany jako wersje alternatywne.
 
@@ -41,7 +41,7 @@ gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub projektu pliku, odp
 | ConfigFile | Określ plik konfiguracji dla polecenia pakietu. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | IncludeReferencedProjects | Wskazuje, że utworzone pakiet powinien zawierać przywoływane projekty, jako zależności lub jako część pakietu. Jeśli przywoływany projekt ma odpowiadające mu `.nuspec` pliku, który ma taką samą nazwę jak projektu, a następnie przywoływanego projektu zostanie dodany jako zależność. W przeciwnym razie przywoływany projekt jest dodawany jako część pakietu. |
-| Atrybut MinClientVersion | Ustaw *atrybutu minClientVersion* atrybut utworzony pakiet. Ta wartość zastępuje wartość istniejącej *atrybutu minClientVersion* atrybutu (jeśli istnieją) w `.nuspec` pliku. |
+| MinClientVersion | Ustaw *atrybutu minClientVersion* atrybut utworzony pakiet. Ta wartość zastępuje wartość istniejącej *atrybutu minClientVersion* atrybutu (jeśli istnieją) w `.nuspec` pliku. |
 | MSBuildPath | *(4.0 +)*  Określa ścieżkę program MSBuild będzie używać za pomocą polecenia pierwszeństwo `-MSBuildVersion`. |
 | MSBuildVersion | *(3.2 +)*  Określa numer wersji MSBuild ma być używany za pomocą tego polecenia. Obsługiwane wartości to 4, 12, 14, 15. Domyślnie program MSBuild w ścieżce jest pobierana w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
 | NoDefaultExcludes | Zapobiega domyślne wykluczenia pakietu nuget pakowanie plików i plików i folderów, rozpoczynając od kropki, takich jak `.svn` i `.gitignore`. |
@@ -89,7 +89,7 @@ nuget pack foo.csproj -Properties Configuration=Release
 nuget pack foo.csproj -Build -Symbols -Properties owners=janedoe,xiaop;version="1.0.5"
 
 # Create a package from project foo.csproj, using MSBuild version 12 to build the project
-nuget pack foo.csproj -Build -Symbols -MSBuildVersion 12 -Properties owners=janedoe,xiaop;version="1.0.5
+nuget pack foo.csproj -Build -Symbols -MSBuildVersion 12 -Properties owners=janedoe,xiaop;version="1.0.5"
 
 # Create a package from project foo.nuspec and the corresponding symbol package using the new recommended format .snupkg
 nuget pack foo.nuspec -Symbols -SymbolPackageFormat snupkg

@@ -5,21 +5,21 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.openlocfilehash: bb24ccbfdd4a6a94cf7116f16b0862871e176e50
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 4b593cc215ad68629e5a93d1f17c90e53c0b4f4f
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549279"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324633"
 ---
-# <a name="quickstart-install-and-use-a-package-using-the-dotnet-cli"></a>Szybki Start: Instalowanie i używanie pakietu przy użyciu interfejsu wiersza polecenia platformy dotnet
+# <a name="quickstart-install-and-use-a-package-using-the-dotnet-cli"></a>Szybki start: Instalowanie i używanie pakietu przy użyciu interfejsu wiersza polecenia platformy dotnet
 
 Pakiety NuGet zawierają kodu wielokrotnego użytku, które inni deweloperzy zapewnić dostępność do użycia w projektach. Zobacz [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety zostaną zainstalowane do projektu .NET Core przy użyciu `dotnet add package` polecenia zgodnie z opisem w tym artykule, aby popularnej [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakietu.
 
 Po zakończeniu instalacji można znaleźć pakietu w kodzie za pomocą `using <namespace>` gdzie \<przestrzeni nazw\> jest właściwa dla pakietu jest używany. Następnie można użyć interfejsu API pakietu.
 
 > [!Tip]
-> **Rozpoczynać nuget.org**: przeglądania nuget.org znajduje się, jak .NET deweloperzy zazwyczaj znajdują składników ponownego wykorzystania w swoich aplikacjach. Można wyszukać nuget.org bezpośrednio lub znaleźć i zainstalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
+> **Rozpoczynać nuget.org**: Przeglądanie nuget.org znajduje się, jak .NET deweloperzy zazwyczaj znajdują składników ponownego wykorzystania w swoich aplikacjach. Można wyszukać nuget.org bezpośrednio lub znaleźć i zainstalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -51,7 +51,7 @@ Można zainstalować pakietów NuGet do projektu .NET pewnego rodzaju. W tym prz
 
     ```xml
    <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
    </ItemGroup>
     ```
 
@@ -101,7 +101,7 @@ Można zainstalować pakietów NuGet do projektu .NET pewnego rodzaju. W tym prz
     }
     ```
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Omówienie i przepływ pracy zużycia pakietu](../consume-packages/overview-and-workflow.md)
 - [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md)

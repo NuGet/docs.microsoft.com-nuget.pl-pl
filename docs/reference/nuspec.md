@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 08/29/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: e8d4ed1f3fe4394d084a5847200901b23a1b7b39
-ms.sourcegitcommit: c825eb7e222d4a551431643f5b5617ae868ebe0a
+ms.openlocfilehash: 009be99a1c6623a00b4bdbe6db3164ca70782212
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51944083"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324906"
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -72,7 +72,7 @@ Rozdzielana przecinkami lista autorów pakietów, pasujące nazwy profilu w witr
 
 ### <a name="optional-metadata-elements"></a>Elementy opcjonalne metadane
 
-#### <a name="title"></a>Tytuł
+#### <a name="title"></a>tytuł
 Tytuł przyjaznego dla człowieka pakietu, zwykle używanych w interfejsie użytkownika wyświetla w witrynach nuget.org i Menedżera pakietów w programie Visual Studio. Jeśli nie zostanie określony, identyfikator pakietu jest używany. 
 #### <a name="owners"></a>Właściciele
 Rozdzielana przecinkami lista twórców pakietów przy użyciu nazwy profilu w witrynie nuget.org. Jest to często tej samej listy podobnie jak w `authors`i jest ignorowana podczas przekazywania pakietu na stronie nuget.org. Zobacz [właścicieli pakietu zarządzania w witrynie nuget.org](../create-packages/publish-a-package.md#managing-package-owners-on-nugetorg). 
@@ -105,6 +105,9 @@ Jeśli używasz licencji, w której nie przypisano identyfikator SPDX lub jest l
   </files>
 </package>
 ```
+
+Dla równoważnej MSBuild, Przyjrzyj się [pakowania wyrażenie licencji lub też pliku licencji](msbuild-targets.md#packing-a-license-expression-or-a-license-file).
+
 Dokładna składnia wyrażeń licencji NuGet jest opisane poniżej w [ABNF](https://tools.ietf.org/html/rfc5234).
 ```cli
 license-id            = <short form license identifier from https://spdx.org/spdx-specification-21-web-version#h.luq9dgcle9mo>
@@ -122,16 +125,16 @@ compound-expression =  1*1(simple-expression /
 license-expression =  1*1(simple-expression / compound-expression / UNLICENSED)
 ```
 
-#### <a name="iconurl"></a>IconUrl
+#### <a name="iconurl"></a>iconUrl
 Adres URL obrazu 64 x 64 z przezroczystość tła do użycia jako ikona dla pakietu wyświetlania w interfejsie użytkownika. Pamiętaj, że ten element zawiera *bezpośredni adres URL obrazu* a nie jej adres URL strony sieci web zawierającej obraz. Na przykład, aby użyć obrazu z witryny GitHub, należy użyć plik raw, takie jak adres URL <em>https://github.com/\<username\>/\<repository\>/raw/\<branch\>/\<logo.png\></em>. 
 
 #### <a name="requirelicenseacceptance"></a>requireLicenseAcceptance
 Wartość logiczna określająca, czy klient musi monitować konsumenta o zaakceptowanie licencji pakietu przed zainstalowaniem pakietu.
-#### <a name="developmentdependency"></a>DevelopmentDependency
+#### <a name="developmentdependency"></a>developmentDependency
 *(2.8+)* Wartość logiczna określająca, czy pakiet jest oznaczone jako — tylko zależnością programistyczną, co zapobiega uwzględniane jako zależności w innych pakietach pakietu. Za pomocą funkcji PackageReference (NuGet 4.8 +) ta flaga oznacza również, że wykluczy zasoby kompilacji z kompilacji. Zobacz [DevelopmentDependency obsługę PackageReference](https://github.com/NuGet/Home/wiki/DevelopmentDependency-support-for-PackageReference)
 #### <a name="summary"></a>podsumowanie
 Krótki opis pakietu do wyświetlania w interfejsie użytkownika. Jeśli argument jest pominięty, skróconą wersję `description` jest używany.
-#### <a name="releasenotes"></a>ReleaseNotes
+#### <a name="releasenotes"></a>releaseNotes
 *(w wersji 1.5+)* Opis zmian wprowadzonych w tej wersji pakietu, często używany w interfejsie użytkownika, takich jak **aktualizacje** kartę z Menedżera pakietów Visual Studio zamiast opisu pakietu.
 #### <a name="copyright"></a>informacji o prawach autorskich,
 *(w wersji 1.5+)* Copyright szczegóły pakietu.
@@ -149,7 +152,7 @@ Określa minimalną wersję klienta NuGet, który można zainstalować ten pakie
 
 #### <a name="collection-elements"></a>Elementy kolekcji
 
-#### <a name="packagetypes"></a>PackageTypes
+#### <a name="packagetypes"></a>packageTypes
 *(3.5 +)*  Zbiór zero lub więcej `<packageType>` elementów, określając typ pakietu, jeśli inne niż tradycyjne zależności pakietu. Każdy packageType ma atrybuty *nazwa* i *wersji*. Zobacz [ustawienie typu pakietu](../create-packages/creating-a-package.md#setting-a-package-type).
 #### <a name="dependencies"></a>zależności
 Kolekcja zero lub więcej `<dependency>` elementy określenie zależności dotyczących pakietu. Poszczególne zależności ma atrybuty *identyfikator*, *wersji*, *obejmują* (3.x+) i *wykluczyć* (3.x+). Zobacz [zależności](#dependencies-element) poniżej.
@@ -382,7 +385,7 @@ Każdy `<file>` element określa następujące atrybuty:
 | Atrybut | Opis |
 | --- | --- |
 | **src** | Lokalizacja pliku lub plików, obejmujący podlegają wykluczenia określonego przez `exclude` atrybutu. Ścieżka jest względem `.nuspec` pliku, chyba że określony jest ścieżką bezwzględną. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
-| **Docelowy** | Względna ścieżka do folderu, w pakiecie, gdzie są umieszczone pliki źródłowe, musi zaczynać się od `lib`, `content`, `build`, lub `tools`. Zobacz [tworzenie .nuspec z katalogu roboczego oparty na Konwencji](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). |
+| **target** | Względna ścieżka do folderu, w pakiecie, gdzie są umieszczone pliki źródłowe, musi zaczynać się od `lib`, `content`, `build`, lub `tools`. Zobacz [tworzenie .nuspec z katalogu roboczego oparty na Konwencji](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). |
 | **exclude** | Rozdzieloną średnikami listę plików lub wzorce plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
 
 ### <a name="examples"></a>Przykłady
@@ -590,7 +593,7 @@ Te pliki są określane za pomocą zestaw atrybutów, które opisują, jak powin
 | **exclude** | Rozdzieloną średnikami listę plików lub wzorce plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
 | **buildAction** | Akcja kompilacji, aby przypisać do elementu zawartości dla platformy MSBuild, takich jak `Content`, `None`, `Embedded Resource`, `Compile`itp. Wartość domyślna to `Compile`. |
 | **copyToOutput** | Wartość Boolean wskazującą, czy chcesz skopiować elementy zawartości do kompilacji (lub opublikować) folder wyjściowy. Wartością domyślną jest false. |
-| **spłaszczanie** | Wartość logiczna wskazująca, czy skopiować elementy zawartości na pojedynczy folder w danych wyjściowych kompilacji (true) czy zachować strukturę folderów w pakiecie (false). Ta flaga działa tylko, gdy copyToOutput flaga jest ustawiona na wartość true. Wartością domyślną jest false. |
+| **flatten** | Wartość logiczna wskazująca, czy skopiować elementy zawartości na pojedynczy folder w danych wyjściowych kompilacji (true) czy zachować strukturę folderów w pakiecie (false). Ta flaga działa tylko, gdy copyToOutput flaga jest ustawiona na wartość true. Wartością domyślną jest false. |
 
 Instalując pakiet NuGet dotyczy elementów podrzędnych `<contentFiles>` od góry do dołu. Jeśli wiele wpisów pasuje do tego samego pliku wszystkie wpisy są stosowane. Wpis umieszczony najwyżej zastępuje wpisy niżej, jeśli występuje konflikt z tego samego atrybutu.
 
@@ -725,5 +728,5 @@ W tym przykładzie poniżej są zainstalowane dla określonego projektu celów:
 - .NET4 -> `System.Web`, `System.Net`
 - . NET4 -> Profil klienta `System.Net`
 - Program Silverlight 3 -> `System.Json`
-- Program Silverlight 4 -> `System.Windows.Controls.DomainServices`
+- Silverlight 4 -> `System.Windows.Controls.DomainServices`
 - WindowsPhone -> `Microsoft.Devices.Sensors`

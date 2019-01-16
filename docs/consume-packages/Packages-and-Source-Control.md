@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0338c3445b2a3d8169158171d97d1e874533a80a
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: ef4c45451cc52eb08dc627f8442c48e853d8ceaf
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551802"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324737"
 ---
 # <a name="omitting-nuget-packages-in-source-control-systems"></a>Pominięcie pakietów NuGet w systemów kontroli źródła
 
@@ -80,7 +80,7 @@ Aby wyłączyć integrację kontroli źródła z użyciem systemu TFVC dla wybra
 
 1. Jeśli używasz programu TFS 2010 lub starszy, zamaskować `packages` folderu mapowania obszarów roboczych.
 
-1. W programie TFS 2012 lub nowszym lub Visual Studio Team Services, utworzyć `.tfignore` plików zgodnie z opisem na [AddFiles serwerowi](/vsts/tfvc/add-files-server.md?view=vsts#tfignore). W tym pliku obejmują zawartość poniżej, aby jawnie Ignoruj modyfikacje `\packages` folder na poziomie repozytorium i kilka innych plików pośrednich. (Należy utworzyć plik w Eksploratorze Windows, przy użyciu nazwy `.tfignore.` końcową kropkę, ale może być konieczne można wyłączyć "Ukryj rozszerzenia znanych" opcji najpierw.):
+1. W programie TFS 2012 lub nowszym lub Visual Studio Team Services, utworzyć `.tfignore` plików zgodnie z opisem na [Dodaj pliki do serwera](/vsts/tfvc/add-files-server?view=vsts#tfignore). W tym pliku obejmują zawartość poniżej, aby jawnie Ignoruj modyfikacje `\packages` folder na poziomie repozytorium i kilka innych plików pośrednich. (Należy utworzyć plik w Eksploratorze Windows, przy użyciu nazwy `.tfignore.` końcową kropkę, ale może być konieczne można wyłączyć "Ukryj rozszerzenia znanych" opcji najpierw.):
 
    ```cli
    # Ignore NuGet Packages

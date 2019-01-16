@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 5/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 641304059c90e360fae4d0956d7b922e34bc6501
-ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
+ms.openlocfilehash: cf15c4f6a2e3e9f6ce7b6acb2304648041043685
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981122"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324828"
 ---
 # <a name="nuget-48-rtm-release-notes"></a>Informacje o wersji RTM 4,8 NuGet
 
@@ -22,7 +22,7 @@ Dostępne są wersje wiersza polecenia funkcji:
 * DotNet.exe - [platformy .NET Core SDK 2.1.400](https://www.microsoft.com/net/download/visual-studio-sdks)
 
 
-## <a name="summary-whats-new-in-this-release"></a>Podsumowanie: nowości w tej wersji
+## <a name="summary-whats-new-in-this-release"></a>Podsumowanie: Nowości w tej wersji
 * NuGet.exe obsługuje teraz longfilenames w systemie Windows 10 — [#6937](https://github.com/NuGet/Home/issues/6937)
 * Wtyczki uwierzytelniania działa teraz w MsBuild, DotNet.exe, NuGet.exe i Visual Studio, w tym dla wielu platform. Pierwsza generacja wtyczki uwierzytelniania nie są obsługiwane w programie MsBuild DotNet.exe. Uwaga: (Wersja zapoznawcza) w programie VS 2017 15.9 kompilacje mają wtyczka uwierzytelniania usługi VSTS uwzględnione. [#6486](https://github.com/NuGet/Home/issues/6486)
 * Mechanizm rozpoznawania zestawu SDK w MsBuild teraz kompilacji w ramach pakietu nuget i instaluje się za pomocą narzędzi NuGet dla programu VS. Należy unikać wersje wprowadzenie limitu synchronizacji. [#6799](https://github.com/NuGet/Home/issues/6799)
@@ -62,7 +62,7 @@ Uwaga: Ten problem został rozwiązany w programie VS 2017 15.9 3 (wersja zapozn
 
 ### <a name="bugs"></a>Usterki
 #### <a name="signing"></a>podpisywanie
-* Podpisywanie: Instalowanie podpisany pakiet w trybie offline środowiska [#7008](https://github.com/NuGet/Home/issues/7008) — rozwiązane w 4.8.1
+* Signing: Instalowanie podpisany pakiet w trybie offline środowiska [#7008](https://github.com/NuGet/Home/issues/7008) — rozwiązane w 4.8.1
 * Podpisywania:: niepoprawna Sprawdź adres URL — [#7174](https://github.com/NuGet/Home/issues/7174)
 * Podpisywania: gdy pakiet jest repozytorium podpisane - Sprawdź integralność pakietu w RepositorySignatureVerifier [#6926](https://github.com/NuGet/Home/issues/6926)
 * "Podczas sprawdzania integralności pakietu nie powiodło się." powinna mieć identyfikator pakietu w wiadomości (i kod błędu) - [#6944](https://github.com/NuGet/Home/issues/6944)
@@ -72,7 +72,7 @@ Uwaga: Ten problem został rozwiązany w programie VS 2017 15.9 3 (wersja zapozn
 * Pamięć jest nieprawidłowy podczas aktualizowania informacji o osoby podpisującej podczas dodawania sygnatury czasowej do kontrasygnaturze - [#6840](https://github.com/NuGet/Home/issues/6840)
 * Podpisywanie: usuwanie wyjątków CTL — [#6794](https://github.com/NuGet/Home/issues/6794)
 * Podpisywanie: contentUrl musi być typu HTTPS - [#6777](https://github.com/NuGet/Home/issues/6777)
-* Podpisywanie: SignedPackageVerifierSettings.VSClientDefaultPolicy jest nieużywany - [#6601](https://github.com/NuGet/Home/issues/6601)
+* Signing:  SignedPackageVerifierSettings.VSClientDefaultPolicy jest nieużywana - [#6601](https://github.com/NuGet/Home/issues/6601)
 
 
 #### <a name="pack"></a>pakiet

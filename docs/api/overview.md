@@ -6,18 +6,18 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: bb47c72768b0698d8e712c8261321ff38bba2764
-ms.sourcegitcommit: be9c51b4b095aea40ef41bbea7e12ef0a194ee74
+ms.openlocfilehash: 39b710c483ce4b3f2da30df6bb5b6842f9ee1fca
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53248432"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324841"
 ---
 # <a name="nuget-api"></a>Interfejs API programu NuGet
 
 Interfejs API NuGet jest zestaw punktów końcowych HTTP, które można pobrać pakiety, pobrać metadanych, opublikować nowe pakiety i wykonywać większości inne operacje dostępne w oficjalnym klientom programu NuGet.
 
-Ten interfejs API jest używany przez klienta programu NuGet w Visual Studio, nuget.exe oraz interfejsu wiersza polecenia platformy .NET do wykonywania operacji NuGet, takich jak [ `dotnet restore` ](/dotnet/articles/core/preview3/tools/dotnet-restore), wyszukiwanie w interfejsie użytkownika Visual Studio i [ `nuget.exe push` ](../tools/cli-ref-push.md).
+Ten interfejs API jest używany przez klienta programu NuGet w Visual Studio, nuget.exe oraz interfejsu wiersza polecenia platformy .NET do wykonywania operacji NuGet, takich jak [ `dotnet restore` ](/dotnet/core/tools/dotnet-restore?tabs=netcore2x), wyszukiwanie w interfejsie użytkownika Visual Studio i [ `nuget.exe push` ](../tools/cli-ref-push.md).
 
 Należy pamiętać, w niektórych przypadkach nuget.org ma dodatkowe wymagania, które nie są wymuszane przez inne źródła pakietu. Te różnice są opisane przez [protokoły nuget.org](nuget-protocols.md).
 
@@ -35,7 +35,7 @@ Aby uzyskać więcej informacji na temat indeks usług zobacz [jego dokumentacja
 
 ## <a name="versioning"></a>Obsługa wersji
 
-Interfejs API jest w wersji 3 NuGet protokołu HTTP. Ten protokół jest czasami określane jako "w wersji 3 interfejsu API." Te dokumenty referencyjne będzie odnosił się do tej wersji protokołu, po prostu jako "interfejsu API."
+Interfejs API jest w wersji 3 NuGet protokołu HTTP. Ten protokół jest czasami określane jako "interfejs API w wersji 3". Te dokumenty referencyjne będzie odnosił się do tej wersji protokołu, po prostu jako "interfejsu API."
 
 Wersja schematu indeksu usługi jest wskazywane przez `version` właściwość w indeksie usługi. Interfejs API określającemu, że ciąg wersji zawiera numer wersji głównej `3`. Wprowadzaniu zmian niepowodujących niezgodności na schemat indeksu service, wersja pomocnicza ciąg wersji zostanie zwiększona.
 
@@ -43,7 +43,7 @@ Starsi klienci (takie jak nuget.exe 2.x) nie obsługują interfejsu API w wersji
 
 Interfejsu API programu NuGet w wersji 3 nosi nazwę jako takie, ponieważ ta usługa jest następcą interfejsu API w wersji 2, który był protokół OData na podstawie implementowany przez oficjalne klienta programu NuGet w wersji 2.x. Interfejs API w wersji 3 pierwsze była obsługiwana przez wersję 3.0 oficjalne klienta programu NuGet i nadal jest najnowsza wersja główna protocol w wersji obsługiwany przez klienta programu NuGet 4.0, a także na. 
 
-Wprowadzono zmiany protokołu bez podziału do interfejsu API od czasu pierwszej wersji.
+Wprowadzono zmiany protokołu bez podziału do interfejsu API, ponieważ został pierwotnie wydany.
 
 ## <a name="resources-and-schema"></a>Schemat i zasoby
 

@@ -6,16 +6,16 @@ ms.author: patbel
 ms.date: 11/12/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: ffd0cf5d50a2deed16e1722b32e43047bc81df2f
-ms.sourcegitcommit: a1846edf70ddb2505d58e536e08e952d870931b0
+ms.openlocfilehash: ee4ffaa7e250cdbf313476fd794a8d87c80b69f9
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52303729"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324711"
 ---
 # <a name="trusted-signers-command-nuget-cli"></a>polecenie zaufane osoby podpisujące (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 4.9 +
+**Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 4.9.1+
 
 Pobiera lub ustawia zaufane osoby podpisujące konfiguracji NuGet. Aby uzyskać dodatkowe użycie, zobacz [Konfigurowanie zachowania pakietu NuGet](../consume-packages/configuring-nuget-behavior.md). Aby uzyskać szczegółowe informacje na temat sposobu schematu pliku nuget.config wygląda na to, zapoznaj się [odwołanie do pliku config NuGet](../reference/nuget-config-file.md).
 
@@ -80,7 +80,7 @@ Podanie zarówno `-Author` i `-Repository` nie jest obsługiwany w tym samym cza
 nuget trusted-signers add -Name <name> [options]
 ```
 
-_Uwaga_: tej opcji tylko doda zaufanych repozytoriów. 
+_Uwaga_: Ta opcja doda tylko zaufane repozytoriów. 
 
 | Opcja | Opis |
 | --- | --- |
@@ -110,7 +110,7 @@ Usuwa zaufane osoby podpisujące, zgodnych z podaną nazwą.
 
 Żąda najnowszą listę certyfikatów używanych w zaufana repozytorium, aby zaktualizować istniejące listy certyfikatów w zaufane osoby podpisującej.
 
-_Uwaga_: ten gest usunie bieżącą listę certyfikatów i zastąp je aktualną listę z repozytorium.
+_Uwaga_: Ten gest będzie usunąć bieżącą listę certyfikatów i zastąp je aktualną listę z repozytorium.
 
 ## <a name="options"></a>Opcje
 

@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: ba47d6fdeeaa4ee9de83ef4dd990707bd4928063
-ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
+ms.openlocfilehash: 19a1f48164f65f1ff805e036e55abb110247aa72
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52453562"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324867"
 ---
 # <a name="package-metadata"></a>Metadane pakietu
 
@@ -19,7 +19,7 @@ Istnieje możliwość pobrania metadanych o pakietach, które są dostępne w ź
 
 Zbiór dokumentów, znajdują się w `RegistrationsBaseUrl` są często nazywane "rejestracje" lub "obiektów blob rejestracji". Zestaw dokumentów w ramach pojedynczej `RegistrationsBaseUrl` jest określany jako "gałąź rejestracji". Gałąź rejestracji zawiera wszystkie metadane dotyczące każdego pakietu dostępne w źródle pakietu.
 
-## <a name="versioning"></a>Przechowywanie wersji
+## <a name="versioning"></a>Obsługa wersji
 
 Następujące `@type` są używane wartości:
 
@@ -78,7 +78,7 @@ Algorytm heurystyczny, który używa nuget.org jest następująca: Jeśli istnie
 
 Nazwa     | W     | Typ    | Wymagane | Uwagi
 -------- | ------ | ------- | -------- | -----
-LOWER_ID | Adres URL    | string  | Tak      | Identyfikator pakietu pisany małymi literami
+LOWER_ID | Adres URL    | string  | tak      | Identyfikator pakietu pisany małymi literami
 
 `LOWER_ID` Wartość jest pisany małymi literami, za pomocą reguł wdrożonych przez identyfikator żądanego pakietu. NET firmy [ `System.String.ToLowerInvariant()` ](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) metody.
 
@@ -88,8 +88,8 @@ Odpowiedź jest dokumentem JSON, który jest obiektem głównym, z następujący
 
 Nazwa  | Typ             | Wymagane | Uwagi
 ----- | ---------------- | -------- | -----
-count | integer          | Tak      | Liczba stron rejestracji w indeksie
-Elementy | Tablica obiektów | Tak      | Tablica stron rejestracji
+count | integer          | tak      | Liczba stron rejestracji w indeksie
+Elementy | Tablica obiektów | tak      | Tablica stron rejestracji
 
 Każdy element w obiekcie indeksu `items` tablica jest obiektem JSON reprezentujący stronę rejestracji.
 
@@ -99,12 +99,12 @@ Obiekt strony rejestracji w indeksie rejestracji ma następujące właściwości
 
 Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
-@id    | string           | Tak      | Adres URL do strony rejestracji
-count  | integer          | Tak      | Numer rejestracji pozostawia na stronie
+@id    | string           | tak      | Adres URL do strony rejestracji
+count  | integer          | tak      | Numer rejestracji pozostawia na stronie
 Elementy  | Tablica obiektów | Brak       | Tablica pozostawia rejestracji i ich kojarzenie metadanych
-Niższy  | string           | Tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
+Niższy  | string           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 Nadrzędny | string           | Brak       | Adres URL do indeksu rejestracji
-górny  | string           | Tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
+górny  | string           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
 `lower` i `upper` granice obiektu strony są przydatne, jeśli potrzebne są metadane dla określonej strony wersji.
 Te granice może służyć do pobrania na stronie rejestracji tylko potrzebne. Ciągi wersji stosować [reguły wersji NuGet](../reference/package-versioning.md). Ciągi wersji są znormalizowane i nie zawierają metadanych kompilacji. Zgodnie ze wszystkimi wersjami należący do ekosystemu NuGet Porównanie ciągów wersji jest implementowany przy użyciu [reguły pierwszeństwa wersji SemVer 2.0.0's](http://semver.org/spec/v2.0.0.html#spec-item-11).
@@ -123,9 +123,9 @@ Obiekt typu liść rejestracji znaleźć na stronie rejestracji ma następujące
 
 Nazwa           | Typ   | Wymagane | Uwagi
 -------------- | ------ | -------- | -----
-@id            | string | Tak      | Adres URL rejestracji typu liść
-catalogEntry   | object | Tak      | Wpis katalogu, zawierający metadane pakietu
-packageContent | string | Tak      | Adres URL do zawartości pakietów (.nupkg)
+@id            | string | tak      | Adres URL rejestracji typu liść
+catalogEntry   | object | tak      | Wpis katalogu, zawierający metadane pakietu
+packageContent | string | tak      | Adres URL do zawartości pakietów (.nupkg)
 
 Każdy obiekt typu liść rejestracji reprezentuje dane skojarzone z wersją w jednym pakiecie.
 
@@ -135,13 +135,14 @@ Każdy obiekt typu liść rejestracji reprezentuje dane skojarzone z wersją w j
 
 Nazwa                     | Typ                       | Wymagane | Uwagi
 ------------------------ | -------------------------- | -------- | -----
-@id                      | string                     | Tak      | Adres URL, aby dokument użyty do utworzenia tego obiektu
+@id                      | string                     | tak      | Adres URL, aby dokument użyty do utworzenia tego obiektu
 Autorzy                  | ciąg lub tablicę ciągów | Brak       | 
 dependencyGroups         | Tablica obiektów           | Brak       | Zależności pakietu, pogrupowane według platformy docelowej
 opis              | string                     | Brak       | 
-IconUrl                  | string                     | Brak       | 
-identyfikator                       | string                     | Tak      | Identyfikator pakietu
-licenseUrl               | string                     | Brak       | 
+iconUrl                  | string                     | Brak       | 
+identyfikator                       | string                     | tak      | Identyfikator pakietu
+licenseUrl               | string                     | Brak       |
+licenseExpression        | string                     | Brak       | 
 wymienione                   | wartość logiczna                    | Brak       | Powinny być traktowane jako wymienionych Jeśli go nie ma
 Atrybut MinClientVersion         | string                     | Brak       | 
 projectUrl               | string                     | Brak       | 
@@ -149,12 +150,14 @@ Opublikowane                | string                     | Brak       | Ciąg za
 requireLicenseAcceptance | wartość logiczna                    | Brak       | 
 podsumowanie                  | string                     | Brak       | 
 tagi                     | ciąg lub tablica ciągów  | Brak       | 
-Tytuł                    | string                     | Brak       | 
-version                  | string                     | Tak      | Ciąg pełnej wersji po normalizacji
+tytuł                    | string                     | Brak       | 
+version                  | string                     | tak      | Ciąg pełnej wersji po normalizacji
 
 Pakiet `version` właściwości jest ciągiem pełnej wersji po normalizacji. Oznacza to, że dane kompilacji SemVer 2.0.0 można uwzględnić w tym miejscu.
 
 `dependencyGroups` Właściwość jest Tablica obiektów reprezentująca zależności pakietu, pogrupowane według wartości docelowej. Jeśli pakiet nie ma zależności, `dependencyGroups` brakuje właściwości, pusta tablica lub `dependencies` właściwość wszystkich grup jest pusta lub Brak.
+
+Wartość `licenseExpression` właściwość jest zgodny z [składni wyrażenia licencji NuGet](https://docs.microsoft.com/en-us/nuget/reference/nuspec#license).
 
 #### <a name="package-dependency-group"></a>Grupa zależności pakietu
 
@@ -175,7 +178,7 @@ Poszczególne zależności pakietu ma następujące właściwości:
 
 Nazwa         | Typ   | Wymagane | Uwagi
 ------------ | ------ | -------- | -----
-identyfikator           | string | Tak      | Identyfikator zależności pakietu
+identyfikator           | string | tak      | Identyfikator zależności pakietu
 range        | object | Brak       | Dozwolona [zakres wersji](../reference/package-versioning.md#version-ranges-and-wildcards) zależności
 rejestracja | string | Brak       | Adres URL do indeksu rejestracji dla tej zależności
 
@@ -199,12 +202,12 @@ Gdy `items` tablicy nie zostanie podany w indeksie rejestracji, żądanie HTTP G
 
 Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
-@id    | string           | Tak      | Adres URL do strony rejestracji
-count  | integer          | Tak      | Numer rejestracji pozostawia na stronie
-Elementy  | Tablica obiektów | Tak      | Tablica pozostawia rejestracji i ich kojarzenie metadanych
-Niższy  | string           | Tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
-Nadrzędny | string           | Tak      | Adres URL do indeksu rejestracji
-górny  | string           | Tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
+@id    | string           | tak      | Adres URL do strony rejestracji
+count  | integer          | tak      | Numer rejestracji pozostawia na stronie
+Elementy  | Tablica obiektów | tak      | Tablica pozostawia rejestracji i ich kojarzenie metadanych
+Niższy  | string           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
+Nadrzędny | string           | tak      | Adres URL do indeksu rejestracji
+górny  | string           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
 Kształt obiektów typu liść rejestracji jest taka sama, jak indeksu rejestracji [powyżej](#registration-leaf-object-in-a-page).
 
@@ -226,7 +229,7 @@ Liścia rejestracji to dokument JSON z obiektem głównym, z następującymi wł
 
 Nazwa           | Typ    | Wymagane | Uwagi
 -------------- | ------- | -------- | -----
-@id            | string  | Tak      | Adres URL rejestracji typu liść
+@id            | string  | tak      | Adres URL rejestracji typu liść
 catalogEntry   | string  | Brak       | Adres URL wpisu wykazu, który te typu liść
 wymienione         | wartość logiczna | Brak       | Powinny być traktowane jako wymienionych Jeśli go nie ma
 packageContent | string  | Brak       | Adres URL do zawartości pakietów (.nupkg)

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 09/27/2017
 ms.topic: conceptual
-ms.openlocfilehash: c59839240935e2a6c590dea3adf623313f79f02f
-ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
+ms.openlocfilehash: a755438c1f63d33271f636cb663cc5b51a5aecbc
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981148"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324815"
 ---
 # <a name="supporting-multiple-net-framework-versions"></a>Obsługiwanie wielu wersji programu .NET framework
 
@@ -125,8 +125,8 @@ Profile obsługiwane są następujące:
 
 Gdy bibliotek tworzenia pakietów przeznaczonych dla biblioteki klas przenośnych może być trudne do określenia docelowej NuGet, które należy używać w nazwach folderów i `.nuspec` pliku, zwłaszcza, jeśli jest to obsługiwane tylko podzbiór PCL. Następujące zasoby zewnętrzne pomoże Ci w tym:
 
-- [Profile Framework na platformie .NET](http://blog.stephencleary.com/2012/05/framework-profiles-in-net.html) (stephenclearly.com)
-- [Przenośne biblioteki klas profile](http://embed.plnkr.co/03ck2dCtnJogBKHJ9EjY/preview) (plnkr.co): Tabela wyliczania ich równoważne cele NuGet i profile PCL
+- [Profile Framework na platformie .NET](http://blog.stephencleary.com/2012/05/framework-profiles-in-net.html) (stephencleary.com)
+- [Przenośne biblioteki klas profile](http://embed.plnkr.co/03ck2dCtnJogBKHJ9EjY/preview) (plnkr.co): Wyliczanie profilów PCL i ich równoważne cele NuGet tabeli
 - [Przenośne biblioteki klas profilów narzędzia](https://github.com/StephenCleary/PortableLibraryProfiles) (github.com): narzędzie wiersza polecenia umożliwiające określanie PCL profile dostępna w systemie
 
 ## <a name="content-files-and-powershell-scripts"></a>Pliki zawartości i skryptów programu PowerShell

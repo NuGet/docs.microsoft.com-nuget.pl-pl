@@ -6,20 +6,20 @@ ms.author: karann
 ms.date: 12/11/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 047ede14c7935844cb4f6d0315772c2a1190e5b8
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 0c76ea43e871009223cc4328449e21e5d02129bb
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547262"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324880"
 ---
 # <a name="target-frameworks"></a>Platformy docelowe
 
 NuGet używa odwołania struktury docelowej w różnych miejscach specjalnie zidentyfikować i izolowania składników zależny od struktury pakietu:
 
-- [.nuspec manifest](../reference/nuspec.md): pakiet może wskazywać różnych pakietów do uwzględnienia w projekcie, w zależności od platformy docelowej projektu.
-- [Nazwa folderu .nupkg](../create-packages/creating-a-package.md#from-a-convention-based-working-directory): foldery wewnątrz pakietu `lib` folder może być nazwany według platformy docelowej, z których każdy zawiera biblioteki dll i innej zawartości, które są odpowiednie dla tej struktury.
-- [Packages.config](../reference/packages-config.md): `targetframework` atrybut zależności określa wariant pakiet do zainstalowania.
+- [.nuspec manifest](../reference/nuspec.md): Pakiet można określić różne pakiety, które mają zostać uwzględnione w projekcie, w zależności od platformy docelowej projektu.
+- [Nazwa folderu .nupkg](../create-packages/creating-a-package.md#from-a-convention-based-working-directory): Foldery wewnątrz pakietu `lib` folder może być nazwany według platformy docelowej, z których każdy zawiera biblioteki dll i innej zawartości, które są odpowiednie dla tej struktury.
+- [packages.config](../reference/packages-config.md): `targetframework` Atrybut zależności określa wariant pakiet do zainstalowania.
 
 > [!Note]
 > Kod źródłowy NuGet klienta, który oblicza w poniższej tabeli znajduje się w następujących lokalizacjach:
@@ -28,11 +28,11 @@ NuGet używa odwołania struktury docelowej w różnych miejscach specjalnie zid
 
 ## <a name="supported-frameworks"></a>Obsługiwane platformy
 
-Struktura zazwyczaj odwołuje się moniker platformy docelowej krótki lub TFM. W programie .NET Standard to samo jest uogólniony, aby *TxM* umożliwia jedno odwołanie do wielu platform.
+Struktura zazwyczaj odwołuje się moniker platformy docelowej krótki lub TFM. W programie .NET Standard jest to również uogólniona do *TxM* umożliwia jedno odwołanie do wielu platform.
 
 Klienci NuGet obsługują struktury w poniższej tabeli. Odpowiedniki są wyświetlane w nawiasach kwadratowych []. Należy pamiętać, że niektóre narzędzia, takie jak `dotnet`, mogą używać odmiany canonical krótkich nazw w niektórych plików. Na przykład `dotnet pack` używa `.NETCoreApp2.0` w `.nuspec` pliku zamiast `netcoreapp2.0`. Różne narzędzia klienta programu NuGet prawidłowo obsługiwać te zmiany, ale należy zawsze używać canonical krótkich nazw podczas edytowania plików bezpośrednio.
 
-| Nazwa | Skrót | Krótkich nazw/TxMs |
+| Nazwa | Skrót | TFMs/TxMs |
 | ------------- | ------------ | --------- |
 |.NET Framework | NET | net11 |
 | | | net20 |
@@ -59,7 +59,7 @@ Klienci NuGet obsługują struktury w poniższej tabeli. Odpowiedniki są wyświ
 | | | Windows 10 (nieobsługiwane przez system Windows 10 platformy) |
 Silverlight | sl | sl4 |
 | | | sl5 |
-Windows Phone (SL) | WP | WP [wp7] |
+Windows Phone (SL) | wp | WP [wp7] |
 | | | wp7 |
 | | | wp75 |
 | | | wp8 |
@@ -67,7 +67,7 @@ Windows Phone (SL) | WP | WP [wp7] |
 Windows Phone (UWP) | | wpa81 |
 Platforma uniwersalna systemu Windows | uap | uap [uap10.0] |
 | | | uap10.0 |
-.NET standard | netstandard | netstandard1.0 |
+.NET Standard | netstandard | netstandard1.0 |
 | | | netstandard1.1 |
 | | | netstandard1.2 |
 | | | netstandard1.3 |
@@ -75,7 +75,7 @@ Platforma uniwersalna systemu Windows | uap | uap [uap10.0] |
 | | | netstandard1.5 |
 | | | netstandard1.6 |
 | | | netstandard2.0 |
-Aplikacja programu .NET core | Element netcoreapp | netcoreapp1.0 |
+Aplikacja programu .NET core | netcoreapp | netcoreapp1.0 |
 | | | netcoreapp1.1 |
 | | | netcoreapp2.0 |
 | | | netcoreapp2.1 |
@@ -88,7 +88,7 @@ Następujące struktury są przestarzałe. Pakiety przeznaczone dla tych platfor
 
 | Przestarzałe framework | Zastępczy
 | --- | ---
-| aspnet50 | Element netcoreapp |
+| aspnet50 | netcoreapp |
 | aspnetcore50 |
 | dnxcore50 |
 | dnx |
@@ -134,7 +134,7 @@ Aby zdefiniować platformę docelową, która odwołuje się do wielu podrzędny
 
 Dodatkowe struktury zdefiniowany przez strony trzecie zapewniają zgodność z innych środowisk, które są dostępne w ten sposób. Ponadto istnieją numery profilu skrótu, które są dostępne te kombinacje pokrewne struktury jako odwołanie do `Profile#`, ale nie jest to zalecana praktyka do użycia tych numerów, ponieważ zmniejsza to czytelność folderów i `.nuspec`.
 
-| Profil # | Struktury | Imię i nazwisko | .NET standard |
+| Profil # | Struktury | Imię i nazwisko | .NET Standard |
  --- | --- | --- | ---
  Profile2 | .NETFramework 4.0 | portable-net40+win8+sl4+wp7 |
  | | Windows 8.0 | |
@@ -279,7 +279,7 @@ Dodatkowe struktury zdefiniowany przez strony trzecie zapewniają zgodność z i
 
 Ponadto pakiety NuGet określanie wartości docelowej platformy Xamarin można użyć dodatkowe struktury zdefiniowane w środowisku Xamarin. Zobacz [NuGet tworzenie pakietów dla platformy Xamarin](https://developer.xamarin.com/guides/cross-platform/advanced/nuget/).
 
-| Nazwa | Opis | .NET standard |
+| Nazwa | Opis | .NET Standard |
 | --- | --- | ---
 | monoandroid | Obsługa środowiska mono dla systemu operacyjnego Android | netstandard1.4 |
 | monotouch | Mono dla systemu iOS | netstandard1.4 |
@@ -290,8 +290,8 @@ Ponadto pakiety NuGet określanie wartości docelowej platformy Xamarin można u
 | xamarinpsfour | Obsługa platformy Xamarin na Playstation 4 | netstandard1.4 |
 | xamarinpsvita | Obsługa platformy Xamarin na PS Vita | netstandard1.4 |
 | xamarinwatchos | Platforma Xamarin dla całkowicie Obejrzyj systemu operacyjnego | netstandard1.4 |
-| xamarintvos | Platforma Xamarin dla całkowicie system TV OS | netstandard1.4 |
-| xamarinxboxthreesixty | Platforma Xamarin dla konsoli XBox 360 | netstandard1.4 |
+| xamarintvos | Xamarin for TV OS | netstandard1.4 |
+| xamarinxboxthreesixty | Xamarin for XBox 360 | netstandard1.4 |
 | xamarinxboxone | Platforma Xamarin dla całkowicie XBox One | netstandard1.4 |
 
 > [!Note]

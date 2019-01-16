@@ -6,18 +6,18 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 01f919dc3bbfb6752c8f8e055a3cd473ad194e75
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 2d2b20c1ea439ec0a3225cf983d9a4d2eedb0333
+ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549086"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54324763"
 ---
 # <a name="autocomplete"></a>Autouzupełnianie
 
 Jest możliwe utworzenie pakietu identyfikator i wersja autouzupełniania doświadczenie w korzystaniu z interfejsu API w wersji 3. Zasób używane na potrzeby wykonywania zapytań autouzupełniania jest `SearchAutocompleteService` można znaleźć zasobu w [indeks usług](service-index.md).
 
-## <a name="versioning"></a>Przechowywanie wersji
+## <a name="versioning"></a>Obsługa wersji
 
 Następujące `@type` są używane wartości:
 
@@ -73,12 +73,12 @@ Główny obiekt JSON ma następujące właściwości:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-totalHits | integer          | Tak      | Całkowita liczba dopasowań, pomijając `skip` i `take`
-dane      | Tablica ciągów | Tak      | Identyfikatory dopasowane przez żądania pakietu
+totalHits | integer          | tak      | Całkowita liczba dopasowań, pomijając `skip` i `take`
+dane      | Tablica ciągów | tak      | Identyfikatory dopasowane przez żądania pakietu
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-POBIERZ https://api-v2v3search-0.nuget.org/autocomplete?q=storage&prerelease=true
+    GET https://api-v2v3search-0.nuget.org/autocomplete?q=storage&prerelease=true
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -96,7 +96,7 @@ Wersja pakietu, który jest nieobecne na liście będą widoczne w wynikach.
 
 Nazwa        | W     | Typ    | Wymagane | Uwagi
 ----------- | ------ | ------- | -------- | -----
-identyfikator          | Adres URL    | string  | Tak      | Identyfikator pakietu można pobrać wersji
+identyfikator          | Adres URL    | string  | tak      | Identyfikator pakietu można pobrać wersji
 wersja wstępna  | Adres URL    | wartość logiczna | Brak       | `true` lub `false` określająca, czy dołączać [pakiety w wersji wstępnej](../create-packages/prerelease-packages.md)
 semVerLevel | Adres URL    | string  | Brak       | Ciąg wersji SemVer 2.0.0 
 
@@ -112,7 +112,7 @@ Główny obiekt JSON ma następującą właściwość:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-dane      | Tablica ciągów | Tak      | Wersje pakietów dopasowane przez żądanie
+dane      | Tablica ciągów | tak      | Wersje pakietów dopasowane przez żądanie
 
 Wersje pakietów w `data` tablicy mogą zawierać metadane kompilacji SemVer 2.0.0 (np. `1.0.0+metadata`) Jeśli `semVerLevel=2.0.0` została podana w ciągu zapytania.
 
