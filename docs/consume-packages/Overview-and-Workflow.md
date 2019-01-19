@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/22/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5f52b00e0c45882fb7a4bd1c1a80022192f3be6b
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: 506a093ff4d62c10c896246f746e6765f64f33f4
+ms.sourcegitcommit: a801052aa728a3a137225ca3ef3ff89f2d1c6b76
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580249"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54403167"
 ---
 # <a name="package-consumption-workflow"></a>Przepływ pracy zużyciu pakietu
 
@@ -35,7 +35,7 @@ Podczas dodawania projektu kodu do repozytorium źródłowego, zazwyczaj nie pod
 
 ![Przepływ przywracania pakietów NuGet, klonowanie repozytorium i za pomocą polecenia restore](media/Overview-02-RestoreFlow.png)
 
-[Przywracanie pakietu](../consume-packages/package-restore.md) korzysta z informacji w pliku projektu lub `packages.config` ponowną instalację wszystkich zależności. Należy pamiętać, że istnieją różnice w procesie związane, zgodnie z opisem w [rozpoznawania zależności](../consume-packages/dependency-resolution.md). Ponadto na powyższym diagramie nie są wyświetlane polecenia restore dla konsoli Menedżera pakietów, ponieważ jesteś za pomocą konsoli, użytkownik jest już w kontekście programu Visual Studio, co zwykle automatycznie przywraca pakietów i zapewnia polecenie poziomie rozwiązania, jak pokazano .
+[Przywracanie pakietu](../consume-packages/package-restore.md) korzysta z informacji w pliku projektu lub `packages.config` ponowną instalację wszystkich zależności. Należy pamiętać, że istnieją różnice w procesie związane, zgodnie z opisem w [rozpoznawania zależności](../consume-packages/dependency-resolution.md). Ponadto na powyższym diagramie nie są wyświetlane polecenia restore dla konsoli Menedżera pakietów, ponieważ w przypadku za pomocą konsoli użytkownik jest już w kontekście programu Visual Studio, która zwykle automatycznie przywraca pakietów oraz udostępnia polecenia poziomie rozwiązania jako wyświetlane.
 
 Czasami zachodzi konieczność ponownej instalacji pakietów, które znajdują się już w projekcie może również ponownie zainstalować zależności. Jest to łatwo zrobić za pomocą `nuget reinstall` polecenia lub konsoli Menedżera pakietów NuGet. Aby uzyskać więcej informacji, zobacz [ponowne zainstalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md).
 
