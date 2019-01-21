@@ -7,12 +7,12 @@ ms.date: 02/12/2018
 ms.topic: overview
 layout: HubPage
 hide_bc: true
-ms.openlocfilehash: 6e2f00c14433e75323e2b185067e110bc554084c
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 35eef5125c40689da0f888992ea8376bb9eb096b
+ms.sourcegitcommit: a801052aa728a3a137225ca3ef3ff89f2d1c6b76
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43550038"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54403154"
 ---
 <div id="main" class="v2">
 <div class="container">
@@ -72,7 +72,7 @@ ms.locfileid: "43550038"
                                             </div>
                                         </div>
                                         <div class="cardText">
-                                            <h3>Szybki start tworzenie pakietu</h3>
+                                            <h3>Szybki start: Tworzenie pakietu</h3>
                                             <p>Omówienie narzędzi i funkcji usługi NuGet do tworzenia pakietów (przewodniki są dostępne zarówno dla interfejsu wiersza polecenia platformy dotnet, jak i programu Visual Studio).</p>
                                         </div>
                                     </div>
@@ -224,7 +224,7 @@ ms.locfileid: "43550038"
                             </a>
                         </li>
                         <li>
-                            <a href="policies/nuget-faq.md">
+                            <a href="policies/governance.md">
                             <div class="cardSize">
                                 <div class="cardPadding">
                                     <div class="card">
@@ -235,7 +235,7 @@ ms.locfileid: "43550038"
                                         </div>
                                         <div class="cardText">
                                             <h3>Zasady</h3>
-                                            <p>Często zadawane pytania wraz z informacjami na temat programu NuGet jako projektu open-source, usuwania pakietów i rozstrzygania sporów.</p>
+                                            <p>Informacje na temat menedżera NuGet jako projektu typu open source — ład, ekosystem i rozstrzyganie sporów.</p>
                                         </div>
                                     </div>
                                 </div>
