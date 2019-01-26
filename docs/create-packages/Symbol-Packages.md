@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 09/12/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 3321cba9082eb35b53ba693e246db18e5d8e187b
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: 56125516345b2255998c1f734db60b58b9a92a06
+ms.sourcegitcommit: 585394f063e95dcbc24d7ac0ce07de643eaf6f4d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580262"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55046331"
 ---
 # <a name="creating-symbol-packages-legacy"></a>Tworzenie pakietów symbol (starsza wersja)
 
@@ -100,7 +100,7 @@ Mogą być wbudowane pakiet symboli, konwencje ze struktury folderów, zgodnie z
 ## <a name="publishing-a-symbol-package"></a>Publikowanie pakietu symboli
 
 > [!Important]
-> Do wypychania pakietów nuget.org, należy użyć [nuget.exe verze 4.1.0 lub nowszej](https://www.nuget.org/downloads), który implementuje wymagane [protokołów NuGet](../api/nuget-protocols.md).
+> Do wypychania pakietów nuget.org, należy użyć [nuget.exe v4.9.1 lub nowszej](https://www.nuget.org/downloads), który implementuje wymagane [protokołów NuGet](../api/nuget-protocols.md).
 
 1. Dla wygody, najpierw zapisać swój klucz interfejsu API z NuGet (zobacz [publikowanie pakietu](../create-packages/publish-a-package.md), która będzie stosowana do nuget.org i symbolsource.org, ponieważ symbolsource.org sprawdzi się z repozytorium nuget.org, aby sprawdzić, czy jesteś właścicielem pakietu.
 

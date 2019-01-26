@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7dcb2e430ad80815f716f5567b511ff08acfe31b
-ms.sourcegitcommit: a9babe261f67da0f714d168d04ea54a66628974b
+ms.openlocfilehash: 99578c5ed7e88b7269872bf88c465bbda462870a
+ms.sourcegitcommit: 585394f063e95dcbc24d7ac0ce07de643eaf6f4d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735139"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55045111"
 ---
 # <a name="nuget-49-release-notes"></a>4.9 wersji NuGet
 
@@ -18,13 +18,15 @@ NuGet pojazdów dystrybucji:
 
 | NuGet w wersji | Dostępne w wersji programu Visual Studio| Dostępne w zestawów SDK platformy .NET|
 |:---|:---|:---|
-| **4.9.0** | Visual Studio 2017 w wersji 15.9.0 | 2.1.500, 2.2.100 |
-| **4.9.1** | n/d | n/d |
+| [**4.9.0**](https://nuget.org/downloads) | [Visual Studio 2017 w wersji 15.9.0](https://visualstudio.microsoft.com/downloads/) | [2.1.500, 2.2.100](https://www.microsoft.com/net/download/visual-studio-sdks) |
+| [**4.9.1**](https://nuget.org/downloads) | n/d | n/d |
 | [**4.9.2**](https://nuget.org/downloads) |[Visual Studio 2017 w wersji 15.9.4](https://visualstudio.microsoft.com/downloads/) | [2.1.502, 2.2.101](https://www.microsoft.com/net/download/visual-studio-sdks) |
+| [**4.9.3**](https://nuget.org/downloads) |[Visual Studio 2017 w wersji 15.9.6](https://visualstudio.microsoft.com/downloads/) | n/d |
+
 
 ## <a name="summary-whats-new-in-490"></a>Podsumowanie: What's New in 4.9.0
 
-* Podpisywania: Włącz ClientPolicies wymagać korzystanie z zestawu zaufanych autorzy i repozytoriów, wymienione w pliku NuGet.Config - [#6961](https://github.com/NuGet/Home/issues/6961), [wpis w blogu](https://blog.nuget.org/20181205/Lock-down-your-dependencies-using-configurable-trust-policies.html)
+* Signing: Włącz ClientPolicies wymagać korzystanie z zestawu zaufanych autorzy i repozytoriów, wymienione w pliku NuGet.Config - [#6961](https://github.com/NuGet/Home/issues/6961), [wpis w blogu](https://blog.nuget.org/20181205/Lock-down-your-dependencies-using-configurable-trust-policies.html)
 
 * Tworzenie plików ".snupkg" zawierają symbole w pakiecie — Zwiększ wypchnięcie, aby zrozumieć nuget protokołu do akceptowania plików snupkg do serwera symboli - [#6878](https://github.com/NuGet/Home/issues/6878), [wpis w blogu](https://blog.nuget.org/20181116/Improved-debugging-experience-with-the-NuGet-org-symbol-server-and-snupkg.html)
 
@@ -35,6 +37,8 @@ NuGet pojazdów dystrybucji:
 * Włącz zoptymalizowany pod kątem w metadanych "GeneratePathProperty" na PackageReference do wygenerowania dla właściwości MSBuild pakietu na "Foo.Bar\1.0\" katalogu — [#6949](https://github.com/NuGet/Home/issues/6949)
 
 * Zwiększyć sukces klientów przy użyciu operacji NuGet — [#7108](https://github.com/NuGet/Home/issues/7108)
+
+* Włącz Przywracanie pakietów powtarzalne przy użyciu blokady pliku — [#5602](https://github.com/NuGet/Home/issues/5602), [ogłoszenie](https://github.com/NuGet/Announcements/issues/28), [wpis w blogu](https://blog.nuget.org/20181217/Enable-repeatable-package-restores-using-a-lock-file.html)
 
 ### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
 
@@ -106,6 +110,35 @@ NuGet pojazdów dystrybucji:
 
 [Lista wszystkie problemy rozwiązane w tej wersji 4.9.2](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.9.2")
 
+## <a name="summary-whats-new-in-493"></a>Podsumowanie: What's New in 4.9.3
+
+### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
+#### <a name="repeatable-package-restores-using-a-lock-file-issues"></a>Problemy z "Pozycji powtarzalne pakietu za pomocą pliku blokady"
+
+* Zablokowany tryb nie działa zgodnie z wyznaczania wartości skrótu jest obliczana niepoprawnie dla wcześniej pamięci podręcznej pakietów - [#7682](https://github.com/NuGet/Home/issues/7682)
+
+* Przywracanie jest rozpoznawana jako do innej wersji niż zdefiniowana w `packages.lock.json` pliku — [#7667](https://github.com/NuGet/Home/issues/7667)
+
+* "--Tryb zablokowany / RestoreLockedMode" powoduje, że fałszywe błędy przywracania w przypadku odwołania do projektu - [#7646](https://github.com/NuGet/Home/issues/7646)
+
+* Mechanizm rozpoznawania zestawu SDK programu MSBuild próbuje zweryfikować SHA dla pakietu SDK, który zakończy się niepowodzeniem przywracania przy użyciu packages.lock.json — [#7599](https://github.com/NuGet/Home/issues/7599)
+
+#### <a name="lock-down-your-dependencies-using-configurable-trust-policies-issues"></a>"Zablokować zależności za pomocą zasad można skonfigurować zaufanie" problemów
+* DotNet.exe nie należy ocenić zaufane osoby podpisujące podpisanych pakietów nie są obsługiwane - [#7574](https://github.com/NuGet/Home/issues/7574)
+
+* Kolejność trustedSigners w pliku konfiguracji ma wpływ na ocenę zaufania - [#7572](https://github.com/NuGet/Home/issues/7572)
+
+* Nie można zaimplementować ISettings [spowodowany refaktoryzacją ustawienia interfejsów API do obsługi funkcji zasady zaufania]- [#7614](https://github.com/NuGet/Home/issues/7614)
+
+#### <a name="improved-debugging-experience-issues"></a>"Improved środowisko debugowania" problemów
+
+* Nie można opublikować pakietu symboli dla platformy .NET Core globalnego narzędzia - [#7632](https://github.com/NuGet/Home/issues/7632)
+
+#### <a name="self-contained-nuget-packages---license-issues"></a>Problemy z "Pakiety NuGet niezależna - licencji"
+
+* Wystąpił błąd podczas tworzenia pakietu .snupkg symboli, korzystając z osadzonych pliku licencji - [#7591](https://github.com/NuGet/Home/issues/7591)
+
+[Lista wszystkie problemy rozwiązane w tej wersji 4.9.3](https://github.com/nuget/home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.9.3")
 ## <a name="known-issues"></a>Znane problemy
 
 ### <a name="dotnet-nuget-push---interactive-gives-an-error-on-mac---7519httpsgithubcomnugethomeissues7519"></a>DotNet nuget push--interaktywne powoduje błąd na komputerze Mac. - [#7519](https://github.com/NuGet/Home/issues/7519)

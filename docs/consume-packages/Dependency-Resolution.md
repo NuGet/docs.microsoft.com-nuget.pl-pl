@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: cdbe13df04bb27091b684a4ae27b0e751da1098f
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: a561a49f2e733929e32584adf7b6849ea535c440
+ms.sourcegitcommit: 585394f063e95dcbc24d7ac0ce07de643eaf6f4d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549037"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55046259"
 ---
 # <a name="how-nuget-resolves-package-dependencies"></a>Jak NuGet jest rozpoznawana jako zależności pakietów
 
@@ -117,10 +117,10 @@ Istnieją scenariusze, w których zestawów o takiej samej nazwie może występo
 
 Aby rozwiązać ten problem, należy bezpośrednio odwoływać się `C.dll` mają (lub użyj innego pakietu, który odwołuje się do właściwy), a następnie dodać zależność od pakietu języka C, która wyklucza wszystkie jej zasoby. W zależności od formatu używanego pakietu zarządzania odbywa się w następujący sposób:
 
-- [PackageReference](../consume-packages/package-references-in-project-files.md): Dodaj `Exclude="All"` w zależności:
+- [PackageReference](../consume-packages/package-references-in-project-files.md): Dodaj `ExcludeAssets="All"` w zależności:
 
     ```xml
-    <PackageReference Include="PackageC" Version="1.0.0" Exclude="All" />
+    <PackageReference Include="PackageC" Version="1.0.0" ExcludeAssets="All" />
     ```
 
 - `packages.config`: Usuń odwołanie do PackageC z `.csproj` plików tak, aby odwoływał się tylko wersję `C.dll` przewidzianą.
