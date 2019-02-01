@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 08/29/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 009be99a1c6623a00b4bdbe6db3164ca70782212
-ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
+ms.openlocfilehash: fec6dd0fb97b565b364a7ffcb192d2eb99187e83
+ms.sourcegitcommit: b15fdd101aec13ea5fe9dd12845051d648034abd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54324906"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480143"
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -61,11 +61,11 @@ Mimo że następujące elementy są minimalne wymagania dotyczące pakietu, nale
 
 Te elementy muszą znajdować się w `<metadata>` elementu.
 
-#### <a name="id"></a>identyfikator 
+#### <a name="id"></a>id 
 Identyfikator pakietu bez uwzględniania wielkości liter, który musi być unikatowa w witrynie nuget.org lub cokolwiek innego pakietu, który znajduje się w galerii. Identyfikatory nie mogą zawierać spacji ani znaków, które nie są prawidłowe dla danego adresu URL i zazwyczaj korzystają z reguły w przestrzeni nazw .NET. Zobacz [wybierając identyfikator unikatowy pakiet](../create-packages/creating-a-package.md#choosing-a-unique-package-identifier-and-setting-the-version-number) wskazówki.
 #### <a name="version"></a>version
 Wersja pakietu, następujące *Wersja_główna.WERSJA_POMOCNICZA.poprawka* wzorca. Numery wersji mogą zawierać sufiks wersji wstępnej, zgodnie z opisem w [przechowywanie wersji pakietów](../reference/package-versioning.md#pre-release-versions). 
-#### <a name="description"></a>opis
+#### <a name="description"></a>description
 Długi opis pakietu do wyświetlania w interfejsie użytkownika. 
 #### <a name="authors"></a>Autorzy
 Rozdzielana przecinkami lista autorów pakietów, pasujące nazwy profilu w witrynie nuget.org. Te są wyświetlane w galerii pakietów NuGet w witrynie nuget.org i są odwoływania się do pakietów przez ten sam autorów. 
@@ -90,7 +90,7 @@ Oto Pełna lista [identyfikatory licencji SPDX](https://spdx.org/licenses/). NuG
 
 Jeśli pakiet jest licencjonowane w ramach wielu typowych licencji, możesz określić złożonego licencji przy użyciu [SPDX składni wyrażenia w wersji 2.0](https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60).<br>Na przykład: `<license type="expression">BSD-2-Clause OR MIT</license>`
 
-Jeśli używasz licencji, w której nie przypisano identyfikator SPDX lub jest licencja niestandardowych, można spakować pliku tekstem licencji. Na przykład:
+Jeśli używasz licencji, w której nie przypisano identyfikator SPDX lub jest licencja niestandardowych, można spakować pliku (tylko `.txt.` lub `.md`) z tekstem licencji. Na przykład:
 ```xml
 <package>
   <metadata>
