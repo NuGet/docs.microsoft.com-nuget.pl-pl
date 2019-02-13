@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 06e3a26863761b7e7a42752866e7fe369f5be4ef
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: adf97196f50f2a55d6b8ceed93d53ff12b67657b
+ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43550355"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56145634"
 ---
 # <a name="restore-command-nuget-cli"></a>polecenie Restore (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 2.7 +
+**Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 2.7+
 
 Pobiera i instaluje wszystkie pakiety brakuje `packages` folderu. W przypadku użycia za pomocą formatu PackageReference i NuGet 4.0 +, generuje `<project>.nuget.props` pliku, jeśli to konieczne w `obj` folderu. (Plik można pominąć z kontroli źródła.)
 
@@ -39,9 +39,9 @@ gdzie `<projectPath>` Określa lokalizację rozwiązania lub `packages.config` p
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | MSBuildPath | *(4.0 +)*  Określa ścieżkę program MSBuild będzie używać za pomocą polecenia pierwszeństwo `-MSBuildVersion`. |
-| MSBuildVersion | *(3.2 +)*  Określa numer wersji MSBuild ma być używany za pomocą tego polecenia. Obsługiwane wartości to 4, 12, 14, 15. Domyślnie program MSBuild w ścieżce jest pobierana w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
+| MSBuildVersion | *(3.2 +)*  Określa numer wersji MSBuild ma być używany za pomocą tego polecenia. Obsługiwane wartości to 4, 12, 14, 15.1, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9. Domyślnie program MSBuild w ścieżce jest pobierana w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
 | NoCache | Uniemożliwia korzystania z pamięci podręcznej pakietów NuGet. Zobacz [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). |
-| Nieinterakcyjnym | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
+| NonInteractive | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
 | OutputDirectory | Określa folder, w którym są zainstalowane pakiety. Jeśli żaden folder jest określony, używany jest bieżącego folderu. Wymagana, gdy przywrócenie za pomocą `packages.config` pliku, chyba że `PackagesDirectory` lub `SolutionDirectory` jest używany.|
 | PackageSaveMode | Określa typy plików, aby zapisać po zakończeniu instalacji pakietu: jeden z `nuspec`, `nupkg`, lub `nuspec;nupkg`. |
 | PackagesDirectory | Taki sam jak `OutputDirectory`. Wymagana, gdy przywrócenie za pomocą `packages.config` pliku, chyba że `OutputDirectory` lub `SolutionDirectory` jest używany. |

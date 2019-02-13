@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 39b710c483ce4b3f2da30df6bb5b6842f9ee1fca
-ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
+ms.openlocfilehash: 5d0d60cbcf6516d24efeb04f8262902da69d92d1
+ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54324841"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56145660"
 ---
 # <a name="nuget-api"></a>Interfejs API programu NuGet
 
@@ -49,17 +49,17 @@ Wprowadzono zmiany protokołu bez podziału do interfejsu API, ponieważ został
 
 **Indeks usług** zawiera opis różnych zasobów. Bieżący zestaw zasobów, obsługiwane są następujące:
 
-Nazwa zasobu                                                           | Wymagane | Opis
-----------------------------------------------------------------------  | -------- | -----------
+Nazwa zasobu                                                          | Wymagane | Opis
+---------------------------------------------------------------------- | -------- | -----------
 [`PackagePublish`](package-publish-resource.md)                        | tak      | Wypychanie i usuwanie lub wyrejestrowanie pakietów.
 [`SearchQueryService`](search-query-service-resource.md)               | tak      | Filtr i wyszukiwanie pakietów według słowa kluczowego.
 [`RegistrationsBaseUrl`](registration-base-url-resource.md)            | tak      | Pobierz metadane pakietów.
 [`PackageBaseAddress`](package-base-address-resource.md)               | tak      | Pobierz zawartość pakietu (.nupkg).
 [`SearchAutocompleteService`](search-autocomplete-service-resource.md) | Brak       | Odkryj identyfikatorów pakietu i wersje, podciąg.
 [`ReportAbuseUriTemplate`](report-abuse-resource.md)                   | Brak       | Skonstruuj adres URL "Zgłoś nadużycie" strona sieci web.
-[`RepositorySignatures`](repository-signatures-resource.md)             | Brak      | Pobierz certyfikaty używane do podpisywania repozytorium.
-[`Catalog`](catalog-resource.md)                                         | Brak      | Pełną dokumentację wszystkich zdarzeń pakietu.
-[`SymbolPackagePublish`](symbol-package-publish-resource.md)            | Brak      | Wypchnij pakiety symboli.
+[`RepositorySignatures`](repository-signatures-resource.md)            | Brak       | Pobierz certyfikaty używane do podpisywania repozytorium.
+[`Catalog`](catalog-resource.md)                                       | Brak       | Pełną dokumentację wszystkich zdarzeń pakietu.
+[`SymbolPackagePublish`](symbol-package-publish-resource.md)           | Brak       | Wypchnij pakiety symboli.
 
 Ogólnie rzecz biorąc wszystkie dane nieznakowe zwrócony przez zasobu interfejsu API są serializowane, przy użyciu formatu JSON. Schemat odpowiedzi zwrócony przez każdego zasobu w indeksie usługi zdefiniowano indywidualnie dla tego zasobu. Aby uzyskać więcej informacji na temat poszczególnych zasobów zobacz tematy wymienione powyżej.
 
@@ -67,6 +67,19 @@ W przyszłości w miarę rozwoju protokołu, nowe właściwości mogą być doda
 
 > [!Note]
 > Jeśli źródło nie implementuje `SearchAutocompleteService` każde zachowanie automatycznego uzupełniania, które powinny być wyłączone bezpiecznie. Gdy `ReportAbuseUriTemplate` nie zaimplementowaniu oficjalna powróci klienta NuGet do usługi nuget.org Zgłoś nadużycie adresu URL (śledzonych przez [domowych NuGet #4924](https://github.com/NuGet/Home/issues/4924)). Inni klienci mogą wybrać, czy po prostu nie przedstawiają nadużycie adresu URL raportu użytkownika.
+
+### <a name="undocumented-resources-on-nugetorg"></a>Nieudokumentowany zasobów w witrynie nuget.org
+
+Indeks usług w wersji 3 w witrynie nuget.org ma zasoby, które nie są opisane powyżej. Istnieje kilka powodów nie dokumentowania zasobu.
+
+Po pierwsze firma Microsoft nie dokumentu zasoby używane jako szczegół implementacji w witrynie nuget.org. `SearchGalleryQueryService` Należy do tej kategorii. [NuGetGallery](https://github.com/NuGet/NuGetGallery) używa tego zasobu, aby delegować niektóre V2 zapytań (OData) do indeksu wyszukiwania, zamiast korzystać z bazy danych. Ten zasób został wprowadzony powodów skalowalność i nie jest przeznaczona do użytku zewnętrznego.
+
+Po drugie firma Microsoft nie dokumentu zasoby, które nigdy nie są dostarczane w wersji RTM oficjalne klienta.
+`PackageDisplayMetadataUriTemplate` i `PackageVersionDisplayMetadataUriTemplate` należą do tej kategorii.
+
+Po trzecie, nie dokumentów zasoby, które są ściśle powiązane z protokołem V2, który sam jest celowo nieudokumentowane. `LegacyGallery` Zasobów należy do tej kategorii. Ten zasób umożliwia V3 indeks usług wskazywał odpowiedni adres URL źródła V2. Ten zasób obsługuje `nuget.exe list`.
+
+Jeśli zasób nie jest opisane w tym miejscu możemy *silnie* zaleca się niepodjęcia zależności na nich. Firma Microsoft może usunąć ani zmienić zachowanie tych nieudokumentowane zasobów, które może spowodować przerwanie implementacji w nieoczekiwany sposób.
 
 ## <a name="timestamps"></a>Sygnatury czasowe
 

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: fc34550b3669d83466318645987cfd3078bc3c18
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: ded9b571324d810c2f0e1a46ea76375a28940406
+ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43545103"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56145608"
 ---
 # <a name="update-command-nuget-cli"></a>update command, polecenie (interfejs wiersza polecenia NuGet)
 
@@ -42,9 +42,9 @@ gdzie `<configPath>` identyfikuje albo `packages.config` lub plik rozwiązania, 
 | Pomoc | Wyświetla Pomoc dla polecenia. |
 | Id | Określa listę identyfikatorów, aby zaktualizować pakiet. |
 | MSBuildPath | *(4.0 +)*  Określa ścieżkę program MSBuild będzie używać za pomocą polecenia pierwszeństwo `-MSBuildVersion`. |
-| MSBuildVersion | *(3.2 +)*  Określa numer wersji MSBuild ma być używany za pomocą tego polecenia. Obsługiwane wartości to 4, 12, 14, 15. Domyślnie program MSBuild w ścieżce jest pobierana w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
-| Nieinterakcyjnym | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
-| Wersja wstępna | Zezwala na aktualizację do wersji wstępnych. Ta flaga nie jest wymagana podczas aktualizowania pakietów wydań wstępnych, które są już zainstalowane. |
+| MSBuildVersion | *(3.2 +)*  Określa numer wersji MSBuild ma być używany za pomocą tego polecenia. Obsługiwane wartości to 4, 12, 14, 15.1, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9. Domyślnie program MSBuild w ścieżce jest pobierana w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
+| NonInteractive | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
+| PreRelease | Zezwala na aktualizację do wersji wstępnych. Ta flaga nie jest wymagana podczas aktualizowania pakietów wydań wstępnych, które są już zainstalowane. |
 | RepositoryPath | Określa folder lokalny, w którym są zainstalowane pakiety. |
 | Bezpieczne | Określa, która aktualizuje tylko z najwyższą wersją dostępne w ramach tej samej wersji głównych i pomocniczych zgodnie z zainstalowanym pakietem zostanie zainstalowana. |
 | Samodzielna | Nuget.exe aktualizacji do najnowszej wersji; wszystkie inne argumenty są ignorowane. |

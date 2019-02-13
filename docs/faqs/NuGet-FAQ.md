@@ -5,12 +5,12 @@ author: shishirx34
 ms.author: shishirh
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 290055a306306e944695d3a6ac970819882ee0c6
-ms.sourcegitcommit: 046717af2eba9ff6f619a0533844dee56a600d1c
+ms.openlocfilehash: f15639c883241c328b5fc0a4bf5617540b52b7ee
+ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648273"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56145686"
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet — często zadawane pytania
 
@@ -241,11 +241,9 @@ Aby użyć nuget.org jako repozytorium pakietów NuGet klientów, należy użyć
 
 **`https://api.nuget.org/v3/index.json`**
 
-Starsi klienci mogą nadal używać protokołu v2 nawiązać nuget.org. Jednak należy zauważyć, że klienci programu NuGet 3.0 lub nowszej mają wolniejszy i mniej niezawodnej usługi przy użyciu protokołu v2:
+Starsi klienci mogą nadal używać protokołu V2 nawiązać nuget.org. Jednak należy zauważyć, że klienci programu NuGet 3.0 lub nowszej mają wolniejszy i mniej niezawodnej usługi przy użyciu protokołu V2:
 
-`https://www.nuget.org/api/v2/` (PRZESTARZAŁE)! **Uwaga:** "www". jest ważne.
-
-Ponadto *NuGet.exe listy* działa tylko z protokołem v2.
+`https://www.nuget.org/api/v2` (PRZESTARZAŁE)! **Uwaga:** Użyj "www". Aby uzyskać większą niezawodność.
 
 ## <a name="nugetorg-account-management"></a>Zarządzanie kontami nuget.org
 

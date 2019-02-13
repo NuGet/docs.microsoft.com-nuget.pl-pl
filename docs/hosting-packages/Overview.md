@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 08/25/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 4741d780afa4fbe11001aed49a9f72bf608d96d9
-ms.sourcegitcommit: a1846edf70ddb2505d58e536e08e952d870931b0
+ms.openlocfilehash: 45d8a6557ee02998f3d12b128ee2dc4fd6ae48bb
+ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52303567"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56145595"
 ---
 # <a name="hosting-your-own-nuget-feeds"></a>Hosting NuGet własne źródła danych
 
@@ -19,13 +19,13 @@ Zamiast udostępniania pakietów publicznie, możesz chcieć wersji pakietów wy
 
 W tych celach NuGet obsługuje konfigurowanie prywatnych źródeł pakietów w następujący sposób:
 
-- Lokalne źródła danych: pakiety są po prostu umieszczane w odpowiedniej sieciowym udziale plików, najlepiej przy użyciu `nuget init` i `nuget add` do utworzenia hierarchicznej struktury folderów (NuGet 3.3 +). Aby uzyskać więcej informacji, zobacz [ze źródeł lokalnych](../hosting-packages/local-feeds.md).
+- Lokalne źródło danych: Pakiety po prostu są umieszczane w odpowiedniej sieci udziału plików, najlepiej przy użyciu `nuget init` i `nuget add` do utworzenia hierarchicznej struktury folderów (NuGet 3.3 +). Aby uzyskać więcej informacji, zobacz [ze źródeł lokalnych](../hosting-packages/local-feeds.md).
 - NuGet.Server: Pakiety są udostępniane za pośrednictwem lokalnego serwera HTTP. Aby uzyskać więcej informacji, zobacz [NuGet.Server](../hosting-packages/nuget-server.md).
 - Galeria NuGet: Pakiety są hostowane w serwera internetowego przy użyciu [projektu galerii NuGet](https://github.com/NuGet/NuGetGallery#build-and-run-the-gallery-in-arbitrary-number-easy-steps) (github.com). Galeria NuGet zawiera zarządzania użytkownikami i ich funkcje, takie jak rozbudowana interfejsu użytkownika, która umożliwia wyszukiwanie i eksplorowanie pakietów z przeglądarki, podobnie jak nuget.org.
 
 Dostępne są również kilka innych NuGet hostingu produktami, które obsługują zdalny prywatnej źródła danych, takie jak następujące:
 
-- [Visual Studio Team Services Management pakietu](https://www.visualstudio.com/docs/package/nuget/publish), który jest także dostępny w Team Foundation Server 2017 i nowsze.
+- [Systemu Azure](https://www.visualstudio.com/docs/package/nuget/publish), który jest także dostępny w Team Foundation Server 2017 i nowsze.
 - [MyGet](http://myget.org)
 - [ProGet](http://inedo.com/proget) z Inedo
 - [Serwer NuGet](http://nugetserver.net/), to projekt Społecznościowy z Inedo

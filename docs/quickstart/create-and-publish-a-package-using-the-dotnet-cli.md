@@ -5,14 +5,14 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/24/2018
 ms.topic: quickstart
-ms.openlocfilehash: 02aa7bb9d27352bbecfc718ef5bd6ee33501018d
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 3e459999eea45c5ae705a7e07c1a0fbb2e0cd1a1
+ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548432"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56145621"
 ---
-# <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki Start: Tworzenie i publikowanie pakietu (wiersz polecenia dotnet wim)
+# <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki start: Tworzenie i publikowanie pakietu (wiersz polecenia dotnet wim)
 
 Jest to prosty proces, aby utworzyć pakiet NuGet z biblioteki klas .NET i opublikuj go w witrynie nuget.org przy użyciu `dotnet` interfejsu wiersza polecenia (CLI).
 
@@ -109,4 +109,5 @@ Po utworzeniu `.nupkg` pliku opublikujesz go w witrynie nuget.org przy użyciu `
 - [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
+- [Tworzenie pakietów symboli](../create-packages/symbol-packages-snupkg.md)
 - [Podpisywanie pakietów](../create-packages/Sign-a-package.md)
