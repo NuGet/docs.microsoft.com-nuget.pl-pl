@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: a561a49f2e733929e32584adf7b6849ea535c440
-ms.sourcegitcommit: 585394f063e95dcbc24d7ac0ce07de643eaf6f4d
+ms.openlocfilehash: a2aed3950b3e19e30d9d026ad1b9bdaef44c9d37
+ms.sourcegitcommit: 1ab750ff17e55c763d646c50e7630138804ce8b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "55046259"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56247649"
 ---
 # <a name="how-nuget-resolves-package-dependencies"></a>Jak NuGet jest rozpoznawana jako zależności pakietów
 
@@ -24,7 +24,7 @@ Gdy wiele pakietów mają ten sam zależność, następnie ten sam identyfikator
 
 Podczas instalowania pakietów do projektów przy użyciu formatu PackageReference, NuGet dodaje odwołania do pakietu prostego wykresu w pliku odpowiednią i rozwiązywania konfliktów wcześniej. Ten proces jest nazywany *przechodnie przywracania*. Ponowne zainstalowanie lub Trwa przywracanie pakietów następnie proces pobierania pakietów wymienionych na wykresie skutkuje szybszy i bardziej przewidywalne kompilacje. Możesz również korzystać z zalet symbolu wieloznacznego (zmiennoprzecinkowego) wersji, takich jak 2.8. \*, unikanie kosztownych i błąd wywołania podatne `nuget update` na maszynach klienckich i serwerach kompilacji.
 
-Podczas procesu przywracania NuGet przed kompilacji go najpierw rozpoznaje zależności w pamięci, a następnie zapisuje wynikowy wykres w pliku o nazwie `project.assets.json` w `obj` folderu projektu przy użyciu funkcji PackageReference. Program MSBuild następnie odczytuje ten plik i przekształca je w zestawie folderów, gdzie można znaleźć potencjalnych odwołania, a następnie dodanie ich do drzewa projektu w pamięci.
+Podczas procesu przywracania NuGet przed kompilacji go najpierw rozpoznaje zależności w pamięci, a następnie zapisuje wynikowy wykres w pliku o nazwie `project.assets.json`. Plik zasobów znajduje się w `MSBuildProjectExtensionsPath`, którego wartość domyślna to folder "obj" projektu. Program MSBuild następnie odczytuje ten plik i przekształca je w zestawie folderów, gdzie można znaleźć potencjalnych odwołania, a następnie dodanie ich do drzewa projektu w pamięci.
 
 Plik blokady są tymczasowe i nie należy dodawać do kontroli źródła. Ta opcja jest wyświetlana domyślnie w obu `.gitignore` i `.tfignore`. Zobacz [pakiety i kontrola źródła](packages-and-source-control.md).
 
