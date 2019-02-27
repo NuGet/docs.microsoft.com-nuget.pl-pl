@@ -5,12 +5,12 @@ author: shishirx34
 ms.author: shishirh
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f15639c883241c328b5fc0a4bf5617540b52b7ee
-ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
+ms.openlocfilehash: 03223e949eeeadd7eaa6e392297ba79d28eed2f2
+ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56145686"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56852549"
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet — często zadawane pytania
 
@@ -166,7 +166,7 @@ NuGet zaleca wszystkich pakietów, były podpisane. Zasady projektowania podpisy
 
 Należy pamiętać, że składników zależnych wymienionych dla pakietu są generowane automatycznie na podstawie pakietu i nie można edytować.
 
-Ponadto przekazywania pakietów do [int.nugettest.org](https://int.nugettest.org) to świetny sposób testować i weryfikować pakietu bez konieczności szukania pakietu dostępne w publicznej galerii.
+Ponadto przekazywania pakietów do [int.nugettest.org](https://int.nugettest.org) to świetny sposób testować i weryfikować pakietu bez konieczności szukania pakietu dostępne w publicznej galerii. Punkt końcowy interfejsu API: https://apiint.nugettest.org/v3/index.json
 
 **Czy jest możliwe do zarezerwowania nazwy pakietów, które mają zostać opublikowane w przyszłości?**
 

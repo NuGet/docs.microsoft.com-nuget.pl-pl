@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 08/29/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: fec6dd0fb97b565b364a7ffcb192d2eb99187e83
-ms.sourcegitcommit: b15fdd101aec13ea5fe9dd12845051d648034abd
+ms.openlocfilehash: a8be66f5871df260581b6baca8eb7959279d66cd
+ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55480143"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56852588"
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -61,11 +61,11 @@ Mimo że następujące elementy są minimalne wymagania dotyczące pakietu, nale
 
 Te elementy muszą znajdować się w `<metadata>` elementu.
 
-#### <a name="id"></a>id 
+#### <a name="id"></a>identyfikator 
 Identyfikator pakietu bez uwzględniania wielkości liter, który musi być unikatowa w witrynie nuget.org lub cokolwiek innego pakietu, który znajduje się w galerii. Identyfikatory nie mogą zawierać spacji ani znaków, które nie są prawidłowe dla danego adresu URL i zazwyczaj korzystają z reguły w przestrzeni nazw .NET. Zobacz [wybierając identyfikator unikatowy pakiet](../create-packages/creating-a-package.md#choosing-a-unique-package-identifier-and-setting-the-version-number) wskazówki.
 #### <a name="version"></a>version
 Wersja pakietu, następujące *Wersja_główna.WERSJA_POMOCNICZA.poprawka* wzorca. Numery wersji mogą zawierać sufiks wersji wstępnej, zgodnie z opisem w [przechowywanie wersji pakietów](../reference/package-versioning.md#pre-release-versions). 
-#### <a name="description"></a>description
+#### <a name="description"></a>opis
 Długi opis pakietu do wyświetlania w interfejsie użytkownika. 
 #### <a name="authors"></a>Autorzy
 Rozdzielana przecinkami lista autorów pakietów, pasujące nazwy profilu w witrynie nuget.org. Te są wyświetlane w galerii pakietów NuGet w witrynie nuget.org i są odwoływania się do pakietów przez ten sam autorów. 
@@ -192,7 +192,7 @@ Z wyjątkiem produktów `$configuration$`, wartości w projekcie są używane za
 | --- | --- | ---
 | **$id$** | plik projektu | AssemblyName (tytuł) z pliku projektu |
 | **$version$** | AssemblyInfo | AssemblyInformationalVersion, jeśli jest obecna, w przeciwnym razie AssemblyVersion |
-| **$authors$** | AssemblyInfo | AssemblyCompany |
+| **$author$** | AssemblyInfo | AssemblyCompany |
 | **$title$** | AssemblyInfo | AssemblyTitle |
 | **$description$** | AssemblyInfo | AssemblyDescription |
 | **$copyright$** | AssemblyInfo | AssemblyCopyright |

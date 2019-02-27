@@ -6,21 +6,21 @@ ms.author: karann
 ms.date: 05/18/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: bd36ae311da1ec824726c5d73670b1232a3f89e0
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: bd19bc402ff9d66d7e2baa4f326d75f0ed444f30
+ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549589"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56852575"
 ---
 # <a name="publishing-packages"></a>Publikowanie pakietów
 
 Gdy utworzono pakiet i mają swoje `.nupkg` plików w kasie, jest to prosty proces, aby udostępnić go innym deweloperom publiczną lub prywatną:
 
 - Publicznych pakietów są udostępniane wszystkim deweloperom globalnie za pomocą [nuget.org](https://www.nuget.org/packages/manage/upload) zgodnie z opisem w tym artykule (wymaga NuGet 4.1.0+).
-- Prywatne pakiety są dostępne dla zespołu lub organizacji, udostępniając je albo udziału plików, prywatny serwer NuGet, [programu Visual Studio Team Services pakietu Management](https://www.visualstudio.com/docs/package/nuget/publish), lub repozytorium innych firm, takich jak myget, ProGet, Nexus Repozytorium i Artifactory. Aby uzyskać więcej informacji, zobacz [hostingu — Omówienie pakietów](../hosting-packages/overview.md).
+- Prywatne pakiety są dostępne dla zespołu lub organizacji, udostępniając je albo udziału plików, prywatny serwer NuGet, [artefaktów Azure](https://www.visualstudio.com/docs/package/nuget/publish), lub repozytorium innych firm, takich jak myget ProGet, Nexus repozytorium i Artifactory. Aby uzyskać więcej informacji, zobacz [hostingu — Omówienie pakietów](../hosting-packages/overview.md).
 
-W tym artykule opisano publikowania w witrynie nuget.org; do publikowania w Visual Studio Team Services, zobacz [zarządzania pakietami](https://www.visualstudio.com/docs/package/nuget/publish).
+W tym artykule opisano publikowania w witrynie nuget.org; do publikowania artefaktów platformy Azure, zobacz [zarządzania pakietami](https://www.visualstudio.com/docs/package/nuget/publish).
 
 ## <a name="publish-to-nugetorg"></a>Publikowanie w witrynie nuget.org
 
@@ -28,7 +28,7 @@ Nuget.org musisz zalogować się przy użyciu konta Microsoft, z którym użytko
 
 ![Znak NuGet w lokalizacji](media/publish_NuGetSignIn.png)
 
-Następnie można albo przekaż pakiet za pośrednictwem portalu sieci web w witrynie nuget.org, Wypchnij do repozytorium nuget.org z wiersza polecenia (wymaga `nuget.exe` 4.1.0+), lub Opublikuj jako część procesu ciągłej integracji/ciągłego wdrażania za pomocą programu Visual Studio Team Services, zgodnie z opisem w poniższych sekcjach.
+Następnie można albo przekaż pakiet za pośrednictwem portalu sieci web w witrynie nuget.org, Wypchnij do repozytorium nuget.org z wiersza polecenia (wymaga `nuget.exe` 4.1.0+), lub Opublikuj jako część procesu ciągłej integracji/ciągłego wdrażania za pośrednictwem usługi DevOps platformy Azure, zgodnie z opisem w poniższych sekcjach.
 
 ### <a name="web-portal-use-the-upload-package-tab-on-nugetorg"></a>Portal sieci Web: Użyj karty przekazywania pakietu w witrynie nuget.org
 
@@ -93,9 +93,9 @@ Należy zwrócić uwagę na to, że może upłynąć trochę czasu pakiet indeks
 
 ![Komunikat wskazujący, że pakiet nie został jeszcze opublikowany.](media/publish_NotYetIndexed.png)
 
-### <a name="visual-studio-team-services-cicd"></a>Visual Studio Team Services (CI/CD)
+### <a name="azure-devops-services-cicd"></a>Usługi Azure DevOps (CI/CD)
 
-Jeśli pakiety są wypychane na stronie nuget.org, jako część procesu ciągłej integracji/ciągłego wdrażania za pomocą programu Visual Studio Team Services, należy użyć `nuget.exe` 4.1 lub nowszym w zadaniach NuGet. Szczegółowe informacje można znaleźć na [przy użyciu najnowszego rozwiązania NuGet w kompilacji](https://blogs.msdn.microsoft.com/devops/2017/09/29/using-the-latest-nuget-in-your-build/) (blog Microsoft DevOps).
+Jeśli pakiety są wypychane na stronie nuget.org przy użyciu usługi DevOps platformy Azure jako część procesu ciągłej integracji/ciągłego wdrażania, należy użyć `nuget.exe` 4.1 lub nowszym w zadaniach NuGet. Szczegółowe informacje można znaleźć na [przy użyciu najnowszego rozwiązania NuGet w kompilacji](https://blogs.msdn.microsoft.com/devops/2017/09/29/using-the-latest-nuget-in-your-build/) (blog Microsoft DevOps).
 
 ## <a name="managing-package-owners-on-nugetorg"></a>Zarządzanie właścicielami pakietu w witrynie nuget.org
 

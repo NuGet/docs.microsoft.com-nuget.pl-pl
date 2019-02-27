@@ -16,14 +16,16 @@ keywords: Pakiety symboli NuGet, pakietów NuGet, debugowanie, obsługa NuGet de
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 1fbb243a7b3518307a393b5f371feae1edb7623a
-ms.sourcegitcommit: 5c5f0f0e1f79098e27d9566dd98371f6ee16f8b5
+ms.openlocfilehash: 43f346dc64ebbc59d02b9c7875b04205d8c5d83a
+ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53645662"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56852445"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symbol (.snupkg)
+
+Pakiety symboli umożliwiają lepsze środowisko debugowania pakietów NuGet.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -31,22 +33,28 @@ ms.locfileid: "53645662"
 
 ## <a name="creating-a-symbol-package"></a>Tworzenie pakietu symboli
 
-Pakiet symboli snupkg mogą być tworzone z pliku .nuspec lub z pliku csproj. Obsługiwane są zarówno NuGet.exe i dotnet.exe. Po opcji ```-Symbols -SymbolPackageFormat snupkg``` używane są polecenia pakietu nuget.exe zostanie utworzony plik .snupkg, oprócz pliku .nupkg.
+Można utworzyć snupkg symbol pakietu dotnet.exe NuGet.exe oraz programu MSBuild. Jeśli używasz NuGet.exe służy następujących poleceń do utworzenia pliku .snupkg oprócz pliku .nupkg:
 
-Przykładowe polecenia, aby utworzyć pliki .snupkg
 ```
-dotnet pack MyPackage.csproj --include-symbols -p:SymbolPackageFormat=snupkg
-
 nuget pack MyPackage.nuspec -Symbols -SymbolPackageFormat snupkg
 
 nuget pack MyPackage.csproj -Symbols -SymbolPackageFormat snupkg
-
-msbuild -t:pack MyPackage.csproj -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
 ```
 
-`.snupkgs` nie są tworzone domyślnie. Należy przekazać `SymbolPackageFormat` właściwości wraz z `-Symbols` przypadku nuget.exe, `--include-symbols` przypadku dotnet.exe, lub `-p:IncludeSymbols` w przypadku programu msbuild.
+Jeśli używasz dotnet.exe lub MSBuild umożliwia utworzenie pliku .snupkg oprócz pliku .nupkg następujące czynności:
 
-Właściwość SymbolPackageFormat może mieć jedną z dwóch wartości: `symbols.nupkg` (ustawienie domyślne) lub `snupkg`. Jeśli nie określono SymbolPackageFormat, jego wartość domyślna to `symbols.nupkg` i zostanie utworzony pakiet symboli starszej wersji.
+1. Dodaj następujące właściwości do pliku csproj:
+
+    ```xml
+    <PropertyGroup>
+      <IncludeSymbols>true</IncludeSymbols>
+      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+    ```
+
+1. Pakiet projektu za pomocą `dotnet pack MyPackage.csproj` lub `msbuild -t:pack MyPackage.csproj`.
+
+`SymbolPackageFormat` Właściwość może mieć jedną z dwóch wartości: `symbols.nupkg` (ustawienie domyślne) lub `snupkg`. Jeśli `SymbolPackageFormat` właściwość nie zostanie określony, jego wartość domyślna to `symbols.nupkg` i zostanie utworzony pakiet symboli starszej wersji.
 
 > [!Note]
 > Format starszych `.symbols.nupkg` jest nadal obsługiwane, ale tylko ze względu na zgodność (zobacz [pakiety ze starszych wersji Symbol](Symbol-Packages.md)). Serwer symboli NuGet.org akceptuje tylko na nowy format pakietu symboli — `.snupkg`.

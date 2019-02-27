@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 03/23/2018
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: b980c1084fe8e31573053a4dcf38bbfa6146e6de
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 6407cd2ea5e5e7a9c9e2be679764a8a0d5dd9260
+ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549776"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56852471"
 ---
 # <a name="package-versioning"></a>Przechowywanie wersji pakietów
 
@@ -29,9 +29,9 @@ W tym temacie:
 
 Numer wersji określonego ma postać *Wersja_główna.WERSJA_POMOCNICZA.poprawka [-sufiks]*, których składniki mają następujące znaczenie:
 
-- *Główne*: fundamentalne zmiany
-- *Drobne*: nowe funkcje, ale wstecznie zgodne
-- *Poprawka*: wstecznie zgodna tylko poprawki.
+- *Główne*: Zmiany powodujące niezgodność
+- *Drobne*: Nowe funkcje, ale wstecznie zgodne
+- *Poprawka*: Wstecznie zgodny poprawek błędów oprogramowania tylko
 - *-Sufiks* (opcjonalnie): łącznik następuje ciąg oznaczający wersji wstępnej (następujących [Konwencji Semantic Versioning lub SemVer 1.0](http://semver.org/spec/v1.0.0.html)).
 
 **Przykłady:**
@@ -50,7 +50,7 @@ Technicznie rzecz biorąc, twórców pakietów można użyć jako sufiks dowolne
 
 Inaczej mówiąc, deweloperów pakietu zazwyczaj korzystają z rozpoznanym konwencji nazewnictwa:
 
-- `-alpha`: Wydanie alfa, zwykle używane do pracy w toku i eksperymentowanie.
+- `-alpha`: Wersja alfa, zwykle używane do pracy w toku i eksperymentowanie.
 - `-beta`: Wydania beta, zazwyczaj taki, który jest funkcja ukończone przez następne zaplanowane wersji, ale może zawierać znanych błędów.
 - `-rc`: W wersji Release candidate, zwykle wydania jest potencjalnie ostateczne (stable), chyba że wyłaniać znaczące błędy.
 
@@ -92,7 +92,7 @@ Jeśli załadujesz pakietu specyficzne dla v2.0.0 SemVer na stronie nuget.org, p
 
 Klienci firm:
 
-- Kierowcy JetBrains
+- JetBrains Rider
 - Paket w wersji 5.0 +
 
 <!-- For compatibility with previous dependency-versions page -->
@@ -187,9 +187,6 @@ W `packages.config`, zależności, co jest wyświetlany na liście dokładnie `v
 ```xml
 <!-- Accepts any version 6.1 and above. -->
 <dependency id="ExamplePackage" version="6.1" />
-
-<!-- Accepts any 6.x.y version. -->
-<dependency id="ExamplePackage" version="6.*" />
 
 <!-- Accepts any version above, but not including 4.1.3. Could be
      used to guarantee a dependency with a specific bug fix. -->

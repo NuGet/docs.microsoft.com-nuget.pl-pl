@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 08/16/2018
 ms.topic: conceptual
 ms.reviewer: kraigb
-ms.openlocfilehash: 6184fe8e987e0637cb912999f2e3fa3a3dc9b4ba
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 003139abac7808dbdaef4aa66119e09772db2b4f
+ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546938"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56852536"
 ---
 # <a name="toolsjson-for-discovering-nugetexe-versions"></a>Tools.JSON nuget.exe wersji odnajdywania
 
@@ -39,28 +39,28 @@ Główny obiekt JSON ma następującą właściwość:
 
 Nazwa      | Typ             | Wymagane
 --------- | ---------------- | --------
-nuget.exe | Tablica obiektów | Tak
+nuget.exe | Tablica obiektów | tak
 
 Każdy obiekt w `nuget.exe` tablica ma następujące właściwości:
 
 Nazwa     | Typ   | Wymagane | Uwagi
 -------- | ------ | -------- | -----
-version  | string | Tak      | Ciąg SemVer 2.0.0
-adres URL      | string | Tak      | Bezwzględny adres URL pobierania tej wersji programu nuget.exe
-etap    | string | Tak      | Ciąg typu wyliczeniowego
-Przekazany | string | Tak      | Przybliżony sygnaturę czasową gdy wersja została udostępniona
+version  | string | tak      | Ciąg SemVer 2.0.0
+url      | string | tak      | Bezwzględny adres URL pobierania tej wersji programu nuget.exe
+etap    | string | tak      | Ciąg typu wyliczeniowego
+Przekazany | string | tak      | Przybliżony ISO 8601 sygnaturę czasową gdy wersja została udostępniona
 
-Elementy w tablicy zostaną posortowane, malejąco według współczynnika SemVer 2.0.0. Gwarancja ta jest przeznaczona do odciążenia wyszukiwania dla najnowszej wersji klienta. 
+Elementy w tablicy zostaną posortowane, malejąco według współczynnika SemVer 2.0.0. Gwarancja jest przeznaczone do zmniejszenia obciążenia klienta, który jest zainteresowany najwyższy numer wersji. Jednak oznacza to, że lista nie jest posortowana w kolejności chronologicznej. Na przykład jeśli starszej wersji głównych jest obsługiwane w terminie później niż w nowszej wersji głównej, ta wersja obsługiwanych nie pojawi się w górnej części listy. Jeśli chcesz, aby najnowszej wersji wydawanych przez *sygnatura czasowa*, po prostu posortować tablicę za `uploaded` ciągu. To działa, ponieważ `uploaded` jest sygnatura czasowa [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formatu, który być sortowane w porządku chronologicznym za pomocą sortowania lexicographical (czyli sortowania prostego ciągu).
 
-`stage` Właściwość wskazuje, jak vettect to narzędzie jest wersja. 
+`stage` Właściwość wskazuje, jak sprawdzonego jest ta wersja narzędzia. 
 
-etap              | Znaczenie
+Etap              | Znaczenie
 ------------------ | ------
 EarlyAccessPreview | Jeszcze nie są widoczne na [pobierania strony sieci web](https://www.nuget.org/downloads) i powinny być weryfikowane przez partnerów
 Wydana           | Dostępne w witrynie pobierania, ale nie jest jeszcze zalecane w przypadku użycia rozprzestrzeniania się całej
 ReleasedAndBlessed | Dostępne w witrynie pobierania i jest zalecane w przypadku użycia
 
-Jeden proste podejście do posiadanie najnowszy, zalecana wersja ma mieć pierwszej wersji na liście, który ma `stage` wartość `ReleasedAndBlessed`.
+Jeden proste podejście do posiadanie najnowszy, zalecana wersja ma mieć pierwszej wersji na liście, który ma `stage` wartość `ReleasedAndBlessed`. To działa, ponieważ wersje są sortowane w kolejności SemVer 2.0.0.
 
 `NuGet.CommandLine` Pakietu w witrynie nuget.org są zazwyczaj aktualizowane tylko przy użyciu `ReleasedAndBlessed` wersji.
 
