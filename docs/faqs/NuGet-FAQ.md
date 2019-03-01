@@ -5,12 +5,12 @@ author: shishirx34
 ms.author: shishirh
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 03223e949eeeadd7eaa6e392297ba79d28eed2f2
-ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
+ms.openlocfilehash: 1c838116f9737b01ea3f9ca17f5d5002f6548044
+ms.sourcegitcommit: 85bf94e0efcfcee1f914650bdc142309ef3e06d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56852549"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57196216"
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet — często zadawane pytania
 
@@ -158,7 +158,7 @@ Każdy pakiet jest regulowane przez postanowienia, które są dołączone do pak
 
 Jeśli pakiet nie określa warunki licencji, skontaktuj się z właścicielem pakietu bezpośrednio przy użyciu **skontaktuj się z właścicielami** łącze na stronie nuget.org pakietu. Microsoft nie licencji jakiejkolwiek własności intelektualnej dla Ciebie od dostawców pakietów innych firm, a nie jest odpowiedzialny za otrzymane od innych firm.
 
-## <a name="managing-packages-on-nugetorg"></a>Zarządzanie pakietami w witrynie nuget.org
+## <a name="managing-packages-on-nugetorg"></a>Zarządzanie pakietami w witrynie NuGet.org
 
 **Po zakończeniu przekazywania można edytować metadane pakietów?**
 
@@ -167,6 +167,10 @@ NuGet zaleca wszystkich pakietów, były podpisane. Zasady projektowania podpisy
 Należy pamiętać, że składników zależnych wymienionych dla pakietu są generowane automatycznie na podstawie pakietu i nie można edytować.
 
 Ponadto przekazywania pakietów do [int.nugettest.org](https://int.nugettest.org) to świetny sposób testować i weryfikować pakietu bez konieczności szukania pakietu dostępne w publicznej galerii. Punkt końcowy interfejsu API: https://apiint.nugettest.org/v3/index.json
+
+**Czy mogę usunąć pakiet, który został opublikowany w witrynie NuGet.org**
+
+Ogólnie rzecz biorąc nie obsługujemy usunięcie pakietu publikowane w witrynie NuGet.org. Dowiedz się więcej o naszych [zasady dotyczące usuwania pakietów](../policies/deleting-packages).
 
 **Czy jest możliwe do zarezerwowania nazwy pakietów, które mają zostać opublikowane w przyszłości?**
 

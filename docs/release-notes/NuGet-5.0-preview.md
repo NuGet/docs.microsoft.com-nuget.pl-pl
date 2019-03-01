@@ -5,19 +5,61 @@ author: anangaur
 ms.author: anangaur
 ms.date: 1/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5889ea52f993fa8fe841f8eb83b6da659cdede93
-ms.sourcegitcommit: 1ab750ff17e55c763d646c50e7630138804ce8b8
+ms.openlocfilehash: 57b66b347ac47a3d05907a4bb237002de8981ecc
+ms.sourcegitcommit: 85bf94e0efcfcee1f914650bdc142309ef3e06d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56247662"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57196203"
 ---
 # <a name="nuget-50-preview-release-notes"></a>Informacje o wersji programu NuGet 5.0 (wersja zapoznawcza)
 
 ## <a name="nuget-50-preview-releases"></a>Wersje zapoznawcze NuGet 5.0
 
+* 27 lutego 2010 — [NuGet w wersji 5.0 w wersji zapoznawczej 4](#summary-whats-new-in-50-preview-4)
 * 13 lutego 2019 - [NuGet w wersji 5.0 (wersja zapoznawcza) 3](#summary-whats-new-in-50-preview-3)
 * 23 stycznia 2019 - [NuGet w wersji 5.0 Preview 2](#summary-whats-new-in-50-preview-2)
+
+## <a name="summary-whats-new-in-nuget-50-preview-4"></a>Podsumowanie: Co nowego w wersji zapoznawczej NuGet w wersji 5.0 4
+
+### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
+
+**Błędy:**
+
+* NuGet.VisualStudio.IVsPackageInstaller — wywoływania nad projektem przy użyciu pakietu nie odwołuje się zawsze używa pliku packages.config, nawet wtedy, gdy są ustawione wartości domyślne do elementu PackageReference - [#7005](https://github.com/NuGet/Home/issues/7005)
+
+* PMC: Pakiet aktualizacji na pakiety delisted ponownie zainstalować kończy się niepowodzeniem ("nie można odnaleźć pakietu"). - [#7268](https://github.com/NuGet/Home/issues/7268)
+
+* Dodaj uwagi dotyczące innych firm w naszym repozytorium i VSIX — [#7409](https://github.com/NuGet/Home/issues/7409)
+
+* NuGet.VisualStudio.IVsPackageInstaller.InstallPackage należy zainstalować najnowszą wersję, gdy nie została zainstalowana wersja podane - [#7493](https://github.com/NuGet/Home/issues/7493)
+
+* — interakcyjne obsługę wypychania nuget dotnet - [#7519](https://github.com/NuGet/Home/issues/7519)
+
+* Podczas przywracania przy użyciu pliku blokady, nie należy wygenerowany NU1603 ostrzeżenie. - [#7529](https://github.com/NuGet/Home/issues/7529)
+
+* NuGet nie powinno wyświetlić ścieżkę projektu podczas przywracania z minimalnym rejestrowaniem - [#7647](https://github.com/NuGet/Home/issues/7647)
+
+* — interakcyjne pomocy technicznej dla platformy dotnet, usuń pakiet - [#7727](https://github.com/NuGet/Home/issues/7727)
+
+* Dodaj kopię NuGet.Packaging.Core z TypeForwardedTo attrs - [#7768](https://github.com/NuGet/Home/issues/7768)
+
+* plugins_cache musi krótszą ścieżkę, aby działać prawidłowo - [#7770](https://github.com/NuGet/Home/issues/7770)
+
+* Preferuj ścieżki programu msbuild odnajdywania, jeśli użytkownik przychodzą msbuild określonych wersji — [#7786](https://github.com/NuGet/Home/issues/7786)
+
+**DCRs:**
+
+* Ogranicz liczbę żądań http na źródłowym za pośrednictwem pliku NuGet.Config - [#4538](https://github.com/NuGet/Home/issues/4538)
+
+* NuGet powinien dotyczyć Net472 (ułatwiające oczyszczania 16,0 kompilacji VSIX) - [#7143](https://github.com/NuGet/Home/issues/7143)
+
+* PMC: Usuń polecenie OpenPackagePage - [#7384](https://github.com/NuGet/Home/issues/7384)
+
+* Marka NetCoreApp 3.0 mapę, aby NetStandard 2.1 — [#7762](https://github.com/NuGet/Home/issues/7762)
+
+* Dodanie obsługi netstandard2.0 do pakietów NuGet.* - [#6516](https://github.com/NuGet/Home/issues/6516)
+
 
 ## <a name="summary-whats-new-in-nuget-50-preview-3"></a>Podsumowanie: Co nowego w wersji zapoznawczej NuGet w wersji 5.0 3
 
@@ -39,7 +81,7 @@ ms.locfileid: "56247662"
 
 * minimalny poziom szczegółowości MSBuild /t:restore powinny być mniejsze - [#4695](https://github.com/NuGet/Home/issues/4695)
 
-**DCRs**
+**DCRs:**
 
 * Umożliwia autorom pakietów do definiowania zachowania przechodnie zasoby kompilacji - [#6091](https://github.com/NuGet/Home/issues/6091)
 
@@ -92,7 +134,7 @@ ms.locfileid: "56247662"
 
 * DotNet restore kończy się niepowodzeniem z powodu wyłączenia maszyny szerokiego źródła danych — [#5410](https://github.com/NuGet/Home/issues/5410)
 
-**DCRs**
+**DCRs:**
 
 * Zestawy NuGet w wersji 5.0, będą musieli .NET 4.7.2 (za pośrednictwem elementu TFM zmiana) - [#7510](https://github.com/NuGet/Home/issues/7510)
 
@@ -109,10 +151,6 @@ ms.locfileid: "56247662"
 [Lista wszystkie problemy rozwiązane w tej wersji 5.0.0-preview2](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.9.2")
 
 ### <a name="known-issues"></a>Znane problemy
-
-#### <a name="dotnet-nuget-push---interactive-gives-an-error-on-mac---7519httpsgithubcomnugethomeissues7519"></a>DotNet nuget push--interaktywne powoduje błąd na komputerze Mac. - [#7519](https://github.com/NuGet/Home/issues/7519)
-**Problem** `--interactive` argument nie są przekazywane przez interfejs wiersza polecenia platformy dotnet i powoduje błąd `error: Missing value for option 'interactive'` 
- **obejście** uruchamiania dowolnego polecenia dotnet z opcją interaktywnych, takich jak `dotnet restore --interactive` i uwierzytelniania. Uwierzytelnianie, program może być buforowane przez dostawcę poświadczeń. Następnie uruchom `dotnet nuget push`.
 
 #### <a name="packages-in-fallbackfolders-installed-by-net-core-sdk-are-custom-installed-and-fail-signature-validation---7414httpsgithubcomnugethomeissues7414"></a>Pakiety w FallbackFolders instalowane przez zestaw .NET Core SDK są zainstalowane niestandardowe i wystąpi niepowodzenie weryfikacji podpisu. - [#7414](https://github.com/NuGet/Home/issues/7414)
 **Problem** przy użyciu dotnet.exe 2.x można przywrócić tego netcoreapp wiele elementów docelowych projektu 1.x i netcoreapp 2.x, rezerwowy folderu jest traktowany jako plik źródła danych. Oznacza to, podczas przywracania, NuGet spowoduje pobranie pakietu z rezerwowego folderu i spróbuj zainstalować go w folderze globalnymi pakietami i są zwykle podpisywania sprawdzania poprawności, który kończy się niepowodzeniem.

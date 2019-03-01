@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 901eb09711a6e32740c70829028da66b782870a0
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 833f4a67bc75c5d650e85180b52ecd8f69218f15
+ms.sourcegitcommit: 85bf94e0efcfcee1f914650bdc142309ef3e06d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548131"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57196190"
 ---
 # <a name="deleting-packages"></a>Usuwanie pakietów
 
@@ -23,7 +23,7 @@ nuget.org jest obsługuje *unlisting* pakietu, co można zrobić na stronie paki
 
 ## <a name="exceptions"></a>Wyjątki
 
-W sytuacjach wyjątkowych, takich jak naruszenie praw autorskich i potencjalnie niebezpieczną zawartość pakietów można je usunąć ręcznie przez zespół programu NuGet. Prześlij żądanie pomocy technicznej za pośrednictwem [galerii pakietów NuGet](http://www.nuget.org) do rozpoczęcia procesu.
+W sytuacjach wyjątkowych, takich jak naruszenie praw autorskich i potencjalnie niebezpieczną zawartość pakietów można je usunąć ręcznie przez zespół programu NuGet. Możesz zgłosić pakietu przy użyciu przycisku "Zgłoś nadużycie" na stronie szczegółów pakietu NuGet.org. Jeśli jesteś właścicielem pakietu i zaloguj się na swoje konto NuGet.org, aby osiągnąć obsługę pakietów NuGet za pomocą przycisku "Się z pomocą techniczną" na stronie szczegółów pakietu NuGet.org.
 
 ## <a name="prohibited-use"></a>Zabronione korzystanie
 
