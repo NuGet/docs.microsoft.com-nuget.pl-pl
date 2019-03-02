@@ -5,26 +5,26 @@ author: anangaur
 ms.author: anangaur
 ms.date: 1/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 57b66b347ac47a3d05907a4bb237002de8981ecc
-ms.sourcegitcommit: 85bf94e0efcfcee1f914650bdc142309ef3e06d9
+ms.openlocfilehash: 4b05dcb9a2960c1e3231e81d4b4c122d3a518753
+ms.sourcegitcommit: 571644118e3c5a2fd818891d305b4b8de8ef21de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196203"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57225891"
 ---
 # <a name="nuget-50-preview-release-notes"></a>Informacje o wersji programu NuGet 5.0 (wersja zapoznawcza)
 
 ## <a name="nuget-50-preview-releases"></a>Wersje zapoznawcze NuGet 5.0
 
-* 27 lutego 2010 — [NuGet w wersji 5.0 w wersji zapoznawczej 4](#summary-whats-new-in-50-preview-4)
-* 13 lutego 2019 - [NuGet w wersji 5.0 (wersja zapoznawcza) 3](#summary-whats-new-in-50-preview-3)
-* 23 stycznia 2019 - [NuGet w wersji 5.0 Preview 2](#summary-whats-new-in-50-preview-2)
+* 27 lutego 2019 - [NuGet w wersji 5.0 w wersji zapoznawczej 4](#whats-new-in-nuget-50-preview-4)
+* 13 lutego 2019 - [NuGet w wersji 5.0 (wersja zapoznawcza) 3](#whats-new-in-nuget-50-preview-3)
+* 23 stycznia 2019 - [NuGet w wersji 5.0 Preview 2](#whats-new-in-nuget-50-preview-2)
 
-## <a name="summary-whats-new-in-nuget-50-preview-4"></a>Podsumowanie: Co nowego w wersji zapoznawczej NuGet w wersji 5.0 4
+## <a name="whats-new-in-nuget-50-preview-4"></a>Co nowego w wersji zapoznawczej NuGet w wersji 5.0 4
 
 ### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
 
-**Błędy:**
+**Błędy**
 
 * NuGet.VisualStudio.IVsPackageInstaller — wywoływania nad projektem przy użyciu pakietu nie odwołuje się zawsze używa pliku packages.config, nawet wtedy, gdy są ustawione wartości domyślne do elementu PackageReference - [#7005](https://github.com/NuGet/Home/issues/7005)
 
@@ -48,7 +48,7 @@ ms.locfileid: "57196203"
 
 * Preferuj ścieżki programu msbuild odnajdywania, jeśli użytkownik przychodzą msbuild określonych wersji — [#7786](https://github.com/NuGet/Home/issues/7786)
 
-**DCRs:**
+**DCRs**
 
 * Ogranicz liczbę żądań http na źródłowym za pośrednictwem pliku NuGet.Config - [#4538](https://github.com/NuGet/Home/issues/4538)
 
@@ -61,11 +61,11 @@ ms.locfileid: "57196203"
 * Dodanie obsługi netstandard2.0 do pakietów NuGet.* - [#6516](https://github.com/NuGet/Home/issues/6516)
 
 
-## <a name="summary-whats-new-in-nuget-50-preview-3"></a>Podsumowanie: Co nowego w wersji zapoznawczej NuGet w wersji 5.0 3
+## <a name="whats-new-in-nuget-50-preview-3"></a>Co nowego w wersji zapoznawczej NuGet w wersji 5.0 3
 
 ### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji 
 
-**Błędy:**
+**Błędy**
 
 * nuget.exe /? pomysłem jest wystawienie msbuild poprawne wersje — [#7794](https://github.com/NuGet/Home/issues/7794)
 
@@ -81,18 +81,18 @@ ms.locfileid: "57196203"
 
 * minimalny poziom szczegółowości MSBuild /t:restore powinny być mniejsze - [#4695](https://github.com/NuGet/Home/issues/4695)
 
-**DCRs:**
+**DCRs**
 
 * Umożliwia autorom pakietów do definiowania zachowania przechodnie zasoby kompilacji - [#6091](https://github.com/NuGet/Home/issues/6091)
 
 * Włączanie funkcji przywracania w programie VS się powieść, jeśli projekt nie jest częścią rozwiązania lub nie jest załadowany, ale została wcześniej przywrócona - [#5820](https://github.com/NuGet/Home/issues/5820)
 
 
-## <a name="summary-whats-new-in-50-preview-2"></a>Podsumowanie: Co nowego w wersji 5.0 2
+## <a name="whats-new-in-nuget-50-preview-2"></a>Co nowego w wersji zapoznawczej NuGet w wersji 5.0 2
 
 ### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
 
-**Błędy:**
+**Błędy**
 
 * VS firmy 16.0 NuGet interfejsu użytkownika ma nie można go odczytać karty z powodu problemów z kolorem - [#7735](https://github.com/NuGet/Home/issues/7735)
 
@@ -134,7 +134,7 @@ ms.locfileid: "57196203"
 
 * DotNet restore kończy się niepowodzeniem z powodu wyłączenia maszyny szerokiego źródła danych — [#5410](https://github.com/NuGet/Home/issues/5410)
 
-**DCRs:**
+**DCRs**
 
 * Zestawy NuGet w wersji 5.0, będą musieli .NET 4.7.2 (za pośrednictwem elementu TFM zmiana) - [#7510](https://github.com/NuGet/Home/issues/7510)
 

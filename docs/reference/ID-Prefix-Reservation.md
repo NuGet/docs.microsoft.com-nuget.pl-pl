@@ -6,12 +6,12 @@ ms.author: diverdan92
 ms.date: 10/09/2017
 ms.topic: reference
 ms.reviewer: ananguar
-ms.openlocfilehash: 32f83bede42f7643a9a4fed593643eefea0453c1
-ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
+ms.openlocfilehash: e8b902c89427333afb7a27ee9de0eeb99a92f391
+ms.sourcegitcommit: 571644118e3c5a2fd818891d305b4b8de8ef21de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981005"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57225878"
 ---
 # <a name="package-id-prefix-reservation"></a>Rezerwowanie prefiksów identyfikatorów pakietu
 
@@ -31,7 +31,7 @@ Gdy prefiks, który jest zarezerwowana na [nuget.org](https://www.nuget.org/), b
 
 1. Zawsze, gdy pakiet jest przesyłany do usługi [nuget.org](https://www.nuget.org/) z Identyfikatorem, który odpowiada zastrzeżony prefiks Identyfikatora, pakiet zostanie odrzucony, o ile nie pochodzi z jego właściciela, która zarezerwowana prefiks Identyfikatora.
 
-1. Dowolny pakiet, który odpowiada zastrzeżony prefiks Identyfikatora i pochodzi z jego właściciela, która zarezerwowana prefiks Identyfikatora odniesie wizualny wskaźnik informujący w programie Visual Studio 2017 w wersji 15.4 lub nowszej, a na [nuget.org](https://www.nuget.org/) wskazująca, że pakiet jest w obszarze zastrzeżony prefiks Identyfikatora. Dotyczy to zarówno nowe przesłanych pakietów, jak i istniejące pakiety w ramach jego właściciela. **Uwaga:** wskaźnika w programie Visual Studio pojawia się tylko wtedy, gdy pojedynczy kanał informacyjny został wybrany jako źródło pakietów.
+1. Dowolny pakiet, który odpowiada zastrzeżony prefiks Identyfikatora i pochodzi z jego właściciela, która zarezerwowana prefiks Identyfikatora odniesie wizualny wskaźnik informujący w programie Visual Studio 2017 w wersji 15.4 lub nowszej, a na [nuget.org](https://www.nuget.org/) wskazująca, że pakiet jest w obszarze zastrzeżony prefiks Identyfikatora. Dotyczy to zarówno nowe przesłanych pakietów, jak i istniejące pakiety w ramach jego właściciela. **Uwaga:** Wskaźnik w programie Visual Studio pojawia się tylko wtedy, gdy pojedynczy kanał informacyjny został wybrany jako źródło pakietów.
 
 1. Wszystkie uprzednio istniejące pakiety, które odpowiadają zastrzeżony prefiks Identyfikatora, ale są one *nie* należące do właściciela zarezerwowanego prefiks pozostanie niezmieniona (nie będzie nieznajdujące się na liście, ale mogą także mieć wizualny wskaźnik informujący). Ponadto właścicieli tych pakietów nadal będzie można przesłać nowe wersje pakietu.
 
@@ -84,6 +84,8 @@ Podczas przeglądania wniosek o rezerwowanie prefiksów identyfikatorów [nuget.
 1. Czy *nie* zarezerwowanie prefiks Identyfikatora pakietu powodować niejednoznaczności i niejasności dla społeczności?
 
 1. Czy właściwości identyfikujących pakiety, które odpowiadają pakietu prefiks Identyfikatora czytelne i spójne (szczególnie Autor pakietu)?
+
+1. Pakiety mają licencję (przy użyciu [licencji](https://docs.microsoft.com/en-us/nuget/reference/nuspec#license) metadanych elementu, a nie licenseUrl, który stanie się przestarzały)?
 
 ## <a name="third-party-feed-provider-scenarios"></a>Innych firm, źródła danych dostawcy scenariuszy
 
