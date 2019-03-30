@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 5d0d60cbcf6516d24efeb04f8262902da69d92d1
-ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
+ms.openlocfilehash: bb15b4decef104f1aefe37fd18f3358181a848af
+ms.sourcegitcommit: 2af17c8bb452a538977794bf559cdd78d58f2790
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56145660"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58637665"
 ---
 # <a name="nuget-api"></a>Interfejs API programu NuGet
 
@@ -33,7 +33,7 @@ Klientów, którzy obsługują interfejs API powinna obsługiwać co najmniej je
 
 Aby uzyskać więcej informacji na temat indeks usług zobacz [jego dokumentacja interfejsu API](service-index.md).
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
 Interfejs API jest w wersji 3 NuGet protokołu HTTP. Ten protokół jest czasami określane jako "interfejs API w wersji 3". Te dokumenty referencyjne będzie odnosił się do tej wersji protokołu, po prostu jako "interfejsu API."
 
@@ -49,17 +49,18 @@ Wprowadzono zmiany protokołu bez podziału do interfejsu API, ponieważ został
 
 **Indeks usług** zawiera opis różnych zasobów. Bieżący zestaw zasobów, obsługiwane są następujące:
 
-Nazwa zasobu                                                          | Wymagane | Opis
----------------------------------------------------------------------- | -------- | -----------
-[`PackagePublish`](package-publish-resource.md)                        | tak      | Wypychanie i usuwanie lub wyrejestrowanie pakietów.
-[`SearchQueryService`](search-query-service-resource.md)               | tak      | Filtr i wyszukiwanie pakietów według słowa kluczowego.
-[`RegistrationsBaseUrl`](registration-base-url-resource.md)            | tak      | Pobierz metadane pakietów.
-[`PackageBaseAddress`](package-base-address-resource.md)               | tak      | Pobierz zawartość pakietu (.nupkg).
-[`SearchAutocompleteService`](search-autocomplete-service-resource.md) | Brak       | Odkryj identyfikatorów pakietu i wersje, podciąg.
-[`ReportAbuseUriTemplate`](report-abuse-resource.md)                   | Brak       | Skonstruuj adres URL "Zgłoś nadużycie" strona sieci web.
-[`RepositorySignatures`](repository-signatures-resource.md)            | Brak       | Pobierz certyfikaty używane do podpisywania repozytorium.
-[`Catalog`](catalog-resource.md)                                       | Brak       | Pełną dokumentację wszystkich zdarzeń pakietu.
-[`SymbolPackagePublish`](symbol-package-publish-resource.md)           | Brak       | Wypchnij pakiety symboli.
+Nazwa zasobu                                                        | Wymagane | Opis
+-------------------------------------------------------------------- | -------- | -----------
+[Wykaz](catalog-resource.md)                                       | Brak       | Pełną dokumentację wszystkich zdarzeń pakietu.
+[PackageBaseAddress](package-base-address-resource.md)               | tak      | Pobierz zawartość pakietu (.nupkg).
+[PackageDetailsUriTemplate](package-details-template-resource.md)    | Brak       | Skonstruuj adres URL, aby uzyskać dostęp do strony sieci web szczegóły pakietu.
+[PackagePublish](package-publish-resource.md)                        | tak      | Wypychanie i usuwanie lub wyrejestrowanie pakietów.
+[RegistrationsBaseUrl](registration-base-url-resource.md)            | tak      | Pobierz metadane pakietów.
+[ReportAbuseUriTemplate](report-abuse-resource.md)                   | Brak       | Skonstruuj adres URL do raportu nadużycie strona sieci web.
+[RepositorySignatures](repository-signatures-resource.md)            | Brak       | Pobierz certyfikaty używane do podpisywania repozytorium.
+[SearchAutocompleteService](search-autocomplete-service-resource.md) | Brak       | Odkryj identyfikatorów pakietu i wersje, podciąg.
+[SearchQueryService](search-query-service-resource.md)               | tak      | Filtr i wyszukiwanie pakietów według słowa kluczowego.
+[SymbolPackagePublish](symbol-package-publish-resource.md)           | Brak       | Wypchnij pakiety symboli.
 
 Ogólnie rzecz biorąc wszystkie dane nieznakowe zwrócony przez zasobu interfejsu API są serializowane, przy użyciu formatu JSON. Schemat odpowiedzi zwrócony przez każdego zasobu w indeksie usługi zdefiniowano indywidualnie dla tego zasobu. Aby uzyskać więcej informacji na temat poszczególnych zasobów zobacz tematy wymienione powyżej.
 
@@ -123,7 +124,9 @@ Nazwa                     | Opis
 X-NuGet-ApiKey           | Wymaganych na potrzeby wypychania i usuwania, zobacz [ `PackagePublish` zasobów](package-publish-resource.md)
 X-NuGet-Client-Version   | **Przestarzałe** i zastąpione przez `X-NuGet-Protocol-Version`
 X-NuGet-Protocol-Version | W niektórych przypadkach wymagane tylko w witrynie nuget.org, zobacz [protokoły nuget.org](NuGet-Protocols.md)
-X-NuGet-Session-Id       | *Opcjonalnie*. NuGet klientów v4.7 na + identyfikowania żądań HTTP, które są częścią tej samej sesji klienta NuGet. Aby uzyskać `PackageReference` operacji przywracania nie jest identyfikatorem jednej sesji w innych scenariuszach, takich jak Autouzupełnianie, i `packages.config` przywracania może istnieć kilka różnych sesji identyfikatory z powodu jak kod jest brana pod uwagę.
+X-NuGet-Session-Id       | *Opcjonalnie*. NuGet klientów v4.7 na + identyfikowania żądań HTTP, które są częścią tej samej sesji klienta NuGet.
+
+`X-NuGet-Session-Id` Zawiera pojedynczą wartość dla wszystkich operacji związanych z jednym przywracania w `PackageReference`. W innych sytuacjach, takich jak Autouzupełnianie i `packages.config` przywracania może istnieć kilka różnych sesji identyfikatory z powodu jak kod jest brana pod uwagę.
 
 ## <a name="authentication"></a>Uwierzytelnianie
 
