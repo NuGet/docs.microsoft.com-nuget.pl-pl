@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 08/29/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: a8be66f5871df260581b6baca8eb7959279d66cd
-ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
+ms.openlocfilehash: 21678cc36fd9bf1ed49143bee3f35208640fc8a7
+ms.sourcegitcommit: 2af17c8bb452a538977794bf559cdd78d58f2790
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56852588"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58637652"
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -90,7 +90,7 @@ Oto Pełna lista [identyfikatory licencji SPDX](https://spdx.org/licenses/). NuG
 
 Jeśli pakiet jest licencjonowane w ramach wielu typowych licencji, możesz określić złożonego licencji przy użyciu [SPDX składni wyrażenia w wersji 2.0](https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60).<br>Na przykład: `<license type="expression">BSD-2-Clause OR MIT</license>`
 
-Jeśli używasz licencji, w której nie przypisano identyfikator SPDX lub jest licencja niestandardowych, można spakować pliku (tylko `.txt.` lub `.md`) z tekstem licencji. Na przykład:
+Jeśli używasz licencji, w której nie przypisano identyfikator SPDX lub jest licencja niestandardowych, można spakować pliku (tylko `.txt` lub `.md`) z tekstem licencji. Na przykład:
 ```xml
 <package>
   <metadata>
