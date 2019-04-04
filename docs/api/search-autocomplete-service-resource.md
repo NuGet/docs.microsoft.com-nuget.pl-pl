@@ -6,18 +6,18 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 2d2b20c1ea439ec0a3225cf983d9a4d2eedb0333
-ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
+ms.openlocfilehash: fdc3ad8aa239a42d8a4c169a757715e856bdcb41
+ms.sourcegitcommit: 9f94e00428d83aef4a7a87db679129eff7720c59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54324763"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58911052"
 ---
 # <a name="autocomplete"></a>Autouzupełnianie
 
 Jest możliwe utworzenie pakietu identyfikator i wersja autouzupełniania doświadczenie w korzystaniu z interfejsu API w wersji 3. Zasób używane na potrzeby wykonywania zapytań autouzupełniania jest `SearchAutocompleteService` można znaleźć zasobu w [indeks usług](service-index.md).
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
 Następujące `@type` są używane wartości:
 
@@ -114,7 +114,7 @@ Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
 dane      | Tablica ciągów | tak      | Wersje pakietów dopasowane przez żądanie
 
-Wersje pakietów w `data` tablicy mogą zawierać metadane kompilacji SemVer 2.0.0 (np. `1.0.0+metadata`) Jeśli `semVerLevel=2.0.0` została podana w ciągu zapytania.
+Wersje pakietów w `data` Tablica może zawierać metadane kompilacji SemVer 2.0.0 (np. `1.0.0+metadata`) Jeśli `semVerLevel=2.0.0` znajduje się w ciągu zapytania.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 

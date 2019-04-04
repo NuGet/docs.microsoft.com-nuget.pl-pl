@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 10/25/2017
 ms.topic: reference
-ms.openlocfilehash: c294e4c188db2e90e6bcb62b60f71ed5529977fe
-ms.sourcegitcommit: a1846edf70ddb2505d58e536e08e952d870931b0
+ms.openlocfilehash: d7c943c1f13edf782dabe4afee9d19a1a42bd42a
+ms.sourcegitcommit: 9f94e00428d83aef4a7a87db679129eff7720c59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52303522"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58911091"
 ---
 # <a name="nugetconfig-reference"></a>Odwołanie do pliku nuget.config
 
@@ -148,8 +148,8 @@ Przechowywane nazwy użytkowników i hasła dla źródeł, zazwyczaj są określ
 
 | Key | Wartość |
 | --- | --- |
-| Nazwa użytkownika | Nazwa użytkownika źródła w postaci zwykłego tekstu. |
-| Hasło | Zaszyfrowane hasło dla źródła. |
+| nazwa użytkownika | Nazwa użytkownika źródła w postaci zwykłego tekstu. |
+| hasło | Zaszyfrowane hasło dla źródła. |
 | cleartextpassword | Hasło nieszyfrowane źródła. |
 
 **Przykład:**

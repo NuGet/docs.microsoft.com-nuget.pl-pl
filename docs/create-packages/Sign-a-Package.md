@@ -6,12 +6,12 @@ ms.author: rmpablos
 ms.date: 03/06/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: e8955f9d46bab235c8755d5654814a4291d542d6
-ms.sourcegitcommit: 673e580ae749544a4a071b4efe7d42fd2bb6d209
+ms.openlocfilehash: 8ff92e5a3ab2d5c13ee02a9e49709866e2ac0e87
+ms.sourcegitcommit: 8793f528a11bd8e8fb229cd12e9abba50d61e104
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52977566"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58921575"
 ---
 # <a name="signing-nuget-packages"></a>Podpisywanie pakietów NuGet
 
@@ -29,7 +29,7 @@ Można użyć własnym wystawionych certyfikatów do celów testowych. Pakiety p
 
   ![Kreator eksportu certyfikatów](../reference/media/CertificateExportWizard.png)
 
-* Możesz też wyeksportować certyfikat przy użyciu [polecenia PowerShell eksportu certyfikatu](/powershell/module/pkiclient/export-certificate.md).
+* Możesz też wyeksportować certyfikat przy użyciu [polecenia PowerShell eksportu certyfikatu](/powershell/module/pkiclient/export-certificate).
 
 ## <a name="sign-the-package"></a>Podpisywanie pakietu
 
@@ -39,8 +39,11 @@ Można użyć własnym wystawionych certyfikatów do celów testowych. Pakiety p
 Zaloguj się przy użyciu pakietu [logowania nuget](../tools/cli-ref-sign.md):
 
 ```cli
-nuget sign MyPackage.nupkg -CertificateFilePath <PathToTheCertificate> -Timestamper <TimestampServiceURL>
+nuget sign MyPackage.nupkg -CertificatePath <PathToTheCertificate> -Timestamper <TimestampServiceURL>
 ```
+
+> [!Tip]
+> Dostawca certyfikatów często są także używane dla adresu URL serwera timestamping `Timestamper` Pokaż opcjonalny argument powyżej. Zapoznaj się z dokumentacją z dostawcą i/lub pomocy technicznej dla tego adresu URL usługi.
 
 * Można użyć certyfikatu jest dostępny w magazynie certyfikatów lub używany certyfikat z pliku. Zobacz odwołanie do interfejsu wiersza polecenia [logowania nuget](../tools/cli-ref-sign.md).
 * Podpisanych pakietów powinien zawierać sygnaturę czasową, aby upewnić się, że podpis pozostaje ważny, gdy wygasł certyfikat podpisywania. Inne dadzą operacji logowania [ostrzeżenie](../reference/errors-and-warnings/NU3002.md).
@@ -67,7 +70,7 @@ Teraz można przystąpić do opublikowania pakietu na stronie NuGet.org. Zobacz 
 
 ## <a name="create-a-test-certificate"></a>Utwórz certyfikat testowy
 
-Można użyć własnym wystawionych certyfikatów do celów testowych. Aby utworzyć własny wystawionego certyfikatu, użyj [polecenia PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate.md).
+Można użyć własnym wystawionych certyfikatów do celów testowych. Aby utworzyć własny wystawionego certyfikatu, użyj [polecenia PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 ```ps
 New-SelfSignedCertificate -Subject "CN=NuGet Test Developer, OU=Use for testing purposes ONLY" `
@@ -89,8 +92,8 @@ To polecenie tworzy certyfikat testowania dostępności w magazynie certyfikató
 ## <a name="manage-signing-requirements-for-your-package-on-nugetorg"></a>Zarządzanie wymagania podpisywania pakietu w witrynie NuGet.org
 1. [Zaloguj się](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) na stronie NuGet.org.
 
-1. Przejdź do `Manage Packages`  
-    ![Konfigurowanie pakietów, które podpisały](../reference/media/configure-package-signers.png)
+1. Przejdź do `Manage Packages` 
+   ![Konfigurowanie pakietów, które podpisały](../reference/media/configure-package-signers.png)
 
 * Jeśli jesteś jedynym właścicielem pakietu, są wymagane osoby podpisującej tj służy dowolne zarejestrowane certyfikaty do podpisywania i publikowania pakietów NuGet.org.
 
@@ -98,7 +101,7 @@ To polecenie tworzy certyfikat testowania dostępności w magazynie certyfikató
 
 * Podobnie, jeśli wartość domyślna "Dowolna" opcja jest zaznaczona dla pakietu, w której jeden właściciel ma certyfikat zarejestrowany i innego właściciela nie ma żadnych certyfikatów zarejestrowanych, następnie NuGet.org akceptuje podpisanych pakietów za pomocą podpisu zarejestrowany za pomocą jednej z jego właścicieli lub Niepodpisany pakietu (ponieważ jest to jeden z właścicieli nie ma żadnych certyfikatów zarejestrowanych).
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Instalowanie pakietów podpisem](../consume-packages/installing-signed-packages.md)
 - [Dokumentacja podpisanych pakietów](../reference/Signed-Packages-Reference.md)
