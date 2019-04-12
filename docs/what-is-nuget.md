@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/10/2018
 ms.topic: overview
-ms.openlocfilehash: d688aecaa73cecbfee184e3b13801ed22326a852
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: 87f7494ea97a4fa65be04b2692d7b894938c3fe5
+ms.sourcegitcommit: 573af6133a39601136181c1d98c09303f51a1ab2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580327"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59509129"
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
@@ -37,7 +37,7 @@ Pakiet "zgodne" oznacza, że zawiera zestawy stworzona z myślą o co najmniej j
 Deweloperów pakietu, którzy wymagają interfejsów API poza .NET Standard z drugiej strony, Utwórz oddzielne zestawy dla platform docelowych różnych, jaki mu pasuje, do obsługi i obejmuje wszystkie te zestawy w tym samym pakiecie (co jest nazywane "multi-targeting"). Podczas instalowania pakietu sieci konsumenta NuGet wyodrębnia tylko zestawy, które są wymagane przez projekt. Pozwoli to zmniejszyć zużycie pakietu w gotowych aplikacji i/lub zestawów generowane przez ten projekt. Pakiet z wielowersyjnością kodu – jest także trudniejsze dla twórcy zachować.
 
 > [!Note]
-> Przeznaczonych dla platformy .NET Standard widoczne na poprzednim podejście przy użyciu różnych celów (PCL) biblioteka klas przenośnych. Ta dokumentacja w związku z tym koncentruje się na tworzenie pakietów dla platformy .NET Standard.
+> Przeznaczonych dla platformy .NET Standard zastępuje poprzedniego podejście przy użyciu różnych celów (PCL) biblioteka klas przenośnych. Ta dokumentacja w związku z tym koncentruje się na tworzenie pakietów dla platformy .NET Standard.
 
 ## <a name="nuget-tools"></a>Narzędzia NuGet
 
@@ -47,9 +47,9 @@ Oprócz hostowania pomocy technicznej, NuGet zawiera szereg narzędzi używane z
 | --- | --- | --- | --- |
 | [Interfejs wiersza polecenia nuget.exe](tools/nuget-exe-cli-reference.md) | Wszystkie | Tworzenie i użycia | Zawiera wszystkie funkcje NuGet, z niektórymi poleceniami zastosowanie konkretnie do pakietu dla twórców, niektóre mające zastosowanie tylko do konsumentów, i inne osoby mające zastosowanie do obu. Na przykład pakiet użycia dla twórców `nuget pack` polecenie, aby utworzyć pakiet z różnych zestawów i powiązane pliki, użyj konsumentów pakietu `nuget install` do uwzględnienia pakiety w folderze projektu i wszyscy używa `nuget config` konfiguracji NuGet zmienne. Jako narzędzie niezależne od platformy interfejs wiersza polecenia NuGet nie wchodzi w interakcję z projektów programu Visual Studio. |
 | [Wiersz polecenia DotNet](tools/dotnet-Commands.md) | Wszystkie | Tworzenie i użycia | Udostępnia pewne interfejs wiersza polecenia NuGet możliwości bezpośrednio w ramach łańcucha narzędzi .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia NuGet, wiersz polecenia dotnet nie wchodzi w interakcję z projektów programu Visual Studio. |
-| [Konsola menedżera pakietów](tools/package-manager-console.md) | Visual Studio Windows | Użycie | Udostępnia [poleceń programu PowerShell](tools/Powershell-Reference.md) dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
-| [Interfejs użytkownika menedżera pakietów](tools/package-manager-ui.md) | Visual Studio Windows | Użycie | Zapewnia łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
-| [Zarządzanie NuGet interfejsu użytkownika](/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Użycie | Zapewniają łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w programie Visual Studio dla komputerów Mac projektów. |
+| [Konsola menedżera pakietów](tools/package-manager-console.md) | Visual Studio Windows | Zużycie | Udostępnia [poleceń programu PowerShell](tools/Powershell-Reference.md) dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
+| [Interfejs użytkownika menedżera pakietów](tools/package-manager-ui.md) | Visual Studio Windows | Zużycie | Zapewnia łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
+| [Zarządzanie NuGet interfejsu użytkownika](/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Zużycie | Zapewniają łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w programie Visual Studio dla komputerów Mac projektów. |
 | [MSBuild](reference/msbuild-targets.md) | Windows | Tworzenie i użycia | Umożliwia tworzenie pakietów i przywrócenia pakietów, używany w projekcie bezpośrednio za pomocą łańcucha narzędzi programu MSBuild. |
 
 Jak widać, narzędzia NuGet, z którymi pracujesz znacznie zależeć od tego, czy tworzysz, wykorzystywanie czy Publikowanie pakietów i platformy, na którym pracujesz. Pakiet dla twórców zazwyczaj są to również konsumentów, ponieważ są one oparte na funkcji, znajdującą się w innych pakietach NuGet. I pakiety, oczywiście, mogą z kolei zależeć od nadal.
@@ -82,7 +82,7 @@ Komputer, który otrzyma projektu, takich jak serwer kompilacji, uzyskując kopi
 
 Wyraźnie widać następnie podstawową rolą NuGet, których dotyczy to deweloperom utrzymuje tę listę odwołań w imieniu projektu i umożliwianie efektywnie przywracania (i zaktualizować) te pakiety do którego istnieje odwołanie. Ta lista jest przechowywana w jednej z dwóch *pakietu zarządzania formaty*, zgodnie z ich wywołania:
 
-- [`packages.config`](reference/packages-config.md): *(NuGet) 1.0 +* pliku XML, który zawiera płaską listę wszystkich zależności w projekcie, w tym zależności innych zainstalowanych pakietów. Zainstalowane lub przywróconej pakiety są przechowywane w `packages` folderu.
+- [`packages.config`](reference/packages-config.md): *(NuGet 1.0 +)*  Pliku XML, który zawiera płaską listę wszystkich zależności w projekcie, w tym zależności innych zainstalowanych pakietów. Zainstalowane lub przywróconej pakiety są przechowywane w `packages` folderu.
 
 - [PackageReference](consume-packages/package-references-in-project-files.md) (lub "odwołania do w plikach projektu pakietu") | *(NuGet 4.0 +)* utrzymuje listę zależności najwyższego poziomu projektu, bezpośrednio w pliku projektu, więc ten sam plik jest potrzebny. Skojarzony plik `obj/project.assets.json`, jest generowana dynamicznie zarządzać ogólną wykres zależności pakietów, do których projekt używa wraz ze wszystkimi zależnościami niskiego poziomu. PackageReference jest zawsze używana w projektach .NET Core.
 

@@ -8,12 +8,12 @@ description: Zasób podpisów repozytorium umożliwia klientom źródła pakietu
 ms.reviewer:
 - karann
 - unniravindranathan
-ms.openlocfilehash: 81d32a7011268e45136e00cdb7345a95070aae06
-ms.sourcegitcommit: be9c51b4b095aea40ef41bbea7e12ef0a194ee74
+ms.openlocfilehash: ea318446c41a0d85d3fbf959dd38c929a0d0e9a1
+ms.sourcegitcommit: 573af6133a39601136181c1d98c09303f51a1ab2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53248445"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59509025"
 ---
 # <a name="repository-signatures"></a>Podpisy repozytorium
 
@@ -21,14 +21,15 @@ Jeśli źródło pakietu obsługuje dodawanie podpisach repozytorium na opubliko
 
 Zasób, używany do pobierania tych informacji podpisu repozytorium jest `RepositorySignatures` można znaleźć zasobu w [indeks usług](service-index.md).
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
 Następujące `@type` zostanie użyta wartość:
 
 @type Wartość                | Uwagi
 -------------------------- | -----
 RepositorySignatures/4.7.0 | Wersja początkowa
-RepositorySignatures/4.9.0 | Umożliwia włączenie `allRepositorySigned`
+RepositorySignatures/4.9.0 | Obsługiwane przez NuGet v4.9 + klientów
+RepositorySignatures/5.0.0 | Umożliwia włączenie `allRepositorySigned`. Obsługiwane przez NuGet w wersji 5.0 + klientów
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
@@ -59,13 +60,13 @@ Indeks sygnatury repozytorium jest dokumentem JSON, który zawiera obiekt z nast
 
 Nazwa                | Typ             | Wymagane | Uwagi
 ------------------- | ---------------- | -------- | -----
-allRepositorySigned | wartość logiczna          | tak      | Musi być `false` na 4.7.0 zasobów
+allRepositorySigned | wartość logiczna          | tak      | Musi być `false` 4.7.0 i 4.9.0 zasobów
 signingCertificates | Tablica obiektów | tak      | 
 
 `allRepositorySigned` Atrybut typu wartość logiczna jest ustawiona na wartość false, jeśli źródło pakietu ma kilka pakietów, dla których brak podpisu w repozytorium. Jeśli wartość logiczna ma wartość true, wszystkie pakiety dostępne na źródło musi mieć podpis repozytorium utworzone za pomocą jednej z certyfikatów podpisywania, o których wspomniano w `signingCertificates`.
 
 > [!Warning]
-> `allRepositorySigned` Logiczna musi mieć wartość false, na 4.7.0 zasobów. Klienci programu NuGet v4.7 na i v4.8 nie może zainstalować pakiety ze źródeł, które mają `allRepositorySigned` ma wartość true.
+> `allRepositorySigned` Logiczna musi mieć wartość false, 4.7.0 i 4.9.0 zasobów. Klienci programu NuGet v4.7 na v4.8 i v4.9 nie może zainstalować pakiety ze źródeł, które mają `allRepositorySigned` ma wartość true.
 
 Powinna istnieć co najmniej jednego certyfikatu podpisywania w `signingCertificates` tablicy, jeśli `allRepositorySigned` atrybut typu wartość logiczna jest ustawiona na wartość true. Jeśli tablica jest pusta i `allRepositorySigned` jest ustawiona na wartość true, wszystkie pakiety ze źródła należy uwzględnić nieprawidłowe, mimo że zasady klienta nadal zezwalają na użycie pakietów. Każdy element w tej tablicy jest obiekt JSON z następującymi właściwościami.
 

@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 08/29/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 21678cc36fd9bf1ed49143bee3f35208640fc8a7
-ms.sourcegitcommit: 2af17c8bb452a538977794bf559cdd78d58f2790
+ms.openlocfilehash: ebb1dd929042a1fcd269d0ac50154ae6b8234be2
+ms.sourcegitcommit: 573af6133a39601136181c1d98c09303f51a1ab2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58637652"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59509105"
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -84,11 +84,13 @@ Adres URL strony głównej pakietu, często wyświetlany w użytkownika, jak ró
 
 Adres URL licencji pakietu, często wyświetlany w użytkownika, jak również adres nuget.org.
 #### <a name="license"></a>Licencja
-Wyrażenie licencji SPDX lub ścieżkę do pliku licencji w ramach pakietu, często wyświetlany w użytkownika, jak również adres nuget.org. Jeśli licencjonujesz pakietu typowych licencji, takie jak BSD 2 klauzuli lub MIT, należy użyć skojarzony identyfikator SPDX w licencji.<br>Na przykład: `<license type="expression">MIT</license>`
+Wyrażenie licencji SPDX lub ścieżkę do pliku licencji w ramach pakietu, często wyświetlany w użytkownika, jak również adres nuget.org. Jeśli licencjonujesz pakietu typowych licencji, takie jak BSD 2 klauzuli lub MIT, należy użyć skojarzony identyfikator SPDX w licencji.<br>Na przykład:
+`<license type="expression">MIT</license>`
 
 Oto Pełna lista [identyfikatory licencji SPDX](https://spdx.org/licenses/). NuGet.org akceptuje tylko OSI lub licencji FSF zatwierdzone, korzystając z licencji wyrażenie typu.
 
-Jeśli pakiet jest licencjonowane w ramach wielu typowych licencji, możesz określić złożonego licencji przy użyciu [SPDX składni wyrażenia w wersji 2.0](https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60).<br>Na przykład: `<license type="expression">BSD-2-Clause OR MIT</license>`
+Jeśli pakiet jest licencjonowane w ramach wielu typowych licencji, możesz określić złożonego licencji przy użyciu [SPDX składni wyrażenia w wersji 2.0](https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60).<br>Na przykład:
+`<license type="expression">BSD-2-Clause OR MIT</license>`
 
 Jeśli używasz licencji, w której nie przypisano identyfikator SPDX lub jest licencja niestandardowych, można spakować pliku (tylko `.txt` lub `.md`) z tekstem licencji. Na przykład:
 ```xml
@@ -344,7 +346,7 @@ Zestawy struktury są te, które są częścią programu .NET framework i powini
 
 | Atrybut | Opis |
 | --- | --- |
-| **assemblyName** | (Wymagane) W pełni kwalifikowanej nazwy zestawu. |
+| **nazwaZestawu** | (Wymagane) W pełni kwalifikowanej nazwy zestawu. |
 | **targetFramework** | (Opcjonalnie) Określa platformę docelową, której dotyczy odwołanie. Jeśli argument jest pominięty, wskazuje, że odwołanie ma zastosowanie do wszystkich środowisk. Zobacz [ustalać platformy docelowe](../reference/target-frameworks.md) identyfikatorów dokładnie framework. |
 
 W poniższym przykładzie pokazano odwołanie do `System.Net` dla wszystkich docelowych struktur i odwołania do `System.ServiceModel` dla programu .NET Framework 4.0 tylko:
@@ -385,8 +387,8 @@ Każdy `<file>` element określa następujące atrybuty:
 | Atrybut | Opis |
 | --- | --- |
 | **src** | Lokalizacja pliku lub plików, obejmujący podlegają wykluczenia określonego przez `exclude` atrybutu. Ścieżka jest względem `.nuspec` pliku, chyba że określony jest ścieżką bezwzględną. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
-| **target** | Względna ścieżka do folderu, w pakiecie, gdzie są umieszczone pliki źródłowe, musi zaczynać się od `lib`, `content`, `build`, lub `tools`. Zobacz [tworzenie .nuspec z katalogu roboczego oparty na Konwencji](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). |
-| **exclude** | Rozdzieloną średnikami listę plików lub wzorce plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
+| **Docelowy** | Względna ścieżka do folderu, w pakiecie, gdzie są umieszczone pliki źródłowe, musi zaczynać się od `lib`, `content`, `build`, lub `tools`. Zobacz [tworzenie .nuspec z katalogu roboczego oparty na Konwencji](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). |
+| **wykluczanie** | Rozdzieloną średnikami listę plików lub wzorce plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
 
 ### <a name="examples"></a>Przykłady
 
@@ -590,10 +592,10 @@ Te pliki są określane za pomocą zestaw atrybutów, które opisują, jak powin
 | Atrybut | Opis |
 | --- | --- |
 | **include** | (Wymagane) Lokalizacja pliku lub plików, obejmujący podlegają wykluczenia określonego przez `exclude` atrybutu. Ścieżka jest względem `.nuspec` pliku, chyba że określony jest ścieżką bezwzględną. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
-| **exclude** | Rozdzieloną średnikami listę plików lub wzorce plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
+| **wykluczanie** | Rozdzieloną średnikami listę plików lub wzorce plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolone i podwójne symbolu wieloznacznego `**` wskazuje folder wyszukiwania rekurencyjnego. |
 | **buildAction** | Akcja kompilacji, aby przypisać do elementu zawartości dla platformy MSBuild, takich jak `Content`, `None`, `Embedded Resource`, `Compile`itp. Wartość domyślna to `Compile`. |
 | **copyToOutput** | Wartość Boolean wskazującą, czy chcesz skopiować elementy zawartości do kompilacji (lub opublikować) folder wyjściowy. Wartością domyślną jest false. |
-| **flatten** | Wartość logiczna wskazująca, czy skopiować elementy zawartości na pojedynczy folder w danych wyjściowych kompilacji (true) czy zachować strukturę folderów w pakiecie (false). Ta flaga działa tylko, gdy copyToOutput flaga jest ustawiona na wartość true. Wartością domyślną jest false. |
+| **spłaszczanie** | Wartość logiczna wskazująca, czy skopiować elementy zawartości na pojedynczy folder w danych wyjściowych kompilacji (true) czy zachować strukturę folderów w pakiecie (false). Ta flaga działa tylko, gdy copyToOutput flaga jest ustawiona na wartość true. Wartością domyślną jest false. |
 
 Instalując pakiet NuGet dotyczy elementów podrzędnych `<contentFiles>` od góry do dołu. Jeśli wiele wpisów pasuje do tego samego pliku wszystkie wpisy są stosowane. Wpis umieszczony najwyżej zastępuje wpisy niżej, jeśli występuje konflikt z tego samego atrybutu.
 
@@ -726,7 +728,6 @@ Puste foldery można użyć `.` zrezygnować z dostarczanie zawartości dla niek
 W tym przykładzie poniżej są zainstalowane dla określonego projektu celów:
 
 - .NET4 -> `System.Web`, `System.Net`
-- . NET4 -> Profil klienta `System.Net`
-- Program Silverlight 3 -> `System.Json`
-- Silverlight 4 -> `System.Windows.Controls.DomainServices`
+- .NET4 Client Profile -> `System.Net`
+- Silverlight 3 -> `System.Json`
 - WindowsPhone -> `Microsoft.Devices.Sensors`
