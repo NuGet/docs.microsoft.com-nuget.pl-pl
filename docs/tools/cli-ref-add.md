@@ -42,11 +42,11 @@ gdzie `<packagePath>` jest nazwa ścieżki do pakietu, aby dodać, a `<sourcePat
 | Opcja | Opis |
 | --- | --- |
 | ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) jest używany.|
-| Rozwiń węzeł | Dodaje wszystkie pliki w pakiecie do źródła pakietu. |
+| Expand | Dodaje wszystkie pliki w pakiecie do źródła pakietu. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
-| Pomoc | Wyświetla Pomoc dla polecenia. |
-| Nieinterakcyjnym | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
+| Help | Wyświetla Pomoc dla polecenia. |
+| NonInteractive | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
+| Verbosity | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
 Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 
