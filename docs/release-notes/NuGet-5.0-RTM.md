@@ -6,10 +6,10 @@ ms.author: karann
 ms.date: 04/02/2019
 ms.topic: conceptual
 ms.openlocfilehash: 5e48ff19ea5c4908d7eb0a3cb19a31b738e348eb
-ms.sourcegitcommit: 8793f528a11bd8e8fb229cd12e9abba50d61e104
+ms.sourcegitcommit: 573af6133a39601136181c1d98c09303f51a1ab2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58921588"
 ---
 # <a name="nuget-50-release-notes"></a>Informacje o wersji 5.0 NuGet
@@ -34,7 +34,7 @@ NuGet pojazdów dystrybucji:
 
 ## <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
 
-**Usterki**
+**Błędy**
 
 * W trakcie przywracania aktualizujący nie działa, należy unikać *. dgspec.json zapisu w katalogu obj — [#7854](https://github.com/NuGet/Home/issues/7854)
 

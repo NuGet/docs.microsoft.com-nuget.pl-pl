@@ -7,10 +7,10 @@ ms.date: 03/06/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
 ms.openlocfilehash: 8ff92e5a3ab2d5c13ee02a9e49709866e2ac0e87
-ms.sourcegitcommit: 8793f528a11bd8e8fb229cd12e9abba50d61e104
+ms.sourcegitcommit: 573af6133a39601136181c1d98c09303f51a1ab2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58921575"
 ---
 # <a name="signing-nuget-packages"></a>Podpisywanie pakietów NuGet
@@ -92,8 +92,8 @@ To polecenie tworzy certyfikat testowania dostępności w magazynie certyfikató
 ## <a name="manage-signing-requirements-for-your-package-on-nugetorg"></a>Zarządzanie wymagania podpisywania pakietu w witrynie NuGet.org
 1. [Zaloguj się](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) na stronie NuGet.org.
 
-1. Przejdź do `Manage Packages` 
-   ![Konfigurowanie pakietów, które podpisały](../reference/media/configure-package-signers.png)
+1. Przejdź do `Manage Packages`  
+    ![Konfigurowanie pakietów, które podpisały](../reference/media/configure-package-signers.png)
 
 * Jeśli jesteś jedynym właścicielem pakietu, są wymagane osoby podpisującej tj służy dowolne zarejestrowane certyfikaty do podpisywania i publikowania pakietów NuGet.org.
 
