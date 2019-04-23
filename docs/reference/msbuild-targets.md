@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8132595cbfaf553736fbcc81aada283a44d6cdbf
-ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
+ms.openlocfilehash: 1e89aeb46f2538d46c013561a51a41702b2472d8
+ms.sourcegitcommit: 6b71926f062ecddb8729ef8567baf67fd269642a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54324854"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59932102"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -322,7 +322,7 @@ Przykład:
 
 1. Odczyt wszystkich odwołań między projektami
 1. Odczyt właściwości projektu, aby znaleźć pośrednich struktur dla folderu docelowego
-1. Pass msbuild data to NuGet.Build.Tasks.dll
+1. Przekazywanie danych programu MSBuild do NuGet.Build.Tasks.dll
 1. Uruchom Przywracanie
 1. Pobierz pakiety
 1. Zapisu pliku zasobów, obiektów docelowych i właściwości
@@ -341,9 +341,14 @@ Ustawienia dodatkowe przywracania mogą pochodzić z właściwości programu MSB
 | RestoreConfigFile | Ścieżka do `Nuget.Config` pliku, aby zastosować. |
 | RestoreNoCache | W przypadku wartości true umożliwia uniknięcie korzystania z pamięci podręcznej pakietów. Zobacz [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). |
 | RestoreIgnoreFailedSources | W przypadku opcji true ignoruje awarie lub Brak źródeł pakietów. |
+| RestoreFallbackFolders | Rezerwowy foldery, używane w taki sam sposób pakiety użytkownika, który jest używany folder. |
+| RestoreAdditionalProjectSources | Dodatkowe zasoby do użycia podczas przywracania. |
+| RestoreAdditionalProjectFallbackFolders | Dodatkowe rezerwowego foldery do wykorzystania podczas przywracania. |
+| RestoreAdditionalProjectFallbackFoldersExcludes | Wyklucza rezerwowego foldery określone w `RestoreAdditionalProjectFallbackFolders` |
 | RestoreTaskAssemblyFile | Ścieżka do `NuGet.Build.Tasks.dll`. |
 | RestoreGraphProjectInput | Rozdzielana średnikami lista projektów do przywrócenia, powinna ona zawierać ścieżek bezwzględnych. |
-| RestoreOutputPath | Folder wyjściowy, przyjęty `obj` folderu. |
+| RestoreUseSkipNonexistentTargets  | Gdy projekty są zbierane za pomocą programu MSBuild Określa, czy ich są zbierane przy użyciu `SkipNonexistentTargets` optymalizacji. Gdy nie są ustawione, wartość domyślna to `true`. Jego konsekwencję jest zachowanie bezawaryjną, gdy obiekt docelowy projektu nie może zostać zaimportowany. |
+| MSBuildProjectExtensionsPath | Folder wyjściowy, przyjęty `BaseIntermediateOutputPath` i `obj` folderu. |
 
 #### <a name="examples"></a>Przykłady
 
@@ -370,6 +375,23 @@ Przywracanie tworzy następujące pliki w kompilacji `obj` folderu:
 | `project.assets.json` | Zawiera wykres zależności dla wszystkich odwołań do pakietów. |
 | `{projectName}.projectFileExtension.nuget.g.props` | Odwołania do właściwości programu MSBuild zawartych w pakietach |
 | `{projectName}.projectFileExtension.nuget.g.targets` | Odwołania do elementów docelowych MSBuild zawartych w pakietach |
+
+### <a name="restoring-and-building-with-one-msbuild-command"></a>Przywracanie i tworzenie za pomocą jednego polecenia programu MSBuild
+
+Fakt, że NuGet można przywrócić pakietów, które obniżyć elementów docelowych MSBuild oraz właściwości, przywracania i ocen kompilacji są uruchamiane przy użyciu różnych właściwości globalne.
+To oznacza, że następujące będzie mieć nieprzewidywalnością i często nieprawidłowe zachowanie.
+
+```cli
+msbuild -t:restore,build
+```
+
+ Zamiast tego zaleca:
+
+```cli
+msbuild -t:build -restore
+```
+
+Ta sama logika dotyczy do innych celów, które są podobne do `build`.
 
 ### <a name="packagetargetfallback"></a>PackageTargetFallback
 

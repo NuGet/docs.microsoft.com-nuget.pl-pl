@@ -5,18 +5,21 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: fd5824d1c5e05df08301dac1cf656ba1d5ca75cd
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: ac1bf2b65ab6ec4e8cf864810181fc661236262a
+ms.sourcegitcommit: 6b71926f062ecddb8729ef8567baf67fd269642a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551741"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59931985"
 ---
 # <a name="nuget-cli-environment-variables"></a>Zmienne środowiskowe interfejsu wiersza polecenia NuGet
 
 Zachowanie nuget.exe interfejsu wiersza polecenia można skonfigurować pewne zmienne środowiskowe, które mają wpływ na nuget.exe całego komputera, użytkownika lub przetworzyć poziomów. Zmienne środowiskowe zawsze zastępuje wszelkie ustawienia w `NuGet.Config` plików, dzięki czemu serwer kompilacji z usługą Zmień odpowiednie ustawienia bez modyfikowania żadnych plików.
 
 Ogólnie rzecz biorąc, opcje określone bezpośrednio w wierszu polecenia lub w plikach konfiguracyjnych NuGet ma pierwszeństwo, ale istnieje kilka wyjątków takich jak *FORCE_NUGET_EXE_INTERACTIVE*. Okaże się, że ten nuget.exe zachowuje się inaczej między komputerami, przyczyną może być zmienną środowiskową. Na przykład Azure Web Apps Kudu, (używane podczas wdrażania) ma *NUGET_XMLDOC_MODE* równa *pominąć* wydajność przywracania pakietów i zaoszczędzić miejsce na dysku.
+
+Interfejs wiersza polecenia NuGet używa programu MSBuild, aby odczytywać pliki projektu. Wszystkie zmienne środowiskowe są dostępne jako [właściwości](/visualstudio/msbuild/msbuild-command-line-reference) podczas oceny MSBuild.
+Lista właściwości, które opisano w [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md#restore-properties) może być także ustawiona jako zmienne środowiskowe.
 
 | Zmienna | Opis | Uwagi |
 | --- | --- | --- |
@@ -34,4 +37,5 @@ Ogólnie rzecz biorąc, opcje określone bezpośrednio w wierszu polecenia lub w
 | NUGET_RESTORE_MSBUILD_VERBOSITY | Ustawia poziom szczegółowości dziennika MSBuild. | Wartość domyślna to *cichy* ("/ v: q"). Możliwe wartości *q [uiet]*, *m [najmniej]*, *n [ormal]*, *d [egółowy]*, i *diag [Diagnostyka]*. |
 | NUGET_SHOW_STACK | Określa, czy pełny wyjątek (w tym ślad stosu) powinna być wyświetlana użytkownikowi. | Określony jako *true* lub *false* (ustawienie domyślne). |
 | NUGET_XMLDOC_MODE | Określa sposób obsługi wyodrębniania pliku dokumentacji XML zestawów. | Tryby obsługiwane są *pominąć* (nie wyodrębnić pliki dokumentacji XML), *skompresować* (przechowywać pliki dokumentacji XML jako archiwum zip) lub *Brak* (domyślnie, Traktuj pliki dokumentacji XML jako zwykłych pliki). |
-| NUGET_CERT_REVOCATION_MODE | Określa, jak sprawdzanie stanu odwołania certyfikatu używanego do podpisania pakietu, pefromed po zainstalowaniu lub przywrócić podpisanych pakietów. Gdy nie są ustawione, wartość domyślna to `online`.| Możliwe wartości *online* (ustawienie domyślne), *offline*.  Powiązane z [NU3028](../reference/errors-and-warnings/NU3028.md) |
+| NUGET_CERT_REVOCATION_MODE | Określa, jak sprawdzanie stanu odwołania certyfikatu używanego do podpisania pakietu, odbywa się po zainstalowaniu lub przywrócić podpisanych pakietów. Gdy nie są ustawione, wartość domyślna to `online`.| Możliwe wartości *online* (ustawienie domyślne), *offline*.  Powiązane z [NU3028](../reference/errors-and-warnings/NU3028.md) |
+

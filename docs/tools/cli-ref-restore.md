@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: adf97196f50f2a55d6b8ceed93d53ff12b67657b
-ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
+ms.openlocfilehash: 9964186dcbfedfbf2415a57102f8f019a1eef23a
+ms.sourcegitcommit: 6b71926f062ecddb8729ef8567baf67fd269642a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56145634"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59931998"
 ---
 # <a name="restore-command-nuget-cli"></a>polecenie Restore (interfejs wiersza polecenia NuGet)
 
@@ -37,7 +37,7 @@ gdzie `<projectPath>` Określa lokalizację rozwiązania lub `packages.config` p
 | DisableParallelProcessing | Wyłącza Przywracanie wielu pakietów równolegle. |
 | FallbackSource | *(3.2 +)*  Listę źródeł pakietów do użycia jako przejścia, w przypadku, gdy pakiet nie zostanie odnaleziona w podstawowej lub domyślne źródło. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
-| Pomoc | Wyświetla Pomoc dla polecenia. |
+| Help | Wyświetla Pomoc dla polecenia. |
 | MSBuildPath | *(4.0 +)*  Określa ścieżkę program MSBuild będzie używać za pomocą polecenia pierwszeństwo `-MSBuildVersion`. |
 | MSBuildVersion | *(3.2 +)*  Określa numer wersji MSBuild ma być używany za pomocą tego polecenia. Obsługiwane wartości to 4, 12, 14, 15.1, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9. Domyślnie program MSBuild w ścieżce jest pobierana w przeciwnym razie domyślnie najwyższy zainstalowanej wersji programu MSBuild. |
 | NoCache | Uniemożliwia korzystania z pamięci podręcznej pakietów NuGet. Zobacz [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). |
@@ -49,8 +49,8 @@ gdzie `<projectPath>` Określa lokalizację rozwiązania lub `packages.config` p
 | cykliczne | *(4.0 +)*  Przywraca wszystkie projekty odwołania dla projektów platformy uniwersalnej systemu Windows i platformy .NET Core. Nie ma zastosowania do projektów przy użyciu `packages.config`. |
 | RequireConsent | Sprawdza, czy Przywracanie pakietów jest włączona, zanim pobranie i zainstalowanie pakietów. Aby uzyskać więcej informacji, zobacz [Przywracanie pakietów](../consume-packages/package-restore.md). |
 | SolutionDirectory | Określa folder rozwiązania. Nie jest prawidłowy podczas przywracania pakietów dla rozwiązania. Wymagana, gdy przywrócenie za pomocą `packages.config` pliku, chyba że `PackagesDirectory` lub `OutputDirectory` jest używany. |
-| Źródło | Określa listę źródeł pakietów (jako adresy URL) na potrzeby przywracania. Jeśli argument jest pominięty, polecenie używa źródeł dostarczane w plikach konfiguracyjnych, zobacz [zachowania programu NuGet Konfigurowanie](../consume-packages/configuring-nuget-behavior.md). |
-| Szczegółowość |> określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
+| Source | Określa listę źródeł pakietów (jako adresy URL) na potrzeby przywracania. Jeśli argument jest pominięty, polecenie używa źródeł dostarczane w plikach konfiguracyjnych, zobacz [zachowania programu NuGet Konfigurowanie](../consume-packages/configuring-nuget-behavior.md). |
+| Verbosity |> określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
 Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 
@@ -71,7 +71,7 @@ Polecenie restore wykonuje następujące czynności:
 2. Określ folder packages przy użyciu następującej kolejności priorytetu (NuGet powoduje błąd, jeśli nie zostaną znalezione żadne z tych folderów):
 
     - Folder określony za pomocą `-PackagesDirectory`.
-    - `repositoryPath` Back w `Nuget.Config`
+    - `repositoryPath` Wartość w `Nuget.Config`
     - Folder określony za pomocą `-SolutionDirectory`
     - `$(SolutionDir)\packages`
 
