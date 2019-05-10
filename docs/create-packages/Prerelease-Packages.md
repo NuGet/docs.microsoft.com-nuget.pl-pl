@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: d6925df63daf3096455a8205d6aeb07b4475f715
-ms.sourcegitcommit: 5c5f0f0e1f79098e27d9566dd98371f6ee16f8b5
+ms.openlocfilehash: 696f51905198defdbfd475ba7d010ac3e27ac557
+ms.sourcegitcommit: 3fc93f7a64be040699fe12125977dd25a7948470
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53645636"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64877942"
 ---
 # <a name="building-pre-release-packages"></a>Tworzenie pakietów w wersji wstępnej
 
@@ -22,7 +22,7 @@ Stabilnej wersji jest taki, który jest uznawany za niezawodny, ma być używany
 
 Do obsługi cyklu życia wersji oprogramowania, NuGet w wersji 1.6 i nowszych umożliwia dystrybucja pakiety w wersji wstępnej, numer wersji uwzględniającym sufiks wersji semantycznej takich jak `-alpha`, `-beta`, lub `-rc`. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji pakietów](../reference/package-versioning.md#pre-release-versions).
 
-Należy określić taki wersji na dwa sposoby:
+Należy określić taki wersji na trzy sposoby:
 
 - `.nuspec` Plik: zawierać sufiks wersji semantycznej `version` elementu:
 
@@ -30,7 +30,15 @@ Należy określić taki wersji na dwa sposoby:
     <version>1.0.1-alpha</version>
     ```
 
-- Zestawu atrybutów: podczas tworzenia pakietu z projektu programu Visual Studio (`.csproj` lub `.vbproj`), użyj `AssemblyInformationalVersionAttribute` do określenia wersji:
+- `.csproj` Plik: zawierać sufiks wersji semantycznej `PackageVersion` elementu:
+
+    ```xml
+    <PropertyGroup>
+        <PackageVersion>1.0.1-alpha</PackageVersion>
+    </PropertyGroup>
+    ```
+
+- Zestawu atrybutów: Określ za pomocą wersji `AssemblyInformationalVersionAttribute`:
 
     ```cs
     [assembly: AssemblyInformationalVersion("1.0.1-beta")]
@@ -56,11 +64,11 @@ Domyślnie podczas pracy z pakietami NuGet obejmuje wersje wstępne, ale można 
 
 ## <a name="semantic-versioning"></a>Przechowywanie wersji semantyczne
 
-[Konwencji Semantic Versioning lub SemVer](http://semver.org/spec/v1.0.0.html) w tym artykule opisano sposób wykorzystywania ciągi numerów wersji w celu przekazania ich znaczenie odpowiedni kod.
+[Konwencji Semantic Versioning lub SemVer](http://semver.org/spec/v1.0.0.html) w tym artykule opisano sposób wykorzystywania ciągi numerów wersji, aby przekazywać znaczenie odpowiedni kod.
 
 W niniejszej Konwencji, każda wersja ma trzy części `Major.Minor.Patch`, mają następujące znaczenie:
 
-- `Major`: Zmiany powodujące niezgodność
+- `Major`: Fundamentalne zmiany
 - `Minor`: Nowe funkcje, ale wstecznie zgodne
 - `Patch`: Wstecznie zgodny poprawek błędów oprogramowania tylko
 
