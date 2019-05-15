@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/12/2017
 ms.topic: conceptual
-ms.openlocfilehash: db02089bec3d2b8c001518fa0542375dc5418eb8
-ms.sourcegitcommit: c825eb7e222d4a551431643f5b5617ae868ebe0a
+ms.openlocfilehash: f0d9667b752caf7831278ac3fd63cfd67f7d34a4
+ms.sourcegitcommit: 4ea46498aee386b4f592b5ebba4af7f9092ac607
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51944070"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610589"
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
@@ -151,7 +151,7 @@ Tworzenie pełny manifeście zwykle zaczyna się od podstawowego `.nuspec` plik 
 
 - [Przejdź do katalogu roboczego oparty na Konwencji](#from-a-convention-based-working-directory)
 - [Zestaw bibliotek DLL](#from-an-assembly-dll)
-- [Projekt programu Visual Studio](#from-a-visual-studio-project)    
+- [A Visual Studio project](#from-a-visual-studio-project)    
 - [Nowy plik z wartościami domyślnymi](#new-file-with-default-values)
 
 Możesz następnie przeprowadź edycję pliku ręcznie, aby go w tym artykule opisano dokładnie zawartość, którą chcesz w pakiecie końcowym.
@@ -166,7 +166,7 @@ Ponieważ pakiet NuGet jest po prostu plik ZIP, który jest zastępowana `.nupkg
 Zaletą tego podejścia jest to, nie należy określić w manifeście pliki, które mają zostać uwzględnione w pakiecie (opisany w dalszej części tego tematu). Po prostu może mieć proces kompilacji, tworzyć strukturę folderów dokładnie, która przechodzi do pakietu i innych plików, które mogą być częścią projektu w przeciwnym razie można łatwo dołączyć:
 
 - Zawartość i kod źródłowy, który powinien dodane do projektu docelowego.
-- Skrypty programu PowerShell (pakietów używane w pakiecie NuGet 2.x może obejmować także skrypty instalacji, co nie jest obsługiwane w pakiecie NuGet 3.x lub nowszy).
+- Skrypty programu PowerShell
 - Przekształcenia do istniejącej konfiguracji i plikami źródła kodu w projekcie.
 
 Konwencje folderze są następujące:
@@ -201,7 +201,7 @@ nuget spec <assembly-name>.dll
 
 Za pomocą tego formularza zastępuje kilka symboli zastępczych w manifeście z określonymi wartościami z zestawu. Na przykład `<id>` właściwość jest ustawiona na nazwę zestawu i `<version>` ustawiono wersję zestawu. Inne właściwości w manifeście, jednak nie ma pasującej wartości w zestawie i związku z tym nadal zawierają symbole zastępcze.
 
-### <a name="from-a-visual-studio-project"></a>Z projektu programu Visual Studio
+### <a name="from-a-visual-studio-project"></a>From a Visual Studio project
 
 Tworzenie `.nuspec` z `.csproj` lub `.vbproj` pliku jest wygodne, ponieważ inne pakiety, które zostały zainstalowane do tych projektu są automatycznie określane jako zależności. W tym samym folderze co plik projektu, po prostu użyj następującego polecenia:
 
@@ -250,9 +250,9 @@ Identyfikator pakietu (`<id>` elementu) i numeru wersji (`<version>` elementu) s
 
 **Najlepsze rozwiązania dotyczące identyfikator pakietu:**
 
-- **Unikatowość**: identyfikator musi być unikatowa w repozytorium nuget.org, lub niezależnie od galerii obsługuje pakiet. Przed podjęciem decyzji o odpowiadającym, wyszukiwanie dotyczy galerii, sprawdź, czy nazwa jest już używana. Aby uniknąć konfliktów, dobrym deseń ma używać nazwy firmy jako pierwsza część identyfikatora, takich jak `Contoso.`.
-- **Jak Namespace nazw**: podobne do przestrzeni nazw na platformie .NET, używając zapisu kropkowego zamiast łączniki wzorca. Na przykład użyć `Contoso.Utility.UsefulStuff` zamiast `Contoso-Utility-UsefulStuff` lub `Contoso_Utility_UsefulStuff`. Odbiorcy również okazać się pomocne podczas identyfikator pakietu jest zgodny przestrzenie nazw używane w kodzie.
-- **Przykładowe pakiety**: w przypadku utworzenia pakiet przykładowy kod, który pokazuje, jak korzystać z innym pakietem, dołącz `.Sample` jako sufiks do identyfikatora, jak `Contoso.Utility.UsefulStuff.Sample`. (Przykładowego pakietu oczywiście musi zależność od innego pakietu.) Podczas tworzenia pakiet przykładowy, użyj opisanego wcześniej metody opartej na Konwencji katalogu roboczego. W `content` folderze Rozmieść przykładowego kodu w folderze o nazwie `\Samples\<identifier>` jak `\Samples\Contoso.Utility.UsefulStuff.Sample`.
+- **Unikatowość**: Identyfikator musi być unikatowa w witrynie nuget.org lub niezależnie od galerii obsługuje pakiet. Przed podjęciem decyzji o odpowiadającym, wyszukiwanie dotyczy galerii, sprawdź, czy nazwa jest już używana. Aby uniknąć konfliktów, dobrym deseń ma używać nazwy firmy jako pierwsza część identyfikatora, takich jak `Contoso.`.
+- **Jak Namespace nazw**: Wykonaj podobny do przestrzeni nazw na platformie .NET, używając zapisu kropkowego zamiast łączniki wzorca. Na przykład użyć `Contoso.Utility.UsefulStuff` zamiast `Contoso-Utility-UsefulStuff` lub `Contoso_Utility_UsefulStuff`. Odbiorcy również okazać się pomocne podczas identyfikator pakietu jest zgodny przestrzenie nazw używane w kodzie.
+- **Przykładowe pakiety**: W przypadku utworzenia pakiet przykładowy kod, który pokazuje, jak korzystać z innym pakietem, dołącz `.Sample` jako sufiks do identyfikatora, jak `Contoso.Utility.UsefulStuff.Sample`. (Przykładowego pakietu oczywiście musi zależność od innego pakietu.) Podczas tworzenia pakiet przykładowy, użyj opisanego wcześniej metody opartej na Konwencji katalogu roboczego. W `content` folderze Rozmieść przykładowego kodu w folderze o nazwie `\Samples\<identifier>` jak `\Samples\Contoso.Utility.UsefulStuff.Sample`.
 
 **Najlepsze rozwiązania dla używanej wersji pakietu:**
 
@@ -261,9 +261,9 @@ Identyfikator pakietu (`<id>` elementu) i numeru wersji (`<version>` elementu) s
 
 > Następujące serię wpisów w blogu krótki są pomocne w zrozumieniu przechowywanie wersji:
 >
-> - [Część 1: Podjęcie na piekłem bibliotek DLL](http://blog.davidebbo.com/2011/01/nuget-versioning-part-1-taking-on-dll.html)
-> - [Część 2: Algorytmu](http://blog.davidebbo.com/2011/01/nuget-versioning-part-2-core-algorithm.html)
-> - [Część 3: Ujednolicenie za pomocą przekierowania powiązań](http://blog.davidebbo.com/2011/01/nuget-versioning-part-3-unification-via.html)
+> - [Część 1. Biorąc na piekłem bibliotek DLL](http://blog.davidebbo.com/2011/01/nuget-versioning-part-1-taking-on-dll.html)
+> - [Część 2. Algorytm core](http://blog.davidebbo.com/2011/01/nuget-versioning-part-2-core-algorithm.html)
+> - [Część 3: Ujednolicenie słów za pomocą przekierowania powiązań](http://blog.davidebbo.com/2011/01/nuget-versioning-part-3-unification-via.html)
 
 ## <a name="setting-a-package-type"></a>Ustawianie typu pakietu
 
@@ -357,7 +357,7 @@ W tym cele i właściwości programu MSBuild w pakiecie został [wprowadzone w p
 
 Gdy NuGet instaluje pakiet o `\build` pliki, dodaje MSBuild `<Import>` elementy w pliku projektu, wskazując `.targets` i `.props` plików. (`.props` zostanie dodany w górnej części pliku projektu; `.targets` zostanie dodany w dolnej części.) Oddzielne MSBuild warunkowego `<Import>` element jest dodawany dla każdej platformy docelowej.
 
-Program MSBuild `.props` i `.targets` pliki for cross-adresowanie można umieścić w `\buildCrossTargeting` folderu. Podczas instalacji pakietu NuGet dodaje odpowiednich `<Import>` elementy do pliku projektu z warunkiem, że platforma docelowa nie jest ustawiona (właściwości programu MSBuild `$(TargetFramework)` może być pusta).
+Program MSBuild `.props` i `.targets` pliki for cross-adresowanie można umieścić w `\buildMultiTargeting` folderu. Podczas instalacji pakietu NuGet dodaje odpowiednich `<Import>` elementy do pliku projektu z warunkiem, że platforma docelowa nie jest ustawiona (właściwości programu MSBuild `$(TargetFramework)` może być pusta).
 
 Nuget 3.x, elementy docelowe nie są dodawane do projektu, ale zamiast tego udostępnionych za pośrednictwem `project.lock.json`.
 

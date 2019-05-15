@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: ac1bf2b65ab6ec4e8cf864810181fc661236262a
-ms.sourcegitcommit: 6b71926f062ecddb8729ef8567baf67fd269642a
+ms.openlocfilehash: 9f26f75a70a996cad158fd125e86d98e10c3dac1
+ms.sourcegitcommit: 4ea46498aee386b4f592b5ebba4af7f9092ac607
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59931985"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610636"
 ---
 # <a name="nuget-cli-environment-variables"></a>Zmienne środowiskowe interfejsu wiersza polecenia NuGet
 
@@ -33,7 +33,7 @@ Lista właściwości, które opisano w [NuGet pakowanie i przywrócić jako elem
 | NUGET_HTTP_CACHE_PATH | Ścieżkę do użycia dla *pamięci podręcznej http* folderu zgodnie z opisem na [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). | Określony jako ścieżka bezwzględna. |
 | NUGET_PERSIST_DG | Flaga wskazująca, czy powinny zostać utrwalone dg pliki (dane zbierane z programu MSBuild). | Określony jako *true* lub *false* (ustawienie domyślne), jeśli NUGET_PERSIST_DG_PATH nie będą przechowywane do katalogu tymczasowego (NuGetScratch folder w bieżącym katalogu temp środowiska). |
 | NUGET_PERSIST_DG_PATH | Ścieżka do utrwalania plików członkowstwa. | Określony jako ścieżka bezwzględna, ta opcja jest tylko do użycia podczas *NUGET_PERSIST_DG* jest ustawiona na wartość true. |
-| NUGET_RESTORE_MSBUILD_ARGS | Ustawia dodatkowe argumenty programu MSBuild. | |
+| NUGET_RESTORE_MSBUILD_ARGS | Ustawia dodatkowe argumenty programu MSBuild. | Przekazywanie argumentów jest identyczna jak należy wprowadzić je do msbuild.exe. Przykład ustawień właściwości projektu Foo z wiersza polecenia na pasku wartość może być /p:Foo = paska |
 | NUGET_RESTORE_MSBUILD_VERBOSITY | Ustawia poziom szczegółowości dziennika MSBuild. | Wartość domyślna to *cichy* ("/ v: q"). Możliwe wartości *q [uiet]*, *m [najmniej]*, *n [ormal]*, *d [egółowy]*, i *diag [Diagnostyka]*. |
 | NUGET_SHOW_STACK | Określa, czy pełny wyjątek (w tym ślad stosu) powinna być wyświetlana użytkownikowi. | Określony jako *true* lub *false* (ustawienie domyślne). |
 | NUGET_XMLDOC_MODE | Określa sposób obsługi wyodrębniania pliku dokumentacji XML zestawów. | Tryby obsługiwane są *pominąć* (nie wyodrębnić pliki dokumentacji XML), *skompresować* (przechowywać pliki dokumentacji XML jako archiwum zip) lub *Brak* (domyślnie, Traktuj pliki dokumentacji XML jako zwykłych pliki). |

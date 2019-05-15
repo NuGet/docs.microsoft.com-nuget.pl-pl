@@ -16,12 +16,12 @@ keywords: Pakiety symboli NuGet, pakietów NuGet, debugowanie, obsługa NuGet de
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 43f346dc64ebbc59d02b9c7875b04205d8c5d83a
-ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
+ms.openlocfilehash: 18d54e28d77f2bdcfea70ff9ae9def05278cb26c
+ms.sourcegitcommit: 4ea46498aee386b4f592b5ebba4af7f9092ac607
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56852445"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610553"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symbol (.snupkg)
 
@@ -54,10 +54,10 @@ Jeśli używasz dotnet.exe lub MSBuild umożliwia utworzenie pliku .snupkg opró
 
 1. Pakiet projektu za pomocą `dotnet pack MyPackage.csproj` lub `msbuild -t:pack MyPackage.csproj`.
 
-`SymbolPackageFormat` Właściwość może mieć jedną z dwóch wartości: `symbols.nupkg` (ustawienie domyślne) lub `snupkg`. Jeśli `SymbolPackageFormat` właściwość nie zostanie określony, jego wartość domyślna to `symbols.nupkg` i zostanie utworzony pakiet symboli starszej wersji.
+[ `SymbolPackageFormat` ](/dotnet/core/tools/csproj.md#symbolpackageformat) Właściwość może mieć jedną z dwóch wartości: `symbols.nupkg` (ustawienie domyślne) lub `snupkg`. Jeśli [ `SymbolPackageFormat` ](/dotnet/core/tools/csproj.md#symbolpackageformat) właściwość nie zostanie określona, zostanie utworzony pakiet symboli starszej wersji.
 
 > [!Note]
-> Format starszych `.symbols.nupkg` jest nadal obsługiwane, ale tylko ze względu na zgodność (zobacz [pakiety ze starszych wersji Symbol](Symbol-Packages.md)). Serwer symboli NuGet.org akceptuje tylko na nowy format pakietu symboli — `.snupkg`.
+> Format starszych `.symbols.nupkg` jest nadal obsługiwane, ale tylko ze względu na zgodność (zobacz [pakiety ze starszych wersji Symbol](Symbol-Packages.md)). Serwer symboli usługi NuGet.org akceptuje tylko na nowy format pakietu symboli — `.snupkg`.
 
 ## <a name="publishing-a-symbol-package"></a>Publikowanie pakietu symboli
 
@@ -80,6 +80,9 @@ Jeśli używasz dotnet.exe lub MSBuild umożliwia utworzenie pliku .snupkg opró
     ```
 
 NuGet opublikuje oba pakiety na stronie nuget.org. `MyPackage.nupkg` zostaną opublikowane w pierwszym, następuje `MyPackage.snupkg`.
+
+> [!Note]
+> Jeśli pakiet symboli nie jest opublikowana, sprawdź skonfigurowano źródło NuGet.org jako `https://api.nuget.org/v3/index.json`. Publikowanie pakietu symboli jest obsługiwana tylko przez [interfejsu API programu NuGet w wersji 3](../api/overview.md#versioning).
 
 ## <a name="nugetorg-symbol-server"></a>Serwer symboli NuGet.org
 

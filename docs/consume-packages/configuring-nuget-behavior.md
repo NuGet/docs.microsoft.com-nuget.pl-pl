@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 10/25/2017
 ms.topic: conceptual
-ms.openlocfilehash: c23b464ca39fd8d872f21846a7d6d34edf9dce93
-ms.sourcegitcommit: 1bd72dca2f85b4267b9924236f1d23dd7b0ed733
+ms.openlocfilehash: db968189e892723c8fd080cb01a7222696c9d3f3
+ms.sourcegitcommit: 4ea46498aee386b4f592b5ebba4af7f9092ac607
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50088931"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610569"
 ---
 # <a name="configuring-nuget-behavior"></a>Konfigurowanie zachowania pakietu NuGet
 
@@ -18,7 +18,7 @@ Zachowanie NuGet jest wymuszany przez ustawienia zebranych w jednej lub więcej 
 
 ## <a name="config-file-locations-and-uses"></a>Lokalizacje plików konfiguracji i używa
 
-| Zakres | Lokalizacja pliku NuGet.Config | Opis |
+| Scope | Lokalizacja pliku NuGet.Config | Opis |
 | --- | --- | --- |
 | Projekt | Bieżący folder (zwane również folder projektu) lub dowolnego folderu do katalogu głównego dysku.| W folderze projektu ustawienia mają zastosowanie tylko do tego projektu. W folderów nadrzędnych zawierających wiele projektów podfolderów ustawienia stosowane do wszystkich projektów w tych podfolderów. |
 | Użytkownik | Windows: `%appdata%\NuGet\NuGet.Config`<br/>Mac/Linux: `~/.config/NuGet/NuGet.Config` lub `~/.nuget/NuGet/NuGet.Config` (zależnie od dystrybucji systemu operacyjnego) | Ustawienia stosowane do wszystkich operacji, ale są zastępowane przez wszystkie ustawienia na poziomie projektu. |
@@ -43,7 +43,7 @@ Ustawienia są zarządzane przy użyciu interfejsu wiersza polecenia NuGet [pole
 
 ### <a name="setting-a-value"></a>Ustawienie wartości
 
-Windows:
+W systemie Windows:
 
 ```cli
 # Set repositoryPath in the user-level config file
@@ -186,17 +186,17 @@ File D. disk_drive_2/Project2/NuGet.Config:
 
 NuGet, a następnie ładuje i stosuje ustawienia w następujący sposób, w zależności od tego, gdzie jest wywoływana:
 
-- **Wywoływane z disk_drive_1/użytkowników**: używane tylko w repozytorium domyślne, które są wymienione w pliku konfiguracji na poziomie użytkownika (A), ponieważ jest to jedyny plik w disk_drive_1.
+- **Wywoływane z disk_drive_1/użytkowników**: Jest używana tylko w repozytorium domyślne, które są wymienione w pliku konfiguracji na poziomie użytkownika (A), ponieważ jest to jedyny plik w disk_drive_1.
 
-- **Wywoływane z disk_drive_2 / lub disk_drive_/tmp**: plik poziom użytkownika (A) jest załadowany po raz pierwszy, a następnie NuGet prowadzi do katalogu głównego disk_drive_2 i znajduje się plik (B). NuGet także szuka pliku konfiguracji w folderze/TMP, ale nie znaleźć partnera. W rezultacie jest używany domyślny repozytorium w witrynie nuget.org, przywracania pakietów jest włączone i pakietów, Pobierz rozwinięty w disk_drive_2/tmp.
+- **Wywoływane z disk_drive_2 / lub disk_drive_/tmp**: Plik poziom użytkownika (A) jest załadowany po raz pierwszy, a następnie NuGet prowadzi do katalogu głównego disk_drive_2 i znajduje się plik (B). NuGet także szuka pliku konfiguracji w folderze/TMP, ale nie znaleźć partnera. W rezultacie jest używany domyślny repozytorium w witrynie nuget.org, przywracania pakietów jest włączone i pakietów, Pobierz rozwinięty w disk_drive_2/tmp.
 
-- **Wywołane z disk_drive_2/projektu Project1 lub disk_drive_2/projektu Project1/źródło**: plik poziom użytkownika (A) jest załadowany po raz pierwszy, a następnie NuGet ładowania pliku (B) z katalogu głównego disk_drive_2, następuje plików (C). Ustawienia w (C) zastępują (B) i (A), więc `repositoryPath` gdzie zainstalowania pakietów jest disk_drive_2/projektu Project1/zewnętrzne/pakietów zamiast *disk_drive_2/tmp*. Ponadto ponieważ (C) Czyści `<packageSources>`, nuget.org nie jest już dostępna jako źródło, pozostawiając tylko `https://MyPrivateRepo/ES/nuget`.
+- **Wywołane z disk_drive_2/projektu Project1 lub disk_drive_2/projektu Project1/źródło**: Poziom użytkownika (A) jest on ładowany najpierw, a następnie NuGet ładowania pliku (B) z katalogu głównego disk_drive_2, następuje plików (C). Ustawienia w (C) zastępują (B) i (A), więc `repositoryPath` gdzie zainstalowania pakietów jest disk_drive_2/projektu Project1/zewnętrzne/pakietów zamiast *disk_drive_2/tmp*. Ponadto ponieważ (C) Czyści `<packageSources>`, nuget.org nie jest już dostępna jako źródło, pozostawiając tylko `https://MyPrivateRepo/ES/nuget`.
 
-- **Wywołane z disk_drive_2/Project2 lub disk_drive_2/Project2/źródło**: załadowaniu pliku poziom użytkownika (A), najpierw następuje plik (B) i plik (D). Ponieważ `packageSources` nie jest czyszczony, zarówno `nuget.org` i `https://MyPrivateRepo/DQ/nuget` są dostępne jako źródła. Pakiety pobrać rozwinięty w disk_drive_2/tmp, jak to określono w (B).
+- **Wywołane z disk_drive_2/Project2 lub disk_drive_2/Project2/źródło**: Plik poziom użytkownika (A) jest ładowany, najpierw następuje plik (B) i plik (D). Ponieważ `packageSources` nie jest czyszczony, zarówno `nuget.org` i `https://MyPrivateRepo/DQ/nuget` są dostępne jako źródła. Pakiety pobrać rozwinięty w disk_drive_2/tmp, jak to określono w (B).
 
 ## <a name="nuget-defaults-file"></a>Plik ustawień domyślnych NuGet
 
-`NuGetDefaults.Config` Plik istnieje, aby określić źródła pakietów, z których pakietów są zainstalowane i aktualizowane oraz do sterowania to domyślny cel dla publikowania pakietów z `nuget push`. Ponieważ administratorzy, mogą wygodnie (na przykład przy użyciu zasad grupy) wdrożyć spójne `NuGetDefaults.Config` dla deweloperów i plików maszyny kompilacji, mogą oni zapewnienie, że wszystkie osoby w organizacji używa poprawny pakiet źródeł, a nie adres nuget.org.
+`NuGetDefaults.Config` Plik istnieje, aby określić źródła pakietów, z których pakietów są zainstalowane i aktualizowane oraz do sterowania to domyślny cel dla publikowania pakietów z `nuget push`. Ponieważ administratorzy, mogą wygodnie (na przykład przy użyciu zasad grupy) wdrożyć spójne `NuGetDefaults.Config` plików dla deweloperów i kompilacji do zapewnienia czy wszyscy użytkownicy w organizacji korzystają źródeł poprawny pakiet, a nie adres nuget.org.
 
 > [!Important]
 > `NuGetDefaults.Config` Plik nigdy nie powoduje źródło pakietu, które można usunąć z konfiguracji NuGet dla deweloperów. Oznacza to, że jeśli deweloper, który już użył NuGet i dlatego ma źródło pakietów nuget.org zarejestrowany, go nie zostaną usunięte po utworzeniu `NuGetDefaults.Config` pliku.
