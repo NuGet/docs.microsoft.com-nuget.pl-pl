@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 10/25/2017
 ms.topic: conceptual
-ms.openlocfilehash: db968189e892723c8fd080cb01a7222696c9d3f3
-ms.sourcegitcommit: 4ea46498aee386b4f592b5ebba4af7f9092ac607
+ms.openlocfilehash: 963d1d59ea7e65e3d75bc7105b8864e3e4045938
+ms.sourcegitcommit: ef08f376688f0191a8d3d873b6a4386afd799373
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610569"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66266338"
 ---
 # <a name="configuring-nuget-behavior"></a>Konfigurowanie zachowania pakietu NuGet
 
@@ -20,7 +20,7 @@ Zachowanie NuGet jest wymuszany przez ustawienia zebranych w jednej lub więcej 
 
 | Scope | Lokalizacja pliku NuGet.Config | Opis |
 | --- | --- | --- |
-| Projekt | Bieżący folder (zwane również folder projektu) lub dowolnego folderu do katalogu głównego dysku.| W folderze projektu ustawienia mają zastosowanie tylko do tego projektu. W folderów nadrzędnych zawierających wiele projektów podfolderów ustawienia stosowane do wszystkich projektów w tych podfolderów. |
+| Rozwiązanie | Bieżący folder (czyli folderu rozwiązania) lub dowolnego folderu do katalogu głównego dysku.| W folderze rozwiązania, Zastosuj ustawienia dotyczą wszystkich projektów w podfolderach. Należy pamiętać, że jeśli plik konfiguracji znajduje się w folderze projektu, nie ma ona wpływu na ten projekt. |
 | Użytkownik | Windows: `%appdata%\NuGet\NuGet.Config`<br/>Mac/Linux: `~/.config/NuGet/NuGet.Config` lub `~/.nuget/NuGet/NuGet.Config` (zależnie od dystrybucji systemu operacyjnego) | Ustawienia stosowane do wszystkich operacji, ale są zastępowane przez wszystkie ustawienia na poziomie projektu. |
 | Komputer | Windows: `%ProgramFiles(x86)%\NuGet\Config`<br/>Mac/Linux: `$XDG_DATA_HOME`. Jeśli `$XDG_DATA_HOME` ma wartość null lub jest pusta, `~/.local/share` lub `/usr/local/share` będzie używany (zależnie od dystrybucji systemu operacyjnego)  | Ustawienia stosowane do wszystkich operacji wykonywanych na komputerze, ale są zastępowane przez ustawienia na poziomie użytkownika lub projektu. |
 

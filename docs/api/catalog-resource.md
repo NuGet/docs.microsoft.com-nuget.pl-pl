@@ -6,16 +6,16 @@ ms.author: jver
 ms.date: 10/30/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: fd5188c92f8154391359b8da5c8a32f4d5d6f2c0
-ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
+ms.openlocfilehash: 4884de71151ee1ae3c0a78b803c9222f9c1d86ec
+ms.sourcegitcommit: ef08f376688f0191a8d3d873b6a4386afd799373
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52453588"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66266361"
 ---
 # <a name="catalog"></a>Wykaz
 
-**Katalogu** jest zasobem, który rejestruje wszystkie operacje pakietu w źródle pakietu, takie jak operacje tworzenia i usuwania. Zasób katalogu ma `Catalog` wpisać [indeks usług](service-index.md).
+**Katalogu** jest zasobem, który rejestruje wszystkie operacje pakietu w źródle pakietu, takie jak operacje tworzenia i usuwania. Zasób katalogu ma `Catalog` wpisać [indeks usług](service-index.md). Można użyć tego zasobu do [zapytania dla wszystkie opublikowane pakiety](../guides/api/query-for-all-published-packages.md).
 
 > [!Note]
 > Ponieważ katalog nie jest używany przez oficjalne klienta programu NuGet, nie wszystkie źródła pakietów zaimplementować katalogu.
@@ -69,10 +69,10 @@ Indeks katalogu jest dokumentem JSON, który zawiera obiekt z następującymi w�
 
 Nazwa            | Typ             | Wymagane | Uwagi
 --------------- | ---------------- | -------- | -----
-commitId        | string           | Tak      | Unikatowy identyfikator skojarzony z ostatnie zatwierdzenie
-commitTimeStamp | string           | Tak      | Sygnatura czasowa najnowsze zatwierdzenia
-count           | integer          | Tak      | Liczba stron w indeksie
-Elementy           | Tablica obiektów | Tak      | Tablica obiektów, każdy obiekt reprezentujący stronę
+commitId        | string           | tak      | Unikatowy identyfikator skojarzony z ostatnie zatwierdzenie
+commitTimeStamp | string           | tak      | Sygnatura czasowa najnowsze zatwierdzenia
+count           | integer          | tak      | Liczba stron w indeksie
+items           | Tablica obiektów | tak      | Tablica obiektów, każdy obiekt reprezentujący stronę
 
 Każdy element w `items` tablica jest obiekt z niektóre minimalne szczegółowe informacje o każdej strony. Obiekty te strony nie zawierają pozostawia katalogu (elementy). Nie zdefiniowano kolejność elementów w tej tablicy. Strony może zostać określona przez klienta w pamięci przy użyciu ich `commitTimeStamp` właściwości.
 
@@ -86,10 +86,10 @@ Obiekty strony katalogu znalezione w indeksie katalogu `items` właściwości ma
 
 Nazwa            | Typ    | Wymagane | Uwagi
 --------------- | ------- | -------- | -----
-@id             | string  | Tak      | Adres URL do strony katalogu pobierania
-commitId        | string  | Tak      | Unikatowy identyfikator skojarzony z najnowsze zatwierdzenie na tej stronie
-commitTimeStamp | string  | Tak      | Sygnaturę czasową najnowsze zatwierdzenie na tej stronie
-count           | integer | Tak      | Liczba elementów na stronie katalogu
+@id             | string  | tak      | Adres URL do strony katalogu pobierania
+commitId        | string  | tak      | Unikatowy identyfikator skojarzony z najnowsze zatwierdzenie na tej stronie
+commitTimeStamp | string  | tak      | Sygnaturę czasową najnowsze zatwierdzenie na tej stronie
+count           | integer | tak      | Liczba elementów na stronie katalogu
 
 W przeciwieństwie do [zasób metadanych pakietu](registration-base-url-resource.md) co w niektórych przypadkach inlines pozostawia do indeksu, pozostawia katalogu nigdy nie jest wbudowana w indeksie i zawsze musi zostać pobrana przy użyciu strony `@id` adresu URL.
 
@@ -111,11 +111,11 @@ Dokument strony katalogu jest obiekt JSON z następującymi właściwościami:
 
 Nazwa            | Typ             | Wymagane | Uwagi
 --------------- | ---------------- | -------- | -----
-commitId        | string           | Tak      | Unikatowy identyfikator skojarzony z najnowsze zatwierdzenie na tej stronie
-commitTimeStamp | string           | Tak      | Sygnaturę czasową najnowsze zatwierdzenie na tej stronie
-count           | integer          | Tak      | Liczba elementów na stronie
-Elementy           | Tablica obiektów | Tak      | Elementy katalogu na tej stronie
-Nadrzędny          | string           | Tak      | Adres URL do indeksu katalogu
+commitId        | string           | tak      | Unikatowy identyfikator skojarzony z najnowsze zatwierdzenie na tej stronie
+commitTimeStamp | string           | tak      | Sygnaturę czasową najnowsze zatwierdzenie na tej stronie
+count           | integer          | tak      | Liczba elementów na stronie
+items           | Tablica obiektów | tak      | Elementy katalogu na tej stronie
+Nadrzędny          | string           | tak      | Adres URL do indeksu katalogu
 
 Każdy element w `items` tablica jest obiekt z niektóre minimalne szczegółowe informacje o elemencie katalogu. Te obiekty elementu nie zawierają wszystkie dane elementu katalogu. Kolejność elementów na stronie `items` tablicy nie jest zdefiniowany. Elementy może zostać określona przez klienta w pamięci przy użyciu ich `commitTimeStamp` właściwości.
 
@@ -131,12 +131,12 @@ Obiekty elementów katalogu znaleźć na stronie katalogu `items` właściwości
 
 Nazwa            | Typ    | Wymagane | Uwagi
 --------------- | ------- | -------- | -----
-@id             | string  | Tak      | Adres URL, aby pobrać element katalogu
-@type           | string  | Tak      | Typ elementu katalogu
-commitId        | string  | Tak      | Identyfikator zatwierdzenia skojarzone z tym elementem katalogu
-commitTimeStamp | string  | Tak      | Sygnatura czasowa zatwierdzenia tego elementu katalogu
-nuget:ID        | string  | Tak      | Identyfikator pakietu, który dotyczy tego typu liść
-nuget:Version   | string  | Tak      | Wersja pakietu, który dotyczy tego typu liść
+@id             | string  | tak      | Adres URL, aby pobrać element katalogu
+@type           | string  | tak      | Typ elementu katalogu
+commitId        | string  | tak      | Identyfikator zatwierdzenia skojarzone z tym elementem katalogu
+commitTimeStamp | string  | tak      | Sygnatura czasowa zatwierdzenia tego elementu katalogu
+nuget:ID        | string  | tak      | Identyfikator pakietu, który dotyczy tego typu liść
+nuget:Version   | string  | tak      | Wersja pakietu, który dotyczy tego typu liść
 
 `@type` Wartość będzie jedną z następujących dwóch wartości:
 
@@ -161,12 +161,12 @@ Dokument liścia wykazu jest obiekt JSON z następującymi właściwościami:
 
 Nazwa                    | Typ                       | Wymagane | Uwagi
 ----------------------- | -------------------------- | -------- | -----
-@type                   | ciąg lub tablicę ciągów | Tak      | Typy elementu katalogu
-katalog: commitId        | string                     | Tak      | Identyfikator zatwierdzenia skojarzone z tym elementem katalogu
-katalog: commitTimeStamp | string                     | Tak      | Sygnatura czasowa zatwierdzenia tego elementu katalogu
-identyfikator                      | string                     | Tak      | Identyfikator pakietu element katalogu
-Opublikowane               | string                     | Tak      | Data opublikowania elementu katalogu pakietu
-version                 | string                     | Tak      | Wersja pakietu element katalogu
+@type                   | ciąg lub tablicę ciągów | tak      | Typy elementu katalogu
+catalog:commitId        | string                     | tak      | Identyfikator zatwierdzenia skojarzone z tym elementem katalogu
+catalog:commitTimeStamp | string                     | tak      | Sygnatura czasowa zatwierdzenia tego elementu katalogu
+identyfikator                      | string                     | tak      | Identyfikator pakietu element katalogu
+Opublikowane               | string                     | tak      | Data opublikowania elementu katalogu pakietu
+version                 | string                     | tak      | Wersja pakietu element katalogu
 
 ### <a name="item-types"></a>Typy elementów
 
@@ -196,21 +196,21 @@ Autorzy                 | string                     | Brak       |
 Utworzone                 | string                     | Brak       | Sygnatura czasowa systemu, gdy pakiet został utworzony po raz pierwszy. Właściwości rezerwowego: `published`.
 dependencyGroups        | Tablica obiektów           | Brak       | Takiego samego formatu jak [zasób metadanych pakietu](registration-base-url-resource.md#package-dependency-group)
 opis             | string                     | Brak       |
-IconUrl                 | string                     | Brak       |
+iconUrl                 | string                     | Brak       |
 isPrerelease            | wartość logiczna                    | Brak       | Określa, czy wersja pakietu jest wstępna. Może zostać wykryte z `version`.
 język                | string                     | Brak       |
 licenseUrl              | string                     | Brak       |
 wymienione                  | wartość logiczna                    | Brak       | Określa, czy pakiet zostanie wyświetlony
 Atrybut MinClientVersion        | string                     | Brak       |
-packageHash             | string                     | Tak      | Skrót pakietu, kodowanie za pomocą [standardowa base 64](https://tools.ietf.org/html/rfc4648#section-4)
-packageHashAlgorithm    | string                     | Tak      |
-packageSize             | integer                    | Tak      | Rozmiar .nupkg pakietu w bajtach
+packageHash             | string                     | tak      | Skrót pakietu, kodowanie za pomocą [standardowa base 64](https://tools.ietf.org/html/rfc4648#section-4)
+packageHashAlgorithm    | string                     | tak      |
+packageSize             | integer                    | tak      | Rozmiar .nupkg pakietu w bajtach
 projectUrl              | string                     | Brak       |
-ReleaseNotes            | string                     | Brak       |
+releaseNotes            | string                     | Brak       |
 requireLicenseAgreement | wartość logiczna                    | Brak       | Załóżmy `false` Jeśli wykluczone
 podsumowanie                 | string                     | Brak       |
 tagi                    | Tablica ciągów           | Brak       |
-Tytuł                   | string                     | Brak       |
+tytuł                   | string                     | Brak       |
 verbatimVersion         | string                     | Brak       | Ciąg wersji, ponieważ pierwotnie został znaleziony w .nuspec
 
 Pakiet `version` właściwości jest ciągiem pełnej wersji po normalizacji. Oznacza to, że dane kompilacji SemVer 2.0.0 można uwzględnić w tym miejscu.
