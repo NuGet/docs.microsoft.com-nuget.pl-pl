@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: e4df15be1f29e2c611876aaa49e16ac7d1823938
-ms.sourcegitcommit: be9c51b4b095aea40ef41bbea7e12ef0a194ee74
+ms.openlocfilehash: c2dfce8de6b28aaee99e3d5ab75cd28950a8cb0f
+ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53248458"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66812840"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu (PackageReference) w plikach projektu
 
@@ -18,7 +18,11 @@ Pakiet odwołań, za pomocą `PackageReference` węzła, zarządzanie zależnoś
 
 Za pomocą funkcji PackageReference umożliwia także warunki MSBuild do wyboru na platformę docelową, konfiguracji, platforma lub inne grupy będzie odwoływał się pakiet. Umożliwia ona również szczegółową kontrolę nad tym zależności i zawartości przepływu. (Aby uzyskać więcej informacji, zobacz [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md).)
 
-Domyślnie PackageReference jest używany dla projektów .NET Core, .NET Standard projektów i projektów platformy UWP przeznaczonych dla systemu Windows 10 kompilacja 15063 (Aktualizacja dla twórców) lub nowszy, z wyjątkiem projektów platformy UWP w języku C++. Projektów programu .NET framework obsługuje PackageReference, ale obecnie domyślnie `packages.config`. Aby korzystać z funkcji PackageReference, migracja zależności z `packages.config` do pliku projektu, a następnie usuń packages.config.
+## <a name="project-type-support"></a>Obsługa typu projektu
+
+Domyślnie PackageReference jest używany dla projektów .NET Core, .NET Standard projektów i projektów platformy UWP przeznaczonych dla systemu Windows 10 kompilacja 15063 (Aktualizacja dla twórców) lub nowszy, z wyjątkiem projektów platformy UWP w języku C++. Projektów programu .NET framework obsługuje PackageReference, ale obecnie domyślnie `packages.config`. Aby użyć funkcji PackageReference, [migracji](../reference/migrate-packages-config-to-package-reference.md) zależności z `packages.config` do pliku projektu, a następnie usuń packages.config.
+
+Aplikacje ASP.NET przeznaczone dla pełny program .NET Framework zawierają tylko [ograniczoną obsługę](https://github.com/NuGet/Home/issues/5877) dla funkcji PackageReference. C++i typów projektów języka JavaScript nie są obsługiwane.
 
 ## <a name="adding-a-packagereference"></a>Dodawanie odwołanie PackageReference
 

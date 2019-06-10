@@ -5,21 +5,21 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.openlocfilehash: 15268ae33d56042a765420e5076dac49db6cce04
-ms.sourcegitcommit: 1591bb230e106b94162a87dd1d86fe427366730a
+ms.openlocfilehash: 8cfb7bd31c37847d83ffe31f11ba61eadc717eb8
+ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52671178"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66812908"
 ---
-# <a name="quickstart-install-and-use-a-package-in-visual-studio"></a>Szybki Start: Instalowanie i używanie pakietu w programie Visual Studio
+# <a name="quickstart-install-and-use-a-package-in-visual-studio"></a>Szybki start: Instalowanie i używanie pakietu w programie Visual Studio
 
 Pakiety NuGet zawierają kodu wielokrotnego użytku, które inni deweloperzy zapewnić dostępność do użycia w projektach. Zobacz [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są instalowane w projekcie programu Visual Studio za pomocą interfejsu użytkownika Menedżera pakietów lub konsoli Menedżera pakietów. W tym artykule przedstawiono proces, korzystając z popularnych [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakietu i projektu uniwersalnej platformy Windows (UWP). Ten sam proces ma zastosowanie do innych projektów .NET lub .NET Core.
 
 Po zakończeniu instalacji można znaleźć pakietu w kodzie za pomocą `using <namespace>` gdzie \<przestrzeni nazw\> jest właściwa dla pakietu jest używany. Gdy odniesienia, można wywołać pakiet za pośrednictwem jego interfejsu API.
 
 > [!Tip]
-> **Rozpoczynać nuget.org**: przeglądania nuget.org znajduje się, jak .NET deweloperzy zazwyczaj znajdują składników ponownego wykorzystania w swoich aplikacjach. Można wyszukać nuget.org bezpośrednio lub znaleźć i zainstalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
+> **Rozpoczynać nuget.org**: Przeglądanie nuget.org znajduje się, jak .NET deweloperzy zazwyczaj znajdują składników ponownego wykorzystania w swoich aplikacjach. Można wyszukać nuget.org bezpośrednio lub znaleźć i zainstalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,17 +28,19 @@ Po zakończeniu instalacji można znaleźć pakietu w kodzie za pomocą `using <
 
 Wersja Community 2017 można zainstalować bezpłatnie z [visualstudio.com](https://www.visualstudio.com/) lub użyj Professional lub Enterprise Edition.
 
+Jeśli używasz programu Visual Studio dla komputerów Mac, zobacz [obejmują pakiet NuGet w projekcie](/visualstudio/mac/nuget-walkthrough).
+
 ## <a name="create-a-project"></a>Tworzenie projektu
 
 Do każdego projektu .NET można zainstalować pakietów NuGet, pod warunkiem, że pakiet obsługuje platformę docelową tego samego jako projekt.
 
-W ramach tego przewodnika należy użyć prostej aplikacji Universal Windows (UWP). Tworzenie projektu w programie Visual Studio przy użyciu **Plik > Nowy projekt...**  i wybierając polecenie **Windows Universal > Pusta aplikacja (Windows Universal)**. Zaakceptuj wartości domyślne dla wersji docelowej i wersję minimalną po wyświetleniu monitu.
+W ramach tego przewodnika należy użyć prostej aplikacji Universal Windows (UWP). Tworzenie projektu w programie Visual Studio przy użyciu **Plik > Nowy projekt...**  i wybierając polecenie **Windows Universal > Pusta aplikacja (Windows Universal)** . Zaakceptuj wartości domyślne dla wersji docelowej i wersję minimalną po wyświetleniu monitu.
 
 ## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodaj pakiet Newtonsoft.Json NuGet
 
 Aby zainstalować pakiet, można użyć interfejsu użytkownika Menedżera pakietów lub konsoli Menedżera pakietów. Podczas instalowania pakietu NuGet rejestruje zależność w jednym pliku projektu lub `packages.config` pliku. Aby uzyskać więcej informacji, zobacz [pakietu zużycie omówienie i przepływ pracy](../consume-packages/Overview-and-Workflow.md).
 
-### <a name="package-manager-ui"></a>Interfejs użytkownika Menedżera pakietów
+### <a name="package-manager-ui"></a>Interfejs użytkownika menedżera pakietów
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **odwołania** i wybierz polecenie **Zarządzaj pakietami NuGet**.
 
@@ -56,7 +58,7 @@ Aby zainstalować pakiet, można użyć interfejsu użytkownika Menedżera pakie
 
 1. W przypadku wyświetlenia monitu o przegląd zmian dokonanych wybierz **OK**.
 
-### <a name="package-manager-console"></a>Konsola Menedżera pakietów
+### <a name="package-manager-console"></a>Konsola menedżera pakietów
 
 1. Wybierz **Narzędzia > Menedżer pakietów NuGet > Konsola Menedżera pakietów** polecenia menu.
 
@@ -118,7 +120,7 @@ Przy użyciu pakietu Newtonsoft.Json w projekcie, można wywołać jej `JsonConv
 
     ![Dane wyjściowe aplikacji platformy uniwersalnej systemu Windows po wybraniu przycisku](media/QS_Use-07-AppEnd.png)
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Omówienie i przepływ pracy zużycia pakietu](../consume-packages/overview-and-workflow.md)
 - [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md)

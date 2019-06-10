@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/21/2017
 ms.topic: tutorial
-ms.openlocfilehash: 16e19be0356bc1d2734ade5cd593ca3ef05bbe5a
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: a4c609b3390748099d85a73f7d168ebe4de2676a
+ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546424"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66812943"
 ---
 # <a name="create-uwp-packages"></a>Tworzenie pakietów platformy UWP
 
@@ -138,6 +138,9 @@ W ramach składnika, podstawowe zasady logiczne typu ImageEnhancer jest w kodzie
         <file src="..\ARM\Debug\ImageEnhancer\ImageEnhancer.dll" target="runtimes\win10-arm\native"/>
         <file src="..\ARM\Debug\ImageEnhancer\ImageEnhancer.pri" target="runtimes\win10-arm\native"/>
 
+        <file src="..\ARM64\Debug\ImageEnhancer\ImageEnhancer.dll" target="runtimes\win10-arm64\native"/>
+        <file src="..\ARM64\Debug\ImageEnhancer\ImageEnhancer.pri" target="runtimes\win10-arm64\native"/>
+
         <file src="..\x64\Debug\ImageEnhancer\ImageEnhancer.dll" target="runtimes\win10-x64\native"/>
         <file src="..\x64\Debug\ImageEnhancer\ImageEnhancer.pri" target="runtimes\win10-x64\native"/>
 
@@ -150,7 +153,7 @@ W ramach składnika, podstawowe zasady logiczne typu ImageEnhancer jest w kodzie
 
 ### <a name="adding-targets"></a>Dodawanie .targets
 
-Następnie projektów C++ i JavaScript, które może używać pakietu NuGet muszą pliku .targets w celu identyfikowania niezbędne pliki zestawu i winmd. (Projektów C# i Visual Basic to zrobić automatycznie.) Utwórz ten plik, kopiując poniższy tekst do `ImageEnhancer.targets` i zapisz go w tym samym folderze co `.nuspec` pliku. _Uwaga_: to `.targets` pliku musi mieć taką samą nazwę jak identyfikator pakietu (np. `<Id>` element `.nupspec` plików):
+Następnie projektów C++ i JavaScript, które może używać pakietu NuGet muszą pliku .targets w celu identyfikowania niezbędne pliki zestawu i winmd. (Projektów C# i Visual Basic to zrobić automatycznie.) Utwórz ten plik, kopiując poniższy tekst do `ImageEnhancer.targets` i zapisz go w tym samym folderze co `.nuspec` pliku. _Uwaga_: To `.targets` pliku musi mieć taką samą nazwę jak identyfikator pakietu (np. `<Id>` element `.nupspec` plików):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -216,6 +219,8 @@ Ostateczna `.nuspec` plik powinien teraz wyglądać podobnie do poniższego, gdz
     <!-- DLLs and resources -->
     <file src="..\ARM\Debug\ImageEnhancer\ImageEnhancer.dll" target="runtimes\win10-arm\native"/>
     <file src="..\ARM\Debug\ImageEnhancer\ImageEnhancer.pri" target="runtimes\win10-arm\native"/>
+    <file src="..\ARM64\Debug\ImageEnhancer\ImageEnhancer.dll" target="runtimes\win10-arm64\native"/>
+    <file src="..\ARM64\Debug\ImageEnhancer\ImageEnhancer.pri" target="runtimes\win10-arm64\native"/>     
     <file src="..\x64\Debug\ImageEnhancer\ImageEnhancer.dll" target="runtimes\win10-x64\native"/>
     <file src="..\x64\Debug\ImageEnhancer\ImageEnhancer.pri" target="runtimes\win10-x64\native"/>
     <file src="..\Debug\ImageEnhancer\ImageEnhancer.dll" target="runtimes\win10-x86\native"/>

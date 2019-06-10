@@ -3,14 +3,14 @@ title: Co to jest NuGet i czego?
 description: Obszerne jakie NuGet jest i wykonuje
 author: karann-msft
 ms.author: karann
-ms.date: 01/10/2018
+ms.date: 05/24/2019
 ms.topic: overview
-ms.openlocfilehash: 87f7494ea97a4fa65be04b2692d7b894938c3fe5
-ms.sourcegitcommit: 573af6133a39601136181c1d98c09303f51a1ab2
+ms.openlocfilehash: 4ab87f072bdace9dd18cecc4100de52b3547136d
+ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59509129"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66813013"
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
@@ -45,8 +45,8 @@ Oprócz hostowania pomocy technicznej, NuGet zawiera szereg narzędzi używane z
 
 | Narzędzie | Platformy | Zastosowanie scenariuszy | Opis |
 | --- | --- | --- | --- |
-| [Interfejs wiersza polecenia nuget.exe](tools/nuget-exe-cli-reference.md) | Wszystkie | Tworzenie i użycia | Zawiera wszystkie funkcje NuGet, z niektórymi poleceniami zastosowanie konkretnie do pakietu dla twórców, niektóre mające zastosowanie tylko do konsumentów, i inne osoby mające zastosowanie do obu. Na przykład pakiet użycia dla twórców `nuget pack` polecenie, aby utworzyć pakiet z różnych zestawów i powiązane pliki, użyj konsumentów pakietu `nuget install` do uwzględnienia pakiety w folderze projektu i wszyscy używa `nuget config` konfiguracji NuGet zmienne. Jako narzędzie niezależne od platformy interfejs wiersza polecenia NuGet nie wchodzi w interakcję z projektów programu Visual Studio. |
-| [Wiersz polecenia DotNet](tools/dotnet-Commands.md) | Wszystkie | Tworzenie i użycia | Udostępnia pewne interfejs wiersza polecenia NuGet możliwości bezpośrednio w ramach łańcucha narzędzi .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia NuGet, wiersz polecenia dotnet nie wchodzi w interakcję z projektów programu Visual Studio. |
+| [Wiersz polecenia DotNet](tools/dotnet-Commands.md) | Wszystkie | Tworzenie i użycia | Narzędzie interfejsu wiersza polecenia dla biblioteki .NET Core i .NET Standard, a dla zestawu SDK stylu projektów środowiska .NET Framework (zobacz [atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions)). Udostępnia pewne interfejs wiersza polecenia NuGet możliwości bezpośrednio w ramach łańcucha narzędzi .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia NuGet, wiersz polecenia dotnet nie wchodzi w interakcję z projektów programu Visual Studio. |
+| [Interfejs wiersza polecenia nuget.exe](tools/nuget-exe-cli-reference.md) | Wszystkie | Tworzenie i użycia | Narzędzie interfejsu wiersza polecenia do bibliotek .NET Framework i projektów innych stylu zestawu SDK, przeznaczonych dla biblioteki .NET Standard. Zawiera wszystkie funkcje NuGet, z niektórymi poleceniami zastosowanie konkretnie do pakietu dla twórców, niektóre mające zastosowanie tylko do konsumentów, i inne osoby mające zastosowanie do obu. Na przykład pakiet użycia dla twórców `nuget pack` polecenie, aby utworzyć pakiet z różnych zestawów i powiązane pliki, użyj konsumentów pakietu `nuget install` do uwzględnienia pakiety w folderze projektu i wszyscy używa `nuget config` konfiguracji NuGet zmienne. Jako narzędzie niezależne od platformy interfejs wiersza polecenia NuGet nie wchodzi w interakcję z projektów programu Visual Studio. |
 | [Konsola menedżera pakietów](tools/package-manager-console.md) | Visual Studio Windows | Zużycie | Udostępnia [poleceń programu PowerShell](tools/Powershell-Reference.md) dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
 | [Interfejs użytkownika menedżera pakietów](tools/package-manager-ui.md) | Visual Studio Windows | Zużycie | Zapewnia łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
 | [Zarządzanie NuGet interfejsu użytkownika](/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Zużycie | Zapewniają łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w programie Visual Studio dla komputerów Mac projektów. |
@@ -82,9 +82,9 @@ Komputer, który otrzyma projektu, takich jak serwer kompilacji, uzyskując kopi
 
 Wyraźnie widać następnie podstawową rolą NuGet, których dotyczy to deweloperom utrzymuje tę listę odwołań w imieniu projektu i umożliwianie efektywnie przywracania (i zaktualizować) te pakiety do którego istnieje odwołanie. Ta lista jest przechowywana w jednej z dwóch *pakietu zarządzania formaty*, zgodnie z ich wywołania:
 
-- [`packages.config`](reference/packages-config.md): *(NuGet 1.0 +)*  Pliku XML, który zawiera płaską listę wszystkich zależności w projekcie, w tym zależności innych zainstalowanych pakietów. Zainstalowane lub przywróconej pakiety są przechowywane w `packages` folderu.
-
 - [PackageReference](consume-packages/package-references-in-project-files.md) (lub "odwołania do w plikach projektu pakietu") | *(NuGet 4.0 +)* utrzymuje listę zależności najwyższego poziomu projektu, bezpośrednio w pliku projektu, więc ten sam plik jest potrzebny. Skojarzony plik `obj/project.assets.json`, jest generowana dynamicznie zarządzać ogólną wykres zależności pakietów, do których projekt używa wraz ze wszystkimi zależnościami niskiego poziomu. PackageReference jest zawsze używana w projektach .NET Core.
+
+- [`packages.config`](reference/packages-config.md): *(NuGet 1.0 +)*  Pliku XML, który zawiera płaską listę wszystkich zależności w projekcie, w tym zależności innych zainstalowanych pakietów. Zainstalowane lub przywróconej pakiety są przechowywane w `packages` folderu.
 
 Format pakietu zarządzania są stosowane w żadnym konkretnym projektem zależy od tego, typ projektu i dostępnej wersji NuGet (i/lub programu Visual Studio). Aby sprawdzić, jakiego formatu jest używany, po prostu wyszukaj `packages.config` w katalogu głównym projektu po zainstalowaniu pierwszego pakietu. Jeśli nie masz tego pliku, poszukaj w pliku projektu bezpośrednio do \<PackageReference\> elementu.
 

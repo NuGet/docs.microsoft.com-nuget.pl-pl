@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/22/2018
 ms.topic: conceptual
-ms.openlocfilehash: 506a093ff4d62c10c896246f746e6765f64f33f4
-ms.sourcegitcommit: a801052aa728a3a137225ca3ef3ff89f2d1c6b76
+ms.openlocfilehash: 556683e5a24c57a6c32d8b4e368bfdccd4d19b48
+ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54403167"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66812862"
 ---
 # <a name="package-consumption-workflow"></a>Przepływ pracy zużyciu pakietu
 
@@ -22,7 +22,7 @@ Między nuget.org i galerie prywatne pakietu, które Twoja organizacja może ust
 
 Aby uzyskać więcej informacji, zobacz [Znajdowanie i Wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md) i [różne sposoby, aby zainstalować pakiet NuGet](ways-to-install-a-package.md).
 
-NuGet są przechowywane tożsamości i numeru wersji każdego zainstalowanego pakietu nagrywanie, albo [ `packages.config` ](../reference/packages-config.md) lub pliku projektu (przy użyciu [PackageReference](../consume-packages/package-references-in-project-files.md)), w zależności od typu projektu i Wersja pakietu nuget. Nuget 4.0 +, PackageReference jest preferowane, mimo że jest to można skonfigurować w programie Visual Studio za pośrednictwem [opcje interfejsu użytkownika Menedżera pakietów](../tools/package-manager-ui.md). W każdym przypadku można przeglądać odpowiedniego pliku w dowolnym momencie, aby zobaczyć pełną listę zależności dla Twojego projektu.
+NuGet są przechowywane tożsamości i numeru wersji każdego zainstalowanego pakietu nagrywanie, albo w pliku projektu (przy użyciu [PackageReference](../consume-packages/package-references-in-project-files.md)) lub [ `packages.config` ](../reference/packages-config.md), w zależności od typu projektu i Wersja pakietu nuget. Nuget 4.0 +, PackageReference jest preferowane, mimo że jest to można skonfigurować w programie Visual Studio za pośrednictwem [opcje interfejsu użytkownika Menedżera pakietów](../tools/package-manager-ui.md). W każdym przypadku można przeglądać odpowiedniego pliku w dowolnym momencie, aby zobaczyć pełną listę zależności dla Twojego projektu.
 
 > [!Tip]
 > Zaleca się do Zawsze sprawdzaj licencję dla każdego pakietu, który ma być używany w oprogramowaniu. W witrynie nuget.org, możesz znaleźć **informacji o licencji** łącza w prawej części strony opis każdego pakietu. Jeśli pakiet nie określa postanowienia licencyjne, skontaktuj się z właścicielem pakietu bezpośrednio przy użyciu **skontaktuj się z właścicielami** łącze na stronie pakiet. Microsoft nie licencji jakiejkolwiek własności intelektualnej dla Ciebie od dostawców pakietów innych firm, a nie jest odpowiedzialny za otrzymane od innych firm.

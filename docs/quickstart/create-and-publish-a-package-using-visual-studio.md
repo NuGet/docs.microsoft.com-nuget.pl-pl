@@ -3,16 +3,16 @@ title: Tworzenie i publikowanie pakietu platformy .NET Standard, za pomocą prog
 description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet programu .NET Standard za pomocą programu Visual Studio 2017 na Windows.
 author: karann-msft
 ms.author: karann
-ms.date: 05/18/2018
+ms.date: 05/24/2019
 ms.topic: quickstart
-ms.openlocfilehash: faea00372bd387aee1502e388ad1ea88de07b95d
-ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
+ms.openlocfilehash: d30e89473b5f00895136b75a90d8d95b7645a100
+ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52453523"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66812982"
 ---
-# <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki Start: Tworzenie i publikowanie pakietu NuGet za pomocą programu Visual Studio (.NET Standard, tylko Windows)
+# <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki start: Tworzenie i publikowanie pakietu NuGet, za pomocą programu Visual Studio (.NET Standard, tylko Windows)
 
 Jest to prosty proces, aby utworzyć pakiet NuGet z standardowe biblioteki klas .NET w programie Visual Studio na Windows, a następnie opublikować go w witrynie nuget.org, za pomocą narzędzia interfejsu wiersza polecenia.
 
@@ -23,9 +23,11 @@ Jest to prosty proces, aby utworzyć pakiet NuGet z standardowe biblioteki klas 
 
 1. Instalowania dowolnej wersji programu Visual Studio 2017 z [visualstudio.com](https://www.visualstudio.com/) ze wszystkimi. Obciążenie związane z sieci. Po zainstalowaniu obciążenia platformy .NET, Visual Studio 2017 zawiera automatycznie możliwości NuGet.
 
-1. Zainstaluj `nuget.exe` interfejsu wiersza polecenia, pobierając go z [nuget.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisywania, który `.exe` pliku do odpowiedniego folderu i dodawanie folderu do zmiennej środowiskowej PATH.
+1. Zainstalowanie jednego z narzędzi interfejsu wiersza polecenia.
 
-    Alternatywnie Jeśli masz [zestawu .NET Core SDK](https://www.microsoft.com/net/download/) zainstalowany, możesz użyć `dotnet` interfejsu wiersza polecenia.
+   * Aby uzyskać `dotnet` interfejsu wiersza polecenia, zainstaluj [zestawu .NET Core SDK](https://www.microsoft.com/net/download/). Dotnet interfejsu wiersza polecenia jest wymagany w przypadku projektów .NET Standard, które używają formatu stylu zestawu SDK (zestaw SDK atrybutu).
+
+   * Dla `nuget.exe` interfejsu wiersza polecenia, pobierz go z [nuget.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisywanie `.exe` pliku do odpowiedniego folderu i dodawanie folderu do zmiennej środowiskowej PATH. Nuget.exe interfejsu wiersza polecenia jest używany dla biblioteki .NET Standard w formacie styl bez zestawu SDK.
 
 1. [Zarejestruj, aby utworzyć bezpłatne konto w witrynie nuget.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) Jeśli nie masz jeszcze takiego. Tworzenie nowego konta wysyła wiadomość e-mail z potwierdzeniem. Aby można było przekazać pakiet, należy potwierdzić konto.
 
@@ -112,7 +114,13 @@ Po utworzeniu `.nupkg` pliku opublikujesz go w witrynie nuget.org, za pomocą `n
 
 [!INCLUDE [publish-api-key](includes/publish-api-key.md)]
 
-### <a name="publish-with-nuget-push"></a>Publikowanie za pomocą wypychania nuget
+### <a name="publish-with-dotnet-nuget-push-dotnet-cli"></a>Publikowanie za pomocą wypychania nuget dotnet (interfejs wiersza polecenia platformy dotnet)
+
+Ten krok jest alternatywa dla użycia `nuget.exe`.
+
+[!INCLUDE [publish-dotnet](includes/publish-dotnet.md)]
+
+### <a name="publish-with-nuget-push-nugetexe-cli"></a>Publikowanie za pomocą wypychania nuget (nuget.exe interfejsu wiersza polecenia)
 
 Ten krok jest alternatywa dla użycia `dotnet.exe`.
 
@@ -134,12 +142,6 @@ Ten krok jest alternatywa dla użycia `dotnet.exe`.
     ```
 
 Zobacz [wypychania nuget](../tools/cli-ref-push.md).
-
-### <a name="publish-with-dotnet-nuget-push"></a>Publikowanie za pomocą polecenia dotnet nuget wypychania
-
-Ten krok jest alternatywa dla użycia `nuget.exe`.
-
-[!INCLUDE [publish-dotnet](includes/publish-dotnet.md)]
 
 ### <a name="publish-errors"></a>Publikowanie błędy
 

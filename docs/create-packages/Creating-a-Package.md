@@ -3,25 +3,31 @@ title: Jak utworzyć pakiet NuGet
 description: Szczegółowy przewodnik dotyczący procesu projektowania i tworzenia pakietu NuGet, w tym punkty kluczowe decyzje, np. plików i przechowywania wersji.
 author: karann-msft
 ms.author: karann
-ms.date: 12/12/2017
+ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0d9667b752caf7831278ac3fd63cfd67f7d34a4
-ms.sourcegitcommit: 4ea46498aee386b4f592b5ebba4af7f9092ac607
+ms.openlocfilehash: 5e362673acfab4b31c8a2e02a521afd8b19d2754
+ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610589"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66812918"
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
-Niezależnie od tego, co robi pakietu lub co do kodu zawiera, możesz użyć `nuget.exe` spakować tej funkcji do składnika udostępnione i używane przez innych programistów. Aby zainstalować `nuget.exe`, zobacz [zainstalować interfejs wiersza polecenia NuGet](../install-nuget-client-tools.md#nugetexe-cli). Należy zauważyć, że program Visual Studio nie ma automatycznie `nuget.exe`.
+Niezależnie od tego, co robi pakietu lub co do kodu zawiera, możesz użyć jednej z narzędzi interfejsu wiersza polecenia albo `nuget.exe` lub `dotnet.exe`, aby spakować tej funkcji do składnika udostępnione i używane przez innych programistów. Aby zainstalować narzędzia interfejsu wiersza polecenia NuGet, zobacz [narzędzia klienta programu NuGet zainstalować](../install-nuget-client-tools.md). Należy pamiętać, że program Visual Studio nie ma automatycznie narzędzie interfejsu wiersza polecenia.
+
+- Dla projektów .NET Core i .NET Standard, które używają formatu zestawu SDK stylu ([atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions)), oraz wszelkie inne projekty zestawu SDK stylu, NuGet używa informacji w pliku projektu bezpośrednio, aby utworzyć pakiet. Aby uzyskać więcej informacji, zobacz [Utwórz standardowy pakiety .NET przy użyciu programu Visual Studio 2017](../quickstart/create-and-publish-a-package-using-visual-studio.md) i [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md).
+
+- Dla projektów w stylu bez zestawu SDK wykonaj czynności opisane w tym artykule, aby utworzyć pakiet.
+
+- Dla projektów migracji z `packages.config` do [PackageReference](../consume-packages/package-references-in-project-files.md), użyj [msbuild - t: pakiet](../reference/migrate-packages-config-to-package-reference.md#create-a-package-after-migration).
 
 Technicznie rzecz biorąc, pakiet NuGet jest po prostu plik ZIP, który jest zastępowana `.nupkg` rozszerzenie i których zawartość dopasowania do określonych konwencji. W tym temacie opisano szczegółowe proces tworzenia pakietu, który spełnia te Konwencji. Ukierunkowane instruktażu, można znaleźć [Szybki Start: tworzenie i publikowanie pakietu](../quickstart/create-and-publish-a-package.md).
 
 Pakowanie zaczyna się od skompilowanego kodu (zestawów), symbole i/lub innych plików, które mają zostać dostarczone jako pakiet (zobacz [omówienie i przepływ pracy](overview-and-workflow.md)). Ten proces jest niezależna od kompilacji, albo w przeciwnym razie generowania plików, które są przekazywane do pakietu, mimo że można narysować z informacji w pliku projektu, aby zachować synchronizację skompilowanych zestawów i pakietów.
 
 > [!Note]
-> W tym temacie dotyczą projektów typów innych niż projektów .NET Core przy użyciu programu Visual Studio 2017 i NuGet 4.0 +. W tych projektach platformy .NET Core NuGet korzysta z informacji w pliku projektu bezpośrednio. Aby uzyskać więcej informacji, zobacz [Utwórz standardowy pakiety .NET przy użyciu programu Visual Studio 2017](../guides/create-net-standard-packages-vs2017.md) i [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md).
+> W tym temacie dotyczą projektów bez SDK-style zwykle, innych niż .NET Core i .NET Standard projektów przy użyciu programu Visual Studio 2017 i NuGet 4.0 +.
 
 ## <a name="deciding-which-assemblies-to-package"></a>Przy wyborze rozwiązania, które zestawy do pakietu
 
