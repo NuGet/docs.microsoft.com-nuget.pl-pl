@@ -5,18 +5,18 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5e362673acfab4b31c8a2e02a521afd8b19d2754
-ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
+ms.openlocfilehash: e3a40a521a3b16d9757ef1bbf2511a1537d8bddb
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66812918"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67425818"
 ---
 # <a name="creating-nuget-packages"></a>Tworzenie pakietów NuGet
 
 Niezależnie od tego, co robi pakietu lub co do kodu zawiera, możesz użyć jednej z narzędzi interfejsu wiersza polecenia albo `nuget.exe` lub `dotnet.exe`, aby spakować tej funkcji do składnika udostępnione i używane przez innych programistów. Aby zainstalować narzędzia interfejsu wiersza polecenia NuGet, zobacz [narzędzia klienta programu NuGet zainstalować](../install-nuget-client-tools.md). Należy pamiętać, że program Visual Studio nie ma automatycznie narzędzie interfejsu wiersza polecenia.
 
-- Dla projektów .NET Core i .NET Standard, które używają formatu zestawu SDK stylu ([atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions)), oraz wszelkie inne projekty zestawu SDK stylu, NuGet używa informacji w pliku projektu bezpośrednio, aby utworzyć pakiet. Aby uzyskać więcej informacji, zobacz [Utwórz standardowy pakiety .NET przy użyciu programu Visual Studio 2017](../quickstart/create-and-publish-a-package-using-visual-studio.md) i [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md).
+- Dla projektów .NET Core i .NET Standard, które używają formatu zestawu SDK stylu ([atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions)), oraz wszelkie inne projekty zestawu SDK stylu, NuGet używa informacji w pliku projektu bezpośrednio, aby utworzyć pakiet. Aby uzyskać więcej informacji, zobacz [Utwórz standardowy pakiety .NET za pomocą programu Visual Studio](../quickstart/create-and-publish-a-package-using-visual-studio.md) i [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md).
 
 - Dla projektów w stylu bez zestawu SDK wykonaj czynności opisane w tym artykule, aby utworzyć pakiet.
 
@@ -27,7 +27,7 @@ Technicznie rzecz biorąc, pakiet NuGet jest po prostu plik ZIP, który jest zas
 Pakowanie zaczyna się od skompilowanego kodu (zestawów), symbole i/lub innych plików, które mają zostać dostarczone jako pakiet (zobacz [omówienie i przepływ pracy](overview-and-workflow.md)). Ten proces jest niezależna od kompilacji, albo w przeciwnym razie generowania plików, które są przekazywane do pakietu, mimo że można narysować z informacji w pliku projektu, aby zachować synchronizację skompilowanych zestawów i pakietów.
 
 > [!Note]
-> W tym temacie dotyczą projektów bez SDK-style zwykle, innych niż .NET Core i .NET Standard projektów przy użyciu programu Visual Studio 2017 i NuGet 4.0 +.
+> W tym temacie dotyczą projektów styl bez zestawu SDK, a zwykle projekty inne niż platformy .NET Core i .NET Standard projektów przy użyciu programu Visual Studio 2017 i wyższych wersji i NuGet 4.0 +.
 
 ## <a name="deciding-which-assemblies-to-package"></a>Przy wyborze rozwiązania, które zestawy do pakietu
 
@@ -408,7 +408,7 @@ We wszystkich przypadkach `nuget pack` wyklucza folderów rozpoczynających się
 
 NuGet wskazuje, czy istnieją błędy w `.nuspec` plików, które wymagają korygowanie, takie jak Zapominanie o zmieniać wartości symboli zastępczych w manifeście.
 
-Gdy `nuget pack` zakończy się powodzeniem, masz `.nupkg` pliku, który można opublikować odpowiedni galerii, zgodnie z opisem w [publikowania pakietu](../create-packages/publish-a-package.md).
+Gdy `nuget pack` zakończy się powodzeniem, masz `.nupkg` pliku, który można opublikować odpowiedni galerii, zgodnie z opisem w [publikowania pakietu](../nuget-org/publish-a-package.md).
 
 > [!Tip]
 > Można zbadać pakietu po jej utworzeniu go otworzyć w [narzędziu Package Explorer](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) narzędzia. Umożliwia graficzne przedstawienie zawartości pakietu i jego manifestu. Można również zmienić nazwę wynikowy `.nupkg` plik `.zip` pliku i przejrzyj jego zawartość bezpośrednio.
@@ -445,7 +445,7 @@ Dostępne są następujące opcje: kilka są powszechne projektów programu Visu
 
 Przed opublikowaniem pakietu, zazwyczaj chcesz przetestować proces instalowania pakietu do projektu. Testy, upewnij się, że zawsze pliki wszystkie znajdą się w ich w odpowiednim miejscu w projekcie.
 
-Testowanie instalacji ręcznie w programie Visual Studio lub w wierszu polecenia przy użyciu normalnych [kroki instalacji pakietu](../consume-packages/ways-to-install-a-package.md).
+Testowanie instalacji ręcznie w programie Visual Studio lub w wierszu polecenia przy użyciu normalnych [kroki instalacji pakietu](../consume-packages/overview-and-workflow.md#ways-to-install-a-nuget-package).
 
 Potrzeby zautomatyzowanego testowania podstawowy proces jest następująca:
 
@@ -456,7 +456,7 @@ Potrzeby zautomatyzowanego testowania podstawowy proces jest następująca:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu pakietu, który jest `.nupkg` pliku, można opublikować ją w Galerii wybranym zgodnie z opisem na [publikowania pakietu](../create-packages/publish-a-package.md).
+Po utworzeniu pakietu, który jest `.nupkg` pliku, można opublikować ją w Galerii wybranym zgodnie z opisem na [publikowania pakietu](../nuget-org/publish-a-package.md).
 
 Możesz również chcieć rozszerzają możliwości pakietu lub w przeciwnym razie obsługuje inne scenariusze, zgodnie z opisem w następujących tematach:
 

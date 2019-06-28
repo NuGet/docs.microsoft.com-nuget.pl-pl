@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/30/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 4884de71151ee1ae3c0a78b803c9222f9c1d86ec
-ms.sourcegitcommit: ef08f376688f0191a8d3d873b6a4386afd799373
+ms.openlocfilehash: 34c205e7dac60c7abfb6323b4dc45bf4f074d46a
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66266361"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426792"
 ---
 # <a name="catalog"></a>Wykaz
 
@@ -210,7 +210,7 @@ releaseNotes            | string                     | Brak       |
 requireLicenseAgreement | wartość logiczna                    | Brak       | Załóżmy `false` Jeśli wykluczone
 podsumowanie                 | string                     | Brak       |
 tagi                    | Tablica ciągów           | Brak       |
-tytuł                   | string                     | Brak       |
+title                   | string                     | Brak       |
 verbatimVersion         | string                     | Brak       | Ciąg wersji, ponieważ pierwotnie został znaleziony w .nuspec
 
 Pakiet `version` właściwości jest ciągiem pełnej wersji po normalizacji. Oznacza to, że dane kompilacji SemVer 2.0.0 można uwzględnić w tym miejscu.
@@ -236,8 +236,8 @@ POBIERZ https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.
 
 Elementy z typem katalogu `PackageDelete` zawierać minimalny zestaw informacji wskazujących klientom katalogu, że pakiet został usunięty ze źródła pakietu i nie jest już dostępna w kontekście operacji pakietu (np. przywracanie).
 
-> [!Note]
-> Istnieje możliwość pakietu do usunięcia i później ponownie opublikować przy użyciu tego samego Identyfikatora pakietu i wersję. W witrynie nuget.org jest to bardzo rzadkich przypadkach, ponieważ powoduje przerwanie oficjalne klienta założenie, że identyfikator pakietu i wersję implikują zawartości określonego pakietu. Aby uzyskać więcej informacji na temat usuwania pakietów w witrynie nuget.org, zobacz [nasze zasady](../policies/deleting-packages.md).
+> [!NOTE]
+> Istnieje możliwość pakietu do usunięcia i później ponownie opublikować przy użyciu tego samego Identyfikatora pakietu i wersję. W witrynie nuget.org jest to bardzo rzadkich przypadkach, ponieważ powoduje przerwanie oficjalne klienta założenie, że identyfikator pakietu i wersję implikują zawartości określonego pakietu. Aby uzyskać więcej informacji na temat usuwania pakietów w witrynie nuget.org, zobacz [nasze zasady](../nuget-org/policies/deleting-packages.md).
 
 Elementy katalogu usuwania pakietu mają żadne dodatkowe właściwości, oprócz tych [uwzględnione na wszystkich pozostawia katalogu](#catalog-leaf).
 

@@ -1,18 +1,18 @@
 ---
-title: Konfigurowanie zachowania pakietu nuget
+title: Typowe konfiguracje NuGet
 description: Pliki w pliku NuGet.Config Sterowanie zachowaniem NuGet, globalnie i na poszczególnych projektów, a są modyfikowane za pomocą polecenia konfiguracji nuget.
 author: karann-msft
 ms.author: karann
 ms.date: 10/25/2017
 ms.topic: conceptual
-ms.openlocfilehash: 963d1d59ea7e65e3d75bc7105b8864e3e4045938
-ms.sourcegitcommit: ef08f376688f0191a8d3d873b6a4386afd799373
+ms.openlocfilehash: 57b7f29b533a8e6d7db2710c7e42a239f50199a1
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66266338"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426653"
 ---
-# <a name="configuring-nuget-behavior"></a>Konfigurowanie zachowania pakietu NuGet
+# <a name="common-nuget-configurations"></a>Typowe konfiguracje NuGet
 
 Zachowanie NuGet jest wymuszany przez ustawienia zebranych w jednej lub więcej `NuGet.Config` plików (XML), które może istnieć na poziomie projektu-, user- i całego komputera. Globalna `NuGetDefaults.Config` plik konfiguruje również specjalnie źródeł pakietów. Ustawienia stosowane do wszystkich poleceń, które pojawiły się w interfejsu wiersza polecenia, konsola Menedżera pakietów i interfejs użytkownika Menedżera pakietów.
 
@@ -20,7 +20,7 @@ Zachowanie NuGet jest wymuszany przez ustawienia zebranych w jednej lub więcej 
 
 | Scope | Lokalizacja pliku NuGet.Config | Opis |
 | --- | --- | --- |
-| Rozwiązanie | Bieżący folder (czyli folderu rozwiązania) lub dowolnego folderu do katalogu głównego dysku.| W folderze rozwiązania, Zastosuj ustawienia dotyczą wszystkich projektów w podfolderach. Należy pamiętać, że jeśli plik konfiguracji znajduje się w folderze projektu, nie ma ona wpływu na ten projekt. |
+| Rozwiązanie | Bieżący folder (czyli folderu rozwiązania) lub dowolnego folderu do katalogu głównego dysku.| W folderze rozwiązania ustawienia stosowane do wszystkich projektów w podfolderach. Należy pamiętać, że jeśli plik konfiguracji znajduje się w folderze projektu, nie ma ona wpływu na ten projekt. |
 | Użytkownik | Windows: `%appdata%\NuGet\NuGet.Config`<br/>Mac/Linux: `~/.config/NuGet/NuGet.Config` lub `~/.nuget/NuGet/NuGet.Config` (zależnie od dystrybucji systemu operacyjnego) | Ustawienia stosowane do wszystkich operacji, ale są zastępowane przez wszystkie ustawienia na poziomie projektu. |
 | Komputer | Windows: `%ProgramFiles(x86)%\NuGet\Config`<br/>Mac/Linux: `$XDG_DATA_HOME`. Jeśli `$XDG_DATA_HOME` ma wartość null lub jest pusta, `~/.local/share` lub `/usr/local/share` będzie używany (zależnie od dystrybucji systemu operacyjnego)  | Ustawienia stosowane do wszystkich operacji wykonywanych na komputerze, ale są zastępowane przez ustawienia na poziomie użytkownika lub projektu. |
 

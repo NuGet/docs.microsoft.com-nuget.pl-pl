@@ -1,18 +1,18 @@
 ---
 title: Tworzenie i publikowanie pakietu platformy .NET Framework, za pomocą programu Visual Studio na Windows
-description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet programu .NET Framework za pomocą programu Visual Studio 2017 na Windows.
+description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet programu .NET Framework za pomocą programu Visual Studio na Windows.
 author: karann-msft
 ms.author: karann
 ms.date: 05/13/2018
 ms.topic: quickstart
-ms.openlocfilehash: 68593211da1a34649c7050753a5db0f3a03cb41b
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: efdaa0128d47f948c86c3cc83d6a332410cbf99f
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549631"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426335"
 ---
-# <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki Start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
+# <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
 
 Tworzenie pakietu NuGet w bibliotece klas programu .NET Framework obejmuje tworzenie biblioteki DLL w programie Visual Studio na Windows, a następnie przy użyciu narzędzia wiersza polecenia nuget.exe umożliwiającego tworzenie i publikowanie pakietu.
 
@@ -117,8 +117,8 @@ Możesz uruchomić `nuget spec` tylko raz, aby wygenerować manifest początkowe
 
     - licenseUrl
     - projectUrl
-    - IconUrl
-    - ReleaseNotes
+    - iconUrl
+    - releaseNotes
     - tagi
 
 1. Pakiety utworzone do użytku publicznego, należy zwrócić szczególną uwagę na **tagi** właściwości, jak tagi pomóc innym odnaleźć pakietu na źródeł, takich jak nuget.org i zrozumieć, co robi.
@@ -175,7 +175,7 @@ Zobacz [wypychania nuget](../tools/cli-ref-push.md).
 ## <a name="related-topics"></a>Tematy pokrewne
 
 - [Utwórz pakiet](../create-packages/creating-a-package.md)
-- [Publikowanie pakietu](../create-packages/publish-a-package.md)
+- [Publikowanie pakietu](../nuget-org/publish-a-package.md)
 - [Pakiety w wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)

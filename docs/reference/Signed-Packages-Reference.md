@@ -6,21 +6,21 @@ ms.author: rmpablos
 ms.date: 05/18/2018
 ms.topic: reference
 ms.reviewer: ananguar
-ms.openlocfilehash: 486bf4032e156168f9b2fef57ccdae0c372b2eff
-ms.sourcegitcommit: 673e580ae749544a4a071b4efe7d42fd2bb6d209
+ms.openlocfilehash: 952256a24246543ecd4c37285cd001622aa2bc46
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52977514"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426176"
 ---
-# <a name="signed-packages"></a>Podpisanych pakietów
+# <a name="signed-packages"></a>Podpisane pakiety
 
 *NuGet 4.6.0+ i Visual Studio 2017 w wersji 15.6 i nowszych*
 
 Pakiety NuGet może zawierać podpis cyfrowy, który zapewnia ochronę przed zmodyfikowany zawartości. Ta sygnatura jest generowany z certyfikat X.509, który dodaje również autentyczności dowody do rzeczywistego źródła pakietu.
 
 Podpisanych pakietów zapewnia najsilniejszą weryfikacji end-to-end. Istnieją dwa różne typy podpisów NuGet:
-- **Tworzenie sygnatury**. Autor podpis gwarantuje, że pakiet nie został zmodyfikowany od czasu Autor podpisania pakietu, niezależnie od którego repozytorium lub co transportu metody jest dostarczany w pakiecie. Ponadto podpisane przez autora pakietów zapewniają mechanizm uwierzytelniania dodatkowego do potoku publikowania w witrynie nuget.org, ponieważ certyfikatu podpisywania musi być zarejestrowany wcześniej. Aby uzyskać więcej informacji, zobacz [rejestrowanie certyfikatów](#register-certificate-on-nugetorg).
+- **Tworzenie sygnatury**. Autor podpis gwarantuje, że pakiet nie został zmodyfikowany od czasu Autor podpisania pakietu, niezależnie od którego repozytorium lub co transportu metody jest dostarczany w pakiecie. Ponadto podpisane przez autora pakietów zapewniają mechanizm uwierzytelniania dodatkowego do potoku publikowania w witrynie nuget.org, ponieważ certyfikatu podpisywania musi być zarejestrowany wcześniej. Aby uzyskać więcej informacji, zobacz [rejestrowanie certyfikatów](#signature-requirements-on-nugetorg).
 - **Podpis repozytorium**. Podpisy repozytorium zapewniają gwarancji spójności dla **wszystkich** pakietów w repozytorium, czy są one podpisane lub nie, autor, nawet wtedy, gdy te pakiety są uzyskiwane z innej lokalizacji niż oryginalny repozytorium, gdzie znajdowały się podpisany.   
 
 Aby uzyskać szczegółowe informacje na temat tworzenia pakietu podpisem autora, zobacz [podpisywanie pakietów](../create-packages/Sign-a-package.md) i [polecenie logowania nuget](../tools/cli-ref-sign.md).
@@ -54,7 +54,7 @@ nuget.org ma dodatkowe wymagania dotyczące zaakceptowanie podpisanych pakietów
   - Nie musi zostać cofnięta podczas podpisywania czasu. (To nie będzie knowable w chwili przesyłania, więc nuget.org okresowo sprawdza ponownie stanu odwołania).
   
   
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Podpisywanie pakietów NuGet](../create-packages/Sign-a-Package.md)
-- [Instalowanie pakietów podpisem](../consume-packages/installing-signed-packages.md)
+- [Zarządzanie granicami zaufania pakietu](../consume-packages/installing-signed-packages.md)

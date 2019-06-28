@@ -1,5 +1,5 @@
 ---
-title: Informacje o interfejsie użytkownika Menedżera pakietów NuGet
+title: Instalowanie i Zarządzaj pakietami NuGet w programie Visual Studio
 description: Instrukcje dotyczące używania interfejsu użytkownika Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami NuGet.
 author: karann-msft
 ms.author: karann
@@ -10,30 +10,21 @@ f1_keywords:
 - vs.toolsoptionspages.nuget_package_manager.general
 - vs.toolsoptionspages.nuget_package_manager.package_sources
 - vs.nuget.packagemanager.ui
-ms.openlocfilehash: 422faf99e58e058d86db774a8f3c1c576b3dc393
-ms.sourcegitcommit: 2af17c8bb452a538977794bf559cdd78d58f2790
+ms.openlocfilehash: 97e5de3f07199cd3c6a645749c8f2f1603ca630e
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58637626"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426237"
 ---
-# <a name="nuget-package-manager-ui"></a>Interfejs użytkownika Menedżera pakietów NuGet
+# <a name="install-and-manage-packages-in-visual-studio"></a>Instalowanie i zarządzania pakietami w programie Visual Studio
 
 Interfejs użytkownika Menedżera pakietów NuGet w programie Visual Studio na Windows pozwala na łatwe instalowanie, odinstalowywanie oraz aktualizowanie pakietów NuGet w projektach i rozwiązaniach. Aby w programie Visual Studio dla komputerów Mac, zobacz [pakietu w tym NuGet w projekcie](/visualstudio/mac/nuget-walkthrough). Interfejs użytkownika Menedżera pakietów nie jest uwzględniona w programie Visual Studio Code.
 
-W tym temacie:
-
-- [Znajdowanie i instalowanie pakietu (Karta Przeglądaj)](#finding-and-installing-a-package)
-- [Odinstalowywanie pakietu (karta zainstalowane)](#uninstalling-a-package)
-- [Aktualizowanie pakietu (karty aktualizacji i zainstalowane)](#updating-a-package) (obejmuje ["Niejawnie odwołuje zestawu SDK" lub "AutoReferenced" wiadomości](#implicit_reference))
-- [Zarządzanie pakietami dla rozwiązania](#managing-packages-for-the-solution) (Praca z wieloma projektami w tym samym czasie).
-- [Źródła pakietów](#package-sources)
-- [Kontrolowanie opcji Menedżera pakietów](#package-manager-options-control)
-
-> [!Note]
+> [!NOTE]
 > Jeśli masz Brak Menedżera pakietów NuGet w programie Visual Studio 2015, sprawdź **Narzędzia > rozszerzenia i aktualizacje...**  i wyszukaj *Menedżera pakietów NuGet* rozszerzenia. Jeśli nie możesz używać Instalator rozszerzenia programu Visual Studio, należy pobrać rozszerzenia bezpośrednio z [ https://dist.nuget.org/index.html ](https://dist.nuget.org/index.html).
 >
-> W programie Visual Studio 2017 Menedżer pakietów NuGet i NuGet są instalowane automatycznie z żadną. Obciążenia związane z sieci. Zainstalować osobno, wybierając **poszczególne składniki > Kod Narzędzia > Menedżer pakietów NuGet** opcji w Instalatorze programu Visual Studio 2017.
+> Począwszy od programu Visual Studio 2017, Menedżer pakietów NuGet i NuGet są instalowane automatycznie z żadną. Obciążenia związane z sieci. Zainstalować osobno, wybierając **poszczególne składniki > Kod Narzędzia > Menedżer pakietów NuGet** opcji w Instalatorze programu Visual Studio.
 
 ## <a name="finding-and-installing-a-package"></a>Znajdowanie i instalowanie pakietu
 
@@ -123,14 +114,14 @@ Aby zarządzać źródeł pakietów:
 
     ![Opcje źródła pakietów](media/options.png)
 
-1. Aby dodać źródła, wybierz **+**, umożliwia edytowanie nazwy, wprowadź adres URL lub ścieżkę w **źródła** sterowania, a następnie wybierz **aktualizacji**. Źródło jest teraz wyświetlany w selektorze listy rozwijanej.
+1. Aby dodać źródła, wybierz **+** , umożliwia edytowanie nazwy, wprowadź adres URL lub ścieżkę w **źródła** sterowania, a następnie wybierz **aktualizacji**. Źródło jest teraz wyświetlany w selektorze listy rozwijanej.
 1. Aby zmienić źródło pakietu, należy ją zaznaczyć, dokonaj edycji w **nazwa** i **źródła** pola, a następnie wybierz **aktualizacji**.
 1. Aby wyłączyć źródło pakietu, wyczyść pole po lewej stronie nazwy na liście.
 1. Aby usunąć źródło pakietu, wybierz ją, a następnie wybierz pozycję **X** przycisku.
 1. Za pomocą w górę i Strzałka w dół przyciski nie zmienia kolejność priorytetów źródeł pakietów. Program Visual Studio ignoruje kolejność źródeł pakietów przy użyciu pakietów z dowolnego źródła najpierw do odpowiadania na żądania. Aby uzyskać więcej informacji, zobacz [Przywracanie pakietu](../consume-packages/package-restore.md).
 
 > [!Tip]
-> Jeśli źródło pakietu pojawi się ponownie po jej usunięciu, mogą być wymienione w poziomie komputera lub użytkownika na poziomie `NuGet.Config` plików. Zobacz [zachowania programu NuGet Konfigurowanie](../consume-packages/configuring-nuget-behavior.md) dla lokalizacji tych plików, następnie usuń źródła przez edycję plików ręcznie lub za pomocą [nuget źródeł polecenia](../tools/nuget-exe-CLI-reference.md).
+> Jeśli źródło pakietu pojawi się ponownie po jej usunięciu, mogą być wymienione w poziomie komputera lub użytkownika na poziomie `NuGet.Config` plików. Zobacz [NuGet typowe konfiguracje](../consume-packages/configuring-nuget-behavior.md) dla lokalizacji tych plików, następnie usuń źródła przez edycję plików ręcznie lub za pomocą [nuget źródeł polecenia](../tools/nuget-exe-CLI-reference.md).
 
 ## <a name="package-manager-options-control"></a>Kontrolowanie opcji Menedżera pakietów
 

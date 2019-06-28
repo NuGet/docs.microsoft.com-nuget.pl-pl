@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 9964186dcbfedfbf2415a57102f8f019a1eef23a
-ms.sourcegitcommit: 6b71926f062ecddb8729ef8567baf67fd269642a
+ms.openlocfilehash: 3d7a4188de4fb6f812ca19e7f9e302a5a133c58b
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59931998"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67425968"
 ---
 # <a name="restore-command-nuget-cli"></a>polecenie Restore (interfejs wiersza polecenia NuGet)
 
@@ -50,7 +50,7 @@ gdzie `<projectPath>` Określa lokalizację rozwiązania lub `packages.config` p
 | RequireConsent | Sprawdza, czy Przywracanie pakietów jest włączona, zanim pobranie i zainstalowanie pakietów. Aby uzyskać więcej informacji, zobacz [Przywracanie pakietów](../consume-packages/package-restore.md). |
 | SolutionDirectory | Określa folder rozwiązania. Nie jest prawidłowy podczas przywracania pakietów dla rozwiązania. Wymagana, gdy przywrócenie za pomocą `packages.config` pliku, chyba że `PackagesDirectory` lub `OutputDirectory` jest używany. |
 | Source | Określa listę źródeł pakietów (jako adresy URL) na potrzeby przywracania. Jeśli argument jest pominięty, polecenie używa źródeł dostarczane w plikach konfiguracyjnych, zobacz [zachowania programu NuGet Konfigurowanie](../consume-packages/configuring-nuget-behavior.md). |
-| Verbosity |> określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
+| Verbosity | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
 Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)
 

@@ -5,14 +5,14 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/09/2017
 ms.topic: tutorial
-ms.openlocfilehash: c43f4e80d456214ca354e136db6419a95fc797a0
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: d737b70febd1e18aa8a39cc73a9a9cf333f758c6
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551911"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426843"
 ---
-# <a name="create-packages-for-xamarin-with-visual-studio-2015"></a>Tworzenie pakietów dla platformy Xamarin w programie Visual Studio 2015
+# <a name="create-packages-for-xamarin-with-visual-studio-2015"></a>Tworzenie pakietów dla platformy Xamarin za pomocą programu Visual Studio 2015
 
 Pakiet dla programu Xamarin zawiera kod, który używa natywnych interfejsów API w systemach iOS, Android i Windows, w zależności od systemu operacyjnego w czasie wykonywania. Chociaż jest to proste, zaleca się umożliwiają deweloperom używanie pakietu z aplikacji PCL lub obszar powierzchni biblioteki .NET Standard za pomocą wspólnego interfejsu API.
 
@@ -260,7 +260,7 @@ Spowoduje to wygenerowanie `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`. Otwarcie tego
 > [!Tip]
 > A `.nupkg` plik jest po prostu plikiem ZIP z innym rozszerzeniem. Można także sprawdzić zawartość pakietu, następnie zmieniając `.nupkg` do `.zip`, ale należy pamiętać przywrócić rozszerzenia przed przekazaniem pakietu na stronie nuget.org.
 
-Aby udostępnić pakietu innym deweloperom, postępuj zgodnie z instrukcjami [publikowanie pakietu](../create-packages/publish-a-package.md).
+Aby udostępnić pakietu innym deweloperom, postępuj zgodnie z instrukcjami [publikowanie pakietu](../nuget-org/publish-a-package.md).
 
 ## <a name="related-topics"></a>Tematy pokrewne
 

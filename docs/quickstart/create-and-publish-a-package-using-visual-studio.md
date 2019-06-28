@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: quickstart
-ms.openlocfilehash: d30e89473b5f00895136b75a90d8d95b7645a100
-ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
+ms.openlocfilehash: e44f7b4040e5450f9f987eef62fd16d12abc6b20
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66812982"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426309"
 ---
 # <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki start: Tworzenie i publikowanie pakietu NuGet, za pomocą programu Visual Studio (.NET Standard, tylko Windows)
 
@@ -174,7 +174,7 @@ To będzie zawierać plik o nazwie `readme.txt` w katalogu głównym pakietu. Vi
 ## <a name="related-topics"></a>Tematy pokrewne
 
 - [Utwórz pakiet](../create-packages/creating-a-package.md)
-- [Publikowanie pakietu](../create-packages/publish-a-package.md)
+- [Publikowanie pakietu](../nuget-org/publish-a-package.md)
 - [Pakiety w wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)

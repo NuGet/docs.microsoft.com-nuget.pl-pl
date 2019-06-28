@@ -6,18 +6,18 @@ ms.author: patbel
 ms.date: 11/12/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: ee4ffaa7e250cdbf313476fd794a8d87c80b69f9
-ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
+ms.openlocfilehash: c22c7f0a6b6878bec4f8396e02e2d97998170455
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54324711"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67425981"
 ---
 # <a name="trusted-signers-command-nuget-cli"></a>polecenie zaufane osoby podpisujące (interfejs wiersza polecenia NuGet)
 
 **Dotyczy:** pakietu zużycie &bullet; **obsługiwane wersje:** 4.9.1+
 
-Pobiera lub ustawia zaufane osoby podpisujące konfiguracji NuGet. Aby uzyskać dodatkowe użycie, zobacz [Konfigurowanie zachowania pakietu NuGet](../consume-packages/configuring-nuget-behavior.md). Aby uzyskać szczegółowe informacje na temat sposobu schematu pliku nuget.config wygląda na to, zapoznaj się [odwołanie do pliku config NuGet](../reference/nuget-config-file.md).
+Pobiera lub ustawia zaufane osoby podpisujące konfiguracji NuGet. Aby uzyskać dodatkowe użycie, zobacz [NuGet typowe konfiguracje](../consume-packages/configuring-nuget-behavior.md). Aby uzyskać szczegółowe informacje na temat sposobu schematu pliku nuget.config wygląda na to, zapoznaj się [odwołanie do pliku config NuGet](../reference/nuget-config-file.md).
 
 ## <a name="usage"></a>Użycie
 
@@ -118,8 +118,8 @@ _Uwaga_: Ten gest będzie usunąć bieżącą listę certyfikatów i zastąp je 
 | --- | --- |
 | ConfigFile | Plik konfiguracyjny NuGet do zastosowania. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) jest używany.|
 | ForceEnglishOutput | Wymusza nuget.exe do uruchamiania przy użyciu kultury niezmiennej, oparte na język angielski. |
-| Pomoc | Wyświetla Pomoc dla polecenia. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
+| Help | Wyświetla Pomoc dla polecenia. |
+| Verbosity | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 
 ## <a name="examples"></a>Przykłady
 

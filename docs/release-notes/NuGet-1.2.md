@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: b47f73c1c225540226d3780e17053427b8ea4a8a
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 5d10d6bf27614980a144c30c3af6f9892a109061
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43545690"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426186"
 ---
 # <a name="nuget-12-release-notes"></a>Informacje o wersji 1.2 NuGet
 
@@ -54,7 +54,7 @@ Te zestawy nie są uwzględnione w pakiecie, zgodnie z ich są zakłada się, ż
 
 ### <a name="nugetexe-now-is-able-to-store-api-key-credentials"></a>teraz nuget.exe jest można przechowywać poświadczenia klucza interfejsu API
 
-Podczas korzystania z narzędzia wiersza polecenia nuget.exe, możesz teraz używać polecenia SetApiKey przechowywać swój klucz interfejsu API. Dzięki temu nie trzeba je określić w każdym wypchnięciu pakietu. Aby uzyskać szczegółowe informacje na temat zapisywania swój klucz interfejsu API z nuget.exe [zapoznaj się z dokumentacją na temat publikowania pakietu](../create-packages/publish-a-package.md).
+Podczas korzystania z narzędzia wiersza polecenia nuget.exe, możesz teraz używać polecenia SetApiKey przechowywać swój klucz interfejsu API. Dzięki temu nie trzeba je określić w każdym wypchnięciu pakietu. Aby uzyskać szczegółowe informacje na temat zapisywania swój klucz interfejsu API z nuget.exe [zapoznaj się z dokumentacją na temat publikowania pakietu](../nuget-org/publish-a-package.md).
 
 ### <a name="package-explorer"></a>Eksplorator pakietów
 Eksplorator pakietów został zaktualizowany do obsługi NuGet 1.2. Aby uzyskać więcej informacji, zapoznaj się z [informacje o wersji w narzędziu Package Explorer](http://nuget.codeplex.com/wikipage?title=New%20features%20in%20NuGet%20Package%20Explorer%201.0).
@@ -65,6 +65,6 @@ Poprzedniej liście były najbardziej zauważalne w wielu funkcji, które wprowa
 
 ## <a name="known-issues"></a>Znane problemy
 
-* **1.2, pakiet niezgodności**: pakiety skompilowane przy użyciu najnowszej wersji narzędzia wiersza polecenia, nuget.exe (> 1.2) nie będzie działać z poprzednimi wersjami dodatku programu NuGet VS (na przykład 1.1). Jeśli napotkasz komunikat coś o schemacie niezgodne zostały przekroczone tego błędu. Zaktualizuj NuGet do najnowszej wersji.
-* **Niezgodność NuGet.Server**: Jeśli przechowujesz NuGet wewnętrznego źródła danych za pomocą programu NuGet.Server project, musisz zaktualizować tego projektu z najnowszą wersją NuGet.Server.
-* **Błąd niezgodność podpisu**: Jeśli napotkasz błąd podczas uaktualniania z komunikatem o niezgodność podpisu, musisz najpierw odinstalować NuGet, a następnie zainstaluj go. To znajduje się w naszym [strony znane problemy](../release-notes/known-issues.md) który zawiera bardziej szczegółowe informacje. Ten problem ma wpływ na komputery z systemem Visual Studio 2010 z dodatkiem SP1 i tylko w wersji 1.0 NuGet zainstalowane, który został niepoprawnie podpisany. Ta wersja tylko podjęto dostępne w witrynie CodePlex przez pewien okres, więc ten problem nie powinien wpływać na zbyt wiele osób.
+* **1.2, pakiet niezgodności**: Pakiety skompilowane przy użyciu najnowszej wersji narzędzia wiersza polecenia, nuget.exe (> 1.2) nie będzie działać z poprzednimi wersjami dodatku programu NuGet VS (na przykład 1.1). Jeśli napotkasz komunikat coś o schemacie niezgodne zostały przekroczone tego błędu. Zaktualizuj NuGet do najnowszej wersji.
+* **Niezgodność NuGet.Server**: Jeśli przechowujesz NuGet wewnętrznego źródła danych za pomocą programu NuGet.Server project, należy zaktualizować tego projektu z najnowszą wersją NuGet.Server.
+* **Błąd niezgodność podpisu**: Jeśli napotkasz błąd podczas uaktualniania z komunikatem o niezgodność podpisu, należy najpierw odinstalować NuGet, a następnie zainstaluj go. To znajduje się w naszym [strony znane problemy](../release-notes/known-issues.md) który zawiera bardziej szczegółowe informacje. Ten problem ma wpływ na komputery z systemem Visual Studio 2010 z dodatkiem SP1 i tylko w wersji 1.0 NuGet zainstalowane, który został niepoprawnie podpisany. Ta wersja tylko podjęto dostępne w witrynie CodePlex przez pewien okres, więc ten problem nie powinien wpływać na zbyt wiele osób.

@@ -1,24 +1,26 @@
 ---
-title: Przewodnik konsoli Menedżera pakietów NuGet
+title: Instalowanie i Zarządzaj pakietami NuGet w programie Visual Studio przy użyciu programu PowerShell
 description: Instrukcje dotyczące korzystania z konsoli Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami.
 author: karann-msft
 ms.author: karann
-ms.date: 01/23/2018
+ms.date: 06/24/2019
 ms.topic: conceptual
 f1_keywords:
 - vs.nuget.packagemanager.console
-ms.openlocfilehash: 88979c67ea7f073f2ea5a02c445186642f77f210
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 11ec25598d3110ba84dec5044642e205e13346af
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546881"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426219"
 ---
-# <a name="package-manager-console"></a>Konsola Menedżera pakietów
+# <a name="install-and-manage-packages-using-powershell-in-visual-studio"></a>Instalowanie i zarządzania pakietami przy użyciu programu PowerShell w programie Visual Studio
 
-Konsola Menedżera pakietów NuGet jest wbudowana w programie Visual Studio na Windows w wersji 2012 i nowszych. (Nie jest uwzględniona w programie Visual Studio for Mac lub Visual Studio Code.)
+Konsola Menedżera pakietów NuGet umożliwia korzystanie z [poleceń programu NuGet PowerShell](../tools/powershell-reference.md) można znaleźć, instalowanie, odinstalowywanie oraz aktualizowanie pakietów NuGet. Za pomocą konsoli jest konieczne w przypadku, gdy interfejs użytkownika Menedżera pakietów nie zapewnia sposób wykonania operacji. Aby użyć `nuget.exe` poleceń interfejsu wiersza polecenia w konsoli, zobacz [przy użyciu nuget.exe interfejsu wiersza polecenia w konsoli](#using-the-nugetexe-cli-in-the-console).
 
-Konsola umożliwia korzystanie z [poleceń programu NuGet PowerShell](../tools/powershell-reference.md) można znaleźć, instalowanie, odinstalowywanie oraz aktualizowanie pakietów NuGet. Za pomocą konsoli jest konieczne w przypadku, gdy interfejs użytkownika Menedżera pakietów nie zapewnia sposób wykonania operacji. Aby użyć `nuget.exe` poleceń w konsoli, zobacz [przy użyciu nuget.exe interfejsu wiersza polecenia w konsoli](#using-the-nugetexe-cli-in-the-console).
+Konsoli jest wbudowana w programie Visual Studio na Windows. Nie jest uwzględniona w programie Visual Studio for Mac lub Visual Studio Code.
+
+## <a name="find-and-install-a-package"></a>Znajdowanie i instalowanie pakietu
 
 Na przykład Znajdowanie i instalowanie pakietu jest przeprowadzane za pomocą trzech prostych krokach:
 
@@ -74,7 +76,7 @@ Install-Package Elmah -ProjectName UtilitiesLib
 
 Zobacz [Install-Package](../tools/ps-ref-install-package.md).
 
-Instalowanie pakietu w konsoli wykonuje te same czynności, zgodnie z opisem na [co się dzieje po zainstalowaniu pakietu](../consume-packages/ways-to-install-a-package.md#what-happens-when-a-package-is-installed), z następującymi dodatkami:
+Instalowanie pakietu w konsoli wykonuje te same czynności, zgodnie z opisem na [co się dzieje po zainstalowaniu pakietu](../concepts/package-installation-process.md), z następującymi dodatkami:
 
 - Konsoli są wyświetlane w odpowiednich postanowieniach licencyjnych w jego oknie dorozumianych umowy. Jeśli nie akceptujesz postanowień, należy odinstalować pakiet natychmiast.
 - Również odwołanie do pakietu są dodawane do pliku projektu i pojawia się w **Eksploratora rozwiązań** w obszarze **odwołania** węzła, musisz zapisać projekt, aby zobaczyć zmiany w pliku projektu bezpośrednio.
@@ -139,7 +141,7 @@ Zobacz [Znajdź pakiet](../tools/ps-ref-find-package.md). W programie Visual Stu
 
 ## <a name="availability-of-the-console"></a>Dostępność w konsoli programu
 
-W programie Visual Studio 2017 Menedżer pakietów NuGet i NuGet są automatycznie instalowane po zaznaczeniu innego. Obciążenia związane z NET; można także zainstalować je oddzielnie, sprawdzając **poszczególne składniki > Kod Narzędzia > Menedżer pakietów NuGet** opcji w Instalatorze programu Visual Studio 2017.
+Począwszy od programu Visual Studio 2017, Menedżer pakietów NuGet i NuGet są automatycznie instalowane po zaznaczeniu innego. Obciążenia związane z NET; można także zainstalować je oddzielnie, sprawdzając **poszczególne składniki > Kod Narzędzia > Menedżer pakietów NuGet** opcji w Instalatorze programu Visual Studio.
 
 Ponadto jeśli masz Brak Menedżera pakietów NuGet w programie Visual Studio 2015 i starszych, sprawdź **Narzędzia > rozszerzenia i aktualizacje...**  i wyszukaj rozszerzenia Menedżera pakietów NuGet. Jeśli nie możesz używać Instalator rozszerzenia programu Visual Studio, możesz pobrać rozszerzenia bezpośrednio z [ https://dist.nuget.org/index.html ](https://dist.nuget.org/index.html).
 

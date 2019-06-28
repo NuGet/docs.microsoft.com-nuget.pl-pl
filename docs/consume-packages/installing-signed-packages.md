@@ -1,18 +1,18 @@
 ---
-title: Instalowanie pakietu NuGet podpisem
+title: Zarządzanie granicami zaufania pakietu
 description: W tym artykule opisano proces instalowania NuGet podpisanych pakietów i konfigurowanie podpisu pakietu zaufania ustawienia.
 author: karann-msft
 ms.author: karann
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 11ffaee96b6f6a9260f38c534328b6631cd96abf
-ms.sourcegitcommit: 673e580ae749544a4a071b4efe7d42fd2bb6d209
+ms.openlocfilehash: 8da57dc295ea78f2eb183226fc9b2f4a37e3f5db
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52977851"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426636"
 ---
-# <a name="install-a-signed-package"></a>Zainstaluj pakiet podpisem
+# <a name="manage-package-trust-boundaries"></a>Zarządzanie granicami zaufania pakietu
 
 Podpisanych pakietów nie wymagają żadnych określone działanie prowadzące do zainstalowania; Jeśli jednak zawartość została zmodyfikowana po podpisaniu, instalacja jest zablokowana z powodu błędu [NU3008](../reference/errors-and-warnings/NU3008.md).
 
@@ -24,7 +24,7 @@ Podpisanych pakietów nie wymagają żadnych określone działanie prowadzące d
 > [!Note]
 > Wymaga NuGet 4.9.0+ i Visual Studio w wersji 15.9, a później Windows
 
-Można skonfigurować, jak klienci programu NuGet zweryfikowania podpisów pakietów przez ustawienie `signatureValidationMode` do `require` w [nuget.config](../reference/nuget-config-file) plików przy użyciu [ `nuget config` ](../tools/cli-ref-config) polecenia.
+Można skonfigurować, jak klienci programu NuGet zweryfikowania podpisów pakietów przez ustawienie `signatureValidationMode` do `require` w [nuget.config](../reference/nuget-config-file.md) plików przy użyciu [ `nuget config` ](../tools/cli-ref-config.md) polecenia.
 
 ```cmd
 nuget.exe config -set signatureValidationMode=require
@@ -40,7 +40,7 @@ W tym trybie sprawdzi, czy wszystkie pakiety są podpisane przez certyfikaty zau
 
 ### <a name="trust-package-author"></a>Zaufanie autora pakietu
 
-Zaufania oparta na wykorzystaniu podpisu autor pakietów [ `trusted-signers` ](..tools/cli-ref-trusted-signers) polecenie, aby ustawić `author` właściwość w pliku nuget.config.
+Zaufania oparta na wykorzystaniu podpisu autor pakietów [ `trusted-signers` ](../tools/cli-ref-trusted-signers.md) polecenie, aby ustawić `author` właściwość w pliku nuget.config.
 
 ```cmd
 nuget.exe  trusted-signers Add -Name MyCompanyCert -CertificateFingerprint CE40881FF5F0AD3E58965DA20A9F571EF1651A56933748E1BF1C99E537C4E039 -FingerprintAlgorithm SHA256
@@ -55,7 +55,7 @@ nuget.exe  trusted-signers Add -Name MyCompanyCert -CertificateFingerprint CE408
 ```
 
 >[!TIP]
->Użyj `nuget.exe` [sprawdzić polecenie](https://docs.microsoft.com/en-us/nuget/tools/cli-ref-verify) można pobrać `SHA256` wartość odcisku palca certyfikatu.
+>Użyj `nuget.exe` [sprawdzić polecenie](../tools/cli-ref-verify.md) można pobrać `SHA256` wartość odcisku palca certyfikatu.
 
 
 ### <a name="trust-all-packages-from-a-repository"></a>Zaufanie wszystkie pakiety z repozytorium
@@ -95,14 +95,13 @@ W niektórych sytuacjach można włączyć weryfikację przy użyciu certyfikat�
 
 ### <a name="sync-repository-certificates"></a>Synchronizacja repozytorium certyfikatów
 
-Repozytoriów pakietów powinno poinformować o certyfikaty używają w swoich [indeks usług](https://docs.microsoft.com/en-us/nuget/api/service-index). Po pewnym czasie repozytorium spowoduje zaktualizowanie te certyfikaty, np. po wygaśnięciu certyfikatu. Jeśli tak się stanie, klientów przy użyciu określonych zasad będzie wymagać aktualizacji konfiguracji do uwzględnienia nowo dodano certyfikat. Możesz łatwo przeprowadzić uaktualnienie zaufane osoby podpisujące skojarzony z repozytorium przy użyciu `nuget.exe` [zaufane osoby podpisujące synchronizacji polecenia](/nuget/tools/cli-ref-trusted-signers.md#nuget-trusted-signers-sync--name-).
+Repozytoriów pakietów powinno poinformować o certyfikaty używają w swoich [indeks usług](../api/service-index.md). Po pewnym czasie repozytorium spowoduje zaktualizowanie te certyfikaty, np. po wygaśnięciu certyfikatu. Jeśli tak się stanie, klientów przy użyciu określonych zasad będzie wymagać aktualizacji konfiguracji do uwzględnienia nowo dodano certyfikat. Możesz łatwo przeprowadzić uaktualnienie zaufane osoby podpisujące skojarzony z repozytorium przy użyciu `nuget.exe` [zaufane osoby podpisujące synchronizacji polecenia](../tools/cli-ref-trusted-signers.md#nuget-trusted-signers-sync--name-).
 
 ### <a name="schema-reference"></a>Odwołanie do schematu
 
-Odwołanie do schematu pełną zasady klienta można znaleźć w [odwołanie do pliku nuget.config](/nuget/reference/nuget-config-file#trustedsigners-section)
+Odwołanie do schematu pełną zasady klienta można znaleźć w [odwołanie do pliku nuget.config](../reference/nuget-config-file.md#trustedsigners-section)
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
-- [Różne sposoby, aby zainstalować pakiet NuGet](ways-to-install-a-package.md)
 - [Podpisywanie pakietów NuGet](../create-packages/Sign-a-Package.md)
 - [Dokumentacja podpisanych pakietów](../reference/Signed-Packages-Reference.md)

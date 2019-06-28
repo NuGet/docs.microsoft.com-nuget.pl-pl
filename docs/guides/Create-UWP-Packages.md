@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/21/2017
 ms.topic: tutorial
-ms.openlocfilehash: a4c609b3390748099d85a73f7d168ebe4de2676a
-ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
+ms.openlocfilehash: 52f2057f7d1012b75bba9e8730eacffd99adacfa
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66812943"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426859"
 ---
 # <a name="create-uwp-packages"></a>Tworzenie pakietów platformy UWP
 
@@ -248,7 +248,7 @@ Spowoduje to wygenerowanie `ImageEnhancer.YOUR_NAME.1.0.0.nupkg`. Otwarcie tego 
 > [!Tip]
 > A `.nupkg` plik jest po prostu plikiem ZIP z innym rozszerzeniem. Można także sprawdzić zawartość pakietu, następnie zmieniając `.nupkg` do `.zip`, ale należy pamiętać przywrócić rozszerzenia przed przekazaniem pakietu na stronie nuget.org.
 
-Aby udostępnić pakietu innym deweloperom, postępuj zgodnie z instrukcjami [publikowanie pakietu](../create-packages/publish-a-package.md).
+Aby udostępnić pakietu innym deweloperom, postępuj zgodnie z instrukcjami [publikowanie pakietu](../nuget-org/publish-a-package.md).
 
 ## <a name="related-topics"></a>Tematy pokrewne
 

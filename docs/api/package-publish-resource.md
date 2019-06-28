@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: ad66d8e0ffda13aaef744104c213863b0e111e0e
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 6e81055796e20186c5769d2ec39849e6c551ff87
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547524"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426721"
 ---
 # <a name="push-and-delete"></a>Wypychanie i usuwanie
 
@@ -48,7 +48,7 @@ nuget.org obsługuje wypychania nowych pakietów przy użyciu następujących in
 
 Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------- | ------ | ------ | -------- | -----
-X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
+X-NuGet-ApiKey | nagłówek | string | tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
 
 Klucz interfejsu API to nieprzezroczysty ciąg uzyskane ze źródła pakietu przez użytkownika i skonfigurowane do klienta. Nie określonego ciągu formatu jest upoważnione, ale długość klucza interfejsu API nie może przekraczać rozmiaru uzasadnione wartości nagłówka HTTP.
 
@@ -72,7 +72,7 @@ Implementacje Server różnią się na kod stanu powodzenia, które są zwracane
 
 ## <a name="delete-a-package"></a>Usuń pakiet
 
-nuget.org interpretuje żądanie usunięcia pakietu jako wiadomość "wyrejestrowanie". Oznacza to, że pakiet jest nadal dostępna dla istniejących konsumentów pakietu, ale pakiet nie jest już wyświetlany w wynikach wyszukiwania lub w interfejsie sieci web. Aby uzyskać więcej informacji na temat tej praktyką, zobacz [usunięte pakiety](../policies/deleting-packages.md) zasad. Inne implementacje serwera są bezpłatne do interpretowania ten sygnał jako twardych delete, usuwanie nietrwałe lub wyrejestrowanie. Na przykład [NuGet.Server](https://www.nuget.org/packages/NuGet.Server) obsługuje (tylko Obsługa starszych interfejsy API wersji 2 implementacji serwera), obsługujący żądanie jako unlist lub usuwania twardych na podstawie opcji konfiguracji.
+nuget.org interpretuje żądanie usunięcia pakietu jako wiadomość "wyrejestrowanie". Oznacza to, że pakiet jest nadal dostępna dla istniejących konsumentów pakietu, ale pakiet nie jest już wyświetlany w wynikach wyszukiwania lub w interfejsie sieci web. Aby uzyskać więcej informacji na temat tej praktyką, zobacz [usunięte pakiety](../nuget-org/policies/deleting-packages.md) zasad. Inne implementacje serwera są bezpłatne do interpretowania ten sygnał jako twardych delete, usuwanie nietrwałe lub wyrejestrowanie. Na przykład [NuGet.Server](https://www.nuget.org/packages/NuGet.Server) obsługuje (tylko Obsługa starszych interfejsy API wersji 2 implementacji serwera), obsługujący żądanie jako unlist lub usuwania twardych na podstawie opcji konfiguracji.
 
     DELETE https://www.nuget.org/api/v2/package/{ID}/{VERSION}
 
@@ -80,9 +80,9 @@ nuget.org interpretuje żądanie usunięcia pakietu jako wiadomość "wyrejestro
 
 Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------- | ------ | ------ | -------- | -----
-ID             | Adres URL    | string | Tak      | Identyfikator pakietu do usunięcia
-WERSJA        | Adres URL    | string | Tak      | Wersja pakietu do usunięcia
-X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
+Identyfikator             | Adres URL    | string | tak      | Identyfikator pakietu do usunięcia
+WERSJA        | Adres URL    | string | tak      | Wersja pakietu do usunięcia
+X-NuGet-ApiKey | nagłówek | string | tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
 
 ### <a name="response"></a>Odpowiedź
 
@@ -103,9 +103,9 @@ Jeśli pakiet jest już na liście, żądanie nadal powiedzie się.
 
 Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------- | ------ | ------ | -------- | -----
-ID             | Adres URL    | string | Tak      | Identyfikator pakietu do ponownego wystawienia
-WERSJA        | Adres URL    | string | Tak      | Wersja pakietu do ponownego wystawienia
-X-NuGet-ApiKey | nagłówek | string | Tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
+Identyfikator             | Adres URL    | string | tak      | Identyfikator pakietu do ponownego wystawienia
+WERSJA        | Adres URL    | string | tak      | Wersja pakietu do ponownego wystawienia
+X-NuGet-ApiKey | nagłówek | string | tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
 
 ### <a name="response"></a>Odpowiedź
 

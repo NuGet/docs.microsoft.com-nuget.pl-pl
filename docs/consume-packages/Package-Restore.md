@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9acb87a5f5731fb33c91a1ae9b106c6df492ddcd
-ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
+ms.openlocfilehash: 3e19d0ee6986021f0a23128f2e62e739d970ac9a
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52453536"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426683"
 ---
 # <a name="package-restore"></a>Przywracanie pakietu
 
@@ -22,7 +22,7 @@ Przywracanie pakietu gwarantuje, że projektu wszystkie zależności są dostęp
 
 Trwa przywracanie pakietów najpierw instaluje bezpośredniej zależności projektu, zgodnie z potrzebami, a następnie instaluje wszystkie zależności tych pakietów w całym wykres zależności całego.
 
-Jeśli pakiet nie jest już zainstalowany, NuGet najpierw próbuje pobrać go z [pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). Jeśli pakiet nie jest w pamięci podręcznej, NuGet następnie próbuje pobrać pakiet ze wszystkich źródeł włączonych (zobacz [zachowania programu NuGet Konfigurowanie](Configuring-NuGet-Behavior.md); źródła są również wyświetlane w **Narzędzia > Opcje > Menedżer pakietów NuGet > Źródła pakietów** listy w programie Visual Studio). Podczas przywracania NuGet ignoruje kolejność źródeł pakietów przy użyciu pakietów z dowolnego źródła najpierw do odpowiadania na żądania.
+Jeśli pakiet nie jest już zainstalowany, NuGet najpierw próbuje pobrać go z [pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). Jeśli pakiet nie jest w pamięci podręcznej, NuGet następnie próbuje pobrać pakiet ze wszystkich źródeł włączonych (zobacz [NuGet typowe konfiguracje](Configuring-NuGet-Behavior.md); źródła są również wyświetlane w **Narzędzia > Opcje > Menedżer pakietów NuGet > Źródła pakietów** listy w programie Visual Studio). Podczas przywracania NuGet ignoruje kolejność źródeł pakietów przy użyciu pakietów z dowolnego źródła najpierw do odpowiadania na żądania.
 
 > [!Note]
 > NuGet nie wskazuje nieudanej próbie przywrócenia pakietów, dopóki wszystkie źródła zostały zaewidencjonowane. W tym czasie NuGet zgłasza błąd tylko ostatni źródła na liście. Ten błąd oznacza, że pakiet nie był dostępny na *wszelkie* innych źródeł, mimo że błędów nie są wyświetlane dla każdego z tych źródeł indywidualnie.
@@ -31,7 +31,7 @@ Przywracanie pakietu jest wyzwalany w następujący sposób:
 
 - **Wiersz polecenia DotNet**: Użyj [dotnet restore](/dotnet/core/tools/dotnet-restore?tabs=netcore2x) polecenia, które pakiety wymienione w pliku projektu (zobacz [PackageReference](../consume-packages/package-references-in-project-files.md)). Za pomocą platformy .NET Core 2.0 i nowszych przywracania odbywa się automatycznie przy użyciu `dotnet build` i `dotnet run`.
 
-- **Interfejs użytkownika Menedżera pakietów (Visual Studio Windows)**: pakiety zostaną przywrócone automatycznie podczas tworzenia projektu z szablonu, a podczas kompilowania projektu (podlegają opcji można znaleźć w [Włączanie i wyłączanie pakietu przywrócić](#enabling-and-disabling-package-restore)). W pakiecie NuGet 4.0 + Przywracanie również odbywa się automatycznie podczas zmiany zostały wprowadzone do projektu na podstawie zestawu .NET Core SDK.
+- **Interfejs użytkownika Menedżera pakietów (Visual Studio Windows)** : Pakiety zostaną przywrócone automatycznie podczas tworzenia projektu z szablonu, a podczas kompilowania projektu (podlegają opcji można znaleźć w [Włączanie i wyłączanie Przywracanie pakietu](#enabling-and-disabling-package-restore)). W pakiecie NuGet 4.0 + Przywracanie również odbywa się automatycznie podczas zmiany zostały wprowadzone do projektu na podstawie zestawu .NET Core SDK.
 
     Aby przywrócić ręcznie, kliknij prawym przyciskiem myszy rozwiązanie w Eksploratorze rozwiązań i wybierz **Przywróć pakiety NuGet**. Jeśli co najmniej jeden z indywidualnych pakietów są nadal nie jest poprawnie zainstalowany (co oznacza, że Eksplorator rozwiązań pokazuje ikona błędu), a następnie użyj interfejsu użytkownika Menedżera pakietów, aby odinstalować i ponownie zainstalować pakiety, których to dotyczy. Zobacz [ponowne zainstalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md)
 
@@ -39,9 +39,9 @@ Przywracanie pakietu jest wyzwalany w następujący sposób:
 
 - **Interfejs wiersza polecenia NuGet**: Użyj [Przywracanie pakietów nuget](../tools/cli-ref-restore.md) polecenia, które pakiety wymienione w pliku projektu lub w `packages.config`. Można również określić plik rozwiązania.
 
-- **Program MSBuild**: Użyj [msbuild - t: Przywracanie](../reference/msbuild-targets.md#restore-target) polecenia, które przywraca pakietów pakiety wymienione w pliku projektu (tylko PackageReference). Dostępne tylko w NuGet 4.x+ i MSBuild 15.1 +, które są dołączone do programu Visual Studio 2017. `nuget restore` i `dotnet restore` dla projektów dotyczy zarówno Użyj tego polecenia.
+- **Program MSBuild**: Użyj [msbuild - t: Przywracanie](../reference/msbuild-targets.md#restore-target) polecenia, które przywraca pakietów pakiety wymienione w pliku projektu (tylko PackageReference). Dostępne tylko w NuGet 4.x+ i MSBuild 15.1 +, które są dołączone do programu Visual Studio 2017 i nowsze wersje. `nuget restore` i `dotnet restore` dla projektów dotyczy zarówno Użyj tego polecenia.
 
-- **Visual Studio Team Services**: podczas tworzenia definicji kompilacji w usłudze Team Services, obejmują [Przywracanie pakietów NuGet](/vsts/build-release/tasks/package/nuget#restore-nuget-packages) lub [przywracania programu .NET Core](/vsts/build-release/tasks/build/dotnet-core#restore-nuget-packages) zadania w definicji przed dowolnego zadania kompilacji. To zadanie jest domyślnie włączone w wiele szablonów kompilacji.
+- **Visual Studio Team Services**: Podczas tworzenia definicji kompilacji w usłudze Team Services, obejmują [Przywracanie pakietów NuGet](/vsts/build-release/tasks/package/nuget#restore-nuget-packages) lub [przywracania programu .NET Core](/vsts/build-release/tasks/build/dotnet-core#restore-nuget-packages) zadania w definicji przed dowolnego zadania kompilacji. To zadanie jest domyślnie włączone w wiele szablonów kompilacji.
 
 - **Team Foundation Server**: TFS 2013 lub nowszym automatycznie przywraca pakietów podczas kompilacji, pod warunkiem, że używasz zespołu tworzenie szablonu dla TFS 2013 lub nowszym. Dla wcześniejszych wersji programu TFS można dołączyć kroku kompilacji do wywoływania jednej z powyższych opcji wiersza polecenia restore. Opcjonalnie można migrować szablonu kompilacji do programu TFS 2013. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące przywracania pakietów w programie Team Foundation Build](../consume-packages/team-foundation-build.md).
 
@@ -82,7 +82,7 @@ Przywracanie pakietu przede wszystkim jest włączana za pomocą **Narzędzia > 
 
 Aby informacje, zobacz [NuGet pliku config - sekcji packageRestore](../reference/nuget-config-file.md#packagerestore-section).
 
-W niektórych przypadkach włączyć lub wyłączyć przywracania pakietu dla wszystkich użytkowników na komputerze może być dewelopera lub firmy. Aby to zrobić, Dodaj te same ustawienia powyżej do globalnych znajduje się w pliku konfiguracji w NuGet `%ProgramData%\NuGet\Config` (Windows potencjalnie w ramach określonego `\{IDE}\{Version}\{SKU}\` folderu dla programu Visual Studio) lub `~/.local/share` (Mac/Linux). Poszczególnych użytkowników można selektywnie włączysz przywracania na poziomie projektu. Zobacz [zachowania programu NuGet Konfigurowanie](../consume-packages/configuring-nuget-behavior.md#how-settings-are-applied) dokładnie szczegółowe informacje na temat sposobu NuGet umożliwia określenie wielu plików konfiguracji.
+W niektórych przypadkach włączyć lub wyłączyć przywracania pakietu dla wszystkich użytkowników na komputerze może być dewelopera lub firmy. Aby to zrobić, Dodaj te same ustawienia powyżej do globalnych znajduje się w pliku konfiguracji w NuGet `%ProgramData%\NuGet\Config` (Windows potencjalnie w ramach określonego `\{IDE}\{Version}\{SKU}\` folderu dla programu Visual Studio) lub `~/.local/share` (Mac/Linux). Poszczególnych użytkowników można selektywnie włączysz przywracania na poziomie projektu. Zobacz [NuGet typowe konfiguracje](../consume-packages/configuring-nuget-behavior.md#how-settings-are-applied) dokładnie szczegółowe informacje na temat sposobu NuGet umożliwia określenie wielu plików konfiguracji.
 
 > [!Important]
 > Jeśli edytujesz `packageRestore` ustawienia bezpośrednio w `nuget.config`, uruchom ponownie program Visual Studio, okno dialogowe Opcje Pokazuje bieżące wartości.

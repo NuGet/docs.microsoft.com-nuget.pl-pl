@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 10/25/2017
 ms.topic: reference
-ms.openlocfilehash: d7c943c1f13edf782dabe4afee9d19a1a42bd42a
-ms.sourcegitcommit: 573af6133a39601136181c1d98c09303f51a1ab2
+ms.openlocfilehash: 2eceb6e94a353cb29b83aea114c6cea2acbac266
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58911091"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426146"
 ---
 # <a name="nugetconfig-reference"></a>Odwołanie do pliku nuget.config
 
-Zachowania programu NuGet jest kontrolowany przez ustawienia w różnych `NuGet.Config` plików zgodnie z opisem w [Konfigurowanie zachowania pakietu NuGet](../consume-packages/configuring-nuget-behavior.md).
+Zachowania programu NuGet jest kontrolowany przez ustawienia w różnych `NuGet.Config` plików zgodnie z opisem w [NuGet typowe konfiguracje](../consume-packages/configuring-nuget-behavior.md).
 
 `nuget.config` jest to plik XML zawierający najwyższego poziomu `<configuration>` węzła, który następnie zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej elementów. Zobacz [pliku konfiguracyjnego przykłady](#example-config-file). Nazwy ustawień jest rozróżniana wielkość liter, a wartości można użyć [zmienne środowiskowe](#using-environment-variables).
 
@@ -148,8 +148,8 @@ Przechowywane nazwy użytkowników i hasła dla źródeł, zazwyczaj są określ
 
 | Key | Wartość |
 | --- | --- |
-| nazwa użytkownika | Nazwa użytkownika źródła w postaci zwykłego tekstu. |
-| hasło | Zaszyfrowane hasło dla źródła. |
+| username | Nazwa użytkownika źródła w postaci zwykłego tekstu. |
+| password | Zaszyfrowane hasło dla źródła. |
 | cleartextpassword | Hasło nieszyfrowane źródła. |
 
 **Przykład:**

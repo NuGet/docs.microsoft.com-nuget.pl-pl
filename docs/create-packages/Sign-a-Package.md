@@ -6,12 +6,12 @@ ms.author: rmpablos
 ms.date: 03/06/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 8ff92e5a3ab2d5c13ee02a9e49709866e2ac0e87
-ms.sourcegitcommit: 573af6133a39601136181c1d98c09303f51a1ab2
+ms.openlocfilehash: abdd06642ccc652527a1a005eda2689ce97df74c
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58921575"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426813"
 ---
 # <a name="signing-nuget-packages"></a>Podpisywanie pakietów NuGet
 
@@ -66,7 +66,7 @@ Aby opublikować podpisanych pakietów, należy zarejestrować certyfikat za pom
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu
 
-Teraz można przystąpić do opublikowania pakietu na stronie NuGet.org. Zobacz [publikowania pakietów](Publish-a-package.md).
+Teraz można przystąpić do opublikowania pakietu na stronie NuGet.org. Zobacz [publikowania pakietów](../nuget-org/Publish-a-package.md).
 
 ## <a name="create-a-test-certificate"></a>Utwórz certyfikat testowy
 
@@ -103,5 +103,5 @@ To polecenie tworzy certyfikat testowania dostępności w magazynie certyfikató
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 
-- [Instalowanie pakietów podpisem](../consume-packages/installing-signed-packages.md)
+- [Zarządzanie granicami zaufania pakietu](../consume-packages/installing-signed-packages.md)
 - [Dokumentacja podpisanych pakietów](../reference/Signed-Packages-Reference.md)

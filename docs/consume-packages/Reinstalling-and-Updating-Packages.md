@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: conceptual
-ms.openlocfilehash: c58cf38bab45793bef820e2c52914a91d745ec77
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 9b2a7b299a0cb944ad9045684e14cc7b83e1cff4
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551786"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426667"
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak zainstalować i pakietów aktualizacji
 
@@ -18,11 +18,14 @@ Istnieje wiele sytuacji, w opisany poniżej w sekcji [podczas ponownej instalacj
 
 Aktualizowanie i ponowne zainstalowanie pakietów odbywa się w następujący sposób:
 
-| Metoda | Aktualizacja | Zainstaluj ponownie |
+| Metoda | Aktualizowanie | Zainstaluj ponownie |
 | --- | --- | --- |
 | Konsola Menedżera pakietów (opisanego w [pakiet aktualizacji przy użyciu](#using-update-package)) | `Update-Package` Polecenie | `Update-Package -reinstall` Polecenie |
-| Interfejs użytkownika Menedżera pakietów | Na **aktualizacje** karty, wybierz jeden lub więcej pakietów i wybierz **aktualizacji** | Na **zainstalowane** karty, wybierz pakiet, zapisać jego nazwę, a następnie wybierz **Odinstaluj**. Przełącz się do **Przeglądaj** kartę, wyszukaj nazwę pakietu, wybierz ją, a następnie wybierz **zainstalować**). |
+| Interfejs użytkownika menedżera pakietów | Na **aktualizacje** karty, wybierz jeden lub więcej pakietów i wybierz **aktualizacji** | Na **zainstalowane** karty, wybierz pakiet, zapisać jego nazwę, a następnie wybierz **Odinstaluj**. Przełącz się do **Przeglądaj** kartę, wyszukaj nazwę pakietu, wybierz ją, a następnie wybierz **zainstalować**). |
 | Interfejs wiersza polecenia nuget.exe | `nuget update` Polecenie | Dla wszystkich pakietów, usuń folder pakietu, a następnie uruchom `nuget install`. Jeden pakiet, usuń folder pakietu i użyj `nuget install <id>` ponowna instalacja taki sam. |
+
+> [!NOTE]
+> Wiersz polecenia dotnet odpowiedniej procedury nie jest wymagany. W podobny scenariusz można [przywrócenia pakietów z wiersz polecenia dotnet](../consume-packages/install-use-packages-dotnet-cli.md#restore-packages).
 
 W tym artykule:
 
@@ -31,11 +34,11 @@ W tym artykule:
 
 ## <a name="when-to-reinstall-a-package"></a>Kiedy należy ponownie zainstalować pakiet
 
-1. **Uszkodzenie odwołań po Przywracanie pakietu**: Jeśli po otwarciu projektu i przywrócić pakiety NuGet, ale nadal znaleźć uszkodzone odwołania, spróbuj zainstalować ponownie każdy z tych pakietów.
+1. **Uszkodzenie odwołań po Przywracanie pakietu**: Jeśli projekt i przywrócony pakiety NuGet jest już otwarte, ale nadal widzą przerwanymi odwołaniami, spróbuj ponownej instalacji każdej z tych pakietów.
 1. **Projekt został przerwany ze względu na usunięte pliki**: NuGet nie uniemożliwiają usunięcie elementy dodane z pakietów, dzięki czemu można łatwo przypadkowo modyfikowanie instalowanych z pakietu zawartości i przerwać projektu. Aby przywrócić projektu, należy ponownie zainstalować pakiety, których to dotyczy.
-1. **Aktualizacja pakietu Przerwano projektu**: w przypadku aktualizacji pakietu przerywa projektu, błąd jest zazwyczaj spowodowane pakietu zależności, który może być również zostały zaktualizowane. Aby przywrócić stan zależność, ponownej instalacji tego określonego pakietu.
-1. **Projekt, przekierowywanie lub Uaktualnij**: może to być przydatne, gdy projekt został przekierowano element lub uaktualnić, a pakiet wymaga ponownej instalacji z powodu zmiany platformy docelowej. NuGet pokazuje błąd kompilacji w takich przypadkach natychmiast po przekierowanie projektu oraz ostrzeżenia kompilacji kolejnych pozwalają dowiedzieć się, że pakiet może być wymagana ponowna instalacja. W celu uaktualnienia projektu NuGet, pokazuje błąd, w dzienniku uaktualnienia projektu.
-1. **Ponowne zainstalowanie pakietu podczas jego tworzenia**: autorom pakietów często należy ponownie zainstalować tę samą wersję pakietu, które tworzą się testowanie zachowania. `Install-Package` Polecenia nie zapewnia możliwość wymuszenia konieczności ponownej instalacji, a więc `Update-Package -reinstall` zamiast tego.
+1. **Aktualizacja pakietu Przerwano projektu**: Jeśli aktualizacja pakietu przerywa projektu, błąd jest zazwyczaj spowodowane pakietu zależności, który może być również zostały zaktualizowane. Aby przywrócić stan zależność, ponownej instalacji tego określonego pakietu.
+1. **Projekt, przekierowywanie lub Uaktualnij**: Może to być przydatne, gdy projekt został przekierowano element lub uaktualnić, a pakiet wymaga ponownej instalacji z powodu zmiany platformy docelowej. NuGet pokazuje błąd kompilacji w takich przypadkach natychmiast po przekierowanie projektu oraz ostrzeżenia kompilacji kolejnych pozwalają dowiedzieć się, że pakiet może być wymagana ponowna instalacja. W celu uaktualnienia projektu NuGet, pokazuje błąd, w dzienniku uaktualnienia projektu.
+1. **Ponowne zainstalowanie pakietu podczas jego tworzenia**: Autorzy pakietów często trzeba ponownie zainstalować tę samą wersję pakietu, które tworzą się testowanie zachowania. `Install-Package` Polecenia nie zapewnia możliwość wymuszenia konieczności ponownej instalacji, a więc `Update-Package -reinstall` zamiast tego.
 
 ## <a name="constraining-upgrade-versions"></a>Ograniczający uaktualniania wersji
 

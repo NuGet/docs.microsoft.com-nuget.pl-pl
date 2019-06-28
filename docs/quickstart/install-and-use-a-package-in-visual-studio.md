@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.openlocfilehash: 8cfb7bd31c37847d83ffe31f11ba61eadc717eb8
-ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
+ms.openlocfilehash: 014b316ea03b45584406c313d46b96ad36340124
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66812908"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426232"
 ---
 # <a name="quickstart-install-and-use-a-package-in-visual-studio"></a>Szybki start: Instalowanie i używanie pakietu w programie Visual Studio
 
@@ -123,6 +123,6 @@ Przy użyciu pakietu Newtonsoft.Json w projekcie, można wywołać jej `JsonConv
 ## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Omówienie i przepływ pracy zużycia pakietu](../consume-packages/overview-and-workflow.md)
+- [Instalowanie i zarządzanie pakietami za pomocą programu Visual Studio](../tools/package-manager-ui.md)
 - [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md)
-- [Sposoby, aby zainstalować pakiet](../consume-packages/ways-to-install-a-package.md)
-- [Konfigurowanie zachowania programu NuGet](../consume-packages/configuring-nuget-behavior.md)
+- [Typowe konfiguracje NuGet](../consume-packages/configuring-nuget-behavior.md)

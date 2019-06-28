@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 05/24/2019
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 6c545ddeddb0c5909f57e879912eaeed744e42d5
-ms.sourcegitcommit: b8c63744252a5a37a2843f6bc1d5917496ee40dd
+ms.openlocfilehash: e4c57c0580fe9018703291c08d60e559f95183dc
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66812925"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426203"
 ---
 # <a name="nuspec-reference"></a>odwołanie .nuspec
 
@@ -82,10 +82,10 @@ Rozdzielana przecinkami lista autorów pakietów, pasujące nazwy profilu w witr
 
 ### <a name="optional-metadata-elements"></a>Elementy opcjonalne metadane
 
-#### <a name="title"></a>tytuł
+#### <a name="title"></a>title
 Tytuł przyjaznego dla człowieka pakietu, zwykle używanych w interfejsie użytkownika wyświetla w witrynach nuget.org i Menedżera pakietów w programie Visual Studio. Jeśli nie zostanie określony, identyfikator pakietu jest używany. 
 #### <a name="owners"></a>Właściciele
-Rozdzielana przecinkami lista twórców pakietów przy użyciu nazwy profilu w witrynie nuget.org. Jest to często tej samej listy podobnie jak w `authors`i jest ignorowana podczas przekazywania pakietu na stronie nuget.org. Zobacz [właścicieli pakietu zarządzania w witrynie nuget.org](../create-packages/publish-a-package.md#managing-package-owners-on-nugetorg). 
+Rozdzielana przecinkami lista twórców pakietów przy użyciu nazwy profilu w witrynie nuget.org. Jest to często tej samej listy podobnie jak w `authors`i jest ignorowana podczas przekazywania pakietu na stronie nuget.org. Zobacz [właścicieli pakietu zarządzania w witrynie nuget.org](../nuget-org/publish-a-package.md#managing-package-owners-on-nugetorg). 
 #### <a name="projecturl"></a>projectUrl
 Adres URL strony głównej pakietu, często wyświetlany w użytkownika, jak również adres nuget.org. 
 #### <a name="licenseurl"></a>licenseUrl
@@ -300,7 +300,7 @@ W poniższym przykładzie pokazano różnych odmian `<group>` elementu:
 
 ## <a name="explicit-assembly-references"></a>Odwołania do zestawów jawne
 
-`<references>` Element jawnie określa zestawy, które projekt docelowy powinny odwoływać się przy użyciu pakietu. Gdy ten element jest obecny, NuGet dodać odwołania do tylko zestawy wymienionych; nie powoduje dodania odwołania do innych zestawów, w tym pakiecie `lib` folderu.
+`<references>` Element jest używany przez projektów przy użyciu `packages.config` jawnie określić zestawy, które projekt docelowy powinny odwoływać się przy użyciu pakietu. Jawne odwołania są zwykle używane dla zestawów tylko w czasie projektowania. Aby uzyskać więcej informacji, zobacz stronę w [zaznaczenie zestawów, które odwołują się projekty](../create-packages/select-assemblies-referenced-by-projects.md) Aby uzyskać więcej informacji.
 
 Na przykład następująca `<references>` elementu powoduje, że rozszerzenie NuGet, aby dodać odwołania do tylko `xunit.dll` i `xunit.extensions.dll` nawet, jeśli istnieją dodatkowe zestawy w pakiecie:
 
@@ -310,10 +310,6 @@ Na przykład następująca `<references>` elementu powoduje, że rozszerzenie Nu
     <reference file="xunit.extensions.dll" />
 </references>
 ```
-
-Jawne odwołania są zwykle używane dla zestawów tylko w czasie projektowania. Korzystając z [kontrakty kodu](/dotnet/framework/debug-trace-profile/code-contracts), na przykład zestawy umowy muszą być obok zestawów środowiska uruchomieniowego, które mogą rozszerzyć, aby je znaleźć programu Visual Studio, ale zestawy kontraktu nie musi być przywoływanego przez projekt lub skopiowany w projekcie `bin` folderu.
-
-Podobnie jawnych odwołań może służyć do struktur testów jednostek, takich jak XUnit, którą jej narzędzi, zestawy znajdujące się obok zestawów środowiska uruchomieniowego, ale nie wymaga dołączeni ich jako odwołania do projektu.
 
 ### <a name="reference-groups"></a>Grupy odwołań
 

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: bce04864224a66019a52cdfff8355f68dc424204
-ms.sourcegitcommit: 69b5eb1494a1745a4b1a7f320a91255d5d8356a9
+ms.openlocfilehash: b4f73e2b816d8a93e123d6de83ad0a15fbb24d18
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65975003"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67425934"
 ---
 # <a name="push-command-nuget-cli"></a>polecenie wypychania (interfejs wiersza polecenia NuGet)
 
@@ -21,7 +21,7 @@ ms.locfileid: "65975003"
 
 Wypychanie pakietu do źródła pakietu i publikuje go.
 
-NuGet domyślnej konfiguracji można uzyskać przez ładowanie `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux), następnie ładowania wszelkie `Nuget.Config` lub `.nuget\Nuget.Config` plików od głównego dysku i kończący się w bieżącym katalogu (zobacz [Konfigurowanie Zachowania programu NuGet](../consume-packages/configuring-nuget-behavior.md))
+NuGet domyślnej konfiguracji można uzyskać przez ładowanie `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux), następnie ładowania wszelkie `Nuget.Config` lub `.nuget\Nuget.Config` plików od głównego dysku i kończący się w bieżącym katalogu (zobacz [wspólnej NuGet konfiguracje](../consume-packages/configuring-nuget-behavior.md))
 
 ## <a name="usage"></a>Użycie
 
@@ -43,7 +43,7 @@ gdzie `<packagePath>` identyfikuje pakiet do wypychania do serwera.
 | NonInteractive | Wyłącza monity dotyczące danych wejściowych użytkownika lub potwierdzenia. |
 | NoSymbols | *(3.5 +)*  Jeżeli istnieje pakiet symboli, nie będą jej wypychane do serwera symboli. |
 | Source | Określa adres URL serwera. NuGet identyfikuje UNC lub lokalny folder źródłowy i po prostu kopiuje plik zamiast wypychanie go przy użyciu protokołu HTTP.  Ponadto, począwszy od NuGet 3.4.2, jest to parametr obowiązkowy chyba że `NuGet.Config` plik Określa *DefaultPushSource* wartości (zobacz [zachowania programu NuGet Konfigurowanie](../consume-packages/configuring-nuget-behavior.md)). |
-| SkipDuplicate | Jeśli pakiet i wersji już istnieje, Pomiń je i Kontynuuj następnego pakietu wypychanie, jeśli istnieje. |
+| SkipDuplicate | *(5.1 +)*  Jeśli pakiet i wersji już istnieje, Pomiń je i Kontynuuj następnego pakietu wypychanie, jeśli istnieje. |
 | SymbolSource | *(3.5 +)*  Określa adres URL serwera symboli; nuget.smbsrc.net jest używany podczas wypychania do repozytorium nuget.org |
 | SymbolApiKey | *(3.5 +)*  Określa klucz interfejsu API dla adresu URL określonego w `-SymbolSource`. |
 | limit czasu | Określa limit czasu w sekundach, wypychania do serwera. Wartość domyślna to 300 sekund (5 minut). |

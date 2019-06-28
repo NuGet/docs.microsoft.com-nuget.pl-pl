@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 06/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: c86a07c30631b7ee99526b014ac9c3b9f136aa81
-ms.sourcegitcommit: 1591bb230e106b94162a87dd1d86fe427366730a
+ms.openlocfilehash: 8cd7529c4a1ecf659abde03fb1632e26431aebf3
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52671191"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426748"
 ---
 # <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocena pakietów NuGet w projekcie
 
@@ -62,7 +62,7 @@ W programie Visual Studio, a podczas korzystania z narzędzi interfejsu wiersza 
 
 - **Interfejs wiersza polecenia nuget.exe**: Użyj `-prerelease` przełącznik z `install`, `update`, `delete`, i `mirror` poleceń. Zapoznaj się [dokumentacja interfejsu wiersza polecenia NuGet](../tools/nuget-exe-cli-reference.md)
 
-- **DotNet.exe interfejsu wiersza polecenia**: Określ dokładnie wersji wstępnej, za pomocą `-v` argumentu. Zapoznaj się [dotnet Dodawanie odwołania do pakietu](/dotnet/core/tools/dotnet-add-package).
+- **Interfejs wiersza polecenia DotNet.exe**: Określ dokładne wersji wstępnej, za pomocą `-v` argumentu. Zapoznaj się [dotnet Dodawanie odwołania do pakietu](/dotnet/core/tools/dotnet-add-package).
 
 <a name="native-cpp-packages"></a>
 
@@ -96,13 +96,13 @@ W tym samym czasie przy użyciu pakietu NuGet oznacza, że jest zależna od, tak
 
 - *Wywiad właściciele*: nowych deweloperów na pewno może być równie wszelkich starań, aby tworzyć wspaniałe pakietów do użycia i dobrze dać im możliwość dostosowania coś nowego do ekosystemu NuGet. Pamiętając o tym, skontaktuj się bezpośrednio do deweloperów pakietu za pomocą **skontaktuj się z właścicielami** opcji w obszarze **informacje** na stronie listy. To, będziesz mieć chętnie z Tobą, aby spełniały Twoje potrzeby!
 
-- *Zastrzeżone prefiksy identyfikator pakietu*: zostały zastosowane do wielu właścicieli pakietu i zostały przyznane [pakietu zastrzeżony prefiks Identyfikatora](../reference/id-prefix-reservation.md). Po wyświetleniu visual znacznik wyboru obok Identyfikatora pakietu na [nuget.org](https://www.nuget.org/), lub w programie Visual Studio, oznacza to spełnienie właścicielem pakietu i naszych [kryteria](../reference/id-prefix-reservation.md#id-prefix-reservation-criteria) dla Identyfikatora prefiksu rezerwacji. Oznacza to, że właściciel pakietu jest jasne na identyfikowaniu same, jak i ich pakietu.
+- *Zastrzeżone prefiksy identyfikator pakietu*: zostały zastosowane do wielu właścicieli pakietu i zostały przyznane [pakietu zastrzeżony prefiks Identyfikatora](../nuget-org/id-prefix-reservation.md). Po wyświetleniu visual znacznik wyboru obok Identyfikatora pakietu na [nuget.org](https://www.nuget.org/), lub w programie Visual Studio, oznacza to spełnienie właścicielem pakietu i naszych [kryteria](../nuget-org/id-prefix-reservation.md#id-prefix-reservation-criteria) dla Identyfikatora prefiksu rezerwacji. Oznacza to, że właściciel pakietu jest jasne na identyfikowaniu same, jak i ich pakietu.
 
 > [!Note]
 > Zawsze mieć je na uwadze postanowień licencyjnych pakietu, które można wyświetlić, wybierając **informacji o licencji** na stronie listy pakietów w witrynie nuget.org. Jeśli pakiet nie określa postanowienia licencyjne, skontaktuj się z właścicielem pakietu bezpośrednio przy użyciu **skontaktuj się z właścicielami** łącze na stronie pakiet. Microsoft nie licencji jakiejkolwiek własności intelektualnej dla Ciebie od dostawców pakietów innych firm, a nie jest odpowiedzialny za otrzymane od innych firm.
 
 ## <a name="license-url-deprecation"></a>Oczekiwany adres URL licencji
-Ponieważ możemy przejść z [licenseUrl](../reference/nuspec#licenseurl) do [licencji](../reference/nuspec#license), niektóre klienci programu NuGet i kanały informacyjne NuGet może jeszcze nie masz możliwość ujawnienie informacji licencyjnych w niektórych przypadkach. Aby zachować zgodność z poprzednimi wersjami, adres URL licencji punktów do tego dokumentu, który opowiada, jak można pobrać informacji o licencji w takich przypadkach.
+Ponieważ możemy przejść z [licenseUrl](../reference/nuspec.md#licenseurl) do [licencji](../reference/nuspec.md#license), niektóre klienci programu NuGet i kanały informacyjne NuGet może jeszcze nie masz możliwość ujawnienie informacji licencyjnych w niektórych przypadkach. Aby zachować zgodność z poprzednimi wersjami, adres URL licencji punktów do tego dokumentu, który opowiada, jak można pobrać informacji o licencji w takich przypadkach.
 
 Jeśli po kliknięciu na adres URL licencji dla pakietu dostosowane do tej strony, jej działanie polega na pakiet zawiera plik licencji i
 * Nawiązano połączenie ze źródłem danych, która nie ma jeszcze sposobu interpretacji i przedstawić nowe informacje o licencji dla klienta **lub**
@@ -120,9 +120,9 @@ Poniżej przedstawiono, jak można odczytać informacji zawartych w pliku licenc
 
 Wyszukaj pakiet NuGet działa tak samo w witrynie nuget.org, interfejs wiersza polecenia NuGet, a także wewnątrz rozszerzenia Menedżera pakietów NuGet w programie Visual Studio. Ogólnie rzecz biorąc zastosowano wyszukiwania słów kluczowych, a także opis pakietu.
 
-- **Słowa kluczowe**: wyszukiwania wyszukuje odpowiednie pakiety, które zawierają dowolne z podanych słów kluczowych. Przykład: `modern UI`. Aby wyszukać pakietów, które zawierają wszystkie podanych słów kluczowych, użyj "+" między warunkami, takich jak `modern+UI`.
-- **Zwroty**: wprowadzania terminów w cudzysłowach szuka dokładne dopasowania bez uwzględniania wielkości liter w tych warunkach. Przykład: `"modern UI" package`
-- **Filtrowanie**: termin wyszukiwania można zastosować do konkretnej właściwości, za pomocą składni `<property>:<term>` gdzie `<property>` (bez uwzględniania wielkości liter) może być `id`, `packageid`, `version`, `title`, `tags`, `author`, `description`, `summary`, i `owner`. Warunki mogą być zawarte w cudzysłowie, jeśli to konieczne, i można wyszukiwać wiele właściwości, w tym samym czasie. Ponadto wyszukuje `id` właściwości są dopasowań podciągów, podczas gdy `packageid` używa dokładnego dopasowania. Przykłady:
+- **Keywords**: Wyszukiwania wyszukuje odpowiednie pakiety, które zawierają dowolne z podanych słów kluczowych. Przykład: `modern UI`. Aby wyszukać pakietów, które zawierają wszystkie podanych słów kluczowych, użyj "+" między warunkami, takich jak `modern+UI`.
+- **Zwroty**: Wprowadzania terminów w cudzysłowach szuka dokładne dopasowania bez uwzględniania wielkości liter w tych warunkach. Przykład: `"modern UI" package`
+- **Filtrowanie**: Wyszukiwany termin można zastosować do konkretnej właściwości, za pomocą składni `<property>:<term>` gdzie `<property>` (bez uwzględniania wielkości liter) może być `id`, `packageid`, `version`, `title`, `tags`, `author`, `description`, `summary`, i `owner`. Warunki mogą być zawarte w cudzysłowie, jeśli to konieczne, i można wyszukiwać wiele właściwości, w tym samym czasie. Ponadto wyszukuje `id` właściwości są dopasowań podciągów, podczas gdy `packageid` używa dokładnego dopasowania. Przykłady:
 
     ```
     id:NuGet.Core                # Match any part of the id property

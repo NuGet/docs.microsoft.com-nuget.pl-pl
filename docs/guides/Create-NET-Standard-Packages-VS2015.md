@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 02/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 7b1ccfbede4cec53cee3ec7d1c023e4c5be60bf0
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: af0c42853a9e407557a010ff2793406499b4b2ef
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43545916"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426879"
 ---
 # <a name="create-net-standard-and-net-framework-packages-with-visual-studio-2015"></a>Tworzenie pakietów .NET Standard i .NET Framework w programie Visual Studio 2015
 
-**Uwaga:** programu Visual Studio 2017 jest zalecane w przypadku tworzenia biblioteki .NET Standard. Program Visual Studio 2015 można pracować, ale zestaw narzędzi .NET Core została udostępniona tylko do stanu (wersja zapoznawcza). Zobacz [tworzenie i publikowanie pakietu programu Visual Studio 2017](../quickstart/create-and-publish-a-package-using-visual-studio.md) do pracy z NuGet 4.x+ i programu Visual Studio 2017.
+**Uwaga:** Program Visual Studio 2017, zaleca się do tworzenia biblioteki .NET Standard. Program Visual Studio 2015 można pracować, ale zestaw narzędzi .NET Core została udostępniona tylko do stanu (wersja zapoznawcza). Zobacz [tworzenie i publikowanie pakietu programu Visual Studio 2017](../quickstart/create-and-publish-a-package-using-visual-studio.md) do pracy z NuGet 4.x+ i programu Visual Studio 2017.
 
 [Biblioteka .NET Standard](/dotnet/articles/standard/library) jest formalną specyfikację interfejsów API platformy .NET, które mają być dostępne na wszystkie środowiska uruchomieniowe platformy .NET, dlatego ustanawiania większej jednolitości należący do ekosystemu platformy .NET. Biblioteka .NET Standard definiuje zbiór jednolitych BCL (Biblioteka klasy podstawowej) interfejsów API dla wszystkich platform .NET zaimplementować, niezależnie od obciążenia. Umożliwia ona deweloperom tworzenia kodu, które są wykorzystywane przez wszystkie środowiska uruchomieniowe platformy .NET i zmniejsza, jeśli nie eliminuje dyrektywy kompilacji warunkowej specyficzne dla platformy w udostępnionego kodu.
 
@@ -31,7 +31,7 @@ Ten przewodnik przeprowadzi Cię przez tworzenie pakietu NuGet określanie warto
 
 ## <a name="create-the-class-library-project"></a>Utwórz projekt biblioteki klas
 
-1. W programie Visual Studio **Plik > Nowy > Projekt**, rozwiń węzeł **Visual C# > Windows** węzła, wybierz opcję **Biblioteka klas (przenośna)**, Zmień nazwę na AppLogger i wybierz **OK**.
+1. W programie Visual Studio **Plik > Nowy > Projekt**, rozwiń węzeł **Visual C# > Windows** węzła, wybierz opcję **Biblioteka klas (przenośna)** , Zmień nazwę na AppLogger i wybierz **OK**.
 
     ![Utwórz nowy projekt biblioteki klas](media/NetStandard-NewProject.png)
 
@@ -159,7 +159,7 @@ Spowoduje to wygenerowanie `AppLogger.YOUR_NAME.1.0.0.nupkg`. Otwarcie tego plik
 > [!Tip]
 > A `.nupkg` plik jest po prostu plikiem ZIP z innym rozszerzeniem. Można także sprawdzić zawartość pakietu, następnie zmieniając `.nupkg` do `.zip`, ale należy pamiętać przywrócić rozszerzenia przed przekazaniem pakietu na stronie nuget.org.
 
-Aby udostępnić pakietu innym deweloperom, postępuj zgodnie z instrukcjami [publikowanie pakietu](../create-packages/publish-a-package.md).
+Aby udostępnić pakietu innym deweloperom, postępuj zgodnie z instrukcjami [publikowanie pakietu](../nuget-org/publish-a-package.md).
 
 Należy pamiętać, że `pack` wymaga platformy Mono 4.4.2 w systemie Mac OS X, a nie działa w systemach Linux. Na komputerze Mac, należy także przekonwertować nazwy Windows ścieżek w `.nuspec` plik do ścieżki stylu systemu Unix.
 

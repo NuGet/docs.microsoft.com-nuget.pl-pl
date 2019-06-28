@@ -16,12 +16,12 @@ keywords: Pakiety symboli NuGet, pakietów NuGet, debugowanie, obsługa NuGet de
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 18d54e28d77f2bdcfea70ff9ae9def05278cb26c
-ms.sourcegitcommit: 4ea46498aee386b4f592b5ebba4af7f9092ac607
+ms.openlocfilehash: 0d82cf8614b88247bc3a3ba3019c11bf1b5e2593
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610553"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426801"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symbol (.snupkg)
 
@@ -61,7 +61,7 @@ Jeśli używasz dotnet.exe lub MSBuild umożliwia utworzenie pliku .snupkg opró
 
 ## <a name="publishing-a-symbol-package"></a>Publikowanie pakietu symboli
 
-1. Dla wygody, najpierw zapisać swój klucz interfejsu API z NuGet (zobacz [publikowanie pakietu](../create-packages/publish-a-package.md)).
+1. Dla wygody, najpierw zapisać swój klucz interfejsu API z NuGet (zobacz [publikowanie pakietu](../nuget-org/publish-a-package.md)).
 
     ```cli
     nuget SetApiKey Your-API-Key

@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/23/2018
 ms.topic: tutorial
-ms.openlocfilehash: dfbd6a3e6d59dfcea6394891703ea66bce5e8e92
-ms.sourcegitcommit: ffbdf147f84f8bd60495d3288dff9a5275491c17
+ms.openlocfilehash: 522dbbb2a39eb1cb6f0d23f39a48158b07c9076d
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51580277"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426854"
 ---
 # <a name="creating-ui-controls-as-nuget-packages"></a>Tworzenie kontrolek interfejsu użytkownika jako pakietów NuGet
 
-Za pomocą programu Visual Studio 2017 możesz korzystać z zalet dodano funkcje dla platformy uniwersalnej systemu Windows i kontrolek WPF, które dostarczają w pakietach NuGet. Ten przewodnik przeprowadzi Cię przez te możliwości w kontekście kontrolek platformy UWP przy użyciu [przykładowe ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage). To samo dotyczy kontrolek WPF, chyba, że wymienione w inny sposób.
+Począwszy od programu Visual Studio 2017, możesz korzystać z zalet dodano funkcje dla platformy uniwersalnej systemu Windows i kontrolek WPF, które dostarczają w pakietach NuGet. Ten przewodnik przeprowadzi Cię przez te możliwości w kontekście kontrolek platformy UWP przy użyciu [przykładowe ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage). To samo dotyczy kontrolek WPF, chyba, że wymienione w inny sposób.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -62,7 +62,7 @@ gdzie:
 - *your_package_file*: pliku nazwę kontrolki, takie jak `ManagedPackage.winmd` ("ManagedPackage" jest używany na potrzeby tego przykładu i nie ma innych znaczenia dowolną o nazwie).
 - *vs_category*: Etykieta dla grupy, w którym formant powinna zostać wyświetlona w przyborniku projektanta programu Visual Studio. Element `VSCategory` jest konieczny, aby formant mógł być wyświetlany w przyborniku.
 - *blend_category*: Etykieta dla grupy, w którym formant powinna zostać wyświetlona w okienku zasobów projektanta programu Blend. Element `BlendCategory` jest konieczny, aby formant mógł być wyświetlany w zasoby.
-- *type_full_name_n*: w pełni kwalifikowaną nazwę dla każdej kontrolki, w tym przestrzeń nazw, takich jak `ManagedPackage.MyCustomControl`. Należy pamiętać, że format kropka jest używane dla typów zarządzane i natywne.
+- *type_full_name_n*: W pełni kwalifikowaną nazwę dla każdej kontrolki, w tym przestrzeń nazw, takich jak `ManagedPackage.MyCustomControl`. Należy pamiętać, że format kropka jest używane dla typów zarządzane i natywne.
 
 W bardziej zaawansowanych scenariuszy może również obejmować wiele `<File>` elementów w obrębie `<FileList>` Jeśli pojedynczy pakiet zawiera wiele zestawów formantu. Mogą też istnieć wiele `<ToolboxItems>` węzłów w ramach pojedynczej `<File>` aby organizować formantów na osobne kategorie.
 

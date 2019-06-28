@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: cfcb52ba7689f1b392c782b4ad42ba820a76c8bf
-ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
+ms.openlocfilehash: d462b289c39c2dd1418304dabcad47d0d4217f82
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981135"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426733"
 ---
 # <a name="search"></a>Wyszukaj
 
@@ -73,8 +73,8 @@ Główny obiekt JSON ma następujące właściwości:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-totalHits | integer          | Tak      | Całkowita liczba dopasowań, pomijając `skip` i `take`
-dane      | Tablica obiektów | Tak      | Wyniki wyszukiwania dopasowane przez żądanie
+totalHits | integer          | tak      | Całkowita liczba dopasowań, pomijając `skip` i `take`
+dane      | Tablica obiektów | tak      | Wyniki wyszukiwania dopasowane przez żądanie
 
 ### <a name="search-result"></a>Wynik wyszukiwania
 
@@ -83,21 +83,21 @@ Obiekt ma następujące właściwości:
 
 Nazwa           | Typ                       | Wymagane | Uwagi
 -------------- | -------------------------- | -------- | -----
-identyfikator             | string                     | Tak      | Identyfikator pakietu dopasowane
-version        | string                     | Tak      | Pełny ciąg wersji SemVer 2.0.0 pakietu (może zawierać metadane kompilacji).
+identyfikator             | string                     | tak      | Identyfikator pakietu dopasowane
+version        | string                     | tak      | Pełny ciąg wersji SemVer 2.0.0 pakietu (może zawierać metadane kompilacji).
 opis    | string                     | Brak       | 
-wersje       | Tablica obiektów           | Tak      | Wszystkie wersje pakietu dopasowywania `prerelease` parametru
+wersje       | Tablica obiektów           | tak      | Wszystkie wersje pakietu dopasowywania `prerelease` parametru
 Autorzy        | ciąg lub tablicę ciągów | Brak       | 
-IconUrl        | string                     | Brak       | 
+iconUrl        | string                     | Brak       | 
 licenseUrl     | string                     | Brak       | 
 Właściciele         | ciąg lub tablicę ciągów | Brak       | 
 projectUrl     | string                     | Brak       | 
 rejestracja   | string                     | Brak       | Bezwzględny adres URL do powiązanych [indeksu rejestracji](registration-base-url-resource.md#registration-index)
 podsumowanie        | string                     | Brak       | 
 tagi           | ciąg lub tablicę ciągów | Brak       | 
-Tytuł          | string                     | Brak       | 
+title          | string                     | Brak       | 
 totalDownloads | integer                    | Brak       | Tę wartość można wywnioskować przez sumę pliki do pobrania w `versions` tablicy
-Zweryfikowano       | wartość logiczna                    | Brak       | JSON atrybut typu wartość logiczna wskazująca, czy pakiet jest [zweryfikowane](../reference/id-prefix-reservation.md)
+Zweryfikowano       | wartość logiczna                    | Brak       | JSON atrybut typu wartość logiczna wskazująca, czy pakiet jest [zweryfikowane](../nuget-org/id-prefix-reservation.md)
 
 W witrynie nuget.org zweryfikowaną pakietu jest taki, który ma identyfikator pakietu dopasowania zastrzeżony prefiks Identyfikatora i należące do właścicieli zastrzeżony prefiks. Aby uzyskać więcej informacji, zobacz [dokumentacji dotyczącej rezerwowanie prefiksów identyfikatorów](../reference/id-prefix-reservation.md).
 
@@ -105,9 +105,9 @@ Metadane zawartych w obiekcie wynikowym wyszukiwania jest pobierana z najnowszej
 
 Nazwa      | Typ    | Wymagane | Uwagi
 --------- | ------- | -------- | -----
-@id       | string  | Tak      | Bezwzględny adres URL do powiązanych [liścia rejestracji](registration-base-url-resource.md#registration-leaf)
-version   | string  | Tak      | Pełny ciąg wersji SemVer 2.0.0 pakietu (może zawierać metadane kompilacji).
-Pliki do pobrania | integer | Tak      | Liczba plików do pobrania w tej wersji określonego pakietu
+@id       | string  | tak      | Bezwzględny adres URL do powiązanych [liścia rejestracji](registration-base-url-resource.md#registration-leaf)
+version   | string  | tak      | Pełny ciąg wersji SemVer 2.0.0 pakietu (może zawierać metadane kompilacji).
+Pliki do pobrania | integer | tak      | Liczba plików do pobrania w tej wersji określonego pakietu
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 

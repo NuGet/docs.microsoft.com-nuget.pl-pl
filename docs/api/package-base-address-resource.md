@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 740defc34077793b81fb35db73a2eee393ae3bac
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 2f0f93e0cee78ea03cbd53194cdc2a10871fd7e1
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547157"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426767"
 ---
 # <a name="package-content"></a>Zawartość pakietu
 
@@ -48,7 +48,7 @@ Jeśli klient zna identyfikator pakietu i chce dowiedzieć się, które pakietu 
 
 Nazwa     | W     | Typ    | Wymagane | Uwagi
 -------- | ------ | ------- | -------- | -----
-LOWER_ID | Adres URL    | string  | Tak      | Identyfikator pakietu, małe litery
+LOWER_ID | Adres URL    | string  | tak      | Identyfikator pakietu, małe litery
 
 `LOWER_ID` Wartość jest pisany małymi literami, za pomocą reguł wdrożonych przez identyfikator żądanego pakietu. NET firmy [ `System.String.ToLowerInvariant()` ](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) metody.
 
@@ -60,7 +60,7 @@ Jeśli źródło pakietu zawiera jedną lub kilka wersji, zwracany jest kod stan
 
 Nazwa     | Typ             | Wymagane | Uwagi
 -------- | ---------------- | -------- | -----
-wersje | Tablica ciągów | Tak      | Pakiet dostępnych identyfikatorów
+wersje | Tablica ciągów | tak      | Pakiet dostępnych identyfikatorów
 
 Ciągi w `versions` tablicy są wszystkie pisany małymi literami, [znormalizować ciągi wersji NuGet](../reference/package-versioning.md#normalized-version-numbers). Ciągi wersji nie zawierają żadnych metadanych kompilacji SemVer 2.0.0.
 
@@ -84,8 +84,8 @@ Jeśli klient zna identyfikator pakietu i wersję i chce pobrać zawartość pak
 
 Nazwa          | W     | Typ   | Wymagane | Uwagi
 ------------- | ------ | ------ | -------- | -----
-LOWER_ID      | Adres URL    | string | Tak      | Identyfikator pakietu, małe litery
-LOWER_VERSION | Adres URL    | string | Tak      | Wersja pakietu znormalizowane i pisany małymi literami
+LOWER_ID      | Adres URL    | string | tak      | Identyfikator pakietu, małe litery
+LOWER_VERSION | Adres URL    | string | tak      | Wersja pakietu znormalizowane i pisany małymi literami
 
 Zarówno `LOWER_ID` i `LOWER_VERSION` jest pisany małymi literami za pomocą reguł wdrożonych przez. NET firmy [`System.String.ToLowerInvariant()`](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant)
 Metoda.
@@ -114,10 +114,10 @@ Jeśli klient zna identyfikator pakietu i wersję i chce pobrać manifestu pakie
 
 ### <a name="request-parameters"></a>Parametry żądania
 
-Nazwa          | W     | Typ    | Wymagane | Uwagi
-------------- | ------ | ------- | -------- | -----
-LOWER_ID      | Adres URL    | string  | Tak      | Identyfikator pakietu, małe litery
-LOWER_VERSION | Adres URL    | integer | Tak      | Wersja pakietu znormalizowane i pisany małymi literami
+Nazwa          | W     | Typ   | Wymagane | Uwagi
+------------- | ------ | ------ | -------- | -----
+LOWER_ID      | Adres URL    | string | tak      | Identyfikator pakietu, małe litery
+LOWER_VERSION | Adres URL    | string | tak      | Wersja pakietu znormalizowane i pisany małymi literami
 
 Zarówno `LOWER_ID` i `LOWER_VERSION` jest pisany małymi literami za pomocą reguł wdrożonych przez. NET firmy [ `System.String.ToLowerInvariant()` ](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) metody.
 

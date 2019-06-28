@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 08/25/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 45d8a6557ee02998f3d12b128ee2dc4fd6ae48bb
-ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
+ms.openlocfilehash: f05c3a7a51bdc0760097422004cfc4339bf9ee2c
+ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56145595"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67426606"
 ---
 # <a name="hosting-your-own-nuget-feeds"></a>Hosting NuGet własne źródła danych
 
@@ -28,6 +28,7 @@ Dostępne są również kilka innych NuGet hostingu produktami, które obsługuj
 - [Systemu Azure](https://www.visualstudio.com/docs/package/nuget/publish), który jest także dostępny w Team Foundation Server 2017 i nowsze.
 - [MyGet](http://myget.org)
 - [ProGet](http://inedo.com/proget) z Inedo
+- [Rejestr pakiet GitHub](https://help.github.com/articles/configuring-nuget-for-use-with-github-package-registry)
 - [Serwer NuGet](http://nugetserver.net/), to projekt Społecznościowy z Inedo
 - [Serwer NuGet (Otwórz źródło)](http://nuget-server.net), podobnie jak serwer NuGet Inedo przez implementację typu open-source
 - [LiGet](https://github.com/ai-traders/liget), implementacją open source serwera NuGet w wersji 2, który jest uruchamiany na kestrel na platformie docker
