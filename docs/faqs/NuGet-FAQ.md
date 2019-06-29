@@ -5,12 +5,12 @@ author: shishirx34
 ms.author: shishirh
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9842e1d729d029ad987c1944afd10f2696030b3b
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 8bc6af90638408847af6e97cebcbf428f1d5d886
+ms.sourcegitcommit: b9a134a6e10d7d8502613f389f7d5f9b9e206ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426832"
+ms.locfileid: "67467766"
 ---
 # <a name="nuget-frequently-asked-questions"></a>NuGet — często zadawane pytania
 
@@ -135,7 +135,7 @@ Ustaw [ `disableSourceControlIntegration` ](../reference/nuget-config-file.md#so
 
 **Jak wyłączyć Przywracanie pakietu**
 
-Zobacz [Włączanie i wyłączanie Przywracanie pakietu](../consume-packages/package-restore.md#enabling-and-disabling-package-restore).
+Zobacz [Włączanie i wyłączanie Przywracanie pakietu](../consume-packages/package-restore.md#enable-and-disable-package-restore).
 
 **Dlaczego otrzymuję "Nie można rozwiązać błąd zależności" podczas instalowania pakietu lokalnego przy użyciu zależności zdalnych?**
 

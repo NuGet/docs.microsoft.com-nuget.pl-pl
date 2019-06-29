@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: b85b586e76e424442dc0ba3acfecbee1e8755345
-ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
+ms.openlocfilehash: 3be8d1dad6552db2fc04b2f324145ac7ce86acb2
+ms.sourcegitcommit: b9a134a6e10d7d8502613f389f7d5f9b9e206ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52453471"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467772"
 ---
 # <a name="troubleshooting-package-restore-errors"></a>Rozwiązywanie problemów z błędami Przywracanie pakietu
 
-Ten artykuł koncentruje się na typowych błędów podczas przywracania pakietów i kroki, aby je rozwiązać. Aby uzyskać szczegółowe informacje dotyczące przywracania pakietów, zobacz [Przywracanie pakietu](../consume-packages/package-restore.md#enabling-and-disabling-package-restore).
+Ten artykuł koncentruje się na typowych błędów podczas przywracania pakietów i kroki, aby je rozwiązać. Aby uzyskać szczegółowe informacje dotyczące przywracania pakietów, zobacz [Przywracanie pakietu](../consume-packages/package-restore.md#enable-and-disable-package-restore).
 
 Jeśli podanych tutaj instrukcji nie działają, [Zgłoś problem w serwisie GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) tak, aby firma Microsoft bardziej dokładnie sprawdź danego scenariusza. Nie używaj "czy ta strona jest pomocna?" Kontrolka, która może pojawić się na tej stronie, ponieważ jej nie umożliwiają nam się z Tobą, aby uzyskać więcej informacji.
 
@@ -24,7 +24,7 @@ Jeśli używasz programu Visual Studio, najpierw włączyć przywracania pakiet�
 
 1. Wybierz **Narzędzia > Menedżer pakietów NuGet > Ustawienia Menedżera pakietów** polecenia menu.
 1. Ustaw obie opcje, w obszarze **Przywracanie pakietów**.
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
 1. Ponownie skompiluj projekt.
 
 ![Włączanie przywracania pakietów NuGet w narzędzia/Opcje](../consume-packages/media/restore-01-autorestoreoptions.png)

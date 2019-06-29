@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: quickstart
-ms.openlocfilehash: e44f7b4040e5450f9f987eef62fd16d12abc6b20
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: c75785d361f25564c8a59d7a2d85924c570a7b9a
+ms.sourcegitcommit: b9a134a6e10d7d8502613f389f7d5f9b9e206ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426309"
+ms.locfileid: "67467813"
 ---
 # <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki start: Tworzenie i publikowanie pakietu NuGet, za pomocą programu Visual Studio (.NET Standard, tylko Windows)
 
@@ -29,7 +29,7 @@ Jest to prosty proces, aby utworzyć pakiet NuGet z standardowe biblioteki klas 
 
    * Dla `nuget.exe` interfejsu wiersza polecenia, pobierz go z [nuget.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisywanie `.exe` pliku do odpowiedniego folderu i dodawanie folderu do zmiennej środowiskowej PATH. Nuget.exe interfejsu wiersza polecenia jest używany dla biblioteki .NET Standard w formacie styl bez zestawu SDK.
 
-1. [Zarejestruj, aby utworzyć bezpłatne konto w witrynie nuget.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) Jeśli nie masz jeszcze takiego. Tworzenie nowego konta wysyła wiadomość e-mail z potwierdzeniem. Aby można było przekazać pakiet, należy potwierdzić konto.
+1. [Zarejestruj, aby utworzyć bezpłatne konto w witrynie nuget.org](https://docs.microsoft.com/en-us/nuget/nuget-org/individual-accounts#add-a-new-individual-account) Jeśli nie masz jeszcze takiego. Tworzenie nowego konta wysyła wiadomość e-mail z potwierdzeniem. Aby można było przekazać pakiet, należy potwierdzić konto.
 
 ## <a name="create-a-class-library-project"></a>Utwórz projekt biblioteki klas
 

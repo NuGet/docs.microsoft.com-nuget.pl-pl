@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: aa5cd1a2f3e3a6707a9d68204306db85651b0a18
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: d43f002b740b669de13f5872844ac0df97fc8fdc
+ms.sourcegitcommit: b9a134a6e10d7d8502613f389f7d5f9b9e206ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43545203"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467786"
 ---
 # <a name="projectjson-archive"></a>archiwum pliku Project.JSON
 
@@ -22,7 +22,7 @@ Zobacz też:
 - [wpływ pliku Project.JSON na autorom pakietów](project-json-impact.md)
 - [Plik project.json i platforma UWP](project-json-and-uwp.md)
 
-## <a name="projectjson-management-format"></a>format zarządzania Project.JSON
+## <a name="projectjson-management-format"></a>Format zarządzania project.json
 
 *Początkowo w [Przywracanie pakietu](../what-is-nuget.md).*
 
@@ -38,7 +38,7 @@ W programach `project.json`.
 
 ## <a name="constraining-package-versions-with-restore"></a>Ograniczający wersji pakietu, dzięki funkcji przywracania
 
-*Początkowo w [Przywracanie pakietu](../consume-packages/package-restore.md#constraining-package-versions-with-restore).*
+*Początkowo w [Przywracanie pakietu](../consume-packages/package-restore.md#constrain-package-versions-with-restore).*
 
 - `project.json`: Określ zakres wersji bezpośrednio z numerem wersji zależności. Na przykład:
 
@@ -93,7 +93,7 @@ Dodano sposób Rozwiązywanie błędów:
 
 *Początkowo w [ustalać platformy docelowe](../reference/target-frameworks.md).*
 
-- [Plik Project.JSON](project-json.md): `frameworks` węzła określa wersje framework skompilowany projekt.
+- [project.json](project-json.md): `frameworks` Węzła określa wersje framework skompilowany projekt.
 
 ## <a name="creating-a-package"></a>Tworzenie pakietu
 
