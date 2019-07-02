@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: d47e1978ab7d827e0b8b97cd4e7237019185b50f
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: a5b5a11ee11d9e2cf6a90d56ac63b1f7bad750ea
+ms.sourcegitcommit: 2a9d149bc6f5ff76b0b657324820bd0429cddeef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546079"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496492"
 ---
 # <a name="update-package-package-manager-console-in-visual-studio"></a>Update-Package (konsola menedżera pakietów w programie Visual Studio)
 
@@ -41,12 +41,12 @@ Update-Package Microsoft.AspNet.MVC -Version 5.0.0.
 | ProjectName | Nazwa projektu zawierający pakiety do aktualizacji, przyjęto wartość domyślną dla wszystkich projektów. |
 | Wersja | Wersja do użycia podczas uaktualniania, ustawiając domyślnie do najnowszej wersji. Nuget 3.0 +, wartość wersji musi mieć jedną z *najniższy, najwyższa, HighestMinor*, lub *HighestPatch* (równoważne — bezpieczna). |
 | Bezpieczne | Ogranicza uaktualnienia do wersji tylko przy użyciu tej samej wersji głównych i pomocniczych, co obecnie zainstalowanego pakietu. |
-| Źródło | Adres URL lub folder ścieżka do źródła pakietu do wyszukania. Ścieżki folderu lokalnego, może być ścieżką bezwzględną, lub względną do bieżącego folderu. W przypadku pominięcia `Update-Package` przeszukuje źródło obecnie wybranego pakietu. |
+| Source | Adres URL lub folder ścieżka do źródła pakietu do wyszukania. Ścieżki folderu lokalnego, może być ścieżką bezwzględną, lub względną do bieżącego folderu. W przypadku pominięcia `Update-Package` przeszukuje źródło obecnie wybranego pakietu. |
 | IncludePrerelease | Obejmuje pakiety w wersjach wstępnych dla aktualizacji. |
 | Zainstaluj ponownie | Pakiety Resintalls przy użyciu ich obecnie zainstalowanej wersji. Zobacz [ponowne zainstalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md). |
 | FileConflictAction | Akcja do wykonania po wyświetleniu monitu o zastąpienie lub zignorować istniejące pliki przywoływanego przez projekt. Możliwe wartości to *zastąpienia, Zignoruj, None, OverwriteAll*, i *IgnoreAll* (3.0 i nowsze). |
 | DependencyVersion | Wersja pakietów zależności do użycia, które może być jedną z następujących czynności:<br/><ul><li>*Najniższy* (ustawienie domyślne): Najniższa wersja</li><li>*HighestPatch*: wersja przy najniższe główne, najniższą pomocnicza, najwyższy poziom poprawki</li><li>*HighestMinor*: wersji z najniższą główne, najwyższy pomocnicza, najwyższy poziom poprawki</li><li>*Najwyższy* (domyślnie dla pakietu aktualizacji bez parametrów): najwyższa wersja</li></ul>Można ustawić przy użyciu wartości domyślnej [ `dependencyVersion` ](../reference/nuget-config-file.md#config-section) ustawienie w `Nuget.Config` pliku. |
-| ToHighestPatch | Ogranicza uaktualnień tylko wersje z tej samej wersji pomocniczej jako aktualnie zainstalowany pakiet. |
+| ToHighestPatch | wartość równoważna — bezpieczne. |
 | ToHighestMinor | Ogranicza uaktualnień tylko wersje z taką samą wersję główną jako aktualnie zainstalowany pakiet. |
 | WhatIf | Pokazuje, co się stanie, podczas uruchamiania polecenia bez rzeczywistego wykonania aktualizacji. |
 
@@ -54,7 +54,7 @@ Update-Package Microsoft.AspNet.MVC -Version 5.0.0.
 
 ### <a name="common-parameters"></a>Wspólne parametry
 
-`Update-Package` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
+`Update-Package` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): Debugowanie, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable pełne, WarningAction i WarningVariable.
 
 ### <a name="examples"></a>Przykłady
 

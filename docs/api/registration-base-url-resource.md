@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 19a1f48164f65f1ff805e036e55abb110247aa72
-ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
+ms.openlocfilehash: 0b35e2bbdde63f7f7a5298bd035c180389cd345d
+ms.sourcegitcommit: 2a9d149bc6f5ff76b0b657324820bd0429cddeef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54324867"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496496"
 ---
 # <a name="package-metadata"></a>Metadane pakietu
 
@@ -19,7 +19,7 @@ Istnieje możliwość pobrania metadanych o pakietach, które są dostępne w ź
 
 Zbiór dokumentów, znajdują się w `RegistrationsBaseUrl` są często nazywane "rejestracje" lub "obiektów blob rejestracji". Zestaw dokumentów w ramach pojedynczej `RegistrationsBaseUrl` jest określany jako "gałąź rejestracji". Gałąź rejestracji zawiera wszystkie metadane dotyczące każdego pakietu dostępne w źródle pakietu.
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
 Następujące `@type` są używane wartości:
 
@@ -89,7 +89,7 @@ Odpowiedź jest dokumentem JSON, który jest obiektem głównym, z następujący
 Nazwa  | Typ             | Wymagane | Uwagi
 ----- | ---------------- | -------- | -----
 count | integer          | tak      | Liczba stron rejestracji w indeksie
-Elementy | Tablica obiektów | tak      | Tablica stron rejestracji
+items | Tablica obiektów | tak      | Tablica stron rejestracji
 
 Każdy element w obiekcie indeksu `items` tablica jest obiektem JSON reprezentujący stronę rejestracji.
 
@@ -101,7 +101,7 @@ Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
 @id    | string           | tak      | Adres URL do strony rejestracji
 count  | integer          | tak      | Numer rejestracji pozostawia na stronie
-Elementy  | Tablica obiektów | Brak       | Tablica pozostawia rejestracji i ich kojarzenie metadanych
+items  | Tablica obiektów | Brak       | Tablica pozostawia rejestracji i ich kojarzenie metadanych
 Niższy  | string           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 Nadrzędny | string           | Brak       | Adres URL do indeksu rejestracji
 górny  | string           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
@@ -138,6 +138,7 @@ Nazwa                     | Typ                       | Wymagane | Uwagi
 @id                      | string                     | tak      | Adres URL, aby dokument użyty do utworzenia tego obiektu
 Autorzy                  | ciąg lub tablicę ciągów | Brak       | 
 dependencyGroups         | Tablica obiektów           | Brak       | Zależności pakietu, pogrupowane według platformy docelowej
+Ogłoszone jako przestarzałe              | object                     | Brak       | Ogłoszone jako przestarzałe, skojarzone z pakietem
 opis              | string                     | Brak       | 
 iconUrl                  | string                     | Brak       | 
 identyfikator                       | string                     | tak      | Identyfikator pakietu
@@ -150,7 +151,7 @@ Opublikowane                | string                     | Brak       | Ciąg za
 requireLicenseAcceptance | wartość logiczna                    | Brak       | 
 podsumowanie                  | string                     | Brak       | 
 tagi                     | ciąg lub tablica ciągów  | Brak       | 
-tytuł                    | string                     | Brak       | 
+title                    | string                     | Brak       | 
 version                  | string                     | tak      | Ciąg pełnej wersji po normalizacji
 
 Pakiet `version` właściwości jest ciągiem pełnej wersji po normalizacji. Oznacza to, że dane kompilacji SemVer 2.0.0 można uwzględnić w tym miejscu.
@@ -184,6 +185,26 @@ rejestracja | string | Brak       | Adres URL do indeksu rejestracji dla tej zal
 
 Jeśli `range` właściwość jest wyłączona lub pustym ciągiem, klient powinien domyślnych do zakresu wersji `(, )`. Oznacza to, że dowolną wersję zależność jest dozwolone.
 
+#### <a name="package-deprecation"></a>Oczekiwany pakiet
+
+Zakończenie obsługi każdego pakietu ma następujące właściwości:
+
+Nazwa             | Typ             | Wymagane | Uwagi
+---------------- | ---------------- | -------- | -----
+przyczyny          | Tablica ciągów | tak      | Przyczyny, dlaczego pakiet została zakończona
+— komunikat          | string           | Brak       | Dodatkowe szczegółowe informacje o tym wycofywania
+alternatePackage | object           | Brak       | Zależności pakietu, które mają być używane zamiast tego
+
+`reasons` Właściwość musi zawierać co najmniej jeden ciąg i powinna zawiera tylko ciągi z tabeli poniżej:
+
+Przyczyna       | Opis             
+------------ | -----------
+Starsza wersja       | Pakiet nie jest już obsługiwany
+CriticalBugs | Pakiet ma błędy, które nie nadaje się do użycia
+Inne        | Pakiet jest przestarzały z powodu nie na tej liście
+
+Jeśli `reasons` właściwość zawiera ciągi, które nie pochodzą ze znanego zestawu, zostaną one zignorowane. Ciągów jest rozróżniana wielkość liter, dlatego `legacy` powinny być traktowane jako taki sam `Legacy`. Jest Brak ograniczeń szeregowania tablicy, dlatego ciągi mogą być ułożone w dowolnej kolejności dowolnego. Ponadto jeśli właściwość zawiera tylko te ciągi, które nie pochodzą ze znanego zestawu, powinien być traktowany tak, jakby zawierała tylko ciąg "Other".
+
 ### <a name="sample-request"></a>Przykładowe żądanie
 
     GET https://api.nuget.org/v3/registration3/nuget.server.core/index.json
@@ -204,7 +225,7 @@ Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
 @id    | string           | tak      | Adres URL do strony rejestracji
 count  | integer          | tak      | Numer rejestracji pozostawia na stronie
-Elementy  | Tablica obiektów | tak      | Tablica pozostawia rejestracji i ich kojarzenie metadanych
+items  | Tablica obiektów | tak      | Tablica pozostawia rejestracji i ich kojarzenie metadanych
 Niższy  | string           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 Nadrzędny | string           | tak      | Adres URL do indeksu rejestracji
 górny  | string           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)

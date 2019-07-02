@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/30/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 34c205e7dac60c7abfb6323b4dc45bf4f074d46a
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 8e4fb376e471a207333d241aeb414da7d5c3571e
+ms.sourcegitcommit: 2a9d149bc6f5ff76b0b657324820bd0429cddeef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426792"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496537"
 ---
 # <a name="catalog"></a>Wykaz
 
@@ -194,7 +194,8 @@ Nazwa                    | Typ                       | Wymagane | Uwagi
 ----------------------- | -------------------------- | -------- | -----
 Autorzy                 | string                     | Brak       |
 Utworzone                 | string                     | Brak       | Sygnatura czasowa systemu, gdy pakiet został utworzony po raz pierwszy. Właściwości rezerwowego: `published`.
-dependencyGroups        | Tablica obiektów           | Brak       | Takiego samego formatu jak [zasób metadanych pakietu](registration-base-url-resource.md#package-dependency-group)
+dependencyGroups        | Tablica obiektów           | Brak       | Zależności pakietu, pogrupowane według platformy docelowej ([tego samego formatu co zasób metadanych pakietu](registration-base-url-resource.md#package-dependency-group))
+Ogłoszone jako przestarzałe             | object                     | Brak       | Ogłoszone jako przestarzałe, skojarzone z pakietem ([tego samego formatu co zasób metadanych pakietu](registration-base-url-resource.md#package-deprecation))
 opis             | string                     | Brak       |
 iconUrl                 | string                     | Brak       |
 isPrerelease            | wartość logiczna                    | Brak       | Określa, czy wersja pakietu jest wstępna. Może zostać wykryte z `version`.
