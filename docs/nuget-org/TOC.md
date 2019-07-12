@@ -14,4 +14,5 @@
 # Tematy pomocy
 ## [Interfejs API narzędzia NuGet](../api/overview.md)
 ## [licenses.nuget.org](licenses.nuget.org.md)
+# Resources
 ## [Często zadawane pytania](nuget-org-faq.md)
