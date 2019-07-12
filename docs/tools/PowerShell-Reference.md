@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 10/02/2017
 ms.topic: reference
-ms.openlocfilehash: 977e06d36962366abd69f1c7f21ef33eca4e5029
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 425ba736eba4609ebd6b5185ae3f1f976ab07a67
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426122"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842566"
 ---
 # <a name="powershell-reference"></a>Dokumentacja programu PowerShell
 
-Konsola Menedżera pakietów zapewnia interfejsu programu PowerShell w programie Visual Studio na Windows do interakcji z NuGet za pomocą określonych poleceń wymienionych poniżej. (Konsola nie jest obecnie dostępna w programie Visual Studio for Mac) Przewodnik dotyczący za pomocą konsoli, zobacz [instalowania i zarządzania pakietami przy użyciu programu PowerShell](../tools/package-manager-console.md) tematu.
+Konsola Menedżera pakietów zapewnia interfejsu programu PowerShell w programie Visual Studio na Windows do interakcji z NuGet za pomocą określonych poleceń wymienionych poniżej. (Konsola nie jest obecnie dostępna w programie Visual Studio for Mac) Przewodnik dotyczący za pomocą konsoli, zobacz [instalowania i zarządzania pakietami przy użyciu konsoli Menedżera pakietów](../tools/package-manager-console.md) tematu.
 
 > [!Tip]
 > Wszystkie polecenia programu PowerShell odnosić się tylko do konsumpcji pakietu. Brak poleceń programu PowerShell odnoszą się do tworzenia i publikowania pakietów, z wyjątkiem w zakresie, w jakim pakietu może być również konsumenta innych pakietów.

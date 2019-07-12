@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.openlocfilehash: 1060d98278fed89ac63ee17c1896ae8bdce72a9e
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 0d637c441cf9f36e8e3e04e47b524b2defecae52
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426165"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67841671"
 ---
 # <a name="quickstart-install-and-use-a-package-using-the-dotnet-cli"></a>Szybki start: Instalowanie i używanie pakietu przy użyciu interfejsu wiersza polecenia platformy dotnet
 
@@ -23,7 +23,7 @@ Po zakończeniu instalacji można znaleźć pakietu w kodzie za pomocą `using <
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Zestawu .NET Core SDK](https://www.microsoft.com/net/download/), która zapewnia `dotnet` narzędzie wiersza polecenia.
+- [Zestawu .NET Core SDK](https://www.microsoft.com/net/download/), która zapewnia `dotnet` narzędzie wiersza polecenia. Począwszy od programu Visual Studio 2017, dotnet, których interfejs wiersza polecenia jest automatycznie instalowany z dowolnej platformy .NET Core powiązanych obciążeń.
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
@@ -106,4 +106,4 @@ Można zainstalować pakietów NuGet do projektu .NET pewnego rodzaju. W tym prz
 - [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia platformy dotnet](../consume-packages/install-use-packages-dotnet-cli.md)
 - [Omówienie i przepływ pracy zużycia pakietu](../consume-packages/overview-and-workflow.md)
 - [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md)
-- [Typowe konfiguracje NuGet](../consume-packages/configuring-nuget-behavior.md)
+- [Typowe konfiguracje narzędzia NuGet](../consume-packages/configuring-nuget-behavior.md)

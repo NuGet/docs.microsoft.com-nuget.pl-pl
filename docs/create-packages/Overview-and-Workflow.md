@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/26/2017
 ms.topic: conceptual
-ms.openlocfilehash: a285650034c99026e34fcda398ca7ced4855e40a
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 58ad05cb854c8f7233d90d03c1b320f8797ca2ab
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67425718"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842398"
 ---
 # <a name="package-creation-workflow"></a>Przepływ pracy tworzenia pakietu
 
@@ -21,9 +21,7 @@ Pakiet może również służyć do tylko ściągania w dowolnej liczbie innych 
 > [!Note]
 > Podczas tworzenia pakietu do użytku przez innych programistów, ważne jest zrozumienie ich tworzenia zależności na pracy. Jako takie tworzenie i publikowanie pakietu oznacza również zobowiązania do naprawiania błędów i wprowadzania innych aktualizacji lub w bardzo najmniej wprowadzania pakietu, które są dostępne jako Otwórz źródło, aby inni pomogli do jego utrzymania.
 
-Niezależnie od przypadku, tworzenie pakietu rozpoczyna się od przy wyborze rozwiązania, które zespoły i inne pliki do pakietu. Następnie utwórz plik manifestu, określonych jako `.nuspec` pliku, aby opisać zawartość pakietu wraz z jego identyfikatora, numer wersji, informacje o prawach autorskich, właściwości programu MSBuild i obiektów docelowych i wiele innych.
-
-Gdy przygotowanej wszystkie niezbędne pliki w odpowiednie foldery i utworzono odpowiednie `.nuspec` pliku, możesz następnie użyć `nuget pack` polecenia (lub [MSBuild pakiet docelowy](../reference/msbuild-targets.md)) zostać umieszczona wszystko ze sobą `.nupkg` pliku. Następnie możesz przystąpić do wdrażania pakietu do dowolnego hosta umożliwia dostęp do niego innym deweloperom.
+Niezależnie od przypadku, tworzenie pakietu rozpoczyna się od podejmowania decyzji o jego identyfikator, numer wersji, licencji, informacje o prawach autorskich i innej zawartości na potrzeby. Po zakończeniu zostać umieszczona wszystko ze sobą, można użyć polecenia "pakiet" `.nupkg` pliku. Ten plik można publikować do źródła danych, np. nuget.org NuGet.
 
 > [!Tip]
 > Pakiet NuGet za pomocą `.nupkg` rozszerzenie jest po prostu plikiem ZIP. Aby łatwiej zbadać zawartość dowolnego pakietu, należy zmienić rozszerzenie `.zip` i rozwiń jego zawartość w zwykły sposób. Po prostu upewnij się zmienić rozszerzenie do `.nupkg` przed podjęciem próby przekazania jej do hosta.

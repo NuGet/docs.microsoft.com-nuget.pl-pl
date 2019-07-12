@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/22/2018
 ms.topic: conceptual
-ms.openlocfilehash: eeae62a09a9f405d27cd113ff586393f6305ba47
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 4cfc2fde08b240288851b87a391dc42c1ac8ecaf
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426710"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842319"
 ---
 # <a name="package-consumption-workflow"></a>Przepływ pracy zużyciu pakietu
 
@@ -49,5 +49,5 @@ Pakiety NuGet zostaną pobrane i zainstalowane przy użyciu dowolnej z metod w p
 | --- | --- |
 | [DotNet.exe interfejsu wiersza polecenia](install-use-packages-dotnet-cli.md) | (Wszystkie platformy) Narzędzie interfejsu wiersza polecenia dla biblioteki .NET Core i .NET Standard, a dla zestawu SDK stylu projektów środowiska .NET Framework (zobacz [atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions)). Pobiera pakiet identyfikowane przez \<nazwa_pakietu\> i dodaje odwołanie do pliku projektu. Ponadto umożliwia pobranie i zainstalowanie zależności. |
 | Visual Studio | (Windows i Mac) Udostępnia interfejs użytkownika, za pomocą którego można przeglądać, wybierz i zainstalować pakiety i ich zależności do projektu ze źródła określonego pakietu. Dodaje odwołania do pakietów zainstalowanych w pliku projektu.<ul><li>[Instalowanie i zarządzanie pakietami za pomocą programu Visual Studio](../tools/package-manager-ui.md)</li><li>[Dołączanie pakietu NuGet w projekcie (Mac)](/visualstudio/mac/nuget-walkthrough)</li></ul> |
-| [Program PowerShell w programie Visual Studio](../tools/package-manager-console.md) | (Tylko Windows) Pobiera i instaluje pakiet identyfikowane przez \<nazwa_pakietu\> z wybranego źródła do określonego projektu w rozwiązaniu, a następnie dodaje odwołanie do pliku projektu. Ponadto umożliwia pobranie i zainstalowanie zależności. |
+| [Konsola Menedżera pakietów w programie Visual Studio](../tools/package-manager-console.md) | (Tylko Windows) Pobiera i instaluje pakiet identyfikowane przez \<nazwa_pakietu\> z wybranego źródła do określonego projektu w rozwiązaniu, a następnie dodaje odwołanie do pliku projektu. Ponadto umożliwia pobranie i zainstalowanie zależności. |
 | [Interfejs wiersza polecenia nuget.exe](install-use-packages-dotnet-cli.md) | (Wszystkie platformy) Narzędzie interfejsu wiersza polecenia do bibliotek .NET Framework i projektów innych stylu zestawu SDK, przeznaczonych dla biblioteki .NET Standard. Pobiera pakiet identyfikowane przez \<nazwa_pakietu\> i zwiększa jego zawartość do folderu w bieżącym katalogu; można także pobrać wszystkie pakiety wymienione w `packages.config` pliku. Również umożliwia pobranie i zainstalowanie zależności, ale nie wprowadza żadnych zmian w plikach projektu lub `packages.config`. |

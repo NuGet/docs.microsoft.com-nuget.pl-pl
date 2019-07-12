@@ -5,12 +5,12 @@ author: mikejo5000
 ms.author: mikejo
 ms.date: 06/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: a8fd525f2446f9468664f1d80ef8808127a24be7
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 64f3a1978cd336064a77c9f3872357e65c37fc10
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427642"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842357"
 ---
 # <a name="install-and-manage-packages-using-the-dotnet-cli"></a>Instalowanie i zarządzanie pakietami za pomocą interfejsu wiersza polecenia platformy dotnet
 
@@ -95,6 +95,8 @@ NuGet instaluje najnowszą wersję pakietu, gdy używasz `dotnet add package` po
 ## <a name="restore-packages"></a>Przywracanie pakietów
 
 Użyj [dotnet restore](/dotnet/core/tools/dotnet-restore?tabs=netcore2x) polecenia, które pakiety wymienione w pliku projektu (zobacz [PackageReference](../consume-packages/package-references-in-project-files.md)). Za pomocą platformy .NET Core 2.0 i nowszych przywracania odbywa się automatycznie przy użyciu `dotnet build` i `dotnet run`. Począwszy od NuGet 4.0, spowoduje to uruchomienie tego samego kodu jako `nuget restore`.
+
+Podobnie jak w przypadku innych `dotnet` poleceń interfejsu wiersza polecenia, najpierw otwórz wiersz polecenia i przejdź do katalogu zawierającego plik projektu.
 
 Aby przywrócić dane przy użyciu pakietu `dotnet restore`:
 

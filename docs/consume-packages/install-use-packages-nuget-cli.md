@@ -5,18 +5,18 @@ author: mikejo5000
 ms.author: mikejo
 ms.date: 06/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: e60bca8fe2f80b044e466db2a100d6c6d167edb7
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: a7177b956930835693921163e634321548c22462
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427630"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842370"
 ---
 # <a name="manage-packages-using-the-nugetexe-cli"></a>Zarządzanie pakietami za pomocą interfejsu wiersza polecenia nuget.exe
 
 Narzędzie interfejsu wiersza polecenia pozwala łatwo zaktualizować i przywracanie pakietów NuGet w projektach i rozwiązaniach. To narzędzie oferuje wszystkie możliwości NuGet w Windows, a także większości funkcji na komputerach Mac i Linux w przypadku uruchomienia w Mono.
 
-Nuget.exe interfejsu wiersza polecenia jest projekt programu .NET Framework i projektów innych stylu zestawu SDK, (na przykład jeden, który jest przeznaczony dla biblioteki .NET Standard). Jeśli używasz projektu bez stylu zestawu SDK, który zostały przeniesione do `PackageReference`, zamiast tego użyj wiersz polecenia dotnet. Interfejs wiersza polecenia NuGet wymaga [packages.config](../reference/packages-config.md) odwołania do pakietu w pliku.
+Nuget.exe interfejsu wiersza polecenia jest projekt programu .NET Framework i projektów innych stylu zestawu SDK (na przykład-SDK stylu projektu, który jest przeznaczony dla biblioteki .NET Standard). Jeśli używasz projektu bez stylu zestawu SDK, który zostały przeniesione do `PackageReference`, zamiast tego użyj wiersz polecenia dotnet. Interfejs wiersza polecenia NuGet wymaga [packages.config](../reference/packages-config.md) odwołania do pakietu w pliku.
 
 > [!NOTE]
 > W większości przypadków zaleca się [migrowania projektów bez SDK-style](../reference/migrate-packages-config-to-package-reference.md) używające `packages.config` do odwołania PackageReference, a następnie przy użyciu interfejsu wiersza polecenia platformy dotnet zamiast `nuget.exe` interfejsu wiersza polecenia. Migracja nie jest obecnie dostępna dla projektów C++ i programu ASP.NET.
@@ -113,6 +113,8 @@ nuget update
 Użyj [przywrócić](../tools/cli-ref-restore.md) polecenia, które pobiera i instaluje wszystkie pakiety brakuje *pakietów* folderu.
 
 `restore` tylko dodaje pakiety do dysku, ale nie zmienia zależności projektu. Aby przywrócić zależności projektu, należy zmodyfikować `packages.config`, następnie za pomocą `restore` polecenia.
+
+Podobnie jak w przypadku innych `dotnet` poleceń interfejsu wiersza polecenia, najpierw otwórz wiersz polecenia i przejdź do katalogu zawierającego plik projektu.
 
 Aby przywrócić dane przy użyciu pakietu `restore`:
 

@@ -1,5 +1,5 @@
 ---
-title: Instalowanie i Zarządzaj pakietami NuGet w programie Visual Studio przy użyciu programu PowerShell
+title: Instalowanie i Zarządzaj pakietami NuGet za pomocą konsoli w programie Visual Studio
 description: Instrukcje dotyczące korzystania z konsoli Menedżera pakietów NuGet w programie Visual Studio do pracy z pakietami.
 author: karann-msft
 ms.author: karann
@@ -7,14 +7,14 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 f1_keywords:
 - vs.nuget.packagemanager.console
-ms.openlocfilehash: 11ec25598d3110ba84dec5044642e205e13346af
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 91ab3859994e5ae738c6637219681ebbfc92d420
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426219"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842593"
 ---
-# <a name="install-and-manage-packages-using-powershell-in-visual-studio"></a>Instalowanie i zarządzania pakietami przy użyciu programu PowerShell w programie Visual Studio
+# <a name="install-and-manage-packages-with-the-package-manager-console-in-visual-studio-powershell"></a>Instalowanie i zarządzanie pakietami za pomocą konsoli Menedżera pakietów w programie Visual Studio (PowerShell)
 
 Konsola Menedżera pakietów NuGet umożliwia korzystanie z [poleceń programu NuGet PowerShell](../tools/powershell-reference.md) można znaleźć, instalowanie, odinstalowywanie oraz aktualizowanie pakietów NuGet. Za pomocą konsoli jest konieczne w przypadku, gdy interfejs użytkownika Menedżera pakietów nie zapewnia sposób wykonania operacji. Aby użyć `nuget.exe` poleceń interfejsu wiersza polecenia w konsoli, zobacz [przy użyciu nuget.exe interfejsu wiersza polecenia w konsoli](#using-the-nugetexe-cli-in-the-console).
 

@@ -5,12 +5,12 @@ author: shishirx34
 ms.author: shishirh
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c2fc11c0f5dd5d98c40c8b97f9d5a72c4a334b79
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: fd846632e7a1f5c49fa72d75b18e51cfc7539949
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427603"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67841956"
 ---
 # <a name="nugetorg-frequently-asked-questions"></a>Często zadawane pytania NuGet.org
 
@@ -252,13 +252,15 @@ Wykonaj kroki podane w [usunąć swoje konto w witrynie nuget.org](#how-to-delet
 
 Można usunąć konto, należy pamiętać, że firma Microsoft zaleca przenieść własność dowolnego pakietu, gdzie jesteś jedynym właścicielem. Przeczytaj więcej o [Zarządzanie właścicielami pakietu](https://docs.microsoft.com/en-us/nuget/create-packages/publish-a-package#managing-package-owners-on-nugetorg) o tym, jak to zrobić. Ułatwi to również nam przyspieszyć Twojego żądania.
 
+Jeśli szukasz Przekształć swoje konto do organizacji, wykonaj kroki podane w [Przekształcanie konto nuget.org, aby organizacja](#how-to-transform-my-nugetorg-account-to-an-organization).
+
 > [!Important]
 > Usunięcie użytkownika spowoduje następujące czynności:
+>  1. Twoja nazwa użytkownika będzie zarezerwowana i nie będzie można ponownie użyć go, aby utworzyć indywidualne konto lub konta organizacji
 >  1. Odwołaj skojarzone klucze interfejsu API. 
->  2. Usuń konto jako właściciela dla dowolnego pakietu podrzędnego.
->  3. Usuń skojarzenie wszystkie rezerwacje prefiks Identyfikatora wcześniej celowe przy użyciu tego konta.
->  4. Usuń konto jest członkiem dowolnej organizacji.
->  5. Rezerwowane swoją nazwę użytkownika i nie będzie można ponownie użyć go ponownie bez naszych uprawnień.
+>  1. Usuń konto jako właściciela dla dowolnego pakietu podrzędnego.
+>  1. Usuń skojarzenie wszystkie rezerwacje prefiks Identyfikatora wcześniej celowe przy użyciu tego konta.
+>  1. Usuń konto jest członkiem dowolnej organizacji.
 
 Wykonaj poniższe kroki, aby kontynuować usuwanie kont.
 1. [Zaloguj się na stronie nuget.org](https://www.nuget.org/users/account/LogOn) przy użyciu konta, którą chcesz usunąć.

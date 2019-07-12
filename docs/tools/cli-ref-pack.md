@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 9db24b2dd6ced0869ac84b25f9796ded5df10f86
-ms.sourcegitcommit: d5a35a097e6b461ae791d9f66b3a85d5219d7305
+ms.openlocfilehash: c3a01b7747be96f02f7b93b3bf66f5d1783ceed7
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56145647"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842552"
 ---
 # <a name="pack-command-nuget-cli"></a>pack command, polecenie (interfejs wiersza polecenia NuGet)
 
@@ -39,7 +39,7 @@ gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub projektu pliku, odp
 | ExcludeEmptyDirectories | Uniemożliwia włączenie puste katalogi, podczas tworzenia pakietu. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
 | ConfigFile | Określ plik konfiguracji dla polecenia pakietu. |
-| Pomoc | Wyświetla Pomoc dla polecenia. |
+| Help | Wyświetla Pomoc dla polecenia. |
 | IncludeReferencedProjects | Wskazuje, że utworzone pakiet powinien zawierać przywoływane projekty, jako zależności lub jako część pakietu. Jeśli przywoływany projekt ma odpowiadające mu `.nuspec` pliku, który ma taką samą nazwę jak projektu, a następnie przywoływanego projektu zostanie dodany jako zależność. W przeciwnym razie przywoływany projekt jest dodawany jako część pakietu. |
 | MinClientVersion | Ustaw *atrybutu minClientVersion* atrybut utworzony pakiet. Ta wartość zastępuje wartość istniejącej *atrybutu minClientVersion* atrybutu (jeśli istnieją) w `.nuspec` pliku. |
 | MSBuildPath | *(4.0 +)*  Określa ścieżkę program MSBuild będzie używać za pomocą polecenia pierwszeństwo `-MSBuildVersion`. |
@@ -50,8 +50,9 @@ gdzie `<nuspecPath>` i `<projectPath>` określ `.nuspec` lub projektu pliku, odp
 | Właściwości | Powinien zostać wyświetlony ostatni wiersz polecenia po innych opcji. Określa listę właściwości, które zastępują wartości w pliku projektu. zobacz [wspólne właściwości projektów MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazw właściwości. Argument właściwości w tym miejscu znajduje się lista token = pary wartości, oddziel je średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostaną zastąpione danej wartości. Możliwe wartości ciągów w znaki cudzysłowu. Należy pamiętać, że dla właściwości "Konfiguracja", wartość domyślna to "Debug". Aby zmienić konfigurację wydania, należy użyć `-Properties Configuration=Release`. |
 | Suffix | *(3.4.4+)*  Dołącza sufiks numerowi wersji wewnętrznie generowane, zwykle używane do wykonania operacji dołączania kompilacji lub innych identyfikatorów w wersji wstępnej. Na przykład za pomocą `-suffix nightly` spowoduje utworzenie pakietu z podobny do numeru wersji `1.2.3-nightly`. Sufiksy musi zaczynać się literą, aby uniknąć ostrzeżenia, błędy i potencjalnych niezgodności z użyciem różnych wersji programu NuGet i Menedżer pakietów NuGet. |
 | Symbole | Określa, że pakiet zawiera źródła i symboli. Gdy jest używane z `.nuspec` pliku, spowoduje to utworzenie pliku pakietu NuGet regularnych oraz odpowiednich symboli pakietu. Domyślnie tworzy [symbol starszej wersji pakietu](../create-packages/Symbol-Packages.md). Nowy format zalecane pakiety symboli jest .snupkg. Zobacz [tworzenia pakietów symbol (.snupkg)](../create-packages/Symbol-Packages-snupkg.md). |
+| SymbolPackageFormat | Określa format pakietu symboli: *symbols.nupkg* (starszych) lub *snupkg* (zalecane). Domyślnie tworzy [symbol starszej wersji pakietu](../create-packages/Symbol-Packages.md). Zobacz [tworzenia pakietów symbol (.snupkg)](../create-packages/Symbol-Packages-snupkg.md). |
 | Narzędzie | Określa, że pliki wyjściowe projektu, należy umieścić w `tool` folderu. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
+| Verbosity | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *cichy*, *szczegółowe*. |
 | Wersja | Zastępuje numer wersji z `.nuspec` pliku. |
 
 Zobacz też [zmiennych środowiskowych](cli-ref-environment-variables.md)

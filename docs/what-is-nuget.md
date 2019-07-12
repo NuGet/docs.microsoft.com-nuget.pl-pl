@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: overview
-ms.openlocfilehash: 087bb043ba4b388b9de6d94cd838915a2e7247f4
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: e11eed5c614a7634fa578ebc84c3ab2068522fe2
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426132"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842203"
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
@@ -45,8 +45,8 @@ Oprócz hostowania pomocy technicznej, NuGet zawiera szereg narzędzi używane z
 
 | Narzędzie | Platformy | Zastosowanie scenariuszy | Opis |
 | --- | --- | --- | --- |
-| [Wiersz polecenia DotNet](consume-packages/install-use-packages-dotnet-cli.md) | Wszystkie | Tworzenie i użycia | Narzędzie interfejsu wiersza polecenia dla biblioteki .NET Core i .NET Standard, a dla zestawu SDK stylu projektów środowiska .NET Framework (zobacz [atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions)). Udostępnia pewne interfejs wiersza polecenia NuGet możliwości bezpośrednio w ramach łańcucha narzędzi .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia NuGet, wiersz polecenia dotnet nie wchodzi w interakcję z projektów programu Visual Studio. |
-| [Interfejs wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md) | Wszystkie | Tworzenie i użycia | Narzędzie interfejsu wiersza polecenia do bibliotek .NET Framework i projektów innych stylu zestawu SDK, przeznaczonych dla biblioteki .NET Standard. Zawiera wszystkie funkcje NuGet, z niektórymi poleceniami zastosowanie konkretnie do pakietu dla twórców, niektóre mające zastosowanie tylko do konsumentów, i inne osoby mające zastosowanie do obu. Na przykład pakiet użycia dla twórców `nuget pack` polecenie, aby utworzyć pakiet z różnych zestawów i powiązane pliki, użyj konsumentów pakietu `nuget install` do uwzględnienia pakiety w folderze projektu i wszyscy używa `nuget config` konfiguracji NuGet zmienne. Jako narzędzie niezależne od platformy interfejs wiersza polecenia NuGet nie wchodzi w interakcję z projektów programu Visual Studio. |
+| [Interfejs wiersza polecenia dotnet](consume-packages/install-use-packages-dotnet-cli.md) | Wszystkie | Tworzenie i użycia | Narzędzie interfejsu wiersza polecenia platformy .NET Core i biblioteki .NET Standard oraz [projektów w stylu zestawu SDK](resources/check-project-format.md) projektów przeznaczonych dla platformy .NET Framework. Udostępnia pewne interfejs wiersza polecenia NuGet możliwości bezpośrednio w ramach łańcucha narzędzi .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia NuGet, wiersz polecenia dotnet nie wchodzi w interakcję z projektów programu Visual Studio. |
+| [Interfejs wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md) | Wszystkie | Tworzenie i użycia | Narzędzie interfejsu wiersza polecenia do bibliotek .NET Framework i [projektów bez SDK-style](resources/check-project-format.md) przeznaczone na platformę biblioteki .NET Standard. Zawiera wszystkie funkcje NuGet, z niektórymi poleceniami zastosowanie konkretnie do pakietu dla twórców, niektóre mające zastosowanie tylko do konsumentów, i inne osoby mające zastosowanie do obu. Na przykład pakiet użycia dla twórców `nuget pack` polecenie, aby utworzyć pakiet z różnych zestawów i powiązane pliki, użyj konsumentów pakietu `nuget install` do uwzględnienia pakiety w folderze projektu i wszyscy używa `nuget config` konfiguracji NuGet zmienne. Jako narzędzie niezależne od platformy interfejs wiersza polecenia NuGet nie wchodzi w interakcję z projektów programu Visual Studio. |
 | [Konsola menedżera pakietów](tools/package-manager-console.md) | Visual Studio Windows | Zużycie | Udostępnia [poleceń programu PowerShell](tools/Powershell-Reference.md) dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
 | [Interfejs użytkownika menedżera pakietów](tools/package-manager-ui.md) | Visual Studio Windows | Zużycie | Zapewnia łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w projektach programu Visual Studio. |
 | [Zarządzanie NuGet interfejsu użytkownika](/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Zużycie | Zapewniają łatwy w użyciu interfejsu użytkownika dotyczące instalowania i zarządzania pakietami w programie Visual Studio dla komputerów Mac projektów. |

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/13/2018
 ms.topic: quickstart
-ms.openlocfilehash: efdaa0128d47f948c86c3cc83d6a332410cbf99f
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: bf561d36a06bf42c029eb96ff1b7930abffa4c0a
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426335"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842043"
 ---
 # <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
 
@@ -145,7 +145,7 @@ Po utworzeniu `.nupkg` pliku opublikujesz go w witrynie nuget.org przy użyciu `
 
 ### <a name="publish-with-nuget-push"></a>Publikowanie za pomocą wypychania nuget
 
-1. Zmień folder zawierający `.nupkg` pliku.
+1. Otwórz wiersz polecenia i zmień folder zawierający `.nupkg` pliku.
 
 1. Uruchom następujące polecenie, określając nazwę pakietu i zastępując wartość klucza swój klucz interfejsu API:
 

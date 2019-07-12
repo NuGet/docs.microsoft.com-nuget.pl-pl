@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: a28b29614dfe5abdeb24438b3451d96634a120db
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: d0d25cb6e21f6d0d42389e08340b6f1e1baf8a64
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551445"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842516"
 ---
 # <a name="get-package-package-manager-console-in-visual-studio"></a>Get-Package (konsola menedżera pakietów w programie Visual Studio)
 
-*W tym temacie opisano polecenia w ramach [Konsola Menedżera pakietów NuGet](package-manager-console.md) w programie Visual Studio na Windows. Ogólne polecenia PowerShell Get-Package, zobacz [dokumentacja programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
+*W tym temacie opisano polecenia w ramach [Konsola Menedżera pakietów](package-manager-console.md) w programie Visual Studio na Windows. Ogólne polecenia PowerShell Get-Package, zobacz [dokumentacja programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
 
 Pobranie listy pakietów zainstalowanych w lokalnym repozytorium, zawiera listę pakietów, które są dostępne ze źródła pakietu, gdy jest używana z opcją - ListAvailable lub wyświetla ich listę dostępnych aktualizacji, gdy jest używana z przełącznikiem - Update.
 
@@ -32,7 +32,7 @@ Bez parametrów `Get-Package` umożliwia wyświetlenie listy pakietów zainstalo
 
 | Parametr | Opis |
 | --- | --- |
-| Źródło | Ścieżka adresu URL lub folder pakietu. Ścieżki folderu lokalnego, może być ścieżką bezwzględną, lub względną do bieżącego folderu. W przypadku pominięcia `Get-Package` przeszukuje źródło obecnie wybranego pakietu. Gdy jest używane z - ListAvailable, wartość domyślna to nuget.org. |
+| Source | Ścieżka adresu URL lub folder pakietu. Ścieżki folderu lokalnego, może być ścieżką bezwzględną, lub względną do bieżącego folderu. W przypadku pominięcia `Get-Package` przeszukuje źródło obecnie wybranego pakietu. Gdy jest używane z - ListAvailable, wartość domyślna to nuget.org. |
 | ListAvailable | Zawiera listę pakietów, które są dostępne ze źródła pakietu przyjęty adres nuget.org. Pokazuje domyślne pakietów 50, chyba że określono - PageSize i/lub - pierwszy. |
 | Aktualizacje | Zawiera listę pakietów, które mają dostępną aktualizację ze źródła pakietu. |
 | ProjectName | Projekt, z którego można pobrać zainstalowanych pakietów. Jeśli argument jest pominięty, zwraca zainstalowane projektów dla całego rozwiązania. |
@@ -47,7 +47,7 @@ Bez parametrów `Get-Package` umożliwia wyświetlenie listy pakietów zainstalo
 
 ## <a name="common-parameters"></a>Wspólne parametry
 
-`Get-Package` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): debugowania, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, pełne, WarningAction i WarningVariable.
+`Get-Package` obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): Debugowanie, akcja w przypadku błędu, ErrorVariable, OutBuffer, OutVariable, PipelineVariable pełne, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

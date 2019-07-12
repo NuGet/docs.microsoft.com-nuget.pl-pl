@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 06/20/2019
 ms.topic: quickstart
-ms.openlocfilehash: 6e3011493b7b89bc43cd9a267aea7fd32d668cec
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: a4a3f5509792e56c09d18b3da98588d17f4756ee
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426569"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67841940"
 ---
 # <a name="install-nuget-client-tools"></a>Instalowanie narzędzi klienta programu NuGet
 
@@ -20,8 +20,8 @@ Aby pracować z pakietów NuGet jako konsument pakietu lub twórcą, można uży
 
 | Narzędzie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Opis | Pobierz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |:------------- |:-------------|:-----|
-| [dotnet.exe](#dotnetexe-cli) | Narzędzie interfejsu wiersza polecenia dla biblioteki .NET Core i .NET Standard, a dla każdego projektu zestawu SDK stylu taki, który jest przeznaczony dla .NET Framework (zobacz [atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions)). Dołączone do zestawu SDK programu .NET Core i zapewnia podstawowe funkcje NuGet na wszystkich platformach. | [Zestaw SDK dla platformy .NET core](https://www.microsoft.com/net/download/) |
-| [nuget.exe](#nugetexe-cli) | Narzędzie interfejsu wiersza polecenia dla biblioteki .NET Framework i projektów innych stylu zestawu SDK, przeznaczonych dla biblioteki .NET Standard. Zawiera wszystkie funkcje NuGet na Windows elastycznego, wyświetla większości funkcji na komputerach Mac i Linux, w przypadku uruchomienia w Mono. | [nuget.exe](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe) |
+| [dotnet.exe](#dotnetexe-cli) | Narzędzie interfejsu wiersza polecenia dla biblioteki .NET Core i .NET Standard, a także dla dowolnej [projekt w stylu zestawu SDK](resources/check-project-format.md) taki, który jest przeznaczony dla .NET Framework. Dołączone do zestawu SDK programu .NET Core i zapewnia podstawowe funkcje NuGet na wszystkich platformach. (Począwszy od programu Visual Studio 2017, dotnet, których interfejs wiersza polecenia jest automatycznie instalowany z dowolnej platformy .NET Core dotyczących obciążenia).| [Zestaw SDK dla platformy .NET core](https://www.microsoft.com/net/download/) |
+| [nuget.exe](#nugetexe-cli) | Narzędzie interfejsu wiersza polecenia do bibliotek .NET Framework oraz [projekt w stylu bez zestawu SDK](resources/check-project-format.md) przeznaczone na platformę biblioteki .NET Standard. Zawiera wszystkie funkcje NuGet na Windows elastycznego, wyświetla większości funkcji na komputerach Mac i Linux, w przypadku uruchomienia w Mono. | [nuget.exe](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe) |
 | [Visual Studio](#visual-studio) | W Windows zapewnia możliwości NuGet za pomocą interfejsu użytkownika Menedżera pakietów i konsoli Menedżera pakietów; dołączone. Obciążenia związane z sieci. Na komputerze Mac udostępnia pewne funkcje za pośrednictwem interfejsu użytkownika. W programie Visual Studio Code funkcji NuGet są dostarczane za pośrednictwem rozszerzeń. | [Visual Studio 2017](https://www.visualstudio.com/downloads/) |
 
 [Interfejsu wiersza polecenia MSBuild](reference/msbuild-targets.md) udostępnia możliwość przywracania i tworzenia pakietów, co przydaje się głównie na serwerach kompilacji. Program MSBuild nie jest narzędziem ogólnego przeznaczenia do pracy z NuGet.
@@ -31,7 +31,7 @@ Aby pracować z pakietów NuGet jako konsument pakietu lub twórcą, można uży
 Są dwa narzędzia interfejsu wiersza polecenia NuGet `dotnet.exe` i `nuget.exe`. Zobacz [dostępność funkcji](#feature-availability) dla porównania.
 
 * Aby skierować je do platformy .NET Core lub .NET Standard, należy użyć wiersz polecenia dotnet. Wiersz polecenia dotnet jest wymagany do formatu projektu zestawu SDK stylu, który używa [atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions).
-* Do obiektu docelowego .NET Framework (tylko projekt się w stylu zestawu SDK), użyj `nuget.exe CLI`. Jeśli projekt jest migracja do `packages.config`, użyj wiersz polecenia dotnet.
+* Do obiektu docelowego .NET Framework (tylko projekt się w stylu zestawu SDK), użyj `nuget.exe CLI`. Jeśli projekt jest migracja z `packages.config` do odwołania PackageReference, należy użyć wiersz polecenia dotnet.
 
 ### <a name="dotnetexe-cli"></a>DotNet.exe interfejsu wiersza polecenia
 
@@ -39,7 +39,7 @@ Są dwa narzędzia interfejsu wiersza polecenia NuGet `dotnet.exe` i `nuget.exe`
 
 Instalacja:
 
-- Na komputerach deweloperów jest instalowany [zestawu .NET Core SDK](https://aka.ms/dotnetcoregs).
+- Na komputerach deweloperów jest instalowany [zestawu .NET Core SDK](https://aka.ms/dotnetcoregs). Począwszy od programu Visual Studio 2017, dotnet, których interfejs wiersza polecenia jest automatycznie instalowany z dowolnej platformy .NET Core powiązanych obciążeń.
 - W przypadku serwerów kompilacji, postępuj zgodnie z instrukcjami [przy użyciu zestawu .NET Core SDK i narzędzi ciągłej integracji](/dotnet/core/tools/using-ci-with-cli).
 
 Aby dowiedzieć się, jak podstawowe polecenia za pomocą interfejsu wiersza polecenia platformy dotnet, zobacz [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia platformy dotnet](consume-packages/install-use-packages-dotnet-cli.md).
@@ -48,14 +48,14 @@ Aby dowiedzieć się, jak podstawowe polecenia za pomocą interfejsu wiersza pol
 
 `nuget.exe` Interfejsu wiersza polecenia, `nuget.exe`, to narzędzie wiersza polecenia dla Windows, który zawiera wszystkie funkcje NuGet; może również działać w systemie Mac OSX i Linux przy użyciu [Mono](http://www.mono-project.com/docs/getting-started/install/) z pewnymi ograniczeniami.
 
+Aby dowiedzieć się, jak użyć podstawowa poleceń z `nuget.exe` interfejsu wiersza polecenia, zobacz [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md).
+
 Instalacja:
 
 [!INCLUDE [install-cli](includes/install-cli.md)]
 
 > [!Tip]
 > Użyj `nuget update -self` na Windows, aby zaktualizować istniejące nuget.exe do najnowszej wersji.
-
-Aby dowiedzieć się, jak użyć podstawowa poleceń z `nuget.exe` interfejsu wiersza polecenia, zobacz [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md).
 
 > [!Note]
 > Najnowsze zalecane, interfejs wiersza polecenia NuGet jest zawsze dostępne pod adresem `https://dist.nuget.org/win-x86-commandline/latest/nuget.exe`. Dla celów zgodności ze starszymi systemami ciągłej integracji, poprzedniego adresu URL `https://nuget.org/nuget.exe` udostępnia obecnie [przestarzałe 2.8.6 narzędzie interfejsu wiersza polecenia](https://github.com/NuGet/NuGetGallery/issues/5381).
@@ -103,7 +103,7 @@ Aby dowiedzieć się, jak użyć podstawowa poleceń z `nuget.exe` interfejsu wi
 ### <a name="related-topics"></a>Tematy pokrewne
 
 - [Instalowanie i zarządzanie pakietami za pomocą programu Visual Studio](tools/package-manager-ui.md)
-- [Instalowanie i zarządzania pakietami przy użyciu programu PowerShell](tools/package-manager-console.md)
+- [Instalowanie i zarządzanie pakietami za pomocą konsoli Menedżera pakietów](tools/package-manager-console.md)
 - [Instalowanie i zarządzanie pakietami za pomocą interfejsu wiersza polecenia platformy dotnet](consume-packages/install-use-packages-dotnet-cli.md)
 - [Instalowanie i zarządzanie pakietami za pomocą interfejsu wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md)
 - [Dokumentacja programu PowerShell z konsoli Menedżera pakietów](tools/powershell-reference.md)

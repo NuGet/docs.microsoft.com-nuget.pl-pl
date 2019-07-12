@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3be8d1dad6552db2fc04b2f324145ac7ce86acb2
-ms.sourcegitcommit: b9a134a6e10d7d8502613f389f7d5f9b9e206ec8
+ms.openlocfilehash: 287237cf4041870c562a6a7f48f233d8fdc8ef33
+ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467772"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67842384"
 ---
 # <a name="troubleshooting-package-restore-errors"></a>Rozwiązywanie problemów z błędami Przywracanie pakietu
 
-Ten artykuł koncentruje się na typowych błędów podczas przywracania pakietów i kroki, aby je rozwiązać. Aby uzyskać szczegółowe informacje dotyczące przywracania pakietów, zobacz [Przywracanie pakietu](../consume-packages/package-restore.md#enable-and-disable-package-restore).
+Ten artykuł koncentruje się na typowych błędów podczas przywracania pakietów i kroki, aby je rozwiązać. Aby uzyskać szczegółowe informacje dotyczące przywracania pakietów, zobacz [Przywracanie pakietu](../consume-packages/package-restore.md#enable-and-disable-package-restore-visual-studio).
 
 Jeśli podanych tutaj instrukcji nie działają, [Zgłoś problem w serwisie GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) tak, aby firma Microsoft bardziej dokładnie sprawdź danego scenariusza. Nie używaj "czy ta strona jest pomocna?" Kontrolka, która może pojawić się na tej stronie, ponieważ jej nie umożliwiają nam się z Tobą, aby uzyskać więcej informacji.
 
@@ -29,7 +29,7 @@ Jeśli używasz programu Visual Studio, najpierw włączyć przywracania pakiet�
 
 ![Włączanie przywracania pakietów NuGet w narzędzia/Opcje](../consume-packages/media/restore-01-autorestoreoptions.png)
 
-Te ustawienia można zmienić w swojej `NuGet.config` pliku; zobacz [zgody](#consent) sekcji.
+Te ustawienia można zmienić w swojej `NuGet.config` pliku; zobacz [zgody](#consent) sekcji. Jeśli projekt jest starsze projektu, który używa Przywracanie pakietu zintegrowane MSBuild, konieczne może być [migracji](package-restore.md#migrate-to-automatic-package-restore-visual-studio) pakietu automatycznego przywracania.
 
 <a name="missing"></a>
 
@@ -54,10 +54,10 @@ Ten błąd może też być plik projektu zawiera ścieżki bezwzględnej do loka
 Do przywrócenia pakietów, użyj jednej z następujących metod:
 
 - Jeśli po przeniesieniu pliku projektu, należy edytować plik bezpośrednio, aby zaktualizować odwołania do pakietu.
-- W programie Visual Studio, należy włączyć Przywracanie pakietu, wybierając **Narzędzia > Menedżer pakietów NuGet > Ustawienia Menedżera pakietów** polecenia menu, ustawianie obu opcji w obszarze **Przywracanie pakietów**i wybierając polecenie  **OK**. Następnie ponownie skompiluj rozwiązanie.
-- Dla projektów .NET Core, uruchom `dotnet restore` lub `dotnet build` (który automatycznie uruchamia przywracania).
-- W wierszu polecenia Uruchom `nuget restore` (z wyjątkiem projekty utworzone za pomocą `dotnet`, w którym to przypadku użycia `dotnet restore`).
-- W wierszu polecenia z projektami przy użyciu formatu PackageReference Uruchom `msbuild -t:restore`.
+- (Visual Studio) Włączanie przywracania pakietów, wybierając **Narzędzia > Menedżer pakietów NuGet > Ustawienia Menedżera pakietów** polecenia menu, ustawianie obu opcji w obszarze **Przywracanie pakietów**i wybierając polecenie **OK** . Następnie ponownie skompiluj rozwiązanie.
+- (interfejs wiersza polecenia platformy dotnet) W wierszu polecenia przejdź do folderu, który zawiera projekt, a następnie uruchom `dotnet restore` lub `dotnet build` (który automatycznie uruchamia przywracania).
+- (nuget.exe interfejsu wiersza polecenia) W wierszu polecenia przejdź do folderu, który zawiera projekt, a następnie uruchom `nuget restore` (z wyjątkiem projekty utworzone za pomocą `dotnet` interfejsu wiersza polecenia, w których wielkość `dotnet restore`).
+- (Projekty po migracji do odwołania PackageReference) W wierszu polecenia Uruchom `msbuild -t:restore`.
 
 Po pomyślnie przeprowadzić przywrócenie, muszą znajdować się w pakiecie *globalnymi pakietami* folderu. W przypadku projektów przy użyciu funkcji PackageReference przywracania należy ponownie utworzyć `obj/project.assets.json` pliku; dla projektów przy użyciu `packages.config`, pakiet powinien pojawić się w projekcie `packages` folderu. Projekt teraz powinien być kompilowany pomyślnie. W przeciwnym razie [pliku wystąpił problem w serwisie GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) , dzięki czemu możemy wykonać kolejne czynności z Tobą.
 
