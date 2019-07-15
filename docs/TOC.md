@@ -15,7 +15,7 @@
 ### [Visual Studio dla komputerów Mac](/visualstudio/mac/nuget-walkthrough?toc=/nuget/toc.json)
 ### [Interfejs wiersza polecenia dotnet](consume-packages/install-use-packages-dotnet-cli.md)
 ### [Interfejs wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md)
-### [Program PowerShell](tools/package-manager-console.md)
+### [Konsola menedżera pakietów (PowerShell)](tools/package-manager-console.md)
 ## Konfigurowanie narzędzia NuGet
 ### Opcje przywracania pakietów
 #### [Opcje przywracania](consume-packages/package-restore.md)
@@ -31,21 +31,23 @@
 ### [packages.config](reference/packages-config.md)
 # Tworzenie pakietów
 ## [Omówienie i przepływ pracy](create-packages/overview-and-workflow.md)
-## [Tworzenie pakietu — interfejs wiersza polecenia nuget.exe](create-packages/creating-a-package.md)
+## [Tworzenie pakietu](create-packages/creating-a-package.md)
 ## [Tworzenie pakietu przy użyciu programu MSBuild](reference/msbuild-targets.md)
 ## [Obsługa wielu platform docelowych](create-packages/supporting-multiple-target-frameworks.md)
 ## [Tworzenie pakietu w wersji wstępnej](create-packages/prerelease-packages.md)
 ## [Tworzenie pakietu symboli](create-packages/symbol-packages-snupkg.md)
 ## Zaawansowane zadania
 ### [Modyfikowanie kodu źródłowego i plików konfiguracji](create-packages/source-and-config-file-transformations.md)
-### [Tworzenie zlokalizowanego pakietu](create-packages/creating-localized-packages.md)
 ### [Wybieranie zestawów przywoływanych w projektach](create-packages/select-assemblies-referenced-by-projects.md)
+### [Ustawianie typu pakietu](create-packages/set-package-type.md)
+### [Tworzenie zlokalizowanego pakietu](create-packages/creating-localized-packages.md)
 ## Przewodniki dotyczące określonej zawartości
 ### [Tworzenie pakietu platformy UWP](guides/create-uwp-packages.md)
 ### [Tworzenie pakietu natywnego](create-packages/native-packages.md)
 ### [Tworzenie kontrolek interfejsu użytkownika jako pakietu NuGet](guides/create-UI-controls.md)
 ### [Tworzenie analizatora jako pakietu NuGet](reference/analyzers-conventions.md)
 ### [Tworzenie pakietu dla platformy Xamarin za pomocą programu Visual Studio 2015](guides/create-packages-for-xamarin.md)
+### [Tworzenie pakietu za pomocą zestawów usługi międzyoperacyjnej modelu COM](create-packages/author-packages-with-COM-interop-assemblies.md)
 ## Podpisywanie pakietów
 ### [Podpisywanie pakietu](create-packages/sign-a-package.md)
 ### [Podpisy i wymagania dotyczące podpisanych pakietów](reference/signed-packages-reference.md)
@@ -335,4 +337,5 @@
 #### [NuGet 1.2](release-notes/NuGet-1.2.md)
 #### [NuGet 1.1](release-notes/NuGet-1.1.md)
 ## [Często zadawane pytania](faqs/nuget-faq.md)
+## [Format projektu](resources/check-project-format.md)
 # [NuGet.org](nuget-org/overview-nuget-org.md)
