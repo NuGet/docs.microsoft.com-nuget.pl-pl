@@ -1,128 +1,128 @@
 ---
-title: Znajdowanie i Wybieranie pakietów NuGet
-description: Przegląd jak znaleźć i wybrać najlepsze pakietów NuGet dla projektu, w tym szczegółowe informacje na temat składni wyszukiwania NuGet.
+title: Znajdowanie i wybieranie pakietów NuGet
+description: Omówienie sposobu znajdowania i wybierania najlepszych pakietów NuGet dla projektu, w tym szczegółowych informacji o składni wyszukiwania NuGet.
 author: karann-msft
 ms.author: karann
 ms.date: 06/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8cd7529c4a1ecf659abde03fb1632e26431aebf3
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 3af29e2f9b09ba5bd82779f9aacf314bd8933436
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426748"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317028"
 ---
-# <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocena pakietów NuGet w projekcie
+# <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocenianie pakietów NuGet dla projektu
 
-Podczas uruchamiania każdego projektu .NET lub po każdym zidentyfikować funkcjonalności potrzeby swojej aplikacji lub usługi, można zapisać samodzielnie mnóstwo czasu i problemy przy użyciu istniejących pakietów NuGet, które spełniają te potrzeby. Te pakiety mogą pochodzić z publicznych kolekcji [nuget.org](http://www.nuget.org/packages/), lub prywatnych źródła, które jest udostępniane przez organizację użytkownika lub innej.
+Podczas uruchamiania dowolnego projektu .NET lub przy każdej identyfikacji potrzeby funkcjonalnej aplikacji lub usługi możesz zaoszczędzić wiele czasu i problemów, korzystając z istniejących pakietów NuGet, które spełniają te wymagania. Te pakiety mogą pochodzić z publicznej kolekcji [NuGet.org](http://www.nuget.org/packages/)lub prywatnego źródła, które jest udostępniane przez organizację lub inną osobę trzecią.
 
-## <a name="finding-packages"></a>Wyszukuje pakietów
+## <a name="finding-packages"></a>Znajdowanie pakietów
 
-Gdy można znaleźć w witrynie nuget.org, lub otworzyć Interfejs użytkownika Menedżera pakietów w programie Visual Studio, zobaczysz listę pakietów, posortowane według łączna liczba plików do pobrania. To od razu dowiesz się pakietów najbardziej powszechnie używany w milionach projektów .NET. Jest dobrym pomysłem, a następnie, że co najmniej niektórych pakietów wymienionych na pierwsze kilka stron będą użyteczne w swoich projektach.
+Gdy odwiedzasz nuget.org lub otworzysz interfejs użytkownika Menedżera pakietów w programie Visual Studio, zobaczysz listę pakietów posortowaną według całkowitej ilości pobieranych plików. Spowoduje to natychmiastowe wyświetlenie najczęściej używanych pakietów w milionach projektów programu .NET. Istnieje dobry szansa, że co najmniej niektóre pakiety wymienione na kilku pierwszych stronach będą przydatne w projektach.
 
-![Domyślny widok nuget.org/packages przedstawiający najbardziej popularnymi pakietami](media/Finding-01-Popularity.png)
+![Widok domyślny nuget.org/packages pokazujący najpopularniejsze pakiety](media/Finding-01-Popularity.png)
 
-Zwróć uwagę **Uwzględnij wersję wstępną** opcji w prawym górnym rogu strony. Po wybraniu nuget.org pokazuje wszystkie wersje pakietów, łącznie z wersji beta i innych Wczesne wersje. Aby pokazać tylko stabilne zwolnione, wyczyść pole wyboru.
+Zwróć uwagę na opcję **Uwzględnij wersję wstępną** w prawym górnym rogu strony. Po wybraniu nuget.org wyświetla wszystkie wersje pakietów, w tym beta i inne wczesne wydania. Aby wyświetlić tylko stabilne zwolnienie, usuń zaznaczenie tej opcji.
 
-Zależności od określonych potrzeb wyszukiwanie według tagów (Menedżera pakietów w Visual Studio lub w portalu, np. nuget.org) to najczęściej oznacza, że odnajdowania odpowiedniego pakietu. Na przykład wyszukiwanie "json" zawiera listę wszystkich pakietów NuGet, które są oznaczane za pomocą tego słowa kluczowego i dlatego mają niektóre relacji do formatu danych JSON.
+W przypadku określonych wymagań wyszukiwanie według tagów (w ramach Menedżera pakietów programu Visual Studio lub w portalu jak nuget.org) jest najpopularniejszym sposobem odnajdywania odpowiedniego pakietu. Na przykład wyszukiwanie w formacie JSON powoduje wyświetlenie listy wszystkich pakietów NuGet oznaczonych za pomocą tego słowa kluczowego, w związku z czym ma pewną relację z formatem danych JSON.
 
-![Wyniki wyszukiwania dla "json" w witrynie nuget.org](media/Finding-02-SearchResults.png)
+![Wyniki wyszukiwania dla elementu "JSON" w nuget.org](media/Finding-02-SearchResults.png)
 
-Można także przeszukać przy użyciu Identyfikatora pakietu, jeśli je znasz. Zobacz [wyszukiwanie składni](#search-syntax) poniżej.
+Możesz również wyszukiwać przy użyciu identyfikatora pakietu, jeśli go znasz. Zobacz [składnię wyszukiwania](#search-syntax) poniżej.
 
-W tej chwili wyniki wyszukiwania są sortowane tylko według istotności, więc zazwyczaj chcesz przeszukać co najmniej pierwsze kilka stron wyników dla pakietów, które odpowiadają potrzebom użytkownika lub dostosować terminy wyszukiwania, aby dokładniej.
+W tej chwili wyniki wyszukiwania są sortowane tylko według istotności, dlatego warto przeszukać co najmniej kilka pierwszych stron wyników dla pakietów, które odpowiadają potrzebom, lub uściślić warunki wyszukiwania, aby były bardziej szczegółowe.
 
-### <a name="does-the-package-support-my-projects-target-framework"></a>Pakiet obsługuje platformę docelową mój projekt?
+### <a name="does-the-package-support-my-projects-target-framework"></a>Czy pakiet obsługuje platformę docelową mojego projektu?
 
-NuGet instaluje pakiet do projektu tylko wtedy, gdy ten pakiet obsługiwanych platform obejmują platformę docelową projektu. Jeśli pakiet nie jest zgodny, NuGet generuje błąd.
+NuGet instaluje pakiet do projektu tylko wtedy, gdy obsługiwane struktury tego pakietu obejmują platformę docelową projektu. Jeśli pakiet nie jest zgodny, narzędzie NuGet wystawia błąd.
 
-Niektóre pakiety listy ich obsługiwanych platform, bezpośrednio w galerii nuget.org, ale takich danych nie jest wymagane, wiele pakietów nie dołączaj tej listy. Obecnie nie istnieje sposób wyszukiwania nuget.org pakietów, obsługujące platformę określony element docelowy (Ta funkcja jest pod uwagę, zobacz [2936 problem NuGet](https://github.com/NuGet/NuGetGallery/issues/2936)).
+Niektóre pakiety mają listę obsługiwanych struktur bezpośrednio w galerii nuget.org, ale ponieważ takie dane nie są wymagane, wiele pakietów nie zawiera tej listy. Obecnie nie ma możliwości wyszukiwania nuget.org dla pakietów, które obsługują konkretną platformę docelową (Ta funkcja jest rozważana, zobacz problem z pakietem [nuget 2936](https://github.com/NuGet/NuGetGallery/issues/2936)).
 
-Na szczęście można określić obsługiwanych platform za pomocą dwóch innych środków:
+Na szczęście można określić obsługiwane platformy, korzystając z dwóch innych metod:
 
-1. Próba zainstalowania pakietu do projektu przy użyciu [ `Install-Package` ](../tools/ps-ref-install-package.md) polecenia w konsoli Menedżera pakietów NuGet. Jeśli pakiet jest niezgodna, to polecenie wyświetla pakietu obsługiwanych platform.
+1. Spróbuj zainstalować pakiet w projekcie za pomocą [`Install-Package`](../reference/ps-reference/ps-ref-install-package.md) polecenia w konsoli Menedżera pakietów NuGet. Jeśli pakiet jest niezgodny, to polecenie pokazuje obsługiwane platformy pakietu.
 
-1. Pobierz pakiet z jego strony w witrynie nuget.org przy użyciu **ręcznego pobrania** łącze w obszarze **informacje**. Zmień rozszerzenie z `.nupkg` do `.zip`, a następnie otwórz plik, aby zbadać zawartość jego `lib` folderu. Widzisz podfoldery dla każdego z obsługiwanych platform, gdzie każdy podfolder nosi nazwę z monikerem platformy docelowej (TFM; zobacz [platform docelowych](../reference/target-frameworks.md)). Jeśli zostanie wyświetlony bez podfolderów w obszarze `lib` i tylko pojedynczego pliku DLL, należy należy próbować zainstalować pakiet w projekcie w celu odnalezienia swojej zgodności.
+1. Pobierz pakiet z jego strony na nuget.org przy użyciu linku **pobierania ręcznego** w obszarze **informacje**. Zmień rozszerzenie z `.nupkg` na `.zip`, a następnie otwórz plik, aby przejrzeć zawartość jego `lib` folderu. Dla każdej obsługiwanej platformy widoczne są podfoldery, gdzie każdy podfolder ma nazwę z monikerem platformy docelowej (TFM; zobacz [Platformy docelowe](../reference/target-frameworks.md)). Jeśli w obszarze `lib` i tylko jednej bibliotece DLL nie ma podfolderów, należy spróbować zainstalować pakiet w projekcie w celu odnalezienia jego zgodności.
 
-## <a name="pre-release-packages"></a>Pakiety w wersji wstępnej
+## <a name="pre-release-packages"></a>Pakiety wersji wstępnej
 
-Wiele autorom pakietów upewnij (wersja zapoznawcza), a dostępne wydań beta, jako że nadal wprowadzić ulepszenia i wyszukiwanie informacji zwrotnych o ich najnowsze poprawki.
+Wielu autorów pakietów udostępnia wersje zapoznawcze i beta, ponieważ kontynuują ulepszanie i wyszukiwanie najnowszych poprawek.
 
-Domyślnie nuget.org zawiera pakiety w wersji wstępnej w wynikach wyszukiwania. Aby wyszukać tylko stabilne wersje, wyczyść **Uwzględnij wersję wstępną** opcji w prawym górnym rogu strony
+Domyślnie nuget.org wyświetla pakiety wersji wstępnej w wynikach wyszukiwania. Aby wyszukać tylko stabilne wersje, usuń zaznaczenie opcji **Uwzględnij wersję wstępną** w prawym górnym rogu strony.
 
-![Obejmują wstępnej pole wyboru w witrynie nuget.org](media/Finding-06-include-prerelease.png)
+![Pole wyboru Uwzględnij wersję wstępną w programie nuget.org](media/Finding-06-include-prerelease.png)
 
-W programie Visual Studio, a podczas korzystania z narzędzi interfejsu wiersza polecenia platformy dotnet i NuGet NuGet nie zawiera wersji wstępnych domyślnie. Aby zmienić to zachowanie, wykonaj następujące czynności:
+W programie Visual Studio i w przypadku korzystania z narzędzi NuGet i interfejsu wiersza polecenia programu dotnet pakiet NuGet domyślnie nie zawiera wersji wstępnej. Aby zmienić to zachowanie, wykonaj następujące czynności:
 
-- **Interfejs użytkownika Menedżera pakietów w programie Visual Studio**: W **Zarządzaj pakietami NuGet** interfejsu użytkownika, ustaw **Uwzględnij wersję wstępną** pole. Ustawienie lub usunięcie zaznaczenia tego pola odświeża interfejs użytkownika Menedżera pakietów i listę dostępnych wersji, które można zainstalować.
+- **Interfejs użytkownika Menedżera pakietów w programie Visual Studio**: W interfejsie użytkownika **Zarządzanie pakietami NuGet** Ustaw pole **Uwzględnij wersję wstępną** . Ustawienie lub wyczyszczenie tego pola powoduje odświeżenie interfejsu użytkownika Menedżera pakietów oraz listę dostępnych wersji, które można zainstalować.
 
-    ![Wstępna pola wyboru Dołącz w programie Visual Studio](media/Prerelease_02-CheckPrerelease.png)
+    ![Pole wyboru Uwzględnij wersję wstępną w programie Visual Studio](media/Prerelease_02-CheckPrerelease.png)
 
-- **Konsola Menedżera pakietów**: Użyj `-IncludePrerelease` przełącznik z `Find-Package`, `Get-Package`, `Install-Package`, `Sync-Package`, i `Update-Package` poleceń. Zapoznaj się [dokumentacja programu PowerShell](../tools/powershell-reference.md).
+- **Konsola Menedżera pakietów**: `Get-Package` `Install-Package`Użyj przełącznika z poleceniami ,,`Sync-Package`, i .`Update-Package` `Find-Package` `-IncludePrerelease` Zapoznaj się z dokumentacją [programu PowerShell](../reference/powershell-reference.md).
 
-- **Interfejs wiersza polecenia nuget.exe**: Użyj `-prerelease` przełącznik z `install`, `update`, `delete`, i `mirror` poleceń. Zapoznaj się [dokumentacja interfejsu wiersza polecenia NuGet](../tools/nuget-exe-cli-reference.md)
+- **interfejs wiersza polecenia NuGet. exe**: `update`Użyj przełącznika z poleceniami`delete`,,i `mirror` . `install` `-prerelease` Zapoznaj się z dokumentacją [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md)
 
-- **Interfejs wiersza polecenia DotNet.exe**: Określ dokładne wersji wstępnej, za pomocą `-v` argumentu. Zapoznaj się [dotnet Dodawanie odwołania do pakietu](/dotnet/core/tools/dotnet-add-package).
+- **interfejs wiersza polecenia dotnet. exe**: Określ dokładną wersję wstępną za pomocą `-v` argumentu. Zapoznaj się z informacjami dotyczącymi [dodawania pakietu dotnet](/dotnet/core/tools/dotnet-add-package).
 
 <a name="native-cpp-packages"></a>
 
-### <a name="native-c-packages"></a>Pakiety natywne C++
+### <a name="native-c-packages"></a>Pakiety C++ natywne
 
-NuGet obsługuje pakiety natywne C++ może używane w projektach C++ w programie Visual Studio. Dzięki temu **Zarządzaj pakietami NuGet** polecenia menu kontekstowe dla projektów, wprowadza `native` docelowy framework i zapewnia integrację programu MSBuild.
+Pakiet NuGet obsługuje C++ pakiety natywne, które mogą być C++ używane w projektach w programie Visual Studio. Umożliwia to menu kontekstowe **Zarządzanie pakietami NuGet** dla projektów, wprowadza `native` platformę docelową i zapewnia integrację z programem MSBuild.
 
-Aby znaleźć pakiety natywne na [nuget.org](https://www.nuget.org/packages), Wyszukaj przy użyciu `tag:native`. Takie pakiety zwykle zapewniają `.targets` i `.props` pliki, które NuGet importuje automatycznie, gdy pakiet zostanie dodany do projektu.
+Aby znaleźć natywne pakiety w [NuGet.org](https://www.nuget.org/packages), Wyszukaj `tag:native`za pomocą. Takie pakiety zazwyczaj `.targets` udostępniają `.props` i pliki, które NuGet są importowane automatycznie podczas dodawania pakietu do projektu.
 
-## <a name="evaluating-packages"></a>Ocena pakietów
+## <a name="evaluating-packages"></a>Ocenianie pakietów
 
-Najlepszym sposobem, aby ocenić przydatność pakietu jest ją pobrać i wypróbować tę funkcję w kodzie (wszystkie pakiety w witrynie nuget.org są regularnie skanowane pod kątem wirusów, przy okazji). Co bardzo popularnego pakietu uruchomiono usługę za pomocą tylko kilku deweloperzy korzystający z jego i może być jednym z pierwszych!
+Najlepszym sposobem na ocenę użyteczności pakietu jest pobranie go i wypróbowanie go w kodzie (wszystkie pakiety na nuget.org są rutynowo skanowane pod kątem wirusów, w drodze). Każdy wysoce popularny pakiet został uruchomiony tylko przez kilku deweloperów korzystających z niego i może być jednym z wczesnych użytkowników.
 
-W tym samym czasie przy użyciu pakietu NuGet oznacza, że jest zależna od, tak aby upewnić się, że w niezawodnym i solidnym. Ponieważ instalowania i testowania bezpośrednio pakietu jest czasochłonne, możesz także dowiedzieć się znacznie jakości pakietu, korzystając z informacji na stronie listy pakiet:
+W tym samym czasie używanie pakietu NuGet oznacza jego zależność, dlatego należy upewnić się, że jest to niezawodne i niezawodne. Ponieważ Instalowanie i bezpośrednie Testowanie pakietu jest czasochłonne, można także uzyskać informacje o jakości pakietu, korzystając z informacji na stronie z listą pakietu:
 
-- *Pobiera statystyki*: na stronie pakiet w witrynie nuget.org, **statystyki** sekcji przedstawiono całkowitą pliki do pobrania, pobieranie najnowszej wersji i średnia pobiera dziennie. Większą liczbą wskazują, że wielu innych deweloperów miały zależność od pakietu, co oznacza, że jej okazał się.
+- *Pobieranie statystyk*: na stronie pakiet w witrynie NuGet.org sekcja **statystyki** zawiera łączne pliki do pobrania, pliki do pobrania najnowszej wersji i średnie pobieranie na dzień. Większa liczba wskazuje, że wielu innych deweloperów pobrało zależność od pakietu, co oznacza, że sama sprawdzona.
 
-    ![Pobierz statystyki na stronie listy pakietów](media/Finding-03-Downloads.png)
+    ![Pobierz statystyki na stronie z listą pakietu](media/Finding-03-Downloads.png)
 
-- *Historia wersji*: na stronie pakiet, sprawdź w obszarze **informacje** daty ostatniego aktualizacji i sprawdź **historię wersji**. Dobrze obsługiwanych pakietów zawiera najnowsze aktualizacje i historię wersji sformatowanego. Zaniedbany pakiety mają kilka aktualizacji i często nie były aktualizowane za jakiś czas.
+- *Historia wersji*: na stronie pakiet zapoznaj się z **informacjami** dotyczącymi daty ostatniej aktualizacji i sprawdź **historię wersji**. Dobrze obsługiwany pakiet zawiera najnowsze aktualizacje i zaawansowaną historię wersji. Zaniedbane pakiety mają kilka aktualizacji i często nie zostały zaktualizowane w pewnym czasie.
 
-    ![Historia wersji na stronie listy pakietów](media/Finding-04-VersionHistory.png)
+    ![Historia wersji na stronie z listą pakietu](media/Finding-04-VersionHistory.png)
 
-- *Instaluje najnowsze*: na stronie pakiet w obszarze **statystyki**, wybierz opcję **Wyświetl pełne statystyki**. Strony pełne statystyki pokazuje, że pakiet instaluje się w ciągu ostatnich sześciu tygodni za pomocą numeru wersji. Pakiet, który aktywnie korzystającą z innymi deweloperami zwykle jest lepszym rozwiązaniem niż ta, która nie jest.
+- *Ostatnie instalacje*: na stronie pakiet w obszarze **Statystyka**wybierz pozycję **Wyświetl pełne statystyki**. Na stronie pełne statystyki zostanie wyświetlony pakiet instalowany w ciągu ostatnich sześciu tygodni według numeru wersji. Pakiet, do którego aktywnie korzysta inni deweloperzy, jest zazwyczaj lepszym wyborem niż ten, który nie jest.
 
-- *Obsługuje*: na stronie pakiet w obszarze **informacje**, wybierz opcję **witryny projektu** (jeśli jest dostępny) aby sprawdzić, jaka pomoc techniczna opcje Autor zawiera. Projekt z witryną dedykowaną zazwyczaj lepiej jest obsługiwane.
+- *Obsługa*: na stronie pakiet w obszarze **informacje**wybierz pozycję **Witryna projektu** (jeśli jest dostępna), aby zobaczyć opcje pomocy technicznej udostępniane przez autora. Projekt z dedykowaną lokacją jest ogólnie lepszy.
 
-- *Historia dewelopera*: na stronie pakiet w obszarze **właścicieli**, wybierz tego właściciela, aby zobaczyć, jakie inne pakiety zostały one opublikowane. Za pomocą wielu pakietów są bardziej prawdopodobne, kontynuowanie obsługi swoją pracę w przyszłości.
+- *Historia deweloperów*: na stronie pakiet w obszarze **właściciele**wybierz właściciela, aby zobaczyć, jakie inne pakiety zostały opublikowane. Te z wieloma pakietami mogą nadal obsługiwać swoją pracę w przyszłości.
 
-- *Otwórz źródło wkładów*: wiele pakietów są obsługiwane w przypadku repozytoriów typu open-source umożliwieniem deweloperom w zależności od ich bezpośrednio współtworzyć poprawki błędów i ulepszenia funkcji. Historia wkład dowolnego danego pakietu jest również dobry wskaźnik ile deweloperzy mają aktywnego udziału użytkownika.
+- *Wkłady typu open source*: wiele pakietów jest przechowywanych w repozytoriach typu "open source", dzięki czemu deweloperzy mogą w zależności od nich bezpośrednio współtworzyć poprawki błędów i ulepszenia funkcji. Historia udziału danego pakietu jest również dobrym wskaźnikiem liczby aktywnie używanych deweloperów.
 
-- *Wywiad właściciele*: nowych deweloperów na pewno może być równie wszelkich starań, aby tworzyć wspaniałe pakietów do użycia i dobrze dać im możliwość dostosowania coś nowego do ekosystemu NuGet. Pamiętając o tym, skontaktuj się bezpośrednio do deweloperów pakietu za pomocą **skontaktuj się z właścicielami** opcji w obszarze **informacje** na stronie listy. To, będziesz mieć chętnie z Tobą, aby spełniały Twoje potrzeby!
+- Przeprowadzenie *rozmowy kwalifikacyjnej z właścicielami*: Nowi deweloperzy mogą na pewno być zaangażowani w tworzenie doskonałych pakietów do użycia i dobrym rozwiązaniem jest nadanie im nowego ekosystemu NuGet. Pamiętając o tym, aby skontaktować się bezpośrednio z deweloperami pakietu za pomocą opcji **właściciele kontaktu** w obszarze **informacje** na stronie z listą. Z tego strony będą mieć szczęście, aby móc korzystać z Twoich potrzeb.
 
-- *Zastrzeżone prefiksy identyfikator pakietu*: zostały zastosowane do wielu właścicieli pakietu i zostały przyznane [pakietu zastrzeżony prefiks Identyfikatora](../nuget-org/id-prefix-reservation.md). Po wyświetleniu visual znacznik wyboru obok Identyfikatora pakietu na [nuget.org](https://www.nuget.org/), lub w programie Visual Studio, oznacza to spełnienie właścicielem pakietu i naszych [kryteria](../nuget-org/id-prefix-reservation.md#id-prefix-reservation-criteria) dla Identyfikatora prefiksu rezerwacji. Oznacza to, że właściciel pakietu jest jasne na identyfikowaniu same, jak i ich pakietu.
+- *Prefiksy identyfikatorów pakietów zarezerwowanych*: wiele właścicieli pakietów ma zastosowanych do i ma przypisany [prefiks identyfikatora pakietu zastrzeżonego](../nuget-org/id-prefix-reservation.md). Gdy zobaczysz znacznik wyboru obok identyfikatora pakietu na [NuGet.org](https://www.nuget.org/)lub w programie Visual Studio, oznacza to, że właściciel pakietu spełnił [kryteria](../nuget-org/id-prefix-reservation.md#id-prefix-reservation-criteria) rezerwacji prefiksów identyfikatorów. Oznacza to, że właściciel pakietu jest czyszczony na identyfikowaniu siebie i ich pakiecie.
 
 > [!Note]
-> Zawsze mieć je na uwadze postanowień licencyjnych pakietu, które można wyświetlić, wybierając **informacji o licencji** na stronie listy pakietów w witrynie nuget.org. Jeśli pakiet nie określa postanowienia licencyjne, skontaktuj się z właścicielem pakietu bezpośrednio przy użyciu **skontaktuj się z właścicielami** łącze na stronie pakiet. Microsoft nie licencji jakiejkolwiek własności intelektualnej dla Ciebie od dostawców pakietów innych firm, a nie jest odpowiedzialny za otrzymane od innych firm.
+> Zawsze pamiętaj o postanowień licencyjnych dotyczących pakietu, które możesz zobaczyć, wybierając pozycję **Informacje o licencji** na stronie z listą pakietów w witrynie NuGet.org. Jeśli pakiet nie określa postanowień licencyjnych, skontaktuj się z właścicielem pakietu bezpośrednio, korzystając z linku **właściciele kontaktu** na stronie pakiet. Firma Microsoft nie udziela licencji jakiejkolwiek własności intelektualnej od dostawców pakietów innych firm i nie ponosi odpowiedzialności za informacje udostępniane przez strony trzecie.
 
-## <a name="license-url-deprecation"></a>Oczekiwany adres URL licencji
-Ponieważ możemy przejść z [licenseUrl](../reference/nuspec.md#licenseurl) do [licencji](../reference/nuspec.md#license), niektóre klienci programu NuGet i kanały informacyjne NuGet może jeszcze nie masz możliwość ujawnienie informacji licencyjnych w niektórych przypadkach. Aby zachować zgodność z poprzednimi wersjami, adres URL licencji punktów do tego dokumentu, który opowiada, jak można pobrać informacji o licencji w takich przypadkach.
+## <a name="license-url-deprecation"></a>Przestarzały adres URL licencji
+Po przejściu z [licenseUrl](../reference/nuspec.md#licenseurl) na [licencję](../reference/nuspec.md#license)niektórzy klienci NuGet i źródła danych NuGet mogą nie mieć jeszcze możliwości podawania informacji licencyjnych. Aby zachować zgodność z poprzednimi wersjami, adres URL licencji wskazuje ten dokument zawierający informacje o sposobie pobierania informacji o licencji w takich przypadkach.
 
-Jeśli po kliknięciu na adres URL licencji dla pakietu dostosowane do tej strony, jej działanie polega na pakiet zawiera plik licencji i
-* Nawiązano połączenie ze źródłem danych, która nie ma jeszcze sposobu interpretacji i przedstawić nowe informacje o licencji dla klienta **lub**
-* Używasz klienta, który nie ma jeszcze sposobu interpretacji i przeczytaj nowe informacje o licencjach, potencjalnie dostarczone przez kanał informacyjny **lub**
-* Obie te grupy
+Jeśli klikniesz adres URL licencji dla pakietu przeniesiesz do tej strony, oznacza to, że pakiet zawiera plik licencji i
+* Nawiązano połączenie ze źródłem danych, które nie wie, jak interpretować i przedstawić nowe informacje o licencji na kliencie **lub**
+* Używasz klienta, który jeszcze nie wie, jak interpretować i odczytać nowe informacje o licencji, które są potencjalnie dostępne w kanale informacyjnym **lub**
+* Połączenie obu
 
-Poniżej przedstawiono, jak można odczytać informacji zawartych w pliku licencji w pakiecie:
-1. Pobierz pakiet NuGet i Rozpakuj jego zawartość do folderu.
-1. Otwórz `.nuspec` pliku, który będzie w katalogu głównym tego folderu.
-1. Powinna mieć tag, takich jak `<license type="file">license\license.txt</license>`. Oznacza to, nosi nazwę pliku licencji `license.txt` i znajduje się wewnątrz folderu o nazwie `license` również byłoby w katalogu głównym tego folderu.
-1. Przejdź do `license` folder i Otwórz `license.txt` pliku.
+Oto jak można odczytać informacje zawarte w pliku licencji w pakiecie:
+1. Pobierz pakiet NuGet i rozpakuj jego zawartość do folderu.
+1. `.nuspec` Otwórz plik, który będzie znajdować się w katalogu głównym tego folderu.
+1. Powinien mieć tag podobny `<license type="file">license\license.txt</license>`do tego. Oznacza to, że plik licencji ma nazwę `license.txt` i znajduje się w folderze o nazwie `license` , który również znajduje się w katalogu głównym tego folderu.
+1. Przejdź do `license` folderu i `license.txt` Otwórz plik.
 
 
 ## <a name="search-syntax"></a>Składnia wyszukiwania
 
-Wyszukaj pakiet NuGet działa tak samo w witrynie nuget.org, interfejs wiersza polecenia NuGet, a także wewnątrz rozszerzenia Menedżera pakietów NuGet w programie Visual Studio. Ogólnie rzecz biorąc zastosowano wyszukiwania słów kluczowych, a także opis pakietu.
+Wyszukiwanie pakietów NuGet działa tak samo na nuget.org, w interfejsie wiersza polecenia NuGet i w rozszerzeniu Menedżera pakietów NuGet w programie Visual Studio. Ogólnie rzecz biorąc, wyszukiwanie jest stosowane do słów kluczowych, a także opisów pakietów.
 
-- **Keywords**: Wyszukiwania wyszukuje odpowiednie pakiety, które zawierają dowolne z podanych słów kluczowych. Przykład: `modern UI`. Aby wyszukać pakietów, które zawierają wszystkie podanych słów kluczowych, użyj "+" między warunkami, takich jak `modern+UI`.
-- **Zwroty**: Wprowadzania terminów w cudzysłowach szuka dokładne dopasowania bez uwzględniania wielkości liter w tych warunkach. Przykład: `"modern UI" package`
-- **Filtrowanie**: Wyszukiwany termin można zastosować do konkretnej właściwości, za pomocą składni `<property>:<term>` gdzie `<property>` (bez uwzględniania wielkości liter) może być `id`, `packageid`, `version`, `title`, `tags`, `author`, `description`, `summary`, i `owner`. Warunki mogą być zawarte w cudzysłowie, jeśli to konieczne, i można wyszukiwać wiele właściwości, w tym samym czasie. Ponadto wyszukuje `id` właściwości są dopasowań podciągów, podczas gdy `packageid` używa dokładnego dopasowania. Przykłady:
+- **Keywords**: Wyszukiwanie wyszukuje odpowiednie pakiety, które zawierają dowolne z podanych słów kluczowych. Przykład: `modern UI`. Aby wyszukać pakiety zawierające wszystkie podane słowa kluczowe, użyj "+" między warunkami, takimi jak `modern+UI`.
+- **Wyrażenia**: Wprowadzanie warunków w cudzysłowie szuka dokładnego dopasowania bez uwzględniania wielkości liter do tych warunków. Przykład: `"modern UI" package`
+- **Filtrowanie**: Możesz zastosować termin `<property>:<term>` wyszukiwania do określonej właściwości przy użyciu składni, gdzie `<property>` (bez uwzględniania wielkości liter `version`) `title`może `tags`być `id`, `packageid` `author` `description`,,,, ,`summary`i .`owner` Warunki mogą być zawarte w cudzysłowie w razie potrzeby i można wyszukiwać wiele właściwości w tym samym czasie. Ponadto wyszukiwania na `id` właściwości są dopasowaniami podciągów, podczas `packageid` gdy używa dokładnego dopasowania. Przykłady:
 
     ```
     id:NuGet.Core                # Match any part of the id property

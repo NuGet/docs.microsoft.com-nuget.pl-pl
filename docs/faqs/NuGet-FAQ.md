@@ -1,153 +1,153 @@
 ---
-title: NuGet — często zadawane pytania
-description: Typowe pytania i odpowiedzi dla za pomocą narzędzia NuGet w wierszu polecenia i w programie Visual Studio
+title: Często zadawane pytania dotyczące narzędzia NuGet
+description: Często zadawane pytania i odpowiedzi dotyczące korzystania z narzędzia NuGet w wierszu polecenia i w programie Visual Studio
 author: shishirx34
 ms.author: shishirh
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 20a55c6ba89478e70d8e6837aaebc1b7b7754a93
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 9094d6b4a2dbd6ea1899b4470624948ce7c21f43
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67842436"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317623"
 ---
-# <a name="nuget-frequently-asked-questions"></a>NuGet — często zadawane pytania
+# <a name="nuget-frequently-asked-questions"></a>Często zadawane pytania dotyczące narzędzia NuGet
 
-**Co to jest wymagane do uruchamiania NuGet?**
+**Co jest wymagane do uruchomienia narzędzia NuGet?**
 
-Wszystkie informacje dotyczące narzędzia wiersza polecenia i interfejsu użytkownika jest dostępna w [Przewodnik instalacji](../install-nuget-client-tools.md).
+Wszystkie informacje o interfejsie użytkownika i narzędziach wiersza polecenia są dostępne w [przewodniku instalacji](../install-nuget-client-tools.md).
 
-**NuGet obsługuje platformy Mono?**
+**Czy pakiet NuGet obsługuje mono?**
 
-Narzędzie wiersza polecenia `nuget.exe`, kompilacji i uruchamiana Mono 3.2 + i mogą tworzyć pakiety w rozwiązaniu Mono.
+Narzędzie `nuget.exe`wiersza polecenia, kompiluje i uruchamia się w programie mono 3.2 + i może tworzyć pakiety w mono.
 
-Mimo że `nuget.exe` działa całkowicie w Windows, występują znane problemy w systemie Linux i OS X. zobacz [wystawia Mono](https://github.com/NuGet/Home/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+mono) w witrynie GitHub.
+Chociaż `nuget.exe` działa w pełni w systemie Windows, istnieją znane problemy w systemach Linux i OS X. Zobacz problemy z programem [mono](https://github.com/NuGet/Home/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+mono) w serwisie GitHub.
 
-A [graficzny klient](https://github.com/mrward/monodevelop-nuget-addin) jest dostępna jako dodatek do programu MonoDevelop.
+[Klient graficzny](https://github.com/mrward/monodevelop-nuget-addin) jest dostępny jako dodatek dla narzędzia MonoDevelop.
 
-**Jak sprawdzić, co zawiera pakiet i czy jest stabilna i użyteczna dla mojej aplikacji?**
+**Jak określić, co pakiet zawiera i czy jest stabilny i przydatny dla mojej aplikacji?**
 
-Podstawowym źródłem szkoleniowe dotyczące pakietu jest jego strony w witrynie nuget.org (lub innej prywatnej źródła danych). Każda strona pakietu w witrynie nuget.org zawiera opis pakietu, jego Historia wersji i statystyki użycia. **Informacje** sekcji na stronie pakiet zawiera również link do witryny sieci web projektu, w którym można zwykle znaleźć wiele przykładów i inne dokumenty, aby ułatwić Ci poznanie sposobu używania pakietu.
+Podstawowym źródłem informacji o pakiecie jest jego strona aukcji w witrynie nuget.org (lub innego prywatnego źródła). Każda Strona pakietu w witrynie nuget.org zawiera opis pakietu, jego historię wersji oraz dane statystyczne użycia. Sekcja **informacje** na stronie pakiet zawiera również link do witryny sieci Web projektu, gdzie zazwyczaj znajdziesz wiele przykładów i innych dokumentów, które ułatwiają zapoznanie się z używanym pakietem.
 
-Aby uzyskać więcej informacji, zobacz [Znajdowanie i Wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md).
+Aby uzyskać więcej informacji, zobacz [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md).
 
-## <a name="nuget-in-visual-studio"></a>NuGet w programie Visual Studio
+## <a name="nuget-in-visual-studio"></a>Pakiet NuGet w programie Visual Studio
 
-**Jak NuGet jest obsługiwane w różnych produktów Visual Studio?**
+**Jak program NuGet jest obsługiwany w różnych produktach Visual Studio?**
 
-- Program Visual Studio w Windows obsługuje [interfejs użytkownika Menedżera pakietów](../tools/package-manager-ui.md) i [Konsola Menedżera pakietów](../tools/package-manager-console.md).
-- Program Visual Studio dla komputerów Mac ma wbudowanych funkcji NuGet, zgodnie z opisem na [pakietu w tym NuGet w projekcie](/visualstudio/mac/nuget-walkthrough).
-- Visual Studio Code (wszystkie platformy) nie ma żadnych bezpośrednią integrację z NuGet. Użyj [interfejs wiersza polecenia NuGet](../tools/nuget-exe-cli-reference.md) lub [wiersz polecenia dotnet](../tools/dotnet-commands.md).
-- Azure DevOps zapewnia [krok kompilacji, aby przywrócić pakiety NuGet](/vsts/build-release/tasks/package/nuget). Możesz również [hosta prywatnego pakietu NuGet kanałów informacyjnych w DevOps platformy Azure](https://docs.microsoft.com/azure/devops/artifacts/nuget/publish).
+- Program Visual Studio w systemie Windows obsługuje [interfejs użytkownika Menedżera pakietów](../consume-packages/install-use-packages-visual-studio.md) i [konsolę Menedżera pakietów](../consume-packages/install-use-packages-powershell.md).
+- Visual Studio dla komputerów Mac ma wbudowane funkcje NuGet, zgodnie z opisem w temacie [zawierającym pakiet NuGet w projekcie](/visualstudio/mac/nuget-walkthrough).
+- Visual Studio Code (wszystkie platformy) nie ma żadnej bezpośredniej integracji z pakietem NuGet. Użyj [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md) lub [interfejsu wiersza polecenia dotnet](../reference/dotnet-commands.md).
+- Usługa Azure DevOps udostępnia [krok kompilacji służący do przywracania pakietów NuGet](/vsts/build-release/tasks/package/nuget). Możesz również [hostować prywatne źródła pakietów NuGet na platformie Azure DevOps](https://docs.microsoft.com/azure/devops/artifacts/nuget/publish).
 
-**Jak sprawdzić wersję narzędzia NuGet, które są zainstalowane?**
+**Jak mogę sprawdzić dokładną wersję zainstalowanych narzędzi NuGet?**
 
-W programie Visual Studio, należy użyć **Pomoc > Microsoft Visual Studio** polecenia i przyjrzyj się wersja wyświetlany obok pozycji **Menedżera pakietów NuGet**.
+W programie Visual Studio Użyj **> pomocy dotyczącej Microsoft Visual Studio** polecenia i sprawdź wersję wyświetlaną obok pozycji **Menedżer pakietów NuGet**.
 
-Alternatywnie Uruchom konsolę Menedżera pakietów (**Narzędzia > Menedżer pakietów NuGet > Konsola Menedżera pakietów**) i wprowadź `$host` Aby wyświetlić informacje o tym w wersji NuGet.
+Alternatywnie można uruchomić konsolę Menedżera pakietów (**Narzędzia > Menedżera pakietów NuGet > konsoli Menedżera pakietów**) i wprowadzić `$host` polecenie, aby wyświetlić informacje o pakiecie NuGet, w tym wersję.
 
-**Jakich języków programowania są obsługiwane przez NuGet?**
+**Jakie języki programowania są obsługiwane przez pakiet NuGet?**
 
-NuGet zwykle działa w przypadku języków .NET i jest przeznaczona do bibliotek .NET do projektu. Ponieważ w niektórych typach projektów są również obsługuje automatyzacji programu MSBuild i Visual Studio, obsługuje ona również innych projektów i języki różnym stopniu.
+Pakiet NuGet zazwyczaj działa w przypadku języków .NET i jest przeznaczony do przenoszenia bibliotek .NET do projektu. Ponieważ obsługuje ona również narzędzia MSBuild i automatyzację programu Visual Studio w niektórych typach projektów, obsługuje również inne projekty i Języki w różnych stopniach.
 
-Obsługuje najnowszej wersji pakietu NuGet C#, Visual Basic F#, WiX i C++.
+Najnowsza wersja NuGet obsługuje C#, Visual Basic, F#, WIX i. C++
 
-**Szablony projektów, które są obsługiwane przez NuGet?**
+**Jakie szablony projektów są obsługiwane przez pakiet NuGet?**
 
-NuGet ma pełną pomoc techniczną dla różnych szablonów projektu, takich jak Windows, sieci Web, chmury, SharePoint, Wix i tak dalej.
+Pakiet NuGet ma pełną obsługę wielu szablonów projektów, takich jak Windows, Web, Cloud, SharePoint, WIX i tak dalej.
 
-**Jak zaktualizować pakiety, które są częścią szablony programu Visual Studio?**
+**Jak mogę pakiety aktualizacji, które są częścią szablonów programu Visual Studio?**
 
-Przejdź do **aktualizacje** w Interfejsie użytkownika Menedżera pakietów, a wybierz pozycję **Aktualizuj wszystkie**, lub użyj [ `Update-Package` polecenia](../tools/ps-ref-update-package.md) z konsoli Menedżera pakietów.
+Przejdź do karty **aktualizacje** w interfejsie użytkownika Menedżera pakietów i wybierz pozycję **Aktualizuj wszystko** [ `Update-Package` ](../reference/ps-reference/ps-ref-update-package.md) lub użyj polecenia z konsoli Menedżera pakietów.
 
-Aby zaktualizować samego szablonu, musisz ręcznie zaktualizować repozytorium szablonów. Zobacz [blog Xavier Decoster](http://www.xavierdecoster.com/update-project-template-to-latest-nuget-packages) na ten temat. Należy to zrobić na własne ryzyko, należy pamiętać, ponieważ ręczne aktualizacje może spowodować uszkodzenie szablonu, jeśli najnowszą wersję wszystkich zależności nie są ze sobą zgodne.
+Aby zaktualizować sam szablon, musisz ręcznie zaktualizować repozytorium szablonów. Zapoznaj się z blogiem dotyczącym [Xavier](http://www.xavierdecoster.com/update-project-template-to-latest-nuget-packages) . Należy pamiętać, że jest to wykonywane na własne ryzyko, ponieważ ręczne aktualizacje mogą uszkodzić szablon, jeśli Najnowsza wersja wszystkich zależności nie jest zgodna ze sobą.
 
-**Można użyć NuGet poza programem Visual Studio?**
+**Czy mogę używać narzędzia NuGet poza programem Visual Studio?**
 
-Tak, NuGet współpracuje bezpośrednio z poziomu wiersza polecenia. Zobacz [Przewodnik instalacji](../install-nuget-client-tools.md) i [dokumentacja interfejsu wiersza polecenia](../tools/nuget-exe-cli-reference.md).
+Tak, pakiet NuGet działa bezpośrednio z wiersza polecenia. Zobacz [Przewodnik instalacji](../install-nuget-client-tools.md) i [Dokumentacja interfejsu wiersza polecenia](../reference/nuget-exe-cli-reference.md).
 
 ## <a name="nuget-command-line"></a>Wiersz polecenia NuGet
 
-**Jak uzyskać najnowszą wersję narzędzia wiersza polecenia NuGet?**
+**Jak mogę pobrać najnowszej wersji narzędzia wiersza polecenia NuGet?**
 
 Zobacz [Przewodnik instalacji](../install-nuget-client-tools.md).
 
-**Co to jest licencja na nuget.exe?**
+**Jaka jest licencja dla programu NuGet. exe?**
 
-Możesz wykonać ponowną dystrybucję nuget.exe zgodnie z warunkami licencji MIT. Odpowiedzialność za aktualizacji i obsługi wszystkich kopii nuget.exe, który chcesz ponownie rozesłać.
+Można ponownie rozesłać plik NuGet. exe zgodnie z warunkami licencji MIT. Użytkownik jest odpowiedzialny za aktualizowanie i obsługę wszelkich kopii programu NuGet. exe, które należy wykonać w celu ponownej dystrybucji.
 
 **Czy jest możliwe rozszerzenie narzędzia wiersza polecenia NuGet?**
 
-Tak, istnieje możliwość dodawania niestandardowych poleceń do `nuget.exe`, zgodnie z opisem w [wpis Rob Reynold](http://geekswithblogs.net/robz/archive/2011/07/15/extend-nuget-command-line.aspx).
+Tak, możliwe jest dodanie poleceń niestandardowych do `nuget.exe`, zgodnie z opisem w wpisie [Rob Reynold](http://geekswithblogs.net/robz/archive/2011/07/15/extend-nuget-command-line.aspx).
 
-## <a name="nuget-package-manager-console-visual-studio-on-windows"></a>Konsola Menedżera pakietów NuGet (Visual Studio Windows)
+## <a name="nuget-package-manager-console-visual-studio-on-windows"></a>Konsola Menedżera pakietów NuGet (Visual Studio w systemie Windows)
 
-**Jak uzyskać dostęp do obiektu DTE w konsoli Menedżera pakietów?**
+**Jak mogę uzyskać dostęp do obiektu DTE w konsoli Menedżera pakietów?**
 
-Obiekt najwyższego poziomu w modelu obiektu automatyzacji programu Visual Studio nosi nazwę obiektu DTE (środowisko programistyczne narzędzia). Konsolę te elementy są dostępne za pośrednictwem zmiennej o nazwie `$DTE`. Aby uzyskać więcej informacji, zobacz [omówienie modelu automatyzacji](/visualstudio/extensibility/internals/automation-model-overview) w dokumentacji rozszerzeń programu Visual Studio.
+Obiekt najwyższego poziomu w modelu obiektów automatyzacji programu Visual Studio jest nazywany obiektem DTE (środowisko narzędzi programistycznych). Konsola zapewnia tę wartość za pomocą zmiennej o `$DTE`nazwie. Aby uzyskać więcej informacji, zobacz [Omówienie modelu automatyzacji](/visualstudio/extensibility/internals/automation-model-overview) w dokumentacji rozszerzalności programu Visual Studio.
 
-**Próbie rzutowania $DTE zmienną typu DTE2, ale pojawia się błąd: Nie można przekonwertować wartości "EnvDTE.DTEClass" typu "EnvDTE.DTEClass" na typ "EnvDTE80.DTE2". Co jest nie tak?**
+**Próbujemy rzutować zmienną $DTE na typ DTE2, ale otrzymuję błąd: Nie można przekonwertować wartości "EnvDTE. DTEClass" typu "EnvDTE. DTEClass" na typ "EnvDTE80. DTE2". Co jest nie tak?**
 
-Jest to znany problem dotyczący współdziałania programu PowerShell za pomocą obiektu COM. Spróbuj wykonać następujące czynności:
+Jest to znany problem związany z współdziałaniem programu PowerShell z obiektem COM. Spróbuj wykonać następujące czynności:
 
 ```ps
 `$dte2 = Get-Interface $dte ([EnvDTE80.DTE2])`
 ```
 
-`Get-Interface` czy funkcji pomocnika, która jest dodawany przez hosta NuGet w programie PowerShell.
+`Get-Interface`jest funkcją pomocnika dodaną przez hosta NuGet programu PowerShell.
 
 ## <a name="creating-and-publishing-packages"></a>Tworzenie i publikowanie pakietów
 
-**Jak wyświetlić listę Mój pakiet w źródle danych?**
+**Jak mogę wyświetlić mój pakiet w kanale informacyjnym?**
 
-Zobacz [tworzenie i publikowanie pakietu](../quickstart/create-and-publish-a-package.md).
+Zobacz [Tworzenie i publikowanie pakietu](../quickstart/create-and-publish-a-package.md).
 
-**Mam wiele wersji biblioteki, przeznaczonych dla różnych wersji programu .NET Framework. Jak utworzyć jeden pakiet, który obsługuje tę funkcję?**
+**Mam wiele wersji mojej biblioteki, które są przeznaczone dla różnych wersji .NET Framework. Jak mogę utworzyć pojedynczy pakiet, który go obsługuje?**
 
-Zobacz [obsługujące wiele wersje programu .NET Framework i profile](../create-packages/supporting-multiple-target-frameworks.md).
+Zobacz [Obsługa wielu .NET Framework wersji i profilów](../create-packages/supporting-multiple-target-frameworks.md).
 
-**Jak skonfigurować własnego repozytorium lub źródło danych?**
+**Jak mogę skonfigurować własne repozytorium lub źródło danych?**
 
-Zobacz [hostingu — Omówienie pakietów](../hosting-packages/overview.md).
+Zobacz [Omówienie pakietów hostingu](../hosting-packages/overview.md).
 
-**Jak przesłać pakiety do mojego NuGet źródła danych w trybie zbiorczym**
+**Jak mogę przekazać pakiety do mojego źródła danych NuGet zbiorczo?**
 
-Zobacz [zbiorczo publikowania pakietów NuGet](http://jeffhandley.com/archive/2012/12/13/Bulk-Publishing-NuGet-Packages.aspx) (jeffhandly.com).
+Zobacz [zbiorcze publikowanie pakietów NuGet](http://jeffhandley.com/archive/2012/12/13/Bulk-Publishing-NuGet-Packages.aspx) (jeffhandly.com).
 
 ## <a name="working-with-packages"></a>Praca z pakietami
 
-**Jaka jest różnica między pakietem na poziomie projektu i pakietu poziomie rozwiązania?**
+**Jaka jest różnica między pakietem na poziomie projektu a pakietem na poziomie rozwiązania?**
 
-Pakiet poziomie rozwiązania (NuGet 3.x+) zostanie zainstalowana tylko raz w rozwiązaniu i jest dostępna dla wszystkich projektów w rozwiązaniu. Pakiet na poziomie projektu jest zainstalowany w każdym projekcie, który korzysta z niego. Pakiet poziomie rozwiązania może również zainstalować nowe polecenia, które mogą być wywoływane z poziomu konsoli Menedżera pakietów.
+Pakiet na poziomie rozwiązania (NuGet 3. x +) jest instalowany tylko raz w rozwiązaniu, a następnie jest dostępny dla wszystkich projektów w rozwiązaniu. Pakiet na poziomie projektu jest instalowany w każdym projekcie, który go używa. Pakiet na poziomie rozwiązania może również instalować nowe polecenia, które można wywołać z poziomu konsoli Menedżera pakietów.
 
-**Czy istnieje możliwość zainstalowania pakietów NuGet bez łączności z Internetem?**
+**Czy jest możliwe zainstalowanie pakietów NuGet bez połączenia z Internetem?**
 
-Tak, zobacz wpis w blogu Scotta Hanselmana [jak uzyskać dostęp do NuGet, kiedy nuget.org znajduje się w dół (lub jesteś na płaszczyźnie)](http://www.hanselman.com/blog/HowToAccessNuGetWhenNuGetorgIsDownOrYoureOnAPlane.aspx) (hanselman.com).
+Tak, zobacz wpis w blogu Scott Hanselman, [jak uzyskać dostęp do narzędzia NuGet, gdy NuGet.org nie działa (lub na płaszczyźnie)](http://www.hanselman.com/blog/HowToAccessNuGetWhenNuGetorgIsDownOrYoureOnAPlane.aspx) (Hanselman.com).
 
-**Jak zainstalować pakiety w innym miejscu niż domyślny folder pakietów?**
+**Jak mogę zainstalować pakiety w innej lokalizacji z folderu pakietów domyślnych?**
 
-Ustaw [ `repositoryPath` ](../reference/nuget-config-file.md#config-section) w `Nuget.Config` przy użyciu `nuget config -set repositoryPath=<path>`.
+[`repositoryPath`](../reference/nuget-config-file.md#config-section) Ustaw ustawienie`Nuget.Config` przy użyciu `nuget config -set repositoryPath=<path>`.
 
-**Jak uniknąć Dodawanie folderu pakiety NuGet do kontroli źródła**
+**Jak mogę unikać dodawania folderu pakietów NuGet do kontroli źródła?**
 
-Ustaw [ `disableSourceControlIntegration` ](../reference/nuget-config-file.md#solution-section) w `Nuget.Config` do `true`. Ta działa klucza w rozwiązaniu poziomie i w związku z tym konieczne będzie dodanie do `$(Solutiondir)\.nuget\Nuget.Config` pliku. Włączanie przywracania pakietów w programie Visual Studio automatycznie tworzy ten plik.
+Ustaw wartość [`disableSourceControlIntegration`](../reference/nuget-config-file.md#solution-section) `Nuget.Config` wna.`true` Ten klucz działa na poziomie rozwiązania i dlatego należy go dodać do `$(Solutiondir)\.nuget\Nuget.Config` pliku. Włączenie przywracania pakietów w programie Visual Studio powoduje automatyczne utworzenie tego pliku.
 
-**Jak wyłączyć Przywracanie pakietu**
+**Jak mogę wyłączyć Przywracanie pakietu?**
 
-Zobacz [Włączanie i wyłączanie Przywracanie pakietu](../consume-packages/package-restore.md#enable-and-disable-package-restore-visual-studio).
+Zobacz [Włączanie i wyłączanie przywracania pakietów](../consume-packages/package-restore.md#enable-and-disable-package-restore-visual-studio).
 
-**Dlaczego otrzymuję "Nie można rozwiązać błąd zależności" podczas instalowania pakietu lokalnego przy użyciu zależności zdalnych?**
+**Dlaczego otrzymuję "nie można rozpoznać błędu zależności" podczas instalowania pakietu lokalnego z zależnościami zdalnymi?**
 
-Musisz wybrać **wszystkie** źródła podczas instalowania pakietu lokalnego do projektu. To agreguje wszystkie źródła danych zamiast przy użyciu tylko jednego. Przyczyna tego błędu pojawia się jest, czy użytkownicy lokalnego repozytorium często chcą uniknąć przypadkowego instalowania zdalnego pakietu ze względu na firmowe zasady.
+W przypadku instalowania pakietu lokalnego w projekcie należy wybrać **wszystkie** źródła. Agreguje wszystkie źródła danych zamiast używać tylko jednego. Przyczyną tego błędu jest to, że użytkownicy lokalnego repozytorium często chcą uniknąć przypadkowego zainstalowania pakietu zdalnego ze względu na zasady korporacyjne.
 
-**Mam wiele projektów w tym samym folderze, jak korzystać z pliku packages.config oddzielnych plików dla każdego projektu?**
+**Mam wiele projektów w tym samym folderze, w jaki sposób mogę używać oddzielnych plików Packages. config dla każdego projektu?**
 
-W większości projektów, w którym oddzielnych projektów znajdować się w oddzielnych folderów, nie jest to problem jak NuGet identyfikuje `packages.config` plików w każdym projekcie. Nuget 3.3 + i jest wiele projektów w tym samym folderze, można wstawiać Nazwa projektu do `packages.config` nazw plików, użyj wzorca `packages.{project-name}.config`, i NuGet korzysta z tego pliku.
+W większości projektów, w których oddzielne projekty znajdują się w oddzielnych folderach, nie jest to problem, `packages.config` ponieważ program NuGet identyfikuje pliki w każdym projekcie. W przypadku programu NuGet 3.3 + i wielu projektów w tym samym folderze można wstawić nazwę projektu do `packages.config` nazwy pliku, użyj wzorca `packages.{project-name}.config`, a NuGet używa tego pliku.
 
-To nie jest wystąpił problem podczas korzystania z funkcji PackageReference, ponieważ każdy plik projektu zawiera swój własny listę zależności.
+Nie jest to problem występujący podczas korzystania z programu PackageReference, ponieważ każdy plik projektu zawiera własną listę zależności.
 
-**Nuget.org nie jest widoczny w listy moich repozytoriów, jak uzyskać go ponownie?**
+**Nie widzę nuget.org na liście repozytoriów, jak to zrobić?**
 
-- Dodaj `https://api.nuget.org/v3/index.json` do listy źródeł, lub
-- Usuń `%appdata%\.nuget\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) i pozwolić NuGet, utwórz go ponownie.
+- Dodaj `https://api.nuget.org/v3/index.json` do listy źródeł lub
+- Usuń `%appdata%\.nuget\NuGet.Config` system (Windows) `~/.nuget/NuGet/NuGet.Config` lub (Mac/Linux) i pozwól, aby pakiet NuGet został utworzony ponownie.

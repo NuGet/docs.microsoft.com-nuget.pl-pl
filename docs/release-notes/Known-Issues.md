@@ -1,51 +1,51 @@
 ---
 title: Znane problemy
-description: Znane problemy związane z tym instalacji pakietu aktualizacji, uwierzytelniania i narzędzia NuGet.
+description: Znane problemy związane z pakietem NuGet, w tym uwierzytelnianie, instalacja pakietu i narzędzia.
 author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: fc338ba3810a125f638a937cf14456bf519a24a8
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: b104eb39ddeacd9ca1ea45937cf98ad57531112a
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548477"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317143"
 ---
-# <a name="known-issues-with-nuget"></a>Znane problemy z NuGet
+# <a name="known-issues-with-nuget"></a>Znane problemy związane z pakietem NuGet
 
-Są to najczęściej znane problemy z NuGet, które często są zgłaszane. Jeśli występują problemy z zainstalowaniem NuGet lub zarządzania pakietami, zapoznaj się za pośrednictwem tych znane problemy i ich rozwiązania.
+Są to najczęstsze znane problemy związane z pakietem NuGet, które są wielokrotnie raportowane. Jeśli masz problemy z instalowaniem NuGet lub zarządzaniem pakietami, zapoznaj się z tymi znanymi problemami i ich rozwiązaniami.
 
 > [!Note]
-> Począwszy od NuGet 4.0, znane problemy są częścią odpowiedniej wersji.
+> Począwszy od programu NuGet 4,0, znane problemy są częścią odpowiednich informacji o wersji.
 
-## <a name="authentication-issues-with-nuget-feeds-in-vsts-with-nugetexe-v343"></a>Problemy z uwierzytelnianiem za pomocą NuGet źródeł danych w usłudze VSTS za pomocą nuget.exe v3.4.3
-
-**Problem:**
-
-Gdy obsługujemy za pomocą następującego polecenia do przechowywania poświadczeń, firma Microsoft znajdą się podwójnego szyfrowania osobisty Token dostępu.
-
-$PAT = "Twój osobisty token dostępu" $Feed = "url".\nuget.exe źródeł add - nazwa testu-$UserName $Feed źródła - UserName-$PAT hasła
-
-**Obejście:**
-
-Store hasła w postaci zwykłego tekstu przy użyciu [- StorePasswordInClearText](../tools/cli-ref-sources.md) opcji.
-
-## <a name="error-installing-packages-with-nuget-34-341"></a>Błąd podczas instalowania pakietów z NuGet 3.4 3.4.1
+## <a name="authentication-issues-with-nuget-feeds-in-vsts-with-nugetexe-v343"></a>Problemy z uwierzytelnianiem ze źródłami danych NuGet w programie VSTS z pakietem NuGet. exe v 3.4.3
 
 **Problem:**
 
-NuGet 3.4 i 3.4.1 korzystając z dodatku programu NuGet, żadnych źródeł są zgłaszane jako dostępne i nie można dodać nowe źródła w oknie konfiguracji. Wynik jest podobna do poniższej ilustracji:
+Gdy korzystamy z następującego polecenia do przechowywania poświadczeń, będziemy mieć podwójne szyfrowanie osobistego tokenu dostępu.
 
-![Config NuGet za pomocą żadnych źródeł](./media/knownIssue-34-NoSources.PNG)
+$PAT = "osobisty token dostępu" $Feed = "Twój adres URL" .\nuget.exe Dodaj nazwę źródła test-Source $Feed-UserName $UserName-Password $PAT
 
-`NuGet.Config` Plików w Twojej `%AppData%\NuGet\` (Windows) lub `~/.nuget/` przypadkowo został opróżniony folder (Mac/Linux). Aby rozwiązać ten problem: Zamknij program Visual Studio (w Windows, jeśli ma to zastosowanie), Usuń `NuGet.Config` pliku i spróbuj ponownie wykonać operację. NuGet wygenerował nowy `NuGet.Config` i powinno być możliwe kontynuować.
+**Poprawkę**
 
-## <a name="error-installing-packages-with-nuget-27"></a>Błąd podczas instalowania pakietów z NuGet w wersji 2.7
+Przechowuj hasła w postaci zwykłego tekstu przy użyciu opcji [-StorePasswordInClearText](../reference/cli-reference/cli-ref-sources.md) .
+
+## <a name="error-installing-packages-with-nuget-34-341"></a>Błąd podczas instalowania pakietów z pakietem NuGet 3,4,
 
 **Problem:**
 
-W NuGet w wersji 2.7 lub powyżej, gdy spróbujesz zainstalować dowolny pakiet, który zawiera odwołania do zestawów, otrzymasz komunikat o błędzie **"ciąg wejściowy nie jest w poprawnym formacie."** , tak jak poniżej:
+W programie NuGet 3,4 i w przypadku korzystania z dodatku NuGet żadne źródła nie są raportowane jako dostępne i nie można dodać nowych źródeł w oknie konfiguracji. Wynik jest podobny do poniższego obrazu:
+
+![Konfiguracja NuGet bez źródeł](./media/knownIssue-34-NoSources.PNG)
+
+Plik w folderze (Windows`~/.nuget/` ) lub (Mac/Linux) przypadkowo został opróżniony. `%AppData%\NuGet\` `NuGet.Config` Aby rozwiązać ten problem: Zamknij program Visual Studio (w systemie Windows, jeśli ma to `NuGet.Config` zastosowanie), usuń plik, a następnie spróbuj ponownie wykonać operację. Pakiet NuGet wygenerował `NuGet.Config` nowe i należy mieć możliwość przejścia.
+
+## <a name="error-installing-packages-with-nuget-27"></a>Błąd podczas instalowania pakietów przy użyciu narzędzia NuGet 2,7
+
+**Problem:**
+
+W programie NuGet 2,7 lub nowszym podczas próby zainstalowania dowolnego pakietu, który zawiera odwołania do zestawów, może zostać wyświetlony komunikat o błędzie **"ciąg wejściowy nie ma poprawnego formatu"** , jak poniżej:
 
 ```ps
 install-package log4net
@@ -61,40 +61,40 @@ install-package log4net
         FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PowerShell.Commands.InstallPackageCommand
 ```
 
-Jest to spowodowane przez biblioteki typów dla `VSLangProj.dll` składnika COM wyrejestrowywany w Twoim systemie. Może się to zdarzyć, na przykład, jeśli masz dwie wersje programu Visual Studio zainstalowane side-by-side i następnie odinstaluj starszą wersję. Ten sposób może przypadkowo wyrejestrować powyżej biblioteki COM.
+Przyczyną jest to, że biblioteka `VSLangProj.dll` typów składnika com jest wyrejestrowana w systemie. Taka sytuacja może wystąpić, jeśli na przykład masz dwie wersje programu Visual Studio, które zostały zainstalowane obok siebie, a następnie odinstalujesz starszą wersję. Wykonanie tej czynności może przypadkowo wyrejestrować powyższą bibliotekę COM.
 
-**Rozwiązanie:**:
+**Rozwiązanie:**
 
-Uruchom następujące polecenie z **wiersz** ponownie zarejestrować biblioteki typów `VSLangProj.dll`
+Uruchom to polecenie w wierszu polecenia z **podwyższonym poziomem uprawnień** , aby ponownie zarejestrować bibliotekę typów dla`VSLangProj.dll`
 
     regsvr32 "C:\Program Files (x86)\Common Files\microsoft shared\MSEnv\VsLangproj.olb"
 
-Jeśli polecenie zakończy się niepowodzeniem, sprawdź, czy plik istnieje w tej lokalizacji.
+Jeśli polecenie nie powiedzie się, sprawdź, czy plik istnieje w tej lokalizacji.
 
-Aby uzyskać więcej informacji na temat tego błędu, zobacz ten [elementu roboczego](https://nuget.codeplex.com/workitem/3609 "elementu roboczego 3609").
+Aby uzyskać więcej informacji na temat tego błędu, zobacz ten element [roboczy element]roboczy(https://nuget.codeplex.com/workitem/3609 "3609").
 
-## <a name="build-failure-after-package-update-in-vs-2012"></a>Błąd kompilacji, po zainstalowaniu pakietu aktualizacji w programie VS 2012
+## <a name="build-failure-after-package-update-in-vs-2012"></a>Błąd kompilacji po aktualizacji pakietu w programie VS 2012
 
-Problem: w przypadku korzystania z programu VS 2012 RTM. Podczas aktualizowania pakietów NuGet, zostanie wyświetlony ten komunikat: "nie można wykonać jeden lub więcej pakietów odinstalowane." i zostanie wyświetlony monit o ponowne uruchomienie programu Visual Studio. Po ponownym uruchomieniu programu VS, pojawiają się błędy nieco dziwne kompilacji.
+Problem: Używasz programu VS 2012 RTM. Podczas aktualizacji pakietów NuGet otrzymujesz następujący komunikat: "Nie można ukończyć odinstalowywania co najmniej jednego pakietu". zostanie wyświetlony monit o ponowne uruchomienie programu Visual Studio. Po ponownym uruchomieniu programu VS należy uzyskać błędy kompilacji brzmienia.
 
-Przyczyną jest to, że niektórych plików w starym pakiety są zablokowane przez tła procesu programu MSBuild. Nawet w przypadku, po ponownym uruchomieniu programu VS, tło procesu programu MSBuild nadal używa plików w starym pakietów, powodując błędy kompilacji.
+Przyczyną jest to, że niektóre pliki w starych pakietach są blokowane przez proces MSBuild w tle. Nawet po ponownym uruchomieniu programu VS, proces MSBuild w tle nadal używa plików w starych pakietach, co powoduje błędy kompilacji.
 
-Obejście polega na zainstalowaniu programu VS 2012 Update, np. programu VS 2012 Update 2.
+Poprawka ma na celu zainstalowanie aktualizacji programu VS 2012, np. VS 2012 Update 2.
 
-## <a name="upgrading-to-latest-nuget-from-an-older-version-causes-a-signature-verification-error"></a>Uaktualnienie do najnowszego rozwiązania NuGet ze starszej wersji powoduje, że błąd weryfikacji podpisu
+## <a name="upgrading-to-latest-nuget-from-an-older-version-causes-a-signature-verification-error"></a>Uaktualnienie do najnowszego NuGet ze starszej wersji powoduje błąd weryfikacji podpisu
 
-Jeśli używasz programu VS 2010 z dodatkiem SP1, możesz napotkać komunikat o błędzie podczas próby uaktualnienia NuGet, jeśli masz starszą wersję zainstalowane.
+Jeśli korzystasz z programu VS 2010 z dodatkiem SP1, możesz uruchomić następujący komunikat o błędzie, próbując uaktualnić program NuGet, jeśli masz zainstalowaną starszą wersję.
 
 ![Instalator rozszerzenia programu Visual Studio](./media/Visual-Studio-Extension-Installer.png)
 
-Podczas wyświetlania dziennika, może wyświetlić informację o `SignatureMismatchException`.
+Podczas przeglądania dzienników może pojawić się wzmianka `SignatureMismatchException`o.
 
-Aby temu zapobiec, jest [poprawki programu Visual Studio 2010 SP1](http://bit.ly/vsixcertfix) można zainstalować.
-Alternatywnie obejściem jest po prostu Odinstaluj NuGet (podczas uruchamiania programu Visual Studio jako Administrator), a następnie zainstalować go z galerii rozszerzeń programu VS.  Zobacz [ http://support.microsoft.com/kb/2581019 ](http://support.microsoft.com/kb/2581019) Aby uzyskać więcej informacji.
+Aby temu zapobiec, istnieje [poprawka programu Visual Studio 2010 z dodatkiem SP1](http://bit.ly/vsixcertfix) , którą można zainstalować.
+Obejście polega na tym, że po prostu Odinstaluj pakiet NuGet (przy użyciu programu Visual Studio jako administrator), a następnie zainstaluj go z galerii rozszerzeń programu VS.  Aby [http://support.microsoft.com/kb/2581019](http://support.microsoft.com/kb/2581019) uzyskać więcej informacji, zobacz.
 
-## <a name="package-manager-console-throws-an-exception-when-the-reflector-visual-studio-add-in-is-also-installed"></a>Konsola Menedżera pakietów zgłasza wyjątek, gdy odblaskowego Visual Studio dodatek programu jest również instalowany.
+## <a name="package-manager-console-throws-an-exception-when-the-reflector-visual-studio-add-in-is-also-installed"></a>Konsola Menedżera pakietów zgłasza wyjątek, gdy zostanie również zainstalowany dodatek do programu Visual Studio.
 
-Podczas uruchamiania konsoli Menedżera pakietów, może wystąpić następujący komunikat o wyjątku w przypadku dodatek VS odblaskowego zainstalowane.
+Podczas uruchamiania konsoli Menedżera pakietów można uruchomić następujący komunikat o wyjątku, jeśli zainstalowano dodatek "reflektor".
 
     The following error occurred while loading the extended type data file:
     Microsoft.PowerShell.Core, C:\Windows\SysWOW64\WindowsPowerShell\v1.0\types.ps1xml(2950) :
@@ -132,13 +132,13 @@ lub
        at NuGetConsole.Implementation.Console.ConsoleDispatcher.Start()
        at NuGetConsole.Implementation.PowerConsoleToolWindow.MoveFocus(FrameworkElement consolePane)
 
-Kontaktujemy się z autorem dodatku w nadziei pracy na poziomie rozwiązania.
+Skontaktujemy się z autorem dodatku w nadziei o rozwiązaniu problemu.
 
-<p class="info">Aktualizacja: Firma Microsoft została zweryfikowana czy najnowszą wersję odblaskowego, 6.5, nie powoduje już tego wyjątku w konsoli programu.</p>
+<p class="info">Update: Sprawdzono, że Najnowsza wersja reflektora 6,5 nie powoduje już wystąpienia tego wyjątku w konsoli programu.</p>
 
-## <a name="opening-package-manager-console-fails-with-objectsecurity-exception"></a>Konsola Menedżera pakietów otwierania zakończy się niepowodzeniem z wyjątkiem niepoprawny
+## <a name="opening-package-manager-console-fails-with-objectsecurity-exception"></a>Otwieranie konsoli Menedżera pakietów kończy się niepowodzeniem z powodu wyjątku ObjectSecurity
 
-Możesz zobaczyć te błędy podczas próby otwarcia konsoli Menedżera pakietów:
+Te błędy mogą pojawić się podczas próby otwarcia konsoli Menedżera pakietów:
 
     The following error occurred while loading the extended type data file: Microsoft.PowerShell.Core, C:\Windows\SysWOW64\WindowsPowerShell\v1.0\types.ps1xml(2977) : Error in type "System.Security.AccessControl.ObjectSecurity": Exception: The getter method should be public, non void, static, and have one parameter of type PSObject.
     The following error occurred while loading the extended type data file: Microsoft.PowerShell.Core, C:\Windows\SysWOW64\WindowsPowerShell\v1.0\types.ps1xml(2984) : Error in type "System.Security.AccessControl.ObjectSecurity": Exception: The getter method should be public, non void, static, and have one parameter of type PSObject.
@@ -147,45 +147,45 @@ Możesz zobaczyć te błędy podczas próby otwarcia konsoli Menedżera pakietó
     The following error occurred while loading the extended type data file: Microsoft.PowerShell.Core, C:\Windows\SysWOW64\WindowsPowerShell\v1.0\types.ps1xml(3005) : Error in type "System.Security.AccessControl.ObjectSecurity": Exception: The getter method should be public, non void, static, and have one parameter of type PSObject.
     The term 'Get-ExecutionPolicy' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 
-Jeśli tak, postępuj zgodnie z rozwiązania [opisem na stronie StackOverflow](http://stackoverflow.com/questions/12638289/embedding-powershell-v2-0-in-net-app-on-windows-8-rtm) rozwiązywania tych problemów.
+Jeśli tak, postępuj zgodnie z rozwiązaniem [omówionym w StackOverflow](http://stackoverflow.com/questions/12638289/embedding-powershell-v2-0-in-net-app-on-windows-8-rtm) , aby je rozwiązać.
 
-## <a name="the-add-package-library-reference-dialog-throws-an-exception-if-the-solution-contains-installshield-limited-edition-project"></a>Okno dialogowe Dodaj odwołanie do pakietu biblioteki zgłasza wyjątek, jeśli rozwiązanie zawiera projekt InstallShield Limited Edition
+## <a name="the-add-package-library-reference-dialog-throws-an-exception-if-the-solution-contains-installshield-limited-edition-project"></a>Okno dialogowe Dodaj odwołanie do biblioteki pakietów zgłasza wyjątek, jeśli rozwiązanie zawiera projekt InstallShield Limited Edition
 
-Firma Microsoft ma ustaliła, że jeśli Twoje rozwiązanie zawiera co najmniej jeden projekt InstallShield Limited Edition, **Dodaj odwołanie do pakietu biblioteki** okna dialogowego spowoduje zgłoszenie wyjątku po otwarciu. Obecnie nie ma sposobu obejścia jeszcze z wyjątkiem usuwanie projektów InstallShield lub zwalnianie je.
+Zidentyfikowano, że jeśli rozwiązanie zawiera co najmniej jeden projekt InstallShield Limited Edition, w oknie dialogowym **Dodawanie odwołania do biblioteki pakietów** zostanie zgłoszony wyjątek, gdy zostanie otwarty. Obecnie nie istnieje jeszcze obejście tego problemu, z wyjątkiem usuwania projektów InstallShield lub ich wyładowywania.
 
-## <a name="uninstall-button-greyed-out-nuget-requires-admin-privileges-to-installuninstall"></a>Odinstaluj wyszarzone przycisku? NuGet wymaga uprawnień administratora do instalacji/dezinstalacji
+## <a name="uninstall-button-greyed-out-nuget-requires-admin-privileges-to-installuninstall"></a>Przycisk odinstalowywania został wyszarzony? Pakiet NuGet wymaga uprawnień administratora do zainstalowania/odinstalowania
 
-Jeśli zostanie podjęta próba odinstalowania NuGet za pomocą programu Visual Studio Extension Manager, można zauważyć, że przycisk Odinstaluj jest wyłączona. NuGet wymaga dostępu administratora do instalowania i odinstalowywania. Uruchom ponownie program Visual Studio jako administrator, aby odinstalować rozszerzenie. NuGet nie wymaga dostępu administratora z niego korzystać.
+Jeśli spróbujesz odinstalować pakiet NuGet za pomocą Menedżera rozszerzeń programu Visual Studio, możesz zauważyć, że przycisk Odinstaluj jest wyłączony. Pakiet NuGet wymaga dostępu administratora do instalacji i dezinstalacji. Uruchom ponownie program Visual Studio jako administrator, aby odinstalować rozszerzenie. Pakiet NuGet nie wymaga dostępu administratora do korzystania z niego.
 
-## <a name="the-package-manager-console-crashes-when-i-open-it-in-windows-xp-whats-wrong"></a>Konsola Menedżera pakietów ulega awarii podczas otwierania go w Windows XP. Co jest nie tak?
+## <a name="the-package-manager-console-crashes-when-i-open-it-in-windows-xp-whats-wrong"></a>Konsola Menedżera pakietów ulega awarii, gdy otworzysz ją w systemie Windows XP. Co jest nie tak?
 
-NuGet wymaga środowiska uruchomieniowego programu Powershell w wersji 2.0. Windows XP, domyślnie nie ma programu Powershell w wersji 2.0. Możesz pobrać program Powershell 2.0 środowisko uruchomieniowe z [ http://support.microsoft.com/kb/968929 ](http://support.microsoft.com/kb/968929). Po jego zainstalowaniu, uruchom ponownie program Visual Studio, a powinien mieć możliwość otwarcia konsoli Menedżera pakietów.
+Pakiet NuGet wymaga środowiska uruchomieniowego PowerShell 2,0. Domyślnie system Windows XP nie ma programu PowerShell 2,0. Środowisko uruchomieniowe programu PowerShell 2,0 można pobrać [http://support.microsoft.com/kb/968929](http://support.microsoft.com/kb/968929)z programu. Po zainstalowaniu należy ponownie uruchomić program Visual Studio, aby móc otworzyć konsolę Menedżera pakietów.
 
-## <a name="visual-studio-2010-sp1-beta-crashes-on-exit-if-the-package-manager-console-is-open"></a>Visual Studio 2010 z dodatkiem SP1 Beta ulega awarii przy zamykaniu, jeśli konsola Menedżera pakietów jest otwarty.
+## <a name="visual-studio-2010-sp1-beta-crashes-on-exit-if-the-package-manager-console-is-open"></a>Jeśli konsola Menedżera pakietów jest otwarta, program Visual Studio 2010 z dodatkiem SP1 w wersji beta jest nieoczekiwany.
 
-Po zainstalowaniu programu Visual Studio 2010 z dodatkiem SP1 Beta można zauważyć, że jeśli zamykaj konsoli Menedżera pakietów, a następnie zamknij program Visual Studio, jego ulegnie awarii. Jest to znany problem programu Visual Studio i zostanie rozwiązany w wersji z dodatkiem SP1 RTM wydania. Teraz po prostu Ignoruj awarii lub odinstalować z dodatkiem SP1 Beta, jeżeli jest to możliwe.
+Jeśli zainstalowano program Visual Studio 2010 z dodatkiem SP1 Beta, można zauważyć, że Jeśli opuścisz konsolę Menedżera pakietów otwartą i zamkniętą program Visual Studio, wystąpi awaria. Jest to znany problem programu Visual Studio, który zostanie rozwiązany w wersji RTM programu SP1. Na razie po prostu zignoruj awarię lub Odinstaluj program SP1 w wersji beta, jeśli jest to możliwe.
 
-## <a name="the-element-metadata--has-invalid-child-element-exception-occurs"></a>Element "metadata"... ma nieprawidłowy element wyjątek występuje
+## <a name="the-element-metadata--has-invalid-child-element-exception-occurs"></a>Element "Metadata"... występuje nieprawidłowy wyjątek elementu podrzędnego
 
-Jeśli zainstalowano pakiety skompilowane przy użyciu wersji wstępnej programu NuGet, może wystąpić komunikat o błędzie z informacją "elementem"metadata"w przestrzeni nazw"schemas.microsoft.com/packaging/2010/07/nuspec.xsd"ma nieprawidłowy element podrzędny" podczas uruchamiania RTM Wersja pakietu nuget za pomocą tego projektu. Należy odinstalować i ponownie zainstalować każdego pakietu NuGet w wersji RTM.
+Jeśli zainstalowano pakiety skompilowane przy użyciu wersji wstępnej programu NuGet, może wystąpić komunikat o błędzie z informacją o tym, że "element" metadanych "w przestrzeni nazw" schemas.microsoft.com/packaging/2010/07/nuspec.xsd "ma nieprawidłowy element podrzędny" podczas uruchamiania programu RTM wersja programu NuGet z tym projektem. Należy odinstalować, a następnie zainstalować ponownie każdy pakiet przy użyciu wersji RTM programu NuGet.
 
-## <a name="attempting-to-install-or-uninstall-results-in-the-error-cannot-create-a-file-when-that-file-already-exists"></a>Próby zainstalowania lub odinstalowania powoduje błąd "Nie można utworzyć pliku, ten plik już istnieje."
+## <a name="attempting-to-install-or-uninstall-results-in-the-error-cannot-create-a-file-when-that-file-already-exists"></a>Próba zainstalowania lub odinstalowania wyników spowoduje błąd "nie można utworzyć pliku, gdy ten plik już istnieje".
 
-Jakiegoś powodu rozszerzeń programu Visual Studio można uzyskać w stanie nieco dziwne, gdzie zostały odinstalowane rozszerzenia VSIX, ale niektóre pliki zostały pozostawione. Aby obejść ten problem:
+Z jakiegoś powodu rozszerzenia programu Visual Studio mogą być w stanie brzmienia, w którym odinstalowano rozszerzenie VSIX, ale niektóre pliki zostały pozostawione w tle. Aby obejść ten problem:
 
-1. Zamknij program Visual Studio
-1. Otwórz następujący folder (może to być na innym dysku na komputerze)
+1. Wyjdź z programu Visual Studio
+1. Otwórz następujący folder (może on znajdować się na innym dysku na komputerze)
 
     C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft Corporation\NuGet Package Manager\<version>\
 
-1. Usuń wszystkie pliki z *.deleteme* rozszerzenia.
+1. Usuń wszystkie pliki z rozszerzeniami *. Deleteme* .
 1. Otwórz ponownie program Visual Studio
 
-Po wykonaniu tych kroków, można kontynuować.
+Po wykonaniu tych kroków powinno być możliwe kontynuowanie.
 
-## <a name="in-rare-cases-compiling-with-code-analysis-turned-on-causes-error"></a>W rzadkich przypadkach kompilowanie za pomocą analizy kodu włączona, powoduje błąd.
+## <a name="in-rare-cases-compiling-with-code-analysis-turned-on-causes-error"></a>W rzadkich przypadkach Kompilowanie z włączoną analizą kodu powoduje wystąpienie błędu.
 
-Może być występuje następujący błąd, jeśli zainstaluje FluentNHibernate za pomocą konsoli Menedżera pakietów, a następnie Skompiluj projekt za pomocą "Analizy kodu" włączona.
+Następujący błąd może wystąpić, Jeśli instalujesz FluentNHibernate z konsolą Menedżera pakietów, a następnie kompilujesz projekt z włączoną funkcją "Analiza kodu".
 
     Error 3 CA0058 : The referenced assembly
     'NHibernate, Version=3.0.0.2001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4'
@@ -193,36 +193,36 @@ Może być występuje następujący błąd, jeśli zainstaluje FluentNHibernate 
     C:\temp\Scratch\src\MyProject.UnitTests\bin\Debug\MyProject.UnitTests.dll.
     MyProject.UnitTests
 
-Domyślnie FluentNHibernate wymaga NHibernate 3.0.0.2001. Jednak zgodnie z projektem NuGet zainstalujesz NHibernate 3.0.0.4000 w projekcie i dodaj odpowiednie powiązanie przekierowuje, dzięki czemu będzie ona działać. Projekt zostanie skompilowany świetnie Jeśli nie włączono analizy kodu. W przeciwieństwie do kompilatora narzędzie do analizy kodu nie prawidłowo wykonaj przekierowania powiązań do używania 3.0.0.4000 zamiast 3.0.0.2001. Można obejść ten problem, albo instalowanie NHibernate 3.0.0.2001 lub poproś narzędzie do analizy kodu do działa tak samo jak kompilator, wykonując następujące czynności:
+Domyślnie FluentNHibernate wymaga NHibernate 3.0.0.2001. Jednak po zaprojektowaniu pakiet NuGet zainstaluje NHibernate 3.0.0.4000 w projekcie i doda odpowiednie przekierowania powiązań, aby działał. Projekt zostanie skompilowany, jeśli analiza kodu nie jest włączona. W przeciwieństwie do kompilatora Narzędzie analizy kodu nie jest prawidłowo zgodne z przekierowaniami powiązań, aby użyć 3.0.0.4000 zamiast 3.0.0.2001. Problem można obejść, instalując NHibernate 3.0.0.2001 lub poinformuj Narzędzie analizy kodu, aby zachowywać się tak samo jak kompilator, wykonując następujące czynności:
 
-1. Przejdź do *%PROGRAMFILES%\Microsoft Visual Studio 10.0\Team Tools\Static analizy Tools\FxCop*
-1. Otwórz FxCopCmd.exe.config i zmień `AssemblyReferenceResolveMode` z `StrongName` do `StrongNameIgnoringVersion`.
+1. Przejdź do pozycji *%ProgramFiles%\Microsoft Visual Studio 10.0 \ Team Tools\Static Analysis Tools\FxCop*
+1. Otwórz plik plik FxCopCmd. exe. config i `AssemblyReferenceResolveMode` Zmień `StrongName` go `StrongNameIgnoringVersion`z na.
 1. Zapisz zmiany i ponownie skompiluj projekt.
 
-## <a name="write-error-command-doesnt-work-inside-installps1uninstallps1initps1"></a>Błąd zapisu polecenie nie działa wewnątrz install.ps1/uninstall.ps1/init.ps1
+## <a name="write-error-command-doesnt-work-inside-installps1uninstallps1initps1"></a>Polecenie Write-Error nie działa wewnątrz install. ps1/Uninstall. ps1/init. ps1
 
-Jest to znany problem. Zamiast wywoływania błąd zapisu, spróbuj wywoływania throw.
+Jest to znany problem. Zamiast wywołania metody Write-Error spróbuj wywołać metodę throw.
 
     throw "My error message"
 
-## <a name="installing-nuget-with-restricted-access-on-windows-2003-can-crash-visual-studio"></a>Instalowanie NuGet z ograniczonym dostępem w systemie Windows 2003 można awarię programu Visual Studio
+## <a name="installing-nuget-with-restricted-access-on-windows-2003-can-crash-visual-studio"></a>Instalowanie pakietu NuGet z ograniczonym dostępem w systemie Windows 2003 może spowodować awarię programu Visual Studio
 
-Podczas próby zainstalowania NuGet za pomocą Menedżera rozszerzeń programu Visual Studio, a nie jest uruchomione jako administrator, &#8220;Uruchom jako&#8221; za pomocą pola wyboru zostanie wyświetlone okno dialogowe &#8220;uruchamiaj ten program z ograniczonym dostępem&#8221; sprawdzana przez Domyślnie.
+Przy próbie zainstalowania narzędzia NuGet przy użyciu Menedżera rozszerzeń programu Visual Studio i niedziałającego jako administrator zostanie &#8220;wyświetlone okno&#8221; dialogowe Uruchom jako z widocznym przyciskiem &#8220;Uruchom ten program z ograniczonym&#8221; dostępem zaznaczonym przez wartooć.
 
-![Uruchom jako ograniczeniami okna dialogowego](./media/RunAsRestricted.png)
+![Uruchom jako okno dialogowe z ograniczeniami](./media/RunAsRestricted.png)
 
-Kliknięcie przycisku OK, korzystając z niego zaznaczone awarie programu Visual Studio. Upewnij się, usuń zaznaczenie tej opcji, przed zainstalowaniem programu NuGet.
+Kliknięcie przycisku OK powoduje awarię programu Visual Studio. Przed zainstalowaniem programu NuGet Usuń zaznaczenie tej opcji.
 
 ## <a name="cannot-uninstall-nuget-for-windows-phone-tools"></a>Nie można odinstalować programu NuGet dla narzędzi Windows Phone
 
-Narzędzia Windows Phone nie ma obsługi Menedżera rozszerzeń dla programu Visual Studio. Aby odinstalować NuGet, uruchom następujące polecenie.
+Narzędzia Windows Phone nie obsługują Menedżera rozszerzeń programu Visual Studio. Aby odinstalować pakiet NuGet, uruchom następujące polecenie.
 
      vsixinstaller.exe /uninstall:NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5
 
-## <a name="changing-the-capitalization-of-nuget-package-ids-breaks-package-restore"></a>Zmiana wielkości liter, identyfikatory pakietu NuGet przerywa Przywracanie pakietu
+## <a name="changing-the-capitalization-of-nuget-package-ids-breaks-package-restore"></a>Zmiana wielkości liter w identyfikatorach pakietów NuGet powoduje przerwanie przywracania pakietu
 
-Zgodnie z opisem szeroko na [problem w usłudze GitHub](https://github.com/Particular/NServiceBus/issues/1271#issuecomment-20865932), zmiana wielkości liter pakietów NuGet może odbywać się przez obsługę pakietów NuGet, ale kompilacji powoduje, że podczas przywracania pakietu dla użytkowników, którzy mają istniejące, inaczej — z uwzględnieniem wielkości liter, pakiety w ich *globalnymi pakietami* folderu. Firma Microsoft zaleca tylko żądania zmiany wielkości liter, gdy masz sposób do komunikowania się z istniejącym użytkownikom pakietu o przerwania, który może wystąpić, aby ich przywracania pakietów w czasie kompilacji.
+Zgodnie z opisem w [tym problemie](https://github.com/Particular/NServiceBus/issues/1271#issuecomment-20865932)z usługą GitHub, zmiana wielkości liter pakietów NuGet może odbywać się przez obsługę NuGet, ale powoduje komplikacje podczas przywracania pakietów dla użytkowników, którzy mają istniejące, w różny sposób, pakiety w ich  *folder Global-Packages* . Zalecamy tylko żądanie zmiany wielkości liter, gdy istnieje możliwość komunikowania się z istniejącymi użytkownikami pakietu w sprawie przerwy, która może wystąpić w przypadku przywracania pakietu w czasie kompilacji.
 
 ## <a name="reporting-issues"></a>Raportowanie problemów
 
-Aby zgłosić problemy z NuGet, odwiedź stronę [ https://github.com/nuget/home/issues ](https://github.com/nuget/home/issues).
+Aby zgłosić problemy z pakietem [https://github.com/nuget/home/issues](https://github.com/nuget/home/issues)NuGet, odwiedź stronę.

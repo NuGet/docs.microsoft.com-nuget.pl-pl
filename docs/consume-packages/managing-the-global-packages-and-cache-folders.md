@@ -1,47 +1,47 @@
 ---
-title: Jak zarządzać globalnymi pakietami, pamięci podręcznej, folderów tymczasowych w programie NuGet
-description: Jak zarządzać folderu instalacji pakietu globalnej pamięci podręcznej pakietu i folderów tymczasowych, które istnieją na komputerze, które są używane podczas instalowania, przywracania i aktualizowanie pakietów.
+title: Jak zarządzać pakietami globalnymi, pamięcią podręczną, folderami tymczasowymi w pakiecie NuGet
+description: Jak zarządzać folderem instalacji pakietów globalnych, pamięci podręcznej pakietów i folderami tymczasowymi, które istnieją na komputerze, które są używane podczas instalowania, przywracania i aktualizowania pakietów.
 author: karann-msft
 ms.author: karann
 ms.date: 03/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4b365488c8dd0e081449552b06451e7b40b5223b
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 2a30904c5d26ea2114432dfbef08f53407926a33
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426615"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317753"
 ---
-# <a name="managing-the-global-packages-cache-and-temp-folders"></a>Zarządzanie globalnymi pakietami, pamięci podręcznej i folderów tymczasowych
+# <a name="managing-the-global-packages-cache-and-temp-folders"></a>Zarządzanie pakietami globalnymi, pamięcią podręczną i folderami tymczasowymi
 
-Zawsze, gdy instalować, aktualizować ani przywrócić pakietu NuGet zarządza pakiety i informacje o pakiecie w kilku folderach poza do struktury projektu:
+Za każdym razem, gdy instalujesz, aktualizujesz lub przywracasz pakiet, program NuGet zarządza pakietami i informacjami o pakietach w kilku folderach poza strukturą projektu:
 
-| Nazwa | Opis i lokalizacji (na użytkownika)|
+| Nazwa | Opis i lokalizacja (na użytkownika)|
 | --- | --- |
-| global&#8209;packages | *Globalnymi pakietami* folder to, gdzie NuGet instaluje wszelkie pobranego pakietu. Każdy pakiet jest w pełni rozwinięta do podfolderu, który odpowiada identyfikator pakietu i numeru wersji. Projektów przy użyciu funkcji PackageReference zawsze formatu pakietów Użyj bezpośrednio z tego folderu. Korzystając z `packages.config`, pakiety są instalowane na *globalnymi pakietami* folder i następnie kopiowane do projektu `packages` folderu.<br/><ul><li>Windows: `%userprofile%\.nuget\packages`</li><li>Mac/Linux: `~/.nuget/packages`</li><li>Zastąp przy użyciu zmiennej środowiskowej NUGET_PACKAGES, `globalPackagesFolder` lub `repositoryPath` [ustawienia konfiguracji](../reference/nuget-config-file.md#config-section) (korzystając z funkcji PackageReference i `packages.config`odpowiednio), lub `RestorePackagesPath` MSBuild Właściwość (MSBuild tylko). Zmienna środowiskowa mają pierwszeństwo przed ustawieniem konfiguracji.</li></ul> |
-| http&#8209;cache | Menedżera pakietów programu Visual Studio (NuGet 3.x+) i `dotnet` narzędzie przechowują kopie pakietów do pobrania w tej pamięci podręcznej (zapisane jako `.dat` pliki) zorganizowanym w podfoldery dla każdego źródła pakietu. Pakiety nie zostaną rozwinięte i pamięć podręczna zawiera 30-minutowy czas wygaśnięcia.<br/><ul><li>Windows: `%localappdata%\NuGet\v3-cache`</li><li>Mac/Linux: `~/.local/share/NuGet/v3-cache`</li><li>Musi zostać zastąpiona, przy użyciu zmiennej środowiskowej NUGET_HTTP_CACHE_PATH.</li></ul> |
-| Temp | Folder, w którym NuGet przechowywania plików tymczasowych podczas jego różne operacje.<br/><li>Windows: `%temp%\NuGetScratch`</li><li>Mac/Linux: `/tmp/NuGetScratch`</li></ul> |
-| plugins-cache **4.8+** | Folder, w którym NuGet przechowuje wyniki z żądania oświadczeń operacji.<br/><ul><li>Windows: `%localappdata%\NuGet\plugins-cache`</li><li>Mac/Linux: `~/.local/share/NuGet/plugins-cache`</li><li>Musi zostać zastąpiona, przy użyciu zmiennej środowiskowej NUGET_PLUGINS_CACHE_PATH.</li></ul> |
+| global&#8209;packages | W folderze *globalne pakiety* jest instalowany pobrany pakiet NuGet. Każdy pakiet jest w pełni rozwinięty do podfolderu, który jest zgodny z identyfikatorem pakietu i numerem wersji. Projekty korzystające z formatu PackageReference zawsze używają pakietów bezpośrednio z tego folderu. W przypadku korzystania `packages.config`z programu pakiety są instalowane w folderze *globalne pakiety* , a następnie kopiowane `packages` do folderu projektu.<br/><ul><li>Windows: `%userprofile%\.nuget\packages`</li><li>Mac/Linux:`~/.nuget/packages`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_PACKAGES `globalPackagesFolder` , `repositoryPath` [Ustawienia konfiguracji](../reference/nuget-config-file.md#config-section) (w przypadku używania PackageReference `packages.config`i, odpowiednio) lub właściwości `RestorePackagesPath` programu MSBuild (tylko MSBuild). Zmienna środowiskowa ma pierwszeństwo przed ustawieniem konfiguracji.</li></ul> |
+| http&#8209;cache | Menedżer pakietów programu Visual Studio (NuGet 3. x +) i `dotnet` narzędzie przechowuje kopie pobranych pakietów w tej pamięci podręcznej (zapisane jako `.dat` pliki), zorganizowane w podfolderach dla każdego źródła pakietu. Pakiety nie są rozwinięte, a pamięć podręczna ma czas wygaśnięcia 30 minut.<br/><ul><li>Windows: `%localappdata%\NuGet\v3-cache`</li><li>Mac/Linux:`~/.local/share/NuGet/v3-cache`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_HTTP_CACHE_PATH.</li></ul> |
+| temp | Folder, w którym narzędzia NuGet przechowują pliki tymczasowe podczas wykonywania różnych operacji.<br/><li>Windows: `%temp%\NuGetScratch`</li><li>Mac/Linux:`/tmp/NuGetScratch`</li></ul> |
+| plugins-cache **4.8+** | Folder, w którym narzędzia NuGet przechowują wyniki żądania oświadczeń operacji.<br/><ul><li>Windows: `%localappdata%\NuGet\plugins-cache`</li><li>Mac/Linux:`~/.local/share/NuGet/plugins-cache`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_PLUGINS_CACHE_PATH.</li></ul> |
 
 > [!Note]
-> NuGet 3.5 i starszych używa *pamięci podręcznej pakietów* zamiast *pamięci podręcznej http*, który znajduje się w `%localappdata%\NuGet\Cache`.
+> Program NuGet 3,5 i starsze wersje używają *pamięci podręcznej pakietów* zamiast pamięci podręcznej *http*, `%localappdata%\NuGet\Cache`która znajduje się w.
 
-Przy użyciu pamięci podręcznej i *globalnymi pakietami* folderów, NuGet ogólnie pozwala uniknąć pobierania pakietów, które już istnieją na komputerze, poprawę wydajności instalacji, aktualizacji i operacji przywracania. Korzystając z funkcji PackageReference, *globalnymi pakietami* folderu również pozwala uniknąć przechowywania pobrane pakiety w folderach projektu, gdzie one może przypadkowo dodane do kontroli źródła i zmniejsza całkowity wpływ NuGet na komputerze Magazyn.
+Przy użyciu folderów pamięci podręcznej i *pakietów globalnych pakiet* NuGet zazwyczaj eliminuje pobieranie pakietów, które już istnieją na komputerze, co zwiększa wydajność operacji instalacji, aktualizacji i przywracania. W przypadku korzystania z programu PackageReference folder *Global-Packages* również pozwala uniknąć utrzymywania pobranych pakietów wewnątrz folderów projektu, gdzie mogą być przypadkowo dodawane do kontroli źródła i zmniejsza ogólny wpływ narzędzia NuGet na magazyn komputerowy.
 
-Po wyświetleniu monitu, aby pobrać pakiet, NuGet najpierw przeszukuje *globalnymi pakietami* folderu. Jeśli dokładna wersja pakietu nie jest dostępne, NuGet umożliwia sprawdzenie wszystkich źródeł pakietów protokołu HTTP. Jeśli nadal nie znaleziono pakietu, NuGet szuka pakietu w *pamięci podręcznej http* chyba że określisz `--no-cache` z `dotnet.exe` poleceń lub `-NoCache` z `nuget.exe` poleceń. Jeśli pakiet nie znajduje się w pamięci podręcznej lub pamięci podręcznej nie jest używany, NuGet następnie pobiera pakiet za pośrednictwem protokołu HTTP.
+Po wyświetleniu monitu o pobranie pakietu pakiet NuGet najpierw szuka folderu *Global-Packages* . Jeśli dokładna wersja pakietu nie istnieje, pakiet NuGet sprawdza wszystkie źródła pakietów spoza protokołu HTTP. Jeśli pakiet nadal nie zostanie znaleziony, pakiet NuGet szuka pakietu w *pamięci podręcznej http* , chyba że zostanie `--no-cache` określony `dotnet.exe` z poleceniami `nuget.exe` lub `-NoCache` z poleceniami. Jeśli pakiet nie znajduje się w pamięci podręcznej, a pamięć podręczna nie jest używana, narzędzie NuGet pobierze pakiet za pośrednictwem protokołu HTTP.
 
-Aby uzyskać więcej informacji, zobacz [co się stanie, gdy jest zainstalowany pakiet?](../concepts/package-installation-process.md).
+Aby uzyskać więcej informacji, zobacz [co się stanie po zainstalowaniu pakietu?](../concepts/package-installation-process.md).
 
-## <a name="viewing-folder-locations"></a>Wyświetlanie lokalizacje folderów
+## <a name="viewing-folder-locations"></a>Przeglądanie lokalizacji folderów
 
-Można wyświetlić przy użyciu lokalizacji [polecenie lokalne nuget](../tools/cli-ref-locals.md):
+Lokalizacje można wyświetlić za pomocą [polecenia locale programu NuGet](../reference/cli-reference/cli-ref-locals.md):
 
 ```cli
 # Display locals for all folders: global-packages, http cache, temp and plugins cache
 nuget locals all -list
 ```
 
-Typowe dane wyjściowe (Windows; Bieżąca nazwa użytkownika to "uzytkownik1"):
+Typowe dane wyjściowe (Windows; "Użytkownik1" jest bieżącą nazwą użytkownika:
 
 ```output
 http-cache: C:\Users\user1\AppData\Local\NuGet\v3-cache
@@ -50,15 +50,15 @@ temp: C:\Users\user1\AppData\Local\Temp\NuGetScratch
 plugins-cache: C:\Users\user1\AppData\Local\NuGet\plugins-cache
 ```
 
-(`package-cache` jest używany w pakiecie NuGet 2.x i pojawia się za pomocą NuGet 3.5 i starszych.)
+(`package-cache` jest używany w NuGet 2. x i występuje z pakietem NuGet 3,5 i wcześniejszym).
 
-Można także wyświetlać lokalizacje folderów za pomocą [polecenie lokalne nuget dotnet](/dotnet/core/tools/dotnet-nuget-locals):
+Lokalizacje folderów można także wyświetlić przy użyciu [polecenia locale programu dotnet dla ustawień regionalnych](/dotnet/core/tools/dotnet-nuget-locals):
 
 ```cli
 dotnet nuget locals all --list
 ```
 
-Typowe dane wyjściowe (Mac/Linux; Bieżąca nazwa użytkownika to "uzytkownik1"):
+Typowe dane wyjściowe (Mac/Linux; "Użytkownik1" jest bieżącą nazwą użytkownika:
 
 ```output
 info : http-cache: /home/user1/.local/share/NuGet/v3-cache
@@ -67,11 +67,11 @@ info : temp: /tmp/NuGetScratch
 info : plugins-cache: /home/user1/.local/share/NuGet/plugins-cache
 ```
 
-Aby wyświetlić lokalizację pojedynczy folder, należy użyć `http-cache`, `global-packages`, `temp`, lub `plugins-cache` zamiast `all`.
+Aby wyświetlić lokalizację pojedynczego folderu, użyj `http-cache`, `global-packages` `temp` `plugins-cache` ,, lub zamiast. `all`
 
-## <a name="clearing-local-folders"></a>Czyszczenie foldery lokalne
+## <a name="clearing-local-folders"></a>Czyszczenie folderów lokalnych
 
-Jeśli występują problemy z instalacją pakietu lub chcesz w przeciwnym razie upewnij się, czy instalujesz pakiety ze zdalnego galerii, użyj `locals --clear` opcji (dotnet.exe) lub `locals -clear` (nuget.exe), określając folder, aby wyczyścić, lub `all` do Wyczyść wszystkie foldery:
+Jeśli wystąpią problemy z instalacją pakietu lub w przeciwnym razie chcesz upewnić się, że instalujesz pakiety z galerii zdalnej `locals --clear` , użyj opcji (dotnet. exe `locals -clear` ) lub (NuGet. exe), określając folder do wyczyszczenia `all` lub Wyczyść wszystkie foldery:
 
 ```cli
 # Clear the 3.x+ cache (use either command)
@@ -98,24 +98,24 @@ dotnet nuget locals all --clear
 nuget locals all -clear
 ```
 
-Wszystkie pakiety używane w projektach, które są aktualnie otwarte w programie Visual Studio nie są usuwane z *globalnymi pakietami* folderu.
+Wszystkie pakiety używane przez projekty, które są aktualnie otwarte w programie Visual Studio, nie są usuwane z folderu *Global-Packages* .
 
-Począwszy od programu Visual Studio 2017, użyj **Narzędzia > Menedżer pakietów NuGet > Ustawienia Menedżera pakietów** menu polecenia, a następnie wybierz **wyczyść wszystkie Cache(s) NuGet**. Zarządzanie pamięcią podręczną nie jest obecnie dostępna za pośrednictwem konsoli Menedżera pakietów. W programie Visual Studio 2015 zamiast tego użyj poleceń interfejsu wiersza polecenia.
+Począwszy od programu Visual Studio 2017, użyj **narzędzia > Menedżer pakietów NuGet > menu Ustawienia Menedżera pakietów** , a następnie wybierz polecenie **Wyczyść wszystkie pamięć podręczna NuGet**. Zarządzanie pamięcią podręczną nie jest obecnie dostępne za pomocą konsoli Menedżera pakietów. W programie Visual Studio 2015 zamiast tego Użyj poleceń interfejsu wiersza polecenia.
 
-![NuGet — opcja polecenia czyszczenia pamięci podręcznych](media/options-clear-caches.png)
+![Polecenie NuGet opcji do czyszczenia pamięci podręcznych](media/options-clear-caches.png)
 
 ## <a name="troubleshooting-errors"></a>Rozwiązywanie problemów z błędami
 
-Następujące błędy mogą wystąpić, gdy za pomocą `nuget locals` lub `dotnet nuget locals`:
+Następujące błędy mogą wystąpić podczas korzystania `nuget locals` z lub: `dotnet nuget locals`
 
-- *Błąd: Ten proces nie może uzyskać dostępu do pliku <package> , ponieważ jest on używany przez inny proces* lub *wyczyszczenie zasobów lokalnych nie powiodło się: Nie można usunąć jeden lub więcej plików*
+- *Błąd: Proces nie może uzyskać dostępu do <package> pliku, ponieważ jest on używany przez inny* proces *lub czyszczenie zasobów lokalnych nie powiodło się: Nie można usunąć co najmniej jednego pliku*
 
-    Jeden lub więcej plików w folderze są używane przez inny proces; na przykład projektu programu Visual Studio jest otwarty, która odwołuje się do pakietów w *globalnymi pakietami* folderu. Zamknij tych procesów i spróbuj ponownie.
+    Co najmniej jeden plik w folderze jest używany przez inny proces; na przykład projekt programu Visual Studio jest otwarty, który odwołuje się do pakietów w folderze *Global-Packages* . Zamknij te procesy i spróbuj ponownie.
 
-- *Błąd: Dostęp do ścieżki <path> odmowa* lub *katalog nie jest pusty*
+- *Błąd: <path> Odmówiono* dostępu do ścieżki lub *katalog nie jest pusty*
 
-    Nie masz uprawnień do usuwania plików w pamięci podręcznej. Zmień uprawnienia do folderu, jeśli to możliwe i spróbuj ponownie. W przeciwnym razie skontaktuj się z administratorem systemu.
+    Nie masz uprawnień do usuwania plików w pamięci podręcznej. Zmień uprawnienia folderu, jeśli to możliwe, i spróbuj ponownie. W przeciwnym razie skontaktuj się z administratorem systemu.
 
-- *Błąd: Określona ścieżka i nazwa pliku jest za długa. W pełni kwalifikowanej nazwy pliku musi być mniejsza niż 260 znaków, a nazwy katalogu musi być mniejsza niż 248 znaków.*
+- *Błąd: Określona ścieżka, nazwa pliku lub obie są zbyt długie. W pełni kwalifikowana nazwa pliku musi być krótsza niż 260 znaków, a nazwa katalogu musi być krótsza niż 248 znaków.*
 
-    Skróć nazwy folderu i spróbuj ponownie.
+    Skróć nazwy folderów i spróbuj ponownie.

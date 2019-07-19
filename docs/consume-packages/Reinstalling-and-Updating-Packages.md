@@ -1,52 +1,52 @@
 ---
 title: Ponowne instalowanie i aktualizowanie pakietów NuGet
-description: Szczegółowe informacje dotyczące kiedy zachodzi konieczność ponownej instalacji i aktualizowanie pakietów, podobnie jak w przypadku odwołania do pakietu przerwane w programie Visual Studio.
+description: Szczegółowe informacje o tym, kiedy należy ponownie zainstalować i zaktualizować pakiety, podobnie jak w przypadku uszkodzonych odwołań do pakietów w programie Visual Studio.
 author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: conceptual
-ms.openlocfilehash: 9b2a7b299a0cb944ad9045684e14cc7b83e1cff4
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 32b01e6066cf60f7a0942508e640fdd5658b4444
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426667"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68316979"
 ---
-# <a name="how-to-reinstall-and-update-packages"></a>Jak zainstalować i pakietów aktualizacji
+# <a name="how-to-reinstall-and-update-packages"></a>Jak ponownie zainstalować i zaktualizować pakiety
 
-Istnieje wiele sytuacji, w opisany poniżej w sekcji [podczas ponownej instalacji pakietu](#when-to-reinstall-a-package), gdy odwołania do pakietu zawiera uszkodzone w ramach projektu programu Visual Studio. W takich przypadkach odinstalować i ponownie zainstalować tę samą wersję pakietu spowoduje przywrócenie te odwołania do działania. Aktualizowanie pakietu to po prostu zainstalowaniu zaktualizowanej wersji, które często przywraca pakietu sprawne.
+Poniżej znajduje się wiele sytuacji, w których [można było ponownie zainstalować pakiet](#when-to-reinstall-a-package), gdzie odwołania do pakietu mogą zostać uszkodzone w projekcie programu Visual Studio. W takich przypadkach Odinstalowywanie i ponowna instalacja tej samej wersji pakietu spowoduje przywrócenie tych odwołań do kolejności roboczej. Aktualizacja pakietu oznacza po prostu zainstalowanie zaktualizowanej wersji, która często przywraca pakiet do kolejności roboczej.
 
-Aktualizowanie i ponowne zainstalowanie pakietów odbywa się w następujący sposób:
+Aktualizowanie i ponowne instalowanie pakietów odbywa się w następujący sposób:
 
-| Metoda | Aktualizowanie | Zainstaluj ponownie |
+| Metoda | Aktualizowanie | Następnie |
 | --- | --- | --- |
-| Konsola Menedżera pakietów (opisanego w [pakiet aktualizacji przy użyciu](#using-update-package)) | `Update-Package` Polecenie | `Update-Package -reinstall` Polecenie |
-| Interfejs użytkownika menedżera pakietów | Na **aktualizacje** karty, wybierz jeden lub więcej pakietów i wybierz **aktualizacji** | Na **zainstalowane** karty, wybierz pakiet, zapisać jego nazwę, a następnie wybierz **Odinstaluj**. Przełącz się do **Przeglądaj** kartę, wyszukaj nazwę pakietu, wybierz ją, a następnie wybierz **zainstalować**). |
-| Interfejs wiersza polecenia nuget.exe | `nuget update` Polecenie | Dla wszystkich pakietów, usuń folder pakietu, a następnie uruchom `nuget install`. Jeden pakiet, usuń folder pakietu i użyj `nuget install <id>` ponowna instalacja taki sam. |
+| Konsola Menedżera pakietów (opisana w temacie [using Update-Package](#using-update-package)) | `Update-Package`dotyczące | `Update-Package -reinstall`dotyczące |
+| Interfejs użytkownika menedżera pakietów | Na karcie **aktualizacje** wybierz co najmniej jeden pakiet i wybierz pozycję **Aktualizuj** . | Na karcie **zainstalowane** wybierz pakiet, Zapisz jego nazwę, a następnie wybierz pozycję **Odinstaluj**. Przejdź do karty **Przeglądaj** , wyszukaj nazwę pakietu, wybierz ją, a następnie wybierz pozycję **Zainstaluj**. |
+| Interfejs wiersza polecenia NuGet. exe | `nuget update`dotyczące | W przypadku wszystkich pakietów Usuń folder pakietu, a następnie uruchom `nuget install`polecenie. W przypadku jednego pakietu Usuń folder pakietu i Użyj `nuget install <id>` programu, aby ponownie zainstalować ten sam plik. |
 
 > [!NOTE]
-> Wiersz polecenia dotnet odpowiedniej procedury nie jest wymagany. W podobny scenariusz można [przywrócenia pakietów z wiersz polecenia dotnet](../consume-packages/install-use-packages-dotnet-cli.md#restore-packages).
+> W przypadku interfejsu wiersza polecenia dotnet odpowiednik procedury nie jest wymagany. W podobnym scenariuszu można [przywrócić pakiety za pomocą interfejsu wiersza polecenia dotnet](../consume-packages/install-use-packages-dotnet-cli.md#restore-packages).
 
 W tym artykule:
 
 - [Kiedy należy ponownie zainstalować pakiet](#when-to-reinstall-a-package)
-- [Ograniczający uaktualniania wersji](#constraining-upgrade-versions)
+- [Ograniczenia dotyczące wersji uaktualnienia](#constraining-upgrade-versions)
 
 ## <a name="when-to-reinstall-a-package"></a>Kiedy należy ponownie zainstalować pakiet
 
-1. **Uszkodzenie odwołań po Przywracanie pakietu**: Jeśli projekt i przywrócony pakiety NuGet jest już otwarte, ale nadal widzą przerwanymi odwołaniami, spróbuj ponownej instalacji każdej z tych pakietów.
-1. **Projekt został przerwany ze względu na usunięte pliki**: NuGet nie uniemożliwiają usunięcie elementy dodane z pakietów, dzięki czemu można łatwo przypadkowo modyfikowanie instalowanych z pakietu zawartości i przerwać projektu. Aby przywrócić projektu, należy ponownie zainstalować pakiety, których to dotyczy.
-1. **Aktualizacja pakietu Przerwano projektu**: Jeśli aktualizacja pakietu przerywa projektu, błąd jest zazwyczaj spowodowane pakietu zależności, który może być również zostały zaktualizowane. Aby przywrócić stan zależność, ponownej instalacji tego określonego pakietu.
-1. **Projekt, przekierowywanie lub Uaktualnij**: Może to być przydatne, gdy projekt został przekierowano element lub uaktualnić, a pakiet wymaga ponownej instalacji z powodu zmiany platformy docelowej. NuGet pokazuje błąd kompilacji w takich przypadkach natychmiast po przekierowanie projektu oraz ostrzeżenia kompilacji kolejnych pozwalają dowiedzieć się, że pakiet może być wymagana ponowna instalacja. W celu uaktualnienia projektu NuGet, pokazuje błąd, w dzienniku uaktualnienia projektu.
-1. **Ponowne zainstalowanie pakietu podczas jego tworzenia**: Autorzy pakietów często trzeba ponownie zainstalować tę samą wersję pakietu, które tworzą się testowanie zachowania. `Install-Package` Polecenia nie zapewnia możliwość wymuszenia konieczności ponownej instalacji, a więc `Update-Package -reinstall` zamiast tego.
+1. **Przerwane odwołania po przywróceniu pakietu**: Jeśli otwarto projekt i przywrócono pakiety NuGet, ale nadal są wyświetlane uszkodzone odwołania, spróbuj zainstalować ponownie każdy z tych pakietów.
+1. **Projekt został przerwany z powodu usuniętych plików**: Pakiet NuGet nie uniemożliwia usuwania elementów dodanych z pakietów, dzięki czemu można łatwo przypadkowo zmodyfikować zawartość zainstalowaną z pakietu i przerwać projekt. Aby przywrócić projekt, zainstaluj ponownie odpowiednie pakiety.
+1. **Aktualizacja pakietu przerwała projekt**: Jeśli aktualizacja pakietu powoduje przerwanie projektu, błąd jest zwykle spowodowany przez pakiet zależności, który mógł również zostać zaktualizowany. Aby przywrócić stan zależności, zainstaluj ponownie ten określony pakiet.
+1. Przekierowanie **lub uaktualnienie projektu**: Może to być przydatne w przypadku przekierowania lub uaktualnienia projektu, a jeśli pakiet wymaga ponownej instalacji z powodu zmiany w strukturze docelowej. Pakiet NuGet pokazuje błąd kompilacji w takich przypadkach natychmiast po przekierowaniu projektu, a kolejne ostrzeżenia kompilacji informują o tym, że może być konieczne ponowne zainstalowanie pakietu. W przypadku uaktualniania projektu pakiet NuGet pokazuje błąd w dzienniku uaktualniania projektu.
+1. **Ponowna instalacja pakietu w trakcie jego tworzenia**: Autorzy pakietów często muszą ponownie zainstalować tę samą wersję pakietu, który opracowuje, aby przetestować zachowanie. Polecenie nie udostępnia opcji wymuszenia ponownej instalacji, dlatego należy zamiast `Update-Package -reinstall` tego użyć. `Install-Package`
 
-## <a name="constraining-upgrade-versions"></a>Ograniczający uaktualniania wersji
+## <a name="constraining-upgrade-versions"></a>Ograniczenia dotyczące wersji uaktualnienia
 
-Domyślnie, ponownego instalowania lub aktualizowania pakietu *zawsze* instaluje najnowszą wersją dostępną ze źródła pakietu.
+Domyślnie ponowna instalacja lub aktualizacja pakietu *zawsze* instaluje najnowszą wersję dostępną ze źródła pakietu.
 
-W projektach przy użyciu `packages.config` format zarządzania, w szczególności ograniczenie zakresu wersji. Na przykład jeśli wiesz, że aplikacja działa tylko z wersji 1.x pakietu ale nie 2.0 i nowszych, prawdopodobnie ze względu na istotne zmiany w pakiecie interfejsu API, a następnie można będzie chciała ograniczenie jest uaktualniane do wersji 1.x. Zapobiega to przypadkowym aktualizacji, które spowoduje przerwanie aplikacji.
+Jednak w projektach korzystających z `packages.config` formatu zarządzania można ograniczyć zakres wersji. Na przykład, Jeśli wiesz, że aplikacja działa tylko w wersji 1. x pakietu, ale nie 2,0 i wyższych, prawdopodobnie z powodu poważnej zmiany w interfejsie API pakietu, a następnie chcesz ograniczyć uaktualnienia do wersji 1. x. Zapobiega to przypadkowym aktualizacjom, które spowodują uszkodzenie aplikacji.
 
-Aby ustawić ograniczenie, otwórz `packages.config` w edytorze tekstów, zlokalizuj omawianego zależności, a następnie dodaj `allowedVersions` atrybutu z zakresu wersji. Na przykład, aby ograniczyć aktualizacji do wersji 1.x, ustaw `allowedVersions` do `[1,2)`:
+Aby ustawić ograniczenie, Otwórz `packages.config` w edytorze tekstu, odszukaj zależność i `allowedVersions` Dodaj atrybut do zakresu wersji. Na przykład, aby ograniczyć aktualizacje do wersji 1. x, ustaw `allowedVersions` na `[1,2)`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -57,65 +57,65 @@ Aby ustawić ograniczenie, otwórz `packages.config` w edytorze tekstów, zlokal
 </packages>
 ```
 
-We wszystkich przypadkach Notacja opisanego w [przechowywanie wersji pakietów](../reference/package-versioning.md#version-ranges-and-wildcards).
+We wszystkich przypadkach należy użyć notacji opisanej w artykule [przechowywanie wersji pakietu](../reference/package-versioning.md#version-ranges-and-wildcards).
 
-## <a name="using-update-package"></a>Użycie pakietu aktualizacji
+## <a name="using-update-package"></a>Korzystanie z pakietu aktualizacji
 
-Trwa w trosce o [zagadnienia](#considerations) opisane poniżej, można łatwo ponownie zainstalować wszystkie pakietu przy użyciu [polecenia Update-Package](../Tools/ps-ref-update-package.md) w konsoli Menedżera pakietów Visual Studio (**narzędzia**  >  **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**):
+W trosce o [zagadnienia](#considerations) opisane poniżej można łatwo ponownie zainstalować dowolny pakiet za pomocą [polecenia Update-Package](../reference/ps-reference/ps-ref-update-package.md) w konsoli Menedżera pakietów programu Visual Studio (**Narzędzia** > **Menedżera** pakietówNuGet >  **Konsola Menedżera pakietów**):
 
 ```ps
 Update-Package -Id <package_name> –reinstall
 ```
 
-Za pomocą tego polecenia jest znacznie prostsze niż usunięcie pakietu, a następnie wykonywanie próby zlokalizowania tego samego pakietu w galerii pakietów NuGet za pomocą tej samej wersji. Należy pamiętać, że `-Id` przełącznik jest opcjonalne.
+Użycie tego polecenia jest znacznie łatwiejsze niż usunięcie pakietu, a następnie próba zlokalizowania tego samego pakietu w galerii NuGet z tą samą wersją. Należy pamiętać, `-Id` że przełącznik jest opcjonalny.
 
-Tego samego polecenia bez `-reinstall` aktualizuje pakiet do nowszej wersji, jeśli ma to zastosowanie. Polecenie powoduje błąd, jeśli danego pakietu nie jest już zainstalowany w projekcie; oznacza to, że `Update-Package` nie można zainstalować pakiety bezpośrednio.
+To samo polecenie bez `-reinstall` aktualizacji pakietu do nowszej wersji, jeśli ma zastosowanie. Polecenie powoduje błąd, jeśli dany pakiet nie jest jeszcze zainstalowany w projekcie; oznacza to, `Update-Package` że program nie instaluje pakietów bezpośrednio.
 
 ```ps
 Update-Package <package_name>
 ```
 
-Domyślnie `Update-Package` ma wpływ na wszystkie projekty w rozwiązaniu. Aby ograniczyć liczbę akcji do określonego projektu, należy użyć `-ProjectName` przełączyć, przy użyciu nazwy projektu, która jest wyświetlana w Eksploratorze rozwiązań:
+Domyślnie `Update-Package` wpływa na wszystkie projekty w rozwiązaniu. Aby ograniczyć akcję do określonego projektu, użyj `-ProjectName` przełącznika przy użyciu nazwy projektu wyświetlanej w Eksplorator rozwiązań:
 
 ```ps
 # Reinstall the package in just MyProject
 Update-Package <package_name> -ProjectName MyProject -reinstall
 ```
 
-Do *aktualizacji* wszystkich pakietów w projekcie (lub ponownie zainstalować przy użyciu `-reinstall`), użyj `-ProjectName` bez określania żadnych danego pakietu:
+Aby *zaktualizować* wszystkie pakiety w projekcie (lub ponownie zainstalować program `-reinstall`przy użyciu programu `-ProjectName` ), użyj polecenia bez określenia określonego pakietu:
 
 ```ps
 Update-Package -ProjectName MyProject
 ```
 
-Aby zaktualizować wszystkie pakiety w rozwiązaniu, wystarczy użyć `Update-Package` samodzielnie bez argumentów lub przełączników. Ten formularz ostrożnie, ponieważ może upłynąć pewien czas do wykonywania wszystkich aktualizacji:
+Aby zaktualizować wszystkie pakiety w rozwiązaniu, wystarczy użyć `Update-Package` samego siebie niezależnie od innych argumentów lub przełączników. Użyj tego formularza uważnie, ponieważ wykonanie wszystkich aktualizacji może zająć dużo czasu:
 
 ```ps
 # Updates all packages in all projects in the solution
 Update-Package 
 ```
 
-Trwa aktualizowanie pakietów w projekcie lub rozwiązaniu przy użyciu [PackageReference](../Consume-Packages/Package-References-in-Project-Files.md) zawsze aktualizacji do najnowszej wersji pakietu (z wyjątkiem pakiety w wersji wstępnej). Projekty używające `packages.config` Jeśli to konieczne, ograniczyć wersje aktualizacji zgodnie z poniższym opisem w [wersji uaktualnienie Constraining](#constraining-upgrade-versions).
+Aktualizowanie pakietów w projekcie lub rozwiązaniu przy użyciu programu [PackageReference](../Consume-Packages/Package-References-in-Project-Files.md) zawsze aktualizuje najnowszą wersję pakietu (z wyłączeniem pakietów wersji wstępnej). Projekty, które `packages.config` używają programu mogą, w razie potrzeby, ograniczyć wersje aktualizacji zgodnie z poniższym opisem w artykule [ograniczenia dotyczące wersji uaktualnienia](#constraining-upgrade-versions).
 
-Aby uzyskać szczegółowe informacje o poleceniu, zobacz [pakiet aktualizacji](../Tools/ps-ref-update-package.md) odwołania.
+Aby uzyskać szczegółowe informacje na temat tego polecenia, zobacz informacje dotyczące [aktualizacji pakietu](../reference/ps-reference/ps-ref-update-package.md) .
 
 ### <a name="considerations"></a>Uwagi
 
-Następujące może mieć wpływ na podczas ponownej instalacji pakietu:
+W przypadku ponownej instalacji pakietu mogą wystąpić następujące zmiany:
 
-1. **Ponowne instalowanie pakietów według projektu target framework przekierowania**
-    - W przypadku prostych, po prostu ponownie zainstalować pakiet przy użyciu `Update-Package –reinstall <package_name>` działa. Pakiet, który jest zainstalowany przed stare platformę docelową pobiera odinstalowane i tego samego pakietu pobiera względem bieżącej struktury docelowej projektu.
-    - W niektórych przypadkach może być pakiet, który nie obsługuje nowe platformy docelowej.
-        - Jeśli pakiet obsługuje bibliotek klas przenośnych (PCLs), a projekt jest ukierunkowany na kombinacji platform, które nie jest już obsługiwany przez pakiet, odwołania do pakietu będzie brak po ponownej instalacji.
-        - To może pojawiać się pakietami, których używasz, bezpośrednio lub pakietów zainstalowanych jako zależności. Istnieje możliwość pakietu, który bezpośrednio do obsługi nowej platformy docelowej, a jego zależność nie jest używany.
-        - Ponowne instalowanie pakietów po przekierowania aplikacji w wyniku kompilacji lub środowisko uruchomieniowe błędów, może być konieczne Przywróć swoje wartości docelowej lub Wyszukaj alternatywnych pakiety, które poprawnie obsługuje Twojej nowej platformy docelowej.
+1. **Ponowne instalowanie pakietów zgodnie z przekierowaniem platformy docelowej projektu**
+    - W prostym przypadku wystarczy ponownie zainstalować pakiet przy użyciu `Update-Package –reinstall <package_name>` programu Works. Pakiet instalowany względem starej platformy docelowej zostanie odinstalowany, a ten sam pakiet zostanie zainstalowany w porównaniu z bieżącą platformą docelową projektu.
+    - W niektórych przypadkach może istnieć pakiet, który nie obsługuje nowej platformy docelowej.
+        - Jeśli pakiet obsługuje biblioteki klas przenośnych (PCLs), a projekt zostanie przekierowaniy do kombinacji platform, które nie są już obsługiwane przez pakiet, nie będzie można odwoływać się do pakietu po ponownej instalacji.
+        - Może to być obszar dla pakietów, które są używane bezpośrednio lub dla pakietów zainstalowanych jako zależności. Jest możliwe, aby pakiet był używany bezpośrednio do obsługi nowej platformy docelowej, a jej zależność nie jest.
+        - Jeśli ponowne instalowanie pakietów po przekierowaniu aplikacji spowoduje błędy kompilacji lub wykonania, może być konieczne przywrócenie platformy docelowej lub wyszukanie alternatywnych pakietów, które prawidłowo obsługują nową platformę docelową.
 
-1. **Atrybut requireReinstallation dodane w pliku packages.config po przekierowanie projektu lub uaktualnienia**
-    - Jeśli NuGet wykryje, że pakiety wpłynęła na retargeting i uaktualniania projektu, dodaje `requireReinstallation="true"` atrybutu w `packages.config` do wszystkich wpływ na odwołania do pakietu. W związku z tym każdej kolejnej kompilacji w programie Visual Studio zgłasza ostrzeżenia kompilacji dla tych pakietów, dlatego należy pamiętać zainstalować je ponownie.
+1. **atrybut requireReinstallation został dodany w pliku Packages. config po przekierowaniu lub uaktualnieniu projektu**
+    - Jeśli program NuGet wykryje, że pakiety miały wpływ na przekierowanie lub uaktualnianie projektu, `requireReinstallation="true"` dodaje `packages.config` atrybut do wszystkich odwołań do pakietów, których to dotyczy. Z tego powodu każda kolejna kompilacja w programie Visual Studio zgłasza ostrzeżenia kompilacji dla tych pakietów, aby można było zapamiętać, aby zainstalować je ponownie.
 
 1. **Ponowne instalowanie pakietów z zależnościami**
-    - `Update-Package –reinstall` Ponownie instaluje tę samą wersję z oryginalnego pakietu, ale instaluje najnowszą wersję zależności, chyba że znajdują się ograniczeń określonej wersji. Dzięki temu można zaktualizować tylko zależności zgodnie z potrzebami w celu rozwiązania problemu. Jednakże, jeśli to wycofanie zależność do wcześniejszej wersji, można użyć `Update-Package <dependency_name>` do ponownej instalacji tego jedną zależność bez wywierania wpływu na zależnego pakietu.
-    - `Update-Package –reinstall <packageName> -ignoreDependencies` Ponownie instaluje tę samą wersję z oryginalnego pakietu, ale nie zainstalować zależności. Użyj tego ustawienia podczas aktualizowania zależności pakietów może spowodować w stanie uszkodzenia
+    - `Update-Package –reinstall`zainstaluje ponownie tę samą wersję oryginalnego pakietu, ale instaluje najnowszą wersję zależności, chyba że zostaną podane określone ograniczenia wersji. Pozwala to zaktualizować tylko zależności wymagane do rozwiązania problemu. Jeśli jednak spowoduje to przywrócenie zależności do wcześniejszej wersji, można użyć `Update-Package <dependency_name>` programu, aby ponownie zainstalować tę zależność bez wpływu na pakiet zależny.
+    - `Update-Package –reinstall <packageName> -ignoreDependencies`instaluje ponownie tę samą wersję oryginalnego pakietu, ale nie powoduje ponownej instalacji zależności. Użyj tego elementu, gdy aktualizowanie zależności pakietów może spowodować uszkodzenie stanu
 
-1. **Ponowne instalowanie pakietów, w przypadku wersji zależne**
-    - Jak wyjaśniono powyżej, ponowna instalacja pakietu nie zmienia wersji wszystkie zainstalowane pakiety, które zależą od niej. Jest to możliwe, a następnie tej zależności ponowna instalacja może spowodować przerwanie zależnego pakietu.
+1. **Ponowne instalowanie pakietów, gdy są objęte zależnymi wersjami**
+    - Jak wyjaśniono powyżej, ponowna instalacja pakietu nie zmienia wersji żadnych innych zainstalowanych pakietów, które od niego zależą. Jest możliwe, że ponowne zainstalowanie zależności może spowodować przerwanie pakietu zależnego.

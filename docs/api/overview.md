@@ -1,133 +1,133 @@
 ---
-title: Omówienie pakietu nuget interfejsu API
-description: Interfejs API NuGet jest zestaw punktów końcowych HTTP, które mogą służyć do pobierania pakietów, pobierania metadanych, publikowanie nowych pakietów itp.
+title: Omówienie interfejsu API NuGet
+description: Interfejs API NuGet to zbiór punktów końcowych HTTP, których można użyć do pobierania pakietów, pobierania metadanych, publikowania nowych pakietów itd.
 author: joelverhagen
 ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: bb15b4decef104f1aefe37fd18f3358181a848af
-ms.sourcegitcommit: 2af17c8bb452a538977794bf559cdd78d58f2790
+ms.openlocfilehash: e8e8fdeee4f0765e2409aea261db8217744ae2c7
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58637665"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68316994"
 ---
-# <a name="nuget-api"></a>Interfejs API programu NuGet
+# <a name="nuget-api"></a>Interfejs API narzędzia NuGet
 
-Interfejs API NuGet jest zestaw punktów końcowych HTTP, które można pobrać pakiety, pobrać metadanych, opublikować nowe pakiety i wykonywać większości inne operacje dostępne w oficjalnym klientom programu NuGet.
+Interfejs API NuGet to zbiór punktów końcowych HTTP, których można użyć do pobierania pakietów, pobierania metadanych, publikowania nowych pakietów i wykonywania większości innych operacji dostępnych w oficjalnych klientach programu NuGet.
 
-Ten interfejs API jest używany przez klienta programu NuGet w Visual Studio, nuget.exe oraz interfejsu wiersza polecenia platformy .NET do wykonywania operacji NuGet, takich jak [ `dotnet restore` ](/dotnet/core/tools/dotnet-restore?tabs=netcore2x), wyszukiwanie w interfejsie użytkownika Visual Studio i [ `nuget.exe push` ](../tools/cli-ref-push.md).
+Ten interfejs API jest używany przez klienta NuGet w programie Visual Studio, NuGet. exe i interfejsu wiersza polecenia platformy .NET do wykonywania operacji NuGet [`dotnet restore`](/dotnet/core/tools/dotnet-restore?tabs=netcore2x), takich jak, wyszukiwania w interfejsie użytkownika [`nuget.exe push`](../reference/cli-reference/cli-ref-push.md)programu Visual Studio i.
 
-Należy pamiętać, w niektórych przypadkach nuget.org ma dodatkowe wymagania, które nie są wymuszane przez inne źródła pakietu. Te różnice są opisane przez [protokoły nuget.org](nuget-protocols.md).
+Uwaga w niektórych przypadkach nuget.org ma dodatkowe wymagania, które nie są wymuszane przez inne źródła pakietów. Te różnice są udokumentowane przez [protokoły NuGet.org](nuget-protocols.md).
 
-Wyliczenie proste i pobierania nuget.exe dostępnych wersji, zobacz [tools.json](tools-json.md) punktu końcowego.
+Aby zapoznać się z prostym wyliczeniem i pobieraniem dostępnych wersji programu NuGet. exe, zobacz punkt końcowy [Tools. JSON](tools-json.md) .
 
 ## <a name="service-index"></a>Indeks usług
 
-Punkt wejścia dla interfejsu API to dokument JSON w dobrze znanej lokalizacji. Ten dokument jest nazywany **indeks usług**. Lokalizacja indeks usługi nuget.org znajduje się `https://api.nuget.org/v3/index.json`.
+Punkt wejścia dla interfejsu API jest dokumentem JSON w dobrze znanej lokalizacji. Ten dokument jest nazywany **indeksem usługi**. Lokalizacją indeksu usługi dla nuget.org jest `https://api.nuget.org/v3/index.json`.
 
-Ten dokument JSON zawiera listę *zasobów* które oferują różne funkcje i realizowania różnych przypadków użycia.
+Ten dokument JSON zawiera listę *zasobów* , które zapewniają różne funkcje i spełniają różne przypadki użycia.
 
-Klientów, którzy obsługują interfejs API powinna obsługiwać co najmniej jedną z tych adresów URL indeksu usługi, co oznacza, że jest łączenie ze źródłami odpowiedniego pakietu.
+Klienci, którzy obsługują interfejs API, powinni akceptować co najmniej jeden adres URL indeksu usługi jako sposób łączenia się z odpowiednimi źródłami pakietów.
 
-Aby uzyskać więcej informacji na temat indeks usług zobacz [jego dokumentacja interfejsu API](service-index.md).
+Aby uzyskać więcej informacji na temat indeksu usługi, zobacz [jego dokumentacja interfejsu API](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-Interfejs API jest w wersji 3 NuGet protokołu HTTP. Ten protokół jest czasami określane jako "interfejs API w wersji 3". Te dokumenty referencyjne będzie odnosił się do tej wersji protokołu, po prostu jako "interfejsu API."
+Interfejs API jest w wersji 3 protokołu HTTP programu NuGet. Ten protokół jest czasami określany jako "interfejs API v3". Te dokumenty referencyjne odnoszą się do tej wersji protokołu po prostu jako "interfejs API".
 
-Wersja schematu indeksu usługi jest wskazywane przez `version` właściwość w indeksie usługi. Interfejs API określającemu, że ciąg wersji zawiera numer wersji głównej `3`. Wprowadzaniu zmian niepowodujących niezgodności na schemat indeksu service, wersja pomocnicza ciąg wersji zostanie zwiększona.
+Wersja schematu indeksu usługi jest wskazywana przez `version` właściwość w indeksie usługi. Interfejs API wymaga, aby ciąg wersji miał wersję główną `3`. Ponieważ zmiany niekrytyczne są wprowadzane do schematu indeksu usługi, zostanie zwiększona wersja pomocnicza ciągu wersji.
 
-Starsi klienci (takie jak nuget.exe 2.x) nie obsługują interfejsu API w wersji 3 i obsługują tylko starsze V2 interfejsu API, który nie jest opisane w tym miejscu.
+Starsze komputery klienckie (takie jak NuGet. exe 2. x) nie obsługują interfejsu API v3 i obsługują tylko starszy interfejs API v2, który nie jest udokumentowany w tym miejscu.
 
-Interfejsu API programu NuGet w wersji 3 nosi nazwę jako takie, ponieważ ta usługa jest następcą interfejsu API w wersji 2, który był protokół OData na podstawie implementowany przez oficjalne klienta programu NuGet w wersji 2.x. Interfejs API w wersji 3 pierwsze była obsługiwana przez wersję 3.0 oficjalne klienta programu NuGet i nadal jest najnowsza wersja główna protocol w wersji obsługiwany przez klienta programu NuGet 4.0, a także na. 
+Interfejs API programu NuGet V3 jest nazwany jako taki, ponieważ jest następnikiem interfejsu API v2, który był protokołem opartym na protokole OData wdrożonym przez wersję 2. x oficjalnego klienta NuGet. Interfejs API v3 został po raz pierwszy obsługiwany przez wersję 3,0 oficjalnego klienta NuGet i nadal jest Najnowsza wersja głównego protokołu obsługiwana przez klienta NuGet, 4,0 i w systemie. 
 
-Wprowadzono zmiany protokołu bez podziału do interfejsu API, ponieważ został pierwotnie wydany.
+W interfejsie API wprowadzono nieprzerwane zmiany protokołu, ponieważ zostały one po raz pierwszy wydane.
 
-## <a name="resources-and-schema"></a>Schemat i zasoby
+## <a name="resources-and-schema"></a>Zasoby i schemat
 
-**Indeks usług** zawiera opis różnych zasobów. Bieżący zestaw zasobów, obsługiwane są następujące:
+**Indeks usługi** zawiera opis różnych zasobów. Bieżący zestaw obsługiwanych zasobów jest następujący:
 
 Nazwa zasobu                                                        | Wymagane | Opis
 -------------------------------------------------------------------- | -------- | -----------
-[Wykaz](catalog-resource.md)                                       | Brak       | Pełną dokumentację wszystkich zdarzeń pakietu.
-[PackageBaseAddress](package-base-address-resource.md)               | tak      | Pobierz zawartość pakietu (.nupkg).
-[PackageDetailsUriTemplate](package-details-template-resource.md)    | Brak       | Skonstruuj adres URL, aby uzyskać dostęp do strony sieci web szczegóły pakietu.
-[PackagePublish](package-publish-resource.md)                        | tak      | Wypychanie i usuwanie lub wyrejestrowanie pakietów.
-[RegistrationsBaseUrl](registration-base-url-resource.md)            | tak      | Pobierz metadane pakietów.
-[ReportAbuseUriTemplate](report-abuse-resource.md)                   | Brak       | Skonstruuj adres URL do raportu nadużycie strona sieci web.
-[RepositorySignatures](repository-signatures-resource.md)            | Brak       | Pobierz certyfikaty używane do podpisywania repozytorium.
-[SearchAutocompleteService](search-autocomplete-service-resource.md) | Brak       | Odkryj identyfikatorów pakietu i wersje, podciąg.
-[SearchQueryService](search-query-service-resource.md)               | tak      | Filtr i wyszukiwanie pakietów według słowa kluczowego.
-[SymbolPackagePublish](symbol-package-publish-resource.md)           | Brak       | Wypchnij pakiety symboli.
+[Wykaz](catalog-resource.md)                                       | Znaleziono       | Pełny rekord wszystkich zdarzeń pakietu.
+[PackageBaseAddress](package-base-address-resource.md)               | tak      | Pobierz zawartość pakietu (. nupkg).
+[PackageDetailsUriTemplate](package-details-template-resource.md)    | Znaleziono       | Utwórz adres URL, aby uzyskać dostęp do strony sieci Web szczegółów pakietu.
+[PackagePublish](package-publish-resource.md)                        | tak      | Pakiety wypychania i usuwania (lub z listy).
+[RegistrationsBaseUrl](registration-base-url-resource.md)            | tak      | Pobierz metadane pakietu.
+[ReportAbuseUriTemplate](report-abuse-resource.md)                   | Znaleziono       | Utwórz adres URL, aby uzyskać dostęp do strony sieci Web nadużycia raportu.
+[RepositorySignatures](repository-signatures-resource.md)            | Znaleziono       | Pobierz certyfikaty używane do podpisywania repozytorium.
+[SearchAutocompleteService](search-autocomplete-service-resource.md) | Znaleziono       | Wykryj identyfikatory pakietów i wersje według podciągu.
+[SearchQueryService](search-query-service-resource.md)               | tak      | Filtrowanie i wyszukiwanie pakietów według słowa kluczowego.
+[SymbolPackagePublish](symbol-package-publish-resource.md)           | Znaleziono       | Pakiety symboli wypychania.
 
-Ogólnie rzecz biorąc wszystkie dane nieznakowe zwrócony przez zasobu interfejsu API są serializowane, przy użyciu formatu JSON. Schemat odpowiedzi zwrócony przez każdego zasobu w indeksie usługi zdefiniowano indywidualnie dla tego zasobu. Aby uzyskać więcej informacji na temat poszczególnych zasobów zobacz tematy wymienione powyżej.
+Ogólnie rzecz biorąc, wszystkie dane niebinarne zwrócone przez zasób interfejsu API są serializowane przy użyciu formatu JSON. Schemat odpowiedzi zwracany przez każdy zasób w indeksie usługi jest definiowany indywidualnie dla tego zasobu. Aby uzyskać więcej informacji na temat poszczególnych zasobów, zobacz tematy wymienione powyżej.
 
-W przyszłości w miarę rozwoju protokołu, nowe właściwości mogą być dodawane do odpowiedzi JSON. Dla klienta jako zabezpieczenie przyszłych potrzeb wdrożenia nie należy zakładać, że schemat odpowiedzi jest ostateczne i nie może zawierać dodatkowe dane. Wszystkie właściwości, które nie rozpoznaje wdrożenia mają być ignorowane.
+W przyszłości w miarę rozwoju protokołu nowe właściwości mogą zostać dodane do odpowiedzi JSON. Aby klient mógł działać w przyszłości, implementacja nie powinna zakładać, że schemat odpowiedzi jest końcowy i nie może zawierać dodatkowych danych. Wszystkie właściwości, które nie są rozpoznawane przez implementację, powinny być ignorowane.
 
 > [!Note]
-> Jeśli źródło nie implementuje `SearchAutocompleteService` każde zachowanie automatycznego uzupełniania, które powinny być wyłączone bezpiecznie. Gdy `ReportAbuseUriTemplate` nie zaimplementowaniu oficjalna powróci klienta NuGet do usługi nuget.org Zgłoś nadużycie adresu URL (śledzonych przez [domowych NuGet #4924](https://github.com/NuGet/Home/issues/4924)). Inni klienci mogą wybrać, czy po prostu nie przedstawiają nadużycie adresu URL raportu użytkownika.
+> Gdy źródło nie implementuje `SearchAutocompleteService` żadnego zachowania autouzupełniania, powinno zostać bezpiecznie wyłączone. Gdy `ReportAbuseUriTemplate` ta wartość nie jest zaimplementowana, Oficjalny klient NuGet powraca do programu NuGet. niezgodny z raportem w organizacji adres URL (śledzony przez [NuGet/Home # 4924](https://github.com/NuGet/Home/issues/4924)). Inni klienci mogą zrezygnować z pokazywania adresu URL nadużycia raportu dla użytkownika.
 
-### <a name="undocumented-resources-on-nugetorg"></a>Nieudokumentowany zasobów w witrynie nuget.org
+### <a name="undocumented-resources-on-nugetorg"></a>Zasoby nieudokumentowane w witrynie nuget.org
 
-Indeks usług w wersji 3 w witrynie nuget.org ma zasoby, które nie są opisane powyżej. Istnieje kilka powodów nie dokumentowania zasobu.
+Indeks usługi v3 na nuget.org zawiera zasoby, które nie zostały opisane powyżej. Istnieje kilka przyczyn niedokumentowania zasobu.
 
-Po pierwsze firma Microsoft nie dokumentu zasoby używane jako szczegół implementacji w witrynie nuget.org. `SearchGalleryQueryService` Należy do tej kategorii. [NuGetGallery](https://github.com/NuGet/NuGetGallery) używa tego zasobu, aby delegować niektóre V2 zapytań (OData) do indeksu wyszukiwania, zamiast korzystać z bazy danych. Ten zasób został wprowadzony powodów skalowalność i nie jest przeznaczona do użytku zewnętrznego.
+Najpierw nie dokumentuje zasobów używanych jako szczegóły implementacji NuGet.org. Znajduje `SearchGalleryQueryService` się w tej kategorii. [NuGetGallery](https://github.com/NuGet/NuGetGallery) używa tego zasobu do delegowania niektórych zapytań v2 (OData) do naszego indeksu wyszukiwania zamiast przy użyciu bazy danych. Ten zasób został wprowadzony ze względu na skalowalność i nie jest przeznaczony do użytku zewnętrznego.
 
-Po drugie firma Microsoft nie dokumentu zasoby, które nigdy nie są dostarczane w wersji RTM oficjalne klienta.
-`PackageDisplayMetadataUriTemplate` i `PackageVersionDisplayMetadataUriTemplate` należą do tej kategorii.
+Po drugie nie są udokumentowane zasoby, które nigdy nie zostały dostarczone w wersji RTM oficjalnego klienta.
+`PackageDisplayMetadataUriTemplate`i `PackageVersionDisplayMetadataUriTemplate` należy do tej kategorii.
 
-Po trzecie, nie dokumentów zasoby, które są ściśle powiązane z protokołem V2, który sam jest celowo nieudokumentowane. `LegacyGallery` Zasobów należy do tej kategorii. Ten zasób umożliwia V3 indeks usług wskazywał odpowiedni adres URL źródła V2. Ten zasób obsługuje `nuget.exe list`.
+W trzecim przypadku nie dokumentuje zasobów, które są ściśle powiązane z protokołem v2, który sam jest celowo. Zasób `LegacyGallery` należy do tej kategorii. Ten zasób umożliwia indeksowi usługi v3 wskazanie odpowiedniego źródłowego adresu URL w wersji 2. Ten zasób obsługuje `nuget.exe list`.
 
-Jeśli zasób nie jest opisane w tym miejscu możemy *silnie* zaleca się niepodjęcia zależności na nich. Firma Microsoft może usunąć ani zmienić zachowanie tych nieudokumentowane zasobów, które może spowodować przerwanie implementacji w nieoczekiwany sposób.
+Jeśli zasób nie jest tutaj udokumentowany, *zdecydowanie* zalecamy, aby nie korzystać z nich zależnych. Firma Microsoft może usunąć lub zmienić zachowanie tych nieudokumentowanych zasobów, co może spowodować uszkodzenie implementacji w nieoczekiwany sposób.
 
 ## <a name="timestamps"></a>Sygnatury czasowe
 
-Wszystkie sygnatury czasowe zwracane przez interfejs API to UTC lub w przeciwnym razie są określane za pomocą [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) reprezentacji. 
+Wszystkie sygnatury czasowe zwracane przez interfejs API są UTC lub w przeciwnym razie są określone przy użyciu reprezentacji [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) . 
 
 ## <a name="http-methods"></a>Metody HTTP
 
 zlecenia   | Zastosowanie
 ------ | -----------
-GET    | Wykonuje operację tylko do odczytu, zazwyczaj podczas pobierania danych.
-GŁÓWNY   | Pobiera nagłówki odpowiedzi dla odpowiedniego `GET` żądania.
-PUT    | Tworzy zasób, który nie istnieje, lub jeśli istnieje, aktualizuje je. Niektóre zasoby mogą nie obsługiwać aktualizacji.
-DELETE | Usuwa lub unlists zasobu.
+GET    | Wykonuje operację tylko do odczytu, zazwyczaj pobierając dane.
+MTP   | Pobiera nagłówki odpowiedzi dla odpowiedniego `GET` żądania.
+PUT    | Tworzy zasób, który nie istnieje lub, jeśli istnieje, aktualizuje go. Niektóre zasoby mogą nie obsługiwać aktualizacji.
+DELETE | Usuwa zasób lub go wystawia.
 
 ## <a name="http-status-codes"></a>Kody stanu HTTP
 
 Kod | Opis
 ---- | -----
-200  | Sukces, a treść odpowiedzi.
-201  | Powodzenie i zasób został utworzony.
-202  | Sukces, żądanie zostało przyjęte, ale pewnej pracy może być niekompletna i zakończone asynchronicznie.
-204  | Powodzenie, ale bez treści odpowiedzi.
-301  | Trwałe przekierowanie.
-302  | Przekierowanie tymczasowe.
+200  | Powodzenie i istnieje treść odpowiedzi.
+201  | Zakończyło się pomyślnie, a zasób został utworzony.
+202  | Żądanie zostało zaakceptowane, ale niektóre zadania mogą być nadal niekompletne i wykonane asynchronicznie.
+204  | Sukces, ale nie ma treści odpowiedzi.
+301  | Stałe przekierowanie.
+302  | Tymczasowe przekierowanie.
 400  | Parametry w adresie URL lub w treści żądania są nieprawidłowe.
 401  | Podane poświadczenia są nieprawidłowe.
-403  | Akcja jest niedozwolona, biorąc pod uwagę podanych poświadczeń.
+403  | Akcja nie jest dozwolona przy użyciu podanych poświadczeń.
 404  | Żądany zasób nie istnieje.
-409  | Konflikty żądań z istniejącego zasobu.
-500  | Usługa napotkał nieoczekiwany błąd.
+409  | Żądanie powoduje konflikt z istniejącym zasobem.
+500  | Usługa napotkała nieoczekiwany błąd.
 503  | Usługa jest tymczasowo niedostępna.
 
-Wszelkie `GET` żądania wysłanego do punktu końcowego interfejsu API może zwrócić przekierowania HTTP (301 lub 302). Klienci bez problemu zmieniała powinna obsługiwać takie przekierowuje obserwując `Location` nagłówka i wydawanie kolejnej `GET`. Dokumentację dotyczącą określonych punktów końcowych nie zostanie jawnie wywołać się, których można użyć przekierowania.
+Wszystkie `GET` żądania wysłane do punktu końcowego interfejsu API mogą zwracać Przekierowanie HTTP (301 lub 302). Klienci powinni bezpiecznie obsługiwać takie przekierowania, obserwując `Location` nagłówek i wydając kolejne. `GET` Dokumentacja dotycząca określonych punktów końcowych nie zostanie jawnie wywołana, gdzie można używać przekierowań.
 
-W przypadku został zwrócony kod stanu 500 poziomu klienta można zaimplementować mechanizm ponawiania prób uzasadnione. Oficjalna NuGet klienta ponowne próby trzy razy, gdy wystąpią, kod stanu 500 poziomie dowolnej błąd TCP/DNS.
+W przypadku kodu stanu 500 na poziomie, klient może zaimplementować rozsądny mechanizm ponawiania prób. Oficjalny klient NuGet ponawia próbę trzykrotnie podczas napotkania dowolnego kodu stanu 500 lub błędu TCP/DNS.
 
-## <a name="http-request-headers"></a>Nagłówki żądania HTTP
+## <a name="http-request-headers"></a>Nagłówki żądań HTTP
 
 Nazwa                     | Opis
 ------------------------ | -----------
-X-NuGet-ApiKey           | Wymaganych na potrzeby wypychania i usuwania, zobacz [ `PackagePublish` zasobów](package-publish-resource.md)
-X-NuGet-Client-Version   | **Przestarzałe** i zastąpione przez `X-NuGet-Protocol-Version`
-X-NuGet-Protocol-Version | W niektórych przypadkach wymagane tylko w witrynie nuget.org, zobacz [protokoły nuget.org](NuGet-Protocols.md)
-X-NuGet-Session-Id       | *Opcjonalnie*. NuGet klientów v4.7 na + identyfikowania żądań HTTP, które są częścią tej samej sesji klienta NuGet.
+X-NuGet-ApiKey           | Wymagane do wypychania i usuwania, zobacz [ `PackagePublish` zasób](package-publish-resource.md)
+X-NuGet-Client-Version   | **Przestarzałe** i zastąpione przez`X-NuGet-Protocol-Version`
+X-NuGet-Protocol-Version | Wymagane w niektórych przypadkach tylko na nuget.org, zobacz [NuGet.org Protocols](NuGet-Protocols.md)
+X-NuGet-Session-Id       | *Opcjonalne*. Klienci NuGet v 4.7 + identyfikują żądania HTTP, które są częścią tej samej sesji klienta NuGet.
 
-`X-NuGet-Session-Id` Zawiera pojedynczą wartość dla wszystkich operacji związanych z jednym przywracania w `PackageReference`. W innych sytuacjach, takich jak Autouzupełnianie i `packages.config` przywracania może istnieć kilka różnych sesji identyfikatory z powodu jak kod jest brana pod uwagę.
+Ma jedną wartość dla wszystkich operacji związanych z pojedynczym przywracaniem w `PackageReference`. `X-NuGet-Session-Id` W przypadku innych scenariuszy, takich jak `packages.config` Autouzupełnianie i przywracanie, może istnieć kilka różnych identyfikatorów sesji ze względu na sposób, w jaki kod jest rozliczane.
 
 ## <a name="authentication"></a>Uwierzytelnianie
 
-Uwierzytelnianie jest dużym implementację źródła pakietu do definiowania. Dla nuget.org tylko `PackagePublish` zasób wymaga uwierzytelnienia za pomocą specjalnych nagłówków klucza interfejsu API. Zobacz [ `PackagePublish` zasobów](package-publish-resource.md) Aby uzyskać szczegółowe informacje.
+Uwierzytelnianie jest pozostawiane do wdrożenia źródła pakietu do zdefiniowania. W przypadku NuGet.org tylko `PackagePublish` zasób wymaga uwierzytelniania za pośrednictwem specjalnego nagłówka klucza interfejsu API. Aby uzyskać szczegółowe informacje, zobacz [ `PackagePublish` zasób](package-publish-resource.md) .

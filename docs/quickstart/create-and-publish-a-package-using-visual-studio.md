@@ -1,46 +1,46 @@
 ---
-title: Tworzenie i publikowanie pakietu platformy .NET Standard, za pomocą programu Visual Studio na Windows
-description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet programu .NET Standard za pomocą programu Visual Studio na Windows.
+title: Tworzenie i publikowanie pakietu .NET Standard przy użyciu programu Visual Studio w systemie Windows
+description: Samouczek instruktażowy dotyczący tworzenia i publikowania pakietu .NET Standard NuGet przy użyciu programu Visual Studio w systemie Windows.
 author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: quickstart
-ms.openlocfilehash: d9eccfa373a5a283542fd158e76ba74b1872f3d6
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 912c596ec6efd583fb122d6f56c452ec8b633b85
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67842144"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317701"
 ---
-# <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki start: Tworzenie i publikowanie pakietu NuGet, za pomocą programu Visual Studio (.NET Standard, tylko Windows)
+# <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki start: Tworzenie i publikowanie pakietu NuGet przy użyciu programu Visual Studio (.NET Standard, tylko w systemie Windows)
 
-Jest to prosty proces, aby utworzyć pakiet NuGet z standardowe biblioteki klas .NET w programie Visual Studio na Windows, a następnie opublikować go w witrynie nuget.org, za pomocą narzędzia interfejsu wiersza polecenia.
+Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET Standard w programie Visual Studio w systemie Windows, a następnie opublikowania jej w celu nuget.org za pomocą narzędzia interfejsu wiersza polecenia.
 
 > [!Note]
-> Jeśli używasz programu Visual Studio dla komputerów Mac, zobacz [te informacje](/xamarin/cross-platform/app-fundamentals/nuget-multiplatform-libraries/existing-library) na tworzenie pakietu NuGet, lub użyj [narzędzi interfejsu wiersza polecenia dotnet](create-and-publish-a-package-using-the-dotnet-cli.md).
+> Jeśli używasz Visual Studio dla komputerów Mac, zapoznaj się z [informacjami](/xamarin/cross-platform/app-fundamentals/nuget-multiplatform-libraries/existing-library) na temat tworzenia pakietu NuGet lub Użyj [narzędzi interfejsu wiersza polecenia dotnet](create-and-publish-a-package-using-the-dotnet-cli.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Zainstalować dowolną wersję programu Visual Studio 2017 lub nowszego z [visualstudio.com](https://www.visualstudio.com/) ze wszystkimi. Obciążenie związane z sieci. Po zainstalowaniu obciążenia platformy .NET w programie Visual Studio 2017 i nowsze automatycznie uwzględnia możliwości NuGet.
+1. Zainstaluj dowolną wersję programu Visual Studio 2017 lub nowszą z [VisualStudio.com](https://www.visualstudio.com/) . Obciążenie związane z usługą SIECIową. Program Visual Studio 2017 lub nowszy automatycznie uwzględnia funkcje NuGet podczas instalacji obciążenia .NET.
 
-1. Zainstaluj `dotnet` interfejsu wiersza polecenia.
+1. `dotnet` Zainstaluj interfejs wiersza polecenia.
 
-   Aby uzyskać `dotnet` interfejsu wiersza polecenia, począwszy od programu Visual Studio 2017 `dotnet` interfejsu wiersza polecenia jest automatycznie instalowany z dowolnej platformy .NET Core powiązanych obciążeń. W przeciwnym razie zainstaluj [zestawu .NET Core SDK](https://www.microsoft.com/net/download/) można pobrać `dotnet` interfejsu wiersza polecenia. `dotnet` Interfejsu wiersza polecenia jest wymagany dla projektów .NET Standard, które używają [format SDK stylu](../resources/check-project-format.md) (zestaw SDK atrybutu). Domyślny szablon biblioteki klas w programie Visual Studio 2017 i nowszym, który jest używany w tym artykule, używa atrybutu zestawu SDK.
+   W przypadku `dotnet` interfejsu wiersza polecenia, rozpoczynając od programu Visual Studio 2017, interfejs wiersza polecenia jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core. `dotnet` W przeciwnym razie zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/) , aby uzyskać `dotnet` interfejs wiersza polecenia. Interfejs wiersza polecenia jest wymagany dla projektów .NET Standard, które używają [formatu stylu zestawu SDK](../resources/check-project-format.md) (atrybut zestawu SDK). `dotnet` Domyślny szablon biblioteki klas w programie Visual Studio 2017 lub nowszym, który jest używany w tym artykule, używa atrybutu SDK.
    
    > [!Important]
-   > W tym artykule `dotnet` interfejsu wiersza polecenia jest zalecane. Mimo że można opublikować wszystkie NuGet pakietu przy użyciu `nuget.exe` interfejsu wiersza polecenia, w niektórych krokach w tym artykule są specyficzne dla projektów w stylu zestawu SDK i wiersz polecenia dotnet. Nuget.exe interfejsu wiersza polecenia służy do [projektów bez SDK-style](../resources/check-project-format.md) (zazwyczaj .NET Framework). Jeśli pracujesz z projektem bez stylu zestawu SDK, wykonaj procedury opisane w [tworzenie i publikowanie pakietu platformy .NET Framework (Visual Studio)](create-and-publish-a-package-using-visual-studio-net-framework.md) do tworzenia i publikowania pakietu.
+   > W tym artykule `dotnet` zaleca się używanie interfejsu wiersza polecenia. Chociaż można opublikować dowolny pakiet NuGet przy użyciu `nuget.exe` interfejsu wiersza polecenia, niektóre kroki opisane w tym artykule są specyficzne dla projektów w stylu zestawu SDK i interfejsu wiersza polecenia dotnet. Interfejs wiersza polecenia NuGet. exe jest używany dla [projektów typu non-SDK](../resources/check-project-format.md) (zwykle .NET Framework). Jeśli pracujesz z projektem w stylu innym niż zestaw SDK, postępuj zgodnie z procedurami w temacie [Tworzenie i publikowanie pakietu .NET Framework (Visual Studio)](create-and-publish-a-package-using-visual-studio-net-framework.md) , aby utworzyć i opublikować pakiet.
 
-1. [Zarejestruj, aby utworzyć bezpłatne konto w witrynie nuget.org](https://docs.microsoft.com/en-us/nuget/nuget-org/individual-accounts#add-a-new-individual-account) Jeśli nie masz jeszcze takiego. Tworzenie nowego konta wysyła wiadomość e-mail z potwierdzeniem. Aby można było przekazać pakiet, należy potwierdzić konto.
+1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](https://docs.microsoft.com/en-us/nuget/nuget-org/individual-accounts#add-a-new-individual-account) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
 
-## <a name="create-a-class-library-project"></a>Utwórz projekt biblioteki klas
+## <a name="create-a-class-library-project"></a>Tworzenie projektu biblioteki klas
 
-Można użyć istniejącego projektu Biblioteka klas programu .NET Standard dla kodu, który ma być pakietu lub Utwórz proste w następujący sposób:
+Można użyć istniejącego projektu biblioteki klas .NET Standard dla kodu, który ma zostać spakowany, lub utworzyć prosty jeden w następujący sposób:
 
-1. W programie Visual Studio, wybierz **Plik > Nowy > Projekt**, rozwiń węzeł **Visual C# > .NET Standard** węzła, wybierz szablon "Biblioteka klas (.NET Standard)", nazwij projekt AppLogger i kliknij **OK**.
+1. W programie Visual Studio wybierz pozycję **plik > nowy > projekt**, rozwiń **węzeł C# .NET standard > wizualizacji** , wybierz szablon "Biblioteka klas (.NET standard)", nazwij projekt AppLogger i kliknij przycisk **OK**.
 
-1. Kliknij prawym przyciskiem myszy, wynikowy plik projektu, a następnie wybierz pozycję **kompilacji** się upewnić, że projekt został utworzony prawidłowo. Biblioteka DLL znajduje się w folderze debugowania (lub wydania, jeśli tworzysz tę konfigurację zamiast).
+1. Kliknij prawym przyciskiem myszy plik projektu powstały i wybierz pozycję **kompilacja** , aby upewnić się, że projekt został utworzony prawidłowo. Biblioteka DLL znajduje się w folderze debugowania (lub zwolnij, jeśli zostanie utworzona ta konfiguracja).
 
-W ciągu rzeczywistą pakietu NuGet oczywiście, możesz zaimplementować wiele przydatnych funkcji, które inne osoby mogą tworzyć aplikacje. W tym przewodniku jednak nie będzie pisania żadnego dodatkowego kodu ponieważ biblioteki klas na podstawie tego szablonu jest wystarczające, aby utworzyć pakiet. Jednak jeśli chcesz funkcjonalności kodu dla pakietu, użyj następującego polecenia:
+Oczywiście w rzeczywistym pakiecie NuGet zaimplementowano wiele przydatnych funkcji, z którymi inne mogą tworzyć aplikacje. W tym instruktażu nie można jednak napisać żadnego dodatkowego kodu, ponieważ biblioteka klas z szablonu jest wystarczająca do utworzenia pakietu. Nadal, jeśli chcesz, aby w pakiecie był jakiś kod funkcjonalny, użyj następujących czynności:
 
 ```cs
 namespace AppLogger
@@ -56,41 +56,41 @@ namespace AppLogger
 ```
 
 > [!Tip]
-> Chyba że istnieje powód, aby wybrać inny sposób, .NET Standard jest preferowany cel pakiety NuGet, ponieważ zapewnia zgodność z szeroką gamą wykorzystywanie projektów.
+> O ile nie istnieje powód, aby wybrać inny sposób, .NET Standard jest preferowanym celem dla pakietów NuGet, ponieważ zapewnia zgodność z najszerszym zakresem zużywanych projektów.
 
 ## <a name="configure-package-properties"></a>Konfigurowanie właściwości pakietu
 
-1. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań, a następnie wybierz **właściwości** menu polecenia, a następnie wybierz **pakietu** kartę.
+1. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **Właściwości** menu, a następnie wybierz kartę **pakiet** .
 
-   **Pakietu** karta jest wyświetlana tylko dla projektów zestawu SDK stylu w programie Visual Studio, zwykle .NET Standard lub projekty bibliotek klas .NET Core; Jeśli-SDK stylu projektu (zwykle .NET Framework), albo [ migrować projekt](../reference/migrate-packages-config-to-package-reference.md) i użyj `dotnet` interfejsu wiersza polecenia, lub zobacz [tworzenie i publikowanie pakietu platformy .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) lub zapoznaj się [tworzenie i publikowanie pakietu platformy .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) zamiast tego dla instrukcje krok po kroku.
+   Karta **pakiet** jest wyświetlana tylko dla projektów w stylu zestawu SDK w programie Visual Studio, zwykle .NET Standard lub projektów biblioteki klas platformy .NET Core; Jeśli obiektem docelowym jest projekt o stylu innym niż zestaw SDK (zwykle .NET Framework), należy [przeprowadzić migrację projektu](../reference/migrate-packages-config-to-package-reference.md) i użyć `dotnet` interfejsu wiersza polecenia lub zobaczyć [Tworzenie i publikowanie pakietu .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) lub zobaczyć [, jak utworzyć i opublikować pakiet .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) Zamiast tego instrukcje krok po kroku.
 
     ![Właściwości pakietu NuGet w projekcie programu Visual Studio](media/qs_create-vs-01-package-properties.png)
 
     > [!Note]
-    > Pakiety utworzone do użytku publicznego, należy zwrócić szczególną uwagę na **tagi** właściwości, jak tagi pomóc innym odnaleźć pakietu i zrozumieć, co robi.
+    > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na właściwości **Tagi** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
-1. Nadaj Unikatowy identyfikator pakietu i podaj żądane właściwości. Aby uzyskać opis różnych właściwości, zobacz [odwołanie do pliku .nuspec](../reference/nuspec.md). Wszystkie właściwości, w tym miejscu są przekazywane do `.nuspec` manifest przez program Visual Studio dla projektu.
+1. Nadaj pakietowi unikatowy identyfikator i Wypełnij wszystkie inne żądane właściwości. Opis różnych właściwości można znaleźć w [dokumentacji pliku. nuspec](../reference/nuspec.md). Wszystkie właściwości w tym miejscu należy `.nuspec` do manifestu, który program Visual Studio tworzy dla projektu.
 
     > [!Important]
-    > Musisz nadać pakietu, identyfikator, który jest unikatowa w obrębie nuget.org, lub niezależnie od rodzaju hoście jest używany. W ramach tego przewodnika firma Microsoft zaleca, tym "Próbny" lub "Test" w nazwie późniejszym etapie publikowania uwidocznić pakietu publicznie (choć jest mało prawdopodobne, każda osoba będzie faktycznie używać).
+    > Należy nadać pakietowi identyfikator, który jest unikatowy w obrębie nuget.org lub dowolnego hosta, który jest używany. W tym instruktażu Zalecamy uwzględnienie "przykładowego" lub "testowego" w nazwie, jak w późniejszym kroku publikowania sprawia, że pakiet jest widoczny publicznie (chociaż prawdopodobnie nikt się nie używa).
     >
-    > Jeśli spróbujesz opublikować pakietu o nazwie, która już istnieje, zostanie wyświetlony błąd.
+    > Jeśli spróbujesz opublikować pakiet o nazwie, która już istnieje, zostanie wyświetlony komunikat o błędzie.
 
-1. Opcjonalnie: Aby wyświetlić właściwości bezpośrednio w pliku projektu, kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz **Edytuj AppLogger.csproj**.
+1. Opcjonalne: Aby wyświetlić właściwości bezpośrednio w pliku projektu, kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **Edytuj AppLogger. csproj**.
 
-   Ta opcja jest dostępna tylko dla projektów korzystających z atrybutu zestawu SDK stylu począwszy od programu Visual Studio 2017. W przeciwnym razie kliknij prawym przyciskiem myszy projekt i wybierz **Zwolnij projekt**. Następnie kliknij prawym przyciskiem myszy zwolnionego projektu i wybierz polecenie **Edytuj AppLogger.csproj**.
+   Ta opcja jest dostępna tylko w programie Visual Studio 2017 dla projektów, które używają atrybutu stylu zestawu SDK. W przeciwnym razie kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zwolnij projekt**. Następnie kliknij prawym przyciskiem myszy niezaładowanego projektu i wybierz polecenie **Edytuj AppLogger. csproj**.
 
-## <a name="run-the-pack-command"></a>Uruchom polecenie pakietu
+## <a name="run-the-pack-command"></a>Uruchom pakiet polecenie
 
-1. Ustaw konfigurację **wersji**.
+1. Skonfiguruj konfigurację do **wydania**.
 
-1. Kliknij prawym przyciskiem myszy projekt w **Eksploratora rozwiązań** i wybierz **pakiet** polecenia:
+1. Kliknij prawym przyciskiem myszy projekt w **Eksplorator rozwiązań** i wybierz polecenie **pakiet** :
 
     ![Polecenie pakietu NuGet w menu kontekstowym projektu programu Visual Studio](media/qs_create-vs-02-pack-command.png)
 
-    Jeśli nie widzisz **pakiet** polecenia, Twój projekt prawdopodobnie nie jest to projekt zestawu SDK stylu i trzeba użyć `nuget.exe` interfejsu wiersza polecenia. Albo [migrować projekt](../reference/migrate-packages-config-to-package-reference.md) i użyj `dotnet` interfejsu wiersza polecenia, lub zobacz [tworzenie i publikowanie pakietu platformy .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) zamiast instrukcje krok po kroku.
+    Jeśli nie widzisz polecenia **Pack** , projekt prawdopodobnie nie jest projektem w `nuget.exe` stylu zestawu SDK i musisz użyć interfejsu wiersza polecenia. Aby uzyskać instrukcje krok po kroku `dotnet` , należy [przeprowadzić migrację projektu](../reference/migrate-packages-config-to-package-reference.md) i użyć interfejsu wiersza polecenia lub zobaczyć, [jak utworzyć i opublikować pakiet .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) .
 
-1. Program Visual Studio tworzy projekt i tworzy `.nupkg` pliku. Sprawdź **dane wyjściowe** okno Szczegóły (podobne do następujących), który zawiera ścieżkę do pliku pakietu. Należy zauważyć, że skompilowany zestaw znajduje się w `bin\Release\netstandard2.0` befits jako obiektu docelowego .NET Standard 2.0.
+1. Program Visual Studio kompiluje projekt i tworzy `.nupkg` plik. Przejrzyj okno **dane wyjściowe** , aby uzyskać szczegółowe informacje (podobne do następujących), które zawiera ścieżkę do pliku pakietu. Należy również pamiętać, że skompilowany zestaw jest `bin\Release\netstandard2.0` w befits .NET Standard 2,0.
 
     ```output
     1>------ Build started: Project: AppLogger, Configuration: Release Any CPU ------
@@ -99,49 +99,49 @@ namespace AppLogger
     ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
     ```
 
-### <a name="alternate-option-pack-with-msbuild"></a>Alternatywna opcja: pakiet za pomocą narzędzia MSBuild
+### <a name="alternate-option-pack-with-msbuild"></a>Opcja alternatywna: pakiet z programem MSBuild
 
-Jako alternatywnego za pomocą **pakiet** polecenia menu, NuGet 4.x+ i obsługuje program MSBuild 15.1 + `pack` docelowy, jeśli projekt zawiera dane niezbędne pakietu. Otwórz wiersz polecenia, przejdź do folderu projektu i uruchom następujące polecenie. (Zazwyczaj należy start "Developer wiersz polecenia dla programu Visual Studio" z Start menu, co będzie można skonfigurować wszystkie niezbędne ścieżki programu MSBuild.)
+Jako alternatywa dla użycia polecenia menu **pakiet** NuGet 4. x + i MSBuild 15.1 + obsługuje `pack` obiekt docelowy, gdy projekt zawiera niezbędne dane pakietu. Otwórz wiersz polecenia, przejdź do folderu projektu i uruchom następujące polecenie. (Zazwyczaj chcesz uruchomić "wiersz polecenia dla deweloperów dla programu Visual Studio" z menu Start, ponieważ zostanie on skonfigurowany ze wszystkimi niezbędnymi ścieżkami dla programu MSBuild).
 
 ```cli
 msbuild -t:pack -p:Configuration=Release
 ```
 
-Następnie można znaleźć pakietu w `bin\Release` folderu.
+Pakiet można następnie znaleźć w `bin\Release` folderze.
 
-Aby uzyskać dodatkowe opcje z `msbuild -t:pack`, zobacz [NuGet pakowanie i przywrócić jako elementów docelowych MSBuild](../reference/msbuild-targets.md#pack-target).
+Aby uzyskać dodatkowe opcje `msbuild -t:pack`w programie, zobacz [pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild](../reference/msbuild-targets.md#pack-target).
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu
 
-Po utworzeniu `.nupkg` pliku opublikujesz go w witrynie nuget.org, za pomocą `nuget.exe` interfejsu wiersza polecenia lub `dotnet.exe` interfejsu wiersza polecenia oraz klucza interfejsu API uzyskanych z repozytorium nuget.org.
+`nuget.exe` `dotnet.exe` Po utworzeniu `.nupkg` pliku opublikuj go w usłudze NuGet.org przy użyciu interfejsu wiersza polecenia lub interfejsu wiersza polecenia oraz klucza API uzyskanego z NuGet.org.
 
 [!INCLUDE [publish-notes](includes/publish-notes.md)]
 
-### <a name="acquire-your-api-key"></a>Uzyskiwanie klucza interfejsu API
+### <a name="acquire-your-api-key"></a>Pozyskiwanie klucza interfejsu API
 
 [!INCLUDE [publish-api-key](includes/publish-api-key.md)]
 
-### <a name="publish-with-dotnet-nuget-push-dotnet-cli"></a>Publikowanie za pomocą wypychania nuget dotnet (interfejs wiersza polecenia platformy dotnet)
+### <a name="publish-with-dotnet-nuget-push-dotnet-cli"></a>Publikowanie przy użyciu wypychania NuGet programu dotnet (interfejs wiersza polecenia dotnet)
 
-Ten krok jest zalecaną alternatywą do korzystania z `nuget.exe`.
+Ten krok jest zalecaną alternatywą dla `nuget.exe`korzystania z programu.
 
-Zanim będzie można opublikować pakietu, należy otworzyć wiersz polecenia.
+Przed opublikowaniem pakietu należy najpierw otworzyć wiersz polecenia.
 
 [!INCLUDE [publish-dotnet](includes/publish-dotnet.md)]
 
-### <a name="publish-with-nuget-push-nugetexe-cli"></a>Publikowanie za pomocą wypychania nuget (nuget.exe interfejsu wiersza polecenia)
+### <a name="publish-with-nuget-push-nugetexe-cli"></a>Publikowanie przy użyciu wypychania NuGet (interfejs wiersza polecenia NuGet. exe)
 
-Ten krok jest alternatywa dla użycia `dotnet.exe`.
+Ten krok jest alternatywą dla korzystania `dotnet.exe`z programu.
 
-1. Otwórz wiersz polecenia i zmień folder zawierający `.nupkg` pliku.
+1. Otwórz wiersz polecenia i przejdź do folderu zawierającego `.nupkg` plik.
 
-1. Uruchom następujące polecenie, określając nazwę pakietu (identyfikator unikatowy pakiet) i zastępując wartość klucza swój klucz interfejsu API:
+1. Uruchom następujące polecenie, określając nazwę pakietu (unikatowy identyfikator pakietu) i zastępując kluczową wartość kluczem interfejsu API:
 
     ```cli
     nuget push AppLogger.1.0.0.nupkg qz2jga8pl3dvn2akksyquwcs9ygggg4exypy3bhxy6w6x6 -Source https://api.nuget.org/v3/index.json
     ```
 
-1. nuget.exe wyświetla wyniki proces publikowania:
+1. NuGet. exe wyświetla wyniki procesu publikowania:
 
     ```output
     Pushing AppLogger.1.0.0.nupkg to 'https://www.nuget.org/api/v2/package'...
@@ -150,19 +150,19 @@ Ten krok jest alternatywa dla użycia `dotnet.exe`.
     Your package was pushed.
     ```
 
-Zobacz [wypychania nuget](../tools/cli-ref-push.md).
+Zobacz [wypychanie NuGet](../reference/cli-reference/cli-ref-push.md).
 
-### <a name="publish-errors"></a>Publikowanie błędy
+### <a name="publish-errors"></a>Błędy publikowania
 
 [!INCLUDE [publish-errors](includes/publish-errors.md)]
 
-### <a name="manage-the-published-package"></a>Zarządzanie opublikowany pakiet
+### <a name="manage-the-published-package"></a>Zarządzanie opublikowanym pakietem
 
 [!INCLUDE [publish-manage](includes/publish-manage.md)]
 
-## <a name="adding-a-readme-and-other-files"></a>Dodawanie pliku readme i inne pliki
+## <a name="adding-a-readme-and-other-files"></a>Dodawanie pliku Readme i innych plików
 
-Aby bezpośrednio określić pliki do dołączenia w pakiecie, Edytuj plik projektu i użyj `content` właściwości:
+Aby bezpośrednio określić pliki do dołączenia do pakietu, należy edytować plik projektu i użyć `content` właściwości:
 
 ```xml
 <ItemGroup>
@@ -173,20 +173,20 @@ Aby bezpośrednio określić pliki do dołączenia w pakiecie, Edytuj plik proje
 </ItemGroup>
 ```
 
-To będzie zawierać plik o nazwie `readme.txt` w katalogu głównym pakietu. Visual Studio Wyświetla zawartość tego pliku jako zwykły tekst od razu po zainstalowaniu pakietu bezpośrednio. (Pliki Readme nie są wyświetlane dla pakietów zainstalowanych jako zależności). Na przykład poniżej przedstawiono sposób wyświetlania pliku readme pakietu HtmlAgilityPack:
+Będzie to zawierać plik o nazwie `readme.txt` w katalogu głównym pakietu. Program Visual Studio Wyświetla zawartość tego pliku jako zwykły tekst bezpośrednio po zainstalowaniu pakietu bezpośrednio. (Pliki Readme nie są wyświetlane dla pakietów zainstalowanych jako zależności). Na przykład poniżej przedstawiono sposób wyświetlania pliku Readme dla pakietu HtmlAgilityPack:
 
-![Wyświetlanie pliku readme podczas instalacji pakietu NuGet](../create-packages/media/Create_01-ShowReadme.png)
+![Wyświetlanie pliku Readme dla pakietu NuGet podczas instalacji](../create-packages/media/Create_01-ShowReadme.png)
 
 > [!Note]
-> Jedynie Dodawanie readme.txt w katalogu głównym projektu nie spowoduje jego ona dołączana do pakietu wynikowego.
+> Jedynie dodanie pliku Readme. txt w katalogu głównym projektu nie spowoduje uwzględnienia go w pakiecie wynikowym.
 
 ## <a name="related-topics"></a>Tematy pokrewne
 
-- [Utwórz pakiet](../create-packages/creating-a-package.md)
+- [Tworzenie pakietu](../create-packages/creating-a-package.md)
 - [Publikowanie pakietu](../nuget-org/publish-a-package.md)
-- [Pakiety w wersji wstępnej](../create-packages/Prerelease-Packages.md)
+- [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
-- [Dokumentacja .NET biblioteki standardowej](/dotnet/articles/standard/library)
-- [Eksportowanie do programu .NET Core z .NET Framework](/dotnet/articles/core/porting/index)
+- [Dokumentacja biblioteki .NET Standard](/dotnet/articles/standard/library)
+- [Przenoszenie do programu .NET Core z .NET Framework](/dotnet/articles/core/porting/index)

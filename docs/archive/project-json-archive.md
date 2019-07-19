@@ -1,44 +1,44 @@
 ---
-title: Zawartość archiwum pliku project.json NuGet
-description: Różne bity zawartość pliku project.json usunięcie z innych obszarów dokumentacja programu NuGet.
+title: Zawartość archiwum Project. JSON elementu NuGet
+description: Różne bity zawartości pliku Project. JSON usunięte z innych obszarów dokumentacji programu NuGet.
 author: karann-msft
 ms.author: karann
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: d43f002b740b669de13f5872844ac0df97fc8fdc
-ms.sourcegitcommit: b9a134a6e10d7d8502613f389f7d5f9b9e206ec8
+ms.openlocfilehash: 8d732e87f01c55bde87da0a2e382fd6d509886a3
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467786"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317018"
 ---
-# <a name="projectjson-archive"></a>archiwum pliku Project.JSON
+# <a name="projectjson-archive"></a>Archiwum Project. JSON
 
-`project.json` Format zarządzania wprowadzono nuget 3.x i używane w przypadku niektórych typów projektów. Została ona zakończona wraz z wprowadzeniem PackageReference format, w którym zależności są wymienione bezpośrednio w pliku projektu.
+Format `project.json` zarządzania został wprowadzony z pakietem NuGet 3. x i używany dla niektórych typów projektów. Była przestarzała z wprowadzeniem formatu PackageReference, w którym zależności są wyświetlane bezpośrednio w pliku projektu.
 
-Zobacz też:
+Zobacz również:
 
 - [project.json schema](project-json.md)
-- [wpływ pliku Project.JSON na autorom pakietów](project-json-impact.md)
+- [wpływ pliku Project. JSON na autorów pakietów](project-json-impact.md)
 - [Plik project.json i platforma UWP](project-json-and-uwp.md)
 
 ## <a name="projectjson-management-format"></a>Format zarządzania project.json
 
-*Początkowo w [Przywracanie pakietu](../what-is-nuget.md).*
+*Pierwotnie w ramach [przywracania pakietu](../what-is-nuget.md).*
 
 Na liście formatów zarządzania:
 
-- [`project.json`](project-json.md): *(przestarzałe)* pliku JSON, który utrzymuje listę zależności projektu za pomocą ogólny wykres pakietu skojarzony plik `project.lock.json`. Ten format jest zastąpiona PackageReference.
+- [`project.json`](project-json.md): *(przestarzałe)* plik JSON, który przechowuje listę zależności projektu z ogólnym grafem pakietu w skojarzonym pliku `project.lock.json`. Ten format jest przestarzały na korzyść PackageReference.
 
-## <a name="nuget-restore-on-mono"></a>Przywracanie nuget dla platformy Mono
+## <a name="nuget-restore-on-mono"></a>Przywracanie NuGet przy mono
 
-*Początkowo w [narzędzia klienta programu NuGet zainstalować](../install-nuget-client-tools.md).*
+*Pierwotnie [zainstalowane narzędzia klienta NuGet](../install-nuget-client-tools.md).*
 
-W programach `project.json`.
+Współpracuje z `project.json`.
 
-## <a name="constraining-package-versions-with-restore"></a>Ograniczający wersji pakietu, dzięki funkcji przywracania
+## <a name="constraining-package-versions-with-restore"></a>Ograniczanie wersji pakietów przy użyciu funkcji przywracania
 
-*Początkowo w [Przywracanie pakietu](../consume-packages/package-restore.md#constrain-package-versions-with-restore).*
+*Pierwotnie w ramach [przywracania pakietu](../consume-packages/package-restore.md#constrain-package-versions-with-restore).*
 
 - `project.json`: Określ zakres wersji bezpośrednio z numerem wersji zależności. Na przykład:
 
@@ -46,29 +46,29 @@ W programach `project.json`.
     "Newtonsoft.json": "[6, 7)"
     ```
 
-## <a name="nuget-cli-commands"></a>Polecenia interfejsu wiersza polecenia NuGet
+## <a name="nuget-cli-commands"></a>Poleceń interfejsu wiersza polecenia NuGet
 
-- `nuget install` nie działa z `project.json`.
-- `nuget restore`: z projektami za pomocą `project.json`, generuje `project.lock.json` pliku i `<project>.nuget.props` pliku, jeśli to konieczne. (Oba pliki można pominąć z kontroli źródła.) `<projectPath>` Argument może wskazywać `project.json` plików i ma takie samo zachowanie, co wskazuje `packages.config` lub pliku projektu. W kolejności priorytetu do folderów pakietów `%userprofile%\.nuget\packages` jest przeszukiwany w pierwszej kolejności przy użyciu `project.json`.
-- `nuget update`: W rozwiązaniu Mono to polecenie nie działa z projektami za pomocą `project.json`.
+- `nuget install`nie działa z `project.json`.
+- `nuget restore`: w przypadku projektów `project.json`korzystających z `project.lock.json` programu Program generuje `<project>.nuget.props` plik i plik, w razie konieczności. (Oba pliki można pominąć z kontroli źródła). Argument może wskazywać plik i ma takie samo `packages.config` zachowanie jak wskazanie pliku projektu lub. `project.json` `<projectPath>` W kolejności według priorytetu dla folderów pakietów `%userprofile%\.nuget\packages` program jest wyszukiwany `project.json`jako pierwszy podczas korzystania z programu.
+- `nuget update`: W przypadku mono to polecenie nie działa z projektami przy użyciu `project.json`programu.
 
-## <a name="dependency-resolution-with-packagereference"></a>Rozpoznawanie zależności za pomocą funkcji PackageReference
+## <a name="dependency-resolution-with-packagereference"></a>Rozpoznawanie zależności z PackageReference
 
-*Początkowo w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#dependency-resolution-with-packagereference).*
+*Pierwotnie w ramach [rozpoznawania zależności](../consume-packages/dependency-resolution.md#dependency-resolution-with-packagereference).*
 
-Zachowanie funkcji PackageReference ma również zastosowanie do `project.json`. Przywracanie pakietów NuGet zapisuje wykres zależności w pliku o nazwie `project.lock.json` obok `project.json`.
+Zachowanie PackageReference ma zastosowanie również do `project.json`. Funkcja przywracania NuGet zapisuje wykres zależności w pliku o nazwie `project.lock.json` obok `project.json`.
 
 ## <a name="managing-dependency-assets"></a>Zarządzanie zasobami zależności
 
-*Początkowo w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#managing-dependency-assets).*
+*Pierwotnie w ramach [rozpoznawania zależności](../consume-packages/dependency-resolution.md#managing-dependency-assets).*
 
-Korzystając z `project.json` formatu, można kontrolować, które zasoby z przepływem zależności do najwyższego poziomu projektu. Aby uzyskać więcej informacji, zobacz [project.json](project-json.md).
+W przypadku korzystania `project.json` z formatu można kontrolować, które zasoby z zależności są przepływem do projektu najwyższego poziomu. Aby uzyskać szczegółowe informacje, zobacz plik [Project. JSON](project-json.md).
 
-## <a name="excluding-references"></a>Z wyjątkiem odwołania
+## <a name="excluding-references"></a>Wykluczanie odwołań
 
-*Początkowo w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#excluding-references).*
+*Pierwotnie w ramach [rozpoznawania zależności](../consume-packages/dependency-resolution.md#excluding-references).*
 
-- `project.json`: Dodaj `"exclude" : "all"` powstanie zależności dla PackageC:
+- `project.json`: Dodaj `"exclude" : "all"` w zależności od PackageC:
 
     ```json
     {
@@ -81,31 +81,31 @@ Korzystając z `project.json` formatu, można kontrolować, które zasoby z prze
     }
     ```
 
-## <a name="resolving-incompatible-package-errors"></a>Rozwiązywanie błędów pakietu niezgodne
+## <a name="resolving-incompatible-package-errors"></a>Rozwiązywanie niezgodnych błędów pakietów
 
-*Początkowo w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#resolving-incompatible-package-errors).*
+*Pierwotnie w ramach [rozpoznawania zależności](../consume-packages/dependency-resolution.md#resolving-incompatible-package-errors).*
 
-Dodano sposób Rozwiązywanie błędów:
+Dodano metodę rozwiązywania błędów:
 
-- **Nie zaleca się**: jako rozwiązanie tymczasowe podczas pracy z autorem pakietu, projekty przeznaczone dla `netcore`, `netstandard`, i `netcoreapp` można oznaczają inne struktury jako zgodne, umożliwiając w ten sposób pakiety przeznaczone dla tych inne struktury do użycia. Zobacz [importuje plik project.json](project-json.md#imports) i [docelowej przywracania MSBuild PackageTargetFallback](../reference/msbuild-targets.md#packagetargetfallback). Może to powodować nieoczekiwane zachowania, więc ponownie jest najlepsze rozwiązanie niezgodności pakietu poprzez współdziałanie z autorem pakietu podczas aktualizacji.
+- **Niezalecane**: jako rozwiązanie tymczasowe podczas pracy z autorem pakietu, projekty `netcore`mające znaczenie, `netstandard`i `netcoreapp` mogą wskazywać inne struktury jako zgodne, umożliwiając tym samym stosowanie pakietów docelowych platformy, które mają być używane. Zobacz plik [Project. JSON Imports](project-json.md#imports) i [element docelowy przywracania MSBuild PackageTargetFallback](../reference/msbuild-targets.md#packagetargetfallback). Może to spowodować nieoczekiwane zachowanie, dlatego najlepiej rozwiązać niezgodności pakietów, pracując z autorem pakietu w ramach aktualizacji.
 
 ## <a name="target-frameworks"></a>Platformy docelowe
 
-*Początkowo w [ustalać platformy docelowe](../reference/target-frameworks.md).*
+*Początkowo w [strukturach docelowych](../reference/target-frameworks.md).*
 
-- [project.json](project-json.md): `frameworks` Węzła określa wersje framework skompilowany projekt.
+- [project.json](project-json.md): `frameworks` Węzeł określa wersje architektury, względem których można skompilować projekt.
 
 ## <a name="creating-a-package"></a>Tworzenie pakietu
 
-*Początkowo w [Tworzenie pakietu](../create-packages/creating-a-package.md)*
+*Pierwotnie podczas [tworzenia pakietu](../create-packages/creating-a-package.md)*
 
 ### <a name="setting-a-package-type"></a>Ustawianie typu pakietu
 
-Za pomocą programu .NET Core 1.x, gdy DotnetCliTool pakiet jest zainstalowany, program Visual Studio umieszcza pakiet w `project.json` `tools` węzła zamiast `dependencies` węzła.
+W przypadku programu .NET Core 1. x po zainstalowaniu pakietu DotnetCliTool program Visual Studio umieszcza pakiet w `project.json` `tools` węźle, a nie `dependencies` w węźle.
 
-Typy pakietów są ustawiane w `project.json`.
+Typy pakietów są ustawione w `project.json`.
 
-- `project.json`: Wskazuje typ pakietu we `packOptions.packageType` właściwości json:
+- `project.json`: Wskaż typ pakietu w pliku `packOptions.packageType` json właściwości:
 
     ```json
     {
@@ -116,38 +116,38 @@ Typy pakietów są ustawiane w `project.json`.
     }
     ```
 
-### <a name="adding-targets-and-props-for-msbuild"></a>Dodawanie obiektów docelowych i właściwości dla programu MSBuild
+### <a name="adding-targets-and-props-for-msbuild"></a>Dodawanie elementów docelowych i właściwości dla programu MSBuild
 
-*Początkowo w [utworzyć pakiety NuGet standardowy .NET przy użyciu programu Visual Studio 2015](../guides/create-net-standard-packages-vs2015.md).*
+*Pierwotnie [twórz .NET standard pakiety NuGet przy użyciu programu Visual Studio 2015](../guides/create-net-standard-packages-vs2015.md).*
 
-Korzystając z `project.json`, elementy docelowe nie są dodawane do projektu, ale są udostępniane za pośrednictwem `project.lock.json`.
+W przypadku `project.json`korzystania z obiektów docelowych nie są dodawane do projektu, ale są udostępniane `project.lock.json`za pośrednictwem.
 
 ### <a name="package-versioning"></a>Przechowywanie wersji pakietów
 
-*Początkowo w [przechowywanie wersji pakietów](../reference/package-versioning.md).*
+*Początkowo w [wersji pakietu](../reference/package-versioning.md).*
 
-Korzystając z `project.json` formatowania, NuGet również obsługuje używanie notacji symbolu wieloznacznego, \*, główne, pomocnicze, poprawki i sufiks wersji wstępnej części numeru.
+W przypadku korzystania `project.json` z formatu, pakiet NuGet obsługuje również używanie \*notacji wieloznacznej, w przypadku elementów głównych, pomocniczych, poprawek i prefiksu w wersji wstępnej.
 
-### <a name="nugetconfig-reference"></a>Odwołanie do pliku NuGet.Config
+### <a name="nugetconfig-reference"></a>Dokumentacja NuGet. config
 
-*Początkowo w [odwołanie do pliku NuGet.Config](../reference/nuget-config-file.md).*
+*Pierwotnie w [dokumentacji NuGet. config](../reference/nuget-config-file.md).*
 
-`globalPackagesFolder` ma zastosowanie tylko do `project.json`. (Dodanie uwagi: ma zastosowanie również do odwołania PackageReference.)
+`globalPackagesFolder`ma zastosowanie tylko `project.json`do. (Dodana Uwaga: dotyczy także PackageReference).
 
-### <a name="nuspec-file-reference"></a>Odwołanie do pliku nuspec
+### <a name="nuspec-file-reference"></a>odwołanie do pliku nuspec
 
-*Początkowo w [odwołania nuspec](../reference/nuspec.md).*
+*Pierwotnie w [nuspec Reference](../reference/nuspec.md).*
 
-`<contentFiles>` Element jest używany zamiast `<files>` z `project.json`.
+Element jest używany `<files>` zamiast `project.json`. `<contentFiles>`
 
-### <a name="package-manager-options-control"></a>Kontrolka opcji Menedżera pakietów
+### <a name="package-manager-options-control"></a>Kontrola opcji Menedżera pakietów
 
-*Początkowo w [informacje o interfejsie użytkownika Menedżera pakietów](../tools/package-manager-ui.md).*
+*Pierwotnie w [dokumentacji interfejsu użytkownika Menedżera pakietów](../consume-packages/install-use-packages-visual-studio.md).*
 
-Projekty, za pomocą `project.json` zarządzania format zobrazit pouze **Pokaż okno podglądu** opcji.
+Projekty używające `project.json` formatu zarządzania pokazują tylko opcję **Pokaż podgląd okna** .
 
 ### <a name="visual-studio-templates"></a>Szablony Visual Studio
 
-*Początkowo w [pakietów NuGet w programie Visual Studio szablonach](../visual-studio-extensibility/visual-studio-templates.md).*
+*Początkowo w [pakietach NuGet w szablonach programu Visual Studio](../visual-studio-extensibility/visual-studio-templates.md).*
 
-Najlepsze rozwiązania: szablony nie obejmują `project.json` pliku i nie obejmują lub odwołania do dowolnej zawartości, która zostanie dodany po zainstalowaniu pakietów NuGet.
+Najlepsze rozwiązania: szablony nie zawierają `project.json` plików i nie zawierają odwołań ani zawartości, które zostałyby dodane po zainstalowaniu pakietów NuGet.

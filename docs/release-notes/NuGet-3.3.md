@@ -1,62 +1,62 @@
 ---
-title: Informacje o wersji 3.3 NuGet
-description: Informacje o wersji rozszerzenia NuGet 3.3 tym znanych problemów, poprawki, funkcje dodane i DCRs.
+title: Informacje o wersji narzędzia NuGet 3,3
+description: Informacje o wersji programu NuGet 3,3, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
 author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 5fb840ab6a1329611e9cf417724bcdcd75efe2df
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 482c03a4f6ca39edf317b6ef8d535e79b53d5d16
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546650"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317042"
 ---
-# <a name="nuget-33-release-notes"></a>Informacje o wersji 3.3 NuGet
+# <a name="nuget-33-release-notes"></a>Informacje o wersji narzędzia NuGet 3,3
 
-[Informacje o wersji NuGet 3.2.1](../release-notes/nuget-3.2.1.md) | [NuGet 3.4 RC wersji](../release-notes/nuget-3.4-RC.md)
+[Informacje o wersji pakietu NuGet 3.2.1](../release-notes/nuget-3.2.1.md)[NuGet 3,4-RC — informacje o wersji](../release-notes/nuget-3.4-RC.md)  | 
 
-Rozszerzenia NuGet 3.3 został wydany do 30 listopada 2015 za pomocą znaczna liczba aktualizacje interfejsu użytkownika i funkcje wiersza polecenia, a także zbiór poprawek przydatne dla klientów NuGet.
+Pakiet NuGet 3,3 został wydane 30 listopada 2015 z znaczącą liczbą aktualizacji interfejsu użytkownika i funkcjami wiersza polecenia, a także kolekcją przydatnych poprawek do klientów programu NuGet.
 
 ## <a name="new-features"></a>Nowe funkcje
 
-* Wprowadzono dostawcy poświadczeń, które umożliwiają klientom wiersza polecenia NuGet można było bezproblemowej współpracy z uwierzytelnionego źródła danych. [Instrukcje dotyczące sposobu instalowania programu Visual Studio Team Services poświadczeń dostawcy ](../api/nuget-exe-credential-providers.md) i konfigurowanie pakietu NuGet klientów z niej korzystać, są dostępne w dokumentacji systemu NuGet.
+* Wprowadzono dostawców poświadczeń, dzięki którym klienci wiersza polecenia NuGet mogą bezproblemowo współpracować z uwierzytelnionym źródłem danych. [Instrukcje dotyczące sposobu instalowania dostawcy poświadczeń Visual Studio Team Services](../api/nuget-exe-credential-providers.md) i konfigurowania klientów NuGet do korzystania z nich są dostępne w dokumentach programu NuGet.
 
 ## <a name="new-user-interface-features"></a>Nowe funkcje interfejsu użytkownika
 
-* Oddzielne karty przeglądania, zainstalowane i dostępna aktualizacje
-* Aktualizacje dostępne wskaźniku określającą liczbę pakietów wraz z dostępnymi aktualizacjami
-* Wskaźniki pakietu na liście pakietu, aby wskazać, czy pakiet jest zainstalowany, czy dostępna jest aktualizacja
-* Pobierz liczbę i autor dodane do listy pakietów
-* Najwyższy numer wersji dostępnych i Liczba obecnie zainstalowanej wersji na liście pakietów
-* Przyciski akcji, aby umożliwić szybkiej instalacji aktualizacji i odinstalować z listy pakietów
-* Bardziej zrozumiały przyciski akcji na panelu szczegółów pakietu
+* Oddziel dostępne karty przeglądania, instalacji i aktualizacji
+* Dostępne aktualizacje znaczek wskazujące liczbę pakietów z dostępnymi aktualizacjami
+* Identyfikatory pakietów na liście pakietów wskazujące, czy pakiet jest zainstalowany lub czy jest dostępna aktualizacja
+* Liczba pobrań i autor dodana do listy pakietów
+* Najwyższy dostępny numer wersji i aktualnie zainstalowany numer wersji na liście pakietów
+* Przyciski akcji umożliwiające szybkie instalowanie, aktualizowanie i odinstalowywanie z listy pakietów
+* Wyczyść przyciski akcji na panelu szczegółów pakietu
 * Data aktualizacji pakietu na panelu szczegółów pakietu
-* Konsolidacja panelu w widoku rozwiązania
-* Sortowanie siatki projektów i numery wersji zainstalowanej w widoku rozwiązania
+* Konsolidowanie panelu w widoku rozwiązania
+* Sortowanie siatki projektów i zainstalowanych numerów wersji w widoku rozwiązania
 
 ## <a name="new-command-line-features"></a>Nowe funkcje wiersza polecenia
 
-W tej wersji wprowadziliśmy `add` i `init` polecenia, aby zainicjować folderu repozytoriów, zgodnie z opisem w [odwołania nuget.exe](../tools/nuget-exe-cli-reference.md). Repozytoria, które są zbudowane i z tego folderu struktury będzie [dostarczać korzystny wydajności](http://blog.nuget.org/20150922/Accelerate-Package-Source.html) zgodnie z opisem w naszym blogu.
+W tej wersji wprowadziliśmy `add` polecenia i `init` w celu zainicjowania repozytoriów opartych na folderach zgodnie z opisem w [dokumentacji NuGet. exe](../reference/nuget-exe-cli-reference.md). Repozytoria tworzone i utrzymywane przy użyciu tej struktury folderów [zapewniają znaczący](http://blog.nuget.org/20150922/Accelerate-Package-Source.html) wpływ na wydajność, jak opisano w naszym blogu.
 
-## <a name="contentfiles"></a>Pliki
+## <a name="contentfiles"></a>ContentFiles
 
-Zawartość jest teraz obsługiwana w `project.json` zarządzanych projektów za pomocą nowego `contentFiles` folder i `.nuspec` `contentFiles` element notation.  Ta zawartość można określić więcej bezpośrednio przez autora pakietu w celu interakcji z systemami projektu.  Więcej informacji na temat sposobu konfigurowania pliki w `.nuspec` można znaleźć dokumentu w [.nuspec odwołania](../reference/nuspec.md).
+Zawartość jest teraz obsługiwana w `project.json` projektach zarządzanych za pomocą nowego `contentFiles` folderu i `.nuspec` `contentFiles` notacji elementu.  Ta zawartość może być bardziej bezpośrednio określona przez autora pakietu na potrzeby interakcji z systemami projektu.  Więcej informacji o sposobie konfigurowania contentFiles w `.nuspec` dokumencie znajduje się w [dokumentacji. nuspec](../reference/nuspec.md).
 
-## <a name="nuget-locals-cache-management"></a>Zmienne lokalne NuGet w pamięci podręcznej zarządzania
+## <a name="nuget-locals-cache-management"></a>Zarządzanie pamięcią podręczną pakietów NuGet
 
-Wiersza polecenia NuGet został zaktualizowany w celu uwzględnienia informacji o sposobie zarządzania pamięciach podręcznych na stacji roboczej.  Więcej informacji o poleceniu zmiennych lokalnych jest dostępna w [wiersza polecenia NuGet](../tools/cli-ref-locals.md).
+Wiersz polecenia NuGet został zaktualizowany w celu uwzględnienia informacji o sposobach zarządzania lokalnymi pamięciami podręcznymi na stacji roboczej.  Więcej informacji na temat polecenia locales jest dostępnych w [dokumentacji wiersza polecenia NuGet](../reference/cli-reference/cli-ref-locals.md).
 
-## <a name="fixed-issues"></a>Rozwiązane problemy
+## <a name="fixed-issues"></a>Rozwiązano problemy
 
-**Problemy godne uwagi**
+**Istotne problemy**
 
-* NuGet przywróconej za pomocą wiersza polecenia przywracania pakietów z plikiem rozwiązania na platformy Mono - [1543](https://github.com/NuGet/Home/issues/1543)
+* Przywrócono obsługę wiersza polecenia NuGet w celu przywrócenia pakietów z plikiem rozwiązania na platformie mono- [1543](https://github.com/NuGet/Home/issues/1543)
 
-Pełną listę problemów, które zostały rozwiązane w wersji 3.3 można znaleźć w witrynie GitHub w ramach [3.3 punkt kontrolny](https://github.com/NuGet/Home/issues?q=is%3Aissue+milestone%3A3.3.0+is%3Aclosed).
+Pełną listę problemów, które zostały rozwiązane w wersji 3,3, można znaleźć w witrynie GitHub w punkcie [kontrolnym 3,3](https://github.com/NuGet/Home/issues?q=is%3Aissue+milestone%3A3.3.0+is%3Aclosed).
 
-Lista problemów rozwiązanych w wersji 3.3 wiersza polecenia są rejestrowane w [3.3 wiersza polecenia punkt kontrolny](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A3.3.0-commandline).
+Lista problemów rozwiązanych w wersji wiersza polecenia 3,3 jest rejestrowana w [kontrolce wiersza polecenia 3,3](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A3.3.0-commandline).
 
 ## <a name="known-issues"></a>Znane problemy
 
-W dalszym ciągu śledzenia problemów na naszej liście problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+Będziemy nadal śledzić problemy na naszej liście problemów usługi GitHub, którą można znaleźć w witrynie:[http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

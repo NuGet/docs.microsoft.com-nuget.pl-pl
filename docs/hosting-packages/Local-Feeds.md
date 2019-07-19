@@ -1,29 +1,29 @@
 ---
 title: Konfigurowanie lokalnych źródeł danych NuGet
-description: Jak utworzyć lokalnego źródła danych dla pakietów NuGet za pomocą folderów w sieci lokalnej
+description: Tworzenie lokalnego źródła danych dla pakietów NuGet przy użyciu folderów w sieci lokalnej
 author: karann-msft
 ms.author: karann
 ms.date: 12/06/2017
 ms.topic: conceptual
-ms.openlocfilehash: 91c072c8895ab4267c64fd04deae010ae5af4d37
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 42a5c30c058a9efb35338c1b484235b6ad111bd0
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43545455"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317591"
 ---
-# <a name="local-feeds"></a>Lokalne źródła danych
+# <a name="local-feeds"></a>Lokalne kanały informacyjne
 
-Lokalne źródła danych pakietu NuGet są po prostu hierarchiczne folder struktury w sieci lokalnej (lub nawet tylko Twój własny komputer), w których umieszczane są pakiety. Te źródła danych mogą być następnie używane jako źródła pakietu z innymi operacjami NuGet za pomocą interfejsu wiersza polecenia, interfejs użytkownika Menedżera pakietów i konsoli Menedżera pakietów.
+Lokalne źródła pakietów NuGet są po prostu hierarchicznymi strukturami folderów w sieci lokalnej (lub nawet na swoim komputerze), w których umieszczane są pakiety. Te kanały informacyjne mogą być następnie używane jako źródła pakietów ze wszystkimi innymi operacjami NuGet przy użyciu interfejsu wiersza polecenia, Menedżera pakietów i konsoli Menedżera pakietów.
 
-Aby włączyć źródłowego, Dodaj swoją nazwę ścieżki (takie jak `\\myserver\packages`) do listy źródeł przy użyciu [interfejs użytkownika Menedżera pakietów](../tools/package-manager-ui.md#package-sources) lub [ `nuget sources` ](../tools/cli-ref-sources.md) polecenia.
+Aby włączyć źródło, Dodaj jego nazwę ścieżki (na przykład `\\myserver\packages`) do listy źródeł przy użyciu [`nuget sources`](../reference/cli-reference/cli-ref-sources.md) [interfejsu użytkownika Menedżera pakietów](../consume-packages/install-use-packages-visual-studio.md#package-sources) lub polecenia.
 
 > [!Note]
-> Folder hierarchicznej struktury są obsługiwane w pakiecie NuGet 3.3 +. Starsze wersje pakietu nuget, użyj tylko pojedynczy folder zawierający pakiety, których wydajność jest znacznie niższa niż hierarchicznej struktury.
+> Hierarchiczne struktury folderów są obsługiwane w NuGet 3.3 +. Starsze wersje programu NuGet używają tylko jednego folderu zawierającego pakiety, z których wydajność jest znacznie mniejsza niż struktura hierarchiczna.
 
-## <a name="initializing-and-maintaining-hierarchical-folders"></a>Inicjowanie i utrzymywanie folderów hierarchicznych
+## <a name="initializing-and-maintaining-hierarchical-folders"></a>Inicjowanie i obsługa folderów hierarchicznych
 
-Drzewo hierarchiczne folderów numerów wersji ma następującą strukturę ogólne:
+Hierarchiczne drzewo folderów z wersjami ma następującą strukturę ogólną:
 
     \\myserver\packages
       └─<packageID>
@@ -31,18 +31,18 @@ Drzewo hierarchiczne folderów numerów wersji ma następującą strukturę ogó
           ├─<packageID>.<version>.nupkg
           └─<other files>
 
-NuGet tworzy automatycznie tej struktury, korzystając z [ `nuget add` ](../tools/cli-ref-add.md) polecenie, aby skopiować pakiet do źródła danych:
+Pakiet NuGet automatycznie tworzy tę strukturę przy użyciu [`nuget add`](../reference/cli-reference/cli-ref-add.md) polecenia do kopiowania pakietu do źródła danych:
 
 ```cli
 nuget add new_package.1.0.0.nupkg -source \\myserver\packages
 ```
 
-`nuget add` Polecenia współpracuje z jednym pakiecie w czasie, który może być niewygodne, podczas konfigurowania źródła danych z wielu pakietów.
+`nuget add` Polecenie działa z jednym pakietem na raz, co może być niewygodne podczas konfigurowania kanału informacyjnego z wieloma pakietami.
 
-W takiej sytuacji należy użyć [ `nuget init` ](../tools/cli-ref-init.md) polecenie, aby skopiować wszystkie pakiety w folderze w strumieniowym źródle danych, jak w przypadku uruchomienia `nuget add` na każdym z nich osobno. Na przykład następujące polecenie kopiuje wszystkie pakiety z `c:\packages` do drzewa hierarchicznego na `\\myserver\packages`:
+W takich przypadkach należy użyć [`nuget init`](../reference/cli-reference/cli-ref-init.md) polecenia, aby skopiować wszystkie pakiety w folderze do źródła danych, tak jakby były uruchamiane `nuget add` osobno na każdym z nich. Na przykład następujące polecenie kopiuje wszystkie pakiety z `c:\packages` do `\\myserver\packages`drzewa hierarchicznego:
 
 ```cli
 nuget init c:\packages \\myserver\packages
 ```
 
-Podobnie jak w przypadku `add` polecenia `init` tworzy folder dla każdego pakietu identyfikator folderu numeru wersji, z których każdy zawiera poziomu będący odpowiedniego pakietu.
+Podobnie jak w `add` przypadku polecenia `init` program tworzy folder dla każdego identyfikatora pakietu, z którego każdy zawiera folder numeru wersji, w którym jest odpowiednim pakietem.
