@@ -1,40 +1,40 @@
 ---
-title: Tworzenie i publikowanie pakietu NuGet za pomocą interfejsu wiersza polecenia platformy dotnet
-description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet za pomocą platformy .NET Core interfejsu wiersza polecenia dotnet.
+title: Tworzenie i publikowanie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
+description: Samouczek instruktażowy dotyczący tworzenia i publikowania pakietu NuGet przy użyciu interfejs wiersza polecenia platformy .NET Core, dotnet.
 author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: quickstart
-ms.openlocfilehash: 4e96d9969c8b4570ee69501d6529986f891ea4dc
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 71acc177e0f74f5dad3bd77fa1920af4619cbafb
+ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67842606"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68342543"
 ---
-# <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki start: Tworzenie i publikowanie pakietu (wiersz polecenia dotnet wim)
+# <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki start: Tworzenie i publikowanie pakietu (interfejs wiersza polecenia dotnet)
 
-Jest to prosty proces, aby utworzyć pakiet NuGet z biblioteki klas .NET i opublikuj go w witrynie nuget.org przy użyciu `dotnet` interfejsu wiersza polecenia (CLI).
+Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET i publikowania go do NuGet.org przy użyciu `dotnet` interfejsu wiersza polecenia (CLI).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Zainstaluj [zestawu .NET Core SDK](https://www.microsoft.com/net/download/), która obejmuje `dotnet` interfejsu wiersza polecenia. Począwszy od programu Visual Studio 2017, dotnet, których interfejs wiersza polecenia jest automatycznie instalowany z dowolnej platformy .NET Core powiązanych obciążeń.
+1. Zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/), który obejmuje `dotnet` interfejs wiersza polecenia. Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.
 
-1. [Zarejestruj, aby utworzyć bezpłatne konto w witrynie nuget.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) Jeśli nie masz jeszcze takiego. Tworzenie nowego konta wysyła wiadomość e-mail z potwierdzeniem. Aby można było przekazać pakiet, należy potwierdzić konto.
+1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
 
-## <a name="create-a-class-library-project"></a>Utwórz projekt biblioteki klas
+## <a name="create-a-class-library-project"></a>Tworzenie projektu biblioteki klas
 
-Można użyć istniejącego projektu biblioteki klas platformy .NET dla kodu, który ma być pakietu lub Utwórz proste w następujący sposób:
+Można użyć istniejącego projektu biblioteki klas .NET dla kodu, który ma zostać spakowany, lub utworzyć prosty jeden w następujący sposób:
 
-1. Utwórz folder o nazwie `AppLogger` i zmienić tę sytuację.
+1. Utwórz folder o nazwie `AppLogger` i przejdź do niego.
 
-1. Utwórz projekt za pomocą `dotnet new classlib`, który używa nazwy bieżącego folderu projektu.
+1. Utwórz projekt przy użyciu `dotnet new classlib`, który używa nazwy bieżącego folderu dla projektu.
 
-## <a name="add-package-metadata-to-the-project-file"></a>Dodaj metadane pakietu do pliku projektu
+## <a name="add-package-metadata-to-the-project-file"></a>Dodawanie metadanych pakietu do pliku projektu
 
-Każdy pakiet NuGet musi manifestu, który opisuje zawartość pakietu i jego zależności. W ostatnim pakiecie manifestu to `.nuspec` pliku, który jest generowany na podstawie właściwości metadanych NuGet, które zawierają w pliku projektu.
+Każdy pakiet NuGet wymaga manifestu opisującego zawartość pakietu i jego zależności. W pakiecie końcowym manifest jest `.nuspec` plikiem, który jest generowany na podstawie właściwości metadanych NuGet, które są zawarte w pliku projektu.
 
-1. Otwórz plik projektu (`.csproj`) i dodaj następujące minimalne właściwości wewnątrz istniejącego `<PropertyGroup>` tagu, zmieniając wartości zgodnie z potrzebami:
+1. Otwórz plik projektu (`.csproj`) i Dodaj następujące minimalne właściwości w istniejącym `<PropertyGroup>` tagu, zmieniając wartości zgodnie z potrzebami:
 
     ```xml
     <PackageId>AppLogger</PackageId>
@@ -44,23 +44,23 @@ Każdy pakiet NuGet musi manifestu, który opisuje zawartość pakietu i jego za
     ```
 
     > [!Important]
-    > Przekazać pakiet identyfikator, który jest unikatowa w obrębie nuget.org, lub niezależnie od rodzaju hoście jest używany. W ramach tego przewodnika firma Microsoft zaleca, tym "Próbny" lub "Test" w nazwie późniejszym etapie publikowania uwidocznić pakietu publicznie (choć jest mało prawdopodobne, każda osoba będzie faktycznie używać).
+    > Nadaj pakietowi identyfikator, który jest unikatowy w obrębie nuget.org lub dowolnego hosta, którego używasz. W tym instruktażu Zalecamy uwzględnienie "przykładowego" lub "testowego" w nazwie, jak w późniejszym kroku publikowania sprawia, że pakiet jest widoczny publicznie (chociaż prawdopodobnie nikt się nie używa).
 
-1. Dodaj wszelkie opcjonalne właściwości opisanych na [właściwości metadanych NuGet](/dotnet/core/tools/csproj#nuget-metadata-properties).
+1. Dodaj wszystkie opcjonalne właściwości opisane we [właściwościach metadanych NuGet](/dotnet/core/tools/csproj#nuget-metadata-properties).
 
     > [!Note]
-    > Pakiety utworzone do użytku publicznego, należy zwrócić szczególną uwagę na **PackageTags** właściwości, jak tagi pomóc innym odnaleźć pakietu i zrozumieć, co robi.
+    > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na Właściwość **PackageTags** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
-## <a name="run-the-pack-command"></a>Uruchom polecenie pakietu
+## <a name="run-the-pack-command"></a>Uruchom pakiet polecenie
 
-Tworzenie pakietu NuGet ( `.nupkg` plik) z projektu, uruchom `dotnet pack` polecenia, które sprzyja wytwarzaniu się odpowiednich projektu automatycznie:
+Aby skompilować pakiet NuGet ( `.nupkg` plik) z projektu, `dotnet pack` Uruchom polecenie, które również automatycznie kompiluje projekt:
 
 ```cli
 # Uses the project file in the current folder by default
 dotnet pack
 ```
 
-Dane wyjściowe zawierają ścieżkę do `.nupkg` pliku:
+Dane wyjściowe przedstawiają ścieżkę do `.nupkg` pliku:
 
 ```output
 Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
@@ -71,9 +71,9 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Successfully created package 'D:\proj\AppLoggerNet\AppLogger\bin\Debug\AppLogger.1.0.0.nupkg'.
 ```
 
-### <a name="automatically-generate-package-on-build"></a>Automatyczne generowanie pakietu w kompilacji
+### <a name="automatically-generate-package-on-build"></a>Automatycznie Generuj pakiet podczas kompilacji
 
-Aby automatycznie uruchomić `dotnet pack` po uruchomieniu `dotnet build`, Dodaj następujący wiersz do pliku projektu w ramach `<PropertyGroup>`:
+Aby automatycznie uruchomić `dotnet pack` `dotnet build`program, Dodaj następujący wiersz do pliku projektu w `<PropertyGroup>`:
 
 ```xml
 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -81,31 +81,37 @@ Aby automatycznie uruchomić `dotnet pack` po uruchomieniu `dotnet build`, Dodaj
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu
 
-Po utworzeniu `.nupkg` pliku opublikujesz go w witrynie nuget.org przy użyciu `dotnet nuget push` polecenia wraz z kluczem API uzyskanych z repozytorium nuget.org.
+Po utworzeniu `dotnet nuget push` pliku opublikuj go w usłudze NuGet.org przy użyciu polecenia wraz z kluczem interfejsu API uzyskanym z NuGet.org. `.nupkg`
 
 [!INCLUDE [publish-notes](includes/publish-notes.md)]
 
-### <a name="acquire-your-api-key"></a>Uzyskiwanie klucza interfejsu API
+### <a name="acquire-your-api-key"></a>Pozyskiwanie klucza interfejsu API
 
 [!INCLUDE [publish-api-key](includes/publish-api-key.md)]
 
-### <a name="publish-with-dotnet-nuget-push"></a>Publikowanie za pomocą polecenia dotnet nuget wypychania
+### <a name="publish-with-dotnet-nuget-push"></a>Publikowanie przy użyciu wypychania NuGet programu dotnet
 
 [!INCLUDE [publish-dotnet](includes/publish-dotnet.md)]
 
-### <a name="publish-errors"></a>Publikowanie błędy
+### <a name="publish-errors"></a>Błędy publikowania
 
 [!INCLUDE [publish-errors](includes/publish-errors.md)]
 
-### <a name="manage-the-published-package"></a>Zarządzanie opublikowany pakiet
+### <a name="manage-the-published-package"></a>Zarządzanie opublikowanym pakietem
 
 [!INCLUDE [publish-manage](includes/publish-manage.md)]
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="next-steps"></a>Następne kroki
 
-- [Utwórz pakiet](../create-packages/creating-a-package.md)
+Gratulujemy utworzenia pierwszego pakietu NuGet!
+
+> [!div class="nextstepaction"]
+> [Tworzenie pakietu](../create-packages/creating-a-package-dotnet-cli.md)
+
+Aby poznać więcej informacji o tym, że pakiet NuGet jest oferowany, wybierz poniższe linki.
+
 - [Publikowanie pakietu](../nuget-org/publish-a-package.md)
-- [Pakiety w wersji wstępnej](../create-packages/Prerelease-Packages.md)
+- [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)

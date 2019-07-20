@@ -1,40 +1,41 @@
 ---
-title: Dokumentacja platformy docelowej dla NuGet
-description: Odwołania struktury docelowej NuGet zidentyfikować i izolowania składników zależny od struktury pakietu.
+title: Dokumentacja platform docelowych dla programu NuGet
+description: Platforma docelowa programu NuGet odwołuje się do identyfikowania i izolowania składników zależnych od struktury pakietu.
 author: karann-msft
 ms.author: karann
 ms.date: 12/11/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 0b2a4fe45d0311b7540c73b481d6821357c723af
-ms.sourcegitcommit: 4ea46498aee386b4f592b5ebba4af7f9092ac607
+ms.openlocfilehash: ea9f699b202d7f32648f0ccfeac3ceb1ca325b7e
+ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610651"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68342443"
 ---
 # <a name="target-frameworks"></a>Platformy docelowe
 
-NuGet używa odwołania struktury docelowej w różnych miejscach specjalnie zidentyfikować i izolowania składników zależny od struktury pakietu:
+Pakiet NuGet używa odwołań platformy docelowej w różnych miejscach, aby identyfikować i izolować składniki zależne od platformy:
 
-- [.nuspec manifest](../reference/nuspec.md): Pakiet można określić różne pakiety, które mają zostać uwzględnione w projekcie, w zależności od platformy docelowej projektu.
-- [Nazwa folderu .nupkg](../create-packages/creating-a-package.md#from-a-convention-based-working-directory): Foldery wewnątrz pakietu `lib` folder może być nazwany według platformy docelowej, z których każdy zawiera biblioteki dll i innej zawartości, które są odpowiednie dla tej struktury.
-- [packages.config](../reference/packages-config.md): `targetframework` Atrybut zależności określa wariant pakiet do zainstalowania.
+- [plik projektu](../create-packages/multiple-target-frameworks-project-file.md): W przypadku projektów w stylu zestawu SDK element *. csproj* zawiera odwołania do platformy docelowej.
+- [manifest. nuspec](../reference/nuspec.md): Pakiet może wskazywać różne pakiety do uwzględnienia w projekcie w zależności od platformy docelowej projektu.
+- [Nazwa folderu. nupkg](../create-packages/creating-a-package.md#from-a-convention-based-working-directory): Foldery wewnątrz `lib` folderu pakietu mogą być nazwane zgodnie z platformą docelową, z których każdy zawiera biblioteki DLL i inne treści odpowiednie dla tej struktury.
+- [Packages. config](../reference/packages-config.md): `targetframework` Atrybut zależności określa wariant pakietu do zainstalowania.
 
 > [!Note]
-> Kod źródłowy NuGet klienta, który oblicza w poniższej tabeli znajduje się w następujących lokalizacjach:
-> - Obsługiwane framework nazwy: [FrameworkConstants.cs](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Frameworks/FrameworkConstants.cs)
-> - Pierwszeństwo Framework i mapowania: [DefaultFrameworkMappings.cs](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Frameworks/DefaultFrameworkMappings.cs)
+> Kod źródłowy klienta NuGet, który oblicza poniższe tabele, znajduje się w następujących lokalizacjach:
+> - Obsługiwane nazwy struktur: [FrameworkConstants.cs](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Frameworks/FrameworkConstants.cs)
+> - Pierwszeństwo i mapowanie struktury: [DefaultFrameworkMappings.cs](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Frameworks/DefaultFrameworkMappings.cs)
 
-## <a name="supported-frameworks"></a>Obsługiwane platformy
+## <a name="supported-frameworks"></a>Obsługiwane struktury
 
-Struktura zazwyczaj odwołuje się moniker platformy docelowej krótki lub TFM. W programie .NET Standard jest to również uogólniona do *TxM* umożliwia jedno odwołanie do wielu platform.
+Struktura jest zwykle przywoływana przez krótką moniker struktury docelowej lub TFM. W .NET Standard jest to również uogólnione *TxM* , aby umożliwić pojedyncze odwołanie do wielu struktur.
 
-Klienci NuGet obsługują struktury w poniższej tabeli. Odpowiedniki są wyświetlane w nawiasach kwadratowych []. Należy pamiętać, że niektóre narzędzia, takie jak `dotnet`, mogą używać odmiany canonical krótkich nazw w niektórych plików. Na przykład `dotnet pack` używa `.NETCoreApp2.0` w `.nuspec` pliku zamiast `netcoreapp2.0`. Różne narzędzia klienta programu NuGet prawidłowo obsługiwać te zmiany, ale należy zawsze używać canonical krótkich nazw podczas edytowania plików bezpośrednio.
+Klienci NuGet obsługują struktury w poniższej tabeli. Równoważne są wyświetlane w nawiasach kwadratowych []. Należy zauważyć, że niektóre narzędzia, `dotnet`takie jak, mogą używać odmian kanonicznych TFMs w niektórych plikach. Na przykład używa `dotnet pack` `.NETCoreApp2.0` w`.nuspec`pliku , a nie. `netcoreapp2.0` Różne narzędzia klienta NuGet odpowiednio obsługują te odmiany, ale w przypadku bezpośredniej edycji plików należy zawsze używać kanonicznej TFMs.
 
-| Nazwa | Skrót | TFMs/TxMs |
+| Name (Nazwa) | Jednostek | TFMs/TxMs |
 | ------------- | ------------ | --------- |
-|.NET Framework | NET | net11 |
+|.NET Framework | Waga | net11 |
 | | | net20 |
 | | | net35 |
 | | | net40 |
@@ -49,47 +50,47 @@ Klienci NuGet obsługują struktury w poniższej tabeli. Odpowiedniki są wyświ
 | | | net471 |
 | | | net472 |
 | | | net48 |
-|Microsoft Store (Windows Store) | netcore | netcore [netcore45] |
-| | | netcore45 [win win8] |
-| | | netcore451 [win81] |
+|Microsoft Store (Sklep Windows) | netcore | Rdzeń [netcore45] |
+| | | netcore45 [win, Win8] |
+| | | netcore451 [Win81] |
 | | | netcore50 |
-|MicroFramework platformy .NET | netmf | netmf |
-|Windows | Wygraj | win [win8, netcore45] |
-| | | win8 [netcore45, wygrać] |
-| | | win81 [netcore451] |
-| | | Windows 10 (nieobsługiwane przez system Windows 10 platformy) |
+|Platforma .NET | netmf | netmf |
+|Windows | kupione | win [Win8, netcore45] |
+| | | Win8 [netcore45, win] |
+| | | Win81 [netcore451] |
+| | | Win10 (nieobsługiwane przez platformę Windows 10) |
 Silverlight | sl | sl4 |
 | | | sl5 |
-Windows Phone (SL) | wp | WP [wp7] |
+Windows Phone (SL) | wp | WP [WP7] |
 | | | wp7 |
 | | | wp75 |
 | | | wp8 |
 | | | wp81 |
-Windows Phone (UWP) | | wpa81 |
-Platforma uniwersalna systemu Windows | uap | uap [uap10.0] |
-| | | uap10.0 |
-| | | uap10.0.XXXXX (gdzie 10.0.xxxxx jest docelowej platformy minimalnej wersji aplikacji) |
-.NET Standard | netstandard | netstandard1.0 |
-| | | netstandard1.1 |
-| | | netstandard1.2 |
-| | | netstandard1.3 |
-| | | netstandard1.4 |
-| | | netstandard1.5 |
-| | | netstandard1.6 |
+Windows Phone (platformy UWP) | | wpa81 |
+Platforma uniwersalna systemu Windows | UAP | UAP [UAP 10.0] |
+| | | UAP 10.0 |
+| | | UAP 10.0. xxxxx (gdzie 10.0. xxxxx to minimalna wersja platformy docelowej zużywanej aplikacji) |
+.NET Standard | netstandard | Standard 1.0 |
+| | | Standard 1.1 |
+| | | Standard 1.2 |
+| | | Standard 1.3 |
+| | | Standardowa 1.4 |
+| | | Standard 1.5 |
+| | | Standard 1.6 |
 | | | netstandard2.0 |
-Aplikacja programu .NET core | netcoreapp | netcoreapp1.0 |
-| | | netcoreapp1.1 |
-| | | netcoreapp2.0 |
-| | | netcoreapp2.1 |
-| | | netcoreapp2.2 |
+Aplikacja .NET Core | netcoreapp | netcoreapp 1.0 |
+| | | netcoreapp 1.1 |
+| | | netcoreapp 2.0 |
+| | | netcoreapp 2.1 |
+| | | netcoreapp 2.2 |
 Tizen | Tizen | tizen3 |
 | | | tizen4 |
 
-## <a name="deprecated-frameworks"></a>Przestarzałe struktur
+## <a name="deprecated-frameworks"></a>Przestarzałe struktury
 
-Następujące struktury są przestarzałe. Pakiety przeznaczone dla tych platform należy migrować do wskazanego zamiany.
+Następujące struktury są przestarzałe. Pakiety ukierunkowane na te struktury powinny być migrowane do wskazanych elementów zastępczych.
 
-| Przestarzałe framework | Zastępczy
+| Przestarzałe środowisko | Zastępc
 | --- | ---
 | aspnet50 | netcoreapp |
 | aspnetcore50 |
@@ -106,196 +107,196 @@ Następujące struktury są przestarzałe. Pakiety przeznaczone dla tych platfor
 | dotnet54 | |
 | dotnet55 | |
 | dotnet56 | |
-| winrt | Wygraj |
+| winrt | kupione |
 
 ## <a name="precedence"></a>Pierwszeństwo
 
-Wiele struktur są powiązane z i zgodność ze sobą, ale nie zawsze jest równoważne:
+Niektóre struktury są powiązane z i zgodne ze sobą, ale niekoniecznie są równoważne:
 
-| Framework | Można użyć |
+| Framework | Może używać |
 | -- | --- |
-| uap (Universal Windows Platform) | win81 |
+| UAP (platforma uniwersalna systemu Windows) | win81 |
 | | wpa81 |
 | | netcore50 |
-| Wygraj (Microsoft Store) | winrt |
+| win (Microsoft Store) | winrt |
 | | |
 
-## <a name="net-platform-standard"></a>Platformy NET Standard
+## <a name="net-standard"></a>Standard .NET
 
-[Platformy .NET Standard](https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-platform-standard.md) upraszcza odwołania między struktur zgodne dane binarne, dzięki czemu platforma pojedynczy element docelowy odwoływać się do innych kombinacji. (Aby uzyskać ogólne, zobacz [Elementarz .NET](/dotnet/articles/standard/index).)
+[.NET Standard](/dotnet/standard/net-standard) upraszcza odwołania między strukturami zgodnymi z binarnym, umożliwiając pojedynczej platformie docelowej odwołujące się do kombinacji innych. (Aby uzyskać ogólne, zobacz [.NET](/dotnet/articles/standard/index).)
 
-[NuGet Pobierz najbliższą narzędzia Framework](https://aka.ms/s2m3th) symuluje NuGet używa do wybrania jednej struktury z wielu zasobów framework dostępne w pakiecie oparty na framework projektu.
+[Narzędzie do pobierania najbliższej struktury programu NuGet](https://aka.ms/s2m3th) symuluje, co używa NuGet, aby wybrać jedną strukturę spośród wielu dostępnych zasobów platformy w pakiecie w oparciu o strukturę projektu.
 
-`dotnet` Serii monikerów powinny być używane w rozszerzenia NuGet 3.3 i starszych; `netstandard` składni moniker należy używać w wersji 3.4 i nowszych wersjach.
+Seria monikerów powinna być używana w programie NuGet 3,3 i starszych wersjach `netstandard` . Składnia monikera powinna być używana w wersji 3.4 i nowszych. `dotnet`
 
-## <a name="portable-class-libraries"></a>Biblioteki klas przenośnych
+## <a name="portable-class-libraries"></a>Przenośne biblioteki klas
 
 > [!Warning]
-> **Nie zaleca się PCLs**. Choć PCLs są obsługiwane, autorom pakietów powinien obsługiwać netstandard zamiast tego. Platformy .NET Standard jest unowocześnienia PCLs i reprezentuje możliwości binarnego przenoszenia na wielu platformach za pomocą pojedynczego monikera, która nie jest powiązany z biblioteki statycznej, takich jak *przenośne-+ b + c* monikerów.
+> **PCLs nie są zalecane**. Chociaż PCLs są obsługiwane, autorzy pakietów powinni obsługiwać standard. .NET Platform Standard to ewolucja PCLs i reprezentuje binarny port na wielu platformach przy użyciu jednego monikera, który nie jest powiązany z biblioteką statyczną, taką jak *Portable-a + b +* krótkie monikery.
 
-Aby zdefiniować platformę docelową, która odwołuje się do wielu podrzędnych —-platform docelowych, `portable` użyj słowa kluczowego używana jako prefiks lista platform do którego istnieje odwołanie. Należy unikać sztucznie tym dodatkowe struktury, które nie są bezpośrednio kompilowane przed ponieważ może to prowadzić do niezamierzone efekty uboczne w tych środowisk.
+Aby zdefiniować platformę docelową, która odwołuje się do wielu struktur elementów podrzędnych `portable` -Target, użyj słowa kluczowego używanego do tworzenia prefiksu listy struktur, do których istnieją odwołania. Unikaj sztucznego uwzględniania dodatkowych platform, które nie są bezpośrednio kompilowane, ponieważ może to prowadzić do niezamierzonych efektów ubocznych w tych strukturach.
 
-Dodatkowe struktury zdefiniowany przez strony trzecie zapewniają zgodność z innych środowisk, które są dostępne w ten sposób. Ponadto istnieją numery profilu skrótu, które są dostępne te kombinacje pokrewne struktury jako odwołanie do `Profile#`, ale nie jest to zalecana praktyka do użycia tych numerów, ponieważ zmniejsza to czytelność folderów i `.nuspec`.
+Dodatkowe struktury zdefiniowane przez strony trzecie zapewniają zgodność z innymi środowiskami, które są dostępne w ten sposób. Ponadto istnieją skrócone numery profilów, które są dostępne w odniesieniu do tych kombinacji powiązanych struktur `Profile#`, ale nie jest to zalecane rozwiązanie do używania tych liczb, ponieważ zmniejsza czytelność folderów i `.nuspec`.
 
-| Profil # | Struktury | Imię i nazwisko | .NET Standard |
+| Profilu # | Struktury | Pełna nazwa | .NET Standard |
  --- | --- | --- | ---
  Profile2 | .NETFramework 4.0 | portable-net40+win8+sl4+wp7 |
  | | Windows 8.0 | |
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | WindowsPhone 7.0|
  Profile3 | .NETFramework 4.0 | portable-net40+sl4
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  Profile4 | .NETFramework 4.5 | portable-net45+sl4+win8+wp7
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
  | | WindowsPhone 7.0 |
  Profile5 | .NETFramework 4.0 | portable-net40+win8
  | | Windows 8.0 |
  Profile6 | .NETFramework 4.0.3 | portable-net403+win8
  | | Windows 8.0 |
- Profile7 | .NETFramework 4.5 | portable-net45+win8 | netstandard1.1
+ Profile7 | .NETFramework 4.5 | portable-net45+win8 | Standard 1.1
  | | Windows 8.0 |
  Profile14 | .NETFramework 4.0 | portable-net40+sl5
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  Profile18 | .NETFramework 4.0.3 | portable-net403+sl4
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  Profile19 | .NETFramework 4.0.3 | portable-net403+sl5
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  Profile23 | .NETFramework 4.5 | portable-net45+sl4
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  Profile24 | .NETFramework 4.5 | portable-net45+sl5
- | | Silverlight 5.0 |
- Profile31 | Windows 8.1 | portable-win81+wp81 | netstandard1.0
- | | WindowsPhone 8.1 (SL) |
- Profile32 | Windows 8.1 | portable-win81+wpa81 | netstandard1.2
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | Program Silverlight 5,0 |
+ Profile31 | Windows 8.1 | portable-win81+wp81 | Standard 1.0
+ | | WindowsPhone 8,1 (SL) |
+ Profile32 | Windows 8.1 | portable-win81+wpa81 | Standard 1.2
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile36 | .NETFramework 4.0 | portable-net40+sl4+win8+wp8
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.0 (SL) |
+ | | WindowsPhone 8,0 (SL) |
  Profile37 | .NETFramework 4.0 | portable-net40+sl5+win8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
  Profile41 | .NETFramework 4.0.3 | portable-net403+sl4+win8
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
  Profile42 | .NETFramework 4.0.3 | portable-net403+sl5+win8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- Profile44 | .NETFramework 4.5.1 | portable-net451+win81 | netstandard1.2
+ Profile44 | .NETFramework 4.5.1 | portable-net451+win81 | Standard 1.2
  | | Windows 8.1 |
  Profile46 | .NETFramework 4.5 | portable-net45+sl4+win8
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
  Profile47 | .NETFramework 4.5 | portable-net45+sl5+win8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- Profile49 | .NETFramework 4.5 | portable-net45+wp8 | netstandard1.0
- | | WindowsPhone 8.0 (SL) |
- Profile78 | .NETFramework 4.5 | portable-net45+win8+wp8 | netstandard1.0
+ Profile49 | .NETFramework 4.5 | portable-net45+wp8 | Standard 1.0
+ | | WindowsPhone 8,0 (SL) |
+ Profile78 | .NETFramework 4.5 | portable-net45+win8+wp8 | Standard 1.0
  | | Windows 8.0 |
- | | WindowsPhone 8.0 (SL) |
- Profile84 | WindowsPhone 8.1 | portable-wp81+wpa81 | netstandard1.0
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | WindowsPhone 8,0 (SL) |
+ Profile84 | WindowsPhone 8.1 | portable-wp81+wpa81 | Standard 1.0
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile88 | .NETFramework 4.0 | portable-net40+sl4+win8+wp75
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
  | | WindowsPhone 7.5 |
  Profile92 | .NETFramework 4.0 | portable-net40+win8+wpa81
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile95 | .NETFramework 4.0.3 | portable-net403+sl4+win8+wp7
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
  | | WindowsPhone 7.0 |
  Profile96 | .NETFramework 4.0.3 | portable-net403+sl4+win8+wp75
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
  | | WindowsPhone 7.5 |
  Profile102 | .NETFramework 4.0.3 | portable-net403+win8+wpa81
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile104 | .NETFramework 4.5 | portable-net45+sl4+win8+wp75
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
  | | WindowsPhone 7.5 |
- Profile111 | .NETFramework 4.5 | portable-net45+win8+wpa81 | netstandard1.1
+ Profile111 | .NETFramework 4.5 | portable-net45+win8+wpa81 | Standard 1.1
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile136 | .NETFramework 4.0 | portable-net40+sl5+win8+wp8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.0 (SL) |
+ | | WindowsPhone 8,0 (SL) |
  Profile143 | .NETFramework 4.0.3 | portable-net403+sl4+win8+wp8
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.0 (SL) |
+ | | WindowsPhone 8,0 (SL) |
  Profile147 | .NETFramework 4.0.3 | portable-net403+sl5+win8+wp8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.0 (SL) |
- Profile151 | NETFramework 4.5.1 | portable-net451+win81+wpa81 | netstandard1.2
+ | | WindowsPhone 8,0 (SL) |
+ Profile151 | NETFramework 4.5.1 | portable-net451+win81+wpa81 | Standard 1.2
  | | Windows 8.1 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile154 | .NETFramework 4.5 | portable-net45+sl4+win8+wp8
- | | Silverlight 4.0 |
+ | | Program Silverlight 4,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.0 (SL) |
- Profile157 | Windows 8.1 | portable-win81+wp81+wpa81 | netstandard1.0
- | | WindowsPhone 8.1 (SL) |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | WindowsPhone 8,0 (SL) |
+ Profile157 | Windows 8.1 | portable-win81+wp81+wpa81 | Standard 1.0
+ | | WindowsPhone 8,1 (SL) |
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile158 | .NETFramework 4.5 | portable-net45+sl5+win8+wp8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.0 (SL) |
+ | | WindowsPhone 8,0 (SL) |
  Profile225 | .NETFramework 4.0 | portable-net40+sl5+win8+wpa81
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile240 | .NETFramework 4.0.3 | portable-net403+sl5+win8+wpa8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
+ | | WindowsPhone 8,1 (platformy UWP) |
  Profile255 | .NETFramework 4.5 | portable-net45+sl5+win8+wpa81
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
- Profile259 | .NETFramework 4.5 | portable-net45+win8+wpa81+wp8 | netstandard1.0
+ | | WindowsPhone 8,1 (platformy UWP) |
+ Profile259 | .NETFramework 4.5 | portable-net45+win8+wpa81+wp8 | Standard 1.0
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
- | | WindowsPhone 8.0 (SL) |
+ | | WindowsPhone 8,1 (platformy UWP) |
+ | | WindowsPhone 8,0 (SL) |
  Profile328 | .NETFramework 4.0 | portable-net40+sl5+win8+wpa81+wp8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
- | | WindowsPhone 8.0 (SL) |
+ | | WindowsPhone 8,1 (platformy UWP) |
+ | | WindowsPhone 8,0 (SL) |
  Profile336 | .NETFramework 4.0.3 | portable-net403+sl5+win8+wpa81+wp8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
- | | WindowsPhone 8.0 (SL) |
+ | | WindowsPhone 8,1 (platformy UWP) |
+ | | WindowsPhone 8,0 (SL) |
  Profile344 | .NETFramework 4.5 | portable-net45+sl5+win8+wpa81+wp8
- | | Silverlight 5.0 |
+ | | Program Silverlight 5,0 |
  | | Windows 8.0 |
- | | WindowsPhone 8.1 (systemu Windows UWP) |
- | | WindowsPhone 8.0 (SL) |
+ | | WindowsPhone 8,1 (platformy UWP) |
+ | | WindowsPhone 8,0 (SL) |
 
-Ponadto pakiety NuGet określanie wartości docelowej platformy Xamarin można użyć dodatkowe struktury zdefiniowane w środowisku Xamarin. Zobacz [NuGet tworzenie pakietów dla platformy Xamarin](https://developer.xamarin.com/guides/cross-platform/advanced/nuget/).
+Ponadto pakiety NuGet ukierunkowane na platformę Xamarin mogą używać dodatkowych struktur zdefiniowanych w programie Xamarin. Zobacz [Tworzenie pakietów NuGet dla platformy Xamarin](https://developer.xamarin.com/guides/cross-platform/advanced/nuget/).
 
-| Nazwa | Opis | .NET Standard |
+| Name (Nazwa) | Opis | .NET Standard |
 | --- | --- | ---
-| monoandroid | Obsługa środowiska mono dla systemu operacyjnego Android | netstandard1.4 |
-| monotouch | Mono dla systemu iOS | netstandard1.4 |
-| platformy monomac | Obsługa środowiska mono dla systemu OSX | netstandard1.4 |
-| xamarinios | Obsługa platformy Xamarin dla systemu iOS | netstandard1.4 |
-| xamarinmac | Obsługuje dla platformy Xamarin dla komputerów Mac | netstandard1.4 |
-| xamarinpsthree | Obsługa platformy Xamarin na Playstation 3 | netstandard1.4 |
-| xamarinpsfour | Obsługa platformy Xamarin na Playstation 4 | netstandard1.4 |
-| xamarinpsvita | Obsługa platformy Xamarin na PS Vita | netstandard1.4 |
-| xamarinwatchos | Platforma Xamarin dla całkowicie Obejrzyj systemu operacyjnego | netstandard1.4 |
-| xamarintvos | Xamarin for TV OS | netstandard1.4 |
-| xamarinxboxthreesixty | Xamarin for XBox 360 | netstandard1.4 |
-| xamarinxboxone | Platforma Xamarin dla całkowicie XBox One | netstandard1.4 |
+| monoandroid | Obsługa platformy mono dla systemu Android | Standardowa 1.4 |
+| monotouch | Obsługa platformy mono dla systemu iOS | Standardowa 1.4 |
+| platformy monomac | Obsługa platformy mono dla OSX | Standardowa 1.4 |
+| xamarinios | Obsługa platformy Xamarin dla systemu iOS | Standardowa 1.4 |
+| xamarinmac | Obsługuje program Xamarin dla komputerów Mac | Standardowa 1.4 |
+| xamarinpsthree | Obsługa platformy Xamarin w systemie PlayStation 3 | Standardowa 1.4 |
+| xamarinpsfour | Obsługa platformy Xamarin w systemie PlayStation 4 | Standardowa 1.4 |
+| xamarinpsvita | Obsługa platformy Xamarin na platformie PS Vita | Standardowa 1.4 |
+| xamarinwatchos | System operacyjny dla programu Xamarin for Watch | Standardowa 1.4 |
+| xamarintvos | System operacyjny Xamarin for TV | Standardowa 1.4 |
+| xamarinxboxthreesixty | Platforma Xamarin dla konsoli XBox 360 | Standardowa 1.4 |
+| xamarinxboxone | Platforma Xamarin dla konsoli XBox one | Standardowa 1.4 |
 
 > [!Note]
-> Autor: Stephen wyraźnie utworzył to narzędzie, które wyświetla listę obsługiwanych PCLs, które można znaleźć na jego wpis, [profile Framework na platformie .NET](http://blog.stephencleary.com/2012/05/framework-profiles-in-net.html).
+> Stephen wyczyścił narzędzie, które wyświetla listę obsługiwanych PCLs, które można znaleźć w profilach post, [Framework w programie .NET](http://blog.stephencleary.com/2012/05/framework-profiles-in-net.html).

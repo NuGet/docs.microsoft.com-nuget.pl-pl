@@ -1,53 +1,53 @@
 ---
-title: Przewodnik wprowadzający, aby za pomocą NuGet pakiety za pośrednictwem interfejsu wiersza polecenia platformy dotnet
-description: Samouczek wskazówki dotyczące procesu o instalowaniu i używaniu pakietu NuGet w projekcie platformy .NET Core.
+title: Instalowanie i używanie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
+description: Samouczek instruktażowy dotyczący procesu instalowania i używania pakietu NuGet w projekcie .NET Core.
 author: karann-msft
 ms.author: karann
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.openlocfilehash: 0d637c441cf9f36e8e3e04e47b524b2defecae52
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: ee456fd49675db37fee78dc14502a897d84a2b99
+ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67841671"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68342461"
 ---
-# <a name="quickstart-install-and-use-a-package-using-the-dotnet-cli"></a>Szybki start: Instalowanie i używanie pakietu przy użyciu interfejsu wiersza polecenia platformy dotnet
+# <a name="quickstart-install-and-use-a-package-using-the-dotnet-cli"></a>Szybki start: Instalowanie i używanie pakietu przy użyciu interfejsu wiersza polecenia dotnet
 
-Pakiety NuGet zawierają kodu wielokrotnego użytku, które inni deweloperzy zapewnić dostępność do użycia w projektach. Zobacz [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety zostaną zainstalowane do projektu .NET Core przy użyciu `dotnet add package` polecenia zgodnie z opisem w tym artykule, aby popularnej [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) pakietu.
+Pakiety NuGet zawierają kod wielokrotnego użytku, który inni deweloperzy udostępnili do użycia w projektach. Zobacz, [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są instalowane w projekcie .NET Core za pomocą `dotnet add package` polecenia, zgodnie z opisem w tym artykule dla popularnego pakietu [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) .
 
-Po zakończeniu instalacji można znaleźć pakietu w kodzie za pomocą `using <namespace>` gdzie \<przestrzeni nazw\> jest właściwa dla pakietu jest używany. Następnie można użyć interfejsu API pakietu.
+Po zainstalowaniu programu zapoznaj się z pakietem w `using <namespace>` kodzie \<,\> gdzie przestrzeń nazw jest specyficzna dla używanego pakietu. Następnie można użyć interfejsu API pakietu.
 
 > [!Tip]
-> **Rozpoczynać nuget.org**: Przeglądanie nuget.org znajduje się, jak .NET deweloperzy zazwyczaj znajdują składników ponownego wykorzystania w swoich aplikacjach. Można wyszukać nuget.org bezpośrednio lub znaleźć i zainstalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
+> **Zacznij od NuGet.org**: Nuget.org przeglądania polega na tym, że deweloperzy platformy .NET zwykle wyszukują składniki, których mogą ponownie używać w swoich aplikacjach. Możesz przeszukiwać nuget.org bezpośrednio lub znajdować i instalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Zestawu .NET Core SDK](https://www.microsoft.com/net/download/), która zapewnia `dotnet` narzędzie wiersza polecenia. Począwszy od programu Visual Studio 2017, dotnet, których interfejs wiersza polecenia jest automatycznie instalowany z dowolnej platformy .NET Core powiązanych obciążeń.
+- [Zestaw .NET Core SDK](https://www.microsoft.com/net/download/), która udostępnia `dotnet` narzędzie wiersza polecenia. Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
-Można zainstalować pakietów NuGet do projektu .NET pewnego rodzaju. W tym przewodniku Utwórz prosty projekt konsoli .NET Core w następujący sposób:
+Pakiety NuGet można instalować w projekcie .NET pewnego rodzaju. W tym instruktażu Utwórz prosty projekt konsoli programu .NET Core w następujący sposób:
 
 1. Utwórz folder dla projektu.
 
-1. Utwórz projekt za pomocą następującego polecenia:
+1. Utwórz projekt przy użyciu następującego polecenia:
 
     ```cli
     dotnet new console
     ```
 
-1. Użyj `dotnet run` do przetestowania, czy aplikacja została utworzona prawidłowo.
+1. Użyj `dotnet run` , aby sprawdzić, czy aplikacja została utworzona poprawnie.
 
-## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodaj pakiet Newtonsoft.Json NuGet
+## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodawanie pakietu NuGet Newtonsoft. JSON
 
-1. Użyj następującego polecenia, aby zainstalować `Newtonsoft.json` pakietu:
+1. Użyj następującego polecenia, aby zainstalować `Newtonsoft.json` pakiet:
 
     ```cli
     dotnet add package Newtonsoft.Json
     ```
 
-2. Po zakończeniu działania polecenia Otwórz `.csproj` plik, aby zobaczyć odwołania dodane:
+2. Po zakończeniu wykonywania polecenia Otwórz `.csproj` plik, aby wyświetlić dodane odwołanie:
 
     ```xml
    <ItemGroup>
@@ -55,15 +55,15 @@ Można zainstalować pakietów NuGet do projektu .NET pewnego rodzaju. W tym prz
    </ItemGroup>
     ```
 
-## <a name="use-the-newtonsoftjson-api-in-the-app"></a>Użyj pakietu Newtonsoft.Json interfejsu API w aplikacji
+## <a name="use-the-newtonsoftjson-api-in-the-app"></a>Korzystanie z interfejsu API Newtonsoft. JSON w aplikacji
 
-1. Otwórz `Program.cs` pliku i Dodaj następujący wiersz w górnej części pliku:
+1. `Program.cs` Otwórz plik i Dodaj następujący wiersz w górnej części pliku:
 
     ```cs
     using Newtonsoft.Json;
     ```
 
-1. Dodaj następujący kod przed `class Program` wiersza:
+1. Dodaj następujący kod przed `class Program` wierszem:
 
     ```cs
     public class Account
@@ -74,7 +74,7 @@ Można zainstalować pakietów NuGet do projektu .NET pewnego rodzaju. W tym prz
     }
     ```
 
-1. Zastąp `Main` funkcji następującym kodem:
+1. Zastąp `Main` funkcję następującymi:
 
     ```cs
     static void Main(string[] args)
@@ -91,7 +91,7 @@ Można zainstalować pakietów NuGet do projektu .NET pewnego rodzaju. W tym prz
     }
     ```
 
-1. Kompilowanie i uruchamianie aplikacji za pomocą `dotnet run` polecenia. Dane wyjściowe powinny być reprezentacji JSON `Account` obiektu w kodzie:
+1. Skompiluj i uruchom aplikację za pomocą `dotnet run` polecenia. Dane wyjściowe powinny być reprezentacją `Account` json obiektu w kodzie:
 
     ```output
     {
@@ -101,9 +101,15 @@ Można zainstalować pakietów NuGet do projektu .NET pewnego rodzaju. W tym prz
     }
     ```
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="next-steps"></a>Następne kroki
 
-- [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia platformy dotnet](../consume-packages/install-use-packages-dotnet-cli.md)
-- [Omówienie i przepływ pracy zużycia pakietu](../consume-packages/overview-and-workflow.md)
+Gratulacje z myślą o instalowaniu i używaniu pierwszego pakietu NuGet!
+
+> [!div class="nextstepaction"]
+> [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia dotnet](../consume-packages/install-use-packages-dotnet-cli.md)
+
+Aby poznać więcej informacji o tym, że pakiet NuGet jest oferowany, wybierz poniższe linki.
+
+- [Omówienie użycia pakietu i przepływ pracy](../consume-packages/overview-and-workflow.md)
 - [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md)
-- [Typowe konfiguracje narzędzia NuGet](../consume-packages/configuring-nuget-behavior.md)
+- [Odwołania do pakietu w plikach projektu](../consume-packages/package-references-in-project-files.md)

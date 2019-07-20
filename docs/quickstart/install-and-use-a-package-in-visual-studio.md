@@ -1,16 +1,16 @@
 ---
-title: Przewodnik wprowadzający do używania pakietów NuGet z poziomu programu Visual Studio
+title: Instalowanie i używanie pakietu NuGet w programie Visual Studio
 description: Samouczek instruktażowy dotyczący procesu instalowania i używania pakietu NuGet w projekcie programu Visual Studio.
 author: karann-msft
 ms.author: karann
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.openlocfilehash: deedc251b605b5b58659d3b70e1ca01b19c72865
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 1976d1dc7129da4edb44a1346c6ce74ad3e93b1b
+ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317571"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68342490"
 ---
 # <a name="quickstart-install-and-use-a-package-in-visual-studio"></a>Szybki start: Instalowanie i używanie pakietu w programie Visual Studio
 
@@ -120,8 +120,15 @@ Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać `JsonConvert.Se
 
     ![Dane wyjściowe aplikacji platformy UWP po wybraniu przycisku](media/QS_Use-07-AppEnd.png)
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="next-steps"></a>Następne kroki
+
+Gratulacje z myślą o instalowaniu i używaniu pierwszego pakietu NuGet!
+
+> [!div class="nextstepaction"]
+> [Instalowanie pakietów i zarządzanie nimi za pomocą programu Visual Studio](../consume-packages/install-use-packages-visual-studio.md)
+
+Aby poznać więcej informacji o tym, że pakiet NuGet jest oferowany, wybierz poniższe linki.
 
 - [Omówienie użycia pakietu i przepływ pracy](../consume-packages/overview-and-workflow.md)
 - [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md)
-- [Typowe konfiguracje narzędzia NuGet](../consume-packages/configuring-nuget-behavior.md)
+- [Odwołania do pakietu w plikach projektu](../consume-packages/package-references-in-project-files.md)
