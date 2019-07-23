@@ -1,113 +1,113 @@
 ---
-title: Instalowanie narzędzi klienta programu NuGet
-description: Wskazówki na temat instalowania narzędzi klienckich, dotnet, jak i nuget interfejsów z wierszem polecenia (CLI) i Menedżer pakietów dla programu Visual Studio.
+title: Instalowanie narzędzi klienta NuGet
+description: Wskazówki dotyczące instalowania narzędzi klienckich, poleceń dotnet i NuGet (CLI) oraz Menedżera pakietów dla programu Visual Studio.
 author: karann-msft
 ms.author: karann
 ms.date: 06/20/2019
 ms.topic: quickstart
-ms.openlocfilehash: a4a3f5509792e56c09d18b3da98588d17f4756ee
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 70dd640e34f917bcba99bea6b53652a949a5d00a
+ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67841940"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68342479"
 ---
 # <a name="install-nuget-client-tools"></a>Instalowanie narzędzi klienta programu NuGet
 
-> **Wyszukiwanie, aby zainstalować pakiet? Zobacz [sposobów instalowania pakietów NuGet](consume-packages/overview-and-workflow.md#ways-to-install-a-nuget-package).**
+> **Chcesz zainstalować pakiet? Zobacz [sposoby instalowania pakietów NuGet](consume-packages/overview-and-workflow.md#ways-to-install-a-nuget-package).**
 
-Aby pracować z pakietów NuGet jako konsument pakietu lub twórcą, można użyć narzędzi interfejsu wiersza polecenia (CLI), a także funkcje NuGet w programie Visual Studio. W tym artykule krótko opisano możliwości różnych narzędzi, jak zainstalować, a ich porównawczej [dostępność funkcji](#feature-availability). Aby rozpocząć korzystanie z pakietów za pomocą narzędzia NuGet, zobacz [instalacji i używania pakietu (interfejs wiersza polecenia platformy .NET)](quickstart/install-and-use-a-package-using-the-dotnet-cli.md) i [instalacji i używania pakietu (Visual Studio)](quickstart/install-and-use-a-package-in-visual-studio.md). Aby rozpocząć tworzenie pakietów NuGet, zobacz [tworzenie i publikowanie pakietu platformy .NET Standard (interfejs wiersza polecenia platformy dotnet)](quickstart/create-and-publish-a-package-using-the-dotnet-cli.md) i [tworzenie i publikowanie pakietu platformy .NET Standard (Visual Studio)](quickstart/create-and-publish-a-package-using-visual-studio.md).
+Aby współpracować z pakietem NuGet jako odbiorca lub twórca pakietu, można użyć narzędzi interfejsu wiersza polecenia (CLI), a także funkcji NuGet w programie Visual Studio. W tym artykule krótko opisano możliwości różnych narzędzi, sposób ich instalacji oraz [dostępność funkcji](#feature-availability)porównawczych. Aby rozpocząć korzystanie z narzędzia NuGet do korzystania z pakietów, zobacz [Instalowanie i używanie pakietu (interfejsu wiersza polecenia dotnet)](quickstart/install-and-use-a-package-using-the-dotnet-cli.md) oraz [Instalowanie i używanie pakietu (Visual Studio)](quickstart/install-and-use-a-package-in-visual-studio.md). Aby rozpocząć tworzenie pakietów NuGet, zobacz [Tworzenie i publikowanie pakietu platformy .NET Standard (interfejsu wiersza polecenia dotnet)](quickstart/create-and-publish-a-package-using-the-dotnet-cli.md) oraz [Tworzenie i publikowanie pakietu platformy .NET Standard (Visual Studio)](quickstart/create-and-publish-a-package-using-visual-studio.md).
 
-| Narzędzie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Opis | Pobierz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| Narzędziem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Opis | Przesłać&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |:------------- |:-------------|:-----|
-| [dotnet.exe](#dotnetexe-cli) | Narzędzie interfejsu wiersza polecenia dla biblioteki .NET Core i .NET Standard, a także dla dowolnej [projekt w stylu zestawu SDK](resources/check-project-format.md) taki, który jest przeznaczony dla .NET Framework. Dołączone do zestawu SDK programu .NET Core i zapewnia podstawowe funkcje NuGet na wszystkich platformach. (Począwszy od programu Visual Studio 2017, dotnet, których interfejs wiersza polecenia jest automatycznie instalowany z dowolnej platformy .NET Core dotyczących obciążenia).| [Zestaw SDK dla platformy .NET core](https://www.microsoft.com/net/download/) |
-| [nuget.exe](#nugetexe-cli) | Narzędzie interfejsu wiersza polecenia do bibliotek .NET Framework oraz [projekt w stylu bez zestawu SDK](resources/check-project-format.md) przeznaczone na platformę biblioteki .NET Standard. Zawiera wszystkie funkcje NuGet na Windows elastycznego, wyświetla większości funkcji na komputerach Mac i Linux, w przypadku uruchomienia w Mono. | [nuget.exe](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe) |
-| [Visual Studio](#visual-studio) | W Windows zapewnia możliwości NuGet za pomocą interfejsu użytkownika Menedżera pakietów i konsoli Menedżera pakietów; dołączone. Obciążenia związane z sieci. Na komputerze Mac udostępnia pewne funkcje za pośrednictwem interfejsu użytkownika. W programie Visual Studio Code funkcji NuGet są dostarczane za pośrednictwem rozszerzeń. | [Visual Studio 2017](https://www.visualstudio.com/downloads/) |
+| [dotnet.exe](#dotnetexe-cli) | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla dowolnego [projektu w stylu zestawu SDK](resources/check-project-format.md) , takiego jak jeden obiekt docelowy .NET Framework. Uwzględniono w zestaw .NET Core SDK i udostępnia podstawowe funkcje NuGet na wszystkich platformach. (Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core).| [zestaw .NET Core SDK](https://www.microsoft.com/net/download/) |
+| [nuget.exe](#nugetexe-cli) | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i dla [projektu typu innego niż zestaw SDK](resources/check-project-format.md) , który jest przeznaczony dla .NET Standard bibliotek. Zapewnia wszystkie możliwości programu NuGet w systemie Windows, zapewnia większość funkcji w systemach Mac i Linux, gdy działa w ramach programu mono. | [nuget.exe](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe) |
+| [Visual Studio](#visual-studio) | W systemie Windows program udostępnia funkcje NuGet za pomocą interfejsu użytkownika Menedżera pakietów i konsoli Menedżera pakietów. zawarte w. Obciążenia związane z usługą SIECIową. Na komputerach Mac program udostępnia pewne funkcje za pomocą interfejsu użytkownika. W Visual Studio Code funkcje NuGet są udostępniane za poorednictwem rozszerzeń. | [Visual Studio 2017](https://www.visualstudio.com/downloads/) |
 
-[Interfejsu wiersza polecenia MSBuild](reference/msbuild-targets.md) udostępnia możliwość przywracania i tworzenia pakietów, co przydaje się głównie na serwerach kompilacji. Program MSBuild nie jest narzędziem ogólnego przeznaczenia do pracy z NuGet.
+[Interfejs wiersza polecenia programu MSBuild](reference/msbuild-targets.md) oferuje również możliwość przywracania i tworzenia pakietów, co jest szczególnie przydatne na serwerach kompilacji. MSBuild nie jest narzędziem ogólnego przeznaczenia do pracy z pakietem NuGet.
 
 ## <a name="cli-tools"></a>Narzędzia interfejsu wiersza polecenia
 
-Są dwa narzędzia interfejsu wiersza polecenia NuGet `dotnet.exe` i `nuget.exe`. Zobacz [dostępność funkcji](#feature-availability) dla porównania.
+Dwa narzędzia interfejsu wiersza polecenia NuGet `dotnet.exe` to `nuget.exe`i. Zobacz [dostępność funkcji](#feature-availability) dla porównania.
 
-* Aby skierować je do platformy .NET Core lub .NET Standard, należy użyć wiersz polecenia dotnet. Wiersz polecenia dotnet jest wymagany do formatu projektu zestawu SDK stylu, który używa [atrybutu zestawu SDK](/dotnet/core/tools/csproj#additions).
-* Do obiektu docelowego .NET Framework (tylko projekt się w stylu zestawu SDK), użyj `nuget.exe CLI`. Jeśli projekt jest migracja z `packages.config` do odwołania PackageReference, należy użyć wiersz polecenia dotnet.
+* Aby określić obiekt docelowy .NET Core lub .NET Standard, użyj interfejsu wiersza polecenia dotnet. Interfejs wiersza polecenia dotnet jest wymagany dla formatu projektu w stylu zestawu SDK, który używa [atrybutu SDK](/dotnet/core/tools/csproj#additions).
+* Aby określić docelową .NET Framework (tylko projekt typu non-SDK), `nuget.exe CLI`Użyj. Jeśli projekt jest migrowany z `packages.config` do PackageReference, użyj interfejsu wiersza polecenia dotnet.
 
-### <a name="dotnetexe-cli"></a>DotNet.exe interfejsu wiersza polecenia
+### <a name="dotnetexe-cli"></a>Interfejs wiersza polecenia dotnet. exe
 
-.NET Core 2.0 CLI `dotnet.exe`, działa na wszystkich platformach (Windows, Mac i Linux) i zapewnia podstawowe funkcje NuGet, takich jak instalowanie, przywracania i publikowania pakietów. `dotnet` zapewnia bezpośrednią integrację z pliki projektów .NET Core (takie jak `.csproj`), co jest przydatne w większości scenariuszy. `dotnet` jest również wbudowane bezpośrednio dla każdej platformy i nie wymaga zainstalowania platformy Mono.
+Interfejs wiersza polecenia platformy .NET Core `dotnet.exe`2,0,, działa na wszystkich platformach (Windows, Mac i Linux) i udostępnia podstawowe funkcje NuGet, takie jak instalowanie, przywracanie i publikowanie pakietów. `dotnet`zapewnia bezpośrednią integrację z plikami projektu programu .NET Core `.csproj`(takimi jak), które są przydatne w większości scenariuszy. `dotnet`Program jest również zbudowany bezpośrednio dla każdej platformy i nie wymaga instalacji programu mono.
 
-Instalacja:
+Instalacji
 
-- Na komputerach deweloperów jest instalowany [zestawu .NET Core SDK](https://aka.ms/dotnetcoregs). Począwszy od programu Visual Studio 2017, dotnet, których interfejs wiersza polecenia jest automatycznie instalowany z dowolnej platformy .NET Core powiązanych obciążeń.
-- W przypadku serwerów kompilacji, postępuj zgodnie z instrukcjami [przy użyciu zestawu .NET Core SDK i narzędzi ciągłej integracji](/dotnet/core/tools/using-ci-with-cli).
+- Na komputerach deweloperskich zainstaluj [zestaw .NET Core SDK](https://aka.ms/dotnetcoregs). Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.
+- W przypadku serwerów kompilacji postępuj zgodnie z instrukcjami dotyczącymi [używania zestaw .NET Core SDK i narzędzi w ciągłej integracji](/dotnet/core/tools/using-ci-with-cli).
 
-Aby dowiedzieć się, jak podstawowe polecenia za pomocą interfejsu wiersza polecenia platformy dotnet, zobacz [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia platformy dotnet](consume-packages/install-use-packages-dotnet-cli.md).
+Aby dowiedzieć się, jak używać podstawowych poleceń z interfejsem wiersza polecenia dotnet, zobacz [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia dotnet](consume-packages/install-use-packages-dotnet-cli.md).
 
-### <a name="nugetexe-cli"></a>Interfejs wiersza polecenia nuget.exe
+### <a name="nugetexe-cli"></a>Interfejs wiersza polecenia NuGet. exe
 
-`nuget.exe` Interfejsu wiersza polecenia, `nuget.exe`, to narzędzie wiersza polecenia dla Windows, który zawiera wszystkie funkcje NuGet; może również działać w systemie Mac OSX i Linux przy użyciu [Mono](http://www.mono-project.com/docs/getting-started/install/) z pewnymi ograniczeniami.
+Interfejs wiersza polecenia, jest narzędziowym wierszem poleceń dla systemu Windows, który zapewnia wszystkie możliwości NuGet. można go również uruchomić w systemach Mac OSX i Linux przy użyciu narzędzia [mono](http://www.mono-project.com/docs/getting-started/install/) z pewnymi ograniczeniami `nuget.exe` `nuget.exe` .
 
-Aby dowiedzieć się, jak użyć podstawowa poleceń z `nuget.exe` interfejsu wiersza polecenia, zobacz [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md).
+Aby dowiedzieć się, jak używać podstawowych poleceń `nuget.exe` za pomocą interfejsu wiersza polecenia, zobacz [Instalowanie i używanie pakietów przy użyciu interfejsu wiersza polecenia NuGet. exe](consume-packages/install-use-packages-nuget-cli.md).
 
-Instalacja:
+Instalacji
 
 [!INCLUDE [install-cli](includes/install-cli.md)]
 
 > [!Tip]
-> Użyj `nuget update -self` na Windows, aby zaktualizować istniejące nuget.exe do najnowszej wersji.
+> Użyj `nuget update -self` w systemie Windows, aby zaktualizować istniejący plik NuGet. exe do najnowszej wersji.
 
 > [!Note]
-> Najnowsze zalecane, interfejs wiersza polecenia NuGet jest zawsze dostępne pod adresem `https://dist.nuget.org/win-x86-commandline/latest/nuget.exe`. Dla celów zgodności ze starszymi systemami ciągłej integracji, poprzedniego adresu URL `https://nuget.org/nuget.exe` udostępnia obecnie [przestarzałe 2.8.6 narzędzie interfejsu wiersza polecenia](https://github.com/NuGet/NuGetGallery/issues/5381).
+> Najnowsza zalecana wersja interfejsu wiersza polecenia NuGet jest zawsze `https://dist.nuget.org/win-x86-commandline/latest/nuget.exe`dostępna pod adresem. W celu zapewnienia zgodności ze starszymi systemami ciągłej integracji, poprzedni `https://nuget.org/nuget.exe` adres URL, obecnie zapewnia [przestarzałe narzędzie interfejsu wiersza polecenia 2.8.6](https://github.com/NuGet/NuGetGallery/issues/5381).
 
 ## <a name="visual-studio"></a>Visual Studio
 
-- Visual Studio Code: NuGet możliwości są dostępne za pośrednictwem rozszerzeń z witryny marketplace lub użyj `dotnet.exe` lub `nuget.exe` narzędzi interfejsu wiersza polecenia.
+- Visual Studio Code: Funkcje NuGet są dostępne za pomocą rozszerzeń witryny Marketplace lub `dotnet.exe` `nuget.exe` narzędzi interfejsu wiersza polecenia.
 
-- Visual Studio dla komputerów Mac: pewnych funkcji NuGet są wbudowane bezpośrednio. Zobacz [pakietu w tym NuGet w projekcie](/visualstudio/mac/nuget-walkthrough) przewodnik. W przypadku innych funkcji, użyj `dotnet.exe` lub `nuget.exe` narzędzi interfejsu wiersza polecenia.
+- Visual Studio dla komputerów Mac: Niektóre funkcje NuGet są wbudowane bezpośrednio. Aby zapoznać się z przewodnikiem, zobacz Dołączanie [pakietu NuGet do projektu](/visualstudio/mac/nuget-walkthrough) . Aby uzyskać inne możliwości, użyj `dotnet.exe` narzędzi `nuget.exe` lub interfejsu wiersza polecenia.
 
-- Visual Studio on Windows: **Menedżera pakietów NuGet** jest dołączone do programu Visual Studio 2012 i nowszych wersjach. Program Visual Studio udostępnia [interfejs użytkownika Menedżera pakietów](tools/package-manager-ui.md) i [Konsola Menedżera pakietów](tools/package-manager-console.md), za pomocą którego można uruchomić większość operacji NuGet.
-  - Począwszy od programu Visual Studio 2017, Instalator zawiera Menedżer pakietów NuGet za pomocą dowolnego obciążenia, która używa .NET. Aby zainstalować niezależnie lub sprawdź, czy jest zainstalowany Menedżer pakietów, uruchom Instalatora programu Visual Studio i zaznacz opcję w obszarze **poszczególne składniki > Kod Narzędzia > Menedżer pakietów NuGet**.
-  - Interfejs użytkownika Menedżera pakietów i konsoli są unikatowe dla programu Visual Studio w Windows. Nie są obecnie dostępne w programie Visual Studio dla komputerów Mac.
-  - Narzędzie interfejsu wiersza polecenia jest wymagany do obsługi funkcji NuGet w środowisku IDE. Można użyć dowolnego `dotnet` interfejsu wiersza polecenia lub `nuget.exe` interfejsu wiersza polecenia. `dotnet` Interfejsu wiersza polecenia został zainstalowany przy użyciu niektórych obciążeń programu Visual Studio, takich jak .NET Core. `nuget.exe` Interfejsu wiersza polecenia musi być zainstalowany oddzielnie, zgodnie z wcześniejszym opisem.
-  - Konsola Menedżera pakietów polecenia działają tylko w programie Visual Studio na Windows, a nie przeszkadzają inne środowiska PowerShell.
-  - Dla programu Visual Studio 2010 i starszych należy zainstalować rozszerzenie "NuGet pakietu Menedżera for Visual Studio".
-  - Rozszerzenia NuGet dla programu Visual Studio 2013 i 2015 można również pobrać z [ https://dist.nuget.org/index.html ](https://dist.nuget.org/index.html).
-  - Jeśli chcesz nadchodzące funkcje NuGet w wersji zapoznawczej, należy zainstalować [Visual Studio 2017 w wersji zapoznawczej](https://www.visualstudio.com/vs/preview/), która działa side-by-side przy użyciu stabilnej wersji programu Visual Studio. Aby zgłosić problemy lub Podziel się pomysłami dotyczącym wersji zapoznawczych, otwórz problem w [repozytorium NuGet GitHub](https://github.com/Nuget/Home/issues).
+- Program Visual Studio w systemie Windows: **Menedżer pakietów NuGet** jest dołączony do programu Visual Studio 2012 lub nowszego. Program Visual Studio udostępnia [interfejs użytkownika Menedżera pakietów](consume-packages/install-use-packages-visual-studio.md) i [konsolę Menedżera pakietów](consume-packages/install-use-packages-powershell.md), za pomocą którego można uruchamiać większość operacji NuGet.
+  - Począwszy od programu Visual Studio 2017, Instalator zawiera Menedżera pakietów NuGet z dowolnym obciążeniem, które wykorzystuje platformę .NET. Aby przeprowadzić instalację osobno lub sprawdzić, czy Menedżer pakietów jest zainstalowany, uruchom Instalatora programu Visual Studio i zaznacz opcję w obszarze **poszczególne składniki > narzędzia kodu > Menedżera pakietów NuGet**.
+  - Interfejs użytkownika i konsola Menedżera pakietów są unikatowe dla programu Visual Studio w systemie Windows. Nie są one obecnie dostępne w Visual Studio dla komputerów Mac.
+  - Narzędzie interfejsu wiersza polecenia jest wymagane do obsługi funkcji NuGet w środowisku IDE. Możesz użyć `dotnet` interfejsu wiersza polecenia lub `nuget.exe` interfejsu wiersza polecenia. `dotnet` Interfejs wiersza polecenia jest instalowany z niektórymi obciążeniami programu Visual Studio, takimi jak .NET Core. `nuget.exe` Interfejs wiersza polecenia należy zainstalować osobno zgodnie z wcześniejszym opisem.
+  - Polecenia konsoli Menedżera pakietów działają tylko w programie Visual Studio w systemie Windows i nie działają w innych środowiskach programu PowerShell.
+  - W przypadku programu Visual Studio 2010 i starszych wersji Zainstaluj rozszerzenie "NuGet Package Manager for Visual Studio".
+  - Rozszerzenia NuGet dla Visual Studio 2013 i 2015 można także pobrać z programu [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html).
+  - Jeśli chcesz przejrzeć nadchodzące funkcje NuGet, zainstaluj [program Visual studio 2017 Preview](https://www.visualstudio.com/vs/preview/), który działa obok siebie w stabilnych wersjach programu Visual Studio. Aby zgłosić problemy lub udostępnić pomysły dotyczące wersji zapoznawczych, Otwórz problem w [repozytorium GitHub programu NuGet](https://github.com/Nuget/Home/issues).
 
 ## <a name="feature-availability"></a>Dostępność funkcji
 
-| Funkcja | Wiersz polecenia DotNet | nuget interfejsu wiersza polecenia platformy (Windows) | nuget interfejsu wiersza polecenia (Mono) | Visual Studio (Windows) | Visual Studio for Mac |
+| Funkcja | Interfejs wiersza polecenia dotnet | Interfejs wiersza polecenia NuGet (Windows) | Interfejs wiersza polecenia NuGet (mono) | Visual Studio (Windows) | Visual Studio for Mac |
 | --- | --- | --- | --- | --- | --- |
 | Wyszukaj pakiety |  | &#10004; | &#10004; | &#10004; | &#10004; |
 | Instalowanie/Odinstalowywanie pakietów | &#10004; | &#10004;(1) | &#10004; | &#10004; | &#10004; |
-| Aktualizowanie pakietów | &#10004; | &#10004; | | &#10004; | &#10004; |
-| Przywracanie pakietów | &#10004; | &#10004; | &#10004;(2) | &#10004; | &#10004; |
+| Pakiety aktualizacji | &#10004; | &#10004; | | &#10004; | &#10004; |
+| Przywróć pakiety | &#10004; | &#10004; | &#10004;(2) | &#10004; | &#10004; |
 | Zarządzanie źródłami pakietów (źródła) | | &#10004; | &#10004; | &#10004; | &#10004; |
-| Zarządzanie pakietami na źródło danych | &#10004; | &#10004; | &#10004; | | |
-| Zestaw kluczy interfejsu API dla źródeł danych | | &#10004; | &#10004; | | |
-| Utwórz packages(3) | &#10004; | &#10004; | &#10004;(4) | &#10004; | |
+| Zarządzanie pakietami w kanale informacyjnym | &#10004; | &#10004; | &#10004; | | |
+| Ustawianie kluczy interfejsu API dla kanałów informacyjnych | | &#10004; | &#10004; | | |
+| Utwórz pakiety (3) | &#10004; | &#10004; | &#10004;czwart | &#10004; | |
 | Publikowanie pakietów | &#10004; | &#10004; | &#10004; | &#10004; |  |
-| Replikowanie pakietów |  | &#10004; | &#10004; | | |
-| Zarządzanie *globalny pakiet* i foldery w pamięci podręcznej | &#10004; | &#10004; | &#10004; | | |
+| Replikuj pakiety |  | &#10004; | &#10004; | | |
+| Zarządzanie folderami *globalnymi* i pakietami pamięci podręcznej | &#10004; | &#10004; | &#10004; | | |
 | Zarządzanie konfiguracją NuGet | | &#10004; | &#10004; | | |
 
-(1) nie wpływa na pliki projektu; Użyj `dotnet.exe` zamiast tego.
+(1) nie ma wpływu na pliki projektu; Użyj `dotnet.exe` zamiast tego.
 
-(2) działa tylko w przypadku `packages.config` pliku, a nie z rozwiązania (`.sln`) plików.
+(2) działa tylko z `packages.config` plikiem, a nie z plikami`.sln`rozwiązania ().
 
-(3) różne funkcje zaawansowane pakietu są dostępne za pośrednictwem interfejsu wiersza polecenia, tylko wtedy, gdy nie są one reprezentowane w interfejsie użytkownika Visual Studio tools.
+(3) różne zaawansowane funkcje pakietu są dostępne za pomocą interfejsu wiersza polecenia tylko wtedy, gdy nie są one reprezentowane w narzędziach interfejsu użytkownika programu Visual Studio.
 
-(4) współpracuje z `.nuspec` plików, ale nie z plików projektu.
+(4) współpracuje z `.nuspec` plikami, ale nie z plikami projektu.
 
 ### <a name="related-topics"></a>Tematy pokrewne
 
-- [Instalowanie i zarządzanie pakietami za pomocą programu Visual Studio](tools/package-manager-ui.md)
-- [Instalowanie i zarządzanie pakietami za pomocą konsoli Menedżera pakietów](tools/package-manager-console.md)
-- [Instalowanie i zarządzanie pakietami za pomocą interfejsu wiersza polecenia platformy dotnet](consume-packages/install-use-packages-dotnet-cli.md)
-- [Instalowanie i zarządzanie pakietami za pomocą interfejsu wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md)
-- [Dokumentacja programu PowerShell z konsoli Menedżera pakietów](tools/powershell-reference.md)
+- [Instalowanie pakietów i zarządzanie nimi za pomocą programu Visual Studio](consume-packages/install-use-packages-visual-studio.md)
+- [Instalowanie pakietów i zarządzanie nimi przy użyciu programu PowerShell](consume-packages/install-use-packages-powershell.md)
+- [Instalowanie pakietów i zarządzanie nimi przy użyciu interfejsu wiersza polecenia dotnet](consume-packages/install-use-packages-dotnet-cli.md)
+- [Instalowanie pakietów i zarządzanie nimi za pomocą interfejsu wiersza polecenia NuGet. exe](consume-packages/install-use-packages-nuget-cli.md)
+- [Dokumentacja programu PowerShell konsoli Menedżera pakietów](reference/powershell-reference.md)
 - [Tworzenie pakietu](create-packages/creating-a-package.md)
 - [Publikowanie pakietu](nuget-org/publish-a-package.md)
 
-Deweloperzy pracujący nad Windows też mogą zapoznać się z [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer), typu open source, autonomiczne narzędzie wizualnie eksplorować, tworzyć i edytować pakietów NuGet. Bardzo pomocne jest na przykład zmiany eksperymentalne do struktury pakietu bez odbudowywania pakietu.
+Deweloperzy pracujący w systemie Windows mogą również zapoznać się z [Eksploratorem pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer)— autonomicznym narzędziem do wizualizacji, tworzenia i edytowania pakietów NuGet. Jest to bardzo przydatne, na przykład, aby wprowadzać eksperymentalne zmiany struktury pakietu bez ponownego kompilowania pakietu.
