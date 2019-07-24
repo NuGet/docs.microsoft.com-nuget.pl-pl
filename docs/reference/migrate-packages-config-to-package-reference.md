@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 39f260835989cbbcc7293d9db27ac7b2c32debaa
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: d1c32f4a926f1f688db3ea6a9ca2eed1a21b2dec
+ms.sourcegitcommit: f9e39ff9ca19ba4a26e52b8a5e01e18eb0de5387
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317237"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68433290"
 ---
 # <a name="migrate-from-packagesconfig-to-packagereference"></a>Migruj z pliku Packages. config do PackageReference
 
@@ -26,7 +26,7 @@ Program Visual Studio 2017 w wersji 15,7 lub nowszej obsługuje Migrowanie proje
 
 ### <a name="limitations"></a>Ograniczenia
 
-* Pakiet NuGet PackageReference nie jest dostępny w programie Visual Studio 2015 i jego starszych wersjach. Zmigrowane projekty można otwierać tylko w programie Visual Studio 2017.
+* Pakiet NuGet PackageReference nie jest dostępny w programie Visual Studio 2015 i jego starszych wersjach. Zmigrowane projekty można otwierać tylko w programie Visual Studio 2017 i nowszych.
 * Migracja nie jest obecnie dostępna dla C++ projektów i ASP.NET.
 * Niektóre pakiety mogą nie być w pełni zgodne z PackageReference. Aby uzyskać więcej informacji, zobacz [problemy ze zgodnością pakietu](#package-compatibility-issues).
 

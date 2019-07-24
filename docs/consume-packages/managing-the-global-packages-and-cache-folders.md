@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2a30904c5d26ea2114432dfbef08f53407926a33
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: f5d418fd5b6b9bb88958d6b7e9e3034f40485a7d
+ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317753"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68419963"
 ---
 # <a name="managing-the-global-packages-cache-and-temp-folders"></a>Zarządzanie pakietami globalnymi, pamięcią podręczną i folderami tymczasowymi
 
@@ -18,7 +18,7 @@ Za każdym razem, gdy instalujesz, aktualizujesz lub przywracasz pakiet, program
 
 | Nazwa | Opis i lokalizacja (na użytkownika)|
 | --- | --- |
-| global&#8209;packages | W folderze *globalne pakiety* jest instalowany pobrany pakiet NuGet. Każdy pakiet jest w pełni rozwinięty do podfolderu, który jest zgodny z identyfikatorem pakietu i numerem wersji. Projekty korzystające z formatu PackageReference zawsze używają pakietów bezpośrednio z tego folderu. W przypadku korzystania `packages.config`z programu pakiety są instalowane w folderze *globalne pakiety* , a następnie kopiowane `packages` do folderu projektu.<br/><ul><li>Windows: `%userprofile%\.nuget\packages`</li><li>Mac/Linux:`~/.nuget/packages`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_PACKAGES `globalPackagesFolder` , `repositoryPath` [Ustawienia konfiguracji](../reference/nuget-config-file.md#config-section) (w przypadku używania PackageReference `packages.config`i, odpowiednio) lub właściwości `RestorePackagesPath` programu MSBuild (tylko MSBuild). Zmienna środowiskowa ma pierwszeństwo przed ustawieniem konfiguracji.</li></ul> |
+| global&#8209;packages | W folderze *globalne pakiety* jest instalowany pobrany pakiet NuGet. Każdy pakiet jest w pełni rozwinięty do podfolderu, który jest zgodny z identyfikatorem pakietu i numerem wersji. Projekty korzystające z formatu [PackageReference](package-references-in-project-files.md) zawsze używają pakietów bezpośrednio z tego folderu. W przypadku korzystania z [pliku Packages. config](../reference/packages-config.md)pakiety są instalowane do folderu *Global-Packages* , a następnie kopiowane do `packages` folderu projektu.<br/><ul><li>Windows: `%userprofile%\.nuget\packages`</li><li>Mac/Linux:`~/.nuget/packages`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_PACKAGES `globalPackagesFolder` , `repositoryPath` [Ustawienia konfiguracji](../reference/nuget-config-file.md#config-section) (w przypadku używania PackageReference `packages.config`i, odpowiednio) lub właściwości `RestorePackagesPath` programu MSBuild (tylko MSBuild). Zmienna środowiskowa ma pierwszeństwo przed ustawieniem konfiguracji.</li></ul> |
 | http&#8209;cache | Menedżer pakietów programu Visual Studio (NuGet 3. x +) i `dotnet` narzędzie przechowuje kopie pobranych pakietów w tej pamięci podręcznej (zapisane jako `.dat` pliki), zorganizowane w podfolderach dla każdego źródła pakietu. Pakiety nie są rozwinięte, a pamięć podręczna ma czas wygaśnięcia 30 minut.<br/><ul><li>Windows: `%localappdata%\NuGet\v3-cache`</li><li>Mac/Linux:`~/.local/share/NuGet/v3-cache`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_HTTP_CACHE_PATH.</li></ul> |
 | temp | Folder, w którym narzędzia NuGet przechowują pliki tymczasowe podczas wykonywania różnych operacji.<br/><li>Windows: `%temp%\NuGetScratch`</li><li>Mac/Linux:`/tmp/NuGetScratch`</li></ul> |
 | plugins-cache **4.8+** | Folder, w którym narzędzia NuGet przechowują wyniki żądania oświadczeń operacji.<br/><ul><li>Windows: `%localappdata%\NuGet\plugins-cache`</li><li>Mac/Linux:`~/.local/share/NuGet/plugins-cache`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_PLUGINS_CACHE_PATH.</li></ul> |

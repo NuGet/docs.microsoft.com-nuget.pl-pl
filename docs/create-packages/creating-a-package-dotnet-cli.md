@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6774329138c2bf26908496860267e3570a94d39c
-ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
+ms.openlocfilehash: c95d10ca2c4098aff5bc031e3c9a2d079b9fd7d0
+ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346158"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68419902"
 ---
 # <a name="create-a-nuget-package-using-the-dotnet-cli"></a>Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
 
@@ -125,7 +125,7 @@ Po utworzeniu pakietu, który jest `.nupkg` plikiem, można go opublikować w wy
 Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób obsługiwać inne scenariusze zgodnie z opisem w następujących tematach:
 
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
-- [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
+- [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
 - [Przekształcenia plików źródłowych i konfiguracji](../create-packages/source-and-config-file-transformations.md)
 - [Lokalizacja](../create-packages/creating-localized-packages.md)
 - [Wersje wstępne](../create-packages/prerelease-packages.md)

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: deedebfc6ac03b374c44e2c07a191da26a7dd68c
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 726f983c2522fdb538dfce858fdf2371ec0ce188
+ms.sourcegitcommit: f9e39ff9ca19ba4a26e52b8a5e01e18eb0de5387
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317666"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68433342"
 ---
 # <a name="building-pre-release-packages"></a>Tworzenie pakietów w wersji wstępnej
 
@@ -81,10 +81,12 @@ Jednak wszelkie używane sufiksy NuGet będą mieć pierwszeństwo w odwrotnej k
     1.0.1-zzz
     1.0.1-rc
     1.0.1-open
-    1.0.1-beta12
-    1.0.1-beta05
+    1.0.1-beta.12
+    1.0.1-beta.5
     1.0.1-beta
-    1.0.1-alpha2
+    1.0.1-alpha.2
     1.0.1-alpha
 
-Jak pokazano, wersja bez żadnego sufiksu zawsze będzie mieć pierwszeństwo przed wersjami wstępnymi. Należy również pamiętać, że jeśli używasz sufiksów liczbowych ze znacznikami wersji wstępnej, które mogą używać cyfr dwucyfrowych (lub więcej), użyj wiodących zer jako wartości w beta01 i beta05, aby upewnić się, że są one sortowane prawidłowo, gdy liczby są większe.
+Jak pokazano, wersja bez żadnego sufiksu zawsze będzie mieć pierwszeństwo przed wersjami wstępnymi.
+
+Wiodące 0s nie są potrzebne w przypadku semver2, ale są z starym schematem wersji. Jeśli używasz sufiksów liczbowych ze znacznikami wersji wstępnej, które mogą używać cyfr dwucyfrowych (lub więcej), użyj wiodących zer jako wersji beta. 01 i beta. 05, aby upewnić się, że są one sortowane prawidłowo, gdy liczby są większe. To zalecenie dotyczy tylko starszego schematu wersji.

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.openlocfilehash: 1976d1dc7129da4edb44a1346c6ce74ad3e93b1b
-ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
+ms.openlocfilehash: 05fd30a9d9d51c81b89d83a16b2fb08a55875e47
+ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68342490"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68419999"
 ---
 # <a name="quickstart-install-and-use-a-package-in-visual-studio"></a>Szybki start: Instalowanie i używanie pakietu w programie Visual Studio
 
@@ -83,7 +83,7 @@ Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać `JsonConvert.Se
     </Grid>
     ```
 
-1. Otwórz plik (znajdujący się w Eksplorator rozwiązań `MainPage.xaml` pod węzłem) i Wstaw następujący kod wewnątrz `MainPage` konstruktora: `MainPage.xaml.cs`
+1. Otwórz plik (znajdujący się w Eksplorator rozwiązań `MainPage.xaml` pod węzłem) i Wstaw następujący kod wewnątrz `MainPage` klasy: `MainPage.xaml.cs`
 
     ```cs
     public class Account

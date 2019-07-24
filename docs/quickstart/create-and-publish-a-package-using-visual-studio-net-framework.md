@@ -1,43 +1,43 @@
 ---
-title: Tworzenie i publikowanie pakietu platformy .NET Framework, za pomocą programu Visual Studio na Windows
-description: Samouczek wskazówki na temat tworzenia i publikowania pakietu NuGet programu .NET Framework za pomocą programu Visual Studio na Windows.
+title: Tworzenie i publikowanie pakietu .NET Framework NuGet przy użyciu programu Visual Studio w systemie Windows
+description: Samouczek instruktażowy dotyczący tworzenia i publikowania pakietu .NET Framework NuGet przy użyciu programu Visual Studio w systemie Windows.
 author: karann-msft
 ms.author: karann
 ms.date: 05/13/2018
 ms.topic: quickstart
-ms.openlocfilehash: bf561d36a06bf42c029eb96ff1b7930abffa4c0a
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 75160bf2b01f6d4707162e019a6263ddc64a6f5e
+ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67842043"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68342518"
 ---
 # <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
 
-Tworzenie pakietu NuGet w bibliotece klas programu .NET Framework obejmuje tworzenie biblioteki DLL w programie Visual Studio na Windows, a następnie przy użyciu narzędzia wiersza polecenia nuget.exe umożliwiającego tworzenie i publikowanie pakietu.
+Tworzenie pakietu NuGet z biblioteki klas .NET Framework obejmuje tworzenie biblioteki DLL w programie Visual Studio w systemie Windows, a następnie użycie narzędzia wiersza polecenia NuGet. exe do utworzenia i opublikowania pakietu.
 
 > [!Note]
-> Ten przewodnik Szybki Start ma zastosowanie do programu Visual Studio 2017 for Windows tylko. Visual Studio dla komputerów Mac nie ma możliwości opisane w tym miejscu. Użyj [narzędzi interfejsu wiersza polecenia dotnet](create-and-publish-a-package-using-the-dotnet-cli.md) zamiast tego.
+> Ten przewodnik Szybki Start dotyczy tylko programu Visual Studio 2017 dla systemu Windows. Visual Studio dla komputerów Mac nie obejmuje funkcji opisanych w tym miejscu. Zamiast tego użyj [narzędzi interfejsu wiersza polecenia dotnet](create-and-publish-a-package-using-the-dotnet-cli.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Instalowania dowolnej wersji programu Visual Studio 2017 z [visualstudio.com](https://www.visualstudio.com/) ze wszystkimi. Obciążenie związane z sieci. Po zainstalowaniu obciążenia platformy .NET, Visual Studio 2017 zawiera automatycznie możliwości NuGet.
+1. Zainstaluj dowolną wersję programu Visual Studio 2017 z [VisualStudio.com](https://www.visualstudio.com/) z dowolnym. Obciążenie związane z usługą SIECIową. Program Visual Studio 2017 automatycznie zawiera funkcje NuGet podczas instalacji obciążenia .NET.
 
-1. Zainstaluj `nuget.exe` interfejsu wiersza polecenia, pobierając go z [nuget.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisywania, który `.exe` pliku do odpowiedniego folderu i dodawanie folderu do zmiennej środowiskowej PATH.
+1. Zainstaluj interfejs wiersza polecenia, pobierając go z [NuGet.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisując `.exe` ten plik w odpowiednim folderze i dodając go do zmiennej środowiskowej PATH. `nuget.exe`
 
-1. [Zarejestruj, aby utworzyć bezpłatne konto w witrynie nuget.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) Jeśli nie masz jeszcze takiego. Tworzenie nowego konta wysyła wiadomość e-mail z potwierdzeniem. Aby można było przekazać pakiet, należy potwierdzić konto.
+1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
 
-## <a name="create-a-class-library-project"></a>Utwórz projekt biblioteki klas
+## <a name="create-a-class-library-project"></a>Tworzenie projektu biblioteki klas
 
-Można użyć istniejącego projektu biblioteki klas .NET Framework dla kodu, który ma być pakietu lub Utwórz proste w następujący sposób:
+Można użyć istniejącego projektu biblioteki klas .NET Framework dla kodu, który ma zostać spakowany, lub utworzyć prosty jeden w następujący sposób:
 
-1. W programie Visual Studio, wybierz **Plik > Nowy > Projekt**, wybierz opcję **Visual C#** węzła, wybierz szablon "Biblioteka klas (.NET Framework)", nazwij projekt AppLogger i kliknij przycisk **OK**.
+1. W programie Visual Studio wybierz kolejno pozycje **plik > Nowy > projekt**, wybierz węzeł  **C# wizualizacji** , wybierz szablon "Biblioteka klas (.NET Framework)", nazwij projekt AppLogger i kliknij przycisk **OK**.
 
-1. Kliknij prawym przyciskiem myszy, wynikowy plik projektu, a następnie wybierz pozycję **kompilacji** się upewnić, że projekt został utworzony prawidłowo. Biblioteka DLL znajduje się w folderze debugowania (lub wydania, jeśli tworzysz tę konfigurację zamiast).
+1. Kliknij prawym przyciskiem myszy plik projektu powstały i wybierz pozycję **kompilacja** , aby upewnić się, że projekt został utworzony prawidłowo. Biblioteka DLL znajduje się w folderze debugowania (lub zwolnij, jeśli zostanie utworzona ta konfiguracja).
 
-W ciągu rzeczywistą pakietu NuGet oczywiście, możesz zaimplementować wiele przydatnych funkcji, które inne osoby mogą tworzyć aplikacje. Można również ustawić platform docelowych w dowolny sposób. Na przykład, zapoznaj się z przewodnikami dla [platformy uniwersalnej systemu Windows](../guides/create-uwp-packages.md) i [Xamarin](../guides/create-packages-for-xamarin.md).
+Oczywiście w rzeczywistym pakiecie NuGet zaimplementowano wiele przydatnych funkcji, z którymi inne mogą tworzyć aplikacje. Możesz również ustawić Platformy docelowe. Na przykład zapoznaj się z przewodnikami dla [platformy UWP](../guides/create-uwp-packages.md) i [Xamarin](../guides/create-packages-for-xamarin.md).
 
-W tym przewodniku jednak nie będzie pisania żadnego dodatkowego kodu ponieważ biblioteki klas na podstawie tego szablonu jest wystarczające, aby utworzyć pakiet. Jednak jeśli chcesz funkcjonalności kodu dla pakietu, użyj następującego polecenia:
+W tym instruktażu nie można jednak napisać żadnego dodatkowego kodu, ponieważ biblioteka klas z szablonu jest wystarczająca do utworzenia pakietu. Nadal, jeśli chcesz, aby w pakiecie był jakiś kod funkcjonalny, użyj następujących czynności:
 
 ```cs
 using System;
@@ -55,40 +55,40 @@ namespace AppLogger
 ```
 
 > [!Tip]
-> Chyba że istnieje powód, aby wybrać inny sposób, .NET Standard jest preferowany cel pakiety NuGet, ponieważ zapewnia zgodność z szeroką gamą wykorzystywanie projektów. Zobacz [tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Standard)](create-and-publish-a-package-using-visual-studio.md).
+> O ile nie istnieje powód, aby wybrać inny sposób, .NET Standard jest preferowanym celem dla pakietów NuGet, ponieważ zapewnia zgodność z najszerszym zakresem zużywanych projektów. Zobacz [Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET standard)](create-and-publish-a-package-using-visual-studio.md).
 
-## <a name="configure-project-properties-for-the-package"></a>Konfigurowanie właściwości projektu pakietu
+## <a name="configure-project-properties-for-the-package"></a>Konfigurowanie właściwości projektu dla pakietu
 
-Pakiet NuGet zawiera manifest ( `.nuspec` pliku), który zawiera istotne metadane, takie jak identyfikator pakietu, numer wersji, opis i. Niektóre z nich może być pobierana z właściwości projektu bezpośrednio, co pozwala uniknąć konieczności oddzielnie zaktualizować je w manifeście i projektu. W tej sekcji opisano, gdzie można ustawić odpowiednich właściwości.
+Pakiet NuGet zawiera manifest ( `.nuspec` plik), który zawiera odpowiednie metadane, takie jak identyfikator pakietu, numer wersji, opis i inne. Niektóre z nich mogą być narysowane bezpośrednio we właściwościach projektu, co pozwala uniknąć konieczności osobnego aktualizowania ich zarówno w projekcie, jak i w manifeście. W tej sekcji opisano, gdzie ustawić odpowiednie właściwości.
 
-1. Wybierz **projektu > właściwości** menu polecenia, a następnie wybierz **aplikacji** kartę.
+1. Wybierz polecenie menu **> właściwości projektu** , a następnie wybierz kartę **aplikacja** .
 
-1. W **nazwy zestawu** pola, nadaj Unikatowy identyfikator pakietu.
+1. W polu **Nazwa zestawu** nadaj pakietowi unikatowy identyfikator.
 
     > [!Important]
-    > Musisz nadać pakietu, identyfikator, który jest unikatowa w obrębie nuget.org, lub niezależnie od rodzaju hoście jest używany. W ramach tego przewodnika firma Microsoft zaleca, tym "Próbny" lub "Test" w nazwie późniejszym etapie publikowania uwidocznić pakietu publicznie (choć jest mało prawdopodobne, każda osoba będzie faktycznie używać).
+    > Należy nadać pakietowi identyfikator, który jest unikatowy w obrębie nuget.org lub dowolnego hosta, który jest używany. W tym instruktażu Zalecamy uwzględnienie "przykładowego" lub "testowego" w nazwie, jak w późniejszym kroku publikowania sprawia, że pakiet jest widoczny publicznie (chociaż prawdopodobnie nikt się nie używa).
     >
-    > Jeśli spróbujesz opublikować pakietu o nazwie, która już istnieje, zostanie wyświetlony błąd.
+    > Jeśli spróbujesz opublikować pakiet o nazwie, która już istnieje, zostanie wyświetlony komunikat o błędzie.
 
-1. Wybierz **informacje o zestawie...**  przycisk, który wywołuje okno dialogowe, w którym należy wprowadzić inne właściwości, które zawierają do manifestu (zobacz [odwołanie do pliku .nuspec - zastąpienia tokenów](../reference/nuspec.md#replacement-tokens)). Najczęściej używanych pól są **tytuł**, **opis**, **firmy**, **Copyright**, i **wersji zestawu**. Te właściwości są wyświetlane ostatecznie z pakietem na hoście, np. nuget.org, dlatego upewnij się, że są one w pełni opisowe.
+1. Wybierz przycisk **Informacje o zestawie** , który umożliwia wyświetlenie okna dialogowego, w którym można wprowadzić inne właściwości, które są umieszczane w manifeście (zobacz [. nuspec plik — tokeny zastępcze](../reference/nuspec.md#replacement-tokens)). Najczęściej używane pola to **tytuł**, **Opis**, **firma**, **prawa autorskie**i **wersja zestawu**. Te właściwości ostatecznie pojawiają się wraz z pakietem na hoście, takim jak nuget.org, więc upewnij się, że są one w pełni opisowe.
 
-    ![Informacje o zestawie w projekcie programu .NET Framework w programie Visual Studio](media/qs_create-vs-01b-project-properties.png)
+    ![Informacje o zestawie w projekcie .NET Framework w programie Visual Studio](media/qs_create-vs-01b-project-properties.png)
 
-1. Opcjonalnie: Aby wyświetlić i edytować właściwości bezpośrednio, otwórz `Properties/AssemblyInfo.cs` pliku w projekcie.
+1. Opcjonalne: Aby wyświetlić i edytować właściwości bezpośrednio, Otwórz `Properties/AssemblyInfo.cs` plik w projekcie.
 
-1. Po ustawieniu właściwości jest równa konfiguracji projektu **wersji** i ponownie skompiluj projekt, aby wygenerować zaktualizowanego pliku DLL.
+1. Po ustawieniu właściwości ustaw konfigurację projektu na Zwolnij i skompiluj  ponownie projekt w celu wygenerowania zaktualizowanej biblioteki DLL.
 
-## <a name="generate-the-initial-manifest"></a>Generuj manifest początkowej
+## <a name="generate-the-initial-manifest"></a>Generuj początkowy manifest
 
-Z biblioteki DLL w zestawie właściwości strony, a projekt, możesz teraz używać `nuget spec` polecenie, aby wygenerować początkową `.nuspec` pliku z projektem. Ten krok obejmuje odpowiednie zastąpienia tokenów pobierające informacje z pliku projektu.
+Z biblioteką DLL w oddziałach i ustawionych właściwościach projektu można `nuget spec` teraz użyć polecenia, aby `.nuspec` wygenerować początkowy plik z projektu. Ten krok obejmuje odpowiednie tokeny zastępcze do rysowania informacji z pliku projektu.
 
-Możesz uruchomić `nuget spec` tylko raz, aby wygenerować manifest początkowej. Podczas aktualizowania pakietu, można zmienić wartości w projekcie albo bezpośrednio edytować manifestu.
+Uruchamia `nuget spec` się tylko raz, aby wygenerować początkowy manifest. Podczas aktualizowania pakietu należy zmienić wartości w projekcie lub bezpośrednio edytować manifest.
 
-1. Otwórz wiersz polecenia i przejdź do folderu projektu zawierającego `AppLogger.csproj` pliku.
+1. Otwórz wiersz polecenia i przejdź do folderu projektu zawierającego `AppLogger.csproj` plik.
 
-1. Uruchom następujące polecenie: `nuget spec AppLogger.csproj`. Określając projektu, NuGet tworzy manifest, który jest zgodna z nazwą projektu, w tym przypadku `AppLogger.nuspec`. To również obejmować zastąpienia tokenów w manifeście.
+1. Uruchom następujące polecenie: `nuget spec AppLogger.csproj`. Określając projekt, pakiet NuGet tworzy manifest, który jest zgodny z nazwą projektu, w tym przypadku `AppLogger.nuspec`. Zawiera również tokeny zastępcze w manifeście.
 
-1. Otwórz `AppLogger.nuspec` w edytorze tekstów, aby zbadać jego zawartość, która powinna wyglądać następująco:
+1. Otwórz `AppLogger.nuspec` w edytorze tekstów, aby przejrzeć jego zawartość, która powinna wyglądać następująco:
 
     ```xml
     <?xml version="1.0"?>
@@ -113,7 +113,7 @@ Możesz uruchomić `nuget spec` tylko raz, aby wygenerować manifest początkowe
 
 ## <a name="edit-the-manifest"></a>Edytuj manifest
 
-1. NuGet generuje błąd, Jeśli spróbujesz utworzyć pakiet z wartościami domyślnymi w swojej `.nuspec` plików, dlatego należy zmodyfikować następujące pola, przed kontynuowaniem. Zobacz [odwołanie do pliku .nuspec — elementy opcjonalne metadane](../reference/nuspec.md#optional-metadata-elements) opis jak są one używane.
+1. Pakiet NuGet generuje błąd w przypadku próby utworzenia pakietu z wartościami domyślnymi w `.nuspec` pliku, dlatego przed kontynuowaniem należy edytować następujące pola. Zobacz [. nuspec — odwołanie do pliku — opcjonalne elementy metadanych](../reference/nuspec.md#optional-metadata-elements) opisujące sposób ich użycia.
 
     - licenseUrl
     - projectUrl
@@ -121,39 +121,39 @@ Możesz uruchomić `nuget spec` tylko raz, aby wygenerować manifest początkowe
     - releaseNotes
     - tagi
 
-1. Pakiety utworzone do użytku publicznego, należy zwrócić szczególną uwagę na **tagi** właściwości, jak tagi pomóc innym odnaleźć pakietu na źródeł, takich jak nuget.org i zrozumieć, co robi.
+1. W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na właściwości **Tagi** , ponieważ Tagi ułatwiają innym znalezienie pakietu na źródłach, takich jak NuGet.org, i zrozumienie jego działania.
 
-1. Można również dodać inne elementy do manifestu w tej chwili zgodnie z opisem na [odwołanie do pliku .nuspec](../reference/nuspec.md).
+1. W tym momencie można również dodać wszystkie inne elementy do manifestu, zgodnie z opisem w [dokumentacji pliku. nuspec](../reference/nuspec.md).
 
 1. Zapisz plik przed kontynuowaniem.
 
-## <a name="run-the-pack-command"></a>Uruchom polecenie pakietu
+## <a name="run-the-pack-command"></a>Uruchom pakiet polecenie
 
-1. Z poziomu wiersza polecenia w folderze zawierającym swoje `.nuspec` pliku, uruchom polecenie `nuget pack`.
+1. W wierszu polecenia w folderze zawierającym `.nuspec` plik Uruchom polecenie. `nuget pack`
 
-1. Generuje NuGet `.nupkg` pliku w postaci *version.nupkg identyfikator*, które znajdują się w bieżącym folderze.
+1. Pakiet NuGet generuje `.nupkg` plik w postaci *identyfikatora-Version. nupkg*, który znajduje się w bieżącym folderze.
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu
 
-Po utworzeniu `.nupkg` pliku opublikujesz go w witrynie nuget.org przy użyciu `nuget.exe` przy użyciu klucza interfejsu API uzyskanych z repozytorium nuget.org. Nuget.org należy używać `nuget.exe` 4.1.0 lub nowszej.
+Po utworzeniu `nuget.exe` pliku opublikuj go w celu NuGet.org przy użyciu klucza interfejsu API uzyskanego z NuGet.org. `.nupkg` W przypadku NuGet.org należy użyć `nuget.exe` 4.1.0 lub wyższej.
 
 [!INCLUDE [publish-notes](includes/publish-notes.md)]
 
-### <a name="acquire-your-api-key"></a>Uzyskiwanie klucza interfejsu API
+### <a name="acquire-your-api-key"></a>Pozyskiwanie klucza interfejsu API
 
 [!INCLUDE [publish-api-key](includes/publish-api-key.md)]
 
-### <a name="publish-with-nuget-push"></a>Publikowanie za pomocą wypychania nuget
+### <a name="publish-with-nuget-push"></a>Publikowanie przy użyciu wypychania NuGet
 
-1. Otwórz wiersz polecenia i zmień folder zawierający `.nupkg` pliku.
+1. Otwórz wiersz polecenia i przejdź do folderu zawierającego `.nupkg` plik.
 
-1. Uruchom następujące polecenie, określając nazwę pakietu i zastępując wartość klucza swój klucz interfejsu API:
+1. Uruchom następujące polecenie, określając nazwę pakietu i zastępując wartość klucza kluczem interfejsu API:
 
     ```cli
     nuget push AppLogger.1.0.0.nupkg qz2jga8pl3dvn2akksyquwcs9ygggg4exypy3bhxy6w6x6 -Source https://api.nuget.org/v3/index.json
     ```
 
-1. nuget.exe wyświetla wyniki proces publikowania:
+1. NuGet. exe wyświetla wyniki procesu publikowania:
 
     ```output
     Pushing AppLogger.1.0.0.nupkg to 'https://www.nuget.org/api/v2/package'...
@@ -162,21 +162,27 @@ Po utworzeniu `.nupkg` pliku opublikujesz go w witrynie nuget.org przy użyciu `
     Your package was pushed.
     ```
 
-Zobacz [wypychania nuget](../tools/cli-ref-push.md).
+Zobacz [wypychanie NuGet](../reference/cli-reference/cli-ref-push.md).
 
-### <a name="publish-errors"></a>Publikowanie błędy
+### <a name="publish-errors"></a>Błędy publikowania
 
 [!INCLUDE [publish-errors](includes/publish-errors.md)]
 
-### <a name="manage-the-published-package"></a>Zarządzanie opublikowany pakiet
+### <a name="manage-the-published-package"></a>Zarządzanie opublikowanym pakietem
 
 [!INCLUDE [publish-manage](includes/publish-manage.md)]
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="next-steps"></a>Następne kroki
 
-- [Utwórz pakiet](../create-packages/creating-a-package.md)
+Gratulujemy utworzenia pierwszego pakietu NuGet!
+
+> [!div class="nextstepaction"]
+> [Tworzenie pakietu](../create-packages/creating-a-package.md)
+
+Aby poznać więcej informacji o tym, że pakiet NuGet jest oferowany, wybierz poniższe linki.
+
 - [Publikowanie pakietu](../nuget-org/publish-a-package.md)
-- [Pakiety w wersji wstępnej](../create-packages/Prerelease-Packages.md)
+- [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)

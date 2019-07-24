@@ -1,16 +1,16 @@
 ---
-title: Tworzenie i publikowanie pakietu NuGet przy użyciu programu Visual Studio w systemie Windows
+title: Tworzenie i publikowanie pakietu .NET Standard NuGet przy użyciu programu Visual Studio w systemie Windows
 description: Samouczek instruktażowy dotyczący tworzenia i publikowania pakietu .NET Standard NuGet przy użyciu programu Visual Studio w systemie Windows.
 author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: quickstart
-ms.openlocfilehash: 949c49d77ef088f802bdbd9c681f7df41d9a4c67
-ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
+ms.openlocfilehash: 86e71460094de9b799384db83456a68db57647af
+ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68342553"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68419922"
 ---
 # <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki start: Tworzenie i publikowanie pakietu NuGet przy użyciu programu Visual Studio (.NET Standard, tylko w systemie Windows)
 
@@ -21,9 +21,9 @@ Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET Standard w 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Zainstaluj dowolną wersję programu Visual Studio 2017 lub nowszą z [VisualStudio.com](https://www.visualstudio.com/) . Obciążenie związane z usługą SIECIową. Program Visual Studio 2017 lub nowszy automatycznie uwzględnia funkcje NuGet podczas instalacji obciążenia .NET.
+1. Zainstaluj dowolną wersję programu Visual Studio 2017 lub nowszą z [VisualStudio.com](https://www.visualstudio.com/) przy użyciu obciążenia związanego z platformą .NET Core.
 
-1. `dotnet` Zainstaluj interfejs wiersza polecenia.
+1. Jeśli nie jest jeszcze zainstalowana, zainstaluj `dotnet` interfejs wiersza polecenia.
 
    W przypadku `dotnet` interfejsu wiersza polecenia, rozpoczynając od programu Visual Studio 2017, interfejs wiersza polecenia jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core. `dotnet` W przeciwnym razie zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/) , aby uzyskać `dotnet` interfejs wiersza polecenia. Interfejs wiersza polecenia jest wymagany dla projektów .NET Standard, które używają [formatu stylu zestawu SDK](../resources/check-project-format.md) (atrybut zestawu SDK). `dotnet` Domyślny szablon biblioteki klas w programie Visual Studio 2017 lub nowszym, który jest używany w tym artykule, używa atrybutu SDK.
    
@@ -185,7 +185,7 @@ Będzie to zawierać plik o nazwie `readme.txt` w katalogu głównym pakietu. Pr
 - [Tworzenie pakietu](../create-packages/creating-a-package.md)
 - [Publikowanie pakietu](../nuget-org/publish-a-package.md)
 - [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
-- [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
+- [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
 - [Dokumentacja biblioteki .NET Standard](/dotnet/articles/standard/library)

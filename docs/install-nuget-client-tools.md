@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 06/20/2019
 ms.topic: quickstart
-ms.openlocfilehash: 70dd640e34f917bcba99bea6b53652a949a5d00a
-ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
+ms.openlocfilehash: d7aa2e4bdb78dcc6747d9775cbdf0d6c41855b96
+ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68342479"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68419803"
 ---
 # <a name="install-nuget-client-tools"></a>Instalowanie narzędzi klienta programu NuGet
 
@@ -21,7 +21,7 @@ Aby współpracować z pakietem NuGet jako odbiorca lub twórca pakietu, można 
 | Narzędziem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Opis | Przesłać&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |:------------- |:-------------|:-----|
 | [dotnet.exe](#dotnetexe-cli) | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla dowolnego [projektu w stylu zestawu SDK](resources/check-project-format.md) , takiego jak jeden obiekt docelowy .NET Framework. Uwzględniono w zestaw .NET Core SDK i udostępnia podstawowe funkcje NuGet na wszystkich platformach. (Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core).| [zestaw .NET Core SDK](https://www.microsoft.com/net/download/) |
-| [nuget.exe](#nugetexe-cli) | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i dla [projektu typu innego niż zestaw SDK](resources/check-project-format.md) , który jest przeznaczony dla .NET Standard bibliotek. Zapewnia wszystkie możliwości programu NuGet w systemie Windows, zapewnia większość funkcji w systemach Mac i Linux, gdy działa w ramach programu mono. | [nuget.exe](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe) |
+| [nuget.exe](#nugetexe-cli) | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i dla dowolnego [projektu typu innego niż zestaw SDK](resources/check-project-format.md) , takiego jak ten, który jest przeznaczony dla bibliotek .NET Standard. Zapewnia wszystkie możliwości programu NuGet w systemie Windows, zapewnia większość funkcji w systemach Mac i Linux, gdy działa w ramach programu mono. | [nuget.exe](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe) |
 | [Visual Studio](#visual-studio) | W systemie Windows program udostępnia funkcje NuGet za pomocą interfejsu użytkownika Menedżera pakietów i konsoli Menedżera pakietów. zawarte w. Obciążenia związane z usługą SIECIową. Na komputerach Mac program udostępnia pewne funkcje za pomocą interfejsu użytkownika. W Visual Studio Code funkcje NuGet są udostępniane za poorednictwem rozszerzeń. | [Visual Studio 2017](https://www.visualstudio.com/downloads/) |
 
 [Interfejs wiersza polecenia programu MSBuild](reference/msbuild-targets.md) oferuje również możliwość przywracania i tworzenia pakietów, co jest szczególnie przydatne na serwerach kompilacji. MSBuild nie jest narzędziem ogólnego przeznaczenia do pracy z pakietem NuGet.
@@ -30,8 +30,8 @@ Aby współpracować z pakietem NuGet jako odbiorca lub twórca pakietu, można 
 
 Dwa narzędzia interfejsu wiersza polecenia NuGet `dotnet.exe` to `nuget.exe`i. Zobacz [dostępność funkcji](#feature-availability) dla porównania.
 
-* Aby określić obiekt docelowy .NET Core lub .NET Standard, użyj interfejsu wiersza polecenia dotnet. Interfejs wiersza polecenia dotnet jest wymagany dla formatu projektu w stylu zestawu SDK, który używa [atrybutu SDK](/dotnet/core/tools/csproj#additions).
-* Aby określić docelową .NET Framework (tylko projekt typu non-SDK), `nuget.exe CLI`Użyj. Jeśli projekt jest migrowany z `packages.config` do PackageReference, użyj interfejsu wiersza polecenia dotnet.
+* Aby określić obiekt docelowy .NET Core lub .NET Standard, użyj interfejsu wiersza polecenia dotnet. Interfejs wiersza polecenia jest wymagany dla formatu projektu w stylu zestawu SDK, który używa [atrybutu SDK.](/dotnet/core/tools/csproj#additions) `dotnet`
+* Aby określić docelową .NET Framework (tylko projekt typu non-SDK), `nuget.exe` Użyj interfejsu wiersza polecenia. Jeśli projekt jest migrowany z `packages.config` do PackageReference, użyj interfejsu wiersza polecenia dotnet.
 
 ### <a name="dotnetexe-cli"></a>Interfejs wiersza polecenia dotnet. exe
 

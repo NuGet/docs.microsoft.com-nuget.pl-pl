@@ -1,67 +1,67 @@
 ---
-title: Za pomocą NuGet.Server do hostowania NuGet źródła danych
-description: Jak tworzyć i hostować pakiet NuGet źródła danych na dowolnym serwerze z uruchomionymi usługami IIS przy użyciu NuGet.Server, udostępnianie pakietów za pośrednictwem protokołu HTTP i OData.
+title: Używanie narzędzia NuGet. Server do hostowania źródeł danych NuGet
+description: Jak utworzyć i hostować źródło pakietów NuGet na dowolnym serwerze, na którym są uruchomione usługi IIS, przy użyciu NuGet. Server, dzięki czemu pakiety są dostępne za pośrednictwem protokołów HTTP i OData.
 author: karann-msft
 ms.author: karann
 ms.date: 03/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: e99d42744ec860976ae098be94e747ec4bc9a7c6
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 734f0a609f243c7bdb218a53ed664de68c707dd7
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551959"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317647"
 ---
 # <a name="nugetserver"></a>NuGet.Server
 
-NuGet.Server to pakiet dostarczone przez .NET Foundation, która tworzy aplikację ASP.NET, która może hostować pakiet źródła danych na dowolnym serwerze, na którym działa program IIS. Był wyświetlany NuGet.Server sprawia, że folder na serwerze, dostępne za pośrednictwem protokołu HTTP (S) (w szczególności OData). Jest łatwy w konfiguracji i sprawdza się najlepiej w przypadku prostych scenariuszy.
+NuGet. Server jest pakietem dostarczanym przez platformę .NET Foundation, który tworzy aplikację ASP.NET, która umożliwia hostowanie kanału informacyjnego pakietu na dowolnym serwerze, na którym są uruchomione usługi IIS. Po prostu program NuGet. Server udostępnia folder na serwerze za pośrednictwem protokołu HTTP (w przypadku usługi OData). Jest ona łatwa do skonfigurowania i jest Najlepsza w przypadku prostych scenariuszy.
 
-1. Utwórz pustą aplikację sieci Web platformy ASP.NET w programie Visual Studio i Dodaj pakiet NuGet.Server do niego.
-1. Konfigurowanie `Packages` folderu w aplikacji i dodawanie pakietów.
-1. Wdróż aplikację do odpowiedniego serwera.
+1. Utwórz pustą aplikację sieci Web ASP.NET w programie Visual Studio i Dodaj do niej pakiet NuGet. Server.
+1. `Packages` Skonfiguruj folder w aplikacji i Dodaj pakiety.
+1. Wdróż aplikację na odpowiednim serwerze.
 
-Poniższe sekcje przeprowadzą przez ten proces szczegółowo, przy użyciu języka C#.
+W poniższych sekcjach szczegółowo omówiono ten proces, korzystając C#z programu.
 
-Jeśli masz więcej pytań dotyczących NuGet.Server, Utwórz problem w [ https://github.com/nuget/NuGetGallery/issues ](https://github.com/nuget/NuGetGallery/issues).
+Jeśli masz więcej pytań na [https://github.com/nuget/NuGetGallery/issues](https://github.com/nuget/NuGetGallery/issues)temat NuGet. Server, Utwórz problem.
 
-## <a name="create-and-deploy-an-aspnet-web-application-with-nugetserver"></a>Tworzenie i wdrażanie aplikacji sieci Web platformy ASP.NET za pomocą NuGet.Server
+## <a name="create-and-deploy-an-aspnet-web-application-with-nugetserver"></a>Tworzenie i wdrażanie aplikacji sieci Web ASP.NET za pomocą narzędzia NuGet. Server
 
-1. W programie Visual Studio, wybierz **Plik > Nowy > Projekt**, wyszukaj "ASP.NET", wybierz **aplikacji sieci Web platformy ASP.NET (.NET Framework)** szablonu języka C# i zestaw **Framework** ".NET Framework 4.6":
+1. W programie Visual Studio wybierz pozycję **plik > nowy > projekt**, wyszukaj ciąg "ASP.NET", wybierz szablon **aplikacja sieci Web ASP.NET (.NET Framework)** dla C#systemu, a następnie ustaw opcję ".NET Framework 4,6":
 
-    ![Ustawienie platforma docelowa dla nowego projektu](media/Hosting_01-NuGet.Server-Set4.6.png)
+    ![Ustawianie platformy docelowej dla nowego projektu](media/Hosting_01-NuGet.Server-Set4.6.png)
 
-1. Nadaj aplikacji nazwę odpowiedniego *innych* niż NuGet.Server, wybierz pozycję OK, a w następnym oknie dialogowym wybierz **pusty** szablonu, następnie wybierz pozycję **OK**.
+1. Nadaj aplikacji odpowiednią nazwę *inną* niż NuGet. Server, wybierz pozycję OK, a następnie w następnym oknie dialogowym wybierz **pusty** szablon, a następnie wybierz **przycisk OK**.
 
-1. Kliknij prawym przyciskiem myszy projekt, wybierz **Zarządzaj pakietami NuGet**.
+1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**.
 
-1. W Interfejsie użytkownika Menedżera pakietów, wybierz **Przeglądaj** kartę, a następnie wyszukaj i zainstaluj najnowszą wersję pakietu NuGet.Server, jeśli jest przeznaczony dla .NET Framework 4.6. (Można także zainstalować go z poziomu konsoli Menedżera pakietów przy użyciu `Install-Package NuGet.Server`.) Jeśli zostanie wyświetlony monit, należy zaakceptować postanowienia licencyjne.
+1. W interfejsie użytkownika Menedżera pakietów wybierz kartę **przeglądanie** , a następnie wyszukaj i zainstaluj najnowszą wersję pakietu NuGet. Server, jeśli jesteś celem .NET Framework 4,6. (Można go także zainstalować z konsoli Menedżera pakietów w programie `Install-Package NuGet.Server`). Zaakceptuj postanowienia licencyjne, jeśli zostanie wyświetlony monit.
 
-    ![Instalowanie pakietu NuGet.Server](media/Hosting_02-NuGet.Server-Package.png)
+    ![Instalowanie pakietu NuGet. Server](media/Hosting_02-NuGet.Server-Package.png)
 
-1. Instalowanie NuGet.Server konwertuje pusta aplikacja sieci Web do źródła pakietu. Instaluje różnych innych pakietów, tworzy `Packages` folderu w aplikacji i modyfikuje `web.config` uwzględnienie dodatkowych ustawień (zobacz komentarze w tym pliku, aby uzyskać szczegółowe informacje).
+1. Instalowanie NuGet. serwer konwertuje pustą aplikację sieci Web na źródło pakietu. Instaluje różne inne pakiety, tworzy `Packages` folder w aplikacji i modyfikuje `web.config` w celu uwzględnienia dodatkowych ustawień (szczegółowe informacje znajdują się w komentarzach w tym pliku).
 
     > [!Important]
-    > Należy dokładnie sprawdzić `web.config` po pakietu NuGet.Server zakończeniu jego modyfikacji pliku. NuGet.Server może nie zastąpić istniejące elementy, ale zamiast tego utworzyć zduplikowane elementy. Te duplikaty spowoduje, że "wewnętrzny błąd serwera" podczas próby uruchomienia projektu później. Na przykład jeśli Twoja `web.config` zawiera `<compilation debug="true" targetFramework="4.5.2" />` przed zainstalowaniem NuGet.Server, pakiet nie zastępuje go, ale wstawia sekundy `<compilation debug="true" targetFramework="4.6" />`. W takim przypadku Usuń element ze starszą wersją framework.
+    > Uważnie Zbadaj `web.config` po wykonaniu przez pakiet NuGet. Server zmian w tym pliku. NuGet. Server nie może zastąpić istniejących elementów, ale zamiast tego utworzyć zduplikowane elementy. Te duplikaty spowodują "wewnętrzny błąd serwera" podczas późniejszej próby uruchomienia projektu. Na przykład jeśli `web.config` zawiera `<compilation debug="true" targetFramework="4.5.2" />` przed zainstalowaniem NuGet. Server, pakiet nie zastępuje go, ale wstawia sekundę `<compilation debug="true" targetFramework="4.6" />`. W takim przypadku Usuń element ze starszą wersją struktury.
 
-1. Aby udostępnić pakietów w kanale informacyjnym podczas publikowania aplikacji na serwerze, należy dodać każdy `.nupkg` plików `Packages` folderu w programie Visual Studio, następnie ustawić każdy z nich w **Build Action** do **zawartości**i **Kopiuj do katalogu wyjściowego** do **zawsze Kopiuj**:
+1. Aby udostępnić pakiety w kanale informacyjnym po opublikowaniu aplikacji na serwerze, `.nupkg` Dodaj wszystkie pliki `Packages` do folderu w programie Visual Studio, a następnie ustaw dla każdej z nich **akcję kompilacji** na **zawartość** i **Skopiuj ją do katalogu wyjściowego** , aby **Kopiuj zawsze**:
 
-    ![Skopiuj pakiety do folderu pakietów w projekcie](media/Hosting_03-NuGet.Server-Package-Folder.png)
+    ![Kopiowanie pakietów do folderu Packages w projekcie](media/Hosting_03-NuGet.Server-Package-Folder.png)
 
-1. Uruchamianie witryny lokalnie w programie Visual Studio (przy użyciu **Debuguj > Uruchom bez debugowania** lub Ctrl + F5). Strona główna zawiera pakiet kanału informacyjnego adresy URL, jak pokazano poniżej. Jeśli widzisz błędy, należy dokładnie sprawdzić swoje `web.config` dla zduplikowane elementy są zanotowanej wcześniej w kroku 5.
+1. Uruchom lokację lokalnie w programie Visual Studio (przy użyciu **debugowania > Uruchom bez debugowania** lub CTRL + F5). Strona główna zawiera adresy URL kanału informacyjnego pakietu, jak pokazano poniżej. Jeśli widzisz błędy, uważnie Przeprowadź `web.config` inspekcję pod kątem zduplikowanych elementów, które zostały zanotowane wcześniej z krok 5.
 
-    ![Domyślną stronę główną dla aplikacji za pomocą NuGet.Server](media/Hosting_04-NuGet.Server-FeedHomePage.png)
+    ![Domyślna strona główna aplikacji z pakietem NuGet. Server](media/Hosting_04-NuGet.Server-FeedHomePage.png)
 
-1. Kliknij pozycję **tutaj** w obszarze opisanych powyżej, aby wyświetlić źródło danych OData pakietów.
+1. Kliknij **tutaj** w obszarze przedstawionym powyżej, aby zobaczyć źródło danych OData pakietów.
 
-1. Przy pierwszym uruchomieniu aplikacji, restrukturyzuje NuGet.Server `Packages` folderu zawierającego folderu dla każdego pakietu. Odpowiada to [układu magazynu lokalnego](http://blog.nuget.org/20151118/nuget-3.3.html#folder-based-repository-commands) wprowadzone w programie NuGet 3.3 w celu zwiększenia wydajności. Podczas dodawania dodatkowych pakietów, w dalszym ciągu strukturą.
+1. Przy pierwszym uruchomieniu aplikacji NuGet. serwer ponownie tworzy strukturę `Packages` folderu tak, aby zawierał folder dla każdego pakietu. Jest to zgodne z [lokalnym układem magazynu](http://blog.nuget.org/20151118/nuget-3.3.html#folder-based-repository-commands) wprowadzonym z pakietem NuGet 3,3 w celu zwiększenia wydajności. W przypadku dodawania kolejnych pakietów Kontynuuj korzystanie z tej struktury.
 
-1. Po przetestowaniu wdrożenia lokalnego, należy wdrożyć aplikację na żadnej innej witrynie wewnętrzne lub zewnętrzne, zgodnie z potrzebami.
+1. Po przetestowaniu lokalnego wdrożenia należy wdrożyć aplikację w dowolnej innej lokacji wewnętrznej lub zewnętrznej, zgodnie z potrzebami.
 
-1. Po jej wdrożeniu na `http://<domain>`, adres URL, którego używasz jako źródła pakietu będzie `http://<domain>/nuget`.
+1. Po wdrożeniu `http://<domain>`w programie adres URL używany dla źródła pakietu będzie miał `http://<domain>/nuget`wartość.
 
-## <a name="configuring-the-packages-folder"></a>Konfigurowanie folderu pakietów
+## <a name="configuring-the-packages-folder"></a>Konfigurowanie folderu Packages
 
-Za pomocą `NuGet.Server` 1.5 lub nowszej można bardziej szczegółowo skonfigurować przy użyciu folderu pakietu `appSetting/packagesPath` wartość w `web.config`:
+W `NuGet.Server` przypadku 1,5 i nowszych można dokładniej skonfigurować folder pakietu `appSetting/packagesPath` przy użyciu wartości w `web.config`:
 
 ```xml
 <appSettings>
@@ -70,15 +70,15 @@ Za pomocą `NuGet.Server` 1.5 lub nowszej można bardziej szczegółowo skonfigu
 </appSettings>
 ```
 
-`packagesPath` może być ścieżką bezwzględną lub wirtualnych.
+`packagesPath`może być ścieżką bezwzględną lub wirtualną.
 
-Gdy `packagesPath` zostanie pominięty lub pole pozostanie puste, packages folder jest ustawieniem domyślnym `~/Packages`.
+Gdy `packagesPath` zostanie pominięte lub pozostawione puste, folder Packages jest wartością `~/Packages`domyślną.
 
-## <a name="adding-packages-to-the-feed-externally"></a>Trwa dodawanie pakietów w kanale informacyjnym zewnętrznie
+## <a name="adding-packages-to-the-feed-externally"></a>Zewnętrzne dodawanie pakietów do źródła danych
 
-Gdy NuGet.Server lokacji zostanie uruchomiona, można dodać pakietów przy użyciu [wypychania nuget](../tools/cli-ref-push.md) pod warunkiem, że ustawisz wartość klucza interfejsu API w `web.config`.
+Po uruchomieniu lokacji NuGet. Server można dodać pakiety przy użyciu [wypychania NuGet](../reference/cli-reference/cli-ref-push.md) , pod warunkiem, że wartość klucza interfejsu API jest `web.config`ustawiona w.
 
-Po zainstalowaniu pakietu NuGet.Server `web.config` zawiera pustą `appSetting/apiKey` wartość:
+Po zainstalowaniu pakietu NuGet. Server program `web.config` zawiera pustą `appSetting/apiKey` wartość:
 
 ```xml
 <appSettings>
@@ -86,9 +86,9 @@ Po zainstalowaniu pakietu NuGet.Server `web.config` zawiera pustą `appSetting/a
 </appSettings>
 ```
 
-Gdy `apiKey` zostanie pominięty lub puste i wypychania pakietów do kanału informacyjnego jest wyłączona.
+Gdy `apiKey` zostanie pominięte lub puste, wypychanie pakietów do źródła danych jest wyłączone.
 
-Aby włączenie tej funkcji, należy ustawić `apiKey` wartości (najlepiej silnego hasła) i Dodaj wartość dla kucza zwanego `appSettings/requireApiKey` z wartością `true`:
+Aby włączyć tę funkcję, należy ustawić `apiKey` na wartość (idealnie silne hasło) i dodać klucz o nazwie `appSettings/requireApiKey` z wartością `true`:
 
 ```xml
 <appSettings>
@@ -100,14 +100,14 @@ Aby włączenie tej funkcji, należy ustawić `apiKey` wartości (najlepiej siln
 </appSettings>
 ```
 
-Jeśli serwer jest już zabezpieczone lub można inaczej nie wymagają klucza interfejsu API (na przykład, jeśli korzystasz z serwera prywatnej sieci lokalnej zespołu), można ustawić `requireApiKey` do `false`. Wszyscy użytkownicy z dostępem do serwera, następnie można wypchnąć pakietów.
+Jeśli serwer jest już zabezpieczony lub nie jest wymagany klucz interfejsu API (na przykład w przypadku korzystania z serwera prywatnego w lokalnej sieci zespołowej), można ustawić na `requireApiKey` `false`wartość. Wszyscy użytkownicy z dostępem do serwera mogą następnie wysyłać pakiety.
 
-## <a name="removing-packages-from-the-feed"></a>Usuwanie pakietów z kanału informacyjnego
+## <a name="removing-packages-from-the-feed"></a>Usuwanie pakietów ze źródła danych
 
-Za pomocą NuGet.Server [Usuń nuget](../tools/cli-ref-delete.md) polecenie usuwa pakiet z repozytorium, pod warunkiem, że zawierają klucz interfejsu API z komentarzem.
+W pakiecie NuGet. Server polecenie [NuGet Delete](../reference/cli-reference/cli-ref-delete.md) usuwa pakiet z repozytorium, pod warunkiem, że dołączysz klucz interfejsu API z komentarzem.
 
-Jeśli chcesz zmienić zachowanie, aby zamiast tego odmownej pakietu (pozostawiając ona dostępna dla przywracania pakietów), zmień `enableDelisting` w `web.config` na wartość true.
+Jeśli chcesz zmienić zachowanie w celu wyłączania pakietu zamiast niego (pozostawiając dostęp do przywracania pakietu), Zmień `enableDelisting` klucz w `web.config` na true.
 
-## <a name="nugetserver-support"></a>Obsługa NuGet.Server
+## <a name="nugetserver-support"></a>NuGet. Server — obsługa
 
-Aby uzyskać dodatkową pomoc przy użyciu NuGet.Server, Utwórz problem w [ https://github.com/nuget/NuGetGallery/issues ](https://github.com/nuget/NuGetGallery/issues).
+Aby uzyskać dodatkową pomoc dotyczącą korzystania z programu NuGet. Server [https://github.com/nuget/NuGetGallery/issues](https://github.com/nuget/NuGetGallery/issues), Utwórz problem w systemie.

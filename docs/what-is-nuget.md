@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: overview
-ms.openlocfilehash: a158abcaef8615a3e0b7e96aeedd096339382e99
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: e8e806e0a893d62d9d3189396dc47250ae9c8cf3
+ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317064"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68420031"
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
@@ -45,7 +45,7 @@ Oprócz obsługi hostingu pakiet NuGet udostępnia również różne narzędzia 
 
 | Narzędzie | Platformy | Odpowiednie scenariusze | Opis |
 | --- | --- | --- | --- |
-| [Interfejs wiersza polecenia dotnet](consume-packages/install-use-packages-dotnet-cli.md) | Wszystkie | Tworzenie, użycie | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla projektów w stylu zestawu SDK, które są przeznaczone dla .NET Framework (zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions)). Zapewnia pewne możliwości interfejsu wiersza polecenia NuGet bezpośrednio w łańcuchu narzędzi programu .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia NuGet, interfejs wiersza polecenia dotnet nie współdziała z projektami programu Visual Studio. |
+| [Interfejs wiersza polecenia dotnet](consume-packages/install-use-packages-dotnet-cli.md) | Wszystkie | Tworzenie, użycie | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla projektów w stylu zestawu SDK, które są przeznaczone dla .NET Framework (zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions)). Zapewnia pewne możliwości interfejsu wiersza polecenia NuGet bezpośrednio w łańcuchu narzędzi programu .NET Core. Podobnie jak w `nuget.exe` przypadku interfejsu wiersza polecenia, interfejs wiersza polecenia dotnet nie współdziała z projektami programu Visual Studio. |
 | [Interfejs wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md) | Wszystkie | Tworzenie, użycie | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i projektów spoza zestawu SDK, które są przeznaczone dla .NET Standard bibliotek. Zapewnia wszystkie możliwości programu NuGet, z zastosowaniem określonych poleceń w odniesieniu do twórców pakietów, niektórych mających zastosowanie tylko do konsumentów i innych. Na przykład twórcy pakietów używają `nuget pack` polecenia, aby utworzyć pakiet z różnych zestawów i powiązanych plików, odbiorcy pakietów używają `nuget install` do dołączania pakietów do folderu projektu, a wszyscy używają `nuget config` do ustawiania konfiguracji NuGet modyfikacj. Jako narzędzie niezależny od platformy, interfejs wiersza polecenia NuGet nie współdziała z projektami programu Visual Studio. |
 | [Konsola menedżera pakietów](consume-packages/install-use-packages-powershell.md) | Program Visual Studio w systemie Windows | Zużycie | Zawiera [polecenia programu PowerShell](reference/Powershell-Reference.md) służące do instalowania i zarządzania pakietami w projektach programu Visual Studio. |
 | [Interfejs użytkownika menedżera pakietów](consume-packages/install-use-packages-visual-studio.md) | Program Visual Studio w systemie Windows | Zużycie | Oferuje łatwy w użyciu interfejs użytkownika do instalowania pakietów i zarządzania nimi w projektach programu Visual Studio. |

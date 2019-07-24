@@ -1,21 +1,23 @@
 ---
-ms.openlocfilehash: 5acdc54726e4cb07794f8ee07d5e0d357ff622a3
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 20851cd71cc5eb6735fe5e0cd8b0f314f9100be4
+ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67842058"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68419920"
 ---
-1. [Zaloguj się do swojego konta w witrynie nuget.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) lub Utwórz konto Jeśli nie masz jeszcze takiego.
+1. [Zaloguj się do swojego konta NuGet.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) lub Utwórz konto, jeśli jeszcze go nie masz.
 
-1. Wybierz swoją nazwę użytkownika (w prawym górnym rogu), a następnie wybierz **klucze interfejsu API**.
+   Aby uzyskać więcej informacji na temat tworzenia konta, zobacz [poszczególne konta](../../nuget-org/individual-accounts.md).
 
-1. Wybierz **Utwórz**, podaj nazwę klucza, wybierz **wybierz zakresy > wypychania**. Wprowadzanie * dla **wzorzec Glob**, a następnie wybierz **Utwórz**. (Zobacz poniżej więcej informacji na temat zakresów).
+1. Wybierz nazwę użytkownika (w prawym górnym rogu), a następnie wybierz pozycję **klucze interfejsu API**.
 
-1. Po utworzeniu klucza, wybierz **kopiowania** do pobrania jest dostęp do kluczy należy w interfejsie wiersza polecenia:
+1. Wybierz pozycję **Utwórz**, podaj nazwę klucza, wybierz pozycję **Wybierz zakresy > wypychania**. Wprowadź ciąg * for **globalizowania**, a następnie wybierz pozycję **Utwórz**. (Zobacz poniżej, aby uzyskać więcej informacji na temat zakresów).
 
-    ![Kopiowanie klucza interfejsu API do Schowka](../media/QS_Create-02-APIKey.png)
+1. Po utworzeniu klucza wybierz pozycję **Kopiuj** , aby pobrać wymagany klucz dostępu w interfejsie wiersza polecenia:
 
-1. **Ważne**: Zapisać klucz w bezpiecznym miejscu, ponieważ nie można skopiować klucz ponownie na dalszym etapie. Po powrocie na stronę klucza interfejsu API, należy ponownie wygenerować klucza w celu skopiowania go. Można również usunąć klucza interfejsu API, jeśli nie chcesz już wypychania pakietów za pomocą interfejsu wiersza polecenia.
+    ![Kopiowanie klucza interfejsu API do schowka](../media/QS_Create-02-APIKey.png)
 
-Wyznaczanie zakresu umożliwia tworzenie oddzielnych kluczy interfejsu API do różnych celów. Każdy klucz ma przedział czasu jego wygaśnięcia i może zostać obniżone do określonych pakietów (lub glob wzorców). Każdy klucz również jest ograniczone do określonych operacji: wypychane nowe pakiety i aktualizacje, wypychania tylko aktualizacje lub usunięcie. Za pomocą określania zakresu, można utworzyć klucze interfejsu API dla różnych osób, które zarządzać pakiety dla Twojej organizacji w taki sposób, że mają oni uprawnienia, które są im potrzebne. Aby uzyskać więcej informacji, zobacz [Introducing zakresu kluczy interfejsu API](https://blog.nuget.org/20170202/introducing-scoped-api-keys.html) (blogs.nuget.org).
+1. **Ważne**: Zapisz klucz w bezpiecznej lokalizacji, ponieważ nie można później skopiować klucza. W przypadku powrotu do strony klucza interfejsu API należy ponownie wygenerować klucz, aby go skopiować. Możesz również usunąć klucz interfejsu API, jeśli nie chcesz już wysyłać pakietów za pośrednictwem interfejsu wiersza polecenia.
+
+Określanie zakresu umożliwia tworzenie oddzielnych kluczy interfejsu API do różnych celów. Każdy klucz ma przedział czasu wygaśnięcia i może być objęty zakresem określonych pakietów (lub wzorców globalizowania). Każdy klucz jest również objęty zakresem określonych operacji: wypychanie nowych pakietów i aktualizacji, tylko wypychanie aktualizacji lub odlistowanie. Dzięki funkcji określania zakresu można utworzyć klucze interfejsu API dla różnych osób, które zarządzają pakietami w organizacji, tak aby mieli tylko wymagane uprawnienia. Aby uzyskać więcej informacji, zobacz [klucze interfejsu API w zakresie](../../nuget-org/scoped-api-keys.md).
