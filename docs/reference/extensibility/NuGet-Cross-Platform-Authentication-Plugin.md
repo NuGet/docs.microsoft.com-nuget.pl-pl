@@ -1,74 +1,74 @@
 ---
-title: NuGet cross platform, wtyczki uwierzytelniania
-description: NuGet cross platform, wtyczki uwierzytelniania NuGet.exe, dotnet.exe, msbuild.exe i programu Visual Studio
+title: Wtyczka uwierzytelniania NuGet dla wielu platform
+description: Wtyczki do uwierzytelniania dla wielu platform NuGet dla NuGet. exe, dotnet. exe, MSBuild. exe i Visual Studio
 author: nkolev92
 ms.author: nikolev
 ms.date: 07/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: b76fab1028ec9a4172d2390083fbf9adb4290a6c
-ms.sourcegitcommit: 0c5a49ec6e0254a4e7a9d8bca7daeefb853c433a
+ms.openlocfilehash: a716737343ea826d28da6de46c32ca73aef590bd
+ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52453510"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68317276"
 ---
-# <a name="nuget-cross-platform-authentication-plugin"></a>NuGet cross platform, wtyczki uwierzytelniania
+# <a name="nuget-cross-platform-authentication-plugin"></a>Wtyczka uwierzytelniania NuGet dla wielu platform
 
-W wersji + NuGet wszystkich klientów (NuGet.exe, Visual Studio, dotnet.exe i MSBuild.exe) można użyć wtyczki uwierzytelniania skompilowane na 4.8 [NuGet cross platform wtyczek](NuGet-Cross-Platform-Plugins.md) modelu.
+W wersji 4.8 + wszystkie klienckie narzędzia NuGet (NuGet. exe, Visual Studio, dotnet. exe i MSBuild. exe) mogą używać wtyczki uwierzytelniania utworzonej na podstawie modelu [wtyczki międzyplatformowej NuGet](NuGet-Cross-Platform-Plugins.md) .
 
-## <a name="authentication-in-dotnetexe"></a>Uwierzytelnianie w dotnet.exe
+## <a name="authentication-in-dotnetexe"></a>Uwierzytelnianie w programie dotnet. exe
 
-Program Visual Studio i NuGet.exe są domyślnie interaktywne. NuGet.exe zawiera przełącznik, aby stał się [nieinterakcyjny](../../tools/nuget-exe-CLI-Reference.md).
-Ponadto wtyczek NuGet.exe i programu Visual Studio monit o wprowadzenie danych wejściowych.
-W dotnet.exe istnieje nie monitowania użytkownika, a wartość domyślna to nieinterakcyjny.
+Programy Visual Studio i NuGet. exe są domyślnie interaktywne. Plik NuGet. exe zawiera przełącznik, który [nie](../nuget-exe-CLI-Reference.md)jest interaktywny.
+Ponadto Dodatki NuGet. exe i Visual Studio monitują użytkownika o dane wejściowe.
+W programie dotnet. exe nie ma monitu i domyślnie nie jest to interaktywny.
 
-Mechanizm uwierzytelniania w dotnet.exe jest przepływ urządzenia. Podczas przywracania lub dodać pakiet uruchomienia operacji interaktywnie bloków operacji i instrukcje dla użytkownika, jak na zakończenie uwierzytelnieniami będzie świadczona w wierszu polecenia.
-Operacja będzie kontynuowana, gdy użytkownik zakończy uwierzytelnianie.
+Mechanizm uwierzytelniania w programie dotnet. exe jest przepływem urządzenia. Gdy operacja przywracania lub dodawania pakietu jest uruchamiana interaktywnie, to bloki operacji i instrukcje dla użytkownika, jak ukończyć uwierzytelnianie, zostaną podane w wierszu polecenia.
+Gdy użytkownik ukończy uwierzytelnianie, operacja będzie kontynuowana.
 
-Operacja interaktywne, jeden powinien polega na przekazaniu `--interactive`.
-Obecnie tylko jawne `dotnet restore` i `dotnet add package` polecenia obsługuje interakcyjne przełącznika.
-Brak Brak przełącznika interaktywne na `dotnet build` i `dotnet publish`.
+Aby operacja była interaktywna, należy ją przekazać `--interactive`.
+Obecnie tylko jawne `dotnet restore` i `dotnet add package` polecenia obsługują przełącznik interaktywny.
+Nie istnieje interaktywny przełącznik włączony `dotnet build` i `dotnet publish`.
 
 ## <a name="authentication-in-msbuild"></a>Uwierzytelnianie w programie MSBuild
 
-Podobnie jak dotnet.exe MSBuild.exe jest domyślnie nie jest mechanizm uwierzytelniania MSBuild.exe interaktywne, przepływ urządzenia.
-Aby umożliwić Przywracanie wstrzymać i poczekaj na potrzeby uwierzytelniania, wywołania do przywracania `msbuild -t:restore -p:NuGetInteractive="true"`.
+Podobnie jak w przypadku programu dotnet. exe, MSBuild. exe jest domyślnie nieinteraktywny mechanizm uwierzytelniania MSBuild. exe jest przepływem urządzenia.
+Aby pozwolić na wstrzymanie przywracania i poczekać na uwierzytelnienie, wywołaj polecenie Restore with `msbuild -t:restore -p:NuGetInteractive="true"`.
 
 ## <a name="creating-a-cross-platform-authentication-plugin"></a>Tworzenie wtyczki uwierzytelniania dla wielu platform
 
-Przykładową implementację można znaleźć w [dodatek dostawcy poświadczeń programu Microsoft](https://github.com/Microsoft/artifacts-credprovider).
+Przykładową implementację można znaleźć w [wtyczki dostawcy poświadczeń firmy Microsoft](https://github.com/Microsoft/artifacts-credprovider).
 
-Jest to bardzo ważne jest, że wtyczki spełnia wymagania dotyczące zabezpieczeń Harbor ustalonych przez narzędzia klienta programu NuGet.
-Minimalna wymagana wersja dla wtyczki do wtyczki uwierzytelniania jest *2.0.0*.
-NuGet wykona uzgadnianie za pomocą wtyczki i zapytania dla oświadczeń obsługiwaną operacją.
-Można znaleźć pakietu NuGet cross platform wtyczki [protokołu komunikatów](NuGet-Cross-Platform-Plugins.md#protocol-messages-index) więcej szczegółowych informacji dotyczących określonych wiadomości.
+Bardzo ważne jest, aby wtyczki zgodne z wymaganiami dotyczącymi zabezpieczeń określonymi przez narzędzia klienckie programu NuGet.
+Minimalna wymagana wersja wtyczki jako wtyczki uwierzytelniania to *2.0.0*.
+Pakiet NuGet wykona uzgadnianie z wtyczką i kwerendą dla obsługiwanych oświadczeń operacji.
+Aby uzyskać więcej informacji na temat konkretnych komunikatów [](NuGet-Cross-Platform-Plugins.md#protocol-messages-index) , zapoznaj się z informacjami o protokole wtyczek NuGet cross platform.
 
-NuGet zostanie ustawiony poziom dziennika i podaj informacje o serwerze proxy, aby dodatek, jeśli ma to zastosowanie.
-Rejestrowanie pakietu NuGet konsoli jest dozwolone tylko wtedy po NuGet został ustawiony poziom dziennika do wtyczki.
+Pakiet NuGet ustawi poziom dziennika i dostarczy informacje o serwerze proxy do wtyczki, jeśli ma to zastosowanie.
+Rejestrowanie w konsoli programu NuGet jest akceptowalne tylko po ustawieniu przez pakiet NuGet poziomu dziennika na wtyczkę.
 
-- Zachowanie uwierzytelniania wtyczka .NET framework
+- Zachowanie uwierzytelniania wtyczki .NET Framework
 
-W programie .NET Framework wtyczki mogą monitować użytkownika o dane wejściowe w postaci okna dialogowego.
+W .NET Framework Dodatki mogą monitować użytkownika o dane wejściowe w postaci okna dialogowego.
 
-- Zachowanie uwierzytelniania wtyczkę dla platformy .NET core
+- Zachowanie uwierzytelniania wtyczki .NET Core
 
-Okno dialogowe nie można wyświetlić w programie .NET Core. Wtyczki należy używać przepływu urządzenie do uwierzytelniania.
-Wtyczka może wysyłać komunikaty dziennika do NuGet za pomocą instrukcji dla użytkownika.
-Należy pamiętać, że rejestrowanie dostępne po ustawieniu poziomu dziennika do wtyczki.
-NuGet nie podejmie żadnych interaktywne dane wejściowe z wiersza polecenia.
+W programie .NET Core nie można wyświetlić okna dialogowego. Wtyczki powinny używać przepływu urządzenia do uwierzytelniania.
+Wtyczka może wysyłać komunikaty dziennika do narzędzia NuGet z instrukcjami dla użytkownika.
+Należy pamiętać, że rejestrowanie jest dostępne po ustawieniu poziomu dziennika na wtyczkę.
+Pakiet NuGet nie będzie pobierał żadnych interaktywnych danych wejściowych z wiersza polecenia.
 
-Gdy klient wywołuje wtyczkę przy użyciu poświadczeń uwierzytelniania Pobierz, wtyczki konieczne są zgodne z przełącznikiem interakcyjność i przestrzegać przełącznika okna dialogowego. 
+Gdy klient wywołuje wtyczkę z poświadczeniami pobierania uwierzytelniania, wtyczki muszą być zgodne z przełącznikiem interaktywnym i mieć poszanowanie przełączenia okna dialogowego. 
 
-W poniższej tabeli przedstawiono, jak wtyczki powinny zachowywać się dla wszystkich kombinacji.
+Poniższa tabela zawiera podsumowanie sposobu zachowania wtyczki dla wszystkich kombinacji.
 
-| IsNonInteractive | CanShowDialog | Zachowanie wtyczki |
+| IsNonInteractive | Zashowdialog | Zachowanie wtyczki |
 | ---------------- | ------------- | --------------- |
-| true | true | Przełącznik IsNonInteractive mają pierwszeństwo przed przełącznika okna dialogowego. Wtyczka jest niedozwolone pop okna dialogowego. Ta kombinacja jest prawidłowy tylko dla wtyczek platformy .NET Framework |
-| true | false | Przełącznik IsNonInteractive mają pierwszeństwo przed przełącznika okna dialogowego. Wtyczka nie może zablokować. Ta kombinacja jest prawidłowy tylko dla wtyczek platformy .NET Core |
-| false | true | Wtyczka powinny być wyświetlane okno dialogowe. Ta kombinacja jest prawidłowy tylko dla wtyczek platformy .NET Framework |
-| false | false | Wtyczka powinna może są wyświetlane okno dialogowe. Wtyczkę należy używać przepływu urządzenie do uwierzytelniania przez rejestrowanie komunikatów instrukcji za pomocą rejestratora. Ta kombinacja jest prawidłowy tylko dla wtyczek platformy .NET Core |
+| true | true | Przełącznik IsNonInteractive ma pierwszeństwo przed przełącznikiem okna dialogowego. Wtyczka nie zezwala na wyskakujące okno dialogowe. Ta kombinacja jest prawidłowa tylko dla wtyczek .NET Framework |
+| true | false | Przełącznik IsNonInteractive ma pierwszeństwo przed przełącznikiem okna dialogowego. Nie można zablokować wtyczki. Ta kombinacja jest prawidłowa tylko dla wtyczek .NET Core |
+| false | true | Wtyczka powinna wyświetlić okno dialogowe. Ta kombinacja jest prawidłowa tylko dla wtyczek .NET Framework |
+| false | false | Wtyczka nie może wyświetlić okna dialogowego. Wtyczka powinna używać przepływu urządzenia do uwierzytelniania przez rejestrowanie komunikatu instrukcji za pośrednictwem rejestratora. Ta kombinacja jest prawidłowa tylko dla wtyczek .NET Core |
 
-Zapoznaj się następujące dane techniczne przed napisaniem wtyczkę.
+Przed zapisaniem wtyczki zapoznaj się z poniższymi specyfikacją.
 
 - [Wtyczka pobierania pakietu NuGet](https://github.com/NuGet/Home/wiki/NuGet-Package-Download-Plugin)
-- [NuGet krzyżowe wtyczki uwierzytelniania plat](https://github.com/NuGet/Home/wiki/NuGet-cross-plat-authentication-plugin)
+- [Wtyczka do uwierzytelniania między płytkami NuGet](https://github.com/NuGet/Home/wiki/NuGet-cross-plat-authentication-plugin)
