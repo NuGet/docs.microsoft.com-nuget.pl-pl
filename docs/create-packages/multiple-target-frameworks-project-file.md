@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ff02871872cee9e8cbf8c7d7c74d804f7dc5b99
-ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
+ms.openlocfilehash: b7870bb6aac39f0865d88efc8c16751fdbecc3a8
+ms.sourcegitcommit: cae759ad8518c049575a30ad3bf04fe5d06244fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346152"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68616774"
 ---
 # <a name="support-multiple-net-framework-versions-in-your-project-file"></a>Obsługa wielu wersji .NET Framework w pliku projektu
 
@@ -72,5 +72,5 @@ Oto plik *. csproj* , który jest generowany przy użyciu powyższych kroków i 
 
 ## <a name="see-also"></a>Zobacz także
 
-[Jak określić platformy](/dotnet/standard/frameworks#how-to-specify-target-frameworks)
-docelowe dla[wielu platform](/dotnet/standard/library-guidance/cross-platform-targeting) docelowych
+* [Jak określić Platformy docelowe](/dotnet/standard/frameworks#how-to-specify-target-frameworks)
+* [Obsługiwane rozwiązania międzyplatformowe](/dotnet/standard/library-guidance/cross-platform-targeting)
