@@ -1,24 +1,26 @@
 ---
-title: Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
+title: Tworzenie pakietu NuGet przy użyciu programu MSBuild
 description: Szczegółowy przewodnik dotyczący procesu projektowania i tworzenia pakietu NuGet, w tym najważniejszych punktów decyzyjnych, takich jak pliki i przechowywanie wersji.
 author: karann-msft
 ms.author: karann
-ms.date: 07/09/2019
+ms.date: 08/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 649536181570ecedc259d264cd2d61d8b4a1259e
+ms.openlocfilehash: 8512b7b214db45fb2a4db742287270cb86054b7c
 ms.sourcegitcommit: 5aa49478dc466c67db5c3edda7c6ce8dcd8ae033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817593"
+ms.locfileid: "68818081"
 ---
-# <a name="create-a-nuget-package-using-the-dotnet-cli"></a>Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
+# <a name="create-a-nuget-package-using-msbuild"></a>Tworzenie pakietu NuGet przy użyciu programu MSBuild
 
-Niezależnie od tego, co Twój pakiet lub jaki kod zawiera, użyj jednego z narzędzi `nuget.exe` interfejsu wiersza polecenia lub `dotnet.exe`, aby spakować tę funkcję do składnika, który może być współużytkowany i używany przez dowolną liczbę innych deweloperów. W tym artykule opisano sposób tworzenia pakietu przy użyciu interfejsu wiersza polecenia dotnet. Aby zainstalować `dotnet` interfejs wiersza polecenia, zobacz [Instalowanie narzędzi klienckich programu NuGet](../install-nuget-client-tools.md). Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest dołączany do obciążeń .NET Core.
+Niezależnie od tego, co Twój pakiet lub jaki kod zawiera, należy spakować tę funkcję do składnika, który może być współużytkowany i używany przez dowolną liczbę innych deweloperów. W tym artykule opisano sposób tworzenia pakietu przy użyciu programu MSBuild. Aby użyć programu `dotnet` MSBuild, najpierw zainstaluj interfejs wiersza polecenia, zobacz [Instalowanie narzędzi klienckich programu NuGet](../install-nuget-client-tools.md). Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest dołączany do obciążeń .NET Core.
 
-W przypadku projektów .NET Core i .NET Standard, które korzystają z [formatu zestawu SDK](../resources/check-project-format.md)i innych projektów w stylu zestawu SDK, NuGet używa informacji w pliku projektu bezpośrednio do tworzenia pakietu. Aby zapoznać się z samouczkami krok po kroku, zobacz [Tworzenie pakietów .NET standard za pomocą interfejsu wiersza polecenia dotnet](../quickstart/create-and-publish-a-package-using-the-dotnet-cli.md) lub [Tworzenie pakietów .NET standard przy użyciu programu Visual Studio](../quickstart/create-and-publish-a-package-using-visual-studio.md).
+W przypadku projektów .NET Core i .NET Standard, które korzystają z [formatu zestawu SDK](../resources/check-project-format.md)i innych projektów w stylu zestawu SDK, NuGet używa informacji w pliku projektu bezpośrednio do tworzenia pakietu.  W przypadku projektu typu innego niż zestaw SDK, który `<PackageReference>`używa, można również użyć programu MSBuild`msbuild /t:pack`().
 
-`msbuild -t:pack`Funkcja jest równoważna `dotnet pack`z. Aby skompilować przy użyciu programu MSBuild, zobacz [Tworzenie pakietu NuGet przy użyciu programu MSBuild](creating-a-package-msbuild.md).
+Aby skompilować przy użyciu programu MSBuild, należy dodać pakiet NuGet. Build. Tasks. Pack do zależności projektu. Aby uzyskać szczegółowe informacje o obiektach docelowych programu MSBuild, zobacz [pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild](../reference/msbuild-targets.md).
+
+`msbuild -t:pack`Funkcja jest równoważna `dotnet pack`z. Aby zapoznać się `dotnet` z samouczkiem krok po kroku przy użyciu interfejsu wiersza polecenia, zobacz [Tworzenie pakietów .NET standard za pomocą interfejsu wiersza polecenia dotnet](../quickstart/create-and-publish-a-package-using-the-dotnet-cli.md).
 
 > [!IMPORTANT]
 > Ten temat ma zastosowanie do projektów w [stylu zestawu SDK](../resources/check-project-format.md) , zwykle .NET Core i projektów .NET Standard.
@@ -37,7 +39,7 @@ W programie Visual Studio można ustawić te wartości we właściwościach proj
 
 ```xml
 <PropertyGroup>
-  <PackageId>AppLogger</PackageId>
+  <PackageId>ClassLibDotNetStandard</PackageId>
   <Version>1.0.0</Version>
   <Authors>your_name</Authors>
   <Company>your_company</Company>
@@ -47,13 +49,13 @@ W programie Visual Studio można ustawić te wartości we właściwościach proj
 > [!Important]
 > Nadaj pakietowi identyfikator, który jest unikatowy w obrębie nuget.org lub dowolnego źródła pakietów, którego używasz.
 
-Poniższy przykład pokazuje prosty, kompletny plik projektu z tymi właściwościami. (Nowy projekt domyślny można utworzyć przy użyciu `dotnet new classlib` polecenia).
+Poniższy przykład pokazuje prosty, kompletny plik projektu z tymi właściwościami.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>AppLogger</PackageId>
+    <PackageId>ClassLibDotNetStandard</PackageId>
     <Version>1.0.0</Version>
     <Authors>your_name</Authors>
     <Company>your_company</Company>
@@ -72,35 +74,81 @@ Aby uzyskać szczegółowe informacje na temat deklarowania zależności i okre�
 
 [!INCLUDE [choose-package-id](includes/choose-package-id.md)]
 
-## <a name="run-the-pack-command"></a>Uruchom pakiet polecenie
+## <a name="add-the-nugetbuildtaskspack-package"></a>Dodaj pakiet NuGet. Build. Tasks. Pack
 
-Aby skompilować pakiet NuGet ( `.nupkg` plik) z projektu, `dotnet pack` Uruchom polecenie, które również automatycznie kompiluje projekt:
+Aby użyć programu MSBuild, Dodaj pakiet NuGet. Build. Tasks. Pack do projektu.
 
-```cli
+1. Otwórz plik projektu i Dodaj następujący `<PropertyGroup>` element po elemencie:
+
+   ```xml
+   <ItemGroup>
+     <!-- ... -->
+     <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0"/>
+     <!-- ... -->
+   </ItemGroup>
+   ```
+
+2. Otwórz wiersz polecenia dewelopera (w polu **wyszukiwania** wpisz **wiersz polecenia programisty**).
+
+3. Przejdź do folderu zawierającego plik projektu i wpisz następujące polecenie, aby zainstalować pakiet NuGet. Build. Tasks. Pack.
+
+   ```cmd
+   # Uses the project file in the current folder by default
+   msbuild -t:restore
+   ```
+
+   Upewnij się, że dane wyjściowe programu MSBuild wskazują, że kompilacja została ukończona pomyślnie.
+
+## <a name="run-the-msbuild--tpack-command"></a>Uruchamianie polecenia MSBuild-t:Pack
+
+Aby skompilować pakiet NuGet ( `.nupkg` plik) z projektu, `msbuild -t:pack` Uruchom polecenie, które również automatycznie kompiluje projekt:
+
+W wierszu polecenia dla deweloperów wpisz następujące polecenie:
+
+```cmd
 # Uses the project file in the current folder by default
-dotnet pack
+msbuild -t:pack
 ```
 
 Dane wyjściowe przedstawiają ścieżkę do `.nupkg` pliku.
 
 ```output
-Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
+Microsoft (R) Build Engine version 16.1.76+g14b0a930a7 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-  Restore completed in 29.91 ms for D:\proj\AppLoggerNet\AppLogger\AppLogger.csproj.
-  AppLogger -> D:\proj\AppLoggerNet\AppLogger\bin\Debug\netstandard2.0\AppLogger.dll
-  Successfully created package 'D:\proj\AppLoggerNet\AppLogger\bin\Debug\AppLogger.1.0.0.nupkg'.
+Build started 8/5/2019 3:09:15 PM.
+Project "C:\Users\username\source\repos\ClassLib_DotNetStandard\ClassLib_DotNetStandard.csproj" on node 1 (pack target(s)).
+GenerateTargetFrameworkMonikerAttribute:
+Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+CoreCompile:
+  ...
+CopyFilesToOutputDirectory:
+  Copying file from "C:\Users\username\source\repos\ClassLib_DotNetStandard\obj\Debug\netstandard2.0\ClassLib_DotNetStandard.dll" to "C:\Use
+  rs\username\source\repos\ClassLib_DotNetStandard\bin\Debug\netstandard2.0\ClassLib_DotNetStandard.dll".
+  ClassLib_DotNetStandard -> C:\Users\username\source\repos\ClassLib_DotNetStandard\bin\Debug\netstandard2.0\ClassLib_DotNetStandard.dll
+  Copying file from "C:\Users\username\source\repos\ClassLib_DotNetStandard\obj\Debug\netstandard2.0\ClassLib_DotNetStandard.pdb" to "C:\Use
+  rs\username\source\repos\ClassLib_DotNetStandard\bin\Debug\netstandard2.0\ClassLib_DotNetStandard.pdb".
+GenerateNuspec:
+  Successfully created package 'C:\Users\username\source\repos\ClassLib_DotNetStandard\bin\Debug\AppLogger.1.0.0.nupkg'.
+Done Building Project "C:\Users\username\source\repos\ClassLib_DotNetStandard\ClassLib_DotNetStandard.csproj" (pack target(s)).
+
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.21
 ```
 
 ### <a name="automatically-generate-package-on-build"></a>Automatycznie Generuj pakiet podczas kompilacji
 
-Aby automatycznie uruchomić `dotnet pack` `dotnet build`program, Dodaj następujący wiersz do pliku projektu w `<PropertyGroup>`:
+Aby automatycznie uruchomić `msbuild -t:pack` podczas kompilowania lub przywracania projektu, Dodaj następujący wiersz do pliku projektu w: `<PropertyGroup>`
 
 ```xml
 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 ```
 
-Po uruchomieniu `dotnet pack` w rozwiązaniu to pakiety wszystkie projekty w rozwiązaniu, które są możliwe do spakowania ([<IsPackable>](/dotnet/core/tools/csproj#nuget-metadata-properties) właściwość jest ustawiona na `true`.
+Po uruchomieniu `msbuild -t:pack` w rozwiązaniu to pakiety wszystkie projekty w rozwiązaniu, które są możliwe do spakowania ([<IsPackable>](/dotnet/core/tools/csproj#nuget-metadata-properties) właściwość jest ustawiona na `true`.
 
 > [!NOTE]
 > Po automatycznym wygenerowaniu pakietu czas do spakowania zwiększa czas kompilacji projektu.
@@ -120,6 +168,7 @@ Po utworzeniu pakietu, który jest `.nupkg` plikiem, można go opublikować w wy
 
 Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób obsługiwać inne scenariusze zgodnie z opisem w następujących tematach:
 
+- [Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild](../reference/msbuild-targets.md)
 - [Przechowywanie wersji pakietów](../reference/package-versioning.md)
 - [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
 - [Przekształcenia plików źródłowych i konfiguracji](../create-packages/source-and-config-file-transformations.md)

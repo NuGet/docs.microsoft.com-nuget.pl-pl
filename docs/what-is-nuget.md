@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: overview
-ms.openlocfilehash: e8e806e0a893d62d9d3189396dc47250ae9c8cf3
-ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
+ms.openlocfilehash: f16cc6f66bc12727a4ec8eb5da4ff44a9eeb1764
+ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68420031"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68833331"
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
@@ -26,7 +26,7 @@ Ponieważ NuGet obsługuje hosty prywatne obok publicznego hosta nuget.org, moż
 
 W roli jako hosta publicznego pakiet NuGet utrzymuje centralne repozytorium ponad 100 000 unikatowych pakietów w [NuGet.org](https://www.nuget.org). Te pakiety są wykorzystywane przez miliony deweloperów .NET/.NET Core codziennie. Pakiet NuGet umożliwia również hostowanie pakietów prywatnych w chmurze (na przykład na platformie Azure DevOps), w sieci prywatnej lub nawet w lokalnym systemie plików. Dzięki temu pakiety te są dostępne tylko dla tych deweloperów, którzy mają dostęp do hosta, co daje możliwość udostępnienia pakietów dla określonej grupy odbiorców. Te opcje są wyjaśnione w przypadku [hostowania własnych źródeł danych NuGet](hosting-packages/overview.md). Za pomocą opcji konfiguracji można również kontrolować, które hosty mogą być dostępne dla każdego komputera, zapewniając tym samym pewność, że pakiety są uzyskiwane z określonych źródeł, a nie do repozytorium publicznego, takiego jak nuget.org.
 
-Niezależnie od ich charakteru Host służy jako punkt połączenia między *twórców* pakietu i *użytkownikami pakietu.* Twórcy tworzą przydatne pakiety NuGet i publikują je na hoście. Konsumenci szukają przydatnych i zgodnych pakietów na dostępnych hostach, pobierając i uwzględniając te pakiety w swoich projektach. Po zainstalowaniu w projekcie interfejsy API pakietów są dostępne dla pozostałej części kodu projektu.
+Niezależnie od ich charakteru Host służy jako punkt połączenia między *twórców* pakietu i użytkownikami pakietu. Twórcy tworzą przydatne pakiety NuGet i publikują je na hoście. Konsumenci szukają przydatnych i zgodnych pakietów na dostępnych hostach, pobierając i uwzględniając te pakiety w swoich projektach. Po zainstalowaniu w projekcie interfejsy API pakietów są dostępne dla pozostałej części kodu projektu.
 
 ![Relacja między twórcymi pakietów, hostami pakietów i użytkownikami pakietów](media/nuget-roles.png)
 
@@ -105,7 +105,7 @@ Aby procesy te działały wydajnie, pakiet NuGet wykonuje pewne optymalizacje w 
 
 W ramach pojedynczego projektu, pakiet NuGet zarządza ogólnym wykresem zależności, który ponownie obejmuje rozwiązywanie wielu odwołań do różnych wersji tego samego pakietu. Dość często zdarza się, że projekt bierze zależność od jednego lub większej liczby pakietów, które same mają te same zależności. Niektóre z najbardziej przydatnych pakietów narzędzi na nuget.org są wykorzystywane przez wiele innych pakietów. W całym grafie zależności można łatwo uzyskać dziesięć różnych odwołań do różnych wersji tego samego pakietu. Aby uniknąć przełączenia wielu wersji tego pakietu do samej aplikacji, program NuGet sortuje, która wersja może być używana przez wszystkich klientów. (Aby uzyskać więcej informacji, zobacz [rozpoznawanie zależności](consume-packages/dependency-resolution.md)).
 
-Poza tym, pakiet NuGet zachowuje wszystkie specyfikacje związane ze strukturą pakietów (w tym [lokalizacjami](create-packages/creating-localized-packages.md) i [symbolami debugowania](create-packages/symbol-packages.md)) oraz ich odwołania (w tym [zakresami wersji](reference/package-versioning.md#version-ranges-and-wildcards) i [wersjami wstępnymi](create-packages/prerelease-packages.md)). Pakiet NuGet udostępnia również różne interfejsy API służące do programistycznej pracy z usługami i zapewnia wsparcie dla deweloperów, którzy piszą rozszerzenia programu Visual Studio i szablony projektów.
+Poza tym, pakiet NuGet zachowuje wszystkie specyfikacje związane ze strukturą pakietów (w tym [lokalizacjami](create-packages/creating-localized-packages.md) i [symbolami debugowania](create-packages/symbol-packages.md)) oraz ich [odwołania](consume-packages/package-references-in-project-files.md) (w tym [zakresami wersji](reference/package-versioning.md#version-ranges-and-wildcards) i [wersjami wstępnymi ](create-packages/prerelease-packages.md).) Pakiet NuGet udostępnia również różne interfejsy API służące do programistycznej pracy z usługami i zapewnia wsparcie dla deweloperów, którzy piszą rozszerzenia programu Visual Studio i szablony projektów.
 
 Poświęć chwilę na przejrzenie spisu treści tej dokumentacji i zobaczysz wszystkie te funkcje w tym miejscu oraz informacje o wersji Datowanie z powrotem do początku narzędzia NuGet.
 

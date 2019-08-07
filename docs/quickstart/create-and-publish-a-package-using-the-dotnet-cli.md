@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: quickstart
-ms.openlocfilehash: 30a77b427fe0a33b41262c5784045e5a6b10852f
-ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
+ms.openlocfilehash: f663b1b2176a5f0ae5bc6d82873193638e0efdaa
+ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68419987"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68833387"
 ---
 # <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki start: Tworzenie i publikowanie pakietu (interfejs wiersza polecenia dotnet)
 
@@ -26,9 +26,15 @@ Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET i publikowa
 
 Można użyć istniejącego projektu biblioteki klas .NET dla kodu, który ma zostać spakowany, lub utworzyć prosty jeden w następujący sposób:
 
-1. Utwórz folder o nazwie `AppLogger` i przejdź do niego.
+1. Utwórz folder o nazwie `AppLogger`.
 
-1. Utwórz projekt przy użyciu `dotnet new classlib`, który używa nazwy bieżącego folderu dla projektu.
+1. Otwórz wiersz polecenia i przejdź do `AppLogger` folderu.
+
+1. Typ `dotnet new classlib`, który używa nazwy bieżącego folderu dla projektu.
+
+   Spowoduje to utworzenie nowego projektu.
+
+1. Użyj `dotnet run` , aby sprawdzić, czy aplikacja została utworzona poprawnie.
 
 ## <a name="add-package-metadata-to-the-project-file"></a>Dodawanie metadanych pakietu do pliku projektu
 

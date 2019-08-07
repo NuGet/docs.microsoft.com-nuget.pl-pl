@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8e662194fffc031d0cfc0aa129a5a15b555a4231
-ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
+ms.openlocfilehash: 8403ae38b5d2e907c6f06b162a18cdcd5425565b
+ms.sourcegitcommit: 5aa49478dc466c67db5c3edda7c6ce8dcd8ae033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68420010"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817521"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -18,7 +18,7 @@ ms.locfileid: "68420010"
 
 W formacie [PackageReference](../consume-packages/package-references-in-project-files.md) program NuGet 4.0 + może przechowywać wszystkie metadane manifestu bezpośrednio w pliku projektu, zamiast używać oddzielnego `.nuspec` pliku.
 
-Dzięki programowi MSBuild 15.1 + pakiet NuGet jest również pierwszym klasą obywatela programu `pack` MSBuild `restore` z obiektami docelowymi, zgodnie z poniższym opisem. Te elementy docelowe umożliwiają współdziałanie z pakietem NuGet, podobnie jak w przypadku każdego innego zadania lub celu programu MSBuild. (W przypadku programu NuGet 3. x i starszych należy użyć poleceń [pakiet](../reference/cli-reference/cli-ref-pack.md) i [Przywróć](../reference/cli-reference/cli-ref-restore.md) zamiast tego w interfejsie wiersza polecenia NuGet).
+Dzięki programowi MSBuild 15.1 + pakiet NuGet jest również pierwszym klasą obywatela programu `pack` MSBuild `restore` z obiektami docelowymi, zgodnie z poniższym opisem. Te elementy docelowe umożliwiają współdziałanie z pakietem NuGet, podobnie jak w przypadku każdego innego zadania lub celu programu MSBuild. Aby uzyskać instrukcje tworzenia pakietu NuGet przy użyciu programu MSBuild, zobacz [Tworzenie pakietu NuGet przy użyciu programu MSBuild](../create-packages/creating-a-package-msbuild.md). (W przypadku programu NuGet 3. x i starszych należy użyć poleceń [pakiet](../reference/cli-reference/cli-ref-pack.md) i [Przywróć](../reference/cli-reference/cli-ref-restore.md) zamiast tego w interfejsie wiersza polecenia NuGet).
 
 ## <a name="target-build-order"></a>Docelowy porządek kompilacji
 
@@ -55,13 +55,13 @@ Należy zauważyć, `Owners` że `Summary` właściwości i `.nuspec` z nie są 
 | Opis | Opis | "Opis pakietu" | |
 | Prawo | Prawo | empty | |
 | RequireLicenseAcceptance | PackageRequireLicenseAcceptance | false | |
-| Licencjonowan | PackageLicenseExpression | empty | Odnosi się do`<license type="expression">` |
-| Licencjonowan | PackageLicenseFile | empty | Odnosi się `<license type="file">`do. Może być konieczne jawne spakowanie pliku licencji, do którego istnieje odwołanie. |
+| licencjonowan | PackageLicenseExpression | empty | Odnosi się do`<license type="expression">` |
+| licencjonowan | PackageLicenseFile | empty | Odnosi się `<license type="file">`do. Może być konieczne jawne spakowanie pliku licencji, do którego istnieje odwołanie. |
 | LicenseUrl | PackageLicenseUrl | empty | `licenseUrl`jest przestarzały, użyj właściwości PackageLicenseExpression lub PackageLicenseFile |
 | ProjectUrl | PackageProjectUrl | empty | |
 | IconUrl | PackageIconUrl | empty | |
 | Znaczniki | PackageTags | empty | Tagi są rozdzielane średnikami. |
-| releaseNotes | PackageReleaseNotes | empty | |
+| ReleaseNotes | PackageReleaseNotes | empty | |
 | Repozytorium/adres URL | RepositoryUrl | empty | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przyklad *https://github.com/NuGet/NuGet.Client.git* |
 | Repozytorium/typ | Repozytorium | empty | Typ repozytorium. Przykłady: *git*i *TFS*. |
 | Repozytorium/gałąź | RepositoryBranch | empty | Opcjonalne informacje o gałęzi repozytorium. Aby można było uwzględnić tę właściwość, należy również określić *RepositoryUrl* . Przykład: *Master* (NuGet 4.7.0 +) |
@@ -79,7 +79,7 @@ Należy zauważyć, `Owners` że `Summary` właściwości i `.nuspec` z nie są 
 - Opis
 - Prawo
 - PackageRequireLicenseAcceptance
-- developmentDependency
+- DevelopmentDependency
 - PackageLicenseExpression
 - PackageLicenseFile
 - PackageLicenseUrl
@@ -90,7 +90,7 @@ Należy zauważyć, `Owners` że `Summary` właściwości i `.nuspec` z nie są 
 - PackageOutputPath
 - IncludeSymbols
 - IncludeSource
-- packageTypes
+- PackageTypes
 - Istool
 - RepositoryUrl
 - Repozytorium
@@ -207,7 +207,7 @@ W przypadku korzystania z wyrażenia licencji Właściwość PackageLicenseExpre
 
 [Dowiedz się więcej na temat wyrażeń licencji i licencji akceptowanych przez NuGet.org](nuspec.md#license).
 
-Podczas pakowania pliku licencji należy użyć właściwości PackageLicenseFile, aby określić ścieżkę pakietu względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik jest dołączony do pakietu. Na przykład:
+Podczas pakowania pliku licencji należy użyć właściwości PackageLicenseFile, aby określić ścieżkę pakietu względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik jest dołączony do pakietu. Przykład:
 
 ```xml
 <PropertyGroup>
@@ -329,7 +329,7 @@ Przykład:
 1. Pobierz pakiety
 1. Zapisz plik zasobów, cele i właściwości.
 
-Obiekt docelowy działa tylko w przypadku projektów korzystających z formatu PackageReference.  `restore` Nie działa **w** przypadku projektów przy użyciu `packages.config` formatu; zamiast tego należy użyć [przywracania NuGet](../reference/cli-reference/cli-ref-restore.md) .
+Obiekt docelowy działa tylko w przypadku projektów korzystających z formatu PackageReference. `restore` Nie działa w przypadku projektów przy użyciu `packages.config` formatu; zamiast tego należy użyć [przywracania NuGet](../reference/cli-reference/cli-ref-restore.md) .
 
 ### <a name="restore-properties"></a>Właściwości przywracania
 

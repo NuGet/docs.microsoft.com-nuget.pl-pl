@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 894a39e9e67508234295db128928b09da7f468f0
-ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
+ms.openlocfilehash: f33624cf50248d8a137216ed0d725ed88c0defd2
+ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68419817"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68833371"
 ---
 # <a name="create-a-package-using-the-nugetexe-cli"></a>Tworzenie pakietu przy użyciu interfejsu wiersza polecenia NuGet. exe
 
@@ -138,7 +138,7 @@ Poniżej znajduje się typowy (ale fikcyjny) `.nuspec` plik z komentarzami opisu
 </package>
 ```
 
-Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [wersja pakietu](../reference/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `include` atrybutów `exclude` i dla `dependency` elementu. Zobacz [. nuspec — zależności](../reference/nuspec.md#dependencies).
+Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [Packages. config](../reference/packages-config.md) i [Versioning Package](../reference/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `include` atrybutów `exclude` i dla `dependency` elementu. Zobacz [. nuspec — zależności](../reference/nuspec.md#dependencies).
 
 Ponieważ manifest jest zawarty w utworzonym przez niego pakiecie, można znaleźć dowolną liczbę dodatkowych przykładów, sprawdzając istniejące pakiety. Dobrym źródłem jest folder *Global-Packages* na komputerze, który jest zwracany przez następujące polecenie:
 
@@ -185,7 +185,7 @@ Konwencje folderów są następujące:
 | Runtime | Zestaw specyficzny dla architektury`.dll`(), symbol`.pdb`() i pliki zasobów natywnych (`.pri`) | Zestawy są dodawane jako odwołania tylko dla środowiska uruchomieniowego; inne pliki są kopiowane do folderów projektu. Zawsze powinien istnieć odpowiedni zestaw (TFM) `AnyCPU` określony w obszarze `/ref/{tfm}` folder, aby zapewnić odpowiedni zestaw czasu kompilacji. Zobacz [Obsługa wielu platform docelowych](supporting-multiple-target-frameworks.md). |
 | zawartość | Dowolne pliki | Zawartość jest kopiowana do katalogu głównego projektu. Folder **zawartości** należy traktować jako katalog główny aplikacji docelowej, która ostatecznie zużywa pakiet. Aby pakiet mógł dodać obraz w folderze */images* aplikacji, umieść go w folderze *content/images* pakietu. |
 | kompilacja | MSBuild `.targets` i `.props` pliki | Automatycznie wstawiany do pliku projektu lub `project.lock.json` (NuGet 3. x +). |
-| narzędzia | Skrypty i programy PowerShell dostępne z konsoli Menedżera pakietów | Folder jest dodawany `PATH` do zmiennej środowiskowej tylko dla konsoli Menedżera pakietów ( `PATH` w odróżnieniu od ustawienia ustawionego dla programu MSBuild podczas kompilowania projektu).  `tools` |
+| narzędzia | Skrypty i programy PowerShell dostępne z konsoli Menedżera pakietów | Folder jest dodawany `PATH` do zmiennej środowiskowej tylko dla konsoli Menedżera pakietów ( `PATH` w odróżnieniu od ustawienia ustawionego dla programu MSBuild podczas kompilowania projektu). `tools` |
 
 Ponieważ struktura folderów może zawierać dowolną liczbę zestawów dla dowolnej liczby platform docelowych, ta metoda jest konieczna podczas tworzenia pakietów, które obsługują wiele platform.
 
