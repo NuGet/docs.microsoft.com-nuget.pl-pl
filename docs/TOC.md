@@ -39,7 +39,6 @@
 ## [Tworzenie pakietu symboli](create-packages/symbol-packages-snupkg.md)
 ## Zaawansowane zadania
 ### [Obsługa wielu platform docelowych](create-packages/supporting-multiple-target-frameworks.md)
-### [Określanie elementów docelowych programu MSBuild: pack i restore](reference/msbuild-targets.md)
 ### [Modyfikowanie kodu źródłowego i plików konfiguracji](create-packages/source-and-config-file-transformations.md)
 ### [Wybieranie zestawów przywoływanych w projektach](create-packages/select-assemblies-referenced-by-projects.md)
 ### [Ustawianie typu pakietu](create-packages/set-package-type.md)
@@ -71,6 +70,7 @@
 ## [.nuspec](reference/nuspec.md)
 ## [Plik nuget.config](reference/nuget-config-file.md)
 ## [Platformy docelowe](reference/target-frameworks.md)
+## [Pakowanie i przywracanie jako elementy docelowe programu MSBuild](reference/msbuild-targets.md)
 ## [Interfejs wiersza polecenia dotnet](reference/dotnet-Commands.md)
 ## [Dokumentacja interfejsu wiersza polecenia programu nuget.exe](reference/nuget-exe-cli-reference.md)
 ### [add](reference/cli-reference/cli-ref-add.md)
