@@ -7,12 +7,12 @@ ms.date: 02/12/2018
 ms.topic: hub-page
 layout: HubPage
 hide_bc: true
-ms.openlocfilehash: cdd032a5a7268a7ffddff5141229fd021ec275a5
-ms.sourcegitcommit: 5aa49478dc466c67db5c3edda7c6ce8dcd8ae033
+ms.openlocfilehash: 8f4fca447d61b6f435399a24ef4151604d43291d
+ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817544"
+ms.locfileid: "68833365"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -122,13 +122,16 @@ ms.locfileid: "68817544"
                             <a href="create-packages/overview-and-workflow.md">Przepływ pracy (omówienie)</a>
                         </p>
                         <p>
-                            <a href="create-packages/creating-a-package-dotnet-cli.md">Tworzenie pakietu — interfejs wiersza polecenia dotnet</a>
+                            <a href="quickstart/create-and-publish-a-package-using-visual-studio.md">Korzystanie z programu Visual Studio</a>
                         </p>
                         <p>
-                            <a href="create-packages/creating-a-package.md">Tworzenie pakietu — interfejs wiersza polecenia nuget.exe</a>
+                            <a href="create-packages/creating-a-package-dotnet-cli.md">Korzystanie z interfejsu wiersza polecenia dotnet</a>
                         </p>
                         <p>
-                            <a href="create-packages/creating-a-package.md">Tworzenie pakietu — program MSBuild</a>
+                            <a href="create-packages/creating-a-package.md">Korzystanie z interfejsu wiersza polecenia nuget.exe</a>
+                        </p>
+                        <p>
+                            <a href="create-packages/creating-a-package.md">Korzystanie z programu MSBuild</a>
                         </p>
                         <p>
                             <a href="create-packages/multiple-target-frameworks-project-file.md">Obsługa wielu platform docelowych</a>
@@ -210,6 +213,8 @@ ms.locfileid: "68817544"
                         <p>
                             <a href="consume-packages/package-references-in-project-files.md">Odwołania do pakietu</a>
                         </p>
+                        <p>
+                            <a href="reference/msbuild-targets.md">Pakowanie i przywracanie jako elementy docelowe programu MSBuild</a>
                         </p>
                         <p>
                             <a href="reference/nuspec.md">Plik nuspec</a>
