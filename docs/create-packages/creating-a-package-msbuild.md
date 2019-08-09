@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: a0db6dc95ffa5ad73741ae53a6be9d6f937c1dbf
-ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
+ms.openlocfilehash: 92b42f0a6133565844d0b6df2cb50770793055ec
+ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68833230"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68860634"
 ---
 # <a name="create-a-nuget-package-using-msbuild"></a>Tworzenie pakietu NuGet przy użyciu programu MSBuild
 
@@ -105,7 +105,7 @@ Jeśli używasz programu MSBuild z projektem w stylu innym niż zestaw SDK i Pac
 
 Aby skompilować pakiet NuGet ( `.nupkg` plik) z projektu, `msbuild -t:pack` Uruchom polecenie, które również automatycznie kompiluje projekt:
 
-W wierszu polecenia dla deweloperów wpisz następujące polecenie:
+W wierszu polecenia dla deweloperów dla programu Visual Studio wpisz następujące polecenie:
 
 ```cmd
 # Uses the project file in the current folder by default

@@ -5,12 +5,12 @@ author: mikejo5000
 ms.author: mikejo
 ms.date: 06/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: a796c7a7537c3052259c7cf3f17d60981a495442
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: d9e9f0026e4c907351b4b0cd0adced28a4670575
+ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317715"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68860590"
 ---
 # <a name="install-and-manage-packages-using-the-dotnet-cli"></a>Instalowanie pakietów i zarządzanie nimi przy użyciu interfejsu wiersza polecenia dotnet
 
@@ -94,12 +94,4 @@ Pakiet NuGet instaluje najnowszą wersję pakietu przy użyciu `dotnet add packa
 
 ## <a name="restore-packages"></a>Przywróć pakiety
 
-Użyj [dotnet Restore](/dotnet/core/tools/dotnet-restore?tabs=netcore2x) polecenie, które przywraca pakiety wymienione w pliku projektu (zobacz [PackageReference](../consume-packages/package-references-in-project-files.md)). W przypadku platformy .NET Core 2,0 i nowszych przywracanie jest wykonywane automatycznie `dotnet build` z `dotnet run`i. W przypadku programu NuGet 4,0 ten sam kod jest uruchamiany co `nuget restore`.
-
-Podobnie jak w przypadku `dotnet` innych poleceń interfejsu wiersza polecenia, najpierw Otwórz wiersz poleceń i przejdź do katalogu, który zawiera plik projektu.
-
-Aby przywrócić pakiet przy użyciu `dotnet restore`:
-
-```cli
-dotnet restore 
-```
+[!INCLUDE [restore-dotnet-cli](includes/restore-dotnet-cli.md)]

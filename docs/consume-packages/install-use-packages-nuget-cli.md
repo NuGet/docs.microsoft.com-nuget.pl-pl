@@ -5,12 +5,12 @@ author: mikejo5000
 ms.author: mikejo
 ms.date: 06/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9eefed6f2c1a362f27c4a5d33d07645d743379fa
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 9ef990c16cca62a1fbad25ff1582bfa543135fab
+ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317746"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68860586"
 ---
 # <a name="manage-packages-using-the-nugetexe-cli"></a>Zarządzanie pakietami za pomocą interfejsu wiersza polecenia NuGet. exe
 
@@ -110,14 +110,4 @@ nuget update
 
 ## <a name="restore-packages"></a>Przywróć pakiety
 
-Użyj polecenia [Restore](../reference/cli-reference/cli-ref-restore.md) , które pobiera i instaluje wszystkie brakujące pakiety w folderze *Packages* .
-
-`restore`dodaje pakiety tylko do dysku, ale nie zmienia zależności projektu. Aby przywrócić zależności projektu, należy `packages.config`zmodyfikować, a następnie `restore` użyć polecenia.
-
-Podobnie jak w przypadku `nuget.exe` innych poleceń interfejsu wiersza polecenia, najpierw Otwórz wiersz poleceń i przejdź do katalogu, który zawiera plik projektu.
-
-Aby przywrócić pakiet przy użyciu `restore`:
-
-```cli
-nuget restore MySolution.sln
-```
+[!INCLUDE [restore-nuget-exe-cli](includes/restore-nuget-exe-cli.md)]

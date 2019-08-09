@@ -5,16 +5,18 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: conceptual
-ms.openlocfilehash: 32b01e6066cf60f7a0942508e640fdd5658b4444
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: bc077220e05b14180baac9611fda9234675ad640
+ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68316979"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68860529"
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak ponownie zainstalować i zaktualizować pakiety
 
 Poniżej znajduje się wiele sytuacji, w których [można było ponownie zainstalować pakiet](#when-to-reinstall-a-package), gdzie odwołania do pakietu mogą zostać uszkodzone w projekcie programu Visual Studio. W takich przypadkach Odinstalowywanie i ponowna instalacja tej samej wersji pakietu spowoduje przywrócenie tych odwołań do kolejności roboczej. Aktualizacja pakietu oznacza po prostu zainstalowanie zaktualizowanej wersji, która często przywraca pakiet do kolejności roboczej.
+
+W programie Visual Studio konsola Menedżera pakietów zawiera wiele elastycznych opcji aktualizowania i instalowania pakietów.
 
 Aktualizowanie i ponowne instalowanie pakietów odbywa się w następujący sposób:
 
@@ -25,7 +27,7 @@ Aktualizowanie i ponowne instalowanie pakietów odbywa się w następujący spos
 | Interfejs wiersza polecenia NuGet. exe | `nuget update`dotyczące | W przypadku wszystkich pakietów Usuń folder pakietu, a następnie uruchom `nuget install`polecenie. W przypadku jednego pakietu Usuń folder pakietu i Użyj `nuget install <id>` programu, aby ponownie zainstalować ten sam plik. |
 
 > [!NOTE]
-> W przypadku interfejsu wiersza polecenia dotnet odpowiednik procedury nie jest wymagany. W podobnym scenariuszu można [przywrócić pakiety za pomocą interfejsu wiersza polecenia dotnet](../consume-packages/install-use-packages-dotnet-cli.md#restore-packages).
+> W przypadku interfejsu wiersza polecenia dotnet odpowiednik procedury nie jest wymagany. W podobnym scenariuszu można [przywrócić pakiety za pomocą interfejsu wiersza polecenia dotnet](package-restore.md#restore-using-the-dotnet-cli).
 
 W tym artykule:
 
@@ -61,7 +63,7 @@ We wszystkich przypadkach należy użyć notacji opisanej w artykule [przechowyw
 
 ## <a name="using-update-package"></a>Korzystanie z pakietu aktualizacji
 
-W trosce o [zagadnienia](#considerations) opisane poniżej można łatwo ponownie zainstalować dowolny pakiet za pomocą [polecenia Update-Package](../reference/ps-reference/ps-ref-update-package.md) w konsoli Menedżera pakietów programu Visual Studio (**Narzędzia** > **Menedżera** pakietówNuGet >  **Konsola Menedżera pakietów**):
+W trosce o [zagadnienia](#considerations) opisane poniżej można łatwo ponownie zainstalować dowolny pakiet za pomocą [polecenia Update-Package](../reference/ps-reference/ps-ref-update-package.md) w konsoli Menedżera pakietów programu Visual Studio (**Narzędzia** > **Menedżera** pakietówNuGet >  **Konsola Menedżera pakietów**).
 
 ```ps
 Update-Package -Id <package_name> –reinstall
