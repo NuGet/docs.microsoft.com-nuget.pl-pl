@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: f33624cf50248d8a137216ed0d725ed88c0defd2
-ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
+ms.openlocfilehash: a8d082b3c04ef4d45bef1ef91b3f06484cb8ff4f
+ms.sourcegitcommit: dec3fa44547c6a00d0ae6cbb6c64cdc65660d808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68833371"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912591"
 ---
 # <a name="create-a-package-using-the-nugetexe-cli"></a>Tworzenie pakietu przy użyciu interfejsu wiersza polecenia NuGet. exe
 
@@ -218,7 +218,15 @@ nuget spec
 
 Utworzony `<project-name>.nuspec` plik zawiera *tokeny* , które są zastępowane w czasie pakowania z wartościami z projektu, w tym odwołaniami do innych pakietów, które zostały już zainstalowane.
 
-Token jest rozdzielany `$` symbolami po obu stronach właściwości projektu. Na przykład `<id>` wartość w manifeście wygenerowaną w ten sposób zwykle pojawia się w następujący sposób:
+Jeśli masz zależności pakietu do uwzględnienia w *nuspec*, zamiast tego użyj `nuget pack`i Pobierz plik *. nuspec* z wygenerowanego pliku *. nupkg* . Na przykład użyj poniższego polecenia.
+
+```cli
+# Use in a folder containing a project file <project-name>.csproj or <project-name>.vbproj
+nuget pack myproject.csproj
+```
+```
+
+A token is delimited by `$` symbols on both sides of the project property. For example, the `<id>` value in a manifest generated in this way typically appears as follows:
 
 ```xml
 <id>$id$</id>

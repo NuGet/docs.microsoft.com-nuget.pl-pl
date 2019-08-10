@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 05/24/2019
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 5b9be55b593890127d8fe0ad1a9357b89527a09a
-ms.sourcegitcommit: f9e39ff9ca19ba4a26e52b8a5e01e18eb0de5387
+ms.openlocfilehash: 9c608c5455bc83874b670b7f2b9a0ceeeafdc8e5
+ms.sourcegitcommit: dec3fa44547c6a00d0ae6cbb6c64cdc65660d808
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68433368"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912575"
 ---
 # <a name="nuspec-reference"></a>nuspec — odwołanie
 
@@ -82,7 +82,7 @@ Rozdzielana przecinkami lista autorów pakietów, które pasują do nazw profil�
 
 ### <a name="optional-metadata-elements"></a>Opcjonalne elementy metadanych
 
-#### <a name="owners"></a>Rzecz
+#### <a name="owners"></a>rzecz
 Rozdzielana przecinkami lista twórców pakietów korzystających z nazw profilów w nuget.org. Jest to często taka sama lista jak w `authors`programie i jest ignorowana podczas przekazywania pakietu do NuGet.org. Zobacz [Zarządzanie właścicielami pakietów w witrynie NuGet.org](../nuget-org/publish-a-package.md#managing-package-owners-on-nugetorg). 
 
 #### <a name="projecturl"></a>projectUrl
@@ -94,7 +94,7 @@ Adres URL strony głównej pakietu, często wyświetlany w interfejsie użytkown
 
 Adres URL licencji pakietu, często przedstawiony w interfejsów użytkownika, na przykład nuget.org.
 
-#### <a name="license"></a>Licencjonowan
+#### <a name="license"></a>licencjonowan
 Wyrażenie licencji SPDX lub ścieżka do pliku licencji w pakiecie, często pokazywane w interfejsów użytkownika, jak nuget.org. Jeśli pakiet jest licencjonowany w ramach wspólnej licencji, takiej jak MIT lub BSD-2-klauzule, należy użyć skojarzonego [identyfikatora licencji SPDX](https://spdx.org/licenses/). Na przykład:
 
 `<license type="expression">MIT</license>`
@@ -102,7 +102,7 @@ Wyrażenie licencji SPDX lub ścieżka do pliku licencji w pakiecie, często pok
 > [!Note]
 > NuGet.org akceptuje tylko wyrażenia licencyjne zatwierdzone przez inicjatywę Open Source lub bezpłatną program Software Foundation.
 
-Jeśli pakiet jest licencjonowany w ramach wielu popularnych licencji, możesz określić licencję złożoną przy użyciu [składni wyrażenia SPDX w wersji 2,0](https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60). Przykład:
+Jeśli pakiet jest licencjonowany w ramach wielu popularnych licencji, możesz określić licencję złożoną przy użyciu [składni wyrażenia SPDX w wersji 2,0](https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60). Na przykład:
 
 `<license type="expression">BSD-2-Clause OR MIT</license>`
 
@@ -170,9 +170,9 @@ Rozdzielana spacjami Lista tagów i słów kluczowych, które opisują pakiet i 
 *(3.3+)* NuGet wewnętrznego użytku tylko.
 
 #### <a name="repository"></a>repozytorium
-Metadane repozytorium zawierające cztery `type` opcjonalne atrybuty: i  `branch` `url` (4.0 +) i i `commit` *(4.6 +)* . Te atrybuty umożliwiają mapowanie `.nupkg` do repozytorium, które zostało przez niego skompilowane, z możliwością uzyskania tak szczegółowej nazwy gałęzi i/lub zatwierdzenia skrótu SHA-1, który skompilowano pakiet. Powinien to być publicznie dostępny adres URL, który może być wywoływany bezpośrednio przez oprogramowanie kontroli wersji. Nie powinna być stroną HTML, ponieważ jest ona przeznaczona dla komputera. W przypadku łączenia ze stroną projektu zamiast tego `projectUrl` Użyj pola.
+Metadane repozytorium zawierające cztery `type` opcjonalne atrybuty: i `branch` `url` (4.0 +) i i `commit` *(4.6 +)* . Te atrybuty umożliwiają mapowanie `.nupkg` do repozytorium, które zostało przez niego skompilowane, z możliwością uzyskania tak szczegółowej nazwy gałęzi i/lub zatwierdzenia skrótu SHA-1, który skompilowano pakiet. Powinien to być publicznie dostępny adres URL, który może być wywoływany bezpośrednio przez oprogramowanie kontroli wersji. Nie powinna być stroną HTML, ponieważ jest ona przeznaczona dla komputera. W przypadku łączenia ze stroną projektu zamiast tego `projectUrl` Użyj pola.
 
-Na przykład:
+Przykład:
 ```xml
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2016/06/nuspec.xsd">
@@ -184,7 +184,7 @@ Na przykład:
 </package>
 ```
 
-#### <a name="minclientversion"></a>MinClientVersion
+#### <a name="minclientversion"></a>minClientVersion
 Określa minimalną wersję klienta NuGet, który może zainstalować ten pakiet, wymuszony przez NuGet. exe i Menedżera pakietów programu Visual Studio. Jest on używany zawsze, gdy pakiet jest zależny od określonych funkcji `.nuspec` pliku, które zostały dodane w określonej wersji klienta NuGet. Na przykład pakiet używający `developmentDependency` atrybutu powinien określać wartość "2,8" dla. `minClientVersion` Podobnie pakiet używający `contentFiles` elementu (patrz następna sekcja) powinien mieć ustawioną wartość `minClientVersion` "3,3". Należy zauważyć, że ponieważ klienci NuGet przed 2,5 nie rozpoznają tej flagi, *zawsze* odmówią instalacji pakietu bez względu na `minClientVersion` to, co zawiera.
 
 #### <a name="title"></a>title
@@ -200,7 +200,7 @@ Kolekcja `<dependency>` elementów co najmniej zero określających zależności
 *(1.2 +)* Kolekcja zawierająca zero lub więcej `<frameworkAssembly>` elementów .NET Framework identyfikujących odwołania do zestawów, które są wymagane przez ten pakiet, co zapewnia, że odwołania są dodawane do projektów zużywających pakiet. Każdy frameworkAssembly ma atrybuty *AssemblyName* i *TargetFramework* . Zobacz [Określanie zestawu Framework odwołuje się do poniższej pamięci](#specifying-framework-assembly-references-gac) podręcznej. |
 #### <a name="references"></a>odwołania
 *(1,5 +)* Kolekcja `<reference>` elementów w `lib` folderze pakietu, które są dodawane jako odwołania do projektu. Każde odwołanie ma atrybut *pliku* . `<references>`może również zawierać `<group>` element z atrybutem *TargetFramework* , który zawiera `<reference>` elementy. W `lib` przypadku pominięcia zostaną uwzględnione wszystkie odwołania. Zobacz [Określanie jawnych odwołań do zestawów](#specifying-explicit-assembly-references) poniżej.
-#### <a name="contentfiles"></a>ContentFiles
+#### <a name="contentfiles"></a>contentFiles
 *(3.3 +)* Kolekcja `<files>` elementów, które identyfikują pliki zawartości do uwzględnienia w projekcie zużywanym. Te pliki są określone za pomocą zestawu atrybutów, które opisują, jak powinny być używane w systemie projektu. Zobacz sekcję [określanie plików do uwzględnienia w pakiecie](#specifying-files-to-include-in-the-package) poniżej.
 #### <a name="files"></a>— pliki 
 `<package>` Węzeł może `<metadata>`zawierać `<files>` węzełjako`<contentFiles>` element równorzędny ielementpodrzędnywprogramie,abyokreślić,któreplikizestawuizawartościmająbyćzawartewpakiecie.`<metadata>` Szczegółowe informacje znajdują się w temacie [zawierającym pliki zestawu](#including-assembly-files) i [pliki zawartości](#including-content-files) w dalszej części tego tematu.
@@ -267,7 +267,7 @@ Element w obrębie `<metadata>` zawiera dowolną liczbę `<dependency>` element�
 
 | Include/Exclude — tag | Zmodyfikowane foldery elementu docelowego |
 | --- | --- |
-| ContentFiles | Zawartość |
+| contentFiles | Zawartość |
 | środowisko uruchomieniowe | Środowisko uruchomieniowe, zasoby i FrameworkAssemblies |
 | opracowania | lib |
 | kompilacja | Kompilacja (właściwości i elementy docelowe programu MSBuild) |
@@ -293,7 +293,8 @@ Poniższe wiersze wskazują zależności dotyczące tych samych pakietów, ale o
 </dependencies>
 ```
 
-Uwaga: Podczas tworzenia `.nuspec` z projektu przy użyciu `nuget spec`, zależności, które istnieją w tym projekcie, są automatycznie dołączane `.nuspec` do pliku w wyniku.
+> [!Important]
+> Podczas tworzenia `.nuspec` z projektu przy użyciu `nuget spec`, zależności, które istnieją w tym projekcie, nie są `.nuspec` automatycznie dołączane do pliku. Zamiast tego należy `nuget pack myproject.csproj`użyć i pobrać plik *. nuspec* z wygenerowanego pliku *NUPKG* . This *. nuspec* zawiera zależności.
 
 ### <a name="dependency-groups"></a>Grupy zależności
 
@@ -643,7 +644,7 @@ Projekt pakietu powinien mieć strukturę zawartości przy użyciu następujące
 - `TxM`to dowolna docelowa moniker platformy docelowej, który obsługuje pakiet NuGet (patrz [Platformy docelowe](../reference/target-frameworks.md)).
 - Wszystkie struktury folderów mogą być dołączane na końcu tej składni.
 
-Przykład:
+Na przykład:
 
     Language- and framework-agnostic:
         /contentFiles/any/any/config.xml
