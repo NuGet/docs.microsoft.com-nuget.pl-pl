@@ -18,7 +18,7 @@
 ### [Konsola menedżera pakietów (PowerShell)](consume-packages/install-use-packages-powershell.md)
 ## Konfigurowanie narzędzia NuGet
 ### Opcje przywracania pakietów
-#### [Opcje przywracania](consume-packages/package-restore.md)
+#### [Przywracanie pakietów](consume-packages/package-restore.md)
 #### [Rozwiązywanie problemów](consume-packages/package-restore-troubleshooting.md)
 ### [Ponowne instalowanie i aktualizowanie pakietów](consume-packages/reinstalling-and-updating-packages.md)
 ### [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](consume-packages/managing-the-global-packages-and-cache-folders.md)
