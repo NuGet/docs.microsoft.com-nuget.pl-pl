@@ -5,18 +5,18 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 0e12944bdd5d43b8b9e84908be480a5249dd924f
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: cab56cb87f46335f9fdebdbc1649fead16459877
+ms.sourcegitcommit: 9803981c90a1ed954dc11ed71731264c0e75ea0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328301"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68959724"
 ---
 # <a name="pack-command-nuget-cli"></a>pack command, polecenie (interfejs wiersza polecenia NuGet)
 
 **Dotyczy:** **obsługiwane wersje** tworzenia &bullet; pakietów: 2.7+
 
-Tworzy pakiet NuGet na podstawie określonego `.nuspec` lub pliku projektu. Polecenie (zobacz [polecenia dotnet](../dotnet-Commands.md)) i `msbuild -t:pack` (zobacz [elementy docelowe programu MSBuild](../msbuild-targets.md)) może być używane jako alternatywy. `dotnet pack`
+Tworzy pakiet NuGet na podstawie określonego pliku [. nuspec](../nuspec.md) lub projektu. Polecenie (zobacz [polecenia dotnet](../dotnet-Commands.md)) i `msbuild -t:pack` (zobacz [elementy docelowe programu MSBuild](../msbuild-targets.md)) może być używane jako alternatywy. `dotnet pack`
 
 > [!Important]
 > W obszarze mono Tworzenie pakietu z pliku projektu nie jest obsługiwane. Należy również dostosować ścieżki nielokalne w `.nuspec` pliku do ścieżek w stylu systemu UNIX, ponieważ NuGet. exe nie konwertuje samych nazw ścieżek systemu Windows.
@@ -33,7 +33,7 @@ gdzie `<nuspecPath>` i `<projectPath>` Określ`.nuspec` odpowiednio plik projekt
 
 | Opcja | Opis |
 | --- | --- |
-| BasePath | Ustawia ścieżkę podstawową plików zdefiniowanych w `.nuspec` pliku. |
+| BasePath | Ustawia ścieżkę podstawową plików zdefiniowanych w pliku [. nuspec](../nuspec.md) . |
 | Kompilacja | Określa, że projekt powinien zostać skompilowany przed skompilowaniem pakietu. |
 | Klucza | Określa jeden lub więcej wzorców symboli wieloznacznych, które mają zostać wykluczone podczas tworzenia pakietu. Aby określić więcej niż jeden wzorzec, powtórz flagę-Exclude. Zobacz przykład poniżej. |
 | ExcludeEmptyDirectories | Uniemożliwia dołączenie pustych katalogów podczas kompilowania pakietu. |

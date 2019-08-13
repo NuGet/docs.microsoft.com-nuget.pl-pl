@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 076d7a480e2f07149e4ec7ac58c7ab37040e7a8f
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 81866172bfbf55c42ee96c213c0117f1f986235c
+ms.sourcegitcommit: 9803981c90a1ed954dc11ed71731264c0e75ea0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328304"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68959709"
 ---
 # <a name="mirror-command-nuget-cli"></a>mirror command, polecenie (interfejs wiersza polecenia NuGet)
 
@@ -19,7 +19,7 @@ ms.locfileid: "68328304"
 Odzwierciedla pakiet i jego zależności z określonych repozytoriów źródłowych do repozytorium docelowego.
 
 > [!NOTE]
-> Aby włączyć to polecenie dla wersji NuGet przed 3,2, przejdź do [https://nuget.codeplex.com/releases](https://nuget.codeplex.com/releases), wybierz najnowszą stabilną wersję, Pobierz `NuGet.ServerExtensions.dll` i `Nuget-Signed.exe` na dysk lokalny, a następnie `Nuget-Signed.exe` Zmień `nuget.exe` nazwę na.
+> Pliki NuGet. ServerExtensions. dll i NuGet-Signed. exe, które wcześniej obsługiwały to polecenie w programie NuGet 2. x (przez zmianę nazwy NuGet-Signed. exe na NuGet. exe), nie są już dostępne do pobrania. Aby użyć polecenia podobnego do tego, wypróbuj [NuGetMirror](https://www.nuget.org/packages/NuGetMirror/).
 
 ## <a name="usage"></a>Użycie
 
