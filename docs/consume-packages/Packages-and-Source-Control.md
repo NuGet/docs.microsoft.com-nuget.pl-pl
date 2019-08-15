@@ -1,35 +1,35 @@
 ---
 title: Pakiety NuGet i kontrola źródła
-description: Informacje dotyczące sposobu traktowania pakietów NuGet w ramach systemów kontroli wersji kontroli i źródła i pominąć pakiety za pomocą narzędzia git i TFVC.
+description: Zagadnienia dotyczące sposobu traktowania pakietów NuGet w systemach kontroli wersji i kontroli źródła oraz jak pominąć pakiety za pomocą usługi git i TFVC.
 author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ef4c45451cc52eb08dc627f8442c48e853d8ceaf
-ms.sourcegitcommit: 6ea2ff8aaf7743a6f7c687c8a9400b7b60f21a52
+ms.openlocfilehash: 9d9ea10ccd32bb65ad0d62b591f5e2cb58ea3427
+ms.sourcegitcommit: fc1b716afda999148eb06d62beedb350643eb346
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54324737"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019978"
 ---
-# <a name="omitting-nuget-packages-in-source-control-systems"></a><span data-ttu-id="936ec-103">Pominięcie pakietów NuGet w systemów kontroli źródła</span><span class="sxs-lookup"><span data-stu-id="936ec-103">Omitting NuGet packages in source control systems</span></span>
+# <a name="omitting-nuget-packages-in-source-control-systems"></a><span data-ttu-id="9b5d3-103">Pomijanie pakietów NuGet w systemach kontroli źródła</span><span class="sxs-lookup"><span data-stu-id="9b5d3-103">Omitting NuGet packages in source control systems</span></span>
 
-<span data-ttu-id="936ec-104">Deweloperzy zazwyczaj pakietów NuGet z ich repozytoriów kontroli źródła i pominięte zamiast polegać na [pakietu przywracania](package-restore.md) ponowna instalacja zależności projektu przed kompilacją.</span><span class="sxs-lookup"><span data-stu-id="936ec-104">Developers typically omit NuGet packages from their source control repositories and rely instead on [package restore](package-restore.md) to reinstall a project's dependencies before a build.</span></span>
+<span data-ttu-id="9b5d3-104">Deweloperzy zwykle pomijają pakiety NuGet z ich repozytoriów kontroli źródła i polegają na [przywróceniu pakietu](package-restore.md) , aby ponownie zainstalować zależności projektu przed kompilacją.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-104">Developers typically omit NuGet packages from their source control repositories and rely instead on [package restore](package-restore.md) to reinstall a project's dependencies before a build.</span></span>
 
-<span data-ttu-id="936ec-105">Opierając się na Przywracanie pakietu przyczyny są następujące:</span><span class="sxs-lookup"><span data-stu-id="936ec-105">The reasons for relying on package restore include the following:</span></span>
+<span data-ttu-id="9b5d3-105">Przyczyny związane z przywracaniem pakietu są następujące:</span><span class="sxs-lookup"><span data-stu-id="9b5d3-105">The reasons for relying on package restore include the following:</span></span>
 
-1. <span data-ttu-id="936ec-106">Systemy kontroli wersji rozproszonej, takich jak Git, zawierać pełne kopie każdej wersji każdego pliku w repozytorium.</span><span class="sxs-lookup"><span data-stu-id="936ec-106">Distributed version control systems, such as Git, include full copies of every version of every file within the repository.</span></span> <span data-ttu-id="936ec-107">Pliki binarne, które są często aktualizowane prowadzić do znaczących rozrostu i powoduje nieznaczne wydłużenie czasu potrzebnego do sklonowania repozytorium.</span><span class="sxs-lookup"><span data-stu-id="936ec-107">Binary files that are frequently updated lead to significant bloat and lengthens the time it takes to clone the repository.</span></span>
-1. <span data-ttu-id="936ec-108">Gdy pakiety są zawarte w repozytorium, deweloperzy mają ponosić odpowiedzialności wobec Dodaj odwołania bezpośrednio do zawartości pakietu na dysku, a nie na pakiety odwołujący się za pośrednictwem pakietu NuGet, co może prowadzić do nazwy zakodowanych ścieżek w projekcie.</span><span class="sxs-lookup"><span data-stu-id="936ec-108">When packages are included in the repository, developers are liable to add references directly to package contents on disk rather than referencing packages through NuGet, which can lead to hard-coded path names in the project.</span></span>
-1. <span data-ttu-id="936ec-109">Ze zrozumieniem czystego rozwiązania wszystkie foldery nieużywanych pakietów na potrzeby upewnij się, że nie usuwaj żadnych folderów pakietu nadal w użyciu.</span><span class="sxs-lookup"><span data-stu-id="936ec-109">It becomes harder to clean your solution of any unused package folders, as you need to ensure you don't delete any package folders still in use.</span></span>
-1. <span data-ttu-id="936ec-110">Pomijając pakietów, możesz zachować czyste granice prawa własności między kod aplikacji i pakietów od innych, zależnych od.</span><span class="sxs-lookup"><span data-stu-id="936ec-110">By omitting packages, you maintain clean boundaries of ownership between your code and the packages from others that you depend upon.</span></span> <span data-ttu-id="936ec-111">Wiele pakietów NuGet są już obsługiwane w ich własnych repozytoriów kontroli źródła.</span><span class="sxs-lookup"><span data-stu-id="936ec-111">Many NuGet packages are maintained in their own source control repositories already.</span></span>
+1. <span data-ttu-id="9b5d3-106">Rozproszone systemy kontroli wersji, takie jak Git, obejmują pełne kopie każdej wersji każdego pliku w repozytorium.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-106">Distributed version control systems, such as Git, include full copies of every version of every file within the repository.</span></span> <span data-ttu-id="9b5d3-107">Pliki binarne, które są często aktualizowane, powodują znaczące przeładowanie i wydłużą czas klonowania repozytorium.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-107">Binary files that are frequently updated lead to significant bloat and lengthens the time it takes to clone the repository.</span></span>
+1. <span data-ttu-id="9b5d3-108">Gdy pakiety są zawarte w repozytorium, deweloperzy mogą dodawać odwołania bezpośrednio do zawartości pakietu na dysku, a nie odwołania do pakietów za pomocą NuGet, co może prowadzić do zakodowanych nazw ścieżek w projekcie.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-108">When packages are included in the repository, developers are liable to add references directly to package contents on disk rather than referencing packages through NuGet, which can lead to hard-coded path names in the project.</span></span>
+1. <span data-ttu-id="9b5d3-109">Nieużywane foldery pakietów staną się trudniejsze do oczyszczenia, co jest konieczne, aby nie usuwać żadnych folderów pakietów, które są nadal używane.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-109">It becomes harder to clean your solution of any unused package folders, as you need to ensure you don't delete any package folders still in use.</span></span>
+1. <span data-ttu-id="9b5d3-110">Pominięcie pakietów spowoduje zachowanie czystych granic własności między kodem a pakietami od innych użytkowników.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-110">By omitting packages, you maintain clean boundaries of ownership between your code and the packages from others that you depend upon.</span></span> <span data-ttu-id="9b5d3-111">Wiele pakietów NuGet jest już przechowywanych w ich własnych repozytoriach kontroli źródła.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-111">Many NuGet packages are maintained in their own source control repositories already.</span></span>
 
-<span data-ttu-id="936ec-112">Mimo że Przywracanie pakietu jest to domyślne zachowanie nuget, niektóre ręczne praca jest konieczna pominąć pakietów&mdash;, `packages` folder w projekcie&mdash;z kontroli źródła, zgodnie z opisem w tym artykule.</span><span class="sxs-lookup"><span data-stu-id="936ec-112">Although package restore is the default behavior with NuGet, some manual work is necessary to omit packages&mdash;namely, the `packages` folder in your project&mdash;from source control, as described in this article.</span></span>
+<span data-ttu-id="9b5d3-112">Chociaż przywracanie pakietów jest domyślnym zachowaniem w pakiecie NuGet, niektóre czynności ręczne są niezbędne do pominięcia&mdash;pakietów `packages` , czyli folderu w&mdash;projekcie z kontroli źródła, zgodnie z opisem w tym artykule.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-112">Although package restore is the default behavior with NuGet, some manual work is necessary to omit packages&mdash;namely, the `packages` folder in your project&mdash;from source control, as described in this article.</span></span>
 
-## <a name="omitting-packages-with-git"></a><span data-ttu-id="936ec-113">Pominięcie pakietów przy użyciu narzędzia Git</span><span class="sxs-lookup"><span data-stu-id="936ec-113">Omitting packages with Git</span></span>
+## <a name="omitting-packages-with-git"></a><span data-ttu-id="9b5d3-113">Pomijanie pakietów w usłudze git</span><span class="sxs-lookup"><span data-stu-id="9b5d3-113">Omitting packages with Git</span></span>
 
-<span data-ttu-id="936ec-114">Użyj [pliku .gitignore](https://git-scm.com/docs/gitignore) ignorowanie pakiety NuGet (`.nupkg`) `packages` folderu i `project.assets.json`, między innymi.</span><span class="sxs-lookup"><span data-stu-id="936ec-114">Use the [.gitignore file](https://git-scm.com/docs/gitignore) to ignore NuGet packages (`.nupkg`) the `packages` folder, and `project.assets.json`, among other things.</span></span> <span data-ttu-id="936ec-115">Aby informacje, zobacz [przykładowe `.gitignore` dla projektów programu Visual Studio](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore):</span><span class="sxs-lookup"><span data-stu-id="936ec-115">For reference, see the [sample `.gitignore` for Visual Studio projects](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore):</span></span>
+<span data-ttu-id="9b5d3-114">Użyj [pliku. gitignore](https://git-scm.com/docs/gitignore) do ignorowania pakietów NuGet (`.nupkg`) `packages` folderu i `project.assets.json`, między innymi.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-114">Use the [.gitignore file](https://git-scm.com/docs/gitignore) to ignore NuGet packages (`.nupkg`) the `packages` folder, and `project.assets.json`, among other things.</span></span> <span data-ttu-id="9b5d3-115">Aby uzyskać informacje, zobacz [przykład `.gitignore` dla projektów programu Visual Studio](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore):</span><span class="sxs-lookup"><span data-stu-id="9b5d3-115">For reference, see the [sample `.gitignore` for Visual Studio projects](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore):</span></span>
 
-<span data-ttu-id="936ec-116">Ważne elementy `.gitignore` pliku są:</span><span class="sxs-lookup"><span data-stu-id="936ec-116">The important parts of the `.gitignore` file are:</span></span>
+<span data-ttu-id="9b5d3-116">Ważne części `.gitignore` pliku są następujące:</span><span class="sxs-lookup"><span data-stu-id="9b5d3-116">The important parts of the `.gitignore` file are:</span></span>
 
 ```gitignore
 # Ignore NuGet Packages
@@ -55,19 +55,19 @@ project.lock.json
 project.assets.json
 ```
 
-## <a name="omitting-packages-with-team-foundation-version-control"></a><span data-ttu-id="936ec-117">Pominięcie pakiety z kontroli wersji serwera Team Foundation</span><span class="sxs-lookup"><span data-stu-id="936ec-117">Omitting packages with Team Foundation Version Control</span></span>
+## <a name="omitting-packages-with-team-foundation-version-control"></a><span data-ttu-id="9b5d3-117">Pomijanie pakietów z Kontrola wersji serwera Team Foundation</span><span class="sxs-lookup"><span data-stu-id="9b5d3-117">Omitting packages with Team Foundation Version Control</span></span>
 
 > [!Note]
-> <span data-ttu-id="936ec-118">Jeśli to możliwe, wykonaj następujące instrukcje *przed* Dodawanie projektu do kontroli źródła.</span><span class="sxs-lookup"><span data-stu-id="936ec-118">Follow these instructions if possible *before* adding your project to source control.</span></span> <span data-ttu-id="936ec-119">W przeciwnym razie ręcznie usuń `packages` folder z repozytorium i zaewidencjonuj zmiany przed kontynuowaniem.</span><span class="sxs-lookup"><span data-stu-id="936ec-119">Otherwise, manually delete the `packages` folder from your repository and check in that change before continuing.</span></span>
+> <span data-ttu-id="9b5d3-118">Jeśli to możliwe, wykonaj te instrukcje *przed* dodaniem projektu do kontroli źródła.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-118">Follow these instructions if possible *before* adding your project to source control.</span></span> <span data-ttu-id="9b5d3-119">W przeciwnym razie ręcznie usuń `packages` folder z repozytorium i Zaewidencjonuj tę zmianę przed kontynuowaniem.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-119">Otherwise, manually delete the `packages` folder from your repository and check in that change before continuing.</span></span>
 
-<span data-ttu-id="936ec-120">Aby wyłączyć integrację kontroli źródła z użyciem systemu TFVC dla wybranych plików:</span><span class="sxs-lookup"><span data-stu-id="936ec-120">To disable source control integration with TFVC for selected files:</span></span>
+<span data-ttu-id="9b5d3-120">Aby wyłączyć integrację kontroli źródła z TFVC dla wybranych plików:</span><span class="sxs-lookup"><span data-stu-id="9b5d3-120">To disable source control integration with TFVC for selected files:</span></span>
 
-1. <span data-ttu-id="936ec-121">Utwórz folder o nazwie `.nuget` w folderze rozwiązania (gdzie `.sln` pliku).</span><span class="sxs-lookup"><span data-stu-id="936ec-121">Create a folder called `.nuget` in your solution folder (where the `.sln` file is).</span></span>
-    - <span data-ttu-id="936ec-122">Porada: na Windows, aby utworzyć ten folder w Eksploratorze Windows, należy użyć nazwy `.nuget.` *z* końcową kropkę.</span><span class="sxs-lookup"><span data-stu-id="936ec-122">Tip: on Windows, to create this folder in Windows Explorer, use the name `.nuget.` *with* the trailing dot.</span></span>
+1. <span data-ttu-id="9b5d3-121">Utwórz folder o nazwie `.nuget` w folderze rozwiązania (w `.sln` którym znajduje się plik).</span><span class="sxs-lookup"><span data-stu-id="9b5d3-121">Create a folder called `.nuget` in your solution folder (where the `.sln` file is).</span></span>
+    - <span data-ttu-id="9b5d3-122">Porada: w systemie Windows Aby utworzyć ten folder w Eksploratorze Windows, użyj nazwy `.nuget.` *z* kropką końcową.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-122">Tip: on Windows, to create this folder in Windows Explorer, use the name `.nuget.` *with* the trailing dot.</span></span>
 
-1. <span data-ttu-id="936ec-123">W tym folderze utwórz plik o nazwie `NuGet.Config` i otworzyć do edycji.</span><span class="sxs-lookup"><span data-stu-id="936ec-123">In that folder, create a file named `NuGet.Config` and open it for editing.</span></span>
+1. <span data-ttu-id="9b5d3-123">W tym folderze Utwórz plik o nazwie `NuGet.Config` i otwórz go do edycji.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-123">In that folder, create a file named `NuGet.Config` and open it for editing.</span></span>
 
-1. <span data-ttu-id="936ec-124">Dodaj następujący tekst jako minimum, gdzie [disableSourceControlIntegration](../reference/nuget-config-file.md#solution-section) ustawienie powoduje, że Visual Studio, aby pominąć wszystkie elementy `packages` folderu:</span><span class="sxs-lookup"><span data-stu-id="936ec-124">Add the following text as a minimum, where the [disableSourceControlIntegration](../reference/nuget-config-file.md#solution-section) setting instructs Visual Studio to skip everything in the `packages` folder:</span></span>
+1. <span data-ttu-id="9b5d3-124">Dodaj następujący tekst jako minimum, gdzie ustawienie [disableSourceControlIntegration](../reference/nuget-config-file.md#solution-section) instruuje program Visual Studio, aby pominąć wszystkie elementy w `packages` folderze:</span><span class="sxs-lookup"><span data-stu-id="9b5d3-124">Add the following text as a minimum, where the [disableSourceControlIntegration](../reference/nuget-config-file.md#solution-section) setting instructs Visual Studio to skip everything in the `packages` folder:</span></span>
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -78,9 +78,9 @@ project.assets.json
    </configuration>
    ```
 
-1. <span data-ttu-id="936ec-125">Jeśli używasz programu TFS 2010 lub starszy, zamaskować `packages` folderu mapowania obszarów roboczych.</span><span class="sxs-lookup"><span data-stu-id="936ec-125">If you are using TFS 2010 or earlier, cloak the `packages` folder in your workspace mappings.</span></span>
+1. <span data-ttu-id="9b5d3-125">Jeśli używasz programu TFS 2010 lub starszego, zamaskowanie `packages` folderu w mapowaniu obszaru roboczego.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-125">If you are using TFS 2010 or earlier, cloak the `packages` folder in your workspace mappings.</span></span>
 
-1. <span data-ttu-id="936ec-126">W programie TFS 2012 lub nowszym lub Visual Studio Team Services, utworzyć `.tfignore` plików zgodnie z opisem na [Dodaj pliki do serwera](/vsts/tfvc/add-files-server?view=vsts#tfignore).</span><span class="sxs-lookup"><span data-stu-id="936ec-126">On TFS 2012 or later, or with Visual Studio Team Services, create a `.tfignore` file as described on [Add Files to the Server](/vsts/tfvc/add-files-server?view=vsts#tfignore).</span></span> <span data-ttu-id="936ec-127">W tym pliku obejmują zawartość poniżej, aby jawnie Ignoruj modyfikacje `\packages` folder na poziomie repozytorium i kilka innych plików pośrednich.</span><span class="sxs-lookup"><span data-stu-id="936ec-127">In that file, include the content below to explicitly ignore modifications to the `\packages` folder on the repository level and a few other intermediate files.</span></span> <span data-ttu-id="936ec-128">(Należy utworzyć plik w Eksploratorze Windows, przy użyciu nazwy `.tfignore.` końcową kropkę, ale może być konieczne można wyłączyć "Ukryj rozszerzenia znanych" opcji najpierw.):</span><span class="sxs-lookup"><span data-stu-id="936ec-128">(You can create the file in Windows Explorer using the name a `.tfignore.` with the trailing dot, but you might need to disable the "Hide known file extensions" option first.):</span></span>
+1. <span data-ttu-id="9b5d3-126">Na serwerze TFS 2012 lub nowszym lub z Visual Studio Team Services Utwórz `.tfignore` plik zgodnie z opisem w temacie [Dodawanie plików do serwera](/vsts/tfvc/add-files-server?view=vsts#tfignore).</span><span class="sxs-lookup"><span data-stu-id="9b5d3-126">On TFS 2012 or later, or with Visual Studio Team Services, create a `.tfignore` file as described on [Add Files to the Server](/vsts/tfvc/add-files-server?view=vsts#tfignore).</span></span> <span data-ttu-id="9b5d3-127">W tym pliku Uwzględnij poniżej zawartość, aby jawnie zignorować modyfikacje `\packages` w folderze na poziomie repozytorium i kilku innych plikach pośrednich.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-127">In that file, include the content below to explicitly ignore modifications to the `\packages` folder on the repository level and a few other intermediate files.</span></span> <span data-ttu-id="9b5d3-128">(Można utworzyć plik w Eksploratorze Windows przy użyciu nazwy a `.tfignore.` z kropką końcową, ale może być konieczne wyłączenie najpierw opcji "Ukryj znane rozszerzenia plików"):</span><span class="sxs-lookup"><span data-stu-id="9b5d3-128">(You can create the file in Windows Explorer using the name a `.tfignore.` with the trailing dot, but you might need to disable the "Hide known file extensions" option first.):</span></span>
 
    ```cli
    # Ignore NuGet Packages
@@ -90,13 +90,10 @@ project.assets.json
    # with additional folder names if it's not in the same folder as .tfignore.   
    packages
 
-   # Exclude package target files which may be required for MSBuild, again prefixing the folder name as needed.
-   !packages/*.targets
-
    # Omit temporary files
    project.lock.json
    project.assets.json
    *.nuget.props
    ```
 
-1. <span data-ttu-id="936ec-129">Dodaj `NuGet.Config` i `.tfignore` do kontroli źródła i zaewidencjonuj zmiany.</span><span class="sxs-lookup"><span data-stu-id="936ec-129">Add `NuGet.Config` and `.tfignore` to source control and check in your changes.</span></span>
+1. <span data-ttu-id="9b5d3-129">Dodaj `NuGet.Config` i`.tfignore` do kontroli źródła i Zaewidencjonuj zmiany.</span><span class="sxs-lookup"><span data-stu-id="9b5d3-129">Add `NuGet.Config` and `.tfignore` to source control and check in your changes.</span></span>
