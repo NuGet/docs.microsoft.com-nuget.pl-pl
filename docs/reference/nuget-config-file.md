@@ -3,36 +3,20 @@ title: Dokumentacja pliku NuGet. config
 description: Odwołanie do pliku NuGet. config, w tym sekcje config, bindingRedirects, packageRestore, Solution i packageSource.
 author: karann-msft
 ms.author: karann
-ms.date: 10/25/2017
+ms.date: 08/13/2019
 ms.topic: reference
-ms.openlocfilehash: b03bb8da0191a679671e5898ac70fff2024d52f2
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: a2955617b899bfadab42d1ae98dd20c8fc6ddca9
+ms.sourcegitcommit: fc1b716afda999148eb06d62beedb350643eb346
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317219"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69020055"
 ---
 # <a name="nugetconfig-reference"></a>Dokumentacja NuGet. config
 
 Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` plikach, zgodnie z opisem w temacie [typowe konfiguracje programu NuGet](../consume-packages/configuring-nuget-behavior.md).
 
 `nuget.config`jest plikiem XML zawierającym węzeł najwyższego `<configuration>` poziomu, który zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej elementów. Zobacz [przykład pliku konfiguracji](#example-config-file). W nazwach ustawień jest rozróżniana wielkość liter, a wartości mogą używać [zmiennych środowiskowych](#using-environment-variables).
-
-W tym temacie:
-
-- [sekcja konfiguracji](#config-section)
-- [Sekcja bindingRedirects](#bindingredirects-section)
-- [Sekcja packageRestore](#packagerestore-section)
-- [Sekcja rozwiązania](#solution-section)
-- [Sekcje źródłowe pakietu](#package-source-sections):
-  - [packageSources](#packagesources)
-  - [packageSourceCredentials](#packagesourcecredentials)
-  - [apikeys](#apikeys)
-  - [disabledPackageSources](#disabledpackagesources)
-  - [activePackageSource](#activepackagesource)
-- [Sekcja trustedSigners](#trustedsigners-section)
-- [Korzystanie ze zmiennych środowiskowych](#using-environment-variables)
-- [Przykładowy plik konfiguracji](#example-config-file)
 
 <a name="dependencyVersion"></a>
 <a name="globalPackagesFolder"></a>
@@ -88,7 +72,7 @@ Kontroluje przywracanie pakietu podczas kompilacji.
 
 | Key | Wartość |
 | --- | --- |
-| Dostępny | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić `EnableNuGetPackageRestore` dla zmiennej środowiskowej `True` wartość zamiast ustawienia tego klucza w pliku konfiguracji. |
+| dostępny | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić `EnableNuGetPackageRestore` dla zmiennej środowiskowej `True` wartość zamiast ustawienia tego klucza w pliku konfiguracji. |
 | automatyczne | Wartość logiczna wskazująca, czy NuGet ma sprawdzać brakujące pakiety podczas kompilacji. |
 
 **Przykład**:
@@ -240,6 +224,7 @@ Identyfikuje aktualnie aktywne źródło lub wskazuje zagregowane wszystkie źr�
     <add key="All" value="(Aggregate source)" />
 </activePackageSource>
 ```
+
 ## <a name="trustedsigners-section"></a>Sekcja trustedSigners
 
 Przechowuje zaufane osoby podpisujące używane do zezwalania na pakiet podczas instalowania lub przywracania. Ta lista nie może być pusta, jeśli użytkownik `signatureValidationMode` ustawi `require`. 
@@ -268,6 +253,50 @@ Obsługiwane algorytmy wyznaczania wartości skrótu używane dla `SHA256`odcisk
         <owners>microsoft;aspnet;nuget</owners>
     </repository>
 </trustedSigners>
+```
+
+## <a name="fallbackpackagefolders-section"></a>Sekcja fallbackPackageFolders
+
+*(3.5 +)* Zapewnia możliwość preinstalacji pakietów, dzięki czemu nie trzeba wykonywać żadnych zadań, jeśli pakiet znajduje się w folderach rezerwowych. Foldery pakietu rezerwowego mają dokładnie ten sam folder i strukturę plików, co folder pakietu globalnego: *. nupkg* jest obecny i wszystkie pliki są wyodrębniane.
+
+Logika wyszukiwania dla tej konfiguracji to:
+
+- Spójrz na folder pakietu globalnego, aby sprawdzić, czy pakiet/wersja została już pobrana.
+
+- Sprawdź, czy w folderach rezerwowych znajduje się zgodność z pakietem/wersją.
+
+Jeśli wyszukiwanie zakończyło się pomyślnie, pobieranie nie jest konieczne.
+
+Jeśli dopasowanie nie zostanie znalezione, pakiet NuGet sprawdza źródła plików, a następnie źródła http, a następnie pobiera pakiety.
+
+| Key | Wartość |
+| --- | --- |
+| (nazwa folderu rezerwowego) | Ścieżka do folderu rezerwowego. |
+
+**Przykład**:
+
+```xml
+<fallbackPackageFolders>
+   <add key="XYZ Offline Packages" value="C:\somePath\someFolder\"/>
+</fallbackPackageFolders>
+```
+
+## <a name="packagemanagement-section"></a>Sekcja packageManagement
+
+Ustawia domyślny format zarządzania pakietami, *Packages. config* lub PackageReference. Projekty w stylu zestawu SDK zawsze używają PackageReference.
+
+| Key | Wartość |
+| --- | --- |
+| format | Wartość logiczna wskazująca domyślny format zarządzania pakietami. Jeśli `1`, format jest PackageReference. Jeśli `0`, format to *Packages. config*. |
+| wyłączone | Wartość logiczna wskazująca, czy wyświetlać monit o wybranie domyślnego formatu pakietu przy pierwszej instalacji pakietu. `False`ukrywa monit. |
+
+**Przykład**:
+
+```xml
+<packageManagement>
+   <add key="format" value="1" />
+   <add key="disabled" value="False" />
+</packageManagement>
 ```
 
 ## <a name="using-environment-variables"></a>Korzystanie ze zmiennych środowiskowych

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: a8d082b3c04ef4d45bef1ef91b3f06484cb8ff4f
-ms.sourcegitcommit: dec3fa44547c6a00d0ae6cbb6c64cdc65660d808
+ms.openlocfilehash: a9224ce4e515cf98893a7134077c90a47df1862a
+ms.sourcegitcommit: fc1b716afda999148eb06d62beedb350643eb346
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912591"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69020072"
 ---
 # <a name="create-a-package-using-the-nugetexe-cli"></a>Tworzenie pakietu przy użyciu interfejsu wiersza polecenia NuGet. exe
 
@@ -184,7 +184,9 @@ Konwencje folderów są następujące:
 | ref/{TFM} | Zestaw (`.dll`) i pliki symboli (`.pdb`) dla danej monikera platformy docelowej (TFM) | Zestawy są dodawane jako odwołania tylko dla czasu kompilacji; Nic nie zostanie skopiowane do folderu bin projektu. |
 | Runtime | Zestaw specyficzny dla architektury`.dll`(), symbol`.pdb`() i pliki zasobów natywnych (`.pri`) | Zestawy są dodawane jako odwołania tylko dla środowiska uruchomieniowego; inne pliki są kopiowane do folderów projektu. Zawsze powinien istnieć odpowiedni zestaw (TFM) `AnyCPU` określony w obszarze `/ref/{tfm}` folder, aby zapewnić odpowiedni zestaw czasu kompilacji. Zobacz [Obsługa wielu platform docelowych](supporting-multiple-target-frameworks.md). |
 | zawartość | Dowolne pliki | Zawartość jest kopiowana do katalogu głównego projektu. Folder **zawartości** należy traktować jako katalog główny aplikacji docelowej, która ostatecznie zużywa pakiet. Aby pakiet mógł dodać obraz w folderze */images* aplikacji, umieść go w folderze *content/images* pakietu. |
-| kompilacja | MSBuild `.targets` i `.props` pliki | Automatycznie wstawiany do pliku projektu lub `project.lock.json` (NuGet 3. x +). |
+| kompilacja | MSBuild `.targets` i `.props` pliki | Automatycznie wstawione do projektu (NuGet 3. x +). |
+| buildMultiTargeting | Program `.targets` MSBuild `.props` i pliki dla celów międzyplatformowych | Automatycznie wstawione do projektu. |
+| buildTransitive | *(5.0 +)* Program `.targets` MSBuild `.props` i pliki, które są przesyłane przechodniie do dowolnego, zużywanego projektu. Zobacz stronę [funkcji](https://github.com/NuGet/Home/wiki/Allow-package--authors-to-define-build-assets-transitive-behavior) . | Automatycznie wstawione do projektu. |
 | narzędzia | Skrypty i programy PowerShell dostępne z konsoli Menedżera pakietów | Folder jest dodawany `PATH` do zmiennej środowiskowej tylko dla konsoli Menedżera pakietów ( `PATH` w odróżnieniu od ustawienia ustawionego dla programu MSBuild podczas kompilowania projektu). `tools` |
 
 Ponieważ struktura folderów może zawierać dowolną liczbę zestawów dla dowolnej liczby platform docelowych, ta metoda jest konieczna podczas tworzenia pakietów, które obsługują wiele platform.
@@ -347,7 +349,7 @@ Gdy `\build` NuGet instaluje pakiet z plikami, dodaje elementy programu MSBuild 
 
 Program `.props` MSBuild `.targets` i pliki dla celów docelowych dla wielu platform `\buildMultiTargeting` można umieścić w folderze. Podczas instalacji pakietu NuGet dodaje odpowiednie `<Import>` elementy do pliku projektu z warunkiem, że platforma docelowa nie jest ustawiona (Właściwość `$(TargetFramework)` programu MSBuild musi być pusta).
 
-W przypadku programu NuGet 3. x elementy docelowe nie są dodawane do projektu, ale zamiast tego są udostępniane `project.lock.json`za pomocą.
+W przypadku programu NuGet 3. x elementy docelowe nie są dodawane do projektu, ale zamiast tego są `{projectName}.nuget.g.targets` udostępniane `{projectName}.nuget.g.props`za pomocą i.
 
 ## <a name="run-nuget-pack-to-generate-the-nupkg-file"></a>Uruchom pakiet NuGet, aby wygenerować plik. nupkg
 
