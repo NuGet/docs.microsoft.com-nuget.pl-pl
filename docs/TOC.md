@@ -27,7 +27,7 @@
 ### [Typowe konfiguracje narzędzia NuGet](consume-packages/configuring-nuget-behavior.md)
 ## Odwołania do pakietów w projekcie
 ### [Odwołania do pakietu w plikach projektu](consume-packages/package-references-in-project-files.md)
-### [Migrowanie pliku packages.config do elementu PackageReference](reference/migrate-packages-config-to-package-reference.md)
+### [Migrowanie pliku packages.config do elementu PackageReference](consume-packages/migrate-packages-config-to-package-reference.md)
 ### [packages.config](reference/packages-config.md)
 # Tworzenie pakietów
 ## [Omówienie i przepływ pracy](create-packages/overview-and-workflow.md)
@@ -45,9 +45,9 @@
 ### [Tworzenie zlokalizowanego pakietu](create-packages/creating-localized-packages.md)
 ## Przewodniki dotyczące określonej zawartości
 ### [Tworzenie pakietu platformy UWP](guides/create-uwp-packages.md)
-### [Tworzenie pakietu natywnego](create-packages/native-packages.md)
+### [Tworzenie pakietu natywnego](guides/native-packages.md)
 ### [Tworzenie kontrolek interfejsu użytkownika jako pakietu NuGet](guides/create-UI-controls.md)
-### [Tworzenie analizatora jako pakietu NuGet](reference/analyzers-conventions.md)
+### [Tworzenie analizatora jako pakietu NuGet](guides/analyzers-conventions.md)
 ### [Tworzenie pakietu dla platformy Xamarin za pomocą programu Visual Studio 2015](guides/create-packages-for-xamarin.md)
 ### [Tworzenie pakietu za pomocą zestawów usługi międzyoperacyjnej modelu COM](create-packages/author-packages-with-COM-interop-assemblies.md)
 ## Podpisywanie pakietów
@@ -64,8 +64,8 @@
 ### [Lokalne źródła danych](hosting-packages/local-feeds.md)
 # Pojęcia
 ## [Proces instalacji pakietu](concepts/package-installation-process.md)
-## [Przechowywanie wersji pakietów](reference/package-versioning.md)
-## [Rozwiązywanie zależności](consume-packages/dependency-resolution.md)
+## [Przechowywanie wersji pakietów](concepts/package-versioning.md)
+## [Rozwiązywanie zależności](concepts/dependency-resolution.md)
 # Tematy pomocy
 ## [.nuspec](reference/nuspec.md)
 ## [Plik nuget.config](reference/nuget-config-file.md)
@@ -342,6 +342,6 @@
 #### [NuGet 1.3](release-notes/NuGet-1.3.md)
 #### [NuGet 1.2](release-notes/NuGet-1.2.md)
 #### [NuGet 1.1](release-notes/NuGet-1.1.md)
-## [Często zadawane pytania](faqs/nuget-faq.md)
+## [Często zadawane pytania](resources/nuget-faq.md)
 ## [Format projektu](resources/check-project-format.md)
 # [NuGet.org](nuget-org/overview-nuget-org.md)
