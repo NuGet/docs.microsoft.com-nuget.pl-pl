@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 92b42f0a6133565844d0b6df2cb50770793055ec
-ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
+ms.openlocfilehash: a965a3049f46af59efcfad2ecf19e0923fda413b
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68860634"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488956"
 ---
 # <a name="create-a-nuget-package-using-msbuild"></a>Tworzenie pakietu NuGet przy użyciu programu MSBuild
 
@@ -68,7 +68,7 @@ Można `Title`również ustawić właściwości opcjonalne, takie jak, `PackageT
 > [!NOTE]
 > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na Właściwość **PackageTags** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
-Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [odwołania do pakietów w plikach projektu](../consume-packages/package-references-in-project-files.md) i [przechowywanie wersji pakietu](../reference/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `<IncludeAssets>` atrybutów `<ExcludeAssets>` i. Aby uzyskać więcej informacji, seee [kontrolowania elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
+Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [odwołania do pakietów w plikach projektu](../consume-packages/package-references-in-project-files.md) i [przechowywanie wersji pakietu](../concepts/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `<IncludeAssets>` atrybutów `<ExcludeAssets>` i. Aby uzyskać więcej informacji, seee [kontrolowania elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
 
 ## <a name="choose-a-unique-package-identifier-and-set-the-version-number"></a>Wybierz unikatowy identyfikator pakietu i ustaw numer wersji
 
@@ -170,7 +170,7 @@ Po utworzeniu pakietu, który jest `.nupkg` plikiem, można go opublikować w wy
 Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób obsługiwać inne scenariusze zgodnie z opisem w następujących tematach:
 
 - [Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild](../reference/msbuild-targets.md)
-- [Przechowywanie wersji pakietów](../reference/package-versioning.md)
+- [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
 - [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
 - [Przekształcenia plików źródłowych i konfiguracji](../create-packages/source-and-config-file-transformations.md)
 - [Lokalizacja](../create-packages/creating-localized-packages.md)
@@ -180,5 +180,5 @@ Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób ob
 
 Na koniec należy pamiętać o dodatkowych typach pakietów:
 
-- [Pakiety natywne](../create-packages/native-packages.md)
+- [Pakiety natywne](../guides/native-packages.md)
 - [Pakiety symboli](../create-packages/symbol-packages.md)

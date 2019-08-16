@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 05/24/2019
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 67bc95135f746c4a4685773808756df399cbf01e
-ms.sourcegitcommit: 9803981c90a1ed954dc11ed71731264c0e75ea0a
+ms.openlocfilehash: f931ed297a6a1e9e24ce5eb30a8158f59925bb39
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68959700"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488683"
 ---
 # <a name="nuspec-reference"></a>nuspec — odwołanie
 
@@ -36,7 +36,7 @@ W tym temacie:
 
    Jeśli tworzysz pakiet przy użyciu `dotnet.exe pack` programu lub `msbuild pack target`, zalecamy [uwzględnienie wszystkich](../reference/msbuild-targets.md#pack-target) `.nuspec` właściwości, które zwykle znajdują się w pliku w pliku projektu. Można jednak wybrać opcję [użycia `.nuspec` pliku do spakowania `dotnet.exe` przy użyciu lub `msbuild pack target` ](../reference/msbuild-targets.md#packing-using-a-nuspec).
 
-- W przypadku projektów migrowanych z `packages.config` do `.nuspec` [PackageReference](../consume-packages/package-references-in-project-files.md) plik nie jest wymagany do utworzenia pakietu. Zamiast tego należy użyć [MSBuild-t:Pack](../reference/migrate-packages-config-to-package-reference.md#create-a-package-after-migration).
+- W przypadku projektów migrowanych z `packages.config` do `.nuspec` [PackageReference](../consume-packages/package-references-in-project-files.md) plik nie jest wymagany do utworzenia pakietu. Zamiast tego należy użyć [MSBuild-t:Pack](../consume-packages/migrate-packages-config-to-package-reference.md#create-a-package-after-migration).
 
 ## <a name="general-form-and-schema"></a>Ogólny formularz i schemat
 
@@ -74,7 +74,7 @@ Te elementy muszą znajdować się `<metadata>` w obrębie elementu.
 #### <a name="id"></a>identyfikator 
 Identyfikator pakietu bez uwzględniania wielkości liter, który musi być unikatowy w obrębie nuget.org lub dowolnej galerii, w której znajduje się pakiet. Identyfikatory nie mogą zawierać spacji ani znaków, które są nieprawidłowe dla adresu URL, i ogólnie przestrzegają reguł przestrzeni nazw platformy .NET. Aby uzyskać wskazówki [, zobacz Wybieranie unikatowego identyfikatora pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number) .
 #### <a name="version"></a>version
-Wersja pakietu, po wzorcu *główna. pomocnicza. poprawka* . Numery wersji mogą zawierać sufiks wstępnej wersji, zgodnie z opisem w temacie [wersja pakietu](../reference/package-versioning.md#pre-release-versions). 
+Wersja pakietu, po wzorcu *główna. pomocnicza. poprawka* . Numery wersji mogą zawierać sufiks wstępnej wersji, zgodnie z opisem w temacie [wersja pakietu](../concepts/package-versioning.md#pre-release-versions). 
 #### <a name="description"></a>opis
 Długi opis pakietu do wyświetlania interfejsu użytkownika. 
 #### <a name="authors"></a>autorów
@@ -95,7 +95,7 @@ Adres URL strony głównej pakietu, często wyświetlany w interfejsie użytkown
 Adres URL licencji pakietu, często przedstawiony w interfejsów użytkownika, na przykład nuget.org.
 
 #### <a name="license"></a>licencjonowan
-Wyrażenie licencji SPDX lub ścieżka do pliku licencji w pakiecie, często pokazywane w interfejsów użytkownika, jak nuget.org. Jeśli pakiet jest licencjonowany w ramach wspólnej licencji, takiej jak MIT lub BSD-2-klauzule, należy użyć skojarzonego [identyfikatora licencji SPDX](https://spdx.org/licenses/). Na przykład:
+Wyrażenie licencji SPDX lub ścieżka do pliku licencji w pakiecie, często pokazywane w interfejsów użytkownika, jak nuget.org. Jeśli pakiet jest licencjonowany w ramach wspólnej licencji, takiej jak MIT lub BSD-2-klauzule, należy użyć skojarzonego [identyfikatora licencji SPDX](https://spdx.org/licenses/). Przykład:
 
 `<license type="expression">MIT</license>`
 
@@ -281,7 +281,7 @@ Element w obrębie `<metadata>` zawiera dowolną liczbę `<dependency>` element�
 | Atrybut | Opis |
 | --- | --- |
 | `id` | Potrzeb Identyfikator pakietu zależności, taki jak "EntityFramework" i "NUnit", czyli nazwa pakietu nuget.org wyświetlana na stronie pakietu. |
-| `version` | Potrzeb Zakres wersji akceptowalnych jako zależność. Aby uzyskać dokładną składnię, zobacz [wersja pakietu](../reference/package-versioning.md#version-ranges-and-wildcards) . Wersje wieloznaczne (przestawne) nie są obsługiwane. |
+| `version` | Potrzeb Zakres wersji akceptowalnych jako zależność. Aby uzyskać dokładną składnię, zobacz [wersja pakietu](../concepts/package-versioning.md#version-ranges-and-wildcards) . Wersje wieloznaczne (przestawne) nie są obsługiwane. |
 | include | Rozdzielana przecinkami lista tagów dołączania/wykluczania (patrz poniżej) wskazujących zależność do uwzględnienia w pakiecie końcowym. Wartość domyślna to `all`. |
 | wykluczanie | Rozdzielana przecinkami lista tagów dołączania/wykluczania (patrz poniżej) wskazujących zależność do wykluczenia w końcowym pakiecie. Wartość domyślna to `build,analyzers` , że można ją wypisać. Ale `content/ ContentFiles` są również niejawnie wykluczone w pakiecie końcowym, który nie może być nadpisany. Tagi określone za `exclude` pomocą mają pierwszeństwo przed tymi `include`określonymi przy użyciu. Na przykład `include="runtime, compile" exclude="compile"` jest taka sama jak `include="runtime"`. |
 
@@ -423,7 +423,7 @@ Jeśli przestrzegasz Konwencji opisanych w temacie [Tworzenie pakietu](../create
 > [!Important]
 > Gdy pakiet jest instalowany w projekcie, NuGet automatycznie dodaje odwołania do zestawu do bibliotek DLL pakietu, *z wyjątkiem* tych, które są nazwane `.resources.dll` , ponieważ zakłada się, że są to zlokalizowane zespoły satelickie. Z tego powodu należy unikać używania `.resources.dll` dla plików, które w przeciwnym razie zawierają istotny kod pakietu.
 
-Aby ominąć to automatyczne zachowanie i jawnie kontrolować, które pliki są zawarte w `<files>` pakiecie, umieść element jako `<package>` obiekt podrzędny `<metadata>`(i element równorzędny), identyfikując każdy plik z oddzielnym `<file>` elementem. Przykład:
+Aby ominąć to automatyczne zachowanie i jawnie kontrolować, które pliki są zawarte w `<files>` pakiecie, umieść element jako `<package>` obiekt podrzędny `<metadata>`(i element równorzędny), identyfikując każdy plik z oddzielnym `<file>` elementem. Na przykład:
 
 ```xml
 <files>

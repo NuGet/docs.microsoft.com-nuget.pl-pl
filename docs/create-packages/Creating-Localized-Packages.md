@@ -1,31 +1,31 @@
 ---
-title: Tworzenie zlokalizowanego pakietu NuGet
-description: Szczegółowe informacje na dwa sposoby tworzenia zlokalizowanych pakietów NuGet, w tym wszystkie zestawy w jednym pakiecie lub publikowania oddzielne zestawy.
+title: Jak utworzyć zlokalizowany pakiet NuGet
+description: Szczegółowe informacje na temat dwóch sposobów tworzenia zlokalizowanych pakietów NuGet przy użyciu wszystkich zestawów w pojedynczym pakiecie lub publikowania oddzielnych zestawów.
 author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: b1c2511c1fbafc7f52029c23521fa55671b0b5c5
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: dbc3781bd17f815c6b32fc70b275469337148f41
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546898"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488835"
 ---
 # <a name="creating-localized-nuget-packages"></a>Tworzenie zlokalizowanych pakietów NuGet
 
-Istnieją dwa sposoby tworzenia zlokalizowane wersje biblioteki:
+Istnieją dwa sposoby tworzenia zlokalizowanych wersji biblioteki:
 
-1. Obejmują wszystkie zestawy zlokalizowanych zasobów w jednym pakiecie.
-1. Tworzenie pakietów oddzielne satelitarnej zlokalizowane postępując zgodnie z ograniczeniami zbiór konwencji.
+1. Uwzględnij wszystkie zestawy zlokalizowanych zasobów w pojedynczym pakiecie.
+1. Utwórz oddzielne, zlokalizowane pakiety satelickie, wykonując rygorystyczne zestawy Konwencji.
 
 Obie metody mają swoje zalety i wady, zgodnie z opisem w poniższych sekcjach.
 
-## <a name="localized-resource-assemblies-in-a-single-package"></a>Zestawów zlokalizowanych zasobów w jednym pakiecie
+## <a name="localized-resource-assemblies-in-a-single-package"></a>Zlokalizowane zestawy zasobów w pojedynczym pakiecie
 
-Dołączenie zestawów zlokalizowanych zasobów w jednym pakiecie zwykle jest najprostsza metoda. Aby to zrobić, należy utworzyć foldery znajdujące się w `lib` obsługiwanych języka innego niż domyślny pakiet (założono, że to en-us). W tych folderach można umieścić zestawów zasobów i zlokalizowane pliki XML w technologii IntelliSense.
+Uwzględnianie zlokalizowanych zestawów zasobów w pojedynczym pakiecie jest zazwyczaj najprostszym podejściem. W tym celu należy utworzyć foldery w `lib` programie dla obsługiwanego języka innego niż domyślny pakiet (założono, że jest to en-US). W tych folderach można umieścić zestawy zasobów i zlokalizowane pliki XML IntelliSense.
 
-Na przykład następującą strukturę folderów obsługuje, niemiecki (de), włoski (on), japoński (ja), rosyjski (ru), chiński (uproszczony) (zh-Hans) i chiński (tradycyjny) (zh-Hant):
+Na przykład następująca struktura folderów obsługuje, niemiecki (Niemcy), włoski (IT), japoński (ja), rosyjski (ru), chiński (uproszczony) (zh-Hans) i chiński (tradycyjny) (zh-Hant):
 
     lib
     └───net40
@@ -56,9 +56,9 @@ Na przykład następującą strukturę folderów obsługuje, niemiecki (de), wł
                 Contoso.Utilities.resources.dll
                 Contoso.Utilities.xml
 
-Widać, że języki są wszystkie wymienione poniżej `net40` folder struktury docelowej. Jeśli jesteś [Obsługa wielu platform](../create-packages/supporting-multiple-target-frameworks.md), wówczas masz folder w obszarze `lib` każdego wariantu.
+Można zobaczyć, że wszystkie języki są wymienione poniżej `net40` folderu platformy docelowej. Jeśli obsługujesz [wiele platform](../create-packages/supporting-multiple-target-frameworks.md), masz folder w obszarze `lib` dla każdego wariantu.
 
-Za pomocą tych folderów w miejscu, następnie odwołać wszystkie pliki w Twojej `.nuspec`:
+Po wprowadzeniu tych folderów odwołujesz się do wszystkich plików w `.nuspec`:
 
 ```xml
 <?xml version="1.0"?>
@@ -71,39 +71,39 @@ Za pomocą tych folderów w miejscu, następnie odwołać wszystkie pliki w Twoj
 </package>
 ```
 
-Jeden pakiet przykładowy, który korzysta z tej metody jest [Microsoft.Data.OData 5.4.0](http://nuget.org/packages/Microsoft.Data.OData/5.4.0).
+Jednym z przykładowych pakietów korzystających z tej metody jest [Microsoft. Data. OData 5.4.0](http://nuget.org/packages/Microsoft.Data.OData/5.4.0).
 
-### <a name="advantages-and-disadvantages-localized-resource-assemblies"></a>Zalety i wady (zlokalizowany zasób zestawów)
+### <a name="advantages-and-disadvantages-localized-resource-assemblies"></a>Zalety i wady (zlokalizowane zestawy zasobów)
 
-Tworzenie pakietów we wszystkich językach, w jednym pakiecie ma kilka wady:
+Zgrupowanie wszystkich języków w jednym pakiecie ma kilka wad:
 
-1. **Udostępnione metadanych**: ponieważ pakietu NuGet może zawierać tylko jeden `.nuspec` pliku, możesz podać metadanych tylko jeden język. Oznacza to, że w NuGet nie są wyświetlane obsługuje zlokalizowanych metadanych.
-1. **Rozmiar pakietu**: w zależności od liczby obsługiwanych języków, biblioteka może stać się znacznie dużych który spowalnia, instalowania i przywracania pakietu.
-1. **Wersje równoczesne**: tworzenie pakietów zlokalizowane pliki w jednym pakiecie wymaga wersji wszystkie zasoby w tym pakiecie jednocześnie, a nie jak zdołaliśmy oddzielnie każdej lokalizacji. Ponadto wszelkich aktualizacji żadnych jednej lokalizacji wymaga nowej wersji cały pakiet.
+1. **Udostępnione metadane**: Ponieważ pakiet NuGet może zawierać tylko jeden `.nuspec` plik, można dostarczyć metadane tylko dla jednego języka. Oznacza to, że NuGet nie obsługuje zlokalizowanych metadanych.
+1. **Rozmiar pakietu**: W zależności od liczby obsługiwanych języków biblioteka może stać się znacznie duża, co powoduje spowolnienie instalowania i przywracania pakietu.
+1. **Równoczesne wersje**: Umieszczenie zlokalizowanych plików w pojedynczym pakiecie wymaga jednoczesnego udostępnienia wszystkich zasobów w tym pakiecie, a nie udostępnienia oddzielnie każdej lokalizacji. Ponadto każda aktualizacja w jednej lokalizacji wymaga nowej wersji całego pakietu.
 
-Jednak także ma kilka zalet:
+Jednak ma ona również kilka korzyści:
 
-1. **Prostota**: konsumentów pakietu Pobierz wszystkie obsługiwane języki w pojedyncza instalacja, niż musieć go zainstalować osobno każdy język. Pojedynczy pakiet jest również łatwiej znaleźć w witrynie nuget.org.
-1. **Powiązane wersje**: ponieważ wszystkie zestawy zasobów znajdują się w tym samym pakiecie jako podstawowego zestawu, wszystkie mają ten sam numer wersji i nie należy uruchamiać ryzyka błędnego wprowadzenie odłączone.
+1. **Prostota**: Odbiorcy pakietu pobierają wszystkie obsługiwane języki w jednej instalacji, a nie muszą oddzielnie instalować każdego języka. Jeden pakiet jest również łatwiejszy do znalezienia w witrynie nuget.org.
+1. **Połączone wersje**: Ze względu na to, że wszystkie zestawy zasobów znajdują się w tym samym pakiecie co zestaw podstawowy, każdy z nich ma ten sam numer wersji i nie powoduje ryzyka błędnego oddzielenia.
 
-## <a name="localized-satellite-packages"></a>Satelitarne zlokalizowanych pakietów
+## <a name="localized-satellite-packages"></a>Zlokalizowane pakiety satelickie
 
-Podobnie jak program .NET Framework obsługuje zestawów satelickich, ta metoda oddziela zlokalizowanych zasobów i plików IntelliSense XML w pakiety satelity.
+Podobnie jak .NET Framework obsługuje zestawy satelickie, ta metoda oddziela zlokalizowane zasoby i pliki XML IntelliSense do pakietów satelitarnych.
 
-Czy do tego, pakiet podstawowego używa konwencji nazewnictwa `{identifier}.{version}.nupkg` i zawiera zestaw dla języka domyślnego (np. en US). Na przykład `ContosoUtilities.1.0.0.nupkg` będzie zawierał następującą strukturę:
+W tym celu pakiet podstawowy używa konwencji `{identifier}.{version}.nupkg` nazewnictwa i zawiera zestaw dla języka domyślnego (na przykład en-US). Na przykład `ContosoUtilities.1.0.0.nupkg` będzie zawierać następującą strukturę:
 
     lib
     └───net40
             ContosoUtilities.dll
             ContosoUtilities.xml
 
-Następnie zestawu satelickiego używa konwencji nazewnictwa `{identifier}.{language}.{version}.nupkg`, takich jak `ContosoUtilities.de.1.0.0.nupkg`. Identyfikator **musi** dokładnie odpowiadać pakiet główny.
+Zestaw satelity używa konwencji `{identifier}.{language}.{version}.nupkg`nazewnictwa, takiej jak. `ContosoUtilities.de.1.0.0.nupkg` Identyfikator **musi** być dokładnie zgodny z pakietem podstawowym.
 
-Ponieważ oddzielny pakiet ma swoje własne `.nuspec` pliku, który zawiera zlokalizowane metadanych. Można je na uwadze, język, w `.nuspec` **musi** zgodne z działaniem używanym w nazwie pliku.
+Ponieważ jest to oddzielny pakiet, ma własny `.nuspec` plik, który zawiera zlokalizowane metadane. Należy mieć na uwadze, że język `.nuspec` w **musi** być zgodny z użytym w nazwie pliku.
 
-Zestawu satelickiego **musi** deklarować dokładnej wersji głównej pakietu także jako zależności, przy użyciu notacji wersji [] \(zobacz [wersji pakietu](../reference/package-versioning.md)). Na przykład `ContosoUtilities.de.1.0.0.nupkg` należy zadeklarować zależność w `ContosoUtilities.1.0.0.nupkg` przy użyciu `[1.0.0]` notacji. Pakiet satelitarnej oczywiście mogą mieć numer wersji innej niż pakiet główny.
+Zestawu satelickiego **musi** deklarować dokładnej wersji głównej pakietu także jako zależności, przy użyciu notacji wersji [] \(zobacz [wersji pakietu](../concepts/package-versioning.md)). Na przykład, `ContosoUtilities.de.1.0.0.nupkg` należy zadeklarować `ContosoUtilities.1.0.0.nupkg` zależność przy użyciu `[1.0.0]` notacji. Pakiet satelitarny może mieć inny numer wersji niż pakiet podstawowy.
 
-Struktura pakietu satelitarnej następnie mogą zawierać zestaw zasobów i plik XML IntelliSense w podfolderze, który odpowiada `{language}` w nazwie pliku pakietu:
+Struktura pakietu satelitarnego musi zawierać zestaw zasobów i plik IntelliSense XML w podfolderze, który pasuje `{language}` do nazwy pliku pakietu:
 
     lib
     └───net40
@@ -111,38 +111,38 @@ Struktura pakietu satelitarnej następnie mogą zawierać zestaw zasobów i plik
                 ContosoUtilities.resources.dll
                 ContosoUtilities.xml
 
-**Uwaga**: chyba że określone podhodowli, takie jak `ja-JP` są niezbędne, zawsze używaj wyższe identyfikatora języka poziomu, takie jak `ja`.
+**Uwaga**: Jeśli określone podkultury, takie jak `ja-JP` są niezbędne, zawsze używają identyfikatora `ja`języka wyższego poziomu, takiego jak.
 
-W zestawie satelickim rozpozna NuGet **tylko** tych plików w folderze, który odpowiada `{language}` w nazwie pliku. Wszystkie pozostałe są ignorowane.
+W zestawie satelity program NuGet rozpozna **tylko** te pliki w folderze, które pasują `{language}` do nazwy pliku. Wszystkie pozostałe są ignorowane.
 
-Po spełnieniu wszystkich tych konwencji NuGet rozpozna pakietu jako pakiet satelitarne i instalowanie zlokalizowanych plików w pakiecie głównej `lib` folderze tak, jakby były one pierwotnie powiązane. Odinstalowywanie pakietu satelitarnej spowoduje usunięcie jej pliki z tym samym folderze.
+Gdy zostaną spełnione wszystkie z tych konwencji, pakiet NuGet rozpoznaje go jako pakiet satelitarny i zainstaluje zlokalizowane pliki w `lib` folderze pakietu podstawowego, tak jakby były pierwotnie powiązane. Odinstalowanie pakietu satelickiego spowoduje usunięcie jego plików z tego samego folderu.
 
-Należy utworzyć dodatkowe zestawy satelickie w taki sam sposób dla każdego z obsługiwanych języków. Na przykład sprawdzić zestaw pakietów platformy ASP.NET MVC:
+W ten sam sposób można utworzyć dodatkowe zestawy satelickie dla każdego obsługiwanego języka. Aby zapoznać się z przykładem, należy zapoznać się z zestawem pakietów ASP.NET MVC:
 
-- [Microsoft.AspNet.Mvc](http://nuget.org/packages/Microsoft.AspNet.Mvc) (podstawowy w języku angielskim)
-- [Microsoft.AspNet.Mvc.de](http://nuget.org/packages/Microsoft.AspNet.Mvc.de) (wersja niemiecka)
+- [Microsoft. ASPNET. MVC](http://nuget.org/packages/Microsoft.AspNet.Mvc) (podstawowa wersja angielskojęzyczna)
+- [Microsoft.ASPNET.MVC.de](http://nuget.org/packages/Microsoft.AspNet.Mvc.de) (niemiecki)
 - [Microsoft.AspNet.Mvc.ja](http://nuget.org/packages/Microsoft.AspNet.Mvc.ja) (Japanese)
 - [Microsoft.AspNet.Mvc.zh-Hans](http://nuget.org/packages/Microsoft.AspNet.Mvc.zh-Hans) (Chinese (Simplified))
 - [Microsoft.AspNet.Mvc.zh-Hant](http://nuget.org/packages/Microsoft.AspNet.Mvc.zh-Hant) (Chinese (Traditional))
 
-### <a name="summary-of-required-conventions"></a>Podsumowanie konwencje wymagane
+### <a name="summary-of-required-conventions"></a>Podsumowanie wymaganych Konwencji
 
-- Pakiet główny musi mieć nazwę. `{identifier}.{version}.nupkg`
-- Pakiet satelitarnej musi mieć nazwę. `{identifier}.{language}.{version}.nupkg`
-- Pakiet satelitarnej `.nuspec` należy określić jego język, aby dopasować nazwę pliku.
-- Pakiet satelitarnej należy zadeklarować zależność w dokładną wersję podstawową przy użyciu notacji [] w jego `.nuspec` pliku. Zakresy nie są obsługiwane.
-- Pakiet satelitarnej należy umieścić pliki w `lib\[{framework}\]{language}` folder, który dokładnie pasuje `{language}` w nazwie pliku.
+- Pakiet podstawowy musi mieć nazwę`{identifier}.{version}.nupkg`
+- Pakiet satelitarny musi mieć nazwę`{identifier}.{language}.{version}.nupkg`
+- Pakiet satelitarny `.nuspec` musi określać swój język, aby odpowiadał nazwie pliku.
+- Pakiet satelitarny musi deklarować zależność dla dokładnej wersji elementu głównego przy użyciu notacji [] w `.nuspec` pliku. Zakresy nie są obsługiwane.
+- Pakiet satelitarny musi umieścić pliki w `lib\[{framework}\]{language}` folderze, który dokładnie pasuje `{language}` do nazwy pliku.
 
-### <a name="advantages-and-disadvantages-satellite-packages"></a>Zalety i wady (satelitarnej pakietów)
+### <a name="advantages-and-disadvantages-satellite-packages"></a>Zalety i wady (pakiety satelitarne)
 
-Za pomocą pakietów satelitarnej ma kilka zalet:
+Używanie pakietów satelitarnych ma kilka zalet:
 
-1. **Rozmiar pakietu**: całkowitego rozmiaru pakietu podstawowego jest zminimalizowany i konsumentów tylko pociągnąć za sobą koszty każdego języka, które mają być użyte.
-1. **Oddzielne metadanych**: każdy pakiet satelitarnej ma swój własny `.nuspec` pliku, a zatem zlokalizowanych metadanych ponieważ. Dzięki temu części użytkowników łatwiej znaleźć pakiety, wyszukując nuget.org zlokalizowane warunki.
-1. **Odłączone wersji**: zestawy satelickie może być zwolnione wraz z upływem czasu, a nie w całości, umożliwiając rozłożyć prace lokalizacji.
+1. **Rozmiar pakietu**: Ogólny wpływ pakietu podstawowego jest zminimalizowany, a konsumenci ponoszą koszty każdego języka, którego chcą używać.
+1. **Oddziel metadane**: Każdy pakiet satelitarny ma własny `.nuspec` plik i dlatego jego własne zlokalizowane metadane. Może to ułatwić klientom łatwiejsze znajdowanie pakietów przez wyszukiwanie nuget.org przy użyciu zlokalizowanych warunków.
+1. Rozłączone **wersje**: Zestawy satelickie mogą być uwalniane z upływem czasu, a nie tylko na raz, co pozwala na rozłożenie wysiłków związanych z lokalizacją.
 
-Jednak pakiety satelitarnej mają własne zestawy wady:
+Jednak pakiety satelickie mają swój własny zestaw wad:
 
-1. **Zaśmiecania**: zamiast jeden pakiet, masz wiele pakietów, które mogą prowadzić do dużej liczby wyników w witrynach nuget.org i długą listę odwołań w projekcie programu Visual Studio.
-1. **Konwencje Strict**. Pakiety satelitarnej muszą dokładnie zgodne z konwencjami lub zlokalizowane wersje nie będą pobrane prawidłowo.
-1. **Przechowywanie wersji**: każdy pakiet satelitarnej musi mieć zależność dokładnie wersji na pakiet główny. Oznacza to, że aktualizowanie pakietu głównej mogą wymagać aktualizacji wszystkich pakietów satelity, nawet wtedy, gdy zasoby nie został zmieniony.
+1. **Bałagan**: Zamiast pojedynczego pakietu, masz wiele pakietów, które mogą prowadzić do nieczytelnych wyników wyszukiwania na nuget.org i długiej listy odwołań w projekcie programu Visual Studio.
+1. **Ścisłe konwencje**. Pakiety satelickie muszą być zgodne z konwencjami dokładnie lub zlokalizowane wersje nie będą prawidłowo pobierane.
+1. **Przechowywanie wersji**: Każdy pakiet satelitarny musi mieć dokładną zależność wersji w pakiecie podstawowym. Oznacza to, że aktualizacja pakietu podstawowego może wymagać aktualizacji wszystkich pakietów satelitarnych, nawet jeśli zasoby nie uległy zmianie.

@@ -1,40 +1,40 @@
 ---
-title: Odwołanie do pliku packages.config NuGet
-description: W niektórych typach projektów packages.config przechowuje listę pakietów NuGet, używany w projekcie.
+title: Dokumentacja pliku Packages. config pakietów NuGet
+description: W niektórych typach projektów Packages. config obsługuje listę pakietów NuGet używanych w projekcie.
 author: karann-msft
 ms.author: karann
 ms.date: 05/21/2018
 ms.topic: reference
-ms.openlocfilehash: 18566671b611899b28fcc8542cf53935f5ee2dfd
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 2fd1640295ca35304358565808a89d752cfd8abf
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551773"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488642"
 ---
-# <a name="packagesconfig-reference"></a>Odwołanie do pliku Packages.config
+# <a name="packagesconfig-reference"></a>Dokumentacja Packages. config
 
-`packages.config` Plik jest używany w niektórych typach projektów do przechowywania listy pakietów przywoływanego przez projekt. Dzięki temu NuGet można łatwo przywrócić zależności projektu podczas projektu do innej maszynie, na przykład na serwerze kompilacji, bez tych pakietów.
+Ten `packages.config` plik jest używany w niektórych typach projektów do obsługi listy pakietów, do których odwołuje się projekt. Dzięki temu NuGet może łatwo przywrócić zależności projektu, gdy projekt ma być transportowany do innego komputera, na przykład na serwerze kompilacji, bez wszystkich pakietów.
 
-Jeśli używane, `packages.config` znajduje się w katalogu głównym projektu. Została ona utworzona automatycznie, gdy pierwszą operacją NuGet jest uruchamiany, ale można również utworzyć ręcznie przed uruchomieniem dowolnych poleceń, takich jak `nuget restore`.
+Jeśli jest używany `packages.config` , zazwyczaj znajduje się w katalogu głównym projektu. Jest ona tworzona automatycznie podczas uruchamiania pierwszej operacji NuGet, ale można ją również utworzyć ręcznie przed uruchomieniem jakichkolwiek poleceń, takich jak `nuget restore`.
 
-Projekty używające [PackageReference](../consume-packages/Package-References-in-Project-Files.md) nie należy używać `packages.config`.
+Projekty używające [PackageReference](../consume-packages/Package-References-in-Project-Files.md) nie są używane `packages.config`.
 
 ## <a name="schema"></a>Schemat
 
-Schemat jest prosty: następujące standardowy nagłówek XML jest pojedynczym `<packages>` węzeł, który zawiera co najmniej jeden `<package>` elementy, po jednym dla każdego odwołania. Każdy `<package>` element może mieć następujące atrybuty:
+Schemat jest prosty: poniżej standardowego nagłówka XML jest pojedynczy `<packages>` węzeł, który zawiera jeden lub więcej `<package>` elementów, po jednym dla każdego odwołania. Każdy `<package>` element może mieć następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --- | --- | --- |
-| identyfikator | Tak | Identyfikator pakietu, takich jak pakiet Newtonsoft.json lub Microsoft.AspNet.Mvc. | 
-| version | Tak | Dokładną wersję pakietu do zainstalowania, takich jak 3.1.1 lub 4.2.5.11-beta. Ciąg wersji musi mieć co najmniej trzy cyfry; czwarty jest opcjonalny, ponieważ sufiks wersji wstępnej. Zakresy są niedozwolone. | 
-| targetFramework | Nie | [Docelowe moniker struktury (TFM)](target-frameworks.md) do zastosowania podczas instalowania pakietu. To jest ustawiany na obiekcie docelowym projektu po zainstalowaniu pakietu. W wyniku innego `<package>` elementy mogą mieć różne krótkich nazw. Na przykład jeśli tworzysz projekt przeznaczony dla .NET 4.5.2, pakietów zainstalowanych w tym momencie użyje elementu TFM z net452. Jeśli użytkownik; później rzekieruj projekt .NET 4.6 i dodawanie dodatkowych pakietów, użyje tych TFM net46. Niezgodność obiektu docelowego projektu i `targetFramework` atrybutami spowoduje wygenerowanie ostrzeżenia, w tym przypadku można ponownie zainstalować pakiety, których to dotyczy. | 
-| allowedVersions | Nie | Zakres dozwolonych wersji tego pakietu, stosowane podczas aktualizacji pakietu (zobacz [wersji uaktualnienie Constraining](../consume-packages/reinstalling-and-updating-packages.md#constraining-upgrade-versions). Robi *nie* wpływają na jakie pakiet jest zainstalowany podczas instalacji lub operacji przywracania. Zobacz [przechowywanie wersji pakietów](../reference/package-versioning.md#version-ranges-and-wildcards) składni. Interfejs użytkownika PackageManager wyłącza również wszystkie wersje poza dozwolonym zakresem. | 
-| DevelopmentDependency | Nie | W przypadku używania sam projekt tworzy pakiet NuGet, ustawienie tej opcji na `true` dla zależności zapobiega włączaniu po utworzeniu pakietu konsumencki tego pakietu. Wartość domyślna to `false`. | 
+| identyfikator | Tak | Identyfikator pakietu, taki jak Newtonsoft. JSON lub Microsoft. AspNet. MVC. | 
+| version | Tak | Dokładna wersja pakietu do zainstalowania, taka jak 3.1.1 lub 4.2.5.11-beta. Ciąg wersji musi zawierać co najmniej trzy cyfry; czwarta jest opcjonalna, ponieważ jest sufiksem w wersji wstępnej. Zakresy są niedozwolone. | 
+| targetFramework | Nie | [Moniker platformy docelowej (TFM)](target-frameworks.md) , który ma zostać zastosowany podczas instalowania pakietu. Jest to początkowo ustawione na obiekt docelowy projektu po zainstalowaniu pakietu. W efekcie różne `<package>` elementy mogą mieć różne TFMs. Na przykład jeśli tworzysz projekt przeznaczony dla platformy .NET 4.5.2, pakiety zainstalowane w tym punkcie będą korzystały z TFM net452. Jeśli użytkownik; później przekieruje projekt do programu .NET 4,6 i doda więcej pakietów, będzie używać TFM z net46. Niezgodność między obiektem docelowym projektu a `targetFramework` atrybutami spowoduje wygenerowanie ostrzeżeń, w takim przypadku można ponownie zainstalować odpowiednie pakiety. | 
+| allowedVersions | Nie | Zakres dozwolonych wersji tego pakietu stosowany podczas aktualizacji pakietu (zobacz ograniczenia dotyczące [wersji uaktualnienia](../consume-packages/reinstalling-and-updating-packages.md#constraining-upgrade-versions). Nie ma to wpływu na pakiet instalowany podczas operacji instalowania lub przywracania. Aby poznać składnię, zobacz [wersja pakietu](../concepts/package-versioning.md#version-ranges-and-wildcards) . Interfejs użytkownika pakietu Packagemanager wyłącza również wszystkie wersje poza dozwolonym zakresem. | 
+| developmentDependency | Nie | Jeśli sam projekt tworzy pakiet NuGet, ustawienie tej `true` opcji na dla zależności uniemożliwia uwzględnienie tego pakietu podczas tworzenia pakietu. Wartość domyślna to `false`. | 
 
 ## <a name="examples"></a>Przykłady
 
-Następujące `packages.config` odwołuje się do dwie zależności:
+Następujące `packages.config` odnoszą się do dwóch zależności:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -44,7 +44,7 @@ Następujące `packages.config` odwołuje się do dwie zależności:
 </packages>
 ```
 
-Następujące `packages.config` odwołuje się do dziewięć pakietów, ale `Microsoft.Net.Compilers` nie zostaną uwzględnione podczas tworzenia pakietu korzystanie z powodu `developmentDependency` atrybutu. Odwołanie do pakietu Newtonsoft.Json ogranicza również aktualizacje tylko 8.x i 9.x wersji.
+Poniższe elementy `packages.config` odnoszą się do dziewięciu pakietów `Microsoft.Net.Compilers` , ale nie zostaną uwzględnione podczas kompilowania pakietu zużywanego z `developmentDependency` powodu atrybutu. Odwołanie do Newtonsoft. JSON również ogranicza aktualizacje tylko do wersji 8. x i 9. x.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/13/2018
 ms.topic: quickstart
-ms.openlocfilehash: 75160bf2b01f6d4707162e019a6263ddc64a6f5e
-ms.sourcegitcommit: 0f5363353f9dc1c3d68e7718f51b7ff92bb35e21
+ms.openlocfilehash: 7bfe041c01114ac61e811497ecc31ebfdad45029
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68342518"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488899"
 ---
 # <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
 
@@ -76,7 +76,7 @@ Pakiet NuGet zawiera manifest ( `.nuspec` plik), który zawiera odpowiednie meta
 
 1. Opcjonalne: Aby wyświetlić i edytować właściwości bezpośrednio, Otwórz `Properties/AssemblyInfo.cs` plik w projekcie.
 
-1. Po ustawieniu właściwości ustaw konfigurację projektu na Zwolnij i skompiluj  ponownie projekt w celu wygenerowania zaktualizowanej biblioteki DLL.
+1. Po ustawieniu właściwości ustaw konfigurację projektu na Zwolnij i skompiluj ponownie projekt w celu wygenerowania zaktualizowanej biblioteki DLL.
 
 ## <a name="generate-the-initial-manifest"></a>Generuj początkowy manifest
 
@@ -184,5 +184,5 @@ Aby poznać więcej informacji o tym, że pakiet NuGet jest oferowany, wybierz p
 - [Publikowanie pakietu](../nuget-org/publish-a-package.md)
 - [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
-- [Przechowywanie wersji pakietów](../reference/package-versioning.md)
+- [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)

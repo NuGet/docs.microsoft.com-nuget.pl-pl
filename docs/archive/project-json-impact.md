@@ -1,74 +1,74 @@
 ---
-title: wpływ pliku Project.JSON na autorom pakietów NuGet
-description: Szczegółowe informacje dotyczące sposobu wykonania pliku project.json w NuGet 3.x ma wpływ na pakiet autorów, takich jak nieobsługiwane funkcje, zawartość i format pakietu.
+title: wpływ pliku Project. JSON na autorów pakietów NuGet
+description: Szczegółowe informacje o tym, jak implementacja pliku Project. JSON w pakiecie NuGet 3. x ma wpływ na autorów pakietów, takich jak Nieobsługiwane funkcje, zawartość i format pakietu.
 author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8c85c1a89469c491c6be1f81961197450744349c
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 34b08f06f04efdcf7bf73efc2cbdb5a5494ae2d9
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43545576"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488197"
 ---
-# <a name="impact-of-projectjson-when-creating-packages"></a>Wpływ pliku project.json podczas tworzenia pakietów
+# <a name="impact-of-projectjson-when-creating-packages"></a>Wpływ pliku Project. JSON podczas tworzenia pakietów
 
 > [!Important]
-> Ta zawartość jest przestarzały. Projekty powinny używać albo `packages.config` lub PackageReference podzielony na fragmenty.
+> Ta zawartość jest przestarzała. Projekty powinny używać `packages.config` formatów lub PackageReference.
 
-`project.json` Systemu NuGet 3 + wpływa na autorom pakietów na kilka sposobów, zgodnie z opisem w poniższych sekcjach.
+`project.json` System używany w programie NuGet 3 + ma wpływ na autorów pakietów na kilka sposobów, zgodnie z opisem w poniższych sekcjach.
 
-## <a name="changes-affecting-existing-packages-usage"></a>Zmiany mające wpływ na istniejące użycie pakietów
+## <a name="changes-affecting-existing-packages-usage"></a>Zmiany wpływające na użycie istniejących pakietów
 
-Tradycyjne pakiety NuGet obsługuje zestaw funkcji, które nie są przenoszone do świata przechodnie.
+Tradycyjne pakiety NuGet obsługują zestaw funkcji, które nie są przenoszone na świecie przechodnie.
 
-### <a name="install-and-uninstall-scripts-are-ignored"></a>Instalowanie i odinstalowywanie skrypty są ignorowane.
+### <a name="install-and-uninstall-scripts-are-ignored"></a>Skrypty instalacji i dezinstalacji są ignorowane
 
-Model przechodnie przywracania, opisanego w [rozpoznawania zależności](../consume-packages/dependency-resolution.md#dependency-resolution-with-packagereference), nie ma koncepcji "Godzina instalacji pakietu". Pakiet jest obecne lub nieobecne, ale nie ma żadnych procesów spójne, który występuje, gdy pakiet jest zainstalowany.
+Model przywracania przechodniego opisany w temacie [rozpoznawanie zależności](../concepts/dependency-resolution.md#dependency-resolution-with-packagereference)nie ma koncepcji "czas instalacji pakietu". Pakiet jest obecny lub nie istnieje, ale nie ma spójnego procesu, który występuje po zainstalowaniu pakietu.
 
-Ponadto Zainstaluj skrypty były obsługiwane tylko w programie Visual Studio. Inne środowiska IDE było testowanie rozszerzalności programu Visual Studio API próbę obsługiwać te skrypty, a nie był dostępny w standardowych edytorów i narzędzia wiersza polecenia.
+Ponadto skrypty instalacji były obsługiwane tylko w programie Visual Studio. Inne środowisk IDE musiały zasymulować interfejs API rozszerzalności programu Visual Studio, aby próbować obsługiwać takie skrypty, a żadne wsparcie nie było dostępne w popularnych edytorach i narzędziach wiersza polecenia.
 
-### <a name="content-transforms-are-not-supported"></a>Przekształcenia zawartości nie są obsługiwane.
+### <a name="content-transforms-are-not-supported"></a>Przekształcenia zawartości nie są obsługiwane
 
-Podobnie jak Zainstaluj skrypty, przekształcenia systemem pakietu Zainstaluj i zazwyczaj nie są idempotentne. Ponieważ to już czas instalacji, Przekształć XDT podobne funkcje nie są obsługiwane i są ignorowane, jeśli taki pakiet jest używany w scenariuszu przechodnie.
+Podobnie jak w przypadku instalacji skryptów, przekształcenia są uruchamiane podczas instalacji pakietu i nie są zwykle idempotentne. Ponieważ nie ma już czasu instalacji, XDT przekształcenia i podobne funkcje nie są obsługiwane i są ignorowane, jeśli taki pakiet jest używany w scenariuszu przechodnim.
 
 ### <a name="content"></a>Zawartość
 
-Tradycyjne pakiety NuGet są wysyłania plików zawartości, takich jak kod źródłowy i pliki konfiguracyjne. Są zwykle używane w przypadku dwóch scenariuszy:
+Tradycyjne pakiety NuGet to wysyłanie plików zawartości, takich jak kod źródłowy i pliki konfiguracji. Są zwykle używane w dwóch scenariuszach:
 
-1. Pliki początkowe upuszczonego do projektu, dzięki czemu użytkownik może edytować je w późniejszym czasie. Typowym przykładem są pliki konfiguracji domyślnej.
+1. Początkowe pliki zostały opuszczone do projektu, dzięki czemu użytkownik może je edytować w późniejszym czasie. Typowym przykładem są domyślne pliki konfiguracji.
 
-1. Pliki zawartości są używane jako towarzyszami do zestawów zainstalowana w projekcie. W tym przykładzie będzie używane przez zestaw obrazu logo.
+1. Pliki zawartości używane jako pomocniki do zestawów zainstalowanych w projekcie. Przykładem może być obraz logo używany przez zestaw.
 
-Pomoc techniczna dla zawartości jest obecnie wyłączony dla podobnych powodów, dla skryptów i transformacji, ale jesteśmy w trakcie projektowania obsługę zawartości.
+Obsługa zawartości jest obecnie wyłączona dla podobnych przyczyn dotyczących skryptów i transformacji, ale jesteśmy w trakcie projektowania obsługi zawartości.
 
-Zawartości plików może nadal znajdować się wewnątrz pakietów i są ignorowane obecnie jednak użytkownik końcowy może nadal skopiuj je do odpowiednich miejscach.
+Pliki zawartości nadal mogą być przenoszone w pakietach i są obecnie ignorowane, jednak użytkownik końcowy nadal może skopiować je do odpowiednich miejsc.
 
-Zobacz jeden z propozycje ponownie przeniesienie zawartości plików i postępuj zgodnie z jego postęp, w tym miejscu: [ https://github.com/NuGet/Home/issues/627 ](https://github.com/NuGet/Home/issues/627).
+Możesz zobaczyć jedną z propozycji do przenoszenia plików zawartości i postępować zgodnie z postępem, tutaj: [https://github.com/NuGet/Home/issues/627](https://github.com/NuGet/Home/issues/627).
 
-## <a name="impact-for-package-authors"></a>Znaczenie dla autorów pakietu
+## <a name="impact-for-package-authors"></a>Wpływ na autorów pakietów
 
-Pakiety przy użyciu powyższych funkcje musiałby użyć innego mechanizmu. Najczęściej przydatny mechanizm to będzie MSBuild celów/arkuszy właściwości, które w dalszym ciągu uzyskać w pełni obsługiwane. System kompilacji można wczytać innych Konwencji w pakiecie. Jest to, jak obsługiwanych elementów docelowych MSBuild oraz analizatorów Roslyn. Istnieje możliwość tworzenia pakietów, które obsługuje elementy docelowe i analizatory do równoległego `packages.config` i `project.json` scenariuszy.
+Pakiety korzystające z powyższych funkcji będą musiały korzystać z innego mechanizmu. Najczęściej używanym mechanizmem jest to, że elementy docelowe i właściwości programu MSBuild, które nadal są w pełni obsługiwane. System kompilacji może wybrać inne konwencje w pakiecie. Jest to sposób, w jaki elementy docelowe programu MSBuild są obsługiwane, a także analizatory Roslyn. Istnieje możliwość kompilowania pakietów, które obsługują obiekty docelowe i analizatory `packages.config` dla `project.json` i scenariuszy.
 
-Pakiety, które próbuje zmodyfikować projekt, aby ułatwić uruchamiania zwykle działa w bardzo ograniczony zestaw scenariuszy, a zamiast tego powinien udostępnić plik readme lub wskazówki dotyczące sposobu używania pakietu.
+Pakiety próbujące zmodyfikować projekt w celu ułatwienia uruchamiania zwykle działają w bardzo ograniczonym zestawie scenariuszy i powinny zawierać plik Readme lub wskazówki dotyczące sposobu korzystania z pakietu.
 
-Większość istniejących pakietów nie powinni używać formatu pakietu opisane poniżej.
+W przypadku większości istniejących pakietów nie należy używać formatu pakietu opisanego poniżej.
 
-Format umożliwia natywnego zawartości najwyższej klasy scenariusza. Oznacza to, że zestawy zarządzane są zależne od blisko implementacji sprzętu w celu wysłania binarne implementacje wraz z zestawów zarządzanych, w oparciu o platformę docelową. Na przykład pakiet System.IO.Compression wykorzystywanych tej technologii. [https://www.nuget.org/packages/System.IO.Compression](https://www.nuget.org/packages/System.IO.Compression)
+Format umożliwia zawartości natywnej jako scenariusza pierwszej klasy. Oznacza to, że zarządzane zestawy są zależne od implementacji sprzętowych, aby dostarczać implementacje binarne wraz z zestawami zarządzanymi opartymi na platformie docelowej. Na przykład pakiet System. IO. Compression korzysta z tej technologii. [https://www.nuget.org/packages/System.IO.Compression](https://www.nuget.org/packages/System.IO.Compression)
 
-W podsumowaniu Jeśli powyżej funkcji nie jest to konieczne, firma Microsoft zaleca wyobrazić za pomocą istniejący format pakietu formacie opisanym tutaj jest obsługiwana tylko przez NuGet 3.x+.
+Podsumowując, jeśli powyższe funkcje nie są absolutnie niezbędne, zalecamy naklejenie w istniejącym formacie pakietu, ponieważ format opisany tutaj jest obsługiwany tylko przez program NuGet 3. x +.
 
-Będzie można skompilować pakiety w celu pracy dla obu `packages.config` i `project.json` scenariuszy za pomocą zastępowanie podkładką:, ale często łatwiej jest tylko sposób tradycyjny struktury pakiety, bez przestarzałych funkcji, o których wspomniano powyżej.
+Możliwe jest skompilowanie pakietów do pracy w ramach obu `packages.config` `project.json` scenariuszy za pomocą zastępowanie podkładką:, jednak często prostsze jest jedynie struktury pakietów w tradycyjny sposób, bez przestarzałych funkcji wymienionych powyżej.
 
-## <a name="3x-package-format"></a>format pakietu 3.x
+## <a name="3x-package-format"></a>format pakietu 3. x
 
-Format pakietu 3.x pozwala na kilka dodatkowych funkcji poza NuGet 2.x:
+Format pakietu 3. x umożliwia korzystanie z kilku dodatkowych funkcji poza pakietem NuGet 2. x:
 
-1. Definiowanie zestawu odwołania używane dla kompilacji i zbiór zestawów implementacji używany dla środowiska uruchomieniowego na różnych platformach/urządzeniach. Co pozwala korzystać z platformy określonych interfejsów API przy jednoczesnym zapewnieniu wspólnych obszaru powierzchni przez użytkowników. W szczególności to sprawia, że pisanie pośrednich bibliotek przenośnych łatwiejsze.
+1. Definiowanie zestawu odwołania używanego do kompilowania i zestawu zestawów implementacji używanych do środowiska uruchomieniowego na różnych platformach/urządzeniach. Dzięki temu można korzystać z interfejsów API specyficznych dla platformy, jednocześnie zapewniając wspólną powierzchnię dla klientów. W ten sposób pisanie pośrednich bibliotek przenośnych jest łatwiejsze.
 
-1. Zezwala na pakiety do tabeli przestawnej — na platformach np. systemy operacyjne i architektury Procesora.
+1. Umożliwia umieszczanie pakietów na platformach, np. w systemach operacyjnych lub architekturach procesora CPU.
 
-1. Umożliwia rozdzielenie implementacji określonego platformy do pakietów pomocnika.
+1. Umożliwia rozdzielenie implementacji specyficznych dla platformy na pakiety pomocnika.
 
-1. Obsługuje zależności natywnych jako najwyższej klasy dla obywateli.
+1. Obsługa natywnych zależności jako obywatela pierwszej klasy.

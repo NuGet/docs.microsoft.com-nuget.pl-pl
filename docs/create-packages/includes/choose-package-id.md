@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e8949e9964ed19d342df53f08f59bb0f89e5feb0
-ms.sourcegitcommit: 5aa49478dc466c67db5c3edda7c6ce8dcd8ae033
+ms.openlocfilehash: 7ebe3c0f75b8de158879119bce4df26217849251
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817478"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488964"
 ---
 Identyfikator pakietu i numer wersji to dwie najważniejsze wartości w projekcie, ponieważ jednoznacznie identyfikują dokładny kod zawarty w pakiecie.
 
@@ -17,9 +17,9 @@ Identyfikator pakietu i numer wersji to dwie najważniejsze wartości w projekci
 **Najlepsze rozwiązania dotyczące wersji pakietu:**
 
 - Ogólnie rzecz biorąc Ustaw wersję pakietu na zgodną z projektem (lub zestawem), ale nie jest to ściśle wymagane. Jest to prosta kwestia w przypadku ograniczenia pakietu do jednego zestawu. Ogólnie, pamiętaj, że sam pakiet NuGet zajmuje się wersjami pakietu podczas rozpoznawania zależności, a nie wersji zestawu.
-- W przypadku korzystania ze schematu wersji niestandardowej należy wziąć pod uwagę reguły obsługi wersji NuGet zgodnie z opisem w temacie [wersja pakietu](../../reference/package-versioning.md). Pakiet NuGet jest w większości [semver 2 zgodny](../../reference/package-versioning.md#semantic-versioning-200).
+- W przypadku korzystania ze schematu wersji niestandardowej należy wziąć pod uwagę reguły obsługi wersji NuGet zgodnie z opisem w temacie [wersja pakietu](../../concepts/package-versioning.md). Pakiet NuGet jest w większości [semver 2 zgodny](../../concepts/package-versioning.md#semantic-versioning-200).
 
-> Aby uzyskać informacje dotyczące rozpoznawania zależności, zobacz [rozpoznawanie zależności z PackageReference](../../consume-packages/dependency-resolution.md#dependency-resolution-with-packagereference). Aby poznać starsze informacje, które mogą być przydatne do lepszego zrozumienia wersji, zobacz tę serię wpisów w blogu.
+> Aby uzyskać informacje dotyczące rozpoznawania zależności, zobacz [rozpoznawanie zależności z PackageReference](../../concepts/dependency-resolution.md#dependency-resolution-with-packagereference). Aby poznać starsze informacje, które mogą być przydatne do lepszego zrozumienia wersji, zobacz tę serię wpisów w blogu.
 >
 > - [Część 1. Pobieranie na Hell DLL](http://blog.davidebbo.com/2011/01/nuget-versioning-part-1-taking-on-dll.html)
 > - [Część 2. Podstawowy algorytm](http://blog.davidebbo.com/2011/01/nuget-versioning-part-2-core-algorithm.html)

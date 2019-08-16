@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 05ece5f36ff7ae5920960c42cfde8b271dc3e712
-ms.sourcegitcommit: fc1b716afda999148eb06d62beedb350643eb346
+ms.openlocfilehash: 464bf52cabe64696270fc391b2c23de9c6ba24f7
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69020010"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488151"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietów (PackageReference) w plikach projektu
 
@@ -20,7 +20,7 @@ Za pomocą PackageReference można także użyć warunków MSBuild, aby wybrać 
 
 ## <a name="project-type-support"></a>Obsługa typu projektu
 
-Domyślnie PackageReference jest używany dla projektów .NET Core, projektów .NET Standard i projektów platformy UWP przeznaczonych dla systemu Windows 10 Build 15063 (Aktualizacja dla twórców) i nowszych, z wyjątkiem projektów C++ platformy UWP. Projekty .NET Framework obsługują PackageReference, ale obecnie domyślnie `packages.config`. Aby użyć PackageReference, [Migruj](../reference/migrate-packages-config-to-package-reference.md) zależności z `packages.config` do pliku projektu, a następnie usuń Packages. config.
+Domyślnie PackageReference jest używany dla projektów .NET Core, projektów .NET Standard i projektów platformy UWP przeznaczonych dla systemu Windows 10 Build 15063 (Aktualizacja dla twórców) i nowszych, z wyjątkiem projektów C++ platformy UWP. Projekty .NET Framework obsługują PackageReference, ale obecnie domyślnie `packages.config`. Aby użyć PackageReference, [Migruj](../consume-packages/migrate-packages-config-to-package-reference.md) zależności z `packages.config` do pliku projektu, a następnie usuń Packages. config.
 
 ASP.NET aplikacje obsługujące pełną .NET Framework obejmują tylko [ograniczoną obsługę](https://github.com/NuGet/Home/issues/5877) PackageReference. C++i typy projektów JavaScript nie są obsługiwane.
 
@@ -48,7 +48,7 @@ Konwencja określania wersji pakietu jest taka sama jak w przypadku użycia `pac
 </ItemGroup>
 ```
 
-W powyższym przykładzie 3.6.0 oznacza dowolną wersję, która jest > = 3.6.0 z preferencją dla najniższej wersji, zgodnie z opisem w temacie [przechowywanie wersji pakietu](../reference/package-versioning.md#version-ranges-and-wildcards).
+W powyższym przykładzie 3.6.0 oznacza dowolną wersję, która jest > = 3.6.0 z preferencją dla najniższej wersji, zgodnie z opisem w temacie [przechowywanie wersji pakietu](../concepts/package-versioning.md#version-ranges-and-wildcards).
 
 ## <a name="using-packagereference-for-a-project-with-no-packagereferences"></a>Używanie PackageReference dla projektu bez składnika packagereferences
 Doświadczonych Jeśli nie masz żadnych pakietów zainstalowanych w projekcie (nie składnika packagereferences w pliku projektu i bez pliku Packages. config), ale chcesz przywrócić projekt jako styl PackageReference, możesz ustawić właściwość projektu RestoreProjectStyle na PackageReference w projekcie rozszerzeniem.
@@ -63,7 +63,7 @@ Może to być przydatne, jeśli odwołują się do projektów, które są Packag
 
 ## <a name="floating-versions"></a>Wersje zmiennoprzecinkowe
 
-[Wersje zmiennoprzecinkowe](../consume-packages/dependency-resolution.md#floating-versions) są obsługiwane `PackageReference`za pomocą:
+[Wersje zmiennoprzecinkowe](../concepts/dependency-resolution.md#floating-versions) są obsługiwane `PackageReference`za pomocą:
 
 ```xml
 <ItemGroup>
@@ -130,6 +130,9 @@ W poniższym przykładzie wszystko, z wyjątkiem plików zawartości z pakietu, 
 ```
 
 Należy pamiętać, `build` że element targets `PrivateAssets`i props *będzie* przepływać do projektu nadrzędnego, ponieważ nie jest zawarty w elemencie. Rozważmy na przykład, że odwołanie powyżej jest używane w projekcie, który kompiluje pakiet NuGet o nazwie AppLogger. AppLogger może zużywać elementy docelowe i wartości z `Contoso.Utility.UsefulStuff`, jak w przypadku projektów, które zużywają AppLogger.
+
+> [!NOTE]
+> Gdy `developmentDependency` jest ustawiona na `true` w `.nuspec` pliku, oznacza to pakiet jako zależność tylko do programowania, co uniemożliwi uwzględnienie pakietu jako zależności w innych pakietach. W przypadku PackageReference *(NuGet 4.8 +)* ta flaga oznacza również, że wykluczają się zasoby czasu kompilacji z kompilacji. Aby uzyskać więcej informacji, zobacz [DevelopmentDependency support for PackageReference](https://github.com/NuGet/Home/wiki/DevelopmentDependency-support-for-PackageReference).
 
 ## <a name="adding-a-packagereference-condition"></a>Dodawanie warunku PackageReference
 

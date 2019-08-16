@@ -1,64 +1,64 @@
 ---
-title: Tworzenie pakietów NuGet dla platformy Universal Windows
-description: End-to-end Przewodnik tworzenia pakietów NuGet dla platformy uniwersalnej Windows za pomocą składnika środowiska wykonawczego Windows.
+title: Utwórz pakiety NuGet dla platforma uniwersalna systemu Windows
+description: Kompleksowy przewodnik tworzenia pakietów NuGet przy użyciu składnika środowisko wykonawcze systemu Windows dla platforma uniwersalna systemu Windows.
 author: karann-msft
 ms.author: karann
 ms.date: 03/21/2017
 ms.topic: tutorial
-ms.openlocfilehash: 344c8d764180d0f33c1bce77b721e3657297e74e
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 1683349faacdf5ad47baafeef3457bbb3bb1baa9
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67842122"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488993"
 ---
 # <a name="create-uwp-packages"></a>Tworzenie pakietów platformy UWP
 
-[Windows platformy Uniwersalnej](https://developer.microsoft.com/windows) udostępnia wspólną platformę aplikacji dla każdego urządzenia z systemem Windows 10. W tym modelu aplikacji platformy UWP może wywoływać zarówno interfejsów API WinRT, które są wspólne dla wszystkich urządzeń, a także interfejsów API (w tym Win32 i platformy .NET), które są specyficzne dla rodziny urządzeń, na którym działa aplikacja.
+[Platforma uniwersalna systemu Windows (platformy UWP)](https://developer.microsoft.com/windows) zapewnia wspólną platformę aplikacji dla każdego urządzenia z systemem Windows 10. W ramach tego modelu aplikacje platformy UWP mogą wywoływać oba interfejsy API WinRT, które są wspólne dla wszystkich urządzeń, a także interfejsy API (w tym Win32 i .NET), które są specyficzne dla rodziny urządzeń, na których działa aplikacja.
 
-W tym przewodniku tworzenia pakietów NuGet za pomocą natywnego platformy uniwersalnej systemu Windows składnik (w tym kontrolki XAML) używanej w zarządzanych i natywnych projektów.
+W tym instruktażu utworzysz pakiet NuGet z natywnym składnikiem platformy UWP (łącznie z kontrolką XAML), który może być używany w projektach zarządzanych i natywnych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Program Visual Studio 2017 lub Visual Studio 2015. Zainstaluj 2017 Community edition bezpłatnie z [visualstudio.com](https://www.visualstudio.com/); można użyć również wersje Professional i Enterprise.
+1. Visual Studio 2017 lub Visual Studio 2015. Zainstaluj bezpłatnie wersję 2017 Community z [VisualStudio.com](https://www.visualstudio.com/); można również używać wersji Professional i Enterprise.
 
-1. Interfejs wiersza polecenia NuGet. Pobierz najnowszą wersję `nuget.exe` z [nuget.org/downloads](https://nuget.org/downloads), zapisanie go do wybranej lokalizacji (pliki do pobrania jest `.exe` bezpośrednio). Następnie dodaj tej lokalizacji do zmiennej środowiskowej PATH, jeśli jeszcze tego nie zrobiono.
+1. Interfejs wiersza polecenia NuGet. Pobierz najnowszą wersję `nuget.exe` z [NuGet.org/downloads](https://nuget.org/downloads), zapisując ją w wybranej lokalizacji (pobieranie jest `.exe` bezpośrednie). Następnie Dodaj tę lokalizację do zmiennej środowiskowej PATH, jeśli nie została jeszcze.
 
-## <a name="create-a-uwp-windows-runtime-component"></a>Tworzenie składników środowiska wykonawczego Windows platformy uniwersalnej systemu Windows
+## <a name="create-a-uwp-windows-runtime-component"></a>Utwórz składnik środowisko wykonawcze systemu Windows platformy UWP
 
-1. W programie Visual Studio, wybierz **Plik > Nowy > Projekt**, rozwiń węzeł **Visual C++ > Windows > Universal** węzła, wybierz opcję **składnika środowiska wykonawczego Windows (Windows Universal)** szablonu, Zmień nazwę na ImageEnhancer, a następnie kliknij przycisk OK. Zaakceptuj wartości domyślne dla wersji docelowej i wersję minimalną po wyświetleniu monitu.
+1. W programie Visual Studio wybierz kolejno opcje **plik > nowy > projekt**, rozwiń węzeł **Visual C++ > Windows > uniwersalny** , wybierz szablon **składnik środowisko wykonawcze systemu Windows (uniwersalny system Windows)** , Zmień nazwę na ImageEnhancer, a następnie kliknij przycisk OK. Po wyświetleniu monitu zaakceptuj wartości domyślne wersji docelowej i wersji minimalnej.
 
-    ![Tworzenie nowego projektu składnika wykonawczego Windows platformy uniwersalnej systemu Windows](media/UWP-NewProject.png)
+    ![Tworzenie nowego projektu składnika środowisko wykonawcze systemu Windows platformy UWP](media/UWP-NewProject.png)
 
-1. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań, wybierz pozycję **Dodaj > Nowy element**, kliknij przycisk **Visual C++ > XAML** węzeł **formant z szablonem**, Zmień nazwę na AwesomeImageControl.cpp, a następnie kliknij przycisk **Dodaj**:
+1. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz pozycję **dodaj > nowy element**, kliknij węzeł **Visual C++ > XAML** , wybierz opcję **formant**z szablonem, Zmień nazwę na AwesomeImageControl. cpp, a następnie kliknij przycisk **Dodaj**:
 
-    ![Dodawanie nowego elementu kontrolka z szablonem XAML do projektu](media/UWP-NewXAMLControl.png)
+    ![Dodawanie nowego elementu formantu XAML z szablonem do projektu](media/UWP-NewXAMLControl.png)
 
-1. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz **właściwości.** Na stronie właściwości rozwiń węzeł **właściwości konfiguracji > C/C++** i kliknij przycisk **pliki wyjściowe**. W okienku po prawej stronie Zmień wartość **Generuj pliki dokumentacji XML** tak:
+1. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **właściwości.** Na stronie właściwości rozwiń węzeł **Właściwości konfiguracji > CC++ /** i kliknij pozycję **pliki wyjściowe**. W okienku po prawej stronie Zmień wartość opcji **Generuj pliki dokumentacji XML** na tak:
 
-    ![Ustawienia Generuj pliki dokumentacji XML tak](media/UWP-GenerateXMLDocFiles.png)
+    ![Ustawienie Generuj pliki dokumentacji XML na tak](media/UWP-GenerateXMLDocFiles.png)
 
-1. Kliknij prawym przyciskiem myszy *rozwiązania* Wybierz teraz **tworzenie partii**, trzy pola debugowania w oknie dialogowym Sprawdź, jak pokazano poniżej. Dzięki temu po wykonaniu kompilacji wygenerować pełny zestaw artefaktów dla każdego z docelowych systemach, które obsługuje Windows.
+1. Kliknij teraz *rozwiązanie* prawym przyciskiem myszy, wybierz pozycję **kompilacja wsadowa**, a następnie sprawdź trzy pola debugowania w oknie dialogowym, jak pokazano poniżej. Daje to pewność, że po wykonaniu kompilacji zostanie wygenerowany pełen zestaw artefaktów dla każdego systemu docelowego obsługiwanego przez system Windows.
 
-    ![Kompilacji wsadowej](media/UWP-BatchBuild.png)
+    ![Kompilacja wsadowa](media/UWP-BatchBuild.png)
 
-1. W zadaniu wsadowym Tworzenie okna dialogowego, a następnie kliknij przycisk **kompilacji** w celu sprawdzenia projektu i utworzyć pliki wyjściowe, które są potrzebne dla pakietu NuGet.
+1. W oknie dialogowym kompilacja wsadowa, a następnie kliknij przycisk **Kompiluj** , aby zweryfikować projekt i utworzyć pliki wyjściowe potrzebne dla pakietu NuGet.
 
 > [!Note]
-> W tym przewodniku użyjesz artefaktów debugowania dla pakietu. Pakietu bez debugowania zamiast tego wybierz opcje wersji w oknie dialogowym Tworzenie usługi Batch i odwołać się do wynikowego folderów wydania w opisanych poniżej.
+> W tym instruktażu użyjesz artefaktów debugowania dla pakietu. W przypadku pakietu bez debugowania Sprawdź opcje wydania w oknie dialogowym kompilacja wsadowa, a następnie zapoznaj się z folderem wydania w poniższej procedurze.
 
-## <a name="create-and-update-the-nuspec-file"></a>Tworzenie i aktualizowanie pliku .nuspec
+## <a name="create-and-update-the-nuspec-file"></a>Utwórz i zaktualizuj plik. nuspec
 
-Aby utworzyć początkowy `.nuspec` plików, wykonaj następujące trzy kroki. Sekcje, które należy wykonać, a następnie prowadzi przez innych wymaganych aktualizacji.
+Aby utworzyć początkowy `.nuspec` plik, wykonaj trzy poniższe czynności. Poniższe sekcje przeprowadzą Cię przez inne niezbędne aktualizacje.
 
-1. Otwórz wiersz polecenia i przejdź do folderu zawierającego `ImageEnhancer.vcxproj` (będzie podfolder poniżej, gdzie jest to plik rozwiązania).
-1. Uruchom rozszerzenie NuGet `spec` polecenie, aby wygenerować `ImageEnhancer.nuspec` (nazwa pliku jest pobierana z nazwy `.vcxproj` plików):
+1. Otwórz wiersz polecenia i przejdź do folderu zawierającego `ImageEnhancer.vcxproj` (będzie to podfolder poniżej lokalizacji pliku rozwiązania).
+1. Uruchom polecenie NuGet `spec` , aby wygenerować `ImageEnhancer.nuspec` (nazwa pliku jest pobierana `.vcxproj` z nazwy pliku):
 
     ```cli
     nuget spec
     ```
 
-1. Otwórz `ImageEnhancer.nuspec` w edytorze i zaktualizuj go zgodnie z poniższym, zamieniając twoja_nazwa odpowiednią wartość. `<id>` Wartość, w szczególności musi być unikatowa w witrynie nuget.org (konwencje nazewnictwa, opisane w temacie [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number)). Należy również zauważyć, że należy również zaktualizować autor i opis znaczników lub wystąpi błąd podczas wykonywania kroku pakowania.
+1. Otwórz `ImageEnhancer.nuspec` w edytorze i zaktualizuj go, aby pasował do następujących wartości, zastępując YOUR_NAME z odpowiednią wartością. Wartość, szczególnie, musi być unikatowa w obrębie NuGet.org (zobacz Konwencje nazewnictwa opisane w artykule [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number)). `<id>` Należy również pamiętać, że należy również zaktualizować Tagi autor i opis lub podczas kroku pakowania wystąpi błąd.
 
     ```xml
     <?xml version="1.0"?>
@@ -79,13 +79,13 @@ Aby utworzyć początkowy `.nuspec` plików, wykonaj następujące trzy kroki. S
     ```
 
 > [!Note]
-> W przypadku pakietów utworzone do użytku publicznego należy zwrócić szczególną uwagę na `<tags>` elementu, jak te znaczniki pomóc innym odnaleźć pakietu i zrozumieć, co robi.
+> W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną `<tags>` uwagę na element, ponieważ te Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
-### <a name="adding-windows-metadata-to-the-package"></a>Dodanie metadanych Windows do pakietu
+### <a name="adding-windows-metadata-to-the-package"></a>Dodawanie metadanych systemu Windows do pakietu
 
-Składnik środowiska wykonawczego Windows wymaga metadane opisujące wszystkich typów publicznie dostępny, co umożliwia dla innych aplikacji i bibliotek korzystanie z komponentu. Te metadane są zawarte w pliku winmd, która jest tworzona podczas kompilowania projektu i muszą być zawarte w pakiecie NuGet. Plik XML z danymi IntelliSense jest również zbudowana w tym samym czasie i mają zostać uwzględnione również.
+Składnik środowisko wykonawcze systemu Windows wymaga metadanych, które opisują wszystkie dostępne publicznie typy, które umożliwiają korzystanie z składnika przez inne aplikacje i biblioteki. Te metadane są zawarte w pliku winmd, który jest tworzony podczas kompilowania projektu i musi być dołączony do pakietu NuGet. Plik XML z danymi IntelliSense jest również zbudowany w tym samym czasie i powinien być również dołączony.
 
-Dodaj następujący kod `<files>` węzeł `.nuspec` pliku:
+Dodaj następujący `<files>` węzeł `.nuspec` do pliku:
 
 ```xml
 <package>
@@ -103,7 +103,7 @@ Dodaj następujący kod `<files>` węzeł `.nuspec` pliku:
 
 ### <a name="adding-xaml-content"></a>Dodawanie zawartości XAML
 
-Aby dołączyć kontrolki XAML przy użyciu składnika, należy dodać plik XAML, którego szablonu domyślnego dla formantu (wygenerowane przez szablon projektu). Prowadzi to również `<files>` sekcji:
+Aby dołączyć kontrolkę XAML do składnika, należy dodać plik XAML, który ma szablon domyślny dla formantu (zgodnie z szablonem projektu). Jest `<files>` to również sekcja:
 
 ```xml
 <?xml version="1.0"?>
@@ -121,9 +121,9 @@ Aby dołączyć kontrolki XAML przy użyciu składnika, należy dodać plik XAML
 </package>
 ```
 
-### <a name="adding-the-native-implementation-libraries"></a>Dodawanie bibliotek natywnych implementacji
+### <a name="adding-the-native-implementation-libraries"></a>Dodawanie natywnych bibliotek implementacji
 
-W ramach składnika, podstawowe zasady logiczne typu ImageEnhancer jest w kodzie natywnym, która jest zawarta w różnych `ImageEnhancer.dll` zestawów, które są generowane dla każdego docelowe środowisko uruchomieniowe (x 86 i x64 ARM). Aby uwzględnić je w pakiecie, odwoływać się do nich w `<files>` sekcji wraz z plikami zasobów .pri skojarzone:
+W składniku podstawowa logika typu ImageEnhancer jest w kodzie natywnym, który jest zawarty w różnych `ImageEnhancer.dll` zestawach, które są generowane dla każdego docelowego środowiska uruchomieniowego (ARM, x86 i x64). Aby uwzględnić je w pakiecie, należy odwołać się do `<files>` nich w sekcji wraz ze skojarzonymi z nimi plikami zasobów. pri:
 
 ```xml
 <?xml version="1.0"?>
@@ -151,9 +151,9 @@ W ramach składnika, podstawowe zasady logiczne typu ImageEnhancer jest w kodzie
 </package>
 ```
 
-### <a name="adding-targets"></a>Dodawanie .targets
+### <a name="adding-targets"></a>Dodawanie elementów docelowych
 
-Następnie projektów C++ i JavaScript, które może używać pakietu NuGet muszą pliku .targets w celu identyfikowania niezbędne pliki zestawu i winmd. (Projektów C# i Visual Basic to zrobić automatycznie.) Utwórz ten plik, kopiując poniższy tekst do `ImageEnhancer.targets` i zapisz go w tym samym folderze co `.nuspec` pliku. _Uwaga_: To `.targets` pliku musi mieć taką samą nazwę jak identyfikator pakietu (np. `<Id>` element `.nupspec` plików):
+Następnie projekty C++ języka JavaScript, które mogą zużywać pakiet NuGet, potrzebują pliku. targets do identyfikowania niezbędnych zestawów i plików WinMD. (C# projekty Visual Basic są automatycznie.) Utwórz ten plik, kopiując poniższy tekst do `ImageEnhancer.targets` i Zapisz go w tym samym folderze, w którym znajduje `.nuspec` się plik. _Uwaga_: Ten `.targets` plik musi mieć taką samą nazwę jak identyfikator pakietu (np `<Id>` . element w `.nupspec` pliku):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -171,7 +171,7 @@ Następnie projektów C++ i JavaScript, które może używać pakietu NuGet musz
 </Project>
 ```
 
-Następnie zapoznaj się `ImageEnhancer.targets` w swojej `.nuspec` pliku:
+Następnie zapoznaj `ImageEnhancer.targets` się z `.nuspec` plikiem w pliku:
 
 ```xml
 <?xml version="1.0"?>
@@ -189,9 +189,9 @@ Następnie zapoznaj się `ImageEnhancer.targets` w swojej `.nuspec` pliku:
 </package>
 ```
 
-### <a name="final-nuspec"></a>Końcowe .nuspec
+### <a name="final-nuspec"></a>Final. nuspec
 
-Ostateczna `.nuspec` plik powinien teraz wyglądać podobnie do poniższego, gdzie ponownie twoja_nazwa należy zamienić na odpowiednie wartości:
+Końcowy `.nuspec` plik powinien teraz wyglądać podobnie do poniższego, gdzie YOUR_NAME należy zastąpić odpowiednią wartością:
 
 ```xml
 <?xml version="1.0"?>
@@ -233,28 +233,28 @@ Ostateczna `.nuspec` plik powinien teraz wyglądać podobnie do poniższego, gdz
 </package>
 ```
 
-## <a name="package-the-component"></a>Pakiet składnika
+## <a name="package-the-component"></a>Pakowanie składnika
 
-Za pomocą ukończoną `.nuspec` odwołuje się do wszystkich plików, które należy uwzględnić w pakiecie, wszystko jest gotowe do uruchomienia `pack` polecenia:
+Po zakończeniu `.nuspec` odwoływania się do wszystkich plików, które należy uwzględnić w pakiecie, możesz `pack` uruchomić polecenie:
 
 ```cli
 nuget pack ImageEnhancer.nuspec
 ```
 
-Spowoduje to wygenerowanie `ImageEnhancer.YOUR_NAME.1.0.0.nupkg`. Otwarcie tego pliku w narzędzia, takiego jak [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzając wszystkie węzły, zobacz następującą zawartość:
+Spowoduje to `ImageEnhancer.YOUR_NAME.1.0.0.nupkg`wygenerowanie. Otwierając ten plik w narzędziu, takim jak [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzając wszystkie węzły, zobaczysz następującą zawartość:
 
-![Wyświetlanie pakietu ImageEnhancer Eksplorator pakietów NuGet](media/UWP-PackageExplorer.png)
+![Eksplorator pakietów NuGet przedstawiający pakiet ImageEnhancer](media/UWP-PackageExplorer.png)
 
 > [!Tip]
-> A `.nupkg` plik jest po prostu plikiem ZIP z innym rozszerzeniem. Można także sprawdzić zawartość pakietu, następnie zmieniając `.nupkg` do `.zip`, ale należy pamiętać przywrócić rozszerzenia przed przekazaniem pakietu na stronie nuget.org.
+> `.nupkg` Plik jest po prostu plikiem ZIP z innym rozszerzeniem. Możesz również przeanalizować zawartość pakietu, a następnie zmienić `.nupkg` ją `.zip`na, ale pamiętaj, aby przywrócić rozszerzenie przed przekazaniem pakietu do NuGet.org.
 
-Aby udostępnić pakietu innym deweloperom, postępuj zgodnie z instrukcjami [publikowanie pakietu](../nuget-org/publish-a-package.md).
+Aby udostępnić pakiet innym deweloperom, postępuj zgodnie z instrukcjami dotyczącymi [publikowania pakietu](../nuget-org/publish-a-package.md).
 
 ## <a name="related-topics"></a>Tematy pokrewne
 
-- [odwołanie .nuspec](../reference/nuspec.md)
+- [nuspec — odwołanie](../reference/nuspec.md)
 - [Pakiety symboli](../create-packages/symbol-packages.md)
-- [Przechowywanie wersji pakietów](../reference/package-versioning.md)
-- [Obsługiwanie wielu wersji programu .NET Framework](../create-packages/supporting-multiple-target-frameworks.md)
-- [Zawiera właściwości programu MSBuild i obiektów docelowych w pakiecie](../create-packages/creating-a-package.md#include-msbuild-props-and-targets-in-a-package)
+- [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
+- [Obsługa wielu wersji .NET Framework](../create-packages/supporting-multiple-target-frameworks.md)
+- [Uwzględnij w pakiecie narzędzia i elementy docelowe programu MSBuild](../create-packages/creating-a-package.md#include-msbuild-props-and-targets-in-a-package)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)

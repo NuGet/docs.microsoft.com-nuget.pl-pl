@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8d732e87f01c55bde87da0a2e382fd6d509886a3
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 87116669c1e685ffd0dbe4142c2f7e357c413497
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317018"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488245"
 ---
 # <a name="projectjson-archive"></a>Archiwum Project. JSON
 
@@ -40,7 +40,7 @@ Współpracuje z `project.json`.
 
 *Pierwotnie w ramach [przywracania pakietu](../consume-packages/package-restore.md#constrain-package-versions-with-restore).*
 
-- `project.json`: Określ zakres wersji bezpośrednio z numerem wersji zależności. Na przykład:
+- `project.json`: Określ zakres wersji bezpośrednio z numerem wersji zależności. Przykład:
 
     ```json
     "Newtonsoft.json": "[6, 7)"
@@ -54,19 +54,19 @@ Współpracuje z `project.json`.
 
 ## <a name="dependency-resolution-with-packagereference"></a>Rozpoznawanie zależności z PackageReference
 
-*Pierwotnie w ramach [rozpoznawania zależności](../consume-packages/dependency-resolution.md#dependency-resolution-with-packagereference).*
+*Pierwotnie w ramach [rozpoznawania zależności](../concepts/dependency-resolution.md#dependency-resolution-with-packagereference).*
 
 Zachowanie PackageReference ma zastosowanie również do `project.json`. Funkcja przywracania NuGet zapisuje wykres zależności w pliku o nazwie `project.lock.json` obok `project.json`.
 
 ## <a name="managing-dependency-assets"></a>Zarządzanie zasobami zależności
 
-*Pierwotnie w ramach [rozpoznawania zależności](../consume-packages/dependency-resolution.md#managing-dependency-assets).*
+*Pierwotnie w ramach [rozpoznawania zależności](../concepts/dependency-resolution.md#managing-dependency-assets).*
 
 W przypadku korzystania `project.json` z formatu można kontrolować, które zasoby z zależności są przepływem do projektu najwyższego poziomu. Aby uzyskać szczegółowe informacje, zobacz plik [Project. JSON](project-json.md).
 
 ## <a name="excluding-references"></a>Wykluczanie odwołań
 
-*Pierwotnie w ramach [rozpoznawania zależności](../consume-packages/dependency-resolution.md#excluding-references).*
+*Pierwotnie w ramach [rozpoznawania zależności](../concepts/dependency-resolution.md#excluding-references).*
 
 - `project.json`: Dodaj `"exclude" : "all"` w zależności od PackageC:
 
@@ -83,7 +83,7 @@ W przypadku korzystania `project.json` z formatu można kontrolować, które zas
 
 ## <a name="resolving-incompatible-package-errors"></a>Rozwiązywanie niezgodnych błędów pakietów
 
-*Pierwotnie w ramach [rozpoznawania zależności](../consume-packages/dependency-resolution.md#resolving-incompatible-package-errors).*
+*Pierwotnie w ramach [rozpoznawania zależności](../concepts/dependency-resolution.md#resolving-incompatible-package-errors).*
 
 Dodano metodę rozwiązywania błędów:
 
@@ -124,7 +124,7 @@ W przypadku `project.json`korzystania z obiektów docelowych nie są dodawane do
 
 ### <a name="package-versioning"></a>Przechowywanie wersji pakietów
 
-*Początkowo w [wersji pakietu](../reference/package-versioning.md).*
+*Początkowo w [wersji pakietu](../concepts/package-versioning.md).*
 
 W przypadku korzystania `project.json` z formatu, pakiet NuGet obsługuje również używanie \*notacji wieloznacznej, w przypadku elementów głównych, pomocniczych, poprawek i prefiksu w wersji wstępnej.
 

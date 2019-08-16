@@ -5,12 +5,12 @@ author: mikejo5000
 ms.author: mikejo
 ms.date: 06/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9ef990c16cca62a1fbad25ff1582bfa543135fab
-ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
+ms.openlocfilehash: 7039dd27f2dddebc3c84e5ad35d5efec59547792
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68860586"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488815"
 ---
 # <a name="manage-packages-using-the-nugetexe-cli"></a>Zarządzanie pakietami za pomocą interfejsu wiersza polecenia NuGet. exe
 
@@ -19,7 +19,7 @@ Narzędzie interfejsu wiersza polecenia umożliwia łatwe aktualizowanie i przyw
 `nuget.exe` Interfejs wiersza polecenia jest przeznaczony dla projektu .NET Framework i projektów nie należących do zestawu SDK (na przykład projektu w stylu innym niż zestaw SDK, który jest celem bibliotek .NET standard). Jeśli używasz projektu typu innego niż zestaw SDK, który został zmigrowany do `PackageReference`, `dotnet` Użyj interfejsu wiersza polecenia. Interfejs wiersza polecenia wymaga pliku [Packages. config](../reference/packages-config.md) na potrzeby odwołań do pakietu. `nuget.exe`
 
 > [!NOTE]
-> W większości scenariuszy zalecamy Migrowanie [projektów typu non-SDK](../reference/migrate-packages-config-to-package-reference.md) , które są używane `packages.config` do PackageReference, a następnie można użyć `dotnet` interfejsu wiersza polecenia zamiast `nuget.exe` interfejsu wiersza polecenia. Migracja nie jest obecnie dostępna dla C++ projektów i ASP.NET.
+> W większości scenariuszy zalecamy Migrowanie [projektów typu non-SDK](../consume-packages/migrate-packages-config-to-package-reference.md) , które są używane `packages.config` do PackageReference, a następnie można użyć `dotnet` interfejsu wiersza polecenia zamiast `nuget.exe` interfejsu wiersza polecenia. Migracja nie jest obecnie dostępna dla C++ projektów i ASP.NET.
 
 W tym artykule przedstawiono podstawowe użycie kilku najpopularniejszych `nuget.exe` poleceń interfejsu wiersza polecenia. W przypadku większości tych poleceń narzędzie interfejsu wiersza polecenia szuka pliku projektu w bieżącym katalogu, chyba że plik projektu jest określony w poleceniu. Aby uzyskać pełną listę poleceń i argumentów, których można użyć, zobacz [Dokumentacja interfejsu wiersza polecenia NuGet. exe](../reference/nuget-exe-cli-reference.md).
 
@@ -111,3 +111,13 @@ nuget update
 ## <a name="restore-packages"></a>Przywróć pakiety
 
 [!INCLUDE [restore-nuget-exe-cli](includes/restore-nuget-exe-cli.md)]
+
+## <a name="get-the-cli-version"></a>Pobierz wersję interfejsu wiersza polecenia
+
+Użyj tego polecenia:
+
+```cli
+nuget help
+```
+
+Pierwszy wiersz w danych wyjściowych pomocy pokazuje wersję. Aby uniknąć przewijania, użyj `nuget help | more` zamiast tego.

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: a9224ce4e515cf98893a7134077c90a47df1862a
-ms.sourcegitcommit: fc1b716afda999148eb06d62beedb350643eb346
+ms.openlocfilehash: 7d952fcbf5cb864e8adbc0b483f42949817e1efa
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69020072"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488874"
 ---
 # <a name="create-a-package-using-the-nugetexe-cli"></a>Tworzenie pakietu przy użyciu interfejsu wiersza polecenia NuGet. exe
 
@@ -20,7 +20,7 @@ Niezależnie od tego, co Twój pakiet lub jaki kod zawiera, użyj jednego z narz
 
 - W przypadku projektów .NET Core i .NET Standard, które używają [formatu zestawu SDK](../resources/check-project-format.md)i innych projektów w stylu zestawu SDK, zobacz [Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet](creating-a-package-dotnet-cli.md).
 
-- W przypadku projektów migrowanych z `packages.config` do [PackageReference](../consume-packages/package-references-in-project-files.md)Użyj programu [MSBuild-t:Pack](../reference/migrate-packages-config-to-package-reference.md#create-a-package-after-migration).
+- W przypadku projektów migrowanych z `packages.config` do [PackageReference](../consume-packages/package-references-in-project-files.md)Użyj programu [MSBuild-t:Pack](../consume-packages/migrate-packages-config-to-package-reference.md#create-a-package-after-migration).
 
 Mówiąc technicznie, pakiet NuGet jest tylko plikiem ZIP, którego nazwa została zmieniona z rozszerzeniem `.nupkg` i którego zawartość pasuje do określonych konwencji. W tym temacie opisano szczegółowy proces tworzenia pakietu, który spełnia te konwencje.
 
@@ -138,7 +138,7 @@ Poniżej znajduje się typowy (ale fikcyjny) `.nuspec` plik z komentarzami opisu
 </package>
 ```
 
-Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [Packages. config](../reference/packages-config.md) i [Versioning Package](../reference/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `include` atrybutów `exclude` i dla `dependency` elementu. Zobacz [. nuspec — zależności](../reference/nuspec.md#dependencies).
+Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [Packages. config](../reference/packages-config.md) i [Versioning Package](../concepts/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `include` atrybutów `exclude` i dla `dependency` elementu. Zobacz [. nuspec — zależności](../reference/nuspec.md#dependencies).
 
 Ponieważ manifest jest zawarty w utworzonym przez niego pakiecie, można znaleźć dowolną liczbę dodatkowych przykładów, sprawdzając istniejące pakiety. Dobrym źródłem jest folder *Global-Packages* na komputerze, który jest zwracany przez następujące polecenie:
 
@@ -184,8 +184,8 @@ Konwencje folderów są następujące:
 | ref/{TFM} | Zestaw (`.dll`) i pliki symboli (`.pdb`) dla danej monikera platformy docelowej (TFM) | Zestawy są dodawane jako odwołania tylko dla czasu kompilacji; Nic nie zostanie skopiowane do folderu bin projektu. |
 | Runtime | Zestaw specyficzny dla architektury`.dll`(), symbol`.pdb`() i pliki zasobów natywnych (`.pri`) | Zestawy są dodawane jako odwołania tylko dla środowiska uruchomieniowego; inne pliki są kopiowane do folderów projektu. Zawsze powinien istnieć odpowiedni zestaw (TFM) `AnyCPU` określony w obszarze `/ref/{tfm}` folder, aby zapewnić odpowiedni zestaw czasu kompilacji. Zobacz [Obsługa wielu platform docelowych](supporting-multiple-target-frameworks.md). |
 | zawartość | Dowolne pliki | Zawartość jest kopiowana do katalogu głównego projektu. Folder **zawartości** należy traktować jako katalog główny aplikacji docelowej, która ostatecznie zużywa pakiet. Aby pakiet mógł dodać obraz w folderze */images* aplikacji, umieść go w folderze *content/images* pakietu. |
-| kompilacja | MSBuild `.targets` i `.props` pliki | Automatycznie wstawione do projektu (NuGet 3. x +). |
-| buildMultiTargeting | Program `.targets` MSBuild `.props` i pliki dla celów międzyplatformowych | Automatycznie wstawione do projektu. |
+| kompilacja | MSBuild `.targets` i `.props` pliki | *(3. x +)* Automatycznie wstawione do projektu. |
+| buildMultiTargeting | *(3. x +)* Program `.targets` MSBuild `.props` i pliki dla celów międzyplatformowych | Automatycznie wstawione do projektu. |
 | buildTransitive | *(5.0 +)* Program `.targets` MSBuild `.props` i pliki, które są przesyłane przechodniie do dowolnego, zużywanego projektu. Zobacz stronę [funkcji](https://github.com/NuGet/Home/wiki/Allow-package--authors-to-define-build-assets-transitive-behavior) . | Automatycznie wstawione do projektu. |
 | narzędzia | Skrypty i programy PowerShell dostępne z konsoli Menedżera pakietów | Folder jest dodawany `PATH` do zmiennej środowiskowej tylko dla konsoli Menedżera pakietów ( `PATH` w odróżnieniu od ustawienia ustawionego dla programu MSBuild podczas kompilowania projektu). `tools` |
 
@@ -226,9 +226,8 @@ Jeśli masz zależności pakietu do uwzględnienia w *nuspec*, zamiast tego uży
 # Use in a folder containing a project file <project-name>.csproj or <project-name>.vbproj
 nuget pack myproject.csproj
 ```
-```
 
-A token is delimited by `$` symbols on both sides of the project property. For example, the `<id>` value in a manifest generated in this way typically appears as follows:
+Token jest rozdzielany `$` symbolami po obu stronach właściwości projektu. Na przykład `<id>` wartość w manifeście wygenerowaną w ten sposób zwykle pojawia się w następujący sposób:
 
 ```xml
 <id>$id$</id>
@@ -273,7 +272,7 @@ Identyfikator pakietu (`<id>` element) i numer wersji (`<version>` element) to d
 **Najlepsze rozwiązania dotyczące wersji pakietu:**
 
 - Ogólnie rzecz biorąc Ustaw wersję pakietu na zgodną z biblioteką, chociaż nie jest to wymagane absolutnie. Jest to prosta kwestia w przypadku ograniczenia pakietu do jednego zestawu, zgodnie z wcześniejszym opisem w [wyborze zestawów do spakowania](#decide-which-assemblies-to-package). Ogólnie, pamiętaj, że sam pakiet NuGet zajmuje się wersjami pakietu podczas rozpoznawania zależności, a nie wersji zestawu.
-- W przypadku korzystania ze schematu wersji niestandardowej należy wziąć pod uwagę reguły obsługi wersji NuGet zgodnie z opisem w temacie [wersja pakietu](../reference/package-versioning.md).
+- W przypadku korzystania ze schematu wersji niestandardowej należy wziąć pod uwagę reguły obsługi wersji NuGet zgodnie z opisem w temacie [wersja pakietu](../concepts/package-versioning.md).
 
 > Poniższa seria krótkich wpisów w blogu pomaga również zrozumieć przechowywanie wersji:
 >
@@ -424,7 +423,7 @@ Po utworzeniu pakietu, który jest `.nupkg` plikiem, można go opublikować w wy
 
 Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób obsługiwać inne scenariusze zgodnie z opisem w następujących tematach:
 
-- [Przechowywanie wersji pakietów](../reference/package-versioning.md)
+- [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
 - [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md)
 - [Przekształcenia plików źródłowych i konfiguracji](../create-packages/source-and-config-file-transformations.md)
 - [Lokalizacja](../create-packages/creating-localized-packages.md)
@@ -434,5 +433,5 @@ Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób ob
 
 Na koniec należy pamiętać o dodatkowych typach pakietów:
 
-- [Pakiety natywne](../create-packages/native-packages.md)
+- [Pakiety natywne](../guides/native-packages.md)
 - [Pakiety symboli](../create-packages/symbol-packages.md)

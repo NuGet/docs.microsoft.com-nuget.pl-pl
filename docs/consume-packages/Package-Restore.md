@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5bf75bb724846f652725bfcf636908c34adc174f
-ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
+ms.openlocfilehash: dfe5f2ef4f0ababd81b91073938752aab2bdc01e
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68860681"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488807"
 ---
 # <a name="restore-packages-using-package-restore"></a>Przywróć pakiety przy użyciu przywracania pakietów
 
@@ -169,7 +169,7 @@ Azure DevOps Server i TFS 2013 i nowsze automatycznie przywracają pakiety podcz
 
 Gdy pakiet NuGet przywraca pakiety za pomocą dowolnej metody, przestrzega ograniczeń określonych w `packages.config` lub pliku projektu:
 
-- W `packages.config`programie można określić zakres wersji `allowedVersion` we właściwości zależności. Aby uzyskać więcej informacji, zobacz [ograniczanie wersji uaktualnienia](../consume-packages/reinstalling-and-updating-packages.md#constraining-upgrade-versions) . Przykład:
+- W `packages.config`programie można określić zakres wersji `allowedVersion` we właściwości zależności. Aby uzyskać więcej informacji, zobacz [ograniczanie wersji uaktualnienia](../consume-packages/reinstalling-and-updating-packages.md#constraining-upgrade-versions) . Na przykład:
 
     ```xml
     <package id="Newtonsoft.json" version="6.0.4" allowedVersions="[6,7)" />
@@ -181,7 +181,7 @@ Gdy pakiet NuGet przywraca pakiety za pomocą dowolnej metody, przestrzega ogran
     <PackageReference Include="Newtonsoft.json" Version="[6, 7)" />
     ```
 
-We wszystkich przypadkach należy użyć notacji opisanej w artykule [przechowywanie wersji pakietu](../reference/package-versioning.md).
+We wszystkich przypadkach należy użyć notacji opisanej w artykule [przechowywanie wersji pakietu](../concepts/package-versioning.md).
 
 ## <a name="force-restore-from-package-sources"></a>Wymuś przywracanie ze źródeł pakietów
 

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0fc3b15c6d5ffa93eb6e26660f71cea2286ba77d
-ms.sourcegitcommit: aed04cc04b0902403612de6736a900d41c265afd
+ms.openlocfilehash: f386808430c9d2315dba7388d38e0890a88b829b
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68821420"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488925"
 ---
 # <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki start: Tworzenie i publikowanie pakietu NuGet przy użyciu programu Visual Studio (.NET Standard, tylko w systemie Windows)
 
@@ -62,7 +62,7 @@ namespace AppLogger
 
 1. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **Właściwości** menu, a następnie wybierz kartę **pakiet** .
 
-   Karta **pakiet** jest wyświetlana tylko dla projektów w stylu zestawu SDK w programie Visual Studio, zwykle .NET Standard lub projektów biblioteki klas platformy .NET Core; Jeśli obiektem docelowym jest projekt o stylu innym niż zestaw SDK (zwykle .NET Framework), należy [przeprowadzić migrację projektu](../reference/migrate-packages-config-to-package-reference.md) i użyć `dotnet` interfejsu wiersza polecenia lub zobaczyć [Tworzenie i publikowanie pakietu .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) lub zobaczyć [, jak utworzyć i opublikować pakiet .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) Zamiast tego instrukcje krok po kroku.
+   Karta **pakiet** jest wyświetlana tylko dla projektów w stylu zestawu SDK w programie Visual Studio, zwykle .NET Standard lub projektów biblioteki klas platformy .NET Core; Jeśli obiektem docelowym jest projekt o stylu innym niż zestaw SDK (zwykle .NET Framework), należy [przeprowadzić migrację projektu](../consume-packages/migrate-packages-config-to-package-reference.md) i użyć `dotnet` interfejsu wiersza polecenia lub zobaczyć [Tworzenie i publikowanie pakietu .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) lub zobaczyć [, jak utworzyć i opublikować pakiet .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) Zamiast tego instrukcje krok po kroku.
 
     ![Właściwości pakietu NuGet w projekcie programu Visual Studio](media/qs_create-vs-01-package-properties.png)
 
@@ -88,7 +88,7 @@ namespace AppLogger
 
     ![Polecenie pakietu NuGet w menu kontekstowym projektu programu Visual Studio](media/qs_create-vs-02-pack-command.png)
 
-    Jeśli nie widzisz polecenia **Pack** , projekt prawdopodobnie nie jest projektem w `nuget.exe` stylu zestawu SDK i musisz użyć interfejsu wiersza polecenia. Aby uzyskać instrukcje krok po kroku `dotnet` , należy [przeprowadzić migrację projektu](../reference/migrate-packages-config-to-package-reference.md) i użyć interfejsu wiersza polecenia lub zobaczyć, [jak utworzyć i opublikować pakiet .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) .
+    Jeśli nie widzisz polecenia **Pack** , projekt prawdopodobnie nie jest projektem w `nuget.exe` stylu zestawu SDK i musisz użyć interfejsu wiersza polecenia. Aby uzyskać instrukcje krok po kroku `dotnet` , należy [przeprowadzić migrację projektu](../consume-packages/migrate-packages-config-to-package-reference.md) i użyć interfejsu wiersza polecenia lub zobaczyć, [jak utworzyć i opublikować pakiet .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) .
 
 1. Program Visual Studio kompiluje projekt i tworzy `.nupkg` plik. Przejrzyj okno **dane wyjściowe** , aby uzyskać szczegółowe informacje (podobne do następujących), które zawiera ścieżkę do pliku pakietu. Należy również pamiętać, że skompilowany zestaw jest `bin\Release\netstandard2.0` w befits .NET Standard 2,0.
 
@@ -193,7 +193,7 @@ Będzie to zawierać plik o nazwie `readme.txt` w katalogu głównym pakietu. Pr
 - [Publikowanie pakietu](../nuget-org/publish-a-package.md)
 - [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
-- [Przechowywanie wersji pakietów](../reference/package-versioning.md)
+- [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
 - [Dokumentacja biblioteki .NET Standard](/dotnet/articles/standard/library)
 - [Przenoszenie do programu .NET Core z .NET Framework](/dotnet/articles/core/porting/index)

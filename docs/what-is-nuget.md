@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: overview
-ms.openlocfilehash: f16cc6f66bc12727a4ec8eb5da4ff44a9eeb1764
-ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
+ms.openlocfilehash: 435103b600f14b9bbf606c09f0c870115204d5c7
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68833331"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488498"
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
@@ -66,7 +66,7 @@ Na poniższej ilustracji przedstawiono projekt, który zależy od pięciu pakiet
 
 Zauważ, że niektóre pakiety pojawiają się wiele razy na wykresie zależności. Na przykład istnieją trzy różne konsumenci pakietu B, a każdy odbiorca może także określić inną wersję dla tego pakietu (nie pokazano). Jest to typowe wystąpienie, szczególnie w przypadku powszechnie używanych pakietów. Pakiet NuGet na szczęście wykonuje wszystkie czynności twarde, aby dokładnie określić, która wersja pakietu B spełnia wszystkich klientów. Następnie program NuGet wykonuje te same działania dla wszystkich innych pakietów, niezależnie od tego, jak głębokiego wykresu zależności.
 
-Aby uzyskać więcej informacji o tym, jak program NuGet wykonuje tę usługę, zobacz [rozpoznawanie zależności](consume-packages/dependency-resolution.md).
+Aby uzyskać więcej informacji o tym, jak program NuGet wykonuje tę usługę, zobacz [rozpoznawanie zależności](concepts/dependency-resolution.md).
 
 ## <a name="tracking-references-and-restoring-packages"></a>Śledzenie odwołań i przywracanie pakietów
 
@@ -103,9 +103,9 @@ Dotychczas znasz następujące cechy programu NuGet:
 
 Aby procesy te działały wydajnie, pakiet NuGet wykonuje pewne optymalizacje w tle. W szczególności program NuGet zarządza pamięcią podręczną pakietu i folderem pakietów globalnych na potrzeby instalacji i ponownej instalacji skrótów. Pamięć podręczna pozwala uniknąć pobierania pakietu, który został już zainstalowany na komputerze. Folder pakiety globalne umożliwia wielu projektom współużytkowanie tego samego zainstalowanego pakietu, co zmniejsza ogólną wpływ narzędzia NuGet na komputerze. Folder pamięci podręcznej i pakiety globalne są również bardzo przydatne, gdy często przywracasz większą liczbę pakietów, jak na serwerze kompilacji. Aby uzyskać więcej informacji na temat tych mechanizmów, zobacz [Zarządzanie pakietami globalnymi i folderami pamięci](consume-packages/managing-the-global-packages-and-cache-folders.md)podręcznej.
 
-W ramach pojedynczego projektu, pakiet NuGet zarządza ogólnym wykresem zależności, który ponownie obejmuje rozwiązywanie wielu odwołań do różnych wersji tego samego pakietu. Dość często zdarza się, że projekt bierze zależność od jednego lub większej liczby pakietów, które same mają te same zależności. Niektóre z najbardziej przydatnych pakietów narzędzi na nuget.org są wykorzystywane przez wiele innych pakietów. W całym grafie zależności można łatwo uzyskać dziesięć różnych odwołań do różnych wersji tego samego pakietu. Aby uniknąć przełączenia wielu wersji tego pakietu do samej aplikacji, program NuGet sortuje, która wersja może być używana przez wszystkich klientów. (Aby uzyskać więcej informacji, zobacz [rozpoznawanie zależności](consume-packages/dependency-resolution.md)).
+W ramach pojedynczego projektu, pakiet NuGet zarządza ogólnym wykresem zależności, który ponownie obejmuje rozwiązywanie wielu odwołań do różnych wersji tego samego pakietu. Dość często zdarza się, że projekt bierze zależność od jednego lub większej liczby pakietów, które same mają te same zależności. Niektóre z najbardziej przydatnych pakietów narzędzi na nuget.org są wykorzystywane przez wiele innych pakietów. W całym grafie zależności można łatwo uzyskać dziesięć różnych odwołań do różnych wersji tego samego pakietu. Aby uniknąć przełączenia wielu wersji tego pakietu do samej aplikacji, program NuGet sortuje, która wersja może być używana przez wszystkich klientów. (Aby uzyskać więcej informacji, zobacz [rozpoznawanie zależności](concepts/dependency-resolution.md)).
 
-Poza tym, pakiet NuGet zachowuje wszystkie specyfikacje związane ze strukturą pakietów (w tym [lokalizacjami](create-packages/creating-localized-packages.md) i [symbolami debugowania](create-packages/symbol-packages.md)) oraz ich [odwołania](consume-packages/package-references-in-project-files.md) (w tym [zakresami wersji](reference/package-versioning.md#version-ranges-and-wildcards) i [wersjami wstępnymi ](create-packages/prerelease-packages.md).) Pakiet NuGet udostępnia również różne interfejsy API służące do programistycznej pracy z usługami i zapewnia wsparcie dla deweloperów, którzy piszą rozszerzenia programu Visual Studio i szablony projektów.
+Poza tym, pakiet NuGet zachowuje wszystkie specyfikacje związane ze strukturą pakietów (w tym [lokalizacjami](create-packages/creating-localized-packages.md) i [symbolami debugowania](create-packages/symbol-packages.md)) oraz ich [odwołania](consume-packages/package-references-in-project-files.md) (w tym [zakresami wersji](concepts/package-versioning.md#version-ranges-and-wildcards) i [wersjami wstępnymi ](create-packages/prerelease-packages.md).) Pakiet NuGet udostępnia również różne interfejsy API służące do programistycznej pracy z usługami i zapewnia wsparcie dla deweloperów, którzy piszą rozszerzenia programu Visual Studio i szablony projektów.
 
 Poświęć chwilę na przejrzenie spisu treści tej dokumentacji i zobaczysz wszystkie te funkcje w tym miejscu oraz informacje o wersji Datowanie z powrotem do początku narzędzia NuGet.
 

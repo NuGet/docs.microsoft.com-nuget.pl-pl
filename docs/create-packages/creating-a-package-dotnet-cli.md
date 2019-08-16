@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8222e1edfa13951d2fda9a2384d93bba38ef4979
-ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
+ms.openlocfilehash: 40a42be91d3848db3e721a674e3fec4096fccd08
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68833288"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69489013"
 ---
 # <a name="create-a-nuget-package-using-the-dotnet-cli"></a>Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
 
@@ -66,7 +66,7 @@ Można `Title`również ustawić właściwości opcjonalne, takie jak, `PackageT
 > [!NOTE]
 > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na Właściwość **PackageTags** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
-Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [odwołania do pakietów w plikach projektu](../consume-packages/package-references-in-project-files.md) i [przechowywanie wersji pakietu](../reference/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `<IncludeAssets>` atrybutów `<ExcludeAssets>` i. Aby uzyskać więcej informacji, seee [kontrolowania elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
+Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [odwołania do pakietów w plikach projektu](../consume-packages/package-references-in-project-files.md) i [przechowywanie wersji pakietu](../concepts/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `<IncludeAssets>` atrybutów `<ExcludeAssets>` i. Aby uzyskać więcej informacji, seee [kontrolowania elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
 
 ## <a name="choose-a-unique-package-identifier-and-set-the-version-number"></a>Wybierz unikatowy identyfikator pakietu i ustaw numer wersji
 
@@ -120,7 +120,7 @@ Po utworzeniu pakietu, który jest `.nupkg` plikiem, można go opublikować w wy
 
 Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób obsługiwać inne scenariusze zgodnie z opisem w następujących tematach:
 
-- [Przechowywanie wersji pakietów](../reference/package-versioning.md)
+- [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
 - [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
 - [Przekształcenia plików źródłowych i konfiguracji](../create-packages/source-and-config-file-transformations.md)
 - [Lokalizacja](../create-packages/creating-localized-packages.md)
@@ -130,5 +130,5 @@ Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób ob
 
 Na koniec należy pamiętać o dodatkowych typach pakietów:
 
-- [Pakiety natywne](../create-packages/native-packages.md)
+- [Pakiety natywne](../guides/native-packages.md)
 - [Pakiety symboli](../create-packages/symbol-packages.md)

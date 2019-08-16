@@ -1,75 +1,83 @@
 ---
-title: Informacje o wersji programu NuGet wersji 4.7 RTM
-description: Informacje o wersji programu NuGet 4.7.0 tym — znane problemy, poprawki, funkcje dodane i DCRs.
+title: Informacje o wersji narzędzia NuGet 4,7 RTM
+description: Informacje o wersji programu NuGet 4.7.0, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
 author: karann-msft
 ms.author: karann
 ms.date: 5/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4ecbdc5475837b1aa1e723a94c2c6c3e8460f9ef
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: fe769f95e3eda4bc07db4369544472c00b35363d
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549431"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488653"
 ---
-# <a name="nuget-47-rtm-release-notes"></a>Informacje o wersji programu NuGet wersji 4.7 RTM
+# <a name="nuget-47-release-notes"></a>Informacje o wersji narzędzia NuGet 4,7
 
-[Visual Studio 2017 wersji 15.7 RTW](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) dołączono [NuGet 4.7.0](https://dist.nuget.org/win-x86-commandline/v4.7.0/nuget.exe).
+[Program Visual Studio 2017 15,7 RTW](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) jest dostarczany z pakietem [NuGet 4.7.0](https://dist.nuget.org/win-x86-commandline/v4.7.0/nuget.exe).
 
-## <a name="summary-whats-new-in-this-release"></a>Podsumowanie: nowości w tej wersji
+## <a name="summary-whats-new-in-470"></a>Podsumowanie Co nowego w programie 4.7.0
 
-* Firma Microsoft ma rozszerzone podpisywania umożliwić pakietu [podpisany repozytorium pakietów](https://github.com/NuGet/Home/wiki/Repository-Signatures)
+* W celu włączenia [podpisanych pakietów repozytorium](https://github.com/NuGet/Home/wiki/Repository-Signatures) zostanie rozszerzony podpis pakietu
 
-* Za pomocą programu Visual Studio w wersji 15.7, firma Microsoft wprowadza możliwość [Migrowanie istniejących projektów korzystające z formatu pliku packages.config do użycia funkcji PackageReference](https://docs.microsoft.com/en-us/nuget/reference/migrate-packages-config-to-package-reference) zamiast tego.
+* W programie Visual Studio w wersji 15,7 wprowadzono możliwość [migrowania istniejących projektów, które używają formatu Packages. config do używania PackageReference](https://docs.microsoft.com/en-us/nuget/consume-packages/migrate-packages-config-to-package-reference) zamiast tego.
+
+## <a name="summary-whats-new-in-472"></a>Podsumowanie Co nowego w programie 4.7.2
+
+* Poprawka zabezpieczeń: Uprawnienia dla plików utworzonych wewnątrz ~/.NuGet są zbyt otwarte [#7673](https://github.com/NuGet/Home/issues/7673) [CVE-2019-0757](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0757)
+
+## <a name="summary-whats-new-in-473"></a>Podsumowanie Co nowego w programie 4.7.3
+
+* Poprawka zabezpieczeń: Pliki wewnątrz elementu NUPKGs mogą mieć ścieżkę względną powyżej katalogu NUPKG [#7906](https://github.com/NuGet/Home/issues/7906)
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="the-migrate-packagesconfig-to-packagereference-option-is-not-available-in-the-right-click-context-menu"></a>`Migrate packages.config to PackageReference...` Opcja nie jest dostępna w menu kontekstowym kliknij prawym przyciskiem myszy
+### <a name="the-migrate-packagesconfig-to-packagereference-option-is-not-available-in-the-right-click-context-menu"></a>`Migrate packages.config to PackageReference...` Opcja nie jest dostępna w menu kontekstowym po kliknięciu prawym przyciskiem myszy
 
 #### <a name="issue"></a>Problem
 
-Przy pierwszym otwarciu projektu, NuGet może nie mieć zainicjowany, dopóki nie jest wykonywana operacja NuGet. Powoduje to możliwość migracji nie pojawiają się w menu kontekstowym kliknij prawym przyciskiem myszy na `packages.config` lub `References`.
+Po pierwszym otwarciu projektu, pakiet NuGet może nie zostać zainicjowany do momentu wykonania operacji NuGet. Powoduje to, że opcja migracji nie jest wyświetlana w menu kontekstowym prawym przyciskiem myszy `packages.config` w `References`lub.
 
 #### <a name="workaround"></a>Obejście
 
-Wykonaj jeden z następujących akcji NuGet:
-* Otwórz interfejs użytkownika Menedżera pakietów — kliknij prawym przyciskiem myszy `References` i wybierz pozycję `Manage NuGet Packages...`
-* Otwórz konsolę Menedżera pakietów — z `Tools > NuGet Package Manager`, wybierz opcję `Package Manager Console`
-* Uruchom Przywracanie pakietów NuGet — kliknij prawym przyciskiem myszy na węzeł rozwiązania w Eksploratorze rozwiązań i wybierz pozycję `Restore NuGet Packages`
-* Skompiluj projekt, który wyzwala również Przywracanie pakietów NuGet
+Wykonaj jedną z następujących akcji NuGet:
+* Otwórz interfejs użytkownika Menedżera pakietów — kliknij prawym przyciskiem `References` myszy i wybierz pozycję`Manage NuGet Packages...`
+* Otwórz konsolę Menedżera pakietów — z `Tools > NuGet Package Manager`, wybierz pozycję`Package Manager Console`
+* Uruchom przywracanie NuGet — kliknij prawym przyciskiem myszy węzeł rozwiązania w Eksplorator rozwiązań a następnie wybierz pozycję`Restore NuGet Packages`
+* Kompiluj projekt, który również wyzwala przywracanie NuGet
 
-Teraz można wyświetlić opcji migracji. Należy zauważyć, że ta opcja nie jest obsługiwane i nie będzie widoczna dla typów projektów platformy ASP.NET i C++.
+Teraz powinno być możliwe sprawdzenie opcji migracji. Należy zauważyć, że ta opcja nie jest obsługiwana i nie będzie wyświetlana dla ASP.NET C++ i typów projektów.
 
-### <a name="issues-with-net-standard-20-with-net-framework--nuget"></a>Problemy z platformą .NET Standard 2.0 przy użyciu platformy .NET Framework i NuGet
+### <a name="issues-with-net-standard-20-with-net-framework--nuget"></a>Problemy z .NET Standard 2,0 z pakietem NuGet .NET Framework &
 
-.NET standard i jego narzędzia zaprojektowano w taki sposób, że projekty przeznaczone dla platformy .NET Framework 4.6.1 może zużywać pakietów NuGet i projekty przeznaczone dla .NET Standard 2.0 lub wcześniejszej. [W tym dokumencie](https://github.com/dotnet/standard/issues/481) znajduje się podsumowanie problemy dotyczące tego scenariusza, planowanie adresowania, a rozwiązania można wdrożyć ze stanem współczesnych narzędzi.
+.NET Standard & narzędzia zostały zaprojektowane tak, aby projekty ukierunkowane na .NET Framework 4.6.1 mogły korzystać z pakietów NuGet & projekty przeznaczone do .NET Standard 2,0 lub wcześniejszych. [Ten dokument](https://github.com/dotnet/standard/issues/481) zawiera podsumowanie problemów związanych z tym scenariuszem, planu ich rozwiązywania oraz obejścia, które można wdrożyć przy użyciu dzisiejszego stanu narzędzi.
 
-## <a name="top-issues-fixed-in-this-release"></a>Najważniejsze problemy rozwiązane w tej wersji
+## <a name="top-issues-fixed-in-this-release"></a>Najczęstsze problemy rozwiązane w tej wersji
 
 ### <a name="bugs"></a>Usterki
 
-* NuGet jest uruchamiany w zakleszczenie w.Net Core system projektu (Regresja nowe). - [#6733](https://github.com/NuGet/Home/issues/6733)
-* Pakiet: PackagePath są konstruowane niepoprawnie użycie TfmSpecificPackageFile dzięki określeniu ścieżki symboli wieloznacznych - [#6726](https://github.com/NuGet/Home/issues/6726)
-* Pakiet: projekt interfejsu api sieci web nie można utworzyć pakietu, chyba że jawnie ustawione ispackable. - [#6156](https://github.com/NuGet/Home/issues/6156)
-* Interfejs użytkownika programu VS i PMC potrwać 30 minut, aby wyświetlić nowy pakiet (nuget.exe widzi ona następnie od razu) - [#6657](https://github.com/NuGet/Home/issues/6657)
-* Podpisywanie: SignatureUtility.GetCertificateChain(...) nie sprawdza wszystkie stany łańcucha - [#6565](https://github.com/NuGet/Home/issues/6565)
-* Podpisywanie: poprawy obsługi DER GeneralizedTime - [#6564](https://github.com/NuGet/Home/issues/6564)
-* Podpisywania: VS nie jest wyświetlany błąd NU3002 podczas instalowania pakietu zmodyfikowany - [#6337](https://github.com/NuGet/Home/issues/6337)
-* lockFile.GetLibrary jest rozróżniana wielkość liter — [#6500](https://github.com/NuGet/Home/issues/6500)
-* Kod przywracania instalacji/aktualizacji i ścieżek kodu przywracania nie są spójne - [#3471](https://github.com/NuGet/Home/issues/3471)
-* ComboBox wersji PackageManager rozwiązania można wybrać separatora za pośrednictwem klawiatury - [#2606](https://github.com/NuGet/Home/issues/2606)
-* Nie można załadować indeks usług dla źródła `https://www.myget.org/F/<id>` ---> System.Net.Http.HttpRequestException: kod stanu odpowiedzi nie wskazuje Powodzenie: 403 (zabronione) - [#2530](https://github.com/NuGet/Home/issues/2530)
+* Pakiet NuGet przebiega w ramach systemu projektu .Net Core (Nowa regresja). - [#6733](https://github.com/NuGet/Home/issues/6733)
+* Pack PackagePath jest niepoprawnie skonstruowany, jeśli TfmSpecificPackageFile jest używany z ścieżkami obsługi symboli wieloznacznych- [#6726](https://github.com/NuGet/Home/issues/6726)
+* Pakiet: projekt interfejsu API sieci Web nie może utworzyć pakietu, chyba że jest on jawnie ustawiony. - [#6156](https://github.com/NuGet/Home/issues/6156)
+* Interfejs użytkownika VS i PMC Weź fragmentach, aby zobaczyć nowy pakiet (NuGet. exe widzi go od razu) — [#6657](https://github.com/NuGet/Home/issues/6657)
+* Pisywać  SignatureUtility. GetCertificateChain (...) nie sprawdza wszystkich stanów łańcucha — [#6565](https://github.com/NuGet/Home/issues/6565)
+* Podpisywanie: ulepszanie obsługi algorytmu DER GeneralizedTime — [#6564](https://github.com/NuGet/Home/issues/6564)
+* Pisywać Program VS nie wyświetla błędu NU3002 podczas instalowania sfałszowanego pakietu [#6337](https://github.com/NuGet/Home/issues/6337)
+* lockFile. getlibrary uwzględnia wielkość liter — [#6500](https://github.com/NuGet/Home/issues/6500)
+* Ścieżki przywracania i przywracania kodu nie są spójne — [#3471](https://github.com/NuGet/Home/issues/3471)
+* Pole kombi wersji pakietu Packagemanager umożliwia wybranie separatora za pomocą klawiatury [#2606](https://github.com/NuGet/Home/issues/2606)
+* Nie można załadować indeksu usługi dla źródłowej `https://www.myget.org/F/<id>` ---> System .NET. http. httprequestexception: Kod stanu odpowiedzi nie wskazuje sukcesu: 403 (dostęp zabroniony) — [#2530](https://github.com/NuGet/Home/issues/2530)
 
-### <a name="dcrs"></a>DCRs
+### <a name="dcrs"></a>DCR
 
-* Nagłówek emitowanie X-NuGet-sesji-Id, aby korelowanie żądań [funkcja propozycji] - [#5330](https://github.com/NuGet/Home/issues/5330)
-* Udostępnianego sposobu czekać na uruchamianie operacji przywracania, uruchomiony w programie Visual Studio za pośrednictwem interfejsów API wektory. - [#6029](https://github.com/NuGet/Home/issues/6029)
-* NuGet.exe - NoServiceEndpoint zapobiegnie dołączanie adres url usługi sufiksu - [#6586](https://github.com/NuGet/Home/issues/6586)
-* Dodaj skrót zatwierdzenia do wersji - [#6492](https://github.com/NuGet/Home/issues/6492)
-* Podpisywanie: Włącz usuwanie repozytorium podpisu/kontrasygnaturze - [#6646](https://github.com/NuGet/Home/issues/6646)
-* Podpisywanie: Interfejs API na potrzeby obcięcie repozytorium podpisu/kontrasygnaturze- [#6589](https://github.com/NuGet/Home/issues/6589)
-* Zaloguj się w programie VS — informacje o źródle [#6527](https://github.com/NuGet/Home/issues/6527)
-* Filtruj /tools tylko TFM i identyfikatorów RID, dzięki czemu kod XML ustawień, które można umieścić w folderze /tools - [#6197](https://github.com/NuGet/Home/issues/6197)
-* Ostrzegaj, gdy polecenie Pakiet wyklucza pliku, który rozpoczyna się od.  - [#3308](https://github.com/NuGet/Home/issues/3308)
+* Emituj nagłówek X-NuGet-Session-ID do skorelowania między żądaniami [propozycja funkcji]- [#5330](https://github.com/NuGet/Home/issues/5330)
+* Uwidocznij sposób oczekiwania na uruchomienie operacji przywracania uruchomionej w programie Visual Studio za pośrednictwem interfejsów API użycie japońskich ideograficznych. - [#6029](https://github.com/NuGet/Home/issues/6029)
+* NuGet. exe-noserviceendpoint zapobiega dołączeniu sufiksu adresu URL usługi [#6586](https://github.com/NuGet/Home/issues/6586)
+* Dodaj skrót zatwierdzenia do wersji informacyjnej — [#6492](https://github.com/NuGet/Home/issues/6492)
+* Podpisywanie: Włączanie usuwania sygnatury repozytorium/kontrpodpis — [#6646](https://github.com/NuGet/Home/issues/6646)
+* Pisywać  Interfejs API służący do oddzielania sygnatury/kontrpodpisów repozytorium [#6589](https://github.com/NuGet/Home/issues/6589)
+* Informacje o źródle dziennika w programie VS- [#6527](https://github.com/NuGet/Home/issues/6527)
+* Filtruj/Tools tylko na TFM i RID, więc XML Settings można umieścić w folderze/Tools- [#6197](https://github.com/NuGet/Home/issues/6197)
+* Ostrzegaj, gdy polecenie Pack wyklucza plik, który rozpoczyna się od.  - [#3308](https://github.com/NuGet/Home/issues/3308)
 
-[Lista wszystkie problemy rozwiązane w tej wersji](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.7")
+[Lista wszystkich problemów rozwiązanych w tej wersji](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.7")

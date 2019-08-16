@@ -1,61 +1,61 @@
 ---
-title: Szablon adresu URL szczegóły pakietu, interfejs API programu NuGet
-description: Szablon adresu URL szczegóły pakietu umożliwia klientom do wyświetlenia w ich interfejsu użytkownika sieci web link, aby uzyskać więcej szczegółów pakietu
+title: Szablon adresu URL szczegółów pakietu, interfejs API NuGet
+description: Szablon adresu URL szczegółów pakietu umożliwia klientom wyświetlanie w ich interfejsie użytkownika linku internetowego do większej liczby szczegółów pakietu
 author: joelverhagen
 ms.author: jver
 ms.date: 3/1/2019
 ms.topic: reference
 ms.reviewer: ananguar
-ms.openlocfilehash: c01fd35c5d96c44279c9d0254f89d8b1b9fe59d8
-ms.sourcegitcommit: 2af17c8bb452a538977794bf559cdd78d58f2790
+ms.openlocfilehash: 6657536ea6c699a834f57494c66b2a7d741dfcb7
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58638088"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488169"
 ---
-# <a name="package-details-url-template"></a>Szablon adresu URL szczegóły pakietu
+# <a name="package-details-url-template"></a>Szablon adresu URL szczegółów pakietu
 
-Istnieje możliwość dla klientów utworzenie adresu URL, który może służyć przez użytkownika Aby wyświetlić więcej szczegółów pakietu w przeglądarce sieci web. Jest to przydatne, gdy chce wyświetlić dodatkowe informacje na temat pakietu, który może nie być dopasowane w zakresie aplikacji klienckiej NuGet pokazuje źródła pakietu.
+Jest możliwe, aby klient mógł utworzyć adres URL, który może być używany przez użytkownika, aby wyświetlić więcej szczegółów pakietu w swojej przeglądarce sieci Web. Jest to przydatne, gdy źródło pakietu chce wyświetlić dodatkowe informacje dotyczące pakietu, który może nie pasować do zakresu działania aplikacji klienckiej NuGet.
 
-Zasób, używana do tworzenia tego adresu URL jest `PackageDetailsUriTemplate` można znaleźć zasobu w [indeks usług](service-index.md).
+Zasób używany do kompilowania tego adresu URL jest `PackageDetailsUriTemplate` zasobem znalezionym w [indeksie usługi](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-Następujące `@type` są używane wartości:
+Są używane `@type` następujące wartości:
 
-@type Wartość                     | Uwagi
+@typewartościami                     | Uwagi
 ------------------------------- | -----
-PackageDetailsUriTemplate/5.1.0 | Wersja początkowa
+PackageDetailsUriTemplate/5.1.0 | Początkowa wersja
 
 ## <a name="url-template"></a>Szablon adresu URL
 
-Adres URL dla następujący interfejs API jest wartością `@id` właściwości skojarzonej z jedną z wyżej wymienionych zasobów `@type` wartości.
+Adres URL następującego interfejsu API to wartość `@id` właściwości skojarzonej z jedną z wymienionych powyżej wartości zasobów. `@type`
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Mimo, że klient nie ma wysyłać żądania do adresu URL szczegóły pakietu w imieniu użytkownika, strony sieci web powinien obsługiwać `GET` metodę umożliwiającą kliknięty adres URL łatwo można otworzyć w przeglądarce sieci web.
+Mimo że klient nie jest przeznaczony do żądania do adresu URL informacji o pakiecie w imieniu użytkownika, na stronie sieci Web powinna być obsługiwana `GET` Metoda zezwalająca na otwarcie klikniętego adresu URL w przeglądarce internetowej.
 
-## <a name="construct-the-url"></a>Skonstruuj adres URL
+## <a name="construct-the-url"></a>Konstruowanie adresu URL
 
-Podany identyfikator znanych pakietu i wersję, implementacji klienta można skonstruować adres URL umożliwiający dostęp do interfejsu sieci web. Implementacja klienta powinien być wyświetlany ten utworzony adres URL (lub łączem) użytkowników, umożliwiając im Otwórz przeglądarkę sieci web do adresu URL i Dowiedz się więcej o pakiecie. Zawartość na stronie szczegółów pakietu jest określany przez implementację serwera.
+Po otrzymaniu znanego identyfikatora pakietu i wersji implementacja klienta może utworzyć adres URL służący do uzyskiwania dostępu do interfejsu sieci Web. W implementacji klienta powinien być wyświetlany ten skonstruowany adres URL (lub link do kliknięcia), dzięki któremu użytkownicy mogą otworzyć przeglądarkę internetową pod adresem URL i dowiedzieć się więcej na temat pakietu. Zawartość strony Szczegóły pakietu jest określana przez implementację serwera.
 
-Adres URL musi być bezwzględnym adresem URL i schematu (protokół) muszą być adresami HTTPS.
+Adres URL musi być bezwzględnym adresem URL, a schemat (protokół) musi być HTTPS.
 
-Wartość `@id` w usłudze indeks jest zawierające dowolne z następujących znaczników symbolu zastępczego ciągu adresu URL:
+Wartość `@id` w indeksie usługi jest ciągiem adresu URL zawierającym dowolny z następujących tokenów zastępczych:
 
 ### <a name="url-placeholders"></a>Symbole zastępcze adresu URL
 
 Nazwa        | Typ    | Wymagane | Uwagi
 ----------- | ------- | -------- | -----
-`{id}`      | string  | Brak       | Identyfikator pakietu, aby uzyskać szczegółowe informacje dla
-`{version}` | string  | Brak       | Wersja pakietu, aby uzyskać szczegółowe informacje dla
+`{id}`      | string  | znaleziono       | Identyfikator pakietu, dla którego mają zostać pobrane szczegóły
+`{version}` | string  | znaleziono       | Wersja pakietu, dla której mają zostać pobrane szczegóły
 
-Serwer powinien akceptować `{id}` i `{version}` wartości za pomocą dowolnej wielkości liter. Ponadto serwer nie powinien być wrażliwe na wersja jest [znormalizowane](https://docs.microsoft.com/en-us/nuget/reference/package-versioning#normalized-version-numbers). Innymi słowy, serwer powinien akceptować także zaakceptować nieznormalizowanego wersji.
+Serwer powinien akceptować `{id}` wartości `{version}` i zawierać dowolne wielkości liter. Ponadto serwer nie powinien być wrażliwy na to, czy wersja jest [znormalizowana](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning#normalized-version-numbers). Innymi słowy, serwer powinien akceptować również nieznormalizowane wersje.
 
-Na przykład szablon szczegóły pakietu usługi nuget.org wygląda następująco:
+Na przykład szablon Details programu NuGet. org wygląda następująco:
 
     https://www.nuget.org/packages/{id}/{version}
 
-Jeśli implementacji klienta wymaga wyświetlone łącze do szczegółów pakietu dla NuGet.Versioning 4.3.0, czy to w efekcie następujący adres URL i przekazać go do użytkownika:
+Jeśli implementacja klienta musi wyświetlić link do szczegółów pakietu NuGet. przechowywanie wersji 4.3.0, spowoduje to utworzenie następującego adresu URL i udostępnienie go użytkownikowi:
 
     https://www.nuget.org/packages/NuGet.Versioning/4.3.0

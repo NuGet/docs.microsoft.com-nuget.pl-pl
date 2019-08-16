@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/22/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b3ecb535c07459bff517102b3cf6f4e6dc42195
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: ddd1d163e18ed4ce1e7cbf41ed152acc40c1c423
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317058"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488786"
 ---
 # <a name="package-consumption-workflow"></a>Przepływ pracy zużycia pakietów
 
@@ -29,13 +29,13 @@ Pakiet NuGet zapamiętuje tożsamość i numer wersji każdego z zainstalowanych
 
 Podczas instalowania pakietów NuGet zwykle sprawdza, czy pakiet jest już dostępny w jego pamięci podręcznej. Możesz ręcznie wyczyścić tę pamięć podręczną z poziomu wiersza polecenia, zgodnie z opisem w temacie [Zarządzanie pakietami globalnymi i folderami pamięci](../consume-packages/managing-the-global-packages-and-cache-folders.md)podręcznej.
 
-Pakiet NuGet gwarantuje również, że Platformy docelowe obsługiwane przez ten element są zgodne z projektem. Jeśli pakiet nie zawiera zgodnych zestawów, program NuGet wyświetli błąd. Zobacz [Rozwiązywanie niezgodnych błędów pakietów](dependency-resolution.md#resolving-incompatible-package-errors).
+Pakiet NuGet gwarantuje również, że Platformy docelowe obsługiwane przez ten element są zgodne z projektem. Jeśli pakiet nie zawiera zgodnych zestawów, program NuGet wyświetli błąd. Zobacz [Rozwiązywanie niezgodnych błędów pakietów](../concepts/dependency-resolution.md#resolving-incompatible-package-errors).
 
 W przypadku dodawania kodu projektu do repozytorium źródłowego zazwyczaj nie są uwzględniane pakiety NuGet. Osoby, które później sklonują repozytorium lub pozyskają projekt, w tym agentów kompilacji w systemach, takich jak Visual Studio Team Services, muszą przywrócić wymagane pakiety przed uruchomieniem kompilacji:
 
 ![Przepływ przywracania pakietów NuGet przez klonowanie repozytorium i użycie polecenia Restore](media/Overview-02-RestoreFlow.png)
 
-[Przywracanie pakietu](../consume-packages/package-restore.md) używa informacji w pliku projektu lub `packages.config` do ponownego zainstalowania wszystkich zależności. Należy zauważyć, że występują różnice w procesie, zgodnie z opisem w temacie [rozpoznawanie zależności](../consume-packages/dependency-resolution.md). Ponadto na powyższym diagramie nie jest wyświetlane polecenie Restore dla konsoli Menedżera pakietów, ponieważ jeśli masz już konsolę programu Visual Studio, która zwykle przywraca pakiety automatycznie i udostępnia polecenie na poziomie rozwiązania jako pokazano.
+[Przywracanie pakietu](../consume-packages/package-restore.md) używa informacji w pliku projektu lub `packages.config` do ponownego zainstalowania wszystkich zależności. Należy zauważyć, że występują różnice w procesie, zgodnie z opisem w temacie [rozpoznawanie zależności](../concepts/dependency-resolution.md). Ponadto na powyższym diagramie nie jest wyświetlane polecenie Restore dla konsoli Menedżera pakietów, ponieważ jeśli masz już konsolę programu Visual Studio, która zwykle przywraca pakiety automatycznie i udostępnia polecenie na poziomie rozwiązania jako pokazano.
 
 Czasami konieczne jest ponowne zainstalowanie pakietów, które już znajdują się w projekcie, co może również ponownie zainstalować zależności. Można to łatwo zrobić przy użyciu `nuget reinstall` polecenia lub konsoli Menedżera pakietów NuGet. Aby uzyskać szczegółowe informacje, zobacz [ponowne instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md).
 

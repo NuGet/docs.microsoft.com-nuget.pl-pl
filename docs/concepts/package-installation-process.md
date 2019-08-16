@@ -1,51 +1,51 @@
 ---
-title: Co się stanie, gdy jest zainstalowany pakiet?
+title: Co się stanie po zainstalowaniu pakietu?
 description: Szczegółowe informacje na temat procesu instalacji pakietu
 author: karann-msft
 ms.author: karann
 ms.date: 06/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5676239bedb7f8fbe9f74725864afd297405d5c1
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 69ef02e3c935287759b4012aadcfb1cb9811367c
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67842334"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488445"
 ---
-# <a name="what-happens-when-a-nuget-package-is-installed"></a>Co się dzieje po zainstalowaniu pakietu NuGet?
+# <a name="what-happens-when-a-nuget-package-is-installed"></a>Co się stanie po zainstalowaniu pakietu NuGet?
 
-Był wyświetlany różne narzędzia NuGet zazwyczaj utworzyć odwołanie do pakietu w pliku projektu lub `packages.config`, następnie wykonać przywracania pakietów skuteczne pakiet zostanie zainstalowany. Wyjątek stanowi `nuget install`, który rozwija tylko pakiet do `packages` folder i wszystkie inne pliki nie powoduje modyfikacji.
+Po prostu poszczególne narzędzia NuGet zwykle tworzą odwołanie do pakietu w pliku projektu lub `packages.config`, a następnie wykonują przywracanie pakietów, które skutecznie instalują pakiet. Wyjątek polega `nuget install`na tym, że rozszerza pakiet jedynie `packages` do folderu i nie modyfikuje żadnych innych plików.
 
-Ogólny proces jest następująca:
+Ogólny proces jest następujący:
 
-1. (Wszystkie narzędzia, z wyjątkiem `nuget.exe`) Zapisz identyfikator pakietu i wersję do pliku projektu lub `packages.config`.
+1. (Wszystkie narzędzia z `nuget.exe`wyjątkiem) rejestrują identyfikator pakietu i wersję do pliku projektu lub `packages.config`.
 
-   Jeśli narzędzie instalacji programu Visual Studio lub wiersz polecenia dotnet, narzędzie najpierw próbuje zainstalować pakiet. Jeśli jest niezgodna, pakiet nie jest dodawany do pliku projektu lub `packages.config`.
+   Jeśli narzędzie instalacji jest Visual Studio lub interfejs wiersza polecenia dotnet, narzędzie najpierw próbuje zainstalować pakiet. Jeśli jest niezgodny, pakiet nie jest dodawany do pliku projektu ani `packages.config`.
 
-2. Pobieranie pakietu:
-   - Sprawdź, czy pakiet (przez dokładny identyfikator oraz numer wersji) jest już zainstalowany w *globalnymi pakietami* folderu zgodnie z opisem na [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md).
+2. Pobierz pakiet:
+   - Sprawdź, czy pakiet (według dokładnych identyfikator i numer wersji) jest już zainstalowany w folderze *pakiety globalne* , zgodnie z opisem w temacie [Zarządzanie pakietami globalnymi i folderami pamięci](../consume-packages/managing-the-global-packages-and-cache-folders.md)podręcznej.
 
-   - Jeśli pakiet nie znajduje się w *globalnymi pakietami* folderze próbują pobrać go ze źródeł wymienione na liście [pliki konfiguracyjne](../consume-packages/Configuring-NuGet-Behavior.md). Dla źródeł online próbował najpierw Pobierz pakiet z pamięci podręcznej HTTP, chyba że `-NoCache` jest określony za pomocą `nuget.exe` poleceń lub `--no-cache` jest określony za pomocą `dotnet restore`. (Visual Studio i `dotnet add package` zawsze używać pamięci podręcznej.) Jeśli pakiet jest używany z pamięci podręcznej, "Pamięć PODRĘCZNĄ" pojawia się w danych wyjściowych. Pamięć podręczna zawiera 30-minutowy czas wygaśnięcia.
+   - Jeśli pakiet nie znajduje się w folderze *pakiety globalne* , spróbuj pobrać go ze źródeł wymienionych na liście w [plikach konfiguracyjnych](../consume-packages/Configuring-NuGet-Behavior.md). W przypadku źródeł online spróbuj najpierw pobrać pakiet z pamięci podręcznej http, `-NoCache` chyba że jest `nuget.exe` określony za `--no-cache` pomocą poleceń lub `dotnet restore`jest określony za pomocą polecenia. (Program Visual Studio `dotnet add package` i zawsze korzysta z pamięci podręcznej). Jeśli pakiet jest używany z pamięci podręcznej, w danych wyjściowych zostanie wyświetlona wartość "CACHE". Pamięć podręczna ma czas wygaśnięcia wynoszący 30 minut.
 
-   - Pakiet nie jest w pamięci podręcznej HTTP, próba go pobrać ze źródła wymienione w konfiguracji. Jeśli pakiet został pobrany, "GET" i "OK" są wyświetlane w danych wyjściowych. NuGet dzienniki ruchu http na normalne poziom szczegółowości.
+   - Jeśli pakiet nie znajduje się w pamięci podręcznej HTTP, spróbuj pobrać go ze źródeł wymienionych w konfiguracji. Jeśli pakiet zostanie pobrany, w danych wyjściowych pojawi się polecenie "GET" i "OK". Pakiet NuGet rejestruje ruch HTTP w normalnej szczegółowości.
 
-   - Jeśli pakiet nie może pomyślnie uzyskana z dowolnymi źródłami, instalacja nie powiedzie się na tym etapie ze względu na błąd taki jak [NU1103](../reference/errors-and-warnings/NU1103.md). Uwaga tego błędy z `nuget.exe` Pokaż polecenia tylko ostatni źródło opcja jest zaznaczona, ale oznacza, że pakiet nie była dostępna z dowolnego źródła.
+   - Jeśli nie można pomyślnie pobrać pakietu z żadnych źródeł, instalacja nie powiedzie się z powodu błędu, takiego jak [NU1103](../reference/errors-and-warnings/NU1103.md). Należy zauważyć, że `nuget.exe` błędy z poleceń pokazują tylko ostatnie zaznaczone źródło, ale oznacza, że pakiet nie był dostępny z żadnego źródła.
 
-   Podczas uzyskiwania pakietu, mogą mieć zastosowanie kolejność źródeł w konfiguracji NuGet:
+   Podczas uzyskiwania pakietu można zastosować kolejność źródeł w konfiguracji programu NuGet:
 
-   - NuGet sprawdza źródła lokalnego folderu i udziałów sieciowych przed sprawdzeniem źródła HTTP.
+   - Pakiet NuGet sprawdza źródłowe foldery lokalne i udziały sieciowe przed sprawdzaniem źródeł HTTP.
 
-3. Zapisz kopię pakietu oraz inne informacje w *pamięci podręcznej http* folderu zgodnie z opisem na [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md).
+3. Zapisz kopię pakietu i inne informacje w folderze *pamięci podręcznej http* zgodnie z opisem w temacie [Zarządzanie pakietami globalnymi i folderami pamięci](../consume-packages/managing-the-global-packages-and-cache-folders.md)podręcznej.
 
-4. Jeśli pobrane, należy zainstalować pakiet w poszczególnych użytkowników *globalnymi pakietami* folderu. NuGet tworzy osobny podfolder dla każdego identyfikatora pakietu, a następnie tworzy oddzielne podfoldery dla każdej zainstalowanej wersji pakietu.
+4. W przypadku pobrania należy zainstalować pakiet w folderze *Global-Packages* dla użytkownika. Pakiet NuGet tworzy podfolder dla każdego identyfikatora pakietu, a następnie tworzy podfoldery dla każdej zainstalowanej wersji pakietu.
 
-5. NuGet instaluje zależności pakietów, zgodnie z potrzebami. Ten proces może aktualizować wersje pakietów w procesie, zgodnie z opisem w [rozpoznawania zależności](../consume-packages/dependency-resolution.md).
+5. Pakiet NuGet instaluje zależności pakietów zgodnie z wymaganiami. Ten proces może aktualizować wersje pakietów w procesie, zgodnie z opisem w temacie [rozpoznawanie zależności](../concepts/dependency-resolution.md).
 
-6. Aktualizacja innych projektów, plików i folderów:
+6. Aktualizowanie innych plików i folderów projektu:
 
-    - W przypadku projektów przy użyciu funkcji PackageReference, zaktualizuj wykres zależności pakietu, które są przechowywane w `obj/project.assets.json`. Zawartość pakietu, sami nie są kopiowane do dowolnego folderu projektu.
-    - Aktualizacja `app.config` i/lub `web.config` Jeśli korzysta z pakietu [źródła i konfiguracji pliku przekształcenia](../create-packages/source-and-config-file-transformations.md).
+    - W przypadku projektów korzystających z programu PackageReference należy zaktualizować wykres zależności `obj/project.assets.json`pakietu przechowywany w temacie. Sama zawartość pakietu nie jest kopiowana do żadnego folderu projektu.
+    - Aktualizacja `app.config` i/lub `web.config` Jeśli pakiet używa [transformacji plików źródłowych i konfiguracyjnych](../create-packages/source-and-config-file-transformations.md).
 
-7. (Tylko visual Studio) Wyświetl plik readme pakietu, jeśli to możliwe, w oknie programu Visual Studio.
+7. (Tylko Visual Studio) Wyświetl plik Readme pakietu, jeśli jest dostępny, w oknie programu Visual Studio.
 
-Korzystaj z usługi produktywne kodowanie dzięki pakiety NuGet!
+Korzystaj z wydajnych kodowania z pakietami NuGet.

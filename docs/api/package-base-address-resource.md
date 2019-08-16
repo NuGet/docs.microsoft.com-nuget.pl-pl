@@ -1,46 +1,46 @@
 ---
-title: Pakiet zawartości, interfejs API programu NuGet
-description: Adres podstawowy pakiet jest prosty interfejs Pobieranie pakietu.
+title: Zawartość pakietu, interfejs API NuGet
+description: Adres podstawowy pakietu jest prostym interfejsem do pobierania samego pakietu.
 author: joelverhagen
 ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 2f0f93e0cee78ea03cbd53194cdc2a10871fd7e1
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 5ec6c0e17a3e8b9a3f156a48685bcaafe42c744b
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426767"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488217"
 ---
 # <a name="package-content"></a>Zawartość pakietu
 
-Istnieje możliwość wygenerować adres URL, aby pobrać zawartość dowolnego pakiet (plik .nupkg) przy użyciu interfejsu API w wersji 3. Zasób, używany do pobierania zawartości pakietu jest `PackageBaseAddress` można znaleźć zasobu w [indeks usług](service-index.md). Ten zasób umożliwia również odnajdywanie wszystkich wersji pakietu na liście lub nieznajdujące się na liście.
+Możliwe jest wygenerowanie adresu URL w celu pobrania zawartości dowolnego pakietu (plik. nupkg) przy użyciu interfejsu API v3. Zasób używany do pobierania zawartości pakietu jest `PackageBaseAddress` zasobem znalezionym w indeksie [usługi](service-index.md). Ten zasób umożliwia również odnajdywanie wszystkich wersji pakietu na liście lub niewymienionej liście.
 
-Ten zasób jest określany często jako albo "pakiet adres podstawowy" lub "container płaską".
+Ten zasób jest często określany jako "adres podstawowy pakietu" lub "kontener płaski".
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-Następujące `@type` zostanie użyta wartość:
+Używana jest `@type` następująca wartość:
 
-@type Wartość              | Uwagi
+@typewartościami              | Uwagi
 ------------------------ | -----
-PackageBaseAddress/3.0.0 | Wersja początkowa
+PackageBaseAddress/3.0.0 | Początkowa wersja
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
-Podstawowy adres URL dla następujących interfejsów API jest wartością `@id` właściwości skojarzonej z wyżej wymienionych zasobów `@type` wartość. W następującym dokumencie symbol zastępczy bazowy adres URL `{@id}` będą używane.
+Podstawowy adres URL dla następujących interfejsów API jest wartością `@id` właściwości skojarzoną z wymienioną powyżej wartością zasobu. `@type` W poniższym dokumencie zostanie użyty symbol zastępczy podstawowego `{@id}` adresu URL.
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Wszystkie adresy URL, znaleziono w obsłudze zasobów rejestracji metod HTTP `GET` i `HEAD`.
+Wszystkie adresy URL znajdujące się w zasobie rejestracji obsługują `GET` metody `HEAD`http i.
 
-## <a name="enumerate-package-versions"></a>Wyliczenie wersji pakietu
+## <a name="enumerate-package-versions"></a>Wylicz wersje pakietów
 
-Jeśli klient zna identyfikator pakietu i chce dowiedzieć się, które pakietu wersji pakietu źródłowy jest dostępny, klient można skonstruować przewidywalne adresu URL, można wyliczyć wszystkie wersje pakietu. Ta lista jest przeznaczony jako "listing katalogu" dla interfejsu API zawartości pakietu wymienione poniżej.
+Jeśli Klient zna identyfikator pakietu i chce wykryć wersje pakietów dostępne dla źródła pakietu, klient może skonstruować przewidywalny adres URL w celu wyliczenia wszystkich wersji pakietu. Ta lista ma być "listą katalogów" dla interfejsu API zawartości pakietu wymienionego poniżej.
 
 > [!Note]
-> Ta lista zawiera obie wersje pakietu listy i spoza niej.
+> Ta lista zawiera listę wersji pakietów wymienionych i nieznajdujących się na liście.
 
     GET {@id}/{LOWER_ID}/index.json
 
@@ -50,21 +50,21 @@ Nazwa     | W     | Typ    | Wymagane | Uwagi
 -------- | ------ | ------- | -------- | -----
 LOWER_ID | Adres URL    | string  | tak      | Identyfikator pakietu, małe litery
 
-`LOWER_ID` Wartość jest pisany małymi literami, za pomocą reguł wdrożonych przez identyfikator żądanego pakietu. NET firmy [ `System.String.ToLowerInvariant()` ](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) metody.
+`LOWER_ID` Wartość jest pożądanym identyfikatorem pakietu małymi literami przy użyciu reguł zaimplementowane przez. [`System.String.ToLowerInvariant()`](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) Metoda sieci.
 
 ### <a name="response"></a>Odpowiedź
 
-Jeśli źródło pakietu nie ma wersji identyfikatora podanego pakietu, zwracany jest kod stanu 404.
+Jeśli źródło pakietu nie ma wersji podanego identyfikatora pakietu, zwracany jest kod stanu 404.
 
-Jeśli źródło pakietu zawiera jedną lub kilka wersji, zwracany jest kod stanu 200. Treść odpowiedzi jest obiekt JSON z następującymi właściwościami:
+Jeśli źródło pakietu ma co najmniej jedną wersję, zwracany jest kod stanu 200. Treść odpowiedzi jest obiektem JSON z następującą właściwością:
 
 Nazwa     | Typ             | Wymagane | Uwagi
 -------- | ---------------- | -------- | -----
-wersje | Tablica ciągów | tak      | Pakiet dostępnych identyfikatorów
+wersje | Tablica ciągów | tak      | Dostępne identyfikatory pakietów
 
-Ciągi w `versions` tablicy są wszystkie pisany małymi literami, [znormalizować ciągi wersji NuGet](../reference/package-versioning.md#normalized-version-numbers). Ciągi wersji nie zawierają żadnych metadanych kompilacji SemVer 2.0.0.
+Ciągi w `versions` tablicy to wszystkie małe litery, [znormalizowane ciągi wersji NuGet](../concepts/package-versioning.md#normalized-version-numbers). Ciągi wersji nie zawierają żadnych metadanych kompilacji SemVer 2.0.0.
 
-Celem jest, że ciągi wersji w tej tablicy mogą być używane verbatim dla `LOWER_VERSION` tokenów znaleźć w następujących punktów końcowych.
+Zamiarem jest to, że ciągi wersji Znalezione w tej tablicy mogą być używane Verbatim `LOWER_VERSION` dla tokenów znalezionych w następujących punktach końcowych.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
@@ -74,9 +74,9 @@ Celem jest, że ciągi wersji w tej tablicy mogą być używane verbatim dla `LO
 
 [!code-JSON [package-base-address-index.json](./_data/package-base-address-index.json)]
 
-## <a name="download-package-content-nupkg"></a>Pobierz zawartość pakietu (.nupkg)
+## <a name="download-package-content-nupkg"></a>Pobierz zawartość pakietu (. nupkg)
 
-Jeśli klient zna identyfikator pakietu i wersję i chce pobrać zawartość pakietu, wystarczy utworzyć następujący adres URL:
+Jeśli Klient zna identyfikator pakietu i wersję, a następnie chce pobrać zawartość pakietu, musi jedynie utworzyć następujący adres URL:
 
     GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.{LOWER_VERSION}.nupkg
 
@@ -85,16 +85,16 @@ Jeśli klient zna identyfikator pakietu i wersję i chce pobrać zawartość pak
 Nazwa          | W     | Typ   | Wymagane | Uwagi
 ------------- | ------ | ------ | -------- | -----
 LOWER_ID      | Adres URL    | string | tak      | Identyfikator pakietu, małe litery
-LOWER_VERSION | Adres URL    | string | tak      | Wersja pakietu znormalizowane i pisany małymi literami
+LOWER_VERSION | Adres URL    | string | tak      | Wersja pakietu, znormalizowana i mała
 
-Zarówno `LOWER_ID` i `LOWER_VERSION` jest pisany małymi literami za pomocą reguł wdrożonych przez. NET firmy [`System.String.ToLowerInvariant()`](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant)
-Metoda.
+Oba `LOWER_ID` i`LOWER_VERSION` są małymi literami przy użyciu reguł zaimplementowane przez. Sieć[`System.String.ToLowerInvariant()`](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant)
+Method.
 
-`LOWER_VERSION` Jest wersja pakietu żądaną znormalizować przy użyciu wersji NuGet [reguł normalizacji](../reference/package-versioning.md#normalized-version-numbers). Oznacza to, że w takim przypadku należy wyłączyć tych metadanych kompilacji, który jest dozwolony przez specyfikację SemVer 2.0.0.
+Jest `LOWER_VERSION` to żądana wersja pakietu, znormalizowana przy użyciu [reguł normalizacji](../concepts/package-versioning.md#normalized-version-numbers)wersji programu NuGet. Oznacza to, że w tym przypadku należy wykluczyć metadane kompilacji, które są dozwolone w specyfikacji SemVer 2.0.0.
 
 ### <a name="response-body"></a>Treść odpowiedzi
 
-Jeśli pakiet istnieje w źródle pakietu, zwracany jest kod stanu 200. Treść odpowiedzi będą samej zawartości pakietu.
+Jeśli pakiet istnieje w źródle pakietów, zwracany jest kod stanu 200. Treść odpowiedzi będzie samą zawartością pakietu.
 
 Jeśli pakiet nie istnieje w źródle pakietu, zwracany jest kod stanu 404.
 
@@ -104,11 +104,11 @@ Jeśli pakiet nie istnieje w źródle pakietu, zwracany jest kod stanu 404.
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
-Strumień danych binarnych jest .nupkg dla Newtonsoft.Json 9.0.1.
+Strumień binarny, który jest plikiem. nupkg dla Newtonsoft. JSON 9.0.1.
 
-## <a name="download-package-manifest-nuspec"></a>Pobierz manifest pakietu (.nuspec)
+## <a name="download-package-manifest-nuspec"></a>Pobierz manifest pakietu (. nuspec)
 
-Jeśli klient zna identyfikator pakietu i wersję i chce pobrać manifestu pakietu, wystarczy utworzyć następujący adres URL:
+Jeśli Klient zna identyfikator pakietu i wersję i chce pobrać manifest pakietu, musi jedynie utworzyć następujący adres URL:
 
     GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.nuspec
 
@@ -117,15 +117,15 @@ Jeśli klient zna identyfikator pakietu i wersję i chce pobrać manifestu pakie
 Nazwa          | W     | Typ   | Wymagane | Uwagi
 ------------- | ------ | ------ | -------- | -----
 LOWER_ID      | Adres URL    | string | tak      | Identyfikator pakietu, małe litery
-LOWER_VERSION | Adres URL    | string | tak      | Wersja pakietu znormalizowane i pisany małymi literami
+LOWER_VERSION | Adres URL    | string | tak      | Wersja pakietu, znormalizowana i mała
 
-Zarówno `LOWER_ID` i `LOWER_VERSION` jest pisany małymi literami za pomocą reguł wdrożonych przez. NET firmy [ `System.String.ToLowerInvariant()` ](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) metody.
+Oba `LOWER_ID` i`LOWER_VERSION` są małymi literami przy użyciu reguł zaimplementowane przez. [`System.String.ToLowerInvariant()`](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) Metoda sieci.
 
-`LOWER_VERSION` Jest wersja pakietu żądaną znormalizować przy użyciu wersji NuGet [reguł normalizacji](../reference/package-versioning.md#normalized-version-numbers). Oznacza to, że w takim przypadku należy wyłączyć tych metadanych kompilacji, który jest dozwolony przez specyfikację SemVer 2.0.0.
+Jest `LOWER_VERSION` to żądana wersja pakietu, znormalizowana przy użyciu [reguł normalizacji](../concepts/package-versioning.md#normalized-version-numbers)wersji programu NuGet. Oznacza to, że w tym przypadku należy wykluczyć metadane kompilacji, które są dozwolone w specyfikacji SemVer 2.0.0.
 
 ### <a name="response-body"></a>Treść odpowiedzi
 
-Jeśli pakiet istnieje w źródle pakietu, zwracany jest kod stanu 200. Treść odpowiedzi będą manifestu pakietu, czyli .nuspec zawartych w odpowiedniej .nupkg. .nuspec jest dokument XML.
+Jeśli pakiet istnieje w źródle pakietów, zwracany jest kod stanu 200. Treść odpowiedzi będzie manifestem pakietu, który jest nuspec zawarty w odpowiedniej. nupkg. Plik. nuspec jest dokumentem XML.
 
 Jeśli pakiet nie istnieje w źródle pakietu, zwracany jest kod stanu 404.
 

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: de76cf610e580a36014be9274b9c2c762b1015ac
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 5f1d3ed6a1b20fb07437f1718faafaac0a193773
+ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317163"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69488708"
 ---
 # <a name="nuget-14-release-notes"></a>Informacje o wersji narzędzia NuGet 1,4
 
@@ -60,7 +60,7 @@ Aby uzyskać więcej informacji, zobacz temat dotyczący [zarządzania pakietami
 Domyślnie po uruchomieniu `Update-Package` polecenia w pakiecie (lub zaktualizowaniu pakietu przy użyciu okna dialogowego) zostanie ono zaktualizowane do najnowszej wersji w źródle danych. Dzięki nowej obsłudze aktualizacji wszystkich pakietów mogą wystąpić sytuacje, w których chcesz zablokować pakiet do określonego zakresu wersji. Na przykład może być wiadomo, że aplikacja będzie działała tylko w wersji 2. * pakietu, ale nie 3,0 i nowszych. Aby zapobiec przypadkowemu aktualizowaniu pakietu do wersji 3, program NuGet 1,4 dodaje obsługę ograniczania zakresu wersji, do których można uaktualnić pakiety, poprzez ręczne edytowanie `packages.config` pliku przy użyciu nowego `allowedVersions` atrybutu.
 
 Na przykład poniższy przykład pokazuje, jak zablokować `SomePackage` pakiet do wersji 2,0 – 3,0 (wyłączne).
-Atrybut akceptuje wartości przy użyciu [formatu zakresu wersji.](../reference/package-versioning.md#version-ranges-and-wildcards) `allowedVersions`
+Atrybut akceptuje wartości przy użyciu [formatu zakresu wersji.](../concepts/package-versioning.md#version-ranges-and-wildcards) `allowedVersions`
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -72,7 +72,7 @@ Atrybut akceptuje wartości przy użyciu [formatu zakresu wersji.](../reference/
 Należy pamiętać, że w 1,4, blokowanie pakietu do określonego zakresu wersji musi być edytowane ręcznie. W programie NuGet 1,5 planujemy dodanie obsługi umieszczania tego zakresu za pośrednictwem `Install-Package` polecenia.
 
 ### <a name="package-visualizer"></a>Wizualizator pakietu
-Nowy wizualizator pakietu, uruchamiany za pomocą opcji menu  ->  -> **wizualizatora** pakietu**Menedżera pakietów biblioteki**narzędzi, umożliwia łatwe wizualizację wszystkich projektów i ich zależności pakietów w ramach Narzędzie.
+Nowy wizualizator pakietu, uruchamiany za pomocą opcji menu ->  -> **wizualizatora** pakietu**Menedżera pakietów biblioteki**narzędzi, umożliwia łatwe wizualizację wszystkich projektów i ich zależności pakietów w ramach Narzędzie.
 
 _**Ważna Uwaga:** Ta funkcja wykorzystuje obsługę DGML w programie Visual Studio. Tworzenie wizualizacji jest obsługiwane tylko w Visual Studio Ultimate. Wyświetlanie diagramu DGML jest obsługiwane tylko w Visual Studio Premium lub wyższym._
 
