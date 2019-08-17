@@ -1,36 +1,36 @@
 ---
 title: Jak utworzyć pakiety symboli NuGet
-description: Jak utworzyć pakiety NuGet, które zawierają tylko symbole, aby zapewnić obsługę debugowania innych pakietów NuGet w programie Visual Studio.
+description: Jak utworzyć pakiety NuGet, które zawierają tylko symbole obsługujące debugowanie innych pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
 ms.date: 09/12/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 40f934f3c3fcea62acae66639c22108a93363b8b
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: f7503dd413a976997580aa03da26df0c462ff0e1
+ms.sourcegitcommit: 80cf99f40759911324468be1ec815c96aebf376d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426777"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69564551"
 ---
-# <a name="creating-symbol-packages-legacy"></a>Tworzenie pakietów symbol (starsza wersja)
+# <a name="creating-symbol-packages-legacy"></a>Tworzenie pakietów symboli (starsza wersja)
 
 > [!Important]
-> Nowy format zalecane pakiety symboli jest .snupkg. Zobacz [tworzenia pakietów symbol (.snupkg)](Symbol-Packages-snupkg.md). </br>
-> . symbols.nupkg nadal jest obsługiwany, ale tylko ze względu na zgodność.
+> Nowy zalecany format pakietów symboli to. snupkg. Zobacz [Tworzenie pakietów symboli (. snupkg)](Symbol-Packages-snupkg.md). </br>
+> . Symbols. NUPKG jest nadal obsługiwana, ale tylko ze względów zgodności.
 
-Oprócz tworzenia pakietów nuget.org lub innych źródeł, NuGet również obsługuje tworzenie skojarzone pakiety symboli i publikowania ich w repozytorium SymbolSource.
+Oprócz kompilowania pakietów dla nuget.org lub innych źródeł, pakiet NuGet obsługuje również tworzenie skojarzonych pakietów symboli i publikowanie ich w repozytorium SymbolSource.
 
-Konsumenci pakiet można następnie dodać `https://nuget.smbsrc.net` źródła symbol w programie Visual Studio, umożliwia przechodzenie do pakietu kodu w debugerze programu Visual Studio. Zobacz [określanie plików symboli (.pdb) i plików źródłowych w debugerze programu Visual Studio](/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger) szczegółowe informacje na temat tego procesu.
+Odbiorcy pakietów mogą następnie dodawać `https://nuget.smbsrc.net` do ich źródeł symboli w programie Visual Studio, co umożliwia przechodzenie do kodu pakietu w debugerze programu Visual Studio. Aby uzyskać szczegółowe informacje na temat tego procesu, zobacz [Określanie symboli (. pdb) i plików źródłowych w debugerze programu Visual Studio](/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger) .
 
 ## <a name="creating-a-symbol-package"></a>Tworzenie pakietu symboli
 
-Aby utworzyć pakiet symboli, postępuj zgodnie z tych konwencji:
+Aby utworzyć pakiet symboli, postępuj zgodnie z następującymi konwencjami:
 
-- Nazwij pakiet główny (Twoim kodem) `{identifier}.nupkg` i Dołącz wszystkie pliki z wyjątkiem `.pdb` plików.
-- Nazwij pakiet symboli `{identifier}.symbols.nupkg` i obejmuje zestaw bibliotek DLL, `.pdb` pliki, pliki XMLDOC, pliki źródłowe (zobacz w kolejnych sekcjach).
+- Nazwij pakiet podstawowy (z kodem) `{identifier}.nupkg` i Dołącz wszystkie pliki z wyjątkiem `.pdb` plików.
+- Nadaj nazwę pakietowi `{identifier}.symbols.nupkg` symboli i Uwzględnij `.pdb` plik DLL zestawu, pliki, pliki XMLDOC, pliki źródłowe (Zobacz poniższe sekcje).
 
-Możesz utworzyć oba pakiety za pomocą `-Symbols` opcji z `.nuspec` pliku lub pliku projektu:
+Oba pakiety można utworzyć przy użyciu `-Symbols` opcji, `.nuspec` z pliku lub pliku projektu:
 
 ```cli
 nuget pack MyPackage.nuspec -Symbols
@@ -38,13 +38,13 @@ nuget pack MyPackage.nuspec -Symbols
 nuget pack MyProject.csproj -Symbols
 ```
 
-Należy pamiętać, że `pack` wymaga platformy Mono 4.4.2 w systemie Mac OS X, a nie działa w systemach Linux. Na komputerze Mac, należy także przekonwertować nazwy Windows ścieżek w `.nuspec` plik do ścieżki stylu systemu Unix.
+Należy pamiętać `pack` , że wymaga mono 4.4.2 w Mac OS X i nie działa w systemach Linux. Na komputerze Mac należy również skonwertować nazwy ścieżek systemu Windows w `.nuspec` pliku na ścieżki w stylu systemu UNIX.
 
 ## <a name="symbol-package-structure"></a>Struktura pakietu symboli
 
-Pakiet symboli można wskazać wiele platform docelowych w taki sam sposób, który wykonuje pakietu biblioteki, więc struktury `lib` folder powinien być dokładnie takie same, jak pakiet podstawowego, tylko tym `.pdb` plików wraz z biblioteki DLL.
+Pakiet symboli może kierować wiele platform docelowych w taki sam sposób, w jaki działa pakiet biblioteki, dlatego struktura `lib` folderu powinna być dokładnie taka sama jak w przypadku pakietu podstawowego, w tym `.pdb` tylko plików obok biblioteki DLL.
 
-Na przykład pakiet symboli, który jest przeznaczony dla .NET 4.0 i Silverlight 4 będą mieć ten układ:
+Na przykład pakiet symboli przeznaczony dla programów .NET 4,0 i Silverlight 4 ma następujący układ:
 
     \lib
         \net40
@@ -54,7 +54,7 @@ Na przykład pakiet symboli, który jest przeznaczony dla .NET 4.0 i Silverlight
             \MyAssembly.dll
             \MyAssembly.pdb
 
-Pliki źródłowe następnie są umieszczane w oddzielnym folderze specjalnym, o nazwie `src`, które należy wykonać względne struktury repozytorium źródłowym. Jest to spowodowane plików PDB zawierać ścieżek bezwzględnych do plików źródłowych, używana do kompilowania zgodnych bibliotek DLL i muszą one można znaleźć w procesie publikowania. Ścieżki podstawowej (Wspólny prefiks ścieżki) może być wycięte. Rozważmy na przykład biblioteki, utworzony na podstawie tych plików:
+Pliki źródłowe są następnie umieszczane w osobnym folderze specjalnym o nazwie `src`, który musi być zgodny ze strukturą względną repozytorium źródłowego. Wynika to z faktu, że plików PDB zawierają bezwzględne ścieżki do plików źródłowych użytych do skompilowania zgodnej biblioteki DLL i muszą znajdować się w trakcie procesu publikowania. Ścieżka bazowa (wspólny prefiks ścieżki) może zostać usunięta. Rozważmy na przykład bibliotekę utworzoną na podstawie tych plików:
 
     C:\Projects
         \MyProject
@@ -70,7 +70,7 @@ Pliki źródłowe następnie są umieszczane w oddzielnym folderze specjalnym, o
                 \MySilverlightExtensions.cs
                 \MyAssembly.csproj (producing \lib\sl4\MyAssembly.dll)
 
-Z wyjątkiem `lib` folderze pakiet symboli musi zawierać ten układ:
+`lib` Poza folderem pakiet symboli musi zawierać następujący układ:
 
     \src
         \Common
@@ -83,9 +83,9 @@ Z wyjątkiem `lib` folderze pakiet symboli musi zawierać ten układ:
                 \AssemblyInfo.cs
             \MySilverlightExtensions.cs
 
-## <a name="referring-to-files-in-the-nuspec"></a>Odwołujące się do plików w nuspec
+## <a name="referring-to-files-in-the-nuspec"></a>Odwoływanie się do plików w nuspec
 
-Mogą być wbudowane pakiet symboli, konwencje ze struktury folderów, zgodnie z opisem w poprzedniej sekcji, lub podając jego zawartość w `files` sekcji manifestu. Na przykład, aby utworzyć pakiet pokazano w poprzedniej sekcji, należy użyć następującego w `.nuspec` pliku:
+Pakiet symboli może być skompilowany przy użyciu konwencji, z struktury folderów, zgodnie z opisem w poprzedniej sekcji lub przez określenie jego zawartości w `files` sekcji manifestu. Na przykład, aby skompilować pakiet przedstawiony w poprzedniej sekcji, użyj następującego w `.nuspec` pliku:
 
 ```xml
 <files>
@@ -100,37 +100,37 @@ Mogą być wbudowane pakiet symboli, konwencje ze struktury folderów, zgodnie z
 ## <a name="publishing-a-symbol-package"></a>Publikowanie pakietu symboli
 
 > [!Important]
-> Do wypychania pakietów nuget.org, należy użyć [nuget.exe v4.9.1 lub nowszej](https://www.nuget.org/downloads), który implementuje wymagane [protokołów NuGet](../api/nuget-protocols.md).
+> Aby wypchnąć pakiety do nuget.org należy użyć pliku [NuGet. exe v 4.9.1 lub nowszego](https://www.nuget.org/downloads), który implementuje wymagane [Protokoły NuGet](../api/nuget-protocols.md).
 
-1. Dla wygody, najpierw zapisać swój klucz interfejsu API z NuGet (zobacz [publikowanie pakietu](../nuget-org/publish-a-package.md), która będzie stosowana do nuget.org i symbolsource.org, ponieważ symbolsource.org sprawdzi się z repozytorium nuget.org, aby sprawdzić, czy jesteś właścicielem pakietu.
+1. Dla wygody należy najpierw zapisać klucz interfejsu API za pomocą narzędzia NuGet (zobacz temat [Publikowanie pakietu](../nuget-org/publish-a-package.md), który będzie stosowany zarówno do NuGet.org, jak i symbolsource.org, ponieważ symbolsource.org sprawdzi się z NuGet.org, aby sprawdzić, czy jesteś właścicielem pakietu.
 
     ```cli
     nuget SetApiKey Your-API-Key
     ```
 
-2. Po opublikowaniu pakiet podstawowego na stronie nuget.org, Wypchnij pakiet symboli w następujący sposób, który będzie automatycznie używać symbolsource.org jako element docelowy z powodu `.symbols` w nazwie pliku:
+2. Po opublikowaniu pakietu podstawowego w `.symbols` programie NuGet.org wypchnij pakiet symboli w następujący sposób, który będzie automatycznie używać symbolsource.org jako elementu docelowego z powodu pliku w nazwie:
 
     ```cli
     nuget push MyPackage.symbols.nupkg
     ```
 
-3. Aby opublikować w repozytorium innego symbolu lub wypychania pakiet symboli, które nie są zgodne z konwencją nazewnictwa, użyj `-Source` opcji:
+3. Aby opublikować w innym repozytorium symboli lub wypchnąć pakiet symboli, który nie jest zgodny z konwencją nazewnictwa, użyj `-Source` opcji:
 
     ```cli
     nuget push MyPackage.symbols.nupkg -source https://nuget.smbsrc.net/
     ```
 
-4. Można również wypchnąć podstawowych i symboli pakietów do obu repozytoriów, w tym samym czasie przy użyciu następujących:
+4. Jednocześnie można wypchnąć zarówno podstawowe, jak i główne pakiety do obu repozytoriów, korzystając z następujących metod:
 
     ```cli
     nuget push MyPackage.nupkg
     ```
 
    > [!Note]
-   > Nuget.exe 4.5.0 lub powyżej symbole pakiety nie zostaną automatycznie wypchnięte do symbolsource.org. Będziesz potrzebować do wypychania pakietów symbole oddzielnie, zgodnie z opisem w następnym kroku.
+   > W przypadku programu NuGet. exe 4.5.0 lub nowszego pakiety symboli nie są automatycznie wypychane do symbolsource.org. Należy wypchnąć pakiety symboli oddzielnie, jak wyjaśniono w poprzednich krokach.
    
-W tym przypadku będzie publikować NuGet `MyPackage.symbols.nupkg`, jeśli jest obecna, aby https://nuget.smbsrc.net/ (URL wypychania dla symbolsource.org), po publikuje pakiet główny na stronie nuget.org.
+W takim przypadku pakiet NuGet opublikuje `MyPackage.symbols.nupkg` https://nuget.smbsrc.net/ (jeśli istnieje) (adres URL wypychania dla symbolsource.org), po opublikowaniu pakietu podstawowego do NuGet.org.
 
 ## <a name="see-also"></a>Zobacz też
 
-[Przejście do nowego aparatu SymbolSource](https://tripleemcoder.com/2015/10/04/moving-to-the-new-symbolsource-engine/) (symbolsource.org)
+[Przechodzenie do nowego aparatu SymbolSource](https://tripleemcoder.com/2015/10/04/moving-to-the-new-symbolsource-engine/) (symbolsource.org)

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 464bf52cabe64696270fc391b2c23de9c6ba24f7
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: ae80206117eed639140a0c7977043d8330bc37bb
+ms.sourcegitcommit: 80cf99f40759911324468be1ec815c96aebf376d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488151"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69564568"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietów (PackageReference) w plikach projektu
 
@@ -106,7 +106,7 @@ Wartości dozwolone dla tych tagów są następujące, z wieloma wartościami od
 | środowisko uruchomieniowe | Zawartość folderu `runtimes` i i kontroluje, czy te zestawy zostaną skopiowane do katalogu wyjściowego kompilacji `lib` |
 | contentFiles | `contentfiles` Zawartość folderu |
 | kompilacja | `.props``.targets` i`build` w folderze |
-| buildMultitargeting | `.props``.targets` i`buildMultitargeting` w folderze, dla celów określania wartości docelowej dla wielu platform |
+| buildMultitargeting | *(4,0)* `.props` i `.targets` w`buildMultitargeting` folderze, dla celów określania wartości docelowej między platformami |
 | buildTransitive | *(5.0 +)* `.props` i wfolderze`buildTransitive` , dla zasobów, które są przesyłane przechodniie do dowolnego, zużywanego projektu. `.targets` Zobacz stronę [funkcji](https://github.com/NuGet/Home/wiki/Allow-package--authors-to-define-build-assets-transitive-behavior) . |
 | Analizatory | Analizatory .NET |
 | natywne | `native` Zawartość folderu |
