@@ -5,14 +5,16 @@ author: shishirx34
 ms.author: shishirh
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9b12b1fa27308cf41b58b0c244ea648d3eecdc95
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: 8cc990e0c9eed07c59c8dffb04d104be47051736
+ms.sourcegitcommit: 7c9f157ba02d9be543de34ab06813ab1ec10192a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520559"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69999940"
 ---
 # <a name="nuget-frequently-asked-questions"></a>Często zadawane pytania dotyczące narzędzia NuGet
+
+Często zadawane pytania dotyczące usługi NuGet.org, takie jak NuGet.org accounts, zobacz [często zadawane pytania](../nuget-org/nuget-org-faq.md).
 
 **Co jest wymagane do uruchomienia narzędzia NuGet?**
 

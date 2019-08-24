@@ -1,18 +1,18 @@
 ---
-title: Indywidualne konta
+title: Pojedyncze konta — NuGet.org
 description: Poszczególne acccounts na NuGet.org są wymagane do publikowania pakietów
 author: mikejo5000
 ms.author: mikejo
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c88b88015bd6d5bae4789765126c0a3dec527e24
-ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
+ms.openlocfilehash: 63c6b5eb5ad635e436b4d53a5f833af35f72d76f
+ms.sourcegitcommit: 7c9f157ba02d9be543de34ab06813ab1ec10192a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68419856"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69999967"
 ---
-# <a name="individual-accounts"></a>Indywidualne konta
+# <a name="individual-accounts-on-nugetorg"></a>Indywidualne konta w witrynie NuGet.org
 
 Musisz utworzyć pojedyncze konto, aby opublikować pakiety i zarządzać nimi w witrynie NuGet.org.
 
@@ -38,7 +38,7 @@ Aby utworzyć konto usługi NuGet.org, musisz mieć konto usługi Personal konto
 
 1. Nastąpi przekierowanie do *NuGet.org*i prośba o zarejestrowanie nazwy użytkownika.
 
-1. Określ nazwę użytkownika w polu wejściowym. Należy pamiętać, że nazwa **użytkownika uwzględnia** wielkość liter i nie można zmienić jej nazwy.
+1. Określ nazwę użytkownika w polu wejściowym. Należy pamiętać, że nazwa użytkownika uwzględnia wielkość liter i nie można zmienić jej nazwy.
 
    ![Określ nazwę użytkownika w NuGet.org](media/nuget-org-register.png) 
 
@@ -69,3 +69,7 @@ Aby lepiej chronić Twoje konto, Włącz uwierzytelnianie dwuskładnikowe (zalec
    ![Włącz funkcji 2FA](media/nuget-org-enter-code-2fa.png)
 
 5. Postępuj zgodnie z dodatkowymi instrukcjami, aby przeprowadzić uwierzytelnianie dwuskładnikowe.
+
+## <a name="delete-a-nugetorg-account"></a>Usuwanie konta NuGet.org
+
+Aby uzyskać pomoc dotyczącą dodatkowych zadań związanych z kontem, takich jak usuwanie konta usługi NuGet.org, zobacz [Zarządzanie kontem NuGet.org](nuget-org-faq.md#nugetorg-account-management).

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: dfe5f2ef4f0ababd81b91073938752aab2bdc01e
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: 93a94a5468b48179d27b89825cebf2447657c8f2
+ms.sourcegitcommit: 7c9f157ba02d9be543de34ab06813ab1ec10192a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488807"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69999985"
 ---
 # <a name="restore-packages-using-package-restore"></a>Przywróć pakiety przy użyciu przywracania pakietów
 
@@ -44,7 +44,7 @@ Przywracanie pakietu próbuje zainstalować wszystkie zależności pakietów do 
 
    W przypadku projektów korzystających z PackageReference po pomyślnym przywróceniu pakiet powinien znajdować się w folderze *Global-Packages* , a `obj/project.assets.json` plik zostanie utworzony ponownie. W przypadku projektów `packages.config`używających pakiet powinien pojawić się w `packages` folderze projektu. Projekt powinien teraz zostać pomyślnie skompilowany. 
 
-2. Jeśli po uruchomieniu przywracania pakietu nadal występują brakujące pakiety lub błędy związane z pakietami (takie jak ikony błędów w Eksplorator rozwiązań w programie Visual Studio), może być konieczne [ponowne zainstalowanie i zaktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md).
+2. Jeśli po uruchomieniu przywracania pakietu nadal występują brakujące pakiety lub błędy związane z pakietami (takie jak ikony błędów w Eksplorator rozwiązań w programie Visual Studio), może być konieczne wykonanie instrukcji opisanych w [temacie Rozwiązywanie problemów z błędami przywracania pakietu](package-restore-troubleshooting.md) lub, Alternatywnie [ponownie zainstaluj pakiety i zaktualizuj](../consume-packages/reinstalling-and-updating-packages.md)je.
 
    W programie Visual Studio konsola Menedżera pakietów udostępnia kilka elastycznych opcji ponownego instalowania pakietów. Zobacz [using Package-Update](reinstalling-and-updating-packages.md#using-update-package).
 
