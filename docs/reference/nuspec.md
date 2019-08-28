@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 05/24/2019
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: f931ed297a6a1e9e24ce5eb30a8158f59925bb39
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: 29c52b6684dff252e9c45bf5365d83b6a3fe5201
+ms.sourcegitcommit: c65e7a889ddf64a8e2ff7bc59ec08edb308e16ca
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488683"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060247"
 ---
 # <a name="nuspec-reference"></a>nuspec — odwołanie
 
@@ -76,7 +76,7 @@ Identyfikator pakietu bez uwzględniania wielkości liter, który musi być unik
 #### <a name="version"></a>version
 Wersja pakietu, po wzorcu *główna. pomocnicza. poprawka* . Numery wersji mogą zawierać sufiks wstępnej wersji, zgodnie z opisem w temacie [wersja pakietu](../concepts/package-versioning.md#pre-release-versions). 
 #### <a name="description"></a>opis
-Długi opis pakietu do wyświetlania interfejsu użytkownika. 
+Opis pakietu na potrzeby wyświetlania interfejsu użytkownika.
 #### <a name="authors"></a>autorów
 Rozdzielana przecinkami lista autorów pakietów, które pasują do nazw profilów w nuget.org. Są one wyświetlane w galerii NuGet w witrynie nuget.org i służą do krzyżowego odwoływania się do pakietów przez tych samych autorów. 
 
@@ -95,7 +95,7 @@ Adres URL strony głównej pakietu, często wyświetlany w interfejsie użytkown
 Adres URL licencji pakietu, często przedstawiony w interfejsów użytkownika, na przykład nuget.org.
 
 #### <a name="license"></a>licencjonowan
-Wyrażenie licencji SPDX lub ścieżka do pliku licencji w pakiecie, często pokazywane w interfejsów użytkownika, jak nuget.org. Jeśli pakiet jest licencjonowany w ramach wspólnej licencji, takiej jak MIT lub BSD-2-klauzule, należy użyć skojarzonego [identyfikatora licencji SPDX](https://spdx.org/licenses/). Przykład:
+Wyrażenie licencji SPDX lub ścieżka do pliku licencji w pakiecie, często pokazywane w interfejsów użytkownika, jak nuget.org. Jeśli pakiet jest licencjonowany w ramach wspólnej licencji, takiej jak MIT lub BSD-2-klauzule, należy użyć skojarzonego [identyfikatora licencji SPDX](https://spdx.org/licenses/). Na przykład:
 
 `<license type="expression">MIT</license>`
 
@@ -152,6 +152,9 @@ Wartość logiczna określająca, czy klient musi monitować konsumenta o zaakce
 *(2.8+)* Wartość logiczna określająca, czy pakiet jest oznaczone jako — tylko zależnością programistyczną, co zapobiega uwzględniane jako zależności w innych pakietach pakietu. W przypadku PackageReference (NuGet 4.8 +) Ta flaga oznacza również, że wykluczają się zasoby czasu kompilacji z kompilacji. Zobacz [DevelopmentDependency support for PackageReference](https://github.com/NuGet/Home/wiki/DevelopmentDependency-support-for-PackageReference)
 
 #### <a name="summary"></a>podsumowanie
+> [!Important]
+> `summary`jest przestarzały. Zamiast nich należy używać słów kluczowych `description`.
+
 Krótki opis pakietu do wyświetlania interfejsu użytkownika. W przypadku pominięcia `description` zostanie użyta obcięta wersja.
 
 #### <a name="releasenotes"></a>releaseNotes
@@ -423,7 +426,7 @@ Jeśli przestrzegasz Konwencji opisanych w temacie [Tworzenie pakietu](../create
 > [!Important]
 > Gdy pakiet jest instalowany w projekcie, NuGet automatycznie dodaje odwołania do zestawu do bibliotek DLL pakietu, *z wyjątkiem* tych, które są nazwane `.resources.dll` , ponieważ zakłada się, że są to zlokalizowane zespoły satelickie. Z tego powodu należy unikać używania `.resources.dll` dla plików, które w przeciwnym razie zawierają istotny kod pakietu.
 
-Aby ominąć to automatyczne zachowanie i jawnie kontrolować, które pliki są zawarte w `<files>` pakiecie, umieść element jako `<package>` obiekt podrzędny `<metadata>`(i element równorzędny), identyfikując każdy plik z oddzielnym `<file>` elementem. Na przykład:
+Aby ominąć to automatyczne zachowanie i jawnie kontrolować, które pliki są zawarte w `<files>` pakiecie, umieść element jako `<package>` obiekt podrzędny `<metadata>`(i element równorzędny), identyfikując każdy plik z oddzielnym `<file>` elementem. Przykład:
 
 ```xml
 <files>
