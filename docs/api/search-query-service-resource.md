@@ -6,16 +6,16 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: b898b389ee6c962831ce789a7c304c75e6bd8774
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: be25e9bf72b9115de8ae55f6296195fed3152f10
+ms.sourcegitcommit: ac9a00ccaf90e539a381e92b650074910b21eb0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488215"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70235125"
 ---
 # <a name="search"></a>Wyszukaj
 
-Istnieje możliwość wyszukiwania pakietów dostępnych w źródle pakietów przy użyciu interfejsu API v3. Zasób używany do wyszukiwania jest `SearchQueryService` zasobem znalezionym w indeksie [usługi](service-index.md).
+Istnieje możliwość wyszukiwania pakietów dostępnych w źródle pakietów przy użyciu interfejsu API v3. Zasób używany do wyszukiwania jest `SearchQueryService` zasobem znalezionym w [indeksie usługi](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
@@ -97,7 +97,7 @@ podsumowanie        | string                     | znaleziono       |
 tagi           | ciąg lub tablica ciągów | znaleziono       | 
 title          | string                     | znaleziono       | 
 totalDownloads | integer                    | znaleziono       | Ta wartość może zostać wywnioskowana przez sumę pobrań w `versions` tablicy
-sprawdzić       | wartość logiczna                    | znaleziono       | Wartość logiczna JSON wskazująca, czy pakiet [](../nuget-org/id-prefix-reservation.md) jest zweryfikowany
+sprawdzić       | wartość logiczna                    | znaleziono       | Wartość logiczna JSON wskazująca, czy pakiet jest [zweryfikowany](../nuget-org/id-prefix-reservation.md)
 
 W systemie nuget.org zweryfikowany pakiet to taki, który ma identyfikator pakietu pasujący do zastrzeżonego prefiksu identyfikatora i należy do jednego z właścicieli zastrzeżonego prefiksu. Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą rezerwacji prefiksów identyfikatorów](../reference/id-prefix-reservation.md).
 
@@ -111,7 +111,7 @@ proces | integer | tak      | Liczba pobrań dla tej konkretnej wersji pakietu
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://api-v2v3search-0.nuget.org/query?q=NuGet.Versioning&prerelease=false
+    GET https://azuresearch-usnc.nuget.org/query?q=NuGet.Versioning&prerelease=false&semVerLevel=2.0.0
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
