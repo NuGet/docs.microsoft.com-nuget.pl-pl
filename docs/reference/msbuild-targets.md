@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: d8d1b2ef0185381d16c1bb73035588fe90bcfd14
-ms.sourcegitcommit: 9803981c90a1ed954dc11ed71731264c0e75ea0a
+ms.openlocfilehash: a9331ad2ea0482737d84f4ea9a9babf95da8d66f
+ms.sourcegitcommit: d5cc3f01a92c2d69b794343c09aff07ba9e912e5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68959690"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70385892"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -60,9 +60,10 @@ Należy zauważyć, `Owners` że `Summary` właściwości i `.nuspec` z nie są 
 | RequireLicenseAcceptance | PackageRequireLicenseAcceptance | false | |
 | licencjonowan | PackageLicenseExpression | empty | Odnosi się do`<license type="expression">` |
 | licencjonowan | PackageLicenseFile | empty | Odnosi się `<license type="file">`do. Może być konieczne jawne spakowanie pliku licencji, do którego istnieje odwołanie. |
-| LicenseUrl | PackageLicenseUrl | empty | `licenseUrl`jest przestarzały, użyj właściwości PackageLicenseExpression lub PackageLicenseFile |
+| LicenseUrl | PackageLicenseUrl | empty | `PackageLicenseUrl`jest przestarzałe, użyj właściwości PackageLicenseExpression lub PackageLicenseFile |
 | ProjectUrl | PackageProjectUrl | empty | |
-| IconUrl | PackageIconUrl | empty | |
+| Ikona | PackageIcon | empty | Może być konieczne jawne spakowanie pliku obrazu ikony, do którego się odwołuje.|
+| IconUrl | PackageIconUrl | empty | `PackageIconUrl`jest przestarzałe, użyj właściwości PackageIcon |
 | Znaczniki | PackageTags | empty | Tagi są rozdzielane średnikami. |
 | ReleaseNotes | PackageReleaseNotes | empty | |
 | Repozytorium/adres URL | RepositoryUrl | empty | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przyklad *https://github.com/NuGet/NuGet.Client.git* |
@@ -117,7 +118,32 @@ Aby pominąć zależności pakietów z wygenerowanego pakietu NuGet `SuppressDep
 
 ### <a name="packageiconurl"></a>PackageIconUrl
 
-W ramach zmiany problemu z pakietem [NuGet 352](https://github.com/NuGet/Home/issues/352), `PackageIconUrl` ostatecznie zmieni się na `PackageIconUri` i będzie to ścieżka względna do pliku ikony, który będzie zawarty w katalogu głównym pakietu.
+> [!Important]
+> PackageIconUrl jest przestarzała. Zamiast tego użyj [PackageIcon](#packing-an-icon-image-file) .
+
+### <a name="packing-an-icon-image-file"></a>Pakowanie pliku obrazu ikony
+
+Podczas pakowania pliku obrazu ikony należy użyć właściwości PackageIcon, aby określić ścieżkę pakietu względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik jest dołączony do pakietu. Rozmiar pliku obrazu jest ograniczony do 1 MB. Obsługiwane formaty plików to JPEG i PNG. Zalecamy rozdzielczość obrazu 64x64.
+
+Na przykład:
+
+```xml
+<PropertyGroup>
+    ...
+    <PackageIcon>icon.png</PackageIcon>
+    ...
+</PropertyGroup>
+
+<ItemGroup>
+    ...
+    <None Include="images\icon.png" Pack="true" PackagePath="\"/>
+    ...
+</ItemGroup>
+```
+
+[Przykład ikony pakietu](https://github.com/NuGet/Samples/tree/master/PackageIconExample).
+
+Aby uzyskać odpowiedniki nuspec, zapoznaj się z tematem [nuspec Reference dla ikony](nuspec.md#icon).
 
 ### <a name="output-assemblies"></a>Zestawy wyjściowe
 
@@ -221,6 +247,7 @@ Podczas pakowania pliku licencji należy użyć właściwości PackageLicenseFil
     <None Include="licenses\LICENSE.txt" Pack="true" PackagePath=""/>
 </ItemGroup>
 ```
+
 [Przykład pliku licencji](https://github.com/NuGet/Samples/tree/master/PackageLicenseFileExample).
 
 ### <a name="istool"></a>Istool
@@ -229,7 +256,7 @@ W przypadku `MSBuild -t:pack -p:IsTool=true`korzystania z programu wszystkie pli
 
 ### <a name="packing-using-a-nuspec"></a>Pakowanie przy użyciu elementu. nuspec
 
-Mimo że zaleca się uwzględnienie [wszystkich właściwości](../reference/msbuild-targets.md#pack-target) , które zwykle znajdują się w `.nuspec` pliku w pliku projektu, można użyć `.nuspec` pliku do spakowania projektu. W przypadku projektu typu innego niż zestaw SDK, który `PackageReference`używa programu, należy `NuGet.Build.Tasks.Pack.targets` go zaimportować, aby można było wykonać zadanie pakietu. Nadal trzeba przywrócić projekt, aby można było spakować plik NUSPEC. (Projekt w stylu zestawu SDK domyślnie zawiera elementy docelowe pakietu).
+Mimo że zaleca się [uwzględnienie wszystkich właściwości](../reference/msbuild-targets.md#pack-target) , które zwykle znajdują się w `.nuspec` pliku w pliku projektu, można użyć `.nuspec` pliku do spakowania projektu. W przypadku projektu typu innego niż zestaw SDK, który `PackageReference`używa programu, należy `NuGet.Build.Tasks.Pack.targets` go zaimportować, aby można było wykonać zadanie pakietu. Nadal trzeba przywrócić projekt, aby można było spakować plik NUSPEC. (Projekt w stylu zestawu SDK domyślnie zawiera elementy docelowe pakietu).
 
 Struktura docelowa pliku projektu jest nieistotna i nie jest używana podczas pakowania nuspec. Następujące trzy właściwości programu MSBuild dotyczą pakowania przy użyciu `.nuspec`:
 
@@ -332,7 +359,7 @@ Przykład:
 1. Pobierz pakiety
 1. Zapisz plik zasobów, cele i właściwości.
 
-Obiekt docelowy działa tylko w przypadku projektów korzystających z formatu PackageReference. `restore` Nie działa w przypadku projektów przy użyciu `packages.config` formatu; zamiast tego należy użyć [przywracania NuGet](../reference/cli-reference/cli-ref-restore.md) .
+Obiekt docelowy działa tylko w przypadku projektów korzystających z formatu PackageReference. `restore` **Nie działa w** przypadku projektów przy użyciu `packages.config` formatu; zamiast tego należy użyć [przywracania NuGet](../reference/cli-reference/cli-ref-restore.md) .
 
 ### <a name="restore-properties"></a>Właściwości przywracania
 
@@ -344,7 +371,7 @@ Dodatkowe ustawienia przywracania mogą pochodzić z właściwości programu MSB
 | RestorePackagesPath | Ścieżka folderu pakietów użytkownika. |
 | RestoreDisableParallel | Ogranicz pobieranie do jednej naraz. |
 | RestoreConfigFile | Ścieżka do `Nuget.Config` pliku, który ma zostać zastosowany. |
-| RestoreNoCache | Jeśli ma wartość true, unika używania buforowanych pakietów. Zobacz [Zarządzanie pakietami globalnymi i folderami pamięci](../consume-packages/managing-the-global-packages-and-cache-folders.md)podręcznej. |
+| RestoreNoCache | Jeśli ma wartość true, unika używania buforowanych pakietów. Zobacz [Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). |
 | RestoreIgnoreFailedSources | W przypadku wartości true program ignoruje Niepowodzenie lub brak źródeł pakietów. |
 | RestoreFallbackFolders | Foldery rezerwowe używane w taki sam sposób, w jaki jest używany folder pakietów użytkownika. |
 | RestoreAdditionalProjectSources | Dodatkowe źródła do użycia podczas przywracania. |

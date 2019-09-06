@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 06/20/2019
 ms.topic: quickstart
-ms.openlocfilehash: d7aa2e4bdb78dcc6747d9775cbdf0d6c41855b96
-ms.sourcegitcommit: e65180e622f6233b51bb0b41d0e919688083eb26
+ms.openlocfilehash: 417388872a74b29a469d6a5c17c079a0d1a35dc3
+ms.sourcegitcommit: a0807671386782021acb7588741390e6f07e94e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68419803"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384472"
 ---
 # <a name="install-nuget-client-tools"></a>Instalowanie narzędzi klienta programu NuGet
 
@@ -22,7 +22,7 @@ Aby współpracować z pakietem NuGet jako odbiorca lub twórca pakietu, można 
 |:------------- |:-------------|:-----|
 | [dotnet.exe](#dotnetexe-cli) | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla dowolnego [projektu w stylu zestawu SDK](resources/check-project-format.md) , takiego jak jeden obiekt docelowy .NET Framework. Uwzględniono w zestaw .NET Core SDK i udostępnia podstawowe funkcje NuGet na wszystkich platformach. (Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core).| [zestaw .NET Core SDK](https://www.microsoft.com/net/download/) |
 | [nuget.exe](#nugetexe-cli) | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i dla dowolnego [projektu typu innego niż zestaw SDK](resources/check-project-format.md) , takiego jak ten, który jest przeznaczony dla bibliotek .NET Standard. Zapewnia wszystkie możliwości programu NuGet w systemie Windows, zapewnia większość funkcji w systemach Mac i Linux, gdy działa w ramach programu mono. | [nuget.exe](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe) |
-| [Visual Studio](#visual-studio) | W systemie Windows program udostępnia funkcje NuGet za pomocą interfejsu użytkownika Menedżera pakietów i konsoli Menedżera pakietów. zawarte w. Obciążenia związane z usługą SIECIową. Na komputerach Mac program udostępnia pewne funkcje za pomocą interfejsu użytkownika. W Visual Studio Code funkcje NuGet są udostępniane za poorednictwem rozszerzeń. | [Visual Studio 2017](https://www.visualstudio.com/downloads/) |
+| [Visual Studio](#visual-studio) | W systemie Windows program udostępnia funkcje NuGet za pomocą interfejsu użytkownika Menedżera pakietów i konsoli Menedżera pakietów. zawarte w. Obciążenia związane z usługą SIECIową. Na komputerach Mac program udostępnia pewne funkcje za pomocą interfejsu użytkownika. W Visual Studio Code funkcje NuGet są udostępniane za poorednictwem rozszerzeń. | [Visual Studio](https://www.visualstudio.com/downloads/) |
 
 [Interfejs wiersza polecenia programu MSBuild](reference/msbuild-targets.md) oferuje również możliwość przywracania i tworzenia pakietów, co jest szczególnie przydatne na serwerach kompilacji. MSBuild nie jest narzędziem ogólnego przeznaczenia do pracy z pakietem NuGet.
 
@@ -64,7 +64,7 @@ Instalacji
 
 - Visual Studio Code: Funkcje NuGet są dostępne za pomocą rozszerzeń witryny Marketplace lub `dotnet.exe` `nuget.exe` narzędzi interfejsu wiersza polecenia.
 
-- Visual Studio dla komputerów Mac: Niektóre funkcje NuGet są wbudowane bezpośrednio. Aby zapoznać się z przewodnikiem, zobacz Dołączanie [pakietu NuGet do projektu](/visualstudio/mac/nuget-walkthrough) . Aby uzyskać inne możliwości, użyj `dotnet.exe` narzędzi `nuget.exe` lub interfejsu wiersza polecenia.
+- Visual Studio dla komputerów Mac: Niektóre funkcje NuGet są wbudowane bezpośrednio. Aby zapoznać się z przewodnikiem, zobacz [dołączanie pakietu NuGet do projektu](/visualstudio/mac/nuget-walkthrough) . Aby uzyskać inne możliwości, użyj `dotnet.exe` narzędzi `nuget.exe` lub interfejsu wiersza polecenia.
 
 - Program Visual Studio w systemie Windows: **Menedżer pakietów NuGet** jest dołączony do programu Visual Studio 2012 lub nowszego. Program Visual Studio udostępnia [interfejs użytkownika Menedżera pakietów](consume-packages/install-use-packages-visual-studio.md) i [konsolę Menedżera pakietów](consume-packages/install-use-packages-powershell.md), za pomocą którego można uruchamiać większość operacji NuGet.
   - Począwszy od programu Visual Studio 2017, Instalator zawiera Menedżera pakietów NuGet z dowolnym obciążeniem, które wykorzystuje platformę .NET. Aby przeprowadzić instalację osobno lub sprawdzić, czy Menedżer pakietów jest zainstalowany, uruchom Instalatora programu Visual Studio i zaznacz opcję w obszarze **poszczególne składniki > narzędzia kodu > Menedżera pakietów NuGet**.
@@ -73,7 +73,7 @@ Instalacji
   - Polecenia konsoli Menedżera pakietów działają tylko w programie Visual Studio w systemie Windows i nie działają w innych środowiskach programu PowerShell.
   - W przypadku programu Visual Studio 2010 i starszych wersji Zainstaluj rozszerzenie "NuGet Package Manager for Visual Studio".
   - Rozszerzenia NuGet dla Visual Studio 2013 i 2015 można także pobrać z programu [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html).
-  - Jeśli chcesz przejrzeć nadchodzące funkcje NuGet, zainstaluj [program Visual studio 2017 Preview](https://www.visualstudio.com/vs/preview/), który działa obok siebie w stabilnych wersjach programu Visual Studio. Aby zgłosić problemy lub udostępnić pomysły dotyczące wersji zapoznawczych, Otwórz problem w [repozytorium GitHub programu NuGet](https://github.com/Nuget/Home/issues).
+  - Jeśli chcesz przejrzeć nadchodzące funkcje NuGet, zainstaluj [program Visual Studio Preview](https://www.visualstudio.com/vs/preview/), który działa obok siebie w stabilnych wersjach programu Visual Studio. Aby zgłosić problemy lub udostępnić pomysły dotyczące wersji zapoznawczych, Otwórz problem w [repozytorium GitHub programu NuGet](https://github.com/Nuget/Home/issues).
 
 ## <a name="feature-availability"></a>Dostępność funkcji
 
@@ -89,7 +89,7 @@ Instalacji
 | Utwórz pakiety (3) | &#10004; | &#10004; | &#10004;czwart | &#10004; | |
 | Publikowanie pakietów | &#10004; | &#10004; | &#10004; | &#10004; |  |
 | Replikuj pakiety |  | &#10004; | &#10004; | | |
-| Zarządzanie folderami *globalnymi* i pakietami pamięci podręcznej | &#10004; | &#10004; | &#10004; | | |
+| Zarządzanie folderami *globalnymi i pakietami* pamięci podręcznej | &#10004; | &#10004; | &#10004; | | |
 | Zarządzanie konfiguracją NuGet | | &#10004; | &#10004; | | |
 
 (1) nie ma wpływu na pliki projektu; Użyj `dotnet.exe` zamiast tego.

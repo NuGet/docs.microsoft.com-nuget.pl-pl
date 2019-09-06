@@ -1,57 +1,57 @@
 ---
 title: Dostawcy poświadczeń programu NuGet dla programu Visual Studio
-description: Dostawcy poświadczeń programu NuGet uwierzytelnianie za pomocą źródeł danych, implementując interfejs IVsCredentialProvider w rozszerzeniu Visual Studio.
+description: Dostawcy poświadczeń NuGet uwierzytelniają się ze źródłami, implementując interfejs IVsCredentialProvider w rozszerzeniu programu Visual Studio.
 author: karann-msft
 ms.author: karann
 ms.date: 01/09/2017
 ms.topic: conceptual
-ms.openlocfilehash: abe009fee5863c55a188f4d7c71ed0924dd067ff
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 4e781a2462871bceeb1c7f02220320daabdab98a
+ms.sourcegitcommit: a0807671386782021acb7588741390e6f07e94e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547957"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384430"
 ---
-# <a name="authenticating-feeds-in-visual-studio-with-nuget-credential-providers"></a>Uwierzytelnianie źródła danych w programie Visual Studio za pomocą dostawcy poświadczeń programu NuGet
+# <a name="authenticating-feeds-in-visual-studio-with-nuget-credential-providers"></a>Uwierzytelnianie kanałów informacyjnych w programie Visual Studio przy użyciu dostawców poświadczeń NuGet
 
-Visual Studio rozszerzenie NuGet 3.6 + obsługuje dostawcy poświadczeń, które umożliwiają NuGet do pracy z uwierzytelnionymi kanałami informacyjnymi.
-Po zainstalowaniu dostawcy poświadczeń NuGet dla programu Visual Studio, rozszerzenie NuGet w programie Visual Studio automatycznie uzyskać i odświeżyć poświadczenia na potrzeby uwierzytelnione kanały informacyjne zgodnie z potrzebami.
+Rozszerzenie programu NuGet Visual Studio w wersji 3.6 + obsługuje dostawców poświadczeń, co umożliwia NuGet współpracują z uwierzytelnionymi źródłami danych.
+Po zainstalowaniu dostawcy poświadczeń programu NuGet dla programu Visual Studio rozszerzenie NuGet programu Visual Studio będzie automatycznie pobierać i odświeżać poświadczenia dla uwierzytelnionych źródeł w razie potrzeby.
 
-Przykładową implementację można znaleźć w [przykładowe VsCredentialProvider](https://github.com/NuGet/Samples/tree/master/VsCredentialProvider).
+Przykładową implementację można znaleźć w [przykładowej VsCredentialProvider](https://github.com/NuGet/Samples/tree/master/VsCredentialProvider).
 
-Począwszy od 4.8 + NuGet w programie Visual Studio obsługuje nowe dla wielu platform uwierzytelniania wtyczki także, ale nie są zalecane podejście do ze względu na wydajność.
+Począwszy od 4.8 + NuGet w programie Visual Studio obsługuje również nowe wtyczki do uwierzytelniania międzyplatformowego, ale nie są to zalecane podejście ze względu na wydajność.
 
 > [!Note]
-> Dostawcy poświadczeń programu NuGet dla programu Visual Studio musi być zainstalowany jako regularne rozszerzenia programu Visual Studio i będzie wymagać [programu Visual Studio 2017](http://aka.ms/vs/15/release/vs_enterprise.exe) lub nowszej.
+> Dostawcy poświadczeń NuGet dla programu Visual Studio muszą być instalowani jako zwykłe rozszerzenie programu Visual Studio i wymagać [programu Visual studio 2017](http://aka.ms/vs/15/release/vs_enterprise.exe) lub nowszego.
 >
-> Dostawcy poświadczeń programu NuGet dla programu Visual Studio działa tylko w programie Visual Studio (nie w dotnet restore lub nuget.exe). Dostawcy poświadczeń przy użyciu nuget.exe, można zobaczyć [nuget.exe dostawcy poświadczeń](nuget-exe-Credential-providers.md).
-> Dla poświadczenia dostawcy w dotnet, jak i msbuild zobacz [NuGet cross platform wtyczek](nuget-cross-platform-authentication-plugin.md)
+> Dostawcy poświadczeń NuGet dla programu Visual Studio działają tylko w programie Visual Studio (nie w dotnet restore lub NuGet. exe). W przypadku dostawców poświadczeń z pakietem NuGet. exe zobacz [dostawcy poświadczeń NuGet. exe](nuget-exe-Credential-providers.md).
+> Dla dostawców poświadczeń w programie dotnet i MSBuild zobacz [wtyczki Międzyplatformowe NuGet](nuget-cross-platform-authentication-plugin.md)
 
-## <a name="available-nuget-credential-providers-for-visual-studio"></a>Dostępne dostawcy poświadczeń programu NuGet dla programu Visual Studio
+## <a name="available-nuget-credential-providers-for-visual-studio"></a>Dostępni dostawcy poświadczeń NuGet dla programu Visual Studio
 
-Brak dostawcy poświadczeń wbudowaną rozszerzenie NuGet usługi Visual Studio do obsługi programu Visual Studio Team Services.
+Istnieje Dostawca poświadczeń wbudowany w rozszerzenie NuGet programu Visual Studio w celu obsługi Visual Studio Team Services.
 
-NuGet rozszerzenia programu Visual Studio używa wewnętrznego `VsCredentialProviderImporter` który również skanuje w poszukiwaniu dostawcy poświadczeń wtyczki. Te dostawcy poświadczeń wtyczka musi być wykrywalne jako eksportu MEF typu `IVsCredentialProvider`.
+Rozszerzenie NuGet programu Visual Studio używa wewnętrznego `VsCredentialProviderImporter` , który również skanuje w poszukiwaniu dostawców poświadczeń wtyczki. Te dostawcy poświadczeń wtyczki muszą być wykrywalne jako MEF eksportu typu `IVsCredentialProvider`.
 
-Dostawcy poświadczeń wtyczki dostępne obejmują:
+Dostępne są następujące dostawcy poświadczeń wtyczek:
 
-- [MyGet Credential Provider for Visual Studio 2017](http://docs.myget.org/docs/reference/credential-provider-for-visual-studio)
+- [Dostawca poświadczeń MyGet dla programu Visual Studio](http://docs.myget.org/docs/reference/credential-provider-for-visual-studio)
 
 ## <a name="creating-a-nuget-credential-provider-for-visual-studio"></a>Tworzenie dostawcy poświadczeń NuGet dla programu Visual Studio
 
-Visual Studio rozszerzenie NuGet 3.6 + implementuje CredentialService wewnętrzny, który służy do uzyskania poświadczeń. CredentialService zawiera listę dostawców wbudowanych i wtyczka poświadczeń. Każdy dostawca zostanie podjęta próba sekwencyjnie aż drogą kupna poświadczeń.
+Pakiet NuGet Visual Studio Extension 3.6 + implementuje wewnętrzny CredentialService, który jest używany do pozyskiwania poświadczeń. CredentialService zawiera listę wbudowanych dostawców poświadczeń i wtyczek. Każdy dostawca jest wybierany sekwencyjnie, dopóki nie zostaną nabyte poświadczenia.
 
-Podczas pozyskiwanie poświadczeń usługa poświadczeń spróbuje użyć dostawcy poświadczeń w następującej kolejności, zatrzymywanie, tak szybko, jak poświadczenia są nabywane:
+Podczas pozyskiwania poświadczeń usługa Credential podejmie próbę dostawcy poświadczeń w następującej kolejności, zatrzymując się zaraz po pozyskaniu poświadczeń:
 
-1. Poświadczenia zostaną pobrane z plików konfiguracji NuGet (przy użyciu wbudowanych `SettingsCredentialProvider`).
-1. Jeśli źródło pakietu znajduje się w Visual Studio Team Services `VisualStudioAccountProvider` będą używane.
-1. Wszystkie inne wtyczki programu Visual Studio dostawcy poświadczeń, zostaną sprawdzone sekwencyjnie.
-1. Spróbuj użyć NuGet wszystkich cross platform dostawcy poświadczeń sekwencyjnie.
-1. Jeśli żadne poświadczenia nie pobrano jeszcze, użytkownik będzie monitowany o poświadczenia, za pomocą okna dialogowego standardowe uwierzytelnianie podstawowe.
+1. Poświadczenia będą pobierane z plików konfiguracji NuGet (przy użyciu wbudowanego `SettingsCredentialProvider`).
+1. Jeśli źródło pakietu znajduje się na Visual Studio Team Services, `VisualStudioAccountProvider` będzie używane.
+1. Wszystkie inne dostawcy poświadczeń programu Visual Studio są podejmowane sekwencyjnie.
+1. Spróbuj użyć wszystkich dostawców poświadczeń wielu platform NuGet sekwencyjnie.
+1. Jeśli nie pobrano jeszcze poświadczeń, użytkownik zostanie poproszony o podanie poświadczeń przy użyciu standardowego okna dialogowego uwierzytelniania podstawowego.
 
 ### <a name="implementing-ivscredentialprovidergetcredentialsasync"></a>Implementing IVsCredentialProvider.GetCredentialsAsync
 
-Dostawcy poświadczeń NuGet dla programu Visual Studio, utworzyć rozszerzenia programu Visual Studio uwidocznionego przez publiczny eksportu MEF Implementowanie `IVsCredentialProvider` wpisz i działa zgodnie z zasadami przedstawionymi poniżej.
+Aby utworzyć dostawcę poświadczeń NuGet dla programu Visual Studio, Utwórz rozszerzenie programu Visual Studio, które ujawnia publiczny eksport MEF, który `IVsCredentialProvider` implementuje typ, i zgodnie z zasadami opisanymi poniżej.
 
 ```cs
 public interface IVsCredentialProvider
@@ -66,24 +66,24 @@ public interface IVsCredentialProvider
 }
 ```
 
-Przykładową implementację można znaleźć w [przykładowe VsCredentialProvider](https://github.com/NuGet/Samples/tree/master/VsCredentialProvider).
+Przykładową implementację można znaleźć w [przykładowej VsCredentialProvider](https://github.com/NuGet/Samples/tree/master/VsCredentialProvider).
 
 Każdy dostawca poświadczeń NuGet dla programu Visual Studio musi:
 
-1. Ustal, czy jego Podaj poświadczenia dla docelowego identyfikatora URI, przed zainicjowaniem pozyskiwanie poświadczeń. Jeśli dostawca nie można podać poświadczenia dla źródła docelowych, a następnie powinien zostać zwrócony `null`.
-1. Jeśli dostawca obsługi żądań dla docelowego identyfikatora URI, ale nie można podać poświadczenia, należy zgłosić wyjątek.
+1. Przed zainicjowaniem pozyskiwania poświadczeń należy określić, czy może podać poświadczenia dla danego identyfikatora URI. Jeśli dostawca nie może dostarczyć poświadczeń dla źródłowego źródła, powinien zwrócić `null`.
+1. Jeśli dostawca obsługuje żądania dla danego identyfikatora URI, ale nie może dostarczyć poświadczeń, należy zgłaszać wyjątek.
 
-Niestandardowego dostawcy poświadczeń NuGet dla programu Visual Studio musi implementować `IVsCredentialProvider` dostępne w interfejsie [pakietu NuGet.VisualStudio](https://www.nuget.org/packages/NuGet.VisualStudio/).
+Niestandardowy dostawca poświadczeń NuGet dla programu Visual Studio musi implementować `IVsCredentialProvider` interfejs dostępny w [pakiecie NuGet. VisualStudio](https://www.nuget.org/packages/NuGet.VisualStudio/).
 
 #### <a name="getcredentialasync"></a>GetCredentialAsync
 
 | Parametr wejściowy |Opis|
 | ----------------|-----------|
-| Identyfikator uri identyfikatora URI | Pakiet źródło identyfikator Uri, dla którego wnioskuje się o poświadczenia.|
-| Serwer proxy IWebProxy | Serwer proxy sieci Web do użycia przy komunikacji w sieci. Wartość null, jeśli uwierzytelnianie nie jest serwer proxy skonfigurowane. |
-| bool isProxyRequest | Wartość true, jeśli żądanie jest uzyskanie poświadczeń uwierzytelniania serwera proxy. Jeśli wdrożenia jest nieprawidłowa dla pobierania poświadczeń serwera proxy, powinna zostać zwrócona wartość null. |
-| bool isRetry | Wartość true, jeśli poświadczenia zostały wcześniej zażądany dla tego identyfikatora Uri, ale podane poświadczenia nie zezwala na dostęp do autoryzowanych. |
-| wartość logiczna nieinterakcyjnym | W przypadku opcji true Dostawca poświadczeń należy pominąć wszystkie monity użytkownika i zamiast tego użyj wartości domyślnych. |
-| CancellationToken token anulowania | Ten token anulowania powinny być sprawdzane w celu ustalenia, jeśli poświadczenia żądania operacja została anulowana. |
+| Identyfikator URI identyfikatora URI | Identyfikator URI źródła pakietu, dla którego są wymagane poświadczenia.|
+| IWebProxy serwer proxy | Serwer proxy sieci Web, który ma być używany podczas komunikacji w sieci. Wartość null, jeśli nie skonfigurowano uwierzytelniania serwera proxy. |
+| isProxyRequest bool | Ma wartość true, jeśli to żądanie służy do uzyskiwania poświadczeń uwierzytelniania serwera proxy. Jeśli implementacja nie jest prawidłowa do uzyskiwania poświadczeń serwera proxy, należy zwrócić wartość null. |
+| isretry bool | Prawda, jeśli dla tego identyfikatora URI zażądano wcześniej poświadczeń, ale podane poświadczenia nie zezwalają na autoryzowany dostęp. |
+| bool nieinteraktywny | W przypadku opcji true Dostawca poświadczeń musi pominąć wszystkie monity użytkownika i zamiast tego użyć wartości domyślnych. |
+| CancellationToken cancellationToken | Ten token anulowania powinien zostać sprawdzony w celu ustalenia, czy operacja żądająca poświadczeń została anulowana. |
 
-**Wartość zwracana**: Implementowanie obiekt poświadczeń [ `System.Net.ICredentials` interfejsu](/dotnet/api/system.net.icredentials?view=netstandard-2.0).
+**Wartość zwracana**: Obiekt poświadczeń implementujący [ `System.Net.ICredentials` interfejs](/dotnet/api/system.net.icredentials?view=netstandard-2.0).

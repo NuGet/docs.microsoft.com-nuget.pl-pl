@@ -5,23 +5,23 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/13/2018
 ms.topic: quickstart
-ms.openlocfilehash: 7bfe041c01114ac61e811497ecc31ebfdad45029
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: 40e240478918d327fbea0013bbf271ea2ee1fc47
+ms.sourcegitcommit: a0807671386782021acb7588741390e6f07e94e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488899"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384496"
 ---
 # <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
 
 Tworzenie pakietu NuGet z biblioteki klas .NET Framework obejmuje tworzenie biblioteki DLL w programie Visual Studio w systemie Windows, a następnie użycie narzędzia wiersza polecenia NuGet. exe do utworzenia i opublikowania pakietu.
 
 > [!Note]
-> Ten przewodnik Szybki Start dotyczy tylko programu Visual Studio 2017 dla systemu Windows. Visual Studio dla komputerów Mac nie obejmuje funkcji opisanych w tym miejscu. Zamiast tego użyj [narzędzi interfejsu wiersza polecenia dotnet](create-and-publish-a-package-using-the-dotnet-cli.md) .
+> Ten przewodnik Szybki Start dotyczy tylko programu Visual Studio 2017 i nowszych wersji dla systemu Windows. Visual Studio dla komputerów Mac nie obejmuje funkcji opisanych w tym miejscu. Zamiast tego użyj [narzędzi interfejsu wiersza polecenia dotnet](create-and-publish-a-package-using-the-dotnet-cli.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Zainstaluj dowolną wersję programu Visual Studio 2017 z [VisualStudio.com](https://www.visualstudio.com/) z dowolnym. Obciążenie związane z usługą SIECIową. Program Visual Studio 2017 automatycznie zawiera funkcje NuGet podczas instalacji obciążenia .NET.
+1. Zainstaluj dowolną wersję programu Visual Studio 2017 lub nowszą z [VisualStudio.com](https://www.visualstudio.com/) . Obciążenie związane z usługą SIECIową. Program Visual Studio 2017 automatycznie zawiera funkcje NuGet podczas instalacji obciążenia .NET.
 
 1. Zainstaluj interfejs wiersza polecenia, pobierając go z [NuGet.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisując `.exe` ten plik w odpowiednim folderze i dodając go do zmiennej środowiskowej PATH. `nuget.exe`
 
@@ -76,7 +76,7 @@ Pakiet NuGet zawiera manifest ( `.nuspec` plik), który zawiera odpowiednie meta
 
 1. Opcjonalne: Aby wyświetlić i edytować właściwości bezpośrednio, Otwórz `Properties/AssemblyInfo.cs` plik w projekcie.
 
-1. Po ustawieniu właściwości ustaw konfigurację projektu na Zwolnij i skompiluj ponownie projekt w celu wygenerowania zaktualizowanej biblioteki DLL.
+1. Po ustawieniu właściwości ustaw konfigurację projektu na **Zwolnij** i Skompiluj ponownie projekt w celu wygenerowania zaktualizowanej biblioteki DLL.
 
 ## <a name="generate-the-initial-manifest"></a>Generuj początkowy manifest
 
