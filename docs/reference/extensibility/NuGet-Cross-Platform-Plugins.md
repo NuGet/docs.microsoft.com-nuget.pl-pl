@@ -1,87 +1,89 @@
 ---
-title: NuGet cross platform wtyczek
-description: NuGet cross platform wtyczek NuGet.exe, dotnet.exe, msbuild.exe i programu Visual Studio
+title: Wtyczki Międzyplatformowe NuGet
+description: Dodatki Międzyplatformowe NuGet dla NuGet. exe, dotnet. exe, MSBuild. exe i Visual Studio
 author: nkolev92
 ms.author: nikolev
 ms.date: 07/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: fdefc5b6189051fd83b2de644080284c09dd85f4
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 74b80b1791dcb403c90bb3032c009717c11ffe57
+ms.sourcegitcommit: 5a741f025e816b684ffe44a81ef7d3fbd2800039
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548209"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815304"
 ---
-# <a name="nuget-cross-platform-plugins"></a>NuGet cross platform wtyczek
+# <a name="nuget-cross-platform-plugins"></a>Wtyczki Międzyplatformowe NuGet
 
-W pakiecie NuGet 4.8 + została dodana obsługa wielu platform, wtyczki.
-Osiągnięto to dzięki przez utworzenie nowego modelu rozszerzalności wtyczki, który ma być zgodna z ograniczeniami zestawu reguł działania.
-Wtyczki są niezależne pliki wykonywalne (runnables w środowisku .NET Core), które klienci programu NuGet, uruchom w oddzielnym procesie.
-Jest to wartość true, zapis raz uruchomić wszędzie, gdzie dodatku typu plug-in. Będzie ona współdziałać z wszystkich narzędzi klienta programu NuGet.
-Wtyczki można .NET Framework (NuGet.exe, MSBuild.exe i programu Visual Studio) lub .NET Core (dotnet.exe).
-Protokół komunikacyjny numerów wersji między klientem NuGet i wtyczka jest zdefiniowana. Podczas uzgadniania uruchamiania 2 procesy negocjowania protokołu wersji.
+W NuGet 4.8 + Obsługa wtyczek międzyplatformowych została dodana.
+Osiągnięto to przez utworzenie nowego modelu rozszerzalności wtyczki, który musi być zgodny z rygorystycznym zestawem reguł operacji.
+Wtyczki to samodzielne pliki wykonywalne (runnables w środowisku .NET Core), które klienci NuGet uruchamiają w osobnym procesie.
+Jest to jednokrotne zapis, uruchom wszędzie. Będzie on działał ze wszystkimi narzędziami klienta NuGet.
+Wtyczki mogą być albo .NET Framework (NuGet. exe, MSBuild. exe i Visual Studio) lub .NET Core (dotnet. exe).
+Jest zdefiniowany protokół komunikacji z wersjami między klientem NuGet a wtyczką. Podczas uzgadniania uruchamiania, 2 procesy negocjują wersję protokołu.
 
-Aby uwzględnić wszystkie scenariusze narzędzia klienta NuGet, należałoby jednej wtyczki platformy .NET Core i .NET Framework.
-Poniżej przedstawiono kombinacje klienta/framework wtyczki.
+Aby uwzględnić wszystkie scenariusze narzędzi klienta NuGet, trzeba mieć zarówno .NET Framework, jak i wtyczkę .NET Core.
+Poniżej opisano kombinacje klienta/struktury wtyczek.
 
 | Narzędzie klienta  | Framework |
 | ------------ | --------- |
 | Visual Studio | .NET Framework |
-| DotNet.exe | .NET Core |
-| NuGet.exe | .NET Framework |
-| MSBuild.exe | .NET Framework |
-| NuGet.exe na platformy Mono | .NET Framework |
+| dotnet.exe | .NET Core |
+| NuGet. exe | .NET Framework |
+| MSBuild. exe | .NET Framework |
+| NuGet. exe na mono | .NET Framework |
 
 ## <a name="how-does-it-work"></a>Jak to działa
 
-Przepływ pracy wysokiego poziomu, można przedstawić w następujący sposób:
+Przepływ pracy wysokiego poziomu można opisać w następujący sposób:
 
-1. NuGet odnajduje dostępne dodatki.
-1. Jeśli ma to zastosowanie, NuGet, będzie ona przechodzić przez wtyczki w kolejności priorytetu i uruchamia je jeden po drugim.
-1. NuGet użyje pierwszego wtyczkę, która może obsłużyć żądania.
-1. Wtyczki zostanie zamknięty, gdy nie są już potrzebne.
+1. Pakiet NuGet odnajduje dostępne wtyczki.
+1. Jeśli ma to zastosowanie, pakiet NuGet przejdzie iterację na wtyczkach w kolejności priorytetu i uruchomi je po jednym.
+1. Pakiet NuGet użyje pierwszej wtyczki, która może obsłużyć żądanie.
+1. Wtyczki zostaną wyłączone, gdy nie będą już potrzebne.
 
-## <a name="general-plugin-requirements"></a>Wymagania ogólne wtyczki
+## <a name="general-plugin-requirements"></a>Ogólne wymagania wtyczki
 
-Bieżąca wersja protokołu jest *2.0.0*.
+Bieżąca wersja protokołu to *2.0.0*.
 W tej wersji wymagania są następujące:
 
-- Należy mieć prawidłowy i zaufanej Authenticode podpisu zestawów, które będzie działać w Windows i platformy Mono. Nie jest wymagane specjalne zaufania dla zestawów w systemie Linux i Mac jeszcze uruchomione. [Odpowiednie problem](https://github.com/NuGet/Home/issues/6702)
-- Obsługa bezstanowych, uruchamiania w kontekście zabezpieczeń bieżącego narzędzia klienta programu NuGet. Na przykład narzędzia klienta programu NuGet nie będzie wykonywać podniesienia uprawnień lub dodatkowe inicjowania poza protokołu wtyczki opisanym w dalszej części.
-- Być nieinterakcyjny, chyba że jawnie określony.
-- Być zgodne z wersji protokołu wynegocjowanym wtyczki.
-- Odpowiedz na wszystkie żądania w rozsądnym czasie.
-- Honorować anulowania żądania dla każdej operacji w toku.
+- Mają prawidłowy zestaw zaufanych podpisów Authenticode, które będą uruchamiane w systemie Windows i mono. Nie ma jeszcze specjalnych wymagań zaufania dla zestawów uruchomionych w systemach Linux i Mac. [Istotny problem](https://github.com/NuGet/Home/issues/6702)
+- Obsługa bezstanowego uruchamiania w ramach bieżącego kontekstu zabezpieczeń narzędzi klienckich programu NuGet. Na przykład narzędzia klienta NuGet nie będą wykonywały podniesienia uprawnień ani dodatkowego inicjowania poza protokołem wtyczki opisanym w dalszej części.
+- Nie jest interaktywny, chyba że zostanie jawnie określony.
+- Zgodność z wynegocjowaną wersją protokołu wtyczki.
+- Odpowiadanie na wszystkie żądania w rozsądnym czasie.
+- Honorować żądania anulowania dla każdej operacji w toku.
 
-Specyfikacja techniczna jest opisany bardziej szczegółowo w specyfikacji następujące:
+Specyfikacja techniczna została szczegółowo opisana w następujących kwestiach:
 
 - [Wtyczka pobierania pakietu NuGet](https://github.com/NuGet/Home/wiki/NuGet-Package-Download-Plugin)
-- [NuGet krzyżowe wtyczki uwierzytelniania plat](https://github.com/NuGet/Home/wiki/NuGet-cross-plat-authentication-plugin)
+- [Wtyczka do uwierzytelniania między płytkami NuGet](https://github.com/NuGet/Home/wiki/NuGet-cross-plat-authentication-plugin)
 
-## <a name="client---plugin-interaction"></a>Klient — interakcji wtyczki
+## <a name="client---plugin-interaction"></a>Interakcja klienta — wtyczka
 
-Narzędzia klienta programu NuGet i wtyczki komunikują się z JSON za pośrednictwem standardowych strumieni (stdin, stdout, stderr). Wszystkie dane muszą być zakodowane w formacie UTF-8.
-Wtyczki są uruchamiane z argumentem "-wtyczki". W przypadku, gdy użytkownik uruchamia bezpośrednio pliku wykonywalnego bez tego argumentu wtyczki, wtyczka może dać komunikat informacyjny, zamiast czekać na uzgadnianie protokołu.
-Upłynął limit czasu protokołu uzgadniania to 5 sekund. Wtyczka powinno zająć instalacji w jako ograniczony ilości, jak to możliwe.
-Narzędzia klienta programu NuGet zapytanie obsługiwane operacje wtyczki, przekazując w indeksie usługi dla źródła pakietów NuGet. Wtyczki mogą używać indeksu usługi pod kątem obecności obsługiwanych typów usług.
+Narzędzia klienta i wtyczki programu NuGet komunikują się z notacją JSON przez strumienie standardowe (stdin, stdout, stderr). Wszystkie dane muszą być kodowane w formacie UTF-8.
+Wtyczki są uruchamiane z argumentem "-plugin". W przypadku, gdy użytkownik bezpośrednio uruchamia plik wykonywalny wtyczki bez tego argumentu, wtyczka może dać komunikat informacyjny, a nie oczekuje na uzgadnianie protokołu.
+Limit czasu uzgadniania protokołu wynosi 5 sekund. Wtyczka powinna zakończyć instalację tak jak najkrótszej ilości, jak to możliwe.
+Narzędzia klienta NuGet będą badać obsługiwane operacje wtyczki, przekazując indeks usługi dla źródła NuGet. Wtyczka może użyć indeksu usługi, aby sprawdzić obecność obsługiwanych typów usług.
 
-Komunikacja między narzędzia klienta programu NuGet i wtyczka jest dwukierunkowy. Każde żądanie ma limit czasu równy 5 sekund. Jeśli operacje są powinien trwać dłużej odpowiedniego procesu powinien wysłać komunikat o postępie, aby uniemożliwić żądania z przekroczeniem limitu czasu. Po 1 min braku wtyczkę uznaje się bezczynności i jest wyłączony.
+Komunikacja między narzędziami klienta NuGet a wtyczką jest dwukierunkowa. Każde żądanie ma limit czasu wynoszący 5 sekund. Jeśli operacje mają trwać dłużej, proces powinien wysłać komunikat o postępie, aby zapobiec przekroczeniu limitu czasu żądania. Po 1 minucie braku aktywności wtyczka jest uważana za bezczynną i jest zamykana.
 
-## <a name="plugin-installation-and-discovery"></a>Instalowanie wtyczki i odnajdywania
+## <a name="plugin-installation-and-discovery"></a>Instalowanie i odnajdywanie wtyczki
 
-Wtyczki zostaną odnalezione za pośrednictwem struktury katalogów oparte na Konwencji.
-Scenariusze ciągłej integracji/ciągłego Dostarczania i użytkownicy zaawansowani, można użyć zmiennej środowiskowej zastąpić zachowanie.
+Wtyczki zostaną odnalezione za pośrednictwem struktury katalogów na podstawie Konwencji.
+Scenariusze ciągłej integracji/ciągłego wdrażania i Użytkownicy zaawansowani mogą używać zmiennych środowiskowych, aby przesłonić zachowanie. Należy pamiętać `NUGET_NETFX_PLUGIN_PATHS` , `NUGET_NETCORE_PLUGIN_PATHS` że i są dostępne tylko w przypadku używania 5.3 + wersji narzędzi NuGet i nowszych.
 
-- `NUGET_PLUGIN_PATHS` -Definiuje wtyczki, który będzie używany dla tego procesu NuGet priorytet zastrzeżone. Jeśli ustawiono tę zmienną środowiskową, zastępuje ona odnajdywanie oparte na Konwencji.
--  Lokalizacja użytkownika, lokalizacji głównej NuGet w `%UserProfile%/.nuget/plugins`. Ta lokalizacja nie może zostać zastąpiony. Katalog główny różnych będzie używany dla wtyczek platformy .NET Core i .NET Framework.
+- `NUGET_NETFX_PLUGIN_PATHS`-definiuje wtyczki, które będą używane przez narzędzia oparte na .NET Framework (NuGet. exe/MSBuild. exe/Visual Studio). Ma pierwszeństwo `NUGET_PLUGIN_PATHS`przed. (Tylko wersja 5.3 programu NuGet)
+- `NUGET_NETCORE_PLUGIN_PATHS`-definiuje wtyczki, które będą używane przez narzędzia oparte na oprogramowaniu .NET Core (dotnet. exe). Ma pierwszeństwo `NUGET_PLUGIN_PATHS`przed. (Tylko wersja 5.3 programu NuGet)
+- `NUGET_PLUGIN_PATHS`-definiuje wtyczki, które będą używane dla tego procesu NuGet, czyli priorytet zarezerwowane. Jeśli ta zmienna środowiskowa jest ustawiona, zastępuje ona metodę odnajdywania opartą na Konwencji. Ignorowany, jeśli określono jedną z zmiennych określonych dla struktury.
+-  Lokalizacja użytkownika, lokalizacja główna narzędzia NuGet w programie `%UserProfile%/.nuget/plugins`. Ta lokalizacja nie może być przesłonięta. Dla wtyczek platformy .NET Core i .NET Framework zostanie użyty inny katalog główny.
 
-| Framework | Lokalizacja odnajdywania główna  |
+| Framework | Główna lokalizacja odnajdowania  |
 | ------- | ------------------------ |
 | .NET Core |  `%UserProfile%/.nuget/plugins/netcore` |
 | .NET Framework | `%UserProfile%/.nuget/plugins/netfx` |
 
-Każdy dodatek typu plug-in powinien być zainstalowany w jego własnym folderze.
-Punkt wejścia wtyczki będzie Nazwa zainstalowanego folderu, z rozszerzeniem dll dla platformy .NET Core i rozszerzenie .exe na platformie .NET.
+Każda wtyczka powinna być zainstalowana we własnym folderze.
+Punkt wejścia wtyczki będzie nazwą zainstalowanego folderu z rozszerzeniami dll dla programu .NET Core i rozszerzeniem exe dla .NET Framework.
 
 ```
 .nuget
@@ -99,202 +101,202 @@ Punkt wejścia wtyczki będzie Nazwa zainstalowanego folderu, z rozszerzeniem dl
 ```
 
 > [!Note]
-> Obecnie jest nie scenariusza użytkownika do zainstalowania wtyczki. Jest tak proste, jak przenoszenie wymaganych plików do określonej lokalizacji.
+> Obecnie nie ma żadnego scenariusza użytkownika dla instalacji wtyczek. Jest to proste przeniesienie wymaganych plików do wstępnie wskazanej lokalizacji.
 
 ## <a name="supported-operations"></a>Obsługiwane operacje
 
-Dwie operacje są obsługiwane w ramach nowego protokołu wtyczki.
+W ramach nowego protokołu wtyczki są obsługiwane dwie operacje.
 
-| Nazwa operacji | Wersja minimalna protokołu | Minimalna wersja klienta NuGet |
+| Nazwa operacji | Minimalna wersja protokołu | Minimalna wersja klienta NuGet |
 | -------------- | ----------------------- | --------------------- |
 | Pobierz pakiet | 1.0.0 | 4.3.0 |
 | [Uwierzytelnianie](NuGet-Cross-Platform-Authentication-Plugin.md) | 2.0.0 | 4.8.0 |
 
-## <a name="running-plugins-under-the-correct-runtime"></a>Uruchamiania wtyczek w obszarze poprawne środowiska uruchomieniowego
+## <a name="running-plugins-under-the-correct-runtime"></a>Uruchamianie wtyczek w prawidłowym środowisku uruchomieniowym
 
-Dla pakietu NuGet w scenariuszach dotnet.exe wtyczek muszą być możliwe do wykonania w ramach tego określonego środowiska uruchomieniowego programu dotnet.exe.
-Jest ona włączona dostawca wtyczki i konsumentów, upewnij się, że jest używana kombinacja dotnet.exe/plugin zgodny.
-Potencjalny problem może wystąpić z wtyczek lokalizacji użytkownika, gdy na przykład, dotnet.exe w obszarze 2.0 środowiska uruchomieniowego próbuje użyć wtyczki, przeznaczony dla środowiska uruchomieniowego 2.1.
+W przypadku pakietu NuGet w scenariuszach programu dotnet. exe wtyczki muszą być w stanie wykonać w tym konkretnym czasie wykonywania programu dotnet. exe.
+Jest on dostawcą wtyczki i konsumentem, aby upewnić się, że jest używana kombinacja dotnet. exe/wtyczka.
+Potencjalny problem może wystąpić w przypadku wtyczek do lokalizacji użytkownika, gdy na przykład program dotnet. exe w środowisku uruchomieniowym 2,0 próbuje użyć wtyczki zarejestrowanej dla środowiska uruchomieniowego 2,1.
 
-## <a name="capabilities-caching"></a>Funkcje pamięci podręcznej
+## <a name="capabilities-caching"></a>Buforowanie możliwości
 
-Weryfikacja zabezpieczeń i wystąpienia wtyczki jest kosztowne. Operacja pobierania odbywa się sposób częściej niż operację uwierzytelniania, jednak średni użytkownik NuGet jest tylko może mieć wtyczki uwierzytelniania.
-Aby ulepszyć środowisko pracy, NuGet będzie buforować oświadczeń operacji dla danego żądania. Ta pamięć podręczna odbywa się dla wtyczki za pomocą klucza wtyczka jest ścieżka wtyczki, a czas wygaśnięcia pamięci podręcznej tej możliwości wynosi 30 dni. 
+Weryfikacja zabezpieczeń i Tworzenie wystąpień wtyczek jest kosztowne. Operacja pobierania odbywa się częściej niż operacja uwierzytelniania, jednak średni użytkownik programu NuGet może mieć tylko wtyczkę uwierzytelniania.
+Aby ulepszyć środowisko, pakiet NuGet będzie buforować oświadczenia operacji dla danego żądania. Ta pamięć podręczna jest na wtyczkę z kluczem wtyczki w ścieżce wtyczki, a okres ważności tej pamięci podręcznej to 30 dni. 
 
-Pamięć podręczna znajduje się w `%LocalAppData%/NuGet/plugins-cache` i zostać zastąpiona przez zmienną środowiskową `NUGET_PLUGINS_CACHE_PATH`. Aby wyczyścić to [pamięci podręcznej](../../consume-packages/managing-the-global-packages-and-cache-folders.md), jedno uruchomienie, aby zmienne polecenia `plugins-cache` opcji.
-`all` Opcja lokalne teraz spowoduje również usunięcie pamięci podręcznej wtyczek. 
+Pamięć podręczna znajduje się `%LocalAppData%/NuGet/plugins-cache` w i przesłonięta ze zmienną `NUGET_PLUGINS_CACHE_PATH`środowiskową. Aby wyczyścić tę [pamięć podręczną](../../consume-packages/managing-the-global-packages-and-cache-folders.md), jeden może uruchomić polecenie Locals z `plugins-cache` opcją.
+Opcja `all` ustawienia lokalne spowoduje teraz również usunięcie pamięci podręcznej dodatków. 
 
-## <a name="protocol-messages-index"></a>Indeks komunikaty protokołu
+## <a name="protocol-messages-index"></a>Indeks komunikatów protokołu
 
-Wersja protokołu *1.0.0* wiadomości:
+Komunikaty o wersji protokołu *1.0.0* :
 
 1.  Zamknięcie
-    * Żądanie kierunek: NuGet -> Wtyczki
-    * Żądanie zawiera ładunek
-    * Brak odpowiedzi jest oczekiwany.  Właściwej odpowiedzi jest niezwłocznie zakończyć działanie procesu wtyczki.
+    * Kierunek żądania:  Wtyczka > NuGet
+    * Żądanie nie będzie zawierać ładunku
+    * Nie oczekiwano odpowiedzi.  Właściwa odpowiedź dotyczy procesu wtyczki, aby zakończyć pracę.
 
-2.  Skopiuj pliki w pakiecie
-    * Żądanie kierunek: NuGet -> Wtyczki
+2.  Kopiuj pliki w pakiecie
+    * Kierunek żądania:  Wtyczka > NuGet
     * Żądanie będzie zawierać:
-        * Identyfikator pakietu i wersję
-        * repozytorium lokalizacji źródłowej pakietu
-        * Ścieżka katalogu docelowego
-        * Element wyliczalny z plików w pakiecie, który ma być kopiowana ścieżkę katalogu docelowego
+        * Identyfikator i wersja pakietu
+        * Lokalizacja repozytorium źródłowego pakietu
+        * ścieżka katalogu docelowego
+        * wyliczalne pliki w pakiecie do skopiowania do ścieżki katalogu docelowego
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
-        * Element wyliczalny z pełnej ścieżki do kopiowanych plików w katalogu docelowym, jeśli operacja zakończyła się pomyślnie
+        * kod odpowiedzi wskazujący wynik operacji
+        * wyliczalne pełne ścieżki dla skopiowanych plików w katalogu docelowym, jeśli operacja zakończyła się pomyślnie
 
-3.  Skopiuj plik pakietu (.nupkg)
-    * Żądanie kierunek: NuGet -> Wtyczki
+3.  Kopiuj plik pakietu (. nupkg)
+    * Kierunek żądania:  Wtyczka > NuGet
     * Żądanie będzie zawierać:
-        * Identyfikator pakietu i wersję
-        * repozytorium lokalizacji źródłowej pakietu
-        * Ścieżka pliku docelowego
+        * Identyfikator i wersja pakietu
+        * Lokalizacja repozytorium źródłowego pakietu
+        * ścieżka pliku docelowego
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
+        * kod odpowiedzi wskazujący wynik operacji
 
-4.  Uzyskiwanie poświadczeń
-    * Żądanie kierunek: wtyczka -> NuGet
+4.  Pobierz poświadczenia
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
-        * repozytorium lokalizacji źródłowej pakietu
-        * Kod stanu HTTP, które są uzyskiwane z repozytorium źródłowym pakietu przy użyciu bieżących poświadczeń
+        * Lokalizacja repozytorium źródłowego pakietu
+        * kod stanu HTTP uzyskany z repozytorium źródłowego pakietu przy użyciu bieżących poświadczeń
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
-        * Nazwa użytkownika, jeśli jest dostępny
-        * hasło, jeśli jest dostępny
+        * kod odpowiedzi wskazujący wynik operacji
+        * Nazwa użytkownika, jeśli jest dostępna
+        * hasło, jeśli jest dostępne
 
 5.  Pobierz pliki w pakiecie
-    * Żądanie kierunek: NuGet -> Wtyczki
+    * Kierunek żądania:  Wtyczka > NuGet
     * Żądanie będzie zawierać:
-        * Identyfikator pakietu i wersję
-        * repozytorium lokalizacji źródłowej pakietu
+        * Identyfikator i wersja pakietu
+        * Lokalizacja repozytorium źródłowego pakietu
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
-        * Element wyliczalny z ścieżki plików w pakiecie, jeśli operacja zakończyła się pomyślnie
+        * kod odpowiedzi wskazujący wynik operacji
+        * wyliczalne ścieżki plików w pakiecie, jeśli operacja zakończyła się pomyślnie
 
-6.  Rozpoczynanie operacji oświadczeń 
-    * Żądanie kierunek: NuGet -> Wtyczki
+6.  Pobierz oświadczenia operacji 
+    * Kierunek żądania:  Wtyczka > NuGet
     * Żądanie będzie zawierać:
-        * index.json usługi dla źródła pakietów
-        * repozytorium lokalizacji źródłowej pakietu
+        * Usługa index. JSON dla źródła pakietu
+        * Lokalizacja repozytorium źródłowego pakietu
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
-        * Element wyliczalny z obsługiwanych operacji (np.: Pobieranie pakietu) Jeśli operacja zakończyła się pomyślnie.  Jeśli wtyczka nie obsługuje źródło pakietów, wtyczka musi zwracać pusty zestaw obsługiwanych operacji.
+        * kod odpowiedzi wskazujący wynik operacji
+        * wyliczalne obsługiwane operacje (np.: Pobieranie pakietu), jeśli operacja zakończyła się pomyślnie.  Jeśli wtyczka nie obsługuje źródła pakietu, wtyczka musi zwrócić pusty zestaw obsługiwanych operacji.
 
 > [!Note]
-> Ten komunikat został zaktualizowany w wersji *2.0.0*. Jest na komputerze klienckim w celu zachowania zgodności z poprzednimi wersjami.
+> Ten komunikat został zaktualizowany w wersji *2.0.0*. Klient zachowuje zgodność z poprzednimi wersjami.
 
 7.  Pobierz skrót pakietu
-    * Żądanie kierunek: NuGet -> Wtyczki
+    * Kierunek żądania:  Wtyczka > NuGet
     * Żądanie będzie zawierać:
-        * Identyfikator pakietu i wersję
-        * repozytorium lokalizacji źródłowej pakietu
-        * Algorytm wyznaczania wartości skrótu
+        * Identyfikator i wersja pakietu
+        * Lokalizacja repozytorium źródłowego pakietu
+        * algorytm wyznaczania wartości skrótu
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
-        * Skrót pliku pakietu, przy użyciu algorytmu mieszania żądanego, jeśli operacja zakończyła się pomyślnie
+        * kod odpowiedzi wskazujący wynik operacji
+        * skrót pliku pakietu przy użyciu żądanego algorytmu wyznaczania wartości skrótu, jeśli operacja zakończyła się pomyślnie
 
-8.  Pobieranie wersji pakietu
-    * Żądanie kierunek: NuGet -> Wtyczki
+8.  Pobierz wersje pakietu
+    * Kierunek żądania:  Wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Identyfikator pakietu
-        * repozytorium lokalizacji źródłowej pakietu
+        * Lokalizacja repozytorium źródłowego pakietu
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
-        * Element wyliczalny z wersji pakietu, jeśli operacja zakończyła się pomyślnie
+        * kod odpowiedzi wskazujący wynik operacji
+        * wyliczalne wersje pakietów, jeśli operacja zakończyła się pomyślnie
 
-9.  Pobierz indeks usług
-    * Żądanie kierunek: wtyczka -> NuGet
+9.  Pobierz indeks usługi
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
-        * repozytorium lokalizacji źródłowej pakietu
+        * Lokalizacja repozytorium źródłowego pakietu
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
-        * Indeks usług, jeśli operacja zakończyła się pomyślnie
+        * kod odpowiedzi wskazujący wynik operacji
+        * indeks usługi, jeśli operacja zakończyła się pomyślnie
 
-10.  Uzgadnianie
-     * Żądanie kierunek: wtyczka NuGet <> —
+10.  Uzgadniania
+     * Kierunek żądania:  < NuGet — wtyczka >
      * Żądanie będzie zawierać:
          * Bieżąca wersja protokołu wtyczki
          * Minimalna obsługiwana wersja protokołu wtyczki
      * Odpowiedź będzie zawierać:
-         * Kod odpowiedzi, wskazując wynik operacji
-         * Wersja wynegocjowanym protokołem, jeśli operacja zakończyła się pomyślnie.  Błąd spowoduje zakończenie wtyczki.
+         * kod odpowiedzi wskazujący wynik operacji
+         * wynegocjowana wersja protokołu, jeśli operacja zakończyła się pomyślnie.  Niepowodzenie spowoduje zakończenie wtyczki.
 
-11.  Inicjowanie
-     * Żądanie kierunek: NuGet -> Wtyczki
+11.  Initialize
+     * Kierunek żądania:  Wtyczka > NuGet
      * Żądanie będzie zawierać:
-         * wersja narzędzia NuGet klienta
-         * NuGet narzędzia skuteczne języku klienta.  Trwa to pod uwagę ustawienie ForceEnglishOutput, jeśli używany.
-         * Domyślny limit czasu żądania, która zastępuje domyślną protokołu.
+         * wersja narzędzia klienta NuGet
+         * efektywny język narzędzia klienckiego NuGet.  Uwzględnia to ustawienie ForceEnglishOutput, jeśli jest używane.
+         * domyślny limit czasu żądania, który zastępuje domyślny protokół.
      * Odpowiedź będzie zawierać:
-         * Kod odpowiedzi, wskazując wynik operacji.  Błąd spowoduje zakończenie wtyczki.
+         * kod odpowiedzi wskazujący wynik operacji.  Niepowodzenie spowoduje zakończenie wtyczki.
 
 12.  Log
-     * Żądanie kierunek: wtyczka -> NuGet
+     * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
-         * poziom rejestrowania dla żądania
+         * poziom rejestrowania żądania
          * komunikat do zarejestrowania
      * Odpowiedź będzie zawierać:
-         * Kod odpowiedzi, wskazując wynik operacji.
+         * kod odpowiedzi wskazujący wynik operacji.
 
-13.  Zakończenie procesu NuGet monitora
-     * Żądanie kierunek: NuGet -> Wtyczki
+13.  Wyjdź z monitorowania procesu NuGet
+     * Kierunek żądania:  Wtyczka > NuGet
      * Żądanie będzie zawierać:
          * Identyfikator procesu NuGet
      * Odpowiedź będzie zawierać:
-         * Kod odpowiedzi, wskazując wynik operacji.
+         * kod odpowiedzi wskazujący wynik operacji.
 
 14.  Pakiet pobierania z wyprzedzeniem
-     * Żądanie kierunek: NuGet -> Wtyczki
+     * Kierunek żądania:  Wtyczka > NuGet
      * Żądanie będzie zawierać:
-         * Identyfikator pakietu i wersję
-         * repozytorium lokalizacji źródłowej pakietu
+         * Identyfikator i wersja pakietu
+         * Lokalizacja repozytorium źródłowego pakietu
      * Odpowiedź będzie zawierać:
-         * Kod odpowiedzi, wskazując wynik operacji
+         * kod odpowiedzi wskazujący wynik operacji
 
 15.  Ustaw poświadczenia
-     * Żądanie kierunek: NuGet -> Wtyczki
+     * Kierunek żądania:  Wtyczka > NuGet
      * Żądanie będzie zawierać:
-         * repozytorium lokalizacji źródłowej pakietu
-         * ostatni znany pakiet źródła nazwę użytkownika, jeśli jest dostępny
-         * ostatnie hasło źródła znanych pakietu, jeśli jest dostępny
-         * ostatni znany nazwa użytkownika serwera proxy, jeśli jest dostępny
-         * ostatnie hasło znanych serwera proxy, jeśli jest dostępny
+         * Lokalizacja repozytorium źródłowego pakietu
+         * Ostatnia znana nazwa użytkownika źródła pakietu, jeśli jest dostępna
+         * ostatnie znane hasło źródłowe pakietu, jeśli jest dostępne
+         * Ostatnia znana nazwa użytkownika serwera proxy, jeśli jest dostępna
+         * ostatnie znane hasło serwera proxy, jeśli jest dostępne
      * Odpowiedź będzie zawierać:
-         * Kod odpowiedzi, wskazując wynik operacji
+         * kod odpowiedzi wskazujący wynik operacji
 
-16.  Ustaw poziom dziennika
-     * Żądanie kierunek: NuGet -> Wtyczki
+16.  Ustawianie poziomu dziennika
+     * Kierunek żądania:  Wtyczka > NuGet
      * Żądanie będzie zawierać:
-         * Domyślny poziom rejestrowania
+         * domyślny poziom dziennika
      * Odpowiedź będzie zawierać:
-         * Kod odpowiedzi, wskazując wynik operacji
+         * kod odpowiedzi wskazujący wynik operacji
 
-Wersja protokołu *2.0.0* wiadomości
+Komunikaty *2.0.0* w wersji protokołu
 
-17. Rozpoczynanie operacji oświadczeń
+17. Pobierz oświadczenia operacji
 
-* Żądanie kierunek: NuGet -> Wtyczki
+* Kierunek żądania:  Wtyczka > NuGet
     * Żądanie będzie zawierać:
-        * index.json usługi dla źródła pakietów
-        * repozytorium lokalizacji źródłowej pakietu
+        * Usługa index. JSON dla źródła pakietu
+        * Lokalizacja repozytorium źródłowego pakietu
     * Odpowiedź będzie zawierać:
-        * Kod odpowiedzi, wskazując wynik operacji
-        * Element wyliczalny z obsługiwanych operacji, jeśli operacja zakończyła się pomyślnie.  Jeśli wtyczka nie obsługuje źródło pakietów, wtyczka musi zwracać pusty zestaw obsługiwanych operacji.
+        * kod odpowiedzi wskazujący wynik operacji
+        * wyliczalne obsługiwane operacje, jeśli operacja zakończyła się pomyślnie.  Jeśli wtyczka nie obsługuje źródła pakietu, wtyczka musi zwrócić pusty zestaw obsługiwanych operacji.
 
-    Jeśli źródło indeks i pakiet usługi ma wartość null, wtyczka pozwala uzyskać odpowiedzi z uwierzytelnianiem.
+    Jeśli indeks usługi i źródło pakietu mają wartość null, wtyczka może odpowiedzieć na uwierzytelnianie.
 
-18. Pobierz poświadczenia uwierzytelniania
+18. Uzyskiwanie poświadczeń uwierzytelniania
 
-* Żądanie kierunek: NuGet -> Wtyczki
+* Kierunek żądania: Wtyczka > NuGet
 * Żądanie będzie zawierać:
-    * Identyfikator URI
-    * isRetry
-    * Nieinterakcyjnym
-    * CanShowDialog
+    * Adresu
+    * isretry
+    * NonInteractive
+    * Zashowdialog
 * Odpowiedź będzie zawierać
     * Nazwa użytkownika
     * Hasło
-    * Komunikat
+    * Message
     * Lista typów uwierzytelniania
     * MessageResponseCode

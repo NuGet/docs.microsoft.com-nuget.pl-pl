@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: cab56cb87f46335f9fdebdbc1649fead16459877
-ms.sourcegitcommit: 9803981c90a1ed954dc11ed71731264c0e75ea0a
+ms.openlocfilehash: 76829d45ea9821da3b7fdaa2f88d30dbb104fea1
+ms.sourcegitcommit: 5a741f025e816b684ffe44a81ef7d3fbd2800039
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68959724"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815362"
 ---
 # <a name="pack-command-nuget-cli"></a>pack command, polecenie (interfejs wiersza polecenia NuGet)
 
@@ -35,6 +35,7 @@ gdzie `<nuspecPath>` i `<projectPath>` Określ`.nuspec` odpowiednio plik projekt
 | --- | --- |
 | BasePath | Ustawia ścieżkę podstawową plików zdefiniowanych w pliku [. nuspec](../nuspec.md) . |
 | Kompilacja | Określa, że projekt powinien zostać skompilowany przed skompilowaniem pakietu. |
+| Deterministyczne | Określ, czy polecenie ma tworzyć deterministyczny pakiet. Wielokrotne wywołania polecenia Pack generują dokładnie ten sam pakiet typu Byte-Byte. W danych wyjściowych polecenia pakowania nie ma wpływ stan otoczenia maszyny. W przypadku wpisów zip zostaną wpisane sygnatury czasowe jako 1980-01-01. Aby osiągnąć pełną, należy skompilować zestawy z odpowiednią opcją kompilatora [-deterministyczną](/dotnet/csharp/language-reference/compiler-options/deterministic-compiler-option). |
 | Klucza | Określa jeden lub więcej wzorców symboli wieloznacznych, które mają zostać wykluczone podczas tworzenia pakietu. Aby określić więcej niż jeden wzorzec, powtórz flagę-Exclude. Zobacz przykład poniżej. |
 | ExcludeEmptyDirectories | Uniemożliwia dołączenie pustych katalogów podczas kompilowania pakietu. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |

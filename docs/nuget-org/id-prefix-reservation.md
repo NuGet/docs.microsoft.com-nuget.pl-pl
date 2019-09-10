@@ -1,17 +1,17 @@
 ---
 title: Rezerwacja prefiksów identyfikatorów
 description: Identyfikator pakietu — opis funkcji rezerwacji i Podręcznik autora.
-author: diverdan92
-ms.author: diverdan92
-ms.date: 10/09/2017
+author: karann-msft
+ms.author: karann
+ms.date: 09/07/2019
 ms.topic: reference
-ms.reviewer: ananguar
-ms.openlocfilehash: 650f570ec65a665e3d452af732ea22337835d8d9
-ms.sourcegitcommit: cae759ad8518c049575a30ad3bf04fe5d06244fb
+ms.reviewer: karann
+ms.openlocfilehash: 630c2b193500ec0b9aa5a7fe4af3ea95ae52aeec
+ms.sourcegitcommit: 5a741f025e816b684ffe44a81ef7d3fbd2800039
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68616798"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815280"
 ---
 # <a name="package-id-prefix-reservation"></a>Rezerwacja prefiksu identyfikatora pakietu
 
@@ -47,7 +47,7 @@ Te zmiany są zależne od następujących warunków i nakładają kilka dodatkow
 
 Poniżej opisano kilka bardziej zaawansowanych scenariuszy rezerwacji prefiksów, w tym delegowanie podprefiksów i oznaczanie prefiksów jako publiczne. Poniżej znajdują się bardziej zaawansowane rezerwacje prefiksów, które można wprowadzić. 
 
-- Podczas rezerwacji prefiksu właściciel może żądać delegowania podzestawów prefiksów (lub prefiksu) do innych właścicieli. Na przykład jeśli "Microsoft[" jest](https://www.nuget.org/profiles/microsoft)właścicielem "Microsoft. ", ale" ASPNET "chce zarezerwować element" Microsoft. ASPNET.[](https://www.nuget.org/profiles/aspnet) \* "," Microsoft "może wybrać delegata" Microsoft. ASPNET.[](https://www.nuget.org/profiles/microsoft) \* "na konto [ASPNET.](https://www.nuget.org/profiles/aspnet) \*
+- Podczas rezerwacji prefiksu właściciel może żądać delegowania podzestawów prefiksów (lub prefiksu) do innych właścicieli. Na przykład jeśli "Microsoft[" jest właścicielem "Microsoft.](https://www.nuget.org/profiles/microsoft) ", ale" ASPNET "chce zarezerwować element" Microsoft. ASPNET.[](https://www.nuget.org/profiles/aspnet) \* "," Microsoft "może wybrać delegata" Microsoft. ASPNET.[](https://www.nuget.org/profiles/microsoft) \* "na konto [ASPNET.](https://www.nuget.org/profiles/aspnet) \*
 
 - Podczas rezerwacji prefiksu właściciel może określić, że prefiks ma być publiczny. Nadal będzie to dać im Wskaźnik wizualny pokazujący, że pakiet pochodzi z zastrzeżonego prefiksu, ale **nie** będzie blokować przyszłych przesłanych pakietów na prefiksie dla każdego właściciela. Jest to przydatne w przypadku projektów open source z wieloma współautorami — w górnym lub podstawowym współautorze może być zarezerwowany prefiks, ale nadal można go otworzyć dla wszystkich współautorów. 
 
@@ -63,7 +63,7 @@ Gdy pakiet pochodzi z zastrzeżonego prefiksu, zobaczysz poniższe wskaźniki wi
 
 ## <a name="id-prefix-reservation-application-process"></a>Proces aplikacji rezerwacji prefiksu identyfikatora
 
-1. Zapoznaj się z kryteriami akceptacji [rezerwacji identyfikatorów prefiksów](#id-prefix-reservation-criteria).
+1. Zapoznaj się z [kryteriami akceptacji rezerwacji identyfikatorów prefiksów](#id-prefix-reservation-criteria).
 
 2. Określ prefiksy, które mają być rezerwowane, oprócz wszelkich [zaawansowanych scenariuszy rezerwacji prefiksów](#advanced-prefix-reservation-scenarios) , które mogą być wymagane.
 
@@ -89,9 +89,11 @@ Podczas przeglądania dowolnych aplikacji dla rezerwacji prefiksów identyfikato
 
 1. Czy pakiety mają licencję (przy użyciu elementu metadanych [licencji](../reference/nuspec.md#license) , a nie licenseUrl, który jest przestarzały)?
 
+1. Jeśli pakiety mają ikonę (przy użyciu elementu metadanych iconUrl), czy również używają elementu metadanych [ikony](../reference/nuspec.md#icon) (nie jest to wymagane do usunięcia iconUrl)?
+
 ## <a name="third-party-feed-provider-scenarios"></a>Scenariusze dostawcy kanałów informacyjnych innych firm
 
-Jeśli dostawca kanału informacyjnego innej firmy interesuje implementację własnej usługi w celu zapewnienia rezerwacji prefiksów, można to zrobić, modyfikując usługę wyszukiwania w dostawcach kanału informacyjnego programu NuGet v3. Dodanie zweryfikowanej właściwości w usłudze wyszukiwania strumieniowego jest konieczne z przykładami dotyczącymi kanałów informacyjnych v3 poniżej. Klient NuGet nie będzie obsługiwał właściwości dodanej w kanale informacyjnym v2.
+Jeśli dostawca kanału informacyjnego innej firmy interesuje implementację własnej usługi w celu zapewnienia rezerwacji prefiksów, można to zrobić, modyfikując usługę wyszukiwania w dostawcach kanału informacyjnego programu NuGet v3. Dodanie *zweryfikowanej* właściwości w usłudze wyszukiwania strumieniowego jest konieczne z przykładami dotyczącymi kanałów informacyjnych v3 poniżej. Klient NuGet nie będzie obsługiwał właściwości dodanej w kanale informacyjnym v2.
 
 Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą usługi wyszukiwania interfejsu API](../api/search-query-service-resource.md).
 
