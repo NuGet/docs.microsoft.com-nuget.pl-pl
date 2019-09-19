@@ -12,12 +12,12 @@ keywords: Pakiety symboli NuGet, debugowanie pakietów NuGet, obsługa debugowan
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 109df18bcfd3e6a3fbd3ef3da1707ffada585140
-ms.sourcegitcommit: f4bfdbf62302c95f1f39e81ccf998f8bbc6d56b0
+ms.openlocfilehash: 5546881dbf7577eb289a28b35bc2c0e7dc5cac40
+ms.sourcegitcommit: 1eda83ab537c86cc27316e7bc67f95a358766e63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70749026"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71094107"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symboli (. snupkg)
 
@@ -92,23 +92,23 @@ Program NuGet opublikuje Oba pakiety w nuget.org. zostanie opublikowany jako pie
 
 ## <a name="nugetorg-symbol-server"></a>Serwer symboli NuGet.org
 
-NuGet.org obsługuje własne repozytorium serwera symboli i akceptuje tylko nowy format pakietu symboli — `.snupkg`. Odbiorcy pakietu mogą korzystać z symboli opublikowanych na serwerze symboli NuGet.org przez dodanie `https://symbols.nuget.org/download/symbols` ich do źródeł symboli w programie Visual Studio, co umożliwia przechodzenie do kodu pakietu w debugerze programu Visual Studio. Aby uzyskać szczegółowe informacje na temat tego procesu, zobacz [Określanie symboli (. pdb) i plików źródłowych w debugerze programu Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger?view=vs-2017) .
+NuGet.org obsługuje własne repozytorium serwera symboli i akceptuje tylko nowy format pakietu symboli — `.snupkg`. Odbiorcy pakietu mogą korzystać z symboli opublikowanych na serwerze symboli NuGet.org przez dodanie `https://symbols.nuget.org/download/symbols` ich do źródeł symboli w programie Visual Studio, co umożliwia przechodzenie do kodu pakietu w debugerze programu Visual Studio. Aby uzyskać szczegółowe informacje na temat tego procesu, zobacz [Określanie symboli (. pdb) i plików źródłowych w debugerze programu Visual Studio](/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger.md) .
 
-### <a name="nugetorg-symbol-package-constraints"></a>Ograniczenia pakietu symboli Nuget.org
+### <a name="nugetorg-symbol-package-constraints"></a>Ograniczenia pakietu symboli NuGet.org
 
-Pakiety symboli obsługiwane na nuget.org mają następujące unikatowego
+NuGet.org ma następujące ograniczenia dotyczące pakietów symboli:
 
-- Tylko następujące rozszerzenia plików mogą być dodawane do pakietu symboli. ```.pdb,.nuspec,.xml,.psmdcp,.rels,.p7s```
-- Tylko zarządzane [plików PDB przenośne](https://github.com/dotnet/corefx/blob/master/src/System.Reflection.Metadata/specs/PortablePdb-Metadata.md) są obecnie obsługiwane na serwerze symboli NuGet.
-- Plików PDB i skojarzone biblioteki DLL NUPKG muszą być kompilowane przy użyciu kompilatora w programie Visual Studio w wersji 15,9 lub nowszej (zobacz [skrót kryptografii PDB](https://github.com/dotnet/roslyn/issues/24429))
+- W pakietach symboli są dozwolone tylko następujące rozszerzenia plików: `.pdb`, `.nuspec`, `.xml` `.psmdcp` `.rels`,,,`.p7s`
+- Tylko zarządzane [plików PDB przenośne](https://github.com/dotnet/corefx/blob/master/src/System.Reflection.Metadata/specs/PortablePdb-Metadata.md) są obsługiwane przez pakiet NuGet. serwer symboli w organizacji.
+- Plików PDB i skojarzone z nimi biblioteki DLL NUPKG muszą być kompilowane przy użyciu kompilatora w programie Visual Studio w wersji 15,9 lub nowszej (zobacz [skrót kryptografii PDB](https://github.com/dotnet/roslyn/issues/24429))
 
-Publikowanie pakietu symboli w usłudze nuget.org zakończy się niepowodzeniem, jeśli jakiekolwiek inne typy plików znajdują się w pliku. snupkg.
+W przypadku, gdy te ograniczenia nie są spełnione, pakiety symboli opublikowane w programie NuGet.org będą kończyć się niepowodzeniem. 
 
 ### <a name="symbol-package-validation-and-indexing"></a>Walidacja i indeksowanie pakietu symboli
 
-Pakiety symboli opublikowane w [NuGet.org](https://www.nuget.org/) poddają się kilku walidacji, takich jak sprawdzanie wirusów.
+Pakiety symboli opublikowane w [NuGet.org](https://www.nuget.org/) przechodzą kilka walidacji, w tym skanowanie złośliwego oprogramowania. Jeśli pakiet nie zostanie zweryfikowany, na stronie szczegółów pakietu zostanie wyświetlony komunikat o błędzie. Ponadto właściciele pakietu otrzymają wiadomość e-mail z instrukcjami dotyczącymi sposobu rozwiązywania zidentyfikowanych problemów.
 
-Gdy pakiet przeszedł wszystkie sprawdzenia poprawności, może upłynąć trochę czasu, aby symbole były indeksowane i dostępne do użycia z serwerów symboli NuGet.org. Jeśli pakiet nie zostanie zweryfikowany, Strona szczegółów pakietu dla elementu. nupkg zostanie zaktualizowana w celu wyświetlenia powiązanego błędu i otrzymasz również wiadomość e-mail z powiadomieniem o tym fakcie.
+Gdy pakiet symboli przeszedł wszystkie walidacje, symbole będą indeksowane przez NuGet. serwery symboli w organizacji. Po indeksowaniu symbol będzie dostępny do użycia z serwerów symboli NuGet.org.
 
 Sprawdzanie poprawności pakietu i indeksowania zazwyczaj trwa 15 minut. Jeśli publikowanie pakietu trwa dłużej niż oczekiwano, odwiedź stronę [status.NuGet.org](https://status.nuget.org/) , aby sprawdzić, czy w NuGet.org występują jakiekolwiek przerwy. Jeśli wszystkie systemy działają, a pakiet nie został pomyślnie opublikowany w ciągu godziny, zaloguj się do nuget.org i skontaktuj się z nami przy użyciu linku skontaktuj się z pomocą techniczną na stronie Szczegóły pakietu.
 
@@ -132,4 +132,6 @@ Plik. nupkg będzie dokładnie taki sam, jak dzisiaj, ale plik. snupkg ma nastę
 
 ## <a name="see-also"></a>Zobacz też
 
-[Udoskonalone debugowanie pakietów NuGet & symboli](https://github.com/NuGet/Home/wiki/NuGet-Package-Debugging-&-Symbols-Improvements)
+Rozważ użycie linku źródłowego, aby włączyć debugowanie kodu źródłowego zestawów .NET. Aby uzyskać więcej informacji, zapoznaj się ze [wskazówkami dotyczącymi linku do źródła](/dotnet/standard/library-guidance/sourcelink.md).
+
+Aby uzyskać więcej informacji na temat pakietów symboli, zapoznaj się z artykułem [debugowanie pakietu NuGet & symbole udoskonalenia](https://github.com/NuGet/Home/wiki/NuGet-Package-Debugging-&-Symbols-Improvements) projektu Specyfikacja.

@@ -6,16 +6,16 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 5ec6c0e17a3e8b9a3f156a48685bcaafe42c744b
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: 7aea28d6224a89149aa33be035c82a45db3058f0
+ms.sourcegitcommit: 1eda83ab537c86cc27316e7bc67f95a358766e63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488217"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71094120"
 ---
 # <a name="package-content"></a>Zawartość pakietu
 
-Możliwe jest wygenerowanie adresu URL w celu pobrania zawartości dowolnego pakietu (plik. nupkg) przy użyciu interfejsu API v3. Zasób używany do pobierania zawartości pakietu jest `PackageBaseAddress` zasobem znalezionym w indeksie [usługi](service-index.md). Ten zasób umożliwia również odnajdywanie wszystkich wersji pakietu na liście lub niewymienionej liście.
+Możliwe jest wygenerowanie adresu URL w celu pobrania zawartości dowolnego pakietu (plik. nupkg) przy użyciu interfejsu API v3. Zasób używany do pobierania zawartości pakietu jest `PackageBaseAddress` zasobem znalezionym w [indeksie usługi](service-index.md). Ten zasób umożliwia również odnajdywanie wszystkich wersji pakietu na liście lub niewymienionej liście.
 
 Ten zasób jest często określany jako "adres podstawowy pakietu" lub "kontener płaski".
 
@@ -60,7 +60,7 @@ Jeśli źródło pakietu ma co najmniej jedną wersję, zwracany jest kod stanu 
 
 Nazwa     | Typ             | Wymagane | Uwagi
 -------- | ---------------- | -------- | -----
-wersje | Tablica ciągów | tak      | Dostępne identyfikatory pakietów
+wersje | Tablica ciągów | tak      | Dostępne wersje
 
 Ciągi w `versions` tablicy to wszystkie małe litery, [znormalizowane ciągi wersji NuGet](../concepts/package-versioning.md#normalized-version-numbers). Ciągi wersji nie zawierają żadnych metadanych kompilacji SemVer 2.0.0.
 

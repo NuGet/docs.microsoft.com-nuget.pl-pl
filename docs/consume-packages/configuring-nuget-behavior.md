@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 10/25/2017
 ms.topic: conceptual
-ms.openlocfilehash: 5309d94fafea9cdfc3699d443393be5d381dd145
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 89127203df0aa1eb24f36b8ec64c5bb4a4d59319
+ms.sourcegitcommit: 1eda83ab537c86cc27316e7bc67f95a358766e63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317728"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71094087"
 ---
 # <a name="common-nuget-configurations"></a>Typowe konfiguracje NuGet
 
@@ -25,7 +25,7 @@ Zachowanie narzędzia NuGet jest zależne od ustawień skumulowanych w jednym lu
 | Computer | Windows: `%ProgramFiles(x86)%\NuGet\Config`<br/>Mac/Linux: `$XDG_DATA_HOME`. Jeśli `$XDG_DATA_HOME` ma wartość null lub jest `~/.local/share` pusty `/usr/local/share` lub będzie używany (zależy od dystrybucji systemu operacyjnego)  | Ustawienia dotyczą wszystkich operacji na komputerze, ale są zastępowane przez dowolne ustawienia użytkownika lub poziomu projektu. |
 
 Uwagi dotyczące wcześniejszych wersji programu NuGet:
-- Pakiet NuGet 3,3 i wcześniejsze użycie `.nuget` folderu dla ustawień całego rozwiązania. Ten plik nie jest używany w programie NuGet 3.4 +.
+- Pakiet NuGet 3,3 i wcześniejsze użycie `.nuget` folderu dla ustawień całego rozwiązania. Ten folder nie jest używany w programie NuGet 3.4 +.
 - W przypadku programu NuGet 2,6 do 3. x plik konfiguracji na poziomie komputera w systemie Windows został zlokalizowany w\\%ProgramData%\NuGet\Config [{IDE\\} [{Version\\} [{SKU}]]] \NuGet.config, gdzie *{IDE}* może być *VisualStudio*, *{ Wersja}* była wersją programu Visual Studio, taką jak *14,0*, *a {SKU}* to *społeczność*, *Pro*lub *Enterprise*. Aby przeprowadzić migrację ustawień do programu NuGet 4.0 +, po prostu skopiuj plik konfiguracyjny do% ProgramFiles (x86)% \ NuGet\Config. W systemie Linux ta poprzednia lokalizacja została/etc/opt oraz na komputerach Mac,/Library/Application Support support.
 
 ## <a name="changing-config-settings"></a>Zmienianie ustawień konfiguracji
