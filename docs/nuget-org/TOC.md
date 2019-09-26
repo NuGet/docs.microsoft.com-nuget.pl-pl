@@ -5,7 +5,8 @@
 ## [Klucze interfejsu API](scoped-api-keys.md)
 # Zarządzanie pakietami w witrynie NuGet.org
 ## [Publikowanie pakietu](publish-a-package.md)
-## [Rezerwowanie prefiksów identyfikatorów pakowania](id-prefix-reservation.md)
+## [Rezerwowanie prefiksów identyfikatorów pakietów](id-prefix-reservation.md)
+## [Przestarzały pakiet](deprecate-packages.md)
 # Zasady
 ## [Żądania danych](policies/Data-requests.md)
 ## [Rozstrzyganie sporów](policies/dispute-resolution.md)

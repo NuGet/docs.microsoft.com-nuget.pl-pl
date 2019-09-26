@@ -12,12 +12,12 @@ keywords: Pakiety symboli NuGet, debugowanie pakietów NuGet, obsługa debugowan
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 5546881dbf7577eb289a28b35bc2c0e7dc5cac40
-ms.sourcegitcommit: 1eda83ab537c86cc27316e7bc67f95a358766e63
+ms.openlocfilehash: 0197902e4dbc18893d68833fbcfe4263f185a594
+ms.sourcegitcommit: e4b0ff4460865db6dc7bc9f20e9f644d98493011
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094107"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71307187"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symboli (. snupkg)
 
@@ -92,7 +92,7 @@ Program NuGet opublikuje Oba pakiety w nuget.org. zostanie opublikowany jako pie
 
 ## <a name="nugetorg-symbol-server"></a>Serwer symboli NuGet.org
 
-NuGet.org obsługuje własne repozytorium serwera symboli i akceptuje tylko nowy format pakietu symboli — `.snupkg`. Odbiorcy pakietu mogą korzystać z symboli opublikowanych na serwerze symboli NuGet.org przez dodanie `https://symbols.nuget.org/download/symbols` ich do źródeł symboli w programie Visual Studio, co umożliwia przechodzenie do kodu pakietu w debugerze programu Visual Studio. Aby uzyskać szczegółowe informacje na temat tego procesu, zobacz [Określanie symboli (. pdb) i plików źródłowych w debugerze programu Visual Studio](/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger.md) .
+NuGet.org obsługuje własne repozytorium serwera symboli i akceptuje tylko nowy format pakietu symboli — `.snupkg`. Odbiorcy pakietu mogą korzystać z symboli opublikowanych na serwerze symboli NuGet.org przez dodanie `https://symbols.nuget.org/download/symbols` ich do źródeł symboli w programie Visual Studio, co umożliwia przechodzenie do kodu pakietu w debugerze programu Visual Studio. Aby uzyskać szczegółowe informacje na temat tego procesu, zobacz [Określanie symboli (. pdb) i plików źródłowych w debugerze programu Visual Studio](/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger) .
 
 ### <a name="nugetorg-symbol-package-constraints"></a>Ograniczenia pakietu symboli NuGet.org
 
@@ -132,6 +132,6 @@ Plik. nupkg będzie dokładnie taki sam, jak dzisiaj, ale plik. snupkg ma nastę
 
 ## <a name="see-also"></a>Zobacz też
 
-Rozważ użycie linku źródłowego, aby włączyć debugowanie kodu źródłowego zestawów .NET. Aby uzyskać więcej informacji, zapoznaj się ze [wskazówkami dotyczącymi linku do źródła](/dotnet/standard/library-guidance/sourcelink.md).
+Rozważ użycie linku źródłowego, aby włączyć debugowanie kodu źródłowego zestawów .NET. Aby uzyskać więcej informacji, zapoznaj się ze [wskazówkami dotyczącymi linku do źródła](/dotnet/standard/library-guidance/sourcelink).
 
 Aby uzyskać więcej informacji na temat pakietów symboli, zapoznaj się z artykułem [debugowanie pakietu NuGet & symbole udoskonalenia](https://github.com/NuGet/Home/wiki/NuGet-Package-Debugging-&-Symbols-Improvements) projektu Specyfikacja.

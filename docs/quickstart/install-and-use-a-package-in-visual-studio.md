@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/24/2018
 ms.topic: quickstart
-ms.openlocfilehash: d9937a2b087fd88c1e6fd9f07a513b5047bdcf2e
-ms.sourcegitcommit: ac9a00ccaf90e539a381e92b650074910b21eb0d
+ms.openlocfilehash: 92fc78a88733d0308dc26e10c5b0bafb86b78045
+ms.sourcegitcommit: e4b0ff4460865db6dc7bc9f20e9f644d98493011
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70235082"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71307226"
 ---
 # <a name="quickstart-install-and-use-a-package-in-visual-studio-windows-only"></a>Szybki start: Instalowanie i używanie pakietu w programie Visual Studio (tylko system Windows)
 
@@ -33,7 +33,7 @@ Jeśli używasz Visual Studio dla komputerów Mac, zobacz [Instalowanie i używa
 
 Pakiety NuGet można zainstalować w dowolnym projekcie .NET, pod warunkiem, że pakiet obsługuje tę samą platformę docelową co projekt.
 
-W tym instruktażu należy użyć prostej aplikacji WPF. Utwórz projekt w programie Visual Studio przy użyciu **pliku > nowy projekt...** , wpisz **.NET** w polu wyszukiwania, a następnie wybierz **aplikację WPF (.NET Framework)** . Kliknij przycisk **Dalej**. Zaakceptuj wartości domyślne dla **struktury** po wyświetleniu monitu.
+W tym instruktażu należy użyć prostej aplikacji WPF. Utwórz projekt w programie Visual Studio przy użyciu **pliku** > **Nowy projekt**, wpisz **.NET** w polu wyszukiwania, a następnie wybierz **aplikację WPF (.NET Framework)** . Kliknij przycisk **Dalej**. Zaakceptuj wartości domyślne dla **struktury** po wyświetleniu monitu.
 
 Program Visual Studio tworzy projekt, który zostanie otwarty w Eksplorator rozwiązań.
 
@@ -63,7 +63,7 @@ Aby zainstalować pakiet, można użyć Menedżera pakietów NuGet lub konsoli M
 
 ### <a name="package-manager-console"></a>Konsola menedżera pakietów
 
-1. Wybierz **narzędzia > Menedżer pakietów NuGet > menu konsoli Menedżera pakietów** .
+1. Wybierz kolejno pozycje **Narzędzia** >  > **Menedżer pakietów NuGet**polecenie**konsola Menedżera pakietów** .
 
 1. Po otwarciu konsoli Sprawdź, czy na liście rozwijanej **Projekt domyślny** znajduje się projekt, w którym ma zostać zainstalowany pakiet. Jeśli w rozwiązaniu istnieje pojedynczy projekt, jest on już zaznaczony.
 
@@ -117,7 +117,7 @@ Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać `JsonConvert.Se
     using Newtonsoft.Json;
     ```
 
-1. Skompiluj i uruchom aplikację, naciskając klawisz F5 lub wybierając pozycję **debuguj > Rozpocznij debugowanie**:
+1. Skompiluj i uruchom aplikację, naciskając klawisz F5 lub wybierając pozycję **Debuguj** > **Rozpocznij debugowanie**:
 
     ![Początkowe dane wyjściowe aplikacji WPF](media/QS_Use-06-AppStart.png)
 
