@@ -5,12 +5,12 @@ author: nkolev92
 ms.author: nikolev
 ms.date: 07/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 74b80b1791dcb403c90bb3032c009717c11ffe57
-ms.sourcegitcommit: 5a741f025e816b684ffe44a81ef7d3fbd2800039
+ms.openlocfilehash: 00410214500c7f5256be243dd6fca0907ba9b0c4
+ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815304"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72380499"
 ---
 # <a name="nuget-cross-platform-plugins"></a>Wtyczki Międzyplatformowe NuGet
 
@@ -27,7 +27,7 @@ Poniżej opisano kombinacje klienta/struktury wtyczek.
 | Narzędzie klienta  | Framework |
 | ------------ | --------- |
 | Visual Studio | .NET Framework |
-| dotnet.exe | .NET Core |
+| dotnet. exe | .NET Core |
 | NuGet. exe | .NET Framework |
 | MSBuild. exe | .NET Framework |
 | NuGet. exe na mono | .NET Framework |
@@ -70,12 +70,12 @@ Komunikacja między narzędziami klienta NuGet a wtyczką jest dwukierunkowa. Ka
 ## <a name="plugin-installation-and-discovery"></a>Instalowanie i odnajdywanie wtyczki
 
 Wtyczki zostaną odnalezione za pośrednictwem struktury katalogów na podstawie Konwencji.
-Scenariusze ciągłej integracji/ciągłego wdrażania i Użytkownicy zaawansowani mogą używać zmiennych środowiskowych, aby przesłonić zachowanie. Należy pamiętać `NUGET_NETFX_PLUGIN_PATHS` , `NUGET_NETCORE_PLUGIN_PATHS` że i są dostępne tylko w przypadku używania 5.3 + wersji narzędzi NuGet i nowszych.
+Scenariusze ciągłej integracji/ciągłego wdrażania i Użytkownicy zaawansowani mogą używać zmiennych środowiskowych, aby przesłonić zachowanie. W przypadku używania zmiennych środowiskowych dozwolone są tylko ścieżki bezwzględne. Należy pamiętać, że `NUGET_NETFX_PLUGIN_PATHS` i `NUGET_NETCORE_PLUGIN_PATHS` są dostępne tylko w przypadku używania 5.3 + wersji narzędzi NuGet i nowszych.
 
-- `NUGET_NETFX_PLUGIN_PATHS`-definiuje wtyczki, które będą używane przez narzędzia oparte na .NET Framework (NuGet. exe/MSBuild. exe/Visual Studio). Ma pierwszeństwo `NUGET_PLUGIN_PATHS`przed. (Tylko wersja 5.3 programu NuGet)
-- `NUGET_NETCORE_PLUGIN_PATHS`-definiuje wtyczki, które będą używane przez narzędzia oparte na oprogramowaniu .NET Core (dotnet. exe). Ma pierwszeństwo `NUGET_PLUGIN_PATHS`przed. (Tylko wersja 5.3 programu NuGet)
-- `NUGET_PLUGIN_PATHS`-definiuje wtyczki, które będą używane dla tego procesu NuGet, czyli priorytet zarezerwowane. Jeśli ta zmienna środowiskowa jest ustawiona, zastępuje ona metodę odnajdywania opartą na Konwencji. Ignorowany, jeśli określono jedną z zmiennych określonych dla struktury.
--  Lokalizacja użytkownika, lokalizacja główna narzędzia NuGet w programie `%UserProfile%/.nuget/plugins`. Ta lokalizacja nie może być przesłonięta. Dla wtyczek platformy .NET Core i .NET Framework zostanie użyty inny katalog główny.
+- `NUGET_NETFX_PLUGIN_PATHS` — definiuje wtyczki, które będą używane przez narzędzia oparte na .NET Framework (NuGet. exe/MSBuild. exe/Visual Studio). Ma pierwszeństwo przed `NUGET_PLUGIN_PATHS`. (Tylko wersja 5.3 programu NuGet)
+- `NUGET_NETCORE_PLUGIN_PATHS` — definiuje wtyczki, które będą używane przez narzędzia oparte na oprogramowaniu .NET Core (dotnet. exe). Ma pierwszeństwo przed `NUGET_PLUGIN_PATHS`. (Tylko wersja 5.3 programu NuGet)
+- `NUGET_PLUGIN_PATHS` — definiuje wtyczki, które będą używane dla tego procesu NuGet, a priorytet zachowano. Jeśli ta zmienna środowiskowa jest ustawiona, zastępuje ona metodę odnajdywania opartą na Konwencji. Ignorowany, jeśli określono jedną z zmiennych określonych dla struktury.
+-  Lokalizacja użytkownika, lokalizacja główna narzędzia NuGet w `%UserProfile%/.nuget/plugins`. Ta lokalizacja nie może być przesłonięta. Dla wtyczek platformy .NET Core i .NET Framework zostanie użyty inny katalog główny.
 
 | Framework | Główna lokalizacja odnajdowania  |
 | ------- | ------------------------ |
@@ -123,20 +123,20 @@ Potencjalny problem może wystąpić w przypadku wtyczek do lokalizacji użytkow
 Weryfikacja zabezpieczeń i Tworzenie wystąpień wtyczek jest kosztowne. Operacja pobierania odbywa się częściej niż operacja uwierzytelniania, jednak średni użytkownik programu NuGet może mieć tylko wtyczkę uwierzytelniania.
 Aby ulepszyć środowisko, pakiet NuGet będzie buforować oświadczenia operacji dla danego żądania. Ta pamięć podręczna jest na wtyczkę z kluczem wtyczki w ścieżce wtyczki, a okres ważności tej pamięci podręcznej to 30 dni. 
 
-Pamięć podręczna znajduje się `%LocalAppData%/NuGet/plugins-cache` w i przesłonięta ze zmienną `NUGET_PLUGINS_CACHE_PATH`środowiskową. Aby wyczyścić tę [pamięć podręczną](../../consume-packages/managing-the-global-packages-and-cache-folders.md), jeden może uruchomić polecenie Locals z `plugins-cache` opcją.
-Opcja `all` ustawienia lokalne spowoduje teraz również usunięcie pamięci podręcznej dodatków. 
+Pamięć podręczna znajduje się w `%LocalAppData%/NuGet/plugins-cache` i przesłonięta ze zmienną środowiskową `NUGET_PLUGINS_CACHE_PATH`. Aby wyczyścić tę [pamięć podręczną](../../consume-packages/managing-the-global-packages-and-cache-folders.md), jeden może uruchomić polecenie Locals z opcją `plugins-cache`.
+Opcja wartości lokalnych `all` spowoduje teraz również usunięcie pamięci podręcznej dodatków. 
 
 ## <a name="protocol-messages-index"></a>Indeks komunikatów protokołu
 
 Komunikaty o wersji protokołu *1.0.0* :
 
 1.  Zamknięcie
-    * Kierunek żądania:  Wtyczka > NuGet
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie nie będzie zawierać ładunku
     * Nie oczekiwano odpowiedzi.  Właściwa odpowiedź dotyczy procesu wtyczki, aby zakończyć pracę.
 
 2.  Kopiuj pliki w pakiecie
-    * Kierunek żądania:  Wtyczka > NuGet
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Identyfikator i wersja pakietu
         * Lokalizacja repozytorium źródłowego pakietu
@@ -147,7 +147,7 @@ Komunikaty o wersji protokołu *1.0.0* :
         * wyliczalne pełne ścieżki dla skopiowanych plików w katalogu docelowym, jeśli operacja zakończyła się pomyślnie
 
 3.  Kopiuj plik pakietu (. nupkg)
-    * Kierunek żądania:  Wtyczka > NuGet
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Identyfikator i wersja pakietu
         * Lokalizacja repozytorium źródłowego pakietu
@@ -166,7 +166,7 @@ Komunikaty o wersji protokołu *1.0.0* :
         * hasło, jeśli jest dostępne
 
 5.  Pobierz pliki w pakiecie
-    * Kierunek żądania:  Wtyczka > NuGet
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Identyfikator i wersja pakietu
         * Lokalizacja repozytorium źródłowego pakietu
@@ -175,7 +175,7 @@ Komunikaty o wersji protokołu *1.0.0* :
         * wyliczalne ścieżki plików w pakiecie, jeśli operacja zakończyła się pomyślnie
 
 6.  Pobierz oświadczenia operacji 
-    * Kierunek żądania:  Wtyczka > NuGet
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Usługa index. JSON dla źródła pakietu
         * Lokalizacja repozytorium źródłowego pakietu
@@ -187,7 +187,7 @@ Komunikaty o wersji protokołu *1.0.0* :
 > Ten komunikat został zaktualizowany w wersji *2.0.0*. Klient zachowuje zgodność z poprzednimi wersjami.
 
 7.  Pobierz skrót pakietu
-    * Kierunek żądania:  Wtyczka > NuGet
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Identyfikator i wersja pakietu
         * Lokalizacja repozytorium źródłowego pakietu
@@ -197,7 +197,7 @@ Komunikaty o wersji protokołu *1.0.0* :
         * skrót pliku pakietu przy użyciu żądanego algorytmu wyznaczania wartości skrótu, jeśli operacja zakończyła się pomyślnie
 
 8.  Pobierz wersje pakietu
-    * Kierunek żądania:  Wtyczka > NuGet
+    * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Identyfikator pakietu
         * Lokalizacja repozytorium źródłowego pakietu
@@ -214,7 +214,7 @@ Komunikaty o wersji protokołu *1.0.0* :
         * indeks usługi, jeśli operacja zakończyła się pomyślnie
 
 10.  Uzgadniania
-     * Kierunek żądania:  < NuGet — wtyczka >
+     * Kierunek żądania: < NuGet — wtyczka >
      * Żądanie będzie zawierać:
          * Bieżąca wersja protokołu wtyczki
          * Minimalna obsługiwana wersja protokołu wtyczki
@@ -223,7 +223,7 @@ Komunikaty o wersji protokołu *1.0.0* :
          * wynegocjowana wersja protokołu, jeśli operacja zakończyła się pomyślnie.  Niepowodzenie spowoduje zakończenie wtyczki.
 
 11.  Initialize
-     * Kierunek żądania:  Wtyczka > NuGet
+     * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
          * wersja narzędzia klienta NuGet
          * efektywny język narzędzia klienckiego NuGet.  Uwzględnia to ustawienie ForceEnglishOutput, jeśli jest używane.
@@ -231,7 +231,7 @@ Komunikaty o wersji protokołu *1.0.0* :
      * Odpowiedź będzie zawierać:
          * kod odpowiedzi wskazujący wynik operacji.  Niepowodzenie spowoduje zakończenie wtyczki.
 
-12.  Log
+12.  rejestrowane
      * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
          * poziom rejestrowania żądania
@@ -240,14 +240,14 @@ Komunikaty o wersji protokołu *1.0.0* :
          * kod odpowiedzi wskazujący wynik operacji.
 
 13.  Wyjdź z monitorowania procesu NuGet
-     * Kierunek żądania:  Wtyczka > NuGet
+     * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
          * Identyfikator procesu NuGet
      * Odpowiedź będzie zawierać:
          * kod odpowiedzi wskazujący wynik operacji.
 
 14.  Pakiet pobierania z wyprzedzeniem
-     * Kierunek żądania:  Wtyczka > NuGet
+     * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
          * Identyfikator i wersja pakietu
          * Lokalizacja repozytorium źródłowego pakietu
@@ -255,7 +255,7 @@ Komunikaty o wersji protokołu *1.0.0* :
          * kod odpowiedzi wskazujący wynik operacji
 
 15.  Ustaw poświadczenia
-     * Kierunek żądania:  Wtyczka > NuGet
+     * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
          * Lokalizacja repozytorium źródłowego pakietu
          * Ostatnia znana nazwa użytkownika źródła pakietu, jeśli jest dostępna
@@ -266,7 +266,7 @@ Komunikaty o wersji protokołu *1.0.0* :
          * kod odpowiedzi wskazujący wynik operacji
 
 16.  Ustawianie poziomu dziennika
-     * Kierunek żądania:  Wtyczka > NuGet
+     * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
          * domyślny poziom dziennika
      * Odpowiedź będzie zawierać:
@@ -276,7 +276,7 @@ Komunikaty *2.0.0* w wersji protokołu
 
 17. Pobierz oświadczenia operacji
 
-* Kierunek żądania:  Wtyczka > NuGet
+* Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Usługa index. JSON dla źródła pakietu
         * Lokalizacja repozytorium źródłowego pakietu
@@ -288,15 +288,15 @@ Komunikaty *2.0.0* w wersji protokołu
 
 18. Uzyskiwanie poświadczeń uwierzytelniania
 
-* Kierunek żądania: Wtyczka > NuGet
+* Kierunek żądania: wtyczka > NuGet
 * Żądanie będzie zawierać:
-    * Adresu
+    * adresu
     * isretry
-    * NonInteractive
+    * Nieinteraktywnych
     * Zashowdialog
 * Odpowiedź będzie zawierać
     * Nazwa użytkownika
     * Hasło
-    * Message
+    * Komunikat
     * Lista typów uwierzytelniania
     * MessageResponseCode

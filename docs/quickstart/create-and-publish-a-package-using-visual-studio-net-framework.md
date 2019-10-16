@@ -5,14 +5,14 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/13/2018
 ms.topic: quickstart
-ms.openlocfilehash: 40e240478918d327fbea0013bbf271ea2ee1fc47
-ms.sourcegitcommit: a0807671386782021acb7588741390e6f07e94e1
+ms.openlocfilehash: e00aac83a710e2f745d5e4bb9aec741ee686e595
+ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384496"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72380642"
 ---
-# <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
+# <a name="quickstart-create-and-publish-a-package-using-visual-studio-net-framework-windows"></a>Szybki Start: Tworzenie i publikowanie pakietu przy użyciu programu Visual Studio (.NET Framework, Windows)
 
 Tworzenie pakietu NuGet z biblioteki klas .NET Framework obejmuje tworzenie biblioteki DLL w programie Visual Studio w systemie Windows, a następnie użycie narzędzia wiersza polecenia NuGet. exe do utworzenia i opublikowania pakietu.
 
@@ -23,7 +23,7 @@ Tworzenie pakietu NuGet z biblioteki klas .NET Framework obejmuje tworzenie bibl
 
 1. Zainstaluj dowolną wersję programu Visual Studio 2017 lub nowszą z [VisualStudio.com](https://www.visualstudio.com/) . Obciążenie związane z usługą SIECIową. Program Visual Studio 2017 automatycznie zawiera funkcje NuGet podczas instalacji obciążenia .NET.
 
-1. Zainstaluj interfejs wiersza polecenia, pobierając go z [NuGet.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisując `.exe` ten plik w odpowiednim folderze i dodając go do zmiennej środowiskowej PATH. `nuget.exe`
+1. Zainstaluj interfejs wiersza polecenia `nuget.exe`, pobierając go z [NuGet.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisując plik `.exe` do odpowiedniego folderu i dodając go do zmiennej środowiskowej PATH.
 
 1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
 
@@ -59,7 +59,7 @@ namespace AppLogger
 
 ## <a name="configure-project-properties-for-the-package"></a>Konfigurowanie właściwości projektu dla pakietu
 
-Pakiet NuGet zawiera manifest ( `.nuspec` plik), który zawiera odpowiednie metadane, takie jak identyfikator pakietu, numer wersji, opis i inne. Niektóre z nich mogą być narysowane bezpośrednio we właściwościach projektu, co pozwala uniknąć konieczności osobnego aktualizowania ich zarówno w projekcie, jak i w manifeście. W tej sekcji opisano, gdzie ustawić odpowiednie właściwości.
+Pakiet NuGet zawiera manifest (plik `.nuspec`), który zawiera odpowiednie metadane, takie jak identyfikator pakietu, numer wersji, opis i inne. Niektóre z nich mogą być narysowane bezpośrednio we właściwościach projektu, co pozwala uniknąć konieczności osobnego aktualizowania ich zarówno w projekcie, jak i w manifeście. W tej sekcji opisano, gdzie ustawić odpowiednie właściwości.
 
 1. Wybierz polecenie menu **> właściwości projektu** , a następnie wybierz kartę **aplikacja** .
 
@@ -74,38 +74,37 @@ Pakiet NuGet zawiera manifest ( `.nuspec` plik), który zawiera odpowiednie meta
 
     ![Informacje o zestawie w projekcie .NET Framework w programie Visual Studio](media/qs_create-vs-01b-project-properties.png)
 
-1. Opcjonalne: Aby wyświetlić i edytować właściwości bezpośrednio, Otwórz `Properties/AssemblyInfo.cs` plik w projekcie.
+1. Opcjonalne: Aby wyświetlić i edytować właściwości bezpośrednio, Otwórz plik `Properties/AssemblyInfo.cs` w projekcie.
 
 1. Po ustawieniu właściwości ustaw konfigurację projektu na **Zwolnij** i Skompiluj ponownie projekt w celu wygenerowania zaktualizowanej biblioteki DLL.
 
 ## <a name="generate-the-initial-manifest"></a>Generuj początkowy manifest
 
-Z biblioteką DLL w oddziałach i ustawionych właściwościach projektu można `nuget spec` teraz użyć polecenia, aby `.nuspec` wygenerować początkowy plik z projektu. Ten krok obejmuje odpowiednie tokeny zastępcze do rysowania informacji z pliku projektu.
+Z biblioteką DLL w oddzielnym i ustawionym właściwościach projektu można teraz użyć polecenia `nuget spec`, aby wygenerować początkowy plik `.nuspec` z projektu. Ten krok obejmuje odpowiednie tokeny zastępcze do rysowania informacji z pliku projektu.
 
-Uruchamia `nuget spec` się tylko raz, aby wygenerować początkowy manifest. Podczas aktualizowania pakietu należy zmienić wartości w projekcie lub bezpośrednio edytować manifest.
+Należy uruchomić `nuget spec` tylko raz, aby wygenerować początkowy manifest. Podczas aktualizowania pakietu należy zmienić wartości w projekcie lub bezpośrednio edytować manifest.
 
-1. Otwórz wiersz polecenia i przejdź do folderu projektu zawierającego `AppLogger.csproj` plik.
+1. Otwórz wiersz polecenia i przejdź do folderu projektu zawierającego plik `AppLogger.csproj`.
 
-1. Uruchom następujące polecenie: `nuget spec AppLogger.csproj`. Określając projekt, pakiet NuGet tworzy manifest, który jest zgodny z nazwą projektu, w tym przypadku `AppLogger.nuspec`. Zawiera również tokeny zastępcze w manifeście.
+1. Uruchom następujące polecenie: `nuget spec AppLogger.csproj`. Określając projekt, pakiet NuGet tworzy manifest pasujący do nazwy projektu, w tym przypadku `AppLogger.nuspec`. Zawiera również tokeny zastępcze w manifeście.
 
-1. Otwórz `AppLogger.nuspec` w edytorze tekstów, aby przejrzeć jego zawartość, która powinna wyglądać następująco:
+1. Otwórz `AppLogger.nuspec` w edytorze tekstów, aby przejrzeć jego zawartość, która powinna wyglądać w następujący sposób:
 
     ```xml
     <?xml version="1.0"?>
     <package >
       <metadata>
-        <id>$id$</id>
-        <version>$version$</version>
-        <title>$title$</title>
-        <authors>$author$</authors>
-        <owners>$author$</owners>
-        <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+        <id>Package</id>
+        <version>1.0.0</version>
+        <authors>YourUsername</authors>
+        <owners>YourUsername</owners>
+        <license type="expression">MIT</license>
         <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
         <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>$description$</description>
+        <description>Package description</description>
         <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-        <copyright>Copyright 2018</copyright>
+        <copyright>Copyright 2019</copyright>
         <tags>Tag1 Tag2</tags>
       </metadata>
     </package>
@@ -113,7 +112,7 @@ Uruchamia `nuget spec` się tylko raz, aby wygenerować początkowy manifest. Po
 
 ## <a name="edit-the-manifest"></a>Edytuj manifest
 
-1. Pakiet NuGet generuje błąd w przypadku próby utworzenia pakietu z wartościami domyślnymi w `.nuspec` pliku, dlatego przed kontynuowaniem należy edytować następujące pola. Zobacz [. nuspec — odwołanie do pliku — opcjonalne elementy metadanych](../reference/nuspec.md#optional-metadata-elements) opisujące sposób ich użycia.
+1. Pakiet NuGet generuje błąd w przypadku próby utworzenia pakietu z wartościami domyślnymi w pliku `.nuspec`, dlatego przed kontynuowaniem należy edytować następujące pola. Zobacz [. nuspec — odwołanie do pliku — opcjonalne elementy metadanych](../reference/nuspec.md#optional-metadata-elements) opisujące sposób ich użycia.
 
     - licenseUrl
     - projectUrl
@@ -129,13 +128,13 @@ Uruchamia `nuget spec` się tylko raz, aby wygenerować początkowy manifest. Po
 
 ## <a name="run-the-pack-command"></a>Uruchom pakiet polecenie
 
-1. W wierszu polecenia w folderze zawierającym `.nuspec` plik Uruchom polecenie. `nuget pack`
+1. Z poziomu wiersza polecenia w folderze zawierającym plik `.nuspec` Uruchom polecenie `nuget pack`.
 
-1. Pakiet NuGet generuje `.nupkg` plik w postaci *identyfikatora-Version. nupkg*, który znajduje się w bieżącym folderze.
+1. Pakiet NuGet generuje plik `.nupkg` w postaci *identyfikatora-Version. nupkg*, który znajduje się w bieżącym folderze.
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu
 
-Po utworzeniu `nuget.exe` pliku opublikuj go w celu NuGet.org przy użyciu klucza interfejsu API uzyskanego z NuGet.org. `.nupkg` W przypadku NuGet.org należy użyć `nuget.exe` 4.1.0 lub wyższej.
+Gdy masz plik `.nupkg`, opublikujesz go w celu nuget.org przy użyciu `nuget.exe` z kluczem interfejsu API uzyskanym z nuget.org. W przypadku nuget.org należy użyć `nuget.exe` 4.1.0 lub wyższego.
 
 [!INCLUDE [publish-notes](includes/publish-notes.md)]
 
@@ -145,7 +144,7 @@ Po utworzeniu `nuget.exe` pliku opublikuj go w celu NuGet.org przy użyciu klucz
 
 ### <a name="publish-with-nuget-push"></a>Publikowanie przy użyciu wypychania NuGet
 
-1. Otwórz wiersz polecenia i przejdź do folderu zawierającego `.nupkg` plik.
+1. Otwórz wiersz polecenia i przejdź do folderu zawierającego plik `.nupkg`.
 
 1. Uruchom następujące polecenie, określając nazwę pakietu i zastępując wartość klucza kluczem interfejsu API:
 

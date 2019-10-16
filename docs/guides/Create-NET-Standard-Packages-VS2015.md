@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 02/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 11dce27b93c3d09a2d27dc79f8d4fed86df879ba
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: b16bf422e2627be3b8516a875d749639734064a9
+ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488973"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72380725"
 ---
 # <a name="create-net-standard-and-net-framework-packages-with-visual-studio-2015"></a>Tworzenie pakietów .NET Standard i .NET Framework za pomocą programu Visual Studio 2015
 
@@ -35,9 +35,9 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
 
     ![Utwórz nowy projekt biblioteki klas](media/NetStandard-NewProject.png)
 
-1. W wyświetlonym oknie dialogowym **Dodaj przenośną bibliotekę klas** wybierz opcje dla `.NET Framework 4.6` i `ASP.NET Core 1.0`. (Jeśli .NET Framework określania wartości docelowej, możesz wybrać opcje, które są odpowiednie.)
+1. W wyświetlonym oknie dialogowym **Dodawanie biblioteki klas przenośnych** wybierz opcje dla `.NET Framework 4.6` i `ASP.NET Core 1.0`. (Jeśli .NET Framework określania wartości docelowej, możesz wybrać opcje, które są odpowiednie.)
 
-1. Jeśli element docelowy jest .NET Standard, kliknij prawym `AppLogger (Portable)` przyciskiem myszy w Eksplorator rozwiązań, wybierz pozycję **Właściwości**, wybierz kartę **Biblioteka** , a następnie wybierz pozycję docelowa **platforma .NET Standard** w sekcji **Określanie wartości docelowej** . Ta akcja monituje o potwierdzenie, a następnie można wybrać `.NET Standard 1.4` (lub inną dostępną wersję) z listy rozwijanej:
+1. Jeśli element docelowy jest .NET Standard, kliknij prawym przyciskiem myszy `AppLogger (Portable)` w Eksplorator rozwiązań, wybierz **Właściwości**, wybierz kartę **Biblioteka** , a następnie wybierz pozycję **docelowa platforma .NET Standard** w sekcji **określania wartości docelowej** . Ta akcja monituje o potwierdzenie, a następnie można wybrać `.NET Standard 1.4` (lub inną dostępną wersję) z listy rozwijanej:
 
     ![Ustawianie elementu docelowego na .NET Standard 1,4](media/NetStandard-ChangeTarget.png)
 
@@ -58,17 +58,17 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
     }
     ```
 
-1. Ustaw konfigurację na wydawanie, Skompiluj projekt i sprawdź, czy pliki dll i XML są tworzone w `bin\Release` folderze.
+1. Ustaw konfigurację na wydawanie, Skompiluj projekt i sprawdź, czy pliki DLL i XML są tworzone w folderze `bin\Release`.
 
 ## <a name="create-and-update-the-nuspec-file"></a>Utwórz i zaktualizuj plik. nuspec
 
-1. Otwórz wiersz polecenia, przejdź `AppLogger.csproj` do folderu zawierającego folder (jeden poziom poniżej `.sln` lokalizacji pliku) i uruchom polecenie NuGet `spec` , aby utworzyć plik początkowy `AppLogger.nuspec` :
+1. Otwórz wiersz polecenia, przejdź do folderu zawierającego `AppLogger.csproj` folder (jeden poziom poniżej miejsca, w którym znajduje się plik `.sln`), a następnie uruchom polecenie NuGet `spec`, aby utworzyć początkowy plik `AppLogger.nuspec`:
 
     ```cli
     nuget spec
     ```
 
-1. Otwórz `AppLogger.nuspec` w edytorze i zaktualizuj go, aby pasował do następujących wartości, zastępując YOUR_NAME z odpowiednią wartością. Wartość, szczególnie, musi być unikatowa w obrębie NuGet.org (zobacz Konwencje nazewnictwa opisane w artykule [Tworzenie pakietu.](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number) `<id>` Należy również pamiętać, że należy również zaktualizować Tagi autor i opis lub podczas kroku pakowania wystąpi błąd.
+1. Otwórz `AppLogger.nuspec` w edytorze i zaktualizuj go tak, aby pasował do poniższego, zastępując YOUR_NAME z odpowiednią wartością. Wartość `<id>`, szczególnie musi być unikatowa w obrębie nuget.org (zobacz Konwencje nazewnictwa opisane w artykule [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number). Należy również pamiętać, że należy również zaktualizować Tagi autor i opis lub podczas kroku pakowania wystąpi błąd.
 
     ```xml
     <?xml version="1.0"?>
@@ -88,7 +88,7 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
     </package>
     ```
 
-1. Dodaj zestawy odwołań do `.nuspec` pliku, a mianowicie biblioteki dll biblioteki i pliku XML IntelliSense:
+1. Dodaj zestawy odwołań do pliku `.nuspec`, a mianowicie biblioteki DLL biblioteki i pliku XML IntelliSense:
 
     W przypadku .NET Standard określania wartości docelowej wpisy są podobne do następujących:
 
@@ -114,7 +114,7 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
 
 ### <a name="declaring-dependencies"></a>Deklarowanie zależności
 
-Jeśli masz jakiekolwiek zależności od innych pakietów NuGet, wystaw je w `<dependencies>` elemencie manifestu z `<group>` elementami. Na przykład, aby zadeklarować zależność w NewtonSoft. JSON 8.0.3 lub powyżej, Dodaj następujące elementy:
+Jeśli masz jakiekolwiek zależności od innych pakietów NuGet, wystaw te elementy w elemencie `<dependencies>` manifestu z elementami `<group>`. Na przykład, aby zadeklarować zależność w NewtonSoft. JSON 8.0.3 lub powyżej, Dodaj następujące elementy:
 
 ```xml
 <!-- Insert within the <metadata> element -->
@@ -129,7 +129,7 @@ Składnia atrybutu *Version* w tym miejscu wskazuje, że wersja 8.0.3 lub nowsza
 
 ### <a name="adding-a-readme"></a>Dodawanie pliku Readme
 
-Utwórz plik, umieść go w folderze głównym projektu i odwołaj się do niego `.nuspec` w pliku: `readme.txt`
+Utwórz plik `readme.txt`, umieść go w folderze głównym projektu i odwołaj się do niego w pliku `.nuspec`:
 
 ```xml
 <?xml version="1.0"?>
@@ -142,26 +142,26 @@ Utwórz plik, umieść go w folderze głównym projektu i odwołaj się do niego
 </package>
 ```
 
-Program Visual Studio `readme.txt` jest wyświetlany, gdy pakiet jest instalowany w projekcie. Plik nie jest wyświetlany, gdy jest zainstalowany w projektach .NET Core lub dla pakietów zainstalowanych jako zależność.
+Program Visual Studio Wyświetla `readme.txt`, gdy pakiet jest instalowany w projekcie. Plik nie jest wyświetlany, gdy jest zainstalowany w projektach .NET Core lub dla pakietów zainstalowanych jako zależność.
 
 ## <a name="package-the-component"></a>Pakowanie składnika
 
-Po zakończeniu `.nuspec` odwoływania się do wszystkich plików, które należy uwzględnić w pakiecie, możesz `pack` uruchomić polecenie:
+Po zakończeniu `.nuspec` odwołujące się do wszystkich plików, które należy uwzględnić w pakiecie, możesz uruchomić polecenie `pack`:
 
 ```cli
 nuget pack AppLogger.nuspec
 ```
 
-Spowoduje to `AppLogger.YOUR_NAME.1.0.0.nupkg`wygenerowanie. Otwieranie tego pliku w narzędziu, takim jak [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzanie wszystkich węzłów, zostanie wyświetlona następująca zawartość (pokazana dla .NET standard):
+Spowoduje to wygenerowanie `AppLogger.YOUR_NAME.1.0.0.nupkg`. Otwieranie tego pliku w narzędziu, takim jak [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzanie wszystkich węzłów, zostanie wyświetlona następująca zawartość (pokazana dla .NET standard):
 
 ![Eksplorator pakietów NuGet przedstawiający pakiet AppLogger](media/NetStandard-PackageExplorer.png)
 
 > [!Tip]
-> `.nupkg` Plik jest po prostu plikiem ZIP z innym rozszerzeniem. Możesz również przeanalizować zawartość pakietu, a następnie zmienić `.nupkg` ją `.zip`na, ale pamiętaj, aby przywrócić rozszerzenie przed przekazaniem pakietu do NuGet.org.
+> Plik `.nupkg` jest tylko plikiem ZIP z innym rozszerzeniem. Możesz również przeanalizować zawartość pakietu, zmieniając `.nupkg` na `.zip`, ale pamiętaj o przywróceniu rozszerzenia przed przekazaniem pakietu do nuget.org.
 
 Aby udostępnić pakiet innym deweloperom, postępuj zgodnie z instrukcjami dotyczącymi [publikowania pakietu](../nuget-org/publish-a-package.md).
 
-Należy pamiętać `pack` , że wymaga mono 4.4.2 w Mac OS X i nie działa w systemach Linux. Na komputerze Mac należy również skonwertować nazwy ścieżek systemu Windows w `.nuspec` pliku na ścieżki w stylu systemu UNIX.
+Należy pamiętać, że `pack` wymaga mono w Mac OS X i nie działa w systemach Linux. Na komputerze Mac należy również skonwertować nazwy ścieżek systemu Windows w pliku `.nuspec` na ścieżki w stylu systemu UNIX.
 
 ## <a name="related-topics"></a>Tematy pokrewne
 
@@ -169,7 +169,7 @@ Należy pamiętać `pack` , że wymaga mono 4.4.2 w Mac OS X i nie działa w sys
 - [Obsługa wielu wersji programu .NET Framework](../create-packages/supporting-multiple-target-frameworks.md)
 - [Uwzględnij w pakiecie narzędzia i elementy docelowe programu MSBuild](../create-packages/creating-a-package.md#include-msbuild-props-and-targets-in-a-package)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
-- [Pakiety symboli](../create-packages/symbol-packages.md)
+- [Pakiety symboli](../create-packages/symbol-packages-snupkg.md)
 - [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
 - [Dokumentacja biblioteki .NET Standard](/dotnet/articles/standard/library)
 - [Przenoszenie do programu .NET Core z .NET Framework](/dotnet/articles/core/porting/index)
