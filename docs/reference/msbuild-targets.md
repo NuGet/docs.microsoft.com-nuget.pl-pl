@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3093761bda456ff5463f708c4d2d12f606dcecbd
-ms.sourcegitcommit: 7dba5be7b983ff508834c60caaa8b504f5fa1ae8
+ms.openlocfilehash: 6a49e410617c14e22f0d4a67d8bfe280f64f5505
+ms.sourcegitcommit: 8a424829b1f70cf7590e95db61997af6ae2d7a41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/16/2019
-ms.locfileid: "72393014"
+ms.locfileid: "72510797"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -382,6 +382,10 @@ Dodatkowe ustawienia przywracania mogą pochodzić z właściwości programu MSB
 | RestoreUseSkipNonexistentTargets  | Gdy projekty są zbierane za pośrednictwem programu MSBuild, określa, czy są zbierane przy użyciu optymalizacji `SkipNonexistentTargets`. Gdy nie jest ustawiona, wartość domyślna to `true`. Sekwencja jest zachowaniem nieprawidłowej awarii, gdy nie można zaimportować elementów docelowych projektu. |
 | MSBuildProjectExtensionsPath | Folder wyjściowy, domyślny dla `BaseIntermediateOutputPath` i folder `obj`. |
 | RestoreForce | W projektach opartych na PackageReference wymusza rozpoznanie wszystkich zależności, nawet jeśli ostatnie przywracanie zakończyło się pomyślnie. Określenie tej flagi jest podobne do usuwania pliku `project.assets.json`. Nie powoduje to obejścia pamięci podręcznej protokołu HTTP. |
+| RestorePackagesWithLockFile | Umożliwia użycie pliku blokady. |
+| RestoreLockedMode | Uruchom przywracanie w trybie zablokowanym. Oznacza to, że przywracanie nie będzie obliczać zależności. |
+| NuGetLockFilePath | Niestandardowa lokalizacja pliku blokady. Domyślna lokalizacja jest obok projektu i nosi nazwę `packages.lock.json`. |
+| RestoreForceEvaluate | Wymusza ponowne obliczenie zależności przez Przywracanie i zaktualizowanie pliku blokady bez ostrzeżenia. | 
 
 #### <a name="examples"></a>Przykłady
 
