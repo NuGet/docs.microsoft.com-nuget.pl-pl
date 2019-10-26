@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/09/2017
 ms.topic: conceptual
-ms.openlocfilehash: 0a8db9f6c55b7e79f9b338119e0b3ac6cb7a1e35
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: 4d337299f725b38981b0121069d5e6295b05e34e
+ms.sourcegitcommit: f9645fc5f49c18978e12a292a3f832e162e069d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520595"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924640"
 ---
 # <a name="analyzer-nuget-formats"></a>Formaty NuGet analizatora
 
@@ -30,29 +30,29 @@ Aby uzyskać dobry przykład, zobacz pakiet [System. Runtime. analizatory](https
 - tools\install.ps1
 - tools\uninstall.ps1
 
-Jak widać, należy umieścić biblioteki DLL `analyzers` analizatora w folderze pakietu.
+Jak widać, należy umieścić biblioteki DLL analizatora w folderze `analyzers` w pakiecie.
 
-Pliki props, które są dołączone do wyłączania starszych reguł FxCop na korzyść implementacji analizatora, są umieszczane `build` w folderze.
+Pliki props, które są dołączone do wyłączania starszych reguł FxCop na korzyść implementacji analizatora, są umieszczane w folderze `build`.
 
-Instalowanie i odinstalowywanie skryptów, które obsługują `packages.config` projekty przy użyciu `tools`programu, są umieszczane w temacie.
+Instalowanie i odinstalowywanie skryptów, które obsługują projekty używające `packages.config`, są umieszczane w `tools`.
 
-Należy również zauważyć, że ponieważ ten pakiet nie ma wymagań specyficznych dla `platform` platformy, folder zostanie pominięty.
+Należy również zauważyć, że ponieważ ten pakiet nie ma wymagań specyficznych dla platformy, folder `platform` jest pomijany.
 
 
 ## <a name="analyzers-path-format"></a>Format ścieżki analizatorów
 
-Użycie `analyzers` folderu jest podobne do programu, który jest używany dla [platform docelowych](../create-packages/supporting-multiple-target-frameworks.md), z wyjątkiem specyfikatorów w ścieżce opisują zależności hosta deweloperskiego, a nie czas kompilacji. Format ogólny jest następujący:
+Użycie folderu `analyzers` jest podobne do programu, który jest używany dla [platform docelowych](../create-packages/supporting-multiple-target-frameworks.md), z wyjątkiem specyfikatorów w ścieżce opisują zależności hosta deweloperskiego, a nie czas kompilacji. Format ogólny jest następujący:
 
     $/analyzers/{framework_name}{version}/{supported_architecture}/{supported_language}/{analyzer_name}.dll
 
-- **framework_name**: *opcjonalny* obszar powierzchni interfejsu API .NET Framework należy uruchomić zawarte w niej biblioteki DLL. `dotnet`jest obecnie jedyną prawidłową wartością, ponieważ Roslyn jest jedynym hostem, który może uruchamiać analizatory. Jeśli nie określono elementu docelowego, zakłada się, że biblioteki DLL są stosowane do *wszystkich* elementów docelowych.
-- **supported_language**: język, dla którego stosowana jest biblioteka DLL, jedna `cs` zC#() `vb` i (Visual Basic) i `fs` (F#). Język wskazuje, że analizator powinien być załadowany tylko dla projektu używającego tego języka. Jeśli nie określono żadnego języka, przyjęto, że biblioteka DLL ma zastosowanie do *wszystkich* języków, które obsługują analizatory.
+- **framework_name** i **Version**: *opcjonalny* obszar powierzchni interfejsu API .NET Framework, które muszą być uruchomione w zawartych bibliotekach DLL. `dotnet` jest obecnie jedyną prawidłową wartością, ponieważ Roslyn jest jedynym hostem, który może uruchamiać analizatory. Jeśli nie określono elementu docelowego, zakłada się, że biblioteki DLL są stosowane do *wszystkich* elementów docelowych.
+- **supported_language**: język, dla którego stosowana jest biblioteka DLL, jedna z `cs`C#() i`vb`(Visual Basic) i`fs`(F#). Język wskazuje, że analizator powinien być załadowany tylko dla projektu używającego tego języka. Jeśli nie określono żadnego języka, przyjęto, że biblioteka DLL ma zastosowanie do *wszystkich* języków, które obsługują analizatory.
 - **analyzer_name**: określa biblioteki DLL analizatora. Jeśli potrzebujesz dodatkowych plików poza biblioteką DLL, muszą one być dołączone do plików obiektów docelowych lub właściwości.
 
 
 ## <a name="install-and-uninstall-scripts"></a>Instalowanie i odinstalowywanie skryptów
 
-Jeśli używany `packages.config`jest projekt użytkownika, skrypt programu MSBuild, który pobiera Analizator, nie jest odtwarzany, dlatego należy umieścić `install.ps1` i `uninstall.ps1` w `tools` folderze z zawartością, która jest opisana poniżej.
+Jeśli projekt użytkownika używa `packages.config`, skrypt programu MSBuild, który pobiera Analizator, nie jest odtwarzany, więc należy umieścić `install.ps1` i `uninstall.ps1` w folderze `tools` z zawartością, która jest opisana poniżej.
 
 **zawartość pliku Install. ps1**
 

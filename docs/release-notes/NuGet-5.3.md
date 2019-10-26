@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 09/06/2019
 ms.topic: conceptual
-ms.openlocfilehash: 683ee7d1bef30d0a7414ec1694a9735d79b2ab45
-ms.sourcegitcommit: c529f5944868a0692ca8550b716a73e05df0ccbf
+ms.openlocfilehash: 3418eb9b60123596eaa361a546e8ea1403396f14
+ms.sourcegitcommit: f9645fc5f49c18978e12a292a3f832e162e069d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687886"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924596"
 ---
 # <a name="nuget-53-release-notes"></a>Informacje o wersji narzędzia NuGet 5,3
 
@@ -18,17 +18,17 @@ Pojazdy dystrybucji NuGet:
 
 | Wersja programu NuGet | Dostępne w wersji programu Visual Studio| Dostępne w zestawach SDK platformy .NET|
 |:---|:---|:---|
-| [**5.3.0**](https://nuget.org/downloads) | [Visual Studio 2019 w wersji 16,3](https://visualstudio.microsoft.com/downloads/) | [3.0.100](https://dotnet.microsoft.com/download/dotnet-core/3.0) <sup>1</sup> |
-
+| [**5.3.0**](https://nuget.org/downloads) | [Visual Studio 2019 w wersji 16,3](https://visualstudio.microsoft.com/downloads/) | [3.0.100](https://dotnet.microsoft.com/download/dotnet-core/3.0)<sup>1</sup> |
+| [**5.3.1**](https://nuget.org/downloads) | [Visual Studio 2019 w wersji 16.3.6](https://visualstudio.microsoft.com/downloads/) | [Przyszła wersja: 3.0.101](https://dotnet.microsoft.com/download/dotnet-core/3.0) |
 <sup>1</sup> Zainstalowane z programem Visual Studio 2019 przy użyciu obciążenia .NET Core
 
-## <a name="summary-whats-new-in-53"></a>Podsumowanie Co nowego w 5,3
+## <a name="summary-whats-new-in-53"></a>Podsumowanie: co nowego w 5,3
 
 * [Ikonę pakietu można osadzić w pakiecie](../reference/msbuild-targets.md#packing-an-icon-image-file), zamiast korzystać z zewnętrznego adresu URL. - [#352](https://github.com/NuGet/Home/issues/352)
 
 * Ulepszone zabezpieczenia dzięki śledzeniu i wymuszaniu algorytmu SHA dla pakietów Packages. config — [#7281](https://github.com/NuGet/Home/issues/7281)
 
-* Włącz wycofanie przestarzałych/starszych pakietów NuGet [#2867](https://github.com/NuGet/Home/issues/2867)[wpis w blogu](https://devblogs.microsoft.com/nuget/deprecating-packages-on-nuget-org/) |   | [docs](https://docs.microsoft.com/en-us/nuget/nuget-org/deprecate-packages)
+* Włącz wycofanie przestarzałych/starszych pakietów NuGet [#2867](https://github.com/NuGet/Home/issues/2867) | [wpis w blogu](https://devblogs.microsoft.com/nuget/deprecating-packages-on-nuget-org/) | [docs](https://docs.microsoft.com/en-us/nuget/nuget-org/deprecate-packages)
 
 ### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
 
@@ -36,7 +36,7 @@ Pojazdy dystrybucji NuGet:
 
 * Pakiety NuGet utworzone za pomocą zestawu SDK 3.0.100-preview9 nie mogą być używane przez użytkowników SDK 2,2... w zależności od [#8603](https://github.com/NuGet/Home/issues/8603) strefy czasowej
 
-* "Znaki cudzysłowu" w ścieżce powodują awarię "niedozwolone znaki `nuget restore` w ścieżce" w [#8168](https://github.com/NuGet/Home/issues/8168)
+* "Znaki cudzysłowu" w ścieżce powodują awarię "niedozwolone znaki w ścieżce" w `nuget restore` [#8168](https://github.com/NuGet/Home/issues/8168)
 
 * VS: zestawy są w pełni NGen-Ed nie częściowo NGen-Ed- [#8513](https://github.com/NuGet/Home/issues/8513)
 
@@ -46,7 +46,7 @@ Pojazdy dystrybucji NuGet:
 
 * Udoskonalenia NU1403 — sprawdzaj poprawność wszystkich pakietów, Uwzględnij oczekiwane/rzeczywiste wartości SHA- [#8424](https://github.com/NuGet/Home/issues/8424)
 
-* Wielokrotne Wyliczenie `NuGetPackageManager.PreviewUpdatePackagesAsync`w  -  [#8401](https://github.com/NuGet/Home/issues/8401)
+* Wielokrotne Wyliczenie w `NuGetPackageManager.PreviewUpdatePackagesAsync` - [#8401](https://github.com/NuGet/Home/issues/8401)
 
 * Przywróć zmianę "Public-> Internal" w PluginProcess — [#8390](https://github.com/NuGet/Home/issues/8390)
 
@@ -70,7 +70,7 @@ Pojazdy dystrybucji NuGet:
 
 * Ustaw odczytywanie ustawień w programie VS z opóźnieniem [#8156](https://github.com/NuGet/Home/issues/8156)
 
-* Regresja `Nuget sources add` w programie powoduje, że znak ":", wartość szesnastkowa 0x3A, nie może zostać uwzględniony w nazwie "Błędy- [#7948](https://github.com/NuGet/Home/issues/7948)
+* Regresja w `Nuget sources add` powoduje, że "znak": ", wartość szesnastkowa 0x3A, nie może zostać uwzględniony w nazwie" Błędy — [#7948](https://github.com/NuGet/Home/issues/7948)
 
 * Dostawcy poświadczeń wtyczki NuGet — ukrywanie okna procesu — [#7511](https://github.com/NuGet/Home/issues/7511)
 
@@ -86,10 +86,16 @@ Pojazdy dystrybucji NuGet:
 
 * Włącz przywracanie na plikach. proj — [#8212](https://github.com/NuGet/Home/issues/8212)
 
-* Wprowadź `NUGET_NETFX_PLUGIN_PATHS` i`NUGET_NETCORE_PLUGIN_PATHS` aby obsługiwać konfigurację obu jednocześnie — [#8151](https://github.com/NuGet/Home/issues/8151)
+* Wprowadź `NUGET_NETFX_PLUGIN_PATHS` i `NUGET_NETCORE_PLUGIN_PATHS` do obsługi konfiguracji obu jednocześnie [#8151](https://github.com/NuGet/Home/issues/8151)
 
 * Włącz wiele wersji dla PackageDownload za pomocą atrybutu Version- [#8074](https://github.com/NuGet/Home/issues/8074)
 
 * Opcje Add-SolutionDirectory i-PackageDirectory do programu NuGet. exe Pack- [#7163](https://github.com/NuGet/Home/issues/7163)
 
 **[Lista wszystkich problemów rozwiązanych w tej wersji — 5,3](https://github.com/nuget/home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%225.3")**
+
+## <a name="summary-whats-new-in-531"></a>Podsumowanie: co nowego w programie 5.3.1
+
+* Wtyczka: zadanie zostało anulowane — nie Zezwalaj na anulowanie dla tworzenia wystąpienia wtyczki — [#8648](https://github.com/NuGet/Home/issues/8648)
+
+* Nie można bezpiecznie uruchomić zadania przywracania dwa razy w jednym procesie (gdy są używane dostawcy poświadczeń) — [#8688](https://github.com/NuGet/Home/issues/8688)
