@@ -36,7 +36,7 @@ gdzie opcjonalne terminy wyszukiwania będą filtrować listę wyświetlaną. Te
 | Help | Wyświetla informacje pomocy dla polecenia. |
 | IncludeDelisted | *(3.2 +)* Wyświetlanie pakietów nieznajdujących się na liście. |
 | NonInteractive | Pomija monity o dane wejściowe lub potwierdzone przez użytkownika. |
-| Wersja wstępna | Zawiera pakiety wersji wstępnej znajdujące się na liście. |
+| PreRelease | Zawiera pakiety wersji wstępnej znajdujące się na liście. |
 | Source | Określa listę źródeł pakietów do wyszukania. |
 | Verbosity | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *ciche*, *szczegółowe*. |
 
