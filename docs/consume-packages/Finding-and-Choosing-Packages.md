@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 06/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: cbe6fd964e88b054b9e2c5c8ead71d1f9090d63c
-ms.sourcegitcommit: 5aa49478dc466c67db5c3edda7c6ce8dcd8ae033
+ms.openlocfilehash: 9947a490e4373bb0b8b7fb0814828ff2a60615a8
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817563"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611073"
 ---
 # <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocenianie pakietów NuGet dla projektu
 
-Podczas uruchamiania dowolnego projektu .NET lub przy każdej identyfikacji potrzeby funkcjonalnej aplikacji lub usługi możesz zaoszczędzić wiele czasu i problemów, korzystając z istniejących pakietów NuGet, które spełniają te wymagania. Te pakiety mogą pochodzić z publicznej kolekcji [NuGet.org](http://www.nuget.org/packages/)lub prywatnego źródła, które jest udostępniane przez organizację lub inną osobę trzecią.
+Podczas uruchamiania dowolnego projektu .NET lub przy każdej identyfikacji potrzeby funkcjonalnej aplikacji lub usługi możesz zaoszczędzić wiele czasu i problemów, korzystając z istniejących pakietów NuGet, które spełniają te wymagania. Te pakiety mogą pochodzić z publicznej kolekcji [NuGet.org](https://www.nuget.org/packages/)lub prywatnego źródła, które jest udostępniane przez organizację lub inną osobę trzecią.
 
 ## <a name="finding-packages"></a>Znajdowanie pakietów
 
@@ -40,9 +40,9 @@ Niektóre pakiety mają listę obsługiwanych struktur bezpośrednio w galerii n
 
 Na szczęście można określić obsługiwane platformy, korzystając z dwóch innych metod:
 
-1. Spróbuj zainstalować pakiet w projekcie za pomocą [`Install-Package`](../reference/ps-reference/ps-ref-install-package.md) polecenia w konsoli Menedżera pakietów NuGet. Jeśli pakiet jest niezgodny, to polecenie pokazuje obsługiwane platformy pakietu.
+1. Spróbuj zainstalować pakiet w projekcie za pomocą polecenia [`Install-Package`](../reference/ps-reference/ps-ref-install-package.md) w konsoli Menedżera pakietów NuGet. Jeśli pakiet jest niezgodny, to polecenie pokazuje obsługiwane platformy pakietu.
 
-1. Pobierz pakiet z jego strony na nuget.org przy użyciu linku **pobierania ręcznego** w obszarze **informacje**. Zmień rozszerzenie z `.nupkg` na `.zip`, a następnie otwórz plik, aby przejrzeć zawartość jego `lib` folderu. Dla każdej obsługiwanej platformy widoczne są podfoldery, gdzie każdy podfolder ma nazwę z monikerem platformy docelowej (TFM; zobacz [Platformy docelowe](../reference/target-frameworks.md)). Jeśli w obszarze `lib` i tylko jednej bibliotece DLL nie ma podfolderów, należy spróbować zainstalować pakiet w projekcie w celu odnalezienia jego zgodności.
+1. Pobierz pakiet z jego strony na nuget.org przy użyciu linku **pobierania ręcznego** w obszarze **informacje**. Zmień rozszerzenie z `.nupkg` na `.zip`, a następnie otwórz plik, aby przejrzeć zawartość folderu `lib`. Dla każdej obsługiwanej platformy widoczne są podfoldery, gdzie każdy podfolder ma nazwę z monikerem platformy docelowej (TFM; zobacz [Platformy docelowe](../reference/target-frameworks.md)). Jeśli w obszarze `lib` nie ma podfolderów i jest tylko jedna biblioteka DLL, należy podjąć próbę zainstalowania pakietu w projekcie w celu odnalezienia jego zgodności.
 
 ## <a name="pre-release-packages"></a>Pakiety wersji wstępnej
 
@@ -54,23 +54,23 @@ Domyślnie nuget.org wyświetla pakiety wersji wstępnej w wynikach wyszukiwania
 
 W programie Visual Studio i w przypadku korzystania z narzędzi NuGet i interfejsu wiersza polecenia programu dotnet pakiet NuGet domyślnie nie zawiera wersji wstępnej. Aby zmienić to zachowanie, wykonaj następujące czynności:
 
-- **Interfejs użytkownika Menedżera pakietów w programie Visual Studio**: W interfejsie użytkownika **Zarządzanie pakietami NuGet** Ustaw pole **Uwzględnij wersję wstępną** . Ustawienie lub wyczyszczenie tego pola powoduje odświeżenie interfejsu użytkownika Menedżera pakietów oraz listę dostępnych wersji, które można zainstalować.
+- **Interfejs użytkownika Menedżera pakietów w programie Visual Studio**: w interfejsie użytkownika **Zarządzanie pakietami NuGet** Ustaw pole **Uwzględnij wersję wstępną** . Ustawienie lub wyczyszczenie tego pola powoduje odświeżenie interfejsu użytkownika Menedżera pakietów oraz listę dostępnych wersji, które można zainstalować.
 
     ![Pole wyboru Uwzględnij wersję wstępną w programie Visual Studio](media/Prerelease_02-CheckPrerelease.png)
 
-- **Konsola Menedżera pakietów**: `Get-Package` `Install-Package`Użyj przełącznika z poleceniami ,,`Sync-Package`, i .`Update-Package` `Find-Package` `-IncludePrerelease` Zapoznaj się z dokumentacją [programu PowerShell](../reference/powershell-reference.md).
+- **Konsola Menedżera pakietów**: użyj przełącznika `-IncludePrerelease` z poleceniami `Find-Package`, `Get-Package`, `Install-Package`, `Sync-Package`i `Update-Package`. Zapoznaj się z dokumentacją [programu PowerShell](../reference/powershell-reference.md).
 
-- **interfejs wiersza polecenia NuGet. exe**: `update`Użyj przełącznika z poleceniami`delete`,,i `mirror` . `install` `-prerelease` Zapoznaj się z dokumentacją [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md)
+- **interfejs wiersza polecenia NuGet. exe**: użyj przełącznika `-prerelease` za pomocą poleceń `install`, `update`, `delete`i `mirror`. Zapoznaj się z dokumentacją [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md)
 
-- **interfejs wiersza polecenia dotnet. exe**: Określ dokładną wersję wstępną za pomocą `-v` argumentu. Zapoznaj się z informacjami dotyczącymi [dodawania pakietu dotnet](/dotnet/core/tools/dotnet-add-package).
+- **interfejs wiersza polecenia dotnet. exe**: Określ dokładną wersję wstępną przy użyciu argumentu `-v`. Zapoznaj się z informacjami dotyczącymi [dodawania pakietu dotnet](/dotnet/core/tools/dotnet-add-package).
 
 <a name="native-cpp-packages"></a>
 
 ### <a name="native-c-packages"></a>Pakiety C++ natywne
 
-Pakiet NuGet obsługuje C++ pakiety natywne, które mogą być C++ używane w projektach w programie Visual Studio. Umożliwia to menu kontekstowe **Zarządzanie pakietami NuGet** dla projektów, wprowadza `native` platformę docelową i zapewnia integrację z programem MSBuild.
+Pakiet NuGet obsługuje C++ pakiety natywne, które mogą być C++ używane w projektach w programie Visual Studio. Umożliwia to polecenie **Zarządzanie pakietami NuGet** — menu kontekstowe dla projektów, wprowadza `native` platformę docelową i zapewnia integrację z programem MSBuild.
 
-Aby znaleźć natywne pakiety w [NuGet.org](https://www.nuget.org/packages), Wyszukaj `tag:native`za pomocą. Takie pakiety zazwyczaj `.targets` udostępniają `.props` i pliki, które NuGet są importowane automatycznie podczas dodawania pakietu do projektu.
+Aby znaleźć natywne pakiety w [NuGet.org](https://www.nuget.org/packages), Wyszukaj przy użyciu `tag:native`. Takie pakiety zwykle udostępniają pliki `.targets` i `.props`, które program NuGet importuje automatycznie po dodaniu pakietu do projektu.
 
 ## <a name="evaluating-packages"></a>Ocenianie pakietów
 
@@ -115,19 +115,19 @@ Jeśli klikniesz adres URL licencji dla pakietu przeniesiesz do tej strony, ozna
 
 Oto jak można odczytać informacje zawarte w pliku licencji w pakiecie:
 1. Pobierz pakiet NuGet i rozpakuj jego zawartość do folderu.
-1. `.nuspec` Otwórz plik, który będzie znajdować się w katalogu głównym tego folderu.
-1. Powinien mieć tag podobny `<license type="file">license\license.txt</license>`do tego. Oznacza to, że plik licencji ma nazwę `license.txt` i znajduje się w folderze o nazwie `license` , który również znajduje się w katalogu głównym tego folderu.
-1. Przejdź do `license` folderu i `license.txt` Otwórz plik.
+1. Otwórz plik `.nuspec`, który będzie znajdować się w katalogu głównym tego folderu.
+1. Powinien mieć tag, taki jak `<license type="file">license\license.txt</license>`. Oznacza to, że plik licencji ma nazwę `license.txt` i znajduje się w folderze o nazwie `license`, który również znajduje się w katalogu głównym tego folderu.
+1. Przejdź do folderu `license` i Otwórz plik `license.txt`.
 
-W przypadku programu MSBuild równoważnego ustawieniu licencji w programie `.nuspec`zapoznaj się z tematem [pakowanie wyrażenia licencji lub pliku licencji](/nuget/reference/msbuild-targets#packing-a-license-expression-or-a-license-file).
+W przypadku programu MSBuild równoważnego ustawieniu licencji w `.nuspec`zapoznaj się z [wyrażeniem pakowanie licencji lub pliku licencji](/nuget/reference/msbuild-targets#packing-a-license-expression-or-a-license-file).
 
 ## <a name="search-syntax"></a>Składnia wyszukiwania
 
 Wyszukiwanie pakietów NuGet działa tak samo na nuget.org, w interfejsie wiersza polecenia NuGet i w rozszerzeniu Menedżera pakietów NuGet w programie Visual Studio. Ogólnie rzecz biorąc, wyszukiwanie jest stosowane do słów kluczowych, a także opisów pakietów.
 
-- **Keywords**: Wyszukiwanie wyszukuje odpowiednie pakiety, które zawierają dowolne z podanych słów kluczowych. Przykład: `modern UI`. Aby wyszukać pakiety zawierające wszystkie podane słowa kluczowe, użyj "+" między warunkami, takimi jak `modern+UI`.
-- **Wyrażenia**: Wprowadzanie warunków w cudzysłowie szuka dokładnego dopasowania bez uwzględniania wielkości liter do tych warunków. Przykład: `"modern UI" package`
-- **Filtrowanie**: Możesz zastosować termin `<property>:<term>` wyszukiwania do określonej właściwości przy użyciu składni, gdzie `<property>` (bez uwzględniania wielkości liter `version`) `title`może `tags`być `id`, `packageid` `author` `description`,,,, ,`summary`i .`owner` Warunki mogą być zawarte w cudzysłowie w razie potrzeby i można wyszukiwać wiele właściwości w tym samym czasie. Ponadto wyszukiwania na `id` właściwości są dopasowaniami podciągów, podczas `packageid` gdy używa dokładnego dopasowania. Przykłady:
+- **Słowa kluczowe**: Search szuka odpowiednich pakietów, które zawierają dowolne z podanych słów kluczowych. Przykład: `modern UI`. Aby wyszukać pakiety zawierające wszystkie podane słowa kluczowe, użyj "+" między warunkami, takimi jak `modern+UI`.
+- **Wyrażenia**: wprowadzanie warunków w cudzysłowie szuka dokładnego dopasowania bez uwzględniania wielkości liter do tych warunków. Przykład: `"modern UI" package`
+- **Filtrowanie**: możesz zastosować termin wyszukiwania do określonej właściwości przy użyciu składni `<property>:<term>` gdzie `<property>` (bez uwzględniania wielkości liter) można `id`, `packageid`, `version`, `title`, `tags`, `author`, `description`, `summary`i `owner`. Warunki mogą być zawarte w cudzysłowie w razie potrzeby i można wyszukiwać wiele właściwości w tym samym czasie. Ponadto wyszukiwania na właściwości `id` są dopasowaniami podciągów, podczas gdy `packageid` używa dokładnego dopasowania. Przykłady:
 
     ```
     id:NuGet.Core                # Match any part of the id property

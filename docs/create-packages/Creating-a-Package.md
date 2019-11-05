@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 353654d12e137222ab24417f30fd22e9f027c324
-ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
+ms.openlocfilehash: 12ecfb8374c43a04d57d32575556adebc991d053
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72380706"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73610703"
 ---
 # <a name="create-a-package-using-the-nugetexe-cli"></a>Tworzenie pakietu przy użyciu interfejsu wiersza polecenia NuGet. exe
 
@@ -255,7 +255,7 @@ Następujące polecenie tworzy manifest domyślny z symbolami zastępczymi, co z
 nuget spec [<package-name>]
 ```
 
-Jeśli pominięto \<package-Name @ no__t-1, otrzymany plik jest `Package.nuspec`. Jeśli podano nazwę, taką jak `Contoso.Utility.UsefulStuff`, plik jest `Contoso.Utility.UsefulStuff.nuspec`.
+W przypadku pominięcia \<nazwy pakietu\>, otrzymany plik zostanie `Package.nuspec`. Jeśli podano nazwę, taką jak `Contoso.Utility.UsefulStuff`, plik jest `Contoso.Utility.UsefulStuff.nuspec`.
 
 Wyniki `.nuspec` zawierają symbole zastępcze dla wartości, takich jak `projectUrl`. Pamiętaj, aby edytować plik przed jego użyciem, aby utworzyć końcowy plik `.nupkg`.
 
@@ -276,9 +276,9 @@ Identyfikator pakietu (element `<id>`) i numer wersji (element `<version>`) to d
 
 > Poniższa seria krótkich wpisów w blogu pomaga również zrozumieć przechowywanie wersji:
 >
-> - [Część 1: pobieranie biblioteki DLL Hell](http://blog.davidebbo.com/2011/01/nuget-versioning-part-1-taking-on-dll.html)
-> - [Część 2: podstawowy algorytm](http://blog.davidebbo.com/2011/01/nuget-versioning-part-2-core-algorithm.html)
-> - [Część 3: ujednolicenie za pośrednictwem przekierowań powiązań](http://blog.davidebbo.com/2011/01/nuget-versioning-part-3-unification-via.html)
+> - [Część 1: pobieranie biblioteki DLL Hell](https://blog.davidebbo.com/2011/01/nuget-versioning-part-1-taking-on-dll.html)
+> - [Część 2: podstawowy algorytm](https://blog.davidebbo.com/2011/01/nuget-versioning-part-2-core-algorithm.html)
+> - [Część 3: ujednolicenie za pośrednictwem przekierowań powiązań](https://blog.davidebbo.com/2011/01/nuget-versioning-part-3-unification-via.html)
 
 ## <a name="add-a-readme-and-other-files"></a>Dodaj plik Readme i inne pliki
 
@@ -312,7 +312,7 @@ Po dołączeniu pliku o nazwie `readme.txt` w katalogu głównym pakietu program
 
 ## <a name="include-msbuild-props-and-targets-in-a-package"></a>Uwzględnij w pakiecie narzędzia i elementy docelowe programu MSBuild
 
-W niektórych przypadkach może zajść potrzeba dodania niestandardowych elementów docelowych kompilacji lub właściwości w projektach korzystających z pakietu, takich jak uruchamianie niestandardowego narzędzia lub procesu podczas kompilacji. W tym celu należy umieścić pliki w formie `<package_id>.targets` lub `<package_id>.props` (takie jak `Contoso.Utility.UsefulStuff.targets`) w folderze `\build` projektu.
+W niektórych przypadkach może zajść potrzeba dodania niestandardowych elementów docelowych kompilacji lub właściwości w projektach korzystających z pakietu, takich jak uruchamianie niestandardowego narzędzia lub procesu podczas kompilacji. W tym celu należy umieścić pliki w formularzu `<package_id>.targets` lub `<package_id>.props` (takie jak `Contoso.Utility.UsefulStuff.targets`) w folderze `\build` projektu.
 
 Pliki w folderze głównym `\build` są uważane za odpowiednie dla wszystkich platform docelowych. Aby zapewnić pliki specyficzne dla struktury, należy najpierw umieścić je w odpowiednich podfolderach, takich jak następujące:
 

@@ -1,40 +1,40 @@
 ---
-title: Jak kontrolek interfejsu użytkownika pakietu nuget
-description: Jak utworzyć pakiety NuGet, które zawierają platformy uniwersalnej systemu Windows lub programu WPF steruje tym potrzebnych metadanych i plików pomocniczych dla projektantów programu Visual Studio i Blend.
+title: Jak spakować formanty interfejsu użytkownika za pomocą narzędzia NuGet
+description: Jak utworzyć pakiety NuGet, które zawierają kontrolki platformy UWP lub WPF, w tym niezbędne metadane i pliki pomocnicze dla projektantów programów Visual Studio i Blend.
 author: karann-msft
 ms.author: karann
 ms.date: 05/23/2018
 ms.topic: tutorial
-ms.openlocfilehash: 522dbbb2a39eb1cb6f0d23f39a48158b07c9076d
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: da8c5a05311c790bf6b873bc0f1a077d3ef1db87
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67426854"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73610618"
 ---
 # <a name="creating-ui-controls-as-nuget-packages"></a>Tworzenie kontrolek interfejsu użytkownika jako pakietów NuGet
 
-Począwszy od programu Visual Studio 2017, możesz korzystać z zalet dodano funkcje dla platformy uniwersalnej systemu Windows i kontrolek WPF, które dostarczają w pakietach NuGet. Ten przewodnik przeprowadzi Cię przez te możliwości w kontekście kontrolek platformy UWP przy użyciu [przykładowe ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage). To samo dotyczy kontrolek WPF, chyba, że wymienione w inny sposób.
+Począwszy od programu Visual Studio 2017, możesz skorzystać z dodatkowych możliwości dla formantów platformy UWP i WPF dostarczanych w pakietach NuGet. Ten przewodnik przeprowadzi Cię przez te możliwości w kontekście formantów platformy UWP za pomocą [przykładu ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage). To samo dotyczy formantów WPF, chyba że określono inaczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Visual Studio 2017
-1. Opis sposobu [tworzenie pakietów platformy UWP](create-uwp-packages.md)
+1. Informacje na temat [tworzenia pakietów platformy UWP](create-uwp-packages.md)
 
 ## <a name="generate-library-layout"></a>Generuj układ biblioteki
 
 > [!Note]
-> Dotyczy tylko kontrolek platformy UWP.
+> Ma to zastosowanie tylko do kontrolek platformy UWP.
 
-Ustawienie `GenerateLibraryLayout` właściwość gwarantuje, że dane wyjściowe kompilacji projektu jest generowany w układzie, który jest gotowy do umieszczenia w pakiecie bez konieczności dla poszczególnych plików zapisów nuspec.
+Ustawienie właściwości `GenerateLibraryLayout` zapewnia, że dane wyjściowe kompilacji projektu są generowane w układzie, który jest gotowy do spakowania bez potrzeby pojedynczych wpisów plików w nuspec.
 
-Z właściwości projektu przejdź na kartę kompilacji, a następnie zaznacz pole wyboru "Generuj układ biblioteki". Spowoduje to zmodyfikowania pliku projektu i ustawić `GenerateLibraryLayout` flagi na wartość true dla aktualnie wybrana konfiguracja kompilacji i platformy.
+Na stronie właściwości projektu przejdź do karty kompilacja i zaznacz pole wyboru "Generuj układ biblioteki". Spowoduje to zmodyfikowanie pliku projektu i ustawienie flagi `GenerateLibraryLayout` na true dla aktualnie wybranej konfiguracji kompilacji i platformy.
 
-Możesz również edytować plik projektu, aby dodać `<GenerateLibraryLayout>true</GenerateLibraryLayout>` do pierwszej grupy właściwości bezwarunkowy. Ma to zastosowanie właściwości niezależnie od tego, czy konfigurację kompilacji i platformy.
+Alternatywnie Edytuj plik projektu, aby dodać `<GenerateLibraryLayout>true</GenerateLibraryLayout>` do pierwszej niewarunkowej grupy właściwości. Spowoduje to zastosowanie właściwości niezależnie od konfiguracji kompilacji i platformy.
 
-## <a name="add-toolboxassets-pane-support-for-xaml-controls"></a>Obsługę przybornika/zasoby okienka kontrolki XAML
+## <a name="add-toolboxassets-pane-support-for-xaml-controls"></a>Obsługa okienka Dodawanie zestawu narzędzi/zasobów dla kontrolek XAML
 
-Aby kontrolki XAML są wyświetlane w przyborniku projektanta XAML w programie Visual Studio i w okienku zasobów programu Blend, należy utworzyć `VisualStudioToolsManifest.xml` pliku w folderze głównym `tools` folderu projektu pakietu. Ten plik nie jest wymagane, jeśli nie potrzebujesz, aby formant mógł być wyświetlany w przyborniku lub w okienku zasobów.
+Aby formant XAML pojawił się w przyborniku projektanta XAML w programie Visual Studio i w okienku Elementy zawartości programu Blend, Utwórz plik `VisualStudioToolsManifest.xml` w folderze głównym `tools` projektu pakietu. Ten plik nie jest wymagany, Jeśli kontrolka nie jest potrzebna w okienku Przybornik lub składniki.
 
     \build
     \lib
@@ -59,14 +59,14 @@ Struktura pliku jest następująca:
 
 gdzie:
 
-- *your_package_file*: pliku nazwę kontrolki, takie jak `ManagedPackage.winmd` ("ManagedPackage" jest używany na potrzeby tego przykładu i nie ma innych znaczenia dowolną o nazwie).
-- *vs_category*: Etykieta dla grupy, w którym formant powinna zostać wyświetlona w przyborniku projektanta programu Visual Studio. Element `VSCategory` jest konieczny, aby formant mógł być wyświetlany w przyborniku.
-- *blend_category*: Etykieta dla grupy, w którym formant powinna zostać wyświetlona w okienku zasobów projektanta programu Blend. Element `BlendCategory` jest konieczny, aby formant mógł być wyświetlany w zasoby.
-- *type_full_name_n*: W pełni kwalifikowaną nazwę dla każdej kontrolki, w tym przestrzeń nazw, takich jak `ManagedPackage.MyCustomControl`. Należy pamiętać, że format kropka jest używane dla typów zarządzane i natywne.
+- *your_package_file*: nazwa pliku kontrolnego, taka jak `ManagedPackage.winmd` ("ManagedPackage", jest dowolną nazwą używaną dla tego przykładu i nie ma innego znaczenia).
+- *vs_category*: etykieta dla grupy, w której formant powinien pojawić się w przyborniku projektanta programu Visual Studio. Aby formant pojawił się w przyborniku, niezbędna jest `VSCategory`.
+- *blend_category*: etykieta grupy, w której formant powinien pojawić się w okienku zasobów projektanta mieszania. Aby formant był widoczny w zasobach, konieczne jest `BlendCategory`.
+- *type_full_name_n*: w pełni kwalifikowana nazwa dla każdej kontrolki, w tym przestrzeń nazw, taka jak `ManagedPackage.MyCustomControl`. Należy zauważyć, że format kropki jest używany zarówno dla typów zarządzanych, jak i natywnych.
 
-W bardziej zaawansowanych scenariuszy może również obejmować wiele `<File>` elementów w obrębie `<FileList>` Jeśli pojedynczy pakiet zawiera wiele zestawów formantu. Mogą też istnieć wiele `<ToolboxItems>` węzłów w ramach pojedynczej `<File>` aby organizować formantów na osobne kategorie.
+W bardziej zaawansowanych scenariuszach można także uwzględnić wiele elementów `<File>` w ramach `<FileList>`, gdy pojedynczy pakiet zawiera wiele zestawów kontrolek. Możesz również mieć wiele węzłów `<ToolboxItems>` w ramach jednego `<File>`, jeśli chcesz zorganizować kontrolki w osobne kategorie.
 
-W poniższym przykładzie kontrolki implementowany w `ManagedPackage.winmd` pojawi się w programie Visual Studio i Blend w grupie o nazwie "Pakiet Managed" i "MyCustomControl" pojawi się w tej grupie. Te nazwy są dowolne.
+W poniższym przykładzie kontrolka zaimplementowana w `ManagedPackage.winmd` zostanie wyświetlona w programie Visual Studio i w programie Blend w grupie o nazwie "pakiet zarządzany" i "MyCustomControl" pojawi się w tej grupie. Wszystkie te nazwy są dowolne.
 
 ```xml
 <FileList>
@@ -78,49 +78,49 @@ W poniższym przykładzie kontrolki implementowany w `ManagedPackage.winmd` poja
 </FileList>
 ```
 
-![Kontrolka w postaci przykład postaci, w jakiej są wyświetlane w programie Visual Studio](media/UWP-control-vs-toolbox.png)
+![Przykładowa kontrolka wyświetlana w programie Visual Studio](media/UWP-control-vs-toolbox.png)
 
-![Kontrolka w postaci przykład postaci, w jakiej są wyświetlane w programie Blend](media/UWP-control-blend-assets.png)
-
-> [!Note]
-> Należy jawnie określić każdy formant, który chcesz zobaczyć w okienku przybornika/zasobów. Upewnij się, podaj w formacie `Namespace.ControlName`.
-
-## <a name="add-custom-icons-to-your-controls"></a>Dodawanie niestandardowych ikon do formantów
-
-Aby wyświetlić ikonę niestandardową, w okienku przybornika/zasoby, należy dodać obraz do projektu lub odpowiednich `design.dll` projektu o nazwie "Namespace.ControlName.extension" i Ustaw akcję kompilacji "Osadzonego zasobu". Należy również zagwarantować, że skojarzone `AssemblyInfo.cs` Określa atrybut ProvideMetadata - `[assembly: ProvideMetadata(typeof(RegisterMetadata))]`. Zobacz ten [przykładowe](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/NativePackage.Design/Properties/AssemblyInfo.cs#L20).
-
-Obsługiwane formaty to `.png`, `.jpg`, `.jpeg`, `.gif`, i `.bmp`. Zalecanym formatem jest BMP24 16 x 16 pikseli.
-
-![Przykład ikona okno narzędzia](https://raw.githubusercontent.com/NuGet/docs.microsoft.com-nuget/live/docs/guides/media/ColorPicker_16x16x24.bmp)
-
-Różowa tła jest zastąpione w czasie wykonywania. Ikony są ponownie pokolorowane, po zmianie motywu programu Visual Studio i oczekuje się, że kolor tła. Aby uzyskać więcej informacji, zobacz [obrazy i ikony dla programu Visual Studio](https://docs.microsoft.com/en-us/visualstudio/extensibility/ux-guidelines/images-and-icons-for-visual-studio).
-
-W poniższym przykładzie projekt zawiera plik o nazwie "ManagedPackage.MyCustomControl.png".
-
-![Ustawienie ikony niestandardowej w projekcie](media/UWP-control-custom-icon.png)
+![Przykładowa kontrolka wyświetlana w programie Blend](media/UWP-control-blend-assets.png)
 
 > [!Note]
-> W przypadku natywnych kontrolek należy umieścić ikony jako zasób w `design.dll` projektu.
+> Należy jawnie określić każdą kontrolkę, która ma być widoczna w okienku Przybornik/składniki. Upewnij się, że określisz je w formacie `Namespace.ControlName`.
 
-## <a name="support-specific-windows-platform-versions"></a>Obsługa określonych wersji platformy Windows
+## <a name="add-custom-icons-to-your-controls"></a>Dodawanie niestandardowych ikon do kontrolek
 
-Pakiety platformy uniwersalnej systemu Windows mają TargetPlatformVersion (TPV) i TargetPlatformMinVersion (TPMinV), które definiują górne i dolne granice wersji systemu operacyjnego zainstalowaną aplikację. Dodatkowo TPV Określa wersję zestawu SDK, względem którego skompilowano aplikację. Można je na uwadze tych właściwości, podczas tworzenia pakietu platformy uniwersalnej systemu Windows: za pomocą interfejsów API poza granicami wersje platformy, zdefiniowane w aplikacji spowoduje, że kompilacja nie powiedzie się lub aplikację, aby zakończyć się niepowodzeniem w czasie wykonywania.
+Aby wyświetlić niestandardową ikonę w okienku Przybornik/składniki, Dodaj obraz do projektu lub odpowiadającego projektu `design.dll` o nazwie "Namespace. ControlName. Extension" i ustaw akcję kompilacji na "osadzony zasób". Należy również upewnić się, że skojarzone `AssemblyInfo.cs` określa atrybut ProvideMetadata `[assembly: ProvideMetadata(typeof(RegisterMetadata))]`. Zapoznaj się z tym [przykładem](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/NativePackage.Design/Properties/AssemblyInfo.cs#L20).
 
-Na przykład załóżmy, że ustawiono TPMinV dla pakietu formanty do systemu Windows 10 Anniversary Edition (10.0; Kompilacja 14393), tak aby mieć pewność, że pakiet jest używane tylko przez platformy uniwersalnej systemu Windows projektów pasujący i obniżyć powiązane z. Aby umożliwić pakietu do użycia w projektach platformy uniwersalnej systemu Windows, należy spakować formantów z następującymi nazwami folderu:
+Obsługiwane formaty to `.png`, `.jpg`, `.jpeg`, `.gif`i `.bmp`. Zalecany format to BMP24 16 pikseli przez 16 pikseli.
+
+![Ikona pola narzędzia — przykład](https://raw.githubusercontent.com/NuGet/docs.microsoft.com-nuget/live/docs/guides/media/ColorPicker_16x16x24.bmp)
+
+Różowe tło jest zastępowane w czasie wykonywania. Po zmianie motywu programu Visual Studio ikony są zmieniane, a jego kolor tła jest oczekiwany. Aby uzyskać więcej informacji, zapoznaj się z [obrazami i ikonami dla programu Visual Studio](https://docs.microsoft.com/visualstudio/extensibility/ux-guidelines/images-and-icons-for-visual-studio).
+
+W poniższym przykładzie projekt zawiera plik obrazu o nazwie "ManagedPackage. MyCustomControl. png".
+
+![Ustawianie niestandardowej ikony w projekcie](media/UWP-control-custom-icon.png)
+
+> [!Note]
+> W przypadku kontrolek natywnych należy umieścić ikonę jako zasób w projekcie `design.dll`.
+
+## <a name="support-specific-windows-platform-versions"></a>Obsługa określonych wersji platformy systemu Windows
+
+Pakiety platformy UWP mają TargetPlatformVersion (TPV) i element targetplatformminversion (TPMinV) definiujące górne i dolne granice wersji systemu operacyjnego, w których można zainstalować aplikację. TPV dalsze określa wersję zestawu SDK, dla którego aplikacja została skompilowana. Pamiętaj o tych właściwościach podczas tworzenia pakietu platformy UWP: Używanie interfejsów API poza granicami wersji platformy zdefiniowanych w aplikacji spowoduje, że kompilacja zakończy się niepowodzeniem lub aplikacja zakończy się niepowodzeniem w czasie wykonywania.
+
+Załóżmy na przykład, że ustawiono TPMinV dla pakietu formantów w systemie Windows 10 w wersji rocznicowej (10,0; Kompilacja 14393), aby upewnić się, że pakiet jest używany tylko przez projekty platformy UWP zgodne z tym dolną granicą. Aby zezwolić na korzystanie z pakietu przez projekty platformy UWP, należy spakować kontrolki następującymi nazwami folderów:
 
     \lib\uap10.0.14393\*
     \ref\uap10.0.14393\*
 
-NuGet sprawdzi automatycznie TPMinV konsumencki projektu i zakończona niepowodzeniem instalacji, jeśli jest on niższy niż Windows 10 Anniversary Edition (10.0; Kompilacja 14393)
+Pakiet NuGet automatycznie sprawdzi TPMinV pakietu, a instalacja nie powiedzie się, jeśli jest starsza niż Windows 10 rocznic Edition (10,0; Kompilacja 14393)
 
-W przypadku WPF Załóżmy się, że chcesz, aby pakiet kontrolek WPF być wykorzystane przez projekty przeznaczone dla .NET Framework v4.6.1 lub nowszej. Aby wymusić, który, należy spakować formantów z następującymi nazwami folderu:
+W przypadku WPF Załóżmy, że chcesz, aby pakiet formantów WPF był używany przez projekty ukierunkowane na .NET Framework v w wersji 4.6.1 lub wyższej. Aby wymusić to, należy spakować kontrolki o następujących nazwach folderów:
 
     \lib\net461\*
     \ref\net461\*
 
-## <a name="add-design-time-support"></a>Dodawanie obsługi w czasie projektowania
+## <a name="add-design-time-support"></a>Dodawanie obsługi czasu projektowania
 
-Aby skonfigurować, gdzie właściwości kontrolki wyświetlane w panelu Inspektor właściwości, Dodaj niestandardowe moduły definiowania układu itp., umieść usługi `design.dll` pliku wewnątrz `lib\uap10.0.14393\Design` folderów właściwe dla platformy docelowej. Ponadto aby upewnić się, że **[Edytuj szablon > Edytuj kopię](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)** działania funkcji musi zawierać `Generic.xaml` i słowników zasobów, które łączy się on w `<your_assembly_name>\Themes` folder (ponownie przy użyciu Twoja nazwa zestawu rzeczywistego). (Ten plik nie ma wpływu na zachowanie środowiska uruchomieniowego kontrolki.) Struktura folderów związku z tym będzie wyglądać następująco:
+Aby skonfigurować, gdzie są wyświetlane właściwości kontrolki w Inspektorze właściwości, Dodaj niestandardowe moduły definiowania układu itp., Umieść plik `design.dll` wewnątrz folderu `lib\uap10.0.14393\Design`, zgodnie z potrzebami platformy docelowej. Ponadto, aby upewnić się, że **[Edytuj szablon > edytowanie funkcji kopiowania](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)** , należy uwzględnić `Generic.xaml` i wszystkie słowniki zasobów, które Scala w folderze `<your_assembly_name>\Themes` (przy użyciu rzeczywistej nazwy zestawu). (Ten plik nie ma wpływu na zachowanie w czasie wykonywania kontrolki). Struktura folderów będzie wyglądać następująco:
 
     \lib
       \uap10.0.14393
@@ -131,7 +131,7 @@ Aby skonfigurować, gdzie właściwości kontrolki wyświetlane w panelu Inspekt
             Generic.xaml
 
 
-Dla WPF kontynuując w przykładzie gdzie chcesz użytkownika WPF kontrolki pakiet, który ma zostać użyte przez projekty przeznaczone dla .NET Framework v4.6.1 lub nowszej:
+W przypadku platformy WPF kontynuując przykład, w którym chcesz, aby pakiet formantów WPF był używany przez projekty przeznaczone dla .NET Framework v 4.6.1 lub wyższych:
 
     \lib
       \net461
@@ -142,18 +142,18 @@ Dla WPF kontynuując w przykładzie gdzie chcesz użytkownika WPF kontrolki paki
             Generic.xaml
 
 > [!Note]
-> Domyślnie właściwości kontrolki będą wyświetlane w różnych kategorii w panelu Inspektor właściwości.
+> Domyślnie właściwości kontrolki będą wyświetlane w kategorii Różne w Inspektorze właściwości.
 
-## <a name="use-strings-and-resources"></a>Użyj ciągów i zasobów
+## <a name="use-strings-and-resources"></a>Korzystanie z ciągów i zasobów
 
-Możesz osadzić zasoby w postaci ciągów (`.resw`) do pakietu, które mogą być używane przez formant lub konsumencki projektu platformy uniwersalnej systemu Windows, należy ustawić **Build Action** właściwość `.resw` plik **PRIResource**.
+W pakiecie można osadzić zasoby ciągów (`.resw`), które mogą być używane przez formant lub projekt zużywający platformy UWP, ustawić właściwość **Akcja kompilacji** pliku `.resw` na **PRIResource**.
 
-Na przykład dotyczyć [MyCustomControl.cs](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/ManagedPackage/MyCustomControl.cs) w przykładzie ExtensionSDKasNuGetPackage.
+Aby zapoznać się z przykładem, zobacz [MyCustomControl.cs](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/ManagedPackage/MyCustomControl.cs) w przykładzie ExtensionSDKasNuGetPackage.
 
 > [!Note]
-> Dotyczy tylko kontrolek platformy UWP.
+> Ma to zastosowanie tylko do kontrolek platformy UWP.
 
 ## <a name="see-also"></a>Zobacz także
 
 - [Tworzenie pakietów platformy UWP](create-uwp-packages.md)
-- [Przykładowe ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage)
+- [Przykład ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage)

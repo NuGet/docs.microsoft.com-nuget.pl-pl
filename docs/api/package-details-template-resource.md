@@ -6,34 +6,34 @@ ms.author: jver
 ms.date: 3/1/2019
 ms.topic: reference
 ms.reviewer: ananguar
-ms.openlocfilehash: 6657536ea6c699a834f57494c66b2a7d741dfcb7
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: 3102cb9a20f354e92a0da8bba6457dc2ad0f0f2d
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488169"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73610957"
 ---
 # <a name="package-details-url-template"></a>Szablon adresu URL szczegółów pakietu
 
 Jest możliwe, aby klient mógł utworzyć adres URL, który może być używany przez użytkownika, aby wyświetlić więcej szczegółów pakietu w swojej przeglądarce sieci Web. Jest to przydatne, gdy źródło pakietu chce wyświetlić dodatkowe informacje dotyczące pakietu, który może nie pasować do zakresu działania aplikacji klienckiej NuGet.
 
-Zasób używany do kompilowania tego adresu URL jest `PackageDetailsUriTemplate` zasobem znalezionym w [indeksie usługi](service-index.md).
+Zasób używany do kompilowania tego adresu URL jest zasobem `PackageDetailsUriTemplate` znalezionym w [indeksie usługi](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-Są używane `@type` następujące wartości:
+Następujące wartości `@type` są używane:
 
-@typewartościami                     | Uwagi
+wartość @type                     | Uwagi
 ------------------------------- | -----
 PackageDetailsUriTemplate/5.1.0 | Początkowa wersja
 
 ## <a name="url-template"></a>Szablon adresu URL
 
-Adres URL następującego interfejsu API to wartość `@id` właściwości skojarzonej z jedną z wymienionych powyżej wartości zasobów. `@type`
+Adres URL następującego interfejsu API to wartość właściwości `@id` skojarzona z jedną z powyższych wartości `@type` zasobów.
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Mimo że klient nie jest przeznaczony do żądania do adresu URL informacji o pakiecie w imieniu użytkownika, na stronie sieci Web powinna być obsługiwana `GET` Metoda zezwalająca na otwarcie klikniętego adresu URL w przeglądarce internetowej.
+Mimo że klient nie jest przeznaczony do żądania do adresu URL szczegółów pakietu w imieniu użytkownika, Strona sieci Web powinna obsługiwać metodę `GET`, aby umożliwić otwieranie adresu URL w przeglądarce internetowej.
 
 ## <a name="construct-the-url"></a>Konstruowanie adresu URL
 
@@ -50,7 +50,7 @@ Nazwa        | Typ    | Wymagane | Uwagi
 `{id}`      | string  | znaleziono       | Identyfikator pakietu, dla którego mają zostać pobrane szczegóły
 `{version}` | string  | znaleziono       | Wersja pakietu, dla której mają zostać pobrane szczegóły
 
-Serwer powinien akceptować `{id}` wartości `{version}` i zawierać dowolne wielkości liter. Ponadto serwer nie powinien być wrażliwy na to, czy wersja jest [znormalizowana](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning#normalized-version-numbers). Innymi słowy, serwer powinien akceptować również nieznormalizowane wersje.
+Serwer powinien akceptować `{id}` i `{version}` wartości przy użyciu dowolnej wielkości liter. Ponadto serwer nie powinien być wrażliwy na to, czy wersja jest [znormalizowana](https://docs.microsoft.com/nuget/concepts/package-versioning#normalized-version-numbers). Innymi słowy, serwer powinien akceptować również nieznormalizowane wersje.
 
 Na przykład szablon Details programu NuGet. org wygląda następująco:
 

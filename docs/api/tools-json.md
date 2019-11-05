@@ -1,68 +1,68 @@
 ---
-title: Tools.JSON nuget.exe wersji odnajdywania
-description: Punkt końcowy
+title: Tools. JSON do odnajdywania wersji NuGet. exe
+description: Punkt końcowy dla
 author: jver
 ms.author: jver
 ms.date: 08/16/2018
 ms.topic: conceptual
 ms.reviewer: kraigb
-ms.openlocfilehash: 003139abac7808dbdaef4aa66119e09772db2b4f
-ms.sourcegitcommit: b6efd4b210d92bf163c67e412ca9a5a018d117f0
+ms.openlocfilehash: a186db9727bdfd1b55bf73a1f29283352555dede
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56852536"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611019"
 ---
-# <a name="toolsjson-for-discovering-nugetexe-versions"></a>Tools.JSON nuget.exe wersji odnajdywania
+# <a name="toolsjson-for-discovering-nugetexe-versions"></a>Tools. JSON do odnajdywania wersji NuGet. exe
 
-Już dziś istnieje kilka sposobów, aby uzyskać najnowszą wersję programu nuget.exe na swojej maszynie w sposób za pomocą skryptów. Na przykład, Pobierz i Wyodrębnij [ `NuGet.CommandLine` ](https://www.nuget.org/packages/NuGet.CommandLine/) pakietów z witryny nuget.org. Ma złożoność, ponieważ wymaga ona albo, że masz już nuget.exe (dla `nuget.exe install`) lub masz rozpakowywanie .nupkg przy użyciu narzędzia unzip podstawowe i znaleźć wewnątrz binarnego.
+Obecnie istnieje kilka sposobów uzyskania najnowszej wersji pliku NuGet. exe na komputerze w sposób skryptowy. Na przykład możesz pobrać i wyodrębnić pakiet [`NuGet.CommandLine`](https://www.nuget.org/packages/NuGet.CommandLine/) z NuGet.org. Jest to pewna złożoność, ponieważ wymaga już posiadania pliku NuGet. exe (na potrzeby `nuget.exe install`) lub trzeba rozpakować NUPKG.
 
-Jeśli masz już nuget.exe, można również użyć `nuget.exe update -self`, jednak wymaga to również, masz istniejącą kopię nuget.exe. Takie podejście również aktualizacji do najnowszej wersji. Nie zezwalaj na użycie określonej wersji.
+Jeśli masz już program NuGet. exe, możesz również użyć `nuget.exe update -self`, ale wymaga to również posiadania istniejącej kopii NuGet. exe. To podejście powoduje także aktualizację do najnowszej wersji. Nie zezwala na korzystanie z określonej wersji.
 
-`tools.json` Punkt końcowy jest dostępny dla obu problemu bootstrapping i zapewnić kontrolę wersji nuget.exe pobrany. To może służyć w środowiskach ciągłej integracji/ciągłego Dostarczania i niestandardowych skryptów do odnajdywania i Pobierz wszelkie wydanej wersji nuget.exe.
+Punkt końcowy `tools.json` jest dostępny zarówno w celu rozwiązania problemu z uruchamianiem, jak i zapewnienia kontroli wersji programu NuGet. exe pobranej. Ta usługa może być używana w środowiskach ciągłej integracji/ciągłego wdrażania lub w skryptach niestandardowych w celu odnajdywania i pobierania dowolnej wydanej wersji programu NuGet. exe.
 
-`tools.json` Punktu końcowego można pobrać za pomocą nieuwierzytelnione żądania HTTP (np. `Invoke-WebRequest` w programie PowerShell lub `wget`). Można analizować, przy użyciu deserializacji JSON i pobierania nuget.exe kolejne adresy URL można również pobrać za pomocą nieuwierzytelnione żądania HTTP.
+Punkt końcowy `tools.json` można pobrać przy użyciu nieuwierzytelnionego żądania HTTP (np. `Invoke-WebRequest` w programie PowerShell lub `wget`). Można go przeanalizować przy użyciu deserializacji JSON, a kolejne adresy URL pobierania NuGet. exe mogą być również pobierane przy użyciu nieuwierzytelnionych żądań HTTP.
 
-Punkt końcowy można pobrać przy użyciu `GET` metody:
+Punkt końcowy można pobrać przy użyciu metody `GET`:
 
     GET https://dist.nuget.org/tools.json
 
-[Schematu JSON](http://json-schema.org/) punkt końcowy jest dostępny tutaj:
+[Schemat JSON](https://json-schema.org/) dla punktu końcowego jest dostępny tutaj:
 
     GET https://dist.nuget.org/tools.schema.json
 
-## <a name="response"></a>Odpowiedź
+## <a name="response"></a>Reakcji
 
-Odpowiedź jest dokumentem JSON, zawierającą wszystkie dostępne wersje nuget.exe.
+Odpowiedź to dokument JSON zawierający wszystkie dostępne wersje programu NuGet. exe.
 
 Główny obiekt JSON ma następującą właściwość:
 
 Nazwa      | Typ             | Wymagane
 --------- | ---------------- | --------
-nuget.exe | Tablica obiektów | tak
+nuget.exe | Tablica obiektów | opcję
 
-Każdy obiekt w `nuget.exe` tablica ma następujące właściwości:
+Każdy obiekt w tablicy `nuget.exe` ma następujące właściwości:
 
 Nazwa     | Typ   | Wymagane | Uwagi
 -------- | ------ | -------- | -----
-version  | string | tak      | Ciąg SemVer 2.0.0
-url      | string | tak      | Bezwzględny adres URL pobierania tej wersji programu nuget.exe
-etap    | string | tak      | Ciąg typu wyliczeniowego
-Przekazany | string | tak      | Przybliżony ISO 8601 sygnaturę czasową gdy wersja została udostępniona
+version  | string | opcję      | Ciąg 2.0.0 SemVer
+adres URL      | string | opcję      | Bezwzględny adres URL do pobierania tej wersji pliku NuGet. exe
+Przygotowane    | string | opcję      | Ciąg wyliczeniowy
+wysyłane | string | opcję      | Przybliżona sygnatura czasowa ISO 8601, gdy wersja została udostępniona
 
-Elementy w tablicy zostaną posortowane, malejąco według współczynnika SemVer 2.0.0. Gwarancja jest przeznaczone do zmniejszenia obciążenia klienta, który jest zainteresowany najwyższy numer wersji. Jednak oznacza to, że lista nie jest posortowana w kolejności chronologicznej. Na przykład jeśli starszej wersji głównych jest obsługiwane w terminie później niż w nowszej wersji głównej, ta wersja obsługiwanych nie pojawi się w górnej części listy. Jeśli chcesz, aby najnowszej wersji wydawanych przez *sygnatura czasowa*, po prostu posortować tablicę za `uploaded` ciągu. To działa, ponieważ `uploaded` jest sygnatura czasowa [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formatu, który być sortowane w porządku chronologicznym za pomocą sortowania lexicographical (czyli sortowania prostego ciągu).
+Elementy w tablicy zostaną posortowane w kolejności malejącej, SemVer 2.0.0. Gwarantuje to zmniejszenie obciążenia klienta, który ma największy numer wersji. Oznacza to jednak, że lista nie jest posortowana w kolejności chronologicznej. Na przykład jeśli niższa wersja główna jest obsługiwana w dacie późniejszej niż wyższa wersja główna, ta wersja serwisowa nie będzie widoczna w górnej części listy. Jeśli chcesz, aby Najnowsza wersja została wydana przez *sygnaturę czasową*, po prostu posortuj tablicę według ciągu `uploaded`. Dzieje się tak, ponieważ sygnatura czasowa `uploaded` jest w formacie [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) , który można sortować chronologicznie przy użyciu sortowania lexicographical (tj. proste sortowanie ciągu).
 
-`stage` Właściwość wskazuje, jak sprawdzonego jest ta wersja narzędzia. 
+Właściwość `stage` wskazuje, jak zbadane ta wersja narzędzia. 
 
-Etap              | Znaczenie
+Przygotowane              | Znaczenie
 ------------------ | ------
-EarlyAccessPreview | Jeszcze nie są widoczne na [pobierania strony sieci web](https://www.nuget.org/downloads) i powinny być weryfikowane przez partnerów
-Wydana           | Dostępne w witrynie pobierania, ale nie jest jeszcze zalecane w przypadku użycia rozprzestrzeniania się całej
-ReleasedAndBlessed | Dostępne w witrynie pobierania i jest zalecane w przypadku użycia
+EarlyAccessPreview | Nie jest jeszcze widoczne na [stronie pobierania](https://www.nuget.org/downloads) i powinny być sprawdzone przez partnerów
+Wydano           | Dostępne w witrynie pobierania, ale nie jest jeszcze zalecane do użycia w szerokim zakresie.
+ReleasedAndBlessed | Dostępne w witrynie pobierania i zalecane do użycia
 
-Jeden proste podejście do posiadanie najnowszy, zalecana wersja ma mieć pierwszej wersji na liście, który ma `stage` wartość `ReleasedAndBlessed`. To działa, ponieważ wersje są sortowane w kolejności SemVer 2.0.0.
+Jednym z prostych podejścia do uzyskania najnowszej, zalecanej wersji jest wykonanie pierwszej wersji na liście, która ma `stage` wartość `ReleasedAndBlessed`. To działa, ponieważ wersje są sortowane w kolejności SemVer 2.0.0.
 
-`NuGet.CommandLine` Pakietu w witrynie nuget.org są zazwyczaj aktualizowane tylko przy użyciu `ReleasedAndBlessed` wersji.
+Pakiet `NuGet.CommandLine` na nuget.org jest zazwyczaj aktualizowany tylko z wersjami `ReleasedAndBlessed`.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 

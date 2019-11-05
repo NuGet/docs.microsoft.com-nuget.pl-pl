@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 09/07/2019
 ms.topic: reference
 ms.reviewer: karann
-ms.openlocfilehash: f6c4a18366b4df20fb210f718d3779e85c08d550
-ms.sourcegitcommit: 188ade66b7ac807ba1667c77cfb9325bf89a8a4a
+ms.openlocfilehash: da464cc44d8c874e13c0cdfab871f31e643b577f
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248128"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73610489"
 ---
 # <a name="package-id-prefix-reservation"></a>Rezerwacja prefiksu identyfikatora pakietu
 
@@ -47,7 +47,7 @@ Te zmiany są zależne od następujących warunków i nakładają kilka dodatkow
 
 Poniżej opisano kilka bardziej zaawansowanych scenariuszy rezerwacji prefiksów, w tym delegowanie podprefiksów i oznaczanie prefiksów jako publiczne. Poniżej znajdują się bardziej zaawansowane rezerwacje prefiksów, które można wprowadzić. 
 
-- Podczas rezerwacji prefiksu właściciel może żądać delegowania podzestawów prefiksów (lub prefiksu) do innych właścicieli. Na przykład jeśli "Microsoft[" jest właścicielem "Microsoft.](https://www.nuget.org/profiles/microsoft) ", ale" ASPNET "chce zarezerwować element" Microsoft. ASPNET.[](https://www.nuget.org/profiles/aspnet) \* "," Microsoft "może wybrać delegata" Microsoft. ASPNET.[](https://www.nuget.org/profiles/microsoft) \* "na konto [ASPNET.](https://www.nuget.org/profiles/aspnet) \*
+- Podczas rezerwacji prefiksu właściciel może żądać delegowania podzestawów prefiksów (lub prefiksu) do innych właścicieli. Na przykład jeśli "Microsoft[" jest właścicielem "Microsoft.](https://www.nuget.org/profiles/microsoft)\*", ale"[ASPNET](https://www.nuget.org/profiles/aspnet)"chce zarezerwować element" Microsoft. ASPNET.\*","[Microsoft](https://www.nuget.org/profiles/microsoft)"może wybrać delegata" Microsoft. ASPNET.\*' na konto [ASPNET](https://www.nuget.org/profiles/aspnet) .
 
 - Podczas rezerwacji prefiksu właściciel może określić, że prefiks ma być publiczny. Nadal będzie to dać im Wskaźnik wizualny pokazujący, że pakiet pochodzi z zastrzeżonego prefiksu, ale **nie** będzie blokować przyszłych przesłanych pakietów na prefiksie dla każdego właściciela. Jest to przydatne w przypadku projektów open source z wieloma współautorami — w górnym lub podstawowym współautorze może być zarezerwowany prefiks, ale nadal można go otworzyć dla wszystkich współautorów. 
 
@@ -55,11 +55,11 @@ Poniżej opisano kilka bardziej zaawansowanych scenariuszy rezerwacji prefiksów
 
 Gdy pakiet pochodzi z zastrzeżonego prefiksu, zobaczysz poniższe wskaźniki wizualizacji w galerii [NuGet.org](https://www.nuget.org/) i w programie visual Studio 2017 w wersji 15,4 lub nowszej:
 
-**nuget.org Gallery**
-![nuget.org Gallery](media/nuget-gallery-reserved-prefix.png)
+Galeria **nuget.org**
+![galerii NuGet.org](media/nuget-gallery-reserved-prefix.png)
 
-**Visual Studio**
-![Visual Studio](media/visual-studio-reserved-prefix.png)
+**Visual studio**
+![visual Studio](media/visual-studio-reserved-prefix.png)
 
 ## <a name="id-prefix-reservation-application-process"></a>Proces aplikacji rezerwacji prefiksu identyfikatora
 
@@ -67,7 +67,7 @@ Gdy pakiet pochodzi z zastrzeżonego prefiksu, zobaczysz poniższe wskaźniki wi
 
 2. Określ prefiksy, które mają być rezerwowane, oprócz wszelkich [zaawansowanych scenariuszy rezerwacji prefiksów](#advanced-prefix-reservation-scenarios) , które mogą być wymagane.
 
-3. Wyślij wiadomość e-mail [account@nuget.org](mailto:account@nuget.org) na adres z nazwą wyświetlaną właściciela w [NuGet.org](https://www.nuget.org/), a także wszystkie zastrzeżone prefiksy. W przypadku delegowania podzestawów prefiksu do wielu właścicieli upewnij się, że podajesz wszystkie nazwy wyświetlanych właściciela i podzestawy prefiksów.
+3. Wyślij wiadomość e-mail do [account@nuget.org](mailto:account@nuget.org) z nazwą wyświetlaną właściciela w [NuGet.org](https://www.nuget.org/), a także wszelkimi zarezerwowanymi prefiksami. W przypadku delegowania podzestawów prefiksu do wielu właścicieli upewnij się, że podajesz wszystkie nazwy wyświetlanych właściciela i podzestawy prefiksów.
 
 Po przesłaniu aplikacji otrzymasz powiadomienie o przyjęciu lub odrzuceniu (z kryteriami, które spowodowały odrzucenie). Może być konieczne podanie dodatkowych pytań, aby potwierdzić tożsamość właściciela.
 
@@ -93,10 +93,10 @@ Podczas przeglądania dowolnych aplikacji dla rezerwacji prefiksów identyfikato
 
 ## <a name="third-party-feed-provider-scenarios"></a>Scenariusze dostawcy kanałów informacyjnych innych firm
 
-Jeśli dostawca kanału informacyjnego innej firmy interesuje implementację własnej usługi w celu zapewnienia rezerwacji prefiksów, można to zrobić, modyfikując usługę wyszukiwania w dostawcach kanału informacyjnego programu NuGet v3. Dodanie *zweryfikowanej* właściwości w usłudze wyszukiwania strumieniowego jest konieczne z przykładami dotyczącymi kanałów informacyjnych v3 poniżej. Klient NuGet nie będzie obsługiwał właściwości dodanej w kanale informacyjnym v2.
+Jeśli dostawca kanału informacyjnego innej firmy interesuje implementację własnej usługi w celu zapewnienia rezerwacji prefiksów, można to zrobić, modyfikując usługę wyszukiwania w dostawcach kanału informacyjnego programu NuGet v3. Zmiana w usłudze wyszukiwania strumieniowego polega na dodaniu właściwości `verified`. Klient NuGet nie będzie obsługiwał właściwości dodanej w kanale informacyjnym v2.
 
 Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą usługi wyszukiwania interfejsu API](../api/search-query-service-resource.md).
 
 ## <a name="package-id-prefix-reservation-dispute-policy"></a>Prefiks identyfikatora pakietu zasad sporu rezerwacji
-Jeśli uważasz, że właściciel na [NuGet.org](https://www.nuget.org) przypisał rezerwację prefiksu identyfikatora pakietu, która znajduje się na powyższych kryteriach lub narusza wszelkie znaki towarowe lub prawa autorskie, Wyślij [support@nuget.org](mailto:support@nuget.org) wiadomość e-mail z prefiksem identyfikatora w podanym polu właściciel identyfikatora prefiks i powód dla sporu przypisanej rezerwacji prefiksu.
+Jeśli uważasz, że właściciel na [NuGet.org](https://www.nuget.org) przypisał rezerwację prefiksu identyfikatora pakietu, która znajduje się na powyższych kryteriach lub narusza wszelkie znaki towarowe lub prawa autorskie, Wyślij wiadomość e-mail [support@nuget.org](mailto:support@nuget.org) z podanym prefiksem ID, właściciel identyfikatora prefiks i powód dla sporu przypisanej rezerwacji prefiksu.
 

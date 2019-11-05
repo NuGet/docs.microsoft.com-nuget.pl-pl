@@ -1,31 +1,31 @@
 ---
-title: Eksportuj zasady kontroli
-description: Zasady dotyczące przepisów kontroli
+title: Eksportowanie zasad kontroli
+description: Zasady rządzące przepisami dotyczącymi kontroli eksportu
 author: karann-msft
 ms.author: karann
 ms.date: 06/27/2019
 ms.topic: conceptual
-ms.openlocfilehash: 97e7b253bed84fc6e9a97922c19756d138dd0381
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.openlocfilehash: 4ea2d2f23a02088b54982b825a5be3c872e27c37
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427495"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611305"
 ---
-# <a name="export-control-policy"></a>Eksportuj zasady kontroli
+# <a name="export-control-policy"></a>Eksportowanie zasad kontroli
 
-Zawartości są przekazywane lub dostępu z repozytorium NuGet.org może być USA eksportu kontroli przepisów, łącznie z USA Wyeksportuj przepisami (Wyczyść).  Gdy dla Twojej wygody zostały zamieszczone pewne informacje poniżej, są odpowiedzialni za zapewnienie, że korzystanie z repozytorium NuGet.org i wszystkich powiązanych usług, który jest zgodny ze wszystkimi obowiązującymi przepisami i przepisów, łącznie z USA wyeksportować prawem kontroli i jest zgodny za pomocą naszych [warunki użytkowania](https://www.nuget.org/policies/Terms).
+Zawartość przekazywana do programu lub dostęp z usługi NuGet.org może podlegać przepisom w zakresie kontroli eksportu w Stanach Zjednoczonych, włącznie z przepisami administracji eksportem USA (na USZACH).  Chociaż podałeś pewne informacje dla wygody użytkownika, jesteś w pełni odpowiedzialny za zapewnienie, że korzystanie z NuGet.org i wszelkich powiązanych usług jest zgodne ze wszystkimi obowiązującymi przepisami i regulacjami, w tym z przepisami w zakresie kontroli eksportu USA i są zgodne z naszymi [warunkami użytkowania](https://www.nuget.org/policies/Terms).
 
-## <a name="publicly-available-encryption-source-code"></a>Szyfrowanie publicznie dostępnego kodu źródłowego
+## <a name="publicly-available-encryption-source-code"></a>Publicznie dostępny kod źródłowy szyfrowania
 
-Zapisami powiadomień opisanego w Wyczyść kod źródłowy szyfrowania klasyfikować ECCN 5 d 002 podlega już Wyczyść.  Taki kod źródłowy jest publicznie dostępny, nawet jeśli jest on ekspresowe umowy o opłaty licencyjne lub licencjonowanych komercyjnych w środowisku produkcyjnym lub sprzedaży każdego produktu opracowanych za pomocą kodu źródłowego.
+Zgodnie z wymaganiami dotyczącymi powiadomień opisanymi na pasku INFORMACYJNym kod źródłowy szyfrowania, sklasyfikowany pod warunkiem ECCN 5D002, nie jest już objęty KOLCZYKami.  Taki kod źródłowy jest publicznie dostępny nawet w przypadku, gdy jest on objęty wyraźną umową dotyczącą płatności za opłaty licencyjne lub honorarium do produkcji komercyjnej lub sprzedaży dowolnego produktu opracowanego przy użyciu kodu źródłowego.
 
-## <a name="notification-requirement"></a>Wymaganie dotyczące powiadomienia o
+## <a name="notification-requirement"></a>Wymaganie powiadomienia
 
-Jak określono w Wyczyść (część 742.15(b) & 734.3(b)(3)), osoba lub podmiot, zapewniając lub przekazywanie kodu źródłowego szyfrowania musi powiadomić Stanów Zjednoczonych Biuro w branży zabezpieczeń (BIS) i koordynatora żądania ENC szyfrowania za pośrednictwem poczty e-mail lokalizacji Internet (np. adres URL lub Internetu), szyfrowanie publicznie dostępnego kodu źródłowego, klasyfikować ECCN 5 d 002 lub każdego z nich kopię szyfrowanie publicznie dostępnego kodu źródłowego. Jeśli zaktualizować lub zmodyfikować kod źródłowy szyfrowania, należy również podać dodatkowe kopie do każdego z nich za każdym razem kryptograficznych funkcji szyfrowania kod źródłowy jest zaktualizowane lub zmodyfikowany. Ponadto jeśli kod źródłowy szyfrowania jest opublikowany w Internecie (np. przy użyciu NuGet.org), należy powiadomić BIS i ENC szyfrowania żądania koordynator każdorazowo, gdy zmianie lokalizacji internetowej, ale nie jest wymagane powiadomienie o aktualizacji i modyfikacji wprowadzone do kodu źródłowego szyfrowania lokalizacji wcześniej powiadomienia. We wszystkich wystąpieniach, Prześlij zgłoszenie lub skopiuj do crypt@bis.doc.gov i enc@nsa.gov.
+Jak określono na pasku INFORMACYJNym (część 742.15 (b) & 734.3 (b) (3)), osoba lub jednostka dostarczająca lub przekazująca kod źródłowy szyfrowania musi powiadomić Biuro amerykańskie o branży i zabezpieczeniach (BIS) oraz koordynator żądania szyfrowania ENC za pośrednictwem poczty e-mail w lokalizacji internetowej ( adres URL lub adres internetowy publicznie dostępnego kodu źródłowego szyfrowania sklasyfikowany w obszarze ECCN 5D002 lub dostarczenie każdej z nich kopii publicznie dostępnego kodu źródłowego szyfrowania. W przypadku aktualizowania lub modyfikowania kodu źródłowego szyfrowania należy również udostępnić dodatkowe kopie każdej z nich przy każdej aktualizacji lub modyfikacji funkcjonalności kryptograficznej kodu źródłowego. Ponadto, jeśli kod źródłowy szyfrowania został ogłoszony w Internecie (np. za pośrednictwem NuGet.org), należy powiadomić polecenie "BIS" i "koordynator żądania szyfrowania ENC" przy każdej zmianie lokalizacji internetowej, ale nie trzeba powiadamiać ich o aktualizacjach ani zmianach dokonano w kodzie źródłowym szyfrowania w wcześniej przekazanej lokalizacji. We wszystkich wystąpieniach prześlij powiadomienie lub skopiuj je do crypt@bis.doc.gov i enc@nsa.gov.
 
-## <a name="commerical-software"></a>Aparatów oprogramowania
+## <a name="commerical-software"></a>Commerical oprogramowanie
 
-Wersję kodu źródłowego publicznie dostępnych jurysdykcji kontroli eksportu przez proces powiadamiania opisanych powyżej *nie ma zastosowania* komercyjnych oprogramowania zawierające przesłane materiały lub pochodzące z tych elementów.  Ponosi wyłączną odpowiedzialność za pod kątem zgodności z prawem wyeksportować jako stosowane do dowolnego oprogramowania komercyjnego dołączanie lub pochodną w kodzie źródłowym hostowane za pośrednictwem NuGet.org.
+Wydanie publicznie dostępnego kodu źródłowego z jurysdykcji kontroli eksportu w ramach opisanego powyżej procesu powiadamiania nie *dotyczy* oprogramowania komercyjnego zawierającego lub pochodzącego z tych elementów.  Użytkownik ponosi wyłączną odpowiedzialność za zgodność z przepisami eksportowymi dotyczącymi wszelkich programów komercyjnych, obejmujących lub pochodzących z kodu źródłowego lub obiektu hostowanego za pośrednictwem NuGet.org.
 
-Więcej informacji na temat eksportowania i ograniczeń eksportowych geograficznego, odwiedź https://www.microsoft.com/en-us/exporting.
+Aby uzyskać więcej informacji na temat ograniczeń eksportu i eksportu geograficznego, odwiedź stronę [Eksportowanie przez firmę Microsoft](https://www.microsoft.com/exporting).

@@ -7,16 +7,16 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 f1_keywords:
 - vs.nuget.packagemanager.console
-ms.openlocfilehash: 1fb12c6cb9f7702c05990f79a6d43b9dd739e8cc
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 42031f7b5fe4d3c1b4dbe5e1bfbf9197014e0e88
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328424"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611098"
 ---
 # <a name="install-and-manage-packages-with-the-package-manager-console-in-visual-studio-powershell"></a>Instalowanie pakietów i zarządzanie nimi za pomocą konsoli Menedżera pakietów w programie Visual Studio (PowerShell)
 
-Konsola Menedżera pakietów NuGet umożliwia używanie [poleceń programu PowerShell NuGet](../reference/powershell-reference.md) do znajdowania, instalowania, odinstalowywania i aktualizowania pakietów NuGet. Korzystanie z konsoli programu jest niezbędne w przypadkach, gdy interfejs użytkownika Menedżera pakietów nie zapewnia sposobu wykonywania operacji. Aby użyć `nuget.exe` poleceń interfejsu wiersza polecenia w konsoli programu, zobacz [using the NuGet. exe CLI w konsoli programu](#use-the-nugetexe-cli-in-the-console).
+Konsola Menedżera pakietów NuGet umożliwia używanie [poleceń programu PowerShell NuGet](../reference/powershell-reference.md) do znajdowania, instalowania, odinstalowywania i aktualizowania pakietów NuGet. Korzystanie z konsoli programu jest niezbędne w przypadkach, gdy interfejs użytkownika Menedżera pakietów nie zapewnia sposobu wykonywania operacji. Aby użyć poleceń interfejsu wiersza polecenia `nuget.exe` w konsoli programu, zobacz [using the NuGet. exe CLI w konsoli programu](#use-the-nugetexe-cli-in-the-console).
 
 Konsola programu jest wbudowana w program Visual Studio w systemie Windows. Nie jest on dołączony do Visual Studio dla komputerów Mac ani Visual Studio Code.
 
@@ -54,13 +54,13 @@ Na przykład wyszukiwanie i instalowanie pakietu odbywa się z trzema prostymi k
 
     ![Formanty konsoli Menedżera pakietów dla źródła i projektu pakietu](media/PackageManagerConsoleControls1.png)
 
-1. Wybranie innego źródła pakietu i/lub projektu powoduje zmianę ustawień domyślnych dla kolejnych poleceń. Aby overrride te ustawienia bez zmiany wartości domyślnych, większość poleceń obsługuje `-Source` i `-ProjectName` opcje.
+1. Wybranie innego źródła pakietu i/lub projektu powoduje zmianę ustawień domyślnych dla kolejnych poleceń. Aby overrride te ustawienia bez zmiany wartości domyślnych, większość poleceń obsługuje opcje `-Source` i `-ProjectName`.
 
 1. Aby zarządzać źródłami pakietów, wybierz ikonę koła zębatego. Jest to skrót do **narzędzi > opcje > Menedżer pakietów NuGet > źródłami pakietów** , zgodnie z opisem na stronie [interfejsu użytkownika Menedżera pakietów](install-use-packages-visual-studio.md#package-sources) . Ponadto kontrolka z prawej strony selektora projektu czyści zawartość konsoli:
 
     ![Ustawienia konsoli Menedżera pakietów i wyczyść kontrolki](media/PackageManagerConsoleControls2.png)
 
-1. Prawy przycisk przerywa wykonywanie długotrwałych poleceń. Na przykład uruchomienie `Get-Package -ListAvailable -PageSize 500` programu wyświetla listę najważniejszych pakietów 500 dla domyślnego źródła (na przykład NuGet.org), co może potrwać kilka minut.
+1. Prawy przycisk przerywa wykonywanie długotrwałych poleceń. Na przykład uruchomienie `Get-Package -ListAvailable -PageSize 500` zawiera listę najważniejszych pakietów 500 dla domyślnego źródła (na przykład nuget.org), co może potrwać kilka minut.
 
     ![Sterowanie zatrzymaniem konsoli Menedżera pakietów](media/PackageManagerConsoleControls3.png)
 
@@ -99,7 +99,7 @@ Zobacz [odinstalowywanie pakietu](../reference/ps-reference/ps-ref-uninstall-pac
 Odinstalowywanie pakietu wykonuje następujące czynności:
 
 - Usuwa odwołania do pakietu z projektu (wraz z dowolnym formatem zarządzania jest używany). Odwołania nie są już wyświetlane w **Eksplorator rozwiązań**. (Może być konieczne ponowne skompilowanie projektu, aby zobaczyć, że został usunięty z folderu **bin** ).
-- Odwraca wszelkie zmiany wprowadzone do `app.config` lub `web.config` podczas instalacji pakietu.
+- Odwraca wszelkie zmiany wprowadzone do `app.config` lub `web.config` podczas instalowania pakietu.
 - Usuwa wcześniej zainstalowane zależności, jeśli żadne pozostałe pakiety nie używają tych zależności.
 
 ## <a name="update-a-package"></a>Aktualizowanie pakietu
@@ -143,7 +143,7 @@ Zobacz sekcję [Znajdź pakiet](../reference/ps-reference/ps-ref-find-package.md
 
 Począwszy od programu Visual Studio 2017, NuGet i Menedżer pakietów NuGet są instalowane automatycznie po wybraniu dowolnego z nich. Obciążenia związane z usługą SIECIową; można ją także zainstalować oddzielnie, sprawdzając **poszczególne składniki > narzędzia kodu > opcji Menedżera pakietów NuGet** w Instalatorze programu Visual Studio.
 
-Ponadto w przypadku braku Menedżera pakietów NuGet w programie Visual Studio 2015 i jego wcześniejszych wersjach zapoznaj się z **narzędziami > rozszerzenia i aktualizacje...** , a następnie wyszukaj rozszerzenie Menedżera pakietów NuGet. Jeśli nie możesz użyć Instalatora rozszerzeń w programie Visual Studio, możesz pobrać rozszerzenie bezpośrednio z [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html)programu.
+Ponadto w przypadku braku Menedżera pakietów NuGet w programie Visual Studio 2015 i jego wcześniejszych wersjach zapoznaj się z **narzędziami > rozszerzenia i aktualizacje...** , a następnie wyszukaj rozszerzenie Menedżera pakietów NuGet. Jeśli nie możesz użyć Instalatora rozszerzeń w programie Visual Studio, możesz pobrać rozszerzenie bezpośrednio z [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html).
 
 Konsola Menedżera pakietów nie jest obecnie dostępna z Visual Studio dla komputerów Mac. Równoważne polecenia są jednak dostępne za pomocą [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-CLI-reference.md). Visual Studio dla komputerów Mac ma interfejs użytkownika do zarządzania pakietami NuGet. Zobacz [dołączanie pakietu NuGet do projektu](/visualstudio/mac/nuget-walkthrough).
 
@@ -151,7 +151,7 @@ Konsola Menedżera pakietów nie jest dołączona do Visual Studio Code.
 
 ## <a name="extend-the-package-manager-console"></a>Rozwiń konsolę Menedżera pakietów
 
-Niektóre pakiety instalują nowe polecenia dla konsoli programu. Na przykład `MvcScaffolding` tworzy polecenia, jak `Scaffold` pokazano poniżej, generujące kontrolery i widoki ASP.NET MVC:
+Niektóre pakiety instalują nowe polecenia dla konsoli programu. Na przykład `MvcScaffolding` tworzy polecenia, takie jak `Scaffold` pokazano poniżej, generujące kontrolery i widoki ASP.NET MVC:
 
 ![Instalowanie i używanie MvcScaffold](media/PackageManagerConsoleInstall.png)
 
@@ -172,9 +172,9 @@ Aby uzyskać więcej informacji, zobacz [Profile programu Windows PowerShell](ht
 
 ## <a name="use-the-nugetexe-cli-in-the-console"></a>Korzystanie z interfejsu wiersza polecenia NuGet. exe w konsoli programu
 
-Aby udostępnić [ `nuget.exe` interfejs wiersza polecenia](../reference/nuget-exe-cli-reference.md) w konsoli Menedżera pakietów, zainstaluj pakiet [NuGet. CommandLine](http://www.nuget.org/packages/NuGet.CommandLine/) z konsoli programu:
+Aby udostępnić [interfejs wiersza polecenia`nuget.exe`](../reference/nuget-exe-cli-reference.md) w konsoli Menedżera pakietów, zainstaluj pakiet [NuGet. CommandLine](https://www.nuget.org/packages/NuGet.CommandLine/) z konsoli programu:
 
 ```ps
-# Other versions are available, see http://www.nuget.org/packages/NuGet.CommandLine/
+# Other versions are available, see https://www.nuget.org/packages/NuGet.CommandLine/
 Install-Package NuGet.CommandLine -Version 4.4.1
 ```

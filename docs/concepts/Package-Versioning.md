@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 03/23/2018
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 7c6992d6bf3142eb6aca70f1fa3c46f72efd25a0
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: e0014a812ea591ef40c961e13864652d75ebdf6c
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520547"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73610992"
 ---
 # <a name="package-versioning"></a>Przechowywanie wersji pakietów
 
@@ -29,12 +29,12 @@ W tym temacie:
 
 Określony numer wersji ma postać *główna. pomocnicza. poprawka [-sufiks]* , gdzie składniki mają następujące znaczenie:
 
-- *Wersja główna*: Fundamentalne zmiany
-- *Drobny*: Nowe funkcje, ale zgodność z poprzednimi wersjami
-- *Poprawka*: Tylko poprawki zgodne z poprzednimi usterkami
-- *-Sufiks* (opcjonalnie): Łącznik, po którym następuje ciąg oznaczający wersję wstępną (zgodnie z Konwencją o [wersji semantycznej lub SemVer 1,0](http://semver.org/spec/v1.0.0.html)).
+- *Główna: istotne*zmiany
+- *Pomocniczy*: nowe funkcje, ale zgodność z poprzednimi wersjami
+- *Poprawka*: tylko poprawki zgodności z poprzednimi wersjami
+- *-Sufiks* (opcjonalnie): Łącznik, po którym następuje ciąg oznaczający wersję wstępną (zgodnie z [Konwencją o wersji semantyki lub SemVer 1,0](https://semver.org/spec/v1.0.0.html)).
 
-**Przykłady:**
+**Pokazują**
 
     1.0.1
     6.11.1231
@@ -42,7 +42,7 @@ Określony numer wersji ma postać *główna. pomocnicza. poprawka [-sufiks]* , 
     2.2.44-beta1
 
 > [!Important]
-> nuget.org odrzuca przekazywanie pakietów, które nie mają dokładnego numeru wersji. Wersja musi być określona w `.nuspec` pliku projektu lub użytym do utworzenia pakietu.
+> nuget.org odrzuca przekazywanie pakietów, które nie mają dokładnego numeru wersji. Wersja musi być określona w `.nuspec` lub pliku projektu użytym do utworzenia pakietu.
 
 ### <a name="pre-release-versions"></a>Wersje wstępne
 
@@ -50,12 +50,12 @@ Mówiąc technicznie, twórcy pakietów mogą używać dowolnego ciągu jako suf
 
 Wspomniane w ten sposób deweloperzy pakietów zazwyczaj przestrzegają rozpoznawanych konwencji nazewnictwa:
 
-- `-alpha`: Wydanie Alpha, zwykle używane do pracy w toku i eksperymentowania.
-- `-beta`: Wydanie beta — zwykle jest to funkcja zakończona dla następnej planowanej wersji, ale może zawierać znane usterki.
-- `-rc`: Wersja Release Candidate, zazwyczaj wersja, która jest potencjalnie końcowa (stabilna), chyba że nastąpiły znaczne błędy.
+- `-alpha`: wydanie Alpha, zwykle używane do pracy w toku i eksperymentowania.
+- `-beta`: wydanie beta, zazwyczaj takie, które jest kompletne dla następnej planowanej wersji, ale mogą zawierać znane usterki.
+- `-rc`: Release Candidate, zazwyczaj wersja, która jest potencjalnie końcowa (stabilna), chyba że nastąpiły znaczne błędy.
 
 > [!Note]
-> Pakiet NuGet 4.3.0 + obsługuje [SemVer 2.0.0](http://semver.org/spec/v2.0.0.html), który obsługuje numery wersji wstępnej z notacją kropkową, tak jak w przypadku *1.0.1-Build. 23*. Notacja kropki nie jest obsługiwana w wersjach NuGet przed 4.3.0. Możesz użyć formularza, takiego jak *1.0.1-build23*.
+> Pakiet NuGet 4.3.0 + obsługuje [SemVer 2.0.0](https://semver.org/spec/v2.0.0.html), który obsługuje numery wersji wstępnej z notacją kropkową, tak jak w przypadku *1.0.1-Build. 23*. Notacja kropki nie jest obsługiwana w wersjach NuGet przed 4.3.0. Możesz użyć formularza, takiego jak *1.0.1-build23*.
 
 Przy rozwiązywaniu odwołań do pakietów i wielu wersjach pakietów różni się tylko sufiksem, pakiet NuGet wybiera wersję bez sufiksu, a następnie stosuje pierwszeństwo w wersji wstępnej w odwrotnej kolejności alfabetycznej. Na przykład następujące wersje zostałyby wybrane w dokładnie pokazanej kolejności:
 
@@ -70,7 +70,7 @@ Przy rozwiązywaniu odwołań do pakietów i wielu wersjach pakietów różni si
 
 ## <a name="semantic-versioning-200"></a>2\.0.0 wersji semantycznej
 
-Dzięki narzędziom NuGet 4.3.0 + i Visual Studio 2017 w wersji 15.3 + pakiet NuGet obsługuje [semantykę wersji 2.0.0](http://semver.org/spec/v2.0.0.html).
+Dzięki narzędziom NuGet 4.3.0 + i Visual Studio 2017 w wersji 15.3 + pakiet NuGet obsługuje [semantykę wersji 2.0.0](https://semver.org/spec/v2.0.0.html).
 
 Niektóre semantyka SemVer v 2.0.0 nie są obsługiwane przez starszych klientów. Pakiet NuGet traktuje wersję pakietu jako SemVer v 2.0.0, jeśli jedno z następujących instrukcji jest prawdziwe:
 
@@ -84,7 +84,7 @@ W przypadku nuget.org pakiet jest zdefiniowany jako pakiet SemVer v 2.0.0, jeśl
 
 W przypadku przekazania pakietu SemVer v 2.0.0 do nuget.org pakiet jest niewidoczny dla starszych klientów i dostępny tylko dla następujących klientów NuGet:
 
-- NuGet 4.3.0+
+- 4\.3.0 NuGet +
 - Visual Studio 2017 w wersji 15.3 +
 - Visual Studio 2015 z pakietem [NuGet VSIX v 3.6.0](https://dist.nuget.org/visualstudio-2015-vsix/latest/NuGet.Tools.vsix)
 - dotnet
@@ -105,23 +105,23 @@ W przypadku odwoływania się do zależności pakietów NuGet obsługuje używan
 | Służąc | Zastosowana reguła | Opis |
 |----------|--------------|-------------|
 | 1.0 | x ≥ 1,0 | Minimalna wersja, włącznie |
-| (1.0,) | x > 1,0 | Wersja minimalna, wyłączna |
-| [1.0] | x == 1.0 | Dopasowanie dokładnej wersji |
-| (,1.0] | x ≤ 1,0 | Maksymalna wersja, włącznie |
-| (,1.0) | x < 1,0 | Maksymalna wersja, wyłączna |
-| [1.0,2.0] | 1,0 ≤ x ≤ 2,0 | Dokładny zakres, włącznie |
-| (1.0,2.0) | 1,0 < x < 2,0 | Dokładny zakres, wyłączny |
-| [1.0,2.0) | 1,0 ≤ x < 2,0 | Mieszana wartość minimalna i wyłączna wersja Maksymalna |
-| (1.0)    | nieprawidłowe | nieprawidłowe |
+| (1,0,) | x > 1,0 | Wersja minimalna, wyłączna |
+| [1,0] | x = = 1,0 | Dopasowanie dokładnej wersji |
+| (, 1,0) | x ≤ 1,0 | Maksymalna wersja, włącznie |
+| (, 1,0) | x < 1,0 | Maksymalna wersja, wyłączna |
+| [1.0, 2.0] | 1,0 ≤ x ≤ 2,0 | Dokładny zakres, włącznie |
+| (1.0, 2.0) | 1,0 < x < 2,0 | Dokładny zakres, wyłączny |
+| [1.0, 2.0) | 1,0 ≤ x < 2,0 | Mieszana wartość minimalna i wyłączna wersja Maksymalna |
+| (1,0)    | nieprawidłowe | nieprawidłowe |
 
-W przypadku korzystania z formatu PackageReference, pakiet NuGet obsługuje również korzystanie z notacji \*wieloznacznej, w przypadku elementów głównych, pomocniczych, poprawek i prefiksu w wersji wstępnej. Symbole wieloznaczne nie są obsługiwane w `packages.config` formacie.
+W przypadku korzystania z formatu PackageReference, pakiet NuGet obsługuje również korzystanie z notacji wieloznacznej, \*, w przypadku elementów głównych, pomocniczych, poprawek i prefiksu w wersji wstępnej. Symbole wieloznaczne nie są obsługiwane w formacie `packages.config`.
 
 > [!Note]
 > Zakresy wersji w programie PackageReference obejmują wersje wstępne. Zgodnie z projektem wersje zmiennoprzecinkowe nie rozwiązują wersji wstępnych, chyba że zostały uwzględnione w. Aby uzyskać stan żądania powiązanej funkcji, zobacz [problem 6434](https://github.com/NuGet/Home/issues/6434#issuecomment-358782297).
 
 ### <a name="examples"></a>Przykłady
 
-Należy zawsze określać wersję lub zakres wersji dla zależności pakietów w plikach projektu `packages.config` , plikach i `.nuspec` plikach. Bez wersji lub zakresu wersji, program NuGet 2.8. x i wcześniejsza wersja wybiera najnowszą dostępną wersję pakietu podczas rozpoznawania zależności, natomiast w przypadku programu NuGet 3. x lub nowszego jest wybierana najniższa wersja pakietu. Określenie wersji lub zakresu wersji pozwala uniknąć tej niepewności.
+Należy zawsze określać wersję lub zakres wersji dla zależności pakietów w plikach projektu, `packages.config` plikach i plikach `.nuspec`. Bez wersji lub zakresu wersji, program NuGet 2.8. x i wcześniejsza wersja wybiera najnowszą dostępną wersję pakietu podczas rozpoznawania zależności, natomiast w przypadku programu NuGet 3. x lub nowszego jest wybierana najniższa wersja pakietu. Określenie wersji lub zakresu wersji pozwala uniknąć tej niepewności.
 
 #### <a name="references-in-project-files-packagereference"></a>Odwołania w plikach projektu (PackageReference)
 
@@ -151,7 +151,7 @@ Należy zawsze określać wersję lub zakres wersji dla zależności pakietów w
 
 **Odwołania w `packages.config`:**
 
-W `packages.config`programie każda zależność jest wyświetlana z dokładnym `version` atrybutem używanym podczas przywracania pakietów. Ten `allowedVersions` atrybut jest używany tylko podczas operacji aktualizowania, aby ograniczyć wersje, do których pakiet może zostać zaktualizowany.
+W `packages.config`każda zależność jest wyświetlana z dokładnym atrybutem `version` używanym podczas przywracania pakietów. Atrybut `allowedVersions` jest używany tylko podczas operacji aktualizacji, aby ograniczyć wersje, do których pakiet może zostać zaktualizowany.
 
 ```xml
 <!-- Install/restore version 6.1.0, accept any version 6.1.0 and above on update. -->
@@ -180,9 +180,9 @@ W `packages.config`programie każda zależność jest wyświetlana z dokładnym 
 <package id="ExamplePackage" version="1.3.5" allowedVersions="[1.3.2,1.5)" />
 ```
 
-**Odwołania w `.nuspec` plikach**
+**Odwołania w plikach `.nuspec`**
 
-`version` Atrybut`<dependency>` w elemencie opisuje wersje zakresu, które są akceptowalne dla zależności.
+Atrybut `version` w elemencie `<dependency>` opisuje wersje zakresu, które są akceptowalne dla zależności.
 
 ```xml
 <!-- Accepts any version 6.1 and above. -->
@@ -222,6 +222,6 @@ Podczas uzyskiwania pakietów z repozytorium podczas operacji instalacji, ponown
         1.0.0.0 is treated as 1.0.0
         1.0.01.0 is treated as 1.0.1
 
-`pack`i `restore` operacje normalizuje wersje wszędzie tam, gdzie to możliwe. W przypadku pakietów, które zostały już skompilowane, normalizacja nie ma wpływu na numery wersji w samych pakietach; ma wpływ tylko na to, jak program NuGet dopasowuje wersje podczas rozpoznawania zależności.
+operacje `pack` i `restore` normalizuje wersje, jeśli jest to możliwe. W przypadku pakietów, które zostały już skompilowane, normalizacja nie ma wpływu na numery wersji w samych pakietach; ma wpływ tylko na to, jak program NuGet dopasowuje wersje podczas rozpoznawania zależności.
 
 Jednak repozytoria pakietów NuGet musi traktować te wartości w taki sam sposób jak NuGet, aby zapobiec duplikowaniu wersji pakietu. W ten sposób repozytorium zawierające wersję *1,0* pakietu nie powinno również hostować wersji *1.0.0* jako oddzielnego i innego pakietu.

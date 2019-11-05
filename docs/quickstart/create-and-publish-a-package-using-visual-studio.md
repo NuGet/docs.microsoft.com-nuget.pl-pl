@@ -5,14 +5,14 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/16/2019
 ms.topic: quickstart
-ms.openlocfilehash: 9552f6c5291f950430bfb723cb713bf76a79ea66
-ms.sourcegitcommit: 80cf99f40759911324468be1ec815c96aebf376d
+ms.openlocfilehash: ef1bda19c5ca3c6b5a4bd9b9d4e3ef41d7dadb53
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2019
-ms.locfileid: "69564592"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73610636"
 ---
-# <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki start: Tworzenie i publikowanie pakietu NuGet przy użyciu programu Visual Studio (.NET Standard, tylko w systemie Windows)
+# <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki Start: Tworzenie i publikowanie pakietu NuGet przy użyciu programu Visual Studio (.NET Standard, tylko w systemie Windows)
 
 Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET Standard w programie Visual Studio w systemie Windows, a następnie opublikowania jej w celu nuget.org za pomocą narzędzia interfejsu wiersza polecenia.
 
@@ -23,14 +23,14 @@ Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET Standard w 
 
 1. Zainstaluj dowolną wersję programu Visual Studio 2019 z [VisualStudio.com](https://www.visualstudio.com/) z użyciem obciążenia związanego z platformą .NET Core.
 
-1. Jeśli nie jest jeszcze zainstalowana, zainstaluj `dotnet` interfejs wiersza polecenia.
+1. Zainstaluj interfejs wiersza polecenia `dotnet`, jeśli nie jest jeszcze zainstalowany.
 
-   W przypadku `dotnet` interfejsu wiersza polecenia, rozpoczynając od programu Visual Studio 2017, interfejs wiersza polecenia jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core. `dotnet` W przeciwnym razie zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/) , aby uzyskać `dotnet` interfejs wiersza polecenia. Interfejs wiersza polecenia jest wymagany dla projektów .NET Standard, które używają [formatu stylu zestawu SDK](../resources/check-project-format.md) (atrybut zestawu SDK). `dotnet` Domyślny szablon biblioteki klas .NET Standard w programie Visual Studio 2017 lub nowszym, który jest używany w tym artykule, używa atrybutu SDK.
+   W przypadku interfejsu wiersza polecenia `dotnet`, rozpoczynając od programu Visual Studio 2017, interfejs wiersza polecenia `dotnet` jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core. W przeciwnym razie zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/) , aby uzyskać `dotnet` interfejsu wiersza polecenia. Interfejs wiersza polecenia `dotnet` jest wymagany dla projektów .NET Standard, które używają [formatu stylu zestawu SDK](../resources/check-project-format.md) (atrybut zestawu SDK). Domyślny szablon biblioteki klas .NET Standard w programie Visual Studio 2017 lub nowszym, który jest używany w tym artykule, używa atrybutu SDK.
    
    > [!Important]
-   > Jeśli pracujesz z projektem w stylu innym niż zestaw SDK, postępuj zgodnie z procedurami w temacie [Tworzenie i publikowanie pakietu .NET Framework (Visual Studio)](create-and-publish-a-package-using-visual-studio-net-framework.md) , aby zamiast tego utworzyć i opublikować pakiet. W tym artykule `dotnet` zaleca się używanie interfejsu wiersza polecenia. Chociaż można opublikować dowolny pakiet NuGet przy użyciu `nuget.exe` interfejsu wiersza polecenia, niektóre kroki opisane w tym artykule są specyficzne dla projektów w stylu zestawu SDK i interfejsu wiersza polecenia dotnet. Interfejs wiersza polecenia NuGet. exe jest używany dla [projektów typu non-SDK](../resources/check-project-format.md) (zwykle .NET Framework).
+   > Jeśli pracujesz z projektem w stylu innym niż zestaw SDK, postępuj zgodnie z procedurami w temacie [Tworzenie i publikowanie pakietu .NET Framework (Visual Studio)](create-and-publish-a-package-using-visual-studio-net-framework.md) , aby zamiast tego utworzyć i opublikować pakiet. W tym artykule zaleca się używanie interfejsu wiersza polecenia `dotnet`. Chociaż można opublikować dowolny pakiet NuGet przy użyciu interfejsu wiersza polecenia `nuget.exe`, niektóre kroki opisane w tym artykule są specyficzne dla projektów w stylu zestawu SDK i interfejsu wiersza polecenia dotnet. Interfejs wiersza polecenia NuGet. exe jest używany dla [projektów typu non-SDK](../resources/check-project-format.md) (zwykle .NET Framework).
 
-1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](https://docs.microsoft.com/en-us/nuget/nuget-org/individual-accounts#add-a-new-individual-account) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
+1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](https://docs.microsoft.com/nuget/nuget-org/individual-accounts#add-a-new-individual-account) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
 
 ## <a name="create-a-class-library-project"></a>Tworzenie projektu biblioteki klas
 
@@ -69,7 +69,7 @@ namespace AppLogger
     > [!Note]
     > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na właściwości **Tagi** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
-1. Nadaj pakietowi unikatowy identyfikator i Wypełnij wszystkie inne żądane właściwości. Aby uzyskać mapowanie właściwości programu MSBuild (projekt w stylu zestawu SDK) na właściwości w elemencie *. nuspec*, zobacz temat [targets Pack](../reference/msbuild-targets.md#pack-target). Opisy właściwości można znaleźć w [dokumentacji pliku. nuspec](../reference/nuspec.md). Wszystkie właściwości w tym miejscu należy `.nuspec` do manifestu, który program Visual Studio tworzy dla projektu.
+1. Nadaj pakietowi unikatowy identyfikator i Wypełnij wszystkie inne żądane właściwości. Aby uzyskać mapowanie właściwości programu MSBuild (projekt w stylu zestawu SDK) na właściwości w elemencie *. nuspec*, zobacz temat [targets Pack](../reference/msbuild-targets.md#pack-target). Opisy właściwości można znaleźć w [dokumentacji pliku. nuspec](../reference/nuspec.md). Wszystkie właściwości w tym miejscu należy do manifestu `.nuspec`, który program Visual Studio tworzy dla projektu.
 
     > [!Important]
     > Należy nadać pakietowi identyfikator, który jest unikatowy w obrębie nuget.org lub dowolnego hosta, który jest używany. W tym instruktażu Zalecamy uwzględnienie "przykładowego" lub "testowego" w nazwie, jak w późniejszym kroku publikowania sprawia, że pakiet jest widoczny publicznie (chociaż prawdopodobnie nikt się nie używa).
@@ -88,9 +88,9 @@ namespace AppLogger
 
     ![Polecenie pakietu NuGet w menu kontekstowym projektu programu Visual Studio](media/qs_create-vs-02-pack-command.png)
 
-    Jeśli nie widzisz polecenia **Pack** , projekt prawdopodobnie nie jest projektem w `nuget.exe` stylu zestawu SDK i musisz użyć interfejsu wiersza polecenia. Aby uzyskać instrukcje krok po kroku `dotnet` , należy [przeprowadzić migrację projektu](../consume-packages/migrate-packages-config-to-package-reference.md) i użyć interfejsu wiersza polecenia lub zobaczyć, [jak utworzyć i opublikować pakiet .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) .
+    Jeśli nie widzisz polecenia **Pack** , projekt nie jest prawdopodobnie projektem w stylu zestawu SDK i musisz użyć interfejsu wiersza polecenia `nuget.exe`. [Wykonaj migrację projektu](../consume-packages/migrate-packages-config-to-package-reference.md) i użyj interfejsu wiersza polecenia `dotnet` lub zobacz [Tworzenie i publikowanie pakietu .NET Framework](create-and-publish-a-package-using-visual-studio-net-framework.md) , aby uzyskać instrukcje krok po kroku.
 
-1. Program Visual Studio kompiluje projekt i tworzy `.nupkg` plik. Przejrzyj okno **dane wyjściowe** , aby uzyskać szczegółowe informacje (podobne do następujących), które zawiera ścieżkę do pliku pakietu. Należy również pamiętać, że skompilowany zestaw jest `bin\Release\netstandard2.0` w befits .NET Standard 2,0.
+1. Program Visual Studio kompiluje projekt i tworzy plik `.nupkg`. Przejrzyj okno **dane wyjściowe** , aby uzyskać szczegółowe informacje (podobne do następujących), które zawiera ścieżkę do pliku pakietu. Należy również pamiętać, że skompilowany zestaw jest w `bin\Release\netstandard2.0` jako befits 2,0 .NET Standard celu.
 
     ```output
     1>------ Build started: Project: AppLogger, Configuration: Release Any CPU ------
@@ -103,7 +103,7 @@ namespace AppLogger
 
 Program Visual Studio można skonfigurować tak, aby automatycznie generował pakiet NuGet podczas kompilowania projektu.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie **właściwości**.
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Właściwości**.
 
 2. Na karcie **pakiet** wybierz pozycję **Generuj pakiet NuGet podczas kompilacji**.
 
@@ -114,13 +114,13 @@ Program Visual Studio można skonfigurować tak, aby automatycznie generował pa
 
 ### <a name="optional-pack-with-msbuild"></a>(Opcjonalnie) pakiet z użyciem programu MSBuild
 
-Jako alternatywa dla użycia polecenia menu **pakiet** NuGet 4. x + i MSBuild 15.1 + obsługuje `pack` obiekt docelowy, gdy projekt zawiera niezbędne dane pakietu. Otwórz wiersz polecenia, przejdź do folderu projektu i uruchom następujące polecenie. (Zazwyczaj chcesz uruchomić "wiersz polecenia dla deweloperów dla programu Visual Studio" z menu Start, ponieważ zostanie on skonfigurowany ze wszystkimi niezbędnymi ścieżkami dla programu MSBuild).
+Jako alternatywa dla użycia polecenia menu **pakiet** NuGet 4. x + i MSBuild 15.1 + obsługuje obiekt docelowy `pack`, gdy projekt zawiera niezbędne dane pakietu. Otwórz wiersz polecenia, przejdź do folderu projektu i uruchom następujące polecenie. (Zazwyczaj chcesz uruchomić "wiersz polecenia dla deweloperów dla programu Visual Studio" z menu Start, ponieważ zostanie on skonfigurowany ze wszystkimi niezbędnymi ścieżkami dla programu MSBuild).
 
 Aby uzyskać więcej informacji, zobacz [Tworzenie pakietu przy użyciu programu MSBuild](../create-packages/creating-a-package-msbuild.md).
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu
 
-`nuget.exe` `dotnet.exe` Po utworzeniu `.nupkg` pliku opublikuj go w usłudze NuGet.org przy użyciu interfejsu wiersza polecenia lub interfejsu wiersza polecenia oraz klucza API uzyskanego z NuGet.org.
+Gdy masz plik `.nupkg`, opublikujesz go w usłudze nuget.org przy użyciu interfejsu wiersza polecenia `nuget.exe` lub interfejsu wiersza polecenia `dotnet.exe` oraz z kluczem interfejsu API uzyskanym z nuget.org.
 
 [!INCLUDE [publish-notes](includes/publish-notes.md)]
 
@@ -134,7 +134,7 @@ Wybierz kartę Narzędzia interfejsu wiersza polecenia, **interfejs wiersza pole
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-Ten krok jest zalecaną alternatywą dla `nuget.exe`korzystania z programu.
+Ten krok jest zalecaną alternatywą dla korzystania z `nuget.exe`.
 
 Przed opublikowaniem pakietu należy najpierw otworzyć wiersz polecenia.
 
@@ -142,9 +142,9 @@ Przed opublikowaniem pakietu należy najpierw otworzyć wiersz polecenia.
 
 # <a name="nugettabnuget"></a>[NuGet](#tab/nuget)
 
-Ten krok jest alternatywą dla korzystania `dotnet.exe`z programu.
+Ten krok stanowi alternatywę dla korzystania z `dotnet.exe`.
 
-1. Otwórz wiersz polecenia i przejdź do folderu zawierającego `.nupkg` plik.
+1. Otwórz wiersz polecenia i przejdź do folderu zawierającego plik `.nupkg`.
 
 1. Uruchom następujące polecenie, określając nazwę pakietu (unikatowy identyfikator pakietu) i zastępując kluczową wartość kluczem interfejsu API:
 
@@ -175,7 +175,7 @@ Zobacz [wypychanie NuGet](../reference/cli-reference/cli-ref-push.md).
 
 ## <a name="adding-a-readme-and-other-files"></a>Dodawanie pliku Readme i innych plików
 
-Aby bezpośrednio określić pliki do dołączenia do pakietu, należy edytować plik projektu i użyć `content` właściwości:
+Aby bezpośrednio określić pliki do dołączenia do pakietu, należy edytować plik projektu i użyć właściwości `content`:
 
 ```xml
 <ItemGroup>

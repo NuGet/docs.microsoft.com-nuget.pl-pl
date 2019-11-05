@@ -6,16 +6,16 @@ ms.author: patbel
 ms.date: 11/12/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: 197f2eaeed1a4a11f0f3ed426534807a0136271e
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 94c4c6524c1870898893b80be914477af5a14e8b
+ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328265"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73610334"
 ---
 # <a name="trusted-signers-command-nuget-cli"></a>Zaufane-podpisujące — polecenie (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** **obsługiwane wersje** pakietów &bullet; : 4.9.1+
+**Dotyczy:** użycie pakietu &bullet; **obsługiwane wersje:** 4.9.1 +
 
 Pobiera lub ustawia zaufane osoby podpisujące do konfiguracji programu NuGet. Aby uzyskać dodatkowe użycie, zobacz [typowe konfiguracje NuGet](../../consume-packages/configuring-nuget-behavior.md). Aby uzyskać szczegółowe informacje o tym, jak wygląda schemat NuGet. config, zapoznaj się z tematem [Dokumentacja pliku konfiguracji programu NuGet](../nuget-config-file.md).
 
@@ -25,11 +25,11 @@ Pobiera lub ustawia zaufane osoby podpisujące do konfiguracji programu NuGet. A
 nuget trusted-signers <list|add|remove|sync> [options]
 ```
 
-Jeśli żadna z `list|add|remove|sync` nie jest określona, polecenie będzie `list`domyślnie.
+Jeśli żadna z `list|add|remove|sync` nie zostanie określona, polecenie będzie domyślnie `list`.
 
 ## <a name="nuget-trusted-signers-list"></a>Lista zaufanych nadawców NuGet
 
-Wyświetla listę wszystkich zaufanych podpisów w konfiguracji. Ta opcja spowoduje uwzględnienie wszystkich certyfikatów (z użyciem algorytmu odcisku palca i odcisku palca) każdego osoby podpisującej. Jeśli certyfikat ma wcześniejszą `[U]`wartość, oznacza to, że wpis certyfikatu ma `allowUntrustedRoot` ustawioną `true`opcję.
+Wyświetla listę wszystkich zaufanych podpisów w konfiguracji. Ta opcja spowoduje uwzględnienie wszystkich certyfikatów (z użyciem algorytmu odcisku palca i odcisku palca) każdego osoby podpisującej. Jeśli certyfikat ma wcześniejszą `[U]`, oznacza to, że wpis certyfikatu ma `allowUntrustedRoot` ustawiony jako `true`.
 
 Poniżej znajduje się przykładowe dane wyjściowe z tego polecenia:
 
@@ -63,16 +63,16 @@ Dodaje do konfiguracji nazwę zaufanego podpisującego o danej nazwie. Ta opcja 
 nuget trusted-signers add <package(s)> -Name <name> [options]
 ```
 
-gdzie `<package(s)>` jest co najmniej jeden `.nupkg` plik.
+gdzie `<package(s)>` to co najmniej jeden plik `.nupkg`.
 
 | Opcja | Opis |
 | --- | --- |
-| Autor | Określa, że podpis autora pakietów powinien być zaufany. |
-| Repozytorium | Określa, że podpis repozytorium lub kontrpodpis pakietów powinien być zaufany. |
+| Tworzone | Określa, że podpis autora pakietów powinien być zaufany. |
+| Kopie | Określa, że podpis repozytorium lub kontrpodpis pakietów powinien być zaufany. |
 | AllowUntrustedRoot | Określa, czy certyfikat zaufanego podpisującego ma być dozwolony w łańcuchu do niezaufanego certyfikatu głównego. |
-| Rzecz | Rozdzielana średnikami lista zaufanych właścicieli, aby bardziej ograniczyć zaufanie do repozytorium. Prawidłowy tylko w `-Repository` przypadku użycia opcji. |
+| rzecz | Rozdzielana średnikami lista zaufanych właścicieli, aby bardziej ograniczyć zaufanie do repozytorium. Prawidłowy tylko przy użyciu opcji `-Repository`. |
 
-Udostępnianie jednocześnie `-Author` i `-Repository` w tym samym czasie nie jest obsługiwane.
+Udostępnianie jednocześnie `-Author` i `-Repository` nie jest obsługiwane.
 
 ## <a name="options-for-add-based-on-a-service-index"></a>Opcje dodawania oparte na indeksie usługi
 
@@ -86,7 +86,7 @@ _Uwaga_: Ta opcja spowoduje dodanie tylko zaufanych repozytoriów.
 | --- | --- |
 | Serviceindex | Określa indeks usługi v3 repozytorium, który ma być zaufany. To repozytorium ma obsługiwać zasób sygnatur repozytorium. Jeśli nie zostanie podany, polecenie będzie szukać źródła pakietu o tej samej `-Name` i pobrać z niego indeks usługi. |
 | AllowUntrustedRoot | Określa, czy certyfikat zaufanego podpisującego ma być dozwolony w łańcuchu do niezaufanego certyfikatu głównego. |
-| Rzecz | Rozdzielana średnikami lista zaufanych właścicieli, aby bardziej ograniczyć zaufanie do repozytorium. |
+| rzecz | Rozdzielana średnikami lista zaufanych właścicieli, aby bardziej ograniczyć zaufanie do repozytorium. |
 
 ## <a name="options-for-add-based-on-the-certificate-information"></a>Opcje dodawania na podstawie informacji o certyfikacie
 
@@ -98,28 +98,28 @@ _Uwaga_: Jeśli zaufany podpis o podanej nazwie już istnieje, element certyfika
 
 | Opcja | Opis |
 | --- | --- |
-| CertificateFingerprint | Określa odciski palca certyfikatu, z którym podpisane pakiety muszą być podpisane. Odcisk palca certyfikatu jest skrótem certyfikatu. Algorytm wyznaczania wartości skrótu używany do obliczania tego skrótu powinien być `FingerprintAlgorithm` określany w opcji. |
-| FingerprintAlgorithm | Określa algorytm wyznaczania wartości skrótu używany do obliczania odcisku palca certyfikatu. Wartość domyślna to `SHA256`. Obsługiwane są `SHA256`wartości, `SHA384` i`SHA512` |
+| CertificateFingerprint | Określa odciski palca certyfikatu, z którym podpisane pakiety muszą być podpisane. Odcisk palca certyfikatu jest skrótem certyfikatu. Algorytm wyznaczania wartości skrótu używany do obliczania tego skrótu powinien być określany w opcji `FingerprintAlgorithm`. |
+| FingerprintAlgorithm | Określa algorytm wyznaczania wartości skrótu używany do obliczania odcisku palca certyfikatu. Wartość domyślna to `SHA256`. Obsługiwane wartości to `SHA256`, `SHA384` i `SHA512` |
 | AllowUntrustedRoot | Określa, czy certyfikat zaufanego podpisującego ma być dozwolony w łańcuchu do niezaufanego certyfikatu głównego. |
 
-## <a name="nuget-trusted-signers-remove--name-name"></a>zaufane osoby podpisujące NuGet — usuwanie nazwy<name>
+## <a name="nuget-trusted-signers-remove--name-name"></a>zaufane osoby podpisujące NuGet usuwają nazwę \<nazwy\>
 
 Usuwa wszystkie zaufane osoby podpisujące zgodne z podaną nazwą.
 
-## <a name="nuget-trusted-signers-sync--name-name"></a>Synchronizacja zaufanych nadawców NuGet — nazwa<name>
+## <a name="nuget-trusted-signers-sync--name-name"></a>Synchronizacja zaufanych nadawców NuGet — nazwa \<nazwa\>
 
 Żąda najnowszej listy certyfikatów używanych w bieżącym repozytorium, aby zaktualizować listę istniejących certyfikatów w zaufanej rejestracji.
 
-_Uwaga_: Ten gest spowoduje usunięcie bieżącej listy certyfikatów i zamienienie ich na aktualną listę z repozytorium.
+_Uwaga_: ten gest spowoduje usunięcie bieżącej listy certyfikatów i zamienienie ich na aktualną listę z repozytorium.
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
-| ConfigFile | Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony `%AppData%\NuGet\NuGet.Config` , używany jest system `~/.nuget/NuGet/NuGet.Config` (Windows) lub (Mac/Linux).|
+| ConfigFile | Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony, używany jest `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux).|
 | ForceEnglishOutput | Wymusza uruchomienie NuGet. exe przy użyciu niezmiennej, opartej na języku angielskim kultury. |
-| Help | Wyświetla informacje pomocy dla polecenia. |
-| Verbosity | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *ciche*, *szczegółowe*. |
+| Pomoc | Wyświetla informacje pomocy dla polecenia. |
+| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *ciche*, *szczegółowe*. |
 
 ## <a name="examples"></a>Przykłady
 
