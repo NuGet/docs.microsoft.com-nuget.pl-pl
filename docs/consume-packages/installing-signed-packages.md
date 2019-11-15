@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 89b5fcbd76b85b77489ab36caa215c3a2fedf032
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: 034b9dd9699af529e4d82d6ee5b1c42214673341
+ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73610972"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74096849"
 ---
 # <a name="manage-package-trust-boundaries"></a>Zarządzaj granicami zaufania pakietu
 
@@ -95,7 +95,7 @@ W niektórych sytuacjach może być konieczne włączenie weryfikacji przy użyc
 
 ### <a name="sync-repository-certificates"></a>Synchronizuj certyfikaty repozytorium
 
-Repozytoria pakietów powinni ogłaszać certyfikaty używane w ich [indeksie usług](../api/service-index.md). Ostatecznie repozytorium zaktualizuje te certyfikaty, np. po wygaśnięciu certyfikatu. W takim przypadku klienci z określonymi zasadami będą musieli zaktualizować konfigurację w celu uwzględnienia nowo dodanego certyfikatu. Można łatwo uaktualnić zaufane osoby podpisujące skojarzone z repozytorium za pomocą `nuget.exe` [polecenie synchronizacji zaufanych nadawców] (.. /Reference/CLI-Reference/CLI-ref-Trusted-signers.MD # NuGet — zaufane-podpisujących-Sync--Name-Name
+Repozytoria pakietów powinni ogłaszać certyfikaty używane w ich [indeksie usług](../api/service-index.md). Ostatecznie repozytorium zaktualizuje te certyfikaty, np. po wygaśnięciu certyfikatu. W takim przypadku klienci z określonymi zasadami będą musieli zaktualizować konfigurację w celu uwzględnienia nowo dodanego certyfikatu. Można łatwo uaktualnić zaufane osoby podpisujące skojarzone z repozytorium za pomocą [polecenia synchronizuj `nuget.exe` zaufanego podpisywania](../reference/cli-reference/cli-ref-trusted-signers.md#nuget-trusted-signers-sync--name-name).
 
 ### <a name="schema-reference"></a>Odwołanie do schematu
 

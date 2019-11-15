@@ -6,12 +6,12 @@ ms.author: anangaur
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.reviewer: karann-msft
-ms.openlocfilehash: 120b463fda856fe9dd407b6eba32d60e0918f763
-ms.sourcegitcommit: 188ade66b7ac807ba1667c77cfb9325bf89a8a4a
+ms.openlocfilehash: 70666ddf9cd7bdc448d29d4235e57bc91e2c003e
+ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248898"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74096884"
 ---
 # <a name="deprecating-packages"></a>Przestarzałe pakiety
 
@@ -45,11 +45,11 @@ Gdy pakiet jest przestarzały, jego konsumenci są powiadamiani o nich w następ
 ### <a name="visual-studio"></a>Visual Studio 
 *Dostępne począwszy od programu Visual Studio 2019 w wersji 16,3*
 
-Program Visual Studio ostrzega o użyciu przestarzałego pakietu na `Installed` karcie. Spowoduje to przekazanie do pakietu i jego informacji o zaniechaniu (w tym przyczyny przestarzałej i alternatywnego pakietu do użycia zamiast tego, jeśli istnieje).
+Program Visual Studio ostrzega o użyciu przestarzałego pakietu na karcie `Installed`. Spowoduje to wyświetlenie ostrzeżenia dotyczącego pakietu i jego informacji o zaniechaniu (w tym przyczyny jego wycofania oraz alternatywnego pakietu do użycia zamiast tego, jeśli istnieje).
 
    ![Przestarzałe pakiety na karcie zainstalowanej w programie Visual Studio Menedżer pakietów](media/deprecation-vs.png)
 
-### <a name="dotnetexe"></a>dotnet.exe
+### <a name="dotnetexe"></a>dotnet. exe
 *Dostępne począwszy od zestawu .NET SDK 3,0*
 
 Jeśli używasz programu dotnet. exe, możesz uruchomić polecenie `dotnet list package --deprecated` w folderze rozwiązania lub projektu, aby uzyskać listę przestarzałych pakietów wraz z informacjami o zaniechaniu:

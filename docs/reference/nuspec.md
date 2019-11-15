@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 05/24/2019
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 6bd730db16d8e8783f0d949bb04cf3b52c642cd0
-ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
+ms.openlocfilehash: ff8f988a4d47e18d74945d274be5cca78d3ff8e5
+ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72380553"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74096924"
 ---
 # <a name="nuspec-reference"></a>nuspec — odwołanie
 
@@ -77,7 +77,7 @@ Identyfikator pakietu bez uwzględniania wielkości liter, który musi być unik
 Wersja pakietu, po wzorcu *główna. pomocnicza. poprawka* . Numery wersji mogą zawierać sufiks wstępnej wersji, zgodnie z opisem w temacie [wersja pakietu](../concepts/package-versioning.md#pre-release-versions). 
 #### <a name="description"></a>opis
 Opis pakietu na potrzeby wyświetlania interfejsu użytkownika.
-#### <a name="authors"></a>Autorów
+#### <a name="authors"></a>autorów
 Rozdzielana przecinkami lista autorów pakietów, które pasują do nazw profilów w nuget.org. Są one wyświetlane w galerii NuGet w witrynie nuget.org i służą do krzyżowego odwoływania się do pakietów przez tych samych autorów. 
 
 ### <a name="optional-metadata-elements"></a>Opcjonalne elementy metadanych
@@ -149,7 +149,7 @@ license-expression =  1*1(simple-expression / compound-expression / UNLICENSED)
 
 Adres URL obrazu 64x64 z przezroczystym tłem, który będzie używany jako ikona pakietu w wyświetlanym interfejsie użytkownika. Upewnij się, że ten element zawiera *adres URL obrazu bezpośredniego* , a nie adres URL strony sieci Web zawierającej obraz. Na przykład, aby użyć obrazu z usługi GitHub, użyj adresu URL nieprzetworzonego pliku, takiego jak <em>https://github.com/\<username\>/\<repository\>/raw/\<branch\>/\<logo.png\></em>. 
    
-#### <a name="icon"></a>Ikona
+#### <a name="icon"></a>ikona
 
 Jest to ścieżka do pliku obrazu w pakiecie, często pokazana w interfejsów użytkownika, jak nuget.org jako ikona pakietu. Rozmiar pliku obrazu jest ograniczony do 1 MB. Obsługiwane formaty plików to JPEG i PNG. Zalecamy resoulution obrazu 64x64.
 
@@ -173,6 +173,9 @@ Na przykład podczas tworzenia pakietu przy użyciu programu NuGet. exe należy 
 [Przykład nuspec ikony pakietu.](https://github.com/NuGet/Samples/tree/master/PackageIconNuspecExample)
 
 W przypadku odpowiedników programu MSBuild zapoznaj się z [opakowaniem pliku obrazu ikony](msbuild-targets.md#packing-an-icon-image-file).
+
+> [!Tip]
+> Można określić zarówno `icon`, jak i `iconUrl`, aby zachować zgodność z poprzednimi wersjami ze źródłami, które nie obsługują `icon`. Program Visual Studio będzie obsługiwał `icon` pakietów pochodzących ze źródła opartego na folderach w przyszłej wersji.
 
 #### <a name="requirelicenseacceptance"></a>requireLicenseAcceptance
 Wartość logiczna określająca, czy klient musi monitować konsumenta o zaakceptowanie licencji pakietu przed zainstalowaniem pakietu.
@@ -236,7 +239,7 @@ Węzeł `<package>` może zawierać węzeł `<files>` jako element równorzędny
 
 ### <a name="metadata-attributes"></a>atrybuty metadanych
 
-#### <a name="minclientversion"></a>MinClientVersion
+#### <a name="minclientversion"></a>minClientVersion
 Określa minimalną wersję klienta NuGet, który może zainstalować ten pakiet, wymuszony przez NuGet. exe i Menedżera pakietów programu Visual Studio. Jest on używany zawsze, gdy pakiet jest zależny od określonych funkcji pliku `.nuspec`, które zostały dodane w określonej wersji klienta NuGet. Na przykład pakiet z atrybutem `developmentDependency` powinien określać wartość "2,8" dla `minClientVersion`. Podobnie pakiet używający elementu `contentFiles` (zobacz następną sekcję) powinien ustawić `minClientVersion` na "3,3". Należy zauważyć, że ponieważ klienci NuGet przed 2,5 nie rozpoznają tej flagi, *zawsze* odmówią instalacji pakietu niezależnie od tego, co `minClientVersion` zawiera.
 
 ```xml
@@ -759,7 +762,7 @@ Puste foldery mogą używać `.`, aby zrezygnować z udostępniania zawartości 
 </package>
 ```
 
-**@No__t-1 z zależnościami**
+**`.nuspec` z zależnościami**
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -776,7 +779,7 @@ Puste foldery mogą używać `.`, aby zrezygnować z udostępniania zawartości 
 </package>
 ```
 
-**@No__t-1 z plikami**
+**`.nuspec` z plikami**
 
 ```xml
 <?xml version="1.0"?>
@@ -794,7 +797,7 @@ Puste foldery mogą używać `.`, aby zrezygnować z udostępniania zawartości 
 </package>
 ```
 
-**@No__t-1 z zestawami struktury**
+**`.nuspec` z zestawami Framework**
 
 ```xml
 <?xml version="1.0"?>
@@ -823,4 +826,4 @@ W tym przykładzie są zainstalowane następujące elementy docelowe dla konkret
 - . NET4-> `System.Web`, `System.Net`
 - . Profil klienta NET4 — > `System.Net`
 - Silverlight 3 — > `System.Json`
-- WindowsPhone — @no__t >-0
+- WindowsPhone > `Microsoft.Devices.Sensors`

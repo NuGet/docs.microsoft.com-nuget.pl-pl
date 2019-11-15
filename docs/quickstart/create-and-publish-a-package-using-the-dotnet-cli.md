@@ -5,20 +5,20 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: quickstart
-ms.openlocfilehash: c0e6de2c3b9978538d504f4af6e744ece43b4a4d
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: 8727f67608593e6ae8b96daa81b7423782dfc219
+ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488933"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74096929"
 ---
-# <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki start: Tworzenie i publikowanie pakietu (interfejs wiersza polecenia dotnet)
+# <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki Start: Tworzenie i publikowanie pakietu (interfejs wiersza polecenia dotnet)
 
-Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET i publikowania go do NuGet.org przy użyciu `dotnet` interfejsu wiersza polecenia (CLI).
+Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET i publikowania go do nuget.org przy użyciu interfejsu wiersza polecenia `dotnet` (CLI).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/), który obejmuje `dotnet` interfejs wiersza polecenia. Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.
+1. Zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/), który zawiera `dotnet` interfejsu wiersza polecenia. Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.
 
 1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
 
@@ -28,19 +28,17 @@ Można użyć istniejącego projektu biblioteki klas .NET dla kodu, który ma zo
 
 1. Utwórz folder o nazwie `AppLogger`.
 
-1. Otwórz wiersz polecenia i przejdź do `AppLogger` folderu.
+1. Otwórz wiersz polecenia i przejdź do folderu `AppLogger`.
 
-1. Typ `dotnet new classlib`, który używa nazwy bieżącego folderu dla projektu.
+1. Wpisz `dotnet new classlib`, który używa nazwy bieżącego folderu dla projektu.
 
    Spowoduje to utworzenie nowego projektu.
 
-1. Użyj `dotnet run` , aby sprawdzić, czy aplikacja została utworzona poprawnie.
-
 ## <a name="add-package-metadata-to-the-project-file"></a>Dodawanie metadanych pakietu do pliku projektu
 
-Każdy pakiet NuGet wymaga manifestu opisującego zawartość pakietu i jego zależności. W pakiecie końcowym manifest jest `.nuspec` plikiem, który jest generowany na podstawie właściwości metadanych NuGet, które są zawarte w pliku projektu.
+Każdy pakiet NuGet wymaga manifestu opisującego zawartość pakietu i jego zależności. W pakiecie końcowym manifest jest plikiem `.nuspec`, który jest generowany na podstawie właściwości metadanych NuGet, które są zawarte w pliku projektu.
 
-1. Otwórz plik projektu (`.csproj`) i Dodaj następujące minimalne właściwości w istniejącym `<PropertyGroup>` tagu, zmieniając wartości zgodnie z potrzebami:
+1. Otwórz plik projektu (`.csproj`) i Dodaj następujące minimalne właściwości w istniejącym tagu `<PropertyGroup>`, zmieniając wartości zgodnie z potrzebami:
 
     ```xml
     <PackageId>AppLogger</PackageId>
@@ -59,14 +57,14 @@ Każdy pakiet NuGet wymaga manifestu opisującego zawartość pakietu i jego zal
 
 ## <a name="run-the-pack-command"></a>Uruchom pakiet polecenie
 
-Aby skompilować pakiet NuGet ( `.nupkg` plik) z projektu, `dotnet pack` Uruchom polecenie, które również automatycznie kompiluje projekt:
+Aby skompilować pakiet NuGet (plik `.nupkg`) z projektu, uruchom polecenie `dotnet pack`, które również automatycznie kompiluje projekt:
 
 ```cli
 # Uses the project file in the current folder by default
 dotnet pack
 ```
 
-Dane wyjściowe przedstawiają ścieżkę do `.nupkg` pliku:
+Dane wyjściowe przedstawiają ścieżkę do pliku `.nupkg`:
 
 ```output
 Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
@@ -79,7 +77,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 ### <a name="automatically-generate-package-on-build"></a>Automatycznie Generuj pakiet podczas kompilacji
 
-Aby automatycznie uruchomić `dotnet pack` `dotnet build`program, Dodaj następujący wiersz do pliku projektu w `<PropertyGroup>`:
+Aby automatycznie uruchomić `dotnet pack` podczas uruchamiania `dotnet build`, Dodaj następujący wiersz do pliku projektu w `<PropertyGroup>`:
 
 ```xml
 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -87,7 +85,7 @@ Aby automatycznie uruchomić `dotnet pack` `dotnet build`program, Dodaj następu
 
 ## <a name="publish-the-package"></a>Publikowanie pakietu
 
-Po utworzeniu `dotnet nuget push` pliku opublikuj go w usłudze NuGet.org przy użyciu polecenia wraz z kluczem interfejsu API uzyskanym z NuGet.org. `.nupkg`
+Gdy masz plik `.nupkg`, opublikujesz go w usłudze nuget.org przy użyciu polecenia `dotnet nuget push` wraz z kluczem interfejsu API uzyskanym z nuget.org.
 
 [!INCLUDE [publish-notes](includes/publish-notes.md)]
 

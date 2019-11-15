@@ -5,18 +5,18 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 892483760a9f3568da7101663e93c69ce3d70b96
-ms.sourcegitcommit: 8a424829b1f70cf7590e95db61997af6ae2d7a41
+ms.openlocfilehash: 231947148295e0c06dcec5aa0e1f479d654a8803
+ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72510810"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74096869"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietów (PackageReference) w plikach projektu
 
 Odwołania do pakietów, za pomocą węzła `PackageReference`, Zarządzaj zależnościami NuGet bezpośrednio w plikach projektu (w przeciwieństwie do oddzielnego pliku `packages.config`). Przy użyciu PackageReference, gdy jest wywoływana, nie ma wpływu na inne aspekty NuGet; na przykład ustawienia w plikach `NuGet.config` (w tym źródła pakietów) są nadal stosowane, jak wyjaśniono w [typowych konfiguracjach NuGet](configuring-nuget-behavior.md).
 
-Za pomocą PackageReference można także użyć warunków MSBuild, aby wybrać odwołania do pakietów dla platformy docelowej, konfiguracji, platformy lub innych grup. Umożliwia również precyzyjne sterowanie zależnościami i przepływem zawartości. (Zobacz, aby uzyskać więcej szczegółów na temat [pakietu NuGet i przywracania jako elementy docelowe programu MSBuild](../reference/msbuild-targets.md)).
+Za pomocą PackageReference można także użyć warunków MSBuild, aby wybrać odwołania do pakietów dla platformy docelowej lub innych grup. Umożliwia również precyzyjne sterowanie zależnościami i przepływem zawartości. (Zobacz, aby uzyskać więcej szczegółów na temat [pakietu NuGet i przywracania jako elementy docelowe programu MSBuild](../reference/msbuild-targets.md)).
 
 ## <a name="project-type-support"></a>Obsługa typu projektu
 
@@ -51,6 +51,7 @@ Konwencja określania wersji pakietu jest taka sama jak w przypadku używania `p
 W powyższym przykładzie 3.6.0 oznacza dowolną wersję, która jest > = 3.6.0 z preferencją dla najniższej wersji, zgodnie z opisem w temacie [przechowywanie wersji pakietu](../concepts/package-versioning.md#version-ranges-and-wildcards).
 
 ## <a name="using-packagereference-for-a-project-with-no-packagereferences"></a>Używanie PackageReference dla projektu bez składnika packagereferences
+
 Zaawansowane: Jeśli nie masz żadnych pakietów zainstalowanych w projekcie (nie składnika packagereferences w pliku projektu i bez pliku Packages. config), ale chcesz przywrócić projekt jako styl PackageReference, możesz ustawić właściwość projektu RestoreProjectStyle na PackageReference w plik projektu.
 ```xml
 <PropertyGroup>
@@ -60,6 +61,10 @@ Zaawansowane: Jeśli nie masz żadnych pakietów zainstalowanych w projekcie (ni
 </PropertyGroup>    
 ```
 Może to być przydatne, jeśli odwołują się do projektów, które są PackageReference w stylu (istniejące projekty csproj lub zestawu SDK). Spowoduje to włączenie pakietów, do których odwołują się te projekty, do których odwołuje się projekt.
+
+## <a name="packagereference-and-sources"></a>PackageReference i źródła
+
+W projektach PackageReference, przechodnie wersje zależności są rozwiązywane w czasie przywracania. W związku z tym w projektach PackageReference wszystkie źródła muszą być dostępne dla wszystkich operacji przywracania. 
 
 ## <a name="floating-versions"></a>Wersje zmiennoprzecinkowe
 

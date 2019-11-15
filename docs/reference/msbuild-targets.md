@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6a49e410617c14e22f0d4a67d8bfe280f64f5505
-ms.sourcegitcommit: 8a424829b1f70cf7590e95db61997af6ae2d7a41
+ms.openlocfilehash: 1c2af0b42e88623fa7a1216c17aa269e9b0a58cf
+ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72510797"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74096907"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -59,11 +59,11 @@ Należy zauważyć, że właściwości `Owners` i `Summary` z `.nuspec` nie są 
 | Prawo | Prawo | empty | |
 | requireLicenseAcceptance | PackageRequireLicenseAcceptance | false | |
 | licencjonowan | PackageLicenseExpression | empty | Odnosi się do `<license type="expression">` |
-| licencjonowan | PackageLicenseFile | empty | Odnosi się do `<license type="file">`. Może być konieczne jawne spakowanie pliku licencji, do którego istnieje odwołanie. |
+| licencjonowan | PackageLicenseFile | empty | Odnosi się do `<license type="file">`. Należy jawnie spakować plik licencji, do której istnieje odwołanie. |
 | licenseUrl | PackageLicenseUrl | empty | `PackageLicenseUrl` jest przestarzałe, użyj właściwości PackageLicenseExpression lub PackageLicenseFile |
 | projectUrl | PackageProjectUrl | empty | |
-| Ikona | PackageIcon | empty | Może być konieczne jawne spakowanie pliku obrazu ikony, do którego się odwołuje.|
-| iconUrl | PackageIconUrl | empty | `PackageIconUrl` jest przestarzałe, użyj właściwości PackageIcon |
+| Ikona | PackageIcon | empty | Należy jawnie spakować plik obrazu ikony, do którego istnieje odwołanie.|
+| iconUrl | PackageIconUrl | empty | Aby zapewnić najlepsze środowisko niskiego poziomu, `PackageIconUrl` należy określić oprócz `PackageIcon`. Dłuższy termin, `PackageIconUrl` będzie przestarzały. |
 | Znaczniki | PackageTags | empty | Tagi są rozdzielane średnikami. |
 | releaseNotes | PackageReleaseNotes | empty | |
 | Repozytorium/adres URL | RepositoryUrl | empty | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przykład: *https://github.com/NuGet/NuGet.Client.git* |
@@ -118,12 +118,18 @@ Aby pominąć zależności pakietów z wygenerowanego pakietu NuGet, ustaw warto
 
 ### <a name="packageiconurl"></a>PackageIconUrl
 
-> [!Important]
-> PackageIconUrl jest przestarzała z pakietem NuGet 5.3 + & Visual Studio 2019 w wersji 16.3 +. Zamiast tego użyj [PackageIcon](#packing-an-icon-image-file) .
+`PackageIconUrl` będą przestarzałe na korzyść nowej właściwości [`PackageIcon`](#packageicon) .
 
-### <a name="packing-an-icon-image-file"></a>Pakowanie pliku obrazu ikony
+Począwszy od programu NuGet 5,3 & Visual Studio 2019 w wersji 16,3, `pack` zwróci ostrzeżenie [NU5048](errors-and-warnings/nu5048) , jeśli metadane pakietu określają tylko `PackageIconUrl`.
 
-Podczas pakowania pliku obrazu ikony należy użyć właściwości PackageIcon, aby określić ścieżkę pakietu względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik jest dołączony do pakietu. Rozmiar pliku obrazu jest ograniczony do 1 MB. Obsługiwane formaty plików to JPEG i PNG. Zalecamy rozdzielczość obrazu 64x64.
+### <a name="packageicon"></a>PackageIcon
+
+> [!Tip]
+> Należy określić zarówno `PackageIcon`, jak i `PackageIconUrl`, aby zachować zgodność z poprzednimi wersjami z klientami i źródłami, które jeszcze nie obsługują `PackageIcon`. Program Visual Studio będzie obsługiwał `PackageIcon` pakietów pochodzących ze źródła opartego na folderach w przyszłej wersji.
+
+#### <a name="packing-an-icon-image-file"></a>Pakowanie pliku obrazu ikony
+
+Podczas pakowania pliku obrazu ikony należy użyć właściwości `PackageIcon`, aby określić ścieżkę pakietu względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik jest dołączony do pakietu. Rozmiar pliku obrazu jest ograniczony do 1 MB. Obsługiwane formaty plików to JPEG i PNG. Zalecamy rozdzielczość obrazu 64x64.
 
 Na przykład:
 
@@ -184,7 +190,7 @@ Aby dołączyć zawartość, Dodaj dodatkowe metadane do istniejącego elementu 
 </Content>
  ```
 
-Domyślnie wszystko jest dodawane do katalogu głównego folderu `content` i `contentFiles\any\<target_framework>` w ramach pakietu i zachowuje względną strukturę folderów, chyba że zostanie określona ścieżka pakietu:
+Domyślnie wszystko jest dodawane do katalogu głównego `content` i `contentFiles\any\<target_framework>` folderu w ramach pakietu i zachowuje względną strukturę folderów, chyba że zostanie określona ścieżka pakietu:
 
 ```xml
 <Content Include="..\win7-x64\libuv.txt">
@@ -193,7 +199,7 @@ Domyślnie wszystko jest dodawane do katalogu głównego folderu `content` i `co
 </Content>
 ```
 
-Jeśli chcesz skopiować całą zawartość tylko do określonych folderów głównych (zamiast `content` i `contentFiles`), możesz użyć właściwości programu MSBuild `ContentTargetFolders`, która domyślnie przyjmuje wartość "Content; contentFiles", ale można ją ustawić na dowolną inną nazwę folderu. Należy pamiętać, że po prostu określenie "contentFiles" w `ContentTargetFolders` umieszcza pliki w obszarze `contentFiles\any\<target_framework>` lub `contentFiles\<language>\<target_framework>` w oparciu o `buildAction`.
+Jeśli chcesz skopiować całą zawartość tylko do określonych folderów głównych (zamiast `content` i `contentFiles`), możesz użyć właściwości programu MSBuild `ContentTargetFolders`, która domyślnie przyjmuje wartość "Content; contentFiles", ale można ją ustawić na dowolną inną nazwę folderu. Należy pamiętać, że po prostu określenie "contentFiles" w `ContentTargetFolders` umieszcza pliki w `contentFiles\any\<target_framework>` lub `contentFiles\<language>\<target_framework>` na podstawie `buildAction`.
 
 `PackagePath` może być zestawem z rozdzielonymi średnikami ścieżkami docelowymi. Określenie pustej ścieżki pakietu spowoduje dodanie pliku do katalogu głównego pakietu. Na przykład następujące dodaje `libuv.txt` do `content\myfiles`, `content\samples` i katalogu głównego pakietu:
 
