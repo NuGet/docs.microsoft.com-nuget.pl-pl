@@ -5,12 +5,12 @@ author: mikejo5000
 ms.author: mikejo
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 63c6b5eb5ad635e436b4d53a5f833af35f72d76f
-ms.sourcegitcommit: 7c9f157ba02d9be543de34ab06813ab1ec10192a
+ms.openlocfilehash: 7951b3db0cdcaee0a1eb955a5bf6fedce24c79c9
+ms.sourcegitcommit: fc0f8c950829ee5c96e3f3f32184bc727714cfdb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69999967"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74253953"
 ---
 # <a name="individual-accounts-on-nugetorg"></a>Indywidualne konta w witrynie NuGet.org
 
@@ -18,7 +18,7 @@ Musisz utworzyć pojedyncze konto, aby opublikować pakiety i zarządzać nimi w
 
 ## <a name="individual-accounts-vs-organization-accounts"></a>Konta poszczególnych kont i organizacji
 
-Twoje konto użytkownika (użytkownik) jest Twoją tożsamością w systemie NuGet.org i może być członkiem dowolnej liczby organizacji. Pakiet może należeć do konta organizacji, takie jak może należeć do pojedynczego konta. Odbiorcy pakietu nie widzą żadnych różnic między kontem pojedynczym ani kontem organizacji: są one wyświetlane jako `owners`pakiet.
+Twoje konto użytkownika (użytkownik) jest Twoją tożsamością w systemie NuGet.org i może być członkiem dowolnej liczby organizacji. Pakiet może należeć do konta organizacji, takie jak może należeć do pojedynczego konta. Odbiorcy pakietu nie widzą żadnych różnic między kontem pojedynczym ani kontem organizacji: są one wyświetlane jako `owners`pakietu.
 
 Konto organizacji ma co najmniej jedno pojedyncze konto jako jego członków. Ci członkowie mogą zarządzać zestawem pakietów przy zachowaniu pojedynczej tożsamości dla własności.
 
@@ -38,7 +38,7 @@ Aby utworzyć konto usługi NuGet.org, musisz mieć konto usługi Personal konto
 
 1. Nastąpi przekierowanie do *NuGet.org*i prośba o zarejestrowanie nazwy użytkownika.
 
-1. Określ nazwę użytkownika w polu wejściowym. Należy pamiętać, że nazwa użytkownika uwzględnia wielkość liter i nie można zmienić jej nazwy.
+1. Określ nazwę użytkownika w polu wejściowym. Należy pamiętać, że nazwa **użytkownika uwzględnia wielkość liter i** nie można zmienić jej nazwy.
 
    ![Określ nazwę użytkownika w NuGet.org](media/nuget-org-register.png) 
 
@@ -48,7 +48,7 @@ Masz już konto NuGet.org. Zarządzanie kontem można przeprowadzić na stronie 
 
 ## <a name="enable-two-factor-authentication-2fa"></a>Włącz uwierzytelnianie dwuskładnikowe (funkcji 2FA)
 
-Aby lepiej chronić Twoje konto, Włącz uwierzytelnianie dwuskładnikowe (zalecane).
+Uwierzytelnianie dwuskładnikowe lub funkcji 2FA to dodatkowa warstwa zabezpieczeń używana podczas rejestrowania w witrynach sieci Web lub aplikacjach. Korzystając z funkcji 2FA, musisz zalogować się przy użyciu konta Microsoft (MSA) i udostępnić inną formę uwierzytelniania, który jest tylko znany lub ma dostęp do programu. Aby lepiej chronić Twoje konto, Włącz uwierzytelnianie dwuskładnikowe (zalecane).
 
 1. Po zalogowaniu się na koncie Otwórz swój profil i wybierz pozycję **Włącz** w obszarze **konto logowania**.
 
@@ -69,6 +69,9 @@ Aby lepiej chronić Twoje konto, Włącz uwierzytelnianie dwuskładnikowe (zalec
    ![Włącz funkcji 2FA](media/nuget-org-enter-code-2fa.png)
 
 5. Postępuj zgodnie z dodatkowymi instrukcjami, aby przeprowadzić uwierzytelnianie dwuskładnikowe.
+
+> [!Tip]
+> Włączenie funkcji 2FA dla konta NuGet.org nie ma wpływu na ustawienia uwierzytelniania dla innych kont lub usług, które mogą być połączone z konto Microsoft używanym do logowania się do usługi NuGet.org.
 
 ## <a name="delete-a-nugetorg-account"></a>Usuwanie konta NuGet.org
 

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 06/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9947a490e4373bb0b8b7fb0814828ff2a60615a8
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: 0691660f20f9b5a1ff0dad110ee87c6e29c0a56e
+ms.sourcegitcommit: fc0f8c950829ee5c96e3f3f32184bc727714cfdb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73611073"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74253934"
 ---
 # <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocenianie pakietów NuGet dla projektu
 
@@ -82,9 +82,12 @@ W tym samym czasie używanie pakietu NuGet oznacza jego zależność, dlatego na
 
     ![Pobierz statystyki na stronie z listą pakietu](media/Finding-03-Downloads.png)
 
-- *Użycie usługi GitHub*: na stronie pakiet w sekcji **użycie usługi GitHub** znajdują się najważniejsze repozytoria GitHub, które są zależne od tego pakietu. Pakiet, od którego zależą wiele popularnych repozytoriów GitHub, jest zazwyczaj lepszym wyborem.
+- *Użycie usługi GitHub*: na stronie Package (pakiet) sekcja **użycie usługi GitHub** zawiera listę publicznych repozytoriów GitHub, które są zależne od tego pakietu i o dużej liczbie gwiazdek w witrynie GitHub. Liczba gwiazdek repozytorium GitHub zazwyczaj wskazuje, jak popularne jest repozytorium z użytkownikami usługi GitHub (zazwyczaj jest to bardziej popularne). Odwiedź [stronę wprowadzenie witryny GitHub](https://help.github.com/en/github/getting-started-with-github/saving-repositories-with-stars#about-stars) , aby uzyskać więcej informacji o systemie klasyfikacji i repozytorium usługi GitHub.
 
     ![Użycie usługi GitHub](media/GitHub-Usage.png)
+
+    > [!Note]
+    > Sekcja użycie usługi GitHub pakietu jest generowana automatycznie, bez konieczności przeglądania indywidualnych repozytoriów i wyłącznie do celów informacyjnych w celu pokazania repozytoriów GitHub, które są zależne od pakietu i które są popularne za pomocą usługi GitHub użytkownikowi.
 
 - *Historia wersji*: na stronie pakiet zapoznaj się z **informacjami** dotyczącymi daty ostatniej aktualizacji i sprawdź **historię wersji**. Dobrze obsługiwany pakiet zawiera najnowsze aktualizacje i zaawansowaną historię wersji. Zaniedbane pakiety mają kilka aktualizacji i często nie zostały zaktualizowane w pewnym czasie.
 
@@ -127,7 +130,7 @@ Wyszukiwanie pakietów NuGet działa tak samo na nuget.org, w interfejsie wiersz
 
 - **Słowa kluczowe**: Search szuka odpowiednich pakietów, które zawierają dowolne z podanych słów kluczowych. Przykład: `modern UI`. Aby wyszukać pakiety zawierające wszystkie podane słowa kluczowe, użyj "+" między warunkami, takimi jak `modern+UI`.
 - **Wyrażenia**: wprowadzanie warunków w cudzysłowie szuka dokładnego dopasowania bez uwzględniania wielkości liter do tych warunków. Przykład: `"modern UI" package`
-- **Filtrowanie**: możesz zastosować termin wyszukiwania do określonej właściwości przy użyciu składni `<property>:<term>` gdzie `<property>` (bez uwzględniania wielkości liter) można `id`, `packageid`, `version`, `title`, `tags`, `author`, `description`, `summary`i `owner`. Warunki mogą być zawarte w cudzysłowie w razie potrzeby i można wyszukiwać wiele właściwości w tym samym czasie. Ponadto wyszukiwania na właściwości `id` są dopasowaniami podciągów, podczas gdy `packageid` używa dokładnego dopasowania. Przykłady:
+- **Filtrowanie**: możesz zastosować termin wyszukiwania do konkretnej właściwości przy użyciu składni `<property>:<term>` gdzie `<property>` (bez uwzględniania wielkości liter) może być `id`, `packageid`, `version`, `title`, `tags`, `author`, `description`, `summary`, `owner`i. Warunki mogą być zawarte w cudzysłowie w razie potrzeby i można wyszukiwać wiele właściwości w tym samym czasie. Ponadto wyszukiwania na właściwości `id` są dopasowaniami podciągów, podczas gdy `packageid` używa dokładnego dopasowania. Przykłady:
 
     ```
     id:NuGet.Core                # Match any part of the id property

@@ -12,12 +12,12 @@ keywords: Pakiety symboli NuGet, debugowanie pakietów NuGet, obsługa debugowan
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 0197902e4dbc18893d68833fbcfe4263f185a594
-ms.sourcegitcommit: e4b0ff4460865db6dc7bc9f20e9f644d98493011
+ms.openlocfilehash: 03ab4e1f3501055abedf430395de095d773bc9da
+ms.sourcegitcommit: fc0f8c950829ee5c96e3f3f32184bc727714cfdb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71307187"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74253927"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symboli (. snupkg)
 
@@ -29,7 +29,7 @@ Pakiety symboli umożliwiają zwiększenie możliwości debugowania pakietów Nu
 
 ## <a name="creating-a-symbol-package"></a>Tworzenie pakietu symboli
 
-Jeśli używasz programu dotnet. exe lub MSBuild, musisz ustawić `IncludeSymbols` właściwości i `SymbolPackageFormat` , aby utworzyć plik. snupkg oprócz pliku. nupkg.
+Jeśli używasz programu dotnet. exe lub MSBuild, musisz ustawić `IncludeSymbols` i `SymbolPackageFormat` właściwości, aby utworzyć plik. snupkg oprócz pliku. nupkg.
 
 * Dodaj następujące właściwości do pliku. csproj:
 
@@ -60,10 +60,10 @@ nuget pack MyPackage.nuspec -Symbols -SymbolPackageFormat snupkg
 nuget pack MyPackage.csproj -Symbols -SymbolPackageFormat snupkg
 ```
 
-Właściwość może mieć jedną z dwóch wartości: `symbols.nupkg` (wartość domyślna) lub `snupkg`. [`SymbolPackageFormat`](/dotnet/core/tools/csproj#symbolpackageformat) Jeśli ta właściwość nie zostanie określona, zostanie utworzony starszy pakiet symboli.
+Właściwość [`SymbolPackageFormat`](/dotnet/core/tools/csproj#symbolpackageformat) może mieć jedną z dwóch wartości: `symbols.nupkg` (wartość domyślna) lub `snupkg`. Jeśli ta właściwość nie zostanie określona, zostanie utworzony starszy pakiet symboli.
 
 > [!Note]
-> Starszy format `.symbols.nupkg` jest nadal obsługiwany, ale tylko ze względu na zgodność (zobacz [starsze pakiety symboli](Symbol-Packages.md)). NuGet. serwer symboli organizacji akceptuje tylko nowy format pakietu symboli — `.snupkg`.
+> Starszy format `.symbols.nupkg` nadal jest obsługiwany, ale tylko ze względu na zgodność (zobacz [starsze pakiety symboli](Symbol-Packages.md)). NuGet. serwer symboli organizacji akceptuje tylko nowy format pakietu symboli — `.snupkg`.
 
 ## <a name="publishing-a-symbol-package"></a>Publikowanie pakietu symboli
 
@@ -85,20 +85,20 @@ Właściwość może mieć jedną z dwóch wartości: `symbols.nupkg` (wartość
     nuget push MyPackage.nupkg
     ```
 
-Program NuGet opublikuje Oba pakiety w nuget.org. zostanie opublikowany jako pierwszy, `MyPackage.snupkg`a następnie. `MyPackage.nupkg`
+Program NuGet opublikuje Oba pakiety w nuget.org. `MyPackage.nupkg` zostanie opublikowany jako pierwszy, a następnie `MyPackage.snupkg`.
 
 > [!Note]
 > Jeśli pakiet symboli nie jest opublikowany, sprawdź, czy źródło NuGet.org zostało skonfigurowane jako `https://api.nuget.org/v3/index.json`. Publikowanie pakietów symboli jest obsługiwane tylko przez [interfejs API programu NuGet v3](../api/overview.md#versioning).
 
 ## <a name="nugetorg-symbol-server"></a>Serwer symboli NuGet.org
 
-NuGet.org obsługuje własne repozytorium serwera symboli i akceptuje tylko nowy format pakietu symboli — `.snupkg`. Odbiorcy pakietu mogą korzystać z symboli opublikowanych na serwerze symboli NuGet.org przez dodanie `https://symbols.nuget.org/download/symbols` ich do źródeł symboli w programie Visual Studio, co umożliwia przechodzenie do kodu pakietu w debugerze programu Visual Studio. Aby uzyskać szczegółowe informacje na temat tego procesu, zobacz [Określanie symboli (. pdb) i plików źródłowych w debugerze programu Visual Studio](/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger) .
+NuGet.org obsługuje własne repozytorium serwera symboli i akceptuje tylko nowy format pakietu symboli — `.snupkg`. Odbiorcy pakietu mogą korzystać z symboli opublikowanych na serwerze symboli nuget.org przez dodawanie `https://symbols.nuget.org/download/symbols` do ich źródeł symboli w programie Visual Studio, co umożliwia przechodzenie do kodu pakietu w debugerze programu Visual Studio. Aby uzyskać szczegółowe informacje na temat tego procesu, zobacz [Określanie symboli (. pdb) i plików źródłowych w debugerze programu Visual Studio](/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger) .
 
 ### <a name="nugetorg-symbol-package-constraints"></a>Ograniczenia pakietu symboli NuGet.org
 
 NuGet.org ma następujące ograniczenia dotyczące pakietów symboli:
 
-- W pakietach symboli są dozwolone tylko następujące rozszerzenia plików: `.pdb`, `.nuspec`, `.xml` `.psmdcp` `.rels`,,,`.p7s`
+- W pakietach symboli są dozwolone tylko następujące rozszerzenia plików: `.pdb`, `.nuspec`, `.xml`, `.psmdcp`, `.rels`, `.p7s`
 - Tylko zarządzane [plików PDB przenośne](https://github.com/dotnet/corefx/blob/master/src/System.Reflection.Metadata/specs/PortablePdb-Metadata.md) są obsługiwane przez pakiet NuGet. serwer symboli w organizacji.
 - Plików PDB i skojarzone z nimi biblioteki DLL NUPKG muszą być kompilowane przy użyciu kompilatora w programie Visual Studio w wersji 15,9 lub nowszej (zobacz [skrót kryptografii PDB](https://github.com/dotnet/roslyn/issues/24429))
 
@@ -127,10 +127,10 @@ Plik. nupkg będzie dokładnie taki sam, jak dzisiaj, ale plik. snupkg ma nastę
    ```
 
 4) Jeśli autor zdecyduje się użyć niestandardowych nuspec do kompilowania ich NUPKG i snupkg, snupkg powinien mieć tę samą hierarchię folderów i pliki szczegółowe w 2).
-5) ```authors```i ```owners``` pole zostanie wykluczone z nuspec snupkg.
-6) Nie należy używać ```<license>``` elementu. A. snupkg jest objęta tą samą licencją co odpowiadające mu. nupkg.
+5) pola ```authors``` i ```owners``` zostaną wykluczone z nuspec snupkg.
+6) Nie należy używać elementu ```<license>```. A. snupkg jest objęta tą samą licencją co odpowiadające mu. nupkg.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 Rozważ użycie linku źródłowego, aby włączyć debugowanie kodu źródłowego zestawów .NET. Aby uzyskać więcej informacji, zapoznaj się ze [wskazówkami dotyczącymi linku do źródła](/dotnet/standard/library-guidance/sourcelink).
 
