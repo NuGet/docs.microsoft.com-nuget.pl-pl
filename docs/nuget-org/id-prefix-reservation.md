@@ -55,11 +55,11 @@ Poniżej opisano kilka bardziej zaawansowanych scenariuszy rezerwacji prefiksów
 
 Gdy pakiet pochodzi z zastrzeżonego prefiksu, zobaczysz poniższe wskaźniki wizualizacji w galerii [NuGet.org](https://www.nuget.org/) i w programie visual Studio 2017 w wersji 15,4 lub nowszej:
 
-Galeria **nuget.org**
-![galerii NuGet.org](media/nuget-gallery-reserved-prefix.png)
+**nuget.org Gallery**
+![nuget.org Gallery](media/nuget-gallery-reserved-prefix.png)
 
-**Visual studio**
-![visual Studio](media/visual-studio-reserved-prefix.png)
+**Visual Studio**
+![Visual Studio](media/visual-studio-reserved-prefix.png)
 
 ## <a name="id-prefix-reservation-application-process"></a>Proces aplikacji rezerwacji prefiksu identyfikatora
 
@@ -98,5 +98,5 @@ Jeśli dostawca kanału informacyjnego innej firmy interesuje implementację wł
 Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą usługi wyszukiwania interfejsu API](../api/search-query-service-resource.md).
 
 ## <a name="package-id-prefix-reservation-dispute-policy"></a>Prefiks identyfikatora pakietu zasad sporu rezerwacji
-Jeśli uważasz, że właściciel na [NuGet.org](https://www.nuget.org) przypisał rezerwację prefiksu identyfikatora pakietu, która znajduje się na powyższych kryteriach lub narusza wszelkie znaki towarowe lub prawa autorskie, Wyślij wiadomość e-mail [support@nuget.org](mailto:support@nuget.org) z podanym prefiksem ID, właściciel identyfikatora prefiks i powód dla sporu przypisanej rezerwacji prefiksu.
+Jeśli uważasz, że właściciel na [NuGet.org](https://www.nuget.org) przypisał rezerwację prefiksu identyfikatora pakietu, która przechodzi do powyższych kryteriów wymienionych na liście lub narusza wszelkie znaki towarowe lub prawa autorskie, należy [support@nuget.org](mailto:support@nuget.org) e-mail z podanym prefiksem identyfikatora, właścicielem prefiksu ID i przyczynie sporu do przypisanej rezerwacji prefiksu.
 

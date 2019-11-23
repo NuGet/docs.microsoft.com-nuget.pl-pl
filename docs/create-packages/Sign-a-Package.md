@@ -19,7 +19,7 @@ Podpisane pakiety umożliwiają sprawdzenie spójności zawartości, co zapewnia
 
 ## <a name="get-a-code-signing-certificate"></a>Pobierz certyfikat podpisywania kodu
 
-Prawidłowe certyfikaty można uzyskać od publicznego urzędu certyfikacji, takiego jak [Symantec](https://trustcenter.websecurity.symantec.com/process/trust/productOptions?productType=SoftwareValidationClass3), [DigiCert](https://www.digicert.com/code-signing/), [Go Daddy](https://www.godaddy.com/web-security/code-signing-certificate), [Global Sign](https://www.globalsign.com/en/code-signing-certificate/), [Comodo](https://www.comodo.com/e-commerce/code-signing/code-signing-certificate.php), [CERTUM](https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml)itp. Pełną listę urzędów certyfikacji zaufanych przez system Windows można uzyskać z programu [http://aka.ms/trustcertpartners](http://aka.ms/trustcertpartners).
+Prawidłowe certyfikaty można uzyskać od publicznego urzędu certyfikacji, takiego jak [Symantec](https://trustcenter.websecurity.symantec.com/process/trust/productOptions?productType=SoftwareValidationClass3), [DigiCert](https://www.digicert.com/code-signing/), [Go Daddy](https://www.godaddy.com/web-security/code-signing-certificate), [Global Sign](https://www.globalsign.com/en/code-signing-certificate/), [Comodo](https://www.comodo.com/e-commerce/code-signing/code-signing-certificate.php), [CERTUM](https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml)itp. Pełną listę urzędów certyfikacji zaufanych przez system Windows można uzyskać z [http://aka.ms/trustcertpartners](http://aka.ms/trustcertpartners).
 
 Do celów testowych można użyć certyfikatów wystawionych przez siebie. Pakiety podpisane przy użyciu certyfikatów z podpisem własnym nie są jednak akceptowane przez NuGet.org. Dowiedz się więcej [na temat tworzenia certyfikatu testowego](#create-a-test-certificate)
 
@@ -43,7 +43,7 @@ nuget sign MyPackage.nupkg -CertificatePath <PathToTheCertificate> -Timestamper 
 ```
 
 > [!Tip]
-> Dostawca certyfikatów często zawiera również adres URL serwera sygnatury czasowej, którego można użyć dla `Timestamper` opcjonalnego argumentu Pokaż powyżej. Zapoznaj się z dokumentacją dostawcy i/lub pomocą techniczną dla tego adresu URL usługi.
+> Dostawca certyfikatów często zawiera również adres URL serwera sygnatury czasowej, którego można użyć dla opcjonalnego argumentu `Timestamper` Pokaż powyżej. Zapoznaj się z dokumentacją dostawcy i/lub pomocą techniczną dla tego adresu URL usługi.
 
 * Możesz użyć certyfikatu dostępnego w magazynie certyfikatów lub użyć certyfikatu z pliku. Zobacz Dokumentacja interfejsu wiersza polecenia dla [znaku NuGet](../reference/cli-reference/cli-ref-sign.md).
 * Podpisane pakiety powinny zawierać sygnaturę czasową, aby upewnić się, że sygnatura jest ważna po wygaśnięciu certyfikatu podpisywania. W przeciwnym razie operacja podpisywania spowoduje wygenerowanie [ostrzeżenia](../reference/errors-and-warnings/NU3002.md).
@@ -51,13 +51,13 @@ nuget sign MyPackage.nupkg -CertificatePath <PathToTheCertificate> -Timestamper 
 
 ## <a name="register-the-certificate-on-nugetorg"></a>Rejestrowanie certyfikatu w usłudze NuGet.org
 
-Aby opublikować podpisany pakiet, należy najpierw zarejestrować certyfikat z NuGet.org. Certyfikat jest potrzebny jako `.cer` plik w formacie binarnym der.
+Aby opublikować podpisany pakiet, należy najpierw zarejestrować certyfikat z NuGet.org. Certyfikat jest potrzebny jako plik `.cer` w formacie binarnym DER.
 
 1. [Zaloguj](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) się do NuGet.org.
-1. Przejdź do `Account settings` (lub `Manage Organization` **>** Jeślichceszzarejestrowaćcertyfikatprzyużyciu`Edit Organziation` konta organizacji).
-1. Rozwiń sekcję i wybierz pozycję `Register new`. `Certificates`
+1. Przejdź do `Account settings` (lub `Manage Organization` **>** `Edit Organziation`, jeśli chcesz zarejestrować certyfikat przy użyciu konta organizacji).
+1. Rozwiń sekcję `Certificates` i wybierz pozycję `Register new`.
 1. Wyszukaj i wybierz plik certyfikacie, który został wyeksportowany wcześniej.
-  ![Zarejestrowane certyfikaty](../reference/media/registered-certs.png)
+  ![zarejestrowane certyfikaty](../reference/media/registered-certs.png)
 
 **Uwaga**
 * Jeden użytkownik może przesłać wiele certyfikatów i ten sam certyfikat może być zarejestrowany przez wielu użytkowników.
@@ -84,7 +84,7 @@ New-SelfSignedCertificate -Subject "CN=NuGet Test Developer, OU=Use for testing 
                           -CertStoreLocation "Cert:\CurrentUser\My" 
 ```
 
-To polecenie umożliwia utworzenie certyfikatu testowego dostępnego w osobistym magazynie certyfikatów bieżącego użytkownika. Można otworzyć magazyn certyfikatów, uruchamiając `certmgr.msc` program w celu wyświetlenia nowo utworzonego certyfikatu.
+To polecenie umożliwia utworzenie certyfikatu testowego dostępnego w osobistym magazynie certyfikatów bieżącego użytkownika. Możesz otworzyć magazyn certyfikatów, uruchamiając `certmgr.msc`, aby wyświetlić nowo utworzony certyfikat.
 
 > [!Warning]
 > Usługa NuGet.org nie akceptuje pakietów podpisanych za pomocą certyfikatów z podpisem własnym.
@@ -92,8 +92,8 @@ To polecenie umożliwia utworzenie certyfikatu testowego dostępnego w osobistym
 ## <a name="manage-signing-requirements-for-your-package-on-nugetorg"></a>Zarządzanie wymaganiami dotyczącymi podpisywania pakietu w programie NuGet.org
 1. [Zaloguj](https://www.nuget.org/users/account/LogOn?returnUrl=%2F) się do NuGet.org.
 
-1. Przejdź do `Manage Packages`  
-    konfigurowaniapodpisywania![pakietów](../reference/media/configure-package-signers.png)
+1. Przejdź do `Manage Packages` 
+   ![skonfigurować podpisy pakietu](../reference/media/configure-package-signers.png)
 
 * Jeśli jesteś jedynym właścicielem pakietu, jest to wymagana osoba podpisująca. możesz użyć dowolnego z zarejestrowanych certyfikatów do podpisywania i publikowania pakietów w usłudze NuGet.org.
 
