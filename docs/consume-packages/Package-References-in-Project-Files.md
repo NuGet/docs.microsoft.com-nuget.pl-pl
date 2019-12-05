@@ -5,22 +5,22 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 231947148295e0c06dcec5aa0e1f479d654a8803
-ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
+ms.openlocfilehash: b6a009832430ee08f51ea1028feb878a39f45222
+ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74096869"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74825137"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietów (PackageReference) w plikach projektu
 
-Odwołania do pakietów, za pomocą węzła `PackageReference`, Zarządzaj zależnościami NuGet bezpośrednio w plikach projektu (w przeciwieństwie do oddzielnego pliku `packages.config`). Przy użyciu PackageReference, gdy jest wywoływana, nie ma wpływu na inne aspekty NuGet; na przykład ustawienia w plikach `NuGet.config` (w tym źródła pakietów) są nadal stosowane, jak wyjaśniono w [typowych konfiguracjach NuGet](configuring-nuget-behavior.md).
+Odwołania do pakietów przy użyciu węzła `PackageReference`, zarządzanie zależnościami NuGet bezpośrednio w plikach projektu (w przeciwieństwie do oddzielnego pliku `packages.config`). Przy użyciu PackageReference, gdy jest wywoływana, nie ma wpływu na inne aspekty NuGet; na przykład ustawienia w plikach `NuGet.config` (w tym źródła pakietów) są nadal stosowane, jak wyjaśniono w [typowych konfiguracjach NuGet](configuring-nuget-behavior.md).
 
 Za pomocą PackageReference można także użyć warunków MSBuild, aby wybrać odwołania do pakietów dla platformy docelowej lub innych grup. Umożliwia również precyzyjne sterowanie zależnościami i przepływem zawartości. (Zobacz, aby uzyskać więcej szczegółów na temat [pakietu NuGet i przywracania jako elementy docelowe programu MSBuild](../reference/msbuild-targets.md)).
 
 ## <a name="project-type-support"></a>Obsługa typu projektu
 
-Domyślnie PackageReference jest używany dla projektów .NET Core, projektów .NET Standard i projektów platformy UWP przeznaczonych dla systemu Windows 10 Build 15063 (Aktualizacja dla twórców) i nowszych, z wyjątkiem projektów C++ platformy UWP. Projekty .NET Framework obsługują PackageReference, ale obecnie domyślnie `packages.config`. Aby użyć PackageReference, [Migruj](../consume-packages/migrate-packages-config-to-package-reference.md) zależności z `packages.config` do pliku projektu, a następnie usuń Packages. config.
+Domyślnie PackageReference jest używany dla projektów .NET Core, projektów .NET Standard i projektów platformy UWP przeznaczonych dla systemu Windows 10 Build 15063 (Aktualizacja dla twórców) i nowszych, z wyjątkiem projektów C++ platformy UWP. Projekty .NET Framework obsługują PackageReference, ale obecnie domyślnie `packages.config`. Aby użyć PackageReference, [Przeprowadź migrację](../consume-packages/migrate-packages-config-to-package-reference.md) zależności z `packages.config` do pliku projektu, a następnie usuń plik Packages. config.
 
 ASP.NET aplikacje obsługujące pełną .NET Framework obejmują tylko [ograniczoną obsługę](https://github.com/NuGet/Home/issues/5877) PackageReference. C++i typy projektów JavaScript nie są obsługiwane.
 
@@ -38,7 +38,7 @@ Dodaj zależność w pliku projektu przy użyciu następującej składni:
 
 ## <a name="controlling-dependency-version"></a>Kontrolowanie wersji zależności
 
-Konwencja określania wersji pakietu jest taka sama jak w przypadku używania `packages.config`:
+Konwencja dotycząca określania wersji pakietu jest taka sama jak w przypadku używania `packages.config`:
 
 ```xml
 <ItemGroup>
@@ -53,6 +53,7 @@ W powyższym przykładzie 3.6.0 oznacza dowolną wersję, która jest > = 3.6.0 
 ## <a name="using-packagereference-for-a-project-with-no-packagereferences"></a>Używanie PackageReference dla projektu bez składnika packagereferences
 
 Zaawansowane: Jeśli nie masz żadnych pakietów zainstalowanych w projekcie (nie składnika packagereferences w pliku projektu i bez pliku Packages. config), ale chcesz przywrócić projekt jako styl PackageReference, możesz ustawić właściwość projektu RestoreProjectStyle na PackageReference w plik projektu.
+
 ```xml
 <PropertyGroup>
     <!--- ... -->
@@ -60,6 +61,7 @@ Zaawansowane: Jeśli nie masz żadnych pakietów zainstalowanych w projekcie (ni
     <!--- ... -->
 </PropertyGroup>    
 ```
+
 Może to być przydatne, jeśli odwołują się do projektów, które są PackageReference w stylu (istniejące projekty csproj lub zestawu SDK). Spowoduje to włączenie pakietów, do których odwołują się te projekty, do których odwołuje się projekt.
 
 ## <a name="packagereference-and-sources"></a>PackageReference i źródła
@@ -68,7 +70,7 @@ W projektach PackageReference, przechodnie wersje zależności są rozwiązywane
 
 ## <a name="floating-versions"></a>Wersje zmiennoprzecinkowe
 
-[Wersje zmiennoprzecinkowe](../concepts/dependency-resolution.md#floating-versions) są obsługiwane z `PackageReference`:
+Obsługiwane są [wersje zmiennoprzecinkowe](../concepts/dependency-resolution.md#floating-versions) `PackageReference`:
 
 ```xml
 <ItemGroup>
@@ -81,7 +83,7 @@ W projektach PackageReference, przechodnie wersje zależności są rozwiązywane
 
 ## <a name="controlling-dependency-assets"></a>Kontrolowanie zasobów zależności
 
-Można używać zależności wyłącznie jako zespołu programistycznego i może nie chcieć ujawniać projektów, które będą korzystać z pakietu. W tym scenariuszu można użyć metadanych `PrivateAssets` w celu sterowania tym zachowaniem.
+Można używać zależności wyłącznie jako zespołu programistycznego i może nie chcieć ujawniać projektów, które będą korzystać z pakietu. W tym scenariuszu można użyć metadanych `PrivateAssets`, aby kontrolować to zachowanie.
 
 ```xml
 <ItemGroup>
@@ -97,21 +99,21 @@ Można używać zależności wyłącznie jako zespołu programistycznego i może
 
 Następujące znaczniki metadanych kontrolują elementy zależne:
 
-| Seryjn | Opis | Wartość domyślna |
+| Tag | Opis | Wartość domyślna |
 | --- | --- | --- |
 | IncludeAssets | Te zasoby zostaną wykorzystane | wszystkie |
 | ExcludeAssets | Te zasoby nie będą używane | brak |
-| PrivateAssets | Te zasoby będą wykorzystane, ale nie będą przepływać do projektu nadrzędnego | contentfiles; analizatory; kompilacja |
+| PrivateAssets | Te zasoby będą wykorzystane, ale nie będą przepływać do projektu nadrzędnego | contentfiles;analyzers;build |
 
 Wartości dozwolone dla tych tagów są następujące, z wieloma wartościami oddzielonymi średnikami z wyjątkiem `all` i `none`, które muszą być wyświetlane samodzielnie:
 
 | Wartość | Opis |
 | --- | ---
-| Opracowania | Zawartość folderu `lib` i kontroluje, czy projekt może być kompilowany względem zestawów w folderze |
+| kompilowanie | Zawartość folderu `lib` i kontroluje, czy projekt można kompilować względem zestawów w folderze |
 | środowisko uruchomieniowe | Zawartość folderu `lib` i `runtimes` i kontroluje, czy te zestawy zostaną skopiowane do katalogu wyjściowego kompilacji |
 | contentFiles | Zawartość folderu `contentfiles` |
 | kompilacja | `.props` i `.targets` w folderze `build` |
-| buildMultitargeting | *(4,0)* `.props` i `.targets` w folderze `buildMultitargeting`, dla celów określania wartości docelowej dla wielu platform |
+| buildMultitargeting | *(4,0)* `.props` i `.targets` w folderze `buildMultitargeting` dla celów związanych z różnymi platformami |
 | buildTransitive | *(5.0 +)* `.props` i `.targets` w folderze `buildTransitive` dla zasobów, które są przechodniie przepływowo do dowolnego konsumowanego projektu. Zobacz stronę [funkcji](https://github.com/NuGet/Home/wiki/Allow-package--authors-to-define-build-assets-transitive-behavior) . |
 | Analizatory | Analizatory .NET |
 | natywne | Zawartość folderu `native` |
@@ -134,7 +136,7 @@ W poniższym przykładzie wszystko, z wyjątkiem plików zawartości z pakietu, 
 </ItemGroup>
 ```
 
-Należy pamiętać, że ponieważ `build` nie jest uwzględniony w `PrivateAssets`, obiekty docelowe i elementy props *będą* przepływać do projektu nadrzędnego. Rozważmy na przykład, że odwołanie powyżej jest używane w projekcie, który kompiluje pakiet NuGet o nazwie AppLogger. AppLogger może zużywać elementy docelowe i wartości z `Contoso.Utility.UsefulStuff`, tak jak projekty, które zużywają AppLogger.
+Należy pamiętać, że ponieważ `build` nie jest zawarty w `PrivateAssets`, obiekty docelowe i elementy props *będą* przepływać do projektu nadrzędnego. Rozważmy na przykład, że odwołanie powyżej jest używane w projekcie, który kompiluje pakiet NuGet o nazwie AppLogger. AppLogger może zużywać elementy docelowe i wartości z `Contoso.Utility.UsefulStuff`, tak jak projekty, które zużywają AppLogger.
 
 > [!NOTE]
 > Gdy `developmentDependency` jest ustawiona na `true` w pliku `.nuspec`, oznacza to pakiet jako zależność tylko do programowania, co uniemożliwi uwzględnienie pakietu jako zależności w innych pakietach. W przypadku PackageReference *(NuGet 4.8 +)* ta flaga oznacza również, że wykluczają się zasoby czasu kompilacji z kompilacji. Aby uzyskać więcej informacji, zobacz [DevelopmentDependency support for PackageReference](https://github.com/NuGet/Home/wiki/DevelopmentDependency-support-for-PackageReference).
@@ -143,7 +145,7 @@ Należy pamiętać, że ponieważ `build` nie jest uwzględniony w `PrivateAsset
 
 Możesz użyć warunku, aby określić, czy pakiet jest uwzględniony, gdzie warunki mogą używać dowolnej zmiennej MSBuild lub zmiennej zdefiniowanej w pliku TARGETS lub props. Jednak obecnie obsługiwana jest tylko zmienna `TargetFramework`.
 
-Załóżmy na przykład, że jesteś celem `netstandard1.4`, a także `net452`, ale ma zależność, która ma zastosowanie tylko do `net452`. W takim przypadku nie potrzebujesz projektu `netstandard1.4`, który zużywa pakiet, aby dodać niepotrzebną zależność. Aby tego uniknąć, należy określić warunek dla `PackageReference` w następujący sposób:
+Załóżmy na przykład, że jesteś celem `netstandard1.4`, a także `net452`, ale ma zależność, która ma zastosowanie tylko do `net452`. W takim przypadku nie chcesz, aby projekt `netstandard1.4`, który zużywa pakiet w celu dodania niepotrzebnej zależności. Aby tego uniknąć, należy określić warunek na `PackageReference` w następujący sposób:
 
 ```xml
 <ItemGroup>
@@ -174,7 +176,7 @@ Warunki mogą być również stosowane na poziomie `ItemGroup` i będą miały z
 Dane wejściowe do przywracania NuGet to zbiór odwołań do pakietów z pliku projektu (zależności najwyższego poziomu lub bezpośrednie), a dane wyjściowe to pełny zamknięcie wszystkich zależności pakietu, w tym zależności przechodnie. Pakiet NuGet próbuje zawsze utworzyć to samo pełne zamknięcie zależności pakietów, jeśli lista wejściowa PackageReference nie została zmieniona. Jednak istnieją pewne scenariusze, w których nie można tego zrobić. Na przykład:
 
 * W przypadku korzystania z wersji zmiennoprzecinkowych, takich jak `<PackageReference Include="My.Sample.Lib" Version="4.*"/>`. Gdy zachodzi taka potrzeba, aby przepływać do najnowszej wersji przy każdym przywracaniu pakietów, istnieją scenariusze, w których użytkownicy wymagają, aby wykres był zablokowany do określonej najnowszej wersji i przepływał do nowszej wersji, o ile jest dostępny, przy jawnym gestie.
-* Opublikowana jest nowsza wersja pakietu spełniająca wymagania dotyczące wersji PackageReference. Tj. 
+* Opublikowana jest nowsza wersja pakietu spełniająca wymagania dotyczące wersji PackageReference. Na przykład 
 
   * Dzień 1: Jeśli określono `<PackageReference Include="My.Sample.Lib" Version="4.0.0"/>`, ale wersje dostępne w repozytoriach NuGet zostały 4.1.0, 4.2.0 i 4.3.0. W takim przypadku pakiet NuGet zostałby rozpoznany jako 4.1.0 (Najbliższa wersja minimalna)
 
@@ -193,29 +195,32 @@ W celu utrwalenia pełnego zamknięcia zależności pakietu można wybrać funkc
 </PropertyGroup>    
 ```
 
-Jeśli ta właściwość jest ustawiona, przywracanie NuGet wygeneruje plik blokady `packages.lock.json` w katalogu głównym projektu, który zawiera listę wszystkich zależności pakietu. 
+Jeśli ta właściwość jest ustawiona, przywracanie NuGet wygeneruje plik blokady `packages.lock.json` pliku w katalogu głównym projektu, który zawiera listę wszystkich zależności pakietu. 
 
 > [!Note]
 > Gdy projekt ma `packages.lock.json` plik w katalogu głównym, plik blokady jest zawsze używany z przywracaniem, nawet jeśli właściwość `RestorePackagesWithLockFile` nie jest ustawiona. Innym sposobem na zgodę na tę funkcję jest utworzenie fikcyjnego pustego pliku `packages.lock.json` w katalogu głównym projektu.
 
-### <a name="restore-behavior-with-lock-file"></a>zachowanie `restore` z plikiem blokady
+### <a name="restore-behavior-with-lock-file"></a>`restore` zachowanie przy użyciu pliku blokady
 Jeśli plik blokady jest obecny dla projektu, NuGet używa tego pliku blokady do uruchamiania `restore`. Program NuGet sprawdza, czy w zależnościach pakietu zostały wprowadzone jakiekolwiek zmiany, jak wspomniano w pliku projektu (lub w plikach projektów zależnych) i czy nie wprowadzono żadnych zmian, po prostu przywraca pakiety wymienione w pliku blokady. Nie ma potrzeby ponownej oceny zależności pakietów.
 
 Jeśli NuGet wykryje zmianę zdefiniowanych zależności, jak wspomniano w plikach projektu, ponownie oblicza Graf pakietu i aktualizuje plik blokady w celu odzwierciedlenia nowego zamknięcia pakietu dla projektu.
 
-W przypadku ciągłej integracji/ciągłego wdrażania i innych scenariuszy, w których nie chcesz zmienić zależności pakietu na bieżąco, możesz to zrobić, ustawiając wartość `lockedmode` na `true`:
+W przypadku ciągłej integracji/ciągłego wdrażania i innych scenariuszy, w których nie chcesz zmienić zależności pakietu na bieżąco, możesz to zrobić, ustawiając `lockedmode` `true`:
 
 W przypadku programu dotnet. exe Uruchom polecenie:
+
 ```
 > dotnet.exe restore --locked-mode
 ```
 
 Dla programu MSBuild. exe Uruchom polecenie:
+
 ```
 > msbuild.exe -t:restore -p:RestoreLockedMode=true
 ```
 
 Możesz również ustawić tę właściwość warunkowego programu MSBuild w pliku projektu:
+
 ```xml
 <PropertyGroup>
     <!--- ... -->
@@ -224,21 +229,23 @@ Możesz również ustawić tę właściwość warunkowego programu MSBuild w pli
 </PropertyGroup> 
 ```
 
-Jeśli tryb blokowania jest `true`, przywracanie będzie przywracać dokładne pakiety wymienione w pliku blokady lub niepowodzeniem, jeśli podczas tworzenia pliku blokady zostały zaktualizowane zdefiniowane zależności pakietu dla projektu.
+Jeśli tryb blokowania jest `true`, przywracanie będzie przywracać dokładnie te pakiety jak wymienione w pliku blokady lub niepowodzenie, jeśli podczas tworzenia pliku blokady zostały zaktualizowane zdefiniowane zależności pakietu dla projektu.
 
 ### <a name="make-lock-file-part-of-your-source-repository"></a>Utwórz część pliku blokady w repozytorium źródłowym
 W przypadku kompilowania aplikacji plik wykonywalny i projekt w danym momencie znajdują się na początku łańcucha zależności, a następnie należy zaewidencjonować plik blokady do repozytorium kodu źródłowego, aby pakiet NuGet mógł go używać podczas przywracania.
 
 Jeśli jednak projekt jest projektem biblioteki, który nie jest dostarczany lub wspólny projekt kodu, od którego zależą inne projekty, **nie należy** ewidencjonować pliku blokady jako części kodu źródłowego. Nie ma szkody w zachowaniu pliku blokady, ale zablokowane zależności pakietu dla wspólnego projektu kodu nie mogą być używane, jak wymieniono w pliku blokady podczas przywracania/kompilowania projektu, który zależy od tego projektu Common-Code.
 
-Zwrotnym.
+Na przykład:
+
 ```
 ProjectA
   |------> PackageX 2.0.0
   |------> ProjectB
              |------>PackageX 1.0.0
 ```
-Jeśli `ProjectA` ma zależność od wersji `PackageX` `2.0.0`, a także odwołuje się do `ProjectB`, która zależy od `PackageX` wersji `1.0.0`, wówczas plik blokady dla `ProjectB` wyświetli zależność od `PackageX` wersji `1.0.0`. Jednak w przypadku skompilowania `ProjectA` jego plik blokady będzie zawierać zależność od wersji `PackageX` **`2.0.0`** , a **nie** `1.0.0`, jak wymieniono w pliku blokady dla `ProjectB`. W ten sposób plik blokady wspólnego projektu kodu ma niewielki stan dla projektów, które są od niego zależne.
+
+Jeśli `ProjectA` ma zależność od wersji `PackageX` `2.0.0` a także odwołuje się do `ProjectB`, które są zależne od `PackageX` wersji `1.0.0`, wówczas plik blokady dla `ProjectB` zostanie wystawiony zależność od `PackageX` wersji `1.0.0`. Jednak po skompilowaniu `ProjectA` jego plik blokady będzie zawierał zależność od wersji `PackageX` **`2.0.0`** a **nie** `1.0.0`, jak wymieniono w pliku blokady dla `ProjectB`. W ten sposób plik blokady wspólnego projektu kodu ma niewielki stan dla projektów, które są od niego zależne.
 
 ### <a name="lock-file-extensibility"></a>Zablokuj rozszerzalność plików
 

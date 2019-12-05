@@ -5,25 +5,25 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/23/2018
 ms.topic: quickstart
-ms.openlocfilehash: 47593cc65ad707b8880d854dc43824b9234fd44a
-ms.sourcegitcommit: ba8ad1bd13a4bba3df94374e34e20c425a05af2f
+ms.openlocfilehash: 9b6eb012b4bc8135b1648fa9f5e84d7d1c9d6b16
+ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68833301"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74825351"
 ---
-# <a name="quickstart-install-and-use-a-package-using-the-dotnet-cli"></a>Szybki start: Instalowanie i używanie pakietu przy użyciu interfejsu wiersza polecenia dotnet
+# <a name="quickstart-install-and-use-a-package-using-the-dotnet-cli"></a>Szybki Start: Instalowanie i używanie pakietu przy użyciu interfejsu wiersza polecenia dotnet
 
-Pakiety NuGet zawierają kod wielokrotnego użytku, który inni deweloperzy udostępnili do użycia w projektach. Zobacz, [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są instalowane w projekcie .NET Core za pomocą `dotnet add package` polecenia, zgodnie z opisem w tym artykule dla popularnego pakietu [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) .
+Pakiety NuGet zawierają kod wielokrotnego użytku, który inni deweloperzy udostępnili do użycia w projektach. Zobacz, [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są instalowane w projekcie .NET Core za pomocą polecenia `dotnet add package`, zgodnie z opisem w tym artykule dla popularnego pakietu [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) .
 
-Po zainstalowaniu programu zapoznaj się z pakietem w `using <namespace>` kodzie \<,\> gdzie przestrzeń nazw jest specyficzna dla używanego pakietu. Następnie można użyć interfejsu API pakietu.
+Po zainstalowaniu programu zapoznaj się z pakietem w kodzie, `using <namespace>` gdzie \<przestrzeń nazw\> jest specyficzna dla używanego pakietu. Następnie można użyć interfejsu API pakietu.
 
 > [!Tip]
-> **Zacznij od NuGet.org**: Nuget.org przeglądania polega na tym, że deweloperzy platformy .NET zwykle wyszukują składniki, których mogą ponownie używać w swoich aplikacjach. Możesz przeszukiwać nuget.org bezpośrednio lub znajdować i instalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
+> **Zacznij od NuGet.org**: przeglądanie NuGet.org polega na tym, że deweloperzy platformy .NET zwykle wyszukują składniki, których mogą ponownie używać w swoich aplikacjach. Możesz przeszukiwać nuget.org bezpośrednio lub znajdować i instalować pakiety w programie Visual Studio, jak pokazano w tym artykule.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Zestaw .NET Core SDK](https://www.microsoft.com/net/download/), która udostępnia `dotnet` narzędzie wiersza polecenia. Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.
+- [Zestaw .NET Core SDK](https://www.microsoft.com/net/download/), która zapewnia `dotnet` narzędzie wiersza polecenia. Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
@@ -35,21 +35,21 @@ Pakiety NuGet można instalować w projekcie .NET pewnego rodzaju. W tym instruk
 
 1. Utwórz projekt przy użyciu następującego polecenia:
 
-    ```cli
+    ```dotnetcli
     dotnet new console
     ```
 
-1. Użyj `dotnet run` , aby sprawdzić, czy aplikacja została utworzona poprawnie.
+1. Użyj `dotnet run`, aby sprawdzić, czy aplikacja została utworzona poprawnie.
 
 ## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodawanie pakietu NuGet Newtonsoft. JSON
 
-1. Użyj następującego polecenia, aby zainstalować `Newtonsoft.json` pakiet:
+1. Aby zainstalować pakiet `Newtonsoft.json`, użyj następującego polecenia:
 
-    ```cli
+    ```dotnetcli
     dotnet add package Newtonsoft.Json
     ```
 
-2. Po zakończeniu wykonywania polecenia Otwórz `.csproj` plik, aby wyświetlić dodane odwołanie:
+2. Po zakończeniu wykonywania polecenia Otwórz plik `.csproj`, aby wyświetlić dodane odwołanie:
 
     ```xml
    <ItemGroup>
@@ -59,13 +59,13 @@ Pakiety NuGet można instalować w projekcie .NET pewnego rodzaju. W tym instruk
 
 ## <a name="use-the-newtonsoftjson-api-in-the-app"></a>Korzystanie z interfejsu API Newtonsoft. JSON w aplikacji
 
-1. `Program.cs` Otwórz plik i Dodaj następujący wiersz w górnej części pliku:
+1. Otwórz plik `Program.cs` i Dodaj następujący wiersz w górnej części pliku:
 
     ```cs
     using Newtonsoft.Json;
     ```
 
-1. Dodaj następujący kod przed `class Program` wierszem:
+1. Dodaj następujący kod przed wierszem `class Program`:
 
     ```cs
     public class Account
@@ -76,7 +76,7 @@ Pakiety NuGet można instalować w projekcie .NET pewnego rodzaju. W tym instruk
     }
     ```
 
-1. Zastąp `Main` funkcję następującymi:
+1. Zastąp funkcję `Main` następującym:
 
     ```cs
     static void Main(string[] args)
@@ -93,7 +93,7 @@ Pakiety NuGet można instalować w projekcie .NET pewnego rodzaju. W tym instruk
     }
     ```
 
-1. Skompiluj i uruchom aplikację za pomocą `dotnet run` polecenia. Dane wyjściowe powinny być reprezentacją `Account` json obiektu w kodzie:
+1. Skompiluj i uruchom aplikację za pomocą polecenia `dotnet run`. Dane wyjściowe powinny być reprezentacją JSON obiektu `Account` w kodzie:
 
     ```output
     {

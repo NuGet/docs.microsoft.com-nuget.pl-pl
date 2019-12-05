@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec37057d40ddc9ed1826b0628aaa573c342b92b6
-ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
+ms.openlocfilehash: 535d5a16a559cde065ee0277471edfbaf1aea084
+ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72380741"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74825274"
 ---
 # <a name="create-a-nuget-package-using-the-dotnet-cli"></a>Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
 
@@ -23,17 +23,17 @@ W przypadku projektów .NET Core i .NET Standard, które korzystają z [formatu 
 > [!IMPORTANT]
 > Ten temat ma zastosowanie do projektów w [stylu zestawu SDK](../resources/check-project-format.md) , zwykle .NET Core i projektów .NET Standard.
 
-## <a name="set-properties"></a>Ustaw właściwości
+## <a name="set-properties"></a>Ustawianie właściwości
 
 Do utworzenia pakietu wymagane są następujące właściwości.
 
-- `PackageId`, identyfikator pakietu, który musi być unikatowy w galerii, w której znajduje się pakiet. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
-- `Version` — określony numer wersji w postaci *główna. pomocnicza. poprawka [-sufiks]* , gdzie *-sufiks* określa [wersję wstępną](prerelease-packages.md). Jeśli nie zostanie określony, wartość domyślna to 1.0.0.
+- `PackageId`identyfikator pakietu, który musi być unikatowy w galerii, w której znajduje się pakiet. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
+- `Version`, określony numer wersji w postaci *główna. pomocnicza. poprawka [-sufiks]* , gdzie *-sufiks* określa [wersję wstępną](prerelease-packages.md). Jeśli nie zostanie określony, wartość domyślna to 1.0.0.
 - Tytuł pakietu, który powinien pojawić się na hoście (na przykład nuget.org)
-- `Authors`, informacje o autorze i właścicielu. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
+- informacje dotyczące `Authors`, autora i właściciela. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
 - `Company`, nazwa firmy. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
 
-W programie Visual Studio można ustawić te wartości we właściwościach projektu (kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz **Właściwości**, a następnie wybierz kartę **pakiet** ). Możesz również ustawić te właściwości bezpośrednio w plikach projektu (`.csproj`).
+W programie Visual Studio można ustawić te wartości we właściwościach projektu (kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz **Właściwości**, a następnie wybierz kartę **pakiet** ). Te właściwości można również ustawić bezpośrednio w plikach projektu (`.csproj`).
 
 ```xml
 <PropertyGroup>
@@ -61,7 +61,7 @@ Poniższy przykład pokazuje prosty, kompletny plik projektu z tymi właściwoś
 </Project>
 ```
 
-Można również ustawić właściwości opcjonalne, takie jak `Title`, `PackageDescription` i `PackageTags`, zgodnie z opisem w obszarze [targets pakietu MSBuild](../reference/msbuild-targets.md#pack-target), [kontrolowanie elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets)i [właściwości metadanych NuGet](/dotnet/core/tools/csproj#nuget-metadata-properties).
+Można również ustawić właściwości opcjonalne, takie jak `Title`, `PackageDescription`i `PackageTags`, zgodnie z opisem w obszarze [targets pakietu MSBuild](../reference/msbuild-targets.md#pack-target), [kontrolując elementy zależne](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets)i [właściwości metadanych NuGet](/dotnet/core/tools/csproj#nuget-metadata-properties).
 
 > [!NOTE]
 > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na Właściwość **PackageTags** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
@@ -76,7 +76,7 @@ Aby uzyskać szczegółowe informacje na temat deklarowania zależności i okre�
 
 Aby skompilować pakiet NuGet (plik `.nupkg`) z projektu, uruchom polecenie `dotnet pack`, które również automatycznie kompiluje projekt:
 
-```cli
+```dotnetcli
 # Uses the project file in the current folder by default
 dotnet pack
 ```
@@ -100,7 +100,7 @@ Aby automatycznie uruchomić `dotnet pack` podczas uruchamiania `dotnet build`, 
 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 ```
 
-Po uruchomieniu `dotnet pack` w rozwiązaniu to pakiety wszystkie projekty w rozwiązaniu, które są możliwe do spakowania (Właściwość[<IsPackable>](/dotnet/core/tools/csproj#nuget-metadata-properties) jest ustawiona na `true`).
+Po uruchomieniu `dotnet pack` w rozwiązaniu wszystkie projekty w rozwiązaniu, które są możliwe do spakowania (Właściwość[<IsPackable>](/dotnet/core/tools/csproj#nuget-metadata-properties) jest ustawiona na `true`).
 
 > [!NOTE]
 > Po automatycznym wygenerowaniu pakietu czas do spakowania zwiększa czas kompilacji projektu.
