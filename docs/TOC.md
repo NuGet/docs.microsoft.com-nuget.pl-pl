@@ -49,7 +49,7 @@
 ### [Tworzenie pakietu natywnego](guides/native-packages.md)
 ### [Tworzenie kontrolek interfejsu użytkownika jako pakietu NuGet](guides/create-UI-controls.md)
 ### [Tworzenie analizatora jako pakietu NuGet](guides/analyzers-conventions.md)
-### [Tworzenie pakietu dla platformy Xamarin za pomocą programu Visual Studio 2015](guides/create-packages-for-xamarin.md)
+### [Tworzenie pakietu dla platformy Xamarin za pomocą programu Visual Studio 2017 lub 2019](guides/create-packages-for-xamarin.md)
 ### [Tworzenie pakietu za pomocą zestawów usługi międzyoperacyjnej modelu COM](create-packages/author-packages-with-COM-interop-assemblies.md)
 ## Podpisywanie pakietów
 ### [Podpisywanie pakietu](create-packages/sign-a-package.md)
