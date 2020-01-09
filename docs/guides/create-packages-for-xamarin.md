@@ -1,57 +1,67 @@
 ---
-title: Tworzenie pakietów NuGet dla platformy Xamarin (dla systemów iOS, Android i Windows) przy użyciu programu Visual Studio 2015
+title: Tworzenie pakietów NuGet dla platformy Xamarin (dla systemów iOS, Android i Windows) przy użyciu programu Visual Studio 2017 lub 2019
 description: Kompleksowy przewodnik tworzenia pakietów NuGet dla platformy Xamarin, które używają natywnych interfejsów API w systemach iOS, Android i Windows.
 author: karann-msft
 ms.author: karann
-ms.date: 01/09/2017
+ms.date: 11/05/2019
 ms.topic: tutorial
-ms.openlocfilehash: 927991429d8d4ce54aa35be3e450475a38141b11
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: fce3c9a92dfee325f9e914bf3d6444601fb38b6c
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385691"
 ---
-# <a name="create-packages-for-xamarin-with-visual-studio-2015"></a><span data-ttu-id="1cf59-103">Tworzenie pakietów dla platformy Xamarin za pomocą programu Visual Studio 2015</span><span class="sxs-lookup"><span data-stu-id="1cf59-103">Create packages for Xamarin with Visual Studio 2015</span></span>
+# <a name="create-packages-for-xamarin-with-visual-studio-2017-or-2019"></a><span data-ttu-id="c44c3-103">Tworzenie pakietów dla platformy Xamarin za pomocą programu Visual Studio 2017 lub 2019</span><span class="sxs-lookup"><span data-stu-id="c44c3-103">Create packages for Xamarin with Visual Studio 2017 or 2019</span></span>
 
-<span data-ttu-id="1cf59-104">Pakiet dla platformy Xamarin zawiera kod, który używa natywnych interfejsów API w systemach iOS, Android i Windows, w zależności od systemu operacyjnego w czasie wykonywania.</span><span class="sxs-lookup"><span data-stu-id="1cf59-104">A package for Xamarin contains code that uses native APIs on iOS, Android, and Windows, depending on the run-time operating system.</span></span> <span data-ttu-id="1cf59-105">Chociaż jest to proste, zaleca się, aby deweloperzy zużywali pakiet z bibliotek PCL lub .NET Standard za pośrednictwem wspólnego obszaru powierzchni interfejsu API.</span><span class="sxs-lookup"><span data-stu-id="1cf59-105">Although this is straightforward to do, it's preferable to let developers consume the package from a PCL or .NET Standard libraries through a common API surface area.</span></span>
+<span data-ttu-id="c44c3-104">Pakiet dla platformy Xamarin zawiera kod, który używa natywnych interfejsów API w systemach iOS, Android i Windows, w zależności od systemu operacyjnego w czasie wykonywania.</span><span class="sxs-lookup"><span data-stu-id="c44c3-104">A package for Xamarin contains code that uses native APIs on iOS, Android, and Windows, depending on the run-time operating system.</span></span> <span data-ttu-id="c44c3-105">Chociaż jest to proste, zaleca się, aby deweloperzy zużywali pakiet z bibliotek PCL lub .NET Standard za pośrednictwem wspólnego obszaru powierzchni interfejsu API.</span><span class="sxs-lookup"><span data-stu-id="c44c3-105">Although this is straightforward to do, it's preferable to let developers consume the package from a PCL or .NET Standard libraries through a common API surface area.</span></span>
 
-<span data-ttu-id="1cf59-106">W tym instruktażu użyjesz programu Visual Studio 2015, aby utworzyć Międzyplatformowy pakiet NuGet, który może być używany w projektach mobilnych w systemach iOS, Android i Windows.</span><span class="sxs-lookup"><span data-stu-id="1cf59-106">In this walkthrough you use Visual Studio 2015 create a cross-platform NuGet package that can be used in mobile projects on iOS, Android, and Windows.</span></span>
+<span data-ttu-id="c44c3-106">W tym instruktażu użyjesz programu Visual Studio 2017 lub 2019, aby utworzyć pakiet NuGet dla wielu platform, który może być używany w projektach mobilnych w systemach iOS, Android i Windows.</span><span class="sxs-lookup"><span data-stu-id="c44c3-106">In this walkthrough you use Visual Studio 2017 or 2019 to create a cross-platform NuGet package that can be used in mobile projects on iOS, Android, and Windows.</span></span>
 
-1. [<span data-ttu-id="1cf59-107">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="1cf59-107">Prerequisites</span></span>](#prerequisites)
-1. [<span data-ttu-id="1cf59-108">Tworzenie struktury projektu i kodu abstrakcji</span><span class="sxs-lookup"><span data-stu-id="1cf59-108">Create the project structure and abstraction code</span></span>](#create-the-project-structure-and-abstraction-code)
-1. [<span data-ttu-id="1cf59-109">Napisz kod specyficzny dla platformy</span><span class="sxs-lookup"><span data-stu-id="1cf59-109">Write your platform-specific code</span></span>](#write-your-platform-specific-code)
-1. [<span data-ttu-id="1cf59-110">Utwórz i zaktualizuj plik. nuspec</span><span class="sxs-lookup"><span data-stu-id="1cf59-110">Create and update the .nuspec file</span></span>](#create-and-update-the-nuspec-file)
-1. [<span data-ttu-id="1cf59-111">Pakowanie składnika</span><span class="sxs-lookup"><span data-stu-id="1cf59-111">Package the component</span></span>](#package-the-component)
-1. [<span data-ttu-id="1cf59-112">Tematy pokrewne</span><span class="sxs-lookup"><span data-stu-id="1cf59-112">Related topics</span></span>](#related-topics)
+1. [<span data-ttu-id="c44c3-107">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="c44c3-107">Prerequisites</span></span>](#prerequisites)
+1. [<span data-ttu-id="c44c3-108">Tworzenie struktury projektu i kodu abstrakcji</span><span class="sxs-lookup"><span data-stu-id="c44c3-108">Create the project structure and abstraction code</span></span>](#create-the-project-structure-and-abstraction-code)
+1. [<span data-ttu-id="c44c3-109">Napisz kod specyficzny dla platformy</span><span class="sxs-lookup"><span data-stu-id="c44c3-109">Write your platform-specific code</span></span>](#write-your-platform-specific-code)
+1. [<span data-ttu-id="c44c3-110">Utwórz i zaktualizuj plik. nuspec</span><span class="sxs-lookup"><span data-stu-id="c44c3-110">Create and update the .nuspec file</span></span>](#create-and-update-the-nuspec-file)
+1. [<span data-ttu-id="c44c3-111">Pakowanie składnika</span><span class="sxs-lookup"><span data-stu-id="c44c3-111">Package the component</span></span>](#package-the-component)
+1. [<span data-ttu-id="c44c3-112">Tematy pokrewne</span><span class="sxs-lookup"><span data-stu-id="c44c3-112">Related topics</span></span>](#related-topics)
 
-## <a name="prerequisites"></a><span data-ttu-id="1cf59-113">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="1cf59-113">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="c44c3-113">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="c44c3-113">Prerequisites</span></span>
 
-1. <span data-ttu-id="1cf59-114">Program Visual Studio 2015 z platforma uniwersalna systemu Windows (platformy UWP) i Xamarin.</span><span class="sxs-lookup"><span data-stu-id="1cf59-114">Visual Studio 2015 with Universal Windows Platform (UWP) and Xamarin.</span></span> <span data-ttu-id="1cf59-115">Zainstaluj bezpłatnie wersję Community z [VisualStudio.com](https://www.visualstudio.com/); Możesz również korzystać z wersji Professional i Enterprise.</span><span class="sxs-lookup"><span data-stu-id="1cf59-115">Install the Community edition for free from [visualstudio.com](https://www.visualstudio.com/); you can use the Professional and Enterprise editions as well, of course.</span></span> <span data-ttu-id="1cf59-116">Aby dołączyć narzędzia platformy UWP i Xamarin Tools, wybierz instalację niestandardową i Sprawdź odpowiednie opcje.</span><span class="sxs-lookup"><span data-stu-id="1cf59-116">To include UWP and Xamarin tools, select a Custom install and check the appropriate options.</span></span>
-1. <span data-ttu-id="1cf59-117">Interfejs wiersza polecenia NuGet.</span><span class="sxs-lookup"><span data-stu-id="1cf59-117">NuGet CLI.</span></span> <span data-ttu-id="1cf59-118">Pobierz najnowszą wersję pliku NuGet. exe z [NuGet.org/downloads](https://nuget.org/downloads), zapisując ją w wybranej lokalizacji.</span><span class="sxs-lookup"><span data-stu-id="1cf59-118">Download the latest version of nuget.exe from [nuget.org/downloads](https://nuget.org/downloads), saving it to a location of your choice.</span></span> <span data-ttu-id="1cf59-119">Następnie Dodaj tę lokalizację do zmiennej środowiskowej PATH, jeśli nie została jeszcze.</span><span class="sxs-lookup"><span data-stu-id="1cf59-119">Then add that location to your PATH environment variable if it isn't already.</span></span>
+1. <span data-ttu-id="c44c3-114">Program Visual Studio 2017 lub 2019 z platforma uniwersalna systemu Windows (platformy UWP) i Xamarin.</span><span class="sxs-lookup"><span data-stu-id="c44c3-114">Visual Studio 2017 or 2019 with Universal Windows Platform (UWP) and Xamarin.</span></span> <span data-ttu-id="c44c3-115">Zainstaluj bezpłatnie wersję Community z [VisualStudio.com](https://www.visualstudio.com/); Możesz również korzystać z wersji Professional i Enterprise.</span><span class="sxs-lookup"><span data-stu-id="c44c3-115">Install the Community edition for free from [visualstudio.com](https://www.visualstudio.com/); you can use the Professional and Enterprise editions as well, of course.</span></span> <span data-ttu-id="c44c3-116">Aby dołączyć narzędzia platformy UWP i Xamarin Tools, wybierz instalację niestandardową i Sprawdź odpowiednie opcje.</span><span class="sxs-lookup"><span data-stu-id="c44c3-116">To include UWP and Xamarin tools, select a Custom install and check the appropriate options.</span></span>
+1. <span data-ttu-id="c44c3-117">Interfejs wiersza polecenia NuGet.</span><span class="sxs-lookup"><span data-stu-id="c44c3-117">NuGet CLI.</span></span> <span data-ttu-id="c44c3-118">Pobierz najnowszą wersję pliku NuGet. exe z [NuGet.org/downloads](https://nuget.org/downloads), zapisując ją w wybranej lokalizacji.</span><span class="sxs-lookup"><span data-stu-id="c44c3-118">Download the latest version of nuget.exe from [nuget.org/downloads](https://nuget.org/downloads), saving it to a location of your choice.</span></span> <span data-ttu-id="c44c3-119">Następnie Dodaj tę lokalizację do zmiennej środowiskowej PATH, jeśli nie została jeszcze.</span><span class="sxs-lookup"><span data-stu-id="c44c3-119">Then add that location to your PATH environment variable if it isn't already.</span></span>
 
 > [!Note]
-> <span data-ttu-id="1cf59-120">NuGet. exe to narzędzie interfejsu wiersza polecenia, a nie Instalator, dlatego pamiętaj o zapisaniu pobranego pliku w przeglądarce zamiast uruchamiania go.</span><span class="sxs-lookup"><span data-stu-id="1cf59-120">nuget.exe is the CLI tool itself, not an installer, so be sure to save the downloaded file from your browser instead of running it.</span></span>
+> <span data-ttu-id="c44c3-120">NuGet. exe to narzędzie interfejsu wiersza polecenia, a nie Instalator, dlatego pamiętaj o zapisaniu pobranego pliku w przeglądarce zamiast uruchamiania go.</span><span class="sxs-lookup"><span data-stu-id="c44c3-120">nuget.exe is the CLI tool itself, not an installer, so be sure to save the downloaded file from your browser instead of running it.</span></span>
 
-## <a name="create-the-project-structure-and-abstraction-code"></a><span data-ttu-id="1cf59-121">Tworzenie struktury projektu i kodu abstrakcji</span><span class="sxs-lookup"><span data-stu-id="1cf59-121">Create the project structure and abstraction code</span></span>
+## <a name="create-the-project-structure-and-abstraction-code"></a><span data-ttu-id="c44c3-121">Tworzenie struktury projektu i kodu abstrakcji</span><span class="sxs-lookup"><span data-stu-id="c44c3-121">Create the project structure and abstraction code</span></span>
 
-1. <span data-ttu-id="1cf59-122">Pobierz i uruchom [wtyczkę dla rozszerzenia szablonów Xamarin](https://marketplace.visualstudio.com/items?itemName=vs-publisher-473885.PluginForXamarinTemplates) dla programu Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="1cf59-122">Download and run the [Plugin for Xamarin Templates extension](https://marketplace.visualstudio.com/items?itemName=vs-publisher-473885.PluginForXamarinTemplates) for Visual Studio.</span></span> <span data-ttu-id="1cf59-123">Te szablony ułatwiają tworzenie niezbędnej struktury projektu dla tego przewodnika.</span><span class="sxs-lookup"><span data-stu-id="1cf59-123">These templates will make it easy to create the necessary project structure for this walkthrough.</span></span>
-1. <span data-ttu-id="1cf59-124">W programie Visual Studio, **plik > Nowy > projektu**, Wyszukaj `Plugin`, wybierz **wtyczka dla szablonu Xamarin** , Zmień nazwę na LoggingLibrary, a następnie kliknij przycisk OK.</span><span class="sxs-lookup"><span data-stu-id="1cf59-124">In Visual Studio, **File > New > Project**, search for `Plugin`, select the **Plugin for Xamarin** template, change the name to LoggingLibrary, and click OK.</span></span>
+1. <span data-ttu-id="c44c3-122">Pobierz i uruchom [Międzyplatformowe rozszerzenie .NET Standard szablony wtyczek](https://marketplace.visualstudio.com/items?itemName=vs-publisher-473885.PluginForXamarinTemplates) dla programu Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="c44c3-122">Download and run the [Cross-Platform .NET Standard Plugin Templates extension](https://marketplace.visualstudio.com/items?itemName=vs-publisher-473885.PluginForXamarinTemplates) for Visual Studio.</span></span> <span data-ttu-id="c44c3-123">Te szablony ułatwiają tworzenie niezbędnej struktury projektu dla tego przewodnika.</span><span class="sxs-lookup"><span data-stu-id="c44c3-123">These templates will make it easy to create the necessary project structure for this walkthrough.</span></span>
+1. <span data-ttu-id="c44c3-124">W programie Visual Studio 2017 **plik > nowy > Project**, Wyszukaj `Plugin`, wybierz **Międzyplatformowy szablon wtyczki biblioteki .NET Standard** , Zmień nazwę na LoggingLibrary, a następnie kliknij przycisk OK.</span><span class="sxs-lookup"><span data-stu-id="c44c3-124">In Visual Studio 2017, **File > New > Project**, search for `Plugin`, select the **Cross-Platform .NET Standard Library Plugin** template, change the name to LoggingLibrary, and click OK.</span></span>
 
-    ![Nowa pusta aplikacja (Xamarin. Forms Portable) w programie Visual Studio](media/CrossPlatform-NewProject.png)
+    ![Nowa pusta aplikacja (Xamarin. Forms Portable) w programie VS 2017](media/CrossPlatform-NewProject.png)
 
-<span data-ttu-id="1cf59-126">Otrzymane rozwiązanie zawiera dwa projekty PCL oraz różne projekty specyficzne dla platformy:</span><span class="sxs-lookup"><span data-stu-id="1cf59-126">The resulting solution contains two PCL projects, along with a variety of platform-specific projects:</span></span>
+    <span data-ttu-id="c44c3-126">W programie Visual Studio 2019 **plik > nowy > Project**, Wyszukaj `Plugin`, wybierz **Międzyplatformowy szablon wtyczki biblioteki .NET Standard** , a następnie kliknij przycisk Dalej.</span><span class="sxs-lookup"><span data-stu-id="c44c3-126">In Visual Studio 2019, **File > New > Project**, search for `Plugin`, select the **Cross-Platform .NET Standard Library Plugin** template, and click Next.</span></span>
 
-- <span data-ttu-id="1cf59-127">PCL o nazwie `Plugin.LoggingLibrary.Abstractions (Portable)`definiuje interfejs publiczny (obszar powierzchniowy interfejsu API) składnika, w tym `ILoggingLibrary` przypadku interfejs zawarty w pliku ILoggingLibrary.cs.</span><span class="sxs-lookup"><span data-stu-id="1cf59-127">The PCL named `Plugin.LoggingLibrary.Abstractions (Portable)`, defines the public interface (the API surface area) of the component, in this case the `ILoggingLibrary` interface contained in the ILoggingLibrary.cs file.</span></span> <span data-ttu-id="1cf59-128">Jest to miejsce, w którym można zdefiniować interfejs biblioteki.</span><span class="sxs-lookup"><span data-stu-id="1cf59-128">This is where you define the interface to your library.</span></span>
-- <span data-ttu-id="1cf59-129">Inne PCL, `Plugin.LoggingLibrary (Portable)`,, zawiera kod w CrossLoggingLibrary.cs, który będzie lokalizować implementację interfejsu abstrakcyjnego dla platformy w czasie wykonywania.</span><span class="sxs-lookup"><span data-stu-id="1cf59-129">The other PCL, `Plugin.LoggingLibrary (Portable)`, contains code in CrossLoggingLibrary.cs that will locate a platform-specific implementation of the abstract interface at run time.</span></span> <span data-ttu-id="1cf59-130">Zazwyczaj nie trzeba modyfikować tego pliku.</span><span class="sxs-lookup"><span data-stu-id="1cf59-130">You typically don't need to modify this file.</span></span>
-- <span data-ttu-id="1cf59-131">Projekty specyficzne dla platformy, takie jak `Plugin.LoggingLibrary.Android`, każdy z nich zawierają natywną implementację interfejsu w odpowiednich plikach LoggingLibraryImplementation.cs.</span><span class="sxs-lookup"><span data-stu-id="1cf59-131">The platform-specific projects, such as `Plugin.LoggingLibrary.Android`, each contain contain a native implementation of the interface in their respective LoggingLibraryImplementation.cs files.</span></span> <span data-ttu-id="1cf59-132">Jest to miejsce, w którym można utworzyć kod biblioteki.</span><span class="sxs-lookup"><span data-stu-id="1cf59-132">This is where you build out your library's code.</span></span>
+    ![Nowa pusta aplikacja (Xamarin. Forms Portable) w programie VS 2019](media/CrossPlatform-NewProject19-Part1.png)
 
-<span data-ttu-id="1cf59-133">Domyślnie plik ILoggingLibrary.cs projektu abstrakcji zawiera definicję interfejsu, ale nie ma żadnych metod.</span><span class="sxs-lookup"><span data-stu-id="1cf59-133">By default, the ILoggingLibrary.cs file of the Abstractions project contains an interface definition, but no methods.</span></span> <span data-ttu-id="1cf59-134">Na potrzeby tego instruktażu Dodaj `Log` metodę w następujący sposób:</span><span class="sxs-lookup"><span data-stu-id="1cf59-134">For the purposes of this walkthrough, add a `Log` method as follows:</span></span>
+    <span data-ttu-id="c44c3-128">Zmień nazwę na LoggingLibrary, a następnie kliknij przycisk Utwórz.</span><span class="sxs-lookup"><span data-stu-id="c44c3-128">Change the name to LoggingLibrary, and click Create.</span></span>
+
+    ![Konfiguracja nowej pustej aplikacji (Xamarin. Forms Portable) w programie VS 2019](media/CrossPlatform-NewProject19-Part2.png)
+
+<span data-ttu-id="c44c3-130">Otrzymane rozwiązanie zawiera dwa projekty udostępnione wraz z różnymi projektami specyficznymi dla platformy:</span><span class="sxs-lookup"><span data-stu-id="c44c3-130">The resulting solution contains two Shared projects, along with a variety of platform-specific projects:</span></span>
+
+- <span data-ttu-id="c44c3-131">Projekt `ILoggingLibrary`, który znajduje się w pliku `ILoggingLibrary.shared.cs`, definiuje publiczny interfejs (obszar powierzchniowy interfejsu API) składnika.</span><span class="sxs-lookup"><span data-stu-id="c44c3-131">The `ILoggingLibrary` project, which is contained in the `ILoggingLibrary.shared.cs` file, defines the public interface (the API surface area) of the component.</span></span> <span data-ttu-id="c44c3-132">Jest to miejsce, w którym można zdefiniować interfejs biblioteki.</span><span class="sxs-lookup"><span data-stu-id="c44c3-132">This is where you define the interface to your library.</span></span>
+- <span data-ttu-id="c44c3-133">Inny udostępniony projekt zawiera kod w `CrossLoggingLibrary.shared.cs`, który będzie lokalizować implementację interfejsu abstrakcyjnego dla danej platformy w czasie wykonywania.</span><span class="sxs-lookup"><span data-stu-id="c44c3-133">The other Shared project contains code in `CrossLoggingLibrary.shared.cs` that will locate a platform-specific implementation of the abstract interface at run time.</span></span> <span data-ttu-id="c44c3-134">Zazwyczaj nie trzeba modyfikować tego pliku.</span><span class="sxs-lookup"><span data-stu-id="c44c3-134">You typically don't need to modify this file.</span></span>
+- <span data-ttu-id="c44c3-135">Projekty specyficzne dla platformy, takie jak `LoggingLibrary.android.cs`, każdy z nich zawierają natywną implementację interfejsu w odpowiednich `LoggingLibraryImplementation.cs` (VS 2017) lub `LoggingLibrary.<PLATFORM>.cs` (VS 2019).</span><span class="sxs-lookup"><span data-stu-id="c44c3-135">The platform-specific projects, such as `LoggingLibrary.android.cs`, each contain contain a native implementation of the interface in their respective `LoggingLibraryImplementation.cs` (VS 2017) or `LoggingLibrary.<PLATFORM>.cs` (VS 2019) files.</span></span> <span data-ttu-id="c44c3-136">Jest to miejsce, w którym można utworzyć kod biblioteki.</span><span class="sxs-lookup"><span data-stu-id="c44c3-136">This is where you build out your library's code.</span></span>
+
+<span data-ttu-id="c44c3-137">Domyślnie plik ILoggingLibrary.shared.cs projektu `ILoggingLibrary` zawiera definicję interfejsu, ale nie ma żadnych metod.</span><span class="sxs-lookup"><span data-stu-id="c44c3-137">By default, the ILoggingLibrary.shared.cs file of the `ILoggingLibrary` project contains an interface definition, but no methods.</span></span> <span data-ttu-id="c44c3-138">Na potrzeby tego instruktażu należy dodać metodę `Log` w następujący sposób:</span><span class="sxs-lookup"><span data-stu-id="c44c3-138">For the purposes of this walkthrough, add a `Log` method as follows:</span></span>
 
 ```cs
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Plugin.LoggingLibrary.Abstractions
+namespace Plugin.LoggingLibrary
 {
     /// <summary>
     /// Interface for LoggingLibrary
@@ -66,15 +76,16 @@ namespace Plugin.LoggingLibrary.Abstractions
 }
 ```
 
-## <a name="write-your-platform-specific-code"></a><span data-ttu-id="1cf59-135">Napisz kod specyficzny dla platformy</span><span class="sxs-lookup"><span data-stu-id="1cf59-135">Write your platform-specific code</span></span>
+## <a name="write-your-platform-specific-code"></a><span data-ttu-id="c44c3-139">Napisz kod specyficzny dla platformy</span><span class="sxs-lookup"><span data-stu-id="c44c3-139">Write your platform-specific code</span></span>
 
-<span data-ttu-id="1cf59-136">Aby zaimplementować implementację `ILoggingLibrary` interfejsu i jego metody specyficzne dla platformy, wykonaj następujące czynności:</span><span class="sxs-lookup"><span data-stu-id="1cf59-136">To implement a platform-specific implementation of the `ILoggingLibrary` interface and its methods, do the following:</span></span>
+<span data-ttu-id="c44c3-140">Aby zaimplementować implementację interfejsu `ILoggingLibrary` i jego metod specyficznych dla platformy, wykonaj następujące czynności:</span><span class="sxs-lookup"><span data-stu-id="c44c3-140">To implement a platform-specific implementation of the `ILoggingLibrary` interface and its methods, do the following:</span></span>
 
-1. <span data-ttu-id="1cf59-137">`LoggingLibraryImplementation.cs` Otwórz plik każdego projektu platformy i Dodaj wymagany kod.</span><span class="sxs-lookup"><span data-stu-id="1cf59-137">Open the `LoggingLibraryImplementation.cs` file of each platform project and add the necessary code.</span></span> <span data-ttu-id="1cf59-138">Na przykład (przy użyciu `Plugin.LoggingLibrary.Android` projektu):</span><span class="sxs-lookup"><span data-stu-id="1cf59-138">For example (using the `Plugin.LoggingLibrary.Android` project):</span></span>
+1. <span data-ttu-id="c44c3-141">Otwórz plik `LoggingLibraryImplementation.cs` (VS 2017) lub `LoggingLibrary.<PLATFORM>.cs` (VS 2019) dla każdego projektu platformy i Dodaj wymagany kod.</span><span class="sxs-lookup"><span data-stu-id="c44c3-141">Open the `LoggingLibraryImplementation.cs` (VS 2017) or `LoggingLibrary.<PLATFORM>.cs` (VS 2019) file of each platform project and add the necessary code.</span></span> <span data-ttu-id="c44c3-142">Na przykład (przy użyciu projektu platformy `Android`):</span><span class="sxs-lookup"><span data-stu-id="c44c3-142">For example (using the `Android` platform project):</span></span>
 
     ```cs
-    using Plugin.LoggingLibrary.Abstractions;
     using System;
+    using System.Collections.Generic;
+    using System.Text;
 
     namespace Plugin.LoggingLibrary
     {
@@ -94,24 +105,25 @@ namespace Plugin.LoggingLibrary.Abstractions
     }
     ```
 
-1. <span data-ttu-id="1cf59-139">Powtórz tę implementację w projektach dla każdej platformy, która ma być obsługiwana.</span><span class="sxs-lookup"><span data-stu-id="1cf59-139">Repeat this implementation in the projects for each platform you want to support.</span></span>
-1. <span data-ttu-id="1cf59-140">Kliknij prawym przyciskiem myszy projekt iOS, wybierz polecenie **Właściwości**, kliknij kartę **kompilacja** i Usuń "\iPhone" z ustawień **Ścieżka wyjściowa** i **plik dokumentacji XML** .</span><span class="sxs-lookup"><span data-stu-id="1cf59-140">Right-click the iOS project, select **Properties**, click the **Build** tab, and remove "\iPhone" from the **Output path** and **XML documentation file** settings.</span></span> <span data-ttu-id="1cf59-141">Jest to tylko dla późniejszej wygody w tym instruktażu.</span><span class="sxs-lookup"><span data-stu-id="1cf59-141">This is just for later convenience in this walkthrough.</span></span> <span data-ttu-id="1cf59-142">Zapisz plik po zakończeniu.</span><span class="sxs-lookup"><span data-stu-id="1cf59-142">Save the file when done.</span></span>
-1. <span data-ttu-id="1cf59-143">Kliknij prawym przyciskiem myszy rozwiązanie, wybierz **Configuration Manager...** i sprawdź pola **kompilacji** dla PCLs i każdej obsługiwanej platformy.</span><span class="sxs-lookup"><span data-stu-id="1cf59-143">Right-click the solution, select **Configuration Manager...**, and check the **Build** boxes for the PCLs and each platform you're supporting.</span></span>
-1. <span data-ttu-id="1cf59-144">Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Kompiluj rozwiązanie** , aby sprawdzić swoją służbę i utworzyć artefakty, które zostały umieszczone w dalszej kolejności.</span><span class="sxs-lookup"><span data-stu-id="1cf59-144">Right-click the solution and select **Build Solution** to check your work and produce the artifacts that you package next.</span></span> <span data-ttu-id="1cf59-145">Jeśli pojawią się błędy dotyczące brakujących odwołań, kliknij prawym przyciskiem myszy rozwiązanie, wybierz polecenie **Przywróć pakiety NuGet** , aby zainstalować zależności i ponownie skompilować.</span><span class="sxs-lookup"><span data-stu-id="1cf59-145">If you get errors about missing references, right-click the solution, select **Restore NuGet Packages** to install dependencies, and rebuild.</span></span>
+1. <span data-ttu-id="c44c3-143">Powtórz tę implementację w projektach dla każdej platformy, która ma być obsługiwana.</span><span class="sxs-lookup"><span data-stu-id="c44c3-143">Repeat this implementation in the projects for each platform you want to support.</span></span>
+1. <span data-ttu-id="c44c3-144">Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Kompiluj rozwiązanie** , aby sprawdzić swoją służbę i utworzyć artefakty, które zostały umieszczone w dalszej kolejności.</span><span class="sxs-lookup"><span data-stu-id="c44c3-144">Right-click the solution and select **Build Solution** to check your work and produce the artifacts that you package next.</span></span> <span data-ttu-id="c44c3-145">Jeśli pojawią się błędy dotyczące brakujących odwołań, kliknij prawym przyciskiem myszy rozwiązanie, wybierz polecenie **Przywróć pakiety NuGet** , aby zainstalować zależności i ponownie skompilować.</span><span class="sxs-lookup"><span data-stu-id="c44c3-145">If you get errors about missing references, right-click the solution, select **Restore NuGet Packages** to install dependencies, and rebuild.</span></span>
 
 > [!Note]
-> <span data-ttu-id="1cf59-146">Aby można było skompilować system iOS, potrzebny jest komputer Mac podłączony do programu Visual Studio, zgodnie z opisem w artykule [wprowadzenie do platformy Xamarin. iOS dla programu Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/introduction_to_xamarin_ios_for_visual_studio/).</span><span class="sxs-lookup"><span data-stu-id="1cf59-146">To build for iOS you need a networked Mac connected to Visual Studio as described on [Introduction to Xamarin.iOS for Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/introduction_to_xamarin_ios_for_visual_studio/).</span></span> <span data-ttu-id="1cf59-147">Jeśli nie masz dostępnego komputera Mac, wyczyść projekt systemu iOS w programie Configuration Manager (krok 3 powyżej).</span><span class="sxs-lookup"><span data-stu-id="1cf59-147">If you don't have a Mac available, clear the iOS project in the configuration manager (step 3 above).</span></span>
+> <span data-ttu-id="c44c3-146">Jeśli używasz programu Visual Studio 2019, przed wybraniem opcji **Przywróć pakiety NuGet** i próbą odbudowy należy zmienić wersję `MSBuild.Sdk.Extras` na `2.0.54` w `LoggingLibrary.csproj`.</span><span class="sxs-lookup"><span data-stu-id="c44c3-146">If you are using Visual Studio 2019, before selecting **Restore NuGet Packages** and trying to rebuild, you need to change the version of `MSBuild.Sdk.Extras` to `2.0.54` in `LoggingLibrary.csproj`.</span></span> <span data-ttu-id="c44c3-147">Dostęp do tego pliku można uzyskać tylko przez kliknięcie prawym przyciskiem myszy projektu (poniżej rozwiązania) i wybranie `Unload Project`, po którym kliknij prawym przyciskiem myszy zwolnionego projektu i wybierz pozycję `Edit LoggingLibrary.csproj`.</span><span class="sxs-lookup"><span data-stu-id="c44c3-147">This file can only be accessed by first right-clicking the project (below the solution) and selecting `Unload Project`, after which you right-click on the unloaded project and select `Edit LoggingLibrary.csproj`.</span></span>
 
-## <a name="create-and-update-the-nuspec-file"></a><span data-ttu-id="1cf59-148">Utwórz i zaktualizuj plik. nuspec</span><span class="sxs-lookup"><span data-stu-id="1cf59-148">Create and update the .nuspec file</span></span>
+> [!Note]
+> <span data-ttu-id="c44c3-148">Aby można było skompilować system iOS, potrzebny jest komputer Mac podłączony do programu Visual Studio, zgodnie z opisem w artykule [wprowadzenie do platformy Xamarin. iOS dla programu Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/introduction_to_xamarin_ios_for_visual_studio/).</span><span class="sxs-lookup"><span data-stu-id="c44c3-148">To build for iOS you need a networked Mac connected to Visual Studio as described on [Introduction to Xamarin.iOS for Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/introduction_to_xamarin_ios_for_visual_studio/).</span></span> <span data-ttu-id="c44c3-149">Jeśli nie masz dostępnego komputera Mac, wyczyść projekt systemu iOS w programie Configuration Manager (krok 3 powyżej).</span><span class="sxs-lookup"><span data-stu-id="c44c3-149">If you don't have a Mac available, clear the iOS project in the configuration manager (step 3 above).</span></span>
 
-1. <span data-ttu-id="1cf59-149">Otwórz wiersz polecenia, przejdź `LoggingLibrary` do folderu, który znajduje się poniżej, `.sln` gdzie znajduje się plik, i uruchom polecenie NuGet `spec` , aby utworzyć plik początkowy `Package.nuspec` :</span><span class="sxs-lookup"><span data-stu-id="1cf59-149">Open a command prompt, navigate to the `LoggingLibrary` folder that's one level below where the `.sln` file is, and run the NuGet `spec` command to create the initial `Package.nuspec` file:</span></span>
+## <a name="create-and-update-the-nuspec-file"></a><span data-ttu-id="c44c3-150">Utwórz i zaktualizuj plik. nuspec</span><span class="sxs-lookup"><span data-stu-id="c44c3-150">Create and update the .nuspec file</span></span>
+
+1. <span data-ttu-id="c44c3-151">Otwórz wiersz polecenia, przejdź do folderu `LoggingLibrary`, który znajduje się poniżej, w którym znajduje się plik `.sln`, i uruchom polecenie NuGet `spec`, aby utworzyć początkowy plik `Package.nuspec`:</span><span class="sxs-lookup"><span data-stu-id="c44c3-151">Open a command prompt, navigate to the `LoggingLibrary` folder that's one level below where the `.sln` file is, and run the NuGet `spec` command to create the initial `Package.nuspec` file:</span></span>
 
     ```cli
     nuget spec
     ```
 
-1. <span data-ttu-id="1cf59-150">Zmień nazwę tego pliku `LoggingLibrary.nuspec` na i otwórz go w edytorze.</span><span class="sxs-lookup"><span data-stu-id="1cf59-150">Rename this file to `LoggingLibrary.nuspec` and open it in an editor.</span></span>
-1. <span data-ttu-id="1cf59-151">Zaktualizuj plik w taki sposób, aby pasował do następującej wartości, zastępując YOUR_NAME.</span><span class="sxs-lookup"><span data-stu-id="1cf59-151">Update the file to match the following, replacing YOUR_NAME with an appropriate value.</span></span> <span data-ttu-id="1cf59-152">Wartość, szczególnie, musi być unikatowa w obrębie NuGet.org (zobacz Konwencje nazewnictwa opisane w artykule [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number)). `<id>`</span><span class="sxs-lookup"><span data-stu-id="1cf59-152">The `<id>` value, specifically, must be unique across nuget.org (see the naming conventions described in [Creating a package](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number)).</span></span> <span data-ttu-id="1cf59-153">Należy również pamiętać, że należy również zaktualizować Tagi autor i opis lub podczas kroku pakowania wystąpi błąd.</span><span class="sxs-lookup"><span data-stu-id="1cf59-153">Also note that you must also update the author and description tags or you get an error during the packing step.</span></span>
+1. <span data-ttu-id="c44c3-152">Zmień nazwę tego pliku na `LoggingLibrary.nuspec` i otwórz go w edytorze.</span><span class="sxs-lookup"><span data-stu-id="c44c3-152">Rename this file to `LoggingLibrary.nuspec` and open it in an editor.</span></span>
+1. <span data-ttu-id="c44c3-153">Zaktualizuj plik w taki sposób, aby pasował do następującej wartości YOUR_NAME.</span><span class="sxs-lookup"><span data-stu-id="c44c3-153">Update the file to match the following, replacing YOUR_NAME with an appropriate value.</span></span> <span data-ttu-id="c44c3-154">Wartość `<id>`, szczególnie, musi być unikatowa w obrębie nuget.org (zobacz Konwencje nazewnictwa opisane w temacie [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number)).</span><span class="sxs-lookup"><span data-stu-id="c44c3-154">The `<id>` value, specifically, must be unique across nuget.org (see the naming conventions described in [Creating a package](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number)).</span></span> <span data-ttu-id="c44c3-155">Należy również pamiętać, że należy również zaktualizować Tagi autor i opis lub podczas kroku pakowania wystąpi błąd.</span><span class="sxs-lookup"><span data-stu-id="c44c3-155">Also note that you must also update the author and description tags or you get an error during the packing step.</span></span>
 
     ```xml
     <?xml version="1.0"?>
@@ -125,18 +137,18 @@ namespace Plugin.LoggingLibrary.Abstractions
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Awesome application logging utility</description>
         <releaseNotes>First release</releaseNotes>
-        <copyright>Copyright 2016</copyright>
+        <copyright>Copyright 2018</copyright>
         <tags>logger logging logs</tags>
         </metadata>
     </package>
     ```
 
 > [!Tip]
-> <span data-ttu-id="1cf59-154">Możesz określić sufiks wersji pakietu przy użyciu `-alpha` `-beta` lub `-rc` aby oznaczyć pakiet jako wersję wstępną, sprawdź [wersje wstępne](../create-packages/prerelease-packages.md) , aby uzyskać więcej informacji o wersjach wstępnych.</span><span class="sxs-lookup"><span data-stu-id="1cf59-154">You can suffix your package version with `-alpha`, `-beta` or `-rc` to mark your package as pre-release, check [Pre-release versions](../create-packages/prerelease-packages.md) for more information about pre-release versions.</span></span>
+> <span data-ttu-id="c44c3-156">Aby oznaczyć pakiet jako wersję wstępną, można uzyskać sufiks wersji pakietu z `-alpha`, `-beta` lub `-rc`. w tym celu sprawdź [wersje wstępne](../create-packages/prerelease-packages.md) , aby uzyskać więcej informacji na temat wersji wstępnych.</span><span class="sxs-lookup"><span data-stu-id="c44c3-156">You can suffix your package version with `-alpha`, `-beta` or `-rc` to mark your package as pre-release, check [Pre-release versions](../create-packages/prerelease-packages.md) for more information about pre-release versions.</span></span>
 
-### <a name="add-reference-assemblies"></a><span data-ttu-id="1cf59-155">Dodaj zestawy referencyjne</span><span class="sxs-lookup"><span data-stu-id="1cf59-155">Add reference assemblies</span></span>
+### <a name="add-reference-assemblies"></a><span data-ttu-id="c44c3-157">Dodaj zestawy referencyjne</span><span class="sxs-lookup"><span data-stu-id="c44c3-157">Add reference assemblies</span></span>
 
-<span data-ttu-id="1cf59-156">Aby uwzględnić zestawy referencyjne specyficzne dla platformy, Dodaj następujące elementy do `<files>` `LoggingLibrary.nuspec` elementu, który jest odpowiedni dla obsługiwanych platform:</span><span class="sxs-lookup"><span data-stu-id="1cf59-156">To include platform-specific reference assemblies, add the following to the `<files>` element of `LoggingLibrary.nuspec` as appropriate for your supported platforms:</span></span>
+<span data-ttu-id="c44c3-158">Aby uwzględnić zestawy referencyjne specyficzne dla platformy, Dodaj następujące elementy do `<files>` elementu `LoggingLibrary.nuspec`, zgodnie z potrzebami dla obsługiwanych platform:</span><span class="sxs-lookup"><span data-stu-id="c44c3-158">To include platform-specific reference assemblies, add the following to the `<files>` element of `LoggingLibrary.nuspec` as appropriate for your supported platforms:</span></span>
 
 ```xml
 <!-- Insert below <metadata> element -->
@@ -162,11 +174,11 @@ namespace Plugin.LoggingLibrary.Abstractions
 ```
 
 > [!Note]
-> <span data-ttu-id="1cf59-157">Aby skrócić nazwy plików DLL i XML, kliknij prawym przyciskiem myszy dowolny dany projekt, wybierz kartę **Biblioteka** i Zmień nazwy zestawów.</span><span class="sxs-lookup"><span data-stu-id="1cf59-157">To shorten the names of the DLL and XML files, right-click on any given project, select the **Library** tab, and change the assembly names.</span></span>
+> <span data-ttu-id="c44c3-159">Aby skrócić nazwy plików DLL i XML, kliknij prawym przyciskiem myszy dowolny dany projekt, wybierz kartę **Biblioteka** i Zmień nazwy zestawów.</span><span class="sxs-lookup"><span data-stu-id="c44c3-159">To shorten the names of the DLL and XML files, right-click on any given project, select the **Library** tab, and change the assembly names.</span></span>
 
-### <a name="add-dependencies"></a><span data-ttu-id="1cf59-158">Dodaj zależności</span><span class="sxs-lookup"><span data-stu-id="1cf59-158">Add dependencies</span></span>
+### <a name="add-dependencies"></a><span data-ttu-id="c44c3-160">Dodaj zależności</span><span class="sxs-lookup"><span data-stu-id="c44c3-160">Add dependencies</span></span>
 
-<span data-ttu-id="1cf59-159">Jeśli masz określone zależności dla implementacji natywnych, użyj `<dependencies>` elementu z `<group>` elementami, aby je określić, na przykład:</span><span class="sxs-lookup"><span data-stu-id="1cf59-159">If you have specific dependencies for native implementations, use the `<dependencies>` element with `<group>` elements to specify them, for example:</span></span>
+<span data-ttu-id="c44c3-161">Jeśli masz określone zależności dla implementacji natywnych, użyj elementu `<dependencies>` z elementami `<group>`, aby je określić, na przykład:</span><span class="sxs-lookup"><span data-stu-id="c44c3-161">If you have specific dependencies for native implementations, use the `<dependencies>` element with `<group>` elements to specify them, for example:</span></span>
 
 ```xml
 <!-- Insert within the <metadata> element -->
@@ -183,7 +195,7 @@ namespace Plugin.LoggingLibrary.Abstractions
 </dependencies>
 ```
 
-<span data-ttu-id="1cf59-160">Na przykład następujące polecenie ustawi iTextSharp jako zależność dla elementu docelowego UAP:</span><span class="sxs-lookup"><span data-stu-id="1cf59-160">For example, the following would set iTextSharp as a dependency for the UAP target:</span></span>
+<span data-ttu-id="c44c3-162">Na przykład następujące polecenie ustawi iTextSharp jako zależność dla elementu docelowego UAP:</span><span class="sxs-lookup"><span data-stu-id="c44c3-162">For example, the following would set iTextSharp as a dependency for the UAP target:</span></span>
 
 ```xml
 <dependencies>
@@ -193,9 +205,9 @@ namespace Plugin.LoggingLibrary.Abstractions
 </dependencies>
 ```
 
-### <a name="final-nuspec"></a><span data-ttu-id="1cf59-161">Final. nuspec</span><span class="sxs-lookup"><span data-stu-id="1cf59-161">Final .nuspec</span></span>
+### <a name="final-nuspec"></a><span data-ttu-id="c44c3-163">Final. nuspec</span><span class="sxs-lookup"><span data-stu-id="c44c3-163">Final .nuspec</span></span>
 
-<span data-ttu-id="1cf59-162">Końcowy `.nuspec` plik powinien teraz wyglądać podobnie do poniższego, gdzie YOUR_NAME należy zastąpić odpowiednią wartością:</span><span class="sxs-lookup"><span data-stu-id="1cf59-162">Your final `.nuspec` file should now look like the following, where again YOUR_NAME should be replaced with an appropriate value:</span></span>
+<span data-ttu-id="c44c3-164">Końcowy plik `.nuspec` powinien teraz wyglądać podobnie do poniższego, gdzie ponownie YOUR_NAME należy zastąpić odpowiednią wartością:</span><span class="sxs-lookup"><span data-stu-id="c44c3-164">Your final `.nuspec` file should now look like the following, where again YOUR_NAME should be replaced with an appropriate value:</span></span>
 
 ```xml
 <?xml version="1.0"?>
@@ -209,7 +221,7 @@ namespace Plugin.LoggingLibrary.Abstractions
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Awesome application logging utility</description>
     <releaseNotes>First release</releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2018</copyright>
     <tags>logger logging logs</tags>
         <dependencies>
         <group targetFramework="MonoAndroid">
@@ -245,28 +257,28 @@ namespace Plugin.LoggingLibrary.Abstractions
 </package>
 ```
 
-## <a name="package-the-component"></a><span data-ttu-id="1cf59-163">Pakowanie składnika</span><span class="sxs-lookup"><span data-stu-id="1cf59-163">Package the component</span></span>
+## <a name="package-the-component"></a><span data-ttu-id="c44c3-165">Pakowanie składnika</span><span class="sxs-lookup"><span data-stu-id="c44c3-165">Package the component</span></span>
 
-<span data-ttu-id="1cf59-164">Po zakończeniu `.nuspec` odwoływania się do wszystkich plików, które należy uwzględnić w pakiecie, możesz `pack` uruchomić polecenie:</span><span class="sxs-lookup"><span data-stu-id="1cf59-164">With the completed `.nuspec` referencing all the files you need to include in the package, you're ready to run the `pack` command:</span></span>
+<span data-ttu-id="c44c3-166">Wraz z `.nuspec` zakończonymi odwołującymi się do wszystkich plików, które należy uwzględnić w pakiecie, możesz uruchomić polecenie `pack`:</span><span class="sxs-lookup"><span data-stu-id="c44c3-166">With the completed `.nuspec` referencing all the files you need to include in the package, you're ready to run the `pack` command:</span></span>
 
 ```cli
 nuget pack LoggingLibrary.nuspec
 ```
 
-<span data-ttu-id="1cf59-165">Spowoduje to wygenerowanie `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`.</span><span class="sxs-lookup"><span data-stu-id="1cf59-165">This will generate `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`.</span></span> <span data-ttu-id="1cf59-166">Otwierając ten plik w narzędziu, takim jak [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzając wszystkie węzły, zobaczysz następującą zawartość:</span><span class="sxs-lookup"><span data-stu-id="1cf59-166">Opening this file in a tool like the [NuGet Package Explorer](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) and expanding all the nodes, you see the following contents:</span></span>
+<span data-ttu-id="c44c3-167">Spowoduje to wygenerowanie `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`.</span><span class="sxs-lookup"><span data-stu-id="c44c3-167">This will generate `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`.</span></span> <span data-ttu-id="c44c3-168">Otwierając ten plik w narzędziu, takim jak [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzając wszystkie węzły, zobaczysz następującą zawartość:</span><span class="sxs-lookup"><span data-stu-id="c44c3-168">Opening this file in a tool like the [NuGet Package Explorer](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) and expanding all the nodes, you see the following contents:</span></span>
 
 ![Eksplorator pakietów NuGet przedstawiający pakiet LoggingLibrary](media/Cross-Platform-PackageExplorer.png)
 
 > [!Tip]
-> <span data-ttu-id="1cf59-168">`.nupkg` Plik jest po prostu plikiem ZIP z innym rozszerzeniem.</span><span class="sxs-lookup"><span data-stu-id="1cf59-168">A `.nupkg` file is just a ZIP file with a different extension.</span></span> <span data-ttu-id="1cf59-169">Możesz również przeanalizować zawartość pakietu, a następnie zmienić `.nupkg` ją `.zip`na, ale pamiętaj, aby przywrócić rozszerzenie przed przekazaniem pakietu do NuGet.org.</span><span class="sxs-lookup"><span data-stu-id="1cf59-169">You can also examine package contents, then, by changing `.nupkg` to `.zip`, but remember to restore the extension before uploading a package to nuget.org.</span></span>
+> <span data-ttu-id="c44c3-170">Plik `.nupkg` jest po prostu plikiem ZIP z innym rozszerzeniem.</span><span class="sxs-lookup"><span data-stu-id="c44c3-170">A `.nupkg` file is just a ZIP file with a different extension.</span></span> <span data-ttu-id="c44c3-171">Możesz również przeanalizować zawartość pakietu, zmieniając `.nupkg` na `.zip`, pamiętając o przywróceniu rozszerzenia przed przekazaniem pakietu do nuget.org.</span><span class="sxs-lookup"><span data-stu-id="c44c3-171">You can also examine package contents, then, by changing `.nupkg` to `.zip`, but remember to restore the extension before uploading a package to nuget.org.</span></span>
 
-<span data-ttu-id="1cf59-170">Aby udostępnić pakiet innym deweloperom, postępuj zgodnie z instrukcjami dotyczącymi [publikowania pakietu](../nuget-org/publish-a-package.md).</span><span class="sxs-lookup"><span data-stu-id="1cf59-170">To make your package available to other developers,  follow the instructions on [Publish a package](../nuget-org/publish-a-package.md).</span></span>
+<span data-ttu-id="c44c3-172">Aby udostępnić pakiet innym deweloperom, postępuj zgodnie z instrukcjami dotyczącymi [publikowania pakietu](../nuget-org/publish-a-package.md).</span><span class="sxs-lookup"><span data-stu-id="c44c3-172">To make your package available to other developers,  follow the instructions on [Publish a package](../nuget-org/publish-a-package.md).</span></span>
 
-## <a name="related-topics"></a><span data-ttu-id="1cf59-171">Tematy pokrewne</span><span class="sxs-lookup"><span data-stu-id="1cf59-171">Related topics</span></span>
+## <a name="related-topics"></a><span data-ttu-id="c44c3-173">Tematy pokrewne</span><span class="sxs-lookup"><span data-stu-id="c44c3-173">Related topics</span></span>
 
-- [<span data-ttu-id="1cf59-172">Odwołanie nuspec</span><span class="sxs-lookup"><span data-stu-id="1cf59-172">Nuspec Reference</span></span>](../reference/nuspec.md)
-- [<span data-ttu-id="1cf59-173">Pakiety symboli</span><span class="sxs-lookup"><span data-stu-id="1cf59-173">Symbol packages</span></span>](../create-packages/symbol-packages.md)
-- [<span data-ttu-id="1cf59-174">Przechowywanie wersji pakietów</span><span class="sxs-lookup"><span data-stu-id="1cf59-174">Package versioning</span></span>](../concepts/package-versioning.md)
-- [<span data-ttu-id="1cf59-175">Obsługa wielu wersji .NET Framework</span><span class="sxs-lookup"><span data-stu-id="1cf59-175">Supporting Multiple .NET Framework Versions</span></span>](../create-packages/supporting-multiple-target-frameworks.md)
-- [<span data-ttu-id="1cf59-176">Uwzględnij w pakiecie narzędzia i elementy docelowe programu MSBuild</span><span class="sxs-lookup"><span data-stu-id="1cf59-176">Include MSBuild props and targets in a package</span></span>](../create-packages/creating-a-package.md#include-msbuild-props-and-targets-in-a-package)
-- [<span data-ttu-id="1cf59-177">Tworzenie zlokalizowanych pakietów</span><span class="sxs-lookup"><span data-stu-id="1cf59-177">Creating Localized Packages</span></span>](../create-packages/creating-localized-packages.md)
+- [<span data-ttu-id="c44c3-174">Odwołanie nuspec</span><span class="sxs-lookup"><span data-stu-id="c44c3-174">Nuspec Reference</span></span>](../reference/nuspec.md)
+- [<span data-ttu-id="c44c3-175">Pakiety symboli</span><span class="sxs-lookup"><span data-stu-id="c44c3-175">Symbol packages</span></span>](../create-packages/symbol-packages.md)
+- [<span data-ttu-id="c44c3-176">Przechowywanie wersji pakietów</span><span class="sxs-lookup"><span data-stu-id="c44c3-176">Package versioning</span></span>](../concepts/package-versioning.md)
+- [<span data-ttu-id="c44c3-177">Obsługa wielu wersji .NET Framework</span><span class="sxs-lookup"><span data-stu-id="c44c3-177">Supporting Multiple .NET Framework Versions</span></span>](../create-packages/supporting-multiple-target-frameworks.md)
+- [<span data-ttu-id="c44c3-178">Uwzględnij w pakiecie narzędzia i elementy docelowe programu MSBuild</span><span class="sxs-lookup"><span data-stu-id="c44c3-178">Include MSBuild props and targets in a package</span></span>](../create-packages/creating-a-package.md#include-msbuild-props-and-targets-in-a-package)
+- [<span data-ttu-id="c44c3-179">Tworzenie zlokalizowanych pakietów</span><span class="sxs-lookup"><span data-stu-id="c44c3-179">Creating Localized Packages</span></span>](../create-packages/creating-localized-packages.md)
