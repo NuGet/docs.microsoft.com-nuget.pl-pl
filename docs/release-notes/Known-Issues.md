@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: b104eb39ddeacd9ca1ea45937cf98ad57531112a
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 8f2b33a7290301bd16db3b1979ae496eee602f55
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317143"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383661"
 ---
 # <a name="known-issues-with-nuget"></a>Znane problemy związane z pakietem NuGet
 
@@ -27,7 +27,7 @@ Gdy korzystamy z następującego polecenia do przechowywania poświadczeń, będ
 
 $PAT = "osobisty token dostępu" $Feed = "Twój adres URL" .\nuget.exe Dodaj nazwę źródła test-Source $Feed-UserName $UserName-Password $PAT
 
-**Poprawkę**
+**Obejście problemu:**
 
 Przechowuj hasła w postaci zwykłego tekstu przy użyciu opcji [-StorePasswordInClearText](../reference/cli-reference/cli-ref-sources.md) .
 
@@ -39,7 +39,7 @@ W programie NuGet 3,4 i w przypadku korzystania z dodatku NuGet żadne źródła
 
 ![Konfiguracja NuGet bez źródeł](./media/knownIssue-34-NoSources.PNG)
 
-Plik w folderze (Windows`~/.nuget/` ) lub (Mac/Linux) przypadkowo został opróżniony. `%AppData%\NuGet\` `NuGet.Config` Aby rozwiązać ten problem: Zamknij program Visual Studio (w systemie Windows, jeśli ma to `NuGet.Config` zastosowanie), usuń plik, a następnie spróbuj ponownie wykonać operację. Pakiet NuGet wygenerował `NuGet.Config` nowe i należy mieć możliwość przejścia.
+Plik `NuGet.Config` w folderze `%AppData%\NuGet\` (Windows) lub `~/.nuget/` (Mac/Linux) przypadkowo został opróżniony. Aby rozwiązać ten problem: Zamknij program Visual Studio (w systemie Windows, jeśli ma to zastosowanie), usuń plik `NuGet.Config` i spróbuj ponownie wykonać operację. Pakiet NuGet wygenerował nową `NuGet.Config` i powinien być w stanie wykonać operację.
 
 ## <a name="error-installing-packages-with-nuget-27"></a>Błąd podczas instalowania pakietów przy użyciu narzędzia NuGet 2,7
 
@@ -61,21 +61,21 @@ install-package log4net
         FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PowerShell.Commands.InstallPackageCommand
 ```
 
-Przyczyną jest to, że biblioteka `VSLangProj.dll` typów składnika com jest wyrejestrowana w systemie. Taka sytuacja może wystąpić, jeśli na przykład masz dwie wersje programu Visual Studio, które zostały zainstalowane obok siebie, a następnie odinstalujesz starszą wersję. Wykonanie tej czynności może przypadkowo wyrejestrować powyższą bibliotekę COM.
+Jest to spowodowane przez bibliotekę typów dla składnika COM `VSLangProj.dll`, który jest wyrejestrowany w systemie. Taka sytuacja może wystąpić, jeśli na przykład masz dwie wersje programu Visual Studio, które zostały zainstalowane obok siebie, a następnie odinstalujesz starszą wersję. Wykonanie tej czynności może przypadkowo wyrejestrować powyższą bibliotekę COM.
 
 **Rozwiązanie:**
 
-Uruchom to polecenie w wierszu polecenia z **podwyższonym poziomem uprawnień** , aby ponownie zarejestrować bibliotekę typów dla`VSLangProj.dll`
+Uruchom to polecenie w wierszu polecenia z **podwyższonym poziomem uprawnień** , aby ponownie zarejestrować bibliotekę typów dla `VSLangProj.dll`
 
     regsvr32 "C:\Program Files (x86)\Common Files\microsoft shared\MSEnv\VsLangproj.olb"
 
 Jeśli polecenie nie powiedzie się, sprawdź, czy plik istnieje w tej lokalizacji.
 
-Aby uzyskać więcej informacji na temat tego błędu, zobacz ten element [roboczy element]roboczy(https://nuget.codeplex.com/workitem/3609 "3609").
+Aby uzyskać więcej informacji na temat tego błędu, zobacz ten [element roboczy](https://nuget.codeplex.com/workitem/3609 "Element roboczy 3609").
 
 ## <a name="build-failure-after-package-update-in-vs-2012"></a>Błąd kompilacji po aktualizacji pakietu w programie VS 2012
 
-Problem: Używasz programu VS 2012 RTM. Podczas aktualizacji pakietów NuGet otrzymujesz następujący komunikat: "Nie można ukończyć odinstalowywania co najmniej jednego pakietu". zostanie wyświetlony monit o ponowne uruchomienie programu Visual Studio. Po ponownym uruchomieniu programu VS należy uzyskać błędy kompilacji brzmienia.
+Problem: używasz programu VS 2012 RTM. Podczas aktualizacji pakietów NuGet otrzymujesz następujący komunikat: "nie można ukończyć odinstalowywania co najmniej jednego pakietu". zostanie wyświetlony monit o ponowne uruchomienie programu Visual Studio. Po ponownym uruchomieniu programu VS należy uzyskać błędy kompilacji brzmienia.
 
 Przyczyną jest to, że niektóre pliki w starych pakietach są blokowane przez proces MSBuild w tle. Nawet po ponownym uruchomieniu programu VS, proces MSBuild w tle nadal używa plików w starych pakietach, co powoduje błędy kompilacji.
 
@@ -87,10 +87,10 @@ Jeśli korzystasz z programu VS 2010 z dodatkiem SP1, możesz uruchomić następ
 
 ![Instalator rozszerzenia programu Visual Studio](./media/Visual-Studio-Extension-Installer.png)
 
-Podczas przeglądania dzienników może pojawić się wzmianka `SignatureMismatchException`o.
+Podczas wyświetlania dzienników może zostać wyświetlona wzmianka o `SignatureMismatchException`.
 
 Aby temu zapobiec, istnieje [poprawka programu Visual Studio 2010 z dodatkiem SP1](http://bit.ly/vsixcertfix) , którą można zainstalować.
-Obejście polega na tym, że po prostu Odinstaluj pakiet NuGet (przy użyciu programu Visual Studio jako administrator), a następnie zainstaluj go z galerii rozszerzeń programu VS.  Aby [http://support.microsoft.com/kb/2581019](http://support.microsoft.com/kb/2581019) uzyskać więcej informacji, zobacz.
+Obejście polega na tym, że po prostu Odinstaluj pakiet NuGet (przy użyciu programu Visual Studio jako administrator), a następnie zainstaluj go z galerii rozszerzeń programu VS. Aby uzyskać więcej informacji, zobacz <https://support.microsoft.com/kb/2581019>.
 
 ## <a name="package-manager-console-throws-an-exception-when-the-reflector-visual-studio-add-in-is-also-installed"></a>Konsola Menedżera pakietów zgłasza wyjątek, gdy zostanie również zainstalowany dodatek do programu Visual Studio.
 
@@ -134,7 +134,7 @@ lub
 
 Skontaktujemy się z autorem dodatku w nadziei o rozwiązaniu problemu.
 
-<p class="info">Update: Sprawdzono, że Najnowsza wersja reflektora 6,5 nie powoduje już wystąpienia tego wyjątku w konsoli programu.</p>
+<p class="info">Aktualizacja: sprawdzono, że Najnowsza wersja reflektora 6,5 nie powoduje już wystąpienia tego wyjątku w konsoli programu.</p>
 
 ## <a name="opening-package-manager-console-fails-with-objectsecurity-exception"></a>Otwieranie konsoli Menedżera pakietów kończy się niepowodzeniem z powodu wyjątku ObjectSecurity
 
@@ -159,7 +159,7 @@ Jeśli spróbujesz odinstalować pakiet NuGet za pomocą Menedżera rozszerzeń 
 
 ## <a name="the-package-manager-console-crashes-when-i-open-it-in-windows-xp-whats-wrong"></a>Konsola Menedżera pakietów ulega awarii, gdy otworzysz ją w systemie Windows XP. Co jest nie tak?
 
-Pakiet NuGet wymaga środowiska uruchomieniowego PowerShell 2,0. Domyślnie system Windows XP nie ma programu PowerShell 2,0. Środowisko uruchomieniowe programu PowerShell 2,0 można pobrać [http://support.microsoft.com/kb/968929](http://support.microsoft.com/kb/968929)z programu. Po zainstalowaniu należy ponownie uruchomić program Visual Studio, aby móc otworzyć konsolę Menedżera pakietów.
+Pakiet NuGet wymaga środowiska uruchomieniowego PowerShell 2,0. Domyślnie system Windows XP nie ma programu PowerShell 2,0. Środowisko uruchomieniowe programu PowerShell 2,0 można pobrać z programu <https://support.microsoft.com/kb/968929>. Po zainstalowaniu należy ponownie uruchomić program Visual Studio, aby móc otworzyć konsolę Menedżera pakietów.
 
 ## <a name="visual-studio-2010-sp1-beta-crashes-on-exit-if-the-package-manager-console-is-open"></a>Jeśli konsola Menedżera pakietów jest otwarta, program Visual Studio 2010 z dodatkiem SP1 w wersji beta jest nieoczekiwany.
 
@@ -167,7 +167,7 @@ Jeśli zainstalowano program Visual Studio 2010 z dodatkiem SP1 Beta, można zau
 
 ## <a name="the-element-metadata--has-invalid-child-element-exception-occurs"></a>Element "Metadata"... występuje nieprawidłowy wyjątek elementu podrzędnego
 
-Jeśli zainstalowano pakiety skompilowane przy użyciu wersji wstępnej programu NuGet, może wystąpić komunikat o błędzie z informacją o tym, że "element" metadanych "w przestrzeni nazw" schemas.microsoft.com/packaging/2010/07/nuspec.xsd "ma nieprawidłowy element podrzędny" podczas uruchamiania programu RTM wersja programu NuGet z tym projektem. Należy odinstalować, a następnie zainstalować ponownie każdy pakiet przy użyciu wersji RTM programu NuGet.
+Jeśli zainstalowano pakiety skompilowane przy użyciu wersji wstępnej programu NuGet, może wystąpić komunikat o błędzie z informacją o tym, że "element" metadanych "w przestrzeni nazw" schemas.microsoft.com/packaging/2010/07/nuspec.xsd "ma nieprawidłowy element podrzędny" podczas uruchamiania wersji RTM pakietu NuGet z tym projektem. Należy odinstalować, a następnie zainstalować ponownie każdy pakiet przy użyciu wersji RTM programu NuGet.
 
 ## <a name="attempting-to-install-or-uninstall-results-in-the-error-cannot-create-a-file-when-that-file-already-exists"></a>Próba zainstalowania lub odinstalowania wyników spowoduje błąd "nie można utworzyć pliku, gdy ten plik już istnieje".
 
@@ -196,7 +196,7 @@ Następujący błąd może wystąpić, Jeśli instalujesz FluentNHibernate z kon
 Domyślnie FluentNHibernate wymaga NHibernate 3.0.0.2001. Jednak po zaprojektowaniu pakiet NuGet zainstaluje NHibernate 3.0.0.4000 w projekcie i doda odpowiednie przekierowania powiązań, aby działał. Projekt zostanie skompilowany, jeśli analiza kodu nie jest włączona. W przeciwieństwie do kompilatora Narzędzie analizy kodu nie jest prawidłowo zgodne z przekierowaniami powiązań, aby użyć 3.0.0.4000 zamiast 3.0.0.2001. Problem można obejść, instalując NHibernate 3.0.0.2001 lub poinformuj Narzędzie analizy kodu, aby zachowywać się tak samo jak kompilator, wykonując następujące czynności:
 
 1. Przejdź do pozycji *%ProgramFiles%\Microsoft Visual Studio 10.0 \ Team Tools\Static Analysis Tools\FxCop*
-1. Otwórz plik plik FxCopCmd. exe. config i `AssemblyReferenceResolveMode` Zmień `StrongName` go `StrongNameIgnoringVersion`z na.
+1. Otwórz plik plik FxCopCmd. exe. config i Zmień `AssemblyReferenceResolveMode` z `StrongName` na `StrongNameIgnoringVersion`.
 1. Zapisz zmiany i ponownie skompiluj projekt.
 
 ## <a name="write-error-command-doesnt-work-inside-installps1uninstallps1initps1"></a>Polecenie Write-Error nie działa wewnątrz install. ps1/Uninstall. ps1/init. ps1
@@ -207,7 +207,7 @@ Jest to znany problem. Zamiast wywołania metody Write-Error spróbuj wywołać 
 
 ## <a name="installing-nuget-with-restricted-access-on-windows-2003-can-crash-visual-studio"></a>Instalowanie pakietu NuGet z ograniczonym dostępem w systemie Windows 2003 może spowodować awarię programu Visual Studio
 
-Przy próbie zainstalowania narzędzia NuGet przy użyciu Menedżera rozszerzeń programu Visual Studio i niedziałającego jako administrator zostanie &#8220;wyświetlone okno&#8221; dialogowe Uruchom jako z widocznym przyciskiem &#8220;Uruchom ten program z ograniczonym&#8221; dostępem zaznaczonym przez wartooć.
+Przy próbie zainstalowania narzędzia NuGet przy użyciu Menedżera rozszerzeń programu Visual Studio i niedziałającego jako administrator zostanie &#8220;wyświetlone okno&#8221; dialogowe Uruchom jako z widocznym ustawieniem &#8220;Uruchom ten program z ograniczonym&#8221; dostępem.
 
 ![Uruchom jako okno dialogowe z ograniczeniami](./media/RunAsRestricted.png)
 
@@ -221,8 +221,8 @@ Narzędzia Windows Phone nie obsługują Menedżera rozszerzeń programu Visual 
 
 ## <a name="changing-the-capitalization-of-nuget-package-ids-breaks-package-restore"></a>Zmiana wielkości liter w identyfikatorach pakietów NuGet powoduje przerwanie przywracania pakietu
 
-Zgodnie z opisem w [tym problemie](https://github.com/Particular/NServiceBus/issues/1271#issuecomment-20865932)z usługą GitHub, zmiana wielkości liter pakietów NuGet może odbywać się przez obsługę NuGet, ale powoduje komplikacje podczas przywracania pakietów dla użytkowników, którzy mają istniejące, w różny sposób, pakiety w ich  *folder Global-Packages* . Zalecamy tylko żądanie zmiany wielkości liter, gdy istnieje możliwość komunikowania się z istniejącymi użytkownikami pakietu w sprawie przerwy, która może wystąpić w przypadku przywracania pakietu w czasie kompilacji.
+Zgodnie z opisem w [tym problemie](https://github.com/Particular/NServiceBus/issues/1271#issuecomment-20865932)w serwisie GitHub, zmiana wielkości liter pakietów NuGet może odbywać się przez obsługę NuGet, ale powoduje komplikacje podczas przywracania pakietów dla użytkowników, którzy mają istniejące, w różny sposób, pakiety w folderze *Global-Packages* . Zalecamy tylko żądanie zmiany wielkości liter, gdy istnieje możliwość komunikowania się z istniejącymi użytkownikami pakietu w sprawie przerwy, która może wystąpić w przypadku przywracania pakietu w czasie kompilacji.
 
 ## <a name="reporting-issues"></a>Raportowanie problemów
 
-Aby zgłosić problemy z pakietem [https://github.com/nuget/home/issues](https://github.com/nuget/home/issues)NuGet, odwiedź stronę.
+Aby zgłosić problemy z pakietem NuGet, odwiedź stronę [https://github.com/nuget/home/issues](https://github.com/nuget/home/issues).

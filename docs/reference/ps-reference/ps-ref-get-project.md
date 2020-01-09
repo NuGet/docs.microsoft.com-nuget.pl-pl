@@ -5,18 +5,18 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 830746f032bb4eb916508ef320c5b3d0486b89a4
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 3343952535c2d3c822f5cac24cb30c8f5bfa5be3
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384623"
 ---
 # <a name="get-project-package-manager-console-in-visual-studio"></a>Get-Project (konsola menedżera pakietów w programie Visual Studio)
 
 *Dostępne tylko w [konsoli Menedżera pakietów](../../consume-packages/install-use-packages-powershell.md) w programie Visual Studio w systemie Windows.*
 
-Wyświetla informacje dotyczące domyślnego lub określonego projektu. `Get-Project`w odniesieniu do obiektu "Visual Studio DTE (środowisko narzędzi programistycznych)" zwraca referent.
+Wyświetla informacje dotyczące domyślnego lub określonego projektu. `Get-Project` w odniesieniu do obiektu programu Visual Studio DTE (środowisko narzędzi programistycznych) zwróci referent.
 
 ## <a name="syntax"></a>Składnia
 
@@ -35,7 +35,7 @@ Get-Project [[-Name] <string>] [-All] [<CommonParameters>]
 
 ## <a name="common-parameters"></a>Parametry wspólne
 
-`Get-Project`Program obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): Debugowanie, Akcja błędu, ErrorVariable, wybuforuj, niezmienna, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Get-Project` obsługuje następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216): debugowanie, Akcja błędu, ErrorVariable, buforowanie, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

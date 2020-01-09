@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: a48a09a27b6db9b774e59b9a10652067179e2c27
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 12a3d5f32056539a75da9e17b15d67e72a8a42c2
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384906"
 ---
 # <a name="sync-package-package-manager-console-in-visual-studio"></a>Sync-Package (konsola menedżera pakietów w programie Visual Studio)
 
@@ -34,17 +34,17 @@ Sync-Package [-Id] <string> [-IgnoreDependencies] [-ProjectName <string>] [[-Ver
 | IgnoreDependencies | Zainstaluj tylko ten pakiet, a nie jego zależności. |
 | ProjectName | Projekt, z którego ma zostać zsynchronizowany pakiet, domyślnie do projektu domyślnego. |
 | Wersja | Wersja pakietu do zsynchronizowania, która domyślnie jest aktualnie zainstalowana wersja. |
-| Source | Ścieżka adresu URL lub folderu dla źródła pakietu do przeszukania. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia program `Sync-Package` przeszukuje aktualnie wybrane źródło pakietu. |
+| Obiekt źródłowy | Ścieżka adresu URL lub folderu dla źródła pakietu do przeszukania. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia `Sync-Package` przeszukuje aktualnie wybrane źródło pakietu. |
 | IncludePrerelease | Obejmuje pakiety wersji wstępnej w synchronizacji. |
 | FileConflictAction | Akcja, która ma zostać podjęta po wyświetleniu monitu o zastąpienie lub zignorowanie istniejących plików, do których odwołuje się projekt. Możliwe wartości to *overwrite, IGNORE, None, OverwriteAll*i *(3.0 +)* *IgnoreAll*. |
-| DependencyVersion | Wersja pakietów zależności do użycia, która może być jedną z następujących:<br/><ul><li>*Najniższy* (domyślnie): najniższa wersja</li><li>*HighestPatch*: wersja z najniższą główną, najmniejszą niewielką lub najwyższą poprawką</li><li>*HighestMinor*: wersja z najmniejszą główną, najwyższą niewielką lub najwyższą poprawką</li><li>*Najwyższa* (domyślnie dla pakietu aktualizacji bez parametrów): najwyższa wersja</li></ul>Możesz ustawić wartość domyślną przy użyciu [`dependencyVersion`](../nuget-config-file.md#config-section) ustawienia `Nuget.Config` w pliku. |
-| WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez przeprowadzania synchronizacji. |
+| DependencyVersion | Wersja pakietów zależności do użycia, która może być jedną z następujących:<br/><ul><li>*Najniższy* (domyślny): najniższa wersja</li><li>*HighestPatch*: wersja z najniższą główną, najmniejszą niewielką lub najwyższą poprawką</li><li>*HighestMinor*: wersja z najmniejszą główną, najwyższą niewielką lub najwyższą poprawką</li><li>*Najwyższe* (domyślnie dla pakietu aktualizacji bez parametrów): najwyższa wersja</li></ul>Wartość domyślną można ustawić przy użyciu ustawienia [`dependencyVersion`](../nuget-config-file.md#config-section) w pliku `Nuget.Config`. |
+| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez przeprowadzania synchronizacji. |
 
 Żaden z tych parametrów nie akceptuje danych wejściowych potoku ani symboli wieloznacznych.
 
 ## <a name="common-parameters"></a>Parametry wspólne
 
-`Sync-Package`Program obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): Debugowanie, Akcja błędu, ErrorVariable, wybuforuj, niezmienna, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Sync-Package` obsługuje następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216): debugowanie, Akcja błędu, ErrorVariable, buforowanie, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 6/1/2017
 ms.topic: reference
-ms.openlocfilehash: 4bb6d090b97dd55fc1be0625855aab27a0d181c4
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 4118b5a38f80a2300b3945738315d56bda096f9a
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384636"
 ---
 # <a name="find-package-package-manager-console-in-visual-studio"></a>Find-Package (konsola menedżera pakietów w programie Visual Studio)
 
@@ -29,20 +29,20 @@ Find-Package [-Id] <keywords> -Source <string> [-AllVersions] [-First [<int>]]
 
 | Parametr | Opis |
 | --- | --- |
-| Słowa &lt;kluczowe identyfikatora&gt; | Potrzeb Słowa kluczowe, które mają być używane podczas wyszukiwania źródła pakietu. Użyj-ExactMatch, aby zwrócić tylko te pakiety, których identyfikator pakietu pasuje do słów kluczowych. Jeśli nie podano słów kluczowych `Find-Package` , funkcja zwraca listę 20 najważniejszych pakietów przez pobieranie lub numer określony przez-First. Należy pamiętać, że-ID jest opcjonalne i No-op. |
-| Source | Ścieżka adresu URL lub folderu dla źródła pakietu do przeszukania. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia program `Find-Package` przeszukuje aktualnie wybrane źródło pakietu. |
+| &gt; &lt;identyfikatorów słów kluczowych | Potrzeb Słowa kluczowe, które mają być używane podczas wyszukiwania źródła pakietu. Użyj-ExactMatch, aby zwrócić tylko te pakiety, których identyfikator pakietu pasuje do słów kluczowych. Jeśli nie podano słów kluczowych, `Find-Package` zwraca listę 20 najważniejszych pakietów przez pobieranie lub numer określony przez-First. Należy pamiętać, że-ID jest opcjonalne i No-op. |
+| Obiekt źródłowy | Ścieżka adresu URL lub folderu dla źródła pakietu do przeszukania. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia `Find-Package` przeszukuje aktualnie wybrane źródło pakietu. |
 | AllVersions | Wyświetla wszystkie dostępne wersje każdego pakietu, a nie tylko najnowszą wersję. |
-| pierwszego | Liczba pakietów do zwrócenia od początku listy; wartość domyślna to 20. |
-| Skip | Pomija pierwsze &lt;pakiety int&gt; z wyświetlonej listy.  |
+| Pierwsze | Liczba pakietów do zwrócenia od początku listy; wartość domyślna to 20. |
+| Skip | Pomija pierwsze &lt;pakietów&gt; int z wyświetlonej listy.  |
 | IncludePrerelease | Zawiera pakiety wersji wstępnej w wynikach. |
-| ExactMatch | Określono, aby &lt;używać&gt; słów kluczowych jako identyfikatora pakietu z uwzględnieniem wielkości liter. |
-| StartWith | Zwraca pakiety, których identyfikator pakietu rozpoczyna &lt;się&gt;od słów kluczowych. |
+| ExactMatch | Określono używanie &lt;słów&gt; kluczowych jako identyfikatora pakietu z uwzględnieniem wielkości liter. |
+| StartWith | Zwraca pakiety, których identyfikator pakietu rozpoczyna się od &lt;słów kluczowych&gt;. |
 
 Żaden z tych parametrów nie akceptuje danych wejściowych potoku ani symboli wieloznacznych.
 
 ## <a name="common-parameters"></a>Parametry wspólne
 
-`Find-Package`Program obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): Debugowanie, Akcja błędu, ErrorVariable, wybuforuj, niezmienna, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Find-Package` obsługuje następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216): debugowanie, Akcja błędu, ErrorVariable, buforowanie, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

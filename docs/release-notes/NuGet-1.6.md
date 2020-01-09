@@ -1,53 +1,53 @@
 ---
-title: Informacje o wersji 1.6 NuGet
-description: Informacje o wersji w tym znanych problemów, poprawki, funkcje dodane i DCRs NuGet w wersji 1.6.
+title: Informacje o wersji narzędzia NuGet 1,6
+description: Informacje o wersji programu NuGet 1,6, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
 author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 351303ca3ae27a37c19e59d84dfc9b4629fe0ca5
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 2878d3809b2be4fb71f4e7b1a1e08e405ead44b9
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384140"
 ---
- # <a name="nuget-16-release-notes"></a>Informacje o wersji 1.6 NuGet
+ # <a name="nuget-16-release-notes"></a>Informacje o wersji narzędzia NuGet 1,6
 
-[Informacje o wersji NuGet w wersji 1.5](../release-notes/nuget-1.5.md) | [informacjach o wersji NuGet w wersji 1.7](../release-notes/nuget-1.7.md)
+[Informacje o wersji pakietu nuget 1,5](../release-notes/nuget-1.5.md) | [Informacje o wersji narzędzia NuGet 1,7](../release-notes/nuget-1.7.md)
 
-NuGet w wersji 1.6 został wydany 13 grudnia 2011.
+Pakiet NuGet 1,6 został opublikowany 13 grudnia 2011.
 
-## <a name="known-installation-issue"></a>Problem z instalacją znane
-Jeśli używasz programu VS 2010 z dodatkiem SP1, możesz napotkać błąd instalacji podczas próby uaktualnienia NuGet, jeśli masz starszą wersję zainstalowane.
+## <a name="known-installation-issue"></a>Znany problem z instalacją
+W przypadku korzystania z programu VS 2010 z dodatkiem SP1 można napotkać błąd instalacji podczas próby uaktualnienia narzędzia NuGet, jeśli jest zainstalowana starsza wersja.
 
-Obejście polega na po prostu Odinstaluj NuGet, a następnie zainstalować go z galerii rozszerzeń programu VS.  Zobacz [ http://support.microsoft.com/kb/2581019 ](http://support.microsoft.com/kb/2581019) Aby uzyskać więcej informacji.
+Obejście polega na prostu odinstalować pakiet NuGet, a następnie zainstalować go z galerii rozszerzeń programu VS.  Aby uzyskać więcej informacji, zobacz <https://support.microsoft.com/kb/2581019>.
 
-Uwaga: Jeśli program Visual Studio nie pozwalają na odinstalować rozszerzenie (przycisk Odinstaluj jest wyłączony), prawdopodobnie musisz ponownie program Visual Studio za pomocą polecenia "Uruchom jako Administrator".
+Uwaga: Jeśli program Visual Studio nie zezwoli na odinstalowanie rozszerzenia (przycisk Odinstaluj jest wyłączony), prawdopodobnie trzeba będzie ponownie uruchomić program Visual Studio za pomocą polecenia "Uruchom jako administrator".
 
 ## <a name="features"></a>Funkcje
 
-### <a name="support-for-semantic-versioning-and-prerelease-packages"></a>Obsługa Semantic Versioning i pakiety w wersjach wstępnych
-NuGet w wersji 1.6 wprowadzono obsługę Semantic Versioning (SemVer). Więcej informacji o używaniu go SemVer [dokumentacja wersji](../create-packages/prerelease-packages.md).
+### <a name="support-for-semantic-versioning-and-prerelease-packages"></a>Obsługa wersji semantycznych i pakietów wstępnych
+Pakiet NuGet 1,6 wprowadza obsługę wersji semantycznej (SemVer). Aby uzyskać więcej informacji na temat korzystania z SemVer, Przeczytaj [dokumentację dotyczącą wersji](../create-packages/prerelease-packages.md).
 
-### <a name="using-nuget-without-checking-in-packages-package-restore"></a>Za pomocą narzędzia NuGet bez sprawdzania, czy w pakietach (Przywracanie pakietu)
-NuGet 1.6 teraz obsługuje najwyższej klasy dla przepływu pracy, w których NuGet nie są dodawane do kontroli źródła pakietów, ale zamiast tego są przywracane podczas kompilacji Jeśli brak. Aby uzyskać więcej informacji, przeczytaj [za pomocą NuGet, nie poświęcając pakietów do kontroli źródła](../consume-packages/packages-and-source-control.md) tematu.
+### <a name="using-nuget-without-checking-in-packages-package-restore"></a>Używanie narzędzia NuGet bez sprawdzania pakietów (Przywracanie pakietu)
+Pakiet NuGet 1,6 ma teraz obsługę pierwszej klasy dla przepływu pracy, w którym pakiety NuGet nie są dodawane do kontroli źródła, ale w razie braku są przywracane w czasie kompilacji. Aby uzyskać więcej informacji, zapoznaj się z tematem [Używanie narzędzia NuGet bez zatwierdzania pakietów do kontroli źródła](../consume-packages/packages-and-source-control.md) .
 
-### <a name="item-templates-that-install-nuget-packages"></a>Szablony elementów, które instalowanie pakietów NuGet
-Opierając się na pracy do obsługi wstępnie zainstalowane pakietu NuGet szablony projektu Visual Studio, NuGet w wersji 1.6 dodają także obsługę szablony elementów Visual Studio. Szablony elementów może być skojarzony pakiety NuGet są instalowane podczas wywoływania szablon na liście.
+### <a name="item-templates-that-install-nuget-packages"></a>Szablony elementów instalujących pakiety NuGet
+Kompilowanie pracy w celu obsługi wstępnie zainstalowanego pakietu NuGet w szablonach projektów programu Visual Studio, NuGet 1,6 również dodaje obsługę szablonów elementów programu Visual Studio. Szablony elementów mogą mieć skojarzone pakiety NuGet, które są instalowane, gdy szablon jest wywoływany.
 
-Aby uzyskać więcej informacji na temat zmiany szablonu projektu/elementu, aby zainstalować pakiety NuGet, przeczytaj [pakietów w szablony programu Visual Studio](../visual-studio-extensibility/visual-studio-templates.md) tematu.
+Aby uzyskać więcej informacji na temat zmiany szablonu projektu/elementu w celu zainstalowania pakietów NuGet, przeczytaj temat [pakiety w temacie szablony programu Visual Studio](../visual-studio-extensibility/visual-studio-templates.md) .
 
-### <a name="support-for-disabling-package-sources"></a>Obsługa wyłączenie źródła pakietów
-Jeśli skonfigurowano wiele źródeł pakietów NuGet będzie wyglądać w każdej z nich pakietów podczas instalowania pakietu i jego zależności. Źródło pakietu, który nie działa dla jakiegoś powodu może poważnie wolno dół NuGet.
+### <a name="support-for-disabling-package-sources"></a>Obsługa wyłączania źródeł pakietów
+W przypadku skonfigurowania wielu źródeł pakietów pakiet NuGet będzie wyglądał dla pakietów podczas instalacji pakietu i jego zależności. Źródło pakietu, które nie działa z jakiegoś powodu, może poważnie spowalniać działanie programu NuGet.
 
-Przed NuGet w wersji 1.6 można usunąć źródła pakietu, ale musisz pamiętać, że szczegółowe informacje, gdy chcesz dodać go ponownie.
+Przed pakietem NuGet 1,6 można było usunąć źródło pakietu, ale należy pamiętać o tym, że trzeba będzie je dodać z powrotem do programu.
 
-NuGet w wersji 1.6 umożliwia, usuwając zaznaczenie pola wyboru źródła pakietu, aby ją wyłączyć, ale zachować ją wokół.
+Pakiet NuGet 1,6 umożliwia odszukanie źródła pakietu, aby je wyłączyć, ale zachować jego zachowanie.
 
 ![Wyłączanie pakietu](./media/package-source-with-disabled-source.png)
 
 ## <a name="bug-fixes"></a>Poprawki błędów
-NuGet w wersji 1.6 miał daje w sumie 106 stałej elementów roboczych. 95 tych zostały sklasyfikowane jako usterki i 10 tych były funkcji.
+Pakiet NuGet 1,6 zawiera łącznie 106 elementów roboczych. 95 z tych elementów zostało sklasyfikowanych jako błędy i 10 z nich.
 
-Aby uzyskać pełną listę prac elementy rozwiązane w NuGet w wersji 1.6, widok [NuGet narzędzie do śledzenia problemów w tej wersji](http://nuget.codeplex.com/workitem/list/advanced?keyword=&status=Closed&type=All&priority=All&release=NuGet%201.6&assignedTo=All&component=All&sortField=Votes&sortDirection=Descending&page=0).
+Aby zapoznać się z pełną listą elementów roboczych ustalonych w programie NuGet 1,6, zobacz [Śledzenie problemów NuGet dla tej wersji](http://nuget.codeplex.com/workitem/list/advanced?keyword=&status=Closed&type=All&priority=All&release=NuGet%201.6&assignedTo=All&component=All&sortField=Votes&sortDirection=Descending&page=0).

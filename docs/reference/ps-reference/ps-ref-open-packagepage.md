@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 0237c23d81000a1d58264cc0ab48c73d819d0e5a
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 39199ebfc37756ed40158a1c07afca7709067350
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384431"
 ---
 # <a name="open-packagepage-package-manager-console-in-visual-studio"></a>Open-PackagePage (konsola menedżera pakietów w programie Visual Studio)
 
@@ -31,7 +31,7 @@ Open-PackagePage [-Id] <string> [-Version] [-Source] [-License] [-ReportAbuse]
 | --- | --- |
 | Id | Identyfikator pakietu żądanego pakietu. Przełącznik-ID jest opcjonalny. |
 | Wersja | Wersja pakietu, domyślna dla najnowszej wersji. |
-| Source | Źródło pakietu, które domyślnie jest wybrane źródło w liście rozwijanej Źródło. |
+| Obiekt źródłowy | Źródło pakietu, które domyślnie jest wybrane źródło w liście rozwijanej Źródło. |
 | Licencja | Otwiera przeglądarkę w adresie URL licencji pakietu. Jeśli nie określono parametru-License ani-ReportAbuse, przeglądarka otworzy adres URL projektu pakietu. |
 | ReportAbuse | Otwiera przeglądarkę w adresie URL nadużycia raportu pakietu. Jeśli nie określono parametru-License ani-ReportAbuse, przeglądarka otworzy adres URL projektu pakietu. |
 | PassThru | Wyświetla adres URL; Użyj with-WhatIf, aby pominąć otwieranie przeglądarki. |
@@ -40,7 +40,7 @@ Open-PackagePage [-Id] <string> [-Version] [-Source] [-License] [-ReportAbuse]
 
 ## <a name="common-parameters"></a>Parametry wspólne
 
-`Open-PackagePage`Program obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): Debugowanie, Akcja błędu, ErrorVariable, wybuforuj, niezmienna, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Open-PackagePage` obsługuje następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216): debugowanie, Akcja błędu, ErrorVariable, buforowanie, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

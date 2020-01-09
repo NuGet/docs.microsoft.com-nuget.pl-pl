@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: ed3545454a811c311190a191c566d9e9192f3fcc
-ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
+ms.openlocfilehash: 2c2b5b21569e2644154670d502146f1e0f9c4c81
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385017"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -101,7 +101,7 @@ Należy zauważyć, że właściwości `Owners` i `Summary` z `.nuspec` nie są 
 - RepositoryBranch
 - RepositoryCommit
 - NoPackageAnalysis
-- minClientVersion
+- MinClientVersion
 - IncludeBuildOutput
 - IncludeContentInPack
 - BuildOutputTargetFolder
@@ -120,7 +120,7 @@ Aby pominąć zależności pakietów z wygenerowanego pakietu NuGet, należy ust
 
 `PackageIconUrl` będą przestarzałe na korzyść nowej właściwości [`PackageIcon`](#packageicon) .
 
-Począwszy od programu NuGet 5,3 & Visual Studio 2019 w wersji 16,3, `pack` zwróci ostrzeżenie [NU5048](errors-and-warnings/nu5048) , jeśli metadane pakietu określają tylko `PackageIconUrl`.
+Począwszy od programu NuGet 5,3 & Visual Studio 2019 w wersji 16,3, `pack` zwróci ostrzeżenie [NU5048](./errors-and-warnings/nu5048.md) , jeśli metadane pakietu określają tylko `PackageIconUrl`.
 
 ### <a name="packageicon"></a>PackageIcon
 

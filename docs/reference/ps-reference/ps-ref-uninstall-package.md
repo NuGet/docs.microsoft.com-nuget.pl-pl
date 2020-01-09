@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 06/01/2017
 ms.topic: reference
-ms.openlocfilehash: 5c963588d28cab42e5fb6a43b31a17e26e49d0d2
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 05b7bf0e8abad0904b9e851ea6b7a5317e74229d
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384418"
 ---
 # <a name="uninstall-package-package-manager-console-in-visual-studio"></a>Uninstall-Package (konsola menedżera pakietów w programie Visual Studio)
 
@@ -35,14 +35,14 @@ Jeśli inne pakiety zależą od tego pakietu, polecenie zakończy się niepowodz
 | Wersja | Wersja pakietu do odinstalowania, domyślnie przydana do aktualnie zainstalowanej wersji. |
 | RemoveDependencies | Odinstaluj pakiet i jego nieużywane zależności. Oznacza to, że jeśli jakakolwiek zależność ma inny pakiet, który od niego zależy, zostanie pominięty. |
 | ProjectName | Projekt, z którego ma zostać odinstalowany pakiet, domyślny projekt domyślny. |
-| Moc | Wymusza odinstalowanie pakietu, nawet jeśli inne pakiety są od niego zależne. |
-| WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez faktycznego wykonania operacji odinstalowywania. |
+| Force | Wymusza odinstalowanie pakietu, nawet jeśli inne pakiety są od niego zależne. |
+| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez faktycznego wykonania operacji odinstalowywania. |
 
 Żaden z tych parametrów nie akceptuje danych wejściowych potoku ani symboli wieloznacznych.
 
 ## <a name="common-parameters"></a>Parametry wspólne
 
-`Uninstall-Package`Program obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): Debugowanie, Akcja błędu, ErrorVariable, wybuforuj, niezmienna, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Uninstall-Package` obsługuje następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216): debugowanie, Akcja błędu, ErrorVariable, buforowanie, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

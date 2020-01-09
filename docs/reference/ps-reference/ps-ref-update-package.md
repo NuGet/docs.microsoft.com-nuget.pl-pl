@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 57e50ed805496b3511bc3b808f89da6f7ad413fc
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: e1bff9d4b7391d8be87afa4b8f2fbd51ae922140
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384859"
 ---
 # <a name="update-package-package-manager-console-in-visual-studio"></a>Update-Package (konsola menedżera pakietów w programie Visual Studio)
 
@@ -26,7 +26,7 @@ Update-Package [-Id] <string> [-IgnoreDependencies] [-ProjectName <string>] [-Ve
     [-DependencyVersion] [-ToHighestPatch] [-ToHighestMinor] [-WhatIf] [<CommonParameters>]
 ```
 
-W programie NuGet 2.8 + `Update-Package` można użyć do obniżenia poziomu istniejącego pakietu w projekcie. Na przykład jeśli masz zainstalowany plik Microsoft. AspNet. MVC 5.1.0-RC1, następujące polecenie obniży go do 5.0.0:
+W programie NuGet 2.8 +, `Update-Package` może służyć do obniżenia poziomu istniejącego pakietu w projekcie. Na przykład jeśli masz zainstalowany plik Microsoft. AspNet. MVC 5.1.0-RC1, następujące polecenie obniży go do 5.0.0:
 
 ```ps
 Update-Package Microsoft.AspNet.MVC -Version 5.0.0.
@@ -39,22 +39,22 @@ Update-Package Microsoft.AspNet.MVC -Version 5.0.0.
 | Id | Identyfikator pakietu do zaktualizowania. W przypadku pominięcia program aktualizuje wszystkie pakiety. Przełącznik-ID jest opcjonalny. |
 | IgnoreDependencies | Pomija aktualizowanie zależności pakietu. |
 | ProjectName | Nazwa projektu zawierającego pakiety do zaktualizowania, domyślnie dla wszystkich projektów. |
-| Wersja | Wersja, która ma zostać użyta do uaktualnienia, domyślna dla najnowszej wersji. W programie NuGet 3.0 + wartość wersji musi mieć jedną z najniższych, najwyższego, *HighestMinor*lub *HighestPatch* (równoważne z bezpiecznym). |
+| Wersja | Wersja, która ma zostać użyta do uaktualnienia, domyślna dla najnowszej wersji. W programie NuGet 3.0 + wartość wersji musi mieć jedną z *najniższych, najwyższego, HighestMinor*lub *HighestPatch* (równoważne z bezpiecznym). |
 | Sejf | Ogranicza uaktualnienia do wersji tylko z tą samą wersją główną i pomocniczą jak aktualnie zainstalowany pakiet. |
-| Source | Ścieżka adresu URL lub folderu dla źródła pakietu do przeszukania. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia program `Update-Package` przeszukuje aktualnie wybrane źródło pakietu. |
+| Obiekt źródłowy | Ścieżka adresu URL lub folderu dla źródła pakietu do przeszukania. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia `Update-Package` przeszukuje aktualnie wybrane źródło pakietu. |
 | IncludePrerelease | Obejmuje pakiety wersji wstępnej dla aktualizacji. |
-| Następnie | Resintalls pakiety przy użyciu ich aktualnie zainstalowanych wersji. Zobacz [ponowne instalowanie i aktualizowanie pakietów](../../consume-packages/reinstalling-and-updating-packages.md). |
+| Ponowna instalacja | Resintalls pakiety przy użyciu ich aktualnie zainstalowanych wersji. Zobacz [ponowne instalowanie i aktualizowanie pakietów](../../consume-packages/reinstalling-and-updating-packages.md). |
 | FileConflictAction | Akcja, która ma zostać podjęta po wyświetleniu monitu o zastąpienie lub zignorowanie istniejących plików, do których odwołuje się projekt. Możliwe wartości to *overwrite, IGNORE, None, OverwriteAll*i *IgnoreAll* (3.0 +). |
-| DependencyVersion | Wersja pakietów zależności do użycia, która może być jedną z następujących:<br/><ul><li>*Najniższy* (domyślnie): najniższa wersja</li><li>*HighestPatch*: wersja z najniższą główną, najmniejszą niewielką lub najwyższą poprawką</li><li>*HighestMinor*: wersja z najmniejszą główną, najwyższą niewielką lub najwyższą poprawką</li><li>*Najwyższa* (domyślnie dla pakietu aktualizacji bez parametrów): najwyższa wersja</li></ul>Możesz ustawić wartość domyślną przy użyciu [`dependencyVersion`](../nuget-config-file.md#config-section) ustawienia `Nuget.Config` w pliku. |
+| DependencyVersion | Wersja pakietów zależności do użycia, która może być jedną z następujących:<br/><ul><li>*Najniższy* (domyślny): najniższa wersja</li><li>*HighestPatch*: wersja z najniższą główną, najmniejszą niewielką lub najwyższą poprawką</li><li>*HighestMinor*: wersja z najmniejszą główną, najwyższą niewielką lub najwyższą poprawką</li><li>*Najwyższe* (domyślnie dla pakietu aktualizacji bez parametrów): najwyższa wersja</li></ul>Wartość domyślną można ustawić przy użyciu ustawienia [`dependencyVersion`](../nuget-config-file.md#config-section) w pliku `Nuget.Config`. |
 | ToHighestPatch | równoważne z bezpiecznym. |
 | ToHighestMinor | Ogranicza uaktualnienia do wersji tylko z tą samą wersją główną jak aktualnie zainstalowany pakiet. |
-| WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez jego faktycznego wykonania. |
+| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez jego faktycznego wykonania. |
 
 Żaden z tych parametrów nie akceptuje danych wejściowych potoku ani symboli wieloznacznych.
 
 ### <a name="common-parameters"></a>Parametry wspólne
 
-`Update-Package`Program obsługuje następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216): Debugowanie, Akcja błędu, ErrorVariable, wybuforuj, niezmienna, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Update-Package` obsługuje następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216): debugowanie, Akcja błędu, ErrorVariable, buforowanie, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
 
 ### <a name="examples"></a>Przykłady
 

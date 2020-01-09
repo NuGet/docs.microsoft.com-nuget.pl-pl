@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/13/2019
 ms.topic: reference
-ms.openlocfilehash: 0b052bd03625172f1b941c365cbedf7629809d6f
-ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
+ms.openlocfilehash: d6cad228eb052563fe57ea635bff0ea548cedc1f
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825191"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383567"
 ---
 # <a name="nugetconfig-reference"></a>Dokumentacja NuGet. config
 
@@ -72,7 +72,7 @@ Kontroluje przywracanie pakietu podczas kompilacji.
 
 | Key | Wartość |
 | --- | --- |
-| enabled | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić zmienną środowiskową `EnableNuGetPackageRestore` przy użyciu wartości `True` zamiast ustawienia tego klucza w pliku konfiguracji. |
+| włączony | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić zmienną środowiskową `EnableNuGetPackageRestore` przy użyciu wartości `True` zamiast ustawienia tego klucza w pliku konfiguracji. |
 | automatyczne | Wartość logiczna wskazująca, czy NuGet ma sprawdzać brakujące pakiety podczas kompilacji. |
 
 **Przykład**:
@@ -305,7 +305,7 @@ Możesz użyć zmiennych środowiskowych w `nuget.config` wartości (NuGet 3.4 +
 
 Na przykład jeśli zmienna środowiskowa `HOME` w systemie Windows jest ustawiona na `c:\users\username`, wartość `%HOME%\NuGetRepository` w pliku konfiguracji jest rozpoznawana jako `c:\users\username\NuGetRepository`.
 
-Podobnie, jeśli `HOME` w systemie Mac/Linux jest ustawiony na `/home/myStuff`, wówczas `%HOME%/NuGetRepository` w pliku konfiguracji jest rozpoznawana jako `/home/myStuff/NuGetRepository`.
+Podobnie, jeśli `HOME` w systemie Mac/Linux jest ustawiony na `/home/myStuff`, wówczas `$HOME/NuGetRepository` w pliku konfiguracji jest rozpoznawana jako `/home/myStuff/NuGetRepository`.
 
 Jeśli zmienna środowiskowa nie zostanie znaleziona, NuGet używa wartości literału z pliku konfiguracyjnego.
 

@@ -1,22 +1,22 @@
 ---
-title: Tworzenie pakietów NuGet dla platformy Xamarin (dla systemów iOS, Android i Windows) przy użyciu programu Visual Studio 2015
+title: Tworzenie pakietów NuGet dla platformy Xamarin (dla systemów iOS, Android i Windows) przy użyciu programu Visual Studio 2017 lub 2019
 description: Kompleksowy przewodnik tworzenia pakietów NuGet dla platformy Xamarin, które używają natywnych interfejsów API w systemach iOS, Android i Windows.
 author: karann-msft
 ms.author: karann
-ms.date: 01/09/2017
+ms.date: 11/05/2019
 ms.topic: tutorial
-ms.openlocfilehash: 927991429d8d4ce54aa35be3e450475a38141b11
-ms.sourcegitcommit: 7441f12f06ca380feb87c6192ec69f6108f43ee3
+ms.openlocfilehash: fce3c9a92dfee325f9e914bf3d6444601fb38b6c
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69488914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385691"
 ---
-# <a name="create-packages-for-xamarin-with-visual-studio-2015"></a>Tworzenie pakietów dla platformy Xamarin za pomocą programu Visual Studio 2015
+# <a name="create-packages-for-xamarin-with-visual-studio-2017-or-2019"></a>Tworzenie pakietów dla platformy Xamarin za pomocą programu Visual Studio 2017 lub 2019
 
 Pakiet dla platformy Xamarin zawiera kod, który używa natywnych interfejsów API w systemach iOS, Android i Windows, w zależności od systemu operacyjnego w czasie wykonywania. Chociaż jest to proste, zaleca się, aby deweloperzy zużywali pakiet z bibliotek PCL lub .NET Standard za pośrednictwem wspólnego obszaru powierzchni interfejsu API.
 
-W tym instruktażu użyjesz programu Visual Studio 2015, aby utworzyć Międzyplatformowy pakiet NuGet, który może być używany w projektach mobilnych w systemach iOS, Android i Windows.
+W tym instruktażu użyjesz programu Visual Studio 2017 lub 2019, aby utworzyć pakiet NuGet dla wielu platform, który może być używany w projektach mobilnych w systemach iOS, Android i Windows.
 
 1. [Wymagania wstępne](#prerequisites)
 1. [Tworzenie struktury projektu i kodu abstrakcji](#create-the-project-structure-and-abstraction-code)
@@ -27,7 +27,7 @@ W tym instruktażu użyjesz programu Visual Studio 2015, aby utworzyć Międzypl
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Program Visual Studio 2015 z platforma uniwersalna systemu Windows (platformy UWP) i Xamarin. Zainstaluj bezpłatnie wersję Community z [VisualStudio.com](https://www.visualstudio.com/); Możesz również korzystać z wersji Professional i Enterprise. Aby dołączyć narzędzia platformy UWP i Xamarin Tools, wybierz instalację niestandardową i Sprawdź odpowiednie opcje.
+1. Program Visual Studio 2017 lub 2019 z platforma uniwersalna systemu Windows (platformy UWP) i Xamarin. Zainstaluj bezpłatnie wersję Community z [VisualStudio.com](https://www.visualstudio.com/); Możesz również korzystać z wersji Professional i Enterprise. Aby dołączyć narzędzia platformy UWP i Xamarin Tools, wybierz instalację niestandardową i Sprawdź odpowiednie opcje.
 1. Interfejs wiersza polecenia NuGet. Pobierz najnowszą wersję pliku NuGet. exe z [NuGet.org/downloads](https://nuget.org/downloads), zapisując ją w wybranej lokalizacji. Następnie Dodaj tę lokalizację do zmiennej środowiskowej PATH, jeśli nie została jeszcze.
 
 > [!Note]
@@ -35,23 +35,33 @@ W tym instruktażu użyjesz programu Visual Studio 2015, aby utworzyć Międzypl
 
 ## <a name="create-the-project-structure-and-abstraction-code"></a>Tworzenie struktury projektu i kodu abstrakcji
 
-1. Pobierz i uruchom [wtyczkę dla rozszerzenia szablonów Xamarin](https://marketplace.visualstudio.com/items?itemName=vs-publisher-473885.PluginForXamarinTemplates) dla programu Visual Studio. Te szablony ułatwiają tworzenie niezbędnej struktury projektu dla tego przewodnika.
-1. W programie Visual Studio, **plik > Nowy > projektu**, Wyszukaj `Plugin`, wybierz **wtyczka dla szablonu Xamarin** , Zmień nazwę na LoggingLibrary, a następnie kliknij przycisk OK.
+1. Pobierz i uruchom [Międzyplatformowe rozszerzenie .NET Standard szablony wtyczek](https://marketplace.visualstudio.com/items?itemName=vs-publisher-473885.PluginForXamarinTemplates) dla programu Visual Studio. Te szablony ułatwiają tworzenie niezbędnej struktury projektu dla tego przewodnika.
+1. W programie Visual Studio 2017 **plik > nowy > Project**, Wyszukaj `Plugin`, wybierz **Międzyplatformowy szablon wtyczki biblioteki .NET Standard** , Zmień nazwę na LoggingLibrary, a następnie kliknij przycisk OK.
 
-    ![Nowa pusta aplikacja (Xamarin. Forms Portable) w programie Visual Studio](media/CrossPlatform-NewProject.png)
+    ![Nowa pusta aplikacja (Xamarin. Forms Portable) w programie VS 2017](media/CrossPlatform-NewProject.png)
 
-Otrzymane rozwiązanie zawiera dwa projekty PCL oraz różne projekty specyficzne dla platformy:
+    W programie Visual Studio 2019 **plik > nowy > Project**, Wyszukaj `Plugin`, wybierz **Międzyplatformowy szablon wtyczki biblioteki .NET Standard** , a następnie kliknij przycisk Dalej.
 
-- PCL o nazwie `Plugin.LoggingLibrary.Abstractions (Portable)`definiuje interfejs publiczny (obszar powierzchniowy interfejsu API) składnika, w tym `ILoggingLibrary` przypadku interfejs zawarty w pliku ILoggingLibrary.cs. Jest to miejsce, w którym można zdefiniować interfejs biblioteki.
-- Inne PCL, `Plugin.LoggingLibrary (Portable)`,, zawiera kod w CrossLoggingLibrary.cs, który będzie lokalizować implementację interfejsu abstrakcyjnego dla platformy w czasie wykonywania. Zazwyczaj nie trzeba modyfikować tego pliku.
-- Projekty specyficzne dla platformy, takie jak `Plugin.LoggingLibrary.Android`, każdy z nich zawierają natywną implementację interfejsu w odpowiednich plikach LoggingLibraryImplementation.cs. Jest to miejsce, w którym można utworzyć kod biblioteki.
+    ![Nowa pusta aplikacja (Xamarin. Forms Portable) w programie VS 2019](media/CrossPlatform-NewProject19-Part1.png)
 
-Domyślnie plik ILoggingLibrary.cs projektu abstrakcji zawiera definicję interfejsu, ale nie ma żadnych metod. Na potrzeby tego instruktażu Dodaj `Log` metodę w następujący sposób:
+    Zmień nazwę na LoggingLibrary, a następnie kliknij przycisk Utwórz.
+
+    ![Konfiguracja nowej pustej aplikacji (Xamarin. Forms Portable) w programie VS 2019](media/CrossPlatform-NewProject19-Part2.png)
+
+Otrzymane rozwiązanie zawiera dwa projekty udostępnione wraz z różnymi projektami specyficznymi dla platformy:
+
+- Projekt `ILoggingLibrary`, który znajduje się w pliku `ILoggingLibrary.shared.cs`, definiuje publiczny interfejs (obszar powierzchniowy interfejsu API) składnika. Jest to miejsce, w którym można zdefiniować interfejs biblioteki.
+- Inny udostępniony projekt zawiera kod w `CrossLoggingLibrary.shared.cs`, który będzie lokalizować implementację interfejsu abstrakcyjnego dla danej platformy w czasie wykonywania. Zazwyczaj nie trzeba modyfikować tego pliku.
+- Projekty specyficzne dla platformy, takie jak `LoggingLibrary.android.cs`, każdy z nich zawierają natywną implementację interfejsu w odpowiednich `LoggingLibraryImplementation.cs` (VS 2017) lub `LoggingLibrary.<PLATFORM>.cs` (VS 2019). Jest to miejsce, w którym można utworzyć kod biblioteki.
+
+Domyślnie plik ILoggingLibrary.shared.cs projektu `ILoggingLibrary` zawiera definicję interfejsu, ale nie ma żadnych metod. Na potrzeby tego instruktażu należy dodać metodę `Log` w następujący sposób:
 
 ```cs
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Plugin.LoggingLibrary.Abstractions
+namespace Plugin.LoggingLibrary
 {
     /// <summary>
     /// Interface for LoggingLibrary
@@ -68,13 +78,14 @@ namespace Plugin.LoggingLibrary.Abstractions
 
 ## <a name="write-your-platform-specific-code"></a>Napisz kod specyficzny dla platformy
 
-Aby zaimplementować implementację `ILoggingLibrary` interfejsu i jego metody specyficzne dla platformy, wykonaj następujące czynności:
+Aby zaimplementować implementację interfejsu `ILoggingLibrary` i jego metod specyficznych dla platformy, wykonaj następujące czynności:
 
-1. `LoggingLibraryImplementation.cs` Otwórz plik każdego projektu platformy i Dodaj wymagany kod. Na przykład (przy użyciu `Plugin.LoggingLibrary.Android` projektu):
+1. Otwórz plik `LoggingLibraryImplementation.cs` (VS 2017) lub `LoggingLibrary.<PLATFORM>.cs` (VS 2019) dla każdego projektu platformy i Dodaj wymagany kod. Na przykład (przy użyciu projektu platformy `Android`):
 
     ```cs
-    using Plugin.LoggingLibrary.Abstractions;
     using System;
+    using System.Collections.Generic;
+    using System.Text;
 
     namespace Plugin.LoggingLibrary
     {
@@ -95,23 +106,24 @@ Aby zaimplementować implementację `ILoggingLibrary` interfejsu i jego metody s
     ```
 
 1. Powtórz tę implementację w projektach dla każdej platformy, która ma być obsługiwana.
-1. Kliknij prawym przyciskiem myszy projekt iOS, wybierz polecenie **Właściwości**, kliknij kartę **kompilacja** i Usuń "\iPhone" z ustawień **Ścieżka wyjściowa** i **plik dokumentacji XML** . Jest to tylko dla późniejszej wygody w tym instruktażu. Zapisz plik po zakończeniu.
-1. Kliknij prawym przyciskiem myszy rozwiązanie, wybierz **Configuration Manager...** i sprawdź pola **kompilacji** dla PCLs i każdej obsługiwanej platformy.
 1. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Kompiluj rozwiązanie** , aby sprawdzić swoją służbę i utworzyć artefakty, które zostały umieszczone w dalszej kolejności. Jeśli pojawią się błędy dotyczące brakujących odwołań, kliknij prawym przyciskiem myszy rozwiązanie, wybierz polecenie **Przywróć pakiety NuGet** , aby zainstalować zależności i ponownie skompilować.
+
+> [!Note]
+> Jeśli używasz programu Visual Studio 2019, przed wybraniem opcji **Przywróć pakiety NuGet** i próbą odbudowy należy zmienić wersję `MSBuild.Sdk.Extras` na `2.0.54` w `LoggingLibrary.csproj`. Dostęp do tego pliku można uzyskać tylko przez kliknięcie prawym przyciskiem myszy projektu (poniżej rozwiązania) i wybranie `Unload Project`, po którym kliknij prawym przyciskiem myszy zwolnionego projektu i wybierz pozycję `Edit LoggingLibrary.csproj`.
 
 > [!Note]
 > Aby można było skompilować system iOS, potrzebny jest komputer Mac podłączony do programu Visual Studio, zgodnie z opisem w artykule [wprowadzenie do platformy Xamarin. iOS dla programu Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/introduction_to_xamarin_ios_for_visual_studio/). Jeśli nie masz dostępnego komputera Mac, wyczyść projekt systemu iOS w programie Configuration Manager (krok 3 powyżej).
 
 ## <a name="create-and-update-the-nuspec-file"></a>Utwórz i zaktualizuj plik. nuspec
 
-1. Otwórz wiersz polecenia, przejdź `LoggingLibrary` do folderu, który znajduje się poniżej, `.sln` gdzie znajduje się plik, i uruchom polecenie NuGet `spec` , aby utworzyć plik początkowy `Package.nuspec` :
+1. Otwórz wiersz polecenia, przejdź do folderu `LoggingLibrary`, który znajduje się poniżej, w którym znajduje się plik `.sln`, i uruchom polecenie NuGet `spec`, aby utworzyć początkowy plik `Package.nuspec`:
 
     ```cli
     nuget spec
     ```
 
-1. Zmień nazwę tego pliku `LoggingLibrary.nuspec` na i otwórz go w edytorze.
-1. Zaktualizuj plik w taki sposób, aby pasował do następującej wartości, zastępując YOUR_NAME. Wartość, szczególnie, musi być unikatowa w obrębie NuGet.org (zobacz Konwencje nazewnictwa opisane w artykule [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number)). `<id>` Należy również pamiętać, że należy również zaktualizować Tagi autor i opis lub podczas kroku pakowania wystąpi błąd.
+1. Zmień nazwę tego pliku na `LoggingLibrary.nuspec` i otwórz go w edytorze.
+1. Zaktualizuj plik w taki sposób, aby pasował do następującej wartości YOUR_NAME. Wartość `<id>`, szczególnie, musi być unikatowa w obrębie nuget.org (zobacz Konwencje nazewnictwa opisane w temacie [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number)). Należy również pamiętać, że należy również zaktualizować Tagi autor i opis lub podczas kroku pakowania wystąpi błąd.
 
     ```xml
     <?xml version="1.0"?>
@@ -125,18 +137,18 @@ Aby zaimplementować implementację `ILoggingLibrary` interfejsu i jego metody s
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Awesome application logging utility</description>
         <releaseNotes>First release</releaseNotes>
-        <copyright>Copyright 2016</copyright>
+        <copyright>Copyright 2018</copyright>
         <tags>logger logging logs</tags>
         </metadata>
     </package>
     ```
 
 > [!Tip]
-> Możesz określić sufiks wersji pakietu przy użyciu `-alpha` `-beta` lub `-rc` aby oznaczyć pakiet jako wersję wstępną, sprawdź [wersje wstępne](../create-packages/prerelease-packages.md) , aby uzyskać więcej informacji o wersjach wstępnych.
+> Aby oznaczyć pakiet jako wersję wstępną, można uzyskać sufiks wersji pakietu z `-alpha`, `-beta` lub `-rc`. w tym celu sprawdź [wersje wstępne](../create-packages/prerelease-packages.md) , aby uzyskać więcej informacji na temat wersji wstępnych.
 
 ### <a name="add-reference-assemblies"></a>Dodaj zestawy referencyjne
 
-Aby uwzględnić zestawy referencyjne specyficzne dla platformy, Dodaj następujące elementy do `<files>` `LoggingLibrary.nuspec` elementu, który jest odpowiedni dla obsługiwanych platform:
+Aby uwzględnić zestawy referencyjne specyficzne dla platformy, Dodaj następujące elementy do `<files>` elementu `LoggingLibrary.nuspec`, zgodnie z potrzebami dla obsługiwanych platform:
 
 ```xml
 <!-- Insert below <metadata> element -->
@@ -166,7 +178,7 @@ Aby uwzględnić zestawy referencyjne specyficzne dla platformy, Dodaj następuj
 
 ### <a name="add-dependencies"></a>Dodaj zależności
 
-Jeśli masz określone zależności dla implementacji natywnych, użyj `<dependencies>` elementu z `<group>` elementami, aby je określić, na przykład:
+Jeśli masz określone zależności dla implementacji natywnych, użyj elementu `<dependencies>` z elementami `<group>`, aby je określić, na przykład:
 
 ```xml
 <!-- Insert within the <metadata> element -->
@@ -195,7 +207,7 @@ Na przykład następujące polecenie ustawi iTextSharp jako zależność dla ele
 
 ### <a name="final-nuspec"></a>Final. nuspec
 
-Końcowy `.nuspec` plik powinien teraz wyglądać podobnie do poniższego, gdzie YOUR_NAME należy zastąpić odpowiednią wartością:
+Końcowy plik `.nuspec` powinien teraz wyglądać podobnie do poniższego, gdzie ponownie YOUR_NAME należy zastąpić odpowiednią wartością:
 
 ```xml
 <?xml version="1.0"?>
@@ -209,7 +221,7 @@ Końcowy `.nuspec` plik powinien teraz wyglądać podobnie do poniższego, gdzie
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Awesome application logging utility</description>
     <releaseNotes>First release</releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2018</copyright>
     <tags>logger logging logs</tags>
         <dependencies>
         <group targetFramework="MonoAndroid">
@@ -247,7 +259,7 @@ Końcowy `.nuspec` plik powinien teraz wyglądać podobnie do poniższego, gdzie
 
 ## <a name="package-the-component"></a>Pakowanie składnika
 
-Po zakończeniu `.nuspec` odwoływania się do wszystkich plików, które należy uwzględnić w pakiecie, możesz `pack` uruchomić polecenie:
+Wraz z `.nuspec` zakończonymi odwołującymi się do wszystkich plików, które należy uwzględnić w pakiecie, możesz uruchomić polecenie `pack`:
 
 ```cli
 nuget pack LoggingLibrary.nuspec
@@ -258,7 +270,7 @@ Spowoduje to wygenerowanie `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`. Otwierając t
 ![Eksplorator pakietów NuGet przedstawiający pakiet LoggingLibrary](media/Cross-Platform-PackageExplorer.png)
 
 > [!Tip]
-> `.nupkg` Plik jest po prostu plikiem ZIP z innym rozszerzeniem. Możesz również przeanalizować zawartość pakietu, a następnie zmienić `.nupkg` ją `.zip`na, ale pamiętaj, aby przywrócić rozszerzenie przed przekazaniem pakietu do NuGet.org.
+> Plik `.nupkg` jest po prostu plikiem ZIP z innym rozszerzeniem. Możesz również przeanalizować zawartość pakietu, zmieniając `.nupkg` na `.zip`, pamiętając o przywróceniu rozszerzenia przed przekazaniem pakietu do nuget.org.
 
 Aby udostępnić pakiet innym deweloperom, postępuj zgodnie z instrukcjami dotyczącymi [publikowania pakietu](../nuget-org/publish-a-package.md).
 

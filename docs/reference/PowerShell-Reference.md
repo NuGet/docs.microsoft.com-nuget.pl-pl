@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 10/02/2017
 ms.topic: reference
-ms.openlocfilehash: 142af9c4f7d25c3b0d986524313851cceb1e4c60
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 2a82b1977265a8f8a15247759bc3de80a5efe228
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385346"
 ---
 # <a name="powershell-reference"></a>Dokumentacja programu PowerShell
 
@@ -31,7 +31,7 @@ Konsola Menedżera pakietów udostępnia interfejs programu PowerShell w program
 
 | Polecenia pomocnicze | Opis | Wersja programu NuGet |
 | --- | --- | --- |
-| [Add-BindingRedirect](ps-reference/ps-ref-add-bindingredirect.md) | Bada wszystkie zestawy w ścieżce wyjściowej projektu i dodaje przekierowania powiązań do lub `app.config` `web.config` w miarę potrzeb. | Wszystkie |
+| [Add-BindingRedirect](ps-reference/ps-ref-add-bindingredirect.md) | Bada wszystkie zestawy w ścieżce wyjściowej projektu i dodaje przekierowania powiązań do `app.config` lub `web.config`, w razie potrzeby. | Wszystkie |
 | [Get-Project](ps-reference/ps-ref-get-project.md) | Wyświetla informacje dotyczące domyślnego lub określonego projektu. | 3.0+ |
 | [Open-PackagePage](ps-reference/ps-ref-open-packagepage.md) | Uruchamia domyślną przeglądarkę z adresem URL nadużycia projektu, licencji lub raportu dla określonego pakietu. | Przestarzałe w wersji 3.0 + |
 | [Register-TabExpansion](ps-reference/ps-ref-register-tabexpansion.md) | Rejestruje rozwinięcie tabulatora dla parametrów polecenia, co pozwala na tworzenie dostosowanych rozszerzeń dla najczęściej używanych wartości parametrów. | Wszystkie |
@@ -44,7 +44,7 @@ Aby uzyskać pełną, szczegółową pomoc dotyczącą dowolnego z tych poleceń
 Get-Help <command> -full
 ```
 
-Wszystkie polecenia konsoli Menedżera pakietów obsługują następujące [typowe parametry programu PowerShell](http://go.microsoft.com/fwlink/?LinkID=113216):
+Wszystkie polecenia konsoli Menedżera pakietów obsługują następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216):
 
 - Debugowanie
 - ErrorAction
@@ -56,4 +56,4 @@ Wszystkie polecenia konsoli Menedżera pakietów obsługują następujące [typo
 - WarningAction
 - WarningVariable
 
-Aby uzyskać szczegółowe informacje, zobacz [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216) w dokumentacji programu PowerShell.
+Aby uzyskać szczegółowe informacje, zobacz [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216) w dokumentacji programu PowerShell.
