@@ -1,37 +1,37 @@
 ---
-title: Informacje o wersji 2.0 programu NuGet
-description: Informacje o wersji programu NuGet w tym znanych problemów, poprawki, funkcje dodane i DCRs w wersji 2.0.
+title: Informacje o wersji narzędzia NuGet 2,0
+description: Informacje o wersji programu NuGet 2,0, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
 author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: f32eea9260ce7e307ff56b7f3e6b48c6d98e6c90
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 01fdbfafcaea009cf119dfa880b2b16539c9b088
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43547578"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383070"
 ---
-# <a name="nuget-20-release-notes"></a>Informacje o wersji 2.0 programu NuGet
+# <a name="nuget-20-release-notes"></a>Informacje o wersji narzędzia NuGet 2,0
 
-[Informacje o wersji NuGet 1.8](../release-notes/nuget-1.8.md) | [informacjach o wersji NuGet 2.1](../release-notes/nuget-2.1.md)
+[Informacje o wersji pakietu nuget 1,8](../release-notes/nuget-1.8.md) | [Informacje o wersji narzędzia NuGet 2,1](../release-notes/nuget-2.1.md)
 
-NuGet w wersji 2.0 została wydana 19 czerwca 2012 r.
+Pakiet NuGet 2,0 został wydaną 19 czerwca 2012.
 
-## <a name="known-installation-issue"></a>Problem z instalacją znane
-Jeśli używasz programu VS 2010 z dodatkiem SP1, możesz napotkać błąd instalacji podczas próby uaktualnienia NuGet, jeśli masz starszą wersję zainstalowane.
+## <a name="known-installation-issue"></a>Znany problem z instalacją
+W przypadku korzystania z programu VS 2010 z dodatkiem SP1 można napotkać błąd instalacji podczas próby uaktualnienia narzędzia NuGet, jeśli jest zainstalowana starsza wersja.
 
-Obejście polega na po prostu Odinstaluj NuGet, a następnie zainstalować go z galerii rozszerzeń programu VS.  Zobacz [ http://support.microsoft.com/kb/2581019 ](http://support.microsoft.com/kb/2581019) uzyskać więcej informacji, lub [przejdź bezpośrednio do poprawki programu VS](http://bit.ly/vsixcertfix).
+Obejście polega na prostu odinstalować pakiet NuGet, a następnie zainstalować go z galerii rozszerzeń programu VS.  Aby uzyskać więcej informacji, zobacz <https://support.microsoft.com/kb/2581019> lub [Przejdź bezpośrednio do poprawki programu vs](http://bit.ly/vsixcertfix).
 
-Uwaga: Jeśli program Visual Studio nie pozwalają na odinstalować rozszerzenie (przycisk Odinstaluj jest wyłączony), prawdopodobnie musisz ponownie program Visual Studio za pomocą polecenia "Uruchom jako Administrator".
+Uwaga: Jeśli program Visual Studio nie zezwoli na odinstalowanie rozszerzenia (przycisk Odinstaluj jest wyłączony), prawdopodobnie trzeba będzie ponownie uruchomić program Visual Studio za pomocą polecenia "Uruchom jako administrator".
 
-## <a name="package-restore-consent-is-now-active"></a>Pakiet przywracania zgody jest teraz aktywna
+## <a name="package-restore-consent-is-now-active"></a>Wyrażanie zgody na przywracanie pakietu jest teraz aktywne
 
-Zgodnie z opisem w tym [publikować zgody przywracania pakietu](http://blog.nuget.org/20120518/package-restore-and-consent.html), NuGet w wersji 2.0 będzie wymagać teraz od o wyrażenie zgody umożliwiające przywracanie pakietu przejdź do trybu online i pobierania pakietów. Upewnij się, czy podane zgodę za pomocą okna dialogowego konfiguracji dla Menedżera pakietów lub zmiennej środowiskowej EnableNuGetPackageRestore.
+Zgodnie z opisem w tym [wpisie dotyczącym przywracania pakietów pakiet](http://blog.nuget.org/20120518/package-restore-and-consent.html)NuGet 2,0 będzie teraz wymagał zgody, aby umożliwić przywracanie pakietów w trybie online i pobrać pakiety. Upewnij się, że podano zgodę za pośrednictwem okna dialogowego konfiguracji Menedżera pakietów lub zmiennej środowiskowej EnableNuGetPackageRestore.
 
-## <a name="group-dependencies-by-target-frameworks"></a>Grupa zależności według platform docelowych
+## <a name="group-dependencies-by-target-frameworks"></a>Grupuj zależności według platform docelowych
 
-Począwszy od wersji 2.0, pakietów, które mogą się różnić w zależności oparte na profilu framework projektu docelowego. Jest to realizowane przy użyciu zaktualizowanych `.nuspec` schematu. `<dependencies>` Elementu może teraz zawierać zestaw `<group>` elementów. Każda grupa zawiera zero lub więcej `<dependency>` elementy i `targetFramework` atrybutu. Wszystkie zależności wewnątrz grupy są instalowane razem, gdy platforma docelowa jest zgodny z profil platformy docelowej projektu. Na przykład:
+Począwszy od wersji 2,0, zależności pakietów mogą się różnić w zależności od profilu struktury projektu docelowego. Jest to realizowane przy użyciu zaktualizowanego schematu `.nuspec`. Element `<dependencies>` może teraz zawierać zestaw `<group>` elementów. Każda grupa zawiera zero lub więcej elementów `<dependency>` i atrybut `targetFramework`. Wszystkie zależności wewnątrz grupy są instalowane razem, jeśli struktura docelowa jest zgodna z docelowym profilem platformy projektu. Na przykład:
 
 ```xml
 <dependencies>
@@ -49,11 +49,11 @@ Począwszy od wersji 2.0, pakietów, które mogą się różnić w zależności 
 </dependencies>
 ```
 
-Należy zauważyć, że grupa może zawierać **zero** zależności. W powyższym przykładzie Jeśli pakiet jest zainstalowany w projekcie, który jest przeznaczony dla programu Silverlight 3.0 lub nowszej, żadne zależności zostanie zainstalowana. Jeśli pakiet jest zainstalowany w projekcie, który jest przeznaczony dla programu .NET 4.0 lub nowszy, dwie zależności, jQuery i WebActivator, zostanie zainstalowana.  Jeśli pakiet jest zainstalowany w projekcie, który jest przeznaczony dla starszej wersji tych struktur 2 lub innych framework, zostanie zainstalowana RouteMagic 1.1.0. Brak nie dziedziczenia między grupami. Jeśli platforma docelowa projektu odpowiada `targetFramework` atrybut grupy, tylko zależności w ramach tej grupy zostaną zainstalowane.
+Należy zauważyć, że grupa może zawierać **zero** zależności. W powyższym przykładzie, jeśli pakiet jest zainstalowany w projekcie, który jest przeznaczony dla programu Silverlight 3,0 lub nowszego, nie zostaną zainstalowane żadne zależności. Jeśli pakiet jest zainstalowany w projekcie przeznaczonym dla programu .NET 4,0 lub nowszego, zostaną zainstalowane dwie zależności, jQuery i webaktywator.  Jeśli pakiet jest instalowany w projekcie, który jest przeznaczony dla wczesnej wersji tych 2 platform lub innych platform, RouteMagic 1.1.0 zostanie zainstalowana. Nie ma żadnego dziedziczenia między grupami. Jeśli platforma docelowa projektu jest zgodna z atrybutem `targetFramework` grupy, zostaną zainstalowane tylko zależności w ramach tej grupy.
 
-Pakiet można określić zależności pakietów w jednym z dwóch formatów: stary format płaską listę `<dependency>` elementów lub grup. Jeśli `<group>` jest używany format, nie można zainstalować pakietu do pakietu nuget w wersji wcześniejszej niż w wersji 2.0.
+Pakiet może określać zależności pakietu w dowolnym z dwóch formatów: starym formacie płaskiej listy elementów `<dependency>` lub grup. Jeśli jest używany format `<group>`, nie można zainstalować pakietu w wersjach programu NuGet wcześniejszych niż 2,0.
 
-Należy pamiętać, że mieszanie dwa formaty jest niedozwolone. Na przykład poniższy fragment kodu jest **nieprawidłowy** i zostanie odrzucony przez NuGet.
+Należy zauważyć, że mieszanie dwóch formatów jest niedozwolone. Na przykład poniższy fragment kodu jest **nieprawidłowy** i zostanie odrzucony przez pakiet NuGet.
 
 ```xml
 <dependencies>
@@ -66,9 +66,9 @@ Należy pamiętać, że mieszanie dwa formaty jest niedozwolone. Na przykład po
 </dependencies>
 ```
 
-## <a name="grouping-content-files-and-powershell-scripts-by-target-framework"></a>Pliki zawartości i skryptów programu PowerShell są grupowane według platformy docelowej
+## <a name="grouping-content-files-and-powershell-scripts-by-target-framework"></a>Grupowanie plików zawartości i skryptów programu PowerShell według platformy docelowej
 
-Oprócz odwołania do zestawów pliki zawartości i skryptów programu PowerShell także można grupować według wartości docelowej. Tę samą strukturę folderów znaleziony w `lib` folderu do określania wartości docelowej można teraz stosować w taki sam sposób, aby `content` i `tools` folderów. Na przykład:
+Oprócz odwołań do zestawów, pliki zawartości i skrypty programu PowerShell mogą być również pogrupowane według platformy docelowej. Ta sama struktura folderów znaleziona w folderze `lib` do określania platformy docelowej można teraz zastosować w taki sam sposób, jak foldery `content` i `tools`. Na przykład:
 
     \content
         \net11
@@ -88,13 +88,13 @@ Oprócz odwołania do zestawów pliki zawartości i skryptów programu PowerShel
             \install.ps1
             \uninstall.ps1
 
-**Uwaga**: ponieważ `init.ps1` jest wykonywane na poziomie rozwiązania i jest nie jest ona zależna od dowolnego pojedynczego projektu, musi zostać umieszczony bezpośrednio pod `tools` folderu. Umieszczony w folderze określonej platformy, zostaną zignorowane.
+**Uwaga**: ponieważ `init.ps1` jest wykonywany na poziomie rozwiązania i nie zależy od żadnego pojedynczego projektu, musi być umieszczony bezpośrednio pod folderem `tools`. Jeśli zostanie umieszczony w folderze specyficznym dla platformy, zostanie zignorowany.
 
-Ponadto jest nowa funkcja NuGet w wersji 2.0, że folder struktury może być *pusty*, w którym to przypadku NuGet zostanie nie Dodawanie odwołania do zestawów, dodać pliki zawartości lub Uruchamiaj skrypty programu PowerShell dla konkretnego framework w wersji. W przykładzie powyżej folderu `content\net40` jest pusty.
+Ponadto nową funkcją w programie NuGet 2,0 jest to, że folder struktury może być *pusty*, w takim przypadku pakiet NuGet nie dodaje odwołań do zestawów, nie dodaje plików zawartości ani nie uruchamia skryptów programu PowerShell dla konkretnej wersji platformy. W powyższym przykładzie folder `content\net40` jest pusty.
 
-## <a name="improved-tab-completion-performance"></a>Wydajność uzupełniania ulepszone karty
-Funkcję uzupełniania kartę w konsoli Menedżera pakietów NuGet został zaktualizowany w celu znacznego podniesienia wydajności. Będzie znacznie mniejsze opóźnienie od chwili, gdy naciskania klawisza tab, aż pojawi się lista rozwijana sugestii.
+## <a name="improved-tab-completion-performance"></a>Ulepszona wydajność kończenia karty
+Funkcja uzupełniania tabulatorów w konsoli Menedżera pakietów NuGet została zaktualizowana w celu znacznego zwiększenia wydajności. Nastąpi znacznie mniej opóźnienia od momentu naciśnięcia klawisza Tab do momentu wyświetlenia listy rozwijanej sugestii.
 
 ## <a name="bug-fixes"></a>Poprawki błędów
-NuGet w wersji 2.0 obejmuje wiele poprawek błędów, z naciskiem na wydajność i zgody przywracania pakietu.
-Aby uzyskać pełną listę prac elementy rozwiązane w NuGet w wersji 2.0, widok [NuGet narzędzie do śledzenia problemów w tej wersji](http://nuget.codeplex.com/workitem/list/advanced?keyword=&status=Closed&type=All&priority=All&release=NuGet%202.0&assignedTo=All&component=All&sortField=Votes&sortDirection=Descending&page=0).
+Pakiet NuGet 2,0 zawiera wiele poprawek błędów z naciskiem na zgodę i wydajność przywracania pakietu.
+Aby zapoznać się z pełną listą elementów roboczych ustalonych w programie NuGet 2,0, zobacz [Śledzenie problemów NuGet dla tej wersji](http://nuget.codeplex.com/workitem/list/advanced?keyword=&status=Closed&type=All&priority=All&release=NuGet%202.0&assignedTo=All&component=All&sortField=Votes&sortDirection=Descending&page=0).

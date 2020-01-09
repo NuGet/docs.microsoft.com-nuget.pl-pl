@@ -1,55 +1,55 @@
 ---
-title: Informacje o wersji 1.7 pakietów NuGet
-description: Informacje o wersji programu NuGet 1.7, w tym znanych problemów, poprawki, funkcje dodane i DCRs.
+title: Informacje o wersji narzędzia NuGet 1,7
+description: Informacje o wersji programu NuGet 1,7, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
 author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 07cd541ef215d2a1bacc45995a22dadb6dfeac6d
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: a98da76038582202396c8da96f8eae166e6096f6
+ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383322"
 ---
-# <a name="nuget-17-release-notes"></a>Informacje o wersji 1.7 pakietów NuGet
+# <a name="nuget-17-release-notes"></a>Informacje o wersji narzędzia NuGet 1,7
 
-[Informacje o wersji NuGet w wersji 1.6](../release-notes/nuget-1.6.md) | [informacjach o wersji NuGet 1.8](../release-notes/nuget-1.8.md)
+[Informacje o wersji pakietu nuget 1,6](../release-notes/nuget-1.6.md) | [Informacje o wersji narzędzia NuGet 1,8](../release-notes/nuget-1.8.md)
 
-NuGet 1.7 został wydany 4 kwietnia 2012 r.
+Pakiet NuGet 1,7 został wydaną 4 kwietnia 2012.
 
-## <a name="known-installation-issue"></a>Problem z instalacją znane
-Jeśli używasz programu VS 2010 z dodatkiem SP1, możesz napotkać błąd instalacji podczas próby uaktualnienia NuGet, jeśli masz starszą wersję zainstalowane.
+## <a name="known-installation-issue"></a>Znany problem z instalacją
+W przypadku korzystania z programu VS 2010 z dodatkiem SP1 można napotkać błąd instalacji podczas próby uaktualnienia narzędzia NuGet, jeśli jest zainstalowana starsza wersja.
 
-Obejście polega na po prostu Odinstaluj NuGet, a następnie zainstalować go z galerii rozszerzeń programu VS.  Zobacz [ http://support.microsoft.com/kb/2581019 ](http://support.microsoft.com/kb/2581019) Aby uzyskać więcej informacji.
+Obejście polega na prostu odinstalować pakiet NuGet, a następnie zainstalować go z galerii rozszerzeń programu VS.  Aby uzyskać więcej informacji, zobacz <https://support.microsoft.com/kb/2581019>.
 
-Uwaga: Jeśli program Visual Studio nie pozwalają na odinstalować rozszerzenie (przycisk Odinstaluj jest wyłączony), prawdopodobnie musisz ponownie program Visual Studio za pomocą polecenia "Uruchom jako Administrator".
+Uwaga: Jeśli program Visual Studio nie zezwoli na odinstalowanie rozszerzenia (przycisk Odinstaluj jest wyłączony), prawdopodobnie trzeba będzie ponownie uruchomić program Visual Studio za pomocą polecenia "Uruchom jako administrator".
 
 ## <a name="features"></a>Funkcje
 
-### <a name="support-opening-readmetxt-file-after-installation"></a>Obsługa otwierania pliku readme.txt po zakończeniu instalacji
-Nowe w wersji 1.7, jeśli pakiet zawiera `readme.txt` pliku w katalogu głównym pakietu NuGet automatycznie otworzyć ten plik, po zakończeniu instalacji pakietu.
+### <a name="support-opening-readmetxt-file-after-installation"></a>Obsługa otwierania pliku Readme. txt po instalacji
+Nowość w 1,7, jeśli pakiet zawiera plik `readme.txt` w folderze głównym pakietu, pakiet NuGet automatycznie otworzy ten plik po zakończeniu instalacji pakietu.
 
-### <a name="show-prerelease-packages-in-the-manage-nuget-packages-dialog"></a>Pokaż pakiety w wersjach wstępnych, w oknie dialogowym pakiety zarządzania pakietami NuGet
-Okno dialogowe Zarządzanie pakietami NuGet teraz zawiera listę rozwijaną, która zapewnia opcję, aby wyświetlać pakiety w wersjach wstępnych.
+### <a name="show-prerelease-packages-in-the-manage-nuget-packages-dialog"></a>Pokaż pakiety wersji wstępnej w oknie dialogowym Zarządzanie pakietami NuGet
+Okno dialogowe Zarządzanie pakietami NuGet zawiera teraz listę rozwijaną, która zawiera opcję wyświetlania pakietów wersji wstępnej.
 
-![Wyświetlanie pakiety w wersjach wstępnych](./media/prerelease-dropdown.png)
+![Wyświetlanie pakietów wersji wstępnej](./media/prerelease-dropdown.png)
 
-### <a name="show-package-restore-button-when-package-files-are-missing"></a>Pokaż przycisk Przywróć pakiet, gdy brakuje plików pakietu
-Po otwarciu konsoli Menedżera pakietów lub pakietów programu Manager NuGet okna dialogowego, NuGet sprawdzi, czy bieżące rozwiązanie ma włączony tryb Przywracanie pakietów, a jeśli brakuje dowolnej pliki pakietu `packages` folderu. Jeśli te dwa warunki są spełnione, powiadomi użytkownika i wyświetli wygodne przycisk przywracania NuGet. Kliknięcie tego przycisku spowoduje wyzwolenie pakietu NuGet, aby przywrócić wszystkie brakujące pakiety.
+### <a name="show-package-restore-button-when-package-files-are-missing"></a>Pokaż przycisk przywracania pakietu, gdy brakuje plików pakietu
+Po otwarciu konsoli Menedżera pakietów lub okna dialogowego pakiety NuGet Menedżera NuGet sprawdzi, czy bieżące rozwiązanie włączyło tryb przywracania pakietu i jeśli brakuje plików pakietu w folderze `packages`. Jeśli te dwa warunki są spełnione, pakiet NuGet wyświetli powiadomienie i wyświetli wygodny przycisk przywracania. Kliknięcie tego przycisku spowoduje wyzwolenie programu NuGet na przywrócenie wszystkich brakujących pakietów.
 
-![Przycisk przywracania pakietów w oknie dialogowym](./media/packagerestore-dialog.png)
+![Przycisk przywracania pakietu w oknie dialogowym](./media/packagerestore-dialog.png)
 
 ![Przycisk Przywróć pakiet w konsoli](./media/packagerestore-console.png)
 
-### <a name="add-solution-level-packagesconfig-file"></a>Dodawanie pliku packages.config na poziomie rozwiązania
-W poprzednich wersjach programu NuGet, każdy projekt ma `packages.config` pliku, który śledzi informacje o pakietów NuGet, które są zainstalowane w tym projekcie. Jednak nie było żadnych podobnych plików na poziomie rozwiązania do śledzenia pakietów poziomie rozwiązania. W rezultacie nie było możliwości można przywrócić pakietów poziomie rozwiązania.
-Ta funkcja jest teraz implementowane w wersji 1.7 NuGet. Poziom rozwiązania `packages.config` plik zostanie umieszczony w obszarze `.nuget` folder, w ramach rozwiązania główny i będzie przechowywać pakiety tylko poziomie rozwiązania.
+### <a name="add-solution-level-packagesconfig-file"></a>Dodaj plik config pakietów na poziomie rozwiązania
+W poprzednich wersjach programu NuGet każdy projekt zawiera plik `packages.config`, który śledzi, jakie pakiety NuGet są zainstalowane w tym projekcie. Jednak na poziomie rozwiązania nie ma podobnego pliku do śledzenia pakietów na poziomie rozwiązania. W związku z tym nie było możliwości przywrócenia pakietów na poziomie rozwiązania.
+Ta funkcja jest teraz zaimplementowana w programie NuGet 1,7. Plik `packages.config` na poziomie rozwiązania zostanie umieszczony w folderze `.nuget` w obszarze katalogu głównego rozwiązania i będzie przechowywać tylko pakiety na poziomie rozwiązania.
 
 ### <a name="remove-new-package-command"></a>Usuń polecenie New-Package
-Z powodu niskiej użycia polecenia New-Package zostało usunięte. Deweloperom zaleca się używać nuget.exe lub przydatną Eksplorator pakietów NuGet do tworzenia pakietów.
+Ze względu na niskie użycie polecenie New-Package zostało usunięte. Deweloperzy są zalecani do tworzenia pakietów przy użyciu programu NuGet. exe lub narzędzia z Eksploratorem pakietów NuGet.
 
 ## <a name="bug-fixes"></a>Poprawki błędów
-NuGet 1.7 ma ustaloną wiele błędów wokół scenariuszy kontroli sieci/źródła i przywracanie pakietów przepływu pracy.
+W pakiecie NuGet 1,7 rozwiązano wiele usterek wokół przepływu pracy przywracania pakietów i scenariuszy kontroli sieci/źródła.
 
-Aby uzyskać pełną listę prac elementy rozwiązane w NuGet 1.7, widok [NuGet narzędzie do śledzenia problemów w tej wersji](http://nuget.codeplex.com/workitem/list/advanced?keyword=&status=Closed&type=All&priority=All&release=NuGet%201.7&assignedTo=All&component=All&sortField=Votes&sortDirection=Descending&page=0).
+Aby zapoznać się z pełną listą elementów roboczych ustalonych w programie NuGet 1,7, zobacz [Śledzenie problemów NuGet dla tej wersji](http://nuget.codeplex.com/workitem/list/advanced?keyword=&status=Closed&type=All&priority=All&release=NuGet%201.7&assignedTo=All&component=All&sortField=Votes&sortDirection=Descending&page=0).

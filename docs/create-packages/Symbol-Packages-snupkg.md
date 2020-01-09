@@ -12,12 +12,12 @@ keywords: Pakiety symboli NuGet, debugowanie pakietów NuGet, obsługa debugowan
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 8528261f90e75e2dfac8cb746b396d227c3741f4
-ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
+ms.openlocfilehash: de37cbf1f63da3de07774281eceef99c51abdaa5
+ms.sourcegitcommit: 96aab8a1ad35eca0c029679d0158d9cc93d66009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825176"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75676383"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symboli (. snupkg)
 
@@ -35,8 +35,8 @@ Jeśli używasz programu dotnet. exe lub MSBuild, musisz ustawić `IncludeSymbol
 
    ```xml
    <PropertyGroup>
-      <IncludeSymbols>true</IncludeSymbols> 
-      <SymbolPackageFormat>snupkg</SymbolPackageFormat> 
+      <IncludeSymbols>true</IncludeSymbols>
+      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
    </PropertyGroup>
    ```
 
