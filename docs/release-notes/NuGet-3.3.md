@@ -5,22 +5,22 @@ author: karann-msft
 ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 482c03a4f6ca39edf317b6ef8d535e79b53d5d16
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: aa8290c80cc500b59d1779bf76662c07382fd277
+ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68317042"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76813783"
 ---
 # <a name="nuget-33-release-notes"></a>Informacje o wersji narzędzia NuGet 3,3
 
-[Informacje o wersji pakietu NuGet 3.2.1](../release-notes/nuget-3.2.1.md)[NuGet 3,4-RC — informacje o wersji](../release-notes/nuget-3.4-RC.md)  | 
+[Informacje o wersji pakietu NuGet 3.2.1](../release-notes/nuget-3.2.1.md) | [NuGet 3,4-RC — informacje o wersji](../release-notes/nuget-3.4-RC.md)
 
 Pakiet NuGet 3,3 został wydane 30 listopada 2015 z znaczącą liczbą aktualizacji interfejsu użytkownika i funkcjami wiersza polecenia, a także kolekcją przydatnych poprawek do klientów programu NuGet.
 
 ## <a name="new-features"></a>Nowe funkcje
 
-* Wprowadzono dostawców poświadczeń, dzięki którym klienci wiersza polecenia NuGet mogą bezproblemowo współpracować z uwierzytelnionym źródłem danych. [Instrukcje dotyczące sposobu instalowania dostawcy poświadczeń Visual Studio Team Services](../api/nuget-exe-credential-providers.md) i konfigurowania klientów NuGet do korzystania z nich są dostępne w dokumentach programu NuGet.
+* Wprowadzono dostawców poświadczeń, dzięki którym klienci wiersza polecenia NuGet mogą bezproblemowo współpracować z uwierzytelnionym źródłem danych. [Instrukcje dotyczące sposobu instalowania dostawcy poświadczeń Visual Studio Team Services](../reference/extensibility/nuget-exe-credential-providers.md) i konfigurowania klientów NuGet do korzystania z nich są dostępne w dokumentach programu NuGet.
 
 ## <a name="new-user-interface-features"></a>Nowe funkcje interfejsu użytkownika
 
@@ -37,11 +37,11 @@ Pakiet NuGet 3,3 został wydane 30 listopada 2015 z znaczącą liczbą aktualiza
 
 ## <a name="new-command-line-features"></a>Nowe funkcje wiersza polecenia
 
-W tej wersji wprowadziliśmy `add` polecenia i `init` w celu zainicjowania repozytoriów opartych na folderach zgodnie z opisem w [dokumentacji NuGet. exe](../reference/nuget-exe-cli-reference.md). Repozytoria tworzone i utrzymywane przy użyciu tej struktury folderów [zapewniają znaczący](http://blog.nuget.org/20150922/Accelerate-Package-Source.html) wpływ na wydajność, jak opisano w naszym blogu.
+W tej wersji wprowadziliśmy polecenia `add` i `init` w celu zainicjowania repozytoriów opartych na folderach zgodnie z opisem w [dokumentacji NuGet. exe](../reference/nuget-exe-cli-reference.md). Repozytoria tworzone i utrzymywane przy użyciu tej struktury folderów [zapewniają znaczący](http://blog.nuget.org/20150922/Accelerate-Package-Source.html) wpływ na wydajność, jak opisano w naszym blogu.
 
-## <a name="contentfiles"></a>ContentFiles
+## <a name="contentfiles"></a>contentFiles
 
-Zawartość jest teraz obsługiwana w `project.json` projektach zarządzanych za pomocą nowego `contentFiles` folderu i `.nuspec` `contentFiles` notacji elementu.  Ta zawartość może być bardziej bezpośrednio określona przez autora pakietu na potrzeby interakcji z systemami projektu.  Więcej informacji o sposobie konfigurowania contentFiles w `.nuspec` dokumencie znajduje się w [dokumentacji. nuspec](../reference/nuspec.md).
+Zawartość jest teraz obsługiwana w `project.json` projektach zarządzanych za pomocą nowego folderu `contentFiles` i `.nuspec` notacji elementu `contentFiles`.  Ta zawartość może być bardziej bezpośrednio określona przez autora pakietu na potrzeby interakcji z systemami projektu.  Więcej informacji o sposobach konfigurowania contentFiles w dokumencie `.nuspec` można znaleźć w [dokumentacji. nuspec](../reference/nuspec.md).
 
 ## <a name="nuget-locals-cache-management"></a>Zarządzanie pamięcią podręczną pakietów NuGet
 
@@ -59,4 +59,4 @@ Lista problemów rozwiązanych w wersji wiersza polecenia 3,3 jest rejestrowana 
 
 ## <a name="known-issues"></a>Znane problemy
 
-Będziemy nadal śledzić problemy na naszej liście problemów usługi GitHub, którą można znaleźć w witrynie:[http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+Będziemy nadal śledzić problemy na naszej liście problemów usługi GitHub, którą można znaleźć w witrynie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

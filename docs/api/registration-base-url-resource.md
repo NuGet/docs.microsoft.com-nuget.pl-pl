@@ -6,14 +6,14 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: eb8d59e253f85fbbb8546a5f71856df842ce94d6
-ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
+ms.openlocfilehash: c62e5b7b53d30a1b362e87dbbea26355a36b1274
+ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74096899"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76813276"
 ---
-# <a name="package-metadata"></a>Metadane pakietu
+# <a name="package-metadata"></a>Metadane pakietów
 
 Możliwe jest pobranie metadanych o pakietach dostępnych w źródle pakietów przy użyciu interfejsu API programu NuGet v3. Te metadane można pobrać przy użyciu zasobu `RegistrationsBaseUrl` znalezionego w [indeksie usługi](service-index.md).
 
@@ -26,8 +26,8 @@ Następujące wartości `@type` są używane:
 wartość @type                     | Uwagi
 ------------------------------- | -----
 RegistrationsBaseUrl            | Początkowa wersja
-RegistrationsBaseUrl/3.0.0 — beta | Alias `RegistrationsBaseUrl`
-RegistrationsBaseUrl/3.0.0-RC   | Alias `RegistrationsBaseUrl`
+RegistrationsBaseUrl/3.0.0-beta | Alias `RegistrationsBaseUrl`
+RegistrationsBaseUrl/3.0.0-rc   | Alias `RegistrationsBaseUrl`
 RegistrationsBaseUrl/3.4.0      | Odpowiedzi formacie gzip
 RegistrationsBaseUrl/3.6.0      | Obejmuje pakiety 2.0.0 SemVer
 
@@ -76,20 +76,20 @@ Algorytm heurystyczny, którego używa nuget.org, jest następujący: w przypadk
 
 ### <a name="request-parameters"></a>Parametry żądania
 
-Nazwa     | W     | Typ    | Wymagane | Uwagi
+Nazwa     | W programie     | Typ    | Wymagane | Uwagi
 -------- | ------ | ------- | -------- | -----
-LOWER_ID | Adres URL    | string  | Opcję      | Identyfikator pakietu, małe litery
+LOWER_ID | {1&gt;URL&lt;1}    | string  | tak      | Identyfikator pakietu, małe litery
 
 Wartość `LOWER_ID` jest pożądanym IDENTYFIKATORem pakietu małymi literami przy użyciu reguł zaimplementowane przez. Metoda [`System.String.ToLowerInvariant()`](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) sieci.
 
-### <a name="response"></a>Reakcji
+### <a name="response"></a>Odpowiedź
 
 Odpowiedź jest dokumentem JSON, który ma obiekt główny o następujących właściwościach:
 
 Nazwa  | Typ             | Wymagane | Uwagi
 ----- | ---------------- | -------- | -----
-count | integer          | Opcję      | Liczba stron rejestracji w indeksie
-produktów | Tablica obiektów | Opcję      | Tablica stron rejestracji
+{1&gt;count&lt;1} | integer          | tak      | Liczba stron rejestracji w indeksie
+items | Tablica obiektów | tak      | Tablica stron rejestracji
 
 Każdy element w tablicy `items` obiektu indeksu jest obiektem JSON reprezentującym stronę rejestracji.
 
@@ -99,12 +99,12 @@ Obiekt strony rejestracji znaleziony w indeksie rejestracji ma następujące wł
 
 Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
-@id    | string           | Opcję      | Adres URL strony rejestracji
-count  | integer          | Opcję      | Liczba liści rejestracji na stronie
-produktów  | Tablica obiektów | Znaleziono       | Tablica liści rejestracji i ich skojarzone metadane
-dołu  | string           | Opcję      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
+@id    | string           | tak      | Adres URL strony rejestracji
+{1&gt;count&lt;1}  | integer          | tak      | Liczba liści rejestracji na stronie
+items  | Tablica obiektów | Znaleziono       | Tablica liści rejestracji i ich skojarzone metadane
+dołu  | string           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 nadrzędny | string           | Znaleziono       | Adres URL indeksu rejestracji
-prawym górnym  | string           | Opcję      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
+prawym górnym  | string           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
 `lower` i `upper` granice obiektu strony są przydatne, gdy wymagana jest wartość metadanych określonej wersji strony.
 Te ograniczenia mogą służyć do pobrania jedynej wymaganej strony rejestracji. Ciągi wersji są zgodne z [regułami wersji narzędzia NuGet](../concepts/package-versioning.md). Ciągi wersji są znormalizowane i nie zawierają metadanych kompilacji. Podobnie jak w przypadku wszystkich wersji ekosystemu NuGet porównanie ciągów wersji jest implementowane przy użyciu [reguł pierwszeństwa wersji SemVer 2.0.0](https://semver.org/spec/v2.0.0.html#spec-item-11).
@@ -123,9 +123,9 @@ Obiekt liścia rejestracji znaleziony na stronie rejestracji ma następujące w�
 
 Nazwa           | Typ   | Wymagane | Uwagi
 -------------- | ------ | -------- | -----
-@id            | string | Opcję      | Adres URL liścia rejestracji
-catalogEntry   | object | Opcję      | Wpis katalogu zawierający metadane pakietu
-packageContent | string | Opcję      | Adres URL zawartości pakietu (. nupkg)
+@id            | string | tak      | Adres URL liścia rejestracji
+catalogEntry   | Obiekt programu | tak      | Wpis katalogu zawierający metadane pakietu
+packageContent | string | tak      | Adres URL zawartości pakietu (. nupkg)
 
 Każdy obiekt liścia rejestracji reprezentuje dane skojarzone z pojedynczą wersją pakietu.
 
@@ -135,30 +135,30 @@ Właściwość `catalogEntry` w obiekcie liścia rejestracji ma następujące w�
 
 Nazwa                     | Typ                       | Wymagane | Uwagi
 ------------------------ | -------------------------- | -------- | -----
-@id                      | string                     | Opcję      | Adres URL dokumentu użyty do utworzenia tego obiektu
+@id                      | string                     | tak      | Adres URL dokumentu użyty do utworzenia tego obiektu
 autorów                  | ciąg lub tablica ciągów | Znaleziono       | 
 dependencyGroups         | Tablica obiektów           | Znaleziono       | Zależności pakietu pogrupowane według platformy docelowej
-Amortyzacja              | object                     | Znaleziono       | Wycofanie skojarzone z pakietem
+Amortyzacja              | Obiekt programu                     | Znaleziono       | Wycofanie skojarzone z pakietem
 opis              | string                     | Znaleziono       | 
 iconUrl                  | string                     | Znaleziono       | 
-identyfikator                       | string                     | Opcję      | Identyfikator pakietu
+{1&gt;identyfikator&lt;1}                       | string                     | tak      | Identyfikator pakietu
 licenseUrl               | string                     | Znaleziono       |
 licenseExpression        | string                     | Znaleziono       | 
 wymienione                   | wartość logiczna                    | Znaleziono       | Powinien być uważany za wymieniony, jeśli nie istnieje
-minClientVersion         | string                     | Znaleziono       | 
+MinClientVersion         | string                     | Znaleziono       | 
 projectUrl               | string                     | Znaleziono       | 
 publikacj                | string                     | Znaleziono       | Ciąg zawierający sygnaturę czasową ISO 8601, kiedy pakiet został opublikowany
 requireLicenseAcceptance | wartość logiczna                    | Znaleziono       | 
 podsumowanie                  | string                     | Znaleziono       | 
 tagi                     | ciąg lub tablica ciągu  | Znaleziono       | 
-tytuły                    | string                     | Znaleziono       | 
-version                  | string                     | Opcję      | Pełny ciąg wersji po normalizacji
+tytuł                    | string                     | Znaleziono       | 
+Wersja programu                  | string                     | tak      | Pełny ciąg wersji po normalizacji
 
 Właściwość Package `version` jest pełnym ciągiem wersji po normalizacji. Oznacza to, że w tym miejscu można uwzględnić dane kompilacji SemVer 2.0.0.
 
 Właściwość `dependencyGroups` jest tablicą obiektów reprezentujących zależności pakietu, pogrupowanych według platformy docelowej. Jeśli pakiet nie ma żadnych zależności, brak właściwości `dependencyGroups`, pusta tablica lub właściwość `dependencies` wszystkich grup jest pusta lub nie istnieje.
 
-Wartość właściwości `licenseExpression` jest zgodna z [składnią wyrażenia licencji NuGet](https://docs.microsoft.com/nuget/reference/nuspec#license).
+Wartość właściwości `licenseExpression` jest zgodna z [składnią wyrażenia licencji NuGet](../reference/nuspec.md#license).
 
 > [!Note]
 > W przypadku nuget.org wartość `published` jest ustawiana na Year 1900, gdy pakiet jest nieznajdujący się na liście.
@@ -182,8 +182,8 @@ Każda zależność pakietu ma następujące właściwości:
 
 Nazwa         | Typ   | Wymagane | Uwagi
 ------------ | ------ | -------- | -----
-identyfikator           | string | Opcję      | Identyfikator zależności pakietu
-range        | object | Znaleziono       | Dozwolony [zakres wersji](../concepts/package-versioning.md#version-ranges-and-wildcards) zależności
+{1&gt;identyfikator&lt;1}           | string | tak      | Identyfikator zależności pakietu
+range        | Obiekt programu | Znaleziono       | Dozwolony [zakres wersji](../concepts/package-versioning.md#version-ranges-and-wildcards) zależności
 rejestracja | string | Znaleziono       | Adres URL indeksu rejestracji dla tej zależności
 
 Jeśli właściwość `range` jest wykluczona lub pusty ciąg, klient powinien domyślnie mieć zakres wersji `(, )`. Oznacza to, że jest dozwolona jakakolwiek wersja zależności. Wartość `*` nie jest dozwolona dla właściwości `range`.
@@ -194,15 +194,15 @@ Każde wycofanie pakietu ma następujące właściwości:
 
 Nazwa             | Typ             | Wymagane | Uwagi
 ---------------- | ---------------- | -------- | -----
-powodów          | Tablica ciągów | Opcję      | Przyczyny, dla których pakiet był przestarzały
+powodów          | Tablica ciągów | tak      | Przyczyny, dla których pakiet był przestarzały
 — komunikat          | string           | Znaleziono       | Dodatkowe szczegóły dotyczące tego wycofania
-alternatePackage | object           | Znaleziono       | Alternatywny pakiet, który powinien zostać użyty zamiast niego
+alternatePackage | Obiekt programu           | Znaleziono       | Alternatywny pakiet, który powinien zostać użyty zamiast niego
 
 Właściwość `reasons` musi zawierać co najmniej jeden ciąg, a jedynie ciągi z następującej tabeli:
 
 Przyczyna       | Opis             
 ------------ | -----------
-Starsza wersja       | Pakiet nie jest już obsługiwany
+Starsze       | Pakiet nie jest już obsługiwany
 CriticalBugs | Pakiet zawiera usterki, które nie są odpowiednie do użycia
 Inne        | Pakiet jest przestarzały z powodu braku na tej liście
 
@@ -214,8 +214,8 @@ Alternatywny obiekt pakietu ma następujące właściwości:
 
 Nazwa         | Typ   | Wymagane | Uwagi
 ------------ | ------ | -------- | -----
-identyfikator           | string | Opcję      | Identyfikator alternatywnego pakietu
-range        | object | Znaleziono       | Dozwolony [zakres wersji](../concepts/package-versioning.md#version-ranges-and-wildcards)lub `*`, jeśli dowolna wersja jest dozwolona
+{1&gt;identyfikator&lt;1}           | string | tak      | Identyfikator alternatywnego pakietu
+range        | Obiekt programu | Znaleziono       | Dozwolony [zakres wersji](../concepts/package-versioning.md#version-ranges-and-wildcards)lub `*`, jeśli dowolna wersja jest dozwolona
 rejestracja | string | Znaleziono       | Adres URL indeksu rejestracji dla tego alternatywnego pakietu
 
 ### <a name="sample-request"></a>Przykładowe żądanie
@@ -239,12 +239,12 @@ Gdy w indeksie rejestracji nie podano tablicy `items`, żądanie HTTP GET warto�
 
 Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
-@id    | string           | Opcję      | Adres URL strony rejestracji
-count  | integer          | Opcję      | Liczba liści rejestracji na stronie
-produktów  | Tablica obiektów | Opcję      | Tablica liści rejestracji i ich skojarzone metadane
-dołu  | string           | Opcję      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
-nadrzędny | string           | Opcję      | Adres URL indeksu rejestracji
-prawym górnym  | string           | Opcję      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
+@id    | string           | tak      | Adres URL strony rejestracji
+{1&gt;count&lt;1}  | integer          | tak      | Liczba liści rejestracji na stronie
+items  | Tablica obiektów | tak      | Tablica liści rejestracji i ich skojarzone metadane
+dołu  | string           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
+nadrzędny | string           | tak      | Adres URL indeksu rejestracji
+prawym górnym  | string           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
 Kształt obiektów liścia rejestracji jest taki sam jak w [powyższym](#registration-leaf-object-in-a-page)indeksie rejestracji.
 
@@ -269,7 +269,7 @@ Liść rejestracji jest dokumentem JSON z obiektem głównym o następujących w
 
 Nazwa           | Typ    | Wymagane | Uwagi
 -------------- | ------- | -------- | -----
-@id            | string  | Opcję      | Adres URL liścia rejestracji
+@id            | string  | tak      | Adres URL liścia rejestracji
 catalogEntry   | string  | Znaleziono       | Adres URL wpisu katalogu, który wygenerował ten liść
 wymienione         | wartość logiczna | Znaleziono       | Powinien być uważany za wymieniony, jeśli nie istnieje
 packageContent | string  | Znaleziono       | Adres URL zawartości pakietu (. nupkg)

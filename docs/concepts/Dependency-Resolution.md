@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: d2294ef0acb9053e74543204ae6f68b9fbc6fb0a
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: c6f50e6eb21826afebcdcd4045c7ab8b6e6489e3
+ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73611068"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76813328"
 ---
 # <a name="how-nuget-resolves-package-dependencies"></a>Jak narzędzie NuGet rozpoznaje zależności pakietów
 
@@ -24,7 +24,7 @@ Gdy wiele pakietów ma tę samą zależność, ten sam identyfikator pakietu mo�
 
 W przypadku instalowania pakietów do projektów przy użyciu formatu PackageReference, NuGet dodaje odwołania do wykresu prostego pakietu w odpowiednim pliku i rozwiązuje konflikty przed czasem. Ten proces jest nazywany *przywracaniem przechodnim*. Ponowne instalowanie lub przywracanie pakietów jest procesem pobierania pakietów wymienionych na grafie, co powoduje szybsze i bardziej przewidywalne kompilacje. Możesz również korzystać z symboli wieloznacznych (zmiennoprzecinkowych), takich jak 2,8.\*, unikając kosztownych i podatnych na błędy wywołań `nuget update` na komputerach klienckich i serwerach kompilacji.
 
-Gdy proces przywracania NuGet zostanie uruchomiony przed kompilacją, rozpoznaje zależności jako pierwsze w pamięci, a następnie zapisuje wykres wyjściowy do pliku o nazwie `project.assets.json`. Program zapisuje także rozwiązane zależności do pliku blokady o nazwie `packages.lock.json`, jeśli [Funkcja blokowania plików jest włączona](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files#locking-dependencies).
+Gdy proces przywracania NuGet zostanie uruchomiony przed kompilacją, rozpoznaje zależności jako pierwsze w pamięci, a następnie zapisuje wykres wyjściowy do pliku o nazwie `project.assets.json`. Program zapisuje także rozwiązane zależności do pliku blokady o nazwie `packages.lock.json`, jeśli [Funkcja blokowania plików jest włączona](../consume-packages/package-references-in-project-files.md#locking-dependencies).
 Plik zasobów znajduje się w `MSBuildProjectExtensionsPath`, który domyślnie jest folderem "obj" projektu. Program MSBuild odczytuje następnie ten plik i tłumaczy go na zestaw folderów, w których można znaleźć potencjalne odwołania, a następnie dodaje je do drzewa projektu w pamięci.
 
 Plik `project.assets.json` jest tymczasowy i nie należy go dodawać do kontroli źródła. Jest on wyświetlany domyślnie w obu `.gitignore` i `.tfignore`. Zobacz [pakiety i kontrola źródła](../consume-packages/packages-and-source-control.md).
@@ -100,7 +100,7 @@ W takich sytuacjach konsument najwyższego poziomu (aplikacja lub pakiet) powini
 
 W przypadku `packages.config`zależności projektu są zapisywane do `packages.config` jako płaska lista. Wszystkie zależności tych pakietów są również zapisywane na tej samej liście. Po zainstalowaniu pakietów NuGet może również modyfikować plik `.csproj`, `app.config`, `web.config`i inne poszczególne pliki.
 
-W `packages.config`pakiet NuGet próbuje rozwiązać konflikty zależności podczas instalacji poszczególnych pakietów. Oznacza to, że jeśli pakiet A jest instalowany i zależy od pakietu B, a pakiet B jest już wymieniony w `packages.config` jako zależność innego, NuGet porównuje wersje żądanego pakietu i próbuje znaleźć wersję spełniającą wszystkie wersje powiązanych. Pakiet NuGet wybiera niższą wersję *główną. pomocniczą* , która spełnia zależności.
+W `packages.config`pakiet NuGet próbuje rozwiązać konflikty zależności podczas instalacji poszczególnych pakietów. Oznacza to, że jeśli pakiet A jest instalowany i zależy od pakietu B, a pakiet B jest już wymieniony w `packages.config` jako zależność innego, NuGet porównuje wersje żądanego pakietu B i próbuje znaleźć wersję, która spełnia wszystkie ograniczenia wersji. Pakiet NuGet wybiera niższą wersję *główną. pomocniczą* , która spełnia zależności.
 
 Domyślnie program NuGet 2,8 szuka najniższej wersji poprawki (zobacz [Informacje o wersji programu nuget 2,8](../release-notes/nuget-2.8.md#patch-resolution-for-dependencies)). To ustawienie można kontrolować za pomocą atrybutu `DependencyVersion` w `Nuget.Config` i przełącznika `-DependencyVersion` w wierszu polecenia.  
 
@@ -156,4 +156,3 @@ Aby rozwiązać niezgodności, wykonaj jedną z następujących czynności:
 
 - Przekieruj projekt do struktury, która jest obsługiwana przez pakiety, których chcesz użyć.
 - Skontaktuj się z autorem pakietów i pracuj z nimi, aby dodać obsługę wybranej platformy. Każda Strona z listą pakietów w witrynie [NuGet.org](https://www.nuget.org/) ma link **Contact Owners** do tego celu.
-

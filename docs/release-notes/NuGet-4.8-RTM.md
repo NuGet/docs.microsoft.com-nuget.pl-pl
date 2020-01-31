@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 5/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6e352fef9fc36646f6feedbc390f847119cb00bf
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: e6f6d9f703dd4761236d166f3772618c100aca09
+ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73611366"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76813770"
 ---
 # <a name="nuget-48-release-notes"></a>Informacje o wersji narzędzia NuGet 4,8
 
@@ -36,7 +36,7 @@ Dostępne są również wersje wiersza polecenia o tej samej funkcji:
 ### <a name="installing-signed-packages-on-a-ci-machine-or-in-an-offline-environment-takes-longer-than-usual"></a>Instalowanie podpisanych pakietów na maszynie elementu konfiguracji lub w środowisku offline trwa dłużej niż zwykle
 
 #### <a name="issue"></a>Problem
-Jeśli komputer ma ograniczoną dostęp do Internetu (na przykład maszynę kompilacji w scenariuszu ciągłej integracji/ciągłego wdrażania), zainstalowanie/przywrócenie podpisanego pakietu NuGet spowoduje ostrzeżenie ([NU3028](https://docs.microsoft.com/nuget/reference/errors-and-warnings/nu3028)), ponieważ serwery odwołań są niedostępne. To normalne zachowanie. Jednak w niektórych przypadkach może to mieć niezamierzone concequences, takie jak instalacja/przywracanie pakietu trwa dłużej niż zwykle.
+Jeśli komputer ma ograniczoną dostęp do Internetu (na przykład maszynę kompilacji w scenariuszu ciągłej integracji/ciągłego wdrażania), zainstalowanie/przywrócenie podpisanego pakietu NuGet spowoduje ostrzeżenie ([NU3028](../reference/errors-and-warnings/nu3028.md)), ponieważ serwery odwołań są niedostępne. To normalne zachowanie. Jednak w niektórych przypadkach może to mieć niezamierzone concequences, takie jak instalacja/przywracanie pakietu trwa dłużej niż zwykle.
 
 #### <a name="workaround"></a>Obejście
 Aktualizacja do programu Visual Studio 15.8.4 i NuGet. exe 4.8.1, gdzie została wprowadzona zmienna środowiskowa do przełączania trybu sprawdzania odwołania.

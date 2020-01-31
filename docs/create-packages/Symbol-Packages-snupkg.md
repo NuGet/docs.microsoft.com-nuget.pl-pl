@@ -12,12 +12,12 @@ keywords: Pakiety symboli NuGet, debugowanie pakietów NuGet, obsługa debugowan
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: de37cbf1f63da3de07774281eceef99c51abdaa5
-ms.sourcegitcommit: 96aab8a1ad35eca0c029679d0158d9cc93d66009
+ms.openlocfilehash: 0109aea95ec255b3e0abcdff4cf51b4bfeafbb8c
+ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75676383"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76813484"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symboli (. snupkg)
 
@@ -127,7 +127,7 @@ Plik. nupkg będzie dokładnie taki sam, jak dzisiaj, ale plik. snupkg ma nastę
    ```
 
 4) Jeśli autor zdecyduje się użyć niestandardowych nuspec do kompilowania ich NUPKG i snupkg, snupkg powinien mieć tę samą hierarchię folderów i pliki szczegółowe w 2).
-5) pola ```authors``` i ```owners``` zostaną wykluczone z nuspec snupkg.
+5) Następujące pola zostaną wykluczone z snupkg nuspec: ```authors```, ```owners```, ```requireLicenseAcceptance```, ```license type```, ```licenseUrl```i ```icon```.
 6) Nie należy używać elementu ```<license>```. A. snupkg jest objęta tą samą licencją co odpowiadające mu. nupkg.
 
 ## <a name="see-also"></a>Zobacz także

@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/16/2019
 ms.topic: quickstart
-ms.openlocfilehash: ef1bda19c5ca3c6b5a4bd9b9d4e3ef41d7dadb53
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: fe551dfa7f2322e6677c9c0b972c79c9df2e7695
+ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73610636"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76813562"
 ---
 # <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki Start: Tworzenie i publikowanie pakietu NuGet przy użyciu programu Visual Studio (.NET Standard, tylko w systemie Windows)
 
@@ -30,7 +30,7 @@ Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET Standard w 
    > [!Important]
    > Jeśli pracujesz z projektem w stylu innym niż zestaw SDK, postępuj zgodnie z procedurami w temacie [Tworzenie i publikowanie pakietu .NET Framework (Visual Studio)](create-and-publish-a-package-using-visual-studio-net-framework.md) , aby zamiast tego utworzyć i opublikować pakiet. W tym artykule zaleca się używanie interfejsu wiersza polecenia `dotnet`. Chociaż można opublikować dowolny pakiet NuGet przy użyciu interfejsu wiersza polecenia `nuget.exe`, niektóre kroki opisane w tym artykule są specyficzne dla projektów w stylu zestawu SDK i interfejsu wiersza polecenia dotnet. Interfejs wiersza polecenia NuGet. exe jest używany dla [projektów typu non-SDK](../resources/check-project-format.md) (zwykle .NET Framework).
 
-1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](https://docs.microsoft.com/nuget/nuget-org/individual-accounts#add-a-new-individual-account) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
+1. [Zarejestruj się, aby korzystać z bezpłatnego konta w usłudze NuGet.org](../nuget-org/individual-accounts.md#add-a-new-individual-account) , jeśli jeszcze go nie masz. Utworzenie nowego konta spowoduje wysłanie wiadomości e-mail z potwierdzeniem. Musisz potwierdzić konto, aby można było przekazać pakiet.
 
 ## <a name="create-a-class-library-project"></a>Tworzenie projektu biblioteki klas
 
@@ -103,7 +103,7 @@ namespace AppLogger
 
 Program Visual Studio można skonfigurować tak, aby automatycznie generował pakiet NuGet podczas kompilowania projektu.
 
-1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Właściwości**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie **właściwości**.
 
 2. Na karcie **pakiet** wybierz pozycję **Generuj pakiet NuGet podczas kompilacji**.
 

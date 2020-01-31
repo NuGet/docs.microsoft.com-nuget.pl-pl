@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 5/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0c3c0380fe6efb3c58124ca5ba8bc1306a433340
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: 2290025d42dcd5704b6b019c17346201fe6a990d
+ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73611350"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76813796"
 ---
 # <a name="nuget-47-release-notes"></a>Informacje o wersji narzędzia NuGet 4,7
 
@@ -20,7 +20,7 @@ ms.locfileid: "73611350"
 
 * W celu włączenia [podpisanych pakietów repozytorium](https://github.com/NuGet/Home/wiki/Repository-Signatures) zostanie rozszerzony podpis pakietu
 
-* W programie Visual Studio w wersji 15,7 wprowadzono możliwość [migrowania istniejących projektów, które używają formatu Packages. config do używania PackageReference](https://docs.microsoft.com/nuget/consume-packages/migrate-packages-config-to-package-reference) zamiast tego.
+* W programie Visual Studio w wersji 15,7 wprowadzono możliwość [migrowania istniejących projektów, które używają formatu Packages. config do używania PackageReference](../consume-packages/migrate-packages-config-to-package-reference.md) zamiast tego.
 
 ## <a name="summary-whats-new-in-472"></a>Podsumowanie: co nowego w programie 4.7.2
 

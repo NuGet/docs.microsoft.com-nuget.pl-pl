@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 3/1/2019
 ms.topic: reference
 ms.reviewer: ananguar
-ms.openlocfilehash: 3102cb9a20f354e92a0da8bba6457dc2ad0f0f2d
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: 1b84c6e88a56216e5747d5bc602219af6695c305
+ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73610957"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76812938"
 ---
 # <a name="package-details-url-template"></a>Szablon adresu URL szczegółów pakietu
 
@@ -47,10 +47,10 @@ Wartość `@id` w indeksie usługi jest ciągiem adresu URL zawierającym dowoln
 
 Nazwa        | Typ    | Wymagane | Uwagi
 ----------- | ------- | -------- | -----
-`{id}`      | string  | znaleziono       | Identyfikator pakietu, dla którego mają zostać pobrane szczegóły
-`{version}` | string  | znaleziono       | Wersja pakietu, dla której mają zostać pobrane szczegóły
+`{id}`      | string  | Znaleziono       | Identyfikator pakietu, dla którego mają zostać pobrane szczegóły
+`{version}` | string  | Znaleziono       | Wersja pakietu, dla której mają zostać pobrane szczegóły
 
-Serwer powinien akceptować `{id}` i `{version}` wartości przy użyciu dowolnej wielkości liter. Ponadto serwer nie powinien być wrażliwy na to, czy wersja jest [znormalizowana](https://docs.microsoft.com/nuget/concepts/package-versioning#normalized-version-numbers). Innymi słowy, serwer powinien akceptować również nieznormalizowane wersje.
+Serwer powinien akceptować `{id}` i `{version}` wartości przy użyciu dowolnej wielkości liter. Ponadto serwer nie powinien być wrażliwy na to, czy wersja jest [znormalizowana](../concepts/package-versioning.md#normalized-version-numbers). Innymi słowy, serwer powinien akceptować również nieznormalizowane wersje.
 
 Na przykład szablon Details programu NuGet. org wygląda następująco:
 
