@@ -5,16 +5,16 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2c2b5b21569e2644154670d502146f1e0f9c4c81
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: 922fc0b25664dede59e33c6cd012dfeedcad0397
+ms.sourcegitcommit: 415c70d7014545c1f65271a2debf8c3c1c5eb688
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385017"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77036932"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
-*NuGet 4.0+*
+*Pakiet NuGet 4.0 +*
 
 W formacie [PackageReference](../consume-packages/package-references-in-project-files.md) program NuGet 4.0 + może przechowywać wszystkie metadane manifestu bezpośrednio w pliku projektu, zamiast używać oddzielnego pliku `.nuspec`.
 
@@ -48,18 +48,18 @@ Należy zauważyć, że właściwości `Owners` i `Summary` z `.nuspec` nie są 
 
 | Wartość atrybutu/NuSpec | Właściwość programu MSBuild | Domyślny | Uwagi |
 |--------|--------|--------|--------|
-| Id | PackageId | AssemblyName | $ (AssemblyName) z MSBuild |
+| Identyfikator | PackageId | AssemblyName | $ (AssemblyName) z MSBuild |
 | Wersja | PackageVersion | Wersja | Jest to zgodne z semver, na przykład "1.0.0", "1.0.0-beta" lub "1.0.0-beta-00345" |
 | VersionPrefix | PackageVersionPrefix | empty | Ustawienie PackageVersion zastępowanie PackageVersionPrefix |
 | VersionSuffix | PackageVersionSuffix | empty | $ (VersionSuffix) z programu MSBuild. Ustawienie PackageVersion zastępowanie PackageVersionSuffix |
 | Autorzy | Autorzy | Nazwa_użytkownika bieżącego użytkownika | |
-| Właściciele | N/D | Nieobecny w NuSpec | |
+| Właściciele | Brak | Nieobecny w NuSpec | |
 | Tytuł | Tytuł | PackageId| |
 | Opis | Opis | "Opis pakietu" | |
-| Prawa autorskie | Prawa autorskie | empty | |
-| RequireLicenseAcceptance | PackageRequireLicenseAcceptance | {1&gt;false&lt;1} | |
-| license (licencja) | PackageLicenseExpression | empty | Odnosi się do `<license type="expression">` |
-| license (licencja) | PackageLicenseFile | empty | Odnosi się do `<license type="file">`. Należy jawnie spakować plik licencji, do której istnieje odwołanie. |
+| Prawo | Prawo | empty | |
+| RequireLicenseAcceptance | PackageRequireLicenseAcceptance | false | |
+| licencjonowan | PackageLicenseExpression | empty | Odnosi się do `<license type="expression">` |
+| licencjonowan | PackageLicenseFile | empty | Odnosi się do `<license type="file">`. Należy jawnie spakować plik licencji, do której istnieje odwołanie. |
 | LicenseUrl | PackageLicenseUrl | empty | `PackageLicenseUrl` jest przestarzałe, użyj właściwości PackageLicenseExpression lub PackageLicenseFile |
 | ProjectUrl | PackageProjectUrl | empty | |
 | Ikona | PackageIcon | empty | Należy jawnie spakować plik obrazu ikony, do którego istnieje odwołanie.|
@@ -69,7 +69,7 @@ Należy zauważyć, że właściwości `Owners` i `Summary` z `.nuspec` nie są 
 | Repozytorium/adres URL | RepositoryUrl | empty | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przykład: *https://github.com/NuGet/NuGet.Client.git* |
 | Repozytorium/typ | Repozytorium | empty | Typ repozytorium. Przykłady: *git*i *TFS*. |
 | Repozytorium/gałąź | RepositoryBranch | empty | Opcjonalne informacje o gałęzi repozytorium. Aby można było uwzględnić tę właściwość, należy również określić *RepositoryUrl* . Przykład: *Master* (NuGet 4.7.0 +) |
-| Repozytorium/zatwierdzenie | RepositoryCommit | empty | Opcjonalne zatwierdzenie lub zestaw zmian repozytorium, aby wskazać, z którym źródłem został skompilowany pakiet. Aby można było uwzględnić tę właściwość, należy również określić *RepositoryUrl* . Example: *0e4d1b598f350b3dc675018d539114d1328189ef* (NuGet 4.7.0+) |
+| Repozytorium/zatwierdzenie | RepositoryCommit | empty | Opcjonalne zatwierdzenie lub zestaw zmian repozytorium, aby wskazać, z którym źródłem został skompilowany pakiet. Aby można było uwzględnić tę właściwość, należy również określić *RepositoryUrl* . Przykład: *0e4d1b598f350b3dc675018d539114d1328189ef* (NuGet 4.7.0 +) |
 | PackageType | `<PackageType>DotNetCliTool, 1.0.0.0;Dependency, 2.0.0.0</PackageType>` | | |
 | Podsumowanie | Nieobsługiwane | | |
 
@@ -81,7 +81,7 @@ Należy zauważyć, że właściwości `Owners` i `Summary` z `.nuspec` nie są 
 - PackageId
 - Autorzy
 - Opis
-- Prawa autorskie
+- Prawo
 - PackageRequireLicenseAcceptance
 - DevelopmentDependency
 - PackageLicenseExpression
@@ -129,7 +129,7 @@ Począwszy od programu NuGet 5,3 & Visual Studio 2019 w wersji 16,3, `pack` zwr�
 
 #### <a name="packing-an-icon-image-file"></a>Pakowanie pliku obrazu ikony
 
-Podczas pakowania pliku obrazu ikony należy użyć właściwości `PackageIcon`, aby określić ścieżkę pakietu względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik jest dołączony do pakietu. Rozmiar pliku obrazu jest ograniczony do 1 MB. Obsługiwane formaty plików to JPEG i PNG. Zalecamy rozdzielczość obrazu 64x64.
+Podczas pakowania pliku obrazu ikony należy użyć właściwości `PackageIcon`, aby określić ścieżkę pakietu względem katalogu głównego pakietu. Ponadto należy się upewnić, że plik jest dołączony do pakietu. Rozmiar pliku obrazu jest ograniczony do 1 MB. Obsługiwane formaty plików to JPEG i PNG. Zalecamy rozdzielczość obrazu 128 x 128.
 
 Na przykład:
 
