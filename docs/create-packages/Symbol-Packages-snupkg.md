@@ -12,24 +12,24 @@ keywords: Pakiety symboli NuGet, debugowanie pakietów NuGet, obsługa debugowan
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: 0109aea95ec255b3e0abcdff4cf51b4bfeafbb8c
-ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
+ms.openlocfilehash: 839c38ec165372bab9b93dec25e5c8e8e9439bfa
+ms.sourcegitcommit: 415c70d7014545c1f65271a2debf8c3c1c5eb688
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76813484"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77036893"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symboli (. snupkg)
 
-Pakiety symboli umożliwiają zwiększenie możliwości debugowania pakietów NuGet.
+Dobre środowisko debugowania opiera się na obecności symboli debugowania, ponieważ zawierają one krytyczne informacje, takie jak skojarzenie między skompilowanym i źródłowym kodem, nazwami zmiennych lokalnych, śladów stosu i innymi. Za pomocą pakietów symboli (. snupkg) można dystrybuować te symbole i ulepszać środowisko debugowania pakietów NuGet.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[NuGet. exe v 4.9.0 lub nowszy](https://www.nuget.org/downloads) albo [dotnet. exe v 2.2.0 lub nowszy](https://www.microsoft.com/net/download/dotnet-core/2.2), które implementują wymagane [Protokoły NuGet](../api/nuget-protocols.md).
+[NuGet. exe v 4.9.0 lub nowszy](https://www.nuget.org/downloads) lub nowszego [interfejsu wiersza polecenia platformy dotnet w wersji 2.2.0 lub nowszej](https://www.microsoft.com/net/download/dotnet-core/2.2), które implementują wymagane [Protokoły NuGet](../api/nuget-protocols.md).
 
 ## <a name="creating-a-symbol-package"></a>Tworzenie pakietu symboli
 
-Jeśli używasz programu dotnet. exe lub MSBuild, musisz ustawić `IncludeSymbols` i `SymbolPackageFormat` właściwości, aby utworzyć plik. snupkg oprócz pliku. nupkg.
+Jeśli używasz interfejsu wiersza polecenia dotnet lub MSBuild, musisz ustawić `IncludeSymbols` i `SymbolPackageFormat` właściwości, aby utworzyć plik. snupkg oprócz pliku. nupkg.
 
 * Dodaj następujące właściwości do pliku. csproj:
 
@@ -108,17 +108,17 @@ W przypadku, gdy te ograniczenia nie są spełnione, pakiety symboli opublikowan
 
 Pakiety symboli opublikowane w [NuGet.org](https://www.nuget.org/) przechodzą kilka walidacji, w tym skanowanie złośliwego oprogramowania. Jeśli pakiet nie zostanie zweryfikowany, na stronie szczegółów pakietu zostanie wyświetlony komunikat o błędzie. Ponadto właściciele pakietu otrzymają wiadomość e-mail z instrukcjami dotyczącymi sposobu rozwiązywania zidentyfikowanych problemów.
 
-Gdy pakiet symboli przeszedł wszystkie walidacje, symbole będą indeksowane przez NuGet. serwery symboli w organizacji. Po indeksowaniu symbol będzie dostępny do użycia z serwerów symboli NuGet.org.
+Gdy pakiet symboli przeszedł wszystkie walidacje, symbole będą indeksowane przez NuGet. serwery symboli organizacji i będą dostępne do użycia.
 
 Sprawdzanie poprawności pakietu i indeksowania zazwyczaj trwa 15 minut. Jeśli publikowanie pakietu trwa dłużej niż oczekiwano, odwiedź stronę [status.NuGet.org](https://status.nuget.org/) , aby sprawdzić, czy w NuGet.org występują jakiekolwiek przerwy. Jeśli wszystkie systemy działają, a pakiet nie został pomyślnie opublikowany w ciągu godziny, zaloguj się do nuget.org i skontaktuj się z nami przy użyciu linku skontaktuj się z pomocą techniczną na stronie Szczegóły pakietu.
 
 ## <a name="symbol-package-structure"></a>Struktura pakietu symboli
 
-Plik. nupkg będzie dokładnie taki sam, jak dzisiaj, ale plik. snupkg ma następującą charakterystykę:
+Pakiet symboli (. snupkg) ma następującą charakterystykę:
 
-1) Element. snupkg będzie miał ten sam identyfikator i wersję co odpowiadający element. nupkg.
-2) Plik. snupkg będzie miał dokładną strukturę folderów jako NUPKG dla każdej biblioteki DLL lub EXE z rozróżnieniem, które zamiast bibliotek DLL/exe, odpowiadające im plików PDB zostaną uwzględnione w tej samej hierarchii folderów. Pliki i foldery z rozszerzeniami innymi niż PDB zostaną pozostawione z snupkg.
-3) Plik. nuspec w pliku. snupkg określi również nowy element PackageType w następujący sposób. Powinien to być określony tylko jeden pakiet.
+1) Element. snupkg ma ten sam identyfikator i wersję, co odpowiadający mu pakiet NuGet (. nupkg).
+2) Plik. snupkg ma taką samą strukturę folderu jak odpowiadająca jej. nupkg dla każdej biblioteki DLL lub EXE z rozróżnieniem, które zamiast bibliotek DLL/exe, odpowiadające im plików PDB zostaną uwzględnione w tej samej hierarchii folderów. Pliki i foldery z rozszerzeniami innymi niż PDB zostaną pozostawione z snupkg.
+3) Plik NUSPEC pakietu symboli ma typ pakietu `SymbolsPackage`:
 
    ```xml
    <packageTypes>

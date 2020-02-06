@@ -1,30 +1,32 @@
 ---
 title: Ustaw typ pakietu NuGet
-description: W tym artykule opisano typy pakietów, aby wskazać przeznaczenie pakietu.
+description: Opisuje typy pakietów, aby wskazać zamierzone użycie pakietu.
 author: karann-msft
 ms.author: karann
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8a3ba6af19125b75af17cab8c093e89485e20324
-ms.sourcegitcommit: 0dea3b153ef823230a9d5f38351b7cef057cb299
+ms.openlocfilehash: 22e8ac2e9e2086a1280c5b0c3be8a032b7998b36
+ms.sourcegitcommit: 415c70d7014545c1f65271a2debf8c3c1c5eb688
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67843534"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77036919"
 ---
 # <a name="set-a-nuget-package-type"></a>Ustaw typ pakietu NuGet
 
-Nuget 3.5 + pakiety mogą być oznaczone określonym *typ pakietu* do wskazania jego przeznaczenia. Domyślnie nie jest oznaczona za pomocą typu, w tym wszystkie pakiety utworzone w starszych wersjach programu NuGet, pakietów `Dependency` typu.
+W przypadku programu NuGet 3.5 + pakiety można oznaczyć przy użyciu określonego *typu pakietu* , aby wskazać jego zamierzone użycie. Pakiety, które nie są oznaczone jako typu, w tym wszystkie pakiety utworzone przy użyciu wcześniejszych wersji programu NuGet, domyślnie są typu `Dependency`.
 
-- `Dependency` pakiety typu Dodaj zasoby kompilacji lub czasu wykonywania bibliotek i aplikacji, a można zainstalować w dowolnym typem projektu (przy założeniu, że są one zgodne).
+- pakiety typu `Dependency` umożliwiają dodawanie zasobów kompilacji lub czasu wykonywania do bibliotek i aplikacji, które można zainstalować w dowolnym typie projektu (przy założeniu, że są one zgodne).
 
-- `DotnetCliTool` rozszerzenia są pakiety typu [wiersz polecenia dotnet](/dotnet/articles/core/tools/index) i są wywoływane z poziomu wiersza polecenia. Takie pakiety można zainstalować tylko w projektach .NET Core i nie mają wpływu na operacje przywracania. Więcej informacji na temat tych rozszerzeń-projekt są dostępne w [rozszerzalność platformy .NET Core](/dotnet/articles/core/tools/extensibility#per-project-based-extensibility) dokumentacji.
+- pakiety typu `DotnetTool` są rozszerzeniami [interfejsu wiersza polecenia dotnet](/dotnet/articles/core/tools/index) i są wywoływane z wiersza poleceń. Takie pakiety można instalować tylko w projektach .NET Core i nie mają wpływu na operacje przywracania. Więcej informacji na temat tych rozszerzeń dla poszczególnych projektów można znaleźć w dokumentacji [rozszerzalności platformy .NET Core](/dotnet/articles/core/tools/extensibility#per-project-based-extensibility) .
 
-- Pakiety typu niestandardowego Użyj identyfikatora dowolnego typu, który jest zgodny z tych samych zasad format jako pakiet identyfikatorów. Dowolny typ inny niż `Dependency` i `DotnetCliTool`, jednak nie są rozpoznawane przez Menedżera pakietów NuGet w programie Visual Studio.
+- pakiety typu `Template` udostępniają [niestandardowe szablony](/dotnet/core/tools/custom-templates) , których można użyć do tworzenia plików lub projektów, takich jak aplikacja, usługa, narzędzie lub Biblioteka klas.
 
-Typy pakietów są ustawiane w `.nuspec` pliku. Jest najlepszym rozwiązaniem dla zapewnienia zgodności, aby *nie* jawnie ustawionej `Dependency` wpisz i zamiast polegać na NuGet, zakładając, że tego typu, gdy typ nie jest określony.
+- Pakiety typu niestandardowego używają dowolnego identyfikatora typu, który jest zgodny z tymi samymi regułami formatowania co identyfikatory pakietów. Jednak żaden typ inny niż `Dependency` i `DotnetTool`nie jest rozpoznawany przez Menedżera pakietów NuGet w programie Visual Studio.
 
-- `.nuspec`: Wskazuje typ pakietu we `packageTypes\packageType` węźle `<metadata>` elementu:
+Typy pakietów są ustawiane w pliku `.nuspec`. Najlepiej, aby zapewnić zgodność z poprzednimi wersjami, aby *nie* ustawiać jawnie typu `Dependency` i zamiast tego polegać na NuGet przy założeniu, że typ nie jest określony.
+
+- `.nuspec`: wskaż typ pakietu w węźle `packageTypes\packageType` pod elementem `<metadata>`:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -32,7 +34,7 @@ Typy pakietów są ustawiane w `.nuspec` pliku. Jest najlepszym rozwiązaniem dl
         <metadata>
         <!-- ... -->
         <packageTypes>
-            <packageType name="DotnetCliTool" />
+            <packageType name="DotnetTool" />
         </packageTypes>
         </metadata>
     </package>
