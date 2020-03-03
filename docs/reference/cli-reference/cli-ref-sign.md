@@ -6,12 +6,12 @@ ms.author: dtivel
 ms.date: 03/06/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: 746f7a421bd855b77716388b4af2fecbd5cf5a68
-ms.sourcegitcommit: 96aab8a1ad35eca0c029679d0158d9cc93d66009
+ms.openlocfilehash: e596fd5eb3de8ca4802d9b7b8e7cb623568e3dcb
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75676409"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78231126"
 ---
 # <a name="sign-command-nuget-cli"></a>sign command, polecenie (interfejs wiersza polecenia NuGet)
 
@@ -22,7 +22,7 @@ Podpisuje wszystkie pakiety pasujące do pierwszego argumentu z certyfikatem. Ce
 > [!Note]
 > Podpisywanie pakietów nie jest jeszcze obsługiwane w programie .NET Core, w obszarze mono lub na platformach innych niż Windows.
 
-## <a name="usage"></a>Pomiar
+## <a name="usage"></a>Sposób użycia
 
 ```cli
 nuget sign <package(s)> [options]
@@ -42,7 +42,7 @@ gdzie `<package(s)>` to co najmniej jeden plik `.nupkg`.
 | CertificateSubjectName | Określa nazwę podmiotu certyfikatu używanego do wyszukiwania certyfikatu w lokalnym magazynie certyfikatów.  Wyszukiwanie to porównanie ciągów bez uwzględniania wielkości liter przy użyciu podanej wartości, która będzie znajdować wszystkie certyfikaty z nazwą podmiotu zawierającą ten ciąg, niezależnie od innych wartości podmiotu.  Magazyn certyfikatów można określić za pomocą opcji-CertificateStoreName i-CertificateStoreLocation. |
 | ConfigFile | Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony, używany jest `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux).|
 | ForceEnglishOutput | Wymusza uruchomienie NuGet. exe przy użyciu niezmiennej, opartej na języku angielskim kultury. |
-| Algorytm | Algorytm wyznaczania wartości skrótu, który ma być używany do podpisywania pakietu. Wartość domyślna to SHA256. |
+| Algorytm | Algorytm wyznaczania wartości skrótu, który ma być używany do podpisywania pakietu. Wartość domyślna to SHA256. Możliwe wartości to SHA256, SHA384 i SHA512. |
 | Pomoc | Wyświetla informacje pomocy dla polecenia. |
 | NonInteractive | Pomija monity o dane wejściowe lub potwierdzone przez użytkownika. |
 | OutputDirectory | Określa katalog, w którym ma zostać zapisany podpisany pakiet. Domyślnie oryginalny pakiet jest zastępowany przez podpisany pakiet. |

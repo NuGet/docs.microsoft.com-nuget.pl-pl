@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/09/2017
 ms.topic: conceptual
-ms.openlocfilehash: 906d07eb22599eb423b00300954ff2601dd33369
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: 13b6f5abe93a17c809564265990f86f6780aa67e
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383554"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78230814"
 ---
 # <a name="authenticating-feeds-in-visual-studio-with-nuget-credential-providers"></a>Uwierzytelnianie kanałów informacyjnych w programie Visual Studio przy użyciu dostawców poświadczeń NuGet
 
@@ -19,6 +19,8 @@ Po zainstalowaniu dostawcy poświadczeń programu NuGet dla programu Visual Stud
 
 Przykładową implementację można znaleźć w [przykładowej VsCredentialProvider](https://github.com/NuGet/Samples/tree/master/VsCredentialProvider).
 
+W programie Visual Studio NuGet używa wewnętrznego `VsCredentialProviderImporter`, który również skanuje w poszukiwaniu dostawców poświadczeń wtyczki. Te dostawcy poświadczeń wtyczki muszą być wykrywalne jako MEF eksportu typu `IVsCredentialProvider`.
+
 Począwszy od 4.8 + NuGet w programie Visual Studio obsługuje również nowe wtyczki do uwierzytelniania międzyplatformowego, ale nie są to zalecane podejście ze względu na wydajność.
 
 > [!Note]
@@ -26,16 +28,6 @@ Począwszy od 4.8 + NuGet w programie Visual Studio obsługuje również nowe wt
 >
 > Dostawcy poświadczeń NuGet dla programu Visual Studio działają tylko w programie Visual Studio (nie w dotnet restore lub NuGet. exe). W przypadku dostawców poświadczeń z pakietem NuGet. exe zobacz [dostawcy poświadczeń NuGet. exe](nuget-exe-Credential-providers.md).
 > Dla dostawców poświadczeń w programie dotnet i MSBuild zobacz [wtyczki Międzyplatformowe NuGet](nuget-cross-platform-authentication-plugin.md)
-
-## <a name="available-nuget-credential-providers-for-visual-studio"></a>Dostępni dostawcy poświadczeń NuGet dla programu Visual Studio
-
-Istnieje Dostawca poświadczeń wbudowany w rozszerzenie NuGet programu Visual Studio w celu obsługi Visual Studio Team Services.
-
-Rozszerzenie NuGet programu Visual Studio używa wewnętrznego `VsCredentialProviderImporter`, które również skanuje w poszukiwaniu dostawców poświadczeń wtyczki. Te dostawcy poświadczeń wtyczki muszą być wykrywalne jako MEF eksportu typu `IVsCredentialProvider`.
-
-Dostępne są następujące dostawcy poświadczeń wtyczek:
-
-- [Dostawca poświadczeń MyGet dla programu Visual Studio](http://docs.myget.org/docs/reference/credential-provider-for-visual-studio)
 
 ## <a name="creating-a-nuget-credential-provider-for-visual-studio"></a>Tworzenie dostawcy poświadczeń NuGet dla programu Visual Studio
 

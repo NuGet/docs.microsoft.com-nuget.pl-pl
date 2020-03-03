@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: b6a009832430ee08f51ea1028feb878a39f45222
-ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
+ms.openlocfilehash: a5833df60c5f7905359f421141347b1237f45d86
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825137"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78230619"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietów (PackageReference) w plikach projektu
 
@@ -48,7 +48,7 @@ Konwencja dotycząca określania wersji pakietu jest taka sama jak w przypadku u
 </ItemGroup>
 ```
 
-W powyższym przykładzie 3.6.0 oznacza dowolną wersję, która jest > = 3.6.0 z preferencją dla najniższej wersji, zgodnie z opisem w temacie [przechowywanie wersji pakietu](../concepts/package-versioning.md#version-ranges-and-wildcards).
+W powyższym przykładzie 3.6.0 oznacza dowolną wersję, która jest > = 3.6.0 z preferencją dla najniższej wersji, zgodnie z opisem w temacie [przechowywanie wersji pakietu](../concepts/package-versioning.md#version-ranges).
 
 ## <a name="using-packagereference-for-a-project-with-no-packagereferences"></a>Używanie PackageReference dla projektu bez składnika packagereferences
 
@@ -101,7 +101,7 @@ Następujące znaczniki metadanych kontrolują elementy zależne:
 
 | Tag | Opis | Wartość domyślna |
 | --- | --- | --- |
-| IncludeAssets | Te zasoby zostaną wykorzystane | wszystkie |
+| IncludeAssets | Te zasoby zostaną wykorzystane | all |
 | ExcludeAssets | Te zasoby nie będą używane | brak |
 | PrivateAssets | Te zasoby będą wykorzystane, ale nie będą przepływać do projektu nadrzędnego | contentfiles;analyzers;build |
 
@@ -109,7 +109,7 @@ Wartości dozwolone dla tych tagów są następujące, z wieloma wartościami od
 
 | Wartość | Opis |
 | --- | ---
-| kompilowanie | Zawartość folderu `lib` i kontroluje, czy projekt można kompilować względem zestawów w folderze |
+| opracowania | Zawartość folderu `lib` i kontroluje, czy projekt można kompilować względem zestawów w folderze |
 | środowisko uruchomieniowe | Zawartość folderu `lib` i `runtimes` i kontroluje, czy te zestawy zostaną skopiowane do katalogu wyjściowego kompilacji |
 | contentFiles | Zawartość folderu `contentfiles` |
 | kompilacja | `.props` i `.targets` w folderze `build` |
@@ -118,7 +118,7 @@ Wartości dozwolone dla tych tagów są następujące, z wieloma wartościami od
 | Analizatory | Analizatory .NET |
 | natywne | Zawartość folderu `native` |
 | brak | Żadne z powyższych nie jest używane. |
-| wszystkie | Wszystkie powyższe (z wyjątkiem `none`) |
+| all | Wszystkie powyższe (z wyjątkiem `none`) |
 
 W poniższym przykładzie wszystko, z wyjątkiem plików zawartości z pakietu, będzie używane przez projekt, a wszystko z wyjątkiem plików zawartości i analizatorów przepływa do projektu nadrzędnego.
 
@@ -170,7 +170,107 @@ Warunki mogą być również stosowane na poziomie `ItemGroup` i będą miały z
 </ItemGroup>
 ```
 
+## <a name="generatepathproperty"></a>GeneratePathProperty
+
+Ta funkcja jest dostępna w programie NuGet **5,0** lub nowszym oraz z programem Visual Studio 2019 **16,0** lub nowszym.
+
+Czasami należy odwoływać się do plików w pakiecie z elementu docelowego programu MSBuild.
+W projektach opartych na `packages.config` pakiety są instalowane w folderze odnoszącym się do pliku projektu. Jednak w PackageReference pakiety są [używane](../concepts/package-installation-process.md) z folderu *Global-Packages* , który może się różnić w zależności od maszyny do komputera.
+
+Aby połączyć ten odstęp, pakiet NuGet wprowadził Właściwość wskazującą lokalizację, z której będzie korzystać pakiet.
+
+Przykład:
+
+```xml
+  <ItemGroup>
+      <PackageReference Include="Some.Package" Version="1.0.0" GeneratePathProperty="true" />
+  </ItemGroup>
+
+  <Target Name="TakeAction" AfterTargets="Build">
+    <Exec Command="$(PkgSome_Package)\something.exe" />
+  </Target>
+````
+
+Dodatkowo NuGet automatycznie generuje właściwości dla pakietów zawierających folder Tools.
+
+```xml
+  <ItemGroup>
+      <PackageReference Include="Package.With.Tools" Version="1.0.0" />
+  </ItemGroup>
+
+  <Target Name="TakeAction" AfterTargets="Build">
+    <Exec Command="$(PkgPackage_With_Tools)\tools\tool.exe" />
+  </Target>
+````
+
+Właściwości programu MSBuild i tożsamości pakietów nie mają tych samych ograniczeń, dlatego należy zmienić tożsamość pakietu na przyjazną nazwę MSBuild, poprzedzoną prefiksem `Pkg`.
+Aby sprawdzić dokładną nazwę wygenerowanej właściwości, zobacz wygenerowany plik [NuGet. g. props](../reference/msbuild-targets.md#restore-outputs) .
+
+## <a name="nuget-warnings-and-errors"></a>Ostrzeżenia i błędy NuGet
+
+*Ta funkcja jest dostępna w programie NuGet **4,3** lub nowszym oraz z programem Visual Studio 2017 **15,3** lub nowszym.*
+
+W przypadku wielu scenariuszy pakowania i przywracania wszystkie ostrzeżenia i błędy programu NuGet są kodowane i zaczynają się od `NU****`. Wszystkie ostrzeżenia i błędy programu NuGet są wymienione w dokumentacji [referencyjnej](../reference/errors-and-warnings.md) .
+
+Pakiet NuGet obserwuje następujące właściwości ostrzegawcze:
+
+- `TreatWarningsAsErrors`Traktuj wszystkie ostrzeżenia jako błędy
+- `WarningsAsErrors`Traktuj określone ostrzeżenia jako błędy
+- `NoWarn`, ukrywanie określonych ostrzeżeń, całego projektu lub całego pakietu.
+
+Przykłady:
+
+```xml
+<PropertyGroup>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+</PropertyGroup>
+...
+<PropertyGroup>
+    <WarningsAsErrors>$(WarningsAsErrors);NU1603;NU1605</WarningsAsErrors>
+</PropertyGroup>
+...
+<PropertyGroup>
+    <NoWarn>$(NoWarn);NU5124</NoWarn>
+</PropertyGroup>
+...
+<ItemGroup>
+    <PackageReference Include="Contoso.Package" Version="1.0.0" NoWarn="NU1605" />
+</ItemGroup>
+```
+
+### <a name="suppressing-nuget-warnings"></a>Pomijanie ostrzeżeń NuGet
+
+Chociaż zaleca się, aby wszystkie ostrzeżenia NuGet były rozwiązywane podczas operacji pakietu i przywracania, w niektórych sytuacjach jest to uzasadnione.
+Aby pominąć ostrzeżenia na poziomie projektu, rozważ wykonanie:
+
+```xml
+<PropertyGroup>
+    <PackageVersion>5.0.0</PackageVersion>
+    <NoWarn>$(NoWarn);NU5104</NoWarn>
+</PropertyGroup>
+<ItemGroup>
+    <PackageReference Include="Contoso.Package" Version="1.0.0-beta.1"/>
+</ItemGroup>
+```
+
+Czasami ostrzeżenia dotyczą tylko określonego pakietu na grafie. Możemy wybrać opcję pomijania tego ostrzeżenia przez dodanie `NoWarn` w elemencie PackageReference. 
+
+```xml
+<PropertyGroup>
+    <PackageVersion>5.0.0</PackageVersion>
+</PropertyGroup>
+<ItemGroup>
+    <PackageReference Include="Contoso.Package" Version="1.0.0-beta.1" NoWarn="NU1603" />
+</ItemGroup>
+```
+
+#### <a name="suppressing-nuget-package-warnings-in-visual-studio"></a>Pomijanie ostrzeżeń pakietu NuGet w programie Visual Studio
+
+W programie Visual Studio można także [pominąć ostrzeżenia](/visualstudio/ide/how-to-suppress-compiler-warnings#suppress-warnings-for-nuget-packages
+) za pomocą środowiska IDE.
+
 ## <a name="locking-dependencies"></a>Blokowanie zależności
+
 *Ta funkcja jest dostępna w programie NuGet **4,9** lub nowszym oraz z programem Visual Studio 2017 **15,9** lub nowszym.*
 
 Dane wejściowe do przywracania NuGet to zbiór odwołań do pakietów z pliku projektu (zależności najwyższego poziomu lub bezpośrednie), a dane wyjściowe to pełny zamknięcie wszystkich zależności pakietu, w tym zależności przechodnie. Pakiet NuGet próbuje zawsze utworzyć to samo pełne zamknięcie zależności pakietów, jeśli lista wejściowa PackageReference nie została zmieniona. Jednak istnieją pewne scenariusze, w których nie można tego zrobić. Na przykład:
@@ -185,6 +285,7 @@ Dane wejściowe do przywracania NuGet to zbiór odwołań do pakietów z pliku p
 * Dana wersja pakietu jest usuwana z repozytorium. Chociaż nuget.org nie zezwala na usuwanie pakietów, te ograniczenia nie są dostępne dla wszystkich repozytoriów pakietów. Spowoduje to znalezienie najlepszego dopasowania przez pakiet NuGet, gdy nie można rozwiązać go do usuniętej wersji.
 
 ### <a name="enabling-lock-file"></a>Włączanie pliku blokady
+
 W celu utrwalenia pełnego zamknięcia zależności pakietu można wybrać funkcję blokowania pliku przez ustawienie właściwości programu MSBuild `RestorePackagesWithLockFile` dla projektu:
 
 ```xml
@@ -251,9 +352,9 @@ Jeśli `ProjectA` ma zależność od wersji `PackageX` `2.0.0` a także odwołuj
 
 Można kontrolować różne zachowania przywracania za pomocą pliku blokady zgodnie z poniższym opisem:
 
-| Opcja | Odpowiednik opcji programu MSBuild | Opis|
-|:---  |:--- |:--- |
-| `--use-lock-file` | RestorePackagesWithLockFile | Umożliwia użycie pliku blokady. | 
-| `--locked-mode` | RestoreLockedMode | Włącza tryb zablokowany do przywracania. Jest to przydatne w scenariuszach ciągłej integracji/ciągłego wdrażania.|   
-| `--force-evaluate` | RestoreForceEvaluate | Ta opcja jest przydatna w przypadku pakietów z wersją zmiennoprzecinkową zdefiniowaną w projekcie. Domyślnie przywracanie pakietu NuGet nie będzie automatycznie aktualizować wersji programu przy każdym przywracaniu, chyba że zostanie uruchomiony przycisk Przywróć z tą opcją. |
-| `--lock-file-path` | NuGetLockFilePath | Definiuje niestandardową lokalizację pliku blokady dla projektu. Domyślnie NuGet obsługuje `packages.lock.json` w katalogu głównym. Jeśli masz wiele projektów w tym samym katalogu, pakiet NuGet obsługuje plik blokady specyficzny dla projektu `packages.<project_name>.lock.json` |
+| NuGet. exe — opcja | Opcja dotnet | Odpowiednik opcji programu MSBuild | Opis |
+|:--- |:--- |:--- |:--- |
+| `-UseLockFile` |`--use-lock-file` | RestorePackagesWithLockFile | Umożliwia użycie pliku blokady. |
+| `-LockedMode` | `--locked-mode` | RestoreLockedMode | Włącza tryb zablokowany do przywracania. Jest to przydatne w scenariuszach ciągłej integracji/ciągłego wdrażania.|   
+| `-ForceEvaluate` | `--force-evaluate` | RestoreForceEvaluate | Ta opcja jest przydatna w przypadku pakietów z wersją zmiennoprzecinkową zdefiniowaną w projekcie. Domyślnie przywracanie pakietu NuGet nie będzie automatycznie aktualizować wersji programu przy każdym przywracaniu, chyba że zostanie uruchomiony przycisk Przywróć z tą opcją. |
+| `-LockFilePath` | `--lock-file-path` | NuGetLockFilePath | Definiuje niestandardową lokalizację pliku blokady dla projektu. Domyślnie NuGet obsługuje `packages.lock.json` w katalogu głównym. Jeśli masz wiele projektów w tym samym katalogu, pakiet NuGet obsługuje plik blokady specyficzny dla projektu `packages.<project_name>.lock.json` |

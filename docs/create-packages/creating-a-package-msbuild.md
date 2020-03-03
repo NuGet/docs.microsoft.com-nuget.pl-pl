@@ -3,39 +3,43 @@ title: Tworzenie pakietu NuGet przy użyciu programu MSBuild
 description: Szczegółowy przewodnik dotyczący procesu projektowania i tworzenia pakietu NuGet, w tym najważniejszych punktów decyzyjnych, takich jak pliki i przechowywanie wersji.
 author: karann-msft
 ms.author: karann
-ms.date: 08/05/2019
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: b45c25a92c0134228fb507ab321cb00ce156527f
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: 7166d622ef9d3975fc1c931d30caf570a765a6da
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73610555"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78231321"
 ---
 # <a name="create-a-nuget-package-using-msbuild"></a>Tworzenie pakietu NuGet przy użyciu programu MSBuild
 
 Podczas tworzenia pakietu NuGet przy użyciu kodu należy spakować tę funkcję do składnika, który może być współużytkowany i używany przez dowolną liczbę innych deweloperów. W tym artykule opisano sposób tworzenia pakietu przy użyciu programu MSBuild. Program MSBuild jest preinstalowany z każdym obciążeniem programu Visual Studio, który zawiera pakiet NuGet. Dodatkowo można również użyć MSBuild za pomocą interfejsu wiersza polecenia dotnet z użyciem programu [dotnet MSBuild](https://docs.microsoft.com/dotnet/core/tools/dotnet-msbuild).
 
-W przypadku projektów .NET Core i .NET Standard, które korzystają z [formatu zestawu SDK](../resources/check-project-format.md)i innych projektów w stylu zestawu SDK, NuGet używa informacji w pliku projektu bezpośrednio do tworzenia pakietu.  Dla projektu typu innego niż zestaw SDK, który używa `<PackageReference>`, NuGet używa również pliku projektu do utworzenia pakietu.
+W przypadku projektów .NET Core i .NET Standard, które korzystają z [formatu zestawu SDK](../resources/check-project-format.md)i innych projektów w stylu zestawu SDK, NuGet używa informacji w pliku projektu bezpośrednio do tworzenia pakietu.  W przypadku projektu typu innego niż zestaw SDK, który używa `<PackageReference>`, NuGet używa również pliku projektu do utworzenia pakietu.
 
 Projekty w stylu zestawu SDK mają funkcje pakietu dostępne domyślnie. W przypadku projektów PackageReference bez zestawu SDK należy dodać pakiet NuGet. Build. Tasks. Pack do zależności projektu. Aby uzyskać szczegółowe informacje o obiektach docelowych programu MSBuild, zobacz [pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild](../reference/msbuild-targets.md).
 
-Polecenie, które tworzy pakiet, `msbuild -t:pack`, jest funkcją odpowiadającą `dotnet pack`.
+Polecenie, które tworzy pakiet `msbuild -t:pack`, jest funkcją równoważną z `dotnet pack`.
 
 > [!IMPORTANT]
 > Ten temat ma zastosowanie do projektów w [stylu zestawu SDK](../resources/check-project-format.md) , zwykle .NET Core i .NET Standard projektów oraz do projektów typu non-SDK, które używają PackageReference.
 
-## <a name="set-properties"></a>Ustaw właściwości
+## <a name="set-properties"></a>Ustawianie właściwości
 
 Do utworzenia pakietu wymagane są następujące właściwości.
 
-- `PackageId`, identyfikator pakietu, który musi być unikatowy w galerii, w której znajduje się pakiet. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
+- `PackageId`identyfikator pakietu, który musi być unikatowy w galerii, w której znajduje się pakiet. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
 - `Version`, określony numer wersji w postaci *główna. pomocnicza. poprawka [-sufiks]* , gdzie *-sufiks* określa [wersję wstępną](prerelease-packages.md). Jeśli nie zostanie określony, wartość domyślna to 1.0.0.
 - Tytuł pakietu, który powinien pojawić się na hoście (na przykład nuget.org)
-- `Authors`, informacje o autorze i właścicielu. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
+- informacje dotyczące `Authors`, autora i właściciela. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
 - `Company`, nazwa firmy. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName`.
 
-W programie Visual Studio można ustawić te wartości we właściwościach projektu (kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz **Właściwości**, a następnie wybierz kartę **pakiet** ). Możesz również ustawić te właściwości bezpośrednio w plikach projektu ( *. csproj*).
+Ponadto w przypadku pakowania projektów spoza zestawu SDK, które używają PackageReference, wymagane są następujące elementy:
+
+- `PackageOutputPath`, folder wyjściowy pakietu wygenerowanego podczas wywoływania pakietu.
+
+W programie Visual Studio można ustawić te wartości we właściwościach projektu (kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz **Właściwości**, a następnie wybierz kartę **pakiet** ). Możesz również ustawić te właściwości bezpośrednio w plikach projektu (*. csproj*).
 
 ```xml
 <PropertyGroup>
@@ -63,12 +67,16 @@ Poniższy przykład pokazuje prosty, kompletny plik projektu z tymi właściwoś
 </Project>
 ```
 
-Można również ustawić właściwości opcjonalne, takie jak `Title`, `PackageDescription` i `PackageTags`, zgodnie z opisem w obszarze [targets pakietu MSBuild](../reference/msbuild-targets.md#pack-target), [kontrolowanie elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets)i [właściwości metadanych NuGet](/dotnet/core/tools/csproj#nuget-metadata-properties).
+Można również ustawić właściwości opcjonalne, takie jak `Title`, `PackageDescription`i `PackageTags`, zgodnie z opisem w obszarze [targets pakietu MSBuild](../reference/msbuild-targets.md#pack-target), [kontrolując elementy zależne](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets)i [właściwości metadanych NuGet](/dotnet/core/tools/csproj#nuget-metadata-properties).
 
 > [!NOTE]
 > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na Właściwość **PackageTags** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
 Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [odwołania do pakietów w plikach projektu](../consume-packages/package-references-in-project-files.md) i [przechowywanie wersji pakietu](../concepts/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu atrybutów `<IncludeAssets>` i `<ExcludeAssets>`. Aby uzyskać więcej informacji, seee [kontrolowania elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
+
+## <a name="add-an-optional-description-field"></a>Dodaj opcjonalne pole opisu
+
+[!INCLUDE [add description to package](includes/add-description.md)]
 
 ## <a name="choose-a-unique-package-identifier-and-set-the-version-number"></a>Wybierz unikatowy identyfikator pakietu i ustaw numer wersji
 
@@ -143,13 +151,13 @@ Time Elapsed 00:00:01.21
 
 ### <a name="automatically-generate-package-on-build"></a>Automatycznie Generuj pakiet podczas kompilacji
 
-Aby automatycznie uruchomić `msbuild -t:pack` podczas kompilowania lub przywracania projektu, Dodaj następujący wiersz do pliku projektu w ramach `<PropertyGroup>`:
+Aby automatycznie uruchomić `msbuild -t:pack` podczas kompilowania lub przywracania projektu, Dodaj następujący wiersz do pliku projektu w `<PropertyGroup>`:
 
 ```xml
 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 ```
 
-Po uruchomieniu `msbuild -t:pack` w rozwiązaniu to pakiety wszystkie projekty w rozwiązaniu, które są możliwe do spakowania (Właściwość[<IsPackable>](/dotnet/core/tools/csproj#nuget-metadata-properties) jest ustawiona na `true`).
+Po uruchomieniu `msbuild -t:pack` w rozwiązaniu wszystkie projekty w rozwiązaniu, które są możliwe do spakowania (Właściwość[<IsPackable>](/dotnet/core/tools/csproj#nuget-metadata-properties) jest ustawiona na `true`).
 
 > [!NOTE]
 > Po automatycznym wygenerowaniu pakietu czas do spakowania zwiększa czas kompilacji projektu.

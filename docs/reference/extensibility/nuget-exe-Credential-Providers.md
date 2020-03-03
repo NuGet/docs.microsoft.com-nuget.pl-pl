@@ -1,76 +1,72 @@
 ---
-title: Dostawcy poświadczeń nuget.exe
-description: dostawcy poświadczeń nuget.exe uwierzytelnianie za pomocą kanału informacyjnego i są implementowane jako zgodne z konwencjami określone pliki wykonywalne wiersza polecenia.
+title: Dostawcy poświadczeń NuGet. exe
+description: dostawcy poświadczeń NuGet. exe uwierzytelniają się ze źródłem danych i są implementowane jako pliki wykonywalne wiersza polecenia, które przestrzegają określonych konwencji.
 author: karann-msft
 ms.author: karann
 ms.date: 12/12/2017
 ms.topic: conceptual
-ms.openlocfilehash: 97a44c6d561f426fa50fa068a9bbf793f77a3111
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 41e3e63138351bafd5e3a56080268faef10d85a3
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43550192"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78230788"
 ---
-# <a name="authenticating-feeds-with-nugetexe-credential-providers"></a>Uwierzytelnianie źródła danych za pomocą dostawcy poświadczeń nuget.exe
+# <a name="authenticating-feeds-with-nugetexe-credential-providers"></a>Uwierzytelnianie kanałów informacyjnych przy użyciu programu NuGet. exe dostawcy poświadczeń
 
-*NuGet 3.3+*
+W wersji `3.3` dodano obsługę dla `nuget.exe` określonych dostawców poświadczeń. Od tego czasu w programie w wersji `4.8` [obsługiwane są dostawcy poświadczeń](NuGet-Cross-Platform-Authentication-Plugin.md) , którzy działają we wszystkich scenariuszach wiersza polecenia (`nuget.exe`, `dotnet.exe`, `msbuild.exe`).
 
-Gdy `nuget.exe` wymaga poświadczeń do uwierzytelniania za pomocą kanału informacyjnego, szuka je w następujący sposób:
+Aby uzyskać szczegółowe informacje [na temat wszystkich](../../consume-packages/consuming-packages-authenticated-feeds.md#nugetexe) metod uwierzytelniania `nuget.exe`
 
-1. NuGet najpierw szuka poświadczenia w `Nuget.Config` plików.
-1. NuGet następnie używa dostawcy poświadczeń wtyczki, z zastrzeżeniem kolejności podanej poniżej. (I przykład [Visual Studio Team Services Dostawca poświadczeń](https://www.visualstudio.com/docs/package/get-started/nuget/auth#vsts-credential-provider).)
-1. NuGet następnie monituje użytkownika o poświadczenia w wierszu polecenia.
+## <a name="nugetexe-credential-provider-discovery"></a>odnajdywanie dostawcy poświadczeń NuGet. exe
 
-Należy zauważyć, że dostawcy poświadczeń, opisane w tym miejscu działają tylko w `nuget.exe` , a nie w "dotnet restore" lub Visual Studio. Dostawcy poświadczeń za pomocą programu Visual Studio, można zobaczyć [nuget.exe dostawcy poświadczeń dla programu Visual Studio](nuget-credential-providers-for-visual-studio.md)
+dostawcy poświadczeń NuGet. exe można używać na trzy sposoby:
 
-dostawcy poświadczeń nuget.exe może służyć w 3 sposoby:
+- **Globalnie**: Aby udostępnić dostawcę poświadczeń wszystkim wystąpieniu `nuget.exe` uruchomionych w ramach profilu bieżącego użytkownika, należy dodać go do `%LocalAppData%\NuGet\CredentialProviders`. Może być konieczne utworzenie folderu `CredentialProviders`. Dostawców poświadczeń można zainstalować w folderze głównym folderu `CredentialProviders` lub w podfolderze. Jeśli Dostawca poświadczeń ma wiele plików/zestawów, można użyć podfolderów, aby zachować zorganizowanie dostawców.
 
-- **Globalnie**: Aby udostępnić Dostawca poświadczeń do wszystkich wystąpień `nuget.exe` uruchomienia w ramach profilu bieżącego użytkownika, dodaj ją do `%LocalAppData%\NuGet\CredentialProviders`. Może być konieczne utworzenie `CredentialProviders` folderu. Dostawcy poświadczeń, można zainstalować w katalogu głównym `CredentialProviders` folder lub podfolder. Jeśli dostawca poświadczeń ma wiele plików/zestawów, można użyć podfoldery do zachowania dostawców zorganizowane.
+- **Ze zmiennej środowiskowej**: dostawcy poświadczeń można przechowywać w dowolnym miejscu i uzyskiwać dostęp do `nuget.exe` przez ustawienie zmiennej środowiskowej `%NUGET_CREDENTIALPROVIDERS_PATH%` na lokalizację dostawcy. Ta zmienna może być rozdzielaną średnikami listą (na przykład `path1;path2`), jeśli istnieje wiele lokalizacji.
 
-- **Ze zmiennej środowiskowej**: dostawcy poświadczeń, które mogą być przechowywane w dowolnym miejscu i udostępniane `nuget.exe` , ustawiając `%NUGET_CREDENTIALPROVIDERS_PATH%` zmiennej środowiskowej, aby lokalizacja dostawcy. Ta zmienna może być rozdzielaną średnikami listę (na przykład `path1;path2`) Jeśli masz wiele lokalizacji.
+- Wraz z pakietem **NuGet. exe**: dostawcy poświadczeń NuGet. exe można umieścić w tym samym folderze co `nuget.exe`.
 
-- **Wraz z nuget.exe**: nuget.exe dostawcy poświadczeń, które można umieścić w tym samym folderze co `nuget.exe`.
+Podczas ładowania dostawców poświadczeń `nuget.exe` przeszukuje powyższe lokalizacje, w kolejności, dla każdego pliku o nazwie `credentialprovider*.exe`, ładuje te pliki w kolejności, w jakiej zostały znalezione. Jeśli w tym samym folderze istnieje wielu dostawców poświadczeń, są one ładowane w kolejności alfabetycznej.
 
-Podczas ładowania dostawcy poświadczeń `nuget.exe` wyszukuje powyższych lokalizacjach, w kolejności, dowolne pliki o nazwie `credentialprovider*.exe`, następnie ładuje te pliki w kolejności one znajdują. Jeśli istnieje wielu dostawców poświadczeń w tym samym folderze, są one załadowane w kolejności alfabetycznej.
+## <a name="creating-a-nugetexe-credential-provider"></a>Tworzenie dostawcy poświadczeń NuGet. exe
 
-## <a name="creating-a-nugetexe-credential-provider"></a>Tworzenie dostawcy poświadczeń nuget.exe
+Dostawca poświadczeń to plik wykonywalny wiersza polecenia o nazwie w formularzu `CredentialProvider*.exe`, który zbiera dane wejściowe, uzyskuje poświadczenia zgodnie z potrzebami, a następnie zwraca odpowiedni kod stanu wyjścia i wyjście standardowe.
 
-Dostawca poświadczeń jest pliku wykonywalnego wiersza polecenia, o nazwie w postaci `CredentialProvider*.exe`, który zbiera dane wejściowe, uzyskuje poświadczenia zgodnie z potrzebami, a następnie zwraca kod stanu zakończenia odpowiednie i standardowe dane wyjściowe.
+Dostawca musi wykonać następujące czynności:
 
-Dostawca musi wykonaj następujące czynności:
-
-- Ustal, czy jego Podaj poświadczenia dla docelowego identyfikatora URI, przed zainicjowaniem pozyskiwanie poświadczeń. W przeciwnym razie powinien zostać zwrócony kod stanu 1 bez poświadczeń.
-- Nie modyfikować `Nuget.Config` (na przykład istnieje ustawienie poświadczeń).
-- Konfiguracja serwera proxy HTTP uchwytu na NuGet własne, jako nie zapewnia informacje o serwerze proxy do wtyczki.
-- Zwróć poświadczeń lub szczegółów błędów do `nuget.exe` , pisząc obiekt odpowiedzi JSON (patrz poniżej) do stdout, przy użyciu kodowania UTF-8.
-- Opcjonalnie emitować rejestrowanie śledzenia dodatkowe stderr. Nie wpisów tajnych nigdy nie będą zapisywane w stderr, ponieważ na poziomach szczegółowości "normal" lub "szczegółowe" takie ślady są powtarzane przez NuGet do konsoli.
-- Nieoczekiwany parametry powinny być ignorowane, zapewniając zgodność z nowszymi wersjami z przyszłych wersji pakietu nuget.
+- Przed zainicjowaniem pozyskiwania poświadczeń należy określić, czy może podać poświadczenia dla danego identyfikatora URI. Jeśli nie, powinien zwrócić kod stanu 1 bez poświadczeń.
+- Nie należy modyfikować `Nuget.Config` (takich jak ustawienia w tym miejscu).
+- Obsługa konfiguracji serwera proxy HTTP we własnym zakresie, ponieważ narzędzie NuGet nie udostępnia informacji o serwerze proxy do wtyczki.
+- Zwróć informacje o poświadczeniach lub błędach do `nuget.exe` przez zapisanie obiektu odpowiedzi JSON (patrz poniżej) do strumienia stdout przy użyciu kodowania UTF-8.
+- Opcjonalnie można emitować dodatkowe rejestrowanie śledzenia do STDERR. Żadne wpisy tajne nie powinny być nigdy zapisywane w stderr, ponieważ na poziomie szczegółowości "normalny" lub "szczegółowe" takie ślady są wyświetlane przez program NuGet w konsoli programu.
+- Nieoczekiwane parametry powinny być ignorowane, co zapewnia zgodność z przyszłymi wersjami NuGet.
 
 ### <a name="input-parameters"></a>Parametry wejściowe
 
-| Parametr/przełącznika |Opis|
+| Parametr/przełącznik |Opis|
 |----------------|-----------|
-| Identyfikator URI {value} | Pakiet źródła wymagające poświadczenia identyfikatora URI.|
-| Nieinterakcyjnym | Jeśli jest obecny, dostawca nie wystawia interaktywne monity. |
-| isRetry | Jeśli jest obecny, oznacza ta próba ponowienia próby zakończyły się niepowodzeniem. Dostawcy zazwyczaj używają tej flagi zapewnienie Pomiń wszelkie istniejące pamięć podręczną i monit o nowe poświadczenia, jeśli jest to możliwe.|
-| Poziom szczegółowości {value} | Jeśli jest obecny, jedną z następujących wartości: "normal", "quiet" lub "szczegóły". Jeśli nie dostarczono żadnej wartości, wartość domyślna to "normal". Dostawcy należy użyć tego wskazanie poziom rejestrowania opcjonalne aby emitować na Standardowy strumień błędów. |
+| Identyfikator URI {Value} | Źródłowy identyfikator URI pakietu wymaga poświadczeń.|
+| NonInteractive | Jeśli jest obecny, dostawca nie wystawia interakcyjnych wierszy. |
+| Isretry | Jeśli jest obecny, oznacza to, że próba wykonania poprzedniej nieudanej próby nie powiodła się. Dostawcy zazwyczaj używają tej flagi, aby upewnić się, że pomijają istniejącą pamięć podręczną i monitują o nowe poświadczenia, jeśli jest to możliwe.|
+| Poziom szczegółowości {Value} | Jeśli jest obecny, jedna z następujących wartości: "normal", "quiet" lub "Detailed". Jeśli nie podano wartości, wartością domyślną jest "normal". Dostawcy powinni używać tego jako wskazanie poziomu opcjonalnego rejestrowania do emisji do standardowego strumienia błędów. |
 
 ### <a name="exit-codes"></a>Kody zakończenia
 
 | Kod |Wynik | Opis |
 |----------------|-----------|-----------|
-| 0 | Powodzenie | Poświadczenia zostały pomyślnie uzyskano i został zapisany do strumienia wyjściowego stdout.|
-| 1 | ProviderNotApplicable | Bieżący dostawca nie Podaj poświadczenia dla danego identyfikatora URI.|
-| 2 | Błąd | Dostawca jest prawidłowy dostawca dla danego identyfikatora URI, ale nie można udostępnić poświadczeń. W takim przypadku nuget.exe nie podejmie kolejnej próby uwierzytelniania i zakończy się niepowodzeniem. Typowym przykładem jest, gdy użytkownik anuluje interakcyjnego logowania. |
+| 0 | Powodzenie | Pomyślnie pobrano poświadczenia i zapisano je w strumieniu stdout.|
+| 1 | ProviderNotApplicable | Bieżący dostawca nie dostarcza poświadczeń dla danego identyfikatora URI.|
+| 2 | Niepowodzenie | Dostawca jest poprawnym dostawcą dla danego identyfikatora URI, ale nie może podawać poświadczeń. W takim przypadku NuGet. exe nie będzie ponawiać uwierzytelniania i zakończy się niepowodzeniem. Typowym przykładem jest to, że użytkownik anuluje Logowanie interakcyjne. |
 
-### <a name="standard-output"></a>Standardowe dane wyjściowe
+### <a name="standard-output"></a>Wyjście standardowe
 
 | Właściwość |Uwagi|
 |----------------|-----------|
 | Nazwa użytkownika | Nazwa użytkownika dla żądań uwierzytelnionych.|
 | Hasło | Hasło dla żądań uwierzytelnionych.|
-| Komunikat | Opcjonalne szczegółowe informacje dotyczące odpowiedzi używane tylko po to, aby wyświetlić dodatkowe informacje w przypadku awarii. |
+| Komunikat | Opcjonalne szczegóły dotyczące odpowiedzi używane tylko w celu wyświetlenia dodatkowych szczegółów w przypadku awarii. |
 
 Przykład stdout:
 
@@ -78,16 +74,16 @@ Przykład stdout:
       "Password" : "bwm3bcx6txhprzmxhl2x63mdsul6grctazoomtdb6kfbof7m3a3z",
       "Message"  : "" }
 
-## <a name="troubleshooting-a-credential-provider"></a>Rozwiązywanie problemów z dostawcy poświadczeń
+## <a name="troubleshooting-a-credential-provider"></a>Rozwiązywanie problemów z dostawcą poświadczeń
 
-Obecnie NuGet nie zapewnia znacznie bezpośredniej pomocy technicznej dla debugowanie dostawców niestandardowych poświadczeń; [wystawiać 4598](https://github.com/NuGet/Home/issues/4598) służy do śledzenia tę pracę.
+W tej chwili NuGet nie zapewnia wielu bezpośrednich obsłudze debugowania niestandardowych dostawców poświadczeń; [problem 4598](https://github.com/NuGet/Home/issues/4598) śledzi tę prace.
 
 Można również wykonać następujące czynności:
 
-- Uruchom nuget.exe z `-verbosity` przełącznika do wglądu w szczegółowe dane wyjściowe.
-- Dodawać komunikaty debugowania do `stdout` w odpowiednich miejscach.
-- Pamiętaj, że używasz nuget.exe 3.3 lub nowszej.
-- Dołącz debuger po uruchomieniu na następujący fragment kodu:
+- Uruchom plik NuGet. exe z przełącznikiem `-verbosity`, aby sprawdzić szczegółowe dane wyjściowe.
+- Dodaj komunikaty debugowania do `stdout` w odpowiednich miejscach.
+- Upewnij się, że używasz programu NuGet. exe 3,3 lub nowszego.
+- Dołącz debuger podczas uruchamiania przy użyciu tego fragmentu kodu:
 
     ```cs
     while (!Debugger.IsAttached)
@@ -96,5 +92,3 @@ Można również wykonać następujące czynności:
     }
     Debugger.Break();
     ```
-
-Aby uzyskać dalszą pomoc [przesłać żądanie pomocy technicznej nuget.org](https://www.nuget.org/policies/Contact).

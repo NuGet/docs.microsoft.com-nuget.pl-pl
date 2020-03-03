@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 8ba61fa87118108c36e9dc73f30d964380d02dab
-ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
+ms.openlocfilehash: d1768a741e3f1c48e94d854fa7d365ebfa3513ea
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72380456"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78231152"
 ---
 # <a name="restore-command-nuget-cli"></a>Restore — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -20,13 +20,13 @@ Pobiera i instaluje wszystkie brakujące pakiety w folderze `packages`. Gdy jest
 
 W systemach Mac OSX i Linux przy użyciu interfejsu wiersza polecenia w systemie mono przywracanie pakietów nie jest obsługiwane z PackageReference.
 
-## <a name="usage"></a>Użycie
+## <a name="usage"></a>Sposób użycia
 
 ```cli
 nuget restore <projectPath> [options]
 ```
 
-gdzie `<projectPath>` Określa lokalizację rozwiązania lub plik `packages.config`. Aby uzyskać szczegółowe informacje o zachowaniu, zobacz [uwagi](#remarks) poniżej.
+gdzie `<projectPath>` określa lokalizację rozwiązania lub pliku `packages.config`. Aby uzyskać szczegółowe informacje o zachowaniu, zobacz [uwagi](#remarks) poniżej.
 
 ## <a name="options"></a>Opcje
 
@@ -36,21 +36,25 @@ gdzie `<projectPath>` Określa lokalizację rozwiązania lub plik `packages.conf
 | DirectDownload | *(4.0 +)* Pobiera pakiety bezpośrednio bez wypełniania pamięci podręcznych za pomocą jakichkolwiek plików binarnych lub metadanych. |
 | DisableParallelProcessing | Wyłącza przywracanie równolegle wielu pakietów. |
 | FallbackSource | *(3.2 +)* Lista źródeł pakietów do użycia jako rezerwy w przypadku, gdy pakiet nie znajduje się w głównym lub domyślnym źródle. Użyj średnika, aby oddzielić pozycje listy. |
+| Moc | W projektach opartych na PackageReference wymusza rozpoznanie wszystkich zależności, nawet jeśli ostatnie przywracanie zakończyło się pomyślnie. Określenie tej flagi jest podobne do usuwania pliku `project.assets.json`. Nie powoduje to obejścia pamięci podręcznej protokołu HTTP. |
 | ForceEnglishOutput | *(3.5 +)* Wymusza uruchomienie NuGet. exe przy użyciu niezmiennej, opartej na języku angielskim kultury. |
+| ForceEvaluate | Wymusza przywrócenie przez Przywracanie wszystkich zależności, nawet jeśli plik blokady już istnieje. |
 | Pomoc | Wyświetla informacje pomocy dla polecenia. |
+| LockFilePath | Lokalizacja wyjściowa, w której jest zapisywana plik blokady projektu. Domyślnie jest to "PROJECT_ROOT \packages.Lock.JSON". |
+| Zablokowanymode | Nie Zezwalaj na aktualizowanie pliku blokady projektu. |
 | MSBuildPath | *(4.0 +)* Określa ścieżkę programu MSBuild do użycia z poleceniem, która ma pierwszeństwo przed `-MSBuildVersion`. |
 | MSBuildVersion | *(3.2 +)* Określa wersję programu MSBuild, która ma być używana z tym poleceniem. Obsługiwane wartości to 4, 12, 14, 15,1, 15,3, 15,4, 15,5, 15,6, 15,7, 15,8, 15,9. Domyślnie program MSBuild w ścieżce jest wybierany, w przeciwnym razie domyślnie jest to najwyższa zainstalowana wersja programu MSBuild. |
-| Nocache | Uniemożliwia narzędziu NuGet używanie buforowanych pakietów. Zobacz [Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](../../consume-packages/managing-the-global-packages-and-cache-folders.md). |
-| Nieinteraktywnych | Pomija monity o dane wejściowe lub potwierdzone przez użytkownika. |
-| OutputDirectory | Określa folder, w którym są zainstalowane pakiety. Jeśli folder nie zostanie określony, używany jest bieżący folder. Wymagany w przypadku przywracania z plikiem `packages.config`, chyba że użyto `PackagesDirectory` lub `SolutionDirectory`.|
-| PackageSaveMode | Określa typy plików do zapisania po zainstalowaniu pakietu: jeden z `nuspec`, `nupkg` lub `nuspec;nupkg`. |
-| PackagesDirectory | Wartość taka sama jak `OutputDirectory`. Wymagany w przypadku przywracania z plikiem `packages.config`, chyba że użyto `OutputDirectory` lub `SolutionDirectory`. |
+| NoCache | Uniemożliwia narzędziu NuGet używanie buforowanych pakietów. Zobacz [Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](../../consume-packages/managing-the-global-packages-and-cache-folders.md). |
+| NonInteractive | Pomija monity o dane wejściowe lub potwierdzone przez użytkownika. |
+| OutputDirectory | Określa folder, w którym są zainstalowane pakiety. Jeśli folder nie zostanie określony, używany jest bieżący folder. Wymagane podczas przywracania z plikiem `packages.config`, chyba że jest używany `PackagesDirectory` lub `SolutionDirectory`.|
+| PackageSaveMode | Określa typy plików do zapisania po zainstalowaniu pakietu: jeden z `nuspec`, `nupkg`lub `nuspec;nupkg`. |
+| PackagesDirectory | Taki sam jak `OutputDirectory`. Wymagane podczas przywracania z plikiem `packages.config`, chyba że jest używany `OutputDirectory` lub `SolutionDirectory`. |
 | Project2ProjectTimeOut | Limit czasu w sekundach dla rozpoznawania odwołań między projektami. |
-| rozpoznawania | *(4.0 +)* Przywraca wszystkie projekty odwołań dla projektów platformy UWP i .NET Core. Nie dotyczy projektów korzystających z `packages.config`. |
+| cykliczne | *(4.0 +)* Przywraca wszystkie projekty odwołań dla projektów platformy UWP i .NET Core. Nie dotyczy projektów korzystających `packages.config`. |
 | RequireConsent | Sprawdza, czy przywracanie pakietów jest włączone przed pobraniem i zainstalowaniem pakietów. Aby uzyskać szczegółowe informacje, zobacz [przywracanie pakietu](../../consume-packages/package-restore.md). |
-| SolutionDirectory | Określa folder rozwiązania. Nieprawidłowy podczas przywracania pakietów dla rozwiązania. Wymagany w przypadku przywracania z plikiem `packages.config`, chyba że użyto `PackagesDirectory` lub `OutputDirectory`. |
-| Obiekt źródłowy | Określa listę źródeł pakietów (jako adresy URL) do użycia podczas przywracania. W przypadku pominięcia polecenie używa źródeł dostarczonych w plikach konfiguracyjnych, zobacz [Konfigurowanie zachowania NuGet](../../consume-packages/configuring-nuget-behavior.md). Użyj średnika, aby oddzielić pozycje listy. |
-| Moc | W projektach opartych na PackageReference wymusza rozpoznanie wszystkich zależności, nawet jeśli ostatnie przywracanie zakończyło się pomyślnie. Określenie tej flagi jest podobne do usuwania pliku `project.assets.json`. Nie powoduje to obejścia pamięci podręcznej protokołu HTTP. |
+| SolutionDirectory | Określa folder rozwiązania. Nieprawidłowy podczas przywracania pakietów dla rozwiązania. Wymagane podczas przywracania z plikiem `packages.config`, chyba że jest używany `PackagesDirectory` lub `OutputDirectory`. |
+| Element źródłowy | Określa listę źródeł pakietów (jako adresy URL) do użycia podczas przywracania. W przypadku pominięcia polecenie używa źródeł dostarczonych w plikach konfiguracyjnych, zobacz [Konfigurowanie zachowania NuGet](../../consume-packages/configuring-nuget-behavior.md). Użyj średnika, aby oddzielić pozycje listy. |
+| UseLockFile | Umożliwia generowanie i używanie pliku blokady projektu z przywracaniem. |
 | Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *ciche*, *szczegółowe*. |
 
 Zobacz również [zmienne środowiskowe](cli-ref-environment-variables.md)
@@ -67,7 +71,7 @@ Polecenie Restore wykonuje następujące czynności:
    | plik `.sln` | Przywróć pakiety zidentyfikowane przez rozwiązanie; występuje błąd, jeśli użyto `-SolutionDirectory`. `$(SolutionDir)\.nuget` jest używany jako folder początkowy. |
    | `packages.config` lub plik projektu | Przywróć pakiety wymienione w pliku, Rozwiązuj i instalując zależności. |
    | Inny typ pliku | Przyjęto, że plik jest plikiem `.sln` jak powyżej; Jeśli nie jest to rozwiązanie, wystąpi błąd programu NuGet. |
-   | (nie określono projectPath) | <ul><li>Pakiet NuGet szuka plików rozwiązania w bieżącym folderze. Jeśli zostanie znaleziony pojedynczy plik, jest on używany do przywracania pakietów; Jeśli zostanie znalezionych wiele rozwiązań, wystąpi błąd programu NuGet.</li><li>Jeśli nie ma plików rozwiązania, narzędzie NuGet szuka `packages.config` i używa go do przywracania pakietów.</li><li>Jeśli nie zostanie znaleziony żaden plik rozwiązania lub `packages.config`, pakiet NuGet podaje błąd.</ul> |
+   | (nie określono projectPath) | <ul><li>Pakiet NuGet szuka plików rozwiązania w bieżącym folderze. Jeśli zostanie znaleziony pojedynczy plik, jest on używany do przywracania pakietów; Jeśli zostanie znalezionych wiele rozwiązań, wystąpi błąd programu NuGet.</li><li>Jeśli nie ma plików rozwiązania, narzędzie NuGet szuka `packages.config` i użyje go do przywrócenia pakietów.</li><li>Jeśli nie zostanie znaleziony żaden plik rozwiązania lub `packages.config`, pakiet NuGet podaje błąd.</ul> |
 
 2. Określ folder Packages przy użyciu następującej kolejności priorytetów (NuGet powoduje błąd, jeśli nie odnaleziono żadnego z tych folderów):
 
@@ -79,7 +83,7 @@ Polecenie Restore wykonuje następujące czynności:
 3. Podczas przywracania pakietów dla rozwiązania NuGet wykonuje następujące czynności:
     - Ładuje plik rozwiązania.
     - Przywraca pakiety na poziomie rozwiązania wymienione w `$(SolutionDir)\.nuget\packages.config` do folderu `packages`.
-    - Przywróć pakiety wymienione w `$(ProjectDir)\packages.config` do folderu `packages`. Dla każdego określonego pakietu Przywróć pakiet równolegle, chyba że zostanie określony `-DisableParallelProcessing`.
+    - Przywróć pakiety wymienione w `$(ProjectDir)\packages.config` do folderu `packages`. Dla każdego określonego pakietu Przywróć pakiet równolegle, chyba że `-DisableParallelProcessing` jest określony.
 
 ## <a name="examples"></a>Przykłady
 

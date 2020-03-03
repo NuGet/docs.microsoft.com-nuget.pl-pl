@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 11/05/2019
 ms.topic: tutorial
-ms.openlocfilehash: fce3c9a92dfee325f9e914bf3d6444601fb38b6c
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: 0cb653bad9e853d908039b3f7a94e1dd7eefdde5
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385691"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78230905"
 ---
 # <a name="create-packages-for-xamarin-with-visual-studio-2017-or-2019"></a>Tworzenie pakietów dla platformy Xamarin za pomocą programu Visual Studio 2017 lub 2019
 
@@ -52,7 +52,7 @@ Otrzymane rozwiązanie zawiera dwa projekty udostępnione wraz z różnymi proje
 
 - Projekt `ILoggingLibrary`, który znajduje się w pliku `ILoggingLibrary.shared.cs`, definiuje publiczny interfejs (obszar powierzchniowy interfejsu API) składnika. Jest to miejsce, w którym można zdefiniować interfejs biblioteki.
 - Inny udostępniony projekt zawiera kod w `CrossLoggingLibrary.shared.cs`, który będzie lokalizować implementację interfejsu abstrakcyjnego dla danej platformy w czasie wykonywania. Zazwyczaj nie trzeba modyfikować tego pliku.
-- Projekty specyficzne dla platformy, takie jak `LoggingLibrary.android.cs`, każdy z nich zawierają natywną implementację interfejsu w odpowiednich `LoggingLibraryImplementation.cs` (VS 2017) lub `LoggingLibrary.<PLATFORM>.cs` (VS 2019). Jest to miejsce, w którym można utworzyć kod biblioteki.
+- Projekty specyficzne dla platformy, takie jak `LoggingLibrary.android.cs`, każda z nich zawiera natywną implementację interfejsu w odpowiednich `LoggingLibraryImplementation.cs` (VS 2017) lub `LoggingLibrary.<PLATFORM>.cs` (VS 2019). Jest to miejsce, w którym można utworzyć kod biblioteki.
 
 Domyślnie plik ILoggingLibrary.shared.cs projektu `ILoggingLibrary` zawiera definicję interfejsu, ale nie ma żadnych metod. Na potrzeby tego instruktażu należy dodać metodę `Log` w następujący sposób:
 
@@ -274,7 +274,7 @@ Spowoduje to wygenerowanie `LoggingLibrary.YOUR_NAME.1.0.0.nupkg`. Otwierając t
 
 Aby udostępnić pakiet innym deweloperom, postępuj zgodnie z instrukcjami dotyczącymi [publikowania pakietu](../nuget-org/publish-a-package.md).
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="related-topics"></a>Powiązane tematy
 
 - [Odwołanie nuspec](../reference/nuspec.md)
 - [Pakiety symboli](../create-packages/symbol-packages.md)

@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 05/18/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 937d051ff6dc49e3204f7d0cb22c4f29b99a2a7d
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: 02c6c8f3018bfd063c2d16a10381f88b54cac840
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73610610"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78231347"
 ---
 # <a name="publishing-packages"></a>Publikowanie pakietów
 
@@ -65,6 +65,10 @@ Aby wypchnąć pakiety do nuget.org należy użyć pliku [NuGet. exe v 4.1.0 lub
     ```
 
     To polecenie zapisuje klucz interfejsu API w konfiguracji NuGet, dzięki czemu nie trzeba ponownie powtarzać tego kroku na tym samym komputerze.
+
+    > [!NOTE]
+    > Klucz interfejsu API nie jest używany do uwierzytelniania w prywatnym źródle danych. Zapoznaj się z [`nuget sources` polecenie](../reference/cli-reference/cli-ref-sources.md) , aby zarządzać poświadczeniami do uwierzytelniania ze źródłem.
+    > Klucze interfejsu API można uzyskać z poszczególnych serwerów NuGet. Aby utworzyć i manange APIKeys dla nuget.org, zobacz temat [Publikowanie-API-Key](../quickstart/includes/publish-api-key.md)
 
 1. Wypchnij pakiet do galerii NuGet przy użyciu następującego polecenia:
 

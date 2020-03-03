@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/13/2019
 ms.topic: reference
-ms.openlocfilehash: d6cad228eb052563fe57ea635bff0ea548cedc1f
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: cd321084c46709e3d1d22872c37485edacd33afa
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383567"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78230529"
 ---
 # <a name="nugetconfig-reference"></a>Dokumentacja NuGet. config
 
@@ -29,7 +29,7 @@ Zawiera różne ustawienia konfiguracji, które można ustawić za pomocą [pole
 
 `dependencyVersion` i `repositoryPath` mają zastosowanie tylko do projektów przy użyciu `packages.config`. `globalPackagesFolder` dotyczy tylko projektów przy użyciu formatu PackageReference.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | dependencyVersion (tylko`packages.config`) | Domyślna wartość `DependencyVersion` instalacji, przywracania i aktualizacji pakietu, gdy przełącznik `-DependencyVersion` nie został określony bezpośrednio. Ta wartość jest również używana przez interfejs użytkownika Menedżera pakietów NuGet. Wartości to `Lowest`, `HighestPatch`, `HighestMinor``Highest`. |
 | globalPackagesFolder (projekty korzystające tylko z PackageReference) | Lokalizacja domyślnego folderu pakiety globalne. Wartość domyślna to `%userprofile%\.nuget\packages` (Windows) lub `~/.nuget/packages` (Mac/Linux). Ścieżka względna może być używana w plikach `nuget.config` specyficznych dla projektu. To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
@@ -54,9 +54,9 @@ Zawiera różne ustawienia konfiguracji, które można ustawić za pomocą [pole
 
 Określa, czy program NuGet ma przekierować automatyczne powiązania po zainstalowaniu pakietu.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
-| Pomiń | Wartość logiczna wskazująca, czy pomijać Automatyczne przekierowania powiązań. Wartość domyślna to false. |
+| Pomiń | Wartość logiczna wskazująca, czy pomijać Automatyczne przekierowania powiązań. Wartością domyślną jest false. |
 
 **Przykład**:
 
@@ -70,9 +70,9 @@ Określa, czy program NuGet ma przekierować automatyczne powiązania po zainsta
 
 Kontroluje przywracanie pakietu podczas kompilacji.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
-| włączony | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić zmienną środowiskową `EnableNuGetPackageRestore` przy użyciu wartości `True` zamiast ustawienia tego klucza w pliku konfiguracji. |
+| dostępny | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić zmienną środowiskową `EnableNuGetPackageRestore` przy użyciu wartości `True` zamiast ustawienia tego klucza w pliku konfiguracji. |
 | automatyczne | Wartość logiczna wskazująca, czy NuGet ma sprawdzać brakujące pakiety podczas kompilacji. |
 
 **Przykład**:
@@ -88,7 +88,7 @@ Kontroluje przywracanie pakietu podczas kompilacji.
 
 Określa, czy folder `packages` rozwiązania jest uwzględniony w kontroli źródła. Ta sekcja działa tylko w `nuget.config` plikach w folderze rozwiązania.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | disableSourceControlIntegration | Wartość logiczna wskazująca, czy ignorować folder Packages podczas pracy z kontrolą źródła. Wartość domyślna to false. |
 
@@ -112,7 +112,7 @@ Należy pamiętać, że źródłowy adres URL dla nuget.org jest `https://api.nu
 
 Wyświetla wszystkie znane źródła pakietów. Kolejność jest ignorowana podczas operacji przywracania i dowolnego projektu przy użyciu formatu PackageReference. Pakiet NuGet szanuje kolejność źródeł dla operacji instalacji i aktualizacji z projektami przy użyciu `packages.config`.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | (nazwa do przypisania do źródła pakietu) | Ścieżka lub adres URL źródła pakietu. |
 
@@ -126,11 +126,14 @@ Wyświetla wszystkie znane źródła pakietów. Kolejność jest ignorowana podc
 </packageSources>
 ```
 
+> [!Tip]
+> Gdy `<clear />` jest obecny dla danego węzła, pakiet NuGet ignoruje wcześniej zdefiniowane wartości konfiguracji dla tego węzła. [Przeczytaj więcej na temat sposobu stosowania ustawień](../consume-packages/configuring-nuget-behavior.md#how-settings-are-applied).
+
 ### <a name="packagesourcecredentials"></a>packageSourceCredentials
 
 Przechowuje nazwy użytkowników i hasła dla źródeł, zwykle określone za pomocą przełączników `-username` i `-password` z `nuget sources`. Hasła są szyfrowane domyślnie, chyba że jest również używana opcja `-storepasswordincleartext`.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | nazwa użytkownika | Nazwa użytkownika dla źródła w postaci zwykłego tekstu. |
 | hasło | Hasło zaszyfrowane dla źródła. |
@@ -172,7 +175,7 @@ W przypadku korzystania z nieszyfrowanych haseł:
 
 Przechowuje klucze dla źródeł korzystających z uwierzytelniania za pomocą klucza interfejsu API, jak określono za pomocą [polecenia`nuget setapikey`](../reference/cli-reference/cli-ref-setapikey.md).
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | (źródłowy adres URL) | Zaszyfrowany klucz interfejsu API. |
 
@@ -188,7 +191,7 @@ Przechowuje klucze dla źródeł korzystających z uwierzytelniania za pomocą k
 
 Zidentyfikowano aktualnie wyłączone źródła. Może być pusty.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | (nazwa źródła) | Wartość logiczna wskazująca, czy źródło jest wyłączone. |
 
@@ -209,7 +212,7 @@ Zidentyfikowano aktualnie wyłączone źródła. Może być pusty.
 
 Identyfikuje aktualnie aktywne źródło lub wskazuje zagregowane wszystkie źródła.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | (nazwa źródła) lub `All` | Jeśli klucz jest nazwą źródła, wartość jest ścieżką źródłową lub adresem URL. Jeśli `All`, wartość powinna być `(Aggregate source)`, aby połączyć wszystkie źródła pakietów, które nie zostały wyłączone w inny sposób. |
 
@@ -269,7 +272,7 @@ Jeśli wyszukiwanie zakończyło się pomyślnie, pobieranie nie jest konieczne.
 
 Jeśli dopasowanie nie zostanie znalezione, pakiet NuGet sprawdza źródła plików, a następnie źródła http, a następnie pobiera pakiety.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | (nazwa folderu rezerwowego) | Ścieżka do folderu rezerwowego. |
 
@@ -285,7 +288,7 @@ Jeśli dopasowanie nie zostanie znalezione, pakiet NuGet sprawdza źródła plik
 
 Ustawia domyślny format zarządzania pakietami, *Packages. config* lub PackageReference. Projekty w stylu zestawu SDK zawsze używają PackageReference.
 
-| Key | Wartość |
+| Klucz | Wartość |
 | --- | --- |
 | format | Wartość logiczna wskazująca domyślny format zarządzania pakietami. Jeśli `1`, format jest PackageReference. Jeśli `0`, format to *Packages. config*. |
 | wyłączone | Wartość logiczna wskazująca, czy wyświetlać monit o wybranie domyślnego formatu pakietu przy pierwszej instalacji pakietu. `False` ukrywa monit. |
@@ -305,13 +308,13 @@ Możesz użyć zmiennych środowiskowych w `nuget.config` wartości (NuGet 3.4 +
 
 Na przykład jeśli zmienna środowiskowa `HOME` w systemie Windows jest ustawiona na `c:\users\username`, wartość `%HOME%\NuGetRepository` w pliku konfiguracji jest rozpoznawana jako `c:\users\username\NuGetRepository`.
 
-Podobnie, jeśli `HOME` w systemie Mac/Linux jest ustawiony na `/home/myStuff`, wówczas `$HOME/NuGetRepository` w pliku konfiguracji jest rozpoznawana jako `/home/myStuff/NuGetRepository`.
+Należy pamiętać, że należy używać zmiennych środowiskowych w stylu systemu Windows (rozpoczyna się i kończą z%) nawet w systemie Mac/Linux. Nie rozwiąże się `$HOME/NuGetRepository` w pliku konfiguracji. W systemie Mac/Linux wartość `%HOME%\NuGetRepository` zostanie rozwiązana, aby `/home/myStuff/NuGetRepository`.
 
 Jeśli zmienna środowiskowa nie zostanie znaleziona, NuGet używa wartości literału z pliku konfiguracyjnego.
 
 ## <a name="example-config-file"></a>Przykładowy plik konfiguracji
 
-Poniżej znajduje się przykładowy plik `nuget.config`, który ilustruje wiele ustawień:
+Poniżej znajduje się przykładowy plik `nuget.config`, który ilustruje wiele ustawień, w tym opcjonalne:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

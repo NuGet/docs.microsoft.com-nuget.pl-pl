@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/24/2019
 ms.topic: overview
-ms.openlocfilehash: a08ac24ce6b1d64496c9fc1b20604850e9711dd6
-ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
+ms.openlocfilehash: c326cf184ff20fb798a5770f0a4cf9bf42bed3f5
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72380671"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78230697"
 ---
 # <a name="an-introduction-to-nuget"></a>Wprowadzenie do narzędzia NuGet
 
@@ -45,12 +45,12 @@ Oprócz obsługi hostingu pakiet NuGet udostępnia również różne narzędzia 
 
 | Narzędzie | Platformy | Odpowiednie scenariusze | Opis |
 | --- | --- | --- | --- |
-| [Interfejs wiersza polecenia dotnet](consume-packages/install-use-packages-dotnet-cli.md) | Wszystkie | Tworzenie, użycie | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla projektów w stylu zestawu SDK, które są przeznaczone dla .NET Framework (zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions)). Zapewnia pewne możliwości interfejsu wiersza polecenia NuGet bezpośrednio w łańcuchu narzędzi programu .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia `nuget.exe` interfejs wiersza polecenia dotnet nie współdziała z projektami programu Visual Studio. |
-| [Interfejs wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md) | Wszystkie | Tworzenie, użycie | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i projektów spoza zestawu SDK, które są przeznaczone dla .NET Standard bibliotek. Zapewnia wszystkie możliwości programu NuGet, z zastosowaniem określonych poleceń w odniesieniu do twórców pakietów, niektórych mających zastosowanie tylko do konsumentów i innych. Na przykład twórcy pakietów używają polecenia `nuget pack`, aby utworzyć pakiet z różnych zestawów i powiązanych plików, odbiorcy pakietu używają `nuget install` do dołączania pakietów do folderu projektu, a wszyscy używają `nuget config` do ustawiania zmiennych konfiguracyjnych NuGet. Jako narzędzie niezależny od platformy, interfejs wiersza polecenia NuGet nie współdziała z projektami programu Visual Studio. |
+| [Interfejs wiersza polecenia dotnet](consume-packages/install-use-packages-dotnet-cli.md) | Wszyscy | Tworzenie, użycie | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla projektów w stylu zestawu SDK, które są przeznaczone dla .NET Framework (zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions)). Zapewnia pewne możliwości interfejsu wiersza polecenia NuGet bezpośrednio w łańcuchu narzędzi programu .NET Core. Podobnie jak w przypadku interfejsu wiersza polecenia `nuget.exe` interfejs wiersza polecenia dotnet nie współdziała z projektami programu Visual Studio. |
+| [Interfejs wiersza polecenia nuget.exe](consume-packages/install-use-packages-nuget-cli.md) | Wszyscy | Tworzenie, użycie | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i projektów spoza zestawu SDK, które są przeznaczone dla .NET Standard bibliotek. Zapewnia wszystkie możliwości programu NuGet, z zastosowaniem określonych poleceń w odniesieniu do twórców pakietów, niektórych mających zastosowanie tylko do konsumentów i innych. Na przykład twórcy pakietów używają polecenia `nuget pack`, aby utworzyć pakiet z różnych zestawów i powiązanych plików, odbiorcy pakietu używają `nuget install` do dołączania pakietów do folderu projektu, a wszyscy używają `nuget config` do ustawiania zmiennych konfiguracyjnych NuGet. Jako narzędzie niezależny od platformy, interfejs wiersza polecenia NuGet nie współdziała z projektami programu Visual Studio. |
 | [Konsola menedżera pakietów](consume-packages/install-use-packages-powershell.md) | Program Visual Studio w systemie Windows | Zużycie | Zawiera [polecenia programu PowerShell](reference/Powershell-Reference.md) służące do instalowania i zarządzania pakietami w projektach programu Visual Studio. |
 | [Interfejs użytkownika menedżera pakietów](consume-packages/install-use-packages-visual-studio.md) | Program Visual Studio w systemie Windows | Zużycie | Oferuje łatwy w użyciu interfejs użytkownika do instalowania pakietów i zarządzania nimi w projektach programu Visual Studio. |
-| [Zarządzaj interfejsem użytkownika NuGet](/visualstudio/mac/nuget-walkthrough) | Visual Studio for Mac | Zużycie | Zapewnianie łatwego w użyciu interfejsu użytkownika do instalowania pakietów i zarządzania nimi w projektach Visual Studio dla komputerów Mac. |
-| [MSBuild](reference/msbuild-targets.md) | Windows | Tworzenie, użycie | Zapewnia możliwość tworzenia pakietów i przywracania pakietów używanych w projekcie bezpośrednio za pomocą łańcucha narzędzi programu MSBuild. |
+| [Zarządzaj interfejsem użytkownika NuGet](/visualstudio/mac/nuget-walkthrough) | Visual Studio dla komputerów Mac | Zużycie | Zapewnianie łatwego w użyciu interfejsu użytkownika do instalowania pakietów i zarządzania nimi w projektach Visual Studio dla komputerów Mac. |
+| [MSBuild](reference/msbuild-targets.md) | System Windows | Tworzenie, użycie | Zapewnia możliwość tworzenia pakietów i przywracania pakietów używanych w projekcie bezpośrednio za pomocą łańcucha narzędzi programu MSBuild. |
 
 Jak widać, narzędzia NuGet, z którymi pracujesz, zależą od tego, czy tworzysz, zużywają lub publikujesz pakiety oraz na platformie, na której pracujesz. Twórcy pakietu są zazwyczaj również odbiorcami, którzy tworzą na podstawie funkcjonalności, która istnieje w innych pakietach NuGet. Te pakiety oczywiście mogą być zależne od innych.
 
@@ -105,9 +105,15 @@ Aby procesy te działały wydajnie, pakiet NuGet wykonuje pewne optymalizacje w 
 
 W ramach pojedynczego projektu, pakiet NuGet zarządza ogólnym wykresem zależności, który ponownie obejmuje rozwiązywanie wielu odwołań do różnych wersji tego samego pakietu. Dość często zdarza się, że projekt bierze zależność od jednego lub większej liczby pakietów, które same mają te same zależności. Niektóre z najbardziej przydatnych pakietów narzędzi na nuget.org są wykorzystywane przez wiele innych pakietów. W całym grafie zależności można łatwo uzyskać dziesięć różnych odwołań do różnych wersji tego samego pakietu. Aby uniknąć przełączenia wielu wersji tego pakietu do samej aplikacji, program NuGet sortuje, która wersja może być używana przez wszystkich klientów. (Aby uzyskać więcej informacji, zobacz [rozpoznawanie zależności](concepts/dependency-resolution.md)).
 
-Poza tym, pakiet NuGet zachowuje wszystkie specyfikacje związane ze strukturą pakietów (w tym [lokalizacjami](create-packages/creating-localized-packages.md) i [symbolami debugowania](create-packages/symbol-packages-snupkg.md)) oraz ich [odwołania](consume-packages/package-references-in-project-files.md) (w tym [zakresami wersji](concepts/package-versioning.md#version-ranges-and-wildcards) i [wersjami wstępnymi](create-packages/prerelease-packages.md)). Pakiet NuGet udostępnia również różne interfejsy API służące do programistycznej pracy z usługami i zapewnia wsparcie dla deweloperów, którzy piszą rozszerzenia programu Visual Studio i szablony projektów.
+Poza tym, pakiet NuGet zachowuje wszystkie specyfikacje związane ze strukturą pakietów (w tym [lokalizacjami](create-packages/creating-localized-packages.md) i [symbolami debugowania](create-packages/symbol-packages-snupkg.md)) oraz ich [odwołania](consume-packages/package-references-in-project-files.md) (w tym [zakresami wersji](concepts/package-versioning.md#version-ranges) i [wersjami wstępnymi](create-packages/prerelease-packages.md)). Pakiet NuGet udostępnia również różne interfejsy API służące do programistycznej pracy z usługami i zapewnia wsparcie dla deweloperów, którzy piszą rozszerzenia programu Visual Studio i szablony projektów.
 
 Poświęć chwilę na przejrzenie spisu treści tej dokumentacji i zobaczysz wszystkie te funkcje w tym miejscu oraz informacje o wersji Datowanie z powrotem do początku narzędzia NuGet.
+
+## <a name="related-video"></a>Pokrewne wideo
+
+> [!Video https://channel9.msdn.com/Series/NuGet-101/What-is-NuGet-1-of-5/player]
+
+Znajdź więcej filmów wideo NuGet w witrynie [Channel 9](https://channel9.msdn.com/Series/NuGet-101) i [YouTube](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oVLvfkFk8O9h6v2Dcdh2bh_).
 
 ## <a name="comments-contributions-and-issues"></a>Komentarze, wkłady i problemy
 

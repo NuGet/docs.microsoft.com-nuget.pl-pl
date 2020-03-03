@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 00e2ee760698afd8591909570d76e4bfe475a682
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: 2358cedc05520a3ec82a39aef34b6d467e44460b
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383998"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78231165"
 ---
 # <a name="pack-command-nuget-cli"></a>pack command, polecenie (interfejs wiersza polecenia NuGet)
 
@@ -22,7 +22,7 @@ Tworzy pakiet NuGet na podstawie określonego pliku [. nuspec](../nuspec.md) lub
 > Użyj [`dotnet pack`](../dotnet-Commands.md) lub [`msbuild -t:pack`](../msbuild-targets.md) dla projektów opartych na [PackageReference](../../consume-packages/package-references-in-project-files.md) .
 > W obszarze mono Tworzenie pakietu z pliku projektu nie jest obsługiwane. Należy również dostosować ścieżki nielokalne w pliku `.nuspec` do ścieżek w stylu systemu UNIX, ponieważ program NuGet. exe nie konwertuje samych nazw ścieżek systemu Windows.
 
-## <a name="usage"></a>Pomiar
+## <a name="usage"></a>Sposób użycia
 
 ```cli
 nuget pack <nuspecPath | projectPath> [options] [-Properties ...]
@@ -35,10 +35,10 @@ gdzie `<nuspecPath>` i `<projectPath>` określają odpowiednio `.nuspec` lub pli
 | Opcja | Opis |
 | --- | --- |
 | BasePath | Ustawia ścieżkę podstawową plików zdefiniowanych w pliku [. nuspec](../nuspec.md) . |
-| {1&gt;Kompilacja&lt;1} | Określa, że projekt powinien zostać skompilowany przed skompilowaniem pakietu. |
-| Wyklucz | Określa jeden lub więcej wzorców symboli wieloznacznych, które mają zostać wykluczone podczas tworzenia pakietu. Aby określić więcej niż jeden wzorzec, powtórz flagę-Exclude. Zobacz przykład poniżej. |
+| Kompilacja | Określa, że projekt powinien zostać skompilowany przed skompilowaniem pakietu. |
+| Exclude | Określa jeden lub więcej wzorców symboli wieloznacznych, które mają zostać wykluczone podczas tworzenia pakietu. Aby określić więcej niż jeden wzorzec, powtórz flagę-Exclude. Zobacz przykład poniżej. |
 | ExcludeEmptyDirectories | Uniemożliwia dołączenie pustych katalogów podczas kompilowania pakietu. |
-| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
+| ForceEnglishOutput | *(3.5 +)* Wymusza uruchomienie NuGet. exe przy użyciu niezmiennej, opartej na języku angielskim kultury. |
 | ConfigFile | Określ plik konfiguracji dla polecenia pakietu. |
 | Pomoc | Wyświetla informacje pomocy dla polecenia. |
 | IncludeReferencedProjects | Wskazuje, że skompilowany pakiet powinien zawierać przywoływane projekty jako zależności lub jako część pakietu. Jeśli projekt, do którego istnieje odwołanie, ma odpowiedni plik `.nuspec`, który ma taką samą nazwę jak projekt, przywoływany projekt jest dodawany jako zależność. W przeciwnym razie przywoływany projekt zostanie dodany jako część pakietu. |
@@ -48,7 +48,7 @@ gdzie `<nuspecPath>` i `<projectPath>` określają odpowiednio `.nuspec` lub pli
 | NoDefaultExcludes | Zapobiega domyślnemu wykluczeniu plików pakietów NuGet oraz plików i folderów zaczynających się od kropki, takich jak `.svn` i `.gitignore`. |
 | NoPackageAnalysis | Określa, że pakiet nie powinien uruchamiać analizy pakietu po skompilowaniu pakietu. |
 | OutputDirectory | Określa folder, w którym jest przechowywany utworzony pakiet. Jeśli folder nie zostanie określony, używany jest bieżący folder. |
-| Właściwości | Powinna zostać wyświetlona jako Ostatnia w wierszu polecenia po innych opcjach. Określa listę właściwości, które zastępują wartości w pliku projektu; Zobacz [wspólne właściwości projektu MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazw właściwości. Argument właściwości znajduje się na liście par token = wartość, oddzielonych średnikami, gdzie każde wystąpienie `$token$` w pliku `.nuspec` zostanie zastąpione daną wartością. Wartości mogą być ciągami w cudzysłowie. Należy pamiętać, że w przypadku właściwości "Configuration" wartością domyślną jest "debug". Aby zmienić konfigurację wydania, użyj `-Properties Configuration=Release`. |
+| Właściwości | Powinna zostać wyświetlona jako Ostatnia w wierszu polecenia po innych opcjach. Określa listę właściwości, które zastępują wartości w pliku projektu; Zobacz [wspólne właściwości projektu MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazw właściwości. Argument właściwości znajduje się na liście par token = wartość, oddzielonych średnikami, gdzie każde wystąpienie `$token$` w pliku `.nuspec` zostanie zastąpione daną wartością. Wartości mogą być ciągami w cudzysłowie. Należy pamiętać, że w przypadku właściwości "Configuration" wartością domyślną jest "debug". Aby zmienić konfigurację wydania, użyj `-Properties Configuration=Release`. **Ogólnie rzecz**biorąc, właściwości powinny być takie same, jak w odpowiednich `nuget build`, aby uniknąć potencjalnie nietypowego zachowania. |
 | Suffix | *(3.4.4 +)* Dołącza sufiks do wewnętrznie wygenerowanego numeru wersji, zazwyczaj używany do dołączania kompilacji lub innych identyfikatorów w wersji wstępnej. Na przykład za pomocą `-suffix nightly` utworzy pakiet z numerem wersji, takim jak `1.2.3-nightly`. Sufiksy muszą zaczynać się literą, aby uniknąć ostrzeżeń, błędów i potencjalnych niezgodności z różnymi wersjami programu NuGet i Menedżera pakietów NuGet. |
 | Symbole | Określa, że pakiet zawiera źródła i symbole. Gdy jest używany z plikiem `.nuspec`, tworzy on zwykły plik pakietu NuGet i odpowiedni pakiet symboli. Domyślnie tworzy on [starszy pakiet symboli](../../create-packages/Symbol-Packages.md). Nowy zalecany format pakietów symboli to. snupkg. Zobacz [Tworzenie pakietów symboli (. snupkg)](../../create-packages/Symbol-Packages-snupkg.md). |
 | Narzędzie | Określa, że pliki wyjściowe projektu należy umieścić w folderze `tool`. |
@@ -75,6 +75,14 @@ Rozważmy na przykład następujący plik `packages.config` w projekcie źródł
 ```
 
 Dla tego projektu pakiet utworzony przez `nuget pack` będzie miał zależność od `jQuery` i `microsoft-web-helpers` ale nie `netfx-Guard`.
+
+## <a name="suppressing-pack-warnings"></a>Pomijanie ostrzeżeń pakietu
+
+Mimo że zaleca się rozwiązanie wszystkich ostrzeżeń NuGet podczas operacji pakietu, w niektórych sytuacjach pomijanie ich jest uzasadnione.
+
+Można to osiągnąć w następujący sposób: 
+
+> NuGet. exe Pack Package. nuspec-Properties nowarn = NU5104
 
 ## <a name="examples"></a>Przykłady
 

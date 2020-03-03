@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 0e2119953e6d07cd3571f156fa0b2665de49f963
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: e06cfb5b355dfae8104090db7babdecdf9e9fec1
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383972"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78231230"
 ---
 # <a name="setapikey-command-nuget-cli"></a>setapikey — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -18,23 +18,24 @@ ms.locfileid: "75383972"
 
 Zapisuje klucz interfejsu API dla danego adresu URL serwera w `NuGet.Config`, aby nie trzeba było go wprowadzać do kolejnych poleceń.
 
-## <a name="usage"></a>Pomiar
+## <a name="usage"></a>Sposób użycia
 
 ```cli
 nuget setapikey <key> -Source <url> [options]
 ```
 
-gdzie `<source>` identyfikuje serwer, a `<key>` jest kluczem lub hasłem do zapisania. W przypadku pominięcia `<source>` zostanie przyjęty nuget.org.
+gdzie `<source>` identyfikuje serwer, a `<key>` jest kluczem do zapisania. W przypadku pominięcia `<source>` zostanie przyjęty nuget.org. 
 
 > [!NOTE]
 > Klucz interfejsu API nie jest używany do uwierzytelniania w prywatnym źródle danych. Zapoznaj się z [`nuget sources` polecenie](../cli-reference/cli-ref-sources.md) , aby zarządzać poświadczeniami do uwierzytelniania ze źródłem.
+> Klucze interfejsu API można uzyskać z poszczególnych serwerów NuGet. Aby utworzyć i zarządzać APIKeys for nuget.org, zobacz temat [Publikowanie-API-Key](../../quickstart/includes/publish-api-key.md)
 
 ## <a name="options"></a>Opcje
 
 | Opcja | Opis |
 | --- | --- |
 | ConfigFile | Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony, używany jest `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux).|
-| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
+| ForceEnglishOutput | *(3.5 +)* Wymusza uruchomienie NuGet. exe przy użyciu niezmiennej, opartej na języku angielskim kultury. |
 | Pomoc | Wyświetla informacje pomocy dla polecenia. |
 | NonInteractive | Pomija monity o dane wejściowe lub potwierdzone przez użytkownika. |
 | Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *ciche*, *szczegółowe*. |

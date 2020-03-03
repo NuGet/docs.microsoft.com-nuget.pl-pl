@@ -5,21 +5,21 @@ author: karann-msft
 ms.author: karann
 ms.date: 07/24/2018
 ms.topic: quickstart
-ms.openlocfilehash: 92fc78a88733d0308dc26e10c5b0bafb86b78045
-ms.sourcegitcommit: e4b0ff4460865db6dc7bc9f20e9f644d98493011
+ms.openlocfilehash: 96e138561390984d9def495ba5e091c43023cc92
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71307226"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78231334"
 ---
-# <a name="quickstart-install-and-use-a-package-in-visual-studio-windows-only"></a>Szybki start: Instalowanie i używanie pakietu w programie Visual Studio (tylko system Windows)
+# <a name="quickstart-install-and-use-a-package-in-visual-studio-windows-only"></a>Szybki Start: Instalowanie i używanie pakietu w programie Visual Studio (tylko system Windows)
 
 Pakiety NuGet zawierają kod wielokrotnego użytku, który inni deweloperzy udostępnili do użycia w projektach. Zobacz, [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są instalowane w projekcie programu Visual Studio za pomocą Menedżera pakietów NuGet lub konsoli Menedżera pakietów. W tym artykule przedstawiono proces przy użyciu popularnego pakietu [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) i projektu Windows Presentation Foundation (WPF). Ten sam proces ma zastosowanie do dowolnego innego projektu .NET lub .NET Core.
 
-Po zainstalowaniu programu zapoznaj się z pakietem w `using <namespace>` kodzie \<,\> gdzie przestrzeń nazw jest specyficzna dla używanego pakietu. Po wprowadzeniu odwołania można wywołać pakiet za pomocą jego interfejsu API.
+Po zainstalowaniu programu zapoznaj się z pakietem w kodzie, `using <namespace>` gdzie \<przestrzeń nazw\> jest specyficzna dla używanego pakietu. Po wprowadzeniu odwołania można wywołać pakiet za pomocą jego interfejsu API.
 
 > [!Tip]
-> **Zacznij od NuGet.org**: *NuGet.org* przeglądania polega na tym, że deweloperzy platformy .NET zwykle wyszukują składniki, których mogą ponownie używać w swoich aplikacjach. Możesz przeszukiwać *NuGet.org* bezpośrednio lub znajdować i instalować pakiety w programie Visual Studio, jak pokazano w tym artykule. Aby uzyskać ogólne informacje, zobacz [Znajdź i Oceń pakiety NuGet](../consume-packages/finding-and-choosing-packages.md).
+> **Zacznij od NuGet.org**: przeglądanie *NuGet.org* polega na tym, że deweloperzy platformy .NET zwykle wyszukują składniki, których mogą ponownie używać w swoich aplikacjach. Możesz przeszukiwać *NuGet.org* bezpośrednio lub znajdować i instalować pakiety w programie Visual Studio, jak pokazano w tym artykule. Aby uzyskać ogólne informacje, zobacz [Znajdź i Oceń pakiety NuGet](../consume-packages/finding-and-choosing-packages.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,13 +33,13 @@ Jeśli używasz Visual Studio dla komputerów Mac, zobacz [Instalowanie i używa
 
 Pakiety NuGet można zainstalować w dowolnym projekcie .NET, pod warunkiem, że pakiet obsługuje tę samą platformę docelową co projekt.
 
-W tym instruktażu należy użyć prostej aplikacji WPF. Utwórz projekt w programie Visual Studio przy użyciu **pliku** > **Nowy projekt**, wpisz **.NET** w polu wyszukiwania, a następnie wybierz **aplikację WPF (.NET Framework)** . Kliknij przycisk **Dalej**. Zaakceptuj wartości domyślne dla **struktury** po wyświetleniu monitu.
+W tym instruktażu należy użyć prostej aplikacji WPF. Utwórz projekt w programie Visual Studio przy użyciu **pliku** > **Nowy projekt**, wpisz **.NET** w polu wyszukiwania, a następnie wybierz **aplikację WPF (.NET Framework)**. Kliknij przycisk **Dalej**. Zaakceptuj wartości domyślne dla **struktury** po wyświetleniu monitu.
 
 Program Visual Studio tworzy projekt, który zostanie otwarty w Eksplorator rozwiązań.
 
 ## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodawanie pakietu NuGet Newtonsoft. JSON
 
-Aby zainstalować pakiet, można użyć Menedżera pakietów NuGet lub konsoli Menedżera pakietów. Podczas instalacji pakietu NuGet rejestruje zależność w pliku projektu lub `packages.config` pliku (w zależności od formatu projektu). Aby uzyskać więcej informacji, zobacz [Omówienie użycia pakietu i przepływ pracy](../consume-packages/Overview-and-Workflow.md).
+Aby zainstalować pakiet, można użyć Menedżera pakietów NuGet lub konsoli Menedżera pakietów. Podczas instalacji pakietu NuGet rejestruje zależność w pliku projektu lub pliku `packages.config` (w zależności od formatu projektu). Aby uzyskać więcej informacji, zobacz [Omówienie użycia pakietu i przepływ pracy](../consume-packages/Overview-and-Workflow.md).
 
 ### <a name="nuget-package-manager"></a>Menedżer pakietów NuGet
 
@@ -63,21 +63,21 @@ Aby zainstalować pakiet, można użyć Menedżera pakietów NuGet lub konsoli M
 
 ### <a name="package-manager-console"></a>Konsola menedżera pakietów
 
-1. Wybierz kolejno pozycje **Narzędzia** >  > **Menedżer pakietów NuGet**polecenie**konsola Menedżera pakietów** .
+1. Wybierz **narzędzia** > **menedżer pakietów NuGet** > menu **konsoli Menedżera pakietów** .
 
 1. Po otwarciu konsoli Sprawdź, czy na liście rozwijanej **Projekt domyślny** znajduje się projekt, w którym ma zostać zainstalowany pakiet. Jeśli w rozwiązaniu istnieje pojedynczy projekt, jest on już zaznaczony.
 
     ![Lokalizowanie pakietu Newtonsoft. JSON](media/QS_Use-08-Console1.png)
 
-1. Wprowadź polecenie `Install-Package Newtonsoft.Json` (zobacz [install-package](../reference/ps-reference/ps-ref-install-package.md)). W oknie konsoli są wyświetlane dane wyjściowe polecenia. Błędy zwykle wskazują, że pakiet nie jest zgodny z platformą docelową projektu.
+1. Wprowadź `Install-Package Newtonsoft.Json` polecenia (zobacz [install-package](../reference/ps-reference/ps-ref-install-package.md)). W oknie konsoli są wyświetlane dane wyjściowe polecenia. Błędy zwykle wskazują, że pakiet nie jest zgodny z platformą docelową projektu.
 
    Aby uzyskać więcej informacji na temat konsoli Menedżera pakietów, zobacz [Instalowanie pakietów i zarządzanie nimi za pomocą konsoli Menedżera pakietów](../consume-packages/install-use-packages-powershell.md).
 
 ## <a name="use-the-newtonsoftjson-api-in-the-app"></a>Korzystanie z interfejsu API Newtonsoft. JSON w aplikacji
 
-Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać `JsonConvert.SerializeObject` metodę, aby przekonwertować obiekt na ciąg czytelny dla człowieka.
+Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać metodę `JsonConvert.SerializeObject`, aby przekonwertować obiekt na ciąg czytelny dla człowieka.
 
-1. Otwórz `MainWindow.xaml` i Zastąp istniejący `Grid` element następującym:
+1. Otwórz `MainWindow.xaml` i Zastąp istniejący element `Grid` następującym:
 
     ```xaml
     <Grid Background="White">
@@ -88,7 +88,7 @@ Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać `JsonConvert.Se
     </Grid>
     ```
 
-1. Otwórz plik (znajdujący się w Eksplorator rozwiązań `MainWindow.xaml` pod węzłem) i Wstaw następujący kod wewnątrz `MainWindow` klasy: `MainWindow.xaml.cs`
+1. Otwórz plik `MainWindow.xaml.cs` (znajdujący się w Eksplorator rozwiązań w węźle `MainWindow.xaml`) i Wstaw następujący kod wewnątrz klasy `MainWindow`:
 
     ```cs
     public class Account
@@ -111,19 +111,25 @@ Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać `JsonConvert.Se
     }
     ```
 
-1. Mimo że dodano pakiet Newtonsoft. JSON do projektu, czerwone zygzaki pojawiają się w obszarze `JsonConvert` , ponieważ `using` potrzebujesz instrukcji w górnej części pliku kodu:
+1. Mimo że dodano pakiet Newtonsoft. JSON do projektu, w obszarze `JsonConvert` pojawia się czerwona zygzakowata, ponieważ potrzebujesz instrukcji `using` w górnej części pliku kodu:
 
     ```cs
     using Newtonsoft.Json;
     ```
 
-1. Skompiluj i uruchom aplikację, naciskając klawisz F5 lub wybierając pozycję **Debuguj** > **Rozpocznij debugowanie**:
+1. Skompiluj i uruchom aplikację, naciskając klawisz F5 lub wybierając pozycję **debuguj** > **Rozpocznij debugowanie**:
 
     ![Początkowe dane wyjściowe aplikacji WPF](media/QS_Use-06-AppStart.png)
 
 1. Wybierz przycisk na przycisku, aby zobaczyć zawartość elementu TextBlock zamienionego na jakiś tekst JSON:
 
     ![Dane wyjściowe aplikacji WPF po wybraniu przycisku](media/QS_Use-07-AppEnd.png)
+
+## <a name="related-video"></a>Pokrewne wideo
+
+> [!Video https://channel9.msdn.com/Series/NuGet-101/Install-and-Use-a-NuGet-Package-with-Visual-Studio-2-of-5/player]
+
+Znajdź więcej filmów wideo NuGet w witrynie [Channel 9](https://channel9.msdn.com/Series/NuGet-101) i [YouTube](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oVLvfkFk8O9h6v2Dcdh2bh_).
 
 ## <a name="next-steps"></a>Następne kroki
 

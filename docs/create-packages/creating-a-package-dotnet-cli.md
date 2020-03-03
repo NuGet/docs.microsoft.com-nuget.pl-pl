@@ -3,14 +3,14 @@ title: Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
 description: Szczegółowy przewodnik dotyczący procesu projektowania i tworzenia pakietu NuGet, w tym najważniejszych punktów decyzyjnych, takich jak pliki i przechowywanie wersji.
 author: karann-msft
 ms.author: karann
-ms.date: 07/09/2019
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: c198bb73f0e4f5a59826db905eaf4622fe8543bc
-ms.sourcegitcommit: 1799d4ac23c8aacee7498fdc72c40dd1646d267b
+ms.openlocfilehash: 712e4c7159aa9719052330d8e45f63e18e390325
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77476259"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78230590"
 ---
 # <a name="create-a-nuget-package-using-the-dotnet-cli"></a>Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
 
@@ -67,6 +67,10 @@ Można również ustawić właściwości opcjonalne, takie jak `Title`, `Package
 > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na Właściwość **PackageTags** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
 Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [odwołania do pakietów w plikach projektu](../consume-packages/package-references-in-project-files.md) i [przechowywanie wersji pakietu](../concepts/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu atrybutów `<IncludeAssets>` i `<ExcludeAssets>`. Aby uzyskać więcej informacji, seee [kontrolowania elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
+
+## <a name="add-an-optional-description-field"></a>Dodaj opcjonalne pole opisu
+
+[!INCLUDE [add description to package](includes/add-description.md)]
 
 ## <a name="choose-a-unique-package-identifier-and-set-the-version-number"></a>Wybierz unikatowy identyfikator pakietu i ustaw numer wersji
 

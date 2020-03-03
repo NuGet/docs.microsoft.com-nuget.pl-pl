@@ -6,28 +6,28 @@ ms.author: karann
 ms.date: 03/23/2018
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: e0014a812ea591ef40c961e13864652d75ebdf6c
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.openlocfilehash: 912c0d015e2f499bc7386483bc6c35ecd765d3d4
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73610992"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78230866"
 ---
 # <a name="package-versioning"></a>Przechowywanie wersji pakietów
 
-Określony pakiet zawsze jest określany przy użyciu identyfikatora pakietu i dokładnego numeru wersji. Na przykład [Entity Framework](https://www.nuget.org/packages/EntityFramework/) w witrynie NuGet.org ma kilka dziesiątych dostępnych pakietów, od wersji *4.1.10311* do wersji *6.1.3* (Najnowsza stabilna wersja) i różne wersje wstępne, takie jak *6.2.0-beta1* .
+Określony pakiet zawsze jest określany przy użyciu identyfikatora pakietu i dokładnego numeru wersji. Na przykład [Entity Framework](https://www.nuget.org/packages/EntityFramework/) w NuGet.org ma kilka dziesiątych dostępnych pakietów, od wersji *4.1.10311* do wersji *6.1.3* (najnowszej stabilnej wersji) i różne wersje wstępne, takie jak *6.2.0-beta1*.
 
 Podczas tworzenia pakietu przypisujesz określony numer wersji z opcjonalnym sufiksem tekstu w wersji wstępnej. W przypadku używania pakietów, z drugiej strony, można określić dokładny numer wersji lub zakres akceptowalnych wersji.
 
 W tym temacie:
 
 - [Podstawy wersji](#version-basics) , w tym sufiksy wstępne.
-- [Zakresy wersji i symbole wieloznaczne](#version-ranges-and-wildcards)
+- [Zakresy wersji](#version-ranges)
 - [Znormalizowane numery wersji](#normalized-version-numbers)
 
 ## <a name="version-basics"></a>Podstawy wersji
 
-Określony numer wersji ma postać *główna. pomocnicza. poprawka [-sufiks]* , gdzie składniki mają następujące znaczenie:
+Określony numer wersji ma postać *główna. pomocnicza. poprawka [-sufiks]*, gdzie składniki mają następujące znaczenie:
 
 - *Główna: istotne*zmiany
 - *Pomocniczy*: nowe funkcje, ale zgodność z poprzednimi wersjami
@@ -68,7 +68,7 @@ Przy rozwiązywaniu odwołań do pakietów i wielu wersjach pakietów różni si
     1.0.1-alpha
     1.0.1-aaa
 
-## <a name="semantic-versioning-200"></a>2\.0.0 wersji semantycznej
+## <a name="semantic-versioning-200"></a>2.0.0 wersji semantycznej
 
 Dzięki narzędziom NuGet 4.3.0 + i Visual Studio 2017 w wersji 15.3 + pakiet NuGet obsługuje [semantykę wersji 2.0.0](https://semver.org/spec/v2.0.0.html).
 
@@ -80,11 +80,11 @@ Niektóre semantyka SemVer v 2.0.0 nie są obsługiwane przez starszych klientó
 W przypadku nuget.org pakiet jest zdefiniowany jako pakiet SemVer v 2.0.0, jeśli jest spełniony jeden z następujących instrukcji:
 
 - Własna wersja pakietu to SemVer v 2.0.0 zgodna, ale nie SemVer v 1.0.0 zgodna, zgodnie z definicją powyżej.
-- Dowolna z zakresów wersji zależności pakietu ma wersję minimalną lub maksymalną, która jest zgodna z SemVer v 2.0.0, ale nie SemVer v 1.0.0 zgodna z definicją powyżej; na przykład *[1.0.0-alpha. 1,)* .
+- Dowolna z zakresów wersji zależności pakietu ma wersję minimalną lub maksymalną, która jest zgodna z SemVer v 2.0.0, ale nie SemVer v 1.0.0 zgodna z definicją powyżej; na przykład *[1.0.0-alpha. 1,)*.
 
 W przypadku przekazania pakietu SemVer v 2.0.0 do nuget.org pakiet jest niewidoczny dla starszych klientów i dostępny tylko dla następujących klientów NuGet:
 
-- 4\.3.0 NuGet +
+- NuGet 4.3.0+
 - Visual Studio 2017 w wersji 15.3 +
 - Visual Studio 2015 z pakietem [NuGet VSIX v 3.6.0](https://dist.nuget.org/visualstudio-2015-vsix/latest/NuGet.Tools.vsix)
 - dotnet
@@ -98,23 +98,23 @@ Klienci innych firm:
 <!-- For compatibility with previous dependency-versions page -->
 <a name="version-ranges"></a>
 
-## <a name="version-ranges-and-wildcards"></a>Zakresy wersji i symbole wieloznaczne
+## <a name="version-ranges"></a>Zakresy wersji
 
 W przypadku odwoływania się do zależności pakietów NuGet obsługuje używanie notacji interwału do określania zakresów wersji, podsumowywane w następujący sposób:
 
 | Służąc | Zastosowana reguła | Opis |
 |----------|--------------|-------------|
 | 1.0 | x ≥ 1,0 | Minimalna wersja, włącznie |
-| (1,0,) | x > 1,0 | Wersja minimalna, wyłączna |
-| [1,0] | x = = 1,0 | Dopasowanie dokładnej wersji |
-| (, 1,0) | x ≤ 1,0 | Maksymalna wersja, włącznie |
-| (, 1,0) | x < 1,0 | Maksymalna wersja, wyłączna |
-| [1.0, 2.0] | 1,0 ≤ x ≤ 2,0 | Dokładny zakres, włącznie |
-| (1.0, 2.0) | 1,0 < x < 2,0 | Dokładny zakres, wyłączny |
-| [1.0, 2.0) | 1,0 ≤ x < 2,0 | Mieszana wartość minimalna i wyłączna wersja Maksymalna |
-| (1,0)    | nieprawidłowe | nieprawidłowe |
+| (1.0,) | x > 1,0 | Wersja minimalna, wyłączna |
+| [1.0] | x == 1.0 | Dopasowanie dokładnej wersji |
+| (,1.0] | x ≤ 1,0 | Maksymalna wersja, włącznie |
+| (,1.0) | x < 1,0 | Maksymalna wersja, wyłączna |
+| [1.0,2.0] | 1,0 ≤ x ≤ 2,0 | Dokładny zakres, włącznie |
+| (1.0,2.0) | 1,0 < x < 2,0 | Dokładny zakres, wyłączny |
+| [1.0,2.0) | 1,0 ≤ x < 2,0 | Mieszana wartość minimalna i wyłączna wersja Maksymalna |
+| (1.0)    | nieprawidłowe | nieprawidłowe |
 
-W przypadku korzystania z formatu PackageReference, pakiet NuGet obsługuje również korzystanie z notacji wieloznacznej, \*, w przypadku elementów głównych, pomocniczych, poprawek i prefiksu w wersji wstępnej. Symbole wieloznaczne nie są obsługiwane w formacie `packages.config`.
+W przypadku korzystania z formatu PackageReference, pakiet NuGet obsługuje także użycie notacji zmiennoprzecinkowej, \*, w przypadku elementów głównych, pomocniczych, poprawek i prefiksu w wersji wstępnej. Wersje zmiennoprzecinkowe nie są obsługiwane w formacie `packages.config`.
 
 > [!Note]
 > Zakresy wersji w programie PackageReference obejmują wersje wstępne. Zgodnie z projektem wersje zmiennoprzecinkowe nie rozwiązują wersji wstępnych, chyba że zostały uwzględnione w. Aby uzyskać stan żądania powiązanej funkcji, zobacz [problem 6434](https://github.com/NuGet/Home/issues/6434#issuecomment-358782297).

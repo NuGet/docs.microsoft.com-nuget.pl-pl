@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: c6f50e6eb21826afebcdcd4045c7ab8b6e6489e3
-ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
+ms.openlocfilehash: 4b95251e4b055523a9533b4125589b2650be932d
+ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76813328"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78231087"
 ---
 # <a name="how-nuget-resolves-package-dependencies"></a>Jak narzędzie NuGet rozpoznaje zależności pakietów
 
@@ -22,7 +22,7 @@ Gdy wiele pakietów ma tę samą zależność, ten sam identyfikator pakietu mo�
 
 ## <a name="dependency-resolution-with-packagereference"></a>Rozpoznawanie zależności z PackageReference
 
-W przypadku instalowania pakietów do projektów przy użyciu formatu PackageReference, NuGet dodaje odwołania do wykresu prostego pakietu w odpowiednim pliku i rozwiązuje konflikty przed czasem. Ten proces jest nazywany *przywracaniem przechodnim*. Ponowne instalowanie lub przywracanie pakietów jest procesem pobierania pakietów wymienionych na grafie, co powoduje szybsze i bardziej przewidywalne kompilacje. Możesz również korzystać z symboli wieloznacznych (zmiennoprzecinkowych), takich jak 2,8.\*, unikając kosztownych i podatnych na błędy wywołań `nuget update` na komputerach klienckich i serwerach kompilacji.
+W przypadku instalowania pakietów do projektów przy użyciu formatu PackageReference, NuGet dodaje odwołania do wykresu prostego pakietu w odpowiednim pliku i rozwiązuje konflikty przed czasem. Ten proces jest nazywany *przywracaniem przechodnim*. Ponowne instalowanie lub przywracanie pakietów jest procesem pobierania pakietów wymienionych na grafie, co powoduje szybsze i bardziej przewidywalne kompilacje. Możesz również korzystać z wersji zmiennoprzecinkowych, na przykład 2,8.\*, aby uniknąć modyfikacji projektu w celu użycia najnowszej wersji pakietu.
 
 Gdy proces przywracania NuGet zostanie uruchomiony przed kompilacją, rozpoznaje zależności jako pierwsze w pamięci, a następnie zapisuje wykres wyjściowy do pliku o nazwie `project.assets.json`. Program zapisuje także rozwiązane zależności do pliku blokady o nazwie `packages.lock.json`, jeśli [Funkcja blokowania plików jest włączona](../consume-packages/package-references-in-project-files.md#locking-dependencies).
 Plik zasobów znajduje się w `MSBuildProjectExtensionsPath`, który domyślnie jest folderem "obj" projektu. Program MSBuild odczytuje następnie ten plik i tłumaczy go na zestaw folderów, w których można znaleźć potencjalne odwołania, a następnie dodaje je do drzewa projektu w pamięci.
@@ -53,16 +53,16 @@ Gdy aplikacja określa dokładny numer wersji, na przykład 1,2, który nie jest
 
 <a name="floating-versions"></a>
 
-#### <a name="floating-wildcard-versions"></a>Wersje zmiennoprzecinkowe (symbol wieloznaczny)
+#### <a name="floating-versions"></a>Wersje zmiennoprzecinkowe
 
-W przypadku symbolu wieloznacznego z \*m jest określana wersja zależności zmiennoprzecinkowa lub wieloznaczna z 6,0.\*. W tej specyfikacji wersji znajduje się komunikat "Użyj najnowszej wersji programu 6.0. x"; 4.\* oznacza "Użyj najnowszej wersji 4. x". Użycie symbolu wieloznacznego pozwala pakietowi zależności kontynuować rozwijanie bez konieczności wprowadzania zmian w aplikacji zużywanej przez program (lub pakiet).
+Określono przepływającą wersję zależności ze znakiem \*. Na przykład `6.0.*`. W tej specyfikacji wersji znajduje się komunikat "Użyj najnowszej wersji programu 6.0. x"; `4.*` oznacza "Użyj najnowszej wersji 4. x". Użycie zmiennoprzecinkowej wersji zmniejsza zmiany w pliku projektu, zachowując aktualność przy użyciu najnowszej wersji zależności.
 
-W przypadku korzystania z symbolu wieloznacznego NuGet rozpoznaje najwyższą wersję pakietu, która pasuje do wzorca wersji, na przykład 6,0.\* pobiera największą wersję pakietu rozpoczynającą się od 6,0:
+W przypadku korzystania z wersji zmiennoprzecinkowej program NuGet rozpoznaje najwyższą wersję pakietu, która jest zgodna ze wzorcem wersji, na przykład `6.0.*` pobiera największą wersję pakietu rozpoczynającą się od 6,0:
 
 ![Wybieranie wersji 6.0.1 w przypadku żądania zmiennoprzecinkowej wersji 6,0. *](media/projectJson-dependency-4.png)
 
 > [!Note]
-> Aby uzyskać informacje o zachowaniu symboli wieloznacznych i wersjach wstępnych, zobacz [wersja pakietu](package-versioning.md#version-ranges-and-wildcards).
+> Aby uzyskać informacje na temat zachowania liczbowych wersji i wersji wstępnych, zobacz [wersja pakietu](package-versioning.md#version-ranges).
 
 
 <a name="nearest-wins"></a>
