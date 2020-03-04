@@ -24,6 +24,7 @@
 ### [Ponowne instalowanie i aktualizowanie pakietów](consume-packages/reinstalling-and-updating-packages.md)
 ### [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej](consume-packages/managing-the-global-packages-and-cache-folders.md)
 ### [Zarządzanie granicami zaufania pakietów](consume-packages/installing-signed-packages.md)
+### [Praca z uwierzytelnionymi źródłami danych](consume-packages/consuming-packages-authenticated-feeds.md)
 ### [Praca z systemami kontroli źródła](consume-packages/packages-and-source-control.md)
 ### [Typowe konfiguracje narzędzia NuGet](consume-packages/configuring-nuget-behavior.md)
 ## Odwołania do pakietów w projekcie
@@ -45,7 +46,8 @@
 ### [Ustawianie typu pakietu](create-packages/set-package-type.md)
 ### [Tworzenie zlokalizowanego pakietu](create-packages/creating-localized-packages.md)
 ## Przewodniki dotyczące określonej zawartości
-### [Tworzenie pakietu platformy UWP](guides/create-uwp-packages.md)
+### [Tworzenie pakietu platformy UWP (C++)](guides/create-uwp-packages.md)
+### [Tworzenie pakietu platformy UWP (C#)](guides/create-uwp-packages-CS.md)
 ### [Tworzenie pakietu natywnego](guides/native-packages.md)
 ### [Tworzenie kontrolek interfejsu użytkownika jako pakietu NuGet](guides/create-UI-controls.md)
 ### [Tworzenie analizatora jako pakietu NuGet](guides/analyzers-conventions.md)
