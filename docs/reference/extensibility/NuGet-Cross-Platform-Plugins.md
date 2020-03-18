@@ -6,11 +6,11 @@ ms.author: nikolev
 ms.date: 07/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 00410214500c7f5256be243dd6fca0907ba9b0c4
-ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72380499"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79429109"
 ---
 # <a name="nuget-cross-platform-plugins"></a>Wtyczki Międzyplatformowe NuGet
 
@@ -24,10 +24,10 @@ Jest zdefiniowany protokół komunikacji z wersjami między klientem NuGet a wty
 Aby uwzględnić wszystkie scenariusze narzędzi klienta NuGet, trzeba mieć zarówno .NET Framework, jak i wtyczkę .NET Core.
 Poniżej opisano kombinacje klienta/struktury wtyczek.
 
-| Narzędzie klienta  | Framework |
+| Narzędzie klienta  | .NET Framework |
 | ------------ | --------- |
 | Visual Studio | .NET Framework |
-| dotnet. exe | .NET Core |
+| dotnet.exe | .NET Core |
 | NuGet. exe | .NET Framework |
 | MSBuild. exe | .NET Framework |
 | NuGet. exe na mono | .NET Framework |
@@ -75,9 +75,9 @@ Scenariusze ciągłej integracji/ciągłego wdrażania i Użytkownicy zaawansowa
 - `NUGET_NETFX_PLUGIN_PATHS` — definiuje wtyczki, które będą używane przez narzędzia oparte na .NET Framework (NuGet. exe/MSBuild. exe/Visual Studio). Ma pierwszeństwo przed `NUGET_PLUGIN_PATHS`. (Tylko wersja 5.3 programu NuGet)
 - `NUGET_NETCORE_PLUGIN_PATHS` — definiuje wtyczki, które będą używane przez narzędzia oparte na oprogramowaniu .NET Core (dotnet. exe). Ma pierwszeństwo przed `NUGET_PLUGIN_PATHS`. (Tylko wersja 5.3 programu NuGet)
 - `NUGET_PLUGIN_PATHS` — definiuje wtyczki, które będą używane dla tego procesu NuGet, a priorytet zachowano. Jeśli ta zmienna środowiskowa jest ustawiona, zastępuje ona metodę odnajdywania opartą na Konwencji. Ignorowany, jeśli określono jedną z zmiennych określonych dla struktury.
--  Lokalizacja użytkownika, lokalizacja główna narzędzia NuGet w `%UserProfile%/.nuget/plugins`. Ta lokalizacja nie może być przesłonięta. Dla wtyczek platformy .NET Core i .NET Framework zostanie użyty inny katalog główny.
+-  Lokalizacja użytkownika — lokalizacja główna narzędzia NuGet w `%UserProfile%/.nuget/plugins`. Ta lokalizacja nie może być przesłonięta. Dla wtyczek platformy .NET Core i .NET Framework zostanie użyty inny katalog główny.
 
-| Framework | Główna lokalizacja odnajdowania  |
+| .NET Framework | Główna lokalizacja odnajdowania  |
 | ------- | ------------------------ |
 | .NET Core |  `%UserProfile%/.nuget/plugins/netcore` |
 | .NET Framework | `%UserProfile%/.nuget/plugins/netfx` |
@@ -124,13 +124,13 @@ Weryfikacja zabezpieczeń i Tworzenie wystąpień wtyczek jest kosztowne. Operac
 Aby ulepszyć środowisko, pakiet NuGet będzie buforować oświadczenia operacji dla danego żądania. Ta pamięć podręczna jest na wtyczkę z kluczem wtyczki w ścieżce wtyczki, a okres ważności tej pamięci podręcznej to 30 dni. 
 
 Pamięć podręczna znajduje się w `%LocalAppData%/NuGet/plugins-cache` i przesłonięta ze zmienną środowiskową `NUGET_PLUGINS_CACHE_PATH`. Aby wyczyścić tę [pamięć podręczną](../../consume-packages/managing-the-global-packages-and-cache-folders.md), jeden może uruchomić polecenie Locals z opcją `plugins-cache`.
-Opcja wartości lokalnych `all` spowoduje teraz również usunięcie pamięci podręcznej dodatków. 
+Opcja `all` locales spowoduje teraz również usunięcie pamięci podręcznej dodatków. 
 
 ## <a name="protocol-messages-index"></a>Indeks komunikatów protokołu
 
 Komunikaty o wersji protokołu *1.0.0* :
 
-1.  Zamknięcie
+1.  Zamykanie
     * Kierunek żądania: wtyczka > NuGet
     * Żądanie nie będzie zawierać ładunku
     * Nie oczekiwano odpowiedzi.  Właściwa odpowiedź dotyczy procesu wtyczki, aby zakończyć pracę.
@@ -155,7 +155,7 @@ Komunikaty o wersji protokołu *1.0.0* :
     * Odpowiedź będzie zawierać:
         * kod odpowiedzi wskazujący wynik operacji
 
-4.  Pobierz poświadczenia
+4.  Pobieranie poświadczeń
     * Kierunek żądania: wtyczka > NuGet
     * Żądanie będzie zawierać:
         * Lokalizacja repozytorium źródłowego pakietu
@@ -231,7 +231,7 @@ Komunikaty o wersji protokołu *1.0.0* :
      * Odpowiedź będzie zawierać:
          * kod odpowiedzi wskazujący wynik operacji.  Niepowodzenie spowoduje zakończenie wtyczki.
 
-12.  rejestrowane
+12.  Log
      * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
          * poziom rejestrowania żądania
@@ -254,7 +254,7 @@ Komunikaty o wersji protokołu *1.0.0* :
      * Odpowiedź będzie zawierać:
          * kod odpowiedzi wskazujący wynik operacji
 
-15.  Ustaw poświadczenia
+15.  Ustawianie poświadczeń
      * Kierunek żądania: wtyczka > NuGet
      * Żądanie będzie zawierać:
          * Lokalizacja repozytorium źródłowego pakietu
@@ -290,9 +290,9 @@ Komunikaty *2.0.0* w wersji protokołu
 
 * Kierunek żądania: wtyczka > NuGet
 * Żądanie będzie zawierać:
-    * adresu
-    * isretry
-    * Nieinteraktywnych
+    * URI
+    * Isretry
+    * NonInteractive
     * Zashowdialog
 * Odpowiedź będzie zawierać
     * Nazwa użytkownika

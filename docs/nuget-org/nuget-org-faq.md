@@ -6,11 +6,11 @@ ms.author: shishirh
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: 915f6e4cfc0b21d2b10006c62e8230720d07ce74
-ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76813744"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428906"
 ---
 # <a name="nugetorg-frequently-asked-questions"></a>Często zadawane pytania NuGet.org
 
@@ -210,7 +210,7 @@ Jeśli jednak konto NuGet.org nie jest skojarzone/połączone z konto Microsoft,
     > [!Important]
     > Zignoruj to okno dialogowe, **nie** klikaj przycisku **Zaloguj się przy użyciu konta Microsoft** .
 
-5. Przejdź do [https://www.nuget.org/account/transform](https://www.nuget.org/account/transform). Umożliwi to konwertowanie konta NuGet.org na organizacji bez łączenia się z konto Microsoft.
+5. Przejdź do obszaru [https://www.nuget.org/account/transform](https://www.nuget.org/account/transform) (Ustawienia — Integracje i usługi). Umożliwi to konwertowanie konta NuGet.org na organizacji bez łączenia się z konto Microsoft.
 6. Określ nazwę użytkownika administratora dla konta osobistego NuGet.org/konto utworzone w kroku 1.
 7. Postępuj zgodnie z instrukcjami, aby zakończyć transformację tego konta w organizacji.
 

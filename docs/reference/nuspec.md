@@ -7,11 +7,11 @@ ms.date: 05/24/2019
 ms.topic: reference
 ms.reviewer: anangaur
 ms.openlocfilehash: 19e7934e2f249056c532369fa5e8ee6e35cc8086
-ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78230606"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79429102"
 ---
 # <a name="nuspec-reference"></a>nuspec — odwołanie
 
@@ -205,7 +205,7 @@ Rozdzielana spacjami Lista tagów i słów kluczowych, które opisują pakiet i 
 *(3.3 +)* Tylko do użytku wewnętrznego narzędzia NuGet.
 
 #### <a name="repository"></a>repozytorium
-Metadane repozytorium zawierające cztery opcjonalne atrybuty: `type` i `url` *(4.0 +)* oraz `branch` i `commit` *(4.6 +)*. Te atrybuty umożliwiają mapowanie `.nupkg` do repozytorium, które zostało przez siebie skompilowane, z możliwością uzyskania tak szczegółowej nazwy gałęzi i/lub zatwierdzenia skrótu SHA-1, który skompilowano pakiet. Powinien to być publicznie dostępny adres URL, który może być wywoływany bezpośrednio przez oprogramowanie kontroli wersji. Nie powinna być stroną HTML, ponieważ jest ona przeznaczona dla komputera. W przypadku łączenia ze stroną projektu zamiast tego użyj pola `projectUrl`.
+Metadane repozytorium zawierające cztery opcjonalne atrybuty: `type` i `url` *(4.0 +)* oraz `branch` i `commit` *(4.6 +)* . Te atrybuty umożliwiają mapowanie `.nupkg` do repozytorium, które zostało przez siebie skompilowane, z możliwością uzyskania tak szczegółowej nazwy gałęzi i/lub zatwierdzenia skrótu SHA-1, który skompilowano pakiet. Powinien to być publicznie dostępny adres URL, który może być wywoływany bezpośrednio przez oprogramowanie kontroli wersji. Nie powinna być stroną HTML, ponieważ jest ona przeznaczona dla komputera. W przypadku łączenia ze stroną projektu zamiast tego użyj pola `projectUrl`.
 
 Na przykład:
 ```xml

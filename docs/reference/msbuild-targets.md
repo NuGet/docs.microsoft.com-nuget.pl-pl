@@ -6,11 +6,11 @@ ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
 ms.openlocfilehash: 922fc0b25664dede59e33c6cd012dfeedcad0397
-ms.sourcegitcommit: 415c70d7014545c1f65271a2debf8c3c1c5eb688
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77036932"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428801"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -20,7 +20,7 @@ W formacie [PackageReference](../consume-packages/package-references-in-project-
 
 Dzięki programowi MSBuild 15.1 + pakiet NuGet jest również pierwszym klasą obywatela programu MSBuild z `pack` i `restore` obiektami docelowymi, zgodnie z poniższym opisem. Te elementy docelowe umożliwiają współdziałanie z pakietem NuGet, podobnie jak w przypadku każdego innego zadania lub celu programu MSBuild. Aby uzyskać instrukcje tworzenia pakietu NuGet przy użyciu programu MSBuild, zobacz [Tworzenie pakietu NuGet przy użyciu programu MSBuild](../create-packages/creating-a-package-msbuild.md). (W przypadku programu NuGet 3. x i starszych należy użyć poleceń [pakiet](../reference/cli-reference/cli-ref-pack.md) i [Przywróć](../reference/cli-reference/cli-ref-restore.md) zamiast tego w interfejsie wiersza polecenia NuGet).
 
-## <a name="target-build-order"></a>Docelowy porządek kompilacji
+## <a name="target-build-order"></a>Kolejność kompilowania obiektów docelowych
 
 Ponieważ `pack` i `restore` są obiektami docelowymi MSBuild, można uzyskać do nich dostęp, aby usprawnić przepływ pracy. Załóżmy na przykład, że chcesz skopiować pakiet do udziału sieciowego po jego spakowaniu. Można to zrobić, dodając następujący plik w pliku projektu:
 
@@ -46,14 +46,14 @@ W poniższej tabeli opisano właściwości programu MSBuild, które można doda�
 
 Należy zauważyć, że właściwości `Owners` i `Summary` z `.nuspec` nie są obsługiwane w programie MSBuild.
 
-| Wartość atrybutu/NuSpec | Właściwość programu MSBuild | Domyślny | Uwagi |
+| Wartość atrybutu/NuSpec | Właściwość programu MSBuild | Domyślne | Uwagi |
 |--------|--------|--------|--------|
 | Identyfikator | PackageId | AssemblyName | $ (AssemblyName) z MSBuild |
 | Wersja | PackageVersion | Wersja | Jest to zgodne z semver, na przykład "1.0.0", "1.0.0-beta" lub "1.0.0-beta-00345" |
 | VersionPrefix | PackageVersionPrefix | empty | Ustawienie PackageVersion zastępowanie PackageVersionPrefix |
 | VersionSuffix | PackageVersionSuffix | empty | $ (VersionSuffix) z programu MSBuild. Ustawienie PackageVersion zastępowanie PackageVersionSuffix |
 | Autorzy | Autorzy | Nazwa_użytkownika bieżącego użytkownika | |
-| Właściciele | Brak | Nieobecny w NuSpec | |
+| Właściciele | Nie dotyczy | Nieobecny w NuSpec | |
 | Tytuł | Tytuł | PackageId| |
 | Opis | Opis | "Opis pakietu" | |
 | Prawo | Prawo | empty | |
@@ -64,7 +64,7 @@ Należy zauważyć, że właściwości `Owners` i `Summary` z `.nuspec` nie są 
 | ProjectUrl | PackageProjectUrl | empty | |
 | Ikona | PackageIcon | empty | Należy jawnie spakować plik obrazu ikony, do którego istnieje odwołanie.|
 | IconUrl | PackageIconUrl | empty | Aby zapewnić najlepsze środowisko niskiego poziomu, `PackageIconUrl` należy określić oprócz `PackageIcon`. Dłuższy termin, `PackageIconUrl` będzie przestarzały. |
-| Znaczniki | PackageTags | empty | Tagi są rozdzielane średnikami. |
+| Tagi | PackageTags | empty | Tagi są rozdzielane średnikami. |
 | ReleaseNotes | PackageReleaseNotes | empty | |
 | Repozytorium/adres URL | RepositoryUrl | empty | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przykład: *https://github.com/NuGet/NuGet.Client.git* |
 | Repozytorium/typ | Repozytorium | empty | Typ repozytorium. Przykłady: *git*i *TFS*. |
@@ -94,7 +94,7 @@ Należy zauważyć, że właściwości `Owners` i `Summary` z `.nuspec` nie są 
 - PackageOutputPath
 - IncludeSymbols
 - IncludeSource
-- PackageTypes
+- packageTypes
 - Istool
 - RepositoryUrl
 - Repozytorium

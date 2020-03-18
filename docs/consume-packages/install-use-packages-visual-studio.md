@@ -11,11 +11,11 @@ f1_keywords:
 - vs.toolsoptionspages.nuget_package_manager.package_sources
 - vs.nuget.packagemanager.ui
 ms.openlocfilehash: 3adceac8c725d9ea1610aea090753c9c1d8bc818
-ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78231010"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428696"
 ---
 # <a name="install-and-manage-packages-in-visual-studio-using-the-nuget-package-manager"></a>Instalowanie pakietów i zarządzanie nimi w programie Visual Studio przy użyciu Menedżera pakietów NuGet
 
@@ -28,7 +28,7 @@ Interfejs użytkownika Menedżera pakietów NuGet w programie Visual Studio w sy
 
 ## <a name="find-and-install-a-package"></a>Znajdowanie i instalowanie pakietu
 
-1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy opcję **odwołania** lub projekt i wybierz polecenie **Zarządzaj pakietami NuGet.**...
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy opcję **odwołania** lub projekt i wybierz polecenie **Zarządzaj pakietami NuGet.** ...
 
     ![Opcja menu Zarządzaj pakietami NuGet](media/ManagePackagesUICommand.png)
 
@@ -48,7 +48,7 @@ Interfejs użytkownika Menedżera pakietów NuGet w programie Visual Studio w sy
 
 ## <a name="uninstall-a-package"></a>Odinstalowywanie pakietu
 
-1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy pozycję **odwołania** lub żądany projekt, a następnie wybierz polecenie **Zarządzaj pakietami NuGet.**...
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy pozycję **odwołania** lub żądany projekt, a następnie wybierz polecenie **Zarządzaj pakietami NuGet.** ...
 1. Wybierz kartę **Zainstalowano**.
 1. Wybierz pakiet, który ma zostać odinstalowany (za pomocą wyszukiwania, w razie potrzeby odfiltruj listę), a następnie wybierz pozycję **Odinstaluj**.
 
@@ -58,7 +58,7 @@ Interfejs użytkownika Menedżera pakietów NuGet w programie Visual Studio w sy
 
 ## <a name="update-a-package"></a>Aktualizowanie pakietu
 
-1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy pozycję **odwołania** lub żądany projekt, a następnie wybierz polecenie **Zarządzaj pakietami NuGet.**... (W obszarze projekty witryny sieci Web kliknij prawym przyciskiem myszy folder **bin** ).
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy pozycję **odwołania** lub żądany projekt, a następnie wybierz polecenie **Zarządzaj pakietami NuGet.** ... (W obszarze projekty witryny sieci Web kliknij prawym przyciskiem myszy folder **bin** ).
 1. Wybierz kartę **aktualizacje** , aby zobaczyć pakiety z dostępnymi aktualizacjami z wybranych źródeł pakietów. Wybierz pozycję **Uwzględnij wersję wstępną** , aby uwzględnić pakiety wersji wstępnej na liście aktualizacji.
 1. Wybierz pakiet do zaktualizowania, wybierz żądaną wersję z listy rozwijanej po prawej stronie, a następnie wybierz pozycję **Aktualizuj**.
 
@@ -79,7 +79,7 @@ Interfejs użytkownika Menedżera pakietów NuGet w programie Visual Studio w sy
 
 Zarządzanie pakietami dla rozwiązania jest wygodnym sposobem pracy z wieloma projektami jednocześnie.
 
-1. Wybierz **narzędzia > Menedżer pakietów nuget > zarządzanie pakietami NuGet dla rozwiązania...** menu, lub kliknij rozwiązanie prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet...**:
+1. Wybierz **narzędzia > Menedżer pakietów nuget > zarządzanie pakietami NuGet dla rozwiązania...** menu, lub kliknij rozwiązanie prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet...** :
 
     ![Zarządzaj pakietami NuGet dla rozwiązania](media/ManagePackagesSolutionUICommand.png)
 
@@ -117,7 +117,7 @@ Aby zarządzać źródłami pakietów:
 
     ![Opcje źródeł pakietów](media/options.png)
 
-1. Aby dodać źródło, wybierz **+**, Edytuj nazwę, wprowadź adres URL lub ścieżkę w kontroli **źródła** , a następnie wybierz pozycję **Aktualizuj**. Źródło zostanie wyświetlone na liście rozwijanej selektora.
+1. Aby dodać źródło, wybierz **+** , Edytuj nazwę, wprowadź adres URL lub ścieżkę w kontroli **źródła** , a następnie wybierz pozycję **Aktualizuj**. Źródło zostanie wyświetlone na liście rozwijanej selektora.
 1. Aby zmienić źródło pakietu, zaznacz je, wprowadź zmiany w polach **Nazwa** i **Źródło** , a następnie wybierz pozycję **Aktualizuj**.
 1. Aby wyłączyć źródło pakietu, wyczyść pole z lewej strony nazwy na liście.
 1. Aby usunąć źródło pakietu, zaznacz je, a następnie wybierz przycisk **X** .

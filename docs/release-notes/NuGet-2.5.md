@@ -6,11 +6,11 @@ ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
 ms.openlocfilehash: 940582d5173f5a53dcd04cf1258fc02a2439af4e
-ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825283"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428717"
 ---
 # <a name="nuget-25-release-notes"></a>Informacje o wersji narzędzia NuGet 2,5
 
@@ -104,7 +104,7 @@ Wiele informacji na temat polecenia cmdlet programu PowerShell "Update-Package" 
 
 Aby wypróbować tę funkcję:
 
-1. Tworzenie nowej aplikacji platformy ASP.NET MVC
+1. tworzenie nowej aplikacji platformy ASP.NET MVC
 1. Uruchom okno dialogowe Zarządzanie pakietami NuGet
 1. Wybierz pozycję "aktualizacje"
 1. Kliknij przycisk "Aktualizuj wszystko"

@@ -6,11 +6,11 @@ ms.author: karann
 ms.date: 05/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8e825410d621ff2946e23e80173292f24f9d21f2
-ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78231275"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428892"
 ---
 # <a name="migrate-from-packagesconfig-to-packagereference"></a>Migruj z pliku Packages. config do PackageReference
 
@@ -57,7 +57,7 @@ Teraz powinno być możliwe sprawdzenie opcji migracji. Należy zauważyć, że 
 
 1. Otwórz rozwiązanie zawierające projekt przy użyciu `packages.config`.
 
-1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy węzeł **odwołania** lub plik `packages.config` i wybierz polecenie **Migruj pakiety. config do PackageReference...**.
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy węzeł **odwołania** lub plik `packages.config` i wybierz polecenie **Migruj pakiety. config do PackageReference...** .
 
 1. Migrator analizuje odwołania do pakietu NuGet projektu i podejmuje próbę skategoryzowania ich do **zależności najwyższego poziomu** (pakiety NuGet zainstalowane bezpośrednio) i **zależności przechodnie** (pakiety, które zostały zainstalowane jako zależności pakietów najwyższego poziomu).
 

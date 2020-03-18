@@ -7,11 +7,11 @@ ms.date: 03/06/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
 ms.openlocfilehash: 00fe1d5fa81132b5d6826203a0d26e56aa8d4755
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383985"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79429004"
 ---
 # <a name="signing-nuget-packages"></a>Podpisywanie pakietów NuGet
 
@@ -101,7 +101,7 @@ To polecenie umożliwia utworzenie certyfikatu testowego dostępnego w osobistym
 
 * Analogicznie, jeśli jest wybrana domyślna opcja "any" dla pakietu, w którym jeden właściciel ma zarejestrowany certyfikat, a inny właściciel nie ma żadnego zarejestrowanego certyfikatu, NuGet.org akceptuje podpisany pakiet z podpisem zarejestrowanym przez jednego z jego właścicieli lub pakiet bez znaku (ponieważ jeden z właścicieli nie ma żadnego zarejestrowanego certyfikatu).
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Zarządzanie granicami zaufania pakietów](../consume-packages/installing-signed-packages.md)
 - [Odwołanie do podpisanych pakietów](../reference/Signed-Packages-Reference.md)

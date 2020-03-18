@@ -6,11 +6,11 @@ ms.author: karann
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 034b9dd9699af529e4d82d6ee5b1c42214673341
-ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74096849"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428983"
 ---
 # <a name="manage-package-trust-boundaries"></a>Zarządzaj granicami zaufania pakietu
 
@@ -101,7 +101,7 @@ Repozytoria pakietów powinni ogłaszać certyfikaty używane w ich [indeksie us
 
 Pełne odwołanie do schematu dotyczące zasad klienta można znaleźć w [dokumentacji NuGet. config](../reference/nuget-config-file.md#trustedsigners-section)
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Podpisywanie pakietów NuGet](../create-packages/Sign-a-Package.md)
 - [Odwołanie do podpisanych pakietów](../reference/Signed-Packages-Reference.md)

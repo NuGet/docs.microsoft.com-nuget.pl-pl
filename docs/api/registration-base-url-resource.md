@@ -7,13 +7,13 @@ ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
 ms.openlocfilehash: 852dca8c70b09d941e844b1f7cd03b38e2192481
-ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78230889"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428731"
 ---
-# <a name="package-metadata"></a>Metadane pakietu
+# <a name="package-metadata"></a>Metadane pakietów
 
 Możliwe jest pobranie metadanych o pakietach dostępnych w źródle pakietów przy użyciu interfejsu API programu NuGet v3. Te metadane można pobrać przy użyciu zasobu `RegistrationsBaseUrl` znalezionego w [indeksie usługi](service-index.md).
 
@@ -102,7 +102,7 @@ Name (Nazwa)   | Typ             | Wymagany | Uwagi
 @id    | ciąg           | tak      | Adres URL strony rejestracji
 count  | liczba całkowita          | tak      | Liczba liści rejestracji na stronie
 items  | Tablica obiektów | nie       | Tablica liści rejestracji i ich skojarzone metadane
-Dołu  | ciąg           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
+dołu  | ciąg           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 nadrzędny | ciąg           | nie       | Adres URL indeksu rejestracji
 prawym górnym  | ciąg           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
@@ -202,7 +202,7 @@ Właściwość `reasons` musi zawierać co najmniej jeden ciąg, a jedynie ciąg
 
 Przyczyna       | Opis             
 ------------ | -----------
-Starsza wersja       | Pakiet nie jest już obsługiwany
+Starsze       | Pakiet nie jest już obsługiwany
 CriticalBugs | Pakiet zawiera usterki, które nie są odpowiednie do użycia
 Inne        | Pakiet jest przestarzały z powodu braku na tej liście
 
@@ -241,7 +241,7 @@ Name (Nazwa)   | Typ             | Wymagany | Uwagi
 @id    | ciąg           | tak      | Adres URL strony rejestracji
 count  | liczba całkowita          | tak      | Liczba liści rejestracji na stronie
 items  | Tablica obiektów | tak      | Tablica liści rejestracji i ich skojarzone metadane
-Dołu  | ciąg           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
+dołu  | ciąg           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 nadrzędny | ciąg           | tak      | Adres URL indeksu rejestracji
 prawym górnym  | ciąg           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 

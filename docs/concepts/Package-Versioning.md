@@ -7,11 +7,11 @@ ms.date: 03/23/2018
 ms.topic: reference
 ms.reviewer: anangaur
 ms.openlocfilehash: 912c0d015e2f499bc7386483bc6c35ecd765d3d4
-ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78230866"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428836"
 ---
 # <a name="package-versioning"></a>Przechowywanie wersji pakietów
 
@@ -27,7 +27,7 @@ W tym temacie:
 
 ## <a name="version-basics"></a>Podstawy wersji
 
-Określony numer wersji ma postać *główna. pomocnicza. poprawka [-sufiks]*, gdzie składniki mają następujące znaczenie:
+Określony numer wersji ma postać *główna. pomocnicza. poprawka [-sufiks]* , gdzie składniki mają następujące znaczenie:
 
 - *Główna: istotne*zmiany
 - *Pomocniczy*: nowe funkcje, ale zgodność z poprzednimi wersjami
@@ -68,7 +68,7 @@ Przy rozwiązywaniu odwołań do pakietów i wielu wersjach pakietów różni si
     1.0.1-alpha
     1.0.1-aaa
 
-## <a name="semantic-versioning-200"></a>2.0.0 wersji semantycznej
+## <a name="semantic-versioning-200"></a>2\.0.0 wersji semantycznej
 
 Dzięki narzędziom NuGet 4.3.0 + i Visual Studio 2017 w wersji 15.3 + pakiet NuGet obsługuje [semantykę wersji 2.0.0](https://semver.org/spec/v2.0.0.html).
 
@@ -80,14 +80,14 @@ Niektóre semantyka SemVer v 2.0.0 nie są obsługiwane przez starszych klientó
 W przypadku nuget.org pakiet jest zdefiniowany jako pakiet SemVer v 2.0.0, jeśli jest spełniony jeden z następujących instrukcji:
 
 - Własna wersja pakietu to SemVer v 2.0.0 zgodna, ale nie SemVer v 1.0.0 zgodna, zgodnie z definicją powyżej.
-- Dowolna z zakresów wersji zależności pakietu ma wersję minimalną lub maksymalną, która jest zgodna z SemVer v 2.0.0, ale nie SemVer v 1.0.0 zgodna z definicją powyżej; na przykład *[1.0.0-alpha. 1,)*.
+- Dowolna z zakresów wersji zależności pakietu ma wersję minimalną lub maksymalną, która jest zgodna z SemVer v 2.0.0, ale nie SemVer v 1.0.0 zgodna z definicją powyżej; na przykład *[1.0.0-alpha. 1,)* .
 
 W przypadku przekazania pakietu SemVer v 2.0.0 do nuget.org pakiet jest niewidoczny dla starszych klientów i dostępny tylko dla następujących klientów NuGet:
 
 - NuGet 4.3.0+
 - Visual Studio 2017 w wersji 15.3 +
 - Visual Studio 2015 z pakietem [NuGet VSIX v 3.6.0](https://dist.nuget.org/visualstudio-2015-vsix/latest/NuGet.Tools.vsix)
-- dotnet
+- polecenia DotNet
   - dotnetcore. exe (zestaw SDK 2.0.0 +)
 
 Klienci innych firm:
@@ -112,7 +112,7 @@ W przypadku odwoływania się do zależności pakietów NuGet obsługuje używan
 | [1.0,2.0] | 1,0 ≤ x ≤ 2,0 | Dokładny zakres, włącznie |
 | (1.0,2.0) | 1,0 < x < 2,0 | Dokładny zakres, wyłączny |
 | [1.0,2.0) | 1,0 ≤ x < 2,0 | Mieszana wartość minimalna i wyłączna wersja Maksymalna |
-| (1.0)    | nieprawidłowe | nieprawidłowe |
+| (1.0)    | nieprawidłowy | nieprawidłowy |
 
 W przypadku korzystania z formatu PackageReference, pakiet NuGet obsługuje także użycie notacji zmiennoprzecinkowej, \*, w przypadku elementów głównych, pomocniczych, poprawek i prefiksu w wersji wstępnej. Wersje zmiennoprzecinkowe nie są obsługiwane w formacie `packages.config`.
 

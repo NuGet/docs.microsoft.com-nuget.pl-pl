@@ -6,11 +6,11 @@ ms.author: karann
 ms.date: 08/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: c1f1957c58839ac763238938b476eb0882c56a59
-ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78231214"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428745"
 ---
 # <a name="restore-packages-using-package-restore"></a>Przywróć pakiety przy użyciu przywracania pakietów
 
@@ -29,7 +29,7 @@ Jeśli pakiet nie jest już zainstalowany, program NuGet najpierw podejmie prób
 
 ## <a name="restore-packages"></a>Przywróć pakiety
 
-Przywracanie pakietu próbuje zainstalować wszystkie zależności pakietów do poprawnego stanu pasującego do odwołania do pakietu w pliku projektu (*. csproj*) lub pliku *Packages. config* . (W programie Visual Studio odwołania pojawiają się w Eksplorator rozwiązań w obszarze **zależności \ NuGet** lub węzeł **odwołania** ).
+Przywracanie pakietu próbuje zainstalować wszystkie zależności pakietów do poprawnego stanu pasującego do odwołania do pakietu w pliku projektu ( *. csproj*) lub pliku *Packages. config* . (W programie Visual Studio odwołania pojawiają się w Eksplorator rozwiązań w obszarze **zależności \ NuGet** lub węzeł **odwołania** ).
 
 1. Jeśli odwołania do pakietu w pliku projektu są poprawne, użyj preferowanego narzędzia, aby przywrócić pakiety.
 
@@ -40,7 +40,7 @@ Przywracanie pakietu próbuje zainstalować wszystkie zależności pakietów do 
    - [Azure Pipelines](#restore-using-azure-pipelines)
    - [Azure DevOps Server](#restore-using-azure-devops-server)
 
-   Jeśli odwołanie do pakietu w pliku projektu (*. csproj*) lub pliku *Packages. config* jest nieprawidłowe (nie są zgodne z żądanym stanem po przywróceniu pakietu), należy zamiast tego zainstalować lub zaktualizować pakiety.
+   Jeśli odwołanie do pakietu w pliku projektu ( *. csproj*) lub pliku *Packages. config* jest nieprawidłowe (nie są zgodne z żądanym stanem po przywróceniu pakietu), należy zamiast tego zainstalować lub zaktualizować pakiety.
 
    W przypadku projektów korzystających z PackageReference po pomyślnym przywracaniu pakiet powinien znajdować się w folderze *Global-Packages* , a plik `obj/project.assets.json` zostanie utworzony ponownie. W przypadku projektów używających `packages.config`pakiet powinien pojawić się w folderze `packages` projektu. Projekt powinien teraz zostać pomyślnie skompilowany. 
 

@@ -6,22 +6,22 @@ ms.author: karann
 ms.date: 03/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: e2672aa0bf57242526364639f0df74f9d1adb934
-ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
+ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825210"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79428969"
 ---
 # <a name="managing-the-global-packages-cache-and-temp-folders"></a>Zarządzanie pakietami globalnymi, pamięcią podręczną i folderami tymczasowymi
 
 Za każdym razem, gdy instalujesz, aktualizujesz lub przywracasz pakiet, program NuGet zarządza pakietami i informacjami o pakietach w kilku folderach poza strukturą projektu:
 
-| Nazwa | Opis i lokalizacja (na użytkownika)|
+| Name (Nazwa) | Opis i lokalizacja (na użytkownika)|
 | --- | --- |
 | global&#8209;packages | W folderze *globalne pakiety* jest instalowany pobrany pakiet NuGet. Każdy pakiet jest w pełni rozwinięty do podfolderu, który jest zgodny z identyfikatorem pakietu i numerem wersji. Projekty korzystające z formatu [PackageReference](package-references-in-project-files.md) zawsze używają pakietów bezpośrednio z tego folderu. W przypadku korzystania z [pliku Packages. config](../reference/packages-config.md)pakiety są instalowane do folderu *Global-Packages* , a następnie kopiowane do folderu `packages` projektu.<br/><ul><li>Windows: `%userprofile%\.nuget\packages`</li><li>Mac/Linux: `~/.nuget/packages`</li><li>Zastąpienie przy użyciu zmiennej środowiskowej NUGET_PACKAGES, [ustawień konfiguracji](../reference/nuget-config-file.md#config-section) `globalPackagesFolder` lub `repositoryPath` (w przypadku używania odpowiednio PackageReference i `packages.config`) lub właściwości programu MSBuild `RestorePackagesPath` (tylko MSBuild). Zmienna środowiskowa ma pierwszeństwo przed ustawieniem konfiguracji.</li></ul> |
 | http&#8209;cache | Menedżer pakietów programu Visual Studio (NuGet 3. x +) i narzędzie `dotnet` przechowują kopie pobranych pakietów w tej pamięci podręcznej (zapisane jako pliki `.dat`), zorganizowane w podfoldery dla każdego źródła pakietu. Pakiety nie są rozwinięte, a pamięć podręczna ma czas wygaśnięcia 30 minut.<br/><ul><li>Windows: `%localappdata%\NuGet\v3-cache`</li><li>Mac/Linux: `~/.local/share/NuGet/v3-cache`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_HTTP_CACHE_PATH.</li></ul> |
 | temp | Folder, w którym narzędzia NuGet przechowują pliki tymczasowe podczas wykonywania różnych operacji.<br/><li>Windows: `%temp%\NuGetScratch`</li><li>Mac/Linux: `/tmp/NuGetScratch`</li></ul> |
-| plugins-cache **4.8+** | Folder, w którym narzędzia NuGet przechowują wyniki żądania oświadczeń operacji.<br/><ul><li>Windows: `%localappdata%\NuGet\plugins-cache`</li><li>Mac/Linux: `~/.local/share/NuGet/plugins-cache`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_PLUGINS_CACHE_PATH.</li></ul> |
+| wtyczki — pamięć podręczna **4.8 +** | Folder, w którym narzędzia NuGet przechowują wyniki żądania oświadczeń operacji.<br/><ul><li>Windows: `%localappdata%\NuGet\plugins-cache`</li><li>Mac/Linux: `~/.local/share/NuGet/plugins-cache`</li><li>Przesłoń przy użyciu zmiennej środowiskowej NUGET_PLUGINS_CACHE_PATH.</li></ul> |
 
 > [!Note]
 > Narzędzia NuGet 3,5 i starsze używają *pamięci podręcznej pakietów* zamiast *pamięci podręcznej http*, która znajduje się w `%localappdata%\NuGet\Cache`.
