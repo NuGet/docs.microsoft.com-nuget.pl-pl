@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: fadb6091f9f1e4f380c3896f790fd61ce80e9683
-ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
+ms.openlocfilehash: b615bcb78ad2eaf8524bfbf17864d4652e546ff1
+ms.sourcegitcommit: 1a63a84da2719c8141823ac89a20bf507fd22b00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78230589"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151363"
 ---
-Opcjonalny opis pakietu, wyświetlany na stronie NuGet.org pakietu, jest pobierany z `<description></description` użytego w pliku `.csproj` lub pobierany za pośrednictwem `$description` w [pliku nuspec](../../reference/nuspec.md).
+Opcjonalny opis pakietu, wyświetlany na stronie NuGet.org pakietu, jest pobierany z `<description></description>` użytego w pliku `.csproj` lub pobierany za pośrednictwem `$description` w [pliku nuspec](../../reference/nuspec.md).
 
 Przykład pola _Opis_ jest wyświetlany w następującym tekście XML pliku `.csproj` dla pakietu .NET:
 
