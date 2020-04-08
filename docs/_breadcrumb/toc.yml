@@ -6,7 +6,7 @@
       tocHref: /nuget/
       topicHref: /nuget
       items:
-        - name: Wprowadzenie
+        - name: Rozpoczynanie pracy
           tocHref: /nuget/quickstart/
           topicHref: /nuget/quickstart/install-and-use-a-package-using-the-dotnet-cli
         - name: Korzystanie z pakietów
@@ -21,10 +21,10 @@
         - name: Pojęcia
           tocHref: /nuget/concepts/
           topicHref: /nuget/concepts/package-installation-process
-        - name: Tematy pomocy
+        - name: Dokumentacja
           tocHref: /nuget/reference/
           topicHref: /nuget/reference/nuspec
-        - name: interfejs API
+        - name: Interfejs API
           tocHref: /nuget/api/
           topicHref: /nuget/api/overview
         - name: Rozszerzalność
@@ -39,10 +39,10 @@
         - name: Zasady
           tocHref: /nuget/policies/
           topicHref: /nuget/policies/governance
-        - name: Uwagi do wersji
+        - name: Informacje o wersji
           tocHref: /nuget/release-notes/
           topicHref: /nuget/release-notes/known-issues
-        - name: Resources
+        - name: Zasoby
           tocHref: /nuget/resources/
           topicHref: /nuget/resources/nuget-faq
         - name: NuGet.org

@@ -1,6 +1,6 @@
 # [Szybki wgląd w dokumenty](index.yml)
 # [Co to jest NuGet?](what-is-nuget.md)
-# Wprowadzenie
+# Rozpoczynanie pracy
 ## [Instalowanie narzędzi klienta programu NuGet](install-nuget-client-tools.md)
 ## [Instalowanie i używanie pakietu (wiersz polecenia dotnet)](quickstart/install-and-use-a-package-using-the-dotnet-cli.md)
 ## [Instalowanie i używanie pakietu (Visual Studio)](quickstart/install-and-use-a-package-in-visual-studio.md)
@@ -69,7 +69,7 @@
 ## [Proces instalacji pakietu](concepts/package-installation-process.md)
 ## [Przechowywanie wersji pakietów](concepts/package-versioning.md)
 ## [Rozwiązywanie zależności](concepts/dependency-resolution.md)
-# Tematy pomocy
+# Dokumentacja
 ## [.nuspec](reference/nuspec.md)
 ## [Plik nuget.config](reference/nuget-config-file.md)
 ## [Platformy docelowe](reference/target-frameworks.md)
@@ -78,7 +78,7 @@
 ## [Dokumentacja interfejsu wiersza polecenia programu nuget.exe](reference/nuget-exe-cli-reference.md)
 ### [add](reference/cli-reference/cli-ref-add.md)
 ### [config](reference/cli-reference/cli-ref-config.md)
-### [delete](reference/cli-reference/cli-ref-delete.md)
+### [usuwanie](reference/cli-reference/cli-ref-delete.md)
 ### [help or ?](reference/cli-reference/cli-ref-help.md)
 ### [init](reference/cli-reference/cli-ref-init.md)
 ### [install](reference/cli-reference/cli-ref-install.md)
@@ -109,7 +109,7 @@
 ### [Update-Package](reference/ps-reference/ps-ref-update-package.md)
 ## Interfejs API serwera NuGet
 ### [Omówienie](api/overview.md)
-### Resources
+### Zasoby
 #### [Autouzupełnianie](api/search-autocomplete-service-resource.md)
 #### [Wykaz](api/catalog-resource.md)
 #### [Zawartość pakietu](api/package-base-address-resource.md)
@@ -281,12 +281,12 @@
 ### [Interfejs API programu NuGet w programie Visual Studio](visual-studio-extensibility/nuget-api-in-visual-studio.md)
 ### [Obsługa systemów projektów](visual-studio-extensibility/project-system-support.md)
 ### [Szablony programu Visual Studio](visual-studio-extensibility/visual-studio-templates.md)
-# Resources
+# Zasoby
 ## Zasady
 ### [Nadzór](policies/governance.md)
 ### [Ekosystem](policies/ecosystem.md)
 ### [Zasady witryny NuGet.org](nuget-org/policies/data-requests.md)
-## Uwagi do wersji
+## Informacje o wersji
 ### [Znane problemy](release-notes/known-issues.md)
 ### NuGet 5.x
 #### [NuGet 5.5](release-notes/NuGet-5.5.md)

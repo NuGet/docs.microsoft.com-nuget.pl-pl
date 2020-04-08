@@ -9,11 +9,11 @@
 ## [Przestarzały pakiet](deprecate-packages.md)
 # Zasady
 ## [Żądania danych](policies/Data-requests.md)
-## [Rozstrzyganie sporów](policies/dispute-resolution.md)
+## [Rozwiązywanie sporów](policies/dispute-resolution.md)
 ## [Usuwanie pakietów](policies/deleting-packages.md)
 ## [Eksportowanie kontrolek](policies/export-control.md)
-# Tematy pomocy
+# Dokumentacja
 ## [Interfejs API narzędzia NuGet](../api/overview.md)
 ## [licenses.nuget.org](licenses.nuget.org.md)
-# Resources
+# Zasoby
 ## [Często zadawane pytania](nuget-org-faq.md)
