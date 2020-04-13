@@ -1,20 +1,20 @@
 ---
 ms.openlocfilehash: 2fc62e7161a07d739760ed638653fbdec0dfc330
-ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "68860577"
 ---
-Użyj polecenia [Restore](../../reference/cli-reference/cli-ref-restore.md) , które pobiera i instaluje wszystkie brakujące pakiety w folderze *Packages* .
+Użyj polecenia [przywracania,](../../reference/cli-reference/cli-ref-restore.md) które pobiera i instaluje wszystkie pakiety brakujące w folderze *pakietów.*
 
-W przypadku projektów migrowanych do PackageReference Użyj polecenia [MSBuild-t:Restore](../package-restore.md#restore-using-msbuild) , aby przywrócić pakiety.
+W przypadku projektów migrowanych do PackageReference należy użyć [msbuild -t:restore,](../package-restore.md#restore-using-msbuild) aby zamiast tego przywrócić pakiety.
 
-`restore`dodaje pakiety tylko do dysku, ale nie zmienia zależności projektu. Aby przywrócić zależności projektu, należy `packages.config`zmodyfikować, a następnie `restore` użyć polecenia.
+`restore`dodaje tylko pakiety do dysku, ale nie zmienia zależności projektu. Aby przywrócić zależności projektu, zmodyfikuj `packages.config` `restore` , a następnie użyj polecenia.
 
-Podobnie jak w przypadku `nuget.exe` innych poleceń interfejsu wiersza polecenia, najpierw Otwórz wiersz poleceń i przejdź do katalogu, który zawiera plik projektu.
+Podobnie jak `nuget.exe` w przypadku innych poleceń interfejsu wiersza polecenia, najpierw otwórz wiersz polecenia i przełącz się do katalogu zawierającego plik projektu.
 
-Aby przywrócić pakiet przy użyciu `restore`:
+Aby przywrócić pakiet `restore`przy użyciu:
 
 ```cli
 nuget restore MySolution.sln

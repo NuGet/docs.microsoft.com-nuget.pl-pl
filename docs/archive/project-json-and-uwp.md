@@ -1,77 +1,77 @@
 ---
-title: Plik project.json NuGet w projektach platformy uniwersalnej systemu Windows
-description: Opis sposobu używania pliku project.json do śledzenia zależności NuGet w projektach platformy uniwersalnej Windows (UWP).
+title: Plik NuGet project.json z projektami platformy uniwersalnej systemuśpiłnie
+description: Opis sposobu, w jaki plik project.json jest używany do śledzenia zależności NuGet w projektach platformy uniwersalnej systemu Windows (UWP).
 author: karann-msft
 ms.author: karann
 ms.date: 07/17/2017
 ms.topic: conceptual
 ms.openlocfilehash: ac3c137dd0ba50571737093eef11c8ab0ef932b2
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548667"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "64494372"
 ---
-# <a name="projectjson-and-uwp"></a>Plik Project.JSON i platformy uniwersalnej systemu Windows
+# <a name="projectjson-and-uwp"></a>Plik project.json i platforma UWP
 
 > [!Important]
-> Ta zawartość jest przestarzały. Projekty powinny używać albo `packages.config` lub PackageReference podzielony na fragmenty.
+> Ta zawartość jest przestarzała. Projekty powinny używać `packages.config` formatów lub PackageReference.
 
-W tym dokumencie opisano strukturę pakietu, która używa funkcji NuGet 3 + (Visual Studio 2015 i nowszych). `minClientVersion` Właściwości usługi `.nuspec` może służyć do stanu wymagane funkcje opisane w tym miejscu, ustawiając go na 3.1.
+W tym dokumencie opisano strukturę pakietu, który wykorzystuje funkcje w NuGet 3+ (Visual Studio 2015 i nowsze). Właściwość `minClientVersion` użytkownika `.nuspec` może służyć do określania, że wymagane są funkcje opisane w tym miejscu, ustawiając ją na 3.1.
 
-## <a name="adding-uwp-support-to-an-existing-package"></a>Dodawanie obsługi platformy uniwersalnej systemu Windows do istniejącego pakietu
+## <a name="adding-uwp-support-to-an-existing-package"></a>Dodawanie pomocy technicznej platformy uniwersalnej systemu i platformy uniwersalnej do istniejącego pakietu
 
-Jeśli masz istniejący pakiet, i chcesz dodać obsługę aplikacji platformy uniwersalnej systemu Windows, nie należy do przyjęcia format pakowania, opisane w tym miejscu. Należy przyjąć tego formatu, jeśli potrzebujesz funkcji, w tym artykule opisano i jest gotowa do pracy tylko w przypadku klientów, które zostały zaktualizowane do wersji 3 + klienta programu NuGet.
+Jeśli masz istniejący pakiet i chcesz dodać obsługę aplikacji platformy uniwersalnej systemuśpiłka, nie musisz przyjmować formatu opakowania opisanego w tym miejscu. Wystarczy przyjąć ten format tylko wtedy, gdy wymagane funkcje, które opisuje i są chętni do pracy tylko z klientami, które zostały zaktualizowane do wersji 3 + klienta NuGet.
 
-## <a name="i-already-target-netcore45"></a>Czy mogę wskazać już netcore45
+## <a name="i-already-target-netcore45"></a>Ja już cel netcore45
 
-Jeśli platformą docelową jest `netcore45` i nie trzeba korzystać z funkcji w tym miejscu, jest wymagana żadna akcja. `netcore45` pakiety mogą być używane przez aplikacje platformy uniwersalnej systemu Windows.
+Jeśli już `netcore45` kierujesz reklamy i nie musisz korzystać z funkcji w tym miejscu, nie jest potrzebne żadne działanie. `netcore45`pakiety mogą być używane przez aplikacje platformy uniwersalnej systemuśpiłnie.
 
-## <a name="i-want-to-take-advantage-of-windows-10-specific-apis"></a>Chcę móc korzystać z określonych interfejsów API systemu Windows 10
+## <a name="i-want-to-take-advantage-of-windows-10-specific-apis"></a>Chcę skorzystać z interfejsów API specyficznych dla systemu Windows 10
 
-W takim przypadku należy dodać `uap10.0` docelowe moniker struktury (TFM lub TxM) do pakietu. Utwórz nowy folder w pakiecie i dodać zestaw, który został wcześniej skompilowany do pracy z systemem Windows 10 do tego folderu.
+W takim przypadku należy `uap10.0` dodać moniker struktury docelowej (TFM lub TxM) do pakietu. Utwórz nowy folder w pakiecie i dodaj zestaw, który został skompilowany do pracy z systemem Windows 10 do tego folderu.
 
-## <a name="i-dont-need-windows-10-specific-apis-but-want-new-net-features-or-dont-have-netcore45-already"></a>Nie potrzebuję określonych interfejsów API systemu Windows 10, ale ma nowe funkcje platformy .NET lub nie został jeszcze netcore45
+## <a name="i-dont-need-windows-10-specific-apis-but-want-new-net-features-or-dont-have-netcore45-already"></a>Nie potrzebuję specyficznych interfejsów API systemu Windows 10, ale chcę nowych funkcji .NET lub nie mam już netcore45
 
-W takim przypadku należy dodać `dotnet` TxM do pakietu. W przeciwieństwie do innych TxMs `dotnet` nie sugeruje się udzielenia, powierzchni lub platformy. Jest o pakietu działa na dowolnej platformie, które zależności działają w treści. Podczas tworzenia pakietu o `dotnet` TxM, najprawdopodobniej będzie mieć wiele więcej zależności TxM określonych w swojej `.nuspec`, jak należy zdefiniować pakietów BCL, na przykład `System.Text`, `System.Xml`itp. Lokalizacje, które te zależności pracować nad definiują, gdzie działa pakiet.
+W takim przypadku należy `dotnet` dodać TxM do pakietu. W przeciwieństwie do innych `dotnet` TxM, nie oznacza powierzchni lub platformy. Jest to stwierdzające, że pakiet działa na dowolnej platformie, na którym działają zależności. Podczas tworzenia pakietu `dotnet` z TxM, prawdopodobnie masz o wiele więcej zależności specyficznych dla TxM w , `.nuspec`jak trzeba `System.Text` `System.Xml`zdefiniować pakiety BCL, na których polegasz, takie , itp. Lokalizacje, które działają te zależności na zdefiniować, gdzie działa pakiet.
 
-### <a name="how-do-i-find-out-my-dependencies"></a>Jak sprawdzić zależności
+### <a name="how-do-i-find-out-my-dependencies"></a>Jak sprawdzić moje zależności
 
-Istnieją dwa sposoby, aby ustalić którym zależności, aby wyświetlić listę:
+Istnieją dwa sposoby, aby dowiedzieć się, które zależności do listy:
 
-1. Użyj [Generator zależności NuSpec](https://github.com/onovotny/ReferenceGenerator) **firm 3** narzędzia. Narzędzie automatyzuje proces i aktualizacji usługi `.nuspec` plików za pomocą pakietów zależnych podczas kompilacji. Jest on dostępny za pośrednictwem pakietu NuGet, [NuSpec.ReferenceGenerator](https://www.nuget.org/packages/NuSpec.ReferenceGenerator/).
+1. Użyj narzędzia [NuSpec Dependency Generator](https://github.com/onovotny/ReferenceGenerator) **3rd party.** Narzędzie automatyzuje proces `.nuspec` i aktualizuje plik za pomocą pakietów zależnych na kompilacji. Jest on dostępny za pośrednictwem pakietu NuGet, [NuSpec.ReferenceGenerator](https://www.nuget.org/packages/NuSpec.ReferenceGenerator/).
 
-1. (Sposób) Użyj `ILDasm` Przyjrzyj się Twoje `.dll` aby zobaczyć, jakie zestawy są rzeczywiście potrzebne w czasie wykonywania. Następnie określ pakiet NuGet, które każdy pochodzą z.
+1. (Trudna droga) Użyj, `ILDasm` aby `.dll` spojrzeć na swoje, aby zobaczyć, jakie zestawy są rzeczywiście potrzebne w czasie wykonywania. Następnie należy określić, który pakiet NuGet, z którego pochodzą.
 
-Zobacz [ `project.json` ](project-json.md) tematu, aby uzyskać szczegółowe informacje na temat funkcji, które pomagają w utworzeniu pakietu, który obsługuje `dotnet` TxM.
+Zobacz [`project.json`](project-json.md) temat, aby uzyskać szczegółowe informacje na temat funkcji, które pomagają w tworzeniu pakietu, który obsługuje `dotnet` TxM.
 
 > [!Important]
-> Jeśli pakiet jest przeznaczony do pracy z projektów PCL, zalecamy tworzenie `dotnet` folderu, w celu uniknięcia ostrzeżeń i potencjalnych problemów ze zgodnością.
+> Jeśli pakiet jest przeznaczony do pracy z projektami PCL, zdecydowanie zaleca się utworzenie folderu, `dotnet` aby uniknąć ostrzeżeń i potencjalnych problemów ze zgodnością.
 
 ## <a name="directory-structure"></a>Struktura katalogów
 
-Pakiety NuGet, używając następującego formatu mają następujące dobrze znany folder i zachowania:
+Pakiety NuGet przy użyciu tego formatu mają następujący dobrze znany folder i zachowania:
 
 | Folder | Zachowania |
 | --- | --- |
-| Kompilacja | Zawiera program MSBuild cele i pliki właściwości w tym folderze są zintegrowane inaczej w projekcie, ale w przeciwnym razie nie nastąpiła żadna zmiana. |
-| Narzędzia | `install.ps1` i `uninstall.ps1` nie są uruchamiane. `init.ps1` działa jak zawsze ma. |
-| Zawartość | Zawartość nie jest kopiowana automatycznie do projektu użytkownika. Obsługa zawartości uwzględnianie w projekcie jest planowana w nowszej wersji. |
-| lib | W przypadku wielu pakietów `lib` działa tak samo w NuGet 2.x, ale z rozszerzone opcje nazwy, jakie może być używany wewnątrz go i lepiej logiki dla pobrania poprawne podfolder, podczas korzystania z pakietów. Jednakże gdy jest używana w połączeniu z `ref`, `lib` folder zawiera zestawy, które implementują podatny na atak obszar zdefiniowany przez zestawy w `ref` folderu. |
-| REF | `ref` jest opcjonalny folder zawierający zestawy .NET, definiując publicznie powierzchni (typy i metody publiczne) do kompilowanie z użyciem aplikacji. Zestawy znajdujące się w tym folderze może nie mają implementacji, czysto służą one do definiowania powierzchni dla kompilatora. Jeśli nie ma pakietu `ref` folder, a następnie `lib` jest zestaw odwołania i zestawu implementacji. |
-| środowiska uruchomieniowe | `runtimes` jest opcjonalny folder zawierający kod określonego systemu operacyjnego, takich jak architektura procesora CPU i określonych lub w inny sposób zależny od platformy plików binarnych systemu operacyjnego. |
+| Kompilacja | Zawiera obiekty docelowe MSBuild i rekwizyty pliki w tym folderze są zintegrowane inaczej do projektu, ale w przeciwnym razie nie ma żadnych zmian. |
+| Narzędzia | `install.ps1`i `uninstall.ps1` nie są uruchamiane. `init.ps1`działa jak zawsze. |
+| Zawartość | Zawartość nie jest automatycznie kopiowana do projektu użytkownika. Wsparcie dla dołączania zawartości w projekcie jest planowane w nowszej wersji. |
+| Lib | Dla wielu `lib` pakietów działa tak samo jak w NuGet 2.x, ale z rozszerzonymi opcjami dla tego, jakie nazwy mogą być używane wewnątrz niego i lepszą logiką do wybierania poprawnego podfolderu podczas korzystania z pakietów. Jednak w połączeniu z `ref`folderem `lib` zawiera zestawy, które implementują powierzchnię zdefiniowaną przez zestawy w folderze. `ref` |
+| Ref | `ref`jest opcjonalnym folderem, który zawiera zestawy .NET definiujące powierzchnię publiczną (typy publiczne i metody) dla aplikacji do skompilowania. Zestawy w tym folderze może mieć żadnej implementacji, są one używane wyłącznie do definiowania powierzchni dla kompilatora. Jeśli pakiet nie `ref` ma folderu, `lib` to jest zarówno zestaw odwołania i zestawu implementacji. |
+| Środowiska wykonawcze | `runtimes`to opcjonalny folder zawierający kod specyficzny dla systemu operacyjnego, taki jak architektura procesora i pliki binarne specyficzne dla systemu operacyjnego lub w inny sposób zależne od platformy. |
 
-## <a name="msbuild-targets-and-props-files-in-packages"></a>Program MSBuild cele i pliki właściwości w pakietach
+## <a name="msbuild-targets-and-props-files-in-packages"></a>MSBuild cele i rekwizyty plików w pakietach
 
-Pakiety NuGet może zawierać `.targets` i `.props` pliki, które są importowane do każdego projektu MSBuild, który pakiet jest zainstalowany w. W pakiecie NuGet 2.x, stało się przez wstrzykiwanie `<Import>` instrukcje do `.csproj` plików, NuGet 3.0 nie ma określonych "Instalacja z projektem" akcji. Zamiast tego proces przywracania pakietów zapisuje dwa pliki `[projectname].nuget.props` i `[projectname].NuGet.targets`.
+Pakiety NuGet `.targets` `.props` mogą zawierać i pliki, które są importowane do dowolnego projektu MSBuild, w którym pakiet jest zainstalowany. W NuGet 2.x zostało to `<Import>` zrobione przez `.csproj` wstrzykiwanie instrukcji do pliku, w NuGet 3.0 nie ma żadnych konkretnych akcji "instalacja do projektu". Zamiast tego proces przywracania pakietu `[projectname].nuget.props` `[projectname].NuGet.targets`zapisuje dwa pliki i .
 
-Program MSBuild wie, aby wyszukać te dwa pliki i automatycznie importuje, na początku i pod koniec procesu kompilacji projektu. Zapewnia to zachowanie bardzo podobne do narzędzia NuGet 2.x, ale z jedną główną różnicą: *nie jest zagwarantowana kolejność plików celów/arkuszy właściwości w tym przypadku*. Jednak program MSBuild umożliwiają kolejność elementów docelowych, za pośrednictwem `BeforeTargets` i `AfterTargets` atrybuty `<Target>` definicji (zobacz [Target — Element (MSBuild)](/visualstudio/msbuild/target-element-msbuild).
+MSBuild wie, aby wyszukać te dwa pliki i automatycznie importuje je na początku i pod koniec procesu kompilacji projektu. Zapewnia to bardzo podobne zachowanie do NuGet 2.x, ale z jedną istotną różnicą: *nie ma gwarantowanej kolejności docelowych / rekwizytów plików w tym przypadku*. Jednak MSBuild zapewnia sposoby zamawiania `BeforeTargets` `AfterTargets` obiektów docelowych za pomocą i atrybutów `<Target>` definicji (zobacz Element [docelowy (MSBuild)](/visualstudio/msbuild/target-element-msbuild).
 
-## <a name="lib-and-ref"></a>Biblioteki i Ref
+## <a name="lib-and-ref"></a>Lib i ref
 
-Zachowanie `lib` folderu nie zmieniły się znacznie w wersji NuGet 3. Jednak wszystkie zestawy muszą znajdować się w podfolderach o nazwie po TxM i nie będzie można umieścić bezpośrednio pod `lib` folderu. TxM nazywa się to platforma, która powinna działać w przypadku danego elementu zawartości w pakiecie. Logicznie te stanowią rozszerzenie z monikerów Framework docelowych (TFM) np. `net45`, `net46`, `netcore50`, i `dnxcore50` należą do nich TxMs (zobacz [platform docelowych](../reference/target-frameworks.md). TxM mogą odwoływać się do struktury (TFM) oraz innych obszarów specyficzne dla platformy. Na przykład TxM platformy uniwersalnej systemu Windows (`uap10.0`) reprezentuje obszar powierzchni .NET, a także Windows podatny na atak obszar dla aplikacji platformy uniwersalnej systemu Windows.
+Zachowanie folderu `lib` nie uległo znacznej zmianie w nuget v3. Jednak wszystkie zestawy muszą znajdować się w podfolderach nazwanych po TxM i `lib` nie mogą być już umieszczane bezpośrednio pod folderem. TxM to nazwa platformy, dla których dany zasób w pakiecie ma działać. Logicznie rzecz biorąc, są to rozszerzenie docelowego monikers framework `net45` `net46`(TFM) `netcore50` `dnxcore50` [np.](../reference/target-frameworks.md) TxM może odnosić się do struktury (TFM), jak również innych obszarów powierzchni specyficznych dla platformy. Na przykład uwp TxM (`uap10.0`) reprezentuje obszar powierzchni .NET, a także powierzchni systemu Windows dla aplikacji platformy uniwersalnej systemu Windows.
 
-Przykład struktury lib:
+Przykładowa struktura lib:
 
     lib
     ├───net40
@@ -79,17 +79,17 @@ Przykład struktury lib:
     └───wp81
             MyLibrary.dll
 
-`lib` Folder zawiera zestawy, które są używane w czasie wykonywania. Większość pakietów folder w węźle `lib` dla każdego obiektu docelowego TxMs to wszystko, co jest wymagane.
+Folder `lib` zawiera zestawy, które są używane w czasie wykonywania. Dla większości pakietów `lib` folder w ramach dla każdego z docelowych TxMs jest wszystko, co jest wymagane.
 
-## <a name="ref"></a>REF
+## <a name="ref"></a>Ref
 
-Czasami są przypadki użycia innego zestawu podczas kompilacji (do tego dzisiaj zestawy referencyjne platformy .NET). Dla tych przypadków użycia folder najwyższego poziomu o nazwie `ref` (skrót od "zestawy odwołań").
+Czasami zdarzają się przypadki, w których podczas kompilacji powinien być używany inny zestaw (zestawy odwołań.NET). W takich przypadkach należy użyć folderu najwyższego poziomu o nazwie `ref` (skrót od "Zestawy odwołań").
 
-Większość autorom pakietów nie wymagają `ref` folderu. Jest to przydatne w przypadku pakietów, które muszą zapewnić spójny obszar powierzchni dla IntelliSense i kompilacja, ale następnie różne implementacje dla różnych TxMs. Największe przypadek użycia są `System.*` pakietów oferowanych w ramach wysyłki platformy .NET Core dla narzędzia NuGet. Te pakiety mają różne implementacje, które są trwa unified według spójny zbiór zestawów odwołania.
+Większość autorów pakietów `ref` nie wymaga tego folderu. Jest to przydatne dla pakietów, które muszą zapewnić spójną powierzchnię kompilacji i IntelliSense, ale następnie mają inną implementację dla różnych TxM. Największym przypadkiem użycia tego `System.*` są pakiety, które są produkowane w ramach wysyłki .NET Core na NuGet. Te pakiety mają różne implementacje, które są ujednolicone przez spójny zestaw zestawów ref.
 
-Mechanicznie zestawy zawarte w `ref` folderu są zestawy odwołania są przekazywane do kompilator. Dla osób, które były używane csc.exe są zestawy, firma Microsoft kończy się sukcesem [opcji/Reference C#](/dotnet/articles/csharp/language-reference/compiler-options/reference-compiler-option) przełącznika.
+Mechanicznie zestawy zawarte w folderze `ref` są zestawami odwołań przekazywanymi do kompilatora. Dla tych z Was, którzy korzystali z csc.exe są zestawy jesteśmy przekazywania do [C# / reference przełącznik opcji.](/dotnet/articles/csharp/language-reference/compiler-options/reference-compiler-option)
 
-Struktura `ref` folderu jest taka sama jak `lib`, na przykład:
+Struktura folderu `ref` jest taka `lib`sama jak na przykład:
 
     └───MyImageProcessingLib
          ├───lib
@@ -109,15 +109,15 @@ Struktura `ref` folderu jest taka sama jak `lib`, na przykład:
              └───portable-net451-win81
                      MyImageProcessingLibrary.dll
 
-W tym przykładzie zestawów w `ref` katalogów wszystkie będzie taka sama.
+W tym przykładzie zestawy `ref` w katalogach będą identyczne.
 
-## <a name="runtimes"></a>środowiska uruchomieniowe
+## <a name="runtimes"></a>Środowiska wykonawcze
 
-Folder środowiska uruchomieniowe zawiera zestawów i bibliotek natywnych wymagane do uruchamiania na określonych "runtimes", które są zazwyczaj definiowane przez architekturę systemu operacyjnego i procesora CPU. Te środowiska uruchomieniowe są identyfikowane za pomocą [identyfikatorów środowiska uruchomieniowego (RID)](/dotnet/core/rid-catalog) takich jak `win`, `win-x86`, `win7-x86`, `win8-64`itp.
+Folder runtimes zawiera zestawy i biblioteki macierzyste wymagane do uruchamiania w określonych "środowiskach uruchomieniowych", które są zazwyczaj definiowane przez system operacyjny i architekturę procesora. Te środowiska wykonawcze są identyfikowane przy użyciu [identyfikatorów środowiska uruchomieniowego (RID),](/dotnet/core/rid-catalog) `win`takich jak `win-x86`, , `win7-x86`, `win8-64`itp.
 
-## <a name="native-helpers-to-use-platform-specific-apis"></a>Natywne pomocników użycia interfejsów API specyficznych dla platformy
+## <a name="native-helpers-to-use-platform-specific-apis"></a>Natywni pomocnicy do korzystania z interfejsów API specyficznych dla platformy
 
-Poniższy przykład pokazuje czysto zarządzaną implementację dla różnych platform, które używa pomocników natywnych w systemie Windows 8, gdzie może wywołać do natywnych interfejsów API systemu Windows 8 określonego pakietu.
+W poniższym przykładzie pokazano pakiet, który ma czysto zarządzaną implementację dla kilku platform, ale używa natywnych pomocników w systemie Windows 8, gdzie można wywołać natywne interfejsy API specyficzne dla systemu Windows 8.
 
     └───MyLibrary
          ├───lib
@@ -141,19 +141,19 @@ Poniższy przykład pokazuje czysto zarządzaną implementację dla różnych pl
                  └───native
                          MyNativeLibrary.dll
 
-Biorąc pod uwagę powyższe pakietu się zdarzyć następujących czynności:
+Biorąc pod uwagę powyższy pakiet, dzieją się następujące rzeczy:
 
-- Kiedy nie w systemie Windows 8 `lib/net40/MyLibrary.dll` zestaw jest używany.
+- Gdy nie ma w `lib/net40/MyLibrary.dll` systemie Windows 8, używany jest zestaw.
 
-- Gdy w systemie Windows 8 `runtimes/win8-<architecture>/lib/MyLibrary.dll` jest używany i `native/MyNativeHelper.dll` jest kopiowany do wyjściowego kompilacji.
+- Gdy w systemie `runtimes/win8-<architecture>/lib/MyLibrary.dll` Windows 8 `native/MyNativeHelper.dll` jest używany i jest kopiowany do danych wyjściowych kompilacji.
 
-W powyższym przykładzie `lib/net40` zestaw jest tylko kod zarządzany, podczas gdy zestawy znajdujące się w folderze środowiska uruchomieniowe będzie p/invoke do zestawu macierzystego pomocnika do wywoływania interfejsów API specyficznych dla systemu Windows 8.
+W powyższym `lib/net40` przykładzie zestaw jest czysto zarządzany kod, podczas gdy zestawy w folderze runtimes będzie p/invoke do natywnego zestawu pomocnika do wywołania interfejsów API specyficznych dla systemu Windows 8.
 
-Tylko jeden `lib` folderu jest nigdy nie zostać pobrane, więc w przypadku określonego folderu środowiska uruchomieniowego jest wybierany za pośrednictwem określonego bez środowiska uruchomieniowego `lib`. Folder macierzysty to dodatek, jeśli taki istnieje, jest kopiowany do danych wyjściowych kompilacji.
+Tylko jeden `lib` folder jest kiedykolwiek pobierany, więc jeśli istnieje folder specyficzny dla środowiska wykonawczego, jest on wybrany przez niepodejmować specyficznego dla `lib`środowiska wykonawczego. Folder macierzysty jest addytywny, jeśli istnieje, jest kopiowany do danych wyjściowych kompilacji.
 
-## <a name="managed-wrapper"></a>Zarządzana otoka
+## <a name="managed-wrapper"></a>Otoka zarządzana
 
-Innym sposobem użycia środowiska uruchomieniowe jest na potrzeby wysłania pakietu, który jest całkowicie zarządzana otoka za pośrednictwem natywnych zestawów. W tym scenariuszu utworzysz pakietu, jak pokazano poniżej:
+Innym sposobem użycia środowisk uruchomieniowych jest wysłanie pakietu, który jest czysto otoką zarządzaną przez natywny zestaw. W tym scenariuszu można utworzyć pakiet, podobnie jak następujące:
 
     └───MyLibrary
          └───runtimes
@@ -173,22 +173,22 @@ Innym sposobem użycia środowiska uruchomieniowe jest na potrzeby wysłania pak
                  └───native
                          MyImplementation.dll
 
-W tym przypadku istnieje nie najwyższego poziomu `lib` folderze, w tym folderze, co tam się bez wdrażania tego pakietu, który nie jest zależny od odpowiedniego natywny zestaw. Jeśli zestaw zarządzany `MyLibrary.dll`, została dokładnie takie same w obu przypadkach firma Microsoft może umieścić go w najwyższego poziomu `lib` folderu, ale ponieważ brak natywny zestaw nie powoduje pakietu niepowodzenie instalacji, jeśli została zainstalowana na platformie, nie były win x86 lub win x64, a następnie lib najwyższego poziomu będzie używana, ale nie natywny zestaw zostałoby skopiowanych.
+W takim przypadku nie ma `lib` żadnego folderu najwyższego poziomu, ponieważ nie ma implementacji tego pakietu, który nie polega na odpowiednim zestawie macierzystym. Jeśli zarządzanyzespoł, `MyLibrary.dll`, był dokładnie taki sam w obu tych `lib` przypadkach, to możemy umieścić go w folderze najwyższego poziomu, ale ponieważ brak natywnego zestawu nie powoduje, że pakiet nie może zainstalować, jeśli został zainstalowany na platformie, która nie była win-x86 lub win-x64 następnie lib najwyższego poziomu będzie używany, ale nie natywnyzezeszes będzie kopiowany.
 
-## <a name="authoring-packages-for-nuget-2-and-nuget-3"></a>Tworzenie pakietów NuGet, 2 i NuGet 3
+## <a name="authoring-packages-for-nuget-2-and-nuget-3"></a>Tworzenie pakietów dla NuGet 2 i NuGet 3
 
-Jeśli chcesz utworzyć pakiet, który może być zużyte przez projektów przy użyciu `packages.config` również jako pakiety przy użyciu `project.json` następnie następujących warunków:
+Jeśli chcesz utworzyć pakiet, który może być `packages.config` używany przez projekty `project.json` przy użyciu, a także pakiety przy użyciu następnie stosuje się następujące:
 
-- REF i środowisk wykonawczych pracować tylko NuGet 3. Są one zarówno ignorowane przez NuGet 2.
+- Ref i runtimes działają tylko na NuGet 3. Oba są ignorowane przez NuGet 2.
 
-- Nie można polegać na `install.ps1` lub `uninstall.ps1` funkcji. Wykonaj te pliki, korzystając z `packages.config`, ale są ignorowane z `project.json`. Więc pakietu musi być możliwe bez ich uruchamiania. `init.ps1` wciąż działa na NuGet 3.
+- Nie można `install.ps1` polegać na lub `uninstall.ps1` do działania. Pliki te są `packages.config`wykonywane podczas korzystania `project.json`z programu , ale są ignorowane za pomocą programu . Więc pakiet musi być użyteczny bez ich uruchamiania. `init.ps1`nadal działa na NuGet 3.
 
-- Cele i właściwości instalacji jest inny, dlatego upewnij się, że pakiet działa zgodnie z oczekiwaniami na obu komputerach klienckich.
+- Obiekty docelowe i props instalacji jest inna, więc upewnij się, że pakiet działa zgodnie z oczekiwaniami na obu klientach.
 
-- Podkatalogi lib musi być TxM NuGet 3. Nie można umieścić bibliotek w katalogu głównym `lib` folderu.
+- Podkatalogi lib musi być TxM w NuGet 3. Nie można umieszczać bibliotek w `lib` katalogu głównym folderu.
 
-- Zawartość nie jest kopiowana automatycznie za pomocą NuGet 3. Konsumentów pakietu można kopiować pliki, samodzielnie lub użyj narzędzia, takiego jak modułu uruchamiającego zadania do zautomatyzowania kopiowania plików.
+- Zawartość nie jest kopiowana automatycznie za pomocą nuget 3. Konsumenci pakietu mogą samodzielnie kopiować pliki lub używać narzędzia, takiego jak narzędzie, aby zautomatyzować kopiowanie plików.
 
-- Przekształcenia pliku źródłowego i konfiguracji nie są uruchamiane przez NuGet 3.
+- Transformacje plików źródłowych i konfiguracyjnych nie są uruchamiane przez nuget 3.
 
-Jeśli są obsługiwane NuGet 2 i 3 wówczas `minClientVersion` powinno być najniższą wersją klienta NuGet 2, który pracuje pakietu. W przypadku istniejącego pakietu nie powinna wymagać zmiany.
+Jeśli obsługujesz NuGet 2 i 3 następnie `minClientVersion` powinny być najniższą wersję klienta NuGet 2, że pakiet działa na. W przypadku istniejącego pakietu nie należy go zmieniać.

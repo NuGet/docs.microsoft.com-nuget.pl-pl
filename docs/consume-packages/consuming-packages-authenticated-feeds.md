@@ -1,105 +1,105 @@
 ---
-title: Używanie pakietów z uwierzytelnionych kanałów informacyjnych
-description: Zużywanie pakietów ze źródeł uwierzytelnionych we wszystkich scenariuszach klienta NuGet
+title: Korzystanie z pakietów z uwierzytelnionych kanałów informacyjnych
+description: Korzystanie z pakietów z uwierzytelnionych kanałów informacyjnych we wszystkich scenariuszach klienta NuGet
 author: nkolev92
 ms.author: nikolev
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: bb624ec6987dd5c6ee38d5bb7e01200487dd4bed
-ms.sourcegitcommit: c81561e93a7be467c1983d639158d4e3dc25b93a
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78231792"
 ---
-# <a name="consuming-packages-from-authenticated-feeds"></a>Używanie pakietów z uwierzytelnionych kanałów informacyjnych
+# <a name="consuming-packages-from-authenticated-feeds"></a>Korzystanie z pakietów z uwierzytelnionych kanałów informacyjnych
 
-Oprócz [publicznego kanału informacyjnego](https://api.nuget.org/v3/index.json)NuGet.org klienci programu NuGet mogą korzystać ze źródeł danych i prywatnych źródeł http.
+Oprócz nuget.org [publicznych kanałów informacyjnych,](https://api.nuget.org/v3/index.json)klienci NuGet mają możliwość interakcji z plikami danych i prywatnymi źródłami http.
 
 
-Aby uwierzytelnić się za pomocą prywatnych źródeł http, dwa podejścia są następujące:
+Aby uwierzytelnić się za pomocą prywatnych kanałów http, 2 podejścia są:
 
-* Dodaj poświadczenia w [pliku NuGet. config](../reference/nuget-config-file.md#packagesourcecredentials)
-* Uwierzytelnianie przy użyciu jednego z wielu modeli rozszerzalności w zależności od używanego klienta programu.
+* Dodawanie poświadczeń w pliku [NuGet.config](../reference/nuget-config-file.md#packagesourcecredentials)
+* Uwierzytelnij się przy użyciu jednego z wielu modeli rozszerzalności w zależności od używanego klienta.
 
 ## <a name="nuget-clients-authentication-extensibility"></a>Rozszerzalność uwierzytelniania klientów NuGet
 
-W przypadku różnych klientów programu NuGet sam dostawca kanału informacyjnego jest odpowiedzialny za uwierzytelnianie.
-Wszyscy klienci NuGet mają metody rozszerzalności obsługujące ten program. Są to rozszerzenia programu Visual Studio lub wtyczka, która może komunikować się z pakietem NuGet w celu pobierania poświadczeń.
+Dla różnych klientów NuGet sam dostawca prywatnego źródła danych jest odpowiedzialny za uwierzytelnianie.
+Wszystkie klienci NuGet mają metody rozszerzalności do obsługi tego. Są to rozszerzenie programu Visual Studio lub wtyczki, które mogą komunikować się z NuGet do pobierania poświadczeń.
 
 ### <a name="visual-studio"></a>Visual Studio
 
-W programie Visual Studio pakiet NuGet udostępnia interfejs, który dostawcy kanału informacyjnego mogą zaimplementować i udostępnić klientom. Aby uzyskać więcej informacji, zapoznaj się z dokumentacją dotyczącą [tworzenia dostawcy poświadczeń programu Visual Studio](../reference/extensibility/NuGet-Credential-Providers-for-Visual-Studio.md).
+W programie Visual Studio NuGet udostępnia interfejs, który dostawcy kanałów informacyjnych można zaimplementować i dostarczyć do swoich klientów. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją dotyczącą tworzenia dostawcy poświadczeń programu Visual Studio.](../reference/extensibility/NuGet-Credential-Providers-for-Visual-Studio.md)
 
-#### <a name="available-nuget-credential-providers-for-visual-studio"></a>Dostępni dostawcy poświadczeń NuGet dla programu Visual Studio
+#### <a name="available-nuget-credential-providers-for-visual-studio"></a>Dostępne dostawców poświadczeń NuGet dla programu Visual Studio
 
-Istnieje Dostawca poświadczeń wbudowany w program Visual Studio w celu obsługi usługi Azure DevOps.
+Istnieje dostawca poświadczeń wbudowany w programie Visual Studio do obsługi usługi Azure DevOps.
 
 
-Dostępne są następujące dostawcy poświadczeń wtyczek:
+Wśród dostawców poświadczeń dostępnych dodatków dodatku plug-in są:
 
 * [Dostawca poświadczeń MyGet dla programu Visual Studio](http://docs.myget.org/docs/reference/credential-provider-for-visual-studio)
 
 ### <a name="nugetexe"></a>nuget.exe
 
-Gdy `nuget.exe` wymaga poświadczeń do uwierzytelnienia ze źródłem danych, wygląda w następujący sposób:
+Gdy `nuget.exe` potrzebne poświadczenia do uwierzytelniania za pomocą pliku danych, wyszukuje je w następujący sposób:
 
-1. Wyszukaj poświadczenia w plikach `NuGet.config`.
-1. Użyj dostawców poświadczeń wtyczek v2
-1. Użyj dostawców poświadczeń wtyczki w wersji 1
-1. Następnie pakiet NuGet monituje użytkownika o poświadczenia w wierszu polecenia.
+1. Poszukaj `NuGet.config` poświadczeń w plikach.
+1. Korzystanie z dostawców poświadczeń dodatku plug-in w wersji 2
+1. Korzystanie z dostawców poświadczeń dodatku plug 1
+1. Następnie NuGet monituje użytkownika o poświadczenia w wierszu polecenia.
 
-#### <a name="nugetexe-and-v2-credential-providers"></a>dostawcy poświadczeń NuGet. exe i v2
+#### <a name="nugetexe-and-v2-credential-providers"></a>dostawcy poświadczeń nuget.exe i V2
 
-W wersji `4.8` NuGet zdefiniowano nowy mechanizm wtyczek uwierzytelniania, zwany dalej dostawcą poświadczeń w wersji 2.
-Aby przeprowadzić instalację i odnajdywanie tych dostawców, zapoznaj się z [dodatkami międzyplatformowymi NuGet](../reference/extensibility/NuGet-Cross-Platform-Plugins.md#plugin-installation-and-discovery).
+W `4.8` wersji NuGet zdefiniowano nowy mechanizm wtyczki uwierzytelniania, dalej określane jako dostawców poświadczeń V2.
+Aby uzyskać informacje na temat instalacji i wykrywania tych dostawców, zobacz [wtyczki platformy wieloplatformowej NuGet](../reference/extensibility/NuGet-Cross-Platform-Plugins.md#plugin-installation-and-discovery).
 
-#### <a name="nugetexe-and-v1-credential-providers"></a>dostawcy poświadczeń NuGet. exe i v1
+#### <a name="nugetexe-and-v1-credential-providers"></a>dostawcy poświadczeń nuget.exe i V1
 
-W wersji `3.3` NuGet wprowadził pierwszą wersję wtyczek uwierzytelniania.
-Na potrzeby instalacji i odnajdywania tych dostawców odwołują się do [dostawców poświadczeń NuGet. exe](../reference/extensibility/nuget-exe-Credential-Providers.md#nugetexe-credential-provider-discovery)
+W `3.3` wersji NuGet wprowadzono pierwszą wersję wtyczek uwierzytelniania.
+W przypadku instalacji i odnajdywania tych dostawców można znaleźć w [u dostawców poświadczeń nuget.exe](../reference/extensibility/nuget-exe-Credential-Providers.md#nugetexe-credential-provider-discovery)
 
-#### <a name="available-credential-providers-for-nugetexe"></a>Dostępni dostawcy poświadczeń dla programu NuGet. exe
+#### <a name="available-credential-providers-for-nugetexe"></a>Dostawcy poświadczeń dostępnych dla pliku nuget.exe
 
-* Dostawcy [poświadczeń usługi Azure DevOps v2](/azure/devops/artifacts/nuget/nuget-exe?view=azure-devops#add-a-feed-to-nuget-482-or-later) lub [Dostawca poświadczeń Azure Artifacts](https://github.com/microsoft/artifacts-credprovider)
+* [Dostawcy poświadczeń usługi Azure DevOps w wersji V2](/azure/devops/artifacts/nuget/nuget-exe?view=azure-devops#add-a-feed-to-nuget-482-or-later) lub [dostawca poświadczeń artefaktów platformy Azure](https://github.com/microsoft/artifacts-credprovider)
 
-W programie Visual Studio 2017 w wersji 15,9 lub nowszej Dostawca poświadczeń usługi Azure DevOps jest powiązany z programem Visual Studio.
-Jeśli `nuget.exe` używa programu MSBuild z tego konkretnego zestawu narzędzi programu Visual Studio, Wtyczka zostanie odnaleziona automatycznie.
+W programie Visual Studio 2017 w wersji 15.9 lub nowszej dostawca poświadczeń usługi Azure DevOps jest dołączany do programu Visual Studio.
+Jeśli `nuget.exe` używa MSBuild z tego konkretnego zestawu narzędzi programu Visual Studio, wtyczka zostanie wykryta automatycznie.
 
-### <a name="dotnetexe"></a>dotnet.exe
+### <a name="dotnetexe"></a>plik dotnet.exe
 
-Gdy `dotnet.exe` wymaga poświadczeń do uwierzytelnienia ze źródłem danych, wygląda w następujący sposób:
+Gdy `dotnet.exe` potrzebne poświadczenia do uwierzytelniania za pomocą pliku danych, wyszukuje je w następujący sposób:
 
-1. Wyszukaj poświadczenia w plikach `NuGet.config`.
-1. Użyj dostawców poświadczeń wtyczek v2
+1. Poszukaj `NuGet.config` poświadczeń w plikach.
+1. Korzystanie z dostawców poświadczeń dodatku plug-in w wersji 2
 
-Domyślnie `dotnet.exe` nie jest interaktywna, więc może być konieczne przekazanie flagi `--interactive` w celu uzyskania narzędzia do zablokowania uwierzytelniania.
+Domyślnie `dotnet.exe` nie jest interaktywna, więc `--interactive` może być konieczne przekazanie flagi, aby narzędzie do blokowania do uwierzytelniania.
 
-#### <a name="dotnetexe-and-v2-credential-providers"></a>dostawcy poświadczeń dotnet. exe i v2
+#### <a name="dotnetexe-and-v2-credential-providers"></a>Dostawcy poświadczeń dotnet.exe i V2
 
-W wersji `2.2.100` zestawu SDK pakiet NuGet definiuje mechanizm wtyczki uwierzytelniania, który działa na wszystkich klientach.
-Aby przeprowadzić instalację i odnajdywanie tych dostawców, zapoznaj się z [dodatkami międzyplatformowymi NuGet](../reference/extensibility/NuGet-Cross-Platform-Plugins.md#plugin-installation-and-discovery).
+W `2.2.100` wersji SDK NuGet zdefiniowane mechanizm wtyczki uwierzytelniania, który działa we wszystkich klientach.
+Aby uzyskać informacje na temat instalacji i wykrywania tych dostawców, zobacz [wtyczki platformy wieloplatformowej NuGet](../reference/extensibility/NuGet-Cross-Platform-Plugins.md#plugin-installation-and-discovery).
 
-#### <a name="available-credential-providers-for-dotnetexe"></a>Dostępni dostawcy poświadczeń dla programu dotnet. exe
+#### <a name="available-credential-providers-for-dotnetexe"></a>Dostawcy poświadczeń dostępnych dla programu dotnet.exe
 
-* [Dostawca poświadczeń Azure Artifacts](https://github.com/microsoft/artifacts-credprovider)
+* [Dostawca poświadczeń artefaktów platformy Azure](https://github.com/microsoft/artifacts-credprovider)
 
-### <a name="msbuildexe"></a>MSBuild. exe
+### <a name="msbuildexe"></a>Msbuild.exe
 
-Gdy `MSBuild.exe` wymaga poświadczeń do uwierzytelnienia ze źródłem danych, wygląda w następujący sposób:
+Gdy `MSBuild.exe` potrzebne poświadczenia do uwierzytelniania za pomocą pliku danych, wyszukuje je w następujący sposób:
 
-1. Wyszukaj poświadczenia w plikach `NuGet.config`
-1. Użyj dostawców poświadczeń wtyczek v2
+1. Szukaj poświadczeń w `NuGet.config` plikach
+1. Korzystanie z dostawców poświadczeń dodatku plug-in w wersji 2
 
-Domyślnie `MSBuild.exe` nie jest interaktywna, więc może być konieczne ustawienie właściwości `/p:NuGetInteractive=true` w celu zablokowania uwierzytelniania.
+Domyślnie `MSBuild.exe` nie jest interaktywna, więc `/p:NuGetInteractive=true` może być konieczne ustawienie właściwości, aby narzędzie do blokowania uwierzytelniania.
 
-#### <a name="msbuildexe-and-v2-credential-providers"></a>Dostawcy poświadczeń MSBuild. exe i v2
+#### <a name="msbuildexe-and-v2-credential-providers"></a>Dostawcy poświadczeń MSBuild.exe i V2
 
-W programie Visual Studio 2019 Update 9 pakiet NuGet definiuje mechanizm wtyczki uwierzytelniania, który działa na wszystkich klientach.
-Aby przeprowadzić instalację i odnajdywanie tych dostawców, zapoznaj się z [dodatkami międzyplatformowymi NuGet](../reference/extensibility/NuGet-Cross-Platform-Plugins.md#plugin-installation-and-discovery).
+W programie Visual Studio 2019 Update 9 NuGet zdefiniował mechanizm wtyczki uwierzytelniania, który działa na wszystkich klientach.
+Aby uzyskać informacje na temat instalacji i wykrywania tych dostawców, zobacz [wtyczki platformy wieloplatformowej NuGet](../reference/extensibility/NuGet-Cross-Platform-Plugins.md#plugin-installation-and-discovery).
 
-#### <a name="available-credential-providers-for-msbuildexe"></a>Dostępni dostawcy poświadczeń dla programu MSBuild. exe
+#### <a name="available-credential-providers-for-msbuildexe"></a>Dostawcy poświadczeń dla programu MSBuild.exe
 
-* [Dostawca poświadczeń Azure Artifacts](https://github.com/microsoft/artifacts-credprovider)
+* [Dostawca poświadczeń artefaktów platformy Azure](https://github.com/microsoft/artifacts-credprovider)
 
-W programie Visual Studio 2017 Update 9 lub nowszym Dostawca poświadczeń usługi Azure DevOps jest powiązany z programem Visual Studio. Nie są wymagane żadne dodatkowe czynności.
+Z visual studio 2017 Update 9 i nowsze, dostawca poświadczeń usługi Azure DevOps jest w pakiecie w programie Visual Studio. Nie są wymagane żadne dodatkowe kroki.

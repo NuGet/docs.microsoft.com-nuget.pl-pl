@@ -1,47 +1,47 @@
 ---
-title: Tworzenie pakietów NuGet .NET Standard i .NET Framework za pomocą programu Visual Studio 2015
-description: Kompleksowy przewodnik tworzenia pakietów NuGet .NET Standard i .NET Framework przy użyciu programu NuGet 3. x i programu Visual Studio 2015.
+title: Tworzenie pakietów NuGet standard i platformy .NET Framework za pomocą programu Visual Studio 2015
+description: End-to-end instruktaż tworzenia pakietów NuGet .NET Standard i .NET Framework przy użyciu nuget 3.x i Visual Studio 2015.
 author: karann-msft
 ms.author: karann
 ms.date: 02/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: b16bf422e2627be3b8516a875d749639734064a9
-ms.sourcegitcommit: 363ec6843409b4714c91b75b105619a3a3184b43
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "72380725"
 ---
-# <a name="create-net-standard-and-net-framework-packages-with-visual-studio-2015"></a>Tworzenie pakietów .NET Standard i .NET Framework za pomocą programu Visual Studio 2015
+# <a name="create-net-standard-and-net-framework-packages-with-visual-studio-2015"></a>Tworzenie pakietów programu .NET Standard i .NET Framework za pomocą programu Visual Studio 2015
 
-**Uwaga:** Program Visual Studio 2017 jest zalecany do tworzenia bibliotek .NET Standard. Program Visual Studio 2015 może współpracować, ale narzędzia .NET Core zostały przesunięte tylko do stanu wersji zapoznawczej. Zobacz [Tworzenie i publikowanie pakietu przy użyciu programu Visual studio 2017](../quickstart/create-and-publish-a-package-using-visual-studio.md) do pracy z pakietem NuGet 4. x + i Visual Studio 2017.
+**Uwaga:** Visual Studio 2017 jest zalecane do tworzenia bibliotek .NET Standard. Visual Studio 2015 może działać, ale narzędzia .NET Core został przeniesiony tylko do stanu wersji zapoznawczej. Zobacz [Tworzenie i publikowanie pakietu z programem Visual Studio 2017](../quickstart/create-and-publish-a-package-using-visual-studio.md) do pracy z NuGet 4.x+ i Visual Studio 2017.
 
-[Biblioteka .NET Standard](/dotnet/articles/standard/library) jest formalną specyfikacją interfejsów API platformy .NET, które mają być dostępne we wszystkich środowiskach uruchomieniowych platformy .NET, a tym samym ustanowienie większej jednorodności w ekosystemie platformy .NET. Biblioteka .NET Standard definiuje jednolity zestaw interfejsów API BCL (Biblioteka klas bazowych) dla wszystkich platform .NET do implementacji, niezależnie od obciążenia. Umożliwia deweloperom tworzenie kodu, który jest użyteczny dla wszystkich środowisk uruchomieniowych platformy .NET, i zmniejsza, czy nie eliminuje specyficznych dla platformy dyrektyw kompilacji warunkowej w kodzie udostępnionym.
+[Biblioteka standardowa platformy .NET](/dotnet/articles/standard/library) jest formalną specyfikacją interfejsów API platformy .NET, które mają być dostępne we wszystkich środowiskach uruchomieniowych platformy .NET, co zapewnia większą jednorodność w ekosystemie platformy .NET. Biblioteka standardowa platformy .NET definiuje jednolity zestaw interfejsów API BCL (Biblioteka klas podstawowych) dla wszystkich platform .NET do zaimplementowania, niezależnie od obciążenia. Umożliwia deweloperom do tworzenia kodu, który jest użyteczny we wszystkich środowiskach uruchomieniowych .NET i zmniejsza, jeśli nie eliminuje dyrektywy kompilacji warunkowej specyficzne dla platformy w kodzie udostępnionym.
 
-Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczony do .NET Standard biblioteki 1,4 lub pakietu docelowego .NET Framework 4,6. Biblioteka .NET Standard 1,4 działa w .NET Framework 4.6.1, platforma uniwersalna systemu Windows 10, .NET Core i mono/Xamarin. Aby uzyskać szczegółowe informacje, zobacz [tabelę mapowania .NET Standard](/dotnet/standard/net-standard#net-implementation-support) (dokumentacja platformy .NET). Jeśli chcesz, możesz wybrać inną wersję biblioteki .NET Standard.
+W tym przewodniku znajdziesz informacje o utworzeniu pakietu NuGet kierowanego na pakiet .NET Standard Library 1.4 lub pakietu docelowego .NET Framework 4.6. Biblioteka .NET Standard 1.4 działa w programie .NET Framework 4.6.1, Universal Windows Platform 10, .NET Core i Mono/Xamarin. Aby uzyskać szczegółowe informacje, zobacz [tabelę mapowania .NET Standard](/dotnet/standard/net-standard#net-implementation-support) (dokumentacja.NET). W razie potrzeby można wybrać inną wersję biblioteki standardowej platformy .NET.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Visual Studio 2015 Update 3
-1. (Tylko .NET Standard) [Zestaw .NET Core SDK](https://www.microsoft.com/net/download/)
-1. Interfejs wiersza polecenia NuGet. Pobierz najnowszą wersję pliku NuGet. exe z [NuGet.org/downloads](https://nuget.org/downloads), zapisując ją w wybranej lokalizacji. Następnie Dodaj tę lokalizację do zmiennej środowiskowej PATH, jeśli nie została jeszcze.
+1. (tylko standard NET) [Podstawowy SDK .NET](https://www.microsoft.com/net/download/)
+1. Funkcja Interfejsu wiersza polecenia NuGet. Pobierz najnowszą wersję nuget.exe z [nuget.org/downloads](https://nuget.org/downloads), zapisując ją w wybranej lokalizacji. Następnie dodaj tę lokalizację do zmiennej środowiskowej PATH, jeśli jeszcze jej nie ma.
 
     > [!Note]
-    > NuGet. exe to narzędzie interfejsu wiersza polecenia, a nie Instalator, dlatego pamiętaj o zapisaniu pobranego pliku w przeglądarce zamiast uruchamiania go.
+    > nuget.exe jest samo narzędzie CLI, a nie instalator, więc pamiętaj, aby zapisać pobrany plik z przeglądarki, zamiast go uruchamiać.
 
-## <a name="create-the-class-library-project"></a>Utwórz projekt biblioteki klas
+## <a name="create-the-class-library-project"></a>Tworzenie projektu biblioteki klas
 
-1. W programie Visual Studio, **plik > nowy > projektu**, rozwiń **węzeł C# Visual > Windows** , wybierz pozycję **Biblioteka klas (przenośna)** , Zmień nazwę na AppLogger i wybierz **przycisk OK**.
+1. W programie Visual Studio **> programem File > Project**rozwiń węzeł > systemu Windows w programie Visual **C#,** wybierz **pozycję Biblioteka klas (przenośna)**, zmień nazwę na AppLogger i wybierz **przycisk OK**.
 
-    ![Utwórz nowy projekt biblioteki klas](media/NetStandard-NewProject.png)
+    ![Tworzenie nowego projektu biblioteki klas](media/NetStandard-NewProject.png)
 
-1. W wyświetlonym oknie dialogowym **Dodawanie biblioteki klas przenośnych** wybierz opcje dla `.NET Framework 4.6` i `ASP.NET Core 1.0`. (Jeśli .NET Framework określania wartości docelowej, możesz wybrać opcje, które są odpowiednie.)
+1. W wyświetlonym oknie dialogowym **Dodawanie biblioteki klas przenośnych** wybierz opcje dla `.NET Framework 4.6` i `ASP.NET Core 1.0`. (Jeśli kierowanie .NET Framework, można wybrać, które opcje są odpowiednie.)
 
-1. Jeśli element docelowy jest .NET Standard, kliknij prawym przyciskiem myszy `AppLogger (Portable)` w Eksplorator rozwiązań, wybierz **Właściwości**, wybierz kartę **Biblioteka** , a następnie wybierz pozycję **docelowa platforma .NET Standard** w sekcji **określania wartości docelowej** . Ta akcja monituje o potwierdzenie, a następnie można wybrać `.NET Standard 1.4` (lub inną dostępną wersję) z listy rozwijanej:
+1. Jeśli kierowanie .NET Standard, `AppLogger (Portable)` kliknij prawym przyciskiem myszy w Eksploratorze **rozwiązań,** wybierz polecenie Właściwości , wybierz kartę **Biblioteka,** a następnie wybierz pozycję **Target .NET Platform Standard** w sekcji **Kierowanie.** Ta akcja monituje o potwierdzenie, `.NET Standard 1.4` po czym można wybrać (lub inną dostępną wersję) z listy rozwijanej:
 
-    ![Ustawianie elementu docelowego na .NET Standard 1,4](media/NetStandard-ChangeTarget.png)
+    ![Ustawianie obiektu docelowego na .NET Standard 1.4](media/NetStandard-ChangeTarget.png)
 
-1. Kliknij kartę **kompilacja** , Zmień **konfigurację** na `Release`, a następnie zaznacz pole wyboru **plik dokumentacji XML**.
+1. Kliknij kartę **Kompilacja,** zmień `Release` **konfigurację** na , a następnie zaznacz pole wyboru pliku dokumentacji **XML**.
 
 1. Dodaj kod do składnika, na przykład:
 
@@ -58,17 +58,17 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
     }
     ```
 
-1. Ustaw konfigurację na wydawanie, Skompiluj projekt i sprawdź, czy pliki DLL i XML są tworzone w folderze `bin\Release`.
+1. Ustaw konfigurację na Zwolnij, skompiluj projekt i sprawdź, `bin\Release` czy pliki DLL i XML są tworzone w folderze.
 
-## <a name="create-and-update-the-nuspec-file"></a>Utwórz i zaktualizuj plik. nuspec
+## <a name="create-and-update-the-nuspec-file"></a>Tworzenie i aktualizowanie pliku nuspec
 
-1. Otwórz wiersz polecenia, przejdź do folderu zawierającego `AppLogger.csproj` folder (jeden poziom poniżej miejsca, w którym znajduje się plik `.sln`), a następnie uruchom polecenie NuGet `spec`, aby utworzyć początkowy plik `AppLogger.nuspec`:
+1. Otwórz wiersz polecenia, przejdź do `AppLogger.csproj` folderu zawierającego folder `.sln` (jeden poziom poniżej, gdzie znajduje się plik) i uruchom polecenie NuGet, `spec` aby utworzyć plik początkowy: `AppLogger.nuspec`
 
     ```cli
     nuget spec
     ```
 
-1. Otwórz `AppLogger.nuspec` w edytorze i zaktualizuj go tak, aby pasował do poniższego, zastępując YOUR_NAME z odpowiednią wartością. Wartość `<id>`, szczególnie musi być unikatowa w obrębie nuget.org (zobacz Konwencje nazewnictwa opisane w artykule [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number). Należy również pamiętać, że należy również zaktualizować Tagi autor i opis lub podczas kroku pakowania wystąpi błąd.
+1. Otwórz `AppLogger.nuspec` w edytorze i zaktualizuj go, aby dopasować go do następujących, zastępując YOUR_NAME odpowiednią wartością. Wartość, `<id>` w szczególności, musi być unikatowa w nuget.org (zobacz konwencje nazewnictwa opisane w [Tworzenie pakietu](../create-packages/creating-a-package.md#choose-a-unique-package-identifier-and-setting-the-version-number). Należy również pamiętać, że należy również zaktualizować tagi autora i opisu lub pojawi się błąd podczas kroku pakowania.
 
     ```xml
     <?xml version="1.0"?>
@@ -88,9 +88,9 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
     </package>
     ```
 
-1. Dodaj zestawy odwołań do pliku `.nuspec`, a mianowicie biblioteki DLL biblioteki i pliku XML IntelliSense:
+1. Dodaj zestawy odwołań `.nuspec` do pliku, a mianowicie biblioteki DLL i pliku IntelliSense XML:
 
-    W przypadku .NET Standard określania wartości docelowej wpisy są podobne do następujących:
+    W przypadku kierowania na standard .NET wpisy są podobne do następujących:
 
     ```xml
     <!-- Insert below <metadata> element -->
@@ -100,7 +100,7 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
     </files>
     ```
 
-    W przypadku .NET Framework określania wartości docelowej wpisy są podobne do następujących:
+    Jeśli kierowanie .NET Framework, wpisy są podobne do następujących:
 
     ```xml
     <!-- Insert below <metadata> element -->
@@ -110,11 +110,11 @@ Ten przewodnik przeprowadzi Cię przez proces tworzenia pakietu NuGet przeznaczo
     </files>
     ```
 
-1. Kliknij prawym przyciskiem myszy rozwiązanie i wybierz pozycję **Kompiluj rozwiązanie** , aby wygenerować wszystkie pliki pakietu.
+1. Kliknij prawym przyciskiem myszy rozwiązanie i wybierz pozycję **Build Solution,** aby wygenerować wszystkie pliki dla pakietu.
 
 ### <a name="declaring-dependencies"></a>Deklarowanie zależności
 
-Jeśli masz jakiekolwiek zależności od innych pakietów NuGet, wystaw te elementy w elemencie `<dependencies>` manifestu z elementami `<group>`. Na przykład, aby zadeklarować zależność w NewtonSoft. JSON 8.0.3 lub powyżej, Dodaj następujące elementy:
+Jeśli masz żadnych zależności od innych pakietów NuGet, `<dependencies>` lista `<group>` tych w manifeście elementu z elementami. Na przykład, aby zadeklarować zależność od NewtonSoft.Json 8.0.3 lub wyższej, dodaj następujące elementy:
 
 ```xml
 <!-- Insert within the <metadata> element -->
@@ -125,11 +125,11 @@ Jeśli masz jakiekolwiek zależności od innych pakietów NuGet, wystaw te eleme
 </dependencies>
 ```
 
-Składnia atrybutu *Version* w tym miejscu wskazuje, że wersja 8.0.3 lub nowsza jest akceptowalna. Aby określić różne zakresy wersji, zapoznaj się z artykułem [wersja pakietu](../concepts/package-versioning.md).
+Składnia atrybutu *wersji* w tym miejscu wskazuje, że wersja 8.0.3 lub powyżej jest dopuszczalna. Aby określić różne zakresy wersji, zobacz [Przechowywanie wersji pakietu](../concepts/package-versioning.md).
 
-### <a name="adding-a-readme"></a>Dodawanie pliku Readme
+### <a name="adding-a-readme"></a>Dodawanie readme
 
-Utwórz plik `readme.txt`, umieść go w folderze głównym projektu i odwołaj się do niego w pliku `.nuspec`:
+Utwórz `readme.txt` plik, umieść go w folderze głównym projektu `.nuspec` i odnieś się do niego w pliku:
 
 ```xml
 <?xml version="1.0"?>
@@ -142,34 +142,34 @@ Utwórz plik `readme.txt`, umieść go w folderze głównym projektu i odwołaj 
 </package>
 ```
 
-Program Visual Studio Wyświetla `readme.txt`, gdy pakiet jest instalowany w projekcie. Plik nie jest wyświetlany, gdy jest zainstalowany w projektach .NET Core lub dla pakietów zainstalowanych jako zależność.
+Visual Studio `readme.txt` wyświetla, gdy pakiet jest zainstalowany w projekcie. Plik nie jest wyświetlany po zainstalowaniu w projektach .NET Core lub dla pakietów, które są instalowane jako zależność.
 
-## <a name="package-the-component"></a>Pakowanie składnika
+## <a name="package-the-component"></a>Zapakuj składnik
 
-Po zakończeniu `.nuspec` odwołujące się do wszystkich plików, które należy uwzględnić w pakiecie, możesz uruchomić polecenie `pack`:
+Po zakończeniu `.nuspec` odwoływania się do wszystkich plików, które należy uwzględnić `pack` w pakiecie, możesz uruchomić polecenie:
 
 ```cli
 nuget pack AppLogger.nuspec
 ```
 
-Spowoduje to wygenerowanie `AppLogger.YOUR_NAME.1.0.0.nupkg`. Otwieranie tego pliku w narzędziu, takim jak [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozszerzanie wszystkich węzłów, zostanie wyświetlona następująca zawartość (pokazana dla .NET standard):
+To generuje `AppLogger.YOUR_NAME.1.0.0.nupkg`. Otwierając ten plik w narzędziu, takim jak [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer) i rozwijając wszystkie węzły, zostanie wyświetlona następująca zawartość (pokazana dla platformy .NET Standard):
 
-![Eksplorator pakietów NuGet przedstawiający pakiet AppLogger](media/NetStandard-PackageExplorer.png)
+![Eksplorator pakietów NuGet z pakietem AppLogger](media/NetStandard-PackageExplorer.png)
 
 > [!Tip]
-> Plik `.nupkg` jest tylko plikiem ZIP z innym rozszerzeniem. Możesz również przeanalizować zawartość pakietu, zmieniając `.nupkg` na `.zip`, ale pamiętaj o przywróceniu rozszerzenia przed przekazaniem pakietu do nuget.org.
+> Plik `.nupkg` to tylko plik ZIP z innym rozszerzeniem. Możesz również sprawdzić zawartość pakietu, `.nupkg` a `.zip`następnie, zmieniając na , ale pamiętaj, aby przywrócić rozszerzenie przed przesłaniem pakietu do nuget.org.
 
 Aby udostępnić pakiet innym deweloperom, postępuj zgodnie z instrukcjami dotyczącymi [publikowania pakietu](../nuget-org/publish-a-package.md).
 
-Należy pamiętać, że `pack` wymaga mono w Mac OS X i nie działa w systemach Linux. Na komputerze Mac należy również skonwertować nazwy ścieżek systemu Windows w pliku `.nuspec` na ścieżki w stylu systemu UNIX.
+Należy `pack` pamiętać, że wymaga Mono 4.4.2 na Mac OS X i nie działa na systemach Linux. Na komputerze Mac należy również przekonwertować `.nuspec` nazwy ścieżek systemu Windows w pliku na ścieżki w stylu Uniksa.
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="related-topics"></a>Powiązane tematy
 
-- [nuspec — odwołanie](../reference/nuspec.md)
-- [Obsługa wielu wersji programu .NET Framework](../create-packages/supporting-multiple-target-frameworks.md)
-- [Uwzględnij w pakiecie narzędzia i elementy docelowe programu MSBuild](../create-packages/creating-a-package.md#include-msbuild-props-and-targets-in-a-package)
+- [Odwołanie .nuspec](../reference/nuspec.md)
+- [Obsługa wielu wersji programu .NET framework](../create-packages/supporting-multiple-target-frameworks.md)
+- [Uwzględnij rekwizyty i obiekty docelowe MSBuild w pakiecie](../create-packages/creating-a-package.md#include-msbuild-props-and-targets-in-a-package)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
 - [Pakiety symboli](../create-packages/symbol-packages-snupkg.md)
 - [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
-- [Dokumentacja biblioteki .NET Standard](/dotnet/articles/standard/library)
-- [Przenoszenie do programu .NET Core z .NET Framework](/dotnet/articles/core/porting/index)
+- [Dokumentacja biblioteki standardowej platformy .NET](/dotnet/articles/standard/library)
+- [Przenoszenie do rdzenia net z platformy .NET Framework](/dotnet/articles/core/porting/index)

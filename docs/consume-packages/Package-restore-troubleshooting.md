@@ -1,37 +1,37 @@
 ---
-title: Rozwiązywanie problemów z przywracaniem pakietów NuGet w programie Visual Studio
-description: Opis typowych błędów przywracania NuGet w programie Visual Studio i sposoby ich rozwiązywania.
+title: Rozwiązywanie problemów z przywracaniem pakietu NuGet w programie Visual Studio
+description: Opis typowych błędów przywracania NuGet w programie Visual Studio i jak je rozwiązać.
 author: karann-msft
 ms.author: karann
 ms.date: 05/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: a1f9f1d03e9a6e58466fa92426bd655d5e8ed83d
-ms.sourcegitcommit: e763d9549cee3b6254ec2d6382baccb44433d42c
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "68860623"
 ---
 # <a name="troubleshooting-package-restore-errors"></a>Rozwiązywanie problemów z błędami przywracania pakietu
 
-Ten artykuł koncentruje się na typowych błędach podczas przywracania pakietów i kroków w celu ich rozwiązania. 
+W tym artykule koncentruje się na typowych błędów podczas przywracania pakietów i kroki, aby je rozwiązać. 
 
-Przywracanie pakietu próbuje zainstalować wszystkie zależności pakietów do poprawnego stanu pasującego do odwołania do pakietu w pliku projektu ( *. csproj*) lub pliku *Packages. config* . (W programie Visual Studio odwołania pojawiają się w Eksplorator rozwiązań w obszarze **zależności \ NuGet** lub węzeł **odwołania** ). Aby wykonać kroki wymagane do przywrócenia pakietów, zobacz [przywracanie pakietów](../consume-packages/package-restore.md#restore-packages). Jeśli odwołania do pakietu w pliku projektu ( *. csproj*) lub pliku *Packages. config* są nieprawidłowe (nie są zgodne z żądanym stanem po przywróceniu pakietu), należy zainstalować lub zaktualizować pakiety zamiast korzystać z pakietu Przywracania.
+Narzędzie Package Restore próbuje zainstalować wszystkie zależności pakietów do prawidłowego stanu odpowiadającego odwołaniom do pakietu w pliku projektu (*.csproj*) lub pliku *packages.config.* (W programie Visual Studio odwołania są wyświetlane w Eksploratorze rozwiązań w obszarze **zależności \ NuGet** lub węźle **Odwołania).** Aby wykonać wymagane kroki w celu przywrócenia pakietów, zobacz [Przywracanie pakietów](../consume-packages/package-restore.md#restore-packages). Jeśli odwołania do pakietu w pliku projektu *(csproj)* lub pliku *packages.config* są niepoprawne (nie pasują do żądanego stanu po przywróceniu pakietu), należy zainstalować lub zaktualizować pakiety zamiast przywracania pakietu.
 
-Jeśli instrukcje tego nie zadziałały, należy [rozwiązać problem w usłudze GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) , aby dokładniej przeanalizować scenariusz. Nie używaj "czy ta strona jest pomocna?" kontrolka, która może pojawić się na tej stronie, ponieważ nie daje nam możliwości skontaktowania się z Tobą w celu uzyskania dodatkowych informacji.
+Jeśli instrukcje w tym miejscu nie działają dla Ciebie, [zgłoś problem na GitHub,](https://github.com/NuGet/docs.microsoft.com-nuget/issues) abyśmy mogli dokładniej zbadać twój scenariusz. Nie używaj "Czy ta strona jest pomocna?" kontroli, która może pojawić się na tej stronie, ponieważ nie daje nam możliwości skontaktowania się z Tobą w celu uzyskania więcej informacji.
 
 ## <a name="quick-solution-for-visual-studio-users"></a>Szybkie rozwiązanie dla użytkowników programu Visual Studio
 
-Jeśli używasz programu Visual Studio, najpierw włącz przywracanie pakietu w następujący sposób. W przeciwnym razie przejdź do kolejnych sekcji.
+Jeśli używasz programu Visual Studio, najpierw włącz przywracanie pakietu w następujący sposób. W przeciwnym razie przejdź do sekcji, które następują.
 
-1. Wybierz polecenie **narzędzia > Menedżer pakietów NuGet > menu Ustawienia Menedżera pakietów** .
-1. Ustaw obie opcje w obszarze **przywracanie pakietu**.
+1. Wybierz polecenie menu **Narzędzia > Menedżera pakietów NuGet > Ustawienia Menedżera pakietów.**
+1. Ustaw obie opcje w obszarze **Przywracanie pakietu**.
 1. Kliknij przycisk **OK**.
-1. Ponownie skompiluj projekt.
+1. Zbuduj swój projekt ponownie.
 
 ![Włącz przywracanie pakietu NuGet w narzędziu/opcjach](../consume-packages/media/restore-01-autorestoreoptions.png)
 
-Te ustawienia można także zmienić w `NuGet.config` pliku; zapoznaj się z sekcją [zgody](#consent) . Jeśli projekt jest starszym projektem, który używa przywracania pakietu programu MSBuild, może być konieczne przeprowadzenie [migracji](package-restore.md#migrate-to-automatic-package-restore-visual-studio) do automatycznego przywracania pakietów.
+Te ustawienia można również `NuGet.config` zmienić w pliku; patrz sekcja [zgody.](#consent) Jeśli projekt jest starszy projekt, który używa msbuild zintegrowane przywracanie pakietu, może być konieczne [migracji](package-restore.md#migrate-to-automatic-package-restore-visual-studio) do automatycznego przywracania pakietu.
 
 <a name="missing"></a>
 
@@ -44,30 +44,30 @@ This project references NuGet package(s) that are missing on this computer.
 Use NuGet Package Restore to download them. The missing file is {name}.
 ```
 
-Ten błąd występuje podczas próby skompilowania projektu, który zawiera odwołania do co najmniej jednego pakietu NuGet, ale te pakiety nie są obecnie zainstalowane na komputerze ani w projekcie.
+Ten błąd występuje podczas próby utworzenia projektu, który zawiera odwołania do jednego lub więcej pakietów NuGet, ale te pakiety nie są obecnie zainstalowane na komputerze lub w projekcie.
 
-- W przypadku korzystania z formatu zarządzania [PackageReference](package-references-in-project-files.md) błąd oznacza, że pakiet nie jest zainstalowany w folderze *globalne pakiety* , zgodnie z opisem w temacie [Zarządzanie pakietami globalnymi i folderami pamięci](managing-the-global-packages-and-cache-folders.md)podręcznej.
-- W przypadku korzystania z [Packages. config](../reference/packages-config.md)błąd oznacza, że pakiet nie jest zainstalowany w `packages` folderze w katalogu głównym rozwiązania.
+- Podczas korzystania z formatu zarządzania [PackageReference](package-references-in-project-files.md) błąd oznacza, że pakiet nie jest zainstalowany w folderze *pakietów globalnych,* zgodnie z opisem w [sprawie Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
+- Podczas korzystania z [packages.config,](../reference/packages-config.md)błąd oznacza, że `packages` pakiet nie jest zainstalowany w folderze w katalogu głównym rozwiązania.
 
-Ta sytuacja często występuje, gdy uzyskujesz kod źródłowy projektu z kontroli źródła lub innego pobierania. Pakiety są zwykle pomijane na podstawie kontroli źródła lub pobierania, ponieważ można je przywrócić ze źródeł danych pakietu, takich jak nuget.org (zobacz [pakiety i kontrola źródła](Packages-and-Source-Control.md)). Dołączenie ich w inny sposób przeładowanie repozytorium lub tworzenie niepotrzebnych dużych plików. zip.
+Ta sytuacja często występuje po uzyskaniu kodu źródłowego projektu z kontroli źródła lub innego pobrania. Pakiety są zazwyczaj pomijane w kontroli źródła lub pobiera, ponieważ można je przywrócić z kanałów pakietowych, takich jak nuget.org (patrz [Pakiety i kontrola źródła).](Packages-and-Source-Control.md) Włączenie ich w przeciwnym razie nadęłoby repozytorium lub stworzyłoby niepotrzebnie duże pliki .zip.
 
-Ten błąd może również wystąpić, jeśli plik projektu zawiera bezwzględne ścieżki do lokalizacji pakietów i przeniesiesz projekt.
+Błąd może również się zdarzyć, jeśli plik projektu zawiera ścieżki bezwzględne do lokalizacji pakietów i przenieść projekt.
 
 Aby przywrócić pakiety, użyj jednej z następujących metod:
 
-- Jeśli plik projektu został przeniesiony, edytuj go bezpośrednio, aby zaktualizować odwołania do pakietu.
-- [Program Visual Studio](package-restore.md#restore-using-visual-studio) ([automatyczne przywracanie](package-restore.md#restore-packages-automatically-using-visual-studio) lub [przywracanie ręczne](package-restore.md#restore-packages-manually-using-visual-studio))
+- Jeśli plik projektu został przeniesiony, edytuj plik bezpośrednio, aby zaktualizować odwołania do pakietu.
+- [Visual Studio](package-restore.md#restore-using-visual-studio) [(automatyczne przywracanie](package-restore.md#restore-packages-automatically-using-visual-studio) lub [ręczne przywracanie)](package-restore.md#restore-packages-manually-using-visual-studio)
 - [Interfejs wiersza polecenia dotnet](package-restore.md#restore-using-the-dotnet-cli)
 - [Interfejs wiersza polecenia nuget.exe](package-restore.md#restore-using-the-nugetexe-cli)
 - [MSBuild](package-restore.md#restore-using-msbuild)
 - [Azure Pipelines](package-restore.md#restore-using-azure-pipelines)
 - [Azure DevOps Server](package-restore.md#restore-using-azure-devops-server)
 
-Po pomyślnym przywróceniu pakiet powinien znajdować się w folderze *Global-Packages* . W przypadku projektów korzystających z programu PackageReference przywracanie powinno `obj/project.assets.json` odtworzyć plik. w przypadku projektów używających `packages.config`pakiet powinien `packages` pojawić się w folderze projektu. Projekt powinien teraz zostać pomyślnie skompilowany. Jeśli nie, Zastąp [problem w usłudze GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) , dzięki czemu będziemy mogli z nich skorzystać.
+Po pomyślnym przywróceniu pakiet powinien znajdować się w folderze *pakietów globalnych.* W przypadku projektów przy użyciu PackageReference `obj/project.assets.json` przywracanie należy ponownie utworzyć plik; w przypadku `packages.config`projektów korzystających z pakietu `packages` powinien pojawić się w folderze projektu. Projekt powinien teraz pomyślnie zbudować. Jeśli nie, [zgłaś problem na GitHub,](https://github.com/NuGet/docs.microsoft.com-nuget/issues) abyśmy mogli z Tobą śledzić.
 
 <a name="assets"></a>
 
-## <a name="assets-file-projectassetsjson-not-found"></a>Nie znaleziono pliku zasobów Project. assets. JSON
+## <a name="assets-file-projectassetsjson-not-found"></a>Nie znaleziono pliku zasobów project.assets.json
 
 Pełny komunikat o błędzie:
 
@@ -75,13 +75,13 @@ Pełny komunikat o błędzie:
 Assets file '<path>\project.assets.json' not found. Run a NuGet package restore to generate this file.
 ```
 
-`project.assets.json` Plik utrzymuje wykres zależności projektu przy użyciu formatu zarządzania PackageReference, który jest używany do upewnienia się, że wszystkie wymagane pakiety są zainstalowane na komputerze. Ponieważ ten plik jest generowany dynamicznie przez Przywracanie pakietów, zazwyczaj nie jest dodawany do kontroli źródła. W związku z tym ten błąd występuje podczas kompilowania projektu za pomocą narzędzia, takiego `msbuild` jak nie przywraca automatycznie pakietów.
+Plik `project.assets.json` przechowuje wykres zależności projektu podczas korzystania z formatu zarządzania PackageReference, który jest używany, aby upewnić się, że wszystkie niezbędne pakiety są zainstalowane na komputerze. Ponieważ ten plik jest generowany dynamicznie za pomocą przywracania pakietu, zazwyczaj nie jest dodawany do kontroli źródła. W rezultacie ten błąd występuje podczas tworzenia projektu `msbuild` za pomocą narzędzia, takiego jak to nie automatycznie przywraca pakiety.
 
-W takim przypadku należy uruchomić `msbuild -t:restore` `msbuild`polecenie, a następnie użyć `dotnet build` (które automatycznie przywraca pakiety). Można również użyć dowolnej z metod przywracania pakietów w [poprzedniej sekcji](#missing).
+W takim przypadku `msbuild -t:restore` uruchom, a następnie `msbuild`, lub użyj `dotnet build` (który automatycznie przywraca pakiety). Można również użyć dowolnej z metod przywracania pakietu w [poprzedniej sekcji](#missing).
 
 <a name="consent"></a>
 
-## <a name="one-or-more-nuget-packages-need-to-be-restored-but-couldnt-be-because-consent-has-not-been-granted"></a>Należy przywrócić co najmniej jeden pakiet NuGet, ale nie można go z powodu braku zgody
+## <a name="one-or-more-nuget-packages-need-to-be-restored-but-couldnt-be-because-consent-has-not-been-granted"></a>Jeden lub więcej pakietów NuGet musi zostać przywrócony, ale nie może być, ponieważ zgoda nie została udzielona
 
 Pełny komunikat o błędzie:
 
@@ -93,11 +93,11 @@ during build.' You can also give consent by setting the environment variable
 'EnableNuGetPackageRestore' to 'true'. Missing packages: {name}
 ```
 
-Ten błąd wskazuje, że przywracanie pakietu jest wyłączone w konfiguracji programu NuGet.
+Ten błąd wskazuje, że przywracanie pakietu jest wyłączone w konfiguracji NuGet.
 
-Można zmienić odpowiednie ustawienia w programie Visual Studio zgodnie z wcześniejszym opisem w sekcji [szybkie rozwiązanie dla użytkowników programu Visual Studio](#quick-solution-for-visual-studio-users).
+Odpowiednie ustawienia w programie Visual Studio można zmienić w sposób opisany wcześniej w obszarze [Szybkie rozwiązanie dla użytkowników programu Visual Studio.](#quick-solution-for-visual-studio-users)
 
-Te ustawienia można również edytować bezpośrednio w odpowiednim `nuget.config` pliku (zazwyczaj `%AppData%\NuGet\NuGet.Config` w systemach Windows i `~/.nuget/NuGet/NuGet.Config` Mac/Linux). Upewnij się, `enabled` że `automatic` klucze i `packageRestore` w obszarze są ustawione na wartość true:
+Można również edytować te ustawienia `nuget.config` bezpośrednio w `%AppData%\NuGet\NuGet.Config` odpowiednim pliku `~/.nuget/NuGet/NuGet.Config` (zazwyczaj w systemie Windows i mac/linux). Upewnij `enabled` się, `automatic` że `packageRestore` klawisze i w obszarze są ustawione na True:
 
 ```xml
 <!-- Package restore is enabled -->
@@ -110,14 +110,14 @@ Te ustawienia można również edytować bezpośrednio w odpowiednim `nuget.conf
 ```
 
 > [!Important]
-> Jeśli edytujesz `packageRestore` ustawienia bezpośrednio w programie `nuget.config`, uruchom ponownie program Visual Studio, aby okno dialogowe Opcje pokazywało bieżące wartości.
+> Jeśli `packageRestore` ustawienia są edytowane `nuget.config`bezpośrednio w programie , uruchom ponownie program Visual Studio, aby okno dialogowe opcji wyświetlał bieżące wartości.
 
 ## <a name="other-potential-conditions"></a>Inne potencjalne warunki
 
-- Błędy kompilacji mogą wystąpić z powodu braku plików, a komunikat informujący o konieczności użycia przywracania NuGet do pobrania. Jednak uruchomienie przywracania może powiedzieć, "wszystkie pakiety są już zainstalowane i nie ma niczego do przywrócenia". W takim przypadku Usuń `packages` folder (w przypadku używania `packages.config`) lub `obj/project.assets.json` plik (w przypadku korzystania z programu PackageReference) i ponownie uruchom przywracanie. Jeśli błąd nadal występuje, `nuget locals all -clear` Użyj lub `dotnet locals all --clear` z wiersza polecenia, aby wyczyścić foldery *globalne-Packages* i pamięci podręcznej zgodnie z opisem w temacie [Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
+- Mogą wystąpić błędy kompilacji z powodu brakujących plików, z komunikatem informującym o użyciu przywracania NuGet, aby je pobrać. Jednak uruchomienie przywracania może powiedzieć: "Wszystkie pakiety są już zainstalowane i nie ma nic do przywrócenia." W takim przypadku `packages` usuń folder `packages.config`(podczas `obj/project.assets.json` korzystania) lub plik (podczas korzystania z PackageReference) i uruchom przywracanie ponownie. Jeśli błąd nadal występuje, `nuget locals all -clear` `dotnet locals all --clear` użyj lub z wiersza polecenia, aby wyczyścić *globalne pakiety* i foldery pamięci podręcznej, zgodnie z opisem w [temacie Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
 
-- Podczas uzyskiwania projektu z kontroli źródła foldery projektu mogą być ustawione na tylko do odczytu. Zmień uprawnienia folderu i spróbuj ponownie przywrócić pakiety.
+- Podczas uzyskiwania projektu z kontroli źródła, foldery projektu mogą być ustawione na tylko do odczytu. Zmień uprawnienia do folderu i spróbuj przywrócić pakiety ponownie.
 
-- Być może używasz starej wersji programu NuGet. Sprawdź [NuGet.org/downloads](https://www.nuget.org/downloads) z najnowszymi zalecanymi wersjami. W przypadku programu Visual Studio 2015 zalecamy 3.6.0.
+- Być może używasz starej wersji NuGet. Sprawdź [nuget.org/downloads,](https://www.nuget.org/downloads) czy dostępne są najnowsze zalecane wersje. Dla programu Visual Studio 2015 zaleca się 3.6.0.
 
-Jeśli napotkasz inne problemy, zapoznaj [się z problemem w serwisie GitHub](https://github.com/NuGet/docs.microsoft.com-nuget/issues) , aby uzyskać więcej szczegółowych informacji.
+Jeśli napotkasz inne problemy, [zgładź problem do GitHub,](https://github.com/NuGet/docs.microsoft.com-nuget/issues) abyśmy mogli uzyskać więcej szczegółów od Ciebie.

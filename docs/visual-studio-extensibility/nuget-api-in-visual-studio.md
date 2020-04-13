@@ -1,46 +1,46 @@
 ---
 title: Interfejs API programu NuGet w programie Visual Studio
-description: Informacje referencyjne interfejsu dla interfejsu API, które eksportuje NuGet, za pomocą Managed Extensibility Framework w programie Visual Studio
+description: Odwołanie do interfejsu api, który nuget eksportuje za pośrednictwem zarządzanej struktury rozszerzalności w programie Visual Studio
 author: karann-msft
 ms.author: karann
 ms.date: 01/09/2017
 ms.topic: reference
 ms.openlocfilehash: f1a11eb63c07a5d737a9474870f5653f6f7d850a
-ms.sourcegitcommit: 09107c5092050f44a0c6abdfb21db73878f78bd0
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980979"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "64495914"
 ---
 # <a name="nuget-api-in-visual-studio"></a>Interfejs API programu NuGet w programie Visual Studio
 
-Oprócz konsoli w programie Visual Studio i interfejs użytkownika Menedżera pakietów NuGet Eksportuje również niektóre przydatne usług za pośrednictwem [Managed Extensibility Framework (MEF)](/dotnet/framework/mef/index). Ten interfejs umożliwia innych składników w programie Visual Studio do interakcji z NuGet, który może służyć do instalowania i odinstalowywania pakietów oraz w celu uzyskania informacji na temat zainstalowanych pakietów.
+Oprócz interfejsu użytkownika i konsoli Menedżera pakietów w programie Visual Studio program NuGet eksportuje również niektóre przydatne usługi za pośrednictwem [struktury managed extensibility framework (MEF).](/dotnet/framework/mef/index) Ten interfejs umożliwia innym składnikom w programie Visual Studio do interakcji z NuGet, który może służyć do instalowania i odinstalowywania pakietów i uzyskać informacje o zainstalowanych pakietach.
 
-Począwszy od NuGet 3.3 + NuGet eksportuje następujących usług, które znajdują się w `NuGet.VisualStudio` przestrzeni nazw w `NuGet.VisualStudio.dll` zestawu:
+Od NuGet 3.3+, NuGet eksportuje następujące usługi, `NuGet.VisualStudio` które znajdują `NuGet.VisualStudio.dll` się w obszarze nazw w zestawie:
 
-- [`IRegistryKey`](#iregistrykey-interface): Metody do pobierania wartości z podklucza rejestru.
-- [`IVsPackageInstaller`](#ivspackageinstaller-interface): Metody, aby zainstalować pakiety NuGet do projektów.
-- [`IVsPackageInstallerEvents`](#ivspackageinstallerevents-interface): Zdarzenia związane z Instalowanie/Odinstalowywanie pakietu.
-- [`IVsPackageInstallerProjectEvents`](#ivspackageinstallerprojectevents-interface): Zdarzenia wsadowych do pakietu instalacji/dezinstalacji.
-- [`IVsPackageInstallerServices`](#ivspackageinstallerservices-interface): Metody pobierania pakietów zainstalowanych w bieżącym rozwiązaniu i sprawdź, czy dany pakiet jest zainstalowany w projekcie.
-- [`IVsPackageManagerProvider`](#ivspackagemanagerprovider-interface): Metody w celu zapewnienia alternatywnej sugestie Menedżer pakietów dla pakietu NuGet.
-- [`IVsPackageMetadata`](#ivspackagemetadata-interface): Metody do pobierania informacji o zainstalowanym pakietem.
-- [`IVsPackageProjectMetadata`](#ivspackageprojectmetadata-interface): Metody do pobierania informacji o projekcie, w których są wykonywane operacje NuGet.
-- [`IVsPackageRestorer`](#ivspackagerestorer-interface): Metody, można przywrócić pakietów zainstalowanych w projekcie.
-- [`IVsPackageSourceProvider`](#ivspackagesourceprovider-interface): Metody do pobierania listy pakietu nuget w pakiecie źródeł.
-- [`IVsPackageUninstaller`](#ivspackageuninstaller-interface): Metody odinstalowania pakietów NuGet z projektów.
-- [`IVsTemplateWizard`](#ivstemplatewizard-interface): Zaprojektowana z myślą o szablony projektu/elementu obejmujący wstępnie zainstalowane pakiety; Ten interfejs jest *nie* powinna być wywoływana z kodu i nie ma żadnych metod publicznych.
+- [`IRegistryKey`](#iregistrykey-interface): Metoda pobierania wartości z podklucza rejestru.
+- [`IVsPackageInstaller`](#ivspackageinstaller-interface): Metody instalowania pakietów NuGet w projektach.
+- [`IVsPackageInstallerEvents`](#ivspackageinstallerevents-interface): Zdarzenia dotyczące instalacji/odinstalowywania pakietu.
+- [`IVsPackageInstallerProjectEvents`](#ivspackageinstallerprojectevents-interface): Zdarzenia wsadowe dla instalacji/odinstalowywania pakietu.
+- [`IVsPackageInstallerServices`](#ivspackageinstallerservices-interface): Metody pobierania zainstalowanych pakietów w bieżącym rozwiązaniu i sprawdzania, czy dany pakiet jest zainstalowany w projekcie.
+- [`IVsPackageManagerProvider`](#ivspackagemanagerprovider-interface): Metody, aby zapewnić alternatywne sugestie Menedżera pakietów dla pakietu NuGet.
+- [`IVsPackageMetadata`](#ivspackagemetadata-interface): Metody pobierania informacji o zainstalowanym pakiecie.
+- [`IVsPackageProjectMetadata`](#ivspackageprojectmetadata-interface): Metody pobierania informacji o projekcie, w którym wykonywane są akcje NuGet.
+- [`IVsPackageRestorer`](#ivspackagerestorer-interface): Metody przywracania pakietów zainstalowanych w projekcie.
+- [`IVsPackageSourceProvider`](#ivspackagesourceprovider-interface): Metody pobierania listy źródeł pakietów NuGet.
+- [`IVsPackageUninstaller`](#ivspackageuninstaller-interface): Metody odinstalowywania pakietów NuGet z projektów.
+- [`IVsTemplateWizard`](#ivstemplatewizard-interface): Przeznaczone do szablonów projektów/elementów w celu uwzględnienia wstępnie zainstalowanych pakietów; ten interfejs *nie* jest przeznaczony do wywoływania z kodu i nie ma metod publicznych.
 
-## <a name="using-nuget-services"></a>Za pomocą usług NuGet
+## <a name="using-nuget-services"></a>Korzystanie z usług NuGet
 
-1. Zainstaluj [ `NuGet.VisualStudio` ](https://www.nuget.org/packages/NuGet.VisualStudio) pakiet w projekcie, który zawiera `NuGet.VisualStudio.dll` zestawu.
+1. Zainstaluj [`NuGet.VisualStudio`](https://www.nuget.org/packages/NuGet.VisualStudio) pakiet w projekcie, który `NuGet.VisualStudio.dll` zawiera zestaw.
 
-    Po zainstalowaniu pakietu automatycznie ustawia **Osadź typy współdziałania** właściwości odwołania zestawu do **True**. To sprawia, że Twój kod odporne na zmiany wersji, gdy użytkownicy przeprowadzić aktualizację do nowszej wersji pakietu nuget.
+    Po zainstalowaniu pakiet automatycznie ustawia **Embed Interop Types** właściwość odwołania do zestawu **true**. Dzięki temu kod jest odporny na zmiany wersji, gdy użytkownicy aktualizują się do nowszych wersji NuGet.
 
 > [!Warning]
-> Nie należy używać innych typów oprócz interfejsów publicznych w kodzie, a nie odwołują się do innych zestawów NuGet, w tym `NuGet.Core.dll`.
+> Nie należy używać żadnych innych typów oprócz interfejsów publicznych w kodzie i nie `NuGet.Core.dll`odwoływać się do innych zestawów NuGet, w tym .
 
-1. Aby korzystać z usługi, zaimportuj go za pośrednictwem [atrybutu importowania MEF](/dotnet/framework/mef/index#imports-and-exports-with-attributes), lub za pomocą [IComponentModel usługi](/dotnet/api/microsoft.visualstudio.componentmodelhost.icomponentmodel?redirectedfrom=MSDN&view=visualstudiosdk-2017).
+1. Aby korzystać z usługi, zaimportuj ją za pomocą [atrybutu IMPORT MEF](/dotnet/framework/mef/index#imports-and-exports-with-attributes)lub za pośrednictwem [usługi IComponentModel](/dotnet/api/microsoft.visualstudio.componentmodelhost.icomponentmodel?redirectedfrom=MSDN&view=visualstudiosdk-2017).
 
     ```cs
     //Using the Import attribute
@@ -57,7 +57,7 @@ Począwszy od NuGet 3.3 + NuGet eksportuje następujących usług, które znajdu
     var installedPackages = installerServices.GetInstalledPackages();
     ```
 
-Odwołanie, kod źródłowy Pro NuGet.VisualStudio znajduje się w ramach [repozytorium NuGet.Clients](https://github.com/NuGet/NuGet.Client/tree/dev/src/NuGet.Clients/NuGet.VisualStudio).
+Dla odwołania, kod źródłowy nuget.VisualStudio znajduje się w [repozytorium NuGet.Clients](https://github.com/NuGet/NuGet.Client/tree/dev/src/NuGet.Clients/NuGet.VisualStudio).
 
 ## <a name="iregistrykey-interface"></a>Interfejs IRegistryKey
 
@@ -317,7 +317,7 @@ public interface IVsPackageInstallerProjectEvents
 }
 ```
 
-## <a name="ivspackageinstallerservices-interface"></a>Interfejs IVsPackageInstallerServices
+## <a name="ivspackageinstallerservices-interface"></a>Interfejs usługi IVsPackageInstallerServices
 
 ```cs
 public interface IVsPackageInstallerServices

@@ -1,63 +1,63 @@
 ---
 title: Instalowanie i używanie pakietu NuGet w programie Visual Studio dla komputerów Mac
-description: Samouczek instruktażowy dotyczący procesu instalowania i używania pakietu NuGet w projekcie Visual Studio dla komputerów Mac.
+description: Samouczek instruktażowy na temat procesu instalowania i używania pakietu NuGet w projekcie programu Visual Studio dla komputerów Mac.
 author: jmatthiesen
 ms.author: jomatthi
 ms.date: 08/14/2019
 ms.topic: quickstart
 ms.openlocfilehash: 6f3fd4f2ffec0037a48aec845fddee258b5c1e7f
-ms.sourcegitcommit: ac9a00ccaf90e539a381e92b650074910b21eb0d
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "70238526"
 ---
-# <a name="quickstart-install-and-use-a-package-in-visual-studio-for-mac"></a>Szybki start: Instalowanie i używanie pakietu w Visual Studio dla komputerów Mac
+# <a name="quickstart-install-and-use-a-package-in-visual-studio-for-mac"></a>Szybki start: instalowanie i używanie pakietu w programie Visual Studio dla komputerów Mac
 
-Pakiety NuGet zawierają kod wielokrotnego użytku, który inni deweloperzy udostępnili do użycia w projektach. Zobacz, [co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są instalowane w projekcie Visual Studio dla komputerów Mac przy użyciu Menedżera pakietów NuGet. W tym artykule przedstawiono proces przy użyciu popularnego pakietu [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) i projektu konsoli .NET Core. Ten sam proces ma zastosowanie do dowolnego innego projektu Xamarin lub .NET Core.
+Pakiety NuGet zawierają kod wielokrotnego użytku, który inni deweloperzy udostępniają do użycia w projektach. Zobacz [Co to jest NuGet?](../What-is-NuGet.md) w tle. Pakiety są instalowane w projekcie programu Visual Studio dla komputerów Mac przy użyciu Menedżera pakietów NuGet. W tym artykule przedstawiono proces przy użyciu popularnego pakietu [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) i projektu konsoli .NET Core. Ten sam proces dotyczy każdego innego projektu platformy Xamarin lub .NET Core.
 
-Po zainstalowaniu programu zapoznaj się z pakietem w `using <namespace>` kodzie \<,\> gdzie przestrzeń nazw jest specyficzna dla używanego pakietu. Po wprowadzeniu odwołania można wywołać pakiet za pomocą jego interfejsu API.
+Po zainstalowaniu należy zapoznać `using <namespace>` się \<z\> pakietem w kodzie, w którym obszar nazw jest specyficzny dla używanego pakietu. Po nawiązaniu odwołania można wywołać pakiet za pośrednictwem jego interfejsu API.
 
 > [!Tip]
-> **Zacznij od NuGet.org**: *NuGet.org* przeglądania polega na tym, że deweloperzy platformy .NET zwykle wyszukują składniki, których mogą ponownie używać w swoich aplikacjach. Możesz przeszukiwać *NuGet.org* bezpośrednio lub znajdować i instalować pakiety w programie Visual Studio, jak pokazano w tym artykule. Aby uzyskać ogólne informacje, zobacz [Znajdź i Oceń pakiety NuGet](../consume-packages/finding-and-choosing-packages.md).
+> **Zacznij od nuget.org:** Przeglądanie *nuget.org* to sposób, w jaki deweloperzy platformy .NET zazwyczaj znajdują składniki, których mogą ponownie wykorzystać we własnych aplikacjach. Można wyszukiwać *nuget.org* bezpośrednio lub znaleźć i zainstalować pakiety w programie Visual Studio, jak pokazano w tym artykule. Aby uzyskać ogólne informacje, zobacz [Znajdowanie i ocenianie pakietów NuGet](../consume-packages/finding-and-choosing-packages.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Program Visual Studio 2019 dla komputerów Mac.
+- Visual Studio 2019 dla komputerów Mac.
 
-Wersję 2019 Community można zainstalować bezpłatnie z usługi [VisualStudio.com](https://www.visualstudio.com/) lub korzystać z wersji Professional lub Enterprise.
+Wersję społeczności 2019 można zainstalować bezpłatnie w [visualstudio.com](https://www.visualstudio.com/) lub korzystać z wersji Professional lub Enterprise.
 
-Jeśli używasz programu Visual Studio w systemie Windows, zobacz [Instalowanie i używanie pakietu w programie Visual Studio (tylko system Windows)](install-and-use-a-package-in-visual-studio.md).
+Jeśli używasz programu Visual Studio w systemie Windows, zobacz [Instalowanie i używanie pakietu w programie Visual Studio (tylko dla systemu Windows)](install-and-use-a-package-in-visual-studio.md).
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
-Pakiety NuGet można zainstalować w dowolnym projekcie .NET, pod warunkiem, że pakiet obsługuje tę samą platformę docelową co projekt.
+Pakiety NuGet można zainstalować w dowolnym projekcie .NET, pod warunkiem, że pakiet obsługuje taką samą platformę docelową jak projekt.
 
-W tym instruktażu należy użyć prostej aplikacji konsolowej platformy .NET Core. Utwórz projekt w Visual Studio dla komputerów Mac przy użyciu **pliku > nowe rozwiązanie...** , wybierz **aplikację .NET Core > Application > szablon aplikacji konsolowej** . Kliknij przycisk **Dalej**. Po wyświetleniu monitu zaakceptuj wartości domyślne dla **platformy docelowej** .
+W tym instruktażu należy użyć prostej aplikacji konsoli .NET Core Console. Utwórz projekt w programie Visual Studio dla komputerów Mac przy użyciu **> nowego rozwiązania plików...**, wybierz szablon **aplikacji konsoli .NET Core > App > Console.** Kliknij przycisk **Dalej**. Zaakceptuj wartości domyślne dla **platformy docelowej** po wyświetleniu monitu.
 
-Program Visual Studio tworzy projekt, który zostanie otwarty w Eksplorator rozwiązań.
+Visual Studio tworzy projekt, który otwiera się w Eksploratorze rozwiązań.
 
-## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodawanie pakietu NuGet Newtonsoft. JSON
+## <a name="add-the-newtonsoftjson-nuget-package"></a>Dodaj pakiet Newtonsoft.Json NuGet
 
-Aby zainstalować pakiet, należy użyć Menedżera pakietów NuGet. Podczas instalacji pakietu NuGet rejestruje zależność w pliku projektu lub `packages.config` pliku (w zależności od formatu projektu). Aby uzyskać więcej informacji, zobacz [Omówienie użycia pakietu i przepływ pracy](../consume-packages/Overview-and-Workflow.md).
+Aby zainstalować pakiet, należy użyć Menedżera pakietów NuGet. Po zainstalowaniu pakietu NuGet rejestruje zależność w pliku projektu `packages.config` lub pliku (w zależności od formatu projektu). Aby uzyskać więcej informacji, zobacz [Omówienie zużycia pakietów i przepływ pracy](../consume-packages/Overview-and-Workflow.md).
 
 ### <a name="nuget-package-manager"></a>Menedżer pakietów NuGet
 
-1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję **zależności** i wybierz polecenie **Dodaj pakiety..** ..
+1. W Eksploratorze **rozwiązań** kliknij prawym przyciskiem myszy pozycję Zależności i wybierz polecenie **Dodaj pakiety...**.
 
-    ![Polecenie zarządzania pakietami NuGet dla odwołań do projektu](media/QS_Use_Mac-02-ManageNuGetPackages.png)
+    ![Zarządzanie poleceniem NuGet Packages dla odwołań do projektu](media/QS_Use_Mac-02-ManageNuGetPackages.png)
 
-1. Wybierz pozycję "nuget.org" jako **Źródło pakietu** w lewym górnym rogu okna dialogowego, a następnie wyszukaj ciąg **Newtonsoft. JSON**, wybierz ten pakiet z listy, a następnie wybierz pozycję **Dodaj pakiety...** :
+1. Wybierz "nuget.org" jako **źródło pakietu** w lewym górnym rogu okna dialogowego i wyszukaj **plik Newtonsoft.Json**, wybierz ten pakiet na liście i wybierz pozycję **Dodaj pakiety...**:
 
-    ![Lokalizowanie pakietu Newtonsoft. JSON](media/QS_Use_Mac-03-NewtonsoftJson.png)
+    ![Lokalizowanie pakietu Newtonsoft.Json](media/QS_Use_Mac-03-NewtonsoftJson.png)
 
-    Aby uzyskać więcej informacji na temat Menedżera pakietów NuGet, zobacz [Instalowanie pakietów i zarządzanie nimi za pomocą Visual Studio dla komputerów Mac](../consume-packages/install-use-packages-visual-studio.md).
+    Aby uzyskać więcej informacji na temat Menedżera pakietów NuGet, zobacz [Instalowanie pakietów i zarządzanie nimi przy użyciu programu Visual Studio dla komputerów Mac](../consume-packages/install-use-packages-visual-studio.md).
 
-## <a name="use-the-newtonsoftjson-api-in-the-app"></a>Korzystanie z interfejsu API Newtonsoft. JSON w aplikacji
+## <a name="use-the-newtonsoftjson-api-in-the-app"></a>Korzystanie z interfejsu API Newtonsoft.Json w aplikacji
 
-Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać `JsonConvert.SerializeObject` metodę, aby przekonwertować obiekt na ciąg czytelny dla człowieka.
+Za pomocą pakietu Newtonsoft.Json w projekcie `JsonConvert.SerializeObject` można wywołać jego metodę konwersji obiektu na ciąg czytelny dla człowieka.
 
-1. `Program.cs` Otwórz plik (znajdujący się w okienko rozwiązania) i Zastąp zawartość pliku następującym kodem:
+1. Otwórz `Program.cs` plik (znajdujący się w panelu rozwiązania) i zastąp zawartość pliku następującym kodem:
 
     ```cs
     using System;
@@ -89,19 +89,19 @@ Za pomocą pakietu Newtonsoft. JSON w projekcie można wywołać `JsonConvert.Se
     }
     ```
 
-1. Skompiluj i uruchom aplikację, wybierając pozycję **Uruchom, > rozpocząć debugowanie**:
+1. Tworzenie i uruchamianie aplikacji przez wybranie **opcji Uruchom > Rozpocznij debugowanie:**
 
-1. Po uruchomieniu aplikacji zobaczysz serializowane dane wyjściowe JSON wyświetlane w konsoli programu:
+1. Po uruchomieniu aplikacji w konsoli pojawi się serializowane dane wyjściowe JSON:
 
-  ![Dane wyjściowe aplikacji konsolowej](media/QS_Use_Mac-06-AppStart.png)
+  ![Dane wyjściowe aplikacji Console](media/QS_Use_Mac-06-AppStart.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Gratulacje z myślą o instalowaniu i używaniu pierwszego pakietu NuGet!
+Gratulujemy instalacji i korzystania z pierwszego pakietu NuGet!
 
 > [!div class="nextstepaction"]
-> [Instalowanie pakietów i zarządzanie nimi przy użyciu Visual Studio dla komputerów Mac](/visualstudio/mac/nuget-walkthrough?toc=/nuget/toc.json)
+> [Instalowanie pakietów i zarządzanie nimi przy użyciu programu Visual Studio dla komputerów Mac](/visualstudio/mac/nuget-walkthrough?toc=/nuget/toc.json)
 
-Aby poznać więcej informacji o tym, że pakiet NuGet jest oferowany, wybierz poniższe linki.
+Aby dowiedzieć się więcej, że NuGet ma do zaoferowania, wybierz poniższe łącza.
 
-- [Omówienie użycia pakietu i przepływ pracy](../consume-packages/overview-and-workflow.md)
+- [Omówienie i przepływ pracy zużycia pakietów](../consume-packages/overview-and-workflow.md)
 - [Odwołania do pakietu w plikach projektu](../consume-packages/package-references-in-project-files.md)

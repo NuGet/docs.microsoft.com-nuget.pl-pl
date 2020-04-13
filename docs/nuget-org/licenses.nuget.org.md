@@ -3,63 +3,63 @@ title: licenses.nuget.org
 author: agr
 ms.date: 02/22/2019
 ms.openlocfilehash: 717cf8c47335c620410be71300b07de82799e1d3
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "67427552"
 ---
 # <a name="licensesnugetorg"></a>licenses.nuget.org
 
-## <a name="rationale"></a>Racjonalne uzasadnienie
+## <a name="rationale"></a>Uzasadnienie
 
-Wraz z wprowadzeniem [licencji wyrażeń](../reference/nuspec.md#license), wymaganie powstało mieć usługi reliable service zapewni tekst odwołania licencji poszczególnych identyfikatorów, identyfikatory wyjątek lub wyrażenia licencji.
-Dodatkowe wymaganie wprowadzono dla tej usługi jest mają stabilny schemat adresu URL, który nie jest podatny na link rot, tak aby bezpiecznie używać go do zapewniania zgodności z poprzednimi wersjami starszych klientów.
+Wraz z wprowadzeniem [wyrażeń licencji](../reference/nuspec.md#license)pojawił się wymóg posiadania niezawodnej usługi, która zapewniałaby tekst referencyjny dla poszczególnych identyfikatorów licencji, identyfikatorów wyjątków lub wyrażeń licencji.
+Dodatkowym wymaganiem dla tej usługi jest mieć stabilny schemat adresu URL, który nie jest podatny na gnicie łącza, dzięki czemu możemy bezpiecznie używać go do zapewnienia zgodności wstecznej dla starszych klientów.
 
-Licenses.nuget.org spełnia tę rolę. Nuget.org używa go, aby zapewnić odwołanie tekst licencji dla pakietów, które określają licencję za pomocą wyrażenia licencji. `nuget pack` lub pakowania z innymi [narzędzi klienckich](../install-nuget-client-tools.md) ustaw [ `licenseUrl` ](../reference/nuspec.md#licenseurl) element, aby wskazywał licenses.nuget.org w celu zapewnienia wstecznej zgodności ze starszymi klientami, które nie obsługują `license` element.
+Licenses.nuget.org spełnia tę rolę. Nuget.org używa go do dostarczenia odwołania tekstowego licencji dla pakietów, które określają ich licencji przy użyciu wyrażenia licencji. `nuget pack`lub pakowania z innymi [narzędziami klienta](../install-nuget-client-tools.md) ustawić [`licenseUrl`](../reference/nuspec.md#licenseurl) element, aby wskazać licenses.nuget.org, aby zapewnić zgodność wsteczna `license` ze starszymi klientami, które nie obsługują elementu.
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol (Protokół)
 
-Licenses.nuget.org jest przeznaczony do przeglądania przez osoby w przeglądarkach, znajdują się odpowiedzi czytelnymi dla komputera.
-Należy używać protokołu HTTPS, a żądania powinny zostać wykonane w określony sposób. Obsługuje on tylko `GET` żądań.
-Akceptuje wyrażeń licencji lub licencji wyjątek identyfikatory jako dane wejściowe w sposób określony poniżej. Należy pamiętać, że wszystkie elementy wyrażenia licencji jest uwzględniana wielkość liter i w związku z tym wszystkie dane wejściowe do licenses.nuget.org jest uwzględniana wielkość liter jak również.
+Licenses.nuget.org jest przeznaczony do przeglądania przez osoby w ich przeglądarkach, nie są dostarczane odpowiedzi nadajalne maszynowo.
+Protokół HTTPS musi być używany, a żądania powinny być konstruowane w określony sposób. Obsługuje `GET` tylko żądania.
+Akceptuje wyrażenia licencji lub identyfikatory wyjątków licencji jako dane wejściowe w sposób określony poniżej. Należy pamiętać, że we wszystkich elementach wyrażeń licencji rozróżniana jest wielkość liter, a zatem wszystkie dane wejściowe do licenses.nuget.org jest również rozróżniana wielkość liter.
 
 ### <a name="license-expressions"></a>Wyrażenia licencji
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Żądanie
 
-Wyrażenia licencji (w tym proste przypadków, gdy wyrażenie składa się z pojedynczej licencji) muszą być [zakodowane w adresie URL](https://tools.ietf.org/html/rfc3986#section-2.1) i używane jako ścieżka w żądaniu licenses.nuget.org.
+Wyrażenia licencji (w tym trywialne przypadki, gdy wyrażenie składa się z jednej licencji) muszą być [zakodowane w adresie URL](https://tools.ietf.org/html/rfc3986#section-2.1) i używane jako ścieżka w żądaniu licenses.nuget.org.
 
 | Wyrażenie licencji | Adres URL do użycia |
 |:---|:---|
 | MIT                                                | <https://licenses.nuget.org/MIT> |
 | (MIT)                                              | <https://licenses.nuget.org/(MIT)> |
-| (LGPL w wersji 2.0 — tylko przy użyciu Apache lub wyjątek FLTK-2.0+) | <https://licenses.nuget.org/(LGPL-2.0-only%20WITH%20FLTK-exception%20OR%20Apache-2.0+)> |
+| (LGPL-2.0-tylko z wyjątkiem FLTK lub Apache-2.0+) | <https://licenses.nuget.org/(LGPL-2.0-only%20WITH%20FLTK-exception%20OR%20Apache-2.0+)> |
 
-Usługa obsługuje tylko identyfikatory licencji i licencji wyjątek identyfikatorów, które są akceptowane przez nuget.org. Wszystkie wyrażenia licencji zawierających identyfikatory nieobsługiwany licencji lub licencji wyjątek identyfikatorów lub który jest niezgodny ze składnią wyrażeń licencji są uznawane za nieprawidłowe.
+Usługa obsługuje tylko identyfikatory licencji i identyfikatory wyjątków licencji, które są akceptowane przez nuget.org. Wszystkie wyrażenia licencji, które zawierają nieobsługiwały identyfikatory licencji lub identyfikatory wyjątków licencji lub które nie są zgodne ze składnią wyrażenia licencji, są uznawane za nieprawidłowe.
 
 #### <a name="response"></a>Odpowiedź
 
-Licenses.nuget.org odpowiada na żądania zawierające wyrażenia prawidłowej licencji z kodem stanu HTTP 200 i strony sieci web zawierająca opis licencji wyrażenia:
+Licenses.nuget.org odpowiada na żądania zawierające prawidłowe wyrażenia licencji za pomocą kodu stanu HTTP 200 i strony sieci Web zawierającej opis wyrażenia licencji:
 
-* Jeśli podane wyrażenie licencji zawiera identyfikator licencji pojedynczej strony sieci web jest zwracane, który zawiera ten tekst odwołanie licencji;
-* Jeśli nie dostarczono licencji wyrażenie jest wyrażeniem złożonego licencji, strony sieci web jest zwracany, który zawiera wyrażenie licencji wraz z łączami do poszczególnych licencji lub licencji wyjątek odwołania.
+* jeśli dostarczone wyrażenie licencji zawiera pojedynczy identyfikator licencji, zwracana jest strona internetowa zawierająca ten tekst referencyjny licencji;
+* jeśli dostarczone wyrażenie licencji jest wyrażeniem licencji złożonej, zwracana jest strona sieci web zawierająca wyrażenie licencji z łączami do indywidualnych odwołań do wyjątków licencji lub licencji.
 
-Wszystkie żądania, które zawierają wyrażenia Nieprawidłowa licencja wyniku w odpowiedzi HTTP 404.
+Wszystkie żądania zawierające nieprawidłowe wyrażenie licencji skutkują odpowiedzią HTTP 404.
 
 ### <a name="license-exceptions"></a>Wyjątki licencji
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Żądanie
 
-Identyfikatory wyjątek licencji musi być zakodowane w adresie URL i używane jako ścieżka w żądaniu licenses.nuget.org. Tylko identyfikator wyjątku licencją mogą być podawane w pojedynczym żądaniu. Żadne dodatkowe znaki, oprócz identyfikatora wyjątku licencji, stwarza część ścieżki adresu URL.
+Identyfikatory wyjątków licencji muszą być zakodowane w adresie URL i używane jako ścieżka w żądaniu do licenses.nuget.org. Tylko jeden identyfikator wyjątku licencji może być dostarczony w jednym żądaniu. W części ścieżki adresu URL nie mogą znajdować się żadne dodatkowe znaki oprócz identyfikatora wyjątku licencji.
 
 | Identyfikator wyjątku licencji | Adres URL do użycia |
 |:---|:---|
-|FLTK-exception            | <https://licenses.nuget.org/FLTK-exception> |
-|openvpn-openssl-exception | <https://licenses.nuget.org/openvpn-openssl-exception> |
+|FLTK-wyjątek            | <https://licenses.nuget.org/FLTK-exception> |
+|openvpn-openssl-wyjątek | <https://licenses.nuget.org/openvpn-openssl-exception> |
 
 #### <a name="response"></a>Odpowiedź
 
-Licenses.nuget.org odpowiada na żądanie z identyfikatorem wyjątek znanych licencji z odpowiedź HTTP 200 i strony sieci web zawierającej tekst odwołania, dla wyjątku jednostkom licencji.
+Licenses.nuget.org odpowiada na żądanie o znanym identyfikatorze wyjątku licencji z odpowiedzią HTTP 200 i stroną sieci web zawierającą tekst referencyjny dla określonego wyjątku licencji.
 
-Każde żądanie, zawierający identyfikator licencji nieobsługiwany wyjątek powoduje w odpowiedzi HTTP 404.
+Każde żądanie zawierające nieobsługicony identyfikator wyjątku licencji powoduje odpowiedź HTTP 404.

@@ -1,26 +1,26 @@
 ---
 ms.openlocfilehash: c92f6e0c34347ee8555d416140d95ea2df5a3fbb
-ms.sourcegitcommit: 39f2ae79fbbc308e06acf67ee8e24cfcdb2c831b
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "73610548"
 ---
-Identyfikator pakietu i numer wersji to dwie najważniejsze wartości w projekcie, ponieważ jednoznacznie identyfikują dokładny kod zawarty w pakiecie.
+Identyfikator pakietu i numer wersji są dwie najważniejsze wartości w projekcie, ponieważ jednoznacznie zidentyfikować dokładny kod, który jest zawarty w pakiecie.
 
-**Najlepsze rozwiązania dotyczące identyfikatora pakietu:**
+**Najważniejsze wskazówki dotyczące identyfikatora pakietu:**
 
-- **Unikatowość**: Identyfikator musi być unikatowy w obrębie NuGet.org lub dowolnej galerii, w której znajduje się pakiet. Przed podjęciem decyzji o identyfikatorze Przeszukaj stosowną galerię, aby sprawdzić, czy nazwa jest już używana. Aby uniknąć konfliktów, dobrym wzorcem jest użycie nazwy firmy jako pierwszej części identyfikatora, takiej jak `Contoso.`.
-- **Nazwy podobne do nazw**: Postępuj zgodnie ze wzorcem podobnym do przestrzeni nazw w programie .NET przy użyciu notacji kropkowej zamiast łączników. Na przykład użyj `Contoso.Utility.UsefulStuff`, a nie `Contoso-Utility-UsefulStuff` lub `Contoso_Utility_UsefulStuff`. Konsumenci są również pomocne, gdy identyfikator pakietu jest zgodny z przestrzeniami nazw używanymi w kodzie.
-- **Przykładowe pakiety**: w przypadku tworzenia pakietu przykładowego kodu, który demonstruje sposób użycia innego pakietu, należy dołączyć `.Sample` jako sufiks do identyfikatora, jak w `Contoso.Utility.UsefulStuff.Sample`. (Przykładowy pakiet jest oczywiście zależny od innego pakietu). Podczas tworzenia przykładowego pakietu Użyj wartości `contentFiles` w `<IncludeAssets>`. W folderze `content` Rozmieść przykładowy kod w folderze o nazwie `\Samples\<identifier>` jako `\Samples\Contoso.Utility.UsefulStuff.Sample`.
+- **Unikatowość:** identyfikator musi być unikatowy w nuget.org lub dowolnej galerii hostuje pakiet. Przed podjęciem decyzji o identyfikatorze przeszukaj odpowiednią galerię, aby sprawdzić, czy nazwa jest już używana. Aby uniknąć konfliktów, dobrym wzorcem jest użycie nazwy firmy jako pierwszej `Contoso.`części identyfikatora, takiej jak .
+- Nazwy podobne do **przestrzeni nazw:** Postępuj zgodnie ze wzorcem podobnym do obszarów nazw w domenie .NET, używając notacji kropkowej zamiast łączników. Na przykład `Contoso.Utility.UsefulStuff` użyj, `Contoso-Utility-UsefulStuff` `Contoso_Utility_UsefulStuff`a nie lub . Konsumenci również znaleźć przydatne, gdy identyfikator pakietu pasuje do obszarów nazw używanych w kodzie.
+- **Przykładowe pakiety:** Jeśli tworzysz pakiet przykładowego kodu, który `.Sample` pokazuje, jak używać innego pakietu, `Contoso.Utility.UsefulStuff.Sample`dołącz jako sufiks do identyfikatora, jak w . (Przykładowy pakiet będzie oczywiście zależny od innego pakietu.) Podczas tworzenia przykładowego pakietu `contentFiles` użyj `<IncludeAssets>`wartości w pliku . W `content` folderze rozmieść przykładowy `\Samples\<identifier>` kod `\Samples\Contoso.Utility.UsefulStuff.Sample`w folderze o nazwie w pliku .
 
-**Najlepsze rozwiązania dotyczące wersji pakietu:**
+**Najważniejsze wskazówki dotyczące wersji pakietu:**
 
-- Ogólnie rzecz biorąc Ustaw wersję pakietu na zgodną z projektem (lub zestawem), ale nie jest to ściśle wymagane. Jest to prosta kwestia w przypadku ograniczenia pakietu do jednego zestawu. Ogólnie, pamiętaj, że sam pakiet NuGet zajmuje się wersjami pakietu podczas rozpoznawania zależności, a nie wersji zestawu.
-- W przypadku korzystania ze schematu wersji niestandardowej należy wziąć pod uwagę reguły obsługi wersji NuGet zgodnie z opisem w temacie [wersja pakietu](../../concepts/package-versioning.md). Pakiet NuGet jest w większości [semver 2 zgodny](../../concepts/package-versioning.md#semantic-versioning-200).
+- Ogólnie rzecz biorąc ustaw wersję pakietu, aby dopasować projekt (lub zestaw), chociaż nie jest to ściśle wymagane. Jest to prosta sprawa, gdy ograniczysz pakiet do pojedynczego zestawu. Ogólnie rzecz biorąc, należy pamiętać, że NuGet sam zajmuje się wersjami pakietów podczas rozpoznawania zależności, a nie wersji zestawu.
+- Korzystając z niestandardowego schematu wersji, należy wziąć pod uwagę reguły wersji NuGet, jak wyjaśniono w [wersji pakietu.](../../concepts/package-versioning.md) NuGet jest w większości [zgodny z semver 2](../../concepts/package-versioning.md#semantic-versioning-200).
 
-> Aby uzyskać informacje dotyczące rozpoznawania zależności, zobacz [rozpoznawanie zależności z PackageReference](../../concepts/dependency-resolution.md#dependency-resolution-with-packagereference). Aby poznać starsze informacje, które mogą być przydatne do lepszego zrozumienia wersji, zobacz tę serię wpisów w blogu.
+> Aby uzyskać informacje na temat rozpoznawania zależności, zobacz [Rozpoznawanie zależności za pomocą packagereference](../../concepts/dependency-resolution.md#dependency-resolution-with-packagereference). Aby uzyskać starsze informacje, które mogą być również pomocne w lepszym zrozumieniu przechowywania wersji, zobacz tę serię wpisów w blogu.
 >
-> - [Część 1: pobieranie biblioteki DLL Hell](https://blog.davidebbo.com/2011/01/nuget-versioning-part-1-taking-on-dll.html)
-> - [Część 2: podstawowy algorytm](https://blog.davidebbo.com/2011/01/nuget-versioning-part-2-core-algorithm.html)
-> - [Część 3: ujednolicenie za pośrednictwem przekierowań powiązań](https://blog.davidebbo.com/2011/01/nuget-versioning-part-3-unification-via.html)
+> - [Część 1: Biorąc na DLL Hell](https://blog.davidebbo.com/2011/01/nuget-versioning-part-1-taking-on-dll.html)
+> - [Część 2: Podstawowy algorytm](https://blog.davidebbo.com/2011/01/nuget-versioning-part-2-core-algorithm.html)
+> - [Część 3: Ujednolicenie za pomocą przekierowań wiążących](https://blog.davidebbo.com/2011/01/nuget-versioning-part-3-unification-via.html)

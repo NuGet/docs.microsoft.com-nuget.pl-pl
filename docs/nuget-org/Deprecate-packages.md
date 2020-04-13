@@ -1,58 +1,58 @@
 ---
-title: Przestarzałe pakiety w nuget.org
-description: Szczegółowy opis procesu wycofywania pakietów i sposobu wyświetlania tych informacji przez klientów
+title: Przestarzałe pakiety na nuget.org
+description: Szczegółowy opis procesu przestarzałości pakietów i sposobu, w jaki klienci pokazują te informacje
 author: anangaur
 ms.author: anangaur
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.reviewer: karann-msft
 ms.openlocfilehash: 70666ddf9cd7bdc448d29d4235e57bc91e2c003e
-ms.sourcegitcommit: 60414a17af65237652c1de9926475a74856b91cc
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "74096884"
 ---
 # <a name="deprecating-packages"></a>Przestarzałe pakiety
 
-Możesz zastąpić pakiet, jeśli już nie przechowujesz pakietu lub chcesz zachęcić odbiorców pakietu do przejścia do innego pakietu. 
+Możesz przestarzałe pakiet, jeśli nie prowadzisz już pakietu lub jeśli chcesz zachęcić konsumentów pakietu do przejścia do innego pakietu. 
 
-Wycofanie pakietu jest inne niż Wycofaj **listę** pakietów, jak wyjaśniono poniżej:
-* **Nielistowanie** pakietu uniemożliwia jego odnajdywanie, ponieważ jest on ukryty w wynikach wyszukiwania. 
-* **Wycofanie** pakietu pozwala istniejącym konsumentom pakietu sprawdzić, czy są one zainstalowane lub używane w projektach. Pozwala również znać przyczynę wycofania i inny zalecany pakiet określony przez użytkownika (Wydawca pakietu). Wycofanie pakietu nie powoduje odlistowania pakietu. 
+Wycofanie pakietu różni się od **nienaszacowania** pakietu, jak wyjaśniono poniżej:
+* **Odsuwanie** pakietu z listy uniemożliwia jego odnajdowanie, ponieważ jest on ukryty w wynikach wyszukiwania. 
+* **Przestarzałe rozwiązanie** pakietu pozwala istniejącym odbiorcom pakietu dowiedzieć się, czy mają go zainstalowany lub używany w swoich projektach. Pozwala im również znać przyczynę wycofania i alternatywny zalecany pakiet określony przez Ciebie (wydawca pakietu). Przestarzałe pakiet nie powoduje wykreślenia pakietu z listy. 
 
-Jako wydawca możesz wybrać zarówno opcję unlist, jak i przestarzałe pakiety.
+Jako wydawca możesz wybrać zarówno niepubliczne, jak i przestarzałe pakiety.
 
-## <a name="deprecation-workflow"></a>Przepływ pracy wycofania
-1. Aby zastąpić pakiet, przejdź do obszaru **Zarządzanie pakietami** i wybierz pozycję **przestarzałe**:
+## <a name="deprecation-workflow"></a>Przepływ pracy deprecation
+1. Aby przestarzałe pakiet, przejdź do **zarządzania pakietami** i wybierz **opcję Zaniechanie:**
 
-    ![Przejdź do opcji przestarzały pakiet](media/deprecation-select-option.png)
+    ![Przejdź do opcji przestarzałego pakietu](media/deprecation-select-option.png)
 
-2. Wybierz wersję, którą chcesz wycofać. Jeśli chcesz zrezygnować z całej wersji, wybierz opcję **Wybierz wszystkie wersje** .
+2. Wybierz wersję, którą chcesz przestarzałe. Jeśli chcesz przestarzałe wszystkie wersje, wybierz wybierz **wszystkie wersje** opcji.
 
-    ![Wybierz wersje pakietu do wycofania](media/deprecation-select-version.png)
+    ![Wybieranie wersji pakietów do przestarzałości](media/deprecation-select-version.png)
 
-3. Wybierz przyczynę wycofania. Jeśli pakiet nie jest już obsługiwany, wybierz opcję **Starsza wersja** . Jeśli określona wersja ma krytyczny błąd, wybierz opcję **ma błędy krytyczne** . Z dowolnego powodu wybierz pozycję **inne**. Zawsze możesz określić alternatywny, zalecany pakiet (i wersja) oraz niestandardowy komunikat do właścicieli. 
+3. Wybierz przyczynę wycofania. Jeśli pakiet nie jest już utrzymywany, wybierz opcję **Starsza.** Jeśli określona wersja ma błąd krytyczny, wybierz opcję **ma krytyczne błędy.** Z dowolnego innego powodu wybierz opcję **Inne**. Zawsze można określić alternatywny zalecany pakiet (i wersję) i niestandardowy komunikat do właścicieli. 
 
-    ![Wybieranie z przyczyn alternatywnego zalecenia pakietu i komunikatu niestandardowego](media/deprecation-save.png)
+    ![Wybierz powody alternatywnego pakietu rekomendacji i wiadomości niestandardowej](media/deprecation-save.png)
 
 > [!Note]
-> Komunikat niestandardowy jest wyświetlany tylko w witrynie nuget.org, ale nie z poziomu klientów. Obecnie klienci tacy jak `dotnet.exe` i Menedżer pakietów NuGet nie wyświetlają komunikatu niestandardowego.
+> Wiadomość niestandardowa jest wyświetlana tylko na nuget.org ale nie od klientów. Obecnie klienci, tacy `dotnet.exe` jak i Menedżer pakietów NuGet, nie wyświetlają wiadomości niestandardowej.
 
-## <a name="client-experience-for-deprecated-packages"></a>Środowisko klienta dla przestarzałych pakietów
-Gdy pakiet jest przestarzały, jego konsumenci są powiadamiani o nich w następujący sposób (w zależności od używanego klienta).
+## <a name="client-experience-for-deprecated-packages"></a>Obsługa klienta dla przestarzałych pakietów
+Gdy pakiet został przestarzały, jego konsumenci są powiadamiani o tym w następujący sposób (w zależności od używanego klienta).
 
 ### <a name="visual-studio"></a>Visual Studio 
-*Dostępne począwszy od programu Visual Studio 2019 w wersji 16,3*
+*Dostępne od wersji Visual Studio 2019 w wersji 16.3*
 
-Program Visual Studio ostrzega o użyciu przestarzałego pakietu na karcie `Installed`. Spowoduje to wyświetlenie ostrzeżenia dotyczącego pakietu i jego informacji o zaniechaniu (w tym przyczyny jego wycofania oraz alternatywnego pakietu do użycia zamiast tego, jeśli istnieje).
+Visual Studio ostrzega o użyciu przestarzałego `Installed` pakietu na karcie. Wyświetli ostrzeżenie dla pakietu i jego informacje o umorzyniu (w tym powód, dla którego został przestarzały i alternatywny pakiet do użycia zamiast tego, jeśli jest obecny).
 
-   ![Przestarzałe pakiety na karcie zainstalowanej w programie Visual Studio Menedżer pakietów](media/deprecation-vs.png)
+   ![Przestarzałe pakiety w programie Visual Studio zainstalowanej karty Menedżera pakietów](media/deprecation-vs.png)
 
-### <a name="dotnetexe"></a>dotnet. exe
-*Dostępne począwszy od zestawu .NET SDK 3,0*
+### <a name="dotnetexe"></a>plik dotnet.exe
+*Dostępne począwszy od .NET SDK 3.0*
 
-Jeśli używasz programu dotnet. exe, możesz uruchomić polecenie `dotnet list package --deprecated` w folderze rozwiązania lub projektu, aby uzyskać listę przestarzałych pakietów wraz z informacjami o zaniechaniu:
+Jeśli używasz dotnet.exe, można `dotnet list package --deprecated` uruchomić polecenie w folderze rozwiązania lub projektu, aby uzyskać listę przestarzałych pakietów wraz z informacjami o umorzazaniu:
 
 ```
 > dotnet list package --deprecated

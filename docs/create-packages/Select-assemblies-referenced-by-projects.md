@@ -1,37 +1,37 @@
 ---
-title: Wybierz zestawy, które odwołują się projekty
-description: Udostępnić podzbiór zestawów w pakiecie do kompilatora, gdy wszystkie zestawy są dostępne w czasie wykonywania.
+title: Wybierz zestawy, do których odwołują się projekty
+description: Udostępnij kompilatorowi podzbiór zestawów w pakiecie, podczas gdy wszystkie zestawy są dostępne w czasie wykonywania.
 author: zivkan
 ms.author: zivkan
 ms.date: 05/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: b32075c3f2c06c15c07d36602bdabdaee8b9405a
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "67427660"
 ---
-# <a name="select-assemblies-referenced-by-projects"></a>Wybierz zestawy, które odwołują się projekty
+# <a name="select-assemblies-referenced-by-projects"></a>Wybierz zestawy, do których odwołują się projekty
 
-Odwołania do zestawu jawnych umożliwia podzbiór zestawów do użytku z technologii IntelliSense i kompilacja, gdy wszystkie zestawy są dostępne w czasie wykonywania. `PackageReference` i `packages.config` działają inaczej, a w rezultacie autorom pakietów należy zachować ostrożność do utworzenia pakietu, aby był zgodny z oboma typami projektów.
+Jawne odwołania do zestawu umożliwia podzbiór zestawów do użycia dla IntelliSense i kompilacji, podczas gdy wszystkie zestawy są dostępne w czasie wykonywania. `PackageReference`i `packages.config` działać inaczej, a w rezultacie autorzy pakietu muszą zadbać o stworzenie pakietu, aby był zgodny z obu typów projektu.
 
 > [!Note]
-> Odwołania do zestawu jawnych odnoszą się do zestawów platformy .NET. Nie jest metodą do rozpowszechniania zestawów natywnych, które są P/wywoływany przez zestaw zarządzany.
+> Jawne odwołania do zestawu są powiązane z zestawami .NET. Nie jest to metoda dystrybucji natywnych zestawów, które są P/Invoked przez zestaw zarządzany.
 
-## <a name="packagereference-support"></a>`PackageReference` Obsługa
+## <a name="packagereference-support"></a>`PackageReference`Wsparcie
 
-Jeśli projekt używa pakietu o `PackageReference` i pakiet zawiera `ref\<tfm>\` katalogu NuGet zostanie klasyfikowanie tych składa się jako zasoby kompilacji podczas `lib\<tfm>\` zestawy są klasyfikowane jako zasoby w czasie wykonywania. Zestawy w `ref\<tfm>\` nie są używane w czasie wykonywania. Oznacza to, niezbędne jest, aby każdy zespół w `ref\<tfm>\` mieć pasujący zestaw albo `lib\<tfm>\` nieznaczące `runtime\` katalogu, w przeciwnym razie środowisko uruchomieniowe prawdopodobnie wystąpią błędy. Ponieważ zestawy w `ref\<tfm>\` nie są używane w czasie wykonywania, może być [zestawów zawierających tylko metadane](https://github.com/dotnet/roslyn/blob/master/docs/features/refout.md) zmniejszyć rozmiar pakietu.
+Gdy projekt używa pakietu `PackageReference` z i pakiet `ref\<tfm>\` zawiera katalog, NuGet klasyfikuje te zestawy jako zasoby `lib\<tfm>\` w czasie kompilacji, podczas gdy zestawy są klasyfikowane jako zasoby środowiska wykonawczego. Zestawy w `ref\<tfm>\` nie są używane w czasie wykonywania. Oznacza to, że jest `ref\<tfm>\` to konieczne dla każdego `lib\<tfm>\` zestawu w `runtime\` mieć pasujące zestawu w jednym lub odpowiedniego katalogu, w przeciwnym razie błędy środowiska uruchomieniowego prawdopodobnie wystąpią. Ponieważ zestawy `ref\<tfm>\` w nie są używane w czasie wykonywania, mogą być [tylko do metadanych zestawów](https://github.com/dotnet/roslyn/blob/master/docs/features/refout.md) w celu zmniejszenia rozmiaru pakietu.
 
 > [!Important]
-> Jeśli pakiet zawiera nuspec `<references>` — element (używane przez `packages.config`, patrz poniżej) i nie zawiera zestawy w `ref\<tfm>\`, NuGet będzie anonsować zestawów na liście nuspec `<references>` elementu jako zasoby kompilacji i środowiska uruchomieniowego. Oznacza to, będzie istnieć wyjątki środowiska uruchomieniowego podczas musisz załadować innego zestawu, w przywoływanych zestawach `lib\<tfm>\` katalogu.
+> Jeśli pakiet `<references>` zawiera nuspec element `packages.config`(używany przez , patrz poniżej) i nie zawiera zestawów w `ref\<tfm>\` `<references>` , NuGet anonsuje zestawy wymienione w nuspec element zarówno skompilować i zasobów środowiska wykonawczego. Oznacza to, że będą wyjątki środowiska uruchomieniowego, gdy zestawy, `lib\<tfm>\` do których istnieje odwołanie, muszą załadować inny zestaw w katalogu.
 
 > [!Note]
-> Jeśli pakiet zawiera `runtime\` katalogu NuGet nie wolno korzystać z zasobów w `lib\` katalogu.
+> Jeśli pakiet zawiera `runtime\` katalog, NuGet nie może używać `lib\` zasobów w katalogu.
 
-## <a name="packagesconfig-support"></a>`packages.config` Obsługa
+## <a name="packagesconfig-support"></a>`packages.config`Wsparcie
 
-Projekty, za pomocą `packages.config` do zarządzania NuGet pakietów zwykle dodać odwołania do wszystkich zestawów w `lib\<tfm>\` katalogu. `ref\` Katalog został dodany do obsługi `PackageReference` i dlatego nie jest traktowane jako przy użyciu `packages.config`. Aby jawnie ustawić zestawy, które są określone dla projektów przy użyciu `packages.config`, należy użyć pakietu [ `<references>` elementu w pliku nuspec](../reference/nuspec.md#explicit-assembly-references). Na przykład:
+Projekty `packages.config` używane do zarządzania pakietami NuGet zwykle dodają odwołania do wszystkich zestawów w `lib\<tfm>\` katalogu. Katalog `ref\` został dodany do `PackageReference` obsługi i dlatego nie `packages.config`jest brany pod uwagę podczas korzystania . Aby jawnie ustawić, do których zestawów są przywoływane dla projektów przy użyciu, `packages.config`pakiet musi użyć [ `<references>` elementu w pliku nuspec](../reference/nuspec.md#explicit-assembly-references). Przykład:
 
 ```xml
 <references>
@@ -42,11 +42,11 @@ Projekty, za pomocą `packages.config` do zarządzania NuGet pakietów zwykle do
 ```
 
 > [!Note]
-> `packages.config` Użyj projektu w proces nazywany [resolveassemblyreference —](https://github.com/Microsoft/msbuild/blob/master/documentation/wiki/ResolveAssemblyReference.md) Aby skopiować zestawy `bin\<configuration>\` katalogu wyjściowego. Zestawu projektu jest kopiowana, a następnie system kompilacji analizuje manifestu zestawu dla zestawów odwołania, a następnie kopiuje te zestawy i rekursywnie powtarza się dla wszystkich zestawów. Oznacza to, że jeśli żadnego z zestawów w swojej `lib\<tfm>\` katalogu nie są wymienione w manifeście żadnych innych zestawów jako zależność (Jeśli zestaw jest ładowany w czasie wykonywania za pomocą `Assembly.Load`, MEF lub innej struktury iniekcji zależności), nie może mieć skopiowany do swojego projektu `bin\<configuration>\` katalog wyjściowy, mimo że znajduje się w `bin\<tfm>\`.
+> `packages.config`projekt użyć procesu o nazwie [ResolveAssemblyReference](https://github.com/Microsoft/msbuild/blob/master/documentation/wiki/ResolveAssemblyReference.md) `bin\<configuration>\` do kopiowania zestawów do katalogu wyjściowego. Zestaw projektu jest kopiowany, a następnie system kompilacji patrzy na manifest zestawu dla zestawów, do których istnieje odwołanie, a następnie kopiuje te zestawy i powtarza się rekurencyjnie dla wszystkich zestawów. Oznacza to, że jeśli którykolwiek `lib\<tfm>\` z zestawów w katalogu nie są wymienione w manifeście innego zestawu `Assembly.Load`jako zależność (jeśli zestaw jest ładowany w czasie wykonywania `bin\<configuration>\` przy użyciu MEF `bin\<tfm>\`lub innej struktury iniekcji zależności), to nie może być kopiowany do katalogu wyjściowego projektu, mimo że jest w .
 
 ## <a name="example"></a>Przykład
 
-Mój pakiet będzie zawierał trzy zestawy `MyLib.dll`, `MyHelpers.dll` i `MyUtilities.dll`, które są przeznaczone dla .NET Framework 4.7.2. `MyUtilities.dll` zawiera klasy przeznaczone do użycia tylko przez te dwa zestawy, dzięki czemu nie chcesz udostępnić te klasy w technologii IntelliSense lub w czasie kompilacji projektów za pomocą Mój pakiet. Moje `nuspec` plik musi zawierać następujące elementy XML:
+Mój pakiet będzie zawierać `MyLib.dll`trzy `MyHelpers.dll` `MyUtilities.dll`zestawy i , które są przeznaczone dla .NET Framework 4.7.2. `MyUtilities.dll`zawiera klasy przeznaczone do użycia tylko przez pozostałe dwa zestawy, więc nie chcę, aby te klasy dostępne w IntelliSense lub w czasie kompilacji do projektów przy użyciu mojego pakietu. Mój `nuspec` plik musi zawierać następujące elementy XML:
 
 ```xml
 <references>
@@ -57,7 +57,7 @@ Mój pakiet będzie zawierał trzy zestawy `MyLib.dll`, `MyHelpers.dll` i `MyUti
 </references>
 ```
 
-pliki w pakiecie. zostanie ona:
+a pliki w pakiecie będą:
 
 ```text
 lib\net472\MyLib.dll

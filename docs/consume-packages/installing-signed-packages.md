@@ -1,30 +1,30 @@
 ---
-title: Zarządzaj granicami zaufania pakietu
-description: Opisuje proces instalowania podpisanych pakietów NuGet i konfigurowania ustawień zaufania sygnatury pakietu.
+title: Zarządzanie granicami zaufania pakietów
+description: Opisuje proces instalowania podpisanych pakietów NuGet i konfigurowania ustawień zaufania podpisu pakietu.
 author: karann-msft
 ms.author: karann
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 034b9dd9699af529e4d82d6ee5b1c42214673341
-ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "79428983"
 ---
-# <a name="manage-package-trust-boundaries"></a>Zarządzaj granicami zaufania pakietu
+# <a name="manage-package-trust-boundaries"></a>Zarządzanie granicami zaufania pakietów
 
-Podpisane pakiety nie wymagają żadnej konkretnej akcji, która ma zostać zainstalowana; Jeśli jednak zawartość została zmodyfikowana od czasu podpisania, instalacja jest zablokowana z powodu błędu [NU3008](../reference/errors-and-warnings/NU3008.md).
+Podpisane pakiety nie wymagają żadnych określonych akcji do zainstalowania; jeśli jednak zawartość została zmodyfikowana od momentu podpisania, instalacja jest blokowana z powodu błędu [NU3008](../reference/errors-and-warnings/NU3008.md).
 
 > [!Warning]
-> Pakiety podpisane przy użyciu certyfikatów niezaufanych są uznawane za niepodpisane i instalowane bez żadnych ostrzeżeń lub błędów, takich jak każdy inny niepodpisany pakiet.
+> Pakiety podpisane za pomocą niezaufanych certyfikatów są uważane za niepodpisane i są instalowane bez żadnych ostrzeżeń lub błędów, jak każdy inny niepodpisany pakiet.
 
-## <a name="configure-package-signature-requirements"></a>Skonfiguruj wymagania dotyczące podpisu pakietu
+## <a name="configure-package-signature-requirements"></a>Konfigurowanie wymagań dotyczących podpisu pakietu
 
 > [!Note]
-> Wymaga NuGet 4.9.0 + i Visual Studio w wersji 15,9 lub nowszej w systemie Windows
+> Wymaga wersji NuGet 4.9.0+ i programu Visual Studio w wersji 15.9 lub nowszej w systemie Windows
 
-Można skonfigurować sposób weryfikowania podpisów pakietów przez klientów NuGet przez ustawienie `signatureValidationMode` do `require` w pliku [NuGet. config](../reference/nuget-config-file.md) za pomocą polecenia [`nuget config`](../reference/cli-reference/cli-ref-config.md) .
+Można skonfigurować sposób sprawdzania poprawności podpisów pakietów `signatureValidationMode` `require` przez klientów NuGet, ustawiając [`nuget config`](../reference/cli-reference/cli-ref-config.md) w pliku [nuget.config w pliku nuget.config](../reference/nuget-config-file.md) za pomocą polecenia.
 
 ```cmd
 nuget.exe config -set signatureValidationMode=require
@@ -36,11 +36,11 @@ nuget.exe config -set signatureValidationMode=require
   </config>
 ```
 
-Ten tryb pozwala sprawdzić, czy wszystkie pakiety są podpisane przez dowolny z certyfikatów zaufanych w pliku `nuget.config`. Ten plik umożliwia określenie, którzy autorzy i/lub repozytoria są zaufani na podstawie odcisku palca certyfikatu.
+W tym trybie zostanie zweryfikowany, czy wszystkie `nuget.config` pakiety są podpisane przez dowolny z certyfikatów zaufanych w pliku. Ten plik pozwala określić, którzy autorzy i / lub repozytoria są zaufane na podstawie odcisku palca certyfikatu.
 
 ### <a name="trust-package-author"></a>Autor pakietu zaufania
 
-Aby ufać pakietom opartym na podpisie autora, użyj polecenia [`trusted-signers`](../reference/cli-reference/cli-ref-trusted-signers.md) , aby ustawić właściwość `author` w pliku NuGet. config.
+Aby ufać pakietom opartym [`trusted-signers`](../reference/cli-reference/cli-ref-trusted-signers.md) na podpisie autora, użyj polecenia, aby ustawić `author` właściwość w nuget.config.
 
 ```cmd
 nuget.exe  trusted-signers Add -Name MyCompanyCert -CertificateFingerprint CE40881FF5F0AD3E58965DA20A9F571EF1651A56933748E1BF1C99E537C4E039 -FingerprintAlgorithm SHA256
@@ -55,12 +55,12 @@ nuget.exe  trusted-signers Add -Name MyCompanyCert -CertificateFingerprint CE408
 ```
 
 >[!TIP]
->Użyj `nuget.exe` [verify polecenie](../reference/cli-reference/cli-ref-verify.md) , aby uzyskać `SHA256` wartość odcisku palca certyfikatu.
+>Użyj `nuget.exe` [polecenia weryfikuj,](../reference/cli-reference/cli-ref-verify.md) `SHA256` aby uzyskać wartość odcisku palca certyfikatu.
 
 
 ### <a name="trust-all-packages-from-a-repository"></a>Ufaj wszystkim pakietom z repozytorium
 
-Aby ufać pakietom opartym na podpisie repozytorium, użyj elementu `repository`:
+Aby ufać pakietom opartym na `repository` podpisie repozytorium, użyj elementu:
 
 ```xml
 <trustedSigners>  
@@ -72,9 +72,9 @@ Aby ufać pakietom opartym na podpisie repozytorium, użyj elementu `repository`
 </trustedSigners>
 ```
 
-### <a name="trust-package-owners"></a>Właściciele zaufanych pakietów
+### <a name="trust-package-owners"></a>Właściciele pakietów zaufania
 
-Sygnatury repozytorium zawierają dodatkowe metadane w celu ustalenia właścicieli pakietu w momencie przesłania. Można ograniczyć pakiety z repozytorium na podstawie listy właścicieli:
+Podpisy repozytorium zawierają dodatkowe metadane w celu określenia właścicieli pakietu w momencie przesyłania. Pakiety można ograniczyć z repozytorium na podstawie listy właścicieli:
 
 ```xml
 <trustedSigners>  
@@ -87,21 +87,21 @@ Sygnatury repozytorium zawierają dodatkowe metadane w celu ustalenia właścici
 </trustedSigners>
 ```
 
-Jeśli pakiet ma wielu właścicieli, a jeden z nich znajduje się na liście zaufanych, instalacja pakietu zakończy się pomyślnie.
+Jeśli pakiet ma wielu właścicieli, a jeden z tych właścicieli znajduje się na liście zaufanych, instalacja pakietu zakończy się pomyślnie.
 
 ### <a name="untrusted-root-certificates"></a>Niezaufane certyfikaty główne
 
-W niektórych sytuacjach może być konieczne włączenie weryfikacji przy użyciu certyfikatów, które nie są powiązane z zaufanym certyfikatem głównym na komputerze lokalnym. Aby dostosować to zachowanie, można użyć atrybutu `allowUntrustedRoot`.
+W niektórych sytuacjach można włączyć weryfikację przy użyciu certyfikatów, które nie są połączone z zaufanym katalogiem głównym na komputerze lokalnym. Można użyć `allowUntrustedRoot` atrybutu, aby dostosować to zachowanie.
 
-### <a name="sync-repository-certificates"></a>Synchronizuj certyfikaty repozytorium
+### <a name="sync-repository-certificates"></a>Certyfikaty repozytorium synchronizacji
 
-Repozytoria pakietów powinni ogłaszać certyfikaty używane w ich [indeksie usług](../api/service-index.md). Ostatecznie repozytorium zaktualizuje te certyfikaty, np. po wygaśnięciu certyfikatu. W takim przypadku klienci z określonymi zasadami będą musieli zaktualizować konfigurację w celu uwzględnienia nowo dodanego certyfikatu. Można łatwo uaktualnić zaufane osoby podpisujące skojarzone z repozytorium za pomocą [polecenia synchronizuj `nuget.exe` zaufanego podpisywania](../reference/cli-reference/cli-ref-trusted-signers.md#nuget-trusted-signers-sync--name-name).
+Repozytoria pakietów powinny ogłaszać certyfikaty, których używają w [indeksie usług.](../api/service-index.md) Ostatecznie repozytorium zaktualizuje te certyfikaty, na przykład po wygaśnięciu certyfikatu. W takim przypadku klienci z określonymi zasadami będą wymagać aktualizacji konfiguracji w celu uwzględnienia nowo dodanego certyfikatu. Zaufane sygnatariusze skojarzone z repozytorium można łatwo `nuget.exe` uaktualnić za pomocą [polecenia synchronizacji zaufanych sygnatariuszy.](../reference/cli-reference/cli-ref-trusted-signers.md#nuget-trusted-signers-sync--name-name)
 
 ### <a name="schema-reference"></a>Odwołanie do schematu
 
-Pełne odwołanie do schematu dotyczące zasad klienta można znaleźć w [dokumentacji NuGet. config](../reference/nuget-config-file.md#trustedsigners-section)
+Pełne odwołanie do schematu dla zasad klienta można znaleźć w [odwołaniu nuget.config](../reference/nuget-config-file.md#trustedsigners-section)
 
-## <a name="related-articles"></a>Pokrewne artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Podpisywanie pakietów NuGet](../create-packages/Sign-a-Package.md)
-- [Odwołanie do podpisanych pakietów](../reference/Signed-Packages-Reference.md)
+- [Odwołanie do pakietów podpisanych](../reference/Signed-Packages-Reference.md)

@@ -1,92 +1,92 @@
 ---
 title: Przywracanie pakietu NuGet
-description: Omówienie sposobu przywracania pakietów przez pakiet NuGet, od których zależy projekt, w tym sposobu wyłączania wersji przywracania i ograniczania.
+description: Omówienie sposobu przywracania pakietów NuGet zależy od projektu, w tym jak wyłączyć przywracanie i ograniczać wersje.
 author: karann-msft
 ms.author: karann
 ms.date: 08/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: c1f1957c58839ac763238938b476eb0882c56a59
-ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "79428745"
 ---
-# <a name="restore-packages-using-package-restore"></a>Przywróć pakiety przy użyciu przywracania pakietów
+# <a name="restore-packages-using-package-restore"></a>Przywracanie pakietów przy użyciu przywracania pakietu
 
-Aby podwyższyć poziom czystego środowiska programistycznego i zmniejszyć rozmiar repozytorium, **przywracanie pakietu** NuGet instaluje wszystkie zależności projektu wymienione w pliku projektu lub `packages.config`. Polecenia programu .NET Core 2.0 + `dotnet build` i `dotnet run` wykonują automatyczne przywracanie pakietów. Program Visual Studio może automatycznie przywracać pakiety podczas kompilacji projektu, a pakiety można przywracać w dowolnym momencie za pomocą programu Visual Studio, `nuget restore`, `dotnet restore`i Xbuild na mono.
+Aby promować czystsze środowisko programistyczne i zmniejszyć rozmiar repozytorium, narzędzie NuGet **Package Restore** instaluje `packages.config`wszystkie zależności projektu wymienione w pliku projektu lub pliku . .NET Core `dotnet build` 2.0+ `dotnet run` i polecenia zrobić automatyczne przywracanie pakietu. Visual Studio można przywrócić pakiety automatycznie podczas tworzenia projektu i można przywrócić pakiety `dotnet restore`w dowolnym momencie za pośrednictwem programu Visual Studio , `nuget restore`i xbuild na mono.
 
-Przywracanie pakietu gwarantuje, że wszystkie zależności projektu są dostępne bez konieczności przechowywania ich w kontroli źródła. Aby skonfigurować repozytorium kontroli źródła w celu wykluczenia plików binarnych pakietu, zobacz [pakiety i kontrola źródła](../consume-packages/packages-and-source-control.md). 
+Przywracanie pakietu upewnia się, że wszystkie zależności projektu są dostępne, bez konieczności przechowywania ich w kontroli źródła. Aby skonfigurować repozytorium kontroli źródła w celu wykluczenia plików binarnych [pakietów, zobacz Pakiety i formant źródła](../consume-packages/packages-and-source-control.md). 
 
-## <a name="package-restore-overview"></a>Przegląd przywracania pakietu
+## <a name="package-restore-overview"></a>Omówienie przywracania pakietu
 
-Funkcja przywracania pakietu najpierw instaluje bezpośrednie zależności projektu w razie konieczności, a następnie instaluje wszystkie zależności tych pakietów w całym grafie zależności.
+Przywracanie pakietu najpierw instaluje bezpośrednie zależności projektu w razie potrzeby, a następnie instaluje wszelkie zależności tych pakietów na całym wykresie zależności.
 
-Jeśli pakiet nie jest już zainstalowany, program NuGet najpierw podejmie próbę pobrania go z [pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). Jeśli pakiet nie znajduje się w pamięci podręcznej, program NuGet próbuje pobrać pakiet ze wszystkich włączonych źródeł znajdujących się na liście w obszarze **narzędzia** > **Opcje** > **Menedżera pakietów NuGet** > **źródła pakietów** w programie Visual Studio. Podczas przywracania program NuGet ignoruje kolejność źródeł pakietów i używa pakietu z tego samego źródła, aby odpowiedzieć na żądania. Aby uzyskać więcej informacji o zachowaniu NuGet, zobacz [typowe konfiguracje NuGet](Configuring-NuGet-Behavior.md). 
+Jeśli pakiet nie jest jeszcze zainstalowany, NuGet najpierw próbuje pobrać go z [pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md). Jeśli pakiet nie znajduje się w pamięci podręcznej, NuGet próbuje pobrać pakiet ze wszystkich włączonych źródeł na liście w **narzędzia** > **opcje** > **NuGet Package Manager** > **źródła pakietów** w programie Visual Studio. Podczas przywracania NuGet ignoruje kolejność źródeł pakietów i używa pakietu z dowolnego źródła, które jest pierwsze, aby odpowiedzieć na żądania. Aby uzyskać więcej informacji na temat zachowania nuget, zobacz [typowe konfiguracje NuGet](Configuring-NuGet-Behavior.md). 
 
 > [!Note]
-> Pakiet NuGet nie wskazuje błędu przywrócenia pakietu, dopóki nie zostaną sprawdzone wszystkie źródła. W tym czasie NuGet zgłosi błąd tylko dla ostatniego źródła na liście. Ten błąd oznacza, że pakiet nie był obecny w *żadnym* z innych źródeł, mimo że błędy nie są wyświetlane dla każdego z tych źródeł osobno.
+> NuGet nie wskazuje na niepowodzenie przywracania pakietu, dopóki nie zostały sprawdzone wszystkie źródła. W tym czasie NuGet zgłasza błąd tylko dla ostatniego źródła na liście. Błąd oznacza, że pakiet nie był obecny w *żadnym* z innych źródeł, mimo że błędy nie są wyświetlane dla każdego z tych źródeł indywidualnie.
 
-## <a name="restore-packages"></a>Przywróć pakiety
+## <a name="restore-packages"></a>Przywracanie pakietów
 
-Przywracanie pakietu próbuje zainstalować wszystkie zależności pakietów do poprawnego stanu pasującego do odwołania do pakietu w pliku projektu ( *. csproj*) lub pliku *Packages. config* . (W programie Visual Studio odwołania pojawiają się w Eksplorator rozwiązań w obszarze **zależności \ NuGet** lub węzeł **odwołania** ).
+Narzędzie Package Restore próbuje zainstalować wszystkie zależności pakietów do prawidłowego stanu odpowiadającego odwołaniom do pakietu w pliku projektu (*.csproj*) lub pliku *packages.config.* (W programie Visual Studio odwołania są wyświetlane w Eksploratorze rozwiązań w obszarze **zależności \ NuGet** lub węźle **Odwołania).**
 
-1. Jeśli odwołania do pakietu w pliku projektu są poprawne, użyj preferowanego narzędzia, aby przywrócić pakiety.
+1. Jeśli odwołania do pakietu w pliku projektu są poprawne, użyj preferowanego narzędzia do przywracania pakietów.
 
-   - [Visual Studio](#restore-using-visual-studio) ([automatyczne przywracanie](#restore-packages-automatically-using-visual-studio) lub [przywracanie ręczne](#restore-packages-manually-using-visual-studio))
+   - [Visual Studio](#restore-using-visual-studio) [(automatyczne przywracanie](#restore-packages-automatically-using-visual-studio) lub [ręczne przywracanie)](#restore-packages-manually-using-visual-studio)
    - [Interfejs wiersza polecenia dotnet](#restore-using-the-dotnet-cli)
    - [Interfejs wiersza polecenia nuget.exe](#restore-using-the-nugetexe-cli)
    - [MSBuild](#restore-using-msbuild)
    - [Azure Pipelines](#restore-using-azure-pipelines)
    - [Azure DevOps Server](#restore-using-azure-devops-server)
 
-   Jeśli odwołanie do pakietu w pliku projektu ( *. csproj*) lub pliku *Packages. config* jest nieprawidłowe (nie są zgodne z żądanym stanem po przywróceniu pakietu), należy zamiast tego zainstalować lub zaktualizować pakiety.
+   Jeśli odwołania do pakietu w pliku projektu (*.csproj*) lub plik *packages.config* są niepoprawne (nie pasują do żądanego stanu po przywracaniu pakietu), należy zainstalować lub zaktualizować pakiety zamiast tego.
 
-   W przypadku projektów korzystających z PackageReference po pomyślnym przywracaniu pakiet powinien znajdować się w folderze *Global-Packages* , a plik `obj/project.assets.json` zostanie utworzony ponownie. W przypadku projektów używających `packages.config`pakiet powinien pojawić się w folderze `packages` projektu. Projekt powinien teraz zostać pomyślnie skompilowany. 
+   W przypadku projektów korzystających z PackageReference, po pomyślnym przywróceniu `obj/project.assets.json` pakiet powinien znajdować się w folderze *pakietów globalnych,* a plik jest odtworzony. W przypadku `packages.config`projektów korzystających z pakietu `packages` powinien pojawić się w folderze projektu. Projekt powinien teraz pomyślnie zbudować. 
 
-2. Po uruchomieniu przywracania pakietów, jeśli nadal występują brakujące pakiety lub błędy związane z pakietami (takie jak ikony błędów w Eksplorator rozwiązań w programie Visual Studio), może być konieczne wykonanie instrukcji opisanych w [temacie Rozwiązywanie problemów z błędami przywracania pakietów](package-restore-troubleshooting.md) lub, Alternatywnie, [ponowne instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md).
+2. Po uruchomieniu narzędzia Przywracanie pakietu, jeśli nadal występują brakujące pakiety lub błędy związane z pakietem (takie jak ikony błędów w Eksploratorze rozwiązań w programie Visual Studio), może być konieczne przestrzeganie instrukcji opisanych w [przypadku błędów przywracania pakietu](package-restore-troubleshooting.md) lub, alternatywnie, [ponowne instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md).
 
-   W programie Visual Studio konsola Menedżera pakietów udostępnia kilka elastycznych opcji ponownego instalowania pakietów. Zobacz [using Package-Update](reinstalling-and-updating-packages.md#using-update-package).
+   W programie Visual Studio konsola Menedżera pakietów udostępnia kilka elastycznych opcji ponownej instalacji pakietów. Zobacz [Korzystanie z aktualizacji pakietu](reinstalling-and-updating-packages.md#using-update-package).
 
-## <a name="restore-using-visual-studio"></a>Przywróć przy użyciu programu Visual Studio
+## <a name="restore-using-visual-studio"></a>Przywracanie przy użyciu programu Visual Studio
 
 W programie Visual Studio w systemie Windows:
 
-- Przywróć pakiety automatycznie lub
+- Automatyczne przywracanie pakietów lub
 
-- Ręcznie Przywróć pakiety
+- Ręczne przywracanie pakietów
 
-### <a name="restore-packages-automatically-using-visual-studio"></a>Przywróć pakiety automatycznie przy użyciu programu Visual Studio
+### <a name="restore-packages-automatically-using-visual-studio"></a>Automatyczne przywracanie pakietów przy użyciu programu Visual Studio
 
-Przywracanie pakietu odbywa się automatycznie podczas tworzenia projektu na podstawie szablonu lub kompilowania projektu, z zastosowaniem opcji w [Włączanie i wyłączanie przywracania pakietów](#enable-and-disable-package-restore-in-visual-studio). W programie NuGet 4.0 + przywracanie odbywa się również automatycznie po wprowadzeniu zmian w projekcie w stylu zestawu SDK (zazwyczaj jest to projekt .NET Core lub .NET Standard).
+Przywracanie pakietu odbywa się automatycznie podczas tworzenia projektu z szablonu lub tworzenia projektu, z zastrzeżeniem opcji w [Włącz i wyłącz przywracanie pakietu](#enable-and-disable-package-restore-in-visual-studio). W NuGet 4.0+ przywracanie odbywa się również automatycznie po wprowadzeniu zmian w projekcie w stylu SDK (zazwyczaj w projekcie .NET Core lub .NET Standard).
 
-1. Włącz automatyczne przywracanie pakietów, wybierając pozycję **narzędzia** > **Opcje** > **Menedżer pakietów NuGet**, a następnie wybierając opcję **automatycznie sprawdzaj brakujące pakiety podczas kompilacji w programie Visual Studio** w obszarze **przywracanie pakietu**.
+1. Włącz automatyczne przywracanie pakietu, wybierając pozycję**Opcje** >  **narzędzi** > **NuGet Package Manager**, a następnie wybierając opcję Automatycznie **sprawdzaj brakujące pakiety podczas kompilacji w programie Visual Studio w** obszarze **Przywracanie pakietów**.
 
-   W przypadku projektów typu non-SDK należy najpierw wybrać opcję Zezwól narzędziu **NuGet na pobieranie brakujących pakietów** , aby włączyć opcję automatycznego przywracania.
+   W przypadku projektów w stylu innych niż SDK należy najpierw wybrać **opcję Zezwalaj nugetowi na pobieranie brakujących pakietów,** aby włączyć opcję automatycznego przywracania.
 
 1. Skompiluj projekt.
 
-   Jeśli co najmniej jeden z pojedynczych pakietów nadal nie jest prawidłowo zainstalowany, **Eksplorator rozwiązań** pokazuje ikonę błędu. Kliknij prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet**, a następnie użyj **Menedżera pakietów** do odinstalowania i ponownego zainstalowania odpowiednich pakietów. Aby uzyskać więcej informacji, zobacz [Instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md)
+   Jeśli jeden lub więcej pojedynczych pakietów nadal nie jest poprawnie zainstalowanych, **Eksplorator rozwiązań** wyświetla ikonę błędu. Kliknij prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet**i użyj **Menedżera pakietów,** aby odinstalować i ponownie zainstalować pakiety, których dotyczy problem. Aby uzyskać więcej informacji, zobacz [Ponowne instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md)
 
-   Jeśli zostanie wyświetlony komunikat o błędzie "ten projekt odwołuje się do pakietów NuGet, których brakuje na tym komputerze" lub "co najmniej jeden pakiet NuGet musi zostać przywrócony, ale nie można go przydzielić," [Włącz automatyczne przywracanie](#enable-and-disable-package-restore-in-visual-studio). W przypadku starszych projektów Zobacz również [Migrowanie do automatycznego przywracania pakietów](#migrate-to-automatic-package-restore-visual-studio). Zobacz również [Rozwiązywanie problemów z przywracaniem pakietów](Package-restore-troubleshooting.md).
+   Jeśli zostanie wyświetlony błąd "Ten projekt odwołuje się do pakietów NuGet, których brakuje na tym komputerze" lub "Jeden lub więcej pakietów NuGet musi zostać przywrócony, ale nie może być, ponieważ nie udzielono zgody", [włącz automatyczne przywracanie](#enable-and-disable-package-restore-in-visual-studio). W przypadku starszych projektów zobacz [Migracja do automatycznego przywracania pakietów](#migrate-to-automatic-package-restore-visual-studio). Zobacz też [Rozwiązywanie problemów z przywracaniem pakietów](Package-restore-troubleshooting.md).
 
-### <a name="restore-packages-manually-using-visual-studio"></a>Przywróć pakiety ręcznie przy użyciu programu Visual Studio
+### <a name="restore-packages-manually-using-visual-studio"></a>Ręczne przywracanie pakietów przy użyciu programu Visual Studio
 
-1. Włącz przywracanie pakietów, wybierając pozycję **narzędzia** > **Opcje** > **Menedżera pakietów NuGet**. W obszarze Opcje **przywracania pakietu** wybierz opcję Zezwól narzędziu **NuGet na pobieranie brakujących pakietów**.
+1. Włącz przywracanie pakietu, wybierając **opcję Opcje** > **Options** > narzędzi**NuGet Package Manager**. W obszarze Opcje **przywracania pakietu** wybierz pozycję **Zezwalaj nugetowi na pobieranie brakujących pakietów**.
 
-1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy rozwiązanie i wybierz polecenie **Przywróć pakiety NuGet**.
+1. W **Eksploratorze rozwiązań**kliknij prawym przyciskiem myszy rozwiązanie i wybierz polecenie **Przywróć pakiety NuGet**.
 
-   Jeśli co najmniej jeden z pojedynczych pakietów nadal nie jest prawidłowo zainstalowany, **Eksplorator rozwiązań** pokazuje ikonę błędu. Kliknij prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet**, a następnie użyj **Menedżera pakietów** do odinstalowania i ponownego zainstalowania odpowiednich pakietów. Aby uzyskać więcej informacji, zobacz [Instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md)
+   Jeśli jeden lub więcej pojedynczych pakietów nadal nie jest poprawnie zainstalowanych, **Eksplorator rozwiązań** wyświetla ikonę błędu. Kliknij prawym przyciskiem myszy i wybierz polecenie **Zarządzaj pakietami NuGet**, a następnie użyj **Menedżera pakietów,** aby odinstalować i ponownie zainstalować pakiety, których dotyczy problem. Aby uzyskać więcej informacji, zobacz [Ponowne instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md)
 
-   Jeśli zostanie wyświetlony komunikat o błędzie "ten projekt odwołuje się do pakietów NuGet, których brakuje na tym komputerze" lub "co najmniej jeden pakiet NuGet musi zostać przywrócony, ale nie można go przydzielić," [Włącz automatyczne przywracanie](#enable-and-disable-package-restore-in-visual-studio). W przypadku starszych projektów Zobacz również [Migrowanie do automatycznego przywracania pakietów](#migrate-to-automatic-package-restore-visual-studio). Zobacz również [Rozwiązywanie problemów z przywracaniem pakietów](Package-restore-troubleshooting.md).
+   Jeśli zostanie wyświetlony błąd "Ten projekt odwołuje się do pakietów NuGet, których brakuje na tym komputerze" lub "Jeden lub więcej pakietów NuGet musi zostać przywrócony, ale nie może być, ponieważ nie udzielono zgody", [włącz automatyczne przywracanie](#enable-and-disable-package-restore-in-visual-studio). W przypadku starszych projektów zobacz [Migracja do automatycznego przywracania pakietów](#migrate-to-automatic-package-restore-visual-studio). Zobacz też [Rozwiązywanie problemów z przywracaniem pakietów](Package-restore-troubleshooting.md).
 
 ### <a name="enable-and-disable-package-restore-in-visual-studio"></a>Włączanie i wyłączanie przywracania pakietów w programie Visual Studio
 
-W programie Visual Studio można sterować przywracaniem pakietów głównie przy użyciu **narzędzi** > **Opcje** > **Menedżerze pakietów NuGet**:
+W programie Visual Studio można kontrolować przywracanie pakietów głównie za pomocą**opcji** >  **narzędzi** > **NuGet Package Manager:**
 
-![Sterowanie przywracaniem pakietu za poorednictwem opcji Menedżera pakietów NuGet](media/Restore-01-AutoRestoreOptions.png)
+![Opcje przywracania pakietu sterowania za pomocą menedżera pakietów NuGet](media/Restore-01-AutoRestoreOptions.png)
 
-- **Zezwól narzędziu NuGet na pobieranie brakujących pakietów** kontroluje wszystkie formy przywracania pakietu, zmieniając ustawienie `packageRestore/enabled` w [sekcji packageRestore](../reference/nuget-config-file.md#packagerestore-section) pliku `NuGet.Config`, w `%AppData%\NuGet\` w systemie Windows lub `~/.nuget/NuGet/` na komputerze Mac/Linux. To ustawienie włącza również polecenie **Przywróć pakiety NuGet** w menu kontekstowym rozwiązania w programie Visual Studio.
+- **Zezwalaj NuGet na pobieranie brakujących pakietów** `packageRestore/enabled` kontroluje wszystkie formy przywracania `NuGet.Config` pakietu, `%AppData%\NuGet\` zmieniając ustawienie `~/.nuget/NuGet/` w [sekcji packageRestore](../reference/nuget-config-file.md#packagerestore-section) pliku, w systemie Windows lub na komputerze Mac/Linux. To ustawienie włącza również polecenie **Przywróć pakiety NuGet** w menu kontekstowym rozwiązania w programie Visual Studio.
 
     ```xml
     <configuration>
@@ -99,9 +99,9 @@ W programie Visual Studio można sterować przywracaniem pakietów głównie prz
     ```
     
   > [!Note]
-  > Aby globalnie zastąpić ustawienie `packageRestore/enabled`, należy ustawić zmienną środowiskową **EnableNuGetPackageRestore** z wartością true lub false przed uruchomieniem programu Visual Studio lub rozpoczęciem kompilacji.
+  > Aby globalnie zastąpić `packageRestore/enabled` ustawienie, ustaw zmienną środowiskową **EnableNuGetPackageRestore** z wartością True lub False przed uruchomieniem programu Visual Studio lub uruchomieniem kompilacji.
 
-- **Automatycznie sprawdzaj brakujące pakiety podczas kompilacji w programie Visual Studio** kontroluje automatyczne przywracanie, zmieniając ustawienie `packageRestore/automatic` w [sekcji packageRestore](../reference/nuget-config-file.md#packagerestore-section) pliku `NuGet.Config`. Gdy ta opcja jest ustawiona na wartość true, uruchomienie kompilacji z programu Visual Studio automatycznie przywraca wszystkie brakujące pakiety. To ustawienie nie ma wpływu na kompilacje wykonywane z wiersza polecenia programu MSBuild.
+- **Automatyczne sprawdzanie brakujących pakietów podczas kompilacji w** `packageRestore/automatic` programie Visual Studio kontroluje automatyczne przywracanie, zmieniając ustawienie w [sekcji packageRestore](../reference/nuget-config-file.md#packagerestore-section) `NuGet.Config` pliku. Gdy ta opcja jest ustawiona na True, uruchomienie kompilacji z programu Visual Studio automatycznie przywraca brakujące pakiety. To ustawienie nie wpływa na kompilacje uruchamiane z wiersza polecenia MSBuild.
 
     ```xml
     ...
@@ -115,121 +115,121 @@ W programie Visual Studio można sterować przywracaniem pakietów głównie prz
     </configuration>
     ```
 
-Aby włączyć lub wyłączyć Przywracanie pakietów dla wszystkich użytkowników na komputerze, deweloper lub firma może dodać ustawienia konfiguracji do pliku `nuget.config` globalnego. Globalna `nuget.config` znajduje się w systemie Windows w `%ProgramData%\NuGet\Config`, czasami w ramach określonego `\{IDE}\{Version}\{SKU}\` folderu programu Visual Studio lub na komputerze Mac/Linux w `~/.local/share`. Indywidualni użytkownicy mogą następnie wybiórczo włączać przywracanie zgodnie z potrzebami na poziomie projektu. Aby uzyskać więcej informacji o tym, jak program NuGet ustala priorytety wielu plików konfiguracji, zobacz [popularne konfiguracje NuGet](../consume-packages/configuring-nuget-behavior.md#how-settings-are-applied).
+Aby włączyć lub wyłączyć przywracanie pakietu dla wszystkich użytkowników na komputerze, deweloper `nuget.config` lub firma może dodać ustawienia konfiguracji do pliku globalnego. Globalny `nuget.config` jest w `%ProgramData%\NuGet\Config`systemie Windows w `\{IDE}\{Version}\{SKU}\` , czasami w określonym folderze Visual Studio, lub w Mac / Linux w `~/.local/share`. Poszczególni użytkownicy mogą następnie selektywnie włączyć przywracanie zgodnie z potrzebami na poziomie projektu. Aby uzyskać więcej informacji na temat ustalania priorytetów przez nuget wielu plików konfiguracyjnych, zobacz [Typowe konfiguracje NuGet](../consume-packages/configuring-nuget-behavior.md#how-settings-are-applied).
 
 > [!Important]
-> Jeśli edytujesz `packageRestore` ustawienia bezpośrednio w `nuget.config`, uruchom ponownie program Visual Studio, aby okno dialogowe **Opcje** pokazywało bieżące wartości.
+> Jeśli `packageRestore` ustawienia są edytowane `nuget.config`bezpośrednio w programie Visual Studio, aby okno dialogowe **Opcje** było wyświetlane w bieżącym oknie dialogowym.
 
-### <a name="choose-default-package-management-format"></a>Wybierz domyślny format zarządzania pakietami
+### <a name="choose-default-package-management-format"></a>Wybieranie domyślnego formatu zarządzania pakietami
 
-![Kontrolowanie domyślnego formatu zarządzania pakietami, gdy opcje Menedżera pakietów NuGet](media/Restore-02-PackageFormatOptions.png)
+![Kontroluj domyślny format zarządzania pakietami za opcjami NuGet Package Manager](media/Restore-02-PackageFormatOptions.png)
 
-Pakiet NuGet ma dwa formaty, w których projekt może używać pakietów: [`PackageReference`](package-references-in-project-files.md) i [`packages.config`](../reference/packages-config.md). Domyślny format można wybrać z listy rozwijanej pod nagłówkiem **Zarządzanie pakietami** . Opcja wyświetlania monitu, gdy pierwszy pakiet zostanie zainstalowany w projekcie jest również dostępny.
+NuGet ma dwa formaty, w których [`PackageReference`](package-references-in-project-files.md) [`packages.config`](../reference/packages-config.md)projekt może używać pakietów: i . Domyślny format można wybrać z listy rozwijanej w nagłówku **Zarządzanie pakietami.** Dostępna jest również opcja monitowana po zainstalowaniu pierwszego pakietu w projekcie.
 
 > [!Note]
-> Jeśli projekt nie obsługuje obu formatów zarządzania pakietami, używany format zarządzania pakietami będzie zgodny z projektem i w związku z tym nie może być domyślnym zestawem opcji. Ponadto pakiet NuGet nie monituje o wybór przy pierwszej instalacji pakietu, nawet jeśli opcja została wybrana w oknie Opcje.
+> Jeśli projekt nie obsługuje obu formatów zarządzania pakietami, używany format zarządzania pakietami będzie zgodny z projektem i dlatego może nie być domyślnym zestawem w opcjach. Ponadto NuGet nie wyświetli monitu o wybór w pierwszej instalacji pakietu, nawet jeśli opcja jest zaznaczona w oknie opcji.
 >
-> Jeśli konsola Menedżera pakietów jest używana do instalowania pierwszego pakietu w projekcie, pakiet NuGet nie wyświetli monitu o wybranie formatu, nawet jeśli opcja jest zaznaczona w oknie Opcje.
+> Jeśli Konsola Menedżera pakietów jest używana do zainstalowania pierwszego pakietu w projekcie, NuGet nie wyświetli monitu o wybór formatu, nawet jeśli opcja jest zaznaczona w oknie opcji.
 
 ## <a name="restore-using-the-dotnet-cli"></a>Przywracanie przy użyciu interfejsu wiersza polecenia dotnet
 
 [!INCLUDE [restore-dotnet-cli](includes/restore-dotnet-cli.md)]
 
 > [!IMPORTANT]
-> Aby dodać brakujące odwołanie do pakietu do pliku projektu, należy użyć polecenia [dotnet Add Package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x), które również uruchamia polecenie `restore`.
+> Aby dodać brakujące odwołanie do pakietu do pliku projektu, użyj `restore` [dotnet add package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x), który również uruchamia polecenie.
 
-## <a name="restore-using-the-nugetexe-cli"></a>Przywracanie za pomocą interfejsu wiersza polecenia NuGet. exe
+## <a name="restore-using-the-nugetexe-cli"></a>Przywracanie przy użyciu interfejsu wiersza polecenia nuget.exe
 
 [!INCLUDE [restore-nuget-exe-cli](includes/restore-nuget-exe-cli.md)]
 
 > [!IMPORTANT]
-> Polecenie `restore`nie modyfikuje pliku projektu ani plik *Packages. config*. Aby dodać zależność, Dodaj pakiet za pomocą interfejsu użytkownika lub konsoli Menedżera pakietów w programie Visual Studio lub zmodyfikuj *plik Packages. config* , a następnie uruchom polecenie `install` lub `restore`.
+> Polecenie `restore`nie modyfikuje pliku projektu ani pliku *packages.config*. Aby dodać zależność, dodaj pakiet za pośrednictwem interfejsu użytkownika menedżera pakietów lub konsoli w programie Visual `install` `restore`Studio lub zmodyfikuj *plik packages.config,* a następnie uruchom albo .
 
-## <a name="restore-using-msbuild"></a>Przywróć przy użyciu programu MSBuild
+## <a name="restore-using-msbuild"></a>Przywracanie przy użyciu usługi MSBuild
 
-Aby przywrócić pakiety wymienione w pliku projektu z PackageReference, użyj polecenia [MSBuild-t:Restore](../reference/msbuild-targets.md#restore-target) . To polecenie jest dostępne tylko w pakiecie NuGet 4. x + i MSBuild 15.1 +, które są dołączone do programu Visual Studio 2017 i nowszych wersji. Oba `nuget restore` i `dotnet restore` używają tego polecenia w odniesieniu do odpowiednich projektów.
+Aby przywrócić pakiety wymienione w pliku projektu za pomocą packagereference, użyj polecenia [msbuild -t:restore.](../reference/msbuild-targets.md#restore-target) To polecenie jest dostępne tylko w nuget 4.x+ i MSBuild 15.1+, które są dołączone do programu Visual Studio 2017 i nowszych wersji. Oba `nuget restore` `dotnet restore` i użyj tego polecenia dla odpowiednich projektów.
 
-1. Otwórz wiersz polecenia dewelopera (w polu **wyszukiwania** wpisz **wiersz polecenia programisty**).
+1. Otwórz wiersz polecenia Deweloper (w polu **Wyszukiwania** wpisz **wiersz polecenia Deweloper**).
 
-   Zazwyczaj chcesz uruchomić wiersz polecenia dla deweloperów dla programu Visual Studio z menu **Start** , ponieważ zostanie on skonfigurowany ze wszystkimi niezbędnymi ścieżkami dla programu MSBuild.
+   Zazwyczaj chcesz uruchomić wiersz polecenia dewelopera dla programu Visual Studio z menu **Start,** ponieważ zostanie on skonfigurowany ze wszystkimi niezbędnymi ścieżkami dla usługi MSBuild.
 
-2. Przejdź do folderu zawierającego plik projektu i wpisz następujące polecenie.
+2. Przełącz się do folderu zawierającego plik projektu i wpisz następujące polecenie.
 
    ```cmd
    # Uses the project file in the current folder by default
    msbuild -t:restore
    ```
 
-3. Wpisz następujące polecenie, aby ponownie skompilować projekt.
+3. Wpisz następujące polecenie, aby odbudować projekt.
 
    ```cmd
    msbuild
    ```
 
-   Upewnij się, że dane wyjściowe programu MSBuild wskazują, że kompilacja została ukończona pomyślnie.
+   Upewnij się, że dane wyjściowe MSBuild wskazuje, że kompilacja została pomyślnie ukończona.
 
-## <a name="restore-using-azure-pipelines"></a>Przywróć przy użyciu Azure Pipelines
+## <a name="restore-using-azure-pipelines"></a>Przywracanie przy użyciu potoków platformy Azure
 
-Podczas tworzenia definicji kompilacji w Azure Pipelines należy uwzględnić w definicji zadanie [przywracania](/azure/devops/pipelines/tasks/package/nuget#restore-nuget-packages) NuGet lub [przywracanie](/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) oprogramowania .NET Core przed zadaniami kompilacji. Niektóre szablony kompilacji domyślnie zawierają zadanie przywracania.
+Podczas tworzenia definicji kompilacji w potokach platformy Azure, należy [uwzględnić](/azure/devops/pipelines/tasks/package/nuget#restore-nuget-packages) NuGet restore lub .NET Core [restore](/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) task w definicji przed wszelkimi zadaniami kompilacji. Niektóre szablony kompilacji zawierają zadanie przywracania domyślnie.
 
-## <a name="restore-using-azure-devops-server"></a>Przywróć przy użyciu Azure DevOps Server
+## <a name="restore-using-azure-devops-server"></a>Przywracanie przy użyciu serwera DevOps platformy Azure
 
-Azure DevOps Server i TFS 2013 i nowsze automatycznie przywracają pakiety podczas kompilacji, jeśli używasz szablonu kompilacji TFS 2013 lub nowszego. W przypadku wcześniejszych wersji programu TFS można uwzględnić krok kompilacji, aby uruchomić opcję przywracania wiersza polecenia lub opcjonalnie przeprowadzić migrację szablonu kompilacji do nowszej wersji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie przywracania pakietu przy użyciu Team Foundation Build](../consume-packages/team-foundation-build.md).
+Usługi Azure DevOps Server i TFS 2013 i nowsze automatycznie przywracają pakiety podczas kompilacji, jeśli używasz szablonu kompilacji zespołu TFS 2013 lub nowszego. W przypadku wcześniejszych wersji TFS można dołączyć krok kompilacji w celu uruchomienia opcji przywracania wiersza polecenia lub opcjonalnie przeprowadzić migrację szablonu kompilacji do nowszej wersji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie przywracania pakietu za pomocą team foundation build](../consume-packages/team-foundation-build.md).
 
-## <a name="constrain-package-versions-with-restore"></a>Ogranicz wersje pakietów przy użyciu funkcji przywracania
+## <a name="constrain-package-versions-with-restore"></a>Ograniczanie wersji pakietów za pomocą przywracania
 
-Gdy pakiet NuGet przywraca pakiety za pomocą dowolnej metody, przestrzega ograniczeń określonych w `packages.config` lub pliku projektu:
+Gdy NuGet przywraca pakiety za pomocą dowolnej metody, `packages.config` honoruje wszelkie ograniczenia określone w pliku projektu lub:
 
-- W `packages.config`można określić zakres wersji we właściwości `allowedVersion` zależności. Aby uzyskać więcej informacji, zobacz [ograniczanie wersji uaktualnienia](../consume-packages/reinstalling-and-updating-packages.md#constraining-upgrade-versions) . Na przykład:
+- W `packages.config`obszarze , można określić `allowedVersion` zakres wersji we właściwości zależności. Aby uzyskać więcej informacji, zobacz [Ograniczanie wersji uaktualniania.](../consume-packages/reinstalling-and-updating-packages.md#constraining-upgrade-versions) Przykład:
 
     ```xml
     <package id="Newtonsoft.json" version="6.0.4" allowedVersions="[6,7)" />
     ```
 
-- W pliku projektu można użyć PackageReference, aby określić zakres zależności bezpośrednio. Na przykład:
+- W pliku projektu można użyć PackageReference, aby określić zakres zależności bezpośrednio. Przykład:
 
     ```xml
     <PackageReference Include="Newtonsoft.json" Version="[6, 7)" />
     ```
 
-We wszystkich przypadkach należy użyć notacji opisanej w artykule [przechowywanie wersji pakietu](../concepts/package-versioning.md).
+We wszystkich przypadkach należy użyć notacji opisanej w [wersji pakietu](../concepts/package-versioning.md).
 
-## <a name="force-restore-from-package-sources"></a>Wymuś przywracanie ze źródeł pakietów
+## <a name="force-restore-from-package-sources"></a>Wymuszanie przywracania ze źródeł pakietów
 
-Domyślnie operacje przywracania NuGet używają pakietów z folderów globalne i *pakiety* *pamięci podręcznej http* , które są opisane w temacie [Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
+Domyślnie operacje przywracania NuGet używają pakietów z *pakietów globalnych* i folderów *http-cache,* które są opisane w [obszarze Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
 
-Aby uniknąć używania folderu *Global-Packages* , wykonaj jedną z następujących czynności:
+Aby uniknąć używania folderu *pakietów globalnych,* wykonaj jedną z następujących czynności:
 
-- Wyczyść folder przy użyciu `nuget locals global-packages -clear` lub `dotnet nuget locals global-packages --clear`.
-- Tymczasowo Zmień lokalizację folderu *Global-Packages* przed operacją przywracania, używając jednej z następujących metod:
+- Wyczyść `nuget locals global-packages -clear` `dotnet nuget locals global-packages --clear`folder za pomocą lub .
+- Tymczasowo zmień lokalizację folderu *pakietów globalnych* przed operacją przywracania, korzystając z jednej z następujących metod:
   - Ustaw zmienną środowiskową NUGET_PACKAGES na inny folder.
-  - Utwórz plik `NuGet.Config`, który ustawia `globalPackagesFolder` (jeśli jest używany PackageReference) lub `repositoryPath` (jeśli jest używany `packages.config`) do innego folderu. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji](../reference/nuget-config-file.md#config-section).
-  - Tylko MSBuild: Określ inny folder z właściwością `RestorePackagesPath`.
+  - Utwórz `NuGet.Config` plik, `globalPackagesFolder` który ustawia (jeśli `repositoryPath` używa packagereference) lub (jeśli używam `packages.config`) do innego folderu. Aby uzyskać więcej informacji, zobacz [ustawienia konfiguracji](../reference/nuget-config-file.md#config-section).
+  - TYLKO MSBuild: Określ inny `RestorePackagesPath` folder z właściwością.
 
 Aby uniknąć używania pamięci podręcznej dla źródeł HTTP, wykonaj jedną z następujących czynności:
 
-- Użyj opcji `-NoCache` z `nuget restore`lub opcji `--no-cache` z `dotnet restore`. Te opcje nie wpływają na operacje przywracania za pomocą Menedżera pakietów lub konsoli programu Visual Studio.
-- Wyczyść pamięć podręczną przy użyciu `nuget locals http-cache -clear` lub `dotnet nuget locals http-cache --clear`.
-- Tymczasowo Ustaw zmienną środowiskową NUGET_HTTP_CACHE_PATH na inny folder.
+- Użyj `-NoCache` opcji `nuget restore`z , `--no-cache` lub `dotnet restore`opcji z . Te opcje nie mają wpływu na operacje przywracania za pośrednictwem Menedżera pakietów programu Visual Studio lub konsoli.
+- Wyczyść `nuget locals http-cache -clear` `dotnet nuget locals http-cache --clear`pamięć podręczną za pomocą lub .
+- Tymczasowo ustaw zmienną środowiskową NUGET_HTTP_CACHE_PATH na inny folder.
 
-## <a name="migrate-to-automatic-package-restore-visual-studio"></a>Migrowanie do automatycznego przywracania pakietów (Visual Studio)
+## <a name="migrate-to-automatic-package-restore-visual-studio"></a>Migracja do automatycznego przywracania pakietów (Visual Studio)
 
-W przypadku programu NuGet 2,6 i wcześniejszego przywracanie pakietu programu MSBuild zostało wcześniej obsługiwane, ale nie jest już prawdziwe. (Zwykle jest to możliwe po kliknięciu prawym przyciskiem myszy rozwiązania w programie Visual Studio i wybraniu opcji **Włącz przywracanie pakietu NuGet**). Jeśli projekt używa przestarzałego przywracania pakietu MSBuild, należy przeprowadzić migrację do automatycznego przywracania pakietów.
+Dla NuGet 2.6 i wcześniej, msbuild zintegrowane przywracanie pakietu był wcześniej obsługiwany, ale to już nie jest true. (Zazwyczaj włączono je, klikając prawym przyciskiem myszy rozwiązanie w programie Visual Studio i wybierając **pozycję Włącz przywracanie pakietu NuGet).** Jeśli projekt używa przestarzałego przywracania pakietu zintegrowanego z MSBuild, przemiń do automatycznego przywracania pakietu.
 
-Projekty korzystające z przywracania pakietów zintegrowanych z programem MSBuild zwykle zawierają folder *. NuGet* z trzema plikami: *NuGet. config*, *NuGet. exe*i *NuGet. targets*. Obecność pliku *NuGet. targets* określa, czy NuGet będzie nadal używać podejścia MSBuild-untegrated, więc ten plik musi zostać usunięty podczas migracji.
+Projekty korzystające z przywracania pakietu MSBuild-Integrated zazwyczaj zawierają folder *.nuget* z trzema plikami: *NuGet.config*, *nuget.exe*i *NuGet.targets*. Obecność pliku *NuGet.targets* określa, czy NuGet będzie nadal używać msbuild-untegrated podejście, więc ten plik musi zostać usunięty podczas migracji.
 
-Aby przeprowadzić migrację do automatycznego przywracania pakietów:
+Aby przeprowadzić migrację do automatycznego przywracania pakietu:
 
 1. Zamknij program Visual Studio.
-2. DELETE *. NuGet/NuGet. exe* i *. NuGet/NuGet. targets*.
-3. Dla każdego pliku projektu Usuń element `<RestorePackages>` i Usuń odwołania do elementu *NuGet. targets*.
+2. Usuń *pliki .nuget/nuget.exe* i *.nuget/NuGet.targets*.
+3. Dla każdego pliku projektu `<RestorePackages>` usuń element i usuń wszelkie odwołania do *pliku NuGet.targets*.
 
-Aby przetestować automatyczne przywracanie pakietów:
+Aby przetestować automatyczne przywracanie pakietu:
 
-1. Usuń folder *Packages* z rozwiązania.
-2. Otwórz rozwiązanie w programie Visual Studio i Rozpocznij kompilację.
+1. Usuń folder *pakietów* z rozwiązania.
+2. Otwórz rozwiązanie w programie Visual Studio i uruchom kompilację.
 
-   Automatyczne przywracanie pakietów powinno pobierać i instalować każdy pakiet zależności bez dodawania ich do kontroli źródła.
+   Automatyczne przywracanie pakietu należy pobrać i zainstalować każdy pakiet zależności, bez dodawania ich do kontroli źródła.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

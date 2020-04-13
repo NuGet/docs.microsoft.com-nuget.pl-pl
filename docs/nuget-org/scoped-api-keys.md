@@ -1,107 +1,107 @@
 ---
-title: O określonym zakresie klucze interfejsu API
-description: Przejmij kontrolę nad kluczy interfejsu API, które umożliwia wypychanie pakietów
+title: Klucze interfejsu API o określonym zakresie
+description: Przejmij kontrolę nad kluczami API używanymi do wypychania pakietów
 author: mikejo5000
 ms.author: mikejo
 ms.date: 06/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 12d12d5294a474c4d3e4f5d3cad468bb515d21d5
-ms.sourcegitcommit: b6810860b77b2d50aab031040b047c20a333aca3
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "67427501"
 ---
-# <a name="scoped-api-keys"></a>O określonym zakresie klucze interfejsu API
+# <a name="scoped-api-keys"></a>Klucze interfejsu API o określonym zakresie
 
-Aby NuGet bezpieczniejsze środowisko do dystrybucji pakietów, może potrwać kontrolę nad kluczami interfejsu API przez dodanie zakresów.
+Aby nuGet bardziej bezpieczne środowisko dystrybucji pakietów, można przejąć kontrolę nad kluczami interfejsu API, dodając zakresy.
 
-Możliwość zapewnienia zakresu, aby zachować klucze interfejsu API zapewniają lepszą kontrolę w interfejsach API. Można:
+Możliwość zapewnienia zakresu kluczy interfejsu API zapewnia lepszą kontrolę nad interfejsami API. Możesz:
 
-- Utwórz wiele o określonym zakresie, które mogą służyć do różnych pakietach przy użyciu różnych harmonogramów wygaśnięcia kluczy interfejsu API.
-- Bezpieczne uzyskanie kluczy interfejsu API.
-- Edytuj istniejących kluczy interfejsu API można zmienić stosowania pakietu.
-- Odśwież lub usunięcie istniejących kluczy interfejsu API bez zakłócania operacji przy użyciu innych kluczy.
+- Utwórz wiele kluczy interfejsu API o określonym zakresie, które mogą być używane dla różnych pakietów o różnych przedziałach czasowych wygaśnięcia.
+- Uzyskaj bezpieczne klucze interfejsu API.
+- Edytuj istniejące klucze interfejsu API, aby zmienić możliwość stosowania pakietu.
+- Odświeżanie lub usuwanie istniejących kluczy interfejsu API bez utrudniania operacji przy użyciu innych kluczy.
 
-## <a name="why-do-we-support-scoped-api-keys"></a>Dlaczego firma Microsoft obsługuje o określonym zakresie klucze interfejsu API?
+## <a name="why-do-we-support-scoped-api-keys"></a>Dlaczego obsługujemy klucze interfejsu API o określonym zakresie?
 
-Firma Microsoft obsługuje zakresów dla kluczy interfejsu API, które umożliwiają bardziej szczegółowych uprawnień. Wcześniej NuGet oferowane jednego klucza interfejsu API dla konta, a takie podejście ma kilka wady:
+Obsługujemy zakresy kluczy interfejsu API, aby umożliwić ci bardziej szczegółowe uprawnienia. Wcześniej NuGet oferowane jeden klucz interfejsu API dla konta, a to podejście miało kilka wad:
 
-- **Jeden klucz interfejsu API do kontrolowania wszystkich pakietów**. Przy użyciu jednego klucza interfejsu API, który służy do zarządzania wszystkich pakietów trudno jest bezpiecznie udostępniaj klucza w przypadku wielu deweloperów związane z różnych pakietach, a po udostępnieniu konta wydawcy.
-- **Wszystkie uprawnienia lub Brak**. Każda osoba mająca dostęp do klucza interfejsu API ma wszystkie uprawnienia (publikowania, wypychania i un-list) o pakiety. Często nie jest to pożądane w środowisku z wieloma zespołami.
-- **Pojedynczy punkt awarii**. Jeden klucz interfejsu API oznacza również pojedynczy punkt awarii. Jeśli klucz zostanie naruszony, wszystkie pakiety skojarzone z kontem może być potencjalnie zagrożone. Odświeżanie klucza interfejsu API jest jedynym sposobem, aby podłączyć przecieku i uniknąć przerw w działaniu przepływu pracy ciągłej integracji/ciągłego wdrażania. Ponadto można wykluczyć sytuacji, gdy chcesz odwołać dostęp do klucza interfejsu API dla poszczególnych (na przykład, gdy pracownik odejdzie z organizacji). Nie ma eleganckie rozwiązanie do obsługi to już dziś.
+- **Jeden klucz interfejsu API do kontrolowania wszystkich pakietów**. Z jednego klucza interfejsu API, który jest używany do zarządzania wszystkimi pakietami, trudno jest bezpiecznie udostępnić klucz, gdy wielu deweloperów są zaangażowane w różnych pakietów i gdy współużytkują konto wydawcy.
+- **Wszystkie uprawnienia lub brak**. Każdy, kto ma dostęp do klucza INTERFEJSU API ma wszystkie uprawnienia (publikować, wypychać i odsuwać listę) na pakietach. Często nie jest to pożądane w środowisku z wieloma zespołami.
+- **Pojedynczy punkt awarii**. Pojedynczy klucz interfejsu API oznacza również pojedynczy punkt awarii. Jeśli klucz zostanie naruszony, wszystkie pakiety skojarzone z kontem mogą zostać naruszone. Odświeżanie klucza interfejsu API jest jedynym sposobem, aby podłączyć przeciek i uniknąć przerwy w przepływie pracy ciągłej integracji/ciągłego wdrażania. Ponadto mogą wystąpić przypadki, gdy chcesz odwołać dostęp do klucza interfejsu API dla danej osoby (na przykład, gdy pracownik opuszcza organizację). Nie ma dziś czystego sposobu radzenia sobie z tym.
 
-Z kluczami interfejsu API o określonym zakresie podejmowane są próby zająć tymi problemami, pamiętając, Podziel przez żaden z istniejącymi przepływami pracy.
+Z kluczami interfejsu API o określonym zakresie, staramy się rozwiązać te problemy, upewniając się, że żaden z istniejących przepływów pracy przerwy.
 
 ## <a name="acquire-an-api-key"></a>Uzyskiwanie klucza interfejsu API
 
 [!INCLUDE [publish-api-key](../quickstart/includes/publish-api-key.md)]
 
-## <a name="create-scoped-api-keys"></a>Tworzenie zakresu kluczy interfejsu API
+## <a name="create-scoped-api-keys"></a>Tworzenie kluczy interfejsu API o określonym zakresie
 
-Możesz utworzyć wiele kluczy interfejsu API, w zależności od wymagań. Klucza interfejsu API można zastosować do co najmniej jeden pakiet, mają różne zakresy, których przyznać określone uprawnienia i mają datę wygaśnięcia skojarzonych z nim.
+Można utworzyć wiele kluczy interfejsu API na podstawie wymagań. Klucz interfejsu API można zastosować do jednego lub więcej pakietów, mają różne zakresy, które przyznają określone uprawnienia i mają datę wygaśnięcia skojarzone z nim.
 
-W poniższym przykładzie, masz klucz interfejsu API o nazwie `Contoso service CI` można wypchnąć pakietów dla określonego `Contoso.Service` pakietów i jest ważny przez 365 dni. Jest to typowy scenariusz, gdzie znajdują się klucz, który przyznaje im uprawnienia tylko do pakietu, który pracuje nad zespołów w obrębie tej samej organizacji pracy w różnych pakietach i członków zespołu. Czas wygaśnięcia służy jako mechanizm, aby zapobiec starych lub zapomniane kluczy.
+W poniższym przykładzie masz klucz `Contoso service CI` interfejsu API o nazwie, `Contoso.Service` który może służyć do wypychania pakietów dla określonych pakietów i jest prawidłowy przez 365 dni. Jest to typowy scenariusz, w którym różne zespoły w tej samej organizacji pracują nad różnymi pakietami, a członkowie zespołu otrzymują klucz, który przyznaje im uprawnienia tylko dla pakietu, nad którym pracują. Wygaśnięcie służy jako mechanizm, aby zapobiec starych lub zapomnianych kluczy.
 
 ![Tworzenie kluczy interfejsu API](media/scoped-api-keys-create-new.png)
 
-## <a name="use-glob-patterns"></a>Użycie glob wzorców
+## <a name="use-glob-patterns"></a>Użyj wzorów glob
 
-Jeśli pracujesz na wielu pakietów, dużej listy pakietów do zarządzania można Użyj wzorców obsługi symboli wieloznacznych, aby wybrać wiele pakietów ze sobą. Na przykład, jeśli użytkownik chce udzielić określonych zakresów do klucza dla wszystkich pakietów którego Identyfikatora rozpoczyna się od ciągu `Fabrikam.Service`, można to zrobić, określając `fabrikam.service.*` w **wzorzec Glob** pola tekstowego.
+Jeśli pracujesz nad wieloma pakietami i masz dużą listę pakietów do zarządzania, możesz użyć wzorców globbingu, aby wybrać wiele pakietów razem. Na przykład, jeśli chcesz udzielić określonych zakresów do klucza dla `Fabrikam.Service`wszystkich pakietów, których `fabrikam.service.*` identyfikator zaczyna się od , można to zrobić, określając w polu tekstowym **wzorca Glob.**
 
 ![Tworzenie kluczy interfejsu API](media/scoped-api-keys-glob-pattern.png)
 
-Przy użyciu wzorców glob, aby określić uprawnienia klucza interfejsu API dotyczy także nowe pakiety pasujących do wzorca glob. Na przykład, Jeśli spróbujesz wypchnąć nowy pakiet o nazwie `Fabrikam.Service.Framework`, możesz to zrobić przy użyciu klucza został wcześniej utworzony, ponieważ pakiet jest zgodny ze wzorcem glob `fabrikam.service.*`.
+Za pomocą wzorców glob do określenia uprawnień klucza interfejsu API stosuje się również do nowych pakietów pasujących do wzorca glob. Na przykład, jeśli spróbujesz wypchnąć nowy pakiet o nazwie `Fabrikam.Service.Framework`, można to zrobić `fabrikam.service.*`z kluczem utworzonym wcześniej, ponieważ pakiet pasuje do wzorca glob .
 
-## <a name="obtain-api-keys-securely"></a>Bezpieczne uzyskanie kluczy interfejsu API
+## <a name="obtain-api-keys-securely"></a>Bezpieczne uzyskiwanie kluczy interfejsu API
 
-Dla bezpieczeństwa nowo utworzony klucz nigdy nie są wyświetlane na ekranie i jest tylko dostępne za pośrednictwem **kopiowania** przycisku. Podobnie klucz nie jest dostępny po odświeżeniu strony.
+Ze względów bezpieczeństwa nowo utworzony klucz nigdy nie jest wyświetlany na ekranie i jest dostępny tylko za pomocą przycisku **Kopiuj.** Podobnie klucz nie jest dostępny po odświeżeniu strony.
 
 ![Tworzenie kluczy interfejsu API](media/scoped-api-keys-obtain-keys.png)
 
-## <a name="edit-existing-api-keys"></a>Edytuj istniejących kluczy interfejsu API
+## <a name="edit-existing-api-keys"></a>Edytowanie istniejących kluczy interfejsu API
 
-Można również zaktualizować uprawnienia klucza i zakresy bez wprowadzania zmian w samych kluczy. Jeśli masz klucz o określone zakresy dla jednego pakietu, można zastosować ten sam zakresy na jednej lub wielu pakietów.
+Można również zaktualizować uprawnienia klucza i zakresy bez zmiany samego klucza. Jeśli masz klucz z określonymi zakresami dla pojedynczego pakietu, możesz zastosować te same zakresy na jednym lub wielu innych pakietach.
 
 ![Tworzenie kluczy interfejsu API](media/scoped-api-keys-edit.png)
 
-## <a name="refresh-or-delete-existing-api-keys"></a>Odśwież lub usuń istniejące klucze interfejsu API
+## <a name="refresh-or-delete-existing-api-keys"></a>Odświeżanie lub usuwanie istniejących kluczy interfejsu API
 
-Właściciel konta może wybrać, aby odświeżyć klucz, w którym to przypadku uprawnienia (pakiety), zakresu i wygaśnięcia pozostają takie same, ale wystawiono nowy klucz, co stary klucz nienadające się do użytku. Jest to przydatne w zarządzaniu starych kluczy lub w przypadku, gdy wszelkie ryzyko wycieku klucza interfejsu API.
+Właściciel konta może wybrać odświeżenie klucza, w którym to przypadku uprawnienie (na pakiety), zakres i wygaśnięcie pozostają takie same, ale nowy klucz jest wystawiany, dzięki czemu stary klucz nie nadaje się do bezużyteczny. Jest to przydatne w zarządzaniu nieaktualne klucze lub gdzie istnieje możliwość wycieku klucza interfejsu API.
 
 ![Tworzenie kluczy interfejsu API](media/scoped-api-keys-refresh.png)
 
-Można również usunąć te klucze, jeśli nie są już potrzebne. Usuwanie klucza powoduje usunięcie klucza i sprawia, że korzystanie z niej.
+Można również usunąć te klucze, jeśli nie są już potrzebne. Usunięcie klucza powoduje usunięcie klucza i uniemożliwia jego użytecznie.
 
 ## <a name="faqs"></a>Często zadawane pytania
 
-### <a name="what-happens-to-my-old-legacy-api-key"></a>Co stanie się Moje starych (starszych) klucz interfejsu API?
+### <a name="what-happens-to-my-old-legacy-api-key"></a>Co się stanie z moim starym (starszym) kluczem interfejsu API?
 
-Stary klucz interfejsu API (starsza wersja) w dalszym ciągu działać i może pracować tak długo, jak chcesz, aby pracować. Jednak te klucze zostaną wycofane, jeśli nie były używane przez więcej niż 365 dni do wypychania pakietu. Aby uzyskać więcej informacji, zobacz wpis w blogu [zmieni się na wygasających kluczy interfejsu API](https://blog.nuget.org/20160825/Changes-to-Expiring-API-Keys.html). Nie można odświeżyć tego klucza. Musisz usunąć starszy klucz i zamiast tego utwórz nowy klucz o określonym zakresie.
+Twój stary klucz interfejsu API (starszy) nadal działa i może działać tak długo, jak chcesz, aby działał. Jednak te klucze zostaną wycofane, jeśli nie były używane przez więcej niż 365 dni do wypychania pakietu. Aby uzyskać więcej informacji, zobacz wpis w blogu [Zmiany wygasające klucze interfejsu API](https://blog.nuget.org/20160825/Changes-to-Expiring-API-Keys.html). Nie można już odświeżyć tego klucza. Należy usunąć starszy klucz i zamiast tego utworzyć nowy klucz o określonym zakresie.
 
 > [!NOTE]
-> Ten klucz ma wszystkie uprawnienia na wszystkich pakietów i nigdy nie wygasa. Należy rozważyć usunięcie tego klucza, a następnie tworzenia nowych kluczy z zakresu uprawnień i utraty ważności określony.
+> Ten klucz ma wszystkie uprawnienia do wszystkich pakietów i nigdy nie wygasa. Należy rozważyć usunięcie tego klucza i tworzenie nowych kluczy z uprawnieniami o określonym zakresie i określonym wygaśnięciem.
 
-### <a name="how-many-api-keys-can-i-create"></a>Jak wiele kluczy interfejsu API można utworzyć?
+### <a name="how-many-api-keys-can-i-create"></a>Ile kluczy interfejsu API można utworzyć?
 
-Nie ma żadnego limitu liczby kluczy interfejsu API, które można utworzyć. Jednak zaleca się można zachować w zarządzaniu liczby tak, aby nie znajdą posiadanie wielu starych kluczy nie wie, gdzie i kto korzysta z nich.
+Nie ma limitu liczby kluczy interfejsu API, które można utworzyć. Radzimy jednak, aby utrzymać go w zarządzaniu liczyć tak, że nie kończy się o wiele starych kluczy bez wiedzy, gdzie i kto z nich korzysta.
 
 ### <a name="can-i-delete-my-legacy-api-key-or-discontinue-using-now"></a>Czy mogę usunąć mój starszy klucz interfejsu API lub zaprzestać używania teraz?
 
-Tak. Możesz — i prawdopodobnie Usuń starszy klucz interfejsu API.
+Tak. Możesz — i prawdopodobnie powinieneś - usunąć starszy klucz interfejsu API.
 
-### <a name="can-i-get-back-my-api-key-that-i-deleted-by-mistake"></a>Czy mogę wrócić mój klucz interfejsu API, który został usunięty przez pomyłkę?
+### <a name="can-i-get-back-my-api-key-that-i-deleted-by-mistake"></a>Czy mogę odzyskać klucz interfejsu API, który został usunięty przez pomyłkę?
 
-Nie. Po usunięciu może tylko tworzyć nowe klucze. Możliwe przypadkowo usuniętych kluczy jest brak odzyskiwania.
+Nie. Po usunięciu można tworzyć tylko nowe klucze. Nie ma możliwości odzyskania przypadkowo usuniętych kluczy.
 
-### <a name="does-the-old-api-key-continue-to-work-upon-api-key-refresh"></a>Stary klucz interfejsu API będzie działać podczas odświeżania klucza interfejsu API?
+### <a name="does-the-old-api-key-continue-to-work-upon-api-key-refresh"></a>Czy stary klucz interfejsu API nadal działa po odświeżeniu klucza interfejsu API?
 
-Nie. Po odświeżeniu klucz pobiera wygenerowany nowy klucz, który ma ten sam zakres, uprawnienia i wygaśnięcia jak stary. Stary klucz przestanie istnieć.
+Nie. Po odświeżeniu klucza zostanie wygenerowany nowy klucz, który ma ten sam zakres, uprawnienie i wygaśnięcie, co stary. Stary klucz przestaje istnieć.
 
-### <a name="can-i-give-more-permissions-to-an-existing-api-key"></a>Można podać więcej uprawnień do istniejącego klucza interfejsu API?
+### <a name="can-i-give-more-permissions-to-an-existing-api-key"></a>Czy mogę nadać więcej uprawnień istniejącemu kluczowi interfejsu API?
 
-Nie można modyfikować zakres, ale można edytować listy pakietów, które ma zastosowanie do.
+Nie można zmodyfikować zakresu, ale można edytować listę pakietów, do której ma zastosowanie.
 
-### <a name="how-do-i-know-if-any-of-my-keys-expired-or-are-getting-expired"></a>Jak sprawdzić, dowolny Moje klucze wygasła lub pobierania wygasł?
+### <a name="how-do-i-know-if-any-of-my-keys-expired-or-are-getting-expired"></a>Skąd mam wiedzieć, czy którykolwiek z moich kluczy wygasł lub wygasł?
 
-Jeśli dowolny klawisz, wygaśnie, firma Microsoft powiadomi Cię za pośrednictwem komunikat ostrzegawczy w górnej części strony. Ponadto wprowadzono wysyłanie wiadomości e-mail z ostrzeżenie do właściciela konta dziesięć dni przed wygaśnięciem klucza, dzięki czemu może działać na nim również z wyprzedzeniem.
+Jeśli dowolny klucz wygaśnie, poinformujemy Cię o tym za pośrednictwem komunikatu ostrzegawczego u góry strony. Wysyłamy również e-mail z ostrzeżeniem do posiadacza konta na dziesięć dni przed wygaśnięciem klucza, aby można było na nim działać z dużym wyprzedzeniem.

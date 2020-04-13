@@ -1,27 +1,37 @@
 ---
-title: Informacje o wersji 4.4 RTM NuGet
-description: Informacje o wersji programu NuGet 4.3 RTM, w tym znanych problemów, poprawki, funkcje dodane i DCRs.
+title: Informacje o wersji nuGet 4.4 RTM
+description: Informacje o wersji dla NuGet 4.3 RTM, w tym znane problemy, poprawki błędów, dodane funkcje i dcrs.
 author: karann-msft
 ms.author: karann
 ms.date: 08/14/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 9ea11ad5476b02940b171fdc69ac0bf56598418d
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 3be24a86cc92c4e6d07fcae1dc625a150f28d7b4
+ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548417"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "64498702"
 ---
-# <a name="nuget-44-rtm-release-notes"></a>Informacje o wersji 4.4 RTM NuGet
+# <a name="nuget-44-release-notes"></a>Informacje o wersji nuget 4.4
 
-[Visual Studio 2017 15.4 RTW](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) jest dostarczany z NuGet w wersji 4.4 RTM.
+[Visual Studio 2017 15.4 RTW](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) jest dostarczany z NuGet 4.4 RTM.
+
+## <a name="summary-whats-new-in-440"></a>Krótki opis: Co nowego w 4.4.0
+
+## <a name="summary-whats-new-in-442"></a>Krótki opis: Co nowego w 4.4.2
+
+* Poprawka zabezpieczeń: Uprawnienia do plików utworzonych wewnątrz ~/.nuget są zbyt otwarte [#7673](https://github.com/NuGet/Home/issues/7673) [CVE-2019-0757](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0757)
+
+## <a name="summary-whats-new-in-443"></a>Krótki opis: Co nowego w 4.4.3
+
+* Poprawka zabezpieczeń: Pliki wewnątrz nupkgs może mieć względną ścieżkę powyżej katalogu NUPKG [#7906](https://github.com/NuGet/Home/issues/7906)
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="issues-with-net-standard-20-with-net-framework--nuget"></a>Problemy z platformą .NET Standard 2.0 przy użyciu platformy .NET Framework i NuGet 
+### <a name="issues-with-net-standard-20-with-net-framework--nuget"></a>Problemy z .NET Standard 2.0 z .NET Framework & NuGet 
 
-.NET standard i jego narzędzia zaprojektowano w taki sposób, że projekty przeznaczone dla platformy .NET Framework 4.6.1 może zużywać pakietów NuGet i projekty przeznaczone dla .NET Standard 2.0 lub wcześniejszej. [W tym dokumencie](https://github.com/dotnet/standard/issues/481) znajduje się podsumowanie problemy dotyczące tego scenariusza, planowanie adresowania, a rozwiązania można wdrożyć ze stanem współczesnych narzędzi.
+.NET Standard & jego narzędzia został zaprojektowany w taki sposób, że projekty przeznaczone dla platformy .NET Framework 4.6.1 mogą korzystać z pakietów NuGet & projektów przeznaczonych dla .NET Standard 2.0 lub wcześniejszych. [W tym dokumencie](https://github.com/dotnet/standard/issues/481) podsumowano problemy związane z tym scenariuszem, plan ich rozwiązania i obejścia, które można wdrożyć przy dzisiejszym stanie narzędzia.
 
 ### <a name="while-using-package-manager-console-enter-key-may-not-work"></a>Podczas korzystania z konsoli Menedżera pakietów może nie działać klawisz „Enter”
 
@@ -31,9 +41,9 @@ Czasami klawisz Enter nie działa w konsoli Menedżera pakietów. Jeśli tak si�
 
 #### <a name="workaround"></a>Obejście
 
-Uruchom ponownie program Visual Studio, a następnie otwórz konsolę zarządzania pakietami przed otwarciem rozwiązania. Alternatywnie, spróbuj usunąć `project.lock.json` i przywrócić go ponownie.
+Uruchom ponownie program Visual Studio, a następnie otwórz konsolę zarządzania pakietami przed otwarciem rozwiązania. Alternatywnie spróbuj usunąć `project.lock.json` i przywrócić ponownie.
 
-### <a name="you-are-unable-to-view-add-or-update-dotnetclitools-using-nuget-package-manager"></a>Nie można wyświetlić, dodać ani zaktualizować składnika DotNetCLITools przy użyciu Menedżera pakietów Nuget
+### <a name="you-are-unable-to-view-add-or-update-dotnetclitools-using-nuget-package-manager"></a>Nie można wyświetlać, dodawać ani aktualizować dotNetCLITools przy użyciu Menedżera pakietów Nuget
 
 #### <a name="issue"></a>Problem
 
@@ -57,136 +67,136 @@ Wykonaj przywracanie ręczne.
 
 #### <a name="issue"></a>Problem
 
-Od czasu do czasu gdy używasz pakietu zawierającego zestaw z nieprawidłowym podpisem lub gdy wersja pakietu została ustawiona za pomocą znacznika "DateTime", powoduje automatyczne przywracanie pakietu do działania w pętli nieskończonej (dotnet/project-system #1457).
+W przypadku użycia pakietu zawierającego zestaw z nieprawidłowym podpisem lub gdy wersja pakietu została ustawiona za pomocą znacznika „DateTime”, automatyczne przywracanie pakietu będzie czasem uruchamiane w pętli nieskończonej (dotnet/project-system#1457).
 
 #### <a name="workaround"></a>Obejście
 
 Obecnie nie istnieje obejście tego problemu.
 
-## <a name="issues-fixed-in-nuget-44-rtm-timeframe"></a>Problemy rozwiązane w wersji RTM w wersji 4.4 NuGet przedział czasu
+## <a name="issues-fixed-in-nuget-44-rtm-timeframe"></a>Naprawiono problemy w ramach czasowych NuGet 4.4 RTM
 
-[4.3 RTM informacjach o wersji NuGet](../release-notes/nuget-4.3-RTM.md) — Wyświetla listę wszystkich problemów naprawione w wersji RTM 4.3 NuGet
+[NuGet 4.3 RTM Release Notes](../release-notes/nuget-4.3-RTM.md) - Wyświetla listę wszystkich problemów rozwiązanych dla NuGet 4.3 RTM
 
 ### <a name="features"></a>Funkcje
 
-- Obsługa uproszczonego ładowania rozwiązań w scenariuszach PMC i NuGet PM interfejsu użytkownika — [#5180](https://github.com/NuGet/Home/issues/5180)
+- Obsługa lekkiego ładowania rozwiązań w scenariuszach interfejsu użytkownika PM PM i NuGet - [#5180](https://github.com/NuGet/Home/issues/5180)
 
-- Element docelowy programu msbuild pakiet powinien mieć publicznego punktu zaczepienia dla uruchomionej docelowi przed sam - [#5143](https://github.com/NuGet/Home/issues/5143)
+- Obiekt docelowy pakietu msbuild powinien mieć publiczny hak do uruchamiania obiektów docelowych użytkownika przed sobą — [#5143](https://github.com/NuGet/Home/issues/5143)
 
-- Funkcja: Dodanie przełącznika dependencyVersion instalacji nuget — [#1806](https://github.com/NuGet/Home/issues/1806)
+- Funkcja: Dodaj przełącznik konwersjiVersion do instalacji nuget - [#1806](https://github.com/NuGet/Home/issues/1806)
 
-- uap10.0.ToDo.0 powinny być mapowane na .NET Standard 2.0 dla NuGet — [#5684](https://github.com/NuGet/Home/issues/5684)
+- uap10.0.TODO.0 powinien zostać zamapowana na .NET Standard 2.0 dla NuGet - [#5684](https://github.com/NuGet/Home/issues/5684)
 
-- Obsługuje program Visual Studio narzędziach do kompilacji SKU z msbuild /t:restore - [#5562](https://github.com/NuGet/Home/issues/5562)
+- Obsługa jednostki SKU narzędzi kompilacji programu Visual Studio za pomocą usługi msbuild /t:restore — [#5562](https://github.com/NuGet/Home/issues/5562)
 
-- Podczas przywracania, generuje błąd, jeśli .NET 4.6.1 Pomoc techniczna dla platformy .NET Standard 2.0 jest wymagana, ale nie jest zainstalowany - [#5325](https://github.com/NuGet/Home/issues/5325)
+- Podczas przywracania wygeneruj błąd, jeśli jest wymagana obsługa platformy .NET 4.6.1 dla platformy .NET Standard 2.0, ale nie zainstalowana — [#5325](https://github.com/NuGet/Home/issues/5325)
 
-- Interfejs użytkownika — klienta rezerwacji prefiks Identyfikatora pakietu [#5572](https://github.com/NuGet/Home/issues/5572)
+- Interfejs użytkownika klienta prefiksu identyfikatora pakietu — [#5572](https://github.com/NuGet/Home/issues/5572)
 
-- dostarczanie składników zlokalizowanej nuget w celu obsługi lokalizacji dotnet.exe - [#4336](https://github.com/NuGet/Home/issues/4336)
+- dostarczać zlokalizowane składniki nuget do obsługi lokalizacji dotnet.exe - [#4336](https://github.com/NuGet/Home/issues/4336)
 
 ### <a name="bugs"></a>Usterki
 
-- Obudowy ścieżki innego projektu może spowodować, że przywracanie utratę PackageReferences - [#5855](https://github.com/NuGet/Home/issues/5855)
+- Różne wielkości liter ścieżki projektu może spowodować przywrócenie do utraty PackageReferences - [#5855](https://github.com/NuGet/Home/issues/5855)
 
-- Przenieś kodów błędów z numery ostrzeżeń do zakres błędów — [#5824](https://github.com/NuGet/Home/issues/5824)
+- Przenieś kody błędów z numerami ostrzeżeń do zakresu błędów - [#5824](https://github.com/NuGet/Home/issues/5824)
 
-- Mylące błąd, gdy .NET Standard w wersji nie jest znany ma być kompatybilna platformę docelową — [#5818](https://github.com/NuGet/Home/issues/5818)
+- Błąd wprowadzający w błąd, gdy nie wiadomo, że wersja .NET Standard jest zgodna z platformą docelową - [#5818](https://github.com/NuGet/Home/issues/5818)
 
-- Pliki z licencjami mylące - testu [#5776](https://github.com/NuGet/Home/issues/5776)
+- Pliki testowe z mylącymi licencjami - [#5776](https://github.com/NuGet/Home/issues/5776)
 
-- Brak nagłówków licencji EndToEnd testowanie szablonów — [#5774](https://github.com/NuGet/Home/issues/5774)
+- Brak nagłówków licencji w szablonach testów EndToEnd — [#5774](https://github.com/NuGet/Home/issues/5774)
 
-- błędy w pliku Packages.config przywracania jest wyświetlany jako NU1000 - [#5743](https://github.com/NuGet/Home/issues/5743)
+- packages.config restore pokazuje błędy jako NU1000 - [#5743](https://github.com/NuGet/Home/issues/5743)
 
-- Zainstaluj nuget.exe powinna mieć DisableParallelProcessing na mono — [#5741](https://github.com/NuGet/Home/issues/5741)
+- nuget.exe zainstalować powinien mieć DisableParallelProcessing na mono - [#5741](https://github.com/NuGet/Home/issues/5741)
 
-- Zainstaluj nuget.exe niepoprawnie wyłącza buforowanie - [#5737](https://github.com/NuGet/Home/issues/5737)
+- nuget.exe zainstalować niepoprawnie wyłącza buforowanie - [#5737](https://github.com/NuGet/Home/issues/5737)
 
-- VS polecenia przywracania dla pliku packages.config po wyłączeniu przywracania Wyświetla niepoprawny komunikat - [#5718](https://github.com/NuGet/Home/issues/5718)
+- Vs Uruchomienie polecenia przywracania dla packages.config po wyłączeniu przywracania wyświetla niepoprawny komunikat - [#5718](https://github.com/NuGet/Home/issues/5718)
 
-- VS; Uruchomienie polecenia przywracania po wyłączeniu przywracania wyświetla komunikat mylące - [#5659](https://github.com/NuGet/Home/issues/5659)
+- VS; Uruchamianie polecenia przywracania po wyłączeniu przywracania wyświetla mylący komunikat - [#5659](https://github.com/NuGet/Home/issues/5659)
 
-- GetRestoreDotnetCliToolsTask ulegnie awarii, gdy brak metadanych wersji - [#5716](https://github.com/NuGet/Home/issues/5716)
+- GetRestoreDotnetCliToolsTask nie powiedzie się, gdy brakuje metadanych wersji - [#5716](https://github.com/NuGet/Home/issues/5716)
 
-- polecenia DotNet
-  - dotnetcore Dodawanie pakietów można wyczyścić puste wiersze z pliku csproj - [#5697](https://github.com/NuGet/Home/issues/5697)
+- dotnet
+  - dotnetcore dodać pakiet można wyczyścić puste linie z csproj - [#5697](https://github.com/NuGet/Home/issues/5697)
 
-- Źródło nazwy ustawienia poświadczeń w pliku NuGet.Config jest uwzględniana wielkość liter — [#5695](https://github.com/NuGet/Home/issues/5695)
+- Nazwy źródeł ustawień poświadczeń w nuget.config są rozróżniane wielkość liter - [#5695](https://github.com/NuGet/Home/issues/5695)
 
-- Włączanie GeneratePackageOnBuild usunięte całej historii pakietów - [#5676](https://github.com/NuGet/Home/issues/5676)
+- Włączenie GeneratePackageOnBuild usunął całą moją historię pakietów - [#5676](https://github.com/NuGet/Home/issues/5676)
 
-- Przywracanie nie spowoduje przywrócenia pakietów mono.cecil lub semver, ale inne pakiety pobrać przywrócony. - [#5649](https://github.com/NuGet/Home/issues/5649)
+- Przywracanie nie przywróci pakietów mono.cecil lub semver, ale wszystkie inne pakiety zostaną przywrócone. - [#5649](https://github.com/NuGet/Home/issues/5649)
 
-- Błędy i ostrzeżenia — zła podczas źródło niedostępne.  - [#5644](https://github.com/NuGet/Home/issues/5644)
+- Błędy i ostrzeżenia — zły błąd, gdy źródło jest niedostępne.  - [#5644](https://github.com/NuGet/Home/issues/5644)
 
-- [DesignConsistency] Obecnie tekst stanu instalacji NuGet wygląda prawidłowe na ciemny. - [#5642](https://github.com/NuGet/Home/issues/5642)
+- [DesignConsistency] Tekst stanu instalacji NuGet nie wygląda poprawnie w ciemnym motywie. - [#5642](https://github.com/NuGet/Home/issues/5642)
 
-- Aktualizowanie pakietów w rozwiązaniu aktualizacji/instalacje dla wszystkich projektów — [#5508](https://github.com/NuGet/Home/issues/5508)
+- Aktualizuj pakiety w aktualizacjach/instalacjach rozwiązania dla wszystkich projektów - [#5508](https://github.com/NuGet/Home/issues/5508)
 
-- polecenia DotNet
-  - Pakiet dotnetcore zachowuje się inaczej w zależności od tego, vs TargetFramework TargetFrameworks - [#5281](https://github.com/NuGet/Home/issues/5281)
+- dotnet
+  - pakiet dotnetcore zachowuje się inaczej w zależności od TargetFramework vs TargetFrameworks - [#5281](https://github.com/NuGet/Home/issues/5281)
 
-- Uwzględnione biblioteki DLL wewnątrz ostrzeżenia throw folderu narzędzia - [#5020](https://github.com/NuGet/Home/issues/5020)
+- Dołączone biblioteki DLL wewnątrz folderu Tools rzucają ostrzeżenia - [#5020](https://github.com/NuGet/Home/issues/5020)
 
-- NuGet.ContentModel zużywa zbyt dużej ilości pamięci dla operacji na ciągach - [#4714](https://github.com/NuGet/Home/issues/4714)
+- NuGet.ContentModel zużywa zbyt dużo pamięci dla operacji ciągu - [#4714](https://github.com/NuGet/Home/issues/4714)
 
-- RuntimeEnvironmentHelper.IsLinux zwraca wartość true dla systemu OSX - [#4648](https://github.com/NuGet/Home/issues/4648)
+- RuntimeEnvironmentHelper.IsLinux zwraca wartość true dla OSX - [#4648](https://github.com/NuGet/Home/issues/4648)
 
-- "pakietu dotnet" umieszcza nuspec w obszarze obj zamiast obj\Debug - [#4644](https://github.com/NuGet/Home/issues/4644)
+- 'dotnet pack' stawia nuspec pod obj zamiast obj\Debug - [#4644](https://github.com/NuGet/Home/issues/4644)
 
-- Nuget bardzo wolno uaktualnienie pakietu - [#4534](https://github.com/NuGet/Home/issues/4534)
+- Nuget bardzo powolne uaktualnienie pakietu - [#4534](https://github.com/NuGet/Home/issues/4534)
 
-- Dokument CPS zsynchronizowany przy użyciu przywracania z większych rozwiązania, które nie zostały włączone LSL (Przywracanie uproszczone ładowanie rozwiązań) — [#4307](https://github.com/NuGet/Home/issues/4307)
+- CPS niezsynchronizowane z przywracanie z większych rozwiązań, które nie zostały włączone LSL (lekkie przywracanie rozwiązania) - [#4307](https://github.com/NuGet/Home/issues/4307)
 
-- SemVer 2.0 - nuget pakietu z podana wersja ignoruje metadanych (3.5.0-rtm-1938) - [#3643](https://github.com/NuGet/Home/issues/3643)
+- SemVer 2.0 - nuget pack z dostarczoną wersją ignoruje metadane (3.5.0-rtm-1938) - [#3643](https://github.com/NuGet/Home/issues/3643)
 
-- Nuget.exe (3 i nowsze): Zainstaluj pakiet przy użyciu numeru wersji i Flaga ExcludeVersion nie powoduje aktualizacji pakietu do nowszej wersji — [#2405](https://github.com/NuGet/Home/issues/2405)
+- Nuget.exe (3.+) zainstalować pakiet z numerem wersji i ExcludeVersion flagi nie aktualizuje pakietu do nowszej wersji - [#2405](https://github.com/NuGet/Home/issues/2405)
 
-- Przywracanie pliku Project.JSON powinien Ostrzegaj, gdy najwyższego pakiety narusza ograniczenia - [#2358](https://github.com/NuGet/Home/issues/2358)
+- Przywracanie project.json powinien ostrzegać, gdy pakiety najwyższego poziomu naruszają ograniczenia - [#2358](https://github.com/NuGet/Home/issues/2358)
 
-- -ConfigFile nie jest ustawienie niestandardowej konfiguracji polecenia install - [#1646](https://github.com/NuGet/Home/issues/1646)
+- -ConfigFile nie ustawia niestandardowego configu na komendzie install - [#1646](https://github.com/NuGet/Home/issues/1646)
 
-- Zainstaluj nuget.exe nie uznaje "-DisableParallelProcessing" przełącznika - [#1556](https://github.com/NuGet/Home/issues/1556)
+- nuget.exe install nie honoruje przełącznika '-DisableParallelProcessing' - [#1556](https://github.com/NuGet/Home/issues/1556)
 
-- Wyłączone źródła nadal używany przez DotNet.exe lub msbuild.exe - [#5704](https://github.com/NuGet/Home/issues/5704)
+- Wyłączone źródła nadal używane przez DotNet.exe lub msbuild.exe - [#5704](https://github.com/NuGet/Home/issues/5704)
 
-- Usuń zawiesza się na scenariusz LSL — [#5685](https://github.com/NuGet/Home/issues/5685)
+- Napraw zawiesza się w scenariuszu LSL - [#5685](https://github.com/NuGet/Home/issues/5685)
 
-### <a name="dcrs"></a>DCRs
+### <a name="dcrs"></a>DDR
 
-- nuget.exe nainstalovat podporu TargetFramework - [#5736](https://github.com/NuGet/Home/issues/5736)
+- nuget.exe zainstalować Obsługę TargetFramework - [#5736](https://github.com/NuGet/Home/issues/5736)
 
-- Dodaj inny msbuild zadań UserAgent ciągi (msbuild pulpitu netcore vs) - [#5709](https://github.com/NuGet/Home/issues/5709)
+- Dodaj różne parametry useragent zadania msbuild (netcore vs desktop msbuild) - [#5709](https://github.com/NuGet/Home/issues/5709)
 
-- PackagePathResolver.GetPackageDirectoryName powinny być wirtualne — [#5700](https://github.com/NuGet/Home/issues/5700)
+- PackagePathResolver.GetPackageDirectoryName powinien być wirtualny - [#5700](https://github.com/NuGet/Home/issues/5700)
 
-- [DesignConsistency] Mylenie komunikat podczas dodawania pakietów NuGet — [#5641](https://github.com/NuGet/Home/issues/5641)
+- [DesignConsistency] Mylący komunikat podczas dodawania pakietu NuGet - [#5641](https://github.com/NuGet/Home/issues/5641)
 
-- [Ostrzeżenia i błędy] NoWarn nie przekazywane, realizowane w sposób przechodni odwołania P2P - [#5501](https://github.com/NuGet/Home/issues/5501)
+- [Ostrzeżenia i błędy] NoWarn nie przepływa przechodnie przez odniesienia P2P - [#5501](https://github.com/NuGet/Home/issues/5501)
 
-- Uproszczone ładowanie rozwiązania: Typowych podstawowe dla interfejsu użytkownika PM, konsolę zarządzania Pakietami, a następnie wektory - [#5057](https://github.com/NuGet/Home/issues/5057)
+- Lekkie obciążenie rozwiązania: Wspólny rdzeń dla pm ui, PMC i IV- - [#5057](https://github.com/NuGet/Home/issues/5057)
 
-- Uproszczone ładowanie rozwiązania: Obsługi - PMC - [#5053](https://github.com/NuGet/Home/issues/5053)
+- Lekkie obciążenie rozwiązania: Wsparcie - PMC - [#5053](https://github.com/NuGet/Home/issues/5053)
 
-- Dodano obsługę wstępnie przywrócić docelowy programu MSBuild, która powoduje uruchomienie programu Visual Studio — [#4781](https://github.com/NuGet/Home/issues/4781)
+- Dodaj obsługę wstępnie przywrócić obiekt docelowy MSBuild, który wyzwala program Visual Studio — [#4781](https://github.com/NuGet/Home/issues/4781)
 
-- Dodanie elementu docelowego publicznej do NuGet.targets, która może znajdować się za pomocą BeforeTargets- [#4634](https://github.com/NuGet/Home/issues/4634)
+- Dodaj publiczny obiekt docelowy do obiektów docelowych NuGet.targets, do których można się odwoływać przy użyciu beforetargets — [#4634](https://github.com/NuGet/Home/issues/4634)
 
-- Pakiet docelowy nie może utworzyć pliki za pomocą akcji kompilacji nieprawidłowo — [#4166](https://github.com/NuGet/Home/issues/4166)
+- Miejsce docelowe pakietu nie może poprawnie utworzyć contentFiles z akcjami kompilacji — [#4166](https://github.com/NuGet/Home/issues/4166)
 
-- RestoreOperationLogger.Do blokuje wątków z puli wątków - [#5663](https://github.com/NuGet/Home/issues/5663)
+- RestoreOperationLogger.Do blokuje wątki puli gwintów - [#5663](https://github.com/NuGet/Home/issues/5663)
 
 ### <a name="docs"></a>Docs
 
-- Dokumenty dotyczące instalacji polecenie DependencyVersion i struktury flagi - [#5858](https://github.com/NuGet/Home/issues/5858)
+- Flagi Docs for Install command DependencyVersion i Framework — [#5858](https://github.com/NuGet/Home/issues/5858)
 
-- Aktualizacja do dokumentów w ostrzeżenia i błędy - NuGet [#5857](https://github.com/NuGet/Home/issues/5857)
+- Aktualizacja do dokumentów na NuGet ostrzeżenia i błędy - [#5857](https://github.com/NuGet/Home/issues/5857)
 
-## <a name="links-to-github-issues-fixed-in-44-rtm"></a>Linki na problemy usługi GitHub, rozwiązane w wersji 4.4 lub RTM
+## <a name="links-to-github-issues-fixed-in-44-rtm"></a>Poprawiono łącze do gitHub w 4.4 RTM
 
-[Problemy z listy 1](https://github.com/NuGet/Home/issues?q=is:issue+is:closed+milestone:"4.4")
+[Lista problemów 1](https://github.com/NuGet/Home/issues?q=is:issue+is:closed+milestone:"4.4")
 
-[Problemy z listy 2](https://github.com/NuGet/Home/issues?q=is:issue+is:closed+milestone:%224.4+-+7%2F31+through+8%2F18%22)
+[Lista problemów 2](https://github.com/NuGet/Home/issues?q=is:issue+is:closed+milestone:%224.4+-+7%2F31+through+8%2F18%22)
 
-[Problemy z listy 3](https://github.com/NuGet/Home/issues?q=is:issue+is:closed+milestone:%224.4+-+7%2F10+through+7%2F28%22)
+[Lista problemów 3](https://github.com/NuGet/Home/issues?q=is:issue+is:closed+milestone:%224.4+-+7%2F10+through+7%2F28%22)
