@@ -1,97 +1,97 @@
 ---
-title: Zasób katalogu, NuGet w wersji 3 interfejsu API
-description: Katalog jest indeks wszystkie pakiety utworzone i usunięte w witrynie nuget.org.
+title: Zasób katalogu, interfejs API programu NuGet v3
+description: Katalog jest indeksem wszystkich pakietów utworzonych i usuniętych w nuget.org.
 author: joelverhagen
 ms.author: jver
 ms.date: 10/30/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 8e4fb376e471a207333d241aeb414da7d5c3571e
-ms.sourcegitcommit: 2a9d149bc6f5ff76b0b657324820bd0429cddeef
+ms.openlocfilehash: ffbcb8dc18542f39c32a6d84b279c8eccaf98fc3
+ms.sourcegitcommit: 7e9c0630335ef9ec1e200e2ee9065f702e52a8ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67496537"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85292319"
 ---
 # <a name="catalog"></a>Wykaz
 
-**Katalogu** jest zasobem, który rejestruje wszystkie operacje pakietu w źródle pakietu, takie jak operacje tworzenia i usuwania. Zasób katalogu ma `Catalog` wpisać [indeks usług](service-index.md). Można użyć tego zasobu do [zapytania dla wszystkie opublikowane pakiety](../guides/api/query-for-all-published-packages.md).
+**Katalog** jest zasobem, który rejestruje wszystkie operacje pakietu w źródle pakietów, takie jak tworzenie i usuwanie. Zasób katalogu ma `Catalog` Typ w [indeksie usługi](service-index.md). Ten zasób służy do [wykonywania zapytań dotyczących wszystkich opublikowanych pakietów](../guides/api/query-for-all-published-packages.md).
 
 > [!Note]
-> Ponieważ katalog nie jest używany przez oficjalne klienta programu NuGet, nie wszystkie źródła pakietów zaimplementować katalogu.
+> Ponieważ katalog nie jest używany przez oficjalnego klienta NuGet, nie wszystkie źródła pakietów implementują wykaz.
 
 > [!Note]
-> Wykaz nuget.org nie jest obecnie dostępna w Chinach. Aby uzyskać więcej informacji, zobacz [NuGet/NuGetGallery#4949](https://github.com/NuGet/NuGetGallery/issues/4949).
+> Obecnie katalog nuget.org nie jest dostępny w Chinach. Aby uzyskać więcej informacji, zobacz [NuGet/NuGetGallery # 4949](https://github.com/NuGet/NuGetGallery/issues/4949).
 
-## <a name="versioning"></a>Przechowywanie wersji
+## <a name="versioning"></a>Obsługa wersji
 
-Następujące `@type` zostanie użyta wartość:
+`@type`Używana jest następująca wartość:
 
-@type Wartość   | Uwagi
+@typewartościami   | Uwagi
 ------------- | -----
-Catalog/3.0.0 | Wersja początkowa
+Katalog/3.0.0 | Początkowa wersja
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
-Adres URL punktu wejścia dla następujących interfejsów API jest wartością `@id` właściwości skojarzonej z wyżej wymienionych zasobów `@type` wartości. W tym temacie używany zastępczego adresu URL `{@id}`.
+Adres URL punktu wejścia dla następujących interfejsów API to wartość `@id` Właściwości skojarzonej z wyżej wymienionymi wartościami zasobów `@type` . W tym temacie jest stosowany symbol zastępczy URL `{@id}` .
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Wszystkie adresy URL w obsługę zasobów katalogu znaleziono tylko metody HTTP `GET` i `HEAD`.
+Wszystkie adresy URL znajdujące się w zasobów katalogu obsługują tylko metody HTTP `GET` i `HEAD` .
 
 ## <a name="catalog-index"></a>Indeks katalogu
 
-Indeks wykazu jest dokument w lokalizacji dobrze znanego, która zawiera listę elementów katalogu, uporządkowanych w porządku chronologicznym. Jest punkt wejścia do zasobu katalogu.
+Indeks wykazu jest dokumentem w dobrze znanej lokalizacji, która ma listę elementów katalogu uporządkowanych chronologicznie. Jest to punkt wejścia zasobu katalogu.
 
-Indeks składa się z strony katalogu. Każda strona katalogu zawiera elementy katalogu. Każdy element katalogu przedstawia zdarzenie dotyczące pojedynczego pakietu w punkcie w czasie. Element katalogu może reprezentować pakiet, który został utworzony, nieznajdujące się na liście, ponownie wystawiony lub został usunięty ze źródła pakietu. Przez przetwarzanie elementów katalogu, w kolejności chronologicznej, klienta można tworzyć aktualny widok każdego pakietu, który istnieje w źródle pakietu V3.
+Indeks składa się ze stron wykazu. Każda Strona wykazu zawiera elementy katalogu. Każdy element katalogu reprezentuje zdarzenie dotyczące pojedynczego pakietu w danym momencie. Element katalogu może reprezentować pakiet, który został utworzony, niewyszczególniony, ponownie wystawiony lub usunięty ze źródła pakietu. Przez przetwarzanie elementów katalogu w kolejności chronologicznej klient może utworzyć aktualny widok każdego pakietu, który istnieje w źródle pakietów v3.
 
-Krótko mówiąc obiekty BLOB katalogu mają następującą strukturę hierarchiczną:
+W skrócie obiekty blob wykazu mają następującą strukturę hierarchiczną:
 
 - **Indeks**: punkt wejścia dla katalogu.
 - **Strona**: grupowanie elementów katalogu.
-- **Liścia**: dokument reprezentujący element katalogu, który jest migawką stanu w jednym pakiecie.
+- **Liść**: dokument reprezentujący element katalogu, który jest migawką stanu pojedynczego pakietu.
 
-Każdy obiekt katalogu ma właściwość o nazwie `commitTimeStamp` reprezentujący, gdy element została dodana do wykazu. Elementy katalogu są dodawane do strony katalogu w partiach, nazywanych zatwierdzeniami. Wszystkie elementy katalogu, w tym samym zatwierdzeniu mają tą samą sygnaturą czasową zatwierdzenia (`commitTimeStamp`) i identyfikator zatwierdzenia (`commitId`). Elementy katalogu, umieszczane w tym samym zatwierdzeniu reprezentują zdarzenia, które wystąpiły w okolicy tego samego punktu w czasie w źródle pakietu. Nie ma żadnych kolejności w ramach zatwierdzenia katalogu.
+Każdy obiekt wykazu ma właściwość o nazwie `commitTimeStamp` reprezentującej, kiedy element został dodany do wykazu. Elementy katalogu są dodawane do strony wykazu w partiach o nazwie commits. Wszystkie elementy katalogu w tym samym zatwierdzeniu mają tę samą sygnaturę czasową zatwierdzenia ( `commitTimeStamp` ) i identyfikator zatwierdzenia ( `commitId` ). Elementy katalogu umieszczane w tym samym zatwierdzeniu reprezentują zdarzenia, które wystąpiły wokół tego samego punktu w czasie w źródle pakietu. Nie ma kolejności w zatwierdzeniu katalogu.
 
-Ponieważ każdy identyfikator pakietu i wersję jest unikatowy, nigdy nie będzie więcej niż jeden element katalogu na zatwierdzenie. Daje to gwarancję, że elementy katalogu w jednym pakiecie zawsze może jednoznacznie uporządkowane względem sygnatury czasowej zatwierdzenia.
+Ze względu na to, że każdy identyfikator pakietu i jego wersja są unikatowe, w zatwierdzeniu nigdy nie będzie więcej niż jeden element katalogu. Gwarantuje to, że elementy katalogu dla pojedynczego pakietu mogą być zawsze niejednoznaczne uporządkowane w odniesieniu do sygnatury czasowej zatwierdzenia.
 
-Istnieje już nigdy nie będzie więcej niż jednego zatwierdzenia do katalogu na `commitTimeStamp`. Innymi słowy `commitId` jest nadmiarowa z `commitTimeStamp`.
+Nie ma więcej niż jednego zatwierdzenia do wykazu na `commitTimeStamp` . Innymi słowy, `commitId` jest nadmiarowy za pomocą `commitTimeStamp` .
 
-W przeciwieństwie do [zasób metadanych pakietu](registration-base-url-resource.md), która jest indeksowana przez identyfikator pakietu, katalog jest indeksowane (i obsługą zapytań) tylko przez czas.
+W przeciwieństwie do [zasobu metadanych pakietu](registration-base-url-resource.md), który jest INDEKSOWANY według identyfikatora pakietu, katalog jest indeksowany (i Queryable) tylko według czasu.
 
-Elementy katalogu są zawsze dodawane do katalogu, w kolejności rosnącej monotonicznie, chronologicznym. Oznacza to, że jeśli zatwierdzenie wykazu jest dodawana w czasie X następnie Brak zatwierdzeń katalogu będą dodawane z czasem mniejszą lub równą X.
+Elementy katalogu są zawsze dodawane do wykazu w monotonicznie rosnącej, chronologicznej kolejności. Oznacza to, że jeśli zostanie dodane zatwierdzenie katalogu w czasie X, żadne zatwierdzenie wykazu nie zostanie kiedykolwiek dodane o czasie mniejszym niż lub równym X.
 
-Następujące żądanie pobiera indeks katalogu.
+Poniższe żądanie Pobiera indeks wykazu.
 
     GET {@id}
 
-Indeks katalogu jest dokumentem JSON, który zawiera obiekt z następującymi właściwościami:
+Indeks wykazu jest dokumentem JSON zawierającym obiekt o następujących właściwościach:
 
 Nazwa            | Typ             | Wymagane | Uwagi
 --------------- | ---------------- | -------- | -----
-commitId        | string           | tak      | Unikatowy identyfikator skojarzony z ostatnie zatwierdzenie
-commitTimeStamp | string           | tak      | Sygnatura czasowa najnowsze zatwierdzenia
-count           | integer          | tak      | Liczba stron w indeksie
-items           | Tablica obiektów | tak      | Tablica obiektów, każdy obiekt reprezentujący stronę
+commitId        | ciąg           | tak      | Unikatowy identyfikator skojarzony z ostatnim zatwierdzeniem
+commitTimeStamp | ciąg           | tak      | Sygnatura czasowa ostatniego zatwierdzenia
+count           | liczba całkowita          | tak      | Liczba stron w indeksie
+produktów           | Tablica obiektów | tak      | Tablica obiektów, każdy obiekt reprezentujący stronę
 
-Każdy element w `items` tablica jest obiekt z niektóre minimalne szczegółowe informacje o każdej strony. Obiekty te strony nie zawierają pozostawia katalogu (elementy). Nie zdefiniowano kolejność elementów w tej tablicy. Strony może zostać określona przez klienta w pamięci przy użyciu ich `commitTimeStamp` właściwości.
+Każdy element w `items` tablicy jest obiektem z niektórymi minimalnymi szczegółami dotyczącymi każdej strony. Te obiekty strony nie zawierają liści wykazu (elementy). Kolejność elementów w tej tablicy nie jest zdefiniowana. Strony mogą być uporządkowane przez klienta w pamięci przy użyciu ich `commitTimeStamp` właściwości.
 
-Wprowadzoną nowych stron `count` jest zwiększany i nowe obiekty będą wyświetlane w `items` tablicy.
+Po wprowadzeniu nowych stron `count` zostanie on zwiększony, a nowe obiekty pojawią się w `items` tablicy.
 
-Po dodaniu elementu do wykazu, indeks `commitId` ulegnie zmianie i `commitTimeStamp` więc ceny wzrosną. Te dwie właściwości są zasadniczo podsumowania na stronie wszystkie `commitId` i `commitTimeStamp` wartości w `items` tablicy.
+Po dodaniu elementów do wykazu indeks `commitId` zostanie zmieniony i `commitTimeStamp` zostanie zwiększony. Te dwie właściwości są zasadniczo podsumowaniem wszystkich stron `commitId` i `commitTimeStamp` wartości w `items` tablicy.
 
 ### <a name="catalog-page-object-in-the-index"></a>Obiekt strony katalogu w indeksie
 
-Obiekty strony katalogu znalezione w indeksie katalogu `items` właściwości mają następujące właściwości:
+Obiekty strony katalogu znalezione we właściwości indeksu wykazu `items` mają następujące właściwości:
 
 Nazwa            | Typ    | Wymagane | Uwagi
 --------------- | ------- | -------- | -----
-@id             | string  | tak      | Adres URL do strony katalogu pobierania
-commitId        | string  | tak      | Unikatowy identyfikator skojarzony z najnowsze zatwierdzenie na tej stronie
-commitTimeStamp | string  | tak      | Sygnaturę czasową najnowsze zatwierdzenie na tej stronie
-count           | integer | tak      | Liczba elementów na stronie katalogu
+@id             | ciąg  | tak      | Adres URL pobierania strony katalogu
+commitId        | ciąg  | tak      | Unikatowy identyfikator skojarzony z ostatnim zatwierdzeniem na tej stronie
+commitTimeStamp | ciąg  | tak      | Sygnatura czasowa ostatniego zatwierdzenia na tej stronie
+count           | liczba całkowita | tak      | Liczba elementów na stronie katalogu
 
-W przeciwieństwie do [zasób metadanych pakietu](registration-base-url-resource.md) co w niektórych przypadkach inlines pozostawia do indeksu, pozostawia katalogu nigdy nie jest wbudowana w indeksie i zawsze musi zostać pobrana przy użyciu strony `@id` adresu URL.
+W przeciwieństwie do [zasobów metadanych pakietu](registration-base-url-resource.md) , które w niektórych przypadkach opuszczają indeks, liści wykazu nigdy nie są wbudowane w indeks i zawsze muszą być pobierane przy użyciu `@id` adresu URL strony.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
@@ -101,49 +101,49 @@ W przeciwieństwie do [zasób metadanych pakietu](registration-base-url-resource
 
 [!code-JSON [catalog-index.json](./_data/catalog-index.json)]
 
-## <a name="catalog-page"></a>Strona katalogu
+## <a name="catalog-page"></a>Strona wykazu
 
-Na stronie katalog to kolekcja elementów katalogu. Jest to dokument pobrana przy użyciu jednej z `@id` znaleziono wartości w indeksie katalogu. Adres URL do strony katalogu nie ma być przewidywalny i powinny zostać wykryte przy użyciu tylko katalog indeksu.
+Strona wykazu jest kolekcją elementów katalogu. Jest to dokument pobierany przy użyciu jednej z `@id` wartości znalezionych w indeksie wykazu. Adres URL strony wykazu nie może być przewidywalny i powinien zostać odnaleziony tylko przy użyciu indeksu wykazu.
 
-Nowe elementy katalogu są dodawane do strony indeksu katalogu tylko z najwyższą sygnatura czasowa zatwierdzenia lub do nowej strony. Po dodaniu strony z wyższym sygnaturą czasową zatwierdzenia do wykazu starsze strony nigdy nie są dodawane do lub zmienione.
+Nowe elementy katalogu są dodawane do strony w indeksie katalogu tylko z najwyższym znacznikiem czasu zatwierdzania lub do nowej strony. Po dodaniu strony z wyższym znacznikiem czasu zatwierdzenia do wykazu starsze strony nigdy nie są dodawane do ani zmieniane.
 
-Dokument strony katalogu jest obiekt JSON z następującymi właściwościami:
+Dokument strony wykazu jest obiektem JSON o następujących właściwościach:
 
 Nazwa            | Typ             | Wymagane | Uwagi
 --------------- | ---------------- | -------- | -----
-commitId        | string           | tak      | Unikatowy identyfikator skojarzony z najnowsze zatwierdzenie na tej stronie
-commitTimeStamp | string           | tak      | Sygnaturę czasową najnowsze zatwierdzenie na tej stronie
-count           | integer          | tak      | Liczba elementów na stronie
-items           | Tablica obiektów | tak      | Elementy katalogu na tej stronie
-Nadrzędny          | string           | tak      | Adres URL do indeksu katalogu
+commitId        | ciąg           | tak      | Unikatowy identyfikator skojarzony z ostatnim zatwierdzeniem na tej stronie
+commitTimeStamp | ciąg           | tak      | Sygnatura czasowa ostatniego zatwierdzenia na tej stronie
+count           | liczba całkowita          | tak      | Liczba elementów na stronie
+produktów           | Tablica obiektów | tak      | Elementy katalogu na tej stronie
+nadrzędny          | ciąg           | tak      | Adres URL indeksu katalogu
 
-Każdy element w `items` tablica jest obiekt z niektóre minimalne szczegółowe informacje o elemencie katalogu. Te obiekty elementu nie zawierają wszystkie dane elementu katalogu. Kolejność elementów na stronie `items` tablicy nie jest zdefiniowany. Elementy może zostać określona przez klienta w pamięci przy użyciu ich `commitTimeStamp` właściwości.
+Każdy element w `items` tablicy jest obiektem z niektórymi minimalnymi szczegółami dotyczącymi elementu katalogu. Te obiekty elementów nie zawierają wszystkich danych elementu katalogu. Kolejność elementów w `items` tablicy strony nie jest zdefiniowana. Elementy mogą być uporządkowane przez klienta w pamięci przy użyciu ich `commitTimeStamp` właściwości.
 
-Liczba elementów katalogu, na stronie jest definiowany przez implementację serwera. Dla nuget.org istnieją co najwyżej 550 elementów na każdej stronie, mimo że rzeczywista liczba może być mniejszy dla niektórych stron, w zależności od rozmiaru następna partia zatwierdzenia w punkcie, w czasie.
+Liczba elementów katalogu na stronie jest definiowana przez implementację serwera. W przypadku nuget.org na każdej stronie znajduje się maksymalnie 550 elementów, chociaż rzeczywista liczba może być mniejsza dla niektórych stron w zależności od rozmiaru następnej partii zatwierdzania w punkcie w czasie.
 
-Ponieważ nowe elementy zostały wprowadzone, `count` jest zwiększona i nowy wykaz elementów obiekty są wyświetlane w `items` tablicy.
+W miarę wprowadzania nowych elementów w `count` tablicy jest zwiększane i pojawiają się nowe obiekty elementów katalogu `items` .
 
-Po dodaniu elementu do strony, `commitId` zmiany i `commitTimeStamp` zwiększa się. Te dwie właściwości są zasadniczo podsumowanie wszystkich `commitId` i `commitTimeStamp` wartości w `items` tablicy.
+Po dodaniu elementów na stronie `commitId` zmiany i `commitTimeStamp` zwiększenia. Te dwie właściwości są zasadniczo podsumowaniem wszystkich `commitId` i `commitTimeStamp` wartości w `items` tablicy.
 
-### <a name="catalog-item-object-in-a-page"></a>Obiekt elementu na stronie sieci w katalogu
+### <a name="catalog-item-object-in-a-page"></a>Obiekt elementu katalogu na stronie
 
-Obiekty elementów katalogu znaleźć na stronie katalogu `items` właściwości mają następujące właściwości:
+Obiekty elementów katalogu znalezione we właściwości strony wykazu `items` mają następujące właściwości:
 
 Nazwa            | Typ    | Wymagane | Uwagi
 --------------- | ------- | -------- | -----
-@id             | string  | tak      | Adres URL, aby pobrać element katalogu
-@type           | string  | tak      | Typ elementu katalogu
-commitId        | string  | tak      | Identyfikator zatwierdzenia skojarzone z tym elementem katalogu
-commitTimeStamp | string  | tak      | Sygnatura czasowa zatwierdzenia tego elementu katalogu
-nuget:ID        | string  | tak      | Identyfikator pakietu, który dotyczy tego typu liść
-nuget:Version   | string  | tak      | Wersja pakietu, który dotyczy tego typu liść
+@id             | ciąg  | tak      | Adres URL pobierania elementu katalogu
+@type           | ciąg  | tak      | Typ elementu katalogu
+commitId        | ciąg  | tak      | Identyfikator zatwierdzenia skojarzony z tym elementem katalogu
+commitTimeStamp | ciąg  | tak      | Sygnatura czasowa zatwierdzeń tego elementu katalogu
+Pakiet NuGet: Identyfikator        | ciąg  | tak      | Identyfikator pakietu, z którym powiązany jest ten liść
+NuGet: wersja   | ciąg  | tak      | Wersja pakietu, z którą jest powiązany ten liść
 
-`@type` Wartość będzie jedną z następujących dwóch wartości:
+`@type`Wartość będzie jedną z dwóch następujących wartości:
 
-1. `nuget:PackageDetails`: odpowiada to `PackageDetails` typu w dokumencie liścia katalogu.
-1. `nuget:PackageDelete`: odpowiada to `PackageDelete` typu w dokumencie liścia katalogu.
+1. `nuget:PackageDetails`: odpowiada `PackageDetails` typu w dokumencie liścia katalogu.
+1. `nuget:PackageDelete`: odpowiada `PackageDelete` typowi w dokumencie liścia katalogu.
 
-Aby uzyskać więcej informacji o oznacza każdy typ, zobacz [odpowiadające elementy typu](#item-types) poniżej.
+Aby uzyskać więcej informacji na temat tego, co oznacza każdy typ, zobacz poniższe [elementy typu](#item-types) poniżej.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
@@ -153,177 +153,185 @@ Aby uzyskać więcej informacji o oznacza każdy typ, zobacz [odpowiadające ele
 
 [!code-JSON [catalog-page.json](./_data/catalog-page.json)]
 
-## <a name="catalog-leaf"></a>Wykaz liścia
+## <a name="catalog-leaf"></a>Liść katalogu
 
-Liścia wykazu zawiera metadane dotyczące określonego pakietu, identyfikator i wersja w pewnym momencie w czasie. Jest to dokument pobierane przy użyciu `@id` wartość znaleźć na stronie katalogu. Adres URL na liść katalogu nie ma być przewidywalny i powinny zostać wykryte przy użyciu tylko katalog strony.
+Liści wykazu zawiera metadane dotyczące określonego identyfikatora pakietu i wersji w pewnym momencie. Jest to dokument pobierany przy użyciu `@id` wartości znalezionej na stronie katalogu. Adres URL liścia wykazu nie może być przewidywalny i powinien zostać odnaleziony przy użyciu tylko strony katalogu.
 
-Dokument liścia wykazu jest obiekt JSON z następującymi właściwościami:
+Dokument liścia wykazu jest obiektem JSON o następujących właściwościach:
 
 Nazwa                    | Typ                       | Wymagane | Uwagi
 ----------------------- | -------------------------- | -------- | -----
-@type                   | ciąg lub tablicę ciągów | tak      | Typy elementu katalogu
-catalog:commitId        | string                     | tak      | Identyfikator zatwierdzenia skojarzone z tym elementem katalogu
-catalog:commitTimeStamp | string                     | tak      | Sygnatura czasowa zatwierdzenia tego elementu katalogu
-identyfikator                      | string                     | tak      | Identyfikator pakietu element katalogu
-Opublikowane               | string                     | tak      | Data opublikowania elementu katalogu pakietu
-version                 | string                     | tak      | Wersja pakietu element katalogu
+@type                   | ciąg lub tablica ciągów | tak      | Typy w elemencie katalogu
+Katalog: commitId        | ciąg                     | tak      | Identyfikator zatwierdzenia skojarzony z tym elementem katalogu
+Katalog: commitTimeStamp | ciąg                     | tak      | Sygnatura czasowa zatwierdzeń tego elementu katalogu
+identyfikator                      | ciąg                     | tak      | Identyfikator pakietu elementu katalogu
+publikacj               | ciąg                     | tak      | Data opublikowania elementu katalogu pakietów
+version                 | ciąg                     | tak      | Wersja pakietu elementu katalogu
 
 ### <a name="item-types"></a>Typy elementów
 
-`@type` Właściwość jest ciąg lub tablicę ciągów. Dla wygody Jeśli `@type` wartość jest ciągiem, powinny być traktowane jako tablica dowolnego rozmiaru, jeden. Nie wszystkie możliwe wartości `@type` są udokumentowane. Jednak każdy element katalogu ma dokładnie jeden z dwóch następujących wartości typu ciąg:
+`@type`Właściwość jest ciągiem lub tablicą ciągów. Dla wygody, jeśli `@type` wartość jest ciągiem, powinna być traktowana jako tablica o rozmiarze jeden. Nie wszystkie możliwe wartości `@type` są udokumentowane. Jednak każdy element katalogu ma dokładnie jedną z dwóch następujących wartości typu String:
 
-1. `PackageDetails`: reprezentuje migawkę metadane pakietu
+1. `PackageDetails`: reprezentuje migawkę metadanych pakietu
 1. `PackageDelete`: reprezentuje pakiet, który został usunięty
 
-### <a name="package-details-catalog-items"></a>Elementy katalogu szczegóły pakietu
+### <a name="package-details-catalog-items"></a>Elementy katalogu szczegółów pakietu
 
-Elementy z typem katalogu `PackageDetails` zawierają migawkę metadane pakietu dla określonego pakietu (identyfikator i wersja połączenia). Element katalogu szczegóły pakietu jest generowana, gdy źródło pakietu wystąpi dowolne z następujących scenariuszy:
+Elementy katalogu z typem `PackageDetails` zawierają migawkę metadanych pakietu dla określonego pakietu (kombinacja identyfikatorów i wersji). Element katalogu szczegóły pakietu jest tworzony, gdy źródło pakietu napotka którykolwiek z następujących scenariuszy:
 
-1. Pakiet jest **wypchnięcie**.
-1. Pakiet jest **wymienione**.
-1. Pakiet jest **nieznajdujące się na liście**.
-1. Pakiet jest **dopasowywany**.
+1. Pakiet jest **wypychany**.
+1. Zostanie **wyświetlony**pakiet.
+1. Pakiet nie znajduje się na **liście**.
+1. Pakiet jest **przepływany**ponownie.
 
-Pakiet ze zmianą ułożenia jest administracyjne gestu, zasadniczo generujący fałszywych synchronizowaniu istniejącego pakietu, bez konieczności wprowadzania zmian do samego pakietu. W witrynie nuget.org ze zmianą ułożenia jest używany po naprawieniu błędu w jednym z zadań w tle, które zużywają katalogu.
+Ponowne przepływanie pakietu to gest administracyjny, który zasadniczo generuje fałszywe wypchnięcie istniejącego pakietu bez wprowadzania zmian w samym pakiecie. W przypadku nuget.org jest używany ponownie przepływ po naprawieniu błędu w jednym z zadań w tle, które wykorzystują wykaz.
 
-Klientom korzystanie z elementów katalogu, nie należy próbować ustalić, który z tych scenariuszy wyprodukowany element katalogu. Zamiast tego klienta należy po prostu zaktualizuj ani utrzymywane w dobrym stanie widoku indeksu przy użyciu metadanych zawartych w elemencie katalogu. Ponadto elementy katalogu zduplikowane lub nadmiarowe z niepoprawnymi bez problemu zmieniała (idempotently).
+Klienci korzystający z elementów wykazu nie powinni próbować ustalić, które z tych scenariuszy wygenerowały element katalogu. Zamiast tego klient powinien po prostu zaktualizować każdy obsługiwany widok lub indeks za pomocą metadanych zawartych w elemencie katalogu. Ponadto zduplikowane lub nadmiarowe elementy katalogu powinny być obsłużone bezpiecznie (idempotently).
 
-Elementy katalogu szczegóły pakietu mają następujące właściwości oprócz tych [uwzględnione na wszystkich pozostawia katalogu](#catalog-leaf).
+Elementy katalogu szczegóły pakietu zawierają następujące właściwości oprócz tych [uwzględnionych we wszystkich liściach katalogu](#catalog-leaf).
 
 Nazwa                    | Typ                       | Wymagane | Uwagi
 ----------------------- | -------------------------- | -------- | -----
-Autorzy                 | string                     | Brak       |
-Utworzone                 | string                     | Brak       | Sygnatura czasowa systemu, gdy pakiet został utworzony po raz pierwszy. Właściwości rezerwowego: `published`.
-dependencyGroups        | Tablica obiektów           | Brak       | Zależności pakietu, pogrupowane według platformy docelowej ([tego samego formatu co zasób metadanych pakietu](registration-base-url-resource.md#package-dependency-group))
-Ogłoszone jako przestarzałe             | object                     | Brak       | Ogłoszone jako przestarzałe, skojarzone z pakietem ([tego samego formatu co zasób metadanych pakietu](registration-base-url-resource.md#package-deprecation))
-opis             | string                     | Brak       |
-iconUrl                 | string                     | Brak       |
-isPrerelease            | wartość logiczna                    | Brak       | Określa, czy wersja pakietu jest wstępna. Może zostać wykryte z `version`.
-język                | string                     | Brak       |
-licenseUrl              | string                     | Brak       |
-wymienione                  | wartość logiczna                    | Brak       | Określa, czy pakiet zostanie wyświetlony
-Atrybut MinClientVersion        | string                     | Brak       |
-packageHash             | string                     | tak      | Skrót pakietu, kodowanie za pomocą [standardowa base 64](https://tools.ietf.org/html/rfc4648#section-4)
-packageHashAlgorithm    | string                     | tak      |
-packageSize             | integer                    | tak      | Rozmiar .nupkg pakietu w bajtach
-projectUrl              | string                     | Brak       |
-releaseNotes            | string                     | Brak       |
-requireLicenseAgreement | wartość logiczna                    | Brak       | Załóżmy `false` Jeśli wykluczone
-podsumowanie                 | string                     | Brak       |
-tagi                    | Tablica ciągów           | Brak       |
-title                   | string                     | Brak       |
-verbatimVersion         | string                     | Brak       | Ciąg wersji, ponieważ pierwotnie został znaleziony w .nuspec
+autorów                 | ciąg                     | nie       |
+utworzony                 | ciąg                     | nie       | Sygnatura czasowa pierwszego utworzenia pakietu. Właściwość rezerwowa: `published` .
+dependencyGroups        | Tablica obiektów           | nie       | Zależności pakietu pogrupowane według platformy docelowej ([ten sam format, w którym znajduje się zasób metadanych pakietu](registration-base-url-resource.md#package-dependency-group))
+Amortyzacja             | object                     | nie       | Zaniechano skojarzone z pakietem ([ten sam format, w którym znajduje się zasób metadanych pakietu](registration-base-url-resource.md#package-deprecation))
+description             | ciąg                     | nie       |
+iconUrl                 | ciąg                     | nie       |
+isPrerelease            | wartość logiczna                    | nie       | Czy wersja pakietu jest w wersji wstępnej. Można wykryć z programu `version` .
+language                | ciąg                     | nie       |
+licenseUrl              | ciąg                     | nie       |
+wymienione                  | wartość logiczna                    | nie       | Czy pakiet znajduje się na liście
+minClientVersion        | ciąg                     | nie       |
+packageHash             | ciąg                     | tak      | Skrót pakietu, kodowanie przy użyciu [standardowej bazowej 64](https://tools.ietf.org/html/rfc4648#section-4)
+packageHashAlgorithm    | ciąg                     | tak      |
+packageSize             | liczba całkowita                    | tak      | Rozmiar pakietu. NUPKG w bajtach
+packageTypes            | Tablica obiektów           | nie       | Typy pakietów określone przez autora.
+projectUrl              | ciąg                     | nie       |
+releaseNotes            | ciąg                     | nie       |
+requireLicenseAgreement | wartość logiczna                    | nie       | Przyjmij, `false` Jeśli wykluczone
+summary                 | ciąg                     | nie       |
+tags                    | tablica ciągów           | nie       |
+tytuł                   | ciąg                     | nie       |
+verbatimVersion         | ciąg                     | nie       | Ciąg wersji, który został pierwotnie odnaleziony w. nuspec
 
-Pakiet `version` właściwości jest ciągiem pełnej wersji po normalizacji. Oznacza to, że dane kompilacji SemVer 2.0.0 można uwzględnić w tym miejscu.
+Właściwość Package `version` jest pełnym ciągiem wersji po normalizacji. Oznacza to, że w tym miejscu można uwzględnić dane kompilacji SemVer 2.0.0.
 
-`created` Sygnatura czasowa jest pakiet najpierw zostało odebrane przez źródło pakietu, który jest zazwyczaj przez krótki czas przed elementami katalogu zatwierdzenia z sygnaturą czasową.
+`created`Sygnatura czasowa jest w momencie, gdy pakiet został po raz pierwszy odebrany przez źródło pakietu, czyli zwykle skracany przed upływem sygnatury czasowej zatwierdzania elementu katalogu.
 
-`packageHashAlgorithm` Jest ciągiem, który został zdefiniowany przez implementację serwera reprezentujący algorytmu wyznaczania wartości skrótu, użyta do wyprodukowania `packageHash`. zawsze używane w witrynie nuget.org `packageHashAlgorithm` wartość `SHA512`.
+`packageHashAlgorithm`Jest to ciąg zdefiniowany przez implementację serwera reprezentującą algorytm wyznaczania wartości skrótu używany do tworzenia `packageHash` . nuget.org zawsze używać `packageHashAlgorithm` wartości `SHA512` .
 
-`published` Sygnatura czasowa jest czas, gdy pakiet został wymieniony ostatnio.
+`packageTypes`Właściwość będzie obecna tylko wtedy, gdy typ pakietu został określony przez autora. Jeśli jest obecny, zawsze będzie mieć co najmniej jeden wpis (1). Każdy element w `packageTypes` tablicy jest obiektem JSON o następujących właściwościach:
+
+Nazwa      | Typ    | Wymagane | Uwagi
+--------- | ------- | -------- | -----
+name      | ciąg  | tak      | Nazwa typu pakietu.
+version    | ciąg  | nie       | Wersja typu pakietu. Tylko wtedy, gdy autor jawnie określił wersję w nuspec.
+
+`published`Sygnatura czasowa to godzina, o której pakiet był ostatnio wyświetlany.
 
 > [!Note]
-> W witrynie nuget.org `published` ma wartość roku 1900, gdy pakiet jest nieobecne na liście.
+> W `published` przypadku NuGet.org wartość jest ustawiana na rok 1900, gdy pakiet zostanie wystawiony.
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 
-POBIERZ https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
+Pobierzhttps://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
 
 #### <a name="sample-response"></a>Przykładowa odpowiedź
 
 [!code-JSON [catalog-package-details.json](./_data/catalog-package-details.json)]
 
-### <a name="package-delete-catalog-items"></a>Elementy katalogu usuwania pakietów
+### <a name="package-delete-catalog-items"></a>Pakiet usuwania elementów katalogu
 
-Elementy z typem katalogu `PackageDelete` zawierać minimalny zestaw informacji wskazujących klientom katalogu, że pakiet został usunięty ze źródła pakietu i nie jest już dostępna w kontekście operacji pakietu (np. przywracanie).
+Elementy katalogu o typie `PackageDelete` zawierają minimalny zestaw informacji wskazujący klientom wykazu, że pakiet został usunięty ze źródła pakietu i nie jest już dostępny dla żadnej operacji pakietu (na przykład przywracania).
 
 > [!NOTE]
-> Istnieje możliwość pakietu do usunięcia i później ponownie opublikować przy użyciu tego samego Identyfikatora pakietu i wersję. W witrynie nuget.org jest to bardzo rzadkich przypadkach, ponieważ powoduje przerwanie oficjalne klienta założenie, że identyfikator pakietu i wersję implikują zawartości określonego pakietu. Aby uzyskać więcej informacji na temat usuwania pakietów w witrynie nuget.org, zobacz [nasze zasady](../nuget-org/policies/deleting-packages.md).
+> Istnieje możliwość usunięcia pakietu i jego późniejszej publikacji ponownie przy użyciu tego samego identyfikatora pakietu i wersji. W systemie nuget.org jest to bardzo rzadki przypadek, ponieważ przerwie oficjalne założenie klienta, że identyfikator pakietu i wersja implikują określoną zawartość pakietu. Aby uzyskać więcej informacji na temat usuwania pakietów na nuget.org, zobacz [nasze zasady](../nuget-org/policies/deleting-packages.md).
 
-Elementy katalogu usuwania pakietu mają żadne dodatkowe właściwości, oprócz tych [uwzględnione na wszystkich pozostawia katalogu](#catalog-leaf).
+Elementy katalogu usuwania pakietów nie mają dodatkowych właściwości oprócz tych [uwzględnionych na liście liści wszystkich katalogów](#catalog-leaf).
 
-`version` Właściwość jest oryginalny ciąg wersji w .nuspec pakietu.
+`version`Właściwość to oryginalny ciąg wersji znaleziony w pakiecie. nuspec.
 
-`published` Właściwość jest czas, gdy pakiet został usunięty, jest zazwyczaj krótki czas przed elementami katalogu zatwierdzenia z sygnaturą czasową.
+`published`Właściwość to czas, przez który został usunięty pakiet, który jest zazwyczaj krótszy niż czas przed zatwierdzeniem elementu katalogu.
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 
-POBIERZ https://api.nuget.org/v3/catalog0/data/2017.11.02.00.40.00/netstandard1.4_lib.1.0.0-test.json
+Pobierzhttps://api.nuget.org/v3/catalog0/data/2017.11.02.00.40.00/netstandard1.4_lib.1.0.0-test.json
 
 #### <a name="sample-response"></a>Przykładowa odpowiedź
 
 [!code-JSON [catalog-package-delete.json](./_data/catalog-package-delete.json)]
 
-## <a name="cursor"></a>Kursor
+## <a name="cursor"></a>Biera
 
 ### <a name="overview"></a>Omówienie
 
-W tej sekcji opisano pojęcia klienta, który, chociaż nie jest zawsze wymagany przez protokół, powinien należeć implementacji klienta praktyczne katalogu.
+W tej sekcji opisano koncepcje klienta, które mimo że nie jest to konieczne przez protokół, powinny być częścią każdej praktycznej implementacji klienta katalogu.
 
-Ponieważ katalog jest strukturą danych tylko do dołączania indeksowane według czasu, klienta należy przechowywać **kursora** lokalnie, nawet w jakim punkcie czasu klienta został przetworzony elementów katalogu. Należy pamiętać o tym, czy ta wartość kursora powinny nigdy nie są generowane przy użyciu zegar komputera klienta. Zamiast tego wartość powinny pochodzić z obiekt wykazu `commitTimestamp` wartość.
+Ze względu na to, że katalog jest strukturą danych tylko do dołączenia indeksowanym przez czas, klient powinien przechowywać **kursor** lokalnie, co oznacza, że punkt w czasie klient przetworzył elementy katalogu. Należy pamiętać, że ta wartość kursora nigdy nie powinna być generowana przy użyciu zegara komputera klienta. Zamiast tego wartość powinna pochodzić z wartości obiektu katalogu `commitTimestamp` .
 
-Za każdym razem, gdy klient chce przetwarzać nowych zdarzeń w źródle pakietu, musi on zapytania katalogu dla wszystkich elementów wykazu z sygnaturą czasową zatwierdzenia większa niż jego przechowywanej kursora. Po klient pomyślnie przetwarza wszystkie nowe elementy katalogu, rejestruje najnowszą sygnaturę czasową zatwierdzania elementów katalogu, po prostu są przetwarzane jako jego nowej wartości kursora.
+Za każdym razem, gdy klient chce przetwarzać nowe zdarzenia w źródle pakietów, musi tylko wysyłać zapytania do wykazu dla wszystkich elementów wykazu z sygnaturą czasową zatwierdzania większą niż jej przechowywany kursor. Gdy klient pomyślnie przetworzy wszystkie nowe elementy katalogu, rejestruje najnowsze sygnatury czasowe zatwierdzania elementów katalogu, które zostały przetworzone w postaci nowej wartości kursora.
 
-W ten sposób klient mieć pewność, że nigdy nie przegap wszelkie zdarzenia pakietu, które wystąpiły w źródle pakietu.
-Ponadto klient nigdy nie ma ponownie przetworzyć starych zdarzeń przed sygnatura czasowa zarejestrowane zatwierdzenia znajduje się kursor.
+Korzystając z tej metody, klient może zawsze pominąć wszystkie zdarzenia pakietu, które wystąpiły w źródle pakietu.
+Ponadto klient nigdy nie musi ponownie przetwarzać starych zdarzeń przed zapisaną sygnaturą czasową zatwierdzania kursora.
 
-Zaawansowanych koncepcji kursory jest używany dla wielu zadań w tle nuget.org i jest używana w celu zapewnienia aktualności sam interfejs API w wersji 3. 
+Ta zaawansowana koncepcja kursorów jest używana dla wielu zadań w tle nuget.org i służy do zapewnienia aktualności interfejsu API v3. 
 
 ### <a name="initial-value"></a>Wartość początkowa
 
-Gdy klient wykazu jest uruchamiana po raz pierwszy (i w związku z tym nie ma wartości kursora), powinna korzystać domyślną wartość kursora. NET firmy `System.DateTimeOffset.MinValue` lub takie analogiczne pojęcie minimalnych stałego sygnatury czasowej.
+Gdy klient wykazu jest uruchamiany po raz pierwszy (i w związku z tym nie ma wartości kursora), powinien używać domyślnej wartości kursora. Sieć `System.DateTimeOffset.MinValue` lub inne analogiczne pojęcie dotyczące minimalnej reprezentacji sygnatury czasowej.
 
-### <a name="iterating-over-catalog-items"></a>Iterowanie po elementów katalogu
+### <a name="iterating-over-catalog-items"></a>Iterowanie przez elementy katalogu
 
-Aby wyszukać kolejny zbiór elementów katalogu do przetwarzania, klient powinien:
+Aby wykonać zapytanie dotyczące następnego zestawu elementów katalogu do przetworzenia, klient powinien:
 
-1. Pobierz wartość zarejestrowane kursora z lokalnego magazynu.
-1. Pobierz i deserializować indeks katalogu.
-1. Znajdź wszystkie strony z sygnaturą czasową zatwierdzenia z katalogu *większa* kursora.
-1. Deklarować pustej listy elementów katalogu do przetworzenia.
-1. Dla każdej strony katalogu dopasowywane w kroku 3:
-   1. Pobierz i zdeserializować strony katalogu.
-   1. Znajdź wszystkie elementy z sygnaturą czasową zatwierdzenia katalogu *większa* kursora.
-   1. Dodaj wszystkie zgodne elementy katalogu, do listy zadeklarowane w kroku 4.
-1. Sortowanie listy elementów katalogu według sygnatur czasowych zatwierdzenia.
-1. Proces każdego elementu katalogu, w kolejności:
-   1. Pobierz i wykonać deserializacji elementu katalogu.
-   1. Reagować odpowiednio do typu elementu wykazu.
-   1. Proces dokumentu elementów katalogu w sposób specyficzne dla klienta.
-1. Zapisz znacznik czasu: ostatni element katalogu zatwierdzenia jako nową wartość kursora.
+1. Pobierz wartość zapisanego kursora z lokalnego magazynu.
+1. Pobierz i deserializacji indeks wykazu.
+1. Znajdź wszystkie strony wykazu z sygnaturą czasową zatwierdzenia *większą od* kursora.
+1. Zadeklaruj pustą listę elementów wykazu do przetworzenia.
+1. Dla każdej strony katalogu dopasowanej w kroku 3:
+   1. Pobierz i deserializacji stronę wykazu.
+   1. Znajdź wszystkie elementy wykazu z sygnaturą czasową zatwierdzenia *większą niż* kursor.
+   1. Dodaj wszystkie zgodne elementy katalogu do listy zadeklarowanej w kroku 4.
+1. Posortuj listę elementów katalogu przez Zatwierdź sygnaturę czasową.
+1. Przetwarzaj każdy element katalogu w sekwencji:
+   1. Pobierz i deserializacji elementu katalogu.
+   1. Odpowiednie reagowanie na typ elementu katalogu.
+   1. Przetwarzanie dokumentu elementu katalogu w sposób specyficzny dla klienta.
+1. Zapisz sygnaturę czasową zatwierdzenia ostatniego elementu katalogu jako nową wartość kursora.
 
-Z tego podstawowego algorytmu implementacji klienta mogą kumulować się pełny przegląd wszystkich pakietów dostępny w źródle pakietu. Klienta należy wykonywać tylko ten algorytm okresowo, aby zawsze pamiętaj o najnowsze zmiany do źródła pakietu.
+Przy użyciu tego podstawowego algorytmu implementacja klienta może utworzyć pełny widok wszystkich pakietów dostępnych w źródle pakietu. Klient musi wykonywać ten algorytm okresowo tylko w celu uzyskania najnowszych zmian w źródle pakietu.
 
 > [!Note]
-> Jest to algorytm korzysta z tego repozytorium nuget.org zapewnienie [metadane pakietów](registration-base-url-resource.md), [zawartość pakietu](package-base-address-resource.md), [wyszukiwania](search-query-service-resource.md) i [autouzupełniania](search-autocomplete-service-resource.md) zasoby na bieżąco.
+> Jest to algorytm używany przez nuget.org do przechowywania [metadanych pakietu](registration-base-url-resource.md), [zawartości pakietu](package-base-address-resource.md), [wyszukiwania](search-query-service-resource.md) i [automatycznego uzupełniania](search-autocomplete-service-resource.md) zasobów.
 
 ### <a name="dependent-cursors"></a>Kursory zależne
 
-Załóżmy, że istnieją dwóch klientów katalogu, które mają zależności związane, w których danych wyjściowych jednego klienta zależy od innego klienta w danych wyjściowych. 
+Załóżmy, że istnieją dwaj klienci wykazu, którzy mają nieodłączną zależność, gdzie dane wyjściowe jednego klienta są zależne od innego klienta. 
 
 #### <a name="example"></a>Przykład
 
-Na przykład w witrynie nuget.org nowo opublikowany pakiet nie powinny być wyświetlane w zasobie wyszukiwania przed wyświetleniem zasób metadanych pakietu. Jest to spowodowane "Przywracanie" wykonywane przez oficjalne klienta programu NuGet korzysta z zasobów metadanych pakietu. Jeśli klient wykryje pakiet przy użyciu usługi search, należy można pomyślnie przywrócić tego pakietu przy użyciu zasób metadanych pakietu. Innymi słowy zasobów wyszukiwania zależy od zasobu metadanych pakietu. Każdy zasób ma wykazu klienta zadania w tle aktualizacji tego zasobu. Każdy klient ma swój własny kursora.
+Na przykład w przypadku nuget.org nowo opublikowany pakiet nie powinien być wyświetlany w zasobie wyszukiwania przed wyświetleniem go w zasobie metadanych pakietu. Wynika to z faktu, że operacja "Restore" wykonywana przez oficjalnego klienta NuGet używa zasobu metadanych pakietu. Jeśli klient odnajduje pakiet za pomocą usługi Search, powinien mieć możliwość pomyślnego przywrócenia tego pakietu przy użyciu zasobu metadanych pakietu. Innymi słowy, zasób wyszukiwania zależy od zasobu metadanych pakietu. Każdy zasób ma zadanie w tle klienta wykazujące aktualizację tego zasobu. Każdy klient ma swój własny kursor.
 
-Ponieważ oba zasoby są tworzone zniżki w stosunku do katalogu, kursor klienta katalogu, który aktualizuje zasób wyszukiwania *musi wykracza poza* kursora klienta wykazu metadanych pakietu.
+Ponieważ oba zasoby są zbudowane z wykazu, kursor klienta katalogu, który aktualizuje zasób wyszukiwania, *nie może wykraczać poza* kursor klienta katalogu metadanych pakietu.
 
 #### <a name="algorithm"></a>Algorytm
 
-Aby zaimplementować to ograniczenie, po prostu zmodyfikuj powyżej, aby być algorytmu:
+Aby zaimplementować to ograniczenie, wystarczy zmodyfikować algorytm powyżej, aby:
 
-1. Pobierz wartość zarejestrowane kursora z lokalnego magazynu.
-1. Pobierz i deserializować indeks katalogu.
-1. Znajdź wszystkie strony z sygnaturą czasową zatwierdzenia z katalogu *większa* kursor **mniejsze niż lub równe kursora zależności.**
-1. Deklarować pustej listy elementów katalogu do przetworzenia.
-1. Dla każdej strony katalogu dopasowywane w kroku 3:
-   1. Pobierz i zdeserializować strony katalogu.
-   1. Znajdź wszystkie elementy z sygnaturą czasową zatwierdzenia katalogu *większa* kursor **mniejsze niż lub równe kursora zależności.**
-   1. Dodaj wszystkie zgodne elementy katalogu, do listy zadeklarowane w kroku 4.
-1. Sortowanie listy elementów katalogu według sygnatur czasowych zatwierdzenia.
-1. Proces każdego elementu katalogu, w kolejności:
-   1. Pobierz i wykonać deserializacji elementu katalogu.
-   1. Reagować odpowiednio do typu elementu wykazu.
-   1. Proces dokumentu elementów katalogu w sposób specyficzne dla klienta.
-1. Zapisz znacznik czasu: ostatni element katalogu zatwierdzenia jako nową wartość kursora.
+1. Pobierz wartość zapisanego kursora z lokalnego magazynu.
+1. Pobierz i deserializacji indeks wykazu.
+1. Znajdź wszystkie strony wykazu z sygnaturą czasową zatwierdzania *większą niż* kursor **krótszy niż lub równy kursorowi zależności.**
+1. Zadeklaruj pustą listę elementów wykazu do przetworzenia.
+1. Dla każdej strony katalogu dopasowanej w kroku 3:
+   1. Pobierz i deserializacji stronę wykazu.
+   1. Znajdź wszystkie elementy wykazu z sygnaturą czasową zatwierdzenia *większą niż* kursor, który jest **mniejszy niż lub równy kursorowi zależności.**
+   1. Dodaj wszystkie zgodne elementy katalogu do listy zadeklarowanej w kroku 4.
+1. Posortuj listę elementów katalogu przez Zatwierdź sygnaturę czasową.
+1. Przetwarzaj każdy element katalogu w sekwencji:
+   1. Pobierz i deserializacji elementu katalogu.
+   1. Odpowiednie reagowanie na typ elementu katalogu.
+   1. Przetwarzanie dokumentu elementu katalogu w sposób specyficzny dla klienta.
+1. Zapisz sygnaturę czasową zatwierdzenia ostatniego elementu katalogu jako nową wartość kursora.
 
-Przy użyciu tego algorytmu zmodyfikowane, możesz tworzyć system klientów zależnych wykaz wszystkich tworzenie własnych określonych indeksów, artefakty, itp.
+Korzystając z tego zmodyfikowanego algorytmu, można utworzyć system zależnych klientów wykazu do tworzenia własnych określonych indeksów, artefaktów itp.

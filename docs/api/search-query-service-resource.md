@@ -6,34 +6,38 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: be25e9bf72b9115de8ae55f6296195fed3152f10
-ms.sourcegitcommit: ac9a00ccaf90e539a381e92b650074910b21eb0d
+ms.openlocfilehash: aed591ceba00f1820a573eacf312112db0a1c69e
+ms.sourcegitcommit: 7e9c0630335ef9ec1e200e2ee9065f702e52a8ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70235125"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85292280"
 ---
-# <a name="search"></a>Wyszukaj
+# <a name="search"></a>Wyszukiwanie
 
 Istnieje możliwość wyszukiwania pakietów dostępnych w źródle pakietów przy użyciu interfejsu API v3. Zasób używany do wyszukiwania jest `SearchQueryService` zasobem znalezionym w [indeksie usługi](service-index.md).
 
-## <a name="versioning"></a>Przechowywanie wersji
+## <a name="versioning"></a>Obsługa wersji
 
-Są używane `@type` następujące wartości:
+`@type`Są używane następujące wartości:
 
 @typewartościami                   | Uwagi
 ----------------------------- | -----
 SearchQueryService            | Początkowa wersja
-SearchQueryService/3.0.0-beta | Alias`SearchQueryService`
-SearchQueryService/3.0.0-rc   | Alias`SearchQueryService`
+SearchQueryService/3.0.0 — beta | Alias`SearchQueryService`
+SearchQueryService/3.0.0-RC   | Alias`SearchQueryService`
+SearchQueryService/3.5.0      | Obejmuje obsługę `packageType` parametru zapytania
+
+### <a name="searchqueryservice350"></a>SearchQueryService/3.5.0
+Ta wersja wprowadza obsługę `packageType` parametrów zapytania i `packageTypes` właściwość Response, umożliwiając filtrowanie według typów pakietów zdefiniowanych przez autora. Jest w pełni zgodna z poprzednimi wersjami zapytań `SearchQueryService` .
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
-Podstawowy adres URL następującego interfejsu API to wartość `@id` właściwości skojarzonej z jedną z wymienionych powyżej wartości zasobów. `@type` W poniższym dokumencie zostanie użyty symbol zastępczy podstawowego `{@id}` adresu URL.
+Podstawowy adres URL następującego interfejsu API to wartość `@id` Właściwości skojarzonej z jedną z wymienionych powyżej `@type` wartości zasobów. W poniższym dokumencie zostanie użyty symbol zastępczy podstawowego adresu URL `{@id}` .
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Wszystkie adresy URL znajdujące się w zasobie rejestracji obsługują `GET` metody `HEAD`http i.
+Wszystkie adresy URL znajdujące się w zasobie rejestracji obsługują metody HTTP `GET` i `HEAD` .
 
 ## <a name="search-for-packages"></a>Wyszukaj pakiety
 
@@ -41,29 +45,34 @@ Interfejs API wyszukiwania umożliwia klientowi wykonywanie zapytań dotyczącyc
 
 Nieznajdujący się na liście pakiet nigdy nie powinien być wyświetlany w wynikach wyszukiwania.
 
-    GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
+    GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}&packageType={PACKAGETYPE}
 
 ### <a name="request-parameters"></a>Parametry żądania
 
 Nazwa        | W     | Typ    | Wymagane | Uwagi
 ----------- | ------ | ------- | -------- | -----
-q           | Adres URL    | string  | znaleziono       | Terminy wyszukiwania używane do filtrowania pakietów
-Pomiń        | Adres URL    | integer | znaleziono       | Liczba wyników do pominięcia na stronie stronicowania
-czasochłonn        | Adres URL    | integer | znaleziono       | Liczba wyników do zwrócenia, na stronie stronicowania
-wersja wstępna  | Adres URL    | wartość logiczna | znaleziono       | `true`lub `false` określając, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
-semVerLevel | Adres URL    | string  | znaleziono       | Ciąg wersji SemVer 1.0.0 
+q           | Adres URL    | ciąg  | nie       | Terminy wyszukiwania używane do filtrowania pakietów
+Pomiń        | Adres URL    | liczba całkowita | nie       | Liczba wyników do pominięcia na stronie stronicowania
+czasochłonn        | Adres URL    | liczba całkowita | nie       | Liczba wyników do zwrócenia, na stronie stronicowania
+wersja wstępna  | Adres URL    | wartość logiczna | nie       | `true`lub `false` określając, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
+semVerLevel | Adres URL    | ciąg  | nie       | Ciąg wersji SemVer 1.0.0 
+packageType | Adres URL    | ciąg  | nie       | Typ pakietu, który ma być używany do filtrowania pakietów (dodana w `SearchQueryService/3.5.0` )
 
-Zapytanie `q` wyszukiwania jest analizowane w sposób zdefiniowany przez implementację serwera. nuget.org obsługuje podstawowe filtrowanie w [różnych polach](../consume-packages/finding-and-choosing-packages.md#search-syntax). Jeśli nie `q` podano żadnego z nich, wszystkie pakiety powinny być zwracane, w granicach nałożonych przez Skip i Take. Spowoduje to włączenie karty "Przeglądaj" w środowisku NuGet programu Visual Studio.
+Zapytanie wyszukiwania `q` jest analizowane w sposób zdefiniowany przez implementację serwera. nuget.org obsługuje podstawowe filtrowanie w [różnych polach](../consume-packages/finding-and-choosing-packages.md#search-syntax). Jeśli nie `q` podano żadnego z nich, wszystkie pakiety powinny być zwracane, w granicach nałożonych przez Skip i Take. Spowoduje to włączenie karty "Przeglądaj" w środowisku NuGet programu Visual Studio.
 
 Wartość `skip` domyślna parametru to 0.
 
-`take` Parametr powinien być liczbą całkowitą większą od zera. Implementacja serwera może mieć wartość maksymalną.
+`take`Parametr powinien być liczbą całkowitą większą od zera. Implementacja serwera może mieć wartość maksymalną.
 
 Jeśli `prerelease` nie jest podany, pakiety wersji wstępnej są wykluczone.
 
-Parametr zapytania jest używany do wybierania [pakietów SemVer 2.0.0.](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29#identifying-semver-v200-packages) `semVerLevel`
+`semVerLevel`Parametr zapytania jest używany do wybierania [pakietów SemVer 2.0.0](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29#identifying-semver-v200-packages).
 Jeśli ten parametr zapytania jest wykluczony, zwracane są tylko pakiety z wersjami zgodnymi z programem SemVer 1.0.0 (ze standardowymi ostrzeżeniami dotyczącymi [wersji NuGet](../concepts/package-versioning.md) , takimi jak ciągi wersji z 4 liczbami całkowitymi).
 Jeśli `semVerLevel=2.0.0` jest podany, zwracane są zgodne z SemVer 1.0.0 i SemVer 2.0.0. Aby uzyskać więcej informacji, zobacz [SemVer 2.0.0 support for NuGet.org](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29) .
+
+Ten `packageType` parametr służy do dalszej odfiltrowania wyników wyszukiwania tylko do pakietów, które mają co najmniej jeden typ pakietu zgodny z nazwą typu pakietu.
+Jeśli podany typ pakietu nie jest prawidłowym typem pakietu zdefiniowanym przez [dokument typu pakietu](https://github.com/NuGet/Home/wiki/Package-Type-%5BPacking%5D), zostanie zwrócony pusty wynik.
+Jeśli podany typ pakietu jest pusty, żaden filtr nie zostanie zastosowany. Innymi słowy, przekazywanie żadnej wartości do parametru PackageType będzie zachowywać się tak, jakby parametr nie został przekazano.
 
 ### <a name="response"></a>Odpowiedź
 
@@ -73,7 +82,7 @@ Główny obiekt JSON ma następujące właściwości:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-totalHits | integer          | tak      | Łączna liczba dopasowań, odnoszących `skip` się do i`take`
+totalHits | liczba całkowita          | tak      | Łączna liczba dopasowań, odnoszących się `skip` do i`take`
 dane      | Tablica obiektów | tak      | Wyniki wyszukiwania dopasowane przez żądanie
 
 ### <a name="search-result"></a>Wynik wyszukiwania
@@ -83,21 +92,22 @@ Obiekt ma następujące właściwości:
 
 Nazwa           | Typ                       | Wymagane | Uwagi
 -------------- | -------------------------- | -------- | -----
-identyfikator             | string                     | tak      | Identyfikator dopasowanego pakietu
-version        | string                     | tak      | Pełny SemVer 2.0.0 wersji pakietu (może zawierać metadane kompilacji)
-opis    | string                     | znaleziono       | 
-wersje       | Tablica obiektów           | tak      | Wszystkie wersje pakietu pasujące do `prerelease` parametru
-autorów        | ciąg lub tablica ciągów | znaleziono       | 
-iconUrl        | string                     | znaleziono       | 
-licenseUrl     | string                     | znaleziono       | 
-rzecz         | ciąg lub tablica ciągów | znaleziono       | 
-projectUrl     | string                     | znaleziono       | 
-rejestracja   | string                     | znaleziono       | Bezwzględny adres URL ze skojarzonym [indeksem rejestracji](registration-base-url-resource.md#registration-index)
-podsumowanie        | string                     | znaleziono       | 
-tagi           | ciąg lub tablica ciągów | znaleziono       | 
-title          | string                     | znaleziono       | 
-totalDownloads | integer                    | znaleziono       | Ta wartość może zostać wywnioskowana przez sumę pobrań w `versions` tablicy
-sprawdzić       | wartość logiczna                    | znaleziono       | Wartość logiczna JSON wskazująca, czy pakiet jest [zweryfikowany](../nuget-org/id-prefix-reservation.md)
+identyfikator             | ciąg                     | tak      | Identyfikator dopasowanego pakietu
+version        | ciąg                     | tak      | Pełny SemVer 2.0.0 wersji pakietu (może zawierać metadane kompilacji)
+description    | ciąg                     | nie       | 
+versions (wersje)       | Tablica obiektów           | tak      | Wszystkie wersje pakietu pasujące do `prerelease` parametru
+autorów        | ciąg lub tablica ciągów | nie       | 
+iconUrl        | ciąg                     | nie       | 
+licenseUrl     | ciąg                     | nie       | 
+rzecz         | ciąg lub tablica ciągów | nie       | 
+projectUrl     | ciąg                     | nie       | 
+rejestracja   | ciąg                     | nie       | Bezwzględny adres URL ze skojarzonym [indeksem rejestracji](registration-base-url-resource.md#registration-index)
+summary        | ciąg                     | nie       | 
+tags           | ciąg lub tablica ciągów | nie       | 
+tytuł          | ciąg                     | nie       | 
+totalDownloads | liczba całkowita                    | nie       | Ta wartość może zostać wywnioskowana przez sumę pobrań w `versions` tablicy
+sprawdzić       | wartość logiczna                    | nie       | Wartość logiczna JSON wskazująca, czy pakiet jest [zweryfikowany](../nuget-org/id-prefix-reservation.md)
+packageTypes   | Tablica obiektów           | tak      | Typy pakietów zdefiniowane przez autora pakietu (dodane w `SearchQueryService/3.5.0` )
 
 W systemie nuget.org zweryfikowany pakiet to taki, który ma identyfikator pakietu pasujący do zastrzeżonego prefiksu identyfikatora i należy do jednego z właścicieli zastrzeżonego prefiksu. Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą rezerwacji prefiksów identyfikatorów](../reference/id-prefix-reservation.md).
 
@@ -105,9 +115,15 @@ Metadane zawarte w obiekcie wynik wyszukiwania są pobierane z najnowszej wersji
 
 Nazwa      | Typ    | Wymagane | Uwagi
 --------- | ------- | -------- | -----
-@id       | string  | tak      | Bezwzględny adres URL do skojarzonego [liścia rejestracji](registration-base-url-resource.md#registration-leaf)
-version   | string  | tak      | Pełny SemVer 2.0.0 wersji pakietu (może zawierać metadane kompilacji)
-proces | integer | tak      | Liczba pobrań dla tej konkretnej wersji pakietu
+@id       | ciąg  | tak      | Bezwzględny adres URL do skojarzonego [liścia rejestracji](registration-base-url-resource.md#registration-leaf)
+version   | ciąg  | tak      | Pełny SemVer 2.0.0 wersji pakietu (może zawierać metadane kompilacji)
+pliki do pobrania | liczba całkowita | tak      | Liczba pobrań dla tej konkretnej wersji pakietu
+
+`packageTypes`Tablica będzie zawsze składać się z co najmniej jednego elementu (1). Typ pakietu dla danego identyfikatora pakietu jest uznawany za typy pakietów zdefiniowane przez najnowszą wersję pakietu w odniesieniu do innych parametrów wyszukiwania. Każdy element w `packageTypes` tablicy jest obiektem JSON o następujących właściwościach:
+
+Nazwa      | Typ    | Wymagane | Uwagi
+--------- | ------- | -------- | -----
+name      | ciąg  | tak      | Nazwa typu pakietu.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
