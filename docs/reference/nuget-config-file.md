@@ -1,22 +1,22 @@
 ---
-title: Dokumentacja pliku NuGet. config
-description: Odwołanie do pliku NuGet. config, w tym sekcje config, bindingRedirects, packageRestore, Solution i packageSource.
+title: Odwołanie do pliku nuget.config
+description: NuGet.Config odwołanie do pliku, w tym sekcje config, bindingRedirects, packageRestore, Solution i packageSource.
 author: karann-msft
 ms.author: karann
 ms.date: 08/13/2019
 ms.topic: reference
-ms.openlocfilehash: cd321084c46709e3d1d22872c37485edacd33afa
-ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
+ms.openlocfilehash: 760bf09cb03608275e2c5406474f572a407a7379
+ms.sourcegitcommit: f29fa9b93fd59e679fab50d7413bbf67da3ea5b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2020
-ms.locfileid: "79429130"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86451128"
 ---
-# <a name="nugetconfig-reference"></a>Dokumentacja NuGet. config
+# <a name="nugetconfig-reference"></a>Informacje nuget.config
 
-Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` lub `nuget.config` plikach, zgodnie z opisem w temacie [typowe konfiguracje NuGet](../consume-packages/configuring-nuget-behavior.md).
+Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` lub `nuget.config` plikach, zgodnie z opisem w temacie [typowe konfiguracje programu NuGet](../consume-packages/configuring-nuget-behavior.md).
 
-`nuget.config` to plik XML zawierający węzeł najwyższego poziomu `<configuration>`, który zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej elementów. Zobacz [przykład pliku konfiguracji](#example-config-file). W nazwach ustawień jest rozróżniana wielkość liter, a wartości mogą używać [zmiennych środowiskowych](#using-environment-variables).
+`nuget.config`jest plikiem XML zawierającym węzeł najwyższego poziomu `<configuration>` , który zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej elementów. Zobacz [przykład pliku konfiguracji](#example-config-file). W nazwach ustawień jest rozróżniana wielkość liter, a wartości mogą używać [zmiennych środowiskowych](#using-environment-variables).
 
 <a name="dependencyVersion"></a>
 <a name="globalPackagesFolder"></a>
@@ -25,18 +25,18 @@ Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` l
 
 ## <a name="config-section"></a>sekcja konfiguracji
 
-Zawiera różne ustawienia konfiguracji, które można ustawić za pomocą [polecenia`nuget config`](../reference/cli-reference/cli-ref-config.md).
+Zawiera różne ustawienia konfiguracji, które można ustawić za pomocą [ `nuget config` polecenia](../reference/cli-reference/cli-ref-config.md).
 
-`dependencyVersion` i `repositoryPath` mają zastosowanie tylko do projektów przy użyciu `packages.config`. `globalPackagesFolder` dotyczy tylko projektów przy użyciu formatu PackageReference.
+`dependencyVersion`i `repositoryPath` mają zastosowanie tylko do projektów korzystających z programu `packages.config` . `globalPackagesFolder`dotyczy tylko projektów przy użyciu formatu PackageReference.
 
 | Klucz | Wartość |
 | --- | --- |
-| dependencyVersion (tylko`packages.config`) | Domyślna wartość `DependencyVersion` instalacji, przywracania i aktualizacji pakietu, gdy przełącznik `-DependencyVersion` nie został określony bezpośrednio. Ta wartość jest również używana przez interfejs użytkownika Menedżera pakietów NuGet. Wartości to `Lowest`, `HighestPatch`, `HighestMinor``Highest`. |
-| globalPackagesFolder (projekty korzystające tylko z PackageReference) | Lokalizacja domyślnego folderu pakiety globalne. Wartość domyślna to `%userprofile%\.nuget\packages` (Windows) lub `~/.nuget/packages` (Mac/Linux). Ścieżka względna może być używana w plikach `nuget.config` specyficznych dla projektu. To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
-| repositoryPath (tylko`packages.config`) | Lokalizacja, w której mają zostać zainstalowane pakiety NuGet zamiast domyślnego folderu `$(Solutiondir)/packages`. Ścieżka względna może być używana w plikach `nuget.config` specyficznych dla projektu. To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
+| dependencyVersion ( `packages.config` tylko) | Wartość domyślna `DependencyVersion` instalacji, przywracania i aktualizacji pakietu, gdy `-DependencyVersion` przełącznik nie jest określony bezpośrednio. Ta wartość jest również używana przez interfejs użytkownika Menedżera pakietów NuGet. Wartości to `Lowest` , `HighestPatch` , `HighestMinor` , `Highest` . |
+| globalPackagesFolder (projekty korzystające tylko z PackageReference) | Lokalizacja domyślnego folderu pakiety globalne. Wartość domyślna to `%userprofile%\.nuget\packages` (Windows) lub `~/.nuget/packages` (Mac/Linux). Ścieżka względna może być używana w plikach specyficznych dla projektu `nuget.config` . To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
+| repositoryPath ( `packages.config` tylko) | Lokalizacja, w której mają zostać zainstalowane pakiety NuGet zamiast folderu domyślnego `$(Solutiondir)/packages` . Ścieżka względna może być używana w plikach specyficznych dla projektu `nuget.config` . To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
 | defaultPushSource | Określa adres URL lub ścieżkę źródła pakietu, które ma być używane jako wartość domyślna, jeśli nie znaleziono żadnych innych źródeł pakietów dla operacji. |
-| http_proxy http_proxy. User http_proxy. Password no_proxy | Ustawienia serwera proxy do użycia podczas nawiązywania połączenia ze źródłami pakietów; `http_proxy` powinna mieć format `http://<username>:<password>@<domain>`. Hasła są szyfrowane i nie można ich dodać ręcznie. W przypadku `no_proxy`wartość jest rozdzielaną przecinkami listą domen, które pomijają serwer proxy. Dla tych wartości można użyć zmiennych środowiskowych http_proxy i no_proxy. Aby uzyskać więcej informacji, zobacz [Ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com). |
-| signatureValidationMode | Określa tryb weryfikacji używany do weryfikowania podpisów pakietów na potrzeby instalacji pakietu i przywracania. Wartości są `accept`, `require`. Wartość domyślna to `accept`.
+| http_proxy http_proxy. User http_proxy. Password no_proxy | Ustawienia serwera proxy do użycia podczas nawiązywania połączenia ze źródłami pakietów; `http_proxy`powinien mieć format `http://<username>:<password>@<domain>` . Hasła są szyfrowane i nie można ich dodać ręcznie. W przypadku `no_proxy` , wartość jest rozdzielaną przecinkami listą domen, które pomijają serwer proxy. Dla tych wartości można użyć zmiennych środowiskowych http_proxy i no_proxy. Aby uzyskać więcej informacji, zobacz [Ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com). |
+| signatureValidationMode | Określa tryb weryfikacji używany do weryfikowania podpisów pakietów na potrzeby instalacji pakietu i przywracania. Wartości to `accept` , `require` . Wartość domyślna to `accept` .
 
 **Przykład**:
 
@@ -72,7 +72,7 @@ Kontroluje przywracanie pakietu podczas kompilacji.
 
 | Klucz | Wartość |
 | --- | --- |
-| dostępny | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić zmienną środowiskową `EnableNuGetPackageRestore` przy użyciu wartości `True` zamiast ustawienia tego klucza w pliku konfiguracji. |
+| enabled | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić dla `EnableNuGetPackageRestore` zmiennej środowiskowej wartość `True` zamiast ustawienia tego klucza w pliku konfiguracji. |
 | automatyczne | Wartość logiczna wskazująca, czy NuGet ma sprawdzać brakujące pakiety podczas kompilacji. |
 
 **Przykład**:
@@ -86,7 +86,7 @@ Kontroluje przywracanie pakietu podczas kompilacji.
 
 ## <a name="solution-section"></a>Sekcja rozwiązania
 
-Określa, czy folder `packages` rozwiązania jest uwzględniony w kontroli źródła. Ta sekcja działa tylko w `nuget.config` plikach w folderze rozwiązania.
+Określa, czy `packages` folder rozwiązania ma być uwzględniony w kontroli źródła. Ta sekcja działa tylko w `nuget.config` plikach w folderze rozwiązania.
 
 | Klucz | Wartość |
 | --- | --- |
@@ -102,15 +102,15 @@ Określa, czy folder `packages` rozwiązania jest uwzględniony w kontroli źró
 
 ## <a name="package-source-sections"></a>Sekcje źródłowe pakietu
 
-`packageSources`, `packageSourceCredentials`, `apikeys`, `activePackageSource`, `disabledPackageSources` i `trustedSigners` wszystkie współpracują ze sobą, aby skonfigurować sposób działania programu NuGet z repozytoriami pakietów podczas operacji instalowania, przywracania i aktualizowania.
+`packageSources`,, `packageSourceCredentials` `apikeys` , `activePackageSource` `disabledPackageSources` I `trustedSigners` wszystkie współpracują ze sobą, aby skonfigurować sposób działania programu NuGet z repozytoriami pakietów podczas operacji instalowania, przywracania i aktualizowania.
 
-[Polecenie`nuget sources`](../reference/cli-reference/cli-ref-sources.md) jest zwykle używane do zarządzania tymi ustawieniami, z wyjątkiem `apikeys` zarządzanych przy użyciu [polecenia`nuget setapikey`](../reference/cli-reference/cli-ref-setapikey.md), a `trustedSigners`, które jest zarządzane przy użyciu [`nuget trusted-signers` polecenia](../reference/cli-reference/cli-ref-trusted-signers.md).
+[ `nuget sources` Polecenie](../reference/cli-reference/cli-ref-sources.md) jest zwykle używane do zarządzania tymi ustawieniami, z wyjątkiem tego, `apikeys` które jest zarządzane za pomocą [ `nuget setapikey` polecenia](../reference/cli-reference/cli-ref-setapikey.md), i `trustedSigners` które jest zarządzane za pomocą [ `nuget trusted-signers` polecenia](../reference/cli-reference/cli-ref-trusted-signers.md).
 
-Należy pamiętać, że źródłowy adres URL dla nuget.org jest `https://api.nuget.org/v3/index.json`.
+Należy pamiętać, że źródłowy adres URL dla nuget.org to `https://api.nuget.org/v3/index.json` .
 
 ### <a name="packagesources"></a>packageSources
 
-Wyświetla wszystkie znane źródła pakietów. Kolejność jest ignorowana podczas operacji przywracania i dowolnego projektu przy użyciu formatu PackageReference. Pakiet NuGet szanuje kolejność źródeł dla operacji instalacji i aktualizacji z projektami przy użyciu `packages.config`.
+Wyświetla wszystkie znane źródła pakietów. Kolejność jest ignorowana podczas operacji przywracania i dowolnego projektu przy użyciu formatu PackageReference. Pakiet NuGet szanuje kolejność źródeł dla operacji instalacji i aktualizacji z projektami przy użyciu programu `packages.config` .
 
 | Klucz | Wartość |
 | --- | --- |
@@ -131,17 +131,17 @@ Wyświetla wszystkie znane źródła pakietów. Kolejność jest ignorowana podc
 
 ### <a name="packagesourcecredentials"></a>packageSourceCredentials
 
-Przechowuje nazwy użytkowników i hasła dla źródeł, zwykle określone za pomocą przełączników `-username` i `-password` z `nuget sources`. Hasła są szyfrowane domyślnie, chyba że jest również używana opcja `-storepasswordincleartext`.
+Przechowuje nazwy użytkowników i hasła dla źródeł, zwykle określone przy użyciu `-username` `-password` przełączników i `nuget sources` . Hasła są szyfrowane domyślnie, chyba że `-storepasswordincleartext` jest również używana opcja.
 
 | Klucz | Wartość |
 | --- | --- |
 | nazwa użytkownika | Nazwa użytkownika dla źródła w postaci zwykłego tekstu. |
-| hasło | Hasło zaszyfrowane dla źródła. |
-| cleartextpassword | Niezaszyfrowane hasło dla źródła. |
+| hasło | Hasło zaszyfrowane dla źródła. Hasła szyfrowane są obsługiwane tylko w systemie Windows i mogą być odszyfrowywane tylko wtedy, gdy są używane na tym samym komputerze i za pośrednictwem tego samego użytkownika co oryginalne szyfrowanie. |
+| cleartextpassword | Niezaszyfrowane hasło dla źródła. Uwaga: zmienne środowiskowe mogą być używane w celu zwiększenia bezpieczeństwa. |
 
 **Przykład:**
 
-W pliku konfiguracji element `<packageSourceCredentials>` zawiera węzły podrzędne dla każdej stosownej nazwy źródłowej (spacje w nazwie są zastępowane `_x0020_`). Oznacza to, że w przypadku źródeł o nazwach "contoso" i "Źródło testowe" plik konfiguracyjny zawiera następujące dane w przypadku korzystania z szyfrowanych haseł:
+W pliku konfiguracji `<packageSourceCredentials>` element zawiera węzły podrzędne dla każdej stosownej nazwy źródłowej (spacje w nazwie są zastępowane `_x0020_` ). Oznacza to, że w przypadku źródeł o nazwach "contoso" i "Źródło testowe" plik konfiguracyjny zawiera następujące dane w przypadku korzystania z szyfrowanych haseł:
 
 ```xml
 <packageSourceCredentials>
@@ -152,6 +152,21 @@ W pliku konfiguracji element `<packageSourceCredentials>` zawiera węzły podrz�
     <Test_x0020_Source>
         <add key="Username" value="user" />
         <add key="Password" value="..." />
+    </Test_x0020_Source>
+</packageSourceCredentials>
+```
+
+W przypadku korzystania z niezaszyfrowanych haseł przechowywanych w zmiennej środowiskowej:
+
+```xml
+<packageSourceCredentials>
+    <Contoso>
+        <add key="Username" value="user@contoso.com" />
+        <add key="ClearTextPassword" value="%ContosoPassword%" />
+    </Contoso>
+    <Test_x0020_Source>
+        <add key="Username" value="user" />
+        <add key="ClearTextPassword" value="%TestSourcePassword%" />
     </Test_x0020_Source>
 </packageSourceCredentials>
 ```
@@ -173,7 +188,7 @@ W przypadku korzystania z nieszyfrowanych haseł:
 
 ### <a name="apikeys"></a>apikeys
 
-Przechowuje klucze dla źródeł korzystających z uwierzytelniania za pomocą klucza interfejsu API, jak określono za pomocą [polecenia`nuget setapikey`](../reference/cli-reference/cli-ref-setapikey.md).
+Przechowuje klucze dla źródeł korzystających z uwierzytelniania za pomocą klucza interfejsu API, jak określono za pomocą [ `nuget setapikey` polecenia](../reference/cli-reference/cli-ref-setapikey.md).
 
 | Klucz | Wartość |
 | --- | --- |
@@ -214,7 +229,7 @@ Identyfikuje aktualnie aktywne źródło lub wskazuje zagregowane wszystkie źr�
 
 | Klucz | Wartość |
 | --- | --- |
-| (nazwa źródła) lub `All` | Jeśli klucz jest nazwą źródła, wartość jest ścieżką źródłową lub adresem URL. Jeśli `All`, wartość powinna być `(Aggregate source)`, aby połączyć wszystkie źródła pakietów, które nie zostały wyłączone w inny sposób. |
+| (nazwa źródła) lub`All` | Jeśli klucz jest nazwą źródła, wartość jest ścieżką źródłową lub adresem URL. Jeśli `All` wartość powinna być `(Aggregate source)` połączona ze wszystkimi źródłami pakietów, które nie są wyłączone. |
 
 **Przykład**:
 
@@ -230,19 +245,19 @@ Identyfikuje aktualnie aktywne źródło lub wskazuje zagregowane wszystkie źr�
 
 ## <a name="trustedsigners-section"></a>Sekcja trustedSigners
 
-Przechowuje zaufane osoby podpisujące używane do zezwalania na pakiet podczas instalowania lub przywracania. Ta lista nie może być pusta, jeśli użytkownik ustawi `signatureValidationMode`, aby `require`. 
+Przechowuje zaufane osoby podpisujące używane do zezwalania na pakiet podczas instalowania lub przywracania. Ta lista nie może być pusta, jeśli użytkownik `signatureValidationMode` ustawi `require` . 
 
-Tę sekcję można zaktualizować za pomocą [polecenia`nuget trusted-signers`](../reference/cli-reference/cli-ref-trusted-signers.md).
+Tę sekcję można zaktualizować za pomocą [ `nuget trusted-signers` polecenia](../reference/cli-reference/cli-ref-trusted-signers.md).
 
 **Schemat**:
 
-Zaufany podpiser ma kolekcję elementów `certificate`, które zarejestrują wszystkie certyfikaty identyfikujące daną rejestrację. Zaufaną rejestracją może być `Author` lub `Repository`.
+Zaufany podpiser zawiera kolekcję `certificate` elementów, które identyfikują wszystkie certyfikaty identyfikujące daną rejestrację. Zaufaną rejestracją może być albo `Author` lub `Repository` .
 
-Zaufane *repozytorium* określa również `serviceIndex` dla repozytorium (które musi być prawidłowym `https` URI) i opcjonalnie określać listę rozdzielonych średnikami, aby ograniczyć `owners` liczbę elementów, które są zaufane z tego konkretnego repozytorium.
+Zaufane *repozytorium* określa również `serviceIndex` dla repozytorium (które musi być prawidłowym `https` identyfikatorem URI) i opcjonalnie określać listę rozdzielaną średnikami, aby ograniczyć liczbę elementów, które `owners` są zaufane z tego konkretnego repozytorium.
 
-Obsługiwane algorytmy wyznaczania wartości skrótu używane dla odcisku palca certyfikatu są `SHA256`, `SHA384` i `SHA512`.
+Obsługiwane algorytmy wyznaczania wartości skrótu używane dla odcisku palca certyfikatu to `SHA256` , `SHA384` i `SHA512` .
 
-Jeśli `certificate` określa `allowUntrustedRoot` jako `true` dany certyfikat może być powiązany z niezaufanym katalogiem głównym podczas budowania łańcucha certyfikatów w ramach weryfikacji podpisu.
+Jeśli `certificate` określono `allowUntrustedRoot` , że `true` dany certyfikat jest dozwolony do łączenia się z niezaufanym katalogiem głównym, podczas budowania łańcucha certyfikatów w ramach weryfikacji podpisu.
 
 **Przykład**:
 
@@ -286,12 +301,12 @@ Jeśli dopasowanie nie zostanie znalezione, pakiet NuGet sprawdza źródła plik
 
 ## <a name="packagemanagement-section"></a>Sekcja packageManagement
 
-Ustawia domyślny format zarządzania pakietami, *Packages. config* lub PackageReference. Projekty w stylu zestawu SDK zawsze używają PackageReference.
+Ustawia domyślny format zarządzania pakietami, *packages.config* lub PackageReference. Projekty w stylu zestawu SDK zawsze używają PackageReference.
 
 | Klucz | Wartość |
 | --- | --- |
-| format | Wartość logiczna wskazująca domyślny format zarządzania pakietami. Jeśli `1`, format jest PackageReference. Jeśli `0`, format to *Packages. config*. |
-| wyłączone | Wartość logiczna wskazująca, czy wyświetlać monit o wybranie domyślnego formatu pakietu przy pierwszej instalacji pakietu. `False` ukrywa monit. |
+| format | Wartość logiczna wskazująca domyślny format zarządzania pakietami. Jeśli `1` , format jest PackageReference. Jeśli `0` Format jest *packages.config*. |
+| wyłączone | Wartość logiczna wskazująca, czy wyświetlać monit o wybranie domyślnego formatu pakietu przy pierwszej instalacji pakietu. `False`ukrywa monit. |
 
 **Przykład**:
 
@@ -304,17 +319,17 @@ Ustawia domyślny format zarządzania pakietami, *Packages. config* lub PackageR
 
 ## <a name="using-environment-variables"></a>Korzystanie ze zmiennych środowiskowych
 
-Możesz użyć zmiennych środowiskowych w `nuget.config` wartości (NuGet 3.4 +), aby zastosować ustawienia w czasie wykonywania.
+Możesz użyć zmiennych środowiskowych w `nuget.config` wartościach (NuGet 3.4 +), aby zastosować ustawienia w czasie wykonywania.
 
-Na przykład jeśli zmienna środowiskowa `HOME` w systemie Windows jest ustawiona na `c:\users\username`, wartość `%HOME%\NuGetRepository` w pliku konfiguracji jest rozpoznawana jako `c:\users\username\NuGetRepository`.
+Na przykład jeśli `HOME` zmienna środowiskowa w systemie Windows jest ustawiona na `c:\users\username` , wartość `%HOME%\NuGetRepository` w pliku konfiguracji jest rozpoznawana jako `c:\users\username\NuGetRepository` .
 
-Należy pamiętać, że należy używać zmiennych środowiskowych w stylu systemu Windows (rozpoczyna się i kończą z%) nawet w systemie Mac/Linux. Nie rozwiąże się `$HOME/NuGetRepository` w pliku konfiguracji. W systemie Mac/Linux wartość `%HOME%\NuGetRepository` zostanie rozwiązana, aby `/home/myStuff/NuGetRepository`.
+Należy pamiętać, że należy używać zmiennych środowiskowych w stylu systemu Windows (rozpoczyna się i kończą z%) nawet w systemie Mac/Linux. Posiadanie `$HOME/NuGetRepository` w pliku konfiguracji nie zostanie rozwiązane. W systemie Mac/Linux wartość `%HOME%\NuGetRepository` zostanie rozwiązany `/home/myStuff/NuGetRepository` .
 
 Jeśli zmienna środowiskowa nie zostanie znaleziona, NuGet używa wartości literału z pliku konfiguracyjnego.
 
 ## <a name="example-config-file"></a>Przykładowy plik konfiguracji
 
-Poniżej znajduje się przykładowy plik `nuget.config`, który ilustruje wiele ustawień, w tym opcjonalne:
+Poniżej znajduje się przykładowy `nuget.config` plik, który ilustruje wiele ustawień, w tym opcjonalne:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
