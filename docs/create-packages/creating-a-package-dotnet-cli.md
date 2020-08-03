@@ -1,39 +1,39 @@
 ---
 title: Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
-description: Szczegółowy przewodnik po procesie projektowania i tworzenia pakietu NuGet, w tym kluczowych punktów decyzyjnych, takich jak pliki i przechowywanie wersji.
+description: Szczegółowy przewodnik dotyczący procesu projektowania i tworzenia pakietu NuGet, w tym najważniejszych punktów decyzyjnych, takich jak pliki i przechowywanie wersji.
 author: karann-msft
 ms.author: karann
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 712e4c7159aa9719052330d8e45f63e18e390325
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 2fcba9dd6bbc7ff4e9b5b8b57250c399f59a1c5e
+ms.sourcegitcommit: e02482e15c0cef63153086ed50d14f5b2a38f598
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78230590"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87473847"
 ---
 # <a name="create-a-nuget-package-using-the-dotnet-cli"></a>Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
 
-Bez względu na to, co pakiet robi lub jaki kod zawiera, należy użyć jednego z narzędzi interfejsu wiersza polecenia, albo `nuget.exe` lub `dotnet.exe`, aby spakować tę funkcjonalność do składnika, który może być współużytkowany i używany przez dowolną liczbę innych deweloperów. W tym artykule opisano sposób tworzenia pakietu przy użyciu interfejsu wiersza polecenia dotnet. Aby zainstalować `dotnet` wiersz polecenia, zobacz [Instalowanie narzędzi klienckich NuGet](../install-nuget-client-tools.md). Począwszy od programu Visual Studio 2017, dotnet interfejsu wiersza polecenia jest dołączony do obciążeń .NET Core.
+Niezależnie od tego, co Twój pakiet lub jaki kod zawiera, użyj jednego z narzędzi interfejsu wiersza polecenia `nuget.exe` lub `dotnet.exe` , aby spakować tę funkcję do składnika, który może być współużytkowany i używany przez dowolną liczbę innych deweloperów. W tym artykule opisano sposób tworzenia pakietu przy użyciu interfejsu wiersza polecenia dotnet. Aby zainstalować `dotnet` interfejs wiersza polecenia, zobacz [Instalowanie narzędzi klienckich programu NuGet](../install-nuget-client-tools.md). Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest dołączany do obciążeń .NET Core.
 
-W przypadku projektów .NET Core i .NET Standard, które używają [formatu w stylu zestawu SDK,](../resources/check-project-format.md)oraz innych projektów w stylu zestawu SDK, NuGet używa informacji w pliku projektu bezpośrednio do utworzenia pakietu. Aby uzyskać samouczki krok po kroku, zobacz [Tworzenie pakietów standardowych platformy .NET za pomocą interfejsu wiersza polecenia dotnet](../quickstart/create-and-publish-a-package-using-the-dotnet-cli.md) lub [Tworzenie pakietów standardowych platformy .NET za pomocą programu Visual Studio](../quickstart/create-and-publish-a-package-using-visual-studio.md).
+W przypadku projektów .NET Core i .NET Standard, które korzystają z [formatu zestawu SDK](../resources/check-project-format.md)i innych projektów w stylu zestawu SDK, NuGet używa informacji w pliku projektu bezpośrednio do tworzenia pakietu. Aby zapoznać się z samouczkami krok po kroku, zobacz [Tworzenie pakietów .NET standard za pomocą interfejsu wiersza polecenia dotnet](../quickstart/create-and-publish-a-package-using-the-dotnet-cli.md) lub [Tworzenie pakietów .NET standard przy użyciu programu Visual Studio](../quickstart/create-and-publish-a-package-using-visual-studio.md).
 
-`msbuild -t:pack`jest funkcją `dotnet pack`równoważną . Aby tworzyć za pomocą msbuild, zobacz [Tworzenie pakietu NuGet przy użyciu msbuild](creating-a-package-msbuild.md).
+`msbuild -t:pack`Funkcja jest równoważna z `dotnet pack` . Aby skompilować przy użyciu programu MSBuild, zobacz [Tworzenie pakietu NuGet przy użyciu programu MSBuild](creating-a-package-msbuild.md).
 
 > [!IMPORTANT]
-> W tym temacie stosuje się do projektów [w stylu SDK,](../resources/check-project-format.md) zazwyczaj .NET Core i .NET Standard projektów.
+> Ten temat ma zastosowanie do projektów w [stylu zestawu SDK](../resources/check-project-format.md) , zwykle .NET Core i projektów .NET Standard.
 
 ## <a name="set-properties"></a>Ustawianie właściwości
 
-Następujące właściwości są wymagane do utworzenia pakietu.
+Do utworzenia pakietu wymagane są następujące właściwości.
 
-- `PackageId`, identyfikator pakietu, który musi być unikatowy w galerii, która obsługuje pakiet. Jeśli nie zostanie określona, wartością domyślną jest `AssemblyName`.
-- `Version`, określony numer wersji w postaci *Major.Minor.Patch[-Suffix],* gdzie *-Suffix* identyfikuje [wersje przedpremierowe](prerelease-packages.md). Jeśli nie zostanie określona, wartość domyślna to 1.0.0.
-- Tytuł pakietu, który powinien pojawić się na hoście (np. nuget.org)
-- `Authors`, informacje o autorze i właścicielu. Jeśli nie zostanie określona, wartością domyślną jest `AssemblyName`.
-- `Company`, nazwę firmy. Jeśli nie zostanie określona, wartością domyślną jest `AssemblyName`.
+- `PackageId`Identyfikator pakietu, który musi być unikatowy w galerii, w której znajduje się pakiet. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName` .
+- `Version`, określony numer wersji w postaci *główna. pomocnicza. poprawka [-sufiks]* , gdzie *-sufiks* określa [wersję wstępną](prerelease-packages.md). Jeśli nie zostanie określony, wartość domyślna to 1.0.0.
+- Tytuł pakietu, który powinien pojawić się na hoście (na przykład nuget.org)
+- `Authors`Informacje o autorze i właścicielu. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName` .
+- `Company`, nazwa firmy. Jeśli nie zostanie określony, wartość domyślna to `AssemblyName` .
 
-W programie Visual Studio można ustawić te wartości we właściwościach projektu (kliknij prawym przyciskiem myszy projekt w Eksploratorze **rozwiązań,** wybierz polecenie Właściwości i wybierz kartę **Pakiet).** Można również ustawić te właściwości bezpośrednio w`.csproj`plikach projektu ( ).
+W programie Visual Studio można ustawić te wartości we właściwościach projektu (kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz **Właściwości**, a następnie wybierz kartę **pakiet** ). Możesz również ustawić te właściwości bezpośrednio w plikach projektu ( `.csproj` ).
 
 ```xml
 <PropertyGroup>
@@ -45,9 +45,9 @@ W programie Visual Studio można ustawić te wartości we właściwościach proj
 ```
 
 > [!Important]
-> Nadaj pakietowi identyfikator, który jest unikatowy w nuget.org lub niezależnie od źródła pakietu, którego używasz.
+> Nadaj pakietowi identyfikator, który jest unikatowy w obrębie nuget.org lub dowolnego źródła pakietów, którego używasz.
 
-W poniższym przykładzie przedstawiono prosty, kompletny plik projektu z tymi właściwościami. (Za pomocą `dotnet new classlib` polecenia można utworzyć nowy projekt domyślny).
+Poniższy przykład pokazuje prosty, kompletny plik projektu z tymi właściwościami. (Nowy projekt domyślny można utworzyć przy użyciu `dotnet new classlib` polecenia).
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -61,14 +61,14 @@ W poniższym przykładzie przedstawiono prosty, kompletny plik projektu z tymi w
 </Project>
 ```
 
-Można również ustawić właściwości opcjonalne, `Title` `PackageDescription`takie `PackageTags`jak , i , zgodnie z opisem w [msbuild pack targets](../reference/msbuild-targets.md#pack-target), [Controlling dependency assets](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets), and [NuGet metadata properties](/dotnet/core/tools/csproj#nuget-metadata-properties).
+Można również ustawić właściwości opcjonalne, takie jak `Title` , `PackageDescription` , i `PackageTags` , zgodnie z opisem w obszarze [targets pakietu MSBuild](../reference/msbuild-targets.md#pack-target), [kontrolować zasoby zależności](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets)i [właściwości metadanych NuGet](/dotnet/core/tools/csproj#nuget-metadata-properties).
 
 > [!NOTE]
-> W przypadku pakietów przeznaczonych do użytku publicznego należy zwrócić szczególną uwagę na **PackageTags** właściwości, jak tagi pomóc innym znaleźć pakiet i zrozumieć, co robi.
+> W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na Właściwość **PackageTags** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
-Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [Odwołania do pakietów w plikach projektu](../consume-packages/package-references-in-project-files.md) i przechowywanie wersji [pakietu](../concepts/package-versioning.md). Jest również możliwe do powierzchni zasobów z zależności bezpośrednio w `<IncludeAssets>` `<ExcludeAssets>` pakiecie przy użyciu i atrybuty. Aby uzyskać więcej informacji, zobacz [Kontrolowanie zasobów zależności](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
+Aby uzyskać szczegółowe informacje na temat deklarowania zależności i określania numerów wersji, zobacz [odwołania do pakietów w plikach projektu](../consume-packages/package-references-in-project-files.md) i [przechowywanie wersji pakietu](../concepts/package-versioning.md). Istnieje również możliwość, że zasoby są zależne od zależności bezpośrednio w pakiecie przy użyciu `<IncludeAssets>` `<ExcludeAssets>` atrybutów i. Aby uzyskać więcej informacji, seee [kontrolowania elementów zależnych](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
 
-## <a name="add-an-optional-description-field"></a>Dodawanie opcjonalnego pola opisu
+## <a name="add-an-optional-description-field"></a>Dodaj opcjonalne pole opisu
 
 [!INCLUDE [add description to package](includes/add-description.md)]
 
@@ -76,16 +76,16 @@ Aby uzyskać szczegółowe informacje na temat deklarowania zależności i okre�
 
 [!INCLUDE [choose-package-id](includes/choose-package-id.md)]
 
-## <a name="run-the-pack-command"></a>Uruchamianie polecenia pack
+## <a name="run-the-pack-command"></a>Uruchom pakiet polecenie
 
-Aby utworzyć pakiet NuGet `.nupkg` (plik) z projektu, uruchom `dotnet pack` polecenie, które również automatycznie tworzy projekt:
+Aby skompilować pakiet NuGet ( `.nupkg` plik) z projektu, uruchom `dotnet pack` polecenie, które również automatycznie kompiluje projekt:
 
 ```dotnetcli
 # Uses the project file in the current folder by default
 dotnet pack
 ```
 
-Dane wyjściowe pokazuje `.nupkg` ścieżkę do pliku.
+Dane wyjściowe przedstawiają ścieżkę do `.nupkg` pliku.
 
 ```output
 Microsoft (R) Build Engine version 15.5.180.51428 for .NET Core
@@ -96,44 +96,44 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Successfully created package 'D:\proj\AppLoggerNet\AppLogger\bin\Debug\AppLogger.1.0.0.nupkg'.
 ```
 
-### <a name="automatically-generate-package-on-build"></a>Automatyczne generowanie pakietu na kompilacji
+### <a name="automatically-generate-package-on-build"></a>Automatycznie Generuj pakiet podczas kompilacji
 
-Aby uruchomić `dotnet pack` je automatycznie `dotnet build`po uruchomieniu, dodaj następujący `<PropertyGroup>`wiersz do pliku projektu w obrębie:
+Aby automatycznie uruchomić `dotnet pack` `dotnet build` program, Dodaj następujący wiersz do pliku projektu w `<PropertyGroup>` :
 
 ```xml
 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 ```
 
-Po uruchomieniu `dotnet pack` rozwiązania, to pakuje wszystkie projekty w rozwiązaniu,[<IsPackable>](/dotnet/core/tools/csproj#nuget-metadata-properties) które są `true`spakowane (właściwość jest ustawiona na ).
+Po uruchomieniu `dotnet pack` w rozwiązaniu to pakiety wszystkie projekty w rozwiązaniu, które są możliwe do spakowania ( [<IsPackable>](/dotnet/core/tools/csproj#nuget-metadata-properties) Właściwość jest ustawiona na `true` ).
 
 > [!NOTE]
-> Po automatycznym wygenerowaniu pakietu czas do spakowania zwiększa czas kompilacji dla projektu.
+> Po automatycznym wygenerowaniu pakietu czas do spakowania zwiększa czas kompilacji projektu.
 
 ### <a name="test-package-installation"></a>Instalacja pakietu testowego
 
-Przed opublikowaniem pakietu zazwyczaj chcesz przetestować proces instalowania pakietu w projekcie. Testy upewnij się, że wszystkie pliki koniecznie kończy się w ich odpowiednich miejscach w projekcie.
+Przed opublikowaniem pakietu zazwyczaj należy przetestować proces instalacji pakietu w projekcie. Testy upewniają się, że wszystkie niezbędne pliki kończą się w ich prawidłowych miejscach w projekcie.
 
-Instalacje można testować ręcznie w programie Visual Studio lub w wierszu polecenia, wykonując [normalne kroki instalacji pakietu](../consume-packages/overview-and-workflow.md#ways-to-install-a-nuget-package).
+Instalacje można testować ręcznie w programie Visual Studio lub w wierszu polecenia przy użyciu standardowych [kroków instalacji pakietu](../consume-packages/overview-and-workflow.md#ways-to-install-a-nuget-package).
 
 > [!IMPORTANT]
-> Pakiety są niezmienne. Jeśli rozwiążesz problem, zmień zawartość pakietu i zapakuj ponownie, podczas ponownego testowania nadal będziesz używać starej wersji pakietu, dopóki nie [wyczyścisz folderu pakietów globalnych.](../consume-packages/managing-the-global-packages-and-cache-folders.md#clearing-local-folders) Jest to szczególnie istotne podczas testowania pakietów, które nie używają unikatowej etykiety wstępnej wersji w każdej kompilacji.
+> Pakiety są niezmienne. W przypadku usunięcia problemu należy ponownie zmienić zawartość pakietu i pakietu, po ponownym przetestowaniu nadal będzie używana stara wersja pakietu do momentu [wyczyszczenia folderu pakiety globalne](../consume-packages/managing-the-global-packages-and-cache-folders.md#clearing-local-folders) . Jest to szczególnie istotne w przypadku testowania pakietów, które nie używają unikatowej etykiety wersji wstępnej dla każdej kompilacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu pakietu, który jest `.nupkg` plikiem, można go opublikować w wybranej galerii, zgodnie z opisem w [polu Publikowanie pakietu.](../nuget-org/publish-a-package.md)
+Po utworzeniu pakietu, który jest `.nupkg` plikiem, można go opublikować w wybranej galerii, zgodnie z opisem w artykule [Publikowanie pakietu](../nuget-org/publish-a-package.md).
 
-Można również rozszerzyć możliwości pakietu lub w inny sposób obsługiwać inne scenariusze, jak opisano w następujących tematach:
+Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób obsługiwać inne scenariusze zgodnie z opisem w następujących tematach:
 
 - [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
 - [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
-- [Dodawanie ikony pakietu](../reference/nuspec.md#icon)
-- [Przekształcenia plików źródłowych i konfiguracyjnych](../create-packages/source-and-config-file-transformations.md)
+- [Dodaj ikonę pakietu](../reference/nuspec.md#icon)
+- [Przekształcenia plików źródłowych i konfiguracji](../create-packages/source-and-config-file-transformations.md)
 - [Lokalizacja](../create-packages/creating-localized-packages.md)
-- [Wersje w wersji wstępnej](../create-packages/prerelease-packages.md)
+- [Wersje wstępne](../create-packages/prerelease-packages.md)
 - [Ustawianie typu pakietu](../create-packages/set-package-type.md)
-- [Tworzenie pakietów z zestawami współdziałań COM](../create-packages/author-packages-with-COM-interop-assemblies.md)
+- [Tworzenie pakietów z zestawami międzyoperacyjnymi modelu COM](../create-packages/author-packages-with-COM-interop-assemblies.md)
 
-Na koniec istnieją dodatkowe typy pakietów, o których należy pamiętać:
+Na koniec należy pamiętać o dodatkowych typach pakietów:
 
 - [Pakiety natywne](../guides/native-packages.md)
 - [Pakiety symboli](../create-packages/symbol-packages-snupkg.md)
