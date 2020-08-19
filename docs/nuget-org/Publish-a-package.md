@@ -1,128 +1,129 @@
 ---
 title: Jak opublikować pakiet NuGet
-description: Szczegółowe instrukcje dotyczące publikowania pakietu NuGet do nuget.org lub prywatnych kanałów informacyjnych oraz zarządzania własnością pakietu w nuget.org.
+description: Szczegółowe instrukcje dotyczące publikowania pakietu NuGet w nuget.org lub prywatnych źródłach oraz zarządzania własnością pakietu na nuget.org.
 author: karann-msft
 ms.author: karann
 ms.date: 05/18/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 02c6c8f3018bfd063c2d16a10381f88b54cac840
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: dc20e43bfb43a4b6e47297fb3446319860034d46
+ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "79429025"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88623032"
 ---
 # <a name="publishing-packages"></a>Publikowanie pakietów
 
-Po utworzeniu pakietu i `.nupkg` udostępnieniu pliku w ręku jest to prosty proces, aby udostępnić go innym deweloperom, publicznie lub prywatnie:
+Po utworzeniu pakietu i udostępnieniu `.nupkg` pliku jest to prosty proces udostępniania go innym deweloperom — publicznie lub prywatnie:
 
-- Pakiety publiczne są udostępniane wszystkim deweloperom na całym świecie za pośrednictwem [nuget.org](https://www.nuget.org/packages/manage/upload) zgodnie z opisem w tym artykule (wymaga NuGet 4.1.0+).
-- Pakiety prywatne są dostępne tylko dla zespołu lub organizacji, hostując je albo udział plików, prywatny serwer NuGet, [artefakty platformy Azure](https://www.visualstudio.com/docs/package/nuget/publish), lub repozytorium innych firm, takich jak myget, ProGet, Repozytorium Nexus i Artifactory. Aby uzyskać dodatkowe informacje, zobacz [Omówienie pakietów hostingowych](../hosting-packages/overview.md).
+- Pakiety publiczne są udostępniane wszystkim deweloperom globalnie przez [NuGet.org](https://www.nuget.org/packages/manage/upload) zgodnie z opisem w tym artykule (wymaga NuGet 4.1.0 +).
+- Pakiety prywatne są dostępne tylko dla zespołu lub organizacji, udostępniając im udział plików, prywatny serwer NuGet, [Azure Artifacts](https://www.visualstudio.com/docs/package/nuget/publish)lub repozytorium innych firm, takie jak MyGet, ProGet, Nexus Repository i Artifactory. Aby uzyskać więcej informacji, zobacz [Omówienie pakietów hostingu](../hosting-packages/overview.md).
 
-Ten artykuł obejmuje publikowanie do nuget.org; aby opublikować w witrynie Azure Artifacts, zobacz [Zarządzanie pakietami](https://www.visualstudio.com/docs/package/nuget/publish).
+W tym artykule opisano publikowanie w usłudze nuget.org; Aby opublikować Azure Artifacts, zobacz [Zarządzanie pakietami](https://www.visualstudio.com/docs/package/nuget/publish).
 
-## <a name="publish-to-nugetorg"></a>Publikowanie w nuget.org
+## <a name="publish-to-nugetorg"></a>Publikowanie w usłudze nuget.org
 
-Aby nuget.org, musisz zalogować się za pomocą konta Microsoft, za pomocą którego zostaniesz poproszony o zarejestrowanie konta w nuget.org. Możesz również zalogować się przy użyciu konta nuget.org utworzonego przy użyciu starszych wersji portalu.
+W przypadku nuget.org należy zalogować się przy użyciu konto Microsoft, z którym zostanie wyświetlony monit o zarejestrowanie konta w usłudze nuget.org. Możesz również zalogować się przy użyciu konta usługi nuget.org utworzonego za pomocą starszych wersji portalu.
 
 ![Lokalizacja logowania NuGet](media/publish_NuGetSignIn.png)
 
-Następnie można przekazać pakiet za pośrednictwem nuget.org portalu sieci web, wypchnąć do nuget.org z `nuget.exe` wiersza polecenia (wymaga 4.1.0+) lub opublikować jako część procesu ciągłej integracji/ciągłego wdrażania za pośrednictwem usługi Azure DevOps, zgodnie z opisem w poniższych sekcjach.
+Następnie można przekazać pakiet za pośrednictwem portalu sieci Web nuget.org, wypchnąć do nuget.org z wiersza polecenia (wymaga `nuget.exe` 4.1.0 +) lub opublikować jako część procesu ciągłej integracji/ciągłego wdrażania za pomocą Azure DevOps Services, zgodnie z opisem w poniższych sekcjach.
 
-### <a name="web-portal-use-the-upload-package-tab-on-nugetorg"></a>Portal sieci Web: użyj karty Przekaż pakiet na nuget.org
+### <a name="web-portal-use-the-upload-package-tab-on-nugetorg"></a>Portal sieci Web: korzystanie z karty przekazywanie pakietu w witrynie nuget.org
 
-1. Wybierz **pozycję Przekaż** w górnym menu nuget.org i przejdź do lokalizacji pakietu.
+1. Wybierz pozycję **Przekaż** w górnym menu NuGet.org i przejdź do lokalizacji pakietu.
 
-    ![Prześlij paczkę na nuget.org](media/publish_UploadYourPackage.PNG)
+    ![Przekaż pakiet na nuget.org](media/publish_UploadYourPackage.PNG)
 
-1. nuget.org informuje, czy nazwa pakietu jest dostępna. Jeśli tak nie jest, zmień identyfikator pakietu w projekcie, odbuduj i spróbuj przekazać ponownie.
+1. nuget.org informuje o tym, czy nazwa pakietu jest dostępna. Jeśli tak nie jest, należy zmienić identyfikator pakietu w projekcie, ponownie skompilować i ponowić próbę przekazania.
 
-1. Jeśli nazwa pakietu jest dostępna, nuget.org otwiera sekcję **Sprawdź,** w której można przejrzeć metadane z manifestu pakietu. Aby zmienić dowolny z metadanych, edytuj `.nuspec` projekt (plik projektu lub plik), odbuduj, ponownie stwórz pakiet i przekaż go ponownie.
+1. Jeśli nazwa pakietu jest dostępna, nuget.org otwiera sekcję **Weryfikuj** , w której można przejrzeć metadane z manifestu pakietu. Aby zmienić dowolne metadane, Edytuj projekt (plik projektu lub `.nuspec` plik), Skompiluj ponownie, ponownie utwórz pakiet i przekaż go ponownie.
 
-1. W obszarze **Dokumentacja importu** możesz wkleić markdown, wskazać dokumenty za pomocą adresu URL lub przekazać plik dokumentacji.
+1. W obszarze **Importuj dokumentację** możesz wkleić do promocji, wskazać swój dokument z adresem URL lub przekazać plik dokumentacji.
 
-1. Gdy wszystkie informacje będą gotowe, wybierz przycisk **Prześlij**
+1. Gdy wszystkie informacje są gotowe, wybierz przycisk **Prześlij**
 
 ### <a name="command-line"></a>Wiersz polecenia
 
-Aby wypchnąć pakiety do nuget.org należy użyć [nuget.exe v4.1.0 lub wyższej](https://www.nuget.org/downloads), która implementuje wymagane [protokoły NuGet](../api/nuget-protocols.md). Potrzebny jest również klucz interfejsu API, który jest tworzony na nuget.org.
+Aby wypchnąć pakiety do nuget.org, należy najpierw dysponować kluczem interfejsu API utworzonym w nuget.org. Musisz użyć obu dotnet.exe (.NET Core) lub nuget.exe v 4.1.0 lub nowszych, które implementują wymagane protokoły NuGet.
+Aby uzyskać więcej informacji, zobacz Protokoły [.NET Core](https://docs.microsoft.com/dotnet/core/install/), [nuget.exe](https://www.nuget.org/downloads)i [NuGet](../api/nuget-protocols.md).
 
-#### <a name="create-api-keys"></a>Tworzenie kluczy interfejsu API
+#### <a name="create-api-keys"></a>Utwórz klucze interfejsu API
 
 [!INCLUDE [publish-api-key](../quickstart/includes/publish-api-key.md)]
 
-#### <a name="publish-with-dotnet-nuget-push"></a>Publikuj z dotnet nuget push
+#### <a name="publish-with-dotnet-nuget-push"></a>Publikowanie przy użyciu wypychania NuGet programu dotnet
 
 [!INCLUDE [publish-dotnet](../quickstart/includes/publish-dotnet.md)]
 
-#### <a name="publish-with-nuget-push"></a>Publikuj z nuget push
+#### <a name="publish-with-nuget-push"></a>Publikowanie przy użyciu wypychania NuGet
 
-1. W wierszu polecenia uruchom następujące `<your_API_key>` polecenie, zastępując kluczem uzyskanym z nuget.org:
+1. W wierszu polecenia Uruchom następujące polecenie, zastępując `<your_API_key>` klucz uzyskany od NuGet.org:
 
     ```cli
     nuget setApiKey <your_API_key>
     ```
 
-    To polecenie przechowuje klucz interfejsu API w konfiguracji NuGet, dzięki czemu nie trzeba powtarzać tego kroku ponownie na tym samym komputerze.
+    To polecenie zapisuje klucz interfejsu API w konfiguracji NuGet, dzięki czemu nie trzeba ponownie powtarzać tego kroku na tym samym komputerze.
 
     > [!NOTE]
-    > Klucz interfejsu API nie jest używany do uwierzytelniania za pomocą prywatnego kanału informacyjnego. Zapoznaj się z [ `nuget sources` poleceniem,](../reference/cli-reference/cli-ref-sources.md) aby zarządzać poświadczeniami do uwierzytelniania ze źródłem.
-    > Klucze interfejsu API można uzyskać z poszczególnych serwerów NuGet. Aby utworzyć i manange APIKeys dla nuget.org odnoszą się do [publish-api-key](../quickstart/includes/publish-api-key.md)
+    > Klucz interfejsu API nie jest używany do uwierzytelniania w prywatnym źródle danych. Zapoznaj się z [ `nuget sources` poleceniem](../reference/cli-reference/cli-ref-sources.md) , aby zarządzać poświadczeniami do uwierzytelniania ze źródłem.
+    > Klucze interfejsu API można uzyskać z poszczególnych serwerów NuGet. Aby utworzyć i manange APIKeys dla nuget.org, zobacz [Tworzenie kluczy interfejsu API](#create-api-keys).
 
-1. Wypchnij pakiet do Galerii NuGet za pomocą następującego polecenia:
+1. Wypchnij pakiet do galerii NuGet przy użyciu następującego polecenia:
 
     ```cli
     nuget push YourPackage.nupkg -Source https://api.nuget.org/v3/index.json
     ```
 
-#### <a name="publish-signed-packages"></a>Publikowanie podpisanych pakietów
+#### <a name="publish-signed-packages"></a>Publikuj podpisane pakiety
 
 Aby przesłać podpisane pakiety, należy najpierw [zarejestrować certyfikat](../create-packages/Sign-a-Package.md#register-the-certificate-on-nugetorg) używany do podpisywania pakietów. 
 
 > [!Warning]
-> nuget.org odrzuca pakiety, które nie spełniają [wymagań podpisanego pakietu.](../reference/Signed-Packages-Reference.md#signature-requirements-on-nugetorg)
+> nuget.org odrzuca pakiety, które nie spełniają [wymagań podpisanego pakietu](../reference/Signed-Packages-Reference.md#signature-requirements-on-nugetorg).
 
-### <a name="package-validation-and-indexing"></a>Sprawdzanie poprawności i indeksowanie pakietów
+### <a name="package-validation-and-indexing"></a>Sprawdzanie poprawności pakietu i indeksowanie
 
-Pakiety wypchnięte do nuget.org poddawane kilku weryfikacji, takich jak kontrole wirusów. (Wszystkie pakiety na nuget.org są okresowo skanowane).
+Pakiety wypychane do nuget.org zostały poddane kilku walidacji, takich jak sprawdzanie wirusów. (Wszystkie pakiety na nuget.org są okresowo skanowane).
 
-Gdy pakiet przeszedł wszystkie sprawdzanie poprawności, może upłynąć trochę czasu, aby być indeksowane i pojawiają się w wynikach wyszukiwania. Po zakończeniu indeksowania otrzymasz wiadomość e-mail z potwierdzeniem pomyślnego opublikowania pakietu. Jeśli pakiet nie zostanie sprawdzony, strona szczegółów pakietu zostanie zaktualizowana, aby wyświetlić skojarzony błąd, a także otrzymasz wiadomość e-mail z powiadomieniem o tym.
+Gdy pakiet przeszedł wszystkie testy sprawdzania poprawności, może upłynąć trochę czasu, aby można było indeksować go i wyświetlać w wynikach wyszukiwania. Po zakończeniu indeksowania otrzymasz wiadomość e-mail z potwierdzeniem, że pakiet został pomyślnie opublikowany. Jeśli pakiet nie zostanie zweryfikowany, Strona szczegóły pakietu zostanie zaktualizowana w celu wyświetlenia powiązanego błędu i otrzymasz wiadomość e-mail z powiadomieniem o tym fakcie.
 
-Sprawdzanie poprawności i indeksowanie pakietów zwykle trwa mniej niż 15 minut. Jeśli publikowanie pakietu trwa dłużej niż oczekiwano, odwiedź [status.nuget.org,](https://status.nuget.org/) aby sprawdzić, czy nuget.org występują przerwy. Jeśli wszystkie systemy działają, a pakiet nie został pomyślnie opublikowany w ciągu godziny, zaloguj się do nuget.org i skontaktuj się z nami za pomocą łącza Skontaktuj się z pomocą techniczną na stronie pakietu.
+Sprawdzanie poprawności pakietu i indeksowania zazwyczaj trwa 15 minut. Jeśli publikowanie pakietu trwa dłużej niż oczekiwano, odwiedź stronę [status.NuGet.org](https://status.nuget.org/) , aby sprawdzić, czy w NuGet.org występują jakiekolwiek przerwy. Jeśli wszystkie systemy działają, a pakiet nie został pomyślnie opublikowany w ciągu godziny, zaloguj się do nuget.org i skontaktuj się z nami za pomocą linku skontaktuj się z pomocą techniczną na stronie pakietu.
 
-Aby wyświetlić stan pakietu, wybierz pozycję **Zarządzaj pakietami** pod nazwą konta w nuget.org. Po zakończeniu sprawdzania poprawności otrzymasz wiadomość e-mail z potwierdzeniem.
+Aby wyświetlić stan pakietu, wybierz pozycję **Zarządzaj pakietami** w polu Nazwa konta w witrynie NuGet.org. Po zakończeniu walidacji otrzymasz wiadomość e-mail z potwierdzeniem.
 
-Należy pamiętać, że może upłynąć trochę czasu, aby pakiet został zindeksowany i pojawił się w wynikach wyszukiwania, gdzie inni mogą go znaleźć, w tym czasie na stronie pakietu może pojawić się następujący komunikat:
+Należy pamiętać, że może upłynąć trochę czasu, zanim pakiet będzie indeksowany i pojawia się w wynikach wyszukiwania, gdzie inne osoby mogą go znaleźć, podczas gdy na stronie pakietu zostanie wyświetlony następujący komunikat:
 
-![Komunikat informujący, że pakiet nie został jeszcze opublikowany](media/publish_NotYetIndexed.png)
+![Komunikat informujący o tym, że pakiet nie został jeszcze opublikowany](media/publish_NotYetIndexed.png)
 
-### <a name="azure-devops-services-cicd"></a>Usługi DevOps platformy Azure (ci/cd)
+### <a name="azure-devops-services-cicd"></a>Azure DevOps Services (CI/CD)
 
-Jeśli wypychasz pakiety do nuget.org przy użyciu usług Azure DevOps w `nuget.exe` ramach procesu ciągłej integracji/wdrażania, należy użyć 4.1 lub powyżej w zadaniach NuGet. Szczegóły można znaleźć na [korzystanie z najnowszego NuGet w kompilacji](https://blogs.msdn.microsoft.com/devops/2017/09/29/using-the-latest-nuget-in-your-build/) (Microsoft DevOps blogu).
+W przypadku wypychania pakietów do nuget.org przy użyciu Azure DevOps Services w ramach procesu ciągłej integracji/wdrażania należy użyć `nuget.exe` 4,1 lub więcej w zadaniach NuGet. Szczegółowe informacje znajdują się w temacie [Korzystanie z najnowszego pakietu NuGet w kompilacji](https://blogs.msdn.microsoft.com/devops/2017/09/29/using-the-latest-nuget-in-your-build/) (blog Microsoft DevOps).
 
-## <a name="managing-package-owners-on-nugetorg"></a>Zarządzanie właścicielami pakietów na nuget.org
+## <a name="managing-package-owners-on-nugetorg"></a>Zarządzanie właścicielami pakietów w witrynie nuget.org
 
-Mimo że `.nuspec` każdy plik pakietu NuGet definiuje autorów pakietu, nuget.org galeria nie używa tych metadanych do definiowania własności. Zamiast tego nuget.org przypisuje początkową własność osobie, która publikuje pakiet. Jest to zalogowany użytkownik, który przesłał pakiet za pośrednictwem nuget.org interfejsu użytkownika, lub użytkownicy, których klucz interfejsu API był używany z `nuget SetApiKey` lub `nuget push`.
+Mimo że każdy plik pakietu NuGet `.nuspec` definiuje autorów pakietu, galeria NuGet.org nie używa tych metadanych do definiowania własności. Zamiast tego nuget.org przypisuje wstępną własność do osoby, która publikuje pakiet. Jest to zalogowany użytkownik, który przekazał pakiet za pomocą interfejsu użytkownika nuget.org, lub użytkowników, których klucz interfejsu API był używany z systemem `nuget SetApiKey` lub `nuget push` .
 
-Wszyscy właściciele pakietów mają pełne uprawnienia do pakietu, w tym dodawanie i usuwanie innych właścicieli oraz publikowanie aktualizacji.
+Wszyscy właściciele pakietu mają pełne uprawnienia do pakietu, w tym dodawanie i usuwanie innych właścicieli oraz publikowanie aktualizacji.
 
 Aby zmienić własność pakietu, wykonaj następujące czynności:
 
-1. Zaloguj się, aby nuget.org przy tym za pomocą konta, które jest bieżącym właścicielem pakietu.
-1. Wybierz nazwę swojego konta, wybierz pozycję **Zarządzaj pakietami**i rozwiń pozycję **Opublikowane pakiety**.
-1. Wybierz na opakowaniu, który chcesz zarządzać, a następnie po prawej stronie wybierz pozycję **Zarządzaj właścicielami**.
+1. Zaloguj się do nuget.org przy użyciu konta, które jest bieżącym właścicielem pakietu.
+1. Wybierz nazwę swojego konta, wybierz pozycję **Zarządzaj pakietami**i rozwiń węzeł **opublikowane pakiety**.
+1. Wybierz pakiet, którym chcesz zarządzać, a następnie po prawej stronie wybierz pozycję **Zarządzaj właścicielami**.
 
 W tym miejscu masz kilka opcji:
 
-1. Usuń dowolnego właściciela wymienionego w obszarze **Bieżąci właściciele**.
-1. Dodaj właściciela w obszarze **Dodaj właściciela,** wprowadzając jego nazwę użytkownika, wiadomość i wybierając **pozycję Dodaj**. Ta akcja wysyła wiadomość e-mail do tego nowego współwłaściciela z linkiem potwierdzającym. Po potwierdzeniu ta osoba ma pełne uprawnienia do dodawania i usuwania właścicieli. (Dopóki nie potwierdzono, sekcja **Obecni właściciele** wskazuje oczekujące zatwierdzenie dla tej osoby).
-1. Aby przenieść własność (jak w przypadku zmiany własności lub pakiet został opublikowany na niewłaściwym koncie), dodaj nowego właściciela, a po potwierdzeniu własności mogą usunąć Cię z listy.
+1. Usuń wszystkich właścicieli wymienionych w obszarze **bieżący właściciele**.
+1. Dodaj właściciela w obszarze **Dodaj właściciela** , wprowadzając jego nazwę użytkownika, komunikat i wybierając pozycję **Dodaj**. Ta akcja spowoduje wysłanie wiadomości e-mail do tego nowego współwłaściciela z linkiem potwierdzającym. Po potwierdzeniu osoba ta ma pełne uprawnienia do dodawania i usuwania właścicieli. (Do momentu potwierdzenia **Bieżąca sekcja właściciele** wskazuje, że oczekuje na zatwierdzenie przez tę osobę).
+1. Aby przenieść własność (jak w przypadku zmiany własności lub opublikowania pakietu na niewłaściwym koncie), Dodaj nowego właściciela, a po potwierdzeniu prawa własności można usunąć użytkownika z listy.
 
-Aby przypisać własność do firmy lub grupy, utwórz konto nuget.org przy użyciu aliasu e-mail, który jest przekazywał do odpowiednich członków zespołu. Na przykład różne pakiety Microsoft ASP.NET są współwłasnością kont [Microsoft](https://nuget.org/profiles/microsoft) i [Aspnet,](https://nuget.org/profiles/aspnet) które po prostu takie aliasy.
+Aby przypisać własność do firmy lub grupy, Utwórz konto usługi nuget.org przy użyciu aliasu e-mail, który jest przekazywany do odpowiednich członków zespołu. Na przykład różne pakiety Microsoft ASP.NET są współwłasnością kont [Microsoft](https://nuget.org/profiles/microsoft) i [ASPNET](https://nuget.org/profiles/aspnet) , które po prostu takie aliasy.
 
 ### <a name="recovering-package-ownership"></a>Odzyskiwanie własności pakietu
 
-Czasami pakiet może nie mieć aktywnego właściciela. Na przykład oryginalny właściciel może opuścić firmę, która produkuje pakiet, nuget.org poświadczenia są tracone lub wcześniejsze błędy w galerii pozostawił pakiet bez właściciela.
+Czasami pakiet może nie mieć aktywnego właściciela. Na przykład oryginalny właściciel może pozostać w firmie, która produkuje pakiet, nuget.org poświadczenia są tracone lub wcześniejsze usterki w galerii pozostawiają bez właściciela pakietu.
 
-Jeśli jesteś prawowitym właścicielem pakietu i trzeba odzyskać własność, użyj [formularza kontaktowego](https://www.nuget.org/policies/Contact) na nuget.org, aby wyjaśnić swoją sytuację do zespołu NuGet. Następnie śledzimy proces weryfikacji własności pakietu, w tym próbuje zlokalizować istniejącego właściciela za pośrednictwem adresu URL projektu pakietu, Twitter, e-mail lub w inny sposób. Ale jeśli wszystko inne zawiedzie, możemy wysłać ci nowe zaproszenie, aby stać się właścicielem.
+Jeśli jesteś właścicielem pakietu i chcesz odzyskać własność, użyj [formularza kontaktu](https://www.nuget.org/policies/Contact) w witrynie NuGet.org, aby wyjaśnić swoją sytuację do zespołu NuGet. Następnie postępuj zgodnie z procesem weryfikacji własności pakietu, w tym przy próbie zlokalizowania istniejącego właściciela za pośrednictwem adresu URL projektu pakietu, serwisu Twitter, poczty e-mail lub innych metod. Jeśli jednak wszystkie inne opcje zakończą się niepowodzeniem, możemy wysłać nowe zaproszenie, aby stał się właścicielem.

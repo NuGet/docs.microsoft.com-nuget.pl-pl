@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 06/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 45928e60033959bc8b4f43d1ef3e4c943e7ec057
-ms.sourcegitcommit: e02482e15c0cef63153086ed50d14f5b2a38f598
+ms.openlocfilehash: feb21ae1e70144491a5c0fe8f6a7be36e61d9b32
+ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87473887"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88622992"
 ---
 # <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocenianie pakietów NuGet dla projektu
 
@@ -72,9 +72,9 @@ W programie Visual Studio i w przypadku korzystania z narzędzi NuGet i interfej
 
 - **Konsola Menedżera pakietów**: Użyj `-IncludePrerelease` przełącznika z `Find-Package` poleceniami,,, `Get-Package` `Install-Package` `Sync-Package` i `Update-Package` . Zapoznaj się z dokumentacją [programu PowerShell](../reference/powershell-reference.md).
 
-- **Interfejs wiersza polecenianuget.exe**: Użyj `-prerelease` przełącznika z `install` poleceniem, `update` , `delete` i `mirror` . Zapoznaj się z dokumentacją [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md)
+- ** Interfejs wiersza polecenianuget.exe**: Użyj `-prerelease` przełącznika z `install` poleceniem, `update` , `delete` i `mirror` . Zapoznaj się z dokumentacją [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md)
 
-- **Interfejs wiersza poleceniadotnet.exe**: Określ dokładną wersję wstępną za pomocą `-v` argumentu. Zapoznaj się z informacjami dotyczącymi [dodawania pakietu dotnet](/dotnet/core/tools/dotnet-add-package).
+- ** Interfejs wiersza poleceniadotnet.exe**: Określ dokładną wersję wstępną za pomocą `-v` argumentu. Zapoznaj się z informacjami dotyczącymi [dodawania pakietu dotnet](/dotnet/core/tools/dotnet-add-package).
 
 <a name="native-cpp-packages"></a>
 
@@ -90,32 +90,41 @@ Najlepszym sposobem na ocenę użyteczności pakietu jest pobranie go i wypróbo
 
 W tym samym czasie używanie pakietu NuGet oznacza jego zależność, dlatego należy upewnić się, że jest to niezawodne i niezawodne. Ponieważ Instalowanie i bezpośrednie Testowanie pakietu jest czasochłonne, można także uzyskać informacje o jakości pakietu, korzystając z informacji na stronie z listą pakietu:
 
-- *Pobieranie statystyk*: na stronie pakiet w witrynie NuGet.org sekcja **statystyki** zawiera łączne pliki do pobrania, pliki do pobrania najnowszej wersji i średnie pobieranie na dzień. Większa liczba wskazuje, że wielu innych deweloperów pobrało zależność od pakietu, co oznacza, że sama sprawdzona.
+- **Pobieranie statystyk**: na stronie pakiet w witrynie NuGet.org sekcja **statystyki** zawiera łączne pliki do pobrania, pliki do pobrania najnowszej wersji i średnie pobieranie na dzień. Większa liczba wskazuje, że wielu innych deweloperów pobrało zależność od pakietu, co oznacza, że sama sprawdzona.
 
     ![Pobierz statystyki na stronie z listą pakietu](media/Finding-03-Downloads.png)
 
-- *Użycie usługi GitHub*: na stronie Package (pakiet) sekcja **użycie usługi GitHub** zawiera listę publicznych repozytoriów GitHub, które są zależne od tego pakietu i o dużej liczbie gwiazdek w witrynie GitHub. Liczba gwiazdek repozytorium GitHub zazwyczaj wskazuje, jak popularne jest repozytorium z użytkownikami usługi GitHub (zazwyczaj jest to bardziej popularne). Odwiedź [stronę wprowadzenie witryny GitHub](https://help.github.com/en/github/getting-started-with-github/saving-repositories-with-stars#about-stars) , aby uzyskać więcej informacji o systemie klasyfikacji i repozytorium usługi GitHub.
+- **Używane przez**: na stronie Package ( **użyty przez** ) sekcja zawiera listę 5 najpopularniejszych pakietów NuGet.org i popularnych repozytoriów usługi GitHub, które są zależne od tego pakietu. Pakiety i repozytoria, które są zależne od tego pakietu, mogą być nazywane "zależnościami" tego pakietu. Pakiety i repozytoria zależne mogą być widoczne jako "Adnotacje" tego pakietu, ponieważ autorzy pakietów wybrani do zaufania i zależą od niej.
+  - Pakiet zależny musi zależeć od *dowolnej wersji* tego pakietu w *najnowszej stabilnej wersji*. Ta definicja zapewnia, że wyświetlane pakiety zależne to aktualne odbicie decyzji autora pakietu o zaufaniu i zależą od tego pakietu. Zależne od wersji wstępnej nie są wyświetlane, ponieważ nie są jeszcze traktowane jako endoresements w całości. Przykłady można znaleźć w poniższej tabeli:
 
-    ![Użycie usługi GitHub](media/GitHub-Usage.png)
+    | Pakowanie wersji | Pakiet A jest wymieniony jako zależny od pakietu B? |
+    |-|-|
+    | 1.0.0 v<br>v 1.1.0 (Najnowsza stabilna) — pakiet > B<br>v 1.2.0 — wersja zapoznawcza | PRAWDA, Najnowsza stabilna wersja jest zależna od pakietu B |
+    | v 1.0.0--> pakiet B<br>1.1.0 v (Najnowsza stabilna)<br>v 1.2.0 — wersja zapoznawcza | FALSE, Najnowsza stabilna wersja nie jest zależna od pakietu B |
+    | v 1.0.0--> pakiet B<br>1.1.0 v (Najnowsza stabilna)<br>v 1.2.0 — wersja zapoznawcza--> pakiet B | FALSE, Najnowsza stabilna wersja nie jest zależna od pakietu B |
+
+  - Liczba gwiazdek repozytorium GitHub zazwyczaj wskazuje, jak popularne jest repozytorium z użytkownikami usługi GitHub (zazwyczaj jest to bardziej popularne). Odwiedź [stronę wprowadzenie witryny GitHub](https://help.github.com/en/github/getting-started-with-github/saving-repositories-with-stars#about-stars) , aby uzyskać więcej informacji o systemie klasyfikacji i repozytorium usługi GitHub.
+
+    ![Używane przez](media/Used-By-section-Humanizer.png)
 
     > [!Note]
-    > Sekcja użycie usługi GitHub pakietu jest generowana automatycznie, bez sprawdzenia przez człowieka indywidualnych repozytoriów i wyłącznie do celów informacyjnych w celu pokazania repozytoriów GitHub, które są zależne od pakietu i które są popularne z użytkownikami usługi GitHub.
+    > Sekcja używany przez sekcję jest generowana automatycznie, okresowo bez przeglądu indywidualnych repozytoriów i wyłącznie do celów informacyjnych w celu pokazania pakietów NuGet.org i popularnych repozytoriów GitHub, które są zależne od pakietu.
 
-- *Historia wersji*: na stronie pakiet zapoznaj się z **informacjami** dotyczącymi daty ostatniej aktualizacji i sprawdź **historię wersji**. Dobrze obsługiwany pakiet zawiera najnowsze aktualizacje i zaawansowaną historię wersji. Zaniedbane pakiety mają kilka aktualizacji i często nie zostały zaktualizowane w pewnym czasie.
+- **Historia wersji**: na stronie pakiet zapoznaj się z **informacjami** dotyczącymi daty ostatniej aktualizacji i sprawdź **historię wersji**. Dobrze obsługiwany pakiet zawiera najnowsze aktualizacje i zaawansowaną historię wersji. Zaniedbane pakiety mają kilka aktualizacji i często nie zostały zaktualizowane w pewnym czasie.
 
     ![Historia wersji na stronie z listą pakietu](media/Finding-04-VersionHistory.png)
 
-- *Ostatnie instalacje*: na stronie pakiet w obszarze **Statystyka**wybierz pozycję **Wyświetl pełne statystyki**. Na stronie pełne statystyki zostanie wyświetlony pakiet instalowany w ciągu ostatnich sześciu tygodni według numeru wersji. Pakiet, do którego aktywnie korzysta inni deweloperzy, jest zazwyczaj lepszym wyborem niż ten, który nie jest.
+- **Ostatnie instalacje**: na stronie pakiet w obszarze **Statystyka**wybierz pozycję **Wyświetl pełne statystyki**. Na stronie pełne statystyki zostanie wyświetlony pakiet instalowany w ciągu ostatnich sześciu tygodni według numeru wersji. Pakiet, do którego aktywnie korzysta inni deweloperzy, jest zazwyczaj lepszym wyborem niż ten, który nie jest.
 
-- *Obsługa*: na stronie pakiet w obszarze **informacje**wybierz pozycję **Witryna projektu** (jeśli jest dostępna), aby zobaczyć opcje pomocy technicznej udostępniane przez autora. Projekt z dedykowaną lokacją jest ogólnie lepszy.
+- **Obsługa**: na stronie pakiet w obszarze **informacje**wybierz pozycję **Witryna projektu** (jeśli jest dostępna), aby zobaczyć opcje pomocy technicznej udostępniane przez autora. Projekt z dedykowaną lokacją jest ogólnie lepszy.
 
-- *Historia deweloperów*: na stronie pakiet w obszarze **właściciele**wybierz właściciela, aby zobaczyć, jakie inne pakiety zostały opublikowane. Te z wieloma pakietami mogą nadal obsługiwać swoją pracę w przyszłości.
+- **Historia deweloperów**: na stronie pakiet w obszarze **właściciele**wybierz właściciela, aby zobaczyć, jakie inne pakiety zostały opublikowane. Te z wieloma pakietami mogą nadal obsługiwać swoją pracę w przyszłości.
 
-- *Wkłady typu open source*: wiele pakietów jest przechowywanych w repozytoriach typu "open source", dzięki czemu deweloperzy mogą w zależności od nich bezpośrednio współtworzyć poprawki błędów i ulepszenia funkcji. Historia udziału danego pakietu jest również dobrym wskaźnikiem liczby aktywnie używanych deweloperów.
+- **Wkłady typu open source**: wiele pakietów jest przechowywanych w repozytoriach typu "open source", dzięki czemu deweloperzy mogą w zależności od nich bezpośrednio współtworzyć poprawki błędów i ulepszenia funkcji. Historia udziału danego pakietu jest również dobrym wskaźnikiem liczby aktywnie używanych deweloperów.
 
-- Przeprowadzenie *rozmowy kwalifikacyjnej z właścicielami*: Nowi deweloperzy mogą na pewno być zaangażowani w tworzenie doskonałych pakietów do użycia i dobrym rozwiązaniem jest nadanie im nowego ekosystemu NuGet. Pamiętając o tym, aby skontaktować się bezpośrednio z deweloperami pakietu za pomocą opcji **właściciele kontaktu** w obszarze **informacje** na stronie z listą. Z tego strony będą mieć szczęście, aby móc korzystać z Twoich potrzeb.
+- Przeprowadzenie **rozmowy kwalifikacyjnej z właścicielami**: Nowi deweloperzy mogą na pewno być zaangażowani w tworzenie doskonałych pakietów do użycia i dobrym rozwiązaniem jest nadanie im nowego ekosystemu NuGet. Pamiętając o tym, aby skontaktować się bezpośrednio z deweloperami pakietu za pomocą opcji **właściciele kontaktu** w obszarze **informacje** na stronie z listą. Z tego strony będą mieć szczęście, aby móc korzystać z Twoich potrzeb.
 
-- *Prefiksy identyfikatorów pakietów zarezerwowanych*: wiele właścicieli pakietów ma zastosowanych do i ma przypisany [prefiks identyfikatora pakietu zastrzeżonego](../nuget-org/id-prefix-reservation.md). Gdy zobaczysz znacznik wyboru obok identyfikatora pakietu na [NuGet.org](https://www.nuget.org/)lub w programie Visual Studio, oznacza to, że właściciel pakietu spełnił [kryteria](../nuget-org/id-prefix-reservation.md#id-prefix-reservation-criteria) rezerwacji prefiksów identyfikatorów. Oznacza to, że właściciel pakietu jest czyszczony na identyfikowaniu siebie i ich pakiecie.
+- **Prefiksy identyfikatorów pakietów zarezerwowanych**: wiele właścicieli pakietów ma zastosowanych do i ma przypisany [prefiks identyfikatora pakietu zastrzeżonego](../nuget-org/id-prefix-reservation.md). Gdy zobaczysz znacznik wyboru obok identyfikatora pakietu na [NuGet.org](https://www.nuget.org/)lub w programie Visual Studio, oznacza to, że właściciel pakietu spełnił [kryteria](../nuget-org/id-prefix-reservation.md#id-prefix-reservation-criteria) rezerwacji prefiksów identyfikatorów. Oznacza to, że właściciel pakietu jest czyszczony na identyfikowaniu siebie i ich pakiecie.
 
 > [!Note]
 > Zawsze pamiętaj o postanowień licencyjnych dotyczących pakietu, które możesz zobaczyć, wybierając pozycję **Informacje o licencji** na stronie z listą pakietów w witrynie NuGet.org. Jeśli pakiet nie określa postanowień licencyjnych, skontaktuj się z właścicielem pakietu bezpośrednio, korzystając z linku **właściciele kontaktu** na stronie pakiet. Firma Microsoft nie udziela licencji jakiejkolwiek własności intelektualnej od dostawców pakietów innych firm i nie ponosi odpowiedzialności za informacje udostępniane przez strony trzecie.

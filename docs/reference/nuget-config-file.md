@@ -5,18 +5,18 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/13/2019
 ms.topic: reference
-ms.openlocfilehash: 760bf09cb03608275e2c5406474f572a407a7379
-ms.sourcegitcommit: f29fa9b93fd59e679fab50d7413bbf67da3ea5b3
+ms.openlocfilehash: 28fae46a65bd4c2b7050e12568c21123fc8658c1
+ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86451128"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88623165"
 ---
 # <a name="nugetconfig-reference"></a>Informacje nuget.config
 
 Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` lub `nuget.config` plikach, zgodnie z opisem w temacie [typowe konfiguracje programu NuGet](../consume-packages/configuring-nuget-behavior.md).
 
-`nuget.config`jest plikiem XML zawierającym węzeł najwyższego poziomu `<configuration>` , który zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej elementów. Zobacz [przykład pliku konfiguracji](#example-config-file). W nazwach ustawień jest rozróżniana wielkość liter, a wartości mogą używać [zmiennych środowiskowych](#using-environment-variables).
+`nuget.config` jest plikiem XML zawierającym węzeł najwyższego poziomu `<configuration>` , który zawiera elementy sekcji opisane w tym temacie. Każda sekcja zawiera zero lub więcej elementów. Zobacz [przykład pliku konfiguracji](#example-config-file). W nazwach ustawień jest rozróżniana wielkość liter, a wartości mogą używać [zmiennych środowiskowych](#using-environment-variables).
 
 <a name="dependencyVersion"></a>
 <a name="globalPackagesFolder"></a>
@@ -27,7 +27,7 @@ Zachowanie NuGet jest kontrolowane przez ustawienia w różnych `NuGet.Config` l
 
 Zawiera różne ustawienia konfiguracji, które można ustawić za pomocą [ `nuget config` polecenia](../reference/cli-reference/cli-ref-config.md).
 
-`dependencyVersion`i `repositoryPath` mają zastosowanie tylko do projektów korzystających z programu `packages.config` . `globalPackagesFolder`dotyczy tylko projektów przy użyciu formatu PackageReference.
+`dependencyVersion` i `repositoryPath` mają zastosowanie tylko do projektów korzystających z programu `packages.config` . `globalPackagesFolder` dotyczy tylko projektów przy użyciu formatu PackageReference.
 
 | Klucz | Wartość |
 | --- | --- |
@@ -35,7 +35,7 @@ Zawiera różne ustawienia konfiguracji, które można ustawić za pomocą [ `nu
 | globalPackagesFolder (projekty korzystające tylko z PackageReference) | Lokalizacja domyślnego folderu pakiety globalne. Wartość domyślna to `%userprofile%\.nuget\packages` (Windows) lub `~/.nuget/packages` (Mac/Linux). Ścieżka względna może być używana w plikach specyficznych dla projektu `nuget.config` . To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
 | repositoryPath ( `packages.config` tylko) | Lokalizacja, w której mają zostać zainstalowane pakiety NuGet zamiast folderu domyślnego `$(Solutiondir)/packages` . Ścieżka względna może być używana w plikach specyficznych dla projektu `nuget.config` . To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
 | defaultPushSource | Określa adres URL lub ścieżkę źródła pakietu, które ma być używane jako wartość domyślna, jeśli nie znaleziono żadnych innych źródeł pakietów dla operacji. |
-| http_proxy http_proxy. User http_proxy. Password no_proxy | Ustawienia serwera proxy do użycia podczas nawiązywania połączenia ze źródłami pakietów; `http_proxy`powinien mieć format `http://<username>:<password>@<domain>` . Hasła są szyfrowane i nie można ich dodać ręcznie. W przypadku `no_proxy` , wartość jest rozdzielaną przecinkami listą domen, które pomijają serwer proxy. Dla tych wartości można użyć zmiennych środowiskowych http_proxy i no_proxy. Aby uzyskać więcej informacji, zobacz [Ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com). |
+| http_proxy http_proxy. User http_proxy. Password no_proxy | Ustawienia serwera proxy do użycia podczas nawiązywania połączenia ze źródłami pakietów; `http_proxy` powinien mieć format `http://<username>:<password>@<domain>` . Hasła są szyfrowane i nie można ich dodać ręcznie. W przypadku `no_proxy` , wartość jest rozdzielaną przecinkami listą domen, które pomijają serwer proxy. Dla tych wartości można użyć zmiennych środowiskowych http_proxy i no_proxy. Aby uzyskać więcej informacji, zobacz [Ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com). |
 | signatureValidationMode | Określa tryb weryfikacji używany do weryfikowania podpisów pakietów na potrzeby instalacji pakietu i przywracania. Wartości to `accept` , `require` . Wartość domyślna to `accept` .
 
 **Przykład**:
@@ -132,12 +132,14 @@ Wyświetla wszystkie znane źródła pakietów. Kolejność jest ignorowana podc
 ### <a name="packagesourcecredentials"></a>packageSourceCredentials
 
 Przechowuje nazwy użytkowników i hasła dla źródeł, zwykle określone przy użyciu `-username` `-password` przełączników i `nuget sources` . Hasła są szyfrowane domyślnie, chyba że `-storepasswordincleartext` jest również używana opcja.
+Opcjonalnie można określić prawidłowe typy uwierzytelniania za pomocą `-validauthenticationtypes` przełącznika.
 
 | Klucz | Wartość |
 | --- | --- |
 | nazwa użytkownika | Nazwa użytkownika dla źródła w postaci zwykłego tekstu. |
 | hasło | Hasło zaszyfrowane dla źródła. Hasła szyfrowane są obsługiwane tylko w systemie Windows i mogą być odszyfrowywane tylko wtedy, gdy są używane na tym samym komputerze i za pośrednictwem tego samego użytkownika co oryginalne szyfrowanie. |
 | cleartextpassword | Niezaszyfrowane hasło dla źródła. Uwaga: zmienne środowiskowe mogą być używane w celu zwiększenia bezpieczeństwa. |
+| validauthenticationtypes | Rozdzielana przecinkami lista prawidłowych typów uwierzytelniania dla tego źródła. Ustaw tę opcję na `basic` , jeśli serwer anonsuje protokół NTLM lub Negocjuj, a Twoje poświadczenia muszą być wysyłane przy użyciu podstawowego mechanizmu, na przykład w przypadku korzystania z elementu "% Azure DevOps Server". Inne prawidłowe wartości to `negotiate` , `kerberos` , `ntlm` , i `digest` , ale te wartości są prawdopodobnie przydatne. |
 
 **Przykład:**
 
@@ -186,6 +188,23 @@ W przypadku korzystania z nieszyfrowanych haseł:
 </packageSourceCredentials>
 ```
 
+Ponadto można podać prawidłowe metody uwierzytelniania:
+
+```xml
+<packageSourceCredentials>
+    <Contoso>
+        <add key="Username" value="user@contoso.com" />
+        <add key="Password" value="..." />
+        <add key="ValidAuthenticationTypes" value="basic" />
+    </Contoso>
+    <Test_x0020_Source>
+        <add key="Username" value="user" />
+        <add key="ClearTextPassword" value="hal+9ooo_da!sY" />
+        <add key="ValidAuthenticationTypes" value="basic, negotiate" />
+    </Test_x0020_Source>
+</packageSourceCredentials>
+```
+
 ### <a name="apikeys"></a>apikeys
 
 Przechowuje klucze dla źródeł korzystających z uwierzytelniania za pomocą klucza interfejsu API, jak określono za pomocą [ `nuget setapikey` polecenia](../reference/cli-reference/cli-ref-setapikey.md).
@@ -229,7 +248,7 @@ Identyfikuje aktualnie aktywne źródło lub wskazuje zagregowane wszystkie źr�
 
 | Klucz | Wartość |
 | --- | --- |
-| (nazwa źródła) lub`All` | Jeśli klucz jest nazwą źródła, wartość jest ścieżką źródłową lub adresem URL. Jeśli `All` wartość powinna być `(Aggregate source)` połączona ze wszystkimi źródłami pakietów, które nie są wyłączone. |
+| (nazwa źródła) lub `All` | Jeśli klucz jest nazwą źródła, wartość jest ścieżką źródłową lub adresem URL. Jeśli `All` wartość powinna być `(Aggregate source)` połączona ze wszystkimi źródłami pakietów, które nie są wyłączone. |
 
 **Przykład**:
 
@@ -306,7 +325,7 @@ Ustawia domyślny format zarządzania pakietami, *packages.config* lub PackageRe
 | Klucz | Wartość |
 | --- | --- |
 | format | Wartość logiczna wskazująca domyślny format zarządzania pakietami. Jeśli `1` , format jest PackageReference. Jeśli `0` Format jest *packages.config*. |
-| wyłączone | Wartość logiczna wskazująca, czy wyświetlać monit o wybranie domyślnego formatu pakietu przy pierwszej instalacji pakietu. `False`ukrywa monit. |
+| wyłączone | Wartość logiczna wskazująca, czy wyświetlać monit o wybranie domyślnego formatu pakietu przy pierwszej instalacji pakietu. `False` ukrywa monit. |
 
 **Przykład**:
 
@@ -323,9 +342,21 @@ Możesz użyć zmiennych środowiskowych w `nuget.config` wartościach (NuGet 3.
 
 Na przykład jeśli `HOME` zmienna środowiskowa w systemie Windows jest ustawiona na `c:\users\username` , wartość `%HOME%\NuGetRepository` w pliku konfiguracji jest rozpoznawana jako `c:\users\username\NuGetRepository` .
 
-Należy pamiętać, że należy używać zmiennych środowiskowych w stylu systemu Windows (rozpoczyna się i kończą z%) nawet w systemie Mac/Linux. Posiadanie `$HOME/NuGetRepository` w pliku konfiguracji nie zostanie rozwiązane. W systemie Mac/Linux wartość `%HOME%\NuGetRepository` zostanie rozwiązany `/home/myStuff/NuGetRepository` .
+Należy pamiętać, że należy używać zmiennych środowiskowych w stylu systemu Windows (rozpoczyna się i kończą z%) nawet w systemie Mac/Linux. Posiadanie `$HOME/NuGetRepository` w pliku konfiguracji nie zostanie rozwiązane. W systemie Mac/Linux wartość `%HOME%/NuGetRepository` zostanie rozwiązany `/home/myStuff/NuGetRepository` .
 
-Jeśli zmienna środowiskowa nie zostanie znaleziona, NuGet używa wartości literału z pliku konfiguracyjnego.
+Jeśli zmienna środowiskowa nie zostanie znaleziona, NuGet używa wartości literału z pliku konfiguracyjnego. Na przykład `%MY_UNDEFINED_VAR%/NuGetRepository` zostanie rozpoznany jako `path/to/current_working_dir/$MY_UNDEFINED_VAR/NuGetRepository`
+
+W poniższej tabeli przedstawiono obsługę składni wirtualnym zmiennych i separator ścieżki dla plików NuGet.Config.
+
+### <a name="nugetconfig-environment-variable-support"></a>Obsługa zmiennej środowiskowej NuGet.Config
+
+| Składnia | Separator dir | nuget.exe systemu Windows | dotnet.exe systemu Windows | Mac nuget.exe (w mono) | dotnet.exe Mac |
+|---|---|---|---|---|---|
+| `%MY_VAR%` | `/`  | Tak | Tak | Tak | Tak |
+| `%MY_VAR%` | `\`  | Tak | Tak | Nie | Nie |
+| `$MY_VAR` | `/`  | Nie | Nie | Nie | Nie |
+| `$MY_VAR` | `\`  | Nie | Nie | Nie | Nie |
+
 
 ## <a name="example-config-file"></a>Przykładowy plik konfiguracji
 
@@ -340,10 +371,10 @@ Poniżej znajduje się przykładowy `nuget.config` plik, który ilustruje wiele 
             See: nuget.exe help install
             See: nuget.exe help update
 
-            In this example, %PACKAGEHOME% is an environment variable. On Mac/Linux,
-            use $PACKAGE_HOME/External as the value.
+            In this example, %PACKAGEHOME% is an environment variable.
+            This syntax works on Windows/Mac/Linux
         -->
-        <add key="repositoryPath" value="%PACKAGEHOME%\External" />
+        <add key="repositoryPath" value="%PACKAGEHOME%/External" />
 
         <!--
             Used to specify default source for the push command.

@@ -1,16 +1,16 @@
 ---
 title: Polecenie konfiguracji interfejsu wiersza polecenia NuGet
-description: Dokumentacja polecenia NuGet. exe config
+description: Informacje dotyczące polecenia nuget.exe config
 author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 384e708187a747221de103720cc51af07acf713e
-ms.sourcegitcommit: f9e39ff9ca19ba4a26e52b8a5e01e18eb0de5387
+ms.openlocfilehash: 7d0c1c51f40cba9a5b69f209ffbd995451bfeb9f
+ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68433318"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88622879"
 ---
 # <a name="config-command-nuget-cli"></a>config — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -25,7 +25,7 @@ nuget config -Set <name>=[<value>] [<name>=<value> ...] [options]
 nuget config -AsPath <name> [options]
 ```
 
-gdzie `<name>` i`<value>` określić parę klucz-wartość, która ma zostać ustawiona w konfiguracji. Można określić dowolną liczbę par. Aby usunąć wartość, określ nazwę i `=` znak, ale nie wartości.
+gdzie `<name>` i `<value>` określić parę klucz-wartość, która ma zostać ustawiona w konfiguracji. Można określić dowolną liczbę par. Aby usunąć wartość, określ nazwę i `=` znak, ale nie wartości.
 
 Aby uzyskać dozwolone nazwy kluczy, zobacz [Dokumentacja pliku konfiguracji programu NuGet](../nuget-config-file.md).
 
@@ -33,14 +33,34 @@ W programie NuGet 3.4 + `<value>` można używać [zmiennych środowiskowych](cl
 
 ## <a name="options"></a>Opcje
 
-| Opcja | Opis |
-| --- | --- |
-| AsPath | Zwraca wartość konfiguracji jako ścieżkę, która jest ignorowana `-Set` , gdy jest używana. |
-| ConfigFile | Plik konfiguracji NuGet do zmodyfikowania. Jeśli nie zostanie określony, domyślny plik jest używany —`%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.config/NuGet/NuGet.Config` (Mac/Linux) lub `~/.nuget/NuGet/NuGet.Config` (w zależności od dystrybucji systemu operacyjnego).|
-| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
-| Help | Wyświetla informacje pomocy dla polecenia. |
-| NonInteractive | Pomija monity o dane wejściowe lub potwierdzone przez użytkownika. |
-| Verbosity | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *ciche*, *szczegółowe*. |
+
+- **`AsPath`**
+
+  Zwraca wartość konfiguracji jako ścieżkę, która jest ignorowana, gdy `-Set` jest używana.
+
+- **`-ConfigFile`**
+
+  Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` lub `~/.config/NuGet/NuGet.Config` (Mac/Linux) jest używany.
+
+- **`-ForceEnglishOutput`**
+
+  *(3.5 +)* Wymusza uruchamianie nuget.exe przy użyciu niezmiennej kultury opartej na języku angielskim.
+
+- **`-?|-help`**
+
+  Wyświetla informacje pomocy dla polecenia.
+
+- **`-NonInteractive`**
+
+  Pomija monity o dane wejściowe lub potwierdzone przez użytkownika.
+
+- **`-Set`**
+
+  Jeden na więcej par klucz-wartość, które mają być ustawiane w konfiguracji.
+
+- **`-Verbosity [normal|quiet|detailed]`**
+
+  Określa ilość szczegółów wyświetlanych w danych wyjściowych: `normal` (wartość domyślna), `quiet` lub `detailed` .
 
 Zobacz również [zmienne środowiskowe](cli-ref-environment-variables.md)
 

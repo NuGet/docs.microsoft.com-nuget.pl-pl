@@ -1,21 +1,21 @@
 ---
 title: Polecenie weryfikacji interfejsu wiersza polecenia NuGet
-description: Odwołanie do polecenia VERIFY. exe programu NuGet
+description: Odwołanie do polecenia nuget.exe verify
 author: dtivel
 ms.author: dtivel
 ms.date: 03/06/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: 9510f7323fe0cb860e0dbde51c1eda761846ee27
-ms.sourcegitcommit: efc18d484fdf0c7a8979b564dcb191c030601bb4
+ms.openlocfilehash: 2c501753a16820c5d027441001561c6b637ccda9
+ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328253"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88622606"
 ---
-# <a name="verify-command-nuget-cli"></a>verify command, polecenie (interfejs wiersza polecenia NuGet)
+# <a name="verify-command-nuget-cli"></a>VERIFY — polecenie (interfejs wiersza polecenia NuGet)
 
-**Dotyczy:** **obsługiwane wersje** pakietów &bullet; : 4.6 +
+**Dotyczy:** &bullet; **obsługiwane wersje pakietów:** 4.6 +
 
 Weryfikuje pakiet.
 
@@ -39,18 +39,31 @@ Określa, że należy przeprowadzić weryfikację podpisu pakietu.
 
 ## <a name="options-for-verify--signatures"></a>Opcje "Weryfikuj sygnaturę"
 
-| Opcja | Opis |
-| --- | --- |
-| CertificateFingerprint | Określa co najmniej jeden odcisk palca certyfikatu SHA-256 certyfikatów, które podpisane pakiety muszą być podpisane. Odcisk palca SHA-256 certyfikatu jest skrótem SHA-256 certyfikatu. Wielokrotne dane wejściowe powinny być rozdzielone średnikami. |
+- **`-CertificateFingerprint`**
+
+  Określa co najmniej jeden odcisk palca certyfikatu SHA-256 certyfikatów, które podpisane pakiety muszą być podpisane. Odcisk palca SHA-256 certyfikatu jest skrótem SHA-256 certyfikatu. Wielokrotne dane wejściowe powinny być rozdzielone średnikami.
 
 ## <a name="options"></a>Opcje
 
-| Opcja | Opis |
-| --- | --- |
-| ConfigFile | Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony `%AppData%\NuGet\NuGet.Config` , używany jest system `~/.nuget/NuGet/NuGet.Config` (Windows) lub (Mac/Linux).|
-| ForceEnglishOutput | Wymusza uruchomienie NuGet. exe przy użyciu niezmiennej, opartej na języku angielskim kultury. |
-| Help | Wyświetla informacje pomocy dla polecenia. |
-| Verbosity | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *ciche*, *szczegółowe*. |
+- **`-ConfigFile`**
+
+  Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` lub `~/.config/NuGet/NuGet.Config` (Mac/Linux) jest używany.
+
+- **`-ForceEnglishOutput`**
+
+  Wymusza uruchamianie nuget.exe przy użyciu niezmiennej kultury opartej na języku angielskim.
+
+- **`-?|-help`**
+
+  Wyświetla informacje pomocy dla polecenia.
+
+- **`-NonInteractive`**
+
+  Pomija monity o dane wejściowe lub potwierdzone przez użytkownika.
+
+- **`-Verbosity [normal|quiet|detailed]`**
+
+  Określa ilość szczegółów wyświetlanych w danych wyjściowych: `normal` (wartość domyślna), `quiet` lub `detailed` .
 
 ## <a name="examples"></a>Przykłady
 

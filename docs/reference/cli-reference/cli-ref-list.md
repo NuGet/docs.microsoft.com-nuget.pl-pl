@@ -1,44 +1,68 @@
 ---
 title: Polecenie listy interfejsu wiersza polecenia NuGet
-description: Dokumentacja polecenia list NuGet. exe
+description: Dokumentacja polecenia nuget.exe list
 author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 94228521b3be85277990bca2da69518b7070bbdf
-ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
+ms.openlocfilehash: 91886dbbdcdb24648289d6f6efbe1f87e4099fff
+ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76813341"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88623074"
 ---
 # <a name="list-command-nuget-cli"></a>list — polecenie (interfejs wiersza polecenia NuGet)
 
 **Dotyczy:** użycie pakietu, publikowanie &bullet; **obsługiwanych wersji:** wszystkie
 
-Wyświetla listę pakietów z danego źródła. Jeśli nie określono żadnych źródeł, używane są wszystkie źródła zdefiniowane w pliku konfiguracji globalnej, `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config`. Jeśli `NuGet.Config` nie określa żadnych źródeł, `list` używa domyślnego kanału informacyjnego (nuget.org).
+Wyświetla listę pakietów z danego źródła. Jeśli nie określono żadnych źródeł, używane są wszystkie źródła zdefiniowane w globalnym pliku konfiguracji `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` ,. Jeśli `NuGet.Config` nie określa żadnych źródeł, program `list` używa domyślnego kanału informacyjnego (NuGet.org).
 
-## <a name="usage"></a>Pomiar
+## <a name="usage"></a>Użycie
 
 ```cli
 nuget list [search terms] [options]
 ```
 
-gdzie opcjonalne terminy wyszukiwania będą filtrować listę wyświetlaną. Terminy wyszukiwania są stosowane do nazw pakietów, tagów i opisów pakietów, tak jak w przypadku ich używania w programie nuget.org.
+gdzie opcjonalne terminy wyszukiwania będą filtrować listę wyświetlaną. [Terminy wyszukiwania](/nuget/consume-packages/finding-and-choosing-packages#search-syntax) są stosowane do nazw pakietów, tagów i opisów pakietów, tak jak w przypadku ich używania w programie NuGet.org. 
 
 ## <a name="options"></a>Opcje
 
-| Opcja | Opis |
-| --- | --- |
-| AllVersions | Wyświetl listę wszystkich wersji pakietu. Domyślnie zostanie wyświetlona tylko Najnowsza wersja pakietu. |
-| ConfigFile | Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony, używany jest `%AppData%\NuGet\NuGet.Config` (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux).|
-| ForceEnglishOutput | *(3.5 +)* Wymusza nuget.exe przy użyciu opartego na język angielski, niezmienna kultura. |
-| Pomoc | Wyświetla informacje pomocy dla polecenia. |
-| IncludeDelisted | *(3.2 +)* Wyświetlanie pakietów nieznajdujących się na liście. |
-| NonInteractive | Pomija monity o dane wejściowe lub potwierdzone przez użytkownika. |
-| PreRelease | Zawiera pakiety wersji wstępnej znajdujące się na liście. |
-| Obiekt źródłowy | Określa listę źródeł pakietów do wyszukania. |
-| Szczegółowość | Określa ilość szczegółów wyświetlanych w danych wyjściowych: *normalne*, *ciche*, *szczegółowe*. |
+- **`-AllVersions`**
+
+  Wyświetl listę wszystkich wersji pakietu. Domyślnie zostanie wyświetlona tylko Najnowsza wersja pakietu.
+
+- **`-ConfigFile`**
+
+  Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` lub `~/.config/NuGet/NuGet.Config` (Mac/Linux) jest używany.
+
+- **`-ForceEnglishOutput`**
+
+  *(3.5 +)* Wymusza uruchamianie nuget.exe przy użyciu niezmiennej kultury opartej na języku angielskim.
+
+- **`-?|-help`**
+
+  Wyświetla informacje pomocy dla polecenia.
+
+- **`-IncludeDelisted`**
+
+  *(3.2 +)* Wyświetlanie pakietów nieznajdujących się na liście.
+
+- **`-NonInteractive`**
+
+  Pomija monity o dane wejściowe lub potwierdzone przez użytkownika.
+
+- **`-PreRelease`**
+
+  Zawiera pakiety wersji wstępnej znajdujące się na liście.
+
+- **`-Source`**
+
+  Określa listę źródeł pakietów do wyszukania.
+
+- **`-Verbosity [normal|quiet|detailed]`**
+
+  Określa ilość szczegółów wyświetlanych w danych wyjściowych: `normal` (wartość domyślna), `quiet` lub `detailed` .
 
 Zobacz również [zmienne środowiskowe](cli-ref-environment-variables.md)
 
@@ -64,4 +88,3 @@ Wyświetlanie listy pakietów związanych z notacją JSON z wielu źródeł/źr�
 ```
 nuget list JSON -Source "https://nuget.org/api/v2" -Source "https://other-feed-url-goes-here"
 ```
-

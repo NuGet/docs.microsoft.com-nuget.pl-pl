@@ -1,50 +1,50 @@
 ---
 title: Instalowanie pakietów NuGet i zarządzanie nimi przy użyciu interfejsu wiersza polecenia dotnet
-description: Instrukcje dotyczące korzystania z dotnet CLI do pracy z pakietami NuGet.
+description: Instrukcje dotyczące używania interfejsu wiersza polecenia dotnet do pracy z pakietami NuGet.
 author: mikejo5000
 ms.author: mikejo
 ms.date: 06/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: 67cca81c48970c7f2e2cf0a64ee5ba57704a31e2
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 38455e61bd91f115df9f27df090ba47a029f6877
+ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "74825162"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88622944"
 ---
 # <a name="install-and-manage-packages-using-the-dotnet-cli"></a>Instalowanie pakietów i zarządzanie nimi przy użyciu interfejsu wiersza polecenia dotnet
 
-Narzędzie CLI umożliwia łatwe instalowanie, odinstalowywanie i aktualizowanie pakietów NuGet w projektach i rozwiązaniach. Działa w systemach Windows, Mac OS X i Linux.
+Narzędzie interfejsu wiersza polecenia umożliwia łatwe instalowanie, Odinstalowywanie i aktualizowanie pakietów NuGet w projektach i rozwiązaniach. Działa w systemach Windows, Mac OS X i Linux.
 
-Dotnet CLI jest do użytku w projekcie .NET Core i .NET Standard (typy projektów w stylu SDK) oraz dla wszystkich innych projektów w stylu SDK (na przykład projektu w stylu SDK, który jest przeznaczony dla platformy .NET Framework). Aby uzyskać więcej informacji, zobacz [atrybut SDK](/dotnet/core/tools/csproj#additions).
+Interfejs wiersza polecenia dotnet jest używany w projekcie .NET Core i .NET Standard projektu (typy projektów w stylu zestawu SDK) oraz dla innych projektów w stylu zestawu SDK (na przykład projekt w stylu zestawu SDK, który jest przeznaczony dla .NET Framework). Aby uzyskać więcej informacji, zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions).
 
-W tym artykule przedstawiono podstawowe użycie kilku najczęściej spotykanych poleceń dotnet CLI. W przypadku większości z tych poleceń narzędzie interfejsu wiersza polecenia wyszukuje plik projektu w bieżącym katalogu, chyba że plik projektu jest określony w poleceniu (plik projektu jest przełącznikiem opcjonalnym). Aby uzyskać pełną listę poleceń i argumenty, których można użyć, zobacz [narzędzia interfejsu wiersza polecenia .NET Core .](../reference/dotnet-commands.md)
+W tym artykule przedstawiono podstawowe użycie kilku typowych poleceń interfejsu wiersza polecenia dotnet. W przypadku większości tych poleceń narzędzie interfejsu wiersza polecenia szuka pliku projektu w bieżącym katalogu, chyba że plik projektu jest określony w poleceniu (plik projektu jest przełącznikiem opcjonalnym). Aby uzyskać pełną listę poleceń i argumentów, których można użyć, zobacz [Narzędzia interfejsu wiersza polecenia (CLI) platformy .NET Core](../reference/dotnet-commands.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zestaw [SDK .NET Core](https://www.microsoft.com/net/download/) `dotnet` , który udostępnia narzędzie wiersza polecenia. Począwszy od programu Visual Studio 2017, dotnet interfejsu wiersza polecenia jest automatycznie instalowany z dowolnego .NET Core obciążeń związanych.
+- [Zestaw .NET Core SDK](https://www.microsoft.com/net/download/), która udostępnia `dotnet` Narzędzie wiersza polecenia. Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.
 
 ## <a name="install-a-package"></a>Instalowanie pakietu
 
-[dotnet add package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) dodaje odwołanie do pakietu `dotnet restore` do pliku projektu, a następnie uruchamia się, aby zainstalować pakiet.
+polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) dodaje odwołanie do pakietu do pliku projektu, a następnie uruchamia polecenie, `dotnet restore` Aby zainstalować pakiet.
 
-1. Otwórz wiersz polecenia i przełącz się do katalogu zawierającego plik projektu.
+1. Otwórz wiersz polecenia i przejdź do katalogu, który zawiera plik projektu.
 
-2. Aby zainstalować pakiet Nuget, użyj następującego polecenia:
+2. Użyj następującego polecenia, aby zainstalować pakiet NuGet:
 
     ```dotnetcli
     dotnet add package <PACKAGE_NAME>
     ```
 
-    Na przykład, aby `Newtonsoft.Json` zainstalować pakiet, użyj następującego polecenia
+    Na przykład aby zainstalować `Newtonsoft.Json` pakiet, użyj następującego polecenia
 
     ```dotnetcli
     dotnet add package Newtonsoft.Json
     ```
 
-3. Po zakończeniu polecenia, spójrz na plik projektu, aby upewnić się, że pakiet został zainstalowany.
+3. Po zakończeniu wykonywania polecenia Sprawdź plik projektu, aby upewnić się, że pakiet został zainstalowany.
 
-   Możesz otworzyć `.csproj` plik, aby wyświetlić dodane odwołanie:
+   Możesz otworzyć plik, `.csproj` Aby zobaczyć dodane odwołanie:
 
     ```xml
    <ItemGroup>
@@ -52,37 +52,37 @@ W tym artykule przedstawiono podstawowe użycie kilku najczęściej spotykanych 
    </ItemGroup>
     ```
 
-## <a name="install-a-specific-version-of-a-package"></a>Instalowanie określonej wersji pakietu
+## <a name="install-a-specific-version-of-a-package"></a>Zainstaluj określoną wersję pakietu
 
-Jeśli wersja nie jest określona, NuGet instaluje najnowszą wersję pakietu. Można również użyć polecenia [dotnet add package,](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) aby zainstalować określoną wersję pakietu Nuget:
+Jeśli wersja nie zostanie określona, NuGet zainstaluje najnowszą wersję pakietu. Aby zainstalować określoną wersję pakietu NuGet, można również użyć polecenia [dotnet Add Package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) :
 
 ```dotnetcli
-dotnet add package <PACKAGE_NAME> -v <VERSION>
+dotnet add package <PACKAGE_NAME> --version <VERSION>
 ```
 
 Na przykład, aby dodać wersję 12.0.1 `Newtonsoft.Json` pakietu, użyj tego polecenia:
 
 ```dotnetcli
-dotnet add package Newtonsoft.Json -v 12.0.1
+dotnet add package Newtonsoft.Json --version 12.0.1
 ```
 
-## <a name="list-package-references"></a>Numery pakietów list
+## <a name="list-package-references"></a>Wyświetl listę odwołań do pakietów
 
-Odwołania do pakietu dla projektu można wyświetlić za pomocą polecenia [pakietu listy dotnet.](/dotnet/core/tools/dotnet-list-package?tabs=netcore2x)
+Możesz wyświetlić listę odwołań do pakietów dla projektu przy użyciu polecenia [pakietu dotnet list](/dotnet/core/tools/dotnet-list-package?tabs=netcore2x) .
 
 ```dotnetcli
 dotnet list package
 ```
 
-## <a name="remove-a-package"></a>Usuwanie pakietu
+## <a name="remove-a-package"></a>Usuń pakiet
 
-Użyj polecenia [dotnet remove package,](/dotnet/core/tools/dotnet-remove-package?tabs=netcore2x) aby usunąć odwołanie do pakietu z pliku projektu.
+Aby usunąć odwołanie do pakietu z pliku projektu, użyj polecenia [dotnet Remove Package](/dotnet/core/tools/dotnet-remove-package?tabs=netcore2x) .
 
 ```dotnetcli
 dotnet remove package <PACKAGE_NAME>
 ```
 
-Na przykład, aby `Newtonsoft.Json` usunąć pakiet, użyj następującego polecenia
+Na przykład aby usunąć `Newtonsoft.Json` pakiet, użyj następującego polecenia
 
 ```dotnetcli
 dotnet remove package Newtonsoft.Json
@@ -90,7 +90,7 @@ dotnet remove package Newtonsoft.Json
 
 ## <a name="update-a-package"></a>Aktualizowanie pakietu
 
-NuGet instaluje najnowszą wersję pakietu `dotnet add package` podczas korzystania z polecenia,`-v` chyba że określisz wersję pakietu ( przełącznik).
+Pakiet NuGet instaluje najnowszą wersję pakietu przy użyciu `dotnet add package` polecenia, o ile nie zostanie określona wersja pakietu ( `-v` przełącznik).
 
 ## <a name="restore-packages"></a>Przywracanie pakietów
 
