@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: b615bcb78ad2eaf8524bfbf17864d4652e546ff1
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: c604d20c6358b7da5b1294ae48d9b7452794102f
+ms.sourcegitcommit: 6cda91f135e58cf57a2471b0c7c4a2f748f40024
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80151363"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89359656"
 ---
-Opcjonalny opis pakietu, wyświetlany na stronie NuGet.org pakietu, jest ściągany `<description></description>` z używanego `.csproj` w pliku lub pobierany `$description` za pośrednictwem [pliku .nuspec](../../reference/nuspec.md).
+Opcjonalny opis pakietu, wyświetlany na stronie NuGet.org pakietu, jest pobierany z `<description></description>` użycia w `.csproj` pliku lub pobierany za pośrednictwem `$description` [pliku. nuspec](../../reference/nuspec.md).
 
-Przykład pola _opisu_ jest wyświetlany w następującym `.csproj` tekście XML pliku dla pakietu .NET:
+Przykład pola _Opis_ jest wyświetlany w następującym tekście XML `.csproj` pliku dla pakietu .NET:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -25,5 +25,5 @@ Przykład pola _opisu_ jest wyświetlany w następującym `.csproj` tekście XML
       REST API Reference for Blob Service - https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
     </Description>
   </PropertyGroup>
-</PropertyGroup>
+</Project>
 ```

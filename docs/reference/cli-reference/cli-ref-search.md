@@ -5,12 +5,12 @@ author: advay26
 ms.author: t-adtand
 ms.date: 08/17/2020
 ms.topic: reference
-ms.openlocfilehash: 35e4906960534299418cb2a17c190476708b2634
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: 8d63efefb8f14c03fbe3986d8d7eebcc3eb5bcac
+ms.sourcegitcommit: 6cda91f135e58cf57a2471b0c7c4a2f748f40024
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88623270"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89359685"
 ---
 # <a name="search-command-nuget-cli"></a>Search — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -33,18 +33,16 @@ gdzie terminy wyszukiwania są stosowane do nazw pakietów, tagów i opisów pak
 | Wersja wstępna | Pakiety wersji wstępnej nie są uwzględniane domyślnie, ale mogą być dołączane za pomocą tego argumentu | -Wersja wstępna |
 | Element źródłowy | Określone źródła pakietów do przeszukania zamiast wysyłania zapytań do domyślnych źródeł w __nuget.config__ | -Źródło `<Source URL>`|
 | Take | Liczba wyników do zwrócenia. Wartość domyślna to 20. | -Zrób `<positive integer>` |
-| Szczegółowość | Poziom szczegółowości, który ma być wyświetlany w danych wyjściowych. Wartość domyślna to _normalny_. (Zobacz uwagi poniżej)  | -Poziom szczegółowości `<quiet\|normal\|detailed>` |
+| Szczegółowość | Poziom szczegółowości, który ma być wyświetlany w danych wyjściowych. Wartość domyślna to _normalny_. (Zobacz uwagi poniżej)  | -Poziom szczegółowości `<quiet|normal|detailed>` |
 | Pomoc | Wyświetla informacje pomocy dla polecenia | -Pomoc |
 
 Zobacz również [zmienne środowiskowe](cli-ref-environment-variables.md)
 
-__UWAGA__
-
-Poziomy szczegółowości:
-
-* _cichy_ — identyfikator pakietu, wersja
-* _normalny_ — identyfikator pakietu, wersja, pobieranie, wersja zapoznawcza opisu
-* _szczegółowy_ — identyfikator pakietu, wersja, pobieranie, pełny opis, inne informacje, takie jak adres URL zapytania
+> [!NOTE] 
+> Poziomy szczegółowości:
+> * _cichy_ — identyfikator pakietu, wersja
+> * _normalny_ — identyfikator pakietu, wersja, pobieranie, wersja zapoznawcza opisu
+> * _szczegółowy_ — identyfikator pakietu, wersja, pobieranie, pełny opis, inne informacje, takie jak adres URL zapytania
 
 ## <a name="examples"></a>Przykłady
 
