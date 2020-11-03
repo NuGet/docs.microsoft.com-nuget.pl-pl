@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 84f939188ac190f6d539f8ee2b422049a274f178
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: 106c4027f03d8e8c1d19545b3ca9b6cd5263830e
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88622580"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93236792"
 ---
 # <a name="update-command-nuget-cli"></a>Update — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -37,6 +37,10 @@ gdzie `<configPath>` identyfikuje `packages.config` lub plik rozwiązania, któr
 - **`-ConfigFile`**
 
   Plik konfiguracji NuGet, który ma zostać zastosowany. Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` lub `~/.config/NuGet/NuGet.Config` (Mac/Linux) jest używany.
+  
+- **`-DependencyVersion [Lowest, HighestPatch, HighestMinor, Highest, Ignore]`**
+
+  Określa wersję pakietów zależności do użycia, która może być jedną z następujących:<br/><ul><li>*Najniższy* (domyślny): najniższa wersja</li><li>*HighestPatch* : wersja z najniższą główną, najmniejszą niewielką lub najwyższą poprawką</li><li>*HighestMinor* : wersja z najmniejszą główną, najwyższą niewielką lub najwyższą poprawką</li><li>*Najwyższa* : najwyższa wersja</li><li>*Ignoruj* : nie będą używane żadne pakiety zależności</li></ul>
 
 - **`-FileConflictAction [PromptUser, Overwrite, Ignore]`**
 

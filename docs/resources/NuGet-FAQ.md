@@ -1,16 +1,16 @@
 ---
-title: Często zadawane pytania dotyczące narzędzia NuGet
+title: Pytania dotyczące Frequently-Asked NuGet
 description: Często zadawane pytania i odpowiedzi dotyczące korzystania z narzędzia NuGet w wierszu polecenia i w programie Visual Studio
 author: shishirx34
 ms.author: shishirh
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 937a0083ca47ba5668059736a7e99f7ca88e8908
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: aae6f0474cc6e8e8aa5c269b79be6fd949d9184c
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88622619"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93238000"
 ---
 # <a name="nuget-frequently-asked-questions"></a>Często zadawane pytania dotyczące narzędzia NuGet
 
@@ -41,13 +41,13 @@ Aby uzyskać więcej informacji, zobacz [Znajdowanie i wybieranie pakietów](../
 - Program Visual Studio w systemie Windows obsługuje [interfejs użytkownika Menedżera pakietów](../consume-packages/install-use-packages-visual-studio.md) i [konsolę Menedżera pakietów](../consume-packages/install-use-packages-powershell.md).
 - Visual Studio dla komputerów Mac ma wbudowane funkcje NuGet, zgodnie z opisem w temacie [zawierającym pakiet NuGet w projekcie](/visualstudio/mac/nuget-walkthrough).
 - Visual Studio Code (wszystkie platformy) nie ma żadnej bezpośredniej integracji z pakietem NuGet. Użyj [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md) lub [interfejsu wiersza polecenia dotnet](../reference/dotnet-commands.md).
-- Usługa Azure DevOps udostępnia [krok kompilacji służący do przywracania pakietów NuGet](/vsts/build-release/tasks/package/nuget). Możesz również [hostować prywatne źródła pakietów NuGet na platformie Azure DevOps](https://docs.microsoft.com/azure/devops/artifacts/nuget/publish).
+- Usługa Azure DevOps udostępnia [krok kompilacji służący do przywracania pakietów NuGet](/vsts/build-release/tasks/package/nuget). Możesz również [hostować prywatne źródła pakietów NuGet na platformie Azure DevOps](/azure/devops/artifacts/nuget/publish).
 
 **Jak mogę sprawdzić dokładną wersję zainstalowanych narzędzi NuGet?**
 
-W programie Visual Studio Użyj **> pomocy dotyczącej Microsoft Visual Studio** polecenia i sprawdź wersję wyświetlaną obok pozycji **Menedżer pakietów NuGet**.
+W programie Visual Studio Użyj **> pomocy dotyczącej Microsoft Visual Studio** polecenia i sprawdź wersję wyświetlaną obok pozycji **Menedżer pakietów NuGet** .
 
-Alternatywnie można uruchomić konsolę Menedżera pakietów (**narzędzia > Menedżera pakietów NuGet > konsoli Menedżera pakietów**) i wprowadzić polecenie, `$host` Aby wyświetlić informacje o pakiecie NuGet, w tym wersję.
+Alternatywnie można uruchomić konsolę Menedżera pakietów ( **narzędzia > Menedżera pakietów NuGet > konsoli Menedżera pakietów** ) i wprowadzić polecenie, `$host` Aby wyświetlić informacje o pakiecie NuGet, w tym wersję.
 
 **Jakie języki programowania są obsługiwane przez pakiet NuGet?**
 
@@ -61,7 +61,7 @@ Pakiet NuGet ma pełną obsługę wielu szablonów projektów, takich jak Window
 
 **Jak mogę pakiety aktualizacji, które są częścią szablonów programu Visual Studio?**
 
-Przejdź do karty **aktualizacje** w interfejsie użytkownika Menedżera pakietów i wybierz pozycję **Aktualizuj wszystko**lub Użyj [ `Update-Package` polecenia](../reference/ps-reference/ps-ref-update-package.md) z konsoli Menedżera pakietów.
+Przejdź do karty **aktualizacje** w interfejsie użytkownika Menedżera pakietów i wybierz pozycję **Aktualizuj wszystko** lub Użyj [ `Update-Package` polecenia](../reference/ps-reference/ps-ref-update-package.md) z konsoli Menedżera pakietów.
 
 Aby zaktualizować sam szablon, musisz ręcznie zaktualizować repozytorium szablonów. Zapoznaj się z [blogiem](http://www.xavierdecoster.com/update-project-template-to-latest-nuget-packages) dotyczącym Xavier. Należy pamiętać, że jest to wykonywane na własne ryzyko, ponieważ ręczne aktualizacje mogą uszkodzić szablon, jeśli Najnowsza wersja wszystkich zależności nie jest zgodna ze sobą.
 
@@ -103,7 +103,7 @@ Jest to znany problem związany z współdziałaniem programu PowerShell z obiek
 
 **Jak mogę wyświetlić mój pakiet w kanale informacyjnym?**
 
-Zobacz [Tworzenie i publikowanie pakietu](../quickstart/create-and-publish-a-package.md).
+Zobacz [Tworzenie i publikowanie pakietu](../quickstart/create-and-publish-a-package-using-visual-studio.md).
 
 **Mam wiele wersji mojej biblioteki, które są przeznaczone dla różnych wersji .NET Framework. Jak mogę utworzyć pojedynczy pakiet, który go obsługuje?**
 

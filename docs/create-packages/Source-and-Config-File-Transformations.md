@@ -1,33 +1,33 @@
 ---
-title: Transformacje plików źródłowych i konfiguracyjnych dla pakietów NuGet
-description: Szczegółowe informacje na temat możliwości pakietów NuGet do przekształcania plików kodu źródłowego i konfiguracji (XML) po zainstalowaniu.
+title: Przekształcenia plików źródłowych i konfiguracji dla pakietów NuGet
+description: Szczegółowe informacje o możliwości pakietów NuGet do przekształcania plików kodu źródłowego i konfiguracji (XML) po zainstalowaniu programu.
 author: karann-msft
 ms.author: karann
 ms.date: 04/24/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 2fefd9cff4d151111023521c31d58878743775bf
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 8e3eade14c70782563ba82894f072f9b3a611923
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78231178"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93237987"
 ---
-# <a name="transforming-source-code-and-configuration-files"></a>Przekształcanie kodu źródłowego i plików konfiguracyjnych
+# <a name="transforming-source-code-and-configuration-files"></a>Przekształcanie kodu źródłowego i plików konfiguracji
 
-**Transformacja kodu źródłowego** stosuje jednokierunkowe zastępowanie tokenów `contentFiles` do`content` plików `packages.config` w `contentFiles` `PackageReference`pakiecie `content` lub folderze (dla klientów korzystających i dla) po zainstalowaniu pakietu, gdzie tokeny odnoszą się do [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7)programu Visual Studio. Dzięki temu można wstawić plik do obszaru nazw projektu lub dostosować kod, `global.asax` który zazwyczaj wchodzi w ASP.NET projektu.
+**Przekształcenie kodu źródłowego** stosuje jednokierunkowe zastępowanie tokenów do plików w pakiecie `content` lub `contentFiles` folderze ( `content` dla klientów korzystających z programu `packages.config` i `contentFiles` dla programu `PackageReference` ) podczas instalowania pakietu, gdzie tokeny odwołują się do [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7)programu Visual Studio. Dzięki temu można wstawić plik do przestrzeni nazw projektu lub dostosować kod, który zwykle `global.asax` znajduje się w projekcie ASP.NET.
 
-**Transformacja pliku konfiguracyjnego** umożliwia modyfikowanie plików, które `web.config` już `app.config`istnieją w projekcie docelowym, takich jak i . Na przykład pakiet może być konieczne dodanie `modules` elementu do sekcji w pliku konfiguracyjnym. Transformacja ta odbywa się poprzez dołączenie specjalnych plików w pakiecie, które opisują sekcje, aby dodać do plików konfiguracyjnych. Po odinstalowaniu pakietu te same zmiany są następnie odwracane, co czyni to transformacją dwukierunkową.
+**Przekształcanie plików konfiguracji** umożliwia modyfikowanie plików, które już istnieją w projekcie docelowym, takich jak `web.config` i `app.config` . Na przykład pakiet może wymagać dodania elementu do `modules` sekcji w pliku konfiguracji. Ta transformacja jest wykonywana przez dodanie plików specjalnych w pakiecie, które opisują sekcje dodawane do plików konfiguracji. Po odinstalowaniu pakietu te same zmiany są odwracane, co sprawia, że jest to dwukierunkowa transformacja.
 
 ## <a name="specifying-source-code-transformations"></a>Określanie przekształceń kodu źródłowego
 
-1. Pliki, które chcesz wstawić z pakietu do projektu, muszą `content` `contentFiles` znajdować się w folderach i folderach pakietu. Na przykład jeśli chcesz, `ContosoData.cs` aby plik wywoływany, który ma być zainstalowany w folderze `Models` projektu docelowego, musi znajdować się wewnątrz `content\Models` folderów i `contentFiles\{lang}\{tfm}\Models` w pakiecie.
+1. Pliki, które mają zostać wstawione z pakietu do projektu, muszą znajdować się w obrębie pakietu `content` i `contentFiles` folderów. Na przykład jeśli plik ma `ContosoData.cs` być zainstalowany w `Models` folderze docelowego projektu, musi znajdować się wewnątrz `content\Models` `contentFiles\{lang}\{tfm}\Models` folderów i w pakiecie.
 
-1. Aby poinstruować NuGet, aby zastosować zastąpienie `.pp` tokenu w czasie instalacji, dołącz do nazwy pliku kodu źródłowego. Po instalacji plik nie `.pp` będzie miał rozszerzenia.
+1. Aby polecić pakietowi NuGet zastosowanie zastąpienia tokenu podczas instalacji, Dołącz `.pp` do nazwy pliku kodu źródłowego. Po instalacji plik nie będzie miał `.pp` rozszerzenia.
 
-    Na przykład, aby dokonać `ContosoData.cs`przekształceń w `ContosoData.cs.pp`programie , nazwij plik w pakiecie . Po instalacji pojawi `ContosoData.cs`się jako .
+    Na przykład aby wykonać przekształcenia w `ContosoData.cs` , Nazwij plik w pakiecie `ContosoData.cs.pp` . Po zakończeniu instalacji zostanie wyświetlona jako `ContosoData.cs` .
 
-1. W pliku kodu źródłowego użyj tokenów bez uwzględniania `$token$` wielkości liter formularza, aby wskazać wartości, które NuGet powinien zastąpić właściwościami projektu:
+1. W pliku kodu źródłowego Użyj tokenów bez uwzględniania wielkości liter w formularzu, `$token$` Aby wskazać wartości, które NuGet powinny zastąpić właściwości projektu:
 
     ```cs
     namespace $rootnamespace$.Models
@@ -43,27 +43,27 @@ ms.locfileid: "78231178"
     }
     ```
 
-    Po instalacji NuGet `$rootnamespace$` `Fabrikam` zastępuje przy założeniu, że projekt `Fabrikam`docelowy, którego głównym obszarem nazw jest .
+    Podczas instalacji pakiet NuGet zastępuje `$rootnamespace$` przy `Fabrikam` założeniu, że docelowy obszar nazw jest docelowym projektem `Fabrikam` .
 
-Token `$rootnamespace$` jest najczęściej używaną właściwością projektu; wszystkie pozostałe są wymienione we [właściwościach projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7). Należy pamiętać, oczywiście, że niektóre właściwości mogą być specyficzne dla typu projektu.
+`$rootnamespace$`Token jest najczęściej używaną właściwością projektu; wszystkie inne są wyświetlane we [właściwościach projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7). Oczywiście należy mieć na uwadze, że niektóre właściwości mogą być specyficzne dla typu projektu.
 
-## <a name="specifying-config-file-transformations"></a>Określanie przekształceń plików konfiguracyjnych
+## <a name="specifying-config-file-transformations"></a>Określanie przekształceń pliku konfiguracji
 
-Zgodnie z opisem w kolejnych sekcjach przekształcenia plików konfiguracyjnych można wykonać na dwa sposoby:
+Zgodnie z opisem w poniższych sekcjach przekształcenia plików konfiguracji można wykonać na dwa sposoby:
 
-- Dołącz `app.config.transform` `web.config.transform` i pliki w `content` folderze pakietu, gdzie `.transform` rozszerzenie mówi NuGet, że te pliki zawierają XML do scalenia z istniejącymi plikami konfiguracyjnymi po zainstalowaniu pakietu. Po odinstalowaniu pakietu ten sam kod XML jest usuwany.
-- Dołącz `app.config.install.xdt` `web.config.install.xdt` i pliki w `content` folderze pakietu, używając [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx) do opisania żądanych zmian. Za pomocą tej opcji `.uninstall.xdt` można również dołączyć plik do odwrócenia zmian, gdy pakiet jest usuwany z projektu.
+- Dołącz `app.config.transform` do `web.config.transform` folderu pakietu i plików `content` , w którym `.transform` rozszerzenie informuje program NuGet, że te pliki zawierają kod XML do scalenia z istniejącymi plikami konfiguracji podczas instalowania pakietu. Po odinstalowaniu pakietu ten sam plik XML jest usuwany.
+- Dołącz `app.config.install.xdt` `web.config.install.xdt` do folderu pakietu i pliki `content` , używając [składni XDT](/previous-versions/aspnet/dd465326(v=vs.110)) do opisania żądanych zmian. Za pomocą tej opcji można również dołączyć `.uninstall.xdt` plik do odwrócenia zmian, gdy pakiet zostanie usunięty z projektu.
 
 > [!Note]
-> Przekształcenia nie są `.config` stosowane do plików, do których odwołuje się jako łącze w programie Visual Studio.
+> Przekształcenia nie są stosowane do `.config` plików, do których odwołuje się jako link w programie Visual Studio.
 
-Zaletą korzystania z XDT jest to, że zamiast po prostu scalanie dwóch plików statycznych, zapewnia składnię do manipulowania strukturą XML DOM przy użyciu elementu i atrybutu dopasowania przy użyciu pełnej obsługi XPath. XDT można następnie dodać, zaktualizować lub usunąć elementy, umieścić nowe elementy w określonej lokalizacji lub zastąpić/usunąć elementy (w tym węzłów podrzędnych). To sprawia, że łatwo utworzyć odinstalować przekształca, że kopii zapasowej wszystkich przekształceń wykonanych podczas instalacji pakietu.
+Zaletą korzystania z XDT jest to, że zamiast bezpośredniego scalania dwóch plików statycznych, zapewnia ona składnię do manipulowania strukturą kodu XML, przy użyciu elementów i atrybutów dopasowywania za pomocą pełnej obsługi XPath. XDT może następnie dodawać, aktualizować lub usuwać elementy, umieszczać nowe elementy w określonej lokalizacji lub zastępować/usuwać elementy (w tym węzłów podrzędnych). Pozwala to na bezpośrednie utworzenie transformacji, które wycofa wszystkie przekształcenia wykonywane podczas instalacji pakietu.
 
-### <a name="xml-transforms"></a>Transformacje XML
+### <a name="xml-transforms"></a>Przekształcenia XML
 
-I `app.config.transform` `web.config.transform` w `content` folderze pakietu zawierają tylko te elementy do scalenia w istniejących `app.config` i `web.config` plików projektu.
+`app.config.transform`I `web.config.transform` w `content` folderze pakietu zawierają tylko te elementy, które mają być scalane do istniejących `app.config` i plików projektu `web.config` .
 
-Na przykład załóżmy, że projekt `web.config`początkowo zawiera następującą zawartość w:
+Załóżmy na przykład, że projekt początkowo zawiera następującą zawartość w `web.config` :
 
 ```xml
 <configuration>
@@ -75,7 +75,7 @@ Na przykład załóżmy, że projekt `web.config`początkowo zawiera następują
 </configuration>
 ```
 
-Aby dodać `MyNuModule` element `modules` do sekcji podczas instalowania `web.config.transform` `content` pakietu, utwórz plik w folderze pakietu, który wygląda następująco:
+Aby dodać `MyNuModule` element do `modules` sekcji podczas instalacji pakietu, Utwórz `web.config.transform` plik w folderze pakietu, `content` który wygląda następująco:
 
 ```xml
 <configuration>
@@ -87,7 +87,7 @@ Aby dodać `MyNuModule` element `modules` do sekcji podczas instalowania `web.co
 </configuration>
 ```
 
-Po zainstalowaniu pakietu przez `web.config` NuGet pojawi się w następujący sposób:
+Po zainstalowaniu pakietu NuGet program `web.config` będzie wyglądać w następujący sposób:
 
 ```xml
 <configuration>
@@ -100,24 +100,24 @@ Po zainstalowaniu pakietu przez `web.config` NuGet pojawi się w następujący s
 </configuration>
 ```
 
-Należy zauważyć, że NuGet `modules` nie zastąpił sekcji, po prostu scalone nowego wpisu do niego, dodając tylko nowe elementy i atrybuty. NuGet nie zmieni żadnych istniejących elementów lub atrybutów.
+Zwróć uwagę, że program NuGet nie zamienił `modules` sekcji, po prostu scalał do niego nowy wpis poprzez dodanie tylko nowych elementów i atrybutów. Pakiet NuGet nie zmieni żadnych istniejących elementów ani atrybutów.
 
-Po odinstalowaniu pakietu NuGet ponownie `.transform` zbada pliki i usunie `.config` elementy, które zawiera z odpowiednich plików. Należy zauważyć, że ten proces `.config` nie wpłynie na żadne wiersze w pliku, które można zmodyfikować po instalacji pakietu.
+Po odinstalowaniu pakietu NuGet `.transform` ponownie sprawdzi pliki i usunie zawarte w nim elementy z odpowiednich `.config` plików. Należy zauważyć, że ten proces nie wpłynie na żadne wiersze w `.config` pliku modyfikowanym po zainstalowaniu pakietu.
 
-Jako bardziej obszerny przykład pakiet [Moduły rejestrowania błędów i programy obsługi ASP.NET (ELMAH)](https://www.nuget.org/packages/elmah/) dodaje wiele wpisów do `web.config`programu , które są ponownie usuwane po odinstalowaniu pakietu.
+W szerszym przykładzie [moduły rejestrowania błędów modułów i programów obsługi dla pakietu ASP.NET (ELMAH)](https://www.nuget.org/packages/elmah/) dodają wiele wpisów do `web.config` , które są ponownie usuwane po odinstalowaniu pakietu.
 
-Aby sprawdzić `web.config.transform` jego plik, pobierz pakiet ELMAH z powyższego `.nupkg` `.zip`łącza, zmień `content\web.config.transform` rozszerzenie pakietu z , a następnie otwórz w tym pliku ZIP.
+Aby przejrzeć swój `web.config.transform` plik, Pobierz pakiet ELMAH z powyższego linku, Zmień rozszerzenie pakietu z `.nupkg` na `.zip` , a następnie otwórz `content\web.config.transform` w tym pliku zip.
 
-Aby zobaczyć efekt instalacji i odinstalowywania pakietu, utwórz nowy projekt ASP.NET w programie Visual Studio (szablon znajduje się w obszarze **Visual C# > Web** w oknie dialogowym Nowy projekt) i wybierz pustą aplikację ASP.NET. Otwórz, `web.config` aby zobaczyć jego stan początkowy. Następnie kliknij prawym przyciskiem myszy projekt, wybierz pozycję **Zarządzaj pakietami NuGet**, wyszukaj elmah na nuget.org i zainstaluj najnowszą wersję. Zwróć uwagę na `web.config`wszystkie zmiany na . Teraz odinstaluj `web.config` pakiet i zobaczysz powrót do poprzedniego stanu.
+Aby zobaczyć efekt instalacji i dezinstalacji pakietu, Utwórz nowy projekt ASP.NET w programie Visual Studio (szablon jest w obszarze **Visual C# > Web** w oknie dialogowym Nowy projekt) i wybierz Pustą aplikację ASP.NET. Otwórz `web.config` , aby zobaczyć jego stan początkowy. Następnie kliknij prawym przyciskiem myszy projekt, wybierz pozycję **Zarządzaj pakietami NuGet** , Wyszukaj pozycję ELMAH w witrynie NuGet.org i zainstaluj najnowszą wersję. Zwróć uwagę na wszystkie zmiany `web.config` . Teraz Odinstaluj pakiet i zobaczysz `web.config` Powrót do poprzedniego stanu.
 
-### <a name="xdt-transforms"></a>Transformacje XDT
+### <a name="xdt-transforms"></a>Przekształcenia XDT
 
 > [!Note]
-> Jak wspomniano w [sekcji problemy ze zgodnością pakietu dokumentów `packages.config` do `PackageReference`migracji z do ](../consume-packages/migrate-packages-config-to-package-reference.md#package-compatibility-issues), XDT przekształcenia, jak opisano poniżej są obsługiwane tylko przez `packages.config`. Jeśli dodasz poniższe pliki do pakietu, konsumenci `PackageReference` korzystający z pakietu z nie będą mieli zastosowanych przekształceń (patrz [ten przykład,](https://github.com/NuGet/Samples/tree/master/XDTransformExample) aby transformacje XDT działały).`PackageReference`
+> Jak wspomniano w [sekcji problemy ze zgodnością pakietu w dokumentacji dotyczącej migracji z `packages.config` programu do `PackageReference` ](../consume-packages/migrate-packages-config-to-package-reference.md#package-compatibility-issues), przekształceń XDT zgodnie z poniższym opisem są obsługiwane tylko przez program `packages.config` . Jeśli dodasz poniższe pliki do pakietu, użytkownicy korzystający z pakietu `PackageReference` nie będą mieć zastosowanych transformacji (zobacz [ten przykład](https://github.com/NuGet/Samples/tree/master/XDTransformExample) , aby XDT transformacje z programem `PackageReference` ).
 
-Pliki konfiguracyjne można modyfikować przy użyciu [składni XDT](https://msdn.microsoft.com/library/dd465326.aspx). Można również nuget zastąpić tokeny z [właściwości projektu,](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) `$` dołączając nazwę właściwości w ogranicznika (bez uwzględniania wielkości liter).
+Pliki konfiguracji można modyfikować przy użyciu [składni XDT](/previous-versions/aspnet/dd465326(v=vs.110)). Możesz również mieć tokeny zamieniania NuGet na [właściwości projektu](/dotnet/api/vslangproj.projectproperties?view=visualstudiosdk-2017&viewFallbackFrom=netframework-4.7) , dołączając nazwę właściwości w `$` ogranicznikach (bez uwzględniania wielkości liter).
 
-Na przykład następujący `app.config.install.xdt` plik wstawi `app.config` element `FullPath`zawierający `FileName` `appSettings` `ActiveConfigurationSettings` , i wartości z projektu:
+Na przykład następujący `app.config.install.xdt` plik spowoduje wstawienie `appSettings` elementu do `app.config` zawierającego `FullPath` `FileName` wartości,, i `ActiveConfigurationSettings` z projektu:
 
 ```xml
 <?xml version="1.0"?>
@@ -130,7 +130,7 @@ Na przykład następujący `app.config.install.xdt` plik wstawi `app.config` ele
 </configuration>
 ```
 
-Na inny przykład załóżmy, że `web.config`projekt początkowo zawiera następującą zawartość w:
+W innym przykładzie Załóżmy, że projekt początkowo zawiera następującą zawartość w `web.config` :
 
 ```xml
 <configuration>
@@ -142,7 +142,7 @@ Na inny przykład załóżmy, że `web.config`projekt początkowo zawiera nastę
 </configuration>
 ```
 
-Aby dodać `MyNuModule` element `modules` do sekcji podczas instalowania `web.config.install.xdt` pakietu, pakiet będzie zawierać następujące elementy:
+Aby dodać `MyNuModule` element do `modules` sekcji podczas instalacji pakietu, pakiet `web.config.install.xdt` powinien zawierać następujące elementy:
 
 ```xml
 <?xml version="1.0"?>
@@ -155,7 +155,7 @@ Aby dodać `MyNuModule` element `modules` do sekcji podczas instalowania `web.co
 </configuration>
 ```
 
-Po zainstalowaniu `web.config` pakietu, będzie wyglądać następująco:
+Po zainstalowaniu pakietu program `web.config` będzie wyglądać następująco:
 
 ```xml
 <configuration>
@@ -168,7 +168,7 @@ Po zainstalowaniu `web.config` pakietu, będzie wyglądać następująco:
 </configuration>
 ```
 
-Aby usunąć `MyNuModule` tylko element podczas `web.config.uninstall.xdt` odinstalowywania pakietu, plik powinien zawierać następujące elementy:
+Aby usunąć tylko `MyNuModule` element podczas odinstalowywania pakietu, `web.config.uninstall.xdt` plik powinien zawierać następujące elementy:
 
 ```xml
 <?xml version="1.0"?>

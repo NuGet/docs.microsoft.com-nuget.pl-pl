@@ -1,62 +1,62 @@
 ---
 title: Zarządzanie pakietami NuGet przy użyciu interfejsu wiersza polecenia nuget.exe
-description: Instrukcje dotyczące korzystania z nuget.exe CLI do pracy z pakietami NuGet.
+description: Instrukcje dotyczące używania interfejsu wiersza polecenia nuget.exe do pracy z pakietami NuGet.
 author: mikejo5000
 ms.author: mikejo
 ms.date: 06/03/2019
 ms.topic: conceptual
 ms.openlocfilehash: 7039dd27f2dddebc3c84e5ad35d5efec59547792
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "79428689"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93237390"
 ---
-# <a name="manage-packages-using-the-nugetexe-cli"></a>Zarządzanie pakietami przy użyciu interfejsu wiersza polecenia nuget.exe
+# <a name="manage-packages-using-the-nugetexe-cli"></a>Zarządzanie pakietami za pomocą interfejsu wiersza polecenia nuget.exe
 
-Narzędzie CLI umożliwia łatwą aktualizację i przywracanie pakietów NuGet w projektach i rozwiązaniach. To narzędzie zapewnia wszystkie funkcje NuGet w systemie Windows, a także zapewnia większość funkcji na komputerach Mac i Linux podczas uruchamiania w obszarze Mono.
+Narzędzie interfejsu wiersza polecenia umożliwia łatwe aktualizowanie i przywracanie pakietów NuGet w projektach i rozwiązaniach. To narzędzie zapewnia wszystkie możliwości programu NuGet w systemie Windows, a także zapewnia większość funkcji na komputerach Mac i Linux, gdy działa w trybie mono.
 
-Cli `nuget.exe` jest dla projektu .NET Framework i projektów w stylu innych niż SDK (na przykład projekt stylu innych niż SDK, który jest przeznaczony dla bibliotek .NET Standard). Jeśli używasz projektu w stylu nieskładu SDK, który został zmigrowany do `PackageReference`, użyj `dotnet` interfejsu wiersza polecenia. Cli `nuget.exe` wymaga pliku [packages.config](../reference/packages-config.md) dla odwołań do pakietu.
+`nuget.exe`Interfejs wiersza polecenia jest przeznaczony dla projektu .NET Framework i projektów nie należących do zestawu SDK (na przykład projektu w stylu innym niż zestaw SDK, który jest celem bibliotek .NET standard). Jeśli używasz projektu typu innego niż zestaw SDK, który został zmigrowany do `PackageReference` , użyj `dotnet` interfejsu wiersza polecenia. `nuget.exe`Interfejs wiersza polecenia wymaga pliku [packages.config](../reference/packages-config.md) do odwołania do pakietu.
 
 > [!NOTE]
-> W większości scenariuszy zaleca się [migrację projektów w stylu innych niż SDK,](../consume-packages/migrate-packages-config-to-package-reference.md) które używają `packages.config` do PackageReference, a następnie można użyć `dotnet` interfejsu wiersza polecenia zamiast interfejsu wiersza `nuget.exe` polecenia. Migracja nie jest obecnie dostępna dla projektów języka C++ i ASP.NET.
+> W większości scenariuszy zalecamy [Migrowanie projektów typu non-SDK](../consume-packages/migrate-packages-config-to-package-reference.md) , które są używane `packages.config` do PackageReference, a następnie można użyć `dotnet` interfejsu wiersza polecenia zamiast `nuget.exe` interfejsu wiersza polecenia. Migracja nie jest obecnie dostępna dla projektów C++ i ASP.NET.
 
-W tym artykule przedstawiono podstawowe użycie `nuget.exe` kilku najczęściej spotykanych poleceń interfejsu wiersza polecenia. W przypadku większości z tych poleceń narzędzie interfejsu wiersza polecenia wyszukuje plik projektu w bieżącym katalogu, chyba że w poleceniu określono plik projektu. Aby uzyskać pełną listę poleceń i argumenty, których można użyć, zobacz [odwołanie do interfejsu wiersza polecenia nuget.exe](../reference/nuget-exe-cli-reference.md).
+W tym artykule przedstawiono podstawowe użycie kilku najpopularniejszych `nuget.exe` poleceń interfejsu wiersza polecenia. W przypadku większości tych poleceń narzędzie interfejsu wiersza polecenia szuka pliku projektu w bieżącym katalogu, chyba że plik projektu jest określony w poleceniu. Aby uzyskać pełną listę poleceń i argumentów, których można użyć, zobacz [ informacje dotyczące interfejsu wiersza polecenianuget.exe](../reference/nuget-exe-cli-reference.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zainstaluj `nuget.exe` interfejsu wiersza polecenia, pobierając go `.exe` z [nuget.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisując ten plik do odpowiedniego folderu i dodając ten folder do zmiennej środowiskowej PATH.
+- Zainstaluj `nuget.exe` interfejs wiersza polecenia, pobierając go z [NuGet.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe), zapisując ten `.exe` plik w odpowiednim folderze i dodając go do zmiennej środowiskowej PATH.
 
 ## <a name="install-a-package"></a>Instalowanie pakietu
 
-Polecenie [install](../reference/cli-reference/cli-ref-install.md) pobiera i instaluje pakiet w projekcie, domyślnie w bieżącym folderze, przy użyciu określonych źródeł pakietu. Zainstaluj nowe pakiety w folderze *pakietów* w katalogu głównym projektu.
+Polecenie [instalacji](../reference/cli-reference/cli-ref-install.md) pobiera i instaluje pakiet w projekcie, domyślnie do bieżącego folderu przy użyciu określonych źródeł pakietów. Zainstaluj nowe pakiety w folderze *Packages* w katalogu głównym projektu.
 
 > [!IMPORTANT]
-> Polecenie `install`nie modyfikuje pliku projektu ani *pliku packages.config*; w ten sposób jest `restore` podobny do tego, że tylko dodaje pakiety do dysku, ale nie zmienia zależności projektu. Aby dodać zależność, dodaj pakiet za pośrednictwem interfejsu użytkownika menedżera pakietów lub konsoli w programie Visual `install` `restore`Studio lub zmodyfikuj *plik packages.config,* a następnie uruchom albo .
+> `install`Polecenie nie modyfikuje pliku projektu ani *packages.config* . w ten sposób jest to podobne do `restore` tego, że dodaje pakiety tylko do dysku, ale nie zmienia zależności projektu. Aby dodać zależność, Dodaj pakiet za pomocą interfejsu użytkownika lub konsoli Menedżera pakietów w programie Visual Studio lub zmodyfikuj *packages.config* a następnie uruchom albo `install` `restore` .
 
-1. Otwórz wiersz polecenia i przełącz się do katalogu zawierającego plik projektu.
+1. Otwórz wiersz polecenia i przejdź do katalogu, który zawiera plik projektu.
 
-2. Użyj następującego polecenia, aby zainstalować pakiet NuGet w folderze *pakietów.*
+2. Użyj poniższego polecenia, aby zainstalować pakiet NuGet w folderze *Packages* .
 
     ```cli
     nuget install <packageID> -OutputDirectory packages
     ```
 
-    Aby zainstalować `Newtonsoft.json` pakiet w folderze *pakietów,* użyj następującego polecenia:
+    Aby zainstalować `Newtonsoft.json` pakiet w folderze *Packages* , użyj następującego polecenia:
 
     ```cli
     nuget install Newtonsoft.Json -OutputDirectory packages
     ```
 
-Alternatywnie można użyć następującego polecenia, aby zainstalować pakiet `packages.config` NuGet przy użyciu istniejącego pliku do folderu *pakietów.* Nie powoduje to dodania pakietu do zależności projektu, ale instaluje go lokalnie.
+Alternatywnie możesz użyć poniższego polecenia, aby zainstalować pakiet NuGet przy użyciu istniejącego `packages.config` pliku w folderze *Packages* . Nie powoduje to dodania pakietu do zależności projektu, ale instaluje go lokalnie.
 
 ```cli
 nuget install packages.config -OutputDirectory packages
 ```
 
-## <a name="install-a-specific-version-of-a-package"></a>Instalowanie określonej wersji pakietu
+## <a name="install-a-specific-version-of-a-package"></a>Zainstaluj określoną wersję pakietu
 
-Jeśli wersja nie jest określona podczas korzystania z polecenia [install,](../reference/cli-reference/cli-ref-install.md) NuGet instaluje najnowszą wersję pakietu. Można również zainstalować określoną wersję pakietu Nuget:
+Jeśli wersja nie zostanie określona podczas korzystania z polecenia [Install](../reference/cli-reference/cli-ref-install.md) , pakiet NuGet instaluje najnowszą wersję pakietu. Można także zainstalować określoną wersję pakietu NuGet:
 
 ```cli
 nuget install <packageID | configFilePath> -Version <version>
@@ -68,29 +68,29 @@ Na przykład, aby dodać wersję 12.0.1 `Newtonsoft.json` pakietu, użyj tego po
 nuget install Newtonsoft.Json -Version 12.0.1
 ```
 
-Aby uzyskać więcej informacji na `install`temat ograniczeń i zachowania programu , zobacz [Instalowanie pakietu](#install-a-package).
+Aby uzyskać więcej informacji o ograniczeniach i zachowaniu programu `install` , zobacz [Instalowanie pakietu](#install-a-package).
 
-## <a name="remove-a-package"></a>Usuwanie pakietu
+## <a name="remove-a-package"></a>Usuń pakiet
 
-Aby usunąć jeden lub więcej pakietów, usuń pakiety, które chcesz usunąć z folderu *pakietów.*
+Aby usunąć co najmniej jeden pakiet, Usuń pakiety, które chcesz usunąć z folderu *pakiety* .
 
-Jeśli chcesz ponownie zainstalować pakiety, `restore` `install` użyj polecenia lub polecenia.
+Jeśli chcesz ponownie zainstalować pakiety, użyj `restore` `install` polecenia lub.
 
-## <a name="list-packages"></a>Lista pakietów
+## <a name="list-packages"></a>Wyświetl listę pakietów
 
-Za pomocą polecenia [list](../reference/cli-reference/cli-ref-list.md) można wyświetlić listę pakietów z danego źródła. Użyj `-Source` tej opcji, aby ograniczyć wyszukiwanie.
+Możesz wyświetlić listę pakietów z danego źródła za pomocą polecenia [list](../reference/cli-reference/cli-ref-list.md) . Użyj `-Source` opcji, aby ograniczyć wyszukiwanie.
 
 ```cli
 nuget list -Source <source>
 ```
 
-Na przykład lista pakietów w folderze *pakietów.*
+Na przykład Wyświetl listę pakietów w folderze *Packages* .
 
 ```cli
 nuget list -Source C:\Users\username\source\repos\MyProject\packages
 ```
 
-Jeśli używasz wyszukiwanego terminu, wyszukiwanie zawiera nazwy pakietów, tagów i opisów pakietów.
+W przypadku korzystania z wyszukiwanego terminu wyszukiwanie obejmuje nazwy pakietów, tagów i opisów pakietów.
 
 ```cli
 nuget list <search term>
@@ -98,11 +98,11 @@ nuget list <search term>
 
 ## <a name="update-an-individual-package"></a>Aktualizowanie pojedynczego pakietu
 
-NuGet instaluje najnowszą wersję pakietu `install` podczas korzystania z polecenia, chyba że określisz wersję pakietu.
+Pakiet NuGet instaluje najnowszą wersję pakietu przy użyciu `install` polecenia, o ile nie zostanie określona wersja pakietu.
 
 ## <a name="update-all-packages"></a>Aktualizuj wszystkie pakiety
 
-Użyj polecenia [update,](../reference/cli-reference/cli-ref-update.md) aby zaktualizować wszystkie pakiety. Aktualizuje wszystkie pakiety `packages.config`w projekcie (za pomocą) do ich najnowszych dostępnych wersji. Zaleca się uruchomienie `restore` przed `update`uruchomieniem .
+Użyj polecenia [Aktualizuj](../reference/cli-reference/cli-ref-update.md) , aby zaktualizować wszystkie pakiety. Aktualizuje wszystkie pakiety w projekcie (przy użyciu programu `packages.config` ) do ich najnowszych dostępnych wersji. Zaleca się uruchomienie `restore` przed uruchomieniem programu `update` .
 
 ```cli
 nuget update
@@ -114,10 +114,10 @@ nuget update
 
 ## <a name="get-the-cli-version"></a>Pobierz wersję interfejsu wiersza polecenia
 
-Użyj tego polecenia:
+Użyj następującego polecenia:
 
 ```cli
 nuget help
 ```
 
-Pierwszy wiersz w danych wyjściowych pomocy pokazuje wersję. Aby uniknąć przewijania `nuget help | more` w górę, użyj zamiast tego.
+Pierwszy wiersz w danych wyjściowych pomocy pokazuje wersję. Aby uniknąć przewijania, użyj `nuget help | more` zamiast tego.

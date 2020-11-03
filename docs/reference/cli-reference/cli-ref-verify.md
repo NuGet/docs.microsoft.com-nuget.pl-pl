@@ -6,12 +6,12 @@ ms.author: dtivel
 ms.date: 03/06/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: 2c501753a16820c5d027441001561c6b637ccda9
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: 7ce08f11195437e94bfe69883ff525e9ad3a73f0
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88622606"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93238143"
 ---
 # <a name="verify-command-nuget-cli"></a>VERIFY — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -19,7 +19,7 @@ ms.locfileid: "88622606"
 
 Weryfikuje pakiet.
 
-Weryfikacja podpisanych pakietów nie jest jeszcze obsługiwana w programie .NET Core, w obszarze mono lub na platformach innych niż Windows.
+Weryfikacja podpisanych pakietów nie jest jeszcze obsługiwana w programie mono.
 
 ## <a name="usage"></a>Użycie
 

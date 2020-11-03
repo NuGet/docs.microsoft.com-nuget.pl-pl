@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/23/2018
 ms.topic: tutorial
-ms.openlocfilehash: e1ebf5042597693ee55d986a4f93e797c27ad30a
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: 17062d83349fe1b8cd28e57dd888686a226ac9cb
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88622710"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93238026"
 ---
 # <a name="creating-ui-controls-as-nuget-packages"></a>Tworzenie kontrolek interfejsu użytkownika jako pakietów NuGet
 
@@ -59,11 +59,11 @@ Struktura pliku jest następująca:
 
 gdzie:
 
-- *your_package_file*: nazwa pliku kontrolnego, na przykład `ManagedPackage.winmd` ("ManagedPackage", to arbitralna Nazwa użyta dla tego przykładu i nie ma innego znaczenia).
-- *vs_category*: etykieta grupy, w której formant powinien pojawić się w przyborniku projektanta programu Visual Studio. `VSCategory`Jest to konieczne, aby formant pojawił się w przyborniku.
-*ui_framework*: Nazwa struktury, taka jak "WPF", należy pamiętać, że ten `UIFramework` atrybut jest wymagany w węzłach ToolboxItems w programie Visual Studio 16,7 Preview 3 lub nowszym, aby formant pojawił się w przyborniku.
-- *blend_category*: etykieta grupy, w której formant powinien pojawić się w okienku zasobów projektanta mieszania. `BlendCategory`Jest to konieczne, aby formant pojawił się w elementach zawartości.
-- *type_full_name_n*: w pełni kwalifikowana nazwa dla każdej kontrolki, łącznie z przestrzenią nazw, taką jak `ManagedPackage.MyCustomControl` . Należy zauważyć, że format kropki jest używany zarówno dla typów zarządzanych, jak i natywnych.
+- *your_package_file* : nazwa pliku kontrolnego, na przykład `ManagedPackage.winmd` ("ManagedPackage", to arbitralna Nazwa użyta dla tego przykładu i nie ma innego znaczenia).
+- *vs_category* : etykieta grupy, w której formant powinien pojawić się w przyborniku projektanta programu Visual Studio. `VSCategory`Jest to konieczne, aby formant pojawił się w przyborniku.
+*ui_framework* : Nazwa struktury, taka jak "WPF", należy pamiętać, że ten `UIFramework` atrybut jest wymagany w węzłach ToolboxItems w programie Visual Studio 16,7 Preview 3 lub nowszym, aby formant pojawił się w przyborniku.
+- *blend_category* : etykieta grupy, w której formant powinien pojawić się w okienku zasobów projektanta mieszania. `BlendCategory`Jest to konieczne, aby formant pojawił się w elementach zawartości.
+- *type_full_name_n* : w pełni kwalifikowana nazwa dla każdej kontrolki, łącznie z przestrzenią nazw, taką jak `ManagedPackage.MyCustomControl` . Należy zauważyć, że format kropki jest używany zarówno dla typów zarządzanych, jak i natywnych.
 
 W bardziej zaawansowanych scenariuszach można także uwzględnić wiele `<File>` elementów w obrębie, `<FileList>` gdy jeden pakiet zawiera wiele zestawów kontrolek. Możesz również mieć wiele `<ToolboxItems>` węzłów w obrębie jednej, `<File>` Jeśli chcesz zorganizować kontrolki w osobnych kategoriach.
 
@@ -94,7 +94,7 @@ Obsługiwane formaty to `.png` ,,, `.jpg` `.jpeg` `.gif` i `.bmp` . Zalecany for
 
 ![Ikona pola narzędzia — przykład](https://raw.githubusercontent.com/NuGet/docs.microsoft.com-nuget/live/docs/guides/media/ColorPicker_16x16x24.bmp)
 
-Różowe tło jest zastępowane w czasie wykonywania. Po zmianie motywu programu Visual Studio ikony są zmieniane, a jego kolor tła jest oczekiwany. Aby uzyskać więcej informacji, zapoznaj się z [obrazami i ikonami dla programu Visual Studio](https://docs.microsoft.com/visualstudio/extensibility/ux-guidelines/images-and-icons-for-visual-studio).
+Różowe tło jest zastępowane w czasie wykonywania. Po zmianie motywu programu Visual Studio ikony są zmieniane, a jego kolor tła jest oczekiwany. Aby uzyskać więcej informacji, zapoznaj się z [obrazami i ikonami dla programu Visual Studio](/visualstudio/extensibility/ux-guidelines/images-and-icons-for-visual-studio).
 
 W poniższym przykładzie projekt zawiera plik obrazu o nazwie "ManagedPackage.MyCustomControl.png".
 
@@ -147,7 +147,7 @@ W przypadku platformy WPF kontynuując przykład, w którym chcesz, aby pakiet f
 
 ## <a name="use-strings-and-resources"></a>Korzystanie z ciągów i zasobów
 
-W pakiecie można osadzić zasoby ciągów ( `.resw` ), które mogą być używane przez formant lub projekt zużywający platformy UWP, ustawić właściwość **Akcja kompilacji** `.resw` pliku na **PRIResource**.
+W pakiecie można osadzić zasoby ciągów ( `.resw` ), które mogą być używane przez formant lub projekt zużywający platformy UWP, ustawić właściwość **Akcja kompilacji** `.resw` pliku na **PRIResource** .
 
 Aby zapoznać się z przykładem, zobacz [MyCustomControl.cs](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/ManagedPackage/MyCustomControl.cs) w przykładzie ExtensionSDKasNuGetPackage.
 

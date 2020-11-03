@@ -1,18 +1,18 @@
 ---
-title: Dokumentacja pakietu NuGet Open-PackagePage programu PowerShell
-description: Odwołanie do polecenia programu PowerShell open-PackagePage w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Dokumentacja programu NuGet Open-PackagePage PowerShell
+description: Informacje dotyczące Open-PackagePage polecenia programu PowerShell w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 39199ebfc37756ed40158a1c07afca7709067350
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: ba90e09c017ec66d73c35a60025474bc77cf65a7
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384431"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93238065"
 ---
-# <a name="open-packagepage-package-manager-console-in-visual-studio"></a>Open-PackagePage (konsola menedżera pakietów w programie Visual Studio)
+# <a name="open-packagepage-package-manager-console-in-visual-studio"></a>Open-PackagePage (konsola Menedżera pakietów w programie Visual Studio)
 
 *Przestarzałe w wersji 3.0 +; dostępne tylko w [konsoli Menedżera pakietów](../../consume-packages/install-use-packages-powershell.md) w programie Visual Studio w systemie Windows.*
 
@@ -31,7 +31,7 @@ Open-PackagePage [-Id] <string> [-Version] [-Source] [-License] [-ReportAbuse]
 | --- | --- |
 | Id | Identyfikator pakietu żądanego pakietu. Przełącznik-ID jest opcjonalny. |
 | Wersja | Wersja pakietu, domyślna dla najnowszej wersji. |
-| Obiekt źródłowy | Źródło pakietu, które domyślnie jest wybrane źródło w liście rozwijanej Źródło. |
+| Element źródłowy | Źródło pakietu, które domyślnie jest wybrane źródło w liście rozwijanej Źródło. |
 | Licencja | Otwiera przeglądarkę w adresie URL licencji pakietu. Jeśli nie określono parametru-License ani-ReportAbuse, przeglądarka otworzy adres URL projektu pakietu. |
 | ReportAbuse | Otwiera przeglądarkę w adresie URL nadużycia raportu pakietu. Jeśli nie określono parametru-License ani-ReportAbuse, przeglądarka otworzy adres URL projektu pakietu. |
 | PassThru | Wyświetla adres URL; Użyj with-WhatIf, aby pominąć otwieranie przeglądarki. |
@@ -40,7 +40,7 @@ Open-PackagePage [-Id] <string> [-Version] [-Source] [-License] [-ReportAbuse]
 
 ## <a name="common-parameters"></a>Parametry wspólne
 
-`Open-PackagePage` obsługuje następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216): debugowanie, Akcja błędu, ErrorVariable, buforowanie, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Open-PackagePage` obsługuje następujące [typowe parametry programu PowerShell](/powershell/module/microsoft.powershell.core/about/about_commonparameters): debugowanie, Akcja błędu, ErrorVariable, wybuforuj, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

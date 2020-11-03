@@ -1,20 +1,20 @@
 ---
-title: Dokumentacja poleceń Get-Package programu NuGet
-description: Dokumentacja polecenia Get-Package programu PowerShell w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Dokumentacja programu NuGet Get-Package PowerShell
+description: Informacje dotyczące Get-Package polecenia programu PowerShell w konsoli Menedżera pakietów NuGet w programie Visual Studio.
 author: karann-msft
 ms.author: karann
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 1c39fea2131b8f4b8a91314347a19366d5a582c2
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: 1576e3f20eba1ecdd099b1e7c23aef6b1a1a0a4f
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385196"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93237234"
 ---
-# <a name="get-package-package-manager-console-in-visual-studio"></a>Get-Package (konsola menedżera pakietów w programie Visual Studio)
+# <a name="get-package-package-manager-console-in-visual-studio"></a>Get-Package (konsola Menedżera pakietów w programie Visual Studio)
 
-*W tym temacie opisano polecenie w [konsoli Menedżera pakietów](../../consume-packages/install-use-packages-powershell.md) w programie Visual Studio w systemie Windows. Aby zapoznać się z ogólnym poleceniem Get-Package programu PowerShell, zobacz [informacje dotyczące programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
+*W tym temacie opisano polecenie w [konsoli Menedżera pakietów](../../consume-packages/install-use-packages-powershell.md) w programie Visual Studio w systemie Windows. Ogólne polecenie programu PowerShell Get-Package można znaleźć w [dokumentacji programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
 
 Pobiera listę pakietów zainstalowanych w repozytorium lokalnym, wyświetla listę pakietów dostępnych ze źródła pakietów, gdy jest używany z przełącznikiem-ListAvailable lub wyświetla listę dostępnych aktualizacji, gdy jest używany z przełącznikiem-Update.
 
@@ -26,19 +26,19 @@ Get-Package -Source <string> [-ListAvailable] [-Updates] [-ProjectName <string>]
     [-PageSize] [<CommonParameters>]
 ```
 
-W przypadku braku parametrów `Get-Package` wyświetla listę pakietów zainstalowanych w domyślnym projekcie.
+Bez parametrów, `Get-Package` wyświetla listę pakietów zainstalowanych w domyślnym projekcie.
 
 ## <a name="parameters"></a>Parametry
 
 | Parametr | Opis |
 | --- | --- |
-| Obiekt źródłowy | Ścieżka adresu URL lub folderu dla pakietu. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia `Get-Package` przeszukuje aktualnie wybrane źródło pakietu. W przypadku użycia z opcją-ListAvailable wartość domyślna to nuget.org. |
+| Element źródłowy | Ścieżka adresu URL lub folderu dla pakietu. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia program `Get-Package` przeszukuje aktualnie wybrane źródło pakietu. W przypadku użycia z opcją-ListAvailable wartość domyślna to nuget.org. |
 | ListAvailable | Wyświetla listę pakietów dostępnych ze źródła pakietów, domyślnie nuget.org. Wyświetla domyślnie 50 pakietów, chyba że są określone wartości-PageSize i/lub-First. |
 | Aktualizacje | Wyświetla listę pakietów z aktualizacją dostępną w źródle pakietu. |
 | ProjectName | Projekt, z którego mają zostać pobrane zainstalowane pakiety. W przypadku pominięcia zwraca zainstalowane projekty dla całego rozwiązania. |
 | Filtr | Ciąg filtru służący do zawężenia listy pakietów przez zastosowanie jej do identyfikatora pakietu, opisu i tagów. |
 | Pierwsze | Liczba pakietów do zwrócenia od początku listy. Jeśli nie zostanie określony, wartość domyślna to 50. |
-| Skip | Pomija pierwsze &lt;pakietów&gt; int z wyświetlonej listy.  |
+| Pomiń | Pomija pierwsze &lt; &gt; pakiety int z wyświetlonej listy.  |
 | AllVersions | Wyświetla wszystkie dostępne wersje każdego pakietu, a nie tylko najnowszą wersję. |
 | IncludePrerelease | Zawiera pakiety wersji wstępnej w wynikach. |
 | PageSize | *(3.0 +)* Jeśli jest używany z-ListAvailable (required), liczba pakietów do wyświetlenia przed podawaniem monitu o kontynuowanie. |
@@ -47,7 +47,7 @@ W przypadku braku parametrów `Get-Package` wyświetla listę pakietów zainstal
 
 ## <a name="common-parameters"></a>Parametry wspólne
 
-`Get-Package` obsługuje następujące [typowe parametry programu PowerShell](https://go.microsoft.com/fwlink/?LinkID=113216): debugowanie, Akcja błędu, ErrorVariable, buforowanie, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Get-Package` obsługuje następujące [typowe parametry programu PowerShell](/powershell/module/microsoft.powershell.core/about/about_commonparameters): debugowanie, Akcja błędu, ErrorVariable, wybuforuj, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

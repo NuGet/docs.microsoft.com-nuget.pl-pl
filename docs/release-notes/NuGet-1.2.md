@@ -6,15 +6,15 @@ ms.author: karann
 ms.date: 11/11/2016
 ms.topic: conceptual
 ms.openlocfilehash: 5d10d6bf27614980a144c30c3af6f9892a109061
-ms.sourcegitcommit: ddb52131e84dd54db199ce8331f6da18aa3feea1
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2020
-ms.locfileid: "79429088"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93237192"
 ---
 # <a name="nuget-12-release-notes"></a>Informacje o wersji narzędzia NuGet 1,2
 
-[Informacje o wersji pakietu nuget 1,0 i 1,1](../release-notes/nuget-1.1.md) | [NuGet 1,3 informacje o wersji](../release-notes/nuget-1.3.md)
+Informacje o wersji pakietu [NuGet 1,0 i 1,1](../release-notes/nuget-1.1.md)  |  [Informacje o wersji narzędzia NuGet 1,3](../release-notes/nuget-1.3.md)
 
 Pakiet NuGet 1,2 został wydano 30 marca 2011.
 
@@ -36,14 +36,14 @@ W przypadku instalowania pakietu o silnych nazwanych zestawach NuGet może teraz
 
 ### <a name="specifying-framework-assembly-references-gac"></a>Określanie odwołań do zestawów struktury (GAC)
 
-W niektórych przypadkach pakiet może zależeć od zestawu, który znajduje się w .NET Framework. Mówiąc ściślej, nie zawsze jest konieczne, aby konsument pakietu odwołuje się do zestawu struktury. Jednak w niektórych przypadkach jest to ważne, na przykład gdy Deweloper musi się zakodować względem typów w tym zestawie, aby można było korzystać z pakietu. Nowy element `frameworkAssemblies`, element podrzędny elementu metadanych, umożliwia określenie zestawu elementów `frameworkAssembly` wskazujących zestaw struktury w pamięci podręcznej GAC. Zanotuj nacisk na zestaw struktury.
-Te zestawy nie są uwzględnione w pakiecie, ponieważ zakłada się, że znajdują się one na każdym komputerze w ramach .NET Framework. Poniższa tabela zawiera listę atrybutów elementu `frameworkAssembly`.
+W niektórych przypadkach pakiet może zależeć od zestawu, który znajduje się w .NET Framework. Mówiąc ściślej, nie zawsze jest konieczne, aby konsument pakietu odwołuje się do zestawu struktury. Jednak w niektórych przypadkach jest to ważne, na przykład gdy Deweloper musi się zakodować względem typów w tym zestawie, aby można było korzystać z pakietu. Nowy `frameworkAssemblies` element, element podrzędny elementu metadanych, umożliwia określenie zestawu `frameworkAssembly` elementów wskazujących zestaw struktury w pamięci podręcznej GAC. Zanotuj nacisk na zestaw struktury.
+Te zestawy nie są uwzględnione w pakiecie, ponieważ zakłada się, że znajdują się one na każdym komputerze w ramach .NET Framework. Poniższa tabela zawiera listę atrybutów `frameworkAssembly` elementu.
 
 
 |Atrybut |Opis|
 |----------------|-----------|
-|**assemblyName**|*Wymagane*. Nazwa zestawu, taka jak `System.Net`.|
-|**targetFramework**|*Opcjonalnie*. Umożliwia określenie struktury i nazwy profilu (lub alias), do których odnosi się ten zestaw platformy, takich jak "net40" lub "SL4". Używa tego samego formatu opisanego w temacie [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md).|
+|**assemblyName**|*Wymagane* . Nazwa zestawu, na przykład `System.Net` .|
+|**targetFramework**|*Opcjonalne* . Umożliwia określenie struktury i nazwy profilu (lub alias), do których odnosi się ten zestaw platformy, takich jak "net40" lub "SL4". Używa tego samego formatu opisanego w temacie [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md).|
 
 ```xml
   <frameworkAssemblies>
@@ -52,9 +52,9 @@ Te zestawy nie są uwzględnione w pakiecie, ponieważ zakłada się, że znajdu
   </frameworkAssemblies>
 ```
 
-### <a name="nugetexe-now-is-able-to-store-api-key-credentials"></a>plik NuGet. exe może teraz przechowywać poświadczenia klucza interfejsu API
+### <a name="nugetexe-now-is-able-to-store-api-key-credentials"></a>nuget.exe teraz można przechowywać poświadczenia klucza interfejsu API
 
-Korzystając z narzędzia wiersza polecenia NuGet. exe, można teraz użyć polecenia SetApiKey w celu zapisania klucza interfejsu API. Dzięki temu nie będzie trzeba określać go przy każdym wypchnięciu pakietu. Aby uzyskać więcej informacji na temat zapisywania klucza interfejsu API za pomocą programu NuGet. exe, [zapoznaj się z dokumentacją dotyczącą publikowania pakietu](../nuget-org/publish-a-package.md).
+Korzystając z narzędzia wiersza polecenia nuget.exe, można teraz użyć polecenia SetApiKey w celu zapisania klucza interfejsu API. Dzięki temu nie będzie trzeba określać go przy każdym wypchnięciu pakietu. Aby uzyskać więcej informacji na temat zapisywania klucza interfejsu API za pomocą nuget.exe, [zapoznaj się z dokumentacją dotyczącą publikowania pakietu](../nuget-org/publish-a-package.md).
 
 ### <a name="package-explorer"></a>Eksplorator pakietów
 Eksplorator pakietów został zaktualizowany do obsługi narzędzia NuGet 1,2. Aby uzyskać więcej informacji, zapoznaj się z informacjami o [wersji Eksploratora pakietów](http://nuget.codeplex.com/wikipage?title=New%20features%20in%20NuGet%20Package%20Explorer%201.0).
@@ -65,6 +65,6 @@ Poprzednia lista była najbardziej zauważalna dla wielu zaimplementowanych funk
 
 ## <a name="known-issues"></a>Znane problemy
 
-* **niezgodność pakietów 1,2**: pakiety skompilowane przy użyciu najnowszej wersji narzędzia wiersza polecenia NuGet. exe (> 1,2) nie będą działały ze starszymi wersjami dodatku NuGet vs (na przykład 1,1). Jeśli zostanie wyświetlony komunikat o błędzie z informacją o niezgodnym schemacie, wystąpi błąd. Zaktualizuj pakiet NuGet do najnowszej wersji.
-* **Niezgodność programu NuGet. Server**: Jeśli przechowujesz wewnętrzne źródło danych NuGet za pomocą projektu NuGet. Server, musisz zaktualizować ten projekt przy użyciu najnowszej wersji programu NuGet. Server.
-* **Błąd niezgodności podpisu**: w przypadku wystąpienia błędu podczas uaktualniania z komunikatem o niezgodności podpisów należy najpierw odinstalować pakiet NuGet, a następnie zainstalować go. Ta lista znajduje się na liście [znanych problemów](../release-notes/known-issues.md) , która zawiera więcej szczegółów. Problem dotyczy tylko tych uruchomionych programu Visual Studio 2010 z dodatkiem SP1 i ma zainstalowaną wersję programu NuGet 1,0, która została nieprawidłowo podpisana. Ta wersja była udostępniona tylko z witryny sieci Web CodePlex przez krótki okres, więc ten problem nie ma wpływu na zbyt wiele osób.
+* **niezgodność pakietów 1,2** : pakiety skompilowane przy użyciu najnowszej wersji narzędzia wiersza polecenia nuget.exe (> 1,2) nie będą działały ze starszymi wersjami dodatku NuGet vs (na przykład 1,1). Jeśli zostanie wyświetlony komunikat o błędzie z informacją o niezgodnym schemacie, wystąpi błąd. Zaktualizuj pakiet NuGet do najnowszej wersji.
+* **Niezgodność programu NuGet. Server** : Jeśli przechowujesz wewnętrzne źródło danych NuGet za pomocą projektu NuGet. Server, musisz zaktualizować ten projekt przy użyciu najnowszej wersji programu NuGet. Server.
+* **Błąd niezgodności podpisu** : w przypadku wystąpienia błędu podczas uaktualniania z komunikatem o niezgodności podpisów należy najpierw odinstalować pakiet NuGet, a następnie zainstalować go. Ta lista znajduje się na liście [znanych problemów](../release-notes/known-issues.md) , która zawiera więcej szczegółów. Problem dotyczy tylko tych uruchomionych programu Visual Studio 2010 z dodatkiem SP1 i ma zainstalowaną wersję programu NuGet 1,0, która została nieprawidłowo podpisana. Ta wersja była udostępniona tylko z witryny sieci Web CodePlex przez krótki okres, więc ten problem nie ma wpływu na zbyt wiele osób.

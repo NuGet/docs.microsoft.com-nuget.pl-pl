@@ -1,60 +1,60 @@
 ---
-title: Formaty analizatora platformy kompilatora platformy .NET dla nuget
-description: Konwencje dla analizatorów platformy .NET, które są pakowane i dystrybuowane za pomocą pakietów NuGet, które implementują interfejs API lub biblioteki.
+title: Formaty analizatora .NET Compiler Platform dla narzędzia NuGet
+description: Konwencje dla analizatorów .NET spakowane i dystrybuowane z pakietami NuGet, które implementują interfejs API lub bibliotekę.
 author: karann-msft
 ms.author: karann
 ms.date: 01/09/2017
 ms.topic: conceptual
-ms.openlocfilehash: 4d337299f725b38981b0121069d5e6295b05e34e
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 9de890d14747a74a13a660109a3b6812a5e08acc
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "72924640"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93237922"
 ---
-# <a name="analyzer-nuget-formats"></a>Formaty Analizatora NuGet
+# <a name="analyzer-nuget-formats"></a>Formaty NuGet analizatora
 
-Platforma kompilatora .NET (znany również jako "Roslyn") umożliwia deweloperom tworzenie [analizatorów,](https://github.com/dotnet/roslyn/wiki/How-To-Write-a-C%23-Analyzer-and-Code-Fix) które badają drzewa składni i semantyki kodu, jak jest zapisywany. Dzięki temu deweloperzy mogą tworzyć narzędzia analizy specyficzne dla domeny, takie jak te, które pomogą w korzystaniu z określonego interfejsu API lub biblioteki. Więcej informacji można znaleźć na wiki [.NET/Roslyn](https://github.com/dotnet/roslyn/wiki) GitHub. Zobacz także [artykuł, Użyj Roslyn napisać analizator kodu na żywo dla interfejsu API](https://msdn.microsoft.com/magazine/dn879356.aspx) w MSDN Magazine.
+.NET Compiler Platform (znany również jako "Roslyn") umożliwia deweloperom tworzenie [analizatorów](https://github.com/dotnet/roslyn/wiki/How-To-Write-a-C%23-Analyzer-and-Code-Fix) , które analizują drzewo składni i semantykę kodu podczas jego pisania. Pozwala to deweloperom na tworzenie specyficznych dla domeny narzędzi do analizy, takich jak te, które mogłyby ułatwić korzystanie z konkretnego interfejsu API lub biblioteki. Więcej informacji można znaleźć na stronie wiki [platformy .NET/Roslyn](https://github.com/dotnet/roslyn/wiki) GitHub. Zobacz również artykuł Roslyn, [Aby napisać analizator kodu na żywo dla interfejsu API](/archive/msdn-magazine/2014/special-issue/csharp-and-visual-basic-use-roslyn-to-write-a-live-code-analyzer-for-your-api) w usłudze MSDN Magazine.
 
-Same analizatory są zazwyczaj pakowane i dystrybuowane jako część pakietów NuGet, które implementują interfejs API lub biblioteki, o których mowa.
+Analizatory są zwykle spakowane i dystrybuowane jako część pakietów NuGet implementujących dany interfejs API lub bibliotekę.
 
-Dobrym przykładem jest pakiet [System.Runtime.Analyzers,](https://www.nuget.org/packages/System.Runtime.Analyzers) który zawiera następującą zawartość:
+Aby uzyskać dobry przykład, zobacz pakiet [System. Runtime. analizatory](https://www.nuget.org/packages/System.Runtime.Analyzers) , który ma następującą zawartość:
 
-- analizatory\dotnet\System.Runtime.Analyzers.dll
-- analizatory\dotnet\cs\System.Runtime.CSharp.Analyzers.dll
-- analizatory\dotnet\vb\System.Runtime.VisualBasic.Analyzers.dll
+- analyzers\dotnet\System.Runtime.Analyzers.dll
+- analyzers\dotnet\cs\System.Runtime.CSharp.Analyzers.dll
+- analyzers\dotnet\vb\System.Runtime.VisualBasic.Analyzers.dll
 - build\System.Runtime.Analyzers.Common.props
 - build\System.Runtime.Analyzers.props
 - build\System.Runtime.CSharp.Analyzers.props
-- kompilacja\System.Runtime.VisualBasic.Analyzers.props
-- narzędzia\install.ps1
-- narzędzia\odinstaluj.ps1
+- build\System.Runtime.VisualBasic.Analyzers.props
+- tools\install.ps1
+- tools\uninstall.ps1
 
-Jak widać, umieszczasz biblioteki DLL analizatora w folderze `analyzers` w pakiecie.
+Jak widać, należy umieścić biblioteki DLL analizatora w `analyzers` folderze pakietu.
 
-Pliki rekwizytów, które są dołączone do wyłączenia starszych reguł FxCop na `build` rzecz implementacji analizatora, są umieszczane w folderze.
+Pliki props, które są dołączone do wyłączania starszych reguł FxCop na korzyść implementacji analizatora, są umieszczane w `build` folderze.
 
-Instalowanie i odinstalowywanie `packages.config` skryptów, które obsługują projekty, które są używane, są umieszczane w pliku `tools`.
+Instalowanie i odinstalowywanie skryptów, które obsługują projekty przy użyciu programu, `packages.config` są umieszczane w temacie `tools` .
 
-Należy również zauważyć, że ponieważ ten pakiet `platform` nie ma wymagań specyficznych dla platformy, folder jest pomijany.
+Należy również zauważyć, że ponieważ ten pakiet nie ma wymagań specyficznych dla platformy, `platform` folder zostanie pominięty.
 
 
 ## <a name="analyzers-path-format"></a>Format ścieżki analizatorów
 
-Użycie folderu `analyzers` jest podobny do używanego dla [struktur docelowych](../create-packages/supporting-multiple-target-frameworks.md), z wyjątkiem specyfikatorów w ścieżce opisują zależności hosta rozwoju zamiast czasu kompilacji. Ogólny format jest następujący:
+Użycie `analyzers` folderu jest podobne do programu, który jest używany dla [platform docelowych](../create-packages/supporting-multiple-target-frameworks.md), z wyjątkiem specyfikatorów w ścieżce opisują zależności hosta deweloperskiego, a nie czas kompilacji. Format ogólny jest następujący:
 
     $/analyzers/{framework_name}{version}/{supported_architecture}/{supported_language}/{analyzer_name}.dll
 
-- **framework_name** i **wersja:** *opcjonalny* obszar powierzchni interfejsu API programu .NET Framework, który zawiera biblioteki DLL muszą być uruchamiane. `dotnet`jest obecnie jedyną prawidłową wartością, ponieważ Roslyn jest jedynym hostem, który może uruchamiać analizatory. Jeśli nie określono celu, zakłada się, że biblioteki DLL mają zastosowanie do *wszystkich* obiektów docelowych.
-- **supported_language**: język, dla którego jest stosowana biblioteka `cs` DLL, `vb` jeden z (C#) i (Visual Basic) i `fs` (F#). Język wskazuje, że analizator powinien być ładowany tylko dla projektu przy użyciu tego języka. Jeśli nie określono języka, zakłada się, że biblioteka DLL będzie stosowana do *wszystkich* języków, które obsługują analizatory.
-- **analyzer_name**: określa biblioteki DLL analizatora. Jeśli potrzebujesz dodatkowych plików poza bibliotekami DLL, muszą one zostać uwzględnione za pośrednictwem plików docelowych lub właściwości.
+- **framework_name** i **wersja** : *opcjonalny* obszar powierzchni interfejsu API .NET Framework, które muszą zostać uruchomione w zawartych bibliotekach DLL. `dotnet` jest obecnie jedyną prawidłową wartością, ponieważ Roslyn jest jedynym hostem, który może uruchamiać analizatory. Jeśli nie określono elementu docelowego, zakłada się, że biblioteki DLL są stosowane do *wszystkich* elementów docelowych.
+- **supported_language** : język, dla którego jest stosowana Biblioteka DLL, jeden z `cs` (C#) i `vb` (Visual Basic) i `fs` (F #). Język wskazuje, że analizator powinien być załadowany tylko dla projektu używającego tego języka. Jeśli nie określono żadnego języka, przyjęto, że biblioteka DLL ma zastosowanie do *wszystkich* języków, które obsługują analizatory.
+- **analyzer_name** : określa biblioteki DLL analizatora. Jeśli potrzebujesz dodatkowych plików poza biblioteką DLL, muszą one być dołączone do plików obiektów docelowych lub właściwości.
 
 
 ## <a name="install-and-uninstall-scripts"></a>Instalowanie i odinstalowywanie skryptów
 
-Jeśli używany jest projekt `packages.config`użytkownika, skrypt MSBuild, który odbiera analizator, nie wchodzi w `install.ps1` `uninstall.ps1` grę, `tools` dlatego należy umieścić i w folderze z zawartością, która jest opisana poniżej.
+Jeśli używany jest projekt użytkownika `packages.config` , skrypt programu MSBuild, który pobiera Analizator, nie jest odtwarzany, dlatego należy umieścić `install.ps1` i `uninstall.ps1` w `tools` folderze z zawartością, która jest opisana poniżej.
 
-**zawartość pliku install.ps1**
+**Zawartość plikuinstall.ps1**
 
 ```ps
 param($installPath, $toolsPath, $package, $project)
@@ -109,7 +109,7 @@ foreach($analyzersPath in $analyzersPaths)
 ```
 
 
-**odinstalowywanie.ps1 zawartość pliku**
+**Zawartość plikuuninstall.ps1**
 
 ```ps
 param($installPath, $toolsPath, $package, $project)

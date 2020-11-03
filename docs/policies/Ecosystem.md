@@ -1,89 +1,89 @@
 ---
 title: Omówienie ekosystemu NuGet
-description: Kompleksowe zasoby w ekosystemie NuGet, w tym źródła NuGet, projekty nuget firmy innych niż Microsoft, narzędzia i materiały szkoleniowe.
+description: Kompleksowe zasoby ekosystemu NuGet, w tym źródła NuGet, projekty, narzędzia i materiały szkoleniowe inne niż firmy Microsoft.
 author: karann-msft
 ms.author: karann
 ms.date: 01/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 31243076f36f6ff274c4377c1773ea59dda8c834
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 165587fb64be5a5f4dbfdece7dc3a1e6402b733e
+ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "64495504"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93237429"
 ---
 # <a name="an-overview-of-the-nuget-ecosystem"></a>Omówienie ekosystemu NuGet
 
-Od czasu wprowadzenia w 2010 r. NuGet przedstawił wielką szansę na ulepszenie i automatyzację różnych aspektów procesów programisty.
+Ponieważ jest to wprowadzenie w 2010, pakiet NuGet przedstawił doskonałą okazję do ulepszania i automatyzowania różnych aspektów procesów programistycznych.
 
-Ponieważ NuGet jest open source w ramach licencji [apache apache v2,](http://choosealicense.com/licenses/apache/)inne projekty mogą korzystać NuGet i firmy mogą budować wsparcie dla niego w swoich produktach. Niezależnie od tego, czy chodzi o projekty typu open source, czy o tworzenie aplikacji w przedsiębiorstwie, NuGet i inne aplikacje oparte na nuget i wokół niego zapewniają szeroki ekosystem narzędzi do ulepszania procesu tworzenia oprogramowania.
+Ponieważ pakiet NuGet jest typu open source w ramach dowolnej [licencji Apache v2](http://choosealicense.com/licenses/apache/), inne projekty mogą korzystać z narzędzia NuGet, a firmy mogą tworzyć do nich pomoc techniczną. Bez względu na to, czy w przypadku projektów typu "open source", jak i programowania aplikacji korporacyjnych, NuGet i innych aplikacji opartych na oprogramowaniu NuGet, można uzyskać obszerny ekosystem narzędzi do ulepszania procesu tworzenia oprogramowania.
 
-Wszystkie te projekty są w stanie wprowadzać innowacje dzięki wkładowi deweloperów. Podobnie jak przyczyniasz się do NuGet się, również przyczynić się do tych projektów, zgłaszając wady i nowe pomysły funkcji, dostarczanie opinii, pisanie dokumentacji i przyczyniając się do kodu, gdzie to możliwe.
+Wszystkie te projekty mogą wprowadzać innowacje ze względu na udziały deweloperów. Podobnie jak w przypadku współtworzenia oprogramowania NuGet, należy również udostępnić te projekty, zgłaszając wady i nowe pomysły dotyczące funkcji, dostarczając Opinie, pisząc dokumentację i tworząc kod, tam gdzie to możliwe.
 
-## <a name="net-foundation-projects"></a>Projekty Fundacji .NET
+## <a name="net-foundation-projects"></a>Projekty .NET Foundation
 
-NuGet zapewnia bezpłatny system zarządzania pakietami open source dla platformy dewelopera firmy Microsoft. Składa się z kilku narzędzi klienta, a także zestaw usług, które składają się na [oficjalnej Galerii NuGet](http://www.nuget.org). Połączone tworzą projekt NuGet, który jest zarządzany przez [.NET Foundation](http://www.dotnetfoundation.org/).
+Pakiet NuGet oferuje bezpłatne system zarządzania pakietami typu open source dla platformy programistycznej Microsoft. Składa się z kilku narzędzi klienckich, a także zestawu usług wchodzących w skład [oficjalnej galerii NuGet](http://www.nuget.org). Łącznie, te tworzą projekt NuGet, który podlega [platformie .NET Foundation](http://www.dotnetfoundation.org/).
 
-Organizacja NuGet zawiera różne repozytoria w usłudze GitHub. [https://github.com/Nuget/Home](https://github.com/Nuget/Home)zawiera przegląd wszystkich repozytoriów i gdzie można znaleźć różne składniki NuGet.
+Organizacja NuGet zawiera różne repozytoria w serwisie GitHub. [https://github.com/Nuget/Home](https://github.com/Nuget/Home) zawiera przegląd wszystkich repozytoriów i lokalizacji, w których można znaleźć różne składniki NuGet.
 
 ## <a name="microsoft-projects"></a>Projekty firmy Microsoft
 
-Firma Microsoft w znacznym stopniu przyczyniła się do rozwoju NuGet. Wszystkie wkłady pracowników firmy Microsoft są również open source i są przekazywane (w tym prawa autorskie) do .NET Foundation.
+Firma Microsoft przyczyniła się do rozwoju programu NuGet. Wszystkie wkłady wykonywane przez pracowników firmy Microsoft są również otwarte i są oddzielone (łącznie z prawami autorskimi) do programu .NET Foundation.
 
-## <a name="non-microsoft-projects"></a>Projekty inne niż Microsoft
+## <a name="non-microsoft-projects"></a>Projekty inne niż firmy Microsoft
 
-Wiele innych osób i firm wniósł znaczący wkład w ekosystem NuGet. Każdy projekt wymieniony w tym miejscu może mieć inną licencję niż podstawowe składniki NuGet, więc upewnij się, że postanowienia licencyjne są dopuszczalne przed użyciem:
+Wiele innych osób i firm wprowadziło znaczące wkłady do ekosystemu NuGet. Każdy projekt wymieniony w tym miejscu może mieć inną licencję niż podstawowe składniki NuGet, dlatego należy upewnić się, że warunki licencji są akceptowane przed użyciem:
 
 - [AppVeyor CI](https://www.appveyor.com/)
-- [Artefakty](https://www.jfrog.com/artifactory/)
-- [BoxStarter (Początek skrzynki)](http://boxstarter.org/)
-- [Czekoladowy](https://chocolatey.org/)
-- [CoApp (CoApp)](http://coapp.org/)
-- [Żywiciele JetBrains](https://resharper-plugins.jetbrains.com/)
+- [Artifactory](https://www.jfrog.com/artifactory/)
+- [BoxStarter](http://boxstarter.org/)
+- [Narzędzia Chocolatey](https://chocolatey.org/)
+- [CoApp](http://coapp.org/)
+- [JetBrains Resharper](https://resharper-plugins.jetbrains.com/)
 - [JetBrains TeamCity](https://www.jetbrains.com/teamcity/)
 - [Klondike](https://github.com/themotleyfool/Klondike)
-- [MinimalNugetServer (MinimalNugetServer)](https://github.com/TanukiSharp/MinimalNugetServer)
-- [MyGet (lub NuGet-as-a-service)](http://www.myget.org/)
+- [MinimalNugetServer](https://github.com/TanukiSharp/MinimalNugetServer)
+- [MyGet (lub NuGet jako usługa)](http://www.myget.org/)
 - [Eksplorator pakietów NuGet](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer)
 - [Serwer NuGet](http://nugetserver.net/)
-- [OśmiornicaDeploy](https://octopus.com/)
-- [Paket (paket)](https://fsprojects.github.io/Paket/)
+- [OctopusDeploy](https://octopus.com/)
+- [Paket](https://fsprojects.github.io/Paket/)
 - [ProGet (Inedo)](http://inedo.com/proget)
-- [skrypty](http://scriptcs.net/)
-- [Sharpdevelop](http://community.sharpdevelop.net/blogs/mattward/archive/2011/01/23/NuGetSupportInSharpDevelop.aspx)
+- [scriptcs](http://scriptcs.net/)
+- [SharpDevelop](http://community.sharpdevelop.net/blogs/mattward/archive/2011/01/23/NuGetSupportInSharpDevelop.aspx)
 - [Sonatype Nexus](http://www.sonatype.com/nexus-repository-sonatype)
-- [Źródło symbolu](http://www.symbolsource.org/Public)
+- [SymbolSource](http://www.symbolsource.org/Public)
 - [Xamarin i MonoDevelop](https://github.com/mrward/monodevelop-nuget-addin)
 
-## <a name="other-nuget-based-utilities"></a>Inne narzędzia oparte na nuget
+## <a name="other-nuget-based-utilities"></a>Inne narzędzia oparte na narzędziu NuGet
 
-Są to narzędzia i narzędzia zbudowane na NuGet:
+Oto narzędzia i narzędzia utworzone na serwerze NuGet:
 
-- [Rozszerzenia Glimpse](http://getglimpse.com/Packages) (wtyczki to pakiety)
+- [Rozszerzenia możliwość wypróbowania innowacyjnego](http://getglimpse.com/Packages) (wtyczki są pakietami)
 - [NuGetMustHaves.com](http://nugetmusthaves.com/)
-- [Sad](http://www.orchardproject.net/) (moduły CMS są pobierane z kanału NuGet w wersji 1 hostowanego w Galerii Sadów)
-- [Implementacja języka Java serwera NuGet Server](http://jonnyzzz.com/blog/2012/03/07/nuget-server-in-pure-java/)
-- [NuGetLatest](https://twitter.com/NuGetLatest) (Twitter bot tweeting nowych publikacji pakiet)
-- [DefinitelyTyped](http://definitelytyped.org/) ([Automatyczne](https://github.com/DefinitelyTyped/NugetAutomation/) [definicje](http://www.nuget.org/packages?q=DefinitelyTyped)typuScript opublikowane w NuGet )
+- [Sadu](http://www.orchardproject.net/) (moduły CMS są pobierane z kanału informacyjnego programu NuGet V1 hostowanego w galerii sadu)
+- [Implementacja języka Java serwera NuGet](http://jonnyzzz.com/blog/2012/03/07/nuget-server-in-pure-java/)
+- [NuGetLatest](https://twitter.com/NuGetLatest) (publikacje nowych pakietów w usłudze Twitter bot)
+- [DefinitelyTyped](http://definitelytyped.org/) ([Automatyczne](https://github.com/DefinitelyTyped/NugetAutomation/) definicje typów TypeScript [publikowane w NuGet](http://www.nuget.org/packages?q=DefinitelyTyped))
 
-## <a name="training-materials-and-references"></a>Materiały szkoleniowe i referencje
+## <a name="training-materials-and-references"></a>Materiały szkoleniowe i odwołania
 
-Korzystanie z nowego narzędzia lub technologii zwykle wiąże się z krzywą uczenia się. Na szczęście dla Ciebie, NuGet nie ma stromej krzywej uczenia się to wszystko! W rzeczywistości każdy może [szybko zacząć konsumować pakiety.](../quickstart/use-a-package.md)
+Korzystanie z nowego narzędzia lub technologii zwykle obejmuje krzywą uczenia się. Na szczęście dla Ciebie, NuGet nie ma bardzo szczegółowej krzywej szkoleniowej. W rzeczywistości każda osoba może szybko rozpocząć [Korzystanie z pakietów](../quickstart/install-and-use-a-package-in-visual-studio.md) .
 
-To powiedziawszy, tworzenie pakietów, a zwłaszcza dobre pakiety, wraz z obejmując NuGet w zautomatyzowanych procesów kompilacji i wdrażania, wymaga spędzenia trochę więcej czasu z następujących zasobów:
+Oznacza to, że pakiety autorskie — i szczególnie dobre pakiety — wraz z pakietem NuGet w zautomatyzowanym procesie kompilowania i wdrażania, wymagają nieco więcej czasu z następującymi zasobami:
 
-- [NuGet Blog](http://blog.nuget.org/)
-- [Zespół NuGet na Twitterze,@nuget](http://twitter.com/nuget)
-- Książki:
-  - [Apress Pro NuGet](http://bit.ly/ProNuGet)
-  - [NuGet 2 Podstawowe elementy](http://www.amazon.com/NuGet-2-Essentials-Damir-Arh-ebook/dp/B00GTQD5M4)
+- [Blog narzędzia NuGet](http://blog.nuget.org/)
+- [Zespół NuGet w serwisie Twitter, @nuget](http://twitter.com/nuget)
+- Stad
+  - [Pakiet NuGet Apress Pro](http://bit.ly/ProNuGet)
+  - [Pakiet NuGet 2](http://www.amazon.com/NuGet-2-Essentials-Damir-Arh-ebook/dp/B00GTQD5M4)
 
-## <a name="documentation-for-individual-packages"></a>Dokumentacja dla poszczególnych opakowań
+## <a name="documentation-for-individual-packages"></a>Dokumentacja poszczególnych pakietów
 
-[NuDoq](http://nudoq.org) zapewnia prosty dostęp i aktualizacje i dokumentację dla pakietów NuGet.
+[NuDoq](http://nudoq.org) zapewnia prosty dostęp i aktualizacje oraz dokumentację dla pakietów NuGet.
 
-NuDoq regularnie sonduje serwer galerii nuget.org w celu uzyskania najnowszych aktualizacji pakietów, rozpakowuje i przetwarza pliki dokumentacji biblioteki oraz odpowiednio aktualizuje witrynę.
+NuDoq regularnie sonduje serwer galerii nuget.org w celu uzyskania najnowszych aktualizacji pakietu, rozpakuje i przetwarza pliki dokumentacji biblioteki i odpowiednio aktualizuje lokację.
 
 ## <a name="adding-your-project"></a>Dodawanie projektu
 
-Jeśli masz projekt ekosystemu NuGet, który byłby cennym dodatkiem do tej strony, prześlij żądanie ściągnięcia z edycją na tej stronie.
+Jeśli masz projekt ekosystemu NuGet, który będzie cennym dodatkiem do tej strony, Prześlij żądanie ściągnięcia z edytowaniem na tej stronie.
