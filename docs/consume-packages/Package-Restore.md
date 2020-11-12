@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 08/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0edfa1f61e6b18ef38689ed2272b2c5992a46ae6
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 05fa68ad3a0b353117a14e2b3e1cdf13dc806127
+ms.sourcegitcommit: 0cc6ac680c3202d0b036c0bed7910f6709215682
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237851"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550391"
 ---
 # <a name="restore-packages-using-package-restore"></a>Przywróć pakiety przy użyciu przywracania pakietów
 
@@ -60,7 +60,7 @@ W programie Visual Studio w systemie Windows:
 
 Przywracanie pakietu odbywa się automatycznie podczas tworzenia projektu na podstawie szablonu lub kompilowania projektu, z zastosowaniem opcji w [Włączanie i wyłączanie przywracania pakietów](#enable-and-disable-package-restore-in-visual-studio). W programie NuGet 4.0 + przywracanie odbywa się również automatycznie po wprowadzeniu zmian w projekcie w stylu zestawu SDK (zazwyczaj jest to projekt .NET Core lub .NET Standard).
 
-1. Włącz automatyczne przywracanie pakietów, wybierając pozycję **Narzędzia**  >  **Options**  >  **Menedżer pakietów NuGet** , a następnie wybierając opcję **automatycznie sprawdzaj brakujące pakiety podczas kompilacji w programie Visual Studio** w obszarze **przywracanie pakietu** .
+1. Włącz automatyczne przywracanie pakietów, wybierając pozycję **Narzędzia**  >  **Options**  >  **Menedżer pakietów NuGet** , a następnie wybierając opcję **automatycznie sprawdzaj brakujące pakiety podczas kompilacji w programie Visual Studio** w obszarze **przywracanie pakietu**.
 
    W przypadku projektów typu non-SDK należy najpierw wybrać opcję Zezwól narzędziu **NuGet na pobieranie brakujących pakietów** , aby włączyć opcję automatycznego przywracania.
 
@@ -72,9 +72,9 @@ Przywracanie pakietu odbywa się automatycznie podczas tworzenia projektu na pod
 
 ### <a name="restore-packages-manually-using-visual-studio"></a>Przywróć pakiety ręcznie przy użyciu programu Visual Studio
 
-1. Włącz przywracanie pakietów, wybierając **Tools**  >  **Opcje** narzędzia  >  **Menedżer pakietów NuGet** . W obszarze Opcje **przywracania pakietu** wybierz opcję Zezwól narzędziu **NuGet na pobieranie brakujących pakietów** .
+1. Włącz przywracanie pakietów, wybierając **Tools**  >  **Opcje** narzędzia  >  **Menedżer pakietów NuGet**. W obszarze Opcje **przywracania pakietu** wybierz opcję Zezwól narzędziu **NuGet na pobieranie brakujących pakietów**.
 
-1. W **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy rozwiązanie i wybierz polecenie **Przywróć pakiety NuGet** .
+1. W **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy rozwiązanie i wybierz polecenie **Przywróć pakiety NuGet**.
 
    Jeśli co najmniej jeden z pojedynczych pakietów nadal nie jest prawidłowo zainstalowany, **Eksplorator rozwiązań** pokazuje ikonę błędu. Kliknij prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet** , a następnie użyj **Menedżera pakietów** do odinstalowania i ponownego zainstalowania odpowiednich pakietów. Aby uzyskać więcej informacji, zobacz [Instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md)
 
@@ -143,7 +143,7 @@ Pakiet NuGet ma dwa formaty, w których projekt może używać pakietów: [`Pack
 [!INCLUDE [restore-nuget-exe-cli](includes/restore-nuget-exe-cli.md)]
 
 > [!IMPORTANT]
-> `restore`Polecenie nie modyfikuje pliku projektu ani *packages.config* . Aby dodać zależność, Dodaj pakiet za pomocą interfejsu użytkownika lub konsoli Menedżera pakietów w programie Visual Studio lub zmodyfikuj *packages.config* a następnie uruchom albo `install` `restore` .
+> `restore`Polecenie nie modyfikuje pliku projektu ani *packages.config*. Aby dodać zależność, Dodaj pakiet za pomocą interfejsu użytkownika lub konsoli Menedżera pakietów w programie Visual Studio lub zmodyfikuj *packages.config* a następnie uruchom albo `install` `restore` .
 
 ## <a name="restore-using-msbuild"></a>Przywróć przy użyciu programu MSBuild
 
@@ -169,7 +169,7 @@ Aby przywrócić pakiety wymienione w pliku projektu z PackageReference, użyj p
    Upewnij się, że dane wyjściowe programu MSBuild wskazują, że kompilacja została ukończona pomyślnie.
    
 > [!Note]
-> Program MSBuild ma `-restore` przełącznik, który zostanie uruchomiony `Restore` , załaduje projekt, a następnie skompiluje. Zobacz [przywracanie i kompilowanie za pomocą jednego polecenia MSBuild](/nuget/reference/msbuild-targets#restoring-and-building-with-one-msbuild-command).
+> Program MSBuild ma `-restore` przełącznik, który zostanie uruchomiony `Restore` , załaduje projekt, a następnie skompiluje. Zobacz [przywracanie i kompilowanie za pomocą jednego polecenia MSBuild](../reference/msbuild-targets.md#restoring-and-building-with-one-msbuild-command).
 
 ```cmd
 # Will restore the project, then build, since build is the default target.
@@ -224,13 +224,13 @@ Aby uniknąć używania pamięci podręcznej dla źródeł HTTP, wykonaj jedną 
 
 W przypadku programu NuGet 2,6 i wcześniejszego przywracanie pakietu programu MSBuild zostało wcześniej obsługiwane, ale nie jest już prawdziwe. (Zwykle jest to możliwe po kliknięciu prawym przyciskiem myszy rozwiązania w programie Visual Studio i wybraniu opcji **Włącz przywracanie pakietu NuGet** ). Jeśli projekt używa przestarzałego przywracania pakietu MSBuild, należy przeprowadzić migrację do automatycznego przywracania pakietów.
 
-Projekty używające przywracania pakietów MSBuild-Integrated zwykle zawierają folder *. NuGet* z trzema plikami: *NuGet.config* , *nuget.exe* i *NuGet. targets* . Obecność pliku *NuGet. targets* określa, czy pakiet NuGet będzie nadal używać metody zintegrowanej z użyciem programu MSBuild, więc ten plik musi zostać usunięty podczas migracji.
+Projekty używające przywracania pakietów MSBuild-Integrated zwykle zawierają folder *. NuGet* z trzema plikami: *NuGet.config* , *nuget.exe* i *NuGet. targets*. Obecność pliku *NuGet. targets* określa, czy pakiet NuGet będzie nadal używać metody zintegrowanej z użyciem programu MSBuild, więc ten plik musi zostać usunięty podczas migracji.
 
 Aby przeprowadzić migrację do automatycznego przywracania pakietów:
 
 1. Zamknij program Visual Studio.
-2. Usuń *. NuGet/nuget.exe* i *. NuGet/NuGet. targets* .
-3. Dla każdego pliku projektu, Usuń `<RestorePackages>` element i Usuń odwołania do *NuGet. targets* .
+2. Usuń *. NuGet/nuget.exe* i *. NuGet/NuGet. targets*.
+3. Dla każdego pliku projektu, Usuń `<RestorePackages>` element i Usuń odwołania do *NuGet. targets*.
 
 Aby przetestować automatyczne przywracanie pakietów:
 
