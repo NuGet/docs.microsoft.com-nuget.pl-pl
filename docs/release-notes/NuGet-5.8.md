@@ -5,12 +5,12 @@ author: dominofire
 ms.author: feaguila
 ms.date: 11/9/2020
 ms.topic: conceptual
-ms.openlocfilehash: 86e173b9d760578454df8f5f817533f64e193996
-ms.sourcegitcommit: 0cc6ac680c3202d0b036c0bed7910f6709215682
+ms.openlocfilehash: 09fb98eec79ee4ed08d85a1c557a420d6b265f11
+ms.sourcegitcommit: f4b74b500e3db9e468f11142df48d87880382267
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550759"
+ms.locfileid: "94572834"
 ---
 # <a name="nuget-58-release-notes"></a>Informacje o wersji narzędzia NuGet 5,8
 
@@ -28,6 +28,8 @@ Pojazdy dystrybucji NuGet:
 
 ## <a name="summary-whats-new-in-58"></a>Podsumowanie: co nowego w 5,8
 🎉 **jest to pierwsza wersja, która oferuje pełną obsługę tworzenia i przywracania pakietów NuGet przeznaczonych dla platformy .net 5,0** 🎉
+
+* Przyspiesz NUPKG wyodrębnianie przy użyciu wywołania MMAP/funkcja CreateFileMapping- [#9807](https://github.com/NuGet/Home/issues/9807)
 
 * Wyświetl szczegóły luk w zabezpieczeniach pakietu w okienku szczegółów pakietu interfejsu użytkownika Menedżera pakietów — [#9850](https://github.com/NuGet/Home/issues/9850)
 
