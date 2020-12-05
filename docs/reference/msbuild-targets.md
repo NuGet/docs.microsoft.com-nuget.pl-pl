@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 16fd7b9103ef5ac335f0b2e5493dd2983b182f50
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: 4a04c6dd7993fc47bcf7a6fe46236ed700a0d105
+ms.sourcegitcommit: e39e5a5ddf68bf41e816617e7f0339308523bbb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88623178"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96738932"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -46,7 +46,7 @@ W poniższej tabeli opisano właściwości programu MSBuild, które można doda�
 
 Należy zauważyć, `Owners` że `Summary` właściwości i z `.nuspec` nie są obsługiwane w programie MSBuild.
 
-| Wartość atrybutu/NuSpec | Właściwość programu MSBuild | Domyślny | Uwagi |
+| Wartość atrybutu/NuSpec | Właściwość programu MSBuild | Domyślne | Uwagi |
 |--------|--------|--------|--------|
 | Id | PackageId | AssemblyName | $ (AssemblyName) z MSBuild |
 | Wersja | PackageVersion | Wersja | Jest to zgodne z semver, na przykład "1.0.0", "1.0.0-beta" lub "1.0.0-beta-00345" |
@@ -67,7 +67,7 @@ Należy zauważyć, `Owners` że `Summary` właściwości i z `.nuspec` nie są 
 | Tagi | PackageTags | puste | Tagi są rozdzielane średnikami. |
 | ReleaseNotes | PackageReleaseNotes | puste | |
 | Repozytorium/adres URL | RepositoryUrl | puste | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przyklad *https://github.com/NuGet/NuGet.Client.git* |
-| Repozytorium/typ | Repozytorium | puste | Typ repozytorium. Przykłady: *git*i *TFS*. |
+| Repozytorium/typ | Repozytorium | puste | Typ repozytorium. Przykłady: *git* i *TFS*. |
 | Repozytorium/gałąź | RepositoryBranch | puste | Opcjonalne informacje o gałęzi repozytorium. Aby można było uwzględnić tę właściwość, należy również określić *RepositoryUrl* . Przykład: *Master* (NuGet 4.7.0 +) |
 | Repozytorium/zatwierdzenie | RepositoryCommit | puste | Opcjonalne zatwierdzenie lub zestaw zmian repozytorium, aby wskazać, z którym źródłem został skompilowany pakiet. Aby można było uwzględnić tę właściwość, należy również określić *RepositoryUrl* . Przykład: *0e4d1b598f350b3dc675018d539114d1328189ef* (NuGet 4.7.0 +) |
 | PackageType | `<PackageType>DotNetCliTool, 1.0.0.0;Dependency, 2.0.0.0</PackageType>` | | |
@@ -365,7 +365,8 @@ Przykład:
 1. Pobierz pakiety
 1. Zapisz plik zasobów, cele i właściwości.
 
-`restore`Obiekt docelowy działa **tylko** w przypadku projektów korzystających z formatu PackageReference. **Nie działa w** przypadku projektów przy użyciu `packages.config` formatu; zamiast tego należy użyć [przywracania NuGet](../reference/cli-reference/cli-ref-restore.md) .
+`restore`Obiekt docelowy działa dla projektów przy użyciu formatu PackageReference.
+`MSBuild 16.5+` Ponadto zapewnia [obsługę](#restoring-packagereference-and-packages.config-with-msbuild) tego `packages.config` formatu.
 
 ### <a name="restore-properties"></a>Właściwości przywracania
 
@@ -391,7 +392,8 @@ Dodatkowe ustawienia przywracania mogą pochodzić z właściwości programu MSB
 | RestorePackagesWithLockFile | Umożliwia użycie pliku blokady. |
 | RestoreLockedMode | Uruchom przywracanie w trybie zablokowanym. Oznacza to, że przywracanie nie będzie obliczać zależności. |
 | NuGetLockFilePath | Niestandardowa lokalizacja pliku blokady. Domyślna lokalizacja jest obok projektu i ma nazwę `packages.lock.json` . |
-| RestoreForceEvaluate | Wymusza ponowne obliczenie zależności przez Przywracanie i zaktualizowanie pliku blokady bez ostrzeżenia. | 
+| RestoreForceEvaluate | Wymusza ponowne obliczenie zależności przez Przywracanie i zaktualizowanie pliku blokady bez ostrzeżenia. |
+| RestorePackagesConfig | Opcjonalny przełącznik, który przywraca projekty z packages.config. Obsługa `MSBuild -t:restore` wyłącznie. |
 
 #### <a name="examples"></a>Przykłady
 
@@ -435,6 +437,17 @@ msbuild -t:build -restore
 ```
 
 Ta sama logika ma zastosowanie do innych obiektów docelowych podobnych do `build` .
+
+### <a name="restoring-packagereference-and-packagesconfig-with-msbuild"></a>Przywracanie PackageReference i packages.config przy użyciu programu MSBuild
+
+W programie MSBuild 16.5 + packages.config są również obsługiwane w programie `msbuild -t:restore` .
+
+```cli
+msbuild -t:restore -p:RestorePackagesConfig=true
+```
+
+> [!NOTE]
+> `packages.config` Przywracanie jest dostępne `MSBuild 16.5+` tylko z `dotnet.exe`
 
 ### <a name="packagetargetfallback"></a>PackageTargetFallback
 

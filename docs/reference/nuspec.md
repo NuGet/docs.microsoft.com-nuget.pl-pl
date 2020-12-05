@@ -6,12 +6,12 @@ ms.author: karann
 ms.date: 05/24/2019
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: f91d47bdf9b957b512d3d83434693ee93de07afb
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: 6e5107ac05046ea46cc819ebe2a504ba6b030634
+ms.sourcegitcommit: e39e5a5ddf68bf41e816617e7f0339308523bbb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88623139"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96738945"
 ---
 # <a name="nuspec-reference"></a>nuspec — odwołanie
 
@@ -78,12 +78,12 @@ Identyfikator pakietu bez uwzględniania wielkości liter, który musi być unik
 
 Podczas przekazywania pakietu do nuget.org, `id` pole jest ograniczone do 128 znaków.
 
-#### <a name="version"></a>version
+#### <a name="version"></a>Wersja
 Wersja pakietu, po wzorcu *główna. pomocnicza. poprawka* . Numery wersji mogą zawierać sufiks wstępnej wersji, zgodnie z opisem w temacie [wersja pakietu](../concepts/package-versioning.md#pre-release-versions). 
 
 Podczas przekazywania pakietu do nuget.org, `version` pole jest ograniczone do 64 znaków.
 
-#### <a name="description"></a>description (opis)
+#### <a name="description"></a>description
 Opis pakietu na potrzeby wyświetlania interfejsu użytkownika.
 
 Podczas przekazywania pakietu do nuget.org, `description` pole jest ograniczone do 4000 znaków.
@@ -96,6 +96,9 @@ Podczas przekazywania pakietu do nuget.org, `authors` pole jest ograniczone do 4
 ### <a name="optional-metadata-elements"></a>Opcjonalne elementy metadanych
 
 #### <a name="owners"></a>rzecz
+> [!Important]
+> Właściciele są przestarzałi. Zamiast tego użyj autorów.
+
 Rozdzielana przecinkami lista twórców pakietów korzystających z nazw profilów w nuget.org. Jest to często taka sama lista jak w programie `authors` i jest ignorowana podczas przekazywania pakietu do NuGet.org. Zobacz [Zarządzanie właścicielami pakietów w witrynie NuGet.org](../nuget-org/publish-a-package.md#managing-package-owners-on-nugetorg). 
 
 #### <a name="projecturl"></a>projectUrl
@@ -519,7 +522,7 @@ Każdy `<file>` element określa następujące atrybuty:
 | --- | --- |
 | **src** | Lokalizacja pliku lub plików do dołączenia, z uwzględnieniem wyjątków określonych przez `exclude` atrybut. Ścieżka jest względna do `.nuspec` pliku, chyba że zostanie określona ścieżka bezwzględna. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
 | **obiektów** | Ścieżka względna do folderu w pakiecie, w którym znajdują się pliki źródłowe, które muszą zaczynać się od `lib` , `content` , `build` , lub `tools` . Zobacz [Tworzenie nuspec z katalogu roboczego opartego na Konwencji](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). |
-| **wykluczanie** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
+| **klucza** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
 
 ### <a name="examples"></a>Przykłady
 
@@ -723,7 +726,7 @@ Te pliki są określone za pomocą zestawu atrybutów, które opisują, jak powi
 | Atrybut | Opis |
 | --- | --- |
 | **być** | Potrzeb Lokalizacja pliku lub plików do dołączenia, z uwzględnieniem wyjątków określonych przez `exclude` atrybut. Ścieżka jest `contentFiles` określana względem folderu, chyba że określona jest ścieżka bezwzględna. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
-| **wykluczanie** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
+| **klucza** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
 | **buildAction** | Akcja kompilacji, która ma zostać przypisana do elementu zawartości dla programu MSBuild, takich jak,,, `Content` `None` `Embedded Resource` `Compile` itd. Wartość domyślna to `Compile` . |
 | **copyToOutput** | Wartość logiczna wskazująca, czy elementy zawartości mają być kopiowane do folderu wyjściowego kompilacja (lub publikacja). Wartością domyślną jest false. |
 | **Flatten** | Wartość logiczna wskazująca, czy kopiować elementy zawartości do pojedynczego folderu w danych wyjściowych kompilacji (true), czy też zachować strukturę folderów w pakiecie (false). Ta flaga działa tylko wtedy, gdy flaga copyToOutput jest ustawiona na wartość true. Wartością domyślną jest false. |
@@ -891,7 +894,7 @@ Należy zauważyć, że nie zaleca się tworzenia ręcznie nuspecs, które zawie
 
 W tym przykładzie są zainstalowane następujące elementy docelowe dla konkretnych projektów:
 
-- . NET4 > `System.Web` , `System.Net`
-- . Profil klienta NET4 — > `System.Net`
+- . NET4 — > `System.Web` , `System.Net`
+- . NET4 — profil klienta — > `System.Net`
 - Silverlight 3 — > `System.Json`
 - WindowsPhone — > `Microsoft.Devices.Sensors`

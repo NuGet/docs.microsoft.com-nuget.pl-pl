@@ -1,9 +1,7 @@
 ---
 title: Pakiety symboli wypychania, interfejs API NuGet | Microsoft Docs
 author: cristinamanum
-ms.author:
-- cmanu
-- kraigb
+ms.author: cmanu
 manager: skofman
 ms.date: 10/30/2018
 ms.topic: reference
@@ -12,33 +10,33 @@ ms.technology: ''
 description: Usługa publikowania pozwala klientom publikować nowe pakiety symboli.
 keywords: Pakiet symboli wypychanych interfejsu API NuGet
 ms.reviewer: karann
-ms.openlocfilehash: 27e557bf15ce31152243a409eddc4112eeb6c38b
-ms.sourcegitcommit: ac9a00ccaf90e539a381e92b650074910b21eb0d
+ms.openlocfilehash: bd4a10cc976c9d0775a63cfe61c35327c196065c
+ms.sourcegitcommit: e39e5a5ddf68bf41e816617e7f0339308523bbb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70235110"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96738880"
 ---
 # <a name="push-symbol-packages"></a>Pakiety symboli wypychania
 
 Można wypchnąć pakiety symboli ([snupkg](../create-packages/Symbol-Packages-snupkg.md)) za pomocą interfejsu API programu NuGet v3.
-Operacje te są oparte `SymbolPackagePublish` na zasobach znalezionych w [indeksie usługi](service-index.md).
+Operacje te są oparte na `SymbolPackagePublish` zasobach znalezionych w [indeksie usługi](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-Używana jest `@type` następująca wartość:
+`@type`Używana jest następująca wartość:
 
-@typewartościami                 | Uwagi
+@type wartościami                 | Uwagi
 --------------------        | -----
 SymbolPackagePublish/4.9.0  | Początkowa wersja
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
-Podstawowy adres URL dla następujących interfejsów API jest wartością `@id` właściwości `SymbolPackagePublish/4.9.0` zasobu w [indeksie usługi](service-index.md)źródła pakietu. W poniższej dokumentacji znajduje się adres URL programu NuGet. org. Rozważmy `https://www.nuget.org/api/v2/symbolpackage` jako symbol zastępczy `@id` dla wartości znalezionej w indeksie usługi.
+Podstawowy adres URL dla następujących interfejsów API jest wartością `@id` właściwości `SymbolPackagePublish/4.9.0` zasobu w [indeksie usługi](service-index.md)źródła pakietu. W poniższej dokumentacji znajduje się adres URL programu NuGet. org. Rozważmy `https://www.nuget.org/api/v2/symbolpackage` jako symbol zastępczy dla `@id` wartości znalezionej w indeksie usługi.
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Metoda `PUT` http jest obsługiwana przez ten zasób. 
+`PUT`Metoda http jest obsługiwana przez ten zasób. 
 
 ## <a name="push-a-symbol-package"></a>Wypchnij pakiet symboli
 
@@ -55,7 +53,7 @@ Pakiety symboli o takim samym IDENTYFIKATORze i wersji mogą być przesyłane wi
 
 Nazwa           | W     | Typ   | Wymagane | Uwagi
 -------------- | ------ | ------ | -------- | -----
-X-NuGet-ApiKey | nagłówek | string | tak      | Na przykład:`X-NuGet-ApiKey: {USER_API_KEY}`
+X-NuGet-ApiKey | Nagłówek | ciąg | tak      | Na przykład `X-NuGet-ApiKey: {USER_API_KEY}`
 
 Klucz interfejsu API to nieprzezroczysty ciąg z źródła pakietu przez użytkownika i skonfigurowany na kliencie. Żaden określony format ciągu nie jest dozwolony, ale długość klucza interfejsu API nie może przekroczyć rozsądnego rozmiaru wartości nagłówka HTTP.
 
@@ -63,7 +61,7 @@ Klucz interfejsu API to nieprzezroczysty ciąg z źródła pakietu przez użytko
 
 Treść żądania odnoszącego się do wypchnięcia symbol jest taka sama jak w przypadku treści żądania wypychania pakietu (zobacz [wypychanie i usuwanie pakietu](package-publish-resource.md)). 
 
-### <a name="response"></a>Odpowiedź
+### <a name="response"></a>Reakcja
 
 Kod stanu | Znaczenie
 ----------- | -------
