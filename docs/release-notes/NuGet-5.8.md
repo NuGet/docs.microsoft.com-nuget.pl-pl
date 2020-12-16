@@ -5,12 +5,12 @@ author: dominofire
 ms.author: feaguila
 ms.date: 11/9/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09fb98eec79ee4ed08d85a1c557a420d6b265f11
-ms.sourcegitcommit: f4b74b500e3db9e468f11142df48d87880382267
+ms.openlocfilehash: 329fdf6479d0799ae4b15cc3493848ba2d999853
+ms.sourcegitcommit: 650c08f8bc3d48dfd206a111e5e2aaca3001f569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94572834"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97523432"
 ---
 # <a name="nuget-58-release-notes"></a>Informacje o wersji narzędzia NuGet 5,8
 
@@ -144,5 +144,5 @@ Dziękujemy, że wszyscy Współautorzy, którzy pomogą Ci w udostępnieniu tej
 
 ## <a name="feedback-welcome"></a>Opinie — Zapraszamy!
 
-Twoja opinia jest dla nas ważna.  Jeśli występują problemy z tą wersją, zapoznaj się z naszymi problemami dotyczącymi usługi [GitHub](https://github.com/NuGet/Home/issues) i [społeczności deweloperów programu Visual Studio](https://developercommunity.visualstudio.com/) .  W przypadku nowych problemów w programie NuGet Zgłoś problem z usługą [GitHub](hhttps://github.com/NuGet/Home/issues/new).
+Twoja opinia jest dla nas ważna.  Jeśli występują problemy z tą wersją, zapoznaj się z naszymi problemami dotyczącymi usługi [GitHub](https://github.com/NuGet/Home/issues) i [społeczności deweloperów programu Visual Studio](https://developercommunity.visualstudio.com/) .  W przypadku nowych problemów w programie NuGet Zgłoś problem z usługą [GitHub](https://github.com/NuGet/Home/issues/new).
 Aby zapoznać się z ogólnymi problemami dotyczącymi środowiska NuGet, poinformuj nas o opcji " [Zgłoś problem](https://docs.microsoft.com/visualstudio/ide/how-to-report-a-problem-with-visual-studio) " znajdującej się w ulubionym środowisku IDE w obszarze **Pomoc > Zgłoś problem**.
