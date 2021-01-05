@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a5833df60c5f7905359f421141347b1237f45d86
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 1127e7aee27d57abd5f14dd3bea82dfff3ba6d93
+ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237643"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97699782"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietów (PackageReference) w plikach projektu
 
@@ -201,10 +201,42 @@ Dodatkowo NuGet automatycznie generuje właściwości dla pakietów zawierający
   <Target Name="TakeAction" AfterTargets="Build">
     <Exec Command="$(PkgPackage_With_Tools)\tools\tool.exe" />
   </Target>
-````
+```
 
 Właściwości programu MSBuild i tożsamości pakietów nie mają tych samych ograniczeń, więc tożsamość pakietu musi zostać zmieniona na przyjazną nazwę MSBuild, poprzedzoną prefiksem `Pkg` .
 Aby sprawdzić dokładną nazwę wygenerowanej właściwości, zobacz wygenerowany plik [NuGet. g. props](../reference/msbuild-targets.md#restore-outputs) .
+
+## <a name="packagereference-aliases"></a>Aliasy PackageReference
+
+W niektórych rzadkich przypadkach różne pakiety będą zawierać klasy znajdujące się w tej samej przestrzeni nazw. Począwszy od programu NuGet 5,7 & Visual Studio 2019 Update 7, równoważne z elementu ProjectReference, PackageReference obsługuje [`Aliases`](/dotnet/api/microsoft.codeanalysis.projectreference.aliases) .
+Domyślnie nie są udostępniane żadne aliasy. Po określeniu aliasu *wszystkie* zestawy pochodzące z pakietu zawierającego adnotacje muszą być przywoływane z aliasem.
+
+Przykładowe użycie można sprawdzić pod adresem [NuGet\Samples](https://github.com/NuGet/Samples/tree/master/PackageReferenceAliasesExample)
+
+W pliku projektu Określ aliasy w następujący sposób:
+
+```xml
+  <ItemGroup>
+    <PackageReference Include="NuGet.Versioning" Version="5.8.0" Aliases="ExampleAlias" />
+  </ItemGroup>
+```
+
+i w kodzie używają go w następujący sposób:
+
+```cs
+extern alias ExampleAlias;
+
+namespace PackageReferenceAliasesExample
+{
+...
+        {
+            var version = ExampleAlias.NuGet.Versioning.NuGetVersion.Parse("5.0.0");
+            Console.WriteLine($"Version : {version}");
+        }
+...
+}
+
+```
 
 ## <a name="nuget-warnings-and-errors"></a>Ostrzeżenia i błędy NuGet
 
@@ -273,7 +305,7 @@ W programie Visual Studio można także [pominąć ostrzeżenia](/visualstudio/i
 
 *Ta funkcja jest dostępna w programie NuGet **4,9** lub nowszym oraz z programem Visual Studio 2017 **15,9** lub nowszym.*
 
-Dane wejściowe do przywracania NuGet to zbiór odwołań do pakietów z pliku projektu (zależności najwyższego poziomu lub bezpośrednie), a dane wyjściowe to pełny zamknięcie wszystkich zależności pakietu, w tym zależności przechodnie. Pakiet NuGet próbuje zawsze utworzyć to samo pełne zamknięcie zależności pakietów, jeśli lista wejściowa PackageReference nie została zmieniona. Jednak istnieją pewne scenariusze, w których nie można tego zrobić. Przykład:
+Dane wejściowe do przywracania NuGet to zbiór odwołań do pakietów z pliku projektu (zależności najwyższego poziomu lub bezpośrednie), a dane wyjściowe to pełny zamknięcie wszystkich zależności pakietu, w tym zależności przechodnie. Pakiet NuGet próbuje zawsze utworzyć to samo pełne zamknięcie zależności pakietów, jeśli lista wejściowa PackageReference nie została zmieniona. Jednak istnieją pewne scenariusze, w których nie można tego zrobić. Na przykład:
 
 * W przypadku korzystania z wersji zmiennoprzecinkowych, takich jak `<PackageReference Include="My.Sample.Lib" Version="4.*"/>` . Gdy zachodzi taka potrzeba, aby przepływać do najnowszej wersji przy każdym przywracaniu pakietów, istnieją scenariusze, w których użytkownicy wymagają, aby wykres był zablokowany do określonej najnowszej wersji i przepływał do nowszej wersji, o ile jest dostępny, przy jawnym gestie.
 * Opublikowana jest nowsza wersja pakietu spełniająca wymagania dotyczące wersji PackageReference. Na przykład 

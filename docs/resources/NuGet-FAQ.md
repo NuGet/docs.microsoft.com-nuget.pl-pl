@@ -5,12 +5,12 @@ author: shishirx34
 ms.author: shishirh
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: aae6f0474cc6e8e8aa5c269b79be6fd949d9184c
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: be24660d05f34242e45f223e2248b943ecc38616
+ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93238000"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97699657"
 ---
 # <a name="nuget-frequently-asked-questions"></a>Często zadawane pytania dotyczące narzędzia NuGet
 
@@ -45,9 +45,9 @@ Aby uzyskać więcej informacji, zobacz [Znajdowanie i wybieranie pakietów](../
 
 **Jak mogę sprawdzić dokładną wersję zainstalowanych narzędzi NuGet?**
 
-W programie Visual Studio Użyj **> pomocy dotyczącej Microsoft Visual Studio** polecenia i sprawdź wersję wyświetlaną obok pozycji **Menedżer pakietów NuGet** .
+W programie Visual Studio Użyj **> pomocy dotyczącej Microsoft Visual Studio** polecenia i sprawdź wersję wyświetlaną obok pozycji **Menedżer pakietów NuGet**.
 
-Alternatywnie można uruchomić konsolę Menedżera pakietów ( **narzędzia > Menedżera pakietów NuGet > konsoli Menedżera pakietów** ) i wprowadzić polecenie, `$host` Aby wyświetlić informacje o pakiecie NuGet, w tym wersję.
+Alternatywnie można uruchomić konsolę Menedżera pakietów (**narzędzia > Menedżera pakietów NuGet > konsoli Menedżera pakietów**) i wprowadzić polecenie, `$host` Aby wyświetlić informacje o pakiecie NuGet, w tym wersję.
 
 **Jakie języki programowania są obsługiwane przez pakiet NuGet?**
 
@@ -149,3 +149,10 @@ Nie jest to problem występujący podczas korzystania z programu PackageReferenc
 
 - Dodaj `https://api.nuget.org/v3/index.json` do listy źródeł lub
 - Usuń `%appdata%\.nuget\NuGet.Config` System (Windows) lub `~/.nuget/NuGet/NuGet.Config` (Mac/Linux) i pozwól, aby pakiet NuGet został utworzony ponownie.
+
+**Dlaczego moja kompilacja kończy się niepowodzeniem `This project references NuGet package(s) that are missing on this computer.` ?**
+
+W projektach packages.config, gdy `build` zainstalowano pakiet z właściwościami lub obiektami docelowymi, NuGet doda `EnsureNuGetPackageBuildImports` obiekt docelowy, aby sprawdzić, czy zawartość MSBuild pakietów została zaimportowana przed kompilacją.
+Jeśli `target` plik został zmodyfikowany ręcznie, pakiet NuGet może nie być w stanie wykryć, że wymaga usunięcia podczas migracji.
+
+Jeśli projekt jest `PackageReference` i nadal ma ten element docelowy w pliku projektu, powinien być bezpiecznie usunięty.

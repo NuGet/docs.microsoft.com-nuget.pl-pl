@@ -1,16 +1,16 @@
 ---
 title: Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 description: Pakiet NuGet i przywracanie mogą współpracować bezpośrednio z obiektami docelowymi programu MSBuild z pakietem NuGet 4.0 +.
-author: karann-msft
-ms.author: karann
+author: nkolev92
+ms.author: nikolev
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4a04c6dd7993fc47bcf7a6fe46236ed700a0d105
-ms.sourcegitcommit: e39e5a5ddf68bf41e816617e7f0339308523bbb3
+ms.openlocfilehash: 66df4e0e4739300608fd5f9e44eea5bcd00079c8
+ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96738932"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97699888"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -54,7 +54,7 @@ Należy zauważyć, `Owners` że `Summary` właściwości i z `.nuspec` nie są 
 | VersionSuffix | PackageVersionSuffix | puste | $ (VersionSuffix) z programu MSBuild. Ustawienie PackageVersion zastępowanie PackageVersionSuffix |
 | Autorzy | Autorzy | Nazwa_użytkownika bieżącego użytkownika | |
 | Właściciele | Nie dotyczy | Nieobecny w NuSpec | |
-| Tytuł | Tytuł | PackageId| |
+| Title (Tytuł) | Title (Tytuł) | PackageId| |
 | Opis | Opis | "Opis pakietu" | |
 | Prawa autorskie | Prawa autorskie | puste | |
 | RequireLicenseAcceptance | PackageRequireLicenseAcceptance | fałsz | |
@@ -256,6 +256,23 @@ Podczas pakowania pliku licencji należy użyć właściwości PackageLicenseFil
 
 [Przykład pliku licencji](https://github.com/NuGet/Samples/tree/master/PackageLicenseFileExample).
 
+### <a name="packing-a-file-without-an-extension"></a>Pakowanie pliku bez rozszerzenia
+
+W niektórych scenariuszach, takich jak podczas pakowania pliku licencji, może być konieczne dołączenie pliku bez rozszerzenia.
+Ze względów historycznych pakiet NuGet & MSBuild traktuje ścieżki bez rozszerzenia jako katalogów.
+
+```xml
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>  
+```
+
+[Plik bez rozszerzenia](https://github.com/NuGet/Samples/blob/master/PackageLicenseFileExtensionlessExample/).
 ### <a name="istool"></a>Istool
 
 W przypadku korzystania z programu `MSBuild -t:pack -p:IsTool=true` wszystkie pliki wyjściowe, zgodnie z opisem w scenariuszu [zestawów wyjściowych](#output-assemblies) , są kopiowane do `tools` folderu, a nie do `lib` folderu. Należy zauważyć, że różni się to od elementu, `DotNetCliTool` który jest określony przez ustawienie `PackageType` w `.csproj` pliku.
@@ -366,7 +383,10 @@ Przykład:
 1. Zapisz plik zasobów, cele i właściwości.
 
 `restore`Obiekt docelowy działa dla projektów przy użyciu formatu PackageReference.
-`MSBuild 16.5+` Ponadto zapewnia [obsługę](#restoring-packagereference-and-packages.config-with-msbuild) tego `packages.config` formatu.
+`MSBuild 16.5+` Ponadto zapewnia [obsługę](#restoring-packagereference-and-packagesconfig-with-msbuild) tego `packages.config` formatu.
+
+> [!NOTE]
+> `restore`Element docelowy [nie powinien być uruchamiany](#restoring-and-building-with-one-msbuild-command) w połączeniu z `build` elementem docelowym.
 
 ### <a name="restore-properties"></a>Właściwości przywracania
 

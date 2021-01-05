@@ -7,18 +7,21 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 f1_keywords:
 - vs.nuget.packagemanager.console
-ms.openlocfilehash: 8b23b6cc22eff5413e317fbe619edd3d4f4716ee
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 31fa51bc017eaaf9306d5f267e5d4b0d7a15ec9c
+ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237403"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97699833"
 ---
 # <a name="install-and-manage-packages-with-the-package-manager-console-in-visual-studio-powershell"></a>Instalowanie pakietów i zarządzanie nimi za pomocą konsoli Menedżera pakietów w programie Visual Studio (PowerShell)
 
 Konsola Menedżera pakietów NuGet umożliwia używanie [poleceń programu PowerShell NuGet](../reference/powershell-reference.md) do znajdowania, instalowania, odinstalowywania i aktualizowania pakietów NuGet. Korzystanie z konsoli programu jest niezbędne w przypadkach, gdy interfejs użytkownika Menedżera pakietów nie zapewnia sposobu wykonywania operacji. Aby korzystać z `nuget.exe` poleceń interfejsu wiersza polecenia w konsoli programu, zobacz [Korzystanie z interfejsu CLI nuget.exe w konsoli programu](#use-the-nugetexe-cli-in-the-console).
 
 Konsola programu jest wbudowana w program Visual Studio w systemie Windows. Nie jest on dołączony do Visual Studio dla komputerów Mac ani Visual Studio Code.
+
+> [!Important]
+> Polecenia wymienione tutaj są specyficzne dla konsoli Menedżera pakietów w programie Visual Studio i różnią się od [poleceń modułu Zarządzanie pakietami](/powershell/module/packagemanagement/) , które są dostępne w ogólnym środowisku programu PowerShell. W każdym środowisku istnieją polecenia, które nie są dostępne w innym, a polecenia o tej samej nazwie mogą również różnić się do określonych argumentów. W przypadku korzystania z konsoli Zarządzanie pakietami w programie Visual Studio stosowane są polecenia i argumenty opisane w tym temacie.
 
 ## <a name="find-and-install-a-package"></a>Znajdowanie i instalowanie pakietu
 
@@ -98,7 +101,7 @@ Zobacz [odinstalowywanie pakietu](../reference/ps-reference/ps-ref-uninstall-pac
 
 Odinstalowywanie pakietu wykonuje następujące czynności:
 
-- Usuwa odwołania do pakietu z projektu (wraz z dowolnym formatem zarządzania jest używany). Odwołania nie są już wyświetlane w **Eksplorator rozwiązań** . (Może być konieczne ponowne skompilowanie projektu, aby zobaczyć, że został usunięty z folderu **bin** ).
+- Usuwa odwołania do pakietu z projektu (wraz z dowolnym formatem zarządzania jest używany). Odwołania nie są już wyświetlane w **Eksplorator rozwiązań**. (Może być konieczne ponowne skompilowanie projektu, aby zobaczyć, że został usunięty z folderu **bin** ).
 - Odwraca wszelkie zmiany wprowadzone do `app.config` lub `web.config` podczas instalacji pakietu.
 - Usuwa wcześniej zainstalowane zależności, jeśli żadne pozostałe pakiety nie używają tych zależności.
 

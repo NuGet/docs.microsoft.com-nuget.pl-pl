@@ -5,12 +5,12 @@ author: karann-msft
 ms.author: karann
 ms.date: 05/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: b162990eae2160961f560b6c6ee73e47cb4121d6
-ms.sourcegitcommit: f29fa9b93fd59e679fab50d7413bbf67da3ea5b3
+ms.openlocfilehash: 9f680a714717d1bde0472f2e1266cacfd8bd4d5f
+ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86451154"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97699720"
 ---
 # <a name="troubleshooting-package-restore-errors"></a>Rozwiązywanie problemów z błędami przywracania pakietu
 
@@ -26,7 +26,7 @@ Jeśli używasz programu Visual Studio, najpierw włącz przywracanie pakietu w 
 
 1. Wybierz polecenie **narzędzia > Menedżer pakietów NuGet > menu Ustawienia Menedżera pakietów** .
 1. Ustaw obie opcje w obszarze **przywracanie pakietu**.
-1. Wybierz przycisk **OK**.
+1. Wybierz pozycję **OK**.
 1. Ponownie skompiluj projekt.
 
 ![Włącz przywracanie pakietu NuGet w narzędziu/opcjach](../consume-packages/media/restore-01-autorestoreoptions.png)
@@ -46,7 +46,7 @@ Use NuGet Package Restore to download them. The missing file is {name}.
 
 Ten błąd występuje podczas próby skompilowania projektu, który zawiera odwołania do co najmniej jednego pakietu NuGet, ale te pakiety nie są obecnie zainstalowane na komputerze ani w projekcie.
 
-- W przypadku korzystania z formatu zarządzania [PackageReference](package-references-in-project-files.md) błąd oznacza, że pakiet nie jest zainstalowany w folderze *globalne pakiety* , zgodnie z opisem w temacie [Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](managing-the-global-packages-and-cache-folders.md).
+- W przypadku korzystania z formatu [PackageReference](package-references-in-project-files.md) Management ten błąd może być pozostały z packages.config do PackageReference migracji i musi zostać [ręcznie usunięty](../resources/NuGet-FAQ.md#working-with-packages) z pliku projektu.
 - W przypadku korzystania z [packages.config](../reference/packages-config.md)błąd oznacza, że pakiet nie jest zainstalowany w `packages` folderze w katalogu głównym rozwiązania.
 
 Ta sytuacja często występuje, gdy uzyskujesz kod źródłowy projektu z kontroli źródła lub innego pobierania. Pakiety są zwykle pomijane na podstawie kontroli źródła lub pobierania, ponieważ można je przywrócić ze źródeł danych pakietu, takich jak nuget.org (zobacz [pakiety i kontrola źródła](Packages-and-Source-Control.md)). Dołączenie ich w inny sposób przeładowanie repozytorium lub tworzenie niepotrzebnych dużych plików. zip.
