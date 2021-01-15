@@ -5,12 +5,12 @@ author: nkolev92
 ms.author: nikolev
 ms.date: 03/23/2018
 ms.topic: conceptual
-ms.openlocfilehash: 66df4e0e4739300608fd5f9e44eea5bcd00079c8
-ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
+ms.openlocfilehash: 7de3f0f1133a89848e9268d489751293fb3cbf25
+ms.sourcegitcommit: 323a107c345c7cb4e344a6e6d8de42c63c5188b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97699888"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98235701"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>Pakiet NuGet i przywracanie jako elementy docelowe programu MSBuild
 
@@ -54,7 +54,7 @@ Należy zauważyć, `Owners` że `Summary` właściwości i z `.nuspec` nie są 
 | VersionSuffix | PackageVersionSuffix | puste | $ (VersionSuffix) z programu MSBuild. Ustawienie PackageVersion zastępowanie PackageVersionSuffix |
 | Autorzy | Autorzy | Nazwa_użytkownika bieżącego użytkownika | |
 | Właściciele | Nie dotyczy | Nieobecny w NuSpec | |
-| Title (Tytuł) | Title (Tytuł) | PackageId| |
+| Tytuł | Tytuł | PackageId| |
 | Opis | Opis | "Opis pakietu" | |
 | Prawa autorskie | Prawa autorskie | puste | |
 | RequireLicenseAcceptance | PackageRequireLicenseAcceptance | fałsz | |
@@ -414,6 +414,7 @@ Dodatkowe ustawienia przywracania mogą pochodzić z właściwości programu MSB
 | NuGetLockFilePath | Niestandardowa lokalizacja pliku blokady. Domyślna lokalizacja jest obok projektu i ma nazwę `packages.lock.json` . |
 | RestoreForceEvaluate | Wymusza ponowne obliczenie zależności przez Przywracanie i zaktualizowanie pliku blokady bez ostrzeżenia. |
 | RestorePackagesConfig | Opcjonalny przełącznik, który przywraca projekty z packages.config. Obsługa `MSBuild -t:restore` wyłącznie. |
+| RestoreUseStaticGraphEvaluation | Opcjonalny przełącznik do korzystania z oceny MSBuild wykresu statycznego zamiast standardowej oceny. Obliczanie wykresu statycznego to eksperymentalna funkcja, która jest znacznie szybsza w przypadku dużych repozytoriów i rozwiązań. |
 
 #### <a name="examples"></a>Przykłady
 
@@ -469,25 +470,40 @@ msbuild -t:restore -p:RestorePackagesConfig=true
 > [!NOTE]
 > `packages.config` Przywracanie jest dostępne `MSBuild 16.5+` tylko z `dotnet.exe`
 
-### <a name="packagetargetfallback"></a>PackageTargetFallback
+### <a name="restoring-with-msbuild-static-graph-evaluation"></a>Przywracanie za pomocą obliczenia wykresu statycznego MSBuild
 
-`PackageTargetFallback`Element umożliwia określenie zestawu zgodnych elementów docelowych, które mają być używane podczas przywracania pakietów. Została zaprojektowana tak, aby zezwalać na pakiety, które używają [TxM](../reference/target-frameworks.md) dotnet, do pracy z zgodnymi pakietami, które nie deklarują TxM dotnet. Oznacza to, że jeśli w projekcie jest używany TxM dotnet, wszystkie pakiety, od których zależy, muszą także mieć TxM dotnet, chyba że zostanie dodany `<PackageTargetFallback>` do projektu w celu umożliwienia zgodności z platformą dotnet.
+> [!NOTE]
+> Przy użyciu programu MSBuild 16.6 + pakiet NuGet dodał funkcję eksperymentalną do użycia obliczeń wykresu statycznego z wiersza polecenia, która znacznie skraca czas przywracania dla dużych repozytoriów.
 
-Na przykład jeśli projekt używa `netstandard1.6` TxM, a pakiet zależny zawiera tylko `lib/net45/a.dll` i `lib/portable-net45+win81/a.dll` , to projekt nie zostanie skompilowany. Jeśli co chcesz zrobić, jest to Ostatnia Biblioteka DLL, a następnie możesz dodać polecenie w `PackageTargetFallback` następujący sposób, aby powiedzieć, że `portable-net45+win81` Biblioteka DLL jest zgodna:
-
-```xml
-<PackageTargetFallback Condition="'$(TargetFramework)'=='netstandard1.6'">
-    portable-net45+win81
-</PackageTargetFallback>
+```cli
+msbuild -t:restore -p:RestoreUseStaticGraphEvaluation=true
 ```
 
-Aby zadeklarować rezerwę dla wszystkich obiektów docelowych w projekcie, pozostaw ten `Condition` atrybut. Możesz również rozłożyć wszystkie istniejące `PackageTargetFallback` , w tym `$(PackageTargetFallback)` tutaj, jak pokazano poniżej:
+Alternatywnie możesz ją włączyć, ustawiając właściwość w katalogu. Build. props.
 
 ```xml
-<PackageTargetFallback>
-    $(PackageTargetFallback);portable-net45+win81
-</PackageTargetFallback >
+<Project>
+  <PropertyGroup>
+    <RestoreUseStaticGraphEvaluation>true</RestoreUseStaticGraphEvaluation>
+  </PropertyGroup>
+</Project>
 ```
+
+> [!NOTE]
+> Począwszy od programu Visual Studio 2019. x i NuGet 5. x, ta funkcja jest uznawana za eksperymentalną i niezależną. Aby uzyskać szczegółowe informacje o tym, kiedy ta funkcja zostanie włączona domyślnie, należy przestrzegać [NuGet/Home # 9803](https://github.com/NuGet/Home/issues/9803) .
+
+Statyczne przywracanie wykresu zmienia część programu MSBuild przywracania, odczytywanie i ocenianie projektu, ale nie algorytmem przywracania. Algorytm przywracania jest taki sam dla wszystkich narzędzi NuGet (NuGet.exe, MSBuild.exe, dotnet.exe i Visual Studio).
+
+W bardzo kilku scenariuszach statyczne przywracanie wykresu może zachowywać się inaczej niż bieżące przywracanie, a niektóre zadeklarowane składnika packagereferences lub zawierających mogą być niedostępne.
+
+Aby ułatwić sobie zdanie, podczas migracji do przywracania wykresu statycznego należy wziąć pod uwagę następujące działania:
+
+```cli
+msbuild.exe -t:restore -p:RestoreUseStaticGraphEvaluation
+msbuild.exe -t:restore
+```
+
+Pakiet NuGet *nie* powinien zgłaszać żadnych zmian. Jeśli widzisz Niezgodność, zrób problem w pliku [NuGet/Home](https://github.com/nuget/home/issues/new).
 
 ### <a name="replacing-one-library-from-a-restore-graph"></a>Zastępowanie jednej biblioteki na podstawie grafu przywracania
 

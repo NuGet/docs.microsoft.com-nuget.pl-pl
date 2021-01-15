@@ -1,16 +1,16 @@
 ---
 title: Format PackageReference NuGet (odwołania do pakietów w plikach projektu)
 description: Szczegóły dotyczące PackageReference NuGet w plikach projektu, które są obsługiwane przez narzędzia NuGet 4.0 + i program VS2017 i .NET Core 2,0
-author: karann-msft
-ms.author: karann
+author: nkolev92
+ms.author: nikolev
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1127e7aee27d57abd5f14dd3bea82dfff3ba6d93
-ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
+ms.openlocfilehash: dcaed83ca54e3234702e963ffc2ebbde4cd75b28
+ms.sourcegitcommit: 323a107c345c7cb4e344a6e6d8de42c63c5188b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97699782"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98235766"
 ---
 # <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietów (PackageReference) w plikach projektu
 
@@ -390,3 +390,34 @@ Można kontrolować różne zachowania przywracania za pomocą pliku blokady zgo
 | `-LockedMode` | `--locked-mode` | RestoreLockedMode | Włącza tryb zablokowany do przywracania. Jest to przydatne w scenariuszach ciągłej integracji/ciągłego wdrażania.|   
 | `-ForceEvaluate` | `--force-evaluate` | RestoreForceEvaluate | Ta opcja jest przydatna w przypadku pakietów z wersją zmiennoprzecinkową zdefiniowaną w projekcie. Domyślnie przywracanie pakietu NuGet nie będzie automatycznie aktualizować wersji programu przy każdym przywracaniu, chyba że zostanie uruchomiony przycisk Przywróć z tą opcją. |
 | `-LockFilePath` | `--lock-file-path` | NuGetLockFilePath | Definiuje niestandardową lokalizację pliku blokady dla projektu. Domyślnie pakiet NuGet obsługuje `packages.lock.json` w katalogu głównym. Jeśli masz wiele projektów w tym samym katalogu, pakiet NuGet obsługuje plik blokady specyficzny dla projektu `packages.<project_name>.lock.json` |
+
+## <a name="assettargetfallback"></a>AssetTargetFallback
+
+`AssetTargetFallback`Właściwość pozwala określić dodatkowe zgodne wersje platformy dla projektów, do których odwołuje się projekt, oraz pakietów NuGet, które są używane w projekcie.
+
+Jeśli określisz zależność pakietu przy użyciu programu, `PackageReference` ale ten pakiet nie zawiera zasobów, które są zgodne z platformą docelową projektu, `AssetTargetFallback` Właściwość jest dostępna. Zgodność przywoływanego pakietu jest ponownie sprawdzana przy użyciu każdej platformy docelowej określonej w `AssetTargetFallback` .
+Gdy `project` odwołanie do lub `package` odwołuje się do programu `AssetTargetFallback` , zostanie zgłoszone ostrzeżenie [NU1701](../reference/errors-and-warnings/NU1701.md) .
+
+Zapoznaj się z tabelą poniżej, aby zapoznać się z przykładami dotyczącymi `AssetTargetFallback` zgodności.
+
+| Struktura projektu | AssetTargetFallback | Struktury pakietów | Wynik |
+|-------------------|---------------------|--------------------|--------|
+|  .NET Framework 4.7.2 | | .NET Standard 2,0 | .NET Standard 2,0 |
+| Aplikacja .NET Core 3,1 | | .NET Standard 2,0, .NET Framework 4.7.2 | .NET Standard 2,0 |
+| Aplikacja .NET Core 3,1 | |  .NET Framework 4.7.2 | Niezgodność, niepowodzenie z [`NU1202`](../reference/errors-and-warnings/NU1202.md) |
+| Aplikacja .NET Core 3,1 | net472;net471 |  .NET Framework 4.7.2 | .NET Framework 4.7.2 z [`NU1701`](../reference/errors-and-warnings/NU1701.md) |
+
+Można określić wiele struktur `;` , używając jako ogranicznika. Aby dodać platformę rezerwową, można wykonać następujące czynności:
+
+```xml
+<AssetTargetFallback Condition=" '$(TargetFramework)'=='netcoreapp3.1' ">
+    $(AssetTargetFallback);net472;net471
+</AssetTargetFallback>
+```
+
+Możesz opuścić `$(AssetTargetFallback)` tę opcję, jeśli chcesz zastąpić, zamiast dodawać do istniejących `AssetTargetFallback` wartości.
+
+> [!NOTE]
+> Jeśli używasz [projektu opartego na zestawie SDK platformy .NET](/dotnet/core/sdk), odpowiednie `$(AssetTargetFallback)` wartości są skonfigurowane i nie trzeba ustawiać ich ręcznie.
+>
+> `$(PackageTargetFallback)` była wcześniejszą funkcją, która podjęła próbę rozwiązania tego wezwania, ale jest w sposób zasadniczy przerwany i nie *należy* jej używać. Aby przeprowadzić migrację z `$(PackageTargetFallback)` do programu `$(AssetTargetFallback)` , wystarczy zmienić nazwę właściwości.

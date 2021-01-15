@@ -5,12 +5,12 @@ author: dominofire
 ms.author: feaguila
 ms.date: 11/9/2020
 ms.topic: conceptual
-ms.openlocfilehash: 329fdf6479d0799ae4b15cc3493848ba2d999853
-ms.sourcegitcommit: 650c08f8bc3d48dfd206a111e5e2aaca3001f569
+ms.openlocfilehash: 7f641c669cdb0cc979d698f6b219cbb4f2692a2e
+ms.sourcegitcommit: 323a107c345c7cb4e344a6e6d8de42c63c5188b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97523432"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98235753"
 ---
 # <a name="nuget-58-release-notes"></a>Informacje o wersji narzędzia NuGet 5,8
 
@@ -19,6 +19,7 @@ Pojazdy dystrybucji NuGet:
 | Wersja programu NuGet | Dostępne w wersji programu Visual Studio | Dostępne w zestawach SDK platformy .NET |
 |:---|:---|:---|
 | [**5.8**](https://nuget.org/downloads) | [Visual Studio 2019 w wersji 16,8](https://visualstudio.microsoft.com/downloads/) | [5,0](https://dotnet.microsoft.com/download/dotnet-core/5.0)<sup>1</sup> |
+| [**5.8.1**](https://nuget.org/downloads) | [Visual Studio 2019 w wersji 16.8.4](https://visualstudio.microsoft.com/downloads/) | |
 
 <sup>1</sup> zainstalowano z programem Visual Studio 2019 przy użyciu obciążenia .NET Core
   
@@ -125,7 +126,7 @@ Pojazdy dystrybucji NuGet:
 
 **[Lista wszystkich problemów rozwiązanych w tej wersji — 5,8](https://app.zenhub.com/workspaces/nuget-client-team-55aec9a240305cf007585881/reports/release?release=5f03519b777e78b4ffb2edeb)**
 
-**[Lista problemów/zatwierdzeń rozwiązanych w tej wersji — 5,8](https://github.com/NuGet/NuGet.Client/compare/5.7.0.6726...5.8.0.6930)**
+**[Lista problemów występujących w tej wersji — 5,8](https://github.com/NuGet/NuGet.Client/compare/5.7.0.6726...5.8.0.6930)**
 
 ### <a name="community-contributions"></a>Materiały przekazywane przez społeczność
 
@@ -141,6 +142,15 @@ Dziękujemy, że wszyscy Współautorzy, którzy pomogą Ci w udostępnieniu tej
 [Therzok](https://github.com/Therzok) | [3636](https://github.com/NuGet/NuGet.Client/pull/3636) | `RuntimeEnvironmentHelper.IsRunningOnVisualStudio` problem z wydajnością w programie mono- [#9989](https://github.com/NuGet/Home/issues/9989)
 [thomaslevesque](https://github.com/thomaslevesque) | [3442](https://github.com/NuGet/NuGet.Client/pull/3442) | Dodaj obiekt TypeConverter dla klasy SemanticVersion — [#9125](https://github.com/NuGet/Home/issues/9125)
 
+## <a name="summary-whats-new-in-581"></a>Podsumowanie: co nowego w programie 5.8.1
+
+* packages.config package.lock.json używa nieprawidłowej platformy docelowej w 5,8- [#10257](https://github.com/NuGet/Home/issues/10257)
+
+* 5,8 + 16,8 nie może rozpoznać zależności projektu przechodniego podczas mieszania PackageReference i packages.config- [#10326](https://github.com/NuGet/Home/issues/10326)
+
+**[Lista wszystkich problemów rozwiązanych w tej wersji — 5.8.1](https://app.zenhub.com/workspaces/nuget-client-team-55aec9a240305cf007585881/reports/release?release=5ff7aeae16150e3b19910391)**
+
+**[Lista zatwierdzeń w tej wersji — 5.8.1](https://github.com/NuGet/NuGet.Client/compare/5.8.0.6930...5.8.1.7021)**
 
 ## <a name="feedback-welcome"></a>Opinie — Zapraszamy!
 
