@@ -1,16 +1,16 @@
 ---
 title: Informacje o wersji narzędzia NuGet 2,8
 description: Informacje o wersji programu NuGet 2,8, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 98b8b7334738306e6d40ba7c455409a87c4bb822
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: cb77cf0f049b5b3cfe1039d83ab58e33457674bf
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237032"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776720"
 ---
 # <a name="nuget-28-release-notes"></a>Informacje o wersji narzędzia NuGet 2,8
 
@@ -44,13 +44,15 @@ Pakiet NuGet 2,8 został wydaną 29 stycznia 2014.
 
 W przypadku rozpoznawania zależności pakietów pakiet NuGet ma historyczną strategię wybierania najmniejszej wersji głównej i pomocniczej pakietu, która spełnia zależności pakietu. W przeciwieństwie do wersji głównej i pomocniczej, wersja poprawki była zawsze rozwiązywana do najwyższej wersji. Mimo że zachowanie zostało prawidłowo zamierzone, utworzono brakujące ustalenia dotyczące instalowania pakietów z zależnościami. Rozpatrzmy następujący przykład:
 
-    PackageA@1.0.0 -[ >=1.0.0 ]-> PackageB@1.0.0
+```
+PackageA@1.0.0 -[ >=1.0.0 ]-> PackageB@1.0.0
 
-    Developer1 installs PackageA@1.0.0: installed PackageA@1.0.0 and PackageB@1.0.0
+Developer1 installs PackageA@1.0.0: installed PackageA@1.0.0 and PackageB@1.0.0
 
-    PackageB@1.0.1 is published
+PackageB@1.0.1 is published
 
-    Developer2 installs PackageA@1.0.0: installed PackageA@1.0.0 and PackageB@1.0.1
+Developer2 installs PackageA@1.0.0: installed PackageA@1.0.0 and PackageB@1.0.1
+```
 
 W tym przykładzie, nawet jeśli zainstalowano Developer1 i Developer2 PackageA@1.0.0 , każdy z nich zakończył działanie z inną wersją PackageB. Program NuGet 2,8 zmienia to zachowanie domyślne, tak że zachowanie rozpoznawania zależności dla wersji poprawek jest spójne z zachowaniem wersji głównych i pomocniczych. W powyższym przykładzie, zostanie PackageB@1.0.0 zainstalowany w wyniku instalacji PackageA@1.0.0 , niezależnie od nowszej wersji poprawki.
 
@@ -64,24 +66,28 @@ Chociaż w pakiecie NuGet 2,8 zmiany _domyślne_ zachowanie rozpoznawania zależ
 
 Oprócz przełącznika-DependencyVersion powyższego powyżej, NuGet również może ustawić nowy atrybut w pliku Nuget.Config definiującym wartość domyślną, jeśli przełącznik-DependencyVersion nie jest określony w wywołaniu pakietu install-package. Ta wartość będzie również przestrzegana przez okno dialogowe Menedżera pakietów NuGet dla wszystkich operacji instalacji pakietu. Aby ustawić tę wartość, Dodaj poniższy atrybut do pliku Nuget.Config:
 
-    <config>
-        <add key="dependencyversion" value="Highest" />
-    </config>
+```xml
+<config>
+    <add key="dependencyversion" value="Highest" />
+</config>
+```
 
 ## <a name="preview-nuget-operations-with--whatif"></a>Podgląd operacji NuGet przy użyciu-whatIf
 
 Niektóre pakiety NuGet mogą mieć szczegółowe wykresy zależności i w ten sposób mogą być przydatne podczas operacji instalowania, odinstalowywania lub aktualizacji, aby najpierw zobaczyć, co się stanie. Program NuGet 2,8 dodaje standardowy przełącznik programu PowerShell-whatIf do poleceń install-package, Uninstall-Package i Update-Package, aby umożliwić wizualizowanie całego zamknięcia pakietów, do których zostanie zastosowane polecenie. Na przykład uruchomienie `install-package Microsoft.AspNet.WebApi -whatif` w pustej aplikacji sieci Web ASP.net daje następujące działania.
 
-    PM> install-package Microsoft.AspNet.WebApi -whatif
-    Attempting to resolve dependency 'Microsoft.AspNet.WebApi.WebHost (≥ 5.0.0)'.
-    Attempting to resolve dependency 'Microsoft.AspNet.WebApi.Core (≥ 5.0.0)'.
-    Attempting to resolve dependency 'Microsoft.AspNet.WebApi.Client (≥ 5.0.0)'.
-    Attempting to resolve dependency 'Newtonsoft.Json (≥ 4.5.11)'.
-    Install Newtonsoft.Json 4.5.11
-    Install Microsoft.AspNet.WebApi.Client 5.0.0
-    Install Microsoft.AspNet.WebApi.Core 5.0.0
-    Install Microsoft.AspNet.WebApi.WebHost 5.0.0
-    Install Microsoft.AspNet.WebApi 5.0.0
+```
+PM> install-package Microsoft.AspNet.WebApi -whatif
+Attempting to resolve dependency 'Microsoft.AspNet.WebApi.WebHost (≥ 5.0.0)'.
+Attempting to resolve dependency 'Microsoft.AspNet.WebApi.Core (≥ 5.0.0)'.
+Attempting to resolve dependency 'Microsoft.AspNet.WebApi.Client (≥ 5.0.0)'.
+Attempting to resolve dependency 'Newtonsoft.Json (≥ 4.5.11)'.
+Install Newtonsoft.Json 4.5.11
+Install Microsoft.AspNet.WebApi.Client 5.0.0
+Install Microsoft.AspNet.WebApi.Core 5.0.0
+Install Microsoft.AspNet.WebApi.WebHost 5.0.0
+Install Microsoft.AspNet.WebApi 5.0.0
+```
 
 ## <a name="downgrade-package"></a>Pakiet obniżenia poziomu
 
@@ -101,12 +107,14 @@ Podczas tworzenia aplikacji dla wielu platform docelowych często istnieją ró�
 
 Chociaż pakiety NuGet są zwykle używane z galerii zdalnej, takiej jak [Galeria NuGet](http://www.nuget.org/) przy użyciu połączenia sieciowego, istnieje wiele scenariuszy, w których klient nie jest połączony. Bez połączenia sieciowego klient NuGet nie mógł pomyślnie zainstalować pakietów — nawet wtedy, gdy te pakiety znajdowały się już na komputerze klienta w lokalnej pamięci podręcznej NuGet. Pakiet NuGet 2,8 dodaje automatyczną rezerwę pamięci podręcznej do konsoli Menedżera pakietów. Na przykład podczas odłączania karty sieciowej i instalowania platformy jQuery konsola programu wyświetla następujące elementy:
 
-    PM> Install-Package jquery
-    The source at nuget.org [https://www.nuget.org/api/v2/] is unreachable. Falling back to NuGet Local Cache at C:\Users\me\AppData\Local\NuGet\Cache
-    Installing 'jQuery 2.0.3'.
-    Successfully installed 'jQuery 2.0.3'.
-    Adding 'jQuery 2.0.3' to WebApplication18.
-    Successfully added 'jQuery 2.0.3' to WebApplication18.
+```
+PM> Install-Package jquery
+The source at nuget.org [https://www.nuget.org/api/v2/] is unreachable. Falling back to NuGet Local Cache at C:\Users\me\AppData\Local\NuGet\Cache
+Installing 'jQuery 2.0.3'.
+Successfully installed 'jQuery 2.0.3'.
+Adding 'jQuery 2.0.3' to WebApplication18.
+Successfully added 'jQuery 2.0.3' to WebApplication18.
+```
 
 Funkcja rezerwy pamięci podręcznej nie wymaga żadnych argumentów polecenia. Ponadto rezerwa pamięci podręcznej obecnie działa tylko w konsoli Menedżera pakietów — zachowanie aktualnie nie działa w oknie dialogowym Menedżera pakietów.
 

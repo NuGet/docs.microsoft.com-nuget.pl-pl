@@ -1,20 +1,20 @@
 ---
 title: Informacje o wersji narzędzia NuGet 1,3
 description: Informacje o wersji programu NuGet 1,3, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 45d5caa46d532670e370b81f675663b3c5aaaa95
-ms.sourcegitcommit: fe34b1fc79d6a9b2943a951f70b820037d2dd72d
+ms.openlocfilehash: 54eda149352810eacc1d6340ad16cec1b03194e3
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825265"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98777116"
 ---
 # <a name="nuget-13-release-notes"></a>Informacje o wersji narzędzia NuGet 1,3
 
-[Informacje o wersji pakietu nuget 1,2](../release-notes/nuget-1.2.md) | [Informacje o wersji narzędzia NuGet 1,4](../release-notes/nuget-1.4.md)
+Informacje o wersji narzędzia [NuGet 1,2](../release-notes/nuget-1.2.md)  |  [Informacje o wersji narzędzia NuGet 1,4](../release-notes/nuget-1.4.md)
 
 Pakiet NuGet 1,3 został wydaną 25 kwietnia 2011.
 
@@ -24,30 +24,40 @@ Pakiet NuGet 1,3 został wydaną 25 kwietnia 2011.
 
 Zespół NuGet współpracujący z osób na [SymbolSource.org](http://www.symbolsource.org/) , aby zaoferować naprawdę prosty sposób publikowania źródeł i plików PDB wraz z pakietem. Dzięki temu klienci pakietu mogą przechodzić do źródła pakietu w debugerze. Aby uzyskać więcej informacji, przeczytaj artykuł [Tworzenie i publikowanie pakietu symboli](../create-packages/symbol-packages.md) w łatwy sposób publikowania pakietów NuGet ze źródłami. Możesz również obejrzeć prezentację na żywo tej funkcji jako część pakietu NuGet, z głębokości Porozmawiaj pod adresem Mix11. Ta funkcja jest w pełni zademonstrowana, zaczynając od 20-minutowego znaku wideo.
 
-### <a name="open-packagepage-command"></a>Polecenie `Open-PackagePage`
+### <a name="open-packagepage-command"></a>`Open-PackagePage` Dotyczące
 
 To polecenie ułatwia dostęp do strony projektu dla pakietu z poziomu konsoli Menedżera pakietów. Dostępne są również opcje umożliwiające otwarcie adresu URL licencji i strony Zgłoś nadużycie dla pakietu.
 Składnia polecenia jest następująca:
 
-    Open-PackagePage -Id <string> [-Version] [-Source] [-License] [-ReportAbuse] [-PassThru]
+```
+Open-PackagePage -Id <string> [-Version] [-Source] [-License] [-ReportAbuse] [-PassThru]
+```
 
-Opcja `-PassThru` służy do zwracania wartości określonego adresu URL.
+`-PassThru`Opcja służy do zwracania wartości określonego adresu URL.
 
 Przykłady:
 
-    PM> Open-PackagePage Ninject
+```
+PM> Open-PackagePage Ninject
+```
 
 Otwiera przeglądarkę do adresu URL projektu określonego w pakiecie Ninject.
 
-    PM> Open-PackagePage Ninject -License
+```
+PM> Open-PackagePage Ninject -License
+```
 
 Otwiera przeglądarkę do adresu URL licencji określonego w pakiecie Ninject.
 
-    PM> Open-PackagePage Ninject -ReportAbuse
+```
+PM> Open-PackagePage Ninject -ReportAbuse
+```
 
 Otwiera przeglądarkę do adresu URL w bieżącym źródle pakietu używanym do zgłaszania nadużycia dla określonego pakietu.
 
-    PM> $url = Open-PackagePage Ninject -License -WhatIf -PassThru
+```
+PM> $url = Open-PackagePage Ninject -License -WhatIf -PassThru
+```
 
 Przypisuje adres URL licencji do zmiennej, $url bez otwierania adresu URL w przeglądarce.
 
@@ -59,13 +69,13 @@ W programie NuGet 1,3 wprowadzono wiele ulepszeń wydajności. Pakiet NuGet 1,3 
 
 Inne ulepszenia wydajności obejmują dodawanie obsługi kompresji HTTP i zwiększanie szybkości instalacji pakietów w programie Visual Studio.
 
-### <a name="visual-studio-and-nugetexe-uses-the-same-list-of-package-sources"></a>Programy Visual Studio i NuGet. exe używają tej samej listy źródeł pakietów
+### <a name="visual-studio-and-nugetexe-uses-the-same-list-of-package-sources"></a>Program Visual Studio i nuget.exe używają tej samej listy źródeł pakietów
 
-Przed pakietem NuGet 1,3 Lista źródeł pakietów używanych przez narzędzia NuGet. exe i dodatek NuGet Visual Studio nie zostały zapisane w tym samym miejscu. Pakiet NuGet 1,3 używa teraz tej samej listy w obu miejscach. Lista jest przechowywana w `NuGet.Config` i przechowywana w folderze AppData.
+Przed pakietem NuGet 1,3 Lista źródeł pakietów używanych przez nuget.exe i NuGet Visual Studio Add-In nie były przechowywane w tym samym miejscu. Pakiet NuGet 1,3 używa teraz tej samej listy w obu miejscach. Lista jest przechowywana w `NuGet.Config` folderze APPDATA i przechowywana w nim.
 
-### <a name="nugetexe-ignores-files-and-folders-that-start-with--by-default"></a>NuGet. exe domyślnie ignoruje pliki i foldery, które zaczynają się od "."
+### <a name="nugetexe-ignores-files-and-folders-that-start-with--by-default"></a>nuget.exe domyślnie ignoruje pliki i foldery, które zaczynają się od "."
 
-Aby program NuGet działał poprawnie z systemami kontroli źródła, takimi jak Subversion i Mercurial, NuGet. exe ignoruje foldery i pliki, które zaczynają się od znaku "." podczas tworzenia pakietów. Można to zastąpić przy użyciu dwóch nowych flag:
+Aby program NuGet działał prawidłowo z systemami kontroli źródła, takimi jak Subversion i Mercurial, nuget.exe ignoruje foldery i pliki, które zaczynają się od znaku "." podczas tworzenia pakietów. Można to zastąpić przy użyciu dwóch nowych flag:
 
 * __-NoDefaultExcludes__ służy do przesłonięcia tego ustawienia i uwzględnienia wszystkich plików.
 * __-Exclude__ służy do dodawania innych plików/folderów do wykluczenia przy użyciu wzorca. Na przykład, aby wykluczyć wszystkie pliki z rozszerzeniem. bak.
@@ -87,4 +97,4 @@ Aby zapoznać się z pełną listą poprawek błędów, przejrzyj [Narzędzie ś
 ## <a name="bug-fixes-worth-noting"></a>Poprawki błędów warto zauważyć
 
 * Pakiety z plikami źródłowymi działają zarówno w witrynach internetowych, jak i w projektach aplikacji sieci Web.
-W przypadku witryn sieci Web pliki źródłowe są kopiowane do folderu `App_Code`
+W przypadku witryn sieci Web pliki źródłowe są kopiowane do `App_Code` folderu

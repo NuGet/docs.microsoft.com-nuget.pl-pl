@@ -1,27 +1,27 @@
 ---
 title: Informacje o wersji narzędzia NuGet 2,0
 description: Informacje o wersji programu NuGet 2,0, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 01fdbfafcaea009cf119dfa880b2b16539c9b088
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: b6874cbf0404f18ab7007bec1e0f66089c790d08
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383070"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776983"
 ---
 # <a name="nuget-20-release-notes"></a>Informacje o wersji narzędzia NuGet 2,0
 
-[Informacje o wersji pakietu nuget 1,8](../release-notes/nuget-1.8.md) | [Informacje o wersji narzędzia NuGet 2,1](../release-notes/nuget-2.1.md)
+Informacje o wersji narzędzia [NuGet 1,8](../release-notes/nuget-1.8.md)  |  [Informacje o wersji narzędzia NuGet 2,1](../release-notes/nuget-2.1.md)
 
 Pakiet NuGet 2,0 został wydaną 19 czerwca 2012.
 
 ## <a name="known-installation-issue"></a>Znany problem z instalacją
 W przypadku korzystania z programu VS 2010 z dodatkiem SP1 można napotkać błąd instalacji podczas próby uaktualnienia narzędzia NuGet, jeśli jest zainstalowana starsza wersja.
 
-Obejście polega na prostu odinstalować pakiet NuGet, a następnie zainstalować go z galerii rozszerzeń programu VS.  Aby uzyskać więcej informacji, zobacz <https://support.microsoft.com/kb/2581019> lub [Przejdź bezpośrednio do poprawki programu vs](http://bit.ly/vsixcertfix).
+Obejście polega na prostu odinstalować pakiet NuGet, a następnie zainstalować go z galerii rozszerzeń programu VS.  Zobacz <https://support.microsoft.com/kb/2581019> , aby uzyskać więcej informacji, lub [Przejdź bezpośrednio do poprawki programu vs](http://bit.ly/vsixcertfix).
 
 Uwaga: Jeśli program Visual Studio nie zezwoli na odinstalowanie rozszerzenia (przycisk Odinstaluj jest wyłączony), prawdopodobnie trzeba będzie ponownie uruchomić program Visual Studio za pomocą polecenia "Uruchom jako administrator".
 
@@ -31,7 +31,7 @@ Zgodnie z opisem w tym [wpisie dotyczącym przywracania pakietów pakiet](http:/
 
 ## <a name="group-dependencies-by-target-frameworks"></a>Grupuj zależności według platform docelowych
 
-Począwszy od wersji 2,0, zależności pakietów mogą się różnić w zależności od profilu struktury projektu docelowego. Jest to realizowane przy użyciu zaktualizowanego schematu `.nuspec`. Element `<dependencies>` może teraz zawierać zestaw `<group>` elementów. Każda grupa zawiera zero lub więcej elementów `<dependency>` i atrybut `targetFramework`. Wszystkie zależności wewnątrz grupy są instalowane razem, jeśli struktura docelowa jest zgodna z docelowym profilem platformy projektu. Na przykład:
+Począwszy od wersji 2,0, zależności pakietów mogą się różnić w zależności od profilu struktury projektu docelowego. Jest to realizowane przy użyciu zaktualizowanego `.nuspec` schematu. `<dependencies>`Element może teraz zawierać zestaw `<group>` elementów. Każda grupa zawiera zero lub więcej `<dependency>` elementów i `targetFramework` atrybut. Wszystkie zależności wewnątrz grupy są instalowane razem, jeśli struktura docelowa jest zgodna z docelowym profilem platformy projektu. Na przykład:
 
 ```xml
 <dependencies>
@@ -49,9 +49,9 @@ Począwszy od wersji 2,0, zależności pakietów mogą się różnić w zależno
 </dependencies>
 ```
 
-Należy zauważyć, że grupa może zawierać **zero** zależności. W powyższym przykładzie, jeśli pakiet jest zainstalowany w projekcie, który jest przeznaczony dla programu Silverlight 3,0 lub nowszego, nie zostaną zainstalowane żadne zależności. Jeśli pakiet jest zainstalowany w projekcie przeznaczonym dla programu .NET 4,0 lub nowszego, zostaną zainstalowane dwie zależności, jQuery i webaktywator.  Jeśli pakiet jest instalowany w projekcie, który jest przeznaczony dla wczesnej wersji tych 2 platform lub innych platform, RouteMagic 1.1.0 zostanie zainstalowana. Nie ma żadnego dziedziczenia między grupami. Jeśli platforma docelowa projektu jest zgodna z atrybutem `targetFramework` grupy, zostaną zainstalowane tylko zależności w ramach tej grupy.
+Należy zauważyć, że grupa może zawierać **zero** zależności. W powyższym przykładzie, jeśli pakiet jest zainstalowany w projekcie, który jest przeznaczony dla programu Silverlight 3,0 lub nowszego, nie zostaną zainstalowane żadne zależności. Jeśli pakiet jest zainstalowany w projekcie przeznaczonym dla programu .NET 4,0 lub nowszego, zostaną zainstalowane dwie zależności, jQuery i webaktywator.  Jeśli pakiet jest instalowany w projekcie, który jest przeznaczony dla wczesnej wersji tych 2 platform lub innych platform, RouteMagic 1.1.0 zostanie zainstalowana. Nie ma żadnego dziedziczenia między grupami. Jeśli struktura docelowa projektu jest zgodna z `targetFramework` atrybutem grupy, zostaną zainstalowane tylko zależności w ramach tej grupy.
 
-Pakiet może określać zależności pakietu w dowolnym z dwóch formatów: starym formacie płaskiej listy elementów `<dependency>` lub grup. Jeśli jest używany format `<group>`, nie można zainstalować pakietu w wersjach programu NuGet wcześniejszych niż 2,0.
+Pakiet może określać zależności pakietu w dowolnym z dwóch formatów: starym formacie płaskiej listy `<dependency>` elementów lub grup. Jeśli `<group>` Format jest używany, nie można zainstalować pakietu w wersjach programu NuGet wcześniejszych niż 2,0.
 
 Należy zauważyć, że mieszanie dwóch formatów jest niedozwolone. Na przykład poniższy fragment kodu jest **nieprawidłowy** i zostanie odrzucony przez pakiet NuGet.
 
@@ -68,27 +68,29 @@ Należy zauważyć, że mieszanie dwóch formatów jest niedozwolone. Na przykł
 
 ## <a name="grouping-content-files-and-powershell-scripts-by-target-framework"></a>Grupowanie plików zawartości i skryptów programu PowerShell według platformy docelowej
 
-Oprócz odwołań do zestawów, pliki zawartości i skrypty programu PowerShell mogą być również pogrupowane według platformy docelowej. Ta sama struktura folderów znaleziona w folderze `lib` do określania platformy docelowej można teraz zastosować w taki sam sposób, jak foldery `content` i `tools`. Na przykład:
+Oprócz odwołań do zestawów, pliki zawartości i skrypty programu PowerShell mogą być również pogrupowane według platformy docelowej. Ta sama struktura folderów znaleziona w `lib` folderze do określania platformy docelowej może być teraz stosowana w taki sam sposób jak `content` foldery i `tools` . Na przykład:
 
-    \content
-        \net11
-            \MyContent.txt
-        \net20
-            \MyContent20.txt
-        \net40
-        \sl40
-            \MySilverlightContent.html
+```
+\content
+    \net11
+        \MyContent.txt
+    \net20
+        \MyContent20.txt
+    \net40
+    \sl40
+        \MySilverlightContent.html
 
-    \tools
-        \init.ps1
-        \net40
-            \install.ps1
-            \uninstall.ps1
-        \sl40
-            \install.ps1
-            \uninstall.ps1
+\tools
+    \init.ps1
+    \net40
+        \install.ps1
+        \uninstall.ps1
+    \sl40
+        \install.ps1
+        \uninstall.ps1
+```
 
-**Uwaga**: ponieważ `init.ps1` jest wykonywany na poziomie rozwiązania i nie zależy od żadnego pojedynczego projektu, musi być umieszczony bezpośrednio pod folderem `tools`. Jeśli zostanie umieszczony w folderze specyficznym dla platformy, zostanie zignorowany.
+**Uwaga**: ponieważ `init.ps1` jest wykonywana na poziomie rozwiązania i nie zależy od żadnego pojedynczego projektu, musi być umieszczony bezpośrednio w `tools` folderze. Jeśli zostanie umieszczony w folderze specyficznym dla platformy, zostanie zignorowany.
 
 Ponadto nową funkcją w programie NuGet 2,0 jest to, że folder struktury może być *pusty*, w takim przypadku pakiet NuGet nie dodaje odwołań do zestawów, nie dodaje plików zawartości ani nie uruchamia skryptów programu PowerShell dla konkretnej wersji platformy. W powyższym przykładzie folder `content\net40` jest pusty.
 

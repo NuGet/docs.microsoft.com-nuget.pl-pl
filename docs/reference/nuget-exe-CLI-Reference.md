@@ -1,16 +1,16 @@
 ---
-title: Dokumentacja interfejsu wiersza polecenia NuGet (CLI)
+title: Informacje o interfejsie wiersza polecenia NuGet Command-Line
 description: Indeks odwołania w wierszu polecenia dla interfejsu CLI nuget.exe
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 01/23/2018
 ms.topic: reference
-ms.openlocfilehash: e9343f1fdddcf839322849925372587e685aef4a
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: a9a5fc4d3b1e0f19fa3ea249ca7759c8ebc2d12e
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88623152"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98777704"
 ---
 # <a name="nuget-cli-reference"></a>Dokumentacja interfejsu wiersza polecenia NuGet
 
@@ -44,25 +44,25 @@ Dostępne polecenia i możliwość zastosowania do tworzenia pakietów, użycia 
 | Typowe polecenia | Odpowiednie role | Wersja programu NuGet | Opis |
 | --- | --- | --- | --- |
 | [pakiet](cli-reference/cli-ref-pack.md) | Tworzenie | 2.7 + | Tworzy pakiet NuGet z `.nuspec` pliku projektu lub. W przypadku uruchamiania w systemie mono Tworzenie pakietu z pliku projektu nie jest obsługiwane. |
-| [push](cli-reference/cli-ref-push.md) | Publikowanie | Wszystkie | Publikuje pakiet w źródle pakietu. |
-| [config](cli-reference/cli-ref-config.md) | Wszystkie | Wszystkie | Pobiera lub ustawia wartości konfiguracji NuGet. |
-| [help or ?](cli-reference/cli-ref-help.md) | Wszystkie | Wszystkie | Wyświetla informacje pomocy lub pomoc dla polecenia. |
-| [locals](cli-reference/cli-ref-locals.md) | Zużycie | 3.3 + | Wyświetla listę lokalizacji *globalnych pakietów*, *pamięci podręcznej protokołu HTTP*i folderów *tymczasowych* i czyści zawartość tych folderów. |
+| [push](cli-reference/cli-ref-push.md) | Publikowanie | Wszystko | Publikuje pakiet w źródle pakietu. |
+| [config](cli-reference/cli-ref-config.md) | Wszystko | Wszystko | Pobiera lub ustawia wartości konfiguracji NuGet. |
+| [help or ?](cli-reference/cli-ref-help.md) | Wszystko | Wszystko | Wyświetla informacje pomocy lub pomoc dla polecenia. |
+| [locals](cli-reference/cli-ref-locals.md) | Zużycie | 3.3 + | Wyświetla listę lokalizacji *globalnych pakietów*, *pamięci podręcznej protokołu HTTP* i folderów *tymczasowych* i czyści zawartość tych folderów. |
 | [restore](cli-reference/cli-ref-restore.md) | Zużycie | 2.7 + | Przywraca wszystkie pakiety, do których odwołuje się używany format zarządzania pakietami. W przypadku uruchamiania w systemie mono przywracanie pakietów przy użyciu formatu PackageReference nie jest obsługiwane. |
-| [setapikey](cli-reference/cli-ref-setapikey.md) | Publikowanie, użycie | Wszystkie | Zapisuje klucz interfejsu API dla danego źródła pakietu, gdy źródło tego pakietu wymaga klucza dostępu. |
-| [spec](cli-reference/cli-ref-spec.md) | Tworzenie | Wszystkie | Generuje `.nuspec` plik, używając tokenów, jeśli generuje plik z projektu programu Visual Studio. |
+| [setapikey](cli-reference/cli-ref-setapikey.md) | Publikowanie, użycie | Wszystko | Zapisuje klucz interfejsu API dla danego źródła pakietu, gdy źródło tego pakietu wymaga klucza dostępu. |
+| [spec](cli-reference/cli-ref-spec.md) | Tworzenie | Wszystko | Generuje `.nuspec` plik, używając tokenów, jeśli generuje plik z projektu programu Visual Studio. |
 
 | Polecenia pomocnicze | Odpowiednie role | Wersja programu NuGet | Opis |
 | --- | --- | --- | --- |
 | [add](cli-reference/cli-ref-add.md) | Publikowanie | 3.3 + | Dodaje pakiet do źródła pakietów innego niż HTTP przy użyciu układu hierarchicznego. W przypadku źródeł HTTP Użyj *polecenia push*. |
-| [delete](cli-reference/cli-ref-delete.md) | Publikowanie | Wszystkie | Usuwa pakiet ze źródła pakietu. |
+| [delete](cli-reference/cli-ref-delete.md) | Publikowanie | Wszystko | Usuwa pakiet ze źródła pakietu. |
 | [init](cli-reference/cli-ref-init.md) | Tworzenie | 3.3 + | Dodaje pakiety z folderu do źródła pakietu przy użyciu układu hierarchicznego. |
-| [install](cli-reference/cli-ref-install.md) | Zużycie | Wszystkie | Instaluje pakiet w bieżącym projekcie, ale nie modyfikuje projektów ani plików referencyjnych. |
-| [list](cli-reference/cli-ref-list.md) | Użycie, prawdopodobnie publikowanie | Wszystkie | Wyświetla pakiety z danego źródła. |
+| [install](cli-reference/cli-ref-install.md) | Zużycie | Wszystko | Instaluje pakiet w bieżącym projekcie, ale nie modyfikuje projektów ani plików referencyjnych. |
+| [list](cli-reference/cli-ref-list.md) | Użycie, prawdopodobnie publikowanie | Wszystko | Wyświetla pakiety z danego źródła. |
 | [mirror](cli-reference/cli-ref-mirror.md) | Publikowanie | Przestarzałe w 3.2 + | Odzwierciedla pakiet i jego zależności ze źródła do repozytorium docelowego. |
-| [wyszukiwania](cli-reference/cli-ref-search.md) | Zużycie | 5.8 + | Wyszukuje dane źródło przy użyciu podanego ciągu zapytania. |
-| [sources](cli-reference/cli-ref-sources.md) | Użycie, publikowanie | Wszystkie | Zarządza źródłami pakietów w plikach konfiguracji. |
-| [update](cli-reference/cli-ref-update.md) | Zużycie | Wszystkie | Aktualizuje pakiety projektu do najnowszej dostępnej wersji. Nieobsługiwane w przypadku uruchamiania na mono. |
+| [search](cli-reference/cli-ref-search.md) | Zużycie | 5.8 + | Wyszukuje dane źródło przy użyciu podanego ciągu zapytania. |
+| [sources](cli-reference/cli-ref-sources.md) | Użycie, publikowanie | Wszystko | Zarządza źródłami pakietów w plikach konfiguracji. |
+| [update](cli-reference/cli-ref-update.md) | Zużycie | Wszystko | Aktualizuje pakiety projektu do najnowszej dostępnej wersji. Nieobsługiwane w przypadku uruchamiania na mono. |
 
 Różne polecenia wykorzystują różne [zmienne środowiskowe](cli-reference/cli-ref-environment-variables.md).
 

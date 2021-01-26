@@ -1,17 +1,17 @@
 ---
 title: Dokumentacja pliku. nuspec dla narzędzia NuGet
 description: Plik. nuspec zawiera metadane pakietu używane podczas kompilowania pakietu i dostarczania informacji użytkownikom pakietu.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 05/24/2019
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 6e5107ac05046ea46cc819ebe2a504ba6b030634
-ms.sourcegitcommit: e39e5a5ddf68bf41e816617e7f0339308523bbb3
+ms.openlocfilehash: 6a68b07c42e6abf4ad57d0129fa76d7dd620145f
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96738945"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98777677"
 ---
 # <a name="nuspec-reference"></a>nuspec — odwołanie
 
@@ -83,7 +83,7 @@ Wersja pakietu, po wzorcu *główna. pomocnicza. poprawka* . Numery wersji mogą
 
 Podczas przekazywania pakietu do nuget.org, `version` pole jest ograniczone do 64 znaków.
 
-#### <a name="description"></a>description
+#### <a name="description"></a>description (opis)
 Opis pakietu na potrzeby wyświetlania interfejsu użytkownika.
 
 Podczas przekazywania pakietu do nuget.org, `description` pole jest ograniczone do 4000 znaków.
@@ -149,6 +149,7 @@ Jeśli używasz niestandardowej licencji, która nie jest obsługiwana przez wyr
 Aby uzyskać odpowiedniki programu MSBuild, zapoznaj się z tematem [pakowanie wyrażenia licencji lub pliku licencji](msbuild-targets.md#packing-a-license-expression-or-a-license-file).
 
 Dokładna składnia wyrażeń licencji narzędzia NuGet została opisana poniżej w [ABNF](https://tools.ietf.org/html/rfc5234).
+
 ```cli
 license-id            = <short form license identifier from https://spdx.org/spdx-specification-21-web-version#h.luq9dgcle9mo>
 
@@ -171,7 +172,7 @@ license-expression =  1*1(simple-expression / compound-expression / UNLICENSED)
 > iconUrl jest przestarzała. Zamiast tego użyj ikony.
 
 Adres URL obrazu 128 x 128 z przezroczystym tłem, który będzie używany jako ikona pakietu w wyświetlanym interfejsie użytkownika. Upewnij się, że ten element zawiera *adres URL obrazu bezpośredniego* , a nie adres URL strony sieci Web zawierającej obraz. Na przykład, aby użyć obrazu z usługi GitHub, użyj adresu URL nieprzetworzonego pliku, takiego jak <em> https://github.com/ \<username\> / \<repository\> /RAW/ \<branch\> / \<logo.png\> </em>. 
-   
+
 Podczas przekazywania pakietu do nuget.org, `iconUrl` pole jest ograniczone do 4000 znaków.
 
 #### <a name="icon"></a>ikona
@@ -265,14 +266,19 @@ Podczas przekazywania pakietu do nuget.org, `title` pole jest ograniczone do 256
 
 #### <a name="packagetypes"></a>packageTypes
 *(3.5 +)* Kolekcja elementów o zerowym lub większej liczbie `<packageType>` określająca typ pakietu, jeśli jest inny niż tradycyjny pakiet zależności. Każdy pakiet PackageType ma atrybuty *nazwy* i *wersji*. Zobacz [Ustawianie typu pakietu](../create-packages/set-package-type.md).
+
 #### <a name="dependencies"></a>zależności
 Kolekcja elementów co najmniej zero `<dependency>` określających zależności pakietu. Każda zależność ma atrybuty *identyfikatora*, *wersji*, *include* (3. x +) i *exclude* (3. x +). Zobacz [zależności](#dependencies-element) poniżej.
+
 #### <a name="frameworkassemblies"></a>frameworkAssemblies
 *(1.2 +)* Kolekcja zawierająca zero lub więcej `<frameworkAssembly>` elementów .NET Framework identyfikujących odwołania do zestawów, które są wymagane przez ten pakiet, co zapewnia, że odwołania są dodawane do projektów zużywających pakiet. Każdy frameworkAssembly ma atrybuty *AssemblyName* i *TargetFramework* . Zobacz [Określanie zestawu Framework odwołuje się do poniższej pamięci podręcznej](#specifying-framework-assembly-references-gac) .
+
 #### <a name="references"></a>odwołania
 *(1,5 +)* Kolekcja `<reference>` elementów w `lib` folderze pakietu, które są dodawane jako odwołania do projektu. Każde odwołanie ma atrybut *pliku* . `<references>` może również zawierać `<group>` element z atrybutem *TargetFramework* , który zawiera `<reference>` elementy. W przypadku pominięcia `lib` zostaną uwzględnione wszystkie odwołania. Zobacz [Określanie jawnych odwołań do zestawów](#specifying-explicit-assembly-references) poniżej.
+
 #### <a name="contentfiles"></a>contentFiles
 *(3.3 +)* Kolekcja `<files>` elementów, które identyfikują pliki zawartości do uwzględnienia w projekcie zużywanym. Te pliki są określone za pomocą zestawu atrybutów, które opisują, jak powinny być używane w systemie projektu. Zobacz sekcję [określanie plików do uwzględnienia w pakiecie](#specifying-files-to-include-in-the-package) poniżej.
+
 #### <a name="files"></a>files 
 `<package>`Węzeł może zawierać `<files>` węzeł jako element równorzędny i element `<metadata>` `<contentFiles>` podrzędny w programie `<metadata>` , aby określić, które pliki zestawu i zawartości mają być zawarte w pakiecie. Szczegółowe informacje znajdują się w temacie [zawierającym pliki zestawu](#including-assembly-files) i [pliki zawartości](#including-content-files) w dalszej części tego tematu.
 
@@ -522,72 +528,82 @@ Każdy `<file>` element określa następujące atrybuty:
 | --- | --- |
 | **src** | Lokalizacja pliku lub plików do dołączenia, z uwzględnieniem wyjątków określonych przez `exclude` atrybut. Ścieżka jest względna do `.nuspec` pliku, chyba że zostanie określona ścieżka bezwzględna. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
 | **obiektów** | Ścieżka względna do folderu w pakiecie, w którym znajdują się pliki źródłowe, które muszą zaczynać się od `lib` , `content` , `build` , lub `tools` . Zobacz [Tworzenie nuspec z katalogu roboczego opartego na Konwencji](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). |
-| **klucza** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
+| **wykluczanie** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
 
 ### <a name="examples"></a>Przykłady
 
 **Pojedynczy zestaw**
 
-    Source file:
-        library.dll
+```
+Source file:
+    library.dll
 
-    .nuspec entry:
-        <file src="library.dll" target="lib" />
+.nuspec entry:
+    <file src="library.dll" target="lib" />
 
-    Packaged result:
-        lib\library.dll
+Packaged result:
+    lib\library.dll
+```
 
 **Pojedynczy zestaw specyficzny dla platformy docelowej**
 
-    Source file:
-        library.dll
+```
+Source file:
+    library.dll
 
-    .nuspec entry:
-        <file src="assemblies\net40\library.dll" target="lib\net40" />
+.nuspec entry:
+    <file src="assemblies\net40\library.dll" target="lib\net40" />
 
-    Packaged result:
-        lib\net40\library.dll
+Packaged result:
+    lib\net40\library.dll
+```
 
 **Zestaw bibliotek DLL przy użyciu symbolu wieloznacznego**
 
-    Source files:
-        bin\release\libraryA.dll
-        bin\release\libraryB.dll
+```
+Source files:
+    bin\release\libraryA.dll
+    bin\release\libraryB.dll
 
-    .nuspec entry:
-        <file src="bin\release\*.dll" target="lib" />
+.nuspec entry:
+    <file src="bin\release\*.dll" target="lib" />
 
-    Packaged result:
-        lib\libraryA.dll
-        lib\libraryB.dll
+Packaged result:
+    lib\libraryA.dll
+    lib\libraryB.dll
+```
 
 **Biblioteki DLL dla różnych platform**
 
-    Source files:
-        lib\net40\library.dll
-        lib\net20\library.dll
+```
+Source files:
+    lib\net40\library.dll
+    lib\net20\library.dll
 
-    .nuspec entry (using ** recursive search):
-        <file src="lib\**" target="lib" />
+.nuspec entry (using ** recursive search):
+    <file src="lib\**" target="lib" />
 
-    Packaged result:
-        lib\net40\library.dll
-        lib\net20\library.dll
+Packaged result:
+    lib\net40\library.dll
+    lib\net20\library.dll
+```
 
 **Wykluczanie plików**
 
-    Source files:
-        \tools\fileA.bak
-        \tools\fileB.bak
-        \tools\fileA.log
-        \tools\build\fileB.log
+```
+Source files:
+    \tools\fileA.bak
+    \tools\fileB.bak
+    \tools\fileA.log
+    \tools\build\fileB.log
 
-    .nuspec entries:
-        <file src="tools\*.*" target="tools" exclude="tools\*.bak" />
-        <file src="tools\**\*.*" target="tools" exclude="**\*.log" />
+.nuspec entries:
+    <file src="tools\*.*" target="tools" exclude="tools\*.bak" />
+    <file src="tools\**\*.*" target="tools" exclude="**\*.log" />
 
-    Package result:
-        (no files)
+Package result:
+    (no files)
+```
 
 ## <a name="including-content-files"></a>Dołączanie plików zawartości
 
@@ -608,108 +624,124 @@ W przypadku plików zawartości wystarczy użyć tego samego formatu co w przypa
 
 **Podstawowe pliki zawartości**
 
-    Source files:
-        css\mobile\style1.css
-        css\mobile\style2.css
+```
+Source files:
+    css\mobile\style1.css
+    css\mobile\style2.css
 
-    .nuspec entry:
-        <file src="css\mobile\*.css" target="content\css\mobile" />
+.nuspec entry:
+    <file src="css\mobile\*.css" target="content\css\mobile" />
 
-    Packaged result:
-        content\css\mobile\style1.css
-        content\css\mobile\style2.css
+Packaged result:
+    content\css\mobile\style1.css
+    content\css\mobile\style2.css
+```
 
 **Pliki zawartości z strukturą katalogów**
 
-    Source files:
-        css\mobile\style.css
-        css\mobile\wp7\style.css
-        css\browser\style.css
+```
+Source files:
+    css\mobile\style.css
+    css\mobile\wp7\style.css
+    css\browser\style.css
 
-    .nuspec entry:
-        <file src="css\**\*.css" target="content\css" />
+.nuspec entry:
+    <file src="css\**\*.css" target="content\css" />
 
-    Packaged result:
-        content\css\mobile\style.css
-        content\css\mobile\wp7\style.css
-        content\css\browser\style.css
+Packaged result:
+    content\css\mobile\style.css
+    content\css\mobile\wp7\style.css
+    content\css\browser\style.css
+```
 
 **Plik zawartości specyficzny dla platformy docelowej**
 
-    Source file:
-        css\cool\style.css
+```
+Source file:
+    css\cool\style.css
 
-    .nuspec entry
-        <file src="css\cool\style.css" target="Content" />
+.nuspec entry
+    <file src="css\cool\style.css" target="Content" />
 
-    Packaged result:
-        content\style.css
+Packaged result:
+    content\style.css
+```
 
 **Plik zawartości skopiowany do folderu z kropką w nazwie**
 
 W takim przypadku pakiet NuGet uważa, że rozszerzenie w programie nie jest `target` zgodne z rozszerzeniem w `src` i w ten sposób traktuje tę część nazwy w `target` postaci folderu:
 
-    Source file:
-        images\picture.png
+```
+Source file:
+    images\picture.png
 
-    .nuspec entry:
-        <file src="images\picture.png" target="Content\images\package.icons" />
+.nuspec entry:
+    <file src="images\picture.png" target="Content\images\package.icons" />
 
-    Packaged result:
-        content\images\package.icons\picture.png
+Packaged result:
+    content\images\package.icons\picture.png
+```
 
 **Pliki zawartości bez rozszerzeń**
 
 Aby dołączyć pliki bez rozszerzenia, użyj `*` `**` symboli wieloznacznych lub:
 
-    Source file:
-        flags\installed
+```
+Source file:
+    flags\installed
 
-    .nuspec entry:
-        <file src="flags\**" target="flags" />
+.nuspec entry:
+    <file src="flags\**" target="flags" />
 
-    Packaged result:
-        flags\installed
+Packaged result:
+    flags\installed
+```
 
 **Pliki zawartości ze szczegółową ścieżką i głębokiego celu**
 
 W tym przypadku, ponieważ rozszerzenia plików dla dopasowania źródłowego i docelowego, pakiet NuGet zakłada, że obiektem docelowym jest nazwa pliku, a nie folder:
 
-    Source file:
-        css\cool\style.css
+```
+Source file:
+    css\cool\style.css
 
-    .nuspec entry:
-        <file src="css\cool\style.css" target="Content\css\cool" />
-        or:
-        <file src="css\cool\style.css" target="Content\css\cool\style.css" />
+.nuspec entry:
+    <file src="css\cool\style.css" target="Content\css\cool" />
+    or:
+    <file src="css\cool\style.css" target="Content\css\cool\style.css" />
 
-    Packaged result:
-        content\css\cool\style.css
+Packaged result:
+    content\css\cool\style.css
+```
 
 **Zmiana nazwy pliku zawartości w pakiecie**
 
-    Source file:
-        ie\css\style.css
+```
+Source file:
+    ie\css\style.css
 
-    .nuspec entry:
-        <file src="ie\css\style.css" target="Content\css\ie.css" />
+.nuspec entry:
+    <file src="ie\css\style.css" target="Content\css\ie.css" />
 
-    Packaged result:
-        content\css\ie.css
+Packaged result:
+    content\css\ie.css
+```
 
 **Wykluczanie plików**
 
-    Source file:
-        docs\*.txt (multiple files)
+```
+Source file:
+    docs\*.txt (multiple files)
 
-    .nuspec entry:
-        <file src="docs\*.txt" target="content\docs" exclude="docs\admin.txt" />
-        or
-        <file src="*.txt" target="content\docs" exclude="admin.txt;log.txt" />
+.nuspec entry:
+    <file src="docs\*.txt" target="content\docs" exclude="docs\admin.txt" />
+    or
+    <file src="*.txt" target="content\docs" exclude="admin.txt;log.txt" />
 
-    Packaged result:
-        All .txt files from docs except admin.txt (first example)
-        All .txt files from docs except admin.txt and log.txt (second example)
+Packaged result:
+    All .txt files from docs except admin.txt (first example)
+    All .txt files from docs except admin.txt and log.txt (second example)
+```
 
 <a name="using-contentfiles-element-for-content-files"></a>
 
@@ -726,7 +758,7 @@ Te pliki są określone za pomocą zestawu atrybutów, które opisują, jak powi
 | Atrybut | Opis |
 | --- | --- |
 | **być** | Potrzeb Lokalizacja pliku lub plików do dołączenia, z uwzględnieniem wyjątków określonych przez `exclude` atrybut. Ścieżka jest `contentFiles` określana względem folderu, chyba że określona jest ścieżka bezwzględna. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
-| **klucza** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
+| **wykluczanie** | Rozdzielana średnikami lista plików lub wzorców plików do wykluczenia z `src` lokalizacji. Symbol wieloznaczny `*` jest dozwolony, a podwójne symbole wieloznaczne `**` oznacza cykliczne wyszukiwanie folderów. |
 | **buildAction** | Akcja kompilacji, która ma zostać przypisana do elementu zawartości dla programu MSBuild, takich jak,,, `Content` `None` `Embedded Resource` `Compile` itd. Wartość domyślna to `Compile` . |
 | **copyToOutput** | Wartość logiczna wskazująca, czy elementy zawartości mają być kopiowane do folderu wyjściowego kompilacja (lub publikacja). Wartością domyślną jest false. |
 | **Flatten** | Wartość logiczna wskazująca, czy kopiować elementy zawartości do pojedynczego folderu w danych wyjściowych kompilacji (true), czy też zachować strukturę folderów w pakiecie (false). Ta flaga działa tylko wtedy, gdy flaga copyToOutput jest ustawiona na wartość true. Wartością domyślną jest false. |
@@ -737,7 +769,9 @@ Podczas instalacji pakietu NuGet stosuje elementy podrzędne `<contentFiles>` od
 
 Projekt pakietu powinien mieć strukturę zawartości przy użyciu następującego wzorca:
 
-    /contentFiles/{codeLanguage}/{TxM}/{any?}
+```
+/contentFiles/{codeLanguage}/{TxM}/{any?}
+```
 
 - `codeLanguages` może być `cs` ,,, `vb` `fs` `any` lub małymi literami odpowiadającymi danej `$(ProjectLanguage)`
 - `TxM` to dowolna docelowa moniker platformy docelowej, który obsługuje pakiet NuGet (patrz [Platformy docelowe](../reference/target-frameworks.md)).
@@ -745,19 +779,23 @@ Projekt pakietu powinien mieć strukturę zawartości przy użyciu następujące
 
 Na przykład:
 
-    Language- and framework-agnostic:
-        /contentFiles/any/any/config.xml
+```
+Language- and framework-agnostic:
+    /contentFiles/any/any/config.xml
 
-    net45 content for all languages
-        /contentFiles/any/net45/config.xml
+net45 content for all languages
+    /contentFiles/any/net45/config.xml
 
-    C#-specific content for net45 and up
-        /contentFiles/cs/net45/sample.cs
+C#-specific content for net45 and up
+    /contentFiles/cs/net45/sample.cs
+```
 
 Za pomocą pustych folderów można `.` zrezygnować z udostępniania zawartości dla niektórych kombinacji języka i TxM, na przykład:
 
-    /contentFiles/vb/any/code.vb
-    /contentFiles/cs/any/.
+```
+/contentFiles/vb/any/code.vb
+/contentFiles/cs/any/.
+```
 
 #### <a name="example-contentfiles-section"></a>Przykładowa sekcja contentFiles
 
@@ -894,7 +932,7 @@ Należy zauważyć, że nie zaleca się tworzenia ręcznie nuspecs, które zawie
 
 W tym przykładzie są zainstalowane następujące elementy docelowe dla konkretnych projektów:
 
-- . NET4 — > `System.Web` , `System.Net`
-- . NET4 — profil klienta — > `System.Net`
+- . NET4 > `System.Web` , `System.Net`
+- . Profil klienta NET4 — > `System.Net`
 - Silverlight 3 — > `System.Json`
 - WindowsPhone — > `Microsoft.Devices.Sensors`

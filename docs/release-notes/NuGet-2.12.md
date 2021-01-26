@@ -1,28 +1,28 @@
 ---
-title: Informacje o wersji 2.12 NuGet
-description: Informacje o wersji programu NuGet 2.12 tym znanych problemów, poprawki, funkcje dodane i DCRs.
-author: karann-msft
-ms.author: karann
+title: Informacje o wersji narzędzia NuGet 2,12
+description: Informacje o wersji programu NuGet 2,12, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: bbdcff9c283e8f2e5799f5fdfb2272c70be484fd
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 76957601de56603cc657c12fdf927cdad781058d
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551817"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776825"
 ---
-# <a name="nuget-212-release-notes"></a>Informacje o wersji 2.12 NuGet
+# <a name="nuget-212-release-notes"></a>Informacje o wersji narzędzia NuGet 2,12
 
-NuGet 2.12 RTM został wydany 27 czerwca 2016 r dla programu Visual Studio 2013
+Pakiet NuGet 2,12 RTM został wydana 27 czerwca 2016 dla Visual Studio 2013
 
-### <a name="updates-in-this-release"></a>Zaktualizowane w tej wersji
+### <a name="updates-in-this-release"></a>Aktualizacje w tej wersji
 
-* Pełne NetStandard i NetCoreApp obsługę VS2013.
-* Dodawanie/wykluczania do `.nuspec` wpisy zależności.
-* Dodanie obsługi "no_proxy" określić wyjątki serwera proxy.
-* Poprawek związanych z TFS.
+* Pełna obsługa standardów i NetCoreApp w VS2013.
+* Dodawanie pozycji Uwzględnij/Wyklucz do `.nuspec` wpisów zależności.
+* Dodaj obsługę "no_proxy", aby określić wyjątki serwera proxy.
+* Poprawki powiązane z programem TFS.
 
-Lista poprawek w tej wersji można znaleźć w witrynie GitHub w [2.12 punkt kontrolny](https://github.com/NuGet/Home/issues?q=milestone%3A2.12+is%3Aclosed)
+Listę poprawek w tej wersji można znaleźć w witrynie GitHub w punkcie [kontrolnym 2,12](https://github.com/NuGet/Home/issues?q=milestone%3A2.12+is%3Aclosed)
 
-Pobierz rozszerzenie z Narzędzia -> rozszerzenia i aktualizacje w programie Visual Studio
+Pobierz rozszerzenie z narzędzi-> rozszerzeń i aktualizacji w programie Visual Studio

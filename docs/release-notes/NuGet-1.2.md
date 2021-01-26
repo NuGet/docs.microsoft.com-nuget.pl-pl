@@ -1,16 +1,16 @@
 ---
 title: Informacje o wersji narzędzia NuGet 1,2
 description: Informacje o wersji programu NuGet 1,2, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 5d10d6bf27614980a144c30c3af6f9892a109061
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: af2248a41800f7641be9b77d7bb72e2a94d4ce47
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237192"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98777191"
 ---
 # <a name="nuget-12-release-notes"></a>Informacje o wersji narzędzia NuGet 1,2
 
@@ -42,8 +42,8 @@ Te zestawy nie są uwzględnione w pakiecie, ponieważ zakłada się, że znajdu
 
 |Atrybut |Opis|
 |----------------|-----------|
-|**assemblyName**|*Wymagane* . Nazwa zestawu, na przykład `System.Net` .|
-|**targetFramework**|*Opcjonalne* . Umożliwia określenie struktury i nazwy profilu (lub alias), do których odnosi się ten zestaw platformy, takich jak "net40" lub "SL4". Używa tego samego formatu opisanego w temacie [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md).|
+|**assemblyName**|*Wymagane*. Nazwa zestawu, na przykład `System.Net` .|
+|**targetFramework**|*Opcjonalne*. Umożliwia określenie struktury i nazwy profilu (lub alias), do których odnosi się ten zestaw platformy, takich jak "net40" lub "SL4". Używa tego samego formatu opisanego w temacie [Obsługa wielu platform docelowych](../create-packages/supporting-multiple-target-frameworks.md).|
 
 ```xml
   <frameworkAssemblies>
@@ -65,6 +65,6 @@ Poprzednia lista była najbardziej zauważalna dla wielu zaimplementowanych funk
 
 ## <a name="known-issues"></a>Znane problemy
 
-* **niezgodność pakietów 1,2** : pakiety skompilowane przy użyciu najnowszej wersji narzędzia wiersza polecenia nuget.exe (> 1,2) nie będą działały ze starszymi wersjami dodatku NuGet vs (na przykład 1,1). Jeśli zostanie wyświetlony komunikat o błędzie z informacją o niezgodnym schemacie, wystąpi błąd. Zaktualizuj pakiet NuGet do najnowszej wersji.
-* **Niezgodność programu NuGet. Server** : Jeśli przechowujesz wewnętrzne źródło danych NuGet za pomocą projektu NuGet. Server, musisz zaktualizować ten projekt przy użyciu najnowszej wersji programu NuGet. Server.
-* **Błąd niezgodności podpisu** : w przypadku wystąpienia błędu podczas uaktualniania z komunikatem o niezgodności podpisów należy najpierw odinstalować pakiet NuGet, a następnie zainstalować go. Ta lista znajduje się na liście [znanych problemów](../release-notes/known-issues.md) , która zawiera więcej szczegółów. Problem dotyczy tylko tych uruchomionych programu Visual Studio 2010 z dodatkiem SP1 i ma zainstalowaną wersję programu NuGet 1,0, która została nieprawidłowo podpisana. Ta wersja była udostępniona tylko z witryny sieci Web CodePlex przez krótki okres, więc ten problem nie ma wpływu na zbyt wiele osób.
+* **niezgodność pakietów 1,2**: pakiety skompilowane przy użyciu najnowszej wersji narzędzia wiersza polecenia nuget.exe (> 1,2) nie będą działały ze starszymi wersjami dodatku NuGet vs (na przykład 1,1). Jeśli zostanie wyświetlony komunikat o błędzie z informacją o niezgodnym schemacie, wystąpi błąd. Zaktualizuj pakiet NuGet do najnowszej wersji.
+* **Niezgodność programu NuGet. Server**: Jeśli przechowujesz wewnętrzne źródło danych NuGet za pomocą projektu NuGet. Server, musisz zaktualizować ten projekt przy użyciu najnowszej wersji programu NuGet. Server.
+* **Błąd niezgodności podpisu**: w przypadku wystąpienia błędu podczas uaktualniania z komunikatem o niezgodności podpisów należy najpierw odinstalować pakiet NuGet, a następnie zainstalować go. Ta lista znajduje się na liście [znanych problemów](../release-notes/known-issues.md) , która zawiera więcej szczegółów. Problem dotyczy tylko tych uruchomionych programu Visual Studio 2010 z dodatkiem SP1 i ma zainstalowaną wersję programu NuGet 1,0, która została nieprawidłowo podpisana. Ta wersja była udostępniona tylko z witryny sieci Web CodePlex przez krótki okres, więc ten problem nie ma wpływu na zbyt wiele osób.

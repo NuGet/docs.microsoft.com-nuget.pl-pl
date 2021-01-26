@@ -1,21 +1,21 @@
 ---
-title: Informacje o wersji programu NuGet 2.8.3
-description: Informacje o wersji programu NuGet 2.8.3, w tym — znane problemy, poprawki, funkcje dodane i DCRs.
-author: karann-msft
-ms.author: karann
+title: Informacje o wersji narzędzia NuGet 2.8.3
+description: Informacje o wersji programu NuGet 2.8.3, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: e773d6dc55c1593a4f0918d67c9c188a38e0e5ec
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: fe7e8f7c45bc4d67ae4015234cf3775372b71bb1
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548459"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776744"
 ---
-# <a name="nuget-283-release-notes"></a>Informacje o wersji programu NuGet 2.8.3
+# <a name="nuget-283-release-notes"></a>Informacje o wersji narzędzia NuGet 2.8.3
 
-[Informacje o wersji NuGet 2.8.2](../release-notes/nuget-2.8.2.md) | [informacjach o wersji NuGet 2.8.5](../release-notes/nuget-2.8.5.md)
+Informacje o wersji narzędzia [NuGet 2.8.2](../release-notes/nuget-2.8.2.md)  |  [Informacje o wersji narzędzia NuGet 2.8.5](../release-notes/nuget-2.8.5.md)
 
-NuGet 2.8.3 został wydany 17 października 2014 r. Jest aktualizację pomocniczą do naszych 2.8.1 VSIX z niektórymi docelowe poprawki.
+2.8.3 NuGet wydano 17 października 2014. Jest to drobna aktualizacja naszego 2.8.1 VSIX z niektórymi poprawkami.
 
-W tej wersji dodano obsługę dla okna dialogowego Menedżer pakietów NuGet [środowiska ASP.NET vNext](http://www.asp.net/vnext), [DevExtreme](http://js.devexpress.com/) i [BizTalk (.btproj)](/biztalk/core/developing-biztalk-server-applications) typów projektów. Zawiera on również poprawki niezawodności powiązanych scenariuszach Włączanie przywracania pakietów oraz zapisywanie opcje Menedżera pakietów.
+W tej wersji dodano okno dialogowe obsługa Menedżera pakietów NuGet dla typów projektów [ASP.NET VNext](http://www.asp.net/vnext), [DevExtreme](http://js.devexpress.com/) i [BizTalk (. btproj)](/biztalk/core/developing-biztalk-server-applications) . Zawiera również poprawki błędów niezawodności dotyczące scenariuszy włączania przywracania pakietów i zapisywania opcji Menedżera pakietów.

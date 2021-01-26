@@ -1,16 +1,16 @@
 ---
 title: nuget.exe dostawców poświadczeń
 description: nuget.exe dostawców poświadczeń uwierzytelniają się ze źródłem danych i są zaimplementowane jako pliki wykonywalne wiersza polecenia, które przestrzegają określonych konwencji.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 12/12/2017
 ms.topic: conceptual
-ms.openlocfilehash: 41e3e63138351bafd5e3a56080268faef10d85a3
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 285504508fa88c96f5c7a23f15ef14d81ebc21e1
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93238117"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98777769"
 ---
 # <a name="authenticating-feeds-with-nugetexe-credential-providers"></a>Uwierzytelnianie kanałów informacyjnych za pomocą dostawców poświadczeń nuget.exe
 
@@ -22,11 +22,11 @@ Aby uzyskać szczegółowe informacje dotyczące wszystkich metod uwierzytelnian
 
 nuget.exe dostawców poświadczeń można używać na trzy sposoby:
 
-- **Globalnie** : Aby udostępnić dostawcę poświadczeń wszystkim wystąpieniu `nuget.exe` uruchomienia w ramach profilu bieżącego użytkownika, należy dodać go do programu `%LocalAppData%\NuGet\CredentialProviders` . Może być konieczne utworzenie `CredentialProviders` folderu. Dostawców poświadczeń można zainstalować w katalogu głównym `CredentialProviders`  folderu lub w podfolderze. Jeśli Dostawca poświadczeń ma wiele plików/zestawów, można użyć podfolderów, aby zachować zorganizowanie dostawców.
+- **Globalnie**: Aby udostępnić dostawcę poświadczeń wszystkim wystąpieniu `nuget.exe` uruchomienia w ramach profilu bieżącego użytkownika, należy dodać go do programu `%LocalAppData%\NuGet\CredentialProviders` . Może być konieczne utworzenie `CredentialProviders` folderu. Dostawców poświadczeń można zainstalować w katalogu głównym `CredentialProviders`  folderu lub w podfolderze. Jeśli Dostawca poświadczeń ma wiele plików/zestawów, można użyć podfolderów, aby zachować zorganizowanie dostawców.
 
-- **Ze zmiennej środowiskowej** : dostawcy poświadczeń można przechowywać w dowolnym miejscu i uzyskiwać do nich dostęp `nuget.exe` przez ustawienie `%NUGET_CREDENTIALPROVIDERS_PATH%` zmiennej środowiskowej na lokalizację dostawcy. Ta zmienna może być rozdzielaną średnikami listą (na przykład `path1;path2` ), jeśli istnieje wiele lokalizacji.
+- **Ze zmiennej środowiskowej**: dostawcy poświadczeń można przechowywać w dowolnym miejscu i uzyskiwać do nich dostęp `nuget.exe` przez ustawienie `%NUGET_CREDENTIALPROVIDERS_PATH%` zmiennej środowiskowej na lokalizację dostawcy. Ta zmienna może być rozdzielaną średnikami listą (na przykład `path1;path2` ), jeśli istnieje wiele lokalizacji.
 
-- **Obok nuget.exe** : dostawcy poświadczeń nuget.exe można umieścić w tym samym folderze co `nuget.exe` .
+- **Obok nuget.exe**: dostawcy poświadczeń nuget.exe można umieścić w tym samym folderze co `nuget.exe` .
 
 Podczas ładowania dostawców poświadczeń program `nuget.exe` przeszukuje powyższe lokalizacje w podanej kolejności, `credentialprovider*.exe` a następnie ładuje te pliki w kolejności, w jakiej zostały znalezione. Jeśli w tym samym folderze istnieje wielu dostawców poświadczeń, są one ładowane w kolejności alfabetycznej.
 
@@ -70,9 +70,11 @@ Dostawca musi wykonać następujące czynności:
 
 Przykład stdout:
 
-    { "Username" : "freddy@example.com",
-      "Password" : "bwm3bcx6txhprzmxhl2x63mdsul6grctazoomtdb6kfbof7m3a3z",
-      "Message"  : "" }
+```
+{ "Username" : "freddy@example.com",
+    "Password" : "bwm3bcx6txhprzmxhl2x63mdsul6grctazoomtdb6kfbof7m3a3z",
+    "Message"  : "" }
+```
 
 ## <a name="troubleshooting-a-credential-provider"></a>Rozwiązywanie problemów z dostawcą poświadczeń
 

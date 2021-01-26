@@ -1,20 +1,20 @@
 ---
 title: Informacje o wersji narzędzia NuGet 1,5
 description: Informacje o wersji programu NuGet 1,5, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 940a19cdc485d611d03b52ee3102bc95a78a36bb
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: c9946f3d8cf545ec14f842c40105743c231b4b72
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383352"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98777097"
 ---
 # <a name="nuget-15-release-notes"></a>Informacje o wersji narzędzia NuGet 1,5
 
-[Informacje o wersji pakietu nuget 1,4](../release-notes/nuget-1.4.md) | [Informacje o wersji narzędzia NuGet 1,6](../release-notes/nuget-1.6.md)
+Informacje o wersji narzędzia [NuGet 1,4](../release-notes/nuget-1.4.md)  |  [Informacje o wersji narzędzia NuGet 1,6](../release-notes/nuget-1.6.md)
 
 Pakiet NuGet 1,5 został wydaną 30 sierpnia 2011.
 
@@ -29,7 +29,7 @@ Aby uzyskać więcej informacji na temat tej funkcji, przeczytaj ten [wpis w blo
 
 ### <a name="explicit-assembly-references"></a>Jawne odwołania do zestawów
 
-Dodano nowy element `<references />` używany do jawnego określania zestawów, do których należy odwoływać się w pakiecie.
+Dodano nowy `<references />` element służący do jawnego określania, które zestawy w pakiecie mają być przywoływane.
 
 Na przykład, jeśli dodasz następujące elementy:
 
@@ -40,18 +40,18 @@ Na przykład, jeśli dodasz następujące elementy:
 </references>
 ```
 
-Następnie tylko `xunit.dll` i `xunit.extensions.dll` będą przywoływane z odpowiedniego [podfolderu Framework/profile](../reference/nuspec.md#explicit-assembly-references) folderu `lib`, nawet jeśli istnieją inne zestawy w folderze.
+Następnie tylko `xunit.dll` i `xunit.extensions.dll` zostanie przywoływany z odpowiedniego [podfolderu Framework/profile](../reference/nuspec.md#explicit-assembly-references) folderu, `lib` nawet jeśli istnieją inne zestawy w folderze.
 
-W przypadku pominięcia tego elementu stosowane jest zwykłe zachowanie, które polega na odwoływaniu się do każdego zestawu w folderze `lib`.
+W przypadku pominięcia tego elementu stosowane jest zwykłe zachowanie, które jest odwołaniem do każdego zestawu w `lib` folderze.
 
 __Do czego służy ta funkcja?__
 
-Ta funkcja obsługuje tylko zestawy w czasie projektowania. Na przykład w przypadku korzystania z kontraktów kodu zestawy kontraktu muszą znajdować się obok zestawów środowiska uruchomieniowego, które rozszerzają się, aby program Visual Studio mógł je znaleźć, ale w przypadku zestawów kontraktu nie należy odwoływać się do tego projektu i nie należy go kopiować do folderu `bin`.
+Ta funkcja obsługuje tylko zestawy w czasie projektowania. Na przykład w przypadku korzystania z kontraktów kodu zestawy umów muszą znajdować się obok zestawów środowiska uruchomieniowego, które rozszerzają się, aby program Visual Studio mógł je znaleźć, ale w przypadku zestawów kontraktu nie należy odwoływać się do tego projektu i nie należy go kopiować do `bin` folderu.
 
 Podobnie funkcja może być używana do dla platform testów jednostkowych, takich jak XUnit, które wymagają, aby zestawy narzędzi były zlokalizowane obok zestawów środowiska uruchomieniowego, ale nie zostały wykluczone z odwołań do projektu.
 
 ### <a name="added-ability-to-exclude-files-in-the-nuspec"></a>Dodano możliwość wykluczania plików z pliku. nuspec
-Element `<file>` w pliku `.nuspec` może służyć do dołączania określonego pliku lub zestawu plików przy użyciu symbolu wieloznacznego. Gdy jest używany symbol wieloznaczny, nie ma możliwości wykluczenia określonego podzestawu dołączonych plików. Załóżmy na przykład, że chcesz, aby wszystkie pliki tekstowe w folderze z wyjątkiem określonego.
+`<file>`Element w `.nuspec` pliku może służyć do dołączania określonego pliku lub zestawu plików przy użyciu symbolu wieloznacznego. Gdy jest używany symbol wieloznaczny, nie ma możliwości wykluczenia określonego podzestawu dołączonych plików. Załóżmy na przykład, że chcesz, aby wszystkie pliki tekstowe w folderze z wyjątkiem określonego.
 
 ```xml
 <files>
@@ -81,10 +81,12 @@ Podczas odinstalowywania pakietu z zależnościami program NuGet monituje o usun
 ![Usuwanie pakietów zależnych](./media/remove-dependent-packages.png)
 
 
-### <a name="get-package-command-improvement"></a>udoskonalenie polecenia `Get-Package`
-Polecenie `Get-Package` obsługuje teraz parametr `-ProjectName`. Więc polecenie
+### <a name="get-package-command-improvement"></a>`Get-Package` udoskonalenie poleceń
+`Get-Package`Polecenie obsługuje teraz `-ProjectName` parametr. Więc polecenie
 
-    Get-Package –ProjectName A
+```
+Get-Package –ProjectName A
+```
 
 wyświetli listę wszystkich pakietów zainstalowanych w projekcie A.
 
@@ -107,10 +109,10 @@ Pakiety NuGet zawierają teraz obsługę informacji o wersji. Informacje o wersj
 
 ![Informacje o wersji na karcie Aktualizacje](./media/manage-nuget-packages-release-notes.png)
 
-Aby dodać informacje o wersji do pakietu, Użyj nowego elementu `<releaseNotes />` Metadata w pliku NuSpec.
+Aby dodać informacje o wersji do pakietu, Użyj nowego `<releaseNotes />` elementu metadanych w pliku NuSpec.
 
-### <a name="nuspec-ltfiles-gt-improvement"></a>nuspec & ltfiles/&gt;
-Plik `.nuspec` teraz zezwala na pusty element `<files />`, który informuje plik NuGet. exe, aby nie dołączać żadnego pliku w pakiecie.
+### <a name="nuspec-ltfiles-gt-improvement"></a>nuspec &ltfiles/ &gt; ulepszanie
+`.nuspec`Plik umożliwia teraz pusty `<files />` element, który informuje nuget.exe nie dołączać żadnego pliku w pakiecie.
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 Pakiet NuGet 1,5 zawiera łącznie 107 elementów roboczych. 103 z tych elementów zostało oznaczonych jako błędy.
@@ -119,6 +121,6 @@ Aby zapoznać się z pełną listą elementów roboczych ustalonych w programie 
 
 ## <a name="bug-fixes-worth-noting"></a>Poprawki błędów warto zauważyć:
 
-* [Problem 1273](http://nuget.codeplex.com/workitem/1273): `packages.config` większą liczbę kontroli wersji, sortując pakiety alfabetycznie i usuwając dodatkowe odstępy.
-* [Problem 844](http://nuget.codeplex.com/workitem/844): numery wersji są teraz znormalizowane, tak aby `Install-Package 1.0` działały w pakiecie z wersją `1.0.0`.
-* [Problem 1060](http://nuget.codeplex.com/workitem/1060): podczas tworzenia pakietu przy użyciu NuGet. exe flaga `-Version` zastępuje element `<version />`.
+* [Problem 1273](http://nuget.codeplex.com/workitem/1273): wprowadzono `packages.config` większą liczbę kontroli wersji, sortując pakiety alfabetycznie i usuwając dodatkowe odstępy.
+* [Problem 844](http://nuget.codeplex.com/workitem/844): numery wersji są teraz znormalizowane, aby `Install-Package 1.0` działały w pakiecie z wersją `1.0.0` .
+* [Problem 1060](http://nuget.codeplex.com/workitem/1060): podczas tworzenia pakietu przy użyciu nuget.exe `-Version` Flaga zastępuje `<version />` element.

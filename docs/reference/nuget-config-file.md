@@ -1,16 +1,16 @@
 ---
 title: Odwołanie do pliku nuget.config
 description: NuGet.Config odwołanie do pliku, w tym sekcje config, bindingRedirects, packageRestore, Solution i packageSource.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 08/13/2019
 ms.topic: reference
-ms.openlocfilehash: 371f0d934fcd3c1f111d277131553c1eed0200be
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 9b15550d0e6e8aec4d526391d77c654a756f343e
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93238104"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98777661"
 ---
 # <a name="nugetconfig-reference"></a>Informacje nuget.config
 
@@ -38,7 +38,7 @@ Zawiera różne ustawienia konfiguracji, które można ustawić za pomocą [ `nu
 | http_proxy http_proxy. User http_proxy. Password no_proxy | Ustawienia serwera proxy do użycia podczas nawiązywania połączenia ze źródłami pakietów; `http_proxy` powinien mieć format `http://<username>:<password>@<domain>` . Hasła są szyfrowane i nie można ich dodać ręcznie. W przypadku `no_proxy` , wartość jest rozdzielaną przecinkami listą domen, które pomijają serwer proxy. Dla tych wartości można użyć zmiennych środowiskowych http_proxy i no_proxy. Aby uzyskać więcej informacji, zobacz [Ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com). |
 | signatureValidationMode | Określa tryb weryfikacji używany do weryfikowania podpisów pakietów na potrzeby instalacji pakietu i przywracania. Wartości to `accept` , `require` . Wartość domyślna to `accept` .
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <config>
@@ -58,7 +58,7 @@ Określa, czy program NuGet ma przekierować automatyczne powiązania po zainsta
 | --- | --- |
 | Pomiń | Wartość logiczna wskazująca, czy pomijać Automatyczne przekierowania powiązań. Wartością domyślną jest false. |
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <bindingRedirects>
@@ -75,7 +75,7 @@ Kontroluje przywracanie pakietu podczas kompilacji.
 | enabled | Wartość logiczna wskazująca, czy pakiet NuGet może wykonywać automatyczne przywracanie. Można również ustawić dla `EnableNuGetPackageRestore` zmiennej środowiskowej wartość `True` zamiast ustawienia tego klucza w pliku konfiguracji. |
 | automatyczne | Wartość logiczna wskazująca, czy NuGet ma sprawdzać brakujące pakiety podczas kompilacji. |
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <packageRestore>
@@ -92,7 +92,7 @@ Określa, czy `packages` folder rozwiązania ma być uwzględniony w kontroli ź
 | --- | --- |
 | disableSourceControlIntegration | Wartość logiczna wskazująca, czy ignorować folder Packages podczas pracy z kontrolą źródła. Wartość domyślna to false. |
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <solution>
@@ -116,7 +116,7 @@ Wyświetla wszystkie znane źródła pakietów. Kolejność jest ignorowana podc
 | --- | --- |
 | (nazwa do przypisania do źródła pakietu) | Ścieżka lub adres URL źródła pakietu. |
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <packageSources>
@@ -213,7 +213,7 @@ Przechowuje klucze dla źródeł korzystających z uwierzytelniania za pomocą k
 | --- | --- |
 | (źródłowy adres URL) | Zaszyfrowany klucz interfejsu API. |
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <apikeys>
@@ -250,7 +250,7 @@ Identyfikuje aktualnie aktywne źródło lub wskazuje zagregowane wszystkie źr�
 | --- | --- |
 | (nazwa źródła) lub `All` | Jeśli klucz jest nazwą źródła, wartość jest ścieżką źródłową lub adresem URL. Jeśli `All` wartość powinna być `(Aggregate source)` połączona ze wszystkimi źródłami pakietów, które nie są wyłączone. |
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <activePackageSource>
@@ -268,7 +268,7 @@ Przechowuje zaufane osoby podpisujące używane do zezwalania na pakiet podczas 
 
 Tę sekcję można zaktualizować za pomocą [ `nuget trusted-signers` polecenia](../reference/cli-reference/cli-ref-trusted-signers.md).
 
-**Schemat** :
+**Schemat**:
 
 Zaufany podpiser zawiera kolekcję `certificate` elementów, które identyfikują wszystkie certyfikaty identyfikujące daną rejestrację. Zaufaną rejestracją może być albo `Author` lub `Repository` .
 
@@ -278,7 +278,7 @@ Obsługiwane algorytmy wyznaczania wartości skrótu używane dla odcisku palca 
 
 Jeśli `certificate` określono `allowUntrustedRoot` , że `true` dany certyfikat jest dozwolony do łączenia się z niezaufanym katalogiem głównym, podczas budowania łańcucha certyfikatów w ramach weryfikacji podpisu.
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <trustedSigners>
@@ -311,7 +311,7 @@ Jeśli dopasowanie nie zostanie znalezione, pakiet NuGet sprawdza źródła plik
 | --- | --- |
 | (nazwa folderu rezerwowego) | Ścieżka do folderu rezerwowego. |
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <fallbackPackageFolders>
@@ -325,10 +325,10 @@ Ustawia domyślny format zarządzania pakietami, *packages.config* lub PackageRe
 
 | Klucz | Wartość |
 | --- | --- |
-| format | Wartość logiczna wskazująca domyślny format zarządzania pakietami. Jeśli `1` , format jest PackageReference. Jeśli `0` Format jest *packages.config* . |
+| format | Wartość logiczna wskazująca domyślny format zarządzania pakietami. Jeśli `1` , format jest PackageReference. Jeśli `0` Format jest *packages.config*. |
 | wyłączone | Wartość logiczna wskazująca, czy wyświetlać monit o wybranie domyślnego formatu pakietu przy pierwszej instalacji pakietu. `False` ukrywa monit. |
 
-**Przykład** :
+**Przykład:**
 
 ```xml
 <packageManagement>
