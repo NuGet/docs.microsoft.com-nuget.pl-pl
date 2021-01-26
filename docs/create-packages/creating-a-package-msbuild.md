@@ -1,16 +1,16 @@
 ---
 title: Tworzenie pakietu NuGet przy użyciu programu MSBuild
 description: Szczegółowy przewodnik dotyczący procesu projektowania i tworzenia pakietu NuGet, w tym najważniejszych punktów decyzyjnych, takich jak pliki i przechowywanie wersji.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 47a20c5566affec1cdc7772c86d8101dab162d85
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 48741668af932a532240f2796a9bf5d490ee8e35
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237974"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774445"
 ---
 # <a name="create-a-nuget-package-using-msbuild"></a>Tworzenie pakietu NuGet przy użyciu programu MSBuild
 
@@ -39,7 +39,7 @@ Ponadto w przypadku pakowania projektów spoza zestawu SDK, które używają Pac
 
 - `PackageOutputPath`folder wyjściowy pakietu wygenerowanego podczas wywoływania pakietu.
 
-W programie Visual Studio można ustawić te wartości we właściwościach projektu (kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz **Właściwości** , a następnie wybierz kartę **pakiet** ). Możesz również ustawić te właściwości bezpośrednio w plikach projektu ( *. csproj* ).
+W programie Visual Studio można ustawić te wartości we właściwościach projektu (kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz **Właściwości**, a następnie wybierz kartę **pakiet** ). Możesz również ustawić te właściwości bezpośrednio w plikach projektu (*. csproj*).
 
 ```xml
 <PropertyGroup>
@@ -96,7 +96,7 @@ Jeśli używasz programu MSBuild z projektem w stylu innym niż zestaw SDK i Pac
    </ItemGroup>
    ```
 
-2. Otwórz wiersz polecenia dewelopera (w polu **wyszukiwania** wpisz **wiersz polecenia programisty** ).
+2. Otwórz wiersz polecenia dewelopera (w polu **wyszukiwania** wpisz **wiersz polecenia programisty**).
 
    Zazwyczaj chcesz uruchomić wiersz polecenia dla deweloperów dla programu Visual Studio z menu **Start** , ponieważ zostanie on skonfigurowany ze wszystkimi niezbędnymi ścieżkami dla programu MSBuild.
 
@@ -181,7 +181,7 @@ Możesz również chcieć zwiększyć możliwości pakietu lub w inny sposób ob
 - [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
 - [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
 - [Przekształcenia plików źródłowych i konfiguracji](../create-packages/source-and-config-file-transformations.md)
-- [Localization](../create-packages/creating-localized-packages.md)
+- [Lokalizacja](../create-packages/creating-localized-packages.md)
 - [Wersje wstępne](../create-packages/prerelease-packages.md)
 - [Ustawianie typu pakietu](../create-packages/set-package-type.md)
 - [Tworzenie pakietów z zestawami międzyoperacyjnymi modelu COM](../create-packages/author-packages-with-COM-interop-assemblies.md)

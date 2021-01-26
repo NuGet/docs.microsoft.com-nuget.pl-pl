@@ -1,17 +1,17 @@
 ---
 title: Jak opublikować pakiet NuGet
 description: Szczegółowe instrukcje dotyczące publikowania pakietu NuGet w nuget.org lub prywatnych źródłach oraz zarządzania własnością pakietu na nuget.org.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 05/18/2018
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: fe5625247dca51c10d82fffe82022c40a4716069
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 5be7a4d4c31df9f2f4bda7bdb1ff9f4887108578
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237935"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775990"
 ---
 # <a name="publishing-packages"></a>Publikowanie pakietów
 
@@ -111,13 +111,13 @@ Wszyscy właściciele pakietu mają pełne uprawnienia do pakietu, w tym dodawan
 Aby zmienić własność pakietu, wykonaj następujące czynności:
 
 1. Zaloguj się do nuget.org przy użyciu konta, które jest bieżącym właścicielem pakietu.
-1. Wybierz nazwę swojego konta, wybierz pozycję **Zarządzaj pakietami** i rozwiń węzeł **opublikowane pakiety** .
-1. Wybierz pakiet, którym chcesz zarządzać, a następnie po prawej stronie wybierz pozycję **Zarządzaj właścicielami** .
+1. Wybierz nazwę swojego konta, wybierz pozycję **Zarządzaj pakietami** i rozwiń węzeł **opublikowane pakiety**.
+1. Wybierz pakiet, którym chcesz zarządzać, a następnie po prawej stronie wybierz pozycję **Zarządzaj właścicielami**.
 
 W tym miejscu masz kilka opcji:
 
-1. Usuń wszystkich właścicieli wymienionych w obszarze **bieżący właściciele** .
-1. Dodaj właściciela w obszarze **Dodaj właściciela** , wprowadzając jego nazwę użytkownika, komunikat i wybierając pozycję **Dodaj** . Ta akcja spowoduje wysłanie wiadomości e-mail do tego nowego współwłaściciela z linkiem potwierdzającym. Po potwierdzeniu osoba ta ma pełne uprawnienia do dodawania i usuwania właścicieli. (Do momentu potwierdzenia **Bieżąca sekcja właściciele** wskazuje, że oczekuje na zatwierdzenie przez tę osobę).
+1. Usuń wszystkich właścicieli wymienionych w obszarze **bieżący właściciele**.
+1. Dodaj właściciela w obszarze **Dodaj właściciela** , wprowadzając jego nazwę użytkownika, komunikat i wybierając pozycję **Dodaj**. Ta akcja spowoduje wysłanie wiadomości e-mail do tego nowego współwłaściciela z linkiem potwierdzającym. Po potwierdzeniu osoba ta ma pełne uprawnienia do dodawania i usuwania właścicieli. (Do momentu potwierdzenia **Bieżąca sekcja właściciele** wskazuje, że oczekuje na zatwierdzenie przez tę osobę).
 1. Aby przenieść własność (jak w przypadku zmiany własności lub opublikowania pakietu na niewłaściwym koncie), Dodaj nowego właściciela, a po potwierdzeniu prawa własności można usunąć użytkownika z listy.
 
 Aby przypisać własność do firmy lub grupy, Utwórz konto usługi nuget.org przy użyciu aliasu e-mail, który jest przekazywany do odpowiednich członków zespołu. Na przykład różne pakiety Microsoft ASP.NET są współwłasnością kont [Microsoft](https://nuget.org/profiles/microsoft) i [ASPNET](https://nuget.org/profiles/aspnet) , które po prostu takie aliasy.

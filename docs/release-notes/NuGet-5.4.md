@@ -1,16 +1,16 @@
 ---
 title: Informacje o wersji narzędzia NuGet 5,4
 description: Informacje o wersji programu NuGet 5,4, w tym nowe funkcje, poprawki błędów i DCR.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 09/06/2019
 ms.topic: conceptual
-ms.openlocfilehash: c7fb9c1e587b6603abe63581c662571abfd4506b
-ms.sourcegitcommit: 26a8eae00af2d4be581171e7a73009f94534c336
+ms.openlocfilehash: dd4c10672db3a65b68f18636105ee55ab09da7ef
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384114"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776178"
 ---
 # <a name="nuget-54-release-notes"></a>Informacje o wersji narzędzia NuGet 5,4
 
@@ -28,7 +28,7 @@ Pojazdy dystrybucji NuGet:
 
 * Nowa funkcja pomocnika — otrzymano listę identyfikatorów pakietów i wersji, należy uzyskać odpowiednie pakiety najwyższego poziomu. - [#8316](https://github.com/NuGet/Home/issues/8316)
 
-* Nowe [`nuget/setup-nuget`](https://github.com/marketplace/actions/setup-nuget-exe-for-use-with-actions) akcje dotyczące instalowania i konfigurowania programu NuGet. exe w ramach [akcji usługi GitHub](https://github.com/features/actions). - [#8818](https://github.com/NuGet/Home/issues/8818)
+* Nowa [`nuget/setup-nuget`](https://github.com/marketplace/actions/setup-nuget-exe-for-use-with-actions) Akcja dotycząca instalowania i konfigurowania NuGet.exe w ramach [akcji usługi GitHub](https://github.com/features/actions). - [#8818](https://github.com/NuGet/Home/issues/8818)
 
 ### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
 
@@ -42,7 +42,7 @@ Pojazdy dystrybucji NuGet:
 
 * Plik blokady nie został prawidłowo wygenerowany — porządkowanie struktury nie powinno mieć wpływu na przywracanie z zablokowanym- [#8645](https://github.com/NuGet/Home/issues/8645)
 
-* Weryfikacja LockFile nie powiedzie się w przypadku projektów z zestawem <RuntimeIdentifiers> w zestawie SDK 3.0.100 — [#8639](https://github.com/NuGet/Home/issues/8639)
+* Weryfikacja LockFile nie powiedzie się w przypadku projektów z <RuntimeIdentifiers> ustawionym zestawem SDK 3.0.100- [#8639](https://github.com/NuGet/Home/issues/8639)
 
 * Sprawdzanie poprawności podpisywania będzie teraz prawidłowo odrzucać sygnatury z sygnaturami czasowymi, które mają 2 wartości pod tym samym identyfikatorem OID- [#8629](https://github.com/NuGet/Home/issues/8629)
 

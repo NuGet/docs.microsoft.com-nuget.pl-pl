@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/30/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: ffbcb8dc18542f39c32a6d84b279c8eccaf98fc3
-ms.sourcegitcommit: 7e9c0630335ef9ec1e200e2ee9065f702e52a8ec
+ms.openlocfilehash: 11485f583d6993919f6bb8acabcc87d9e4261975
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85292319"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774153"
 ---
 # <a name="catalog"></a>Wykaz
 
@@ -23,11 +23,11 @@ ms.locfileid: "85292319"
 > [!Note]
 > Obecnie katalog nuget.org nie jest dostępny w Chinach. Aby uzyskać więcej informacji, zobacz [NuGet/NuGetGallery # 4949](https://github.com/NuGet/NuGetGallery/issues/4949).
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
 `@type`Używana jest następująca wartość:
 
-@typewartościami   | Uwagi
+@type wartościami   | Uwagi
 ------------- | -----
 Katalog/3.0.0 | Początkowa wersja
 
@@ -63,7 +63,9 @@ Elementy katalogu są zawsze dodawane do wykazu w monotonicznie rosnącej, chron
 
 Poniższe żądanie Pobiera indeks wykazu.
 
-    GET {@id}
+```
+GET {@id}
+```
 
 Indeks wykazu jest dokumentem JSON zawierającym obiekt o następujących właściwościach:
 
@@ -95,7 +97,9 @@ W przeciwieństwie do [zasobów metadanych pakietu](registration-base-url-resour
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://api.nuget.org/v3/catalog0/index.json
+```
+GET https://api.nuget.org/v3/catalog0/index.json
+```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -147,7 +151,9 @@ Aby uzyskać więcej informacji na temat tego, co oznacza każdy typ, zobacz pon
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://api.nuget.org/v3/catalog0/page2926.json
+```
+GET https://api.nuget.org/v3/catalog0/page2926.json
+```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -166,7 +172,7 @@ Katalog: commitId        | ciąg                     | tak      | Identyfikator 
 Katalog: commitTimeStamp | ciąg                     | tak      | Sygnatura czasowa zatwierdzeń tego elementu katalogu
 identyfikator                      | ciąg                     | tak      | Identyfikator pakietu elementu katalogu
 publikacj               | ciąg                     | tak      | Data opublikowania elementu katalogu pakietów
-version                 | ciąg                     | tak      | Wersja pakietu elementu katalogu
+Wersja                 | ciąg                     | tak      | Wersja pakietu elementu katalogu
 
 ### <a name="item-types"></a>Typy elementów
 
@@ -180,9 +186,9 @@ version                 | ciąg                     | tak      | Wersja pakietu 
 Elementy katalogu z typem `PackageDetails` zawierają migawkę metadanych pakietu dla określonego pakietu (kombinacja identyfikatorów i wersji). Element katalogu szczegóły pakietu jest tworzony, gdy źródło pakietu napotka którykolwiek z następujących scenariuszy:
 
 1. Pakiet jest **wypychany**.
-1. Zostanie **wyświetlony**pakiet.
+1. Zostanie **wyświetlony** pakiet.
 1. Pakiet nie znajduje się na **liście**.
-1. Pakiet jest **przepływany**ponownie.
+1. Pakiet jest **przepływany** ponownie.
 
 Ponowne przepływanie pakietu to gest administracyjny, który zasadniczo generuje fałszywe wypchnięcie istniejącego pakietu bez wprowadzania zmian w samym pakiecie. W przypadku nuget.org jest używany ponownie przepływ po naprawieniu błędu w jednym z zadań w tle, które wykorzystują wykaz.
 
@@ -196,12 +202,12 @@ autorów                 | ciąg                     | nie       |
 utworzony                 | ciąg                     | nie       | Sygnatura czasowa pierwszego utworzenia pakietu. Właściwość rezerwowa: `published` .
 dependencyGroups        | Tablica obiektów           | nie       | Zależności pakietu pogrupowane według platformy docelowej ([ten sam format, w którym znajduje się zasób metadanych pakietu](registration-base-url-resource.md#package-dependency-group))
 Amortyzacja             | object                     | nie       | Zaniechano skojarzone z pakietem ([ten sam format, w którym znajduje się zasób metadanych pakietu](registration-base-url-resource.md#package-deprecation))
-description             | ciąg                     | nie       |
+description (opis)             | ciąg                     | nie       |
 iconUrl                 | ciąg                     | nie       |
-isPrerelease            | wartość logiczna                    | nie       | Czy wersja pakietu jest w wersji wstępnej. Można wykryć z programu `version` .
+isPrerelease            | boolean                    | nie       | Czy wersja pakietu jest w wersji wstępnej. Można wykryć z programu `version` .
 language                | ciąg                     | nie       |
 licenseUrl              | ciąg                     | nie       |
-wymienione                  | wartość logiczna                    | nie       | Czy pakiet znajduje się na liście
+wymienione                  | boolean                    | nie       | Czy pakiet znajduje się na liście
 minClientVersion        | ciąg                     | nie       |
 packageHash             | ciąg                     | tak      | Skrót pakietu, kodowanie przy użyciu [standardowej bazowej 64](https://tools.ietf.org/html/rfc4648#section-4)
 packageHashAlgorithm    | ciąg                     | tak      |
@@ -209,8 +215,8 @@ packageSize             | liczba całkowita                    | tak      | Rozm
 packageTypes            | Tablica obiektów           | nie       | Typy pakietów określone przez autora.
 projectUrl              | ciąg                     | nie       |
 releaseNotes            | ciąg                     | nie       |
-requireLicenseAgreement | wartość logiczna                    | nie       | Przyjmij, `false` Jeśli wykluczone
-summary                 | ciąg                     | nie       |
+requireLicenseAgreement | boolean                    | nie       | Przyjmij, `false` Jeśli wykluczone
+Podsumowanie                 | ciąg                     | nie       |
 tags                    | tablica ciągów           | nie       |
 tytuł                   | ciąg                     | nie       |
 verbatimVersion         | ciąg                     | nie       | Ciąg wersji, który został pierwotnie odnaleziony w. nuspec
@@ -226,7 +232,7 @@ Właściwość Package `version` jest pełnym ciągiem wersji po normalizacji. O
 Nazwa      | Typ    | Wymagane | Uwagi
 --------- | ------- | -------- | -----
 name      | ciąg  | tak      | Nazwa typu pakietu.
-version    | ciąg  | nie       | Wersja typu pakietu. Tylko wtedy, gdy autor jawnie określił wersję w nuspec.
+Wersja    | ciąg  | nie       | Wersja typu pakietu. Tylko wtedy, gdy autor jawnie określił wersję w nuspec.
 
 `published`Sygnatura czasowa to godzina, o której pakiet był ostatnio wyświetlany.
 
@@ -235,7 +241,9 @@ version    | ciąg  | nie       | Wersja typu pakietu. Tylko wtedy, gdy autor ja
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 
-Pobierzhttps://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
+```
+GET https://api.nuget.org/v3/catalog0/data/2015.02.01.11.18.40/windowsazure.storage.1.0.0.json
+```
 
 #### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -256,7 +264,9 @@ Elementy katalogu usuwania pakietów nie mają dodatkowych właściwości opróc
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 
-Pobierzhttps://api.nuget.org/v3/catalog0/data/2017.11.02.00.40.00/netstandard1.4_lib.1.0.0-test.json
+```
+GET https://api.nuget.org/v3/catalog0/data/2017.11.02.00.40.00/netstandard1.4_lib.1.0.0-test.json
+```
 
 #### <a name="sample-response"></a>Przykładowa odpowiedź
 

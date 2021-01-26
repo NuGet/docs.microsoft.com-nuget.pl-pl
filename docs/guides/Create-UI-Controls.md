@@ -1,16 +1,16 @@
 ---
 title: Jak spakować formanty interfejsu użytkownika za pomocą narzędzia NuGet
 description: Jak utworzyć pakiety NuGet, które zawierają kontrolki platformy UWP lub WPF, w tym niezbędne metadane i pliki pomocnicze dla projektantów programów Visual Studio i Blend.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 05/23/2018
 ms.topic: tutorial
-ms.openlocfilehash: 17062d83349fe1b8cd28e57dd888686a226ac9cb
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 317937b4d9d773d74384b8ebfcd2146062236ac1
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93238026"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774326"
 ---
 # <a name="creating-ui-controls-as-nuget-packages"></a>Tworzenie kontrolek interfejsu użytkownika jako pakietów NuGet
 
@@ -36,10 +36,12 @@ Alternatywnie Edytuj plik projektu, aby dodać `<GenerateLibraryLayout>true</Gen
 
 Aby formant XAML pojawił się w przyborniku projektanta XAML w programie Visual Studio i w okienku zasoby programu Blend, Utwórz `VisualStudioToolsManifest.xml` plik w `tools` folderze głównym folderu projektu pakietu. Ten plik nie jest wymagany, Jeśli kontrolka nie jest potrzebna w okienku Przybornik lub składniki.
 
-    \build
-    \lib
-    \tools
-        VisualStudioToolsManifest.xml
+```
+\build
+\lib
+\tools
+    VisualStudioToolsManifest.xml
+```
 
 Struktura pliku jest następująca:
 
@@ -59,11 +61,11 @@ Struktura pliku jest następująca:
 
 gdzie:
 
-- *your_package_file* : nazwa pliku kontrolnego, na przykład `ManagedPackage.winmd` ("ManagedPackage", to arbitralna Nazwa użyta dla tego przykładu i nie ma innego znaczenia).
-- *vs_category* : etykieta grupy, w której formant powinien pojawić się w przyborniku projektanta programu Visual Studio. `VSCategory`Jest to konieczne, aby formant pojawił się w przyborniku.
-*ui_framework* : Nazwa struktury, taka jak "WPF", należy pamiętać, że ten `UIFramework` atrybut jest wymagany w węzłach ToolboxItems w programie Visual Studio 16,7 Preview 3 lub nowszym, aby formant pojawił się w przyborniku.
-- *blend_category* : etykieta grupy, w której formant powinien pojawić się w okienku zasobów projektanta mieszania. `BlendCategory`Jest to konieczne, aby formant pojawił się w elementach zawartości.
-- *type_full_name_n* : w pełni kwalifikowana nazwa dla każdej kontrolki, łącznie z przestrzenią nazw, taką jak `ManagedPackage.MyCustomControl` . Należy zauważyć, że format kropki jest używany zarówno dla typów zarządzanych, jak i natywnych.
+- *your_package_file*: nazwa pliku kontrolnego, na przykład `ManagedPackage.winmd` ("ManagedPackage", to arbitralna Nazwa użyta dla tego przykładu i nie ma innego znaczenia).
+- *vs_category*: etykieta grupy, w której formant powinien pojawić się w przyborniku projektanta programu Visual Studio. `VSCategory`Jest to konieczne, aby formant pojawił się w przyborniku.
+*ui_framework*: Nazwa struktury, taka jak "WPF", należy pamiętać, że ten `UIFramework` atrybut jest wymagany w węzłach ToolboxItems w programie Visual Studio 16,7 Preview 3 lub nowszym, aby formant pojawił się w przyborniku.
+- *blend_category*: etykieta grupy, w której formant powinien pojawić się w okienku zasobów projektanta mieszania. `BlendCategory`Jest to konieczne, aby formant pojawił się w elementach zawartości.
+- *type_full_name_n*: w pełni kwalifikowana nazwa dla każdej kontrolki, łącznie z przestrzenią nazw, taką jak `ManagedPackage.MyCustomControl` . Należy zauważyć, że format kropki jest używany zarówno dla typów zarządzanych, jak i natywnych.
 
 W bardziej zaawansowanych scenariuszach można także uwzględnić wiele `<File>` elementów w obrębie, `<FileList>` gdy jeden pakiet zawiera wiele zestawów kontrolek. Możesz również mieć wiele `<ToolboxItems>` węzłów w obrębie jednej, `<File>` Jeśli chcesz zorganizować kontrolki w osobnych kategoriach.
 
@@ -109,52 +111,59 @@ Pakiety platformy UWP mają TargetPlatformVersion (TPV) i element targetplatform
 
 Załóżmy na przykład, że ustawiono TPMinV dla pakietu formantów w systemie Windows 10 w wersji rocznicowej (10,0; Kompilacja 14393), aby upewnić się, że pakiet jest używany tylko przez projekty platformy UWP zgodne z tym dolną granicą. Aby zezwolić na korzystanie z pakietu przez projekty platformy UWP, należy spakować kontrolki następującymi nazwami folderów:
 
-    \lib\uap10.0.14393\*
-    \ref\uap10.0.14393\*
+```
+\lib\uap10.0.14393\*
+\ref\uap10.0.14393\*
+```
 
 Pakiet NuGet automatycznie sprawdzi TPMinV pakietu, a instalacja nie powiedzie się, jeśli jest starsza niż Windows 10 rocznic Edition (10,0; Kompilacja 14393)
 
 W przypadku WPF Załóżmy, że chcesz, aby pakiet formantów WPF był używany przez projekty ukierunkowane na .NET Framework v w wersji 4.6.1 lub wyższej. Aby wymusić to, należy spakować kontrolki o następujących nazwach folderów:
 
-    \lib\net461\*
-    \ref\net461\*
+```
+\lib\net461\*
+\ref\net461\*
+```
 
 ## <a name="add-design-time-support"></a>Dodawanie obsługi czasu projektowania
 
 Aby skonfigurować, gdzie są wyświetlane właściwości kontrolki w Inspektorze właściwości, Dodaj niestandardowe moduły definiowania układu itp., umieść `design.dll` plik wewnątrz `lib\uap10.0.14393\Design` folderu odpowiednio do platformy docelowej. Ponadto, aby upewnić się, że **[Edytuj szablon > edytowanie funkcji kopiowania](/windows/uwp/controls-and-patterns/xaml-styles#modify-the-default-system-styles)** , należy uwzględnić `Generic.xaml` i wszystkie słowniki zasobów, które Scala w `<your_assembly_name>\Themes` folderze (ponownie przy użyciu rzeczywistej nazwy zestawu). (Ten plik nie ma wpływu na zachowanie w czasie wykonywania kontrolki). Struktura folderów będzie wyglądać następująco:
 
-    \lib
-      \uap10.0.14393
-        \Design
-          \MyControl.design.dll
-        \your_assembly_name
-          \Themes
-            Generic.xaml
-
+```
+\lib
+  \uap10.0.14393
+    \Design
+      \MyControl.design.dll
+    \your_assembly_name
+      \Themes
+        Generic.xaml
+```
 
 W przypadku platformy WPF kontynuując przykład, w którym chcesz, aby pakiet formantów WPF był używany przez projekty przeznaczone dla .NET Framework v 4.6.1 lub wyższych:
 
-    \lib
-      \net461
-        \Design
-          \MyControl.design.dll
-        \your_assembly_name
-          \Themes
-            Generic.xaml
+```
+\lib
+  \net461
+    \Design
+      \MyControl.design.dll
+    \your_assembly_name
+      \Themes
+        Generic.xaml
+```
 
 > [!Note]
 > Domyślnie właściwości kontrolki będą wyświetlane w kategorii Różne w Inspektorze właściwości.
 
 ## <a name="use-strings-and-resources"></a>Korzystanie z ciągów i zasobów
 
-W pakiecie można osadzić zasoby ciągów ( `.resw` ), które mogą być używane przez formant lub projekt zużywający platformy UWP, ustawić właściwość **Akcja kompilacji** `.resw` pliku na **PRIResource** .
+W pakiecie można osadzić zasoby ciągów ( `.resw` ), które mogą być używane przez formant lub projekt zużywający platformy UWP, ustawić właściwość **Akcja kompilacji** `.resw` pliku na **PRIResource**.
 
 Aby zapoznać się z przykładem, zobacz [MyCustomControl.cs](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/ManagedPackage/MyCustomControl.cs) w przykładzie ExtensionSDKasNuGetPackage.
 
 > [!Note]
 > Ma to zastosowanie tylko do kontrolek platformy UWP.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Tworzenie pakietów platformy UWP](create-uwp-packages.md)
 - [Przykład ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage)

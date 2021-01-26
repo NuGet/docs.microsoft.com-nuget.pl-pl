@@ -1,90 +1,92 @@
 ---
-title: Przewodnik po przywróceniu pakietu NuGet z kompilacją Team Foundation
-description: Przewodnik jak NuGet przywracanie pakietu z Team Foundation Build (zarówno TFS i Visual Studio Team Services).
-author: karann-msft
-ms.author: karann
+title: Przewodnik po przywracaniu pakietów NuGet za pomocą programu Team Foundation Build
+description: Przewodnik dotyczący sposobu przywracania pakietu NuGet przy użyciu programu Team Foundation Build (zarówno TFS, jak i Visual Studio Team Services).
+author: JonDouglas
+ms.author: jodou
 ms.date: 01/09/2017
 ms.topic: conceptual
-ms.openlocfilehash: a86a58f8afb4b0f1affeddd47d6c5606fb465757
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 8b993106d439dc137fbe040b51fda373539de81a
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "73611002"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774994"
 ---
-# <a name="setting-up-package-restore-with-team-foundation-build"></a>Konfigurowanie przywracania pakietu za pomocą team foundation build
+# <a name="setting-up-package-restore-with-team-foundation-build"></a>Konfigurowanie przywracania pakietu przy użyciu Team Foundation Build
 
-Ten artykuł zawiera szczegółowe wskazówki dotyczące przywracania pakietów w ramach [team services kompilacji](/vsts/build-release/index) zarówno dla Git i Team Services kontroli wersji.
+Ten artykuł zawiera szczegółowy przewodnik dotyczący sposobu przywracania pakietów w ramach [kompilacji usługi Team Services](/vsts/build-release/index) zarówno dla kontroli wersji usług git, jak i Team Services.
 
-Chociaż ten instruktaż jest specyficzny dla scenariusza korzystania z programu Visual Studio Team Services, pojęcia dotyczą również innych systemów kontroli wersji i kompilacji.
+Chociaż ten przewodnik jest specyficzny dla scenariusza używania Visual Studio Team Services, pojęcia dotyczą także innych systemów kontroli wersji i kompilacji.
 
 Dotyczy:
 
-- Niestandardowe projekty MSBuild uruchomione w dowolnej wersji usługi TFS
-- Team Foundation Server 2012 lub wcześniejszy
-- Szablony procesów kompilacji niestandardowych fundacji zespołu zmigrowane do usługi TFS 2013 lub nowszej
-- Tworzenie szablonów procesów z usuniętą funkcją przywracania nuget
+- Niestandardowe projekty programu MSBuild działające w dowolnej wersji programu TFS
+- Team Foundation Server 2012 lub starszy
+- Niestandardowe szablony procesu programu Team Foundation Build migrowane do programu TFS 2013 lub nowszego
+- Kompiluj szablony procesów z usuniętymi funkcjami przywracania NuGet
 
-Jeśli używasz programu Visual Studio Team Services lub Team Foundation Server 2013 z jego szablonów procesu kompilacji, automatyczne przywracanie pakietu odbywa się w ramach procesu kompilacji.
+Jeśli używasz Visual Studio Team Services lub Team Foundation Server 2013 z szablonami procesu kompilacji, automatyczne przywracanie pakietów odbywa się w ramach procesu kompilacji.
 
 ## <a name="the-general-approach"></a>Ogólne podejście
 
-Zaletą korzystania z NuGet jest to, że można go używać, aby uniknąć sprawdzania w plikach binarnych do systemu kontroli wersji.
+Zaletą korzystania z programu NuGet jest możliwość użycia go w celu uniknięcia ewidencjonowania plików binarnych w systemie kontroli wersji.
 
-Jest to szczególnie interesujące, jeśli używasz rozproszonego systemu [kontroli wersji,](https://en.wikipedia.org/wiki/Distributed_revision_control) takiego jak git, ponieważ deweloperzy muszą sklonować całe repozytorium, w tym pełną historię, zanim będą mogli rozpocząć pracę lokalnie. Zaewidencjonowanie w plikach binarnych może spowodować znaczne nadęcie repozytorium, ponieważ pliki binarne są zazwyczaj przechowywane bez kompresji różnicowej.
+Jest to szczególnie przydatne, jeśli używasz [rozproszonego systemu kontroli wersji](https://en.wikipedia.org/wiki/Distributed_revision_control) , takiego jak Git, ponieważ deweloperzy muszą sklonować całe repozytorium, w tym pełną historię, zanim będą mogli rozpocząć pracę lokalnie. Ewidencjonowanie plików binarnych może spowodować znaczące przeładowanie repozytorium, ponieważ pliki binarne są zwykle przechowywane bez kompresji różnicowej.
 
-NuGet obsługuje [przywracanie pakietów](../consume-packages/package-restore.md) jako część kompilacji przez długi czas. Poprzednia implementacja miała problem z kurczakiem i jajem dla pakietów, które chcesz rozszerzyć proces kompilacji, ponieważ NuGet przywrócono pakiety podczas tworzenia projektu. Jednak MSBuild nie zezwala na rozszerzanie kompilacji podczas kompilacji; można argumentować, że jest to problem w MSBuild, ale chciałbym twierdzić, że jest to nieodłączny problem. W zależności od tego, który aspekt należy rozszerzyć może być za późno, aby zarejestrować się do czasu, gdy pakiet zostanie przywrócony.
+Pakiet NuGet obsługuje teraz [przywracanie pakietów](../consume-packages/package-restore.md) w ramach kompilacji przez długi czas. W poprzedniej implementacji wystąpił problem z kurczakami i jajami dla pakietów, które chcą zwiększyć proces kompilacji, ponieważ pakiety NuGet zostały przywrócone podczas kompilowania projektu. Jednak MSBuild nie zezwala na rozszerzanie kompilacji podczas kompilacji; może to spowodować, że ten problem wystąpił w programie MSBuild, ale może to być problem. W zależności od tego, który aspekt należy zwiększyć, może być zbyt późny do zarejestrowania przez czas przywrócenia pakietu.
 
-Lekarstwem na ten problem jest upewnienie się, że pakiety są przywracane jako pierwszy krok w procesie kompilacji:
+Odjęcie tego problemu polega na tym, że pakiety są przywracane jako pierwszy krok w procesie kompilacji:
 
 ```cli
 nuget restore path\to\solution.sln
 ```
 
-Gdy proces kompilacji przywraca pakiety przed utworzeniem kodu, nie `.targets` trzeba zaewidencjonować plików
+Gdy proces kompilacji przywraca pakiety przed skompilowaniem kodu, nie musisz ewidencjonować `.targets` plików
 
 > [!Note]
-> Pakiety muszą być autorstwa, aby umożliwić ładowanie w programie Visual Studio. W przeciwnym razie nadal można `.targets` zaewidencjonować pliki, aby inni deweloperzy mogli po prostu otworzyć rozwiązanie bez konieczności przywracania pakietów.
+> Pakiety muszą zostać utworzone w celu umożliwienia ładowania w programie Visual Studio. W przeciwnym razie można nadal chcieć zaewidencjonować `.targets` pliki, aby inni deweloperzy mogli po prostu otworzyć rozwiązanie bez konieczności wcześniejszego przywrócenia pakietów.
 
-Poniższy projekt demonstracyjny pokazuje, jak skonfigurować `packages` kompilację `.targets` w taki sposób, aby foldery i pliki nie musiały być zaewidencjonowane. Pokazuje również, jak skonfigurować zautomatyzowaną kompilację w usłudze Team Foundation dla tego przykładowego projektu.
+W poniższym projekcie demonstracyjnym pokazano, jak skonfigurować kompilację w taki sposób, aby `packages` `.targets` nie trzeba było ewidencjonować folderów i plików. Przedstawiono w nim również sposób konfigurowania zautomatyzowanej kompilacji na Team Foundation Service dla tego przykładowego projektu.
 
 ## <a name="repository-structure"></a>Struktura repozytorium
 
-Nasz projekt demonstracyjny to proste narzędzie wiersza polecenia, które używa argumentu wiersza polecenia do wykonywania zapytań bing. Jest przeznaczony dla programu .NET Framework 4 i używa wielu [pakietów BCL](https://www.nuget.org/profiles/dotnetframework/) ([Microsoft.Net.Http](https://www.nuget.org/packages/Microsoft.Net.Http), [Microsoft.Bcl](https://www.nuget.org/packages/Microsoft.Bcl), [Microsoft.Bcl.Async](https://www.nuget.org/packages/Microsoft.Bcl.Async)i [Microsoft.Bcl.Build](https://www.nuget.org/packages/Microsoft.Bcl.Build)).
+Nasze projekty demonstracyjne to proste narzędzie wiersza polecenia, które używa argumentu wiersza polecenia do wysyłania zapytań do usługi Bing. Jest ona przeznaczona dla .NET Framework 4 i używa wielu [pakietów BCL](https://www.nuget.org/profiles/dotnetframework/) ([Microsoft.NET. http](https://www.nuget.org/packages/Microsoft.Net.Http), [Microsoft. BCL](https://www.nuget.org/packages/Microsoft.Bcl), [Microsoft. BCL. Async](https://www.nuget.org/packages/Microsoft.Bcl.Async)i [Microsoft. BCL. Build](https://www.nuget.org/packages/Microsoft.Bcl.Build)).
 
 Struktura repozytorium wygląda następująco:
 
-    <Project>
-        │   .gitignore
-        │   .tfignore
-        │   build.proj
-        │
-        ├───src
-        │   │   BingSearcher.sln
-        │   │
-        │   └───BingSearcher
-        │       │   App.config
-        │       │   BingSearcher.csproj
-        │       │   packages.config
-        │       │   Program.cs
-        │       │
-        │       └───Properties
-        │               AssemblyInfo.cs
-        │
-        └───tools
-            └───NuGet
-                    nuget.exe
+```
+<Project>
+    │   .gitignore
+    │   .tfignore
+    │   build.proj
+    │
+    ├───src
+    │   │   BingSearcher.sln
+    │   │
+    │   └───BingSearcher
+    │       │   App.config
+    │       │   BingSearcher.csproj
+    │       │   packages.config
+    │       │   Program.cs
+    │       │
+    │       └───Properties
+    │               AssemblyInfo.cs
+    │
+    └───tools
+        └───NuGet
+                nuget.exe
+```
 
-Widać, że nie sprawdziliśmy `packages` ani żadnych `.targets` plików.
+Można zobaczyć, że nie zaznaczono `packages` folderu ani `.targets` plików.
 
-Mamy jednak sprawdzone w `nuget.exe` jak to jest potrzebne podczas kompilacji. Zgodnie z powszechnie używanymi konwencjami zaewidencjonowaliśmy go w folderze udostępnionym. `tools`
+Mamy jednak zaewidencjonować, że jest to `nuget.exe` konieczne podczas kompilacji. Zgodnie z powszechnie używanymi konwencjami została sprawdzona w folderze udostępnionym `tools` .
 
-Kod źródłowy znajduje `src` się w folderze. Chociaż nasze demo używa tylko jednego rozwiązania, można łatwo sobie wyobrazić, że ten folder zawiera więcej niż jedno rozwiązanie.
+Kod źródłowy znajduje się w `src` folderze. Mimo że w tej wersji demonstracyjnej używane jest tylko jedno rozwiązanie, można w łatwy sposób przypuśćć, że ten folder zawiera więcej niż jedno rozwiązanie.
 
 ### <a name="ignore-files"></a>Pliki ignorowanych
 
 > [!Note]
-> Obecnie istnieje [znany błąd w kliencie NuGet,](https://nuget.codeplex.com/workitem/4072) który powoduje, że klient nadal dodać `packages` folder do kontroli wersji. Obejście jest wyłączenie integracji kontroli źródła. Aby to zrobić, potrzebujesz `Nuget.Config ` pliku w `.nuget` folderze, który jest równoległy do rozwiązania. Jeśli ten folder jeszcze nie istnieje, należy go utworzyć. W [`Nuget.Config`](../consume-packages/configuring-nuget-behavior.md)obszarze dodaj następującą zawartość:
+> [W kliencie NuGet jest obecnie znana usterka](https://nuget.codeplex.com/workitem/4072) , która powoduje, że klient nadal dodaje `packages` folder do kontroli wersji. Obejście polega na wyłączeniu integracji kontroli źródła. W tym celu potrzebny `Nuget.Config ` jest plik w  `.nuget` folderze, który jest równoległy do Twojego rozwiązania. Jeśli ten folder jeszcze nie istnieje, należy go utworzyć. W programie [`Nuget.Config`](../consume-packages/configuring-nuget-behavior.md) Dodaj następującą zawartość:
 
 ```xml
 <configuration>
@@ -94,49 +96,55 @@ Kod źródłowy znajduje `src` się w folderze. Chociaż nasze demo używa tylko
 </configuration>
 ```
 
-Aby przekazać do kontroli wersji, że nie zamierzamy zaewidencjonować **foldery pakietów,** `.gitignore`dodaliśmy również ignoruj`.tfignore`pliki zarówno dla git ( ), jak również kontroli wersji TF ( ). Pliki te opisują wzorce plików, których nie chcesz zaewidencjonować.
+Aby komunikować się z kontrolą wersji, której nie chcemy zaewidencjonować folderów **pakietów** , dodaliśmy również ignorowanie plików zarówno dla narzędzia Git ( `.gitignore` ), jak i kontroli wersji TF ( `.tfignore` ). Te pliki opisują wzorce plików, których nie chcesz zaewidencjonować.
 
-Plik `.gitignore` wygląda następująco:
+`.gitignore`Plik wygląda następująco:
 
-    syntax: glob
-    *.user
-    *.suo
-    bin
-    obj
-    packages
-    *.nupkg
-    project.lock.json
-    project.assets.json
+```
+syntax: glob
+*.user
+*.suo
+bin
+obj
+packages
+*.nupkg
+project.lock.json
+project.assets.json
+```
 
-Plik `.gitignore` jest [dość potężny](https://www.kernel.org/pub/software/scm/git/docs/gitignore.html). Na przykład, jeśli zazwyczaj nie chcesz zaewidencjonować zawartości `packages` folderu, ale chcesz `.targets` przejść z poprzednimi wskazówkami dotyczącymi zaewidencjonowania plików, możesz mieć następującą regułę:
+`.gitignore`Plik jest [całkiem wydajny](https://www.kernel.org/pub/software/scm/git/docs/gitignore.html). Na przykład, jeśli chcesz zwykle nie zaewidencjonować zawartości `packages` folderu, ale chcesz przejść do poprzedniej wskazówki dotyczącej sprawdzania `.targets` plików, można użyć następującej reguły:
 
-    packages
-    !packages/**/*.targets
+```
+packages
+!packages/**/*.targets
+```
 
-Spowoduje to `packages` wykluczenie wszystkich folderów, ale `.targets` spowoduje ponowne uwzględnić wszystkie zawarte pliki. Nawiasem mówiąc, można znaleźć `.gitignore` szablon dla plików, który jest specjalnie dostosowany do potrzeb deweloperów programu Visual Studio [tutaj](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
+Spowoduje to wykluczenie wszystkich `packages` folderów, ale spowoduje ponowne uwzględnienie wszystkich zawartych `.targets` plików. W ten sposób można znaleźć szablon `.gitignore` plików, które są specjalnie dostosowane do potrzeb deweloperów programu Visual Studio. [](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)
 
-Kontrola wersji TF obsługuje bardzo podobny mechanizm za pośrednictwem pliku [.tfignore.](/vsts/tfvc/add-files-server#customize-which-files-are-ignored-by-version-control) Składnia jest praktycznie taka sama:
+System kontroli wersji TF obsługuje bardzo podobny mechanizm za pośrednictwem pliku [. tfignore](/vsts/tfvc/add-files-server#customize-which-files-are-ignored-by-version-control) . Składnia jest praktycznie taka sama:
 
-    *.user
-    *.suo
-    bin
-    obj
-    packages
-    *.nupkg
-    project.lock.json
-    project.assets.json
+```
+*.user
+*.suo
+bin
+obj
+packages
+*.nupkg
+project.lock.json
+project.assets.json
+```
 
-## <a name="buildproj"></a>build.proj
+## <a name="buildproj"></a>Kompilacja. proj
 
-W przypadku naszego demo proces budowania jest dość prosty. Utworzymy projekt MSBuild, który tworzy wszystkie rozwiązania, upewniając się, że pakiety zostaną przywrócone przed utworzeniem rozwiązań.
+W naszej wersji demonstracyjnej proces kompilacji jest dość prosty. Utworzymy projekt MSBuild, który kompiluje wszystkie rozwiązania, a jednocześnie upewnia się, że pakiety są przywracane przed skompilowaniem rozwiązań.
 
-Projekt ten będzie miał `Clean`trzy `Build` `Rebuild` konwencjonalne cele, `RestorePackages`a także nowy cel.
+Ten projekt będzie miał trzy konwencjonalne cele `Clean` , `Build` a także `Rebuild` nowy element docelowy `RestorePackages` .
 
-- Zarówno `Build` `Rebuild` i cele `RestorePackages`zależą od . Dzięki temu można zarówno `Build` uruchomić `Rebuild` i polegać na pakiety są przywracane.
-- `Clean`i `Build` `Rebuild` wywołać odpowiedni obiekt docelowy MSBuild we wszystkich plikach rozwiązań.
-- Obiekt `RestorePackages` docelowy `nuget.exe` wywołuje dla każdego pliku rozwiązania. Jest to realizowane przy użyciu [funkcji wsadowego MSBuild.](/visualstudio/msbuild/msbuild-batching)
+- `Build`Elementy i `Rebuild` są zależne od `RestorePackages` . Dzięki temu można uruchamiać `Build` i `Rebuild` korzystać z pakietów, które są przywracane.
+- `Clean``Build`i `Rebuild` Wywołaj odpowiednie obiekty docelowe programu MSBuild we wszystkich plikach rozwiązania.
+- `RestorePackages`Obiekt docelowy wywołuje `nuget.exe` każdy plik rozwiązania. Jest to realizowane przy użyciu [funkcji wsadowych programu MSBuild](/visualstudio/msbuild/msbuild-batching).
 
-Wynik wygląda następująco:
+Wynik będzie wyglądać następująco:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -180,18 +188,18 @@ Wynik wygląda następująco:
 
 ## <a name="configuring-team-build"></a>Konfigurowanie kompilacji zespołu
 
-Team Build oferuje różne szablony procesów. W tej demonstracji używamy usługi Team Foundation Service. Instalacje lokalne TFS będą jednak bardzo podobne.
+Kompilacja zespołowa oferuje różne szablony procesów. Na potrzeby tej demonstracji używamy Team Foundation Service. Instalacje lokalne programu TFS będą bardzo podobne.
 
-Git i TF Version Control mają różne szablony team build, więc następujące kroki będą się różnić w zależności od używanego systemu kontroli wersji. W obu przypadkach wszystko, czego potrzebujesz, to wybranie build.proj jako projektu, który chcesz utworzyć.
+System kontroli wersji Git i TF ma inne szablony kompilacji zespołu, więc poniższe kroki będą się różnić w zależności od używanego systemu kontroli wersji. W obu przypadkach wystarczy wybrać kompilację Build. proj jako projekt, który chcesz skompilować.
 
-Najpierw przyjrzyjmy się szablonowi procesu dla git. W szablonie opartym na git `Solution to build`kompilacja jest wybierana za pośrednictwem właściwości:
+Najpierw przyjrzyjmy się szablonowi procesu do usługi git. W szablonie opartym na git kompilacja jest wybierana za pośrednictwem właściwości `Solution to build` :
 
-![Proces budowania dla git](media/PackageRestoreTeamBuildGit.png)
+![Proces kompilacji dla narzędzia Git](media/PackageRestoreTeamBuildGit.png)
 
-Obiekt znajduje się w repozytorium. Ponieważ `build.proj` nasz jest w korzeniu, po prostu użyliśmy `build.proj`. Jeśli umieścisz plik kompilacji `tools`w folderze `tools\build.proj`o nazwie , wartość będzie .
+Należy pamiętać, że ta właściwość jest lokalizacją w repozytorium. Ponieważ nasz `build.proj` element znajduje się w katalogu głównym, został po prostu użyty `build.proj` . Jeśli plik kompilacji zostanie umieszczony w folderze o nazwie `tools` , wartość będzie równa `tools\build.proj` .
 
-W szablonie kontroli wersji TF projekt `Projects`jest wybierany za pośrednictwem właściwości:
+W szablonie kontroli wersji TF projekt jest wybierany za pośrednictwem właściwości `Projects` :
 
-![Proces budowania dla TFVC](media/PackageRestoreTeamBuildTFVC.png)
+![Proces kompilacji dla TFVC](media/PackageRestoreTeamBuildTFVC.png)
 
-W przeciwieństwie do szablonu opartego na git, kontrola wersji TF obsługuje selektory (przycisk po prawej stronie z trzema kropkami). Tak więc, aby uniknąć błędów pisania, zalecamy użycie ich do wybrania projektu.
+W przeciwieństwie do szablonu opartego na usłudze git Kontrola wersji TF obsługuje selektory (przycisk po prawej stronie z trzema kropkami). Aby uniknąć błędów wpisywania, zalecamy użycie ich do wybrania projektu.

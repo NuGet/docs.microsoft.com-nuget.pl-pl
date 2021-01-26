@@ -1,16 +1,16 @@
 ---
 title: Rozpoznawanie zależności pakietu NuGet
 description: Szczegółowe informacje na temat procesu, za pomocą którego zależności pakietu NuGet są rozwiązywane i instalowane zarówno w programie NuGet 2. x, jak i NuGet 3. x +.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: 4b95251e4b055523a9533b4125589b2650be932d
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 0ef309d95c6ef5437765c02791da6dab13794678
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237747"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775272"
 ---
 # <a name="how-nuget-resolves-package-dependencies"></a>Jak narzędzie NuGet rozpoznaje zależności pakietów
 
@@ -22,7 +22,7 @@ Gdy wiele pakietów ma tę samą zależność, ten sam identyfikator pakietu mo�
 
 ## <a name="dependency-resolution-with-packagereference"></a>Rozpoznawanie zależności z PackageReference
 
-W przypadku instalowania pakietów do projektów przy użyciu formatu PackageReference, NuGet dodaje odwołania do wykresu prostego pakietu w odpowiednim pliku i rozwiązuje konflikty przed czasem. Ten proces jest nazywany *przywracaniem przechodnim* . Ponowne instalowanie lub przywracanie pakietów jest procesem pobierania pakietów wymienionych na grafie, co powoduje szybsze i bardziej przewidywalne kompilacje. Możesz również korzystać z wersji zmiennoprzecinkowych, na przykład 2,8. \* , aby uniknąć modyfikacji projektu w celu korzystania z najnowszej wersji pakietu.
+W przypadku instalowania pakietów do projektów przy użyciu formatu PackageReference, NuGet dodaje odwołania do wykresu prostego pakietu w odpowiednim pliku i rozwiązuje konflikty przed czasem. Ten proces jest nazywany *przywracaniem przechodnim*. Ponowne instalowanie lub przywracanie pakietów jest procesem pobierania pakietów wymienionych na grafie, co powoduje szybsze i bardziej przewidywalne kompilacje. Możesz również korzystać z wersji zmiennoprzecinkowych, na przykład 2,8. \* , aby uniknąć modyfikacji projektu w celu korzystania z najnowszej wersji pakietu.
 
 Gdy proces przywracania NuGet zostanie uruchomiony przed kompilacją, rozpoznaje zależności jako pierwsze w pamięci, a następnie zapisuje wykres wyjściowy do pliku o nazwie `project.assets.json` . Zapisuje także rozwiązane zależności do pliku blokady o nazwie `packages.lock.json` , jeśli [jest włączona funkcja blokowania plików](../consume-packages/package-references-in-project-files.md#locking-dependencies).
 Plik zasobów znajduje się w lokalizacji `MSBuildProjectExtensionsPath` , która domyślnie jest folderem "obj" projektu. Program MSBuild odczytuje następnie ten plik i tłumaczy go na zestaw folderów, w których można znaleźć potencjalne odwołania, a następnie dodaje je do drzewa projektu w pamięci.

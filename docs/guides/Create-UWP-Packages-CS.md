@@ -1,16 +1,16 @@
 ---
-title: Utwórz pakiety NuGet dla platforma uniwersalna systemu Windows
+title: Tworzenie pakietów NuGet dla platformy platformy UWP (C#)
 description: Kompleksowy przewodnik tworzenia pakietów NuGet przy użyciu składnika środowisko wykonawcze systemu Windows dla platforma uniwersalna systemu Windows w języku C#.
 author: rrelyea
 ms.author: rrelyea
 ms.date: 02/28/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6f8037f439d627af158b6d5b7746a633b053e514
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 22df2cd6dc374ba265c79a019747191e797b774c
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93238013"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774287"
 ---
 # <a name="create-uwp-packages-c"></a>Tworzenie pakietów platformy UWP (C#)
 
@@ -26,19 +26,19 @@ W tym instruktażu utworzysz pakiet NuGet ze składnikiem platformy UWP języka 
 
 ## <a name="create-a-uwp-windows-runtime-component"></a>Utwórz składnik środowisko wykonawcze systemu Windows platformy UWP
 
-1. W programie Visual Studio wybierz kolejno pozycje **plik > nowy > projekt** , wyszukaj ciąg "platformy UWP c#", wybierz szablon **składnik środowisko wykonawcze systemu Windows (uniwersalny system Windows)** , kliknij przycisk Dalej, Zmień nazwę na ImageEnhancer, a następnie kliknij przycisk Utwórz. Po wyświetleniu monitu zaakceptuj wartości domyślne wersji docelowej i wersji minimalnej.
+1. W programie Visual Studio wybierz kolejno pozycje **plik > nowy > projekt**, wyszukaj ciąg "platformy UWP c#", wybierz szablon **składnik środowisko wykonawcze systemu Windows (uniwersalny system Windows)** , kliknij przycisk Dalej, Zmień nazwę na ImageEnhancer, a następnie kliknij przycisk Utwórz. Po wyświetleniu monitu zaakceptuj wartości domyślne wersji docelowej i wersji minimalnej.
 
     ![Tworzenie nowego projektu składnika środowisko wykonawcze systemu Windows platformy UWP](media/UWP-NewProject-CS.png)
 
-1. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz pozycję **dodaj > nowy element** , wybierz opcję **formant z szablonem** , Zmień nazwę na AwesomeImageControl.cs, a następnie kliknij przycisk **Dodaj** :
+1. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań, wybierz pozycję **dodaj > nowy element**, wybierz opcję **formant z szablonem**, Zmień nazwę na AwesomeImageControl.cs, a następnie kliknij przycisk **Dodaj**:
 
     ![Dodawanie nowego elementu formantu XAML z szablonem do projektu](media/UWP-NewXAMLControl-CS.png)
 
-1. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **właściwości.** Na stronie właściwości wybierz kartę **kompilacja** i Włącz **plik dokumentacji XML** :
+1. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **właściwości.** Na stronie właściwości wybierz kartę **kompilacja** i Włącz **plik dokumentacji XML**:
 
     ![Ustawienie Generuj pliki dokumentacji XML na tak](media/UWP-GenerateXMLDocFiles-CS.png)
 
-1. Kliknij teraz *rozwiązanie* prawym przyciskiem myszy, wybierz pozycję **kompilacja wsadowa** , a następnie sprawdź pięć pól kompilacji w oknie dialogowym, jak pokazano poniżej. Daje to pewność, że po wykonaniu kompilacji zostanie wygenerowany pełen zestaw artefaktów dla każdego systemu docelowego obsługiwanego przez system Windows.
+1. Kliknij teraz *rozwiązanie* prawym przyciskiem myszy, wybierz pozycję **kompilacja wsadowa**, a następnie sprawdź pięć pól kompilacji w oknie dialogowym, jak pokazano poniżej. Daje to pewność, że po wykonaniu kompilacji zostanie wygenerowany pełen zestaw artefaktów dla każdego systemu docelowego obsługiwanego przez system Windows.
 
     ![Kompilacja wsadowa](media/UWP-BatchBuild-CS.png)
 

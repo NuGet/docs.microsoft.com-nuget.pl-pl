@@ -5,12 +5,12 @@ author: dominofire
 ms.author: feaguila
 ms.date: 11/9/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f641c669cdb0cc979d698f6b219cbb4f2692a2e
-ms.sourcegitcommit: 323a107c345c7cb4e344a6e6d8de42c63c5188b7
+ms.openlocfilehash: 550971d77ed4b15129fdc58fef95e0cceda8d8d1
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98235753"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776169"
 ---
 # <a name="nuget-58-release-notes"></a>Informacje o wersji narzędzia NuGet 5,8
 
@@ -34,13 +34,13 @@ Pojazdy dystrybucji NuGet:
 
 * Wyświetl szczegóły luk w zabezpieczeniach pakietu w okienku szczegółów pakietu interfejsu użytkownika Menedżera pakietów — [#9850](https://github.com/NuGet/Home/issues/9850)
 
-* Sprawdź, czy podpisane pakiety NuGet z nowym [`dotnet nuget verify`](https://docs.microsoft.com/dotnet/core/tools/dotnet-nuget-verify) poleceniem [#8051](https://github.com/NuGet/Home/issues/8051)
+* Sprawdź, czy podpisane pakiety NuGet z nowym [`dotnet nuget verify`](/dotnet/core/tools/dotnet-nuget-verify) poleceniem [#8051](https://github.com/NuGet/Home/issues/8051)
 
-* [`dotnet add package`](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package#:~:text=dotnet%20add%20package%201%20Name%202%20Synopsis%203,when%20targeting%20a%20specific%20framework.%20...%206%20Examples) obsługuje `--prerelease` opcję dodania najnowszej wersji pakietu, w tym wersji wstępnej — [#4699](https://github.com/NuGet/Home/issues/4699)
+* [`dotnet add package`](/dotnet/core/tools/dotnet-add-package#:~:text=dotnet%20add%20package%201%20Name%202%20Synopsis%203,when%20targeting%20a%20specific%20framework.%20...%206%20Examples) obsługuje `--prerelease` opcję dodania najnowszej wersji pakietu, w tym wersji wstępnej — [#4699](https://github.com/NuGet/Home/issues/4699)
 
-* Wyszukaj pakiety w interfejsie wiersza [`nuget.exe search`](https://docs.microsoft.com/nuget/reference/cli-reference/cli-ref-search) polecenia z poleceniem [#9704](https://github.com/NuGet/Home/issues/9704)
+* Wyszukaj pakiety w interfejsie wiersza [`nuget.exe search`](../reference/cli-reference/cli-ref-search.md) polecenia z poleceniem [#9704](https://github.com/NuGet/Home/issues/9704)
 
-* [`dotnet list package`](https://docs.microsoft.com/dotnet/core/tools/dotnet-list-package) Opcja obsługuje `--verbosity` [#9600](https://github.com/NuGet/Home/issues/9600)
+* [`dotnet list package`](/dotnet/core/tools/dotnet-list-package) Opcja obsługuje `--verbosity` [#9600](https://github.com/NuGet/Home/issues/9600)
 
 * Włącz optymalizację funkcji Fast No-Op Restore dla projektów opartych na PackageReference w programie Visual Studio — [#9565](https://github.com/NuGet/Home/issues/9565)
 
@@ -155,4 +155,4 @@ Dziękujemy, że wszyscy Współautorzy, którzy pomogą Ci w udostępnieniu tej
 ## <a name="feedback-welcome"></a>Opinie — Zapraszamy!
 
 Twoja opinia jest dla nas ważna.  Jeśli występują problemy z tą wersją, zapoznaj się z naszymi problemami dotyczącymi usługi [GitHub](https://github.com/NuGet/Home/issues) i [społeczności deweloperów programu Visual Studio](https://developercommunity.visualstudio.com/) .  W przypadku nowych problemów w programie NuGet Zgłoś problem z usługą [GitHub](https://github.com/NuGet/Home/issues/new).
-Aby zapoznać się z ogólnymi problemami dotyczącymi środowiska NuGet, poinformuj nas o opcji " [Zgłoś problem](https://docs.microsoft.com/visualstudio/ide/how-to-report-a-problem-with-visual-studio) " znajdującej się w ulubionym środowisku IDE w obszarze **Pomoc > Zgłoś problem**.
+Aby zapoznać się z ogólnymi problemami dotyczącymi środowiska NuGet, poinformuj nas o opcji " [Zgłoś problem](/visualstudio/ide/how-to-report-a-problem-with-visual-studio) " znajdującej się w ulubionym środowisku IDE w obszarze **Pomoc > Zgłoś problem**.

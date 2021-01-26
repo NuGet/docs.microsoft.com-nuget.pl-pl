@@ -1,16 +1,16 @@
 ---
 title: Tworzenie i publikowanie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet
 description: Samouczek instruktażowy dotyczący tworzenia i publikowania pakietu NuGet przy użyciu interfejs wiersza polecenia platformy .NET Core, dotnet.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 05/24/2019
 ms.topic: quickstart
-ms.openlocfilehash: a67c8cd92304c6c4abcffbb79ddbe964664d08fb
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: cb63257c874fc4752f3b3d59db4be5996d5ab81d
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237487"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775762"
 ---
 # <a name="quickstart-create-and-publish-a-package-dotnet-cli"></a>Szybki Start: Tworzenie i publikowanie pakietu (interfejs wiersza polecenia dotnet)
 
@@ -124,7 +124,7 @@ Aby poznać więcej informacji o tym, że pakiet NuGet jest oferowany, wybierz p
 - [Pakiety wersji wstępnej](../create-packages/Prerelease-Packages.md)
 - [Obsługa wielu platform docelowych](../create-packages/multiple-target-frameworks-project-file.md)
 - [Przechowywanie wersji pakietów](../concepts/package-versioning.md)
-- [Dodawanie wyrażenia lub pliku licencji](../reference/msbuild-targets#packing-a-license-expression-or-a-license-file)
+- [Dodawanie wyrażenia lub pliku licencji](../reference/msbuild-targets.md#packing-a-license-expression-or-a-license-file)
 - [Tworzenie zlokalizowanych pakietów](../create-packages/creating-localized-packages.md)
 - [Tworzenie pakietów symboli](../create-packages/symbol-packages-snupkg.md)
 - [Podpisywanie pakietów](../create-packages/Sign-a-package.md)

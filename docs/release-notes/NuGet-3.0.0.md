@@ -1,57 +1,57 @@
 ---
-title: Informacje o wersji 3.0 NuGet
-description: Informacje o wersji programu NuGet 3.0.0 tym — znane problemy, poprawki, funkcje dodane i DCRs.
-author: karann-msft
-ms.author: karann
+title: Informacje o wersji narzędzia NuGet 3,0
+description: Informacje o wersji programu NuGet 3.0.0, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 1ade2b5b5ff7d57d756829c1c1853b5573c17d6d
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 4d4ce17c33dc38df5504a77d9cc3530d466d70af
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551866"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776551"
 ---
-# <a name="nuget-30-release-notes"></a>Informacje o wersji 3.0 NuGet
+# <a name="nuget-30-release-notes"></a>Informacje o wersji narzędzia NuGet 3,0
 
-[Informacje o wersji programu NuGet 3.0 RC2](../release-notes/nuget-3.0-RC2.md) | [informacjach o wersji NuGet 3.1](../release-notes/nuget-3.1.md)
+Informacje o wersji narzędzia [NuGet 3,0 RC2](../release-notes/nuget-3.0-RC2.md)  |  [Informacje o wersji narzędzia NuGet 3,1](../release-notes/nuget-3.1.md)
 
-NuGet 3.0 został wydany 20 lipca 2015 roku jako rozszerzenie pakietu Visual Studio 2015. Przeprowadziliśmy się do świadczenia tej wersji programu Visual Studio, tak aby pełnego środowiska pracy zaktualizowanych pakietów NuGet 3.0 będą dostępne dla nowych użytkowników programu Visual Studio. Ta wersja rozszerzenia NuGet jest dostępna tylko dla programu Visual Studio 2015.
+Pakiet NuGet 3,0 został wydano 20 lipca 2015 jako rozszerzenie pakietu do programu Visual Studio 2015. Firma Microsoft wypychamy, aby dostarczyć tę wersję za pomocą programu Visual Studio, dzięki czemu kompletne zaktualizowane środowisko NuGet 3,0 będzie dostępne dla nowych użytkowników programu Visual Studio. Ta wersja rozszerzenia NuGet jest dostępna tylko dla programu Visual Studio 2015.
 
-Firma Microsoft zaleca tych deweloperów, które mają dostęp do aktualizacji galerii programu Visual Studio do najnowszej wersji, która jest dostępna, ponieważ obecnie publikujemy aktualizacji wkrótce po wydaniu programu Visual Studio 2015, który zawiera obsługę programowania aplikacji dla systemu Windows 10.
+Zaleca się, aby Ci deweloperzy mieli dostęp do aktualizacji galerii programu Visual Studio do najnowszej dostępnej wersji, ponieważ publikujemy aktualizację wkrótce po wydaniu programu Visual Studio 2015, który zawiera wsparcie dla rozwoju systemu Windows 10.
 
-W sumie możemy zamknięte 240 problemy w wersji 3.0 i możesz przejrzeć [pełną listę problemów w usłudze GitHub](https://github.com/NuGet/Home/issues?q=milestone%3A3.0.0-RTM+is%3Aclosed).
+W sumie zostały zamknięte 240 problemów w wersji 3,0 i można zapoznać się z [pełną listą problemów w witrynie GitHub](https://github.com/NuGet/Home/issues?q=milestone%3A3.0.0-RTM+is%3Aclosed).
 
 ## <a name="known-issues"></a>Znane problemy
 
-Wiele znanych problemów dostarczone w tej wersji, a wszystkie te elementy zostały usunięte w wersji 3.1 zaplanowanego postoju wersji systemu Windows 10 na 29 lipca.  Jesteś w stanie zaktualizować rozszerzenia programu Visual Studio z galerii na lub po tej dacie, aby rozwiązać te znane problemy.
+Istniało wiele znanych problemów z tą wersją, a wszystkie te elementy zostały rozwiązane w naszym zaplanowanym 3,1 wersji, aby uzyskać zbieżność z wersją systemu Windows 10 w dniu 29 lipca.  Możesz zaktualizować rozszerzenie programu Visual Studio z galerii w tej dacie lub później, aby rozwiązać te znane problemy.
 
-*  Tłumaczenie nie jest dostępna do etykiety "Nie pokazuj ponownie", w oknie Podgląd i etykiety "Autorzy" w oknie Opis pakietu.
-*  Podczas pracy nad projektem przy użyciu serwera TFS kontroli źródła NuGet nie może przedstawiać Menedżera pakietów interfejsu użytkownika, jeśli plik Nuget.Config jest oznaczony jako tylko do odczytu.
-   * **Obejście** wyewidencjonować plik z serwera TFS.
-*  Tekst w kolorze żółtym "bar ponowne uruchomienie" w oknie programu NuGet Powershell nie jest widoczny, gdy używasz ciemnego motywu programu Visual Studio.
-   * **Obejście** Użyj motyw jasny programu Visual Studio.
+*  Nie podano tłumaczenia na etykietę "nie pokazuj ponownie" w oknie podglądu i etykiecie "autorów" w oknie opisu pakietu.
+*  Podczas pracy nad projektem przy użyciu kontroli źródła TFS, NuGet nie może przedstawić interfejsu użytkownika Menedżera pakietów, jeśli plik Nuget.Config jest oznaczony jako tylko do odczytu.
+   * **Obejście problemu** Wyewidencjonuj plik z TFS.
+*  W przypadku korzystania z ciemnego motywu programu Visual Studio tekst w żółtym "pasku ponownego uruchamiania" w oknie programu PowerShell NuGet nie jest widoczny.
+   * **Obejście problemu** Użyj motywu programu Visual Studio.
 
 
-## <a name="summary-of-top-issues-resolved"></a>Podsumowanie Najważniejsze problemy rozwiązane
+## <a name="summary-of-top-issues-resolved"></a>Podsumowanie najważniejszych problemów rozwiązanych
 
-* [Aktualizacja sieci częste wywołania podczas odświeżania okno Menedżera pakietów](https://github.com/NuGet/Home/issues/515)
-* [Opóźnione przewijania zainstalowanym zmiana na widok w Menedżerze pakietów](https://github.com/NuGet/Home/issues/519)
-* [Wywołania sieciowe powinien zostać uruchomiony na wątku w tle](https://github.com/NuGet/Home/issues/516)
-* [Dodano pole wyboru "Nie pokazuj okna (wersja zapoznawcza)"](https://github.com/NuGet/Home/issues/566)
-* [Dodano proces ograniczania przepustowości, aby zmniejszyć obciążenie procesora](https://github.com/NuGet/Home/issues/356)
-* Ulepszona obsługa odwołanie do biblioteki w przypadku klas przenośna
+* [Częste wywołania aktualizacji sieci podczas odświeżania okna Menedżera pakietów](https://github.com/NuGet/Home/issues/515)
+* [Opóźnione przewijanie podczas zmiany widoku na zainstalowany w Menedżerze pakietów](https://github.com/NuGet/Home/issues/519)
+* [Wywołania sieciowe powinny być uruchamiane w wątku w tle](https://github.com/NuGet/Home/issues/516)
+* [Dodano pole wyboru "nie pokazuj okna podglądu"](https://github.com/NuGet/Home/issues/566)
+* [Dodano ograniczanie procesów w celu zmniejszenia użycia procesora](https://github.com/NuGet/Home/issues/356)
+* Ulepszona obsługa odwołań do biblioteki klas przenośnych
     * [https://github.com/NuGet/Home/issues/562](https://github.com/NuGet/Home/issues/562)
     * [https://github.com/NuGet/Home/issues/454](https://github.com/NuGet/Home/issues/454)
     * [https://github.com/NuGet/Home/issues/440](https://github.com/NuGet/Home/issues/440)
-* [Usługa autouzupełniania była uwzględniana wielkość liter](https://github.com/NuGet/Home/issues/198)
-* [Aktualizacja ponownie wprowadzić poświadczenia uwierzytelniania podstawowego](https://github.com/NuGet/Home/issues/456)
-* [Rejestrowanie udoskonalone błędów](https://github.com/NuGet/Home/issues/407)
-* [Powershell Ulepszone komunikaty o błędach podczas wywoływania pakiet aktualizacji](https://github.com/NuGet/Home/issues/5)
-* [Naprawiono link "Dowiedz się więcej na temat opcji", aby uniknąć awarii w systemie Windows 10](https://github.com/NuGet/Home/issues/822)
-* [Pamiętaj ustawienie pola wyboru wersji wstępnej](https://github.com/NuGet/Home/issues/732)
-* [Zbieranie ulepszoną wydajność przez buforowanie wyników w projektach w rozwiązaniu](https://github.com/NuGet/Home/issues/721)
-* [Wiele pakietów można gromadzić równolegle](https://github.com/NuGet/Home/issues/713)
-* [Usunięte install-package-force polecenia](https://github.com/NuGet/Home/issues/697)
+* [W usłudze autouzupełniania była rozróżniana wielkość liter](https://github.com/NuGet/Home/issues/198)
+* [Aktualizuj, aby wprowadzić poświadczenia uwierzytelniania podstawowego](https://github.com/NuGet/Home/issues/456)
+* [Ulepszone rejestrowanie błędów](https://github.com/NuGet/Home/issues/407)
+* [Ulepszone komunikaty o błędach programu PowerShell podczas wywoływania polecenia Update-Package](https://github.com/NuGet/Home/issues/5)
+* [Rozwiązano link "informacje o opcjach", aby zapobiec awariom systemu Windows 10](https://github.com/NuGet/Home/issues/822)
+* [Zapamiętaj ustawienie pola wyboru w wersji wstępnej](https://github.com/NuGet/Home/issues/732)
+* [Ulepszone zbieranie wydajności przez buforowanie wyników między projektami w rozwiązaniu](https://github.com/NuGet/Home/issues/721)
+* [Wiele pakietów może być zebranych równolegle](https://github.com/NuGet/Home/issues/713)
+* [Usunięto polecenie install-package-Force](https://github.com/NuGet/Home/issues/697)
 
-Można nadzorować [naszym blogu](http://blog.nuget.org) więcej postępu i anonse uzyskując chcesz zaoferować wsparcie dla programowania systemu Windows 10.
+Zapoznaj się z [naszym blogiem](http://blog.nuget.org) , aby uzyskać więcej informacji o postępie i ogłoszeniach, jak jesteśmy gotowi do świadczenia pomocy technicznej dla rozwoju systemu Windows 10.

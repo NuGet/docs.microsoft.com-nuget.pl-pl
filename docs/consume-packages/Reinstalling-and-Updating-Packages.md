@@ -1,16 +1,16 @@
 ---
 title: Ponowne instalowanie i aktualizowanie pakietów NuGet
 description: Szczegółowe informacje o tym, kiedy należy ponownie zainstalować i zaktualizować pakiety, podobnie jak w przypadku uszkodzonych odwołań do pakietów w programie Visual Studio.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 12/07/2017
 ms.topic: conceptual
-ms.openlocfilehash: 101c6d6b9d93da912f60c40b27559e80327154b8
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 588d546352e5733ba8198061beb8006a79ecedac
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237734"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774976"
 ---
 # <a name="how-to-reinstall-and-update-packages"></a>Jak ponownie zainstalować i zaktualizować pakiety
 
@@ -23,7 +23,7 @@ Aktualizowanie i ponowne instalowanie pakietów odbywa się w następujący spos
 | Metoda | Aktualizacja | Ponowna instalacja |
 | --- | --- | --- |
 | Konsola Menedżera pakietów (opisana w temacie [using Update-Package](#using-update-package)) | Polecenie `Update-Package` | Polecenie `Update-Package -reinstall` |
-| Interfejs użytkownika menedżera pakietów | Na karcie **aktualizacje** wybierz co najmniej jeden pakiet i wybierz pozycję **Aktualizuj** . | Na karcie **zainstalowane** wybierz pakiet, Zapisz jego nazwę, a następnie wybierz pozycję **Odinstaluj** . Przejdź do karty **Przeglądaj** , wyszukaj nazwę pakietu, wybierz ją, a następnie wybierz pozycję **Zainstaluj** . |
+| Interfejs użytkownika menedżera pakietów | Na karcie **aktualizacje** wybierz co najmniej jeden pakiet i wybierz pozycję **Aktualizuj** . | Na karcie **zainstalowane** wybierz pakiet, Zapisz jego nazwę, a następnie wybierz pozycję **Odinstaluj**. Przejdź do karty **Przeglądaj** , wyszukaj nazwę pakietu, wybierz ją, a następnie wybierz pozycję **Zainstaluj**. |
 | Interfejs wiersza polecenia nuget.exe | Polecenie `nuget update` | W przypadku wszystkich pakietów Usuń folder pakietu, a następnie uruchom polecenie `nuget install` . W przypadku jednego pakietu Usuń folder pakietu i użyj programu, `nuget install <id>` Aby ponownie zainstalować ten sam plik. |
 
 > [!NOTE]
@@ -36,11 +36,11 @@ W tym artykule:
 
 ## <a name="when-to-reinstall-a-package"></a>Kiedy należy ponownie zainstalować pakiet
 
-1. **Przerwane odwołania po przywróceniu pakietu** : Jeśli otwarto projekt i przywrócono pakiety NuGet, ale nadal są wyświetlane uszkodzone odwołania, spróbuj zainstalować ponownie każdy z tych pakietów.
-1. **Projekt został przerwany z powodu usuniętych plików** : pakiet NuGet nie uniemożliwia usuwania elementów dodanych z pakietów, dzięki czemu można łatwo przypadkowo zmodyfikować zawartość zainstalowaną z pakietu i przerwać projekt. Aby przywrócić projekt, zainstaluj ponownie odpowiednie pakiety.
+1. **Przerwane odwołania po przywróceniu pakietu**: Jeśli otwarto projekt i przywrócono pakiety NuGet, ale nadal są wyświetlane uszkodzone odwołania, spróbuj zainstalować ponownie każdy z tych pakietów.
+1. **Projekt został przerwany z powodu usuniętych plików**: pakiet NuGet nie uniemożliwia usuwania elementów dodanych z pakietów, dzięki czemu można łatwo przypadkowo zmodyfikować zawartość zainstalowaną z pakietu i przerwać projekt. Aby przywrócić projekt, zainstaluj ponownie odpowiednie pakiety.
 1. **Aktualizacja pakietu** spowodowała uszkodzenie projektu: Jeśli aktualizacja pakietu jest przerywana w projekcie, ten błąd jest zwykle spowodowany przez pakiet zależności, który mógł również zostać zaktualizowany. Aby przywrócić stan zależności, zainstaluj ponownie ten określony pakiet.
-1. Przekierowanie **lub uaktualnienie projektu** : może to być przydatne w przypadku przekierowania lub uaktualnienia projektu, a jeśli pakiet wymaga ponownej instalacji z powodu zmiany w środowisku docelowym. Pakiet NuGet pokazuje błąd kompilacji w takich przypadkach natychmiast po przekierowaniu projektu, a kolejne ostrzeżenia kompilacji informują o tym, że może być konieczne ponowne zainstalowanie pakietu. W przypadku uaktualniania projektu pakiet NuGet pokazuje błąd w dzienniku uaktualniania projektu.
-1. **Ponowna instalacja pakietu w trakcie jego opracowywania** : autorzy pakietów często muszą ponownie zainstalować tę samą wersję pakietu, którą opracowują, aby przetestować zachowanie. `Install-Package`Polecenie nie udostępnia opcji wymuszenia ponownej instalacji, dlatego należy `Update-Package -reinstall` zamiast tego użyć.
+1. Przekierowanie **lub uaktualnienie projektu**: może to być przydatne w przypadku przekierowania lub uaktualnienia projektu, a jeśli pakiet wymaga ponownej instalacji z powodu zmiany w środowisku docelowym. Pakiet NuGet pokazuje błąd kompilacji w takich przypadkach natychmiast po przekierowaniu projektu, a kolejne ostrzeżenia kompilacji informują o tym, że może być konieczne ponowne zainstalowanie pakietu. W przypadku uaktualniania projektu pakiet NuGet pokazuje błąd w dzienniku uaktualniania projektu.
+1. **Ponowna instalacja pakietu w trakcie jego opracowywania**: autorzy pakietów często muszą ponownie zainstalować tę samą wersję pakietu, którą opracowują, aby przetestować zachowanie. `Install-Package`Polecenie nie udostępnia opcji wymuszenia ponownej instalacji, dlatego należy `Update-Package -reinstall` zamiast tego użyć.
 
 ## <a name="constraining-upgrade-versions"></a>Ograniczenia dotyczące wersji uaktualnienia
 
@@ -63,7 +63,7 @@ We wszystkich przypadkach należy użyć notacji opisanej w artykule [przechowyw
 
 ## <a name="using-update-package"></a>Używanie Update-Package
 
-W trosce o [zagadnienia](#considerations) opisane poniżej można łatwo ponownie zainstalować dowolny pakiet za pomocą [polecenia Update-Package](../reference/ps-reference/ps-ref-update-package.md) w konsoli Menedżera pakietów programu Visual Studio ( **Narzędzia** Menedżer  >  **pakietów NuGet**  >  **konsola Menedżera** pakietów).
+W trosce o [zagadnienia](#considerations) opisane poniżej można łatwo ponownie zainstalować dowolny pakiet za pomocą [polecenia Update-Package](../reference/ps-reference/ps-ref-update-package.md) w konsoli Menedżera pakietów programu Visual Studio (**Narzędzia** Menedżer  >  **pakietów NuGet**  >  **konsola Menedżera** pakietów).
 
 ```ps
 Update-Package -Id <package_name> –reinstall

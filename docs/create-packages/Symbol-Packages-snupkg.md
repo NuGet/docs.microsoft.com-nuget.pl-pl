@@ -1,7 +1,7 @@
 ---
 title: Jak publikować pakiety symboli NuGet przy użyciu nowego formatu pakietu symboli ". snupkg" | Microsoft Docs
-author: cristinamanu
-ms.author: cristinamanu
+author: JonDouglas
+ms.author: jodou
 manager: skofman
 ms.date: 10/30/2018
 ms.topic: reference
@@ -12,16 +12,18 @@ keywords: Pakiety symboli NuGet, debugowanie pakietów NuGet, obsługa debugowan
 ms.reviewer:
 - anangaur
 - karann
-ms.openlocfilehash: fbcc035a6b800617f995d3bcebd7e1764aa467b0
-ms.sourcegitcommit: 323a107c345c7cb4e344a6e6d8de42c63c5188b7
+ms.openlocfilehash: 001637348fdd435e4ffd3a5a55e8128d1eab453c
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98235727"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774572"
 ---
 # <a name="creating-symbol-packages-snupkg"></a>Tworzenie pakietów symboli (. snupkg)
 
 Dobre środowisko debugowania opiera się na obecności symboli debugowania, ponieważ zawierają one krytyczne informacje, takie jak skojarzenie między skompilowanym i źródłowym kodem, nazwami zmiennych lokalnych, śladów stosu i innymi. Za pomocą pakietów symboli (. snupkg) można dystrybuować te symbole i ulepszać środowisko debugowania pakietów NuGet.
+
+> Należy zauważyć, że pakiet symboli nie jest jedyną strategią, aby symbole debugowania były dostępne dla użytkowników biblioteki. Są one również [dostępne `embed` ](https://docs.microsoft.com/dotnet/core/deploying/single-file#include-pdb-files-inside-the-bundle) w `dll` lub `exe` z następującą właściwością projektu:`<DebugType>embedded</DebugType>`
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

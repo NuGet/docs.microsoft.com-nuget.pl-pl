@@ -1,16 +1,16 @@
 ---
 title: Typowe konfiguracje narzędzia NuGet
 description: NuGet.Config pliki kontrolują zachowanie narzędzia NuGet zarówno globalnie, jak i dla każdego projektu i są modyfikowane za pomocą polecenia konfiguracji NuGet.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 10/25/2017
 ms.topic: conceptual
-ms.openlocfilehash: e81c380eab3f1a8635e50e62811c7ae463ec3653
-ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
+ms.openlocfilehash: 35339626b0a20ccfceafa89fef94fb3187013fd7
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97699765"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774853"
 ---
 # <a name="common-nuget-configurations"></a>Typowe konfiguracje narzędzia NuGet
 
@@ -120,14 +120,16 @@ Ponieważ program NuGet odnajdzie ustawienia w tych plikach, są one stosowane w
 
 Załóżmy, że masz następującą strukturę folderów na dwóch oddzielnych dyskach:
 
-    disk_drive_1
-        User
-    disk_drive_2
-       Project1
-         Source
-       Project2
-         Source
-       tmp
+```
+disk_drive_1
+    User
+disk_drive_2
+    Project1
+        Source
+    Project2
+        Source
+    tmp
+```
 
 Następnie `NuGet.Config` w poniższych lokalizacjach znajdują się cztery pliki o podaną zawartość. (Plik na poziomie komputera nie jest uwzględniony w tym przykładzie, ale zachowuje się podobnie do pliku na poziomie użytkownika).
 

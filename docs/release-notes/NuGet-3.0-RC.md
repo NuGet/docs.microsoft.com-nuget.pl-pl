@@ -1,45 +1,45 @@
 ---
-title: Informacje o wersji programu NuGet 3.0 RC
-description: Informacje o wersji programu NuGet 3.0 RC obejmuje znane problemy, poprawki błędów, funkcje dodane i DCRs.
-author: karann-msft
-ms.author: karann
+title: Informacje o wersji narzędzia NuGet 3,0 RC
+description: Informacje o wersji programu NuGet 3,0 RC, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 0575cb1598f259a1cf1597f67123b644d67c31b5
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 19bc51a278425295811db253ca3f4ba4366ccf49
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551722"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776573"
 ---
-# <a name="nuget-30-rc-release-notes"></a>Informacje o wersji programu NuGet 3.0 RC
+# <a name="nuget-30-rc-release-notes"></a>Informacje o wersji narzędzia NuGet 3,0 RC
 
-[Informacje o wersji programu NuGet 3.0 Beta](../release-notes/nuget-3.0-beta.md) | [NuGet 3.0 RC2 — informacje o wersji](../release-notes/nuget-3.0-RC2.md)
+Informacje o wersji programu [NuGet 3,0 beta](../release-notes/nuget-3.0-beta.md)  |  [Informacje o wersji narzędzia NuGet 3,0 RC2](../release-notes/nuget-3.0-RC2.md)
 
-NuGet 3.0 RC został wydany 29 kwietnia 2015 w wersji Visual Studio 2015 RC. Ta wersja ma wiele ważnych poprawek błędów, ulepszeń wydajności i aktualizacji do obsługi nowych platform.  Jest on dostępny tylko dla programu Visual Studio 2015.
+Pakiet NuGet 3,0 RC został zwolniony 29 kwietnia 2015 z wersją Visual Studio 2015 RC. W tej wersji wprowadzono wiele ważnych poprawek usterek, ulepszeń wydajności i aktualizacji w celu obsługi nowych platform.  Jest on dostępny tylko dla programu Visual Studio 2015.
 
-### <a name="continued-focus-on-performance"></a>Ciągłe dążenie do wydajności
+### <a name="continued-focus-on-performance"></a>Dalsze koncentracje na wydajności
 
-Stabilności i wydajności kwerend NuGet nadal aktualnie gorący temat wśród, koncentrujemy się na.  W tej wersji należy zacząć wyświetlić operacje bardzo szybkie wyszukiwanie w NuGet interfejsu użytkownika i witryny sieci Web.  Firma Microsoft monitorowania usługi i sposobie korzystania z usługi tak, aby umożliwić nam dostosować te operacje.
+Stabilność i wydajność zapytań NuGet nadal jest aktywnym tematem, na którym koncentrujemy się.  W tej wersji należy zacząć wyświetlać bardzo szybkie operacje wyszukiwania w interfejsie użytkownika i witrynie programu NuGet.  Monitorujemy usługę i używamy usługi, aby można było dalej dostroić te operacje.
 
-## <a name="significant-issues-resolved"></a>Istotne problemy rozwiązane
+## <a name="significant-issues-resolved"></a>Znaczne problemy rozwiązane
 
-W celu stabilizacji klientom programu NuGet, rozwiązaliśmy wiele problemów w ramach tej wersji.  Poniżej przedstawiono tylko krótkie listami niektóre najważniejsze zagadnienia, które są rozwiązane:
+Aby zapewnić stabilizację klientów programu NuGet, firma Microsoft rozwiązała wiele problemów w ramach tej wersji.  Poniżej przedstawiono krótką listę niektórych ważniejszych problemów, które zostały rozwiązane:
 
-* W ramach zmiany nazwy K framework programu ASP.NET 5, monikerów framework zostały zaktualizowane do obsługi środowiska dnx i dnxcore [łącza](https://github.com/NuGet/Home/issues/215)
-* Dodano dokumentacji pomocy z poziomu linków w interfejsie użytkownika programu Visual Studio [łącza](https://github.com/NuGet/Home/issues/232)
-* Lepiej obsługi złożonych odwołań w `.nuspec` za pomocą odwołania rozdzielonych przecinkami [łącza](https://github.com/NuGet/Home/issues/276)
-* Naprawiono obsługę japoński kultur [łącza](https://github.com/NuGet/Home/issues/253)
-* Zaktualizowanego klienta, aby umożliwić projektów ASP.NET 5, aby używać nowych v3 punktów końcowych [łącza](https://github.com/NuGet/Home/issues/219)
-* Zaktualizowano w celu lepszego uchwyt folder packages z kontrolą źródła [łącza](https://github.com/NuGet/Home/issues/56)
-* Naprawiono obsługę satelitarnej pakietów [łącza](https://github.com/NuGet/Home/issues/17)
-* Poprawiona obsługa dla określonej platformy, pliki zawartości [łącza](https://github.com/NuGet/Home/issues/18)
+* W ramach zmiany nazwy platformy K dla ASP.NET 5, monikery struktury zostały zaktualizowane w celu obsługi [linku](https://github.com/NuGet/Home/issues/215) środowiska DNX i dnxcore
+* Dodano dokumentację pomocy z linków w [linku](https://github.com/NuGet/Home/issues/232) interfejsu użytkownika programu Visual Studio
+* Ulepszona obsługa złożonych odwołań w `.nuspec` połączeniu z odwołaniami do struktury rozdzielonych przecinkami [](https://github.com/NuGet/Home/issues/276)
+* Stała obsługa [łącza](https://github.com/NuGet/Home/issues/253) dla kultur japońskich
+* Zaktualizowano klienta, aby zezwolić na używanie przez ASP.NET 5 projektów [nowych punktów](https://github.com/NuGet/Home/issues/219) końcowych v3
+* Zaktualizowano w celu lepszego obsługi folderu pakietów z [linkiem](https://github.com/NuGet/Home/issues/56) kontroli źródła
+* Stałe wsparcie dla [linku](https://github.com/NuGet/Home/issues/17) pakietów satelitarnych
+* Poprawiono obsługę [linku](https://github.com/NuGet/Home/issues/18) do plików zawartości specyficznej dla platformy
 
-## <a name="github-presence-overhaul"></a>Kontrolę obecności usługi GitHub
+## <a name="github-presence-overhaul"></a>Remonty obecności usługi GitHub
 
-Wprowadziliśmy pewne zmiany do naszych [źródła repozytoriów w serwisie GitHub](http://github.com/nuget/home).  Jeśli masz problemy z klienta programu NuGet w programie Visual Studio, poleceń programu Powershell lub wiersza polecenia pliku wykonywalnego można rejestrować tych problemów i monitorować ich postęp na naszych [listę problemów w repozytorium GitHub głównej](http://github.com/nuget/home/issues).  Śledzimy problemy z galerii w naszym [repozytorium GitHub NuGetGallery](http://github.com/nuget/NuGetGallery/issues).
+Wprowadziliśmy pewne zmiany w [repozytoriach kodu źródłowego w serwisie GitHub](http://github.com/nuget/home).  Jeśli masz problemy z klientem programu Visual Studio NuGet, poleceniami programu PowerShell lub wykonywalnym wierszem polecenia, można rejestrować te problemy i monitorować ich postęp na naszej [liście problemów z repozytorium głównym usługi GitHub](http://github.com/nuget/home/issues).  Śledzimy problemy z galerią w naszym [repozytorium GitHub NuGetGallery](http://github.com/nuget/NuGetGallery/issues).
 
 
-## <a name="stay-tuned"></a>Obserwuj na bieżąco
+## <a name="stay-tuned"></a>Bądź na bieżąco
 
-Można nadzorować [naszym blogu](http://blog.nuget.org) więcej postępu i anonsów dla pakietów NuGet 3.0!
+Obserwuj [nasz blog](http://blog.nuget.org) , aby uzyskać więcej informacji na temat postępu i anonsów dla programu NuGet 3,0!

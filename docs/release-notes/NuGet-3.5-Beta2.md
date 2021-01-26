@@ -1,22 +1,22 @@
 ---
-title: 3.5 informacje o wersji Beta2
-description: Informacje o wersji programu NuGet 3.5 Beta 2, w tym znanych problemów, poprawki, funkcje dodane i DCRs.
-author: karann-msft
-ms.author: karann
+title: 3,5 beta2 — informacje o wersji
+description: Informacje o wersji programu NuGet 3,5 Beta 2, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 4b47939e2fafc11823c41a849b3c58bbf0800ada
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 2aa92d4ef97acb2b4b70388cd4d580e7094aea45
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551994"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776392"
 ---
-# <a name="nuget-35-beta2-release-notes"></a>Informacje o wersji programu NuGet 3.5 Beta2.
+# <a name="nuget-35-beta2-release-notes"></a>Informacje o wersji narzędzia NuGet 3,5 beta2
 
-[Informacje o wersji 3.5 Beta NuGet](../release-notes/nuget-3.5-Beta.md) | [NuGet 3.5 RC wersji](../release-notes/nuget-3.5-RC.md)
+[NuGet 3,5 — informacje](../release-notes/nuget-3.5-Beta.md)  |  o wersji beta Pakiet [NuGet 3,5 — informacje o wersji RC](../release-notes/nuget-3.5-RC.md)
 
-NuGet 3.5 Beta 2 RTM została opublikowana 27 czerwca 2016 r dla programu Visual Studio 2013 i nuget.exe
+Pakiet NuGet 3,5 Beta 2 RTM został wydano 27 czerwca 2016 dla Visual Studio 2013 i nuget.exe
 
 [Pełny dziennik zmian](https://github.com/NuGet/NuGet.Client/compare/release-3.5.0-beta...release-3.5.0-beta2)
 
@@ -24,70 +24,70 @@ NuGet 3.5 Beta 2 RTM została opublikowana 27 czerwca 2016 r dla programu Visual
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 
-* Komunikat o błędzie zaktualizowane na brak obsługi decrpytion hasła w programie .NET Core dla uwierzytelnione kanały informacyjne - [#2942](https://github.com/NuGet/Home/issues/2942)
+* Zaktualizowano komunikat o błędzie w celu braku obsługi hasła decrpytion w programie .NET Core dla uwierzytelnionych kanałów informacyjnych — [#2942](https://github.com/NuGet/Home/issues/2942)
 
-* Konsola Menedżera pakietów Get-Package zakończy się niepowodzeniem, jeśli projekt .NET Core jest otwarty — [#2932](https://github.com/NuGet/Home/issues/2932)
+* Get-Package konsoli Menedżera pakietów kończy się niepowodzeniem, jeśli projekt .NET Core jest otwarty — [#2932](https://github.com/NuGet/Home/issues/2932)
 
-* Napraw nieprawidłowa obsługa 403 w poleceniu wypychania NuGet [#2910](https://github.com/NuGet/Home/issues/2910)
+* Naprawianie niepoprawnej obsługi 403 w poleceniu wypychania NuGet [#2910](https://github.com/NuGet/Home/issues/2910)
 
-* Rozwiązywanie problemów w odinstalowywanie pakietów w rozwiązaniu powiązany do kontroli źródła programu TFS, gdy disableSourceControlIntegration jest ustawiona na wartość true - [#2739](https://github.com/NuGet/Home/issues/2739)
+* Rozwiązywanie problemów podczas odinstalowywania pakietów w rozwiązaniu związanym z kontrolą źródła TFS, gdy disableSourceControlIntegration jest ustawiona na true — [#2739](https://github.com/NuGet/Home/issues/2739)
 
-* Napraw aktualizacji pakietu uwzględniać konto pakiety-target - [#2724](https://github.com/NuGet/Home/issues/2724)
+* Napraw aktualizację pakietu, aby wziąć pod uwagę Pakiety inne niż docelowe — [#2724](https://github.com/NuGet/Home/issues/2724)
 
-* Użyj poziom szczegółowości MSBuild, aby ustawić poziom rejestrowania dla Menedżera pakietów Nuget, akcje interfejsu użytkownika — [#2705](https://github.com/NuGet/Home/issues/2705)
+* Poziom szczegółowości programu MSBuild umożliwia ustawianie poziomu rejestratora dla akcji interfejsu użytkownika Menedżera pakietów NuGet — [#2705](https://github.com/NuGet/Home/issues/2705)
 
-* Konfiguracja NuGet poprawka jest nieprawidłowy w projektów witryny sieci Web — VS 2015 VSIX (v3.4.3) — [#2667](https://github.com/NuGet/Home/issues/2667)
+* Naprawa konfiguracji NuGet jest nieprawidłowa w projektach witryny sieci Web — VS 2015 VSIX (v 3.4.3) — [#2667](https://github.com/NuGet/Home/issues/2667)
 
-* Rozwiązywanie problemów z dodatkiem Service pack z `.csproj` gdy pliki zawartości są uwzględnione - [#2658](https://github.com/NuGet/Home/issues/2658)
+* Rozwiązywanie problemów z pakietami z `.csproj` uwzględnieniem plików zawartości — [#2658](https://github.com/NuGet/Home/issues/2658)
 
-* DefaultPushSource w `NuGetDefaults.Config` (`ProgramData\NuGet`) nie działa — [#2653](https://github.com/NuGet/Home/issues/2653)
+* DefaultPushSource w `NuGetDefaults.Config` ( `ProgramData\NuGet` ) nie działa — [#2653](https://github.com/NuGet/Home/issues/2653)
 
-* Rozwiązać problem w wersji programu Nuget 3.4.3 - wartość nie może być pusta przy tworzeniu pakietu - [#2648](https://github.com/NuGet/Home/issues/2648)
+* Usuwanie problemu w programie NuGet 3.4.3 wersja nie może mieć wartości null podczas tworzenia pakietu- [#2648](https://github.com/NuGet/Home/issues/2648)
 
-* Przywracania przy użyciu przechowywanych poświadczeń z pliku Nuget.Config dla źródeł danych usługi VSTS — [#2647](https://github.com/NuGet/Home/issues/2647)
+* Funkcja Restore używa przechowywanych poświadczeń z Nuget.Config dla źródeł danych VSTS — [#2647](https://github.com/NuGet/Home/issues/2647)
 
-* Wyników — poprawki alokacje nadmierne w kodzie porównania wersji - [#2632](https://github.com/NuGet/Home/issues/2632)
+* Wydajność — napraw nadmierne alokacje w wersji comparsion Code- [#2632](https://github.com/NuGet/Home/issues/2632)
 
-* Rozwiązywanie problemów, gdy wiele wystąpień programu nuget.exe próbuje zainstalować ten sam pakiet równolegle - [#2628](https://github.com/NuGet/Home/issues/2628)
+* Rozwiązywanie problemów, gdy wiele wystąpień nuget.exe próbuje zainstalować ten sam pakiet w równoległej [#2628](https://github.com/NuGet/Home/issues/2628)
 
-* Wydajność — pamięć podręczna informacji o zależnościach dla operacji obejmujących wiele projektów — [#2619](https://github.com/NuGet/Home/issues/2619)
+* Wydajność — informacje o zależnościach pamięci podręcznej dla operacji wieloprojektowych — [#2619](https://github.com/NuGet/Home/issues/2619)
 
-* Rozwiąż problem w przypadku, gdy nie można źródeł pakietów można dodać z ustawień, gdy lista źródłowa jest pusta — [#2617](https://github.com/NuGet/Home/issues/2617)
+* Rozwiąż problem polegający na tym, że nie można źródła pakietów zostaną dodane z ustawień, gdy lista źródłowa jest pusta — [#2617](https://github.com/NuGet/Home/issues/2617)
 
-* Napraw błąd Misleading, podczas próby zainstalowania pakietu, który zależy od czasu projektowania fasad - [#2594](https://github.com/NuGet/Home/issues/2594)
+* Naprawianie błędu mylącego podczas próby zainstalowania pakietu, który zależy od [#2594](https://github.com/NuGet/Home/issues/2594) fasad czasu projektowania
 
-* Instalowanie pakietu z poziomu konsoli PackageManager z ustawieniem "All" próbuje tylko pierwsze źródło - [#2557](https://github.com/NuGet/Home/issues/2557)
+* Instalowanie pakietu z konsoli pakietu Packagemanager z ustawieniem "All" powoduje tylko próbę pierwszego źródła — [#2557](https://github.com/NuGet/Home/issues/2557)
 
-* Rozwiązywanie problemów z pakietami, które znajdują się pliki z czasem zapisu w przyszłości (Mono) - [#2518](https://github.com/NuGet/Home/issues/2518)
+* Rozwiązywanie problemów z pakietami zawierającymi pliki z godzinami zapisu w przyszłości (mono) — [#2518](https://github.com/NuGet/Home/issues/2518)
 
-* Wyświetlanie wyjątku, gdy wystąpi awaria znajdowanie projektów w polecenia update - [#2418](https://github.com/NuGet/Home/issues/2418)
+* Wyświetl wyjątek, jeśli wystąpił błąd podczas znajdowania projektów w ramach polecenia Update — [#2418](https://github.com/NuGet/Home/issues/2418)
 
-* Zawartość pakietu jest nie została poprawnie przywrócona podczas instalowania pakietu z v3.3 nuget + źródła danych z argumentem - Właściwość NoCache Jeśli pakiet zawiera `.nupkg` plików — [#2354](https://github.com/NuGet/Home/issues/2354)
+* Zawartość pakietu nie jest przywracana poprawnie podczas instalowania pakietu z programu NuGet v 3.3 + ze źródła danych argument-nocache, gdy pakiet zawiera `.nupkg` pliki- [#2354](https://github.com/NuGet/Home/issues/2354)
 
-* Rozwiązanie problemu z pakietu instalacji (wszystkich źródeł), gdy brak pakietu ze źródła 1 - [#2322](https://github.com/NuGet/Home/issues/2322)
+* Rozwiązywanie problemu z instalacją pakietu (wszystkie źródła), gdy brakuje pakietu z 1 źródła — [#2322](https://github.com/NuGet/Home/issues/2322)
 
-* Zainstaluj bloków, jeśli pojedyncze źródło odmawia autoryzacji - [#2034](https://github.com/NuGet/Home/issues/2034)
+* Zainstaluj bloki w przypadku niepowodzenia autoryzacji pojedynczego źródła — [#2034](https://github.com/NuGet/Home/issues/2034)
 
-* `.nuspec` zakres powinien przesłonić - IncludeReferencedProjects wersja — wersja [#1983](https://github.com/NuGet/Home/issues/1983)
+* `.nuspec` zakres wersji powinien przesłonić IncludeReferencedProjects wersji [#1983](https://github.com/NuGet/Home/issues/1983)
 
-* Aktualizacji NuGet 3.3.0 kończy się niepowodzeniem z "… dodatkowe ograniczenia zdefiniowane w pliku packages.config zapobiega tej operacji." - [#1816](https://github.com/NuGet/Home/issues/1816)
+* Aktualizacja NuGet 3.3.0 kończy się niepowodzeniem z "dodatkowym ograniczeniem... zdefiniowane w packages.config uniemożliwia wykonanie tej operacji ". - [#1816](https://github.com/NuGet/Home/issues/1816)
 
-* Aktualizacja nuget.exe spada, silna nazwa zestawu i atrybut Private. - [#1778](https://github.com/NuGet/Home/issues/1778)
+* nuget.exe Update odrzuca silną nazwę i atrybut prywatny zestawu. - [#1778](https://github.com/NuGet/Home/issues/1778)
 
-* Rozwiązywanie problemów z względna ścieżka do pliku dla "DefaultPushSource" - [#1746](https://github.com/NuGet/Home/issues/1746)
+* Rozwiązywanie problemów ze względną ścieżką pliku dla "DefaultPushSource" — [#1746](https://github.com/NuGet/Home/issues/1746)
 
-* Poprawić komunikaty o błędach rozpoznawania Update - [#1373](https://github.com/NuGet/Home/issues/1373)
+* Optymalizowanie komunikatów o błędach rozwiązywania problemów dotyczących aktualizacji — [#1373](https://github.com/NuGet/Home/issues/1373)
 
-## <a name="features-and-behavior-changes"></a>Funkcje i zmiany sposobu działania
+## <a name="features-and-behavior-changes"></a>Zmiany funkcji i zachowania
 
-* wypychane nuget.exe — parametr limitu czasu nie działa — [#2785](https://github.com/NuGet/Home/issues/2785)
+* nuget.exe parametr limitu czasu wypychania nie działa — [#2785](https://github.com/NuGet/Home/issues/2785)
 
-* Przywracanie nuget.exe nie generuje `.props` i `.targets` pliki `.nuproj` projektów (Regresja w v3.4.3.855) - [#2711](https://github.com/NuGet/Home/issues/2711)
+* Przywracanie nuget.exe nie produkuje `.props` i `.targets` plików dla `.nuproj` projektów (regresja w v 3.4.3.855) — [#2711](https://github.com/NuGet/Home/issues/2711)
 
-* Potrzebujesz rozszerzeń interfejsu API, aby porównać platform z import - [#2633](https://github.com/NuGet/Home/issues/2633)
+* Potrzebny interfejs API rozszerzalności do porównywania platform z importami — [#2633](https://github.com/NuGet/Home/issues/2633)
 
-* Ukryj opcje zależność, korzystając z `project.json`  -  [#2486](https://github.com/NuGet/Home/issues/2486)
+* Ukryj Opcje zależności przy użyciu `project.json`  -  [#2486](https://github.com/NuGet/Home/issues/2486)
 
-* Wydrukować nuget.exe nagłówka wersji w szczegółowe dane wyjściowe — [#1887](https://github.com/NuGet/Home/issues/1887)
+* Drukuj nagłówek nuget.exe wersji w szczegółowych danych wyjściowych — [#1887](https://github.com/NuGet/Home/issues/1887)
 
-* NuGet należy dodać obsługę /nativeassets/ /runtimes/ {rid} {txm} / - [#2782](https://github.com/NuGet/Home/issues/2782)
+* Pakiet NuGet powinien dodać obsługę/Runtimes/{RID}/nativeassets/{TXM}/- [#2782](https://github.com/NuGet/Home/issues/2782)

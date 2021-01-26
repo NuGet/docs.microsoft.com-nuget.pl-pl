@@ -5,12 +5,12 @@ author: shishirx34
 ms.author: shishirh
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7076378b53c439eef51a243fa6efcfb01b8cfa73
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: aa845464dbe939260d5fca3e4b89bd846df471a7
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237909"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775942"
 ---
 # <a name="nugetorg-frequently-asked-questions"></a>Często zadawane pytania NuGet.org
 
@@ -81,8 +81,8 @@ Najpierw upewnij się, że korzystasz z najnowszych wersji programu NuGet. Jeśl
 *Aby przechwycić MTR:*
 
 - Pobierz [winmtr](https://sourceforge.net/projects/winmtr/files/WinMTR-v092.zip/download).
-- Wprowadź `api.nuget.org` jako nazwę hosta, a następnie kliknij przycisk **Uruchom** .
-- Zaczekaj na > **wysłanej** kolumny = 100.
+- Wprowadź `api.nuget.org` jako nazwę hosta, a następnie kliknij przycisk **Uruchom**.
+- Zaczekaj na >**wysłanej** kolumny = 100.
 
     ![Przechwytywanie MTR](media/mtr.png)
 
@@ -124,10 +124,10 @@ Jeśli nie pamiętasz, która konto Microsoft jest skojarzona z kontem NuGet.org
 
 ### <a name="how-to-change-the-microsoft-account-i-use-for-nugetorg-login"></a>Jak zmienić konto Microsoft używany na potrzeby logowania NuGet.org?
 Jeśli chcesz zmienić konto Microsoft dla użytkownika NuGet.org, wykonaj poniższe kroki. Umożliwia wymówienie, że konto Microsoft za pomocą poczty e-mail `account1@outlook.com` jest skojarzony z kontem NuGet.org z nazwą użytkownika `MyNuGetAccount` . Chcesz zmienić nazwę logowania na inną konto Microsoft za pomocą poczty e-mail `account2@outlook.com`
-1. Zaloguj się przy użyciu **obecnie skojarzonych konto Microsoft** , np. `account1@outlook.com` na [stronie logowania](https://www.nuget.org/users/account/LogOn) po kliknięciu przycisku **Zaloguj się przy użyciu konta Microsoft** .
+1. Zaloguj się przy użyciu **obecnie skojarzonych konto Microsoft** , np. `account1@outlook.com` na [stronie logowania](https://www.nuget.org/users/account/LogOn) po kliknięciu przycisku **Zaloguj się przy użyciu konta Microsoft**.
 1. Po zalogowaniu przejdź do strony [ustawień konta](https://www.nuget.org/account) .
-1. Rozwiń sekcję dla **konta logowania** . Kliknij przycisk **Zmień konto** .
-1. Nastąpi przekierowanie do strony logowania firmy Microsoft. Zaloguj się przy użyciu konta, na które chcesz zmienić skojarzenie `account2@outlook.com` . **Uwaga** : aby móc zalogować się przy użyciu innego konto Microsoft, może być konieczne kliknięcie przycisku **Wyloguj i zalogowanie się przy użyciu innego konta** .
+1. Rozwiń sekcję dla **konta logowania**. Kliknij przycisk **Zmień konto** .
+1. Nastąpi przekierowanie do strony logowania firmy Microsoft. Zaloguj się przy użyciu konta, na które chcesz zmienić skojarzenie `account2@outlook.com` . **Uwaga**: aby móc zalogować się przy użyciu innego konto Microsoft, może być konieczne kliknięcie przycisku **Wyloguj i zalogowanie się przy użyciu innego konta** .
 1. Jeśli zobaczysz błąd podobny do poniższego, zobacz [konto Microsoft jest połączony z innym kontem NuGet.org](#microsoft-account-is-linked-with-another-nugetorg-account) , aby uzyskać więcej szczegółów.
     >_Nie można zaktualizować konto Microsoft przy użyciu "account2 <account2@outlook.com> ". Taka sytuacja może wystąpić, jeśli jest już połączona z innym kontem NuGet. Skontaktuj się z pomocą techniczną, aby uzyskać więcej informacji._
 
@@ -188,11 +188,11 @@ Wykonaj kroki opisane w sekcji [nie można użyć logowania do firmy Microsoft, 
 ### <a name="unable-to-use-microsoft-login-how-do-i-recover-my-nugetorg-account"></a>Nie można użyć identyfikatora logowania firmy Microsoft, jak odzyskać konto NuGet.org?
 
 Jeśli podjęto próbę skorzystania z [pomocy przy logowaniu](#which-microsoft-account-is-linked-to-my-nugetorg-account) i nie masz dostępu do konto Microsoft skojarzonej z Twoim kontem usługi NuGet.org, wykonaj poniższe kroki, aby połączyć nowe konto Microsoft z kontem NuGet.org.
-1. **Wymaganie** : będzie potrzebny dostęp do konto Microsoft, który nie jest skojarzony z żadnym z istniejących kont NuGet.org. Jeśli go nie masz, możesz go [utworzyć](https://signup.live.com) .
+1. **Wymaganie**: będzie potrzebny dostęp do konto Microsoft, który nie jest skojarzony z żadnym z istniejących kont NuGet.org. Jeśli go nie masz, możesz go [utworzyć](https://signup.live.com) .
 2. Jeśli nie pamiętasz nazwy użytkownika i hasła do konta usługi NuGet.org, postępuj zgodnie z instrukcjami, [Aby odzyskać logowanie](#how-to-recover-nugetorg-password-login)przy użyciu hasła.
 3. [Zaloguj się do NuGet.org](https://www.nuget.org/users/account/LogOnNuGetAccount) przy użyciu nazwy użytkownika/hasła logowania.
 4. Po zalogowaniu zostanie wyświetlone okno podręczne wyświetlane poniżej. To jest okno dialogowe niekontynuacja hasła.
-5. **Uwaga** : zignoruj instrukcję, aby zalogować się przy użyciu podanej konto Microsoft. Teraz możesz połączyć konto NuGet.org z innymi identyfikatorami logowania firmy Microsoft.
+5. **Uwaga**: zignoruj instrukcję, aby zalogować się przy użyciu podanej konto Microsoft. Teraz możesz połączyć konto NuGet.org z innymi identyfikatorami logowania firmy Microsoft.
 6. Kliknij przycisk **Zaloguj się przy użyciu konta Microsoft** i zaloguj się przy użyciu konto Microsoft, do którego masz dostęp, jak wspomniano w kroku 1.
 7. Twoje konto zostanie teraz połączone z nowym konto Microsoft, którego możesz użyć do zalogowania się do usługi NuGet.org.
 
@@ -203,7 +203,7 @@ Jeśli podjęto próbę skorzystania z [pomocy przy logowaniu](#which-microsoft-
 Jeśli chcesz przekształcić konto w organizację, a to konto jest już skojarzone z logowaniem konto Microsoft, wykonaj kroki podane w dokumentacji dotyczącej [organizacji na platformie NuGet](organizations-on-nuget-org.md).
 
 Jeśli jednak konto NuGet.org nie jest skojarzone/połączone z konto Microsoft, możesz wykonać poniższe kroki, aby przekształcić to konto w organizację.
-1. **Wymaganie** : musisz najpierw utworzyć konto w usłudze NuGet.org, które będzie używane jako administrator na koncie organizacji. Jeśli go nie masz, [Utwórz nowe konto NuGet.org](individual-accounts.md)
+1. **Wymaganie**: musisz najpierw utworzyć konto w usłudze NuGet.org, które będzie używane jako administrator na koncie organizacji. Jeśli go nie masz, [Utwórz nowe konto NuGet.org](individual-accounts.md)
 2. Wykonaj [kroki w celu odzyskania hasła logowania](#how-to-recover-nugetorg-password-login) do konta usługi NuGet.org, jeśli nie masz dla niego hasła logowania, Pomiń ten krok.
 3. [Zaloguj się do NuGet.org](https://www.nuget.org/users/account/LogOnNuGetAccount) przy użyciu nazwy użytkownika/hasła logowania.
 4. Po zalogowaniu zostanie wyświetlone okno podręczne wyświetlane poniżej. To jest okno dialogowe niekontynuacja hasła. 
@@ -220,9 +220,7 @@ Jeśli jednak konto NuGet.org nie jest skojarzone/połączone z konto Microsoft,
 
 Jeśli zobaczysz błąd podobny do poniższego podczas przepływu logowania przy użyciu domeny konta e-mail ( @yourdomain.com ), zobacz poniższe kroki, aby odzyskać konto NuGet.org.
 
-<p align="center">
-    <img src="media/unmanaged-aad-tenant.png" />
-</p>
+![Błąd podczas logowania dla kont usługi AAD](media/unmanaged-aad-tenant.png)
 
 **Co to jest stan niezarządzany podczas logowania? Co się dzieje teraz?** 
 
@@ -244,7 +242,7 @@ Można [utworzyć](https://www.microsoft.com/account) nowy konto Microsoft (z ad
 
 Nie możesz. Zgodnie z zasadami nie zezwalamy na zmianę nazw użytkowników. Jest to również nieprzerwana zmiana dla użytkowników, którzy mogą mieć zdefiniowane [zasady zaufania pakietu na podstawie właściciela pakietu](../consume-packages/installing-signed-packages.md#trust-package-owners). Jedynym sposobem zmiany nazwy użytkownika jest utworzenie nowego konta z odpowiednią nazwą użytkownika. Zalecamy usunięcie istniejących kont przed utworzeniem nowego konta. w przeciwnym razie nie będzie można ponownie użyć zarejestrowanych konto Microsoft.
 > [!Important]
-> Usunięcie użytkownika będzie nadal **zarezerwować** `username` . Nie będziesz w stanie ponownie ponownie używać tej samej nazwy użytkownika i **obejmuje ona zmianę wielkości liter** . Jeśli na przykład utworzono użytkownika o nazwie użytkownika `mycoolname` i chcesz zmienić ten element na `MyCoolName` (zmiany wielkości liter), nie będzie możliwe po usunięciu użytkownika.
+> Usunięcie użytkownika będzie nadal **zarezerwować** `username` . Nie będziesz w stanie ponownie ponownie używać tej samej nazwy użytkownika i **obejmuje ona zmianę wielkości liter**. Jeśli na przykład utworzono użytkownika o nazwie użytkownika `mycoolname` i chcesz zmienić ten element na `MyCoolName` (zmiany wielkości liter), nie będzie możliwe po usunięciu użytkownika.
 
 Wykonaj czynności podane w sekcji [usuwanie konta NuGet.org](#how-to-delete-my-nugetorg-account) i [Zarejestruj nowe konto](individual-accounts.md) o prawidłowej nazwie użytkownika.
 

@@ -1,16 +1,16 @@
 ---
 title: Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia nuget.exe
 description: Szczegółowy przewodnik dotyczący projektowania i tworzenia pakietu NuGet, w tym plików i przechowywania wersji.
-author: karann-msft
+author: JonDouglas
 ms.author: feaguila
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec06a8f721b7b67ddc5d72323305b9b22f292de6
-ms.sourcegitcommit: 53b06e27bcfef03500a69548ba2db069b55837f1
+ms.openlocfilehash: ebaa14325e477c7d864f5c5e88d99f467194e62c
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97699801"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774719"
 ---
 # <a name="create-a-package-using-the-nugetexe-cli"></a>Tworzenie pakietu przy użyciu interfejsu wiersza polecenia nuget.exe
 

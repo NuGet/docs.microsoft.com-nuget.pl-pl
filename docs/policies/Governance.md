@@ -1,95 +1,95 @@
 ---
-title: Zarządzanie projektami NuGet
-description: Model nadzoru dla NuGet, w tym role i obowiązki dla committers, współautorów i użytkowników.
-author: karann-msft
-ms.author: karann
+title: Zarządzanie projektem NuGet
+description: Model ładu dla programu NuGet, w tym role i obowiązki dla twórców, współautorów i użytkowników.
+author: JonDouglas
+ms.author: jodou
 ms.date: 01/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2aaaf41b3fc4ef3621333e5099780b5d7ef393bc
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 2edaac0218dc936ea6bfe1814c0aab963028ea87
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "64500395"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775586"
 ---
-# <a name="nuget-governance"></a>Zarządzanie uciążliwością
+# <a name="nuget-governance"></a>Zarządzanie pakietem NuGet
 
-> Dokument ten jest oparty na [dobroczynnym modelu rządzenia dyktatorem](http://www.oss-watch.ac.uk/resources/benevolentdictatorgovernancemodel) przez Uniwersytet Oksfordzki. Jest licencjonowany na licencji [Creative Commons Uznanie autorstwa-ShareAlike 2.0 UK: England & Wales License](http://creativecommons.org/licenses/by-sa/2.0/uk/).
+> Ten dokument jest oparty na [modelu ładu Benevolent Dictator](http://www.oss-watch.ac.uk/resources/benevolentdictatorgovernancemodel) przez Uniwersytet Oxford. Jest on licencjonowany w ramach [creative commons attribution Attribution-ShareAlike 2,0 UK: anglia & licencji na Walia](http://creativecommons.org/licenses/by-sa/2.0/uk/).
 
-Projekt NuGet jest prowadzony przez życzliwego dyktatora i zarządzany przez społeczność. Oznacza to, że społeczność aktywnie przyczynia się do codziennego utrzymania projektu, ale ogólna linia strategiczna jest rysowana przez życzliwego dyktatora. W przypadku braku porozumienia życzliwy dyktator ma ostatnie słowo.
+Projekt NuGet jest kierowany przez Benevolent Dictator i zarządzany przez społeczność. Oznacza to, że społeczność aktywnie uczestniczy w codziennym obsłudze projektu, ale Ogólna linia strategiczna jest rysowana przez Benevolent Dictator. W przypadku braku umowy Benevolent Dictator ma ostatni wyraz.
 
-Zadaniem życzliwego dyktatora jest rozwiązywanie sporów wewnątrz społeczności i zapewnienie, że projekt jest w stanie rozwijać się w skoordynowany sposób. Z kolei zadaniem społeczności jest kierowanie decyzjami życzliwego dyktatora poprzez aktywne zaangażowanie i wkład.
+Jest to zadanie Benevolent Dictator w celu rozwiązania sporów w społeczności i zapewnienia, że projekt jest w sposób skoordynowany. Z kolei jest to zadanie społecznościowe, które ułatwiają podejmowanie decyzji dotyczących Benevolent Dictator w ramach aktywnego zaangażowania i udziału.
 
 ## <a name="roles-and-responsibilities"></a>Role i obowiązki
 
-Istnieją cztery role opisane tutaj: Życzliwy dyktator, committers, współpracowników i użytkowników.
+Poniżej opisano cztery role: Benevolent Dictator, osoby zatwierdzające, współautorzy i użytkownicy.
 
-### <a name="benevolent-dictator"></a>Życzliwy dyktator
+### <a name="benevolent-dictator"></a>Benevolent dictator
 
-Podstawowy zespół NuGet jest samozwańczy jako życzliwy dyktator lub kierownik projektu. Jednakże, ponieważ społeczność zawsze ma możliwość rozwidlić, zespół jest w pełni odpowiedzialny przed społecznością. Oczekuje się, że prowadzący projekt zrozumie całą społeczność i będzie dążyć do zaspokojenia jak największej liczby sprzecznych potrzeb, przy jednoczesnym zapewnieniu, że projekt przetrwa w dłuższej perspektywie.
+Główny zespół NuGet jest samopowoływany jako Benevolent Dictator lub potencjalny lider projektu. Jednak ze względu na to, że społeczność ma zawsze możliwość rozwidlenia, zespół jest w pełni odpowiadać społeczności. Potencjalny klient projektu powinien zrozumieć społeczność jako całość i dążyć do zaspokojenia możliwie największej liczby konfliktów, a jednocześnie zagwarantowania, że projekt przeżyje w długim okresie.
 
-Pod wieloma względami rola życzliwego dyktatora polega w mniejszym stopniu na dyktaturze, a bardziej na dyplomacji. Kluczem jest zapewnienie, że w miarę rozwoju projektu, odpowiednie osoby mają wpływ na niego i społeczności zbiera się za wizją lidera projektu. Zadaniem potencjalnego klienta jest następnie zapewnienie, że osoby zobowiązujące (patrz poniżej) podejmują właściwe decyzje w imieniu projektu. Ogólnie rzecz biorąc, tak długo, jak committers są zgodne ze strategią projektu, kierownik projektu pozwoli im postępować zgodnie z ich życzeniem.
+Na wiele sposobów rola Benevolent Dictator jest niższa dla dictatorship i więcej informacji na temat Diplomacy. Kluczem jest upewnienie się, że w miarę rozwijania projektu odpowiednie osoby mają wpływ na dział IT, a społeczność rallies za wizję liderów projektu. Zadanie potencjalnego klienta polega na zapewnieniu, że osoby zatwierdzające (patrz poniżej) podejmują właściwe decyzje w imieniu projektu. Ogólnie mówiąc, tak długo, jak osoby zatwierdzające są wyrównane z strategią projektu, potencjalni klienci projektu umożliwią im dalsze działanie.
 
-Ponadto pracownicy fundacji .NET uważają, że projekt jest głównym lub pierwszym punktem kontaktowym dla nugeta na potrzeby operacji biznesowych, w tym rejestracji domen i usług technicznych (np. podpisywania kodu).
+Ponadto pracownicy platformy .NET Foundation uważają, że ten projekt prowadzi do głównego lub pierwszego punktu kontaktu dla programu NuGet w celach operacyjnych, takich jak rejestracje domen i usługi techniczne (np. podpisywanie kodu).
 
-### <a name="committers"></a>Zrzeszacze
+### <a name="committers"></a>Współtwórców
 
-Committers są współpracownikami, którzy wnieśli trwały cenny wkład do NuGet i są mianowani przez życzliwego dyktatora. Po wyznaczeniu, committers są powoływane zarówno napisać kod bezpośrednio do repozytorium i ekran składek innych. Committers są często deweloperzy, ale może przyczynić się w inny sposób.
+Osoby zatwierdzające to Współautorzy, którzy wykonali cenne udziały w NuGet i są mianowani przez Benevolent Dictator. Po wyznaczeniu, osoby zatwierdzające są zaangażowane w zarówno zapis kodu do repozytorium, jak i na ekranie. Twórcy są często deweloperami, ale mogą współtworzyć w inny sposób.
 
-Zazwyczaj committer koncentruje się na konkretnym aspekcie projektu i wnosi poziom wiedzy i zrozumienia, który przynosi im szacunek społeczności i lidera projektu. Rola committer nie jest oficjalna, to po prostu stanowisko, które wpływowi członkowie społeczności zakładają, jak prowadzić projekt patrzy na nich wskazówek i wsparcia.
+Zazwyczaj osoba przekazująca koncentruje się na konkretnym aspekcie projektu i udostępnia poziom wiedzy i zrozumienie, że uzyskuje je w związku ze społecznością i potencjalnym liderem projektu. Rola osoby zatwierdzającej nie jest oficjalna, to po prostu pozycja, która ma wpływ na członków społeczności przyjętych przez lidera projektu, aby uzyskać wskazówki i pomoc techniczną.
 
-Committers nie mają uprawnień, gdzie ogólny kierunek NuGet dotyczy. Jednak mają ucho lidera projektu. Zadaniem osoby zobowiązującej jest dbanie o to, aby potencjalny klient był świadomy potrzeb i wspólnych celów społeczności, a także pomagać w opracowywaniu lub wywoływaniu odpowiedniego wkładu w projekt. Często committers otrzymują nieformalną kontrolę nad ich określonych obszarach odpowiedzialności i są przypisane prawa do bezpośredniego modyfikowania niektórych obszarów kodu źródłowego. Oznacza to, że chociaż committers nie mają wyraźnego uprawnienia decyzyjnego, często stwierdzają, że ich działania są synonimem decyzji podejmowanych przez lidera.
+Program zatwierdzający nie ma żadnego urzędu, w którym znajduje się ogólny kierunek NuGet. Jednak są one dostępne na uszach lidera projektu. Jest to zadanie osoby zatwierdzającej, aby zapewnić, że potencjalny klient ma świadomość potrzeb Wspólnoty i celów zbiorowych oraz aby pomóc w opracowywaniu lub wytworzeniu odpowiednich wkładów do projektu. Często program zatwierdzający ma nieformalną kontrolę nad ich szczególnymi zakresami odpowiedzialności i ma przypisane prawa do bezpośredniego modyfikowania niektórych obszarów kodu źródłowego. Oznacza to, że chociaż osoby dokonujące wyboru nie mają jawnego urzędu decyzyjnego, często będą uważali, że ich działania są równoznaczne z decyzjami podjętymi przez lidera.
 
 ### <a name="contributors"></a>Współautorzy
 
-Współautorzy są członkami społeczności, którzy przesyłają poprawki do NuGet. Te poprawki mogą być jednorazowym wystąpieniem lub wystąpić w czasie. Oczekuje się, że współautorzy przesyłają poprawki, które są małe na początku i powiększają się, gdy współautor, osoby zatwierdzacze i potencjalny klient projektu zbudowali zaufanie do jakości poprawek współautora. Współautorzy są rozpoznawani w skojarzonym dokumencie informacji o wersji produktu.
+Współautorzy są członkami społeczności, którzy przesyłają poprawki do narzędzia NuGet. Te poprawki mogą być wystąpieniem jednorazowym lub występować w czasie. Oczekiwania polegają na tym, że Współautorzy przesyłają w pierwszej kolejności poprawki, które są bardzo małe i zwiększają się, gdy współautor, osoby zatwierdzające i potencjalni klienci projektu mają pewność, że jakość poprawek współautora została skompilowana. Współautorzy są rozpoznawani w dokumencie informacje o wersji skojarzonego produktu.
 
-Zanim pierwsza poprawka współautora zostanie umieszczona w repozytorium, musi podpisać [umowę licencyjną współautora](http://en.wikipedia.org/wiki/Contributor_License_Agreement) lub umowę cesji do platformy .NET Foundation. Łatka może być przesłana i omówiona, ale w rzeczywistości nie może być zaangażowana w repozytorium bez odpowiedniej dokumentacji. Aby uzyskać umowę licencyjną współautora, wyślij [contributions@nuget.org](mailto:contributions@nuget.org)prośbę w wiadomości e-mail na adres .
+Przed wprowadzeniem pierwszej poprawki współautora do repozytorium należy podpisać [umowę licencyjną współautora](http://en.wikipedia.org/wiki/Contributor_License_Agreement) lub umowę o przypisaniu do programu .NET Foundation. Poprawkę można przesłać i omówić, ale nie można jej faktycznie przekazać do repozytorium bez odpowiednich Paperwork. Aby uzyskać umowę licencyjną współautora, Wyślij żądanie w wiadomości e-mail na adres [contributions@nuget.org](mailto:contributions@nuget.org) .
 
-Aby zostać współautorem, prześlij żądanie ściągnięcia do jednego z następujących repozytoriów:
+Aby stać się współautorem, Prześlij żądanie ściągnięcia do jednego z następujących repozytoriów:
 
 - [Klient NuGet](https://github.com/NuGet/NuGet.Client)
 - [Galeria NuGet](https://github.com/nuget/nugetgallery)
 - [Dokumenty NuGet](https://github.com/nuget/nugetdocs)
 
-Szczegółowy proces przesyłania żądania ściągnięcia różni się w zależności od repozytorium:
+Szczegółowy proces przesyłania żądania ściągnięcia zależy od repozytorium:
 
-- [Instrukcje dotyczące wkładu dla klienta NuGet i galerii NuGet](https://github.com/NuGet/Home/wiki/Contributing-to-NuGet)
-- [Instrukcje dotyczące wkładu dla NuGet Docs](https://github.com/NuGet/NuGetDocs/wiki/Contributing-to-NuGet-Documentation)
+- [Instrukcje dotyczące udziału dla klienta NuGet i galerii NuGet](https://github.com/NuGet/Home/wiki/Contributing-to-NuGet)
+- [Instrukcje dotyczące udziału dokumentów NuGet](https://github.com/NuGet/NuGetDocs/wiki/Contributing-to-NuGet-Documentation)
 
 ### <a name="users"></a>Użytkownicy
 
-Użytkownicy są członkami społeczności, którzy potrzebują i używają NuGet, jako konsumentów pakietów i/lub autorów. Użytkownicy są najważniejszymi członkami społeczności: bez nich projekt nie miałby żadnego celu. Każdy może być użytkownikiem; nie ma żadnych szczególnych wymagań.
+Użytkownicy są członkami społeczności, którzy mają potrzebę korzystania z NuGet, jako odbiorców pakietu i/lub autorów. Użytkownicy są najważniejszymi członkami społeczności: bez nich, projekt nie będzie przeznaczenie. Każdy może być użytkownikiem; nie ma określonych wymagań.
 
-Użytkownicy powinni być zachęcani do udziału w życiu NuGet i społeczności jak najwięcej. Wkład użytkowników umożliwia zespołowi projektowego upewnienie się, że zaspokaja potrzeby tych użytkowników. Typowe działania użytkownika obejmują między innymi następujące czynności:
+Użytkownicy powinni zachęcać do uczestnictwa w życiu programu NuGet i społeczności tak jak to możliwe. Udziały użytkowników umożliwiają zespołowi projektu upewnienie się, że spełniają one potrzeby tych użytkowników. Typowe działania użytkowników obejmują, ale nie są ograniczone do następujących:
 
-- Popieranie wykorzystania projektu
-- Informowanie twórców o mocnych i słabych stronach projektu z perspektywy nowego użytkownika
-- Zapewnienie wsparcia moralnego (dziękuję przechodzi długą drogę)
+- Ambasador dla korzystania z projektu
+- Informowanie deweloperów siły projektu i słabości z perspektywy nowego użytkownika
+- Zapewnianie pomocy technicznej (Dziękujemy w długim czasie)
 - Pisanie dokumentacji i samouczków
-- Zgłaszanie raportów o błędach i żądań funkcji
-- Uczestnictwo w wydarzeniach społecznościowych, takich jak błędy
-- Udział w forach dyskusyjnych lub forach
+- Zgłaszanie raportów usterek i żądań funkcji
+- Uczestnictwo w zdarzeniach społeczności, takich jak usterka bashes
+- Uczestnictwo w dyskusjach lub forach dyskusyjnych
 
-Użytkownicy, którzy nadal angażują się w projekt i jego społeczność, często stają się coraz bardziej zaangażowani. Tacy użytkownicy mogą następnie stać się współautorami, jak opisano powyżej.
+Użytkownicy, którzy kontynuują zaangażowanie się z projektem i jego społeczność często znajdą się coraz bardziej zaangażowani. Tacy użytkownicy mogą następnie przechodzić do współautorów, jak opisano powyżej.
 
-## <a name="package-succession-under-special-circumstances"></a>Dziedziczenie pakietów w szczególnych okolicznościach
+## <a name="package-succession-under-special-circumstances"></a>Powodzenie pakietu w szczególnych okolicznościach
 
-W niefortunnej sytuacji, gdy posiadacz konta NuGet jest ubezwłasnowolniony lub zmarły, będziemy współpracować ze społecznością, aby dodać odpowiedniego właściciela / s do pakietu, w którym wspomniane konto ma wyłączną własność, a pakiet jest publikowany na [licencji zatwierdzonej](https://opensource.org/licenses/alphabetical)przez OSI. Aby zażądać własności, należy przesłać nam następujące dokumenty:
+W sytuacji, gdy posiadacz konta NuGet jest incapacitated lub zakończył działanie, współpracujemy ze społecznością, aby dodać odpowiednich właścicieli/s do pakietu, w którym wymienione konto ma wyłączną własność, a pakiet jest publikowany w ramach [zatwierdzonej licencji na osi](https://opensource.org/licenses/alphabetical). Aby zażądać własności, musisz wysłać nam następujące dokumenty:
 
-1. Kserokopia doładowego do zdjęcia wydanego przez rząd.
-1. Jeden z następujących dokumentów potwierdzających status poprzedniego posiadacza konta: 
-    - Urzędowy, wydany przez rząd akt zgonu, jeżeli poprzedni posiadacz konta nie żyje, lub,
-    - Poświadczony dokument, taki jak zaświadczenie podpisane przez lekarza odpowiedzialnego za opiekę nad posiadaczem konta niezdolnego do pracy.
+1. Fotokopia Twojego identyfikatora zdjęć wystawionego przez rząd.
+1. Jeden z następujących dokumentów potwierdza status poprzedniego właściciela konta: 
+    - Urzędowy, wydany przez rząd certyfikat zgonu, jeśli poprzedni właściciel konta jest zaprzestał lub
+    - Dokument certyfikowany, taki jak certyfikat podpisany przez specjalistę medyczne odpowiedzialny za opiekę właściciela konta incapacitated.
 1. Jeden z następujących dokumentów potwierdzających prawo własności: 
-    - Akt małżeństwa wskazujący, że jesteś żyjącym współmałżonkiem posiadacza rachunku,
-    - Podpisane pełnomocnictwo,
-    - Kopia dokumentu woli lub zaufania, nazywając Cię wykonawcą lub beneficjentem,
-    - Akt urodzenia posiadacza konta, jeśli jesteś jego rodzicem, lub
-    - Dokumenty opiekuńcza, jeśli jesteś prawnym opiekunem właściciela konta.
+    - Certyfikat małżeństwa pokazujący, że jesteś pozostały współmałżonkiem posiadacza konta,
+    - Podpisana moc prawnika,
+    - Kopia a lub zaufana nazwa dokumentu jako wykonawca lub beneficjenta
+    - Certyfikat urodzenia dla właściciela konta, jeśli jesteś ich rodzicem lub,
+    - Opiekuna Paperwork, jeśli jesteś prawnym opiekunem właściciela konta.
 
-Jeśli potrzebujesz powołania się na te zasady, wyślij [support@nuget.org](mailto:support@nuget.org) do nas wiadomość e-mail z identyfikatorem i wersją pakietu.
+Jeśli okaże się, że nie musisz wycofać tych zasad, Wyślij do nas wiadomość e-mail [support@nuget.org](mailto:support@nuget.org) z identyfikatorem i wersją pakietu.
 
-## <a name="transparency"></a>Przezroczystość
+## <a name="transparency"></a>Przejrzystość
 
-Budowanie zaufania społeczności do zarządzania projektem open source ma kluczowe znaczenie dla jego sukcesu. W tym celu proces podejmowania decyzji musi odbywać się w sposób przejrzysty i otwarty. Dyskusja na temat kierunku projektu musi być emidacją do publicznej wiadomości. Społeczność nigdy nie powinna być złapana na gorącym uczynku przez decyzję życzliwego dyktatora. Ponadto dyskusja na temat decyzji dotyczących projektu musi zostać zarchiwizowana, aby członkowie społeczności mogli zrozumieć całą historię decyzji i jej kontekst.
+Tworzenie zaufania społeczności w dziedzinie nadzoru nad projektem typu open source jest istotne dla sukcesu. W tym celu należy podjąć decyzję w przejrzysty, otwarty sposób. Dyskusja o kierunku projektu musi być prowadzona publicznie. Wspólnota nie powinna być nigdy przechwycona jako ochrona przed decyzją Benevolent Dictator. Ponadto należy zarchiwizować dyskusje na temat decyzji projektu, aby członkowie społeczności mogli zrozumieć całą historię decyzji i jej kontekstu.

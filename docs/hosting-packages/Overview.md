@@ -1,42 +1,42 @@
 ---
-title: Przegląd hostingu własnych kanałów NuGet
-description: Omówienie otwiera dla hostingu własnych nuget pakietów kanałów informacyjnych lub galerii lokalnie lub zdalnie.
-author: karann-msft
-ms.author: karann
+title: Przegląd hostingu własnych źródeł danych NuGet
+description: Omówienie otwierania w celu hostowania własnych kanałów informacyjnych lub Galerii pakietów NuGet lokalnie lub zdalnie.
+author: JonDouglas
+ms.author: jodou
 ms.date: 08/25/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 81acf15ac69d78d39d2784e77c18ba38bfea126d
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 1b7bad6bcd897b746ea9eb6e89b80a88ee5e891a
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "75385545"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774058"
 ---
-# <a name="hosting-your-own-nuget-feeds"></a>Hostowanie własnych kanałów NuGet
+# <a name="hosting-your-own-nuget-feeds"></a>Hosting własnych źródeł danych NuGet
 
-Zamiast udostępniać pakiety publicznie, można udostępnić pakiety tylko ograniczonej grupie odbiorców, takiej jak organizacja lub grupa robocza. Ponadto niektóre firmy mogą chcieć ograniczyć biblioteki innych firm, z których mogą korzystać ich deweloperzy, a tym samym skierować tych deweloperów do rysowania z ograniczonego źródła pakietu, a nie nuget.org.
+Zamiast udostępniać pakiety publicznie, możesz chcieć zwolnić pakiety tylko do ograniczonych odbiorców, takich jak organizacja lub Grupa robocza. Ponadto niektóre firmy mogą chcieć ograniczyć dostęp do bibliotek innych firm, które mogą być używane przez deweloperów, i w ten sposób kierować tych deweloperów na podstawie ograniczonego źródła pakietów, a nie nuget.org.
 
-Dla wszystkich takich celów NuGet obsługuje konfigurowanie prywatnych źródeł pakietów w następujący sposób:
+Dla wszystkich takich celów NuGet obsługuje Konfigurowanie prywatnych źródeł pakietów w następujący sposób:
 
-- Lokalny kanał informacyjny: Pakiety są po prostu umieszczane w odpowiednim udziale plików sieciowych, najlepiej używając `nuget init` i `nuget add` tworząc hierarchiczną strukturę folderów (NuGet 3.3+). Aby uzyskać szczegółowe informacje, zobacz [Lokalne kanały informacyjne](../hosting-packages/local-feeds.md).
-- NuGet.Server: Pakiety są udostępniane za pośrednictwem lokalnego serwera HTTP. Aby uzyskać szczegółowe informacje, zobacz [NuGet.Server](../hosting-packages/nuget-server.md).
-- Galeria NuGet: Pakiety są hostowane na serwerze internetowym przy użyciu [projektu NuGet Gallery](https://github.com/NuGet/NuGetGallery#build-and-run-the-gallery-in-arbitrary-number-easy-steps) (github.com). Galeria NuGet udostępnia zarządzanie użytkownikami i funkcje, takie jak rozbudowany interfejs użytkownika sieci Web, który umożliwia wyszukiwanie i eksplorowanie pakietów z poziomu przeglądarki, podobnie jak nuget.org.
+- Lokalne źródło danych: pakiety są po prostu umieszczane w odpowiednim sieciowym udziale plików, najlepiej przy użyciu `nuget init` i `nuget add` do tworzenia hierarchicznej struktury folderów (NuGet 3.3 +). Aby uzyskać szczegółowe informacje, zobacz [lokalne źródła danych](../hosting-packages/local-feeds.md).
+- NuGet. Server: pakiety są udostępniane za pośrednictwem lokalnego serwera HTTP. Aby uzyskać szczegółowe informacje, zobacz [NuGet. Server](../hosting-packages/nuget-server.md).
+- Galeria NuGet: pakiety są hostowane na serwerze internetowym przy użyciu [projektu galerii NuGet](https://github.com/NuGet/NuGetGallery#build-and-run-the-gallery-in-arbitrary-number-easy-steps) (GitHub.com). Galeria NuGet umożliwia zarządzanie użytkownikami i ich funkcje, takie jak obszerny interfejs użytkownika sieci Web, który umożliwia wyszukiwanie i eksplorowanie pakietów z poziomu przeglądarki, podobnie jak nuget.org.
 
-Istnieje również kilka innych produktów hostingowych NuGet, takich jak [artefakty platformy Azure](https://www.visualstudio.com/docs/package/nuget/publish) i rejestr [pakietów GitHub,](https://help.github.com/articles/configuring-nuget-for-use-with-github-package-registry) które obsługują zdalne prywatne źródła danych. Poniżej znajduje się lista takich produktów:
+Istnieje także kilka innych produktów hostingowych NuGet, takich jak [Azure Artifacts](https://www.visualstudio.com/docs/package/nuget/publish) i [Rejestr pakietów usługi GitHub](https://help.github.com/articles/configuring-nuget-for-use-with-github-package-registry) , które obsługują zdalne źródła danych. Poniżej znajduje się lista takich produktów:
 
 - [Artifactory](https://www.jfrog.com/artifactory/) z JFrog.
-- [Artefakty platformy Azure](https://www.visualstudio.com/docs/package/nuget/publish), który jest również dostępny na Team Foundation Server 2017 i nowsze.
-- [BaGet](https://github.com/loic-sharma/BaGet), implementacja open-source serwera NuGet V3 zbudowana na ASP.NET Core
+- [Azure Artifacts](https://www.visualstudio.com/docs/package/nuget/publish), która jest również dostępna na Team Foundation Server 2017 i nowszych.
+- [BaGet](https://github.com/loic-sharma/BaGet), implementacja typu "open source" serwera NuGet v3 skompilowanego na ASP.NET Core
 - [Cloudsmith](https://cloudsmith.io/l/nuget-feed/), w pełni zarządzane zarządzanie pakietami SaaS
-- [Rejestr pakietów GitHub](https://help.github.com/articles/configuring-nuget-for-use-with-github-package-registry)
-- [LiGet](https://github.com/ai-traders/liget), implementacja open-source serwera NuGet V2, który działa na pustułce w docker
+- [Rejestr pakietów usługi GitHub](https://help.github.com/articles/configuring-nuget-for-use-with-github-package-registry)
+- [LiGet](https://github.com/ai-traders/liget), implementacja typu "open source" serwera NuGet v2 działającego na platformie Kestrel w Docker
 - [MyGet](https://myget.org)
-- [Nexus Repozytorium OSS](https://www.sonatype.com/nexus-repository-oss) z Sonatype.
-- [NuGet Server (Open Source)](https://github.com/svenkle/nuget-server)— implementacja typu open source podobna do serwera NuGet Server firmy Inedo
-- [NuGet Server](http://nugetserver.net/), projekt społeczności z Inedo
-- [ProGet](https://inedo.com/proget) od Inedo
-- [Sleet](https://github.com/emgarten/sleet), generator statyczny NuGet V3 typu open source
-- [TeamCity](https://www.jetbrains.com/teamcity/) firmy JetBrains.
+- [Nexus REPOZYTORIUM OSS](https://www.sonatype.com/nexus-repository-oss) z Sonatype.
+- [Serwer NuGet (Open Source)](https://github.com/svenkle/nuget-server)— implementacja "open source" podobna do serwera NuGet Inedo
+- [Serwer NuGet](http://nugetserver.net/), projekt społecznościowy z Inedo
+- [ProGet](https://inedo.com/proget) z Inedo
+- [Sleet](https://github.com/emgarten/sleet), generator statycznego źródła danych NuGet w wersji 3 (Open Source)
+- [TeamCity](https://www.jetbrains.com/teamcity/) z JetBrains.
 
-Niezależnie od sposobu hosta pakietów, można uzyskać do nich dostęp, `NuGet.Config`dodając je do listy dostępnych źródeł w programie . Można to zrobić w programie Visual Studio zgodnie z opisem [`nuget sources`](../reference/cli-reference/cli-ref-sources.md)w programie Źródła [pakietów](../consume-packages/install-use-packages-visual-studio.md#package-sources)lub z wiersza polecenia przy użyciu programu . Ścieżką do źródła może być nazwa ścieżki folderu lokalnego, nazwa sieciowa lub adres URL.
+Niezależnie od tego, jak są hostowane pakiety, można uzyskać do nich dostęp, dodając je do listy dostępnych źródeł w `NuGet.Config` . Można to zrobić w programie Visual Studio zgodnie z opisem w artykule [źródła pakietów](../consume-packages/install-use-packages-visual-studio.md#package-sources)lub z wiersza polecenia przy użyciu [`nuget sources`](../reference/cli-reference/cli-ref-sources.md) . Ścieżka do źródła może być ścieżką do folderu lokalnego, nazwą sieci lub adresem URL.

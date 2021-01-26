@@ -1,16 +1,16 @@
 ---
 title: Tworzenie i publikowanie .NET Standard Pakiet NuGet — Visual Studio w systemie Windows
 description: Samouczek instruktażowy dotyczący tworzenia i publikowania pakietu .NET Standard NuGet przy użyciu programu Visual Studio w systemie Windows.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 08/16/2019
 ms.topic: quickstart
-ms.openlocfilehash: 32dcc1d233154463e2950b1ce46554b1cb89956e
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 53f54f6723ad10fca2ed6f75290ba3829dfb9a5e
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237500"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775680"
 ---
 # <a name="quickstart-create-and-publish-a-nuget-package-using-visual-studio-net-standard-windows-only"></a>Szybki Start: Tworzenie i publikowanie pakietu NuGet przy użyciu programu Visual Studio (.NET Standard, tylko w systemie Windows)
 
@@ -36,7 +36,7 @@ Jest to prosty proces tworzenia pakietu NuGet z biblioteki klas .NET Standard w 
 
 Można użyć istniejącego projektu biblioteki klas .NET Standard dla kodu, który ma zostać spakowany, lub utworzyć prosty jeden w następujący sposób:
 
-1. W programie Visual Studio wybierz pozycję **plik > nowy > projekt** , rozwiń węzeł **.NET Standard > Visual C#** , wybierz szablon "Biblioteka klas (.NET standard)", Nadaj projektowi nazwę AppLogger i kliknij przycisk **OK** .
+1. W programie Visual Studio wybierz pozycję **plik > nowy > projekt**, rozwiń węzeł **.NET Standard > Visual C#** , wybierz szablon "Biblioteka klas (.NET standard)", Nadaj projektowi nazwę AppLogger i kliknij przycisk **OK**.
 
    > [!Tip]
    > O ile nie istnieje powód, aby wybrać inny sposób, .NET Standard jest preferowanym celem dla pakietów NuGet, ponieważ zapewnia zgodność z najszerszym zakresem zużywanych projektów.
@@ -69,20 +69,20 @@ namespace AppLogger
     > [!Note]
     > W przypadku pakietów przeznaczonych do użycia publicznego należy zwrócić szczególną uwagę na właściwości **Tagi** , ponieważ Tagi ułatwiają innym znalezienie pakietu i zrozumienie jego działania.
 
-1. Nadaj pakietowi unikatowy identyfikator i Wypełnij wszystkie inne żądane właściwości. Aby uzyskać mapowanie właściwości programu MSBuild (projekt w stylu zestawu SDK) na właściwości w elemencie *. nuspec* , zobacz temat [targets Pack](../reference/msbuild-targets.md#pack-target). Opisy właściwości można znaleźć w [dokumentacji pliku. nuspec](../reference/nuspec.md). Wszystkie właściwości w tym miejscu należy do `.nuspec` manifestu, który program Visual Studio tworzy dla projektu.
+1. Nadaj pakietowi unikatowy identyfikator i Wypełnij wszystkie inne żądane właściwości. Aby uzyskać mapowanie właściwości programu MSBuild (projekt w stylu zestawu SDK) na właściwości w elemencie *. nuspec*, zobacz temat [targets Pack](../reference/msbuild-targets.md#pack-target). Opisy właściwości można znaleźć w [dokumentacji pliku. nuspec](../reference/nuspec.md). Wszystkie właściwości w tym miejscu należy do `.nuspec` manifestu, który program Visual Studio tworzy dla projektu.
 
     > [!Important]
     > Należy nadać pakietowi identyfikator, który jest unikatowy w obrębie nuget.org lub dowolnego hosta, który jest używany. W tym instruktażu Zalecamy uwzględnienie "przykładowego" lub "testowego" w nazwie, jak w późniejszym kroku publikowania sprawia, że pakiet jest widoczny publicznie (chociaż prawdopodobnie nikt się nie używa).
     >
     > Jeśli spróbujesz opublikować pakiet o nazwie, która już istnieje, zostanie wyświetlony komunikat o błędzie.
 
-1. Obowiązkowe Aby wyświetlić właściwości bezpośrednio w pliku projektu, kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **Edytuj AppLogger. csproj** .
+1. Obowiązkowe Aby wyświetlić właściwości bezpośrednio w pliku projektu, kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **Edytuj AppLogger. csproj**.
 
-   Ta opcja jest dostępna tylko w programie Visual Studio 2017 dla projektów, które używają atrybutu stylu zestawu SDK. W przeciwnym razie kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zwolnij projekt** . Następnie kliknij prawym przyciskiem myszy niezaładowanego projektu i wybierz polecenie **Edytuj AppLogger. csproj** .
+   Ta opcja jest dostępna tylko w programie Visual Studio 2017 dla projektów, które używają atrybutu stylu zestawu SDK. W przeciwnym razie kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zwolnij projekt**. Następnie kliknij prawym przyciskiem myszy niezaładowanego projektu i wybierz polecenie **Edytuj AppLogger. csproj**.
 
 ## <a name="run-the-pack-command"></a>Uruchom pakiet polecenie
 
-1. Skonfiguruj konfigurację do **wydania** .
+1. Skonfiguruj konfigurację do **wydania**.
 
 1. Kliknij prawym przyciskiem myszy projekt w **Eksplorator rozwiązań** i wybierz polecenie **pakiet** :
 
@@ -103,9 +103,9 @@ namespace AppLogger
 
 Program Visual Studio można skonfigurować tak, aby automatycznie generował pakiet NuGet podczas kompilowania projektu.
 
-1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Właściwości** .
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Właściwości**.
 
-2. Na karcie **pakiet** wybierz pozycję **Generuj pakiet NuGet podczas kompilacji** .
+2. Na karcie **pakiet** wybierz pozycję **Generuj pakiet NuGet podczas kompilacji**.
 
    ![Automatycznie Generuj pakiet podczas kompilacji](media/qs_create-vs-05-generate-on-build.png)
 

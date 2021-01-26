@@ -1,16 +1,16 @@
 ---
 title: Znajdowanie i wybieranie pakietów NuGet
 description: Omówienie sposobu znajdowania i wybierania najlepszych pakietów NuGet dla projektu, w tym szczegółowych informacji o składni wyszukiwania NuGet.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 06/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: feb21ae1e70144491a5c0fe8f6a7be36e61d9b32
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: 4ba51028c1a69a3466cec655db19c2c498e29d9b
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88622992"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775179"
 ---
 # <a name="finding-and-evaluating-nuget-packages-for-your-project"></a>Znajdowanie i ocenianie pakietów NuGet dla projektu
 
@@ -72,9 +72,9 @@ W programie Visual Studio i w przypadku korzystania z narzędzi NuGet i interfej
 
 - **Konsola Menedżera pakietów**: Użyj `-IncludePrerelease` przełącznika z `Find-Package` poleceniami,,, `Get-Package` `Install-Package` `Sync-Package` i `Update-Package` . Zapoznaj się z dokumentacją [programu PowerShell](../reference/powershell-reference.md).
 
-- ** Interfejs wiersza polecenianuget.exe**: Użyj `-prerelease` przełącznika z `install` poleceniem, `update` , `delete` i `mirror` . Zapoznaj się z dokumentacją [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md)
+- **Interfejs wiersza polecenianuget.exe**: Użyj `-prerelease` przełącznika z `install` poleceniem, `update` , `delete` i `mirror` . Zapoznaj się z dokumentacją [interfejsu wiersza polecenia NuGet](../reference/nuget-exe-cli-reference.md)
 
-- ** Interfejs wiersza poleceniadotnet.exe**: Określ dokładną wersję wstępną za pomocą `-v` argumentu. Zapoznaj się z informacjami dotyczącymi [dodawania pakietu dotnet](/dotnet/core/tools/dotnet-add-package).
+- **Interfejs wiersza poleceniadotnet.exe**: Określ dokładną wersję wstępną za pomocą `-v` argumentu. Zapoznaj się z informacjami dotyczącymi [dodawania pakietu dotnet](/dotnet/core/tools/dotnet-add-package).
 
 <a name="native-cpp-packages"></a>
 
@@ -114,11 +114,11 @@ W tym samym czasie używanie pakietu NuGet oznacza jego zależność, dlatego na
 
     ![Historia wersji na stronie z listą pakietu](media/Finding-04-VersionHistory.png)
 
-- **Ostatnie instalacje**: na stronie pakiet w obszarze **Statystyka**wybierz pozycję **Wyświetl pełne statystyki**. Na stronie pełne statystyki zostanie wyświetlony pakiet instalowany w ciągu ostatnich sześciu tygodni według numeru wersji. Pakiet, do którego aktywnie korzysta inni deweloperzy, jest zazwyczaj lepszym wyborem niż ten, który nie jest.
+- **Ostatnie instalacje**: na stronie pakiet w obszarze **Statystyka** wybierz pozycję **Wyświetl pełne statystyki**. Na stronie pełne statystyki zostanie wyświetlony pakiet instalowany w ciągu ostatnich sześciu tygodni według numeru wersji. Pakiet, do którego aktywnie korzysta inni deweloperzy, jest zazwyczaj lepszym wyborem niż ten, który nie jest.
 
-- **Obsługa**: na stronie pakiet w obszarze **informacje**wybierz pozycję **Witryna projektu** (jeśli jest dostępna), aby zobaczyć opcje pomocy technicznej udostępniane przez autora. Projekt z dedykowaną lokacją jest ogólnie lepszy.
+- **Obsługa**: na stronie pakiet w obszarze **informacje** wybierz pozycję **Witryna projektu** (jeśli jest dostępna), aby zobaczyć opcje pomocy technicznej udostępniane przez autora. Projekt z dedykowaną lokacją jest ogólnie lepszy.
 
-- **Historia deweloperów**: na stronie pakiet w obszarze **właściciele**wybierz właściciela, aby zobaczyć, jakie inne pakiety zostały opublikowane. Te z wieloma pakietami mogą nadal obsługiwać swoją pracę w przyszłości.
+- **Historia deweloperów**: na stronie pakiet w obszarze **właściciele** wybierz właściciela, aby zobaczyć, jakie inne pakiety zostały opublikowane. Te z wieloma pakietami mogą nadal obsługiwać swoją pracę w przyszłości.
 
 - **Wkłady typu open source**: wiele pakietów jest przechowywanych w repozytoriach typu "open source", dzięki czemu deweloperzy mogą w zależności od nich bezpośrednio współtworzyć poprawki błędów i ulepszenia funkcji. Historia udziału danego pakietu jest również dobrym wskaźnikiem liczby aktywnie używanych deweloperów.
 

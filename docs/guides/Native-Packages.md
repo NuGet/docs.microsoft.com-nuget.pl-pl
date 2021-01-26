@@ -1,26 +1,26 @@
 ---
 title: Tworzenie natywnych pakietów NuGet
-description: Szczegóły dotyczące tworzenia natywnych pakietów NuGet, który zawiera kod C++ zamiast kodu zarządzanego, do użycia w projektach języka C++.
-author: karann-msft
-ms.author: karann
+description: Szczegółowe informacje na temat tworzenia natywnych pakietów NuGet, które zawierają kod języka C++ zamiast kodu zarządzanego, do użycia w projektach C++.
+author: JonDouglas
+ms.author: jodou
 ms.date: 01/09/2017
 ms.topic: conceptual
-ms.openlocfilehash: e0ec5323f7be53bef6637ad69540a66abbf22711
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 2a95fca2ce5496512627e913273e5b66128e34c7
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "69520598"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774210"
 ---
 # <a name="creating-native-packages"></a>Tworzenie pakietów natywnych
 
-Pakiet macierzysty zawiera natywne pliki binarne zamiast zarządzanych zestawów, dzięki czemu można go używać w projektach języka C++ (lub podobnych). (Zobacz [natywne pakiety C++](../consume-packages/finding-and-choosing-packages.md#native-c-packages) w sekcji Zużycie).
+Pakiet macierzysty zawiera natywne dane binarne zamiast zestawów zarządzanych, umożliwiając ich używanie w projektach C++ (lub podobnych). (Zobacz [natywne pakiety C++](../consume-packages/finding-and-choosing-packages.md#native-c-packages) w sekcji Używanie).
 
-Aby być materiałów eksploatacyjnych w projekcie Języka `native` C++, pakiet musi być ukierunkowany na platformę. Obecnie nie istnieją żadne numery wersji skojarzone z tej struktury, jak NuGet traktuje wszystkie projekty C++ takie same.
+Aby można było korzystać z projektu C++, pakiet musi być celem `native` struktury. Obecnie nie ma żadnych numerów wersji skojarzonych z tym środowiskiem, ponieważ pakiet NuGet traktuje wszystkie projekty C++ w ten sam sposób.
 
 > [!Note]
-> Pamiętaj, aby uwzględnić `<tags>` `.nuspec` *natywne* w sekcji, aby pomóc innym deweloperom znaleźć pakiet, wyszukując na tym tagu.
+> Upewnij się, że w sekcji Twojego tematu znajduje się kod *macierzysty* , `<tags>` `.nuspec` Aby pomóc innym deweloperom znaleźć swój pakiet, wyszukując ten tag.
 
-`native` Natywne kierowanie pakietów `\build` `\content`NuGet `\tools` następnie zapewniają pliki w , i folderach; `\lib` nie jest używany w tym przypadku (NuGet nie można bezpośrednio dodać odwołania do projektu C++). Pakiet może również zawierać obiekty docelowe i props plików, w `\build` tym NuGet automatycznie zaimportuje do projektów, które korzystają z pakietu. Pliki te muszą być nazwane taką samą jak identyfikator pakietu z `.targets` rozszerzeniami i/lub `.props` rozszerzeniami. Na przykład pakiet [cpprestsdk](https://nuget.org/packages/cpprestsdk/) `cpprestsdk.targets` zawiera plik `\build` w swoim folderze.
+Natywne pakiety NuGet `native` , które umożliwiają udostępnienie plików w `\build` , `\content` , i `\tools` folderów; `\lib` nie są używane w tym przypadku (NuGet nie może bezpośrednio dodawać odwołań do projektu C++). Pakiet może zawierać również elementy docelowe i pliki props w `\build` tym pakiecie NuGet zostaną automatycznie zaimportowane do projektów, które zużywają pakiet. Te pliki muszą mieć taką samą nazwę jak identyfikator pakietu z `.targets` rozszerzeniami i/lub `.props` . Na przykład pakiet [cpprestsdk](https://nuget.org/packages/cpprestsdk/) zawiera `cpprestsdk.targets` plik w `\build` folderze.
 
-Folder `\build` może być używany dla wszystkich pakietów NuGet, a nie tylko pakietów natywnych. Folder `\build` jest zgodny z ramami `\content` `\lib`docelowymi, podobnie jak foldery i `\tools` foldery. Oznacza to, że `\build\net40` można `\build\net45` utworzyć folder i folder i NuGet zaimportuje odpowiednie rekwizyty i pliki docelowe do projektu. (Użycie skryptów programu PowerShell do importowania obiektów docelowych MSBuild nie jest potrzebne).
+Ten `\build` folder może być używany dla wszystkich pakietów NuGet, a nie tylko dla pakietów natywnych. `\build`Folder uwzględnia Platformy docelowe, podobnie jak `\content` `\lib` foldery, i `\tools` . Oznacza to, że można utworzyć `\build\net40` folder i `\build\net45` folder, a plik NuGet zaimportuje odpowiednie elementy props i targets do projektu. (Użycie skryptów programu PowerShell do importowania obiektów docelowych MSBuild nie jest konieczne).

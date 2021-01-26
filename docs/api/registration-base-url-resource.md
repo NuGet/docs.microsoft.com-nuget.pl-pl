@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 852dca8c70b09d941e844b1f7cd03b38e2192481
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 403686de42bf4dc1fa94b9dd92ca6d33f3be2183
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237526"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775293"
 ---
 # <a name="package-metadata"></a>Metadane pakietu
 
@@ -19,7 +19,7 @@ Możliwe jest pobranie metadanych o pakietach dostępnych w źródle pakietów p
 
 Kolekcja dokumentów znalezionych w obszarze `RegistrationsBaseUrl` jest często nazywana "rejestracjami" lub "Rejestracja obiektów BLOB". Zestaw dokumentów w ramach jednego elementu `RegistrationsBaseUrl` jest określany jako "gałąź rejestracji". Gałąź rejestracji zawiera wszystkie metadane dotyczące każdego pakietu dostępnego w źródle pakietu.
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
 `@type`Są używane następujące wartości:
 
@@ -58,9 +58,9 @@ Wszystkie adresy URL znajdujące się w zasobie rejestracji obsługują metody H
 
 Metadane pakietu grup zasobów rejestracji według identyfikatora pakietu. Nie jest możliwe pobieranie danych o więcej niż jednym IDENTYFIKATORze pakietu jednocześnie. Ten zasób nie umożliwia odnajdywania identyfikatorów pakietów. Zamiast tego zakłada się, że klient ma już znać żądany identyfikator pakietu. Dostępne metadane dotyczące poszczególnych wersji pakietu różnią się w zależności od implementacji serwera. Obiekty blob rejestracji pakietu mają następującą strukturę hierarchiczną:
 
-- **Index** : punkt wejścia dla metadanych pakietu, współużytkowany przez wszystkie pakiety w źródle o takim samym identyfikatorze.
-- **Strona** : grupowanie wersji pakietu. Liczba wersji pakietu na stronie jest definiowana przez implementację serwera.
-- **Liść** : dokument specyficzny dla jednej wersji pakietu.
+- **Index**: punkt wejścia dla metadanych pakietu, współużytkowany przez wszystkie pakiety w źródle o takim samym identyfikatorze.
+- **Strona**: grupowanie wersji pakietu. Liczba wersji pakietu na stronie jest definiowana przez implementację serwera.
+- **Liść**: dokument specyficzny dla jednej wersji pakietu.
 
 Adres URL indeksu rejestracji jest przewidywalny i może być określony przez klienta z IDENTYFIKATORem pakietu i wartością zasobu rejestracji `@id` z indeksu usługi. Adresy URL stron rejestracji i liści są odnajdywane przez sprawdzenie indeksu rejestracji.
 
@@ -72,15 +72,17 @@ Przechowywanie wszystkich wersji pakietu (liście) w indeksie rejestracji oszcz�
 
 Algorytm heurystyczny, którego używa nuget.org, jest następujący: w przypadku 128 lub większej liczby wersji pakietu, należy przerwać pozostawianie liści na stronach o rozmiarze 64. Jeśli jest mniej niż 128 wersji, wszystkie w tym indeksie zostaną pozostawione. Należy zauważyć, że pakiety z 65 do 127 wersji będą mieć dwie strony w indeksie, ale obie strony zostaną wbudowane.
 
-    GET {@id}/{LOWER_ID}/index.json
+```
+GET {@id}/{LOWER_ID}/index.json
+```
 
 ### <a name="request-parameters"></a>Parametry żądania
 
 Nazwa     | W     | Typ    | Wymagane | Uwagi
 -------- | ------ | ------- | -------- | -----
-LOWER_ID | Adres URL    | ciąg  | yes      | Identyfikator pakietu, małe litery
+LOWER_ID | Adres URL    | ciąg  | tak      | Identyfikator pakietu, małe litery
 
-`LOWER_ID`Wartość jest pożądanym identyfikatorem pakietu małymi literami przy użyciu reguł zaimplementowane przez. Metoda sieci [`System.String.ToLowerInvariant()`](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant) .
+`LOWER_ID`Wartość jest pożądanym identyfikatorem pakietu małymi literami przy użyciu reguł zaimplementowane przez. Metoda sieci [`System.String.ToLowerInvariant()`](/dotnet/api/system.string.tolowerinvariant?view=netstandard-2.0#System_String_ToLowerInvariant&preserve-view=true) .
 
 ### <a name="response"></a>Reakcja
 
@@ -88,8 +90,8 @@ Odpowiedź jest dokumentem JSON, który ma obiekt główny o następujących wł
 
 Nazwa  | Typ             | Wymagane | Uwagi
 ----- | ---------------- | -------- | -----
-count | liczba całkowita          | yes      | Liczba stron rejestracji w indeksie
-produktów | Tablica obiektów | yes      | Tablica stron rejestracji
+count | liczba całkowita          | tak      | Liczba stron rejestracji w indeksie
+produktów | Tablica obiektów | tak      | Tablica stron rejestracji
 
 Każdy element w tablicy obiektu indeksu `items` jest obiektem JSON reprezentującym stronę rejestracji.
 
@@ -99,12 +101,12 @@ Obiekt strony rejestracji znaleziony w indeksie rejestracji ma następujące wł
 
 Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
-@id    | ciąg           | yes      | Adres URL strony rejestracji
-count  | liczba całkowita          | yes      | Liczba liści rejestracji na stronie
+@id    | ciąg           | tak      | Adres URL strony rejestracji
+count  | liczba całkowita          | tak      | Liczba liści rejestracji na stronie
 produktów  | Tablica obiektów | nie       | Tablica liści rejestracji i ich skojarzone metadane
-dołu  | ciąg           | yes      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
+dołu  | ciąg           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
 nadrzędny | ciąg           | nie       | Adres URL indeksu rejestracji
-prawym górnym  | ciąg           | yes      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
+prawym górnym  | ciąg           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
 `lower`I `upper` granice obiektu strony są przydatne, gdy wymagana jest wartość metadanych określonej wersji strony.
 Te ograniczenia mogą służyć do pobrania jedynej wymaganej strony rejestracji. Ciągi wersji są zgodne z [regułami wersji narzędzia NuGet](../concepts/package-versioning.md). Ciągi wersji są znormalizowane i nie zawierają metadanych kompilacji. Podobnie jak w przypadku wszystkich wersji ekosystemu NuGet porównanie ciągów wersji jest implementowane przy użyciu [reguł pierwszeństwa wersji SemVer 2.0.0](https://semver.org/spec/v2.0.0.html#spec-item-11).
@@ -123,9 +125,9 @@ Obiekt liścia rejestracji znaleziony na stronie rejestracji ma następujące w�
 
 Nazwa           | Typ   | Wymagane | Uwagi
 -------------- | ------ | -------- | -----
-@id            | ciąg | yes      | Adres URL liścia rejestracji
-catalogEntry   | object | yes      | Wpis katalogu zawierający metadane pakietu
-packageContent | ciąg | yes      | Adres URL zawartości pakietu (. nupkg)
+@id            | ciąg | tak      | Adres URL liścia rejestracji
+catalogEntry   | object | tak      | Wpis katalogu zawierający metadane pakietu
+packageContent | ciąg | tak      | Adres URL zawartości pakietu (. nupkg)
 
 Każdy obiekt liścia rejestracji reprezentuje dane skojarzone z pojedynczą wersją pakietu.
 
@@ -135,13 +137,13 @@ Każdy obiekt liścia rejestracji reprezentuje dane skojarzone z pojedynczą wer
 
 Nazwa                     | Typ                       | Wymagane | Uwagi
 ------------------------ | -------------------------- | -------- | -----
-@id                      | ciąg                     | yes      | Adres URL dokumentu użyty do utworzenia tego obiektu
+@id                      | ciąg                     | tak      | Adres URL dokumentu użyty do utworzenia tego obiektu
 autorów                  | ciąg lub tablica ciągów | nie       | 
 dependencyGroups         | Tablica obiektów           | nie       | Zależności pakietu pogrupowane według platformy docelowej
 Amortyzacja              | object                     | nie       | Wycofanie skojarzone z pakietem
 description (opis)              | ciąg                     | nie       | 
 iconUrl                  | ciąg                     | nie       | 
-identyfikator                       | ciąg                     | yes      | Identyfikator pakietu
+identyfikator                       | ciąg                     | tak      | Identyfikator pakietu
 licenseUrl               | ciąg                     | nie       |
 licenseExpression        | ciąg                     | nie       | 
 wymienione                   | boolean                    | nie       | Powinien być uważany za wymieniony, jeśli nie istnieje
@@ -152,7 +154,7 @@ requireLicenseAcceptance | boolean                    | nie       |
 Podsumowanie                  | ciąg                     | nie       | 
 tags                     | ciąg lub tablica ciągu  | nie       | 
 tytuł                    | ciąg                     | nie       | 
-Wersja                  | ciąg                     | yes      | Pełny ciąg wersji po normalizacji
+Wersja                  | ciąg                     | tak      | Pełny ciąg wersji po normalizacji
 
 Właściwość Package `version` jest pełnym ciągiem wersji po normalizacji. Oznacza to, że w tym miejscu można uwzględnić dane kompilacji SemVer 2.0.0.
 
@@ -182,7 +184,7 @@ Każda zależność pakietu ma następujące właściwości:
 
 Nazwa         | Typ   | Wymagane | Uwagi
 ------------ | ------ | -------- | -----
-identyfikator           | ciąg | yes      | Identyfikator zależności pakietu
+identyfikator           | ciąg | tak      | Identyfikator zależności pakietu
 range        | object | nie       | Dozwolony [zakres wersji](../concepts/package-versioning.md#version-ranges) zależności
 rejestracja | ciąg | nie       | Adres URL indeksu rejestracji dla tej zależności
 
@@ -194,7 +196,7 @@ Każde wycofanie pakietu ma następujące właściwości:
 
 Nazwa             | Typ             | Wymagane | Uwagi
 ---------------- | ---------------- | -------- | -----
-powodów          | tablica ciągów | yes      | Przyczyny, dla których pakiet był przestarzały
+powodów          | tablica ciągów | tak      | Przyczyny, dla których pakiet był przestarzały
 message          | ciąg           | nie       | Dodatkowe szczegóły dotyczące tego wycofania
 alternatePackage | object           | nie       | Alternatywny pakiet, który powinien zostać użyty zamiast niego
 
@@ -214,12 +216,14 @@ Alternatywny obiekt pakietu ma następujące właściwości:
 
 Nazwa         | Typ   | Wymagane | Uwagi
 ------------ | ------ | -------- | -----
-identyfikator           | ciąg | yes      | Identyfikator alternatywnego pakietu
+identyfikator           | ciąg | tak      | Identyfikator alternatywnego pakietu
 range        | object | nie       | Dozwolony [zakres wersji](../concepts/package-versioning.md#version-ranges)lub `*` Jeśli dowolna wersja jest dozwolona
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://api.nuget.org/v3/registration3/nuget.server.core/index.json
+```
+GET https://api.nuget.org/v3/registration3/nuget.server.core/index.json
+```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -238,18 +242,20 @@ Gdy `items` Tablica nie zostanie podana w indeksie rejestracji, żądanie HTTP G
 
 Nazwa   | Typ             | Wymagane | Uwagi
 ------ | ---------------- | -------- | -----
-@id    | ciąg           | yes      | Adres URL strony rejestracji
-count  | liczba całkowita          | yes      | Liczba liści rejestracji na stronie
-produktów  | Tablica obiektów | yes      | Tablica liści rejestracji i ich skojarzone metadane
-dołu  | ciąg           | yes      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
-nadrzędny | ciąg           | yes      | Adres URL indeksu rejestracji
-prawym górnym  | ciąg           | yes      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
+@id    | ciąg           | tak      | Adres URL strony rejestracji
+count  | liczba całkowita          | tak      | Liczba liści rejestracji na stronie
+produktów  | Tablica obiektów | tak      | Tablica liści rejestracji i ich skojarzone metadane
+dołu  | ciąg           | tak      | Najniższa wersja SemVer 2.0.0 na stronie (włącznie)
+nadrzędny | ciąg           | tak      | Adres URL indeksu rejestracji
+prawym górnym  | ciąg           | tak      | Najwyższa wersja SemVer 2.0.0 na stronie (włącznie)
 
 Kształt obiektów liścia rejestracji jest taki sam jak w [powyższym](#registration-leaf-object-in-a-page)indeksie rejestracji.
 
 ## <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://api.nuget.org/v3/registration3/ravendb.client/page/1.0.531/1.0.729-unstable.json
+```
+GET https://api.nuget.org/v3/registration3/ravendb.client/page/1.0.531/1.0.729-unstable.json
+```
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -268,7 +274,7 @@ Liść rejestracji jest dokumentem JSON z obiektem głównym o następujących w
 
 Nazwa           | Typ    | Wymagane | Uwagi
 -------------- | ------- | -------- | -----
-@id            | ciąg  | yes      | Adres URL liścia rejestracji
+@id            | ciąg  | tak      | Adres URL liścia rejestracji
 catalogEntry   | ciąg  | nie       | Adres URL wpisu katalogu, który wygenerował ten liść
 wymienione         | boolean | nie       | Powinien być uważany za wymieniony, jeśli nie istnieje
 packageContent | ciąg  | nie       | Adres URL zawartości pakietu (. nupkg)
@@ -280,7 +286,9 @@ rejestracja   | ciąg  | nie       | Adres URL indeksu rejestracji
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://api.nuget.org/v3/registration3/nuget.versioning/4.3.0.json
+```
+GET https://api.nuget.org/v3/registration3/nuget.versioning/4.3.0.json
+```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 

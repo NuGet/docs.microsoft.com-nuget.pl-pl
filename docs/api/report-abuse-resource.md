@@ -1,60 +1,64 @@
 ---
-title: Zgłoś nadużycie szablon adresu URL, interfejs API programu NuGet
-description: Szablon adresu URL raportu nadużycie umożliwia klientom wyświetlane łącza zgłaszania nadużycia w jego interfejsie użytkownika.
+title: Szablon adresu URL zgłaszania nadużycia, interfejs API NuGet
+description: Szablon adresu URL niezgodnego raportu umożliwia klientom wyświetlanie linku nadużycia raportu w ich interfejsie użytkownika.
 author: joelverhagen
 ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: d0ff41b08eeba5a6e4bc7c44722b6bc57f502047
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: b36058c9c841e2cca6eb61121ada8275f1525a8f
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43549342"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775223"
 ---
-# <a name="report-abuse-url-template"></a>Szablon adresu URL nadużycie raportu
+# <a name="report-abuse-url-template"></a>Szablon adresu URL zgłaszania nadużycia
 
-Istnieje możliwość dla klientów utworzenie adresu URL, który może służyć przez użytkownika w celu Zgłoś nadużycie o określonym pakiecie. Jest to przydatne, gdy źródło pakietu chce umieszczenie wszystkich klienta (strona nawet 3) do delegowania nadużycie raporty do źródła pakietu.
+Jest możliwe, aby klient mógł utworzyć adres URL, który może być używany przez użytkownika do zgłaszania nadużycia określonego pakietu. Jest to przydatne, gdy źródło pakietu chce włączyć wszystkie środowiska klienta (nawet inne firmy) do delegowania nadużycia raportów do źródła pakietu.
 
-Zasób, używana do tworzenia tego adresu URL jest `ReportAbuseUriTemplate` można znaleźć zasobu w [indeks usług](service-index.md).
+Zasób używany do kompilowania tego adresu URL jest `ReportAbuseUriTemplate` zasobem znalezionym w [indeksie usługi](service-index.md).
 
 ## <a name="versioning"></a>Przechowywanie wersji
 
-Następujące `@type` są używane wartości:
+`@type`Są używane następujące wartości:
 
-@type Wartość                       | Uwagi
+@type wartościami                       | Uwagi
 --------------------------------- | -----
-ReportAbuseUriTemplate/3.0.0-beta | Wersja początkowa
-ReportAbuseUriTemplate/3.0.0-rc   | Alias `ReportAbuseUriTemplate/3.0.0-beta`
+ReportAbuseUriTemplate/3.0.0 — beta | Początkowa wersja
+ReportAbuseUriTemplate/3.0.0-RC   | Alias `ReportAbuseUriTemplate/3.0.0-beta`
 
 ## <a name="url-template"></a>Szablon adresu URL
 
-Adres URL dla następujący interfejs API jest wartością `@id` właściwości skojarzonej z jedną z wyżej wymienionych zasobów `@type` wartości.
+Adres URL następującego interfejsu API to wartość `@id` Właściwości skojarzonej z jedną z wymienionych powyżej `@type` wartości zasobów.
 
 ## <a name="http-methods"></a>Metody HTTP
 
-Mimo, że klient nie ma wysyłać żądania do adresu URL nadużycie raportu w imieniu użytkownika, strony sieci web powinien obsługiwać `GET` metodę umożliwiającą kliknięty adres URL łatwo można otworzyć w przeglądarce sieci web.
+Mimo że klient nie jest przeznaczony do żądania do adresu URL niezgodnego z raportem w imieniu użytkownika, Strona sieci Web powinna obsługiwać `GET` metodę, aby można było łatwo otworzyć kliknięty adres URL w przeglądarce sieci Web.
 
-## <a name="construct-the-url"></a>Skonstruuj adres URL
+## <a name="construct-the-url"></a>Konstruowanie adresu URL
 
-Podany identyfikator znanych pakietu i wersję, implementacji klienta można skonstruować adres URL umożliwiający dostęp do interfejsu sieci web. Implementacja klienta powinien być wyświetlany ten utworzony adres URL (lub łączem) użytkowników, umożliwiając im Otwórz przeglądarkę sieci web do adresu URL i dowolny raport nadużycie niezbędne. Implementacja nadużycie formularz raportu jest określany przez implementację serwera.
+Po otrzymaniu znanego identyfikatora pakietu i wersji implementacja klienta może utworzyć adres URL służący do uzyskiwania dostępu do interfejsu sieci Web. W implementacji klienta powinien być wyświetlany ten skonstruowany adres URL (lub link z możliwością kliknięcia), dzięki któremu użytkownicy mogą otworzyć przeglądarkę sieci Web pod adresem URL i wprowadzić wszelkie niezbędne raporty dotyczące nadużycia. Implementacja formularza raportu nadużycia jest określana przez implementację serwera.
 
-Wartość `@id` jest zawierające dowolne z następujących znaczników symbolu zastępczego ciągu adresu URL:
+Wartość parametru `@id` jest ciągiem adresu URL zawierającym dowolny z następujących tokenów zastępczych:
 
 ### <a name="url-placeholders"></a>Symbole zastępcze adresu URL
 
 Nazwa        | Typ    | Wymagane | Uwagi
 ----------- | ------- | -------- | -----
-`{id}`      | string  | Brak       | Identyfikator pakietu w celu Zgłoś nadużycie odnośnie do
-`{version}` | string  | Brak       | Wersja pakietu, który ma być Zgłoś nadużycie odnośnie do
+`{id}`      | ciąg  | nie       | Identyfikator pakietu służący do zgłaszania nadużycia
+`{version}` | ciąg  | nie       | Wersja pakietu do zgłaszania nadużycia
 
-`{id}` i `{version}` wartości interpretowane przez implementację serwera musi być bez uwzględniania wielkości liter i nie wrażliwe na tego, czy wersja jest znormalizować.
+`{id}`Wartości i `{version}` interpretowane przez implementację serwera muszą być bez uwzględniania wielkości liter i nie są poufne dla tego, czy wersja jest znormalizowana.
 
-Na przykład szablon nadużycie raportu usługi nuget.org wygląda następująco:
+Na przykład szablon nieużywający raportów programu NuGet.
 
-    https://www.nuget.org/packages/{id}/{version}/ReportAbuse
+```
+https://www.nuget.org/packages/{id}/{version}/ReportAbuse
+```
 
-Jeśli implementacji klienta wymaganych, aby wyświetlić łącza do formularza nadużycie raportu dla NuGet.Versioning 4.3.0, czy to w efekcie następujący adres URL i przekazać go do użytkownika:
+Jeśli implementacja klienta musi wyświetlić link do formularza nadużycia w raporcie dla NuGet. przechowywanie wersji 4.3.0, spowoduje to utworzenie następującego adresu URL i udostępnienie go użytkownikowi:
 
-    https://www.nuget.org/packages/NuGet.Versioning/4.3.0/ReportAbuse
+```
+https://www.nuget.org/packages/NuGet.Versioning/4.3.0/ReportAbuse
+```

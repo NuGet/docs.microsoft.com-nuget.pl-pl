@@ -1,17 +1,17 @@
 ---
 title: Przekształcenia plików źródłowych i konfiguracji dla pakietów NuGet
 description: Szczegółowe informacje o możliwości pakietów NuGet do przekształcania plików kodu źródłowego i konfiguracji (XML) po zainstalowaniu programu.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 04/24/2017
 ms.topic: conceptual
 ms.reviewer: anangaur
-ms.openlocfilehash: 8e3eade14c70782563ba82894f072f9b3a611923
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 5bd0e409f527fb668008204fb16ad002f4784c46
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237987"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774580"
 ---
 # <a name="transforming-source-code-and-configuration-files"></a>Przekształcanie kodu źródłowego i plików konfiguracji
 
@@ -108,7 +108,7 @@ W szerszym przykładzie [moduły rejestrowania błędów modułów i programów 
 
 Aby przejrzeć swój `web.config.transform` plik, Pobierz pakiet ELMAH z powyższego linku, Zmień rozszerzenie pakietu z `.nupkg` na `.zip` , a następnie otwórz `content\web.config.transform` w tym pliku zip.
 
-Aby zobaczyć efekt instalacji i dezinstalacji pakietu, Utwórz nowy projekt ASP.NET w programie Visual Studio (szablon jest w obszarze **Visual C# > Web** w oknie dialogowym Nowy projekt) i wybierz Pustą aplikację ASP.NET. Otwórz `web.config` , aby zobaczyć jego stan początkowy. Następnie kliknij prawym przyciskiem myszy projekt, wybierz pozycję **Zarządzaj pakietami NuGet** , Wyszukaj pozycję ELMAH w witrynie NuGet.org i zainstaluj najnowszą wersję. Zwróć uwagę na wszystkie zmiany `web.config` . Teraz Odinstaluj pakiet i zobaczysz `web.config` Powrót do poprzedniego stanu.
+Aby zobaczyć efekt instalacji i dezinstalacji pakietu, Utwórz nowy projekt ASP.NET w programie Visual Studio (szablon jest w obszarze **Visual C# > Web** w oknie dialogowym Nowy projekt) i wybierz Pustą aplikację ASP.NET. Otwórz `web.config` , aby zobaczyć jego stan początkowy. Następnie kliknij prawym przyciskiem myszy projekt, wybierz pozycję **Zarządzaj pakietami NuGet**, Wyszukaj pozycję ELMAH w witrynie NuGet.org i zainstaluj najnowszą wersję. Zwróć uwagę na wszystkie zmiany `web.config` . Teraz Odinstaluj pakiet i zobaczysz `web.config` Powrót do poprzedniego stanu.
 
 ### <a name="xdt-transforms"></a>Przekształcenia XDT
 

@@ -6,18 +6,18 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 86c9d07cf90b84fffd09b04847d41772dd633b98
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 7047dfd48b7f93756bbb1491de1b7e65da2c12b4
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237877"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775416"
 ---
 # <a name="search"></a>Wyszukaj
 
 Istnieje możliwość wyszukiwania pakietów dostępnych w źródle pakietów przy użyciu interfejsu API v3. Zasób używany do wyszukiwania jest `SearchQueryService` zasobem znalezionym w [indeksie usługi](service-index.md).
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
 `@type`Są używane następujące wartości:
 
@@ -45,7 +45,9 @@ Interfejs API wyszukiwania umożliwia klientowi wykonywanie zapytań dotyczącyc
 
 Nieznajdujący się na liście pakiet nigdy nie powinien być wyświetlany w wynikach wyszukiwania.
 
-    GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}&packageType={PACKAGETYPE}
+```
+GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}&packageType={PACKAGETYPE}
+```
 
 ### <a name="request-parameters"></a>Parametry żądania
 
@@ -82,8 +84,8 @@ Główny obiekt JSON ma następujące właściwości:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-totalHits | liczba całkowita          | yes      | Łączna liczba dopasowań, odnoszących się `skip` do i `take`
-dane      | Tablica obiektów | yes      | Wyniki wyszukiwania dopasowane przez żądanie
+totalHits | liczba całkowita          | tak      | Łączna liczba dopasowań, odnoszących się `skip` do i `take`
+dane      | Tablica obiektów | tak      | Wyniki wyszukiwania dopasowane przez żądanie
 
 ### <a name="search-result"></a>Wynik wyszukiwania
 
@@ -92,10 +94,10 @@ Obiekt ma następujące właściwości:
 
 Nazwa           | Typ                       | Wymagane | Uwagi
 -------------- | -------------------------- | -------- | -----
-identyfikator             | ciąg                     | yes      | Identyfikator dopasowanego pakietu
-Wersja        | ciąg                     | yes      | Pełny SemVer 2.0.0 wersji pakietu (może zawierać metadane kompilacji)
+identyfikator             | ciąg                     | tak      | Identyfikator dopasowanego pakietu
+Wersja        | ciąg                     | tak      | Pełny SemVer 2.0.0 wersji pakietu (może zawierać metadane kompilacji)
 description (opis)    | ciąg                     | nie       | 
-versions (wersje)       | Tablica obiektów           | yes      | Wszystkie wersje pakietu pasujące do `prerelease` parametru
+versions (wersje)       | Tablica obiektów           | tak      | Wszystkie wersje pakietu pasujące do `prerelease` parametru
 autorów        | ciąg lub tablica ciągów | nie       | 
 iconUrl        | ciąg                     | nie       | 
 licenseUrl     | ciąg                     | nie       | 
@@ -107,7 +109,7 @@ tags           | ciąg lub tablica ciągów | nie       |
 tytuł          | ciąg                     | nie       | 
 totalDownloads | liczba całkowita                    | nie       | Ta wartość może zostać wywnioskowana przez sumę pobrań w `versions` tablicy
 sprawdzić       | boolean                    | nie       | Wartość logiczna JSON wskazująca, czy pakiet jest [zweryfikowany](../nuget-org/id-prefix-reservation.md)
-packageTypes   | Tablica obiektów           | yes      | Typy pakietów zdefiniowane przez autora pakietu (dodane w `SearchQueryService/3.5.0` )
+packageTypes   | Tablica obiektów           | tak      | Typy pakietów zdefiniowane przez autora pakietu (dodane w `SearchQueryService/3.5.0` )
 
 W systemie nuget.org zweryfikowany pakiet to taki, który ma identyfikator pakietu pasujący do zastrzeżonego prefiksu identyfikatora i należy do jednego z właścicieli zastrzeżonego prefiksu. Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą rezerwacji prefiksów identyfikatorów](../nuget-org/id-prefix-reservation.md).
 
@@ -115,19 +117,21 @@ Metadane zawarte w obiekcie wynik wyszukiwania są pobierane z najnowszej wersji
 
 Nazwa      | Typ    | Wymagane | Uwagi
 --------- | ------- | -------- | -----
-@id       | ciąg  | yes      | Bezwzględny adres URL do skojarzonego [liścia rejestracji](registration-base-url-resource.md#registration-leaf)
-Wersja   | ciąg  | yes      | Pełny SemVer 2.0.0 wersji pakietu (może zawierać metadane kompilacji)
-pliki do pobrania | liczba całkowita | yes      | Liczba pobrań dla tej konkretnej wersji pakietu
+@id       | ciąg  | tak      | Bezwzględny adres URL do skojarzonego [liścia rejestracji](registration-base-url-resource.md#registration-leaf)
+Wersja   | ciąg  | tak      | Pełny SemVer 2.0.0 wersji pakietu (może zawierać metadane kompilacji)
+pliki do pobrania | liczba całkowita | tak      | Liczba pobrań dla tej konkretnej wersji pakietu
 
 `packageTypes`Tablica będzie zawsze składać się z co najmniej jednego elementu (1). Typ pakietu dla danego identyfikatora pakietu jest uznawany za typy pakietów zdefiniowane przez najnowszą wersję pakietu w odniesieniu do innych parametrów wyszukiwania. Każdy element w `packageTypes` tablicy jest obiektem JSON o następujących właściwościach:
 
 Nazwa      | Typ    | Wymagane | Uwagi
 --------- | ------- | -------- | -----
-name      | ciąg  | yes      | Nazwa typu pakietu.
+name      | ciąg  | tak      | Nazwa typu pakietu.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://azuresearch-usnc.nuget.org/query?q=NuGet.Versioning&prerelease=false&semVerLevel=2.0.0
+```
+GET https://azuresearch-usnc.nuget.org/query?q=NuGet.Versioning&prerelease=false&semVerLevel=2.0.0
+```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 

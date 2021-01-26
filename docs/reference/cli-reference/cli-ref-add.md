@@ -1,20 +1,20 @@
 ---
 title: Polecenie Add interfejsu wiersza polecenia NuGet
 description: Odwołanie do nuget.exe Dodaj polecenie
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 89d268946243e8eae07e482db48e809a15260c38
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: 096d2f7a61a3c861ce2084368500ab8e8b21f212
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88622905"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776087"
 ---
 # <a name="add-command-nuget-cli"></a>Add — polecenie (interfejs wiersza polecenia NuGet)
 
-**Dotyczy**: &bullet; **obsługiwane wersje**publikowania pakietów: 3.3 +
+**Dotyczy**: &bullet; **obsługiwane wersje** publikowania pakietów: 3.3 +
 
 Dodaje określony pakiet do źródła pakietów innego niż HTTP (folderu lub ścieżki UNC) w układzie hierarchicznym, w którym foldery są tworzone dla identyfikatora pakietu i numeru wersji. Na przykład:
 

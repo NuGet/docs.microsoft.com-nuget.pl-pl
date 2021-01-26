@@ -1,35 +1,35 @@
 ---
 title: Pakiety NuGet i kontrola źródła
-description: Zagadnienia dotyczące sposobu leczenia pakietów NuGet w ramach kontroli wersji i systemów kontroli źródła oraz sposobu pominięcia pakietów z git i TFVC.
-author: karann-msft
-ms.author: karann
+description: Zagadnienia dotyczące sposobu traktowania pakietów NuGet w systemach kontroli wersji i kontroli źródła oraz jak pominąć pakiety za pomocą usługi git i TFVC.
+author: JonDouglas
+ms.author: jodou
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9d9ea10ccd32bb65ad0d62b591f5e2cb58ea3427
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 9bae65573ca49c68d07250228c1923890e0f14ac
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "69019978"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775012"
 ---
 # <a name="omitting-nuget-packages-in-source-control-systems"></a>Pomijanie pakietów NuGet w systemach kontroli źródła
 
-Deweloperzy zazwyczaj pominąć pakiety NuGet z ich repozytoriów kontroli źródła i zamiast tego polegać na [przywracanie pakietu,](package-restore.md) aby ponownie zainstalować zależności projektu przed kompilacją.
+Deweloperzy zwykle pomijają pakiety NuGet z ich repozytoriów kontroli źródła i polegają na [przywróceniu pakietu](package-restore.md) , aby ponownie zainstalować zależności projektu przed kompilacją.
 
-Powody, dla których warto polegać na przywracaniu pakietu, są następujące:
+Przyczyny związane z przywracaniem pakietu są następujące:
 
-1. Rozproszone systemy kontroli wersji, takie jak Git, zawierają pełne kopie każdej wersji każdego pliku w repozytorium. Pliki binarne, które są często aktualizowane prowadzić do znacznego uwędzić i wydłuża czas potrzebny do sklonowania repozytorium.
-1. Gdy pakiety są zawarte w repozytorium, deweloperzy są umienia dodać odwołania bezpośrednio do zawartości pakietu na dysku, a nie odwoływanie się do pakietów za pośrednictwem NuGet, co może prowadzić do zakodowanych nazw ścieżek w projekcie.
-1. Staje się trudniejsze do czyszczenia rozwiązania nieużywanych folderów pakietu, jak trzeba upewnić się, że nie usuwać żadnych folderów pakietu nadal w użyciu.
-1. Pomijając pakiety, należy zachować czyste granice własności między kodem a pakietami od innych, od których zależy. Wiele pakietów NuGet są już obsługiwane we własnych repozytoriach kontroli źródła.
+1. Rozproszone systemy kontroli wersji, takie jak Git, obejmują pełne kopie każdej wersji każdego pliku w repozytorium. Pliki binarne, które są często aktualizowane, powodują znaczące przeładowanie i wydłużą czas klonowania repozytorium.
+1. Gdy pakiety są zawarte w repozytorium, deweloperzy mogą dodawać odwołania bezpośrednio do zawartości pakietu na dysku, a nie odwołania do pakietów za pomocą NuGet, co może prowadzić do zakodowanych nazw ścieżek w projekcie.
+1. Nieużywane foldery pakietów staną się trudniejsze do oczyszczenia, co jest konieczne, aby nie usuwać żadnych folderów pakietów, które są nadal używane.
+1. Pominięcie pakietów spowoduje zachowanie czystych granic własności między kodem a pakietami od innych użytkowników. Wiele pakietów NuGet jest już przechowywanych w ich własnych repozytoriach kontroli źródła.
 
-Chociaż przywracanie pakietu jest domyślnym zachowaniem z NuGet,&mdash;niektóre ręczne prace są niezbędne do pominięcia pakietów, a mianowicie `packages` folder w projekcie&mdash;z kontroli źródła, zgodnie z opisem w tym artykule.
+Chociaż przywracanie pakietów jest domyślnym zachowaniem w pakiecie NuGet, niektóre czynności ręczne są niezbędne do pominięcia pakietów &mdash; , czyli `packages` folderu w projekcie &mdash; z kontroli źródła, zgodnie z opisem w tym artykule.
 
-## <a name="omitting-packages-with-git"></a>Pomijanie pakietów z Git
+## <a name="omitting-packages-with-git"></a>Pomijanie pakietów w usłudze git
 
-Użyj [pliku gitignore,](https://git-scm.com/docs/gitignore) aby zignorować`.nupkg`pakiety NuGet ( ) `packages` folder i `project.assets.json`, między innymi. Aby uzyskać odwołanie, zobacz [przykład dla `.gitignore` projektów programu Visual Studio:](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)
+Użyj [pliku. gitignore](https://git-scm.com/docs/gitignore) do ignorowania pakietów NuGet ( `.nupkg` ) `packages` folderu i `project.assets.json` , między innymi. Aby uzyskać informacje, zobacz [przykład `.gitignore` dla projektów programu Visual Studio](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore):
 
-Ważnymi częściami `.gitignore` pliku są:
+Ważne części `.gitignore` pliku są następujące:
 
 ```gitignore
 # Ignore NuGet Packages
@@ -55,19 +55,19 @@ project.lock.json
 project.assets.json
 ```
 
-## <a name="omitting-packages-with-team-foundation-version-control"></a>Pomijanie pakietów z kontrolą wersji Team Foundation
+## <a name="omitting-packages-with-team-foundation-version-control"></a>Pomijanie pakietów z Kontrola wersji serwera Team Foundation
 
 > [!Note]
-> Postępuj zgodnie z tymi instrukcjami, jeśli to możliwe *przed* dodaniem projektu do kontroli źródła. W przeciwnym razie `packages` ręcznie usuń folder z repozytorium i zaewidencjonuj tę zmianę przed kontynuowaniem.
+> Jeśli to możliwe, wykonaj te instrukcje *przed* dodaniem projektu do kontroli źródła. W przeciwnym razie ręcznie usuń `packages` folder z repozytorium i Zaewidencjonuj tę zmianę przed kontynuowaniem.
 
 Aby wyłączyć integrację kontroli źródła z TFVC dla wybranych plików:
 
-1. Utwórz folder `.nuget` wywoływany w folderze rozwiązania (w którym znajduje się `.sln` plik).
-    - Wskazówka: w systemie Windows, aby utworzyć ten `.nuget.` folder w Eksploratorze Windows, użyj nazwy *z* końcową kropką.
+1. Utwórz folder o nazwie `.nuget` w folderze rozwiązania (w którym `.sln` znajduje się plik).
+    - Porada: w systemie Windows Aby utworzyć ten folder w Eksploratorze Windows, użyj nazwy `.nuget.` *z* kropką końcową.
 
-1. W tym folderze utwórz plik o nazwie `NuGet.Config` i otwórz go do edycji.
+1. W tym folderze Utwórz plik o nazwie `NuGet.Config` i otwórz go do edycji.
 
-1. Dodaj następujący tekst jako minimum, gdzie [ustawienie disableSourceControlIntegration](../reference/nuget-config-file.md#solution-section) nakazuje programowi Visual Studio pominąć wszystko w folderze: `packages`
+1. Dodaj następujący tekst jako minimum, gdzie ustawienie [disableSourceControlIntegration](../reference/nuget-config-file.md#solution-section) instruuje program Visual Studio, aby pominąć wszystkie elementy w `packages` folderze:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -78,9 +78,9 @@ Aby wyłączyć integrację kontroli źródła z TFVC dla wybranych plików:
    </configuration>
    ```
 
-1. Jeśli używasz TFS 2010 lub wcześniej, zamaskuj `packages` folder w mapowaniach obszaru roboczego.
+1. Jeśli używasz programu TFS 2010 lub starszego, zamaskowanie `packages` folderu w mapowaniu obszaru roboczego.
 
-1. W programie TFS 2012 lub nowszym lub `.tfignore` w programie Visual Studio Team Services należy utworzyć plik zgodnie z opisem w programie [Dodaj pliki do serwera](/vsts/tfvc/add-files-server?view=vsts#tfignore). W tym pliku dołącz poniższą zawartość, aby `\packages` jawnie zignorować modyfikacje folderu na poziomie repozytorium i kilku innych plików pośrednich. (Plik można utworzyć w Eksploratorze `.tfignore.` Windows przy użyciu nazwy a z końcową kropką, ale może być konieczne wyłączenie opcji "Ukryj znane rozszerzenia plików".
+1. Na serwerze TFS 2012 lub nowszym lub z Visual Studio Team Services Utwórz `.tfignore` plik zgodnie z opisem w temacie [Dodawanie plików do serwera](/vsts/tfvc/add-files-server?view=vsts#tfignore). W tym pliku Uwzględnij poniżej zawartość, aby jawnie zignorować modyfikacje w `\packages` folderze na poziomie repozytorium i kilku innych plikach pośrednich. (Można utworzyć plik w Eksploratorze Windows przy użyciu nazwy a `.tfignore.` z kropką końcową, ale może być konieczne wyłączenie najpierw opcji "Ukryj znane rozszerzenia plików"):
 
    ```cli
    # Ignore NuGet Packages
@@ -96,4 +96,4 @@ Aby wyłączyć integrację kontroli źródła z TFVC dla wybranych plików:
    *.nuget.props
    ```
 
-1. Dodaj `NuGet.Config` `.tfignore` i do kontroli źródła i zaewidencjonuj zmiany.
+1. Dodaj `NuGet.Config` i `.tfignore` do kontroli źródła i Zaewidencjonuj zmiany.

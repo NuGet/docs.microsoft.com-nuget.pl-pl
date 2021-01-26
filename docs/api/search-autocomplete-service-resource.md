@@ -6,26 +6,26 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: f574849bf99cd4da4eefd55c3dd5a0648042f0c1
-ms.sourcegitcommit: 7e9c0630335ef9ec1e200e2ee9065f702e52a8ec
+ms.openlocfilehash: 2893e13ff7b070844a2bdd5722da3aa1f123538d
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85292296"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98773956"
 ---
 # <a name="autocomplete"></a>Autouzupełnianie
 
 Istnieje możliwość utworzenia identyfikatora pakietu i funkcji Autouzupełnianie wersji przy użyciu interfejsu API v3. Zasób używany do wykonywania zapytań autouzupełniania jest `SearchAutocompleteService` zasobem znalezionym w [indeksie usługi](service-index.md).
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
 `@type`Są używane następujące wartości:
 
-@typewartościami                          | Uwagi
+@type wartościami                          | Uwagi
 ------------------------------------ | -----
 SearchAutocompleteService            | Początkowa wersja
-SearchAutocompleteService/3.0.0 — beta | Alias`SearchAutocompleteService`
-SearchAutocompleteService/3.0.0-RC   | Alias`SearchAutocompleteService`
+SearchAutocompleteService/3.0.0 — beta | Alias `SearchAutocompleteService`
+SearchAutocompleteService/3.0.0-RC   | Alias `SearchAutocompleteService`
 SearchAutocompleteService/3.5.0      | Obejmuje obsługę `packageType` parametru zapytania
 
 ### <a name="searchautocompleteservice350"></a>SearchAutocompleteService/3.5.0
@@ -45,7 +45,9 @@ Pierwszy interfejs API funkcji Autouzupełnianie obsługuje wyszukiwanie częśc
 
 Pakiet z tylko wersjami nieznajdującymi się na liście nie będzie wyświetlany w wynikach.
 
-    GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}&packageType={PACKAGETYPE}
+```
+GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}&packageType={PACKAGETYPE}
+```
 
 ### <a name="request-parameters"></a>Parametry żądania
 
@@ -53,8 +55,8 @@ Nazwa        | W     | Typ    | Wymagane | Uwagi
 ----------- | ------ | ------- | -------- | -----
 q           | Adres URL    | ciąg  | nie       | Ciąg do porównania z identyfikatorami pakietów
 Pomiń        | Adres URL    | liczba całkowita | nie       | Liczba wyników do pominięcia na stronie stronicowania
-czasochłonn        | Adres URL    | liczba całkowita | nie       | Liczba wyników do zwrócenia, na stronie stronicowania
-wersja wstępna  | Adres URL    | wartość logiczna | nie       | `true`lub `false` określając, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
+take (pobierz)        | Adres URL    | liczba całkowita | nie       | Liczba wyników do zwrócenia, na stronie stronicowania
+wersja wstępna  | Adres URL    | boolean | nie       | `true` lub `false` określając, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
 semVerLevel | Adres URL    | ciąg  | nie       | Ciąg wersji SemVer 1.0.0 
 packageType | Adres URL    | ciąg  | nie       | Typ pakietu, który ma być używany do filtrowania pakietów (dodana w `SearchAutocompleteService/3.5.0` )
 
@@ -74,7 +76,7 @@ Ten `packageType` parametr służy do dokładniejszego filtrowania wyników auto
 Jeśli podany typ pakietu nie jest prawidłowym typem pakietu zdefiniowanym przez [dokument typu pakietu](https://github.com/NuGet/Home/wiki/Package-Type-%5BPacking%5D), zostanie zwrócony pusty wynik.
 Jeśli podany typ pakietu jest pusty, żaden filtr nie zostanie zastosowany. Innymi słowy, przekazywanie żadnej wartości do `packageType` parametru będzie zachowywać się tak, jakby parametr nie został przekazano.
 
-### <a name="response"></a>Odpowiedź
+### <a name="response"></a>Reakcja
 
 Odpowiedź jest dokumentem JSON zawierającym do `take` wyników Autouzupełnianie.
 
@@ -82,12 +84,14 @@ Główny obiekt JSON ma następujące właściwości:
 
 Nazwa      | Typ             | Wymagane | Uwagi
 --------- | ---------------- | -------- | -----
-totalHits | liczba całkowita          | tak      | Łączna liczba dopasowań, odnoszących się `skip` do i`take`
+totalHits | liczba całkowita          | tak      | Łączna liczba dopasowań, odnoszących się `skip` do i `take`
 dane      | tablica ciągów | tak      | Identyfikatory pakietów dopasowane przez żądanie
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://api-v2v3search-0.nuget.org/autocomplete?q=storage&prerelease=true
+```
+GET https://api-v2v3search-0.nuget.org/autocomplete?q=storage&prerelease=true
+```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 
@@ -99,21 +103,23 @@ Po znalezieniu identyfikatora pakietu przy użyciu poprzedniego interfejsu API k
 
 Wersja pakietu, która nie znajduje się na liście, nie zostanie wyświetlona w wynikach.
 
-    GET {@id}?id={ID}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
+```
+GET {@id}?id={ID}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
+```
 
 ### <a name="request-parameters"></a>Parametry żądania
 
 Nazwa        | W     | Typ    | Wymagane | Uwagi
 ----------- | ------ | ------- | -------- | -----
 identyfikator          | Adres URL    | ciąg  | tak      | Identyfikator pakietu, dla którego mają zostać pobrane wersje
-wersja wstępna  | Adres URL    | wartość logiczna | nie       | `true`lub `false` określając, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
+wersja wstępna  | Adres URL    | boolean | nie       | `true` lub `false` określając, czy dołączać [pakiety wersji wstępnej](../create-packages/prerelease-packages.md)
 semVerLevel | Adres URL    | ciąg  | nie       | Ciąg wersji SemVer 2.0.0 
 
 Jeśli `prerelease` nie jest podany, pakiety wersji wstępnej są wykluczone.
 
 `semVerLevel`Parametr zapytania jest używany do wybierania pakietów SemVer 2.0.0. Jeśli ten parametr zapytania jest wykluczony, zostaną zwrócone tylko wersje programu SemVer 1.0.0. Jeśli `semVerLevel=2.0.0` jest podany, zostaną zwrócone wersje SemVer 1.0.0 i SemVer 2.0.0. Aby uzyskać więcej informacji, zobacz [SemVer 2.0.0 support for NuGet.org](https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-%28server-side%29) .
 
-### <a name="response"></a>Odpowiedź
+### <a name="response"></a>Reakcja
 
 Odpowiedź to dokument JSON zawierający wszystkie wersje pakietu podanego identyfikatora pakietu, filtrowanie według podanych parametrów zapytania.
 
@@ -127,7 +133,9 @@ Wersje pakietu w `data` tablicy mogą zawierać metadane kompilacji SemVer 2.0.0
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
-    GET https://api-v2v3search-0.nuget.org/autocomplete?id=nuget.protocol&prerelease=true
+```
+GET https://api-v2v3search-0.nuget.org/autocomplete?id=nuget.protocol&prerelease=true
+```
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
 

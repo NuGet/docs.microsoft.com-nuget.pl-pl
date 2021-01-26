@@ -1,55 +1,55 @@
 ---
 title: Usuwanie pakietów NuGet z nuget.org
-description: Zasady dotyczące odsyłania pakietów z nuget.org; trwałe usunięcie nie jest obsługiwane, z wyjątkiem sytuacji, gdy pakiety naruszają inne zasady.
-author: karann-msft
-ms.author: karann
+description: Zasady dla pakietów unlisting z nuget.org; trwałe usuwanie nie jest obsługiwane, z wyjątkiem przypadków, gdy pakiety naruszają inne zasady.
+author: JonDouglas
+ms.author: jodou
 ms.date: 01/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3abe809d76e75801c2f936aba129d27ba7b64913
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: e5c62177b40162cb8b6b37b0d272fb7a945156c1
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80581265"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98775712"
 ---
 # <a name="deleting-packages"></a>Usuwanie pakietów
 
-nuget.org nie obsługuje trwałego usuwania pakietów. W ten sposób można podzielić każdy projekt w zależności od dostępności pakietu, zwłaszcza w przepływach pracy kompilacji, które obejmują przywracanie pakietu.
+nuget.org nie obsługuje trwałego usuwania pakietów. Wykonanie tej operacji spowodowałoby przerwanie każdego projektu w zależności od dostępności pakietu, szczególnie w przypadku przepływów pracy kompilacji, które obejmują przywracanie pakietów.
 
-nuget.org obsługuje [nienotowanie pakietu,](#unlisting-a-package)co można zrobić na stronie zarządzania pakietami na stronie internetowej. Pakiety niepubliczne nie są wyświetlane w nuget.org ani w interfejsie użytkownika programu Visual Studio i nie są wyświetlane w wynikach wyszukiwania. Niepubliczne pakiety nadal można jednak pobrać i zainstalować przy użyciu dokładnego numeru wersji, który obsługuje przywracanie pakietu. Ponadto pakiety nienotowane na liście mogą być nadal odnajdowane w następujących konkretnych scenariuszach:
+Usługa nuget.org obsługuje [listę pakietów](#unlisting-a-package), które można wykonać na stronie Zarządzanie pakietami w witrynie sieci Web. Nieznajdujące się na liście pakiety nie są wyświetlane w programie nuget.org lub w interfejsie użytkownika programu Visual Studio i nie są wyświetlane w wynikach wyszukiwania. Jednak pakiety nieznajdujące się na liście nadal mogą być pobierane i instalowane przy użyciu dokładnego numeru wersji, który obsługuje przywracanie pakietów. Ponadto pakiety nieznajdujące się na liście mogą być nadal odnajdywane w następujących scenariuszach:
 
-- Przywracanie pakietu przy użyciu `1.0.0-*`wersji przestawnych (na przykład ), jeśli najnowszy dostępny pakiet pasujący do ograniczeń wersji lub zależności jest pakietem niepublicznym.
-- Replikacja pakietów za pośrednictwem katalogu (ponieważ katalog zawiera również pakiety niepubliczne).
+- Przywracanie pakietu przy użyciu wersji zmiennoprzecinkowych (na przykład `1.0.0-*` ), Jeśli najnowszy dostępny pakiet zgodny z ograniczeniami wersji lub zależności jest pakietem nieznajdującym się na liście.
+- Replikacja pakietów przez wykaz (ponieważ katalog zawiera również nieznajdujące się na liście pakiety).
 
 ## <a name="exceptions"></a>Wyjątki
 
-W wyjątkowych sytuacjach, takich jak naruszenie praw autorskich i potencjalnie szkodliwe treści, pakiety mogą zostać usunięte ręcznie przez zespół NuGet. Pakiet można zgłosić za pomocą przycisku "Zgłoś nadużycie" na stronie szczegółów NuGet.org pakietu. Jeśli jesteś właścicielem pakietu, zaloguj się do swojego konta NuGet.org, aby uzyskać dostęp do pomocy technicznej NuGet za pomocą przycisku "Skontaktuj się z pomocą techniczną" na stronie szczegółów pakietu NuGet.org.
+W wyjątkowych sytuacjach, takich jak naruszenie praw autorskich i potencjalnie szkodliwa zawartość, pakiety mogą być usuwane ręcznie przez zespół NuGet. Możesz zgłosić pakiet za pomocą przycisku "Zgłoś nadużycie" na stronie szczegółów pakietu NuGet.org. Jeśli jesteś właścicielem pakietu, zaloguj się do swojego konta usługi NuGet.org, aby uzyskać pomoc techniczną NuGet przy użyciu przycisku "Skontaktuj się z pomocą techniczną" na stronie szczegółów pakietu NuGet.org.
 
-## <a name="prohibited-use"></a>Zabronione używanie
+## <a name="prohibited-use"></a>Zabronione użycie
 
-Pakiety, które spełniają którekolwiek z następujących kryteriów nie są dozwolone w publicznej galerii NuGet i zostaną natychmiast usunięte bez dyskusji. Właściciele pakietów zostaną jednak powiadomieni o usunięciu.
+Pakiety spełniające następujące kryteria są niedozwolone w publicznej galerii NuGet i zostaną natychmiast usunięte bez dyskusji. Właściciele pakietu będą jednak powiadamiani o usunięciu.
 
-- Zawiera złośliwe oprogramowanie, adware lub wszelkiego rodzaju programy szpiegujące.
-- Mają na celu uszkodzenie stacji roboczej dewelopera lub ich organizacji.
+- Zawiera złośliwe oprogramowanie, programy reklamujące lub dowolny rodzaj programów szpiegujących.
+- Są przeznaczone do szkodliwej stacji roboczej lub organizacji dewelopera.
 - Narusza prawa autorskie lub narusza licencje.
-- Zawiera nielegalne treści.
-- Są używane do kucać na identyfikatory pakietów, w tym pakiety, które mają zero zawartości produkcyjnej. Opakowania muszą zawierać kod lub właściciele muszą przyznać identyfikator osobie, która faktycznie ma produkt do wysyłki.
-- Spróbuj zrobić galerii coś, co nie jest jawnie zaprojektowane do zrobienia.
+- Zawiera niedozwoloną zawartość.
+- Są używane do squat w identyfikatorach pakietów, w tym pakietów, które mają zerową zawartość produkcyjną. Pakiety muszą zawierać kod lub właściciele muszą oddzielać identyfikator osobie, która rzeczywiście dysponuje produktem do wysłania.
+- Podjęto próbę przeprowadzenia przez galerię niejawnie zaprojektowanej do wykonania.
 
-Jeśli znajdziesz pakiet, który narusza którykolwiek z tych elementów, kliknij link **Zgłoś nadużycie** na stronie szczegółów pakietu i prześlij raport.
+Jeśli znajdziesz pakiet, który narusza którykolwiek z tych elementów, kliknij link **Zgłoś nadużycie** na stronie Szczegóły pakietu i prześlij raport.
 
-Należy zauważyć, że zespół NuGet i .NET Foundation zastrzega sobie prawo do zmiany tych kryteriów w dowolnym momencie.
+Należy pamiętać, że zespół NuGet i .NET Foundation rezerwują prawo do zmiany tych kryteriów w dowolnym momencie.
 
-## <a name="unlisting-a-package"></a>Odsłanianie paczki
-Odsuwanie wersji pakietu powoduje, że ukrywa ją przed wyszukiwaniem i nuget.org stroną szczegółów pakietu. Dzięki temu istniejących użytkowników pakietu, aby kontynuować korzystanie z niego, ale zmniejsza nowe przyjęcie, ponieważ pakiet nie jest widoczny w wyszukiwaniu.
+## <a name="unlisting-a-package"></a>Wylistowanie pakietu
+Wylistowanie wersji pakietu powoduje ukrycie jej w programie Search i na stronie szczegółów pakietu nuget.org. Dzięki temu istniejący użytkownicy pakietu mogą nadal z niego korzystać, ale redukuje nowe wdrożenie, ponieważ pakiet nie jest widoczny w wyszukiwaniu.
 
-Kroki, aby odsunąć paczkę z listy:
+Procedura wystawiania pakietu:
 
 1. Wybierz `Your account name` (w prawym górnym rogu) >`Manage packages` > `Published packages`
 1. Wybierz ikonę "Zarządzaj pakietem"
-1. Rozwiń sekcję "Aukcja" i wybierz wersję pakietu
-1. Odznacz "Lista w wynikach wyszukiwania" i wybierz "Zapisz"
+1. Rozwiń sekcję "Lista" i wybierz wersję pakietu
+1. Usuń zaznaczenie pozycji "Wyświetl w wynikach wyszukiwania" i wybierz pozycję "Zapisz"
 
-Wersja określonego pakietu została teraz niepubliczna. Aby to zweryfikować, wyloguj się ze swojego konta i przejdź do https://www.nuget.org/packages/YOUR-PACKAGE-NAME/strony pakietu (bez części wersji) np.: . Zobaczysz wszystkie wersje tego pakietu, które **nie** zostały wystawione na listę. Jednak właściciel pakietu, po zalogowaniu, może zobaczyć wszystkie wersje i ich stan aukcji.
+Określona wersja pakietu została teraz niewymieniona. Aby to sprawdzić, Wyloguj się z konta i przejdź do strony pakietu (bez części wersji), np.: https://www.nuget.org/packages/YOUR-PACKAGE-NAME/ . Zobaczysz wszystkie wersje tego pakietu, które **nie** zostały niewyświetlone na liście. Jednak właściciel pakietu, po zalogowaniu, może zobaczyć wszystkie wersje i ich stan.
 
-Istnieje również możliwość przestarzałe wersji pakietu (w przypadku, gdy nie można usunąć wersję pakietu). Aby uzyskać więcej informacji na temat przestarzałego podawania wersji [pakietów, zobacz Przestarzałe pakiety](../deprecate-packages.md).
+Istnieje również możliwość wycofania wersji pakietu (w przypadku, gdy nie można usunąć wersji pakietu). Aby uzyskać więcej informacji na temat przestarzałych wersji pakietu, zobacz [Przestarzałe pakiety](../deprecate-packages.md).

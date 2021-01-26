@@ -1,20 +1,20 @@
 ---
-title: Informacje o wersji nuGet 4.0 RC
-description: Informacje o wersji dla NuGet 4.0 RTM, w tym znane problemy, poprawki błędów, dodane funkcje i dcrs.
+title: Informacje o wersji narzędzia NuGet 4,0 RTM
+description: Informacje o wersji dla programu NuGet 4,0 RTM, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
 author: anangaur
 ms.author: anangaur
 ms.date: 03/03/2017
 ms.topic: conceptual
-ms.openlocfilehash: c27d0aa2e5c9af9cb15d2f487b93e93aca666214
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: c3ec5c20e5175edd315de20ca98c7a106c51809e
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "64496607"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98776277"
 ---
-# <a name="nuget-40-rtm-release-notes"></a>Informacje o wydaniu programu NuGet 4.0 RTM
+# <a name="nuget-40-rtm-release-notes"></a>Informacje o wersji narzędzia NuGet 4,0 RTM
 
-[Visual Studio 2017](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) jest wyposażony w NuGet 4.0, który dodaje obsługę .NET Core, ma kilka poprawek jakości i zwiększa wydajność. Ta wersja zawiera również kilka ulepszeń, takich jak obsługa PackageReference, Polecenia NuGet jako obiekty docelowe MSBuild, przywraca pakiet w tle i inne.
+[Program Visual Studio 2017](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes) jest dostarczany z pakietem NuGet 4,0, który dodaje obsługę platformy .NET Core, ma wiele poprawek dotyczących jakości i poprawia wydajność. W tej wersji wprowadzono również kilka ulepszeń, takich jak obsługa PackageReference, poleceń NuGet jako obiektów docelowych programu MSBuild, przywrócenie pakietu w tle i nie tylko.
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -48,7 +48,7 @@ Czasami, w przypadku użycia pakietu zawierającego zestaw z nieprawidłowym pod
 
 Obecnie nie istnieje obejście tego problemu.
 
-### <a name="you-are-unable-to-view-add-or-update-dotnetclitools-using-nuget-package-manager"></a>Nie można wyświetlać, dodawać ani aktualizować dotNetCLITools przy użyciu Menedżera pakietów Nuget
+### <a name="you-are-unable-to-view-add-or-update-dotnetclitools-using-nuget-package-manager"></a>Nie można wyświetlać, dodawać ani aktualizować składnika dotnetclitools przy użyciu Menedżera pakietów NuGet
 
 #### <a name="issue"></a>Problem
 
@@ -108,286 +108,286 @@ Działanie polecenia msbuild /t:restore kończy się niepowodzeniem, gdy projekt
 
 Obecnie nie istnieje obejście tego problemu.
 
-## <a name="issues-fixed-in-nuget-40-rtm-timeframe"></a>Naprawiono problemy w ramach czasowych NuGet 4.0 RTM
+## <a name="issues-fixed-in-nuget-40-rtm-timeframe"></a>Problemy rozwiązane w przedziale czasu NuGet 4,0 RTM
 
-[NuGet 4.0 RC Release Notes](../release-notes/nuget-4.0-RC.md) - Wyświetla listę wszystkich problemów rozwiązanych dla NuGet 4.0 RC
+[Informacje o wersji programu nuget 4,0 RC](../release-notes/nuget-4.0-RC.md) — zawiera listę wszystkich problemów rozwiązanych dla programu NuGet 4,0 RC
 
 ### <a name="features"></a>Funkcje
 
-- Lokalizuj ciągi w pliku NuGet.Core.sln — [#2041](https://github.com/NuGet/Home/issues/2041)
+- Lokalizowanie ciągów w NuGet. Core. sln- [#2041](https://github.com/NuGet/Home/issues/2041)
 
-- Nuget wymusza ładowanie projektów aplikacji internetowych w trybie LSL - [#4258](https://github.com/NuGet/Home/issues/4258)
+- Siły NuGet do ładowania projektów aplikacji sieci Web w trybie SKRÓCONO — [#4258](https://github.com/NuGet/Home/issues/4258)
 
-- Obsługa funkcji AutoReferenced PackageReference w celu zablokowania zmian wersji w interfejsie użytkownika dla pakietów "zainstalowany sdk" — [#4044](https://github.com/NuGet/Home/issues/4044)
+- Obsługa PackageReference, która blokuje zmiany wersji w interfejsie użytkownika dla pakietów "zainstalowane w zestawie SDK" — [#4044](https://github.com/NuGet/Home/issues/4044)
 
-- Poprawnie komunikować PackageSpec.Version dla wszystkich zależności projektu (PackageRef) - [#3902](https://github.com/NuGet/Home/issues/3902)
+- Poprawnie komunikuj PackageSpec. Version dla dowolnych zależności projektu (PackageRef) — [#3902](https://github.com/NuGet/Home/issues/3902)
 
-- obsługa usuwania odwołań `.csproj` z wierszy poleceń - [#4101](https://github.com/NuGet/Home/issues/4101)
+- obsługa usuwania odwołań do `.csproj` z wierszy polecenia — [#4101](https://github.com/NuGet/Home/issues/4101)
 
-- Obsługa przywracania dla projektów PackageReference (normalny i xplat) i lekkie obciążenie rozwiązania - [#4003](https://github.com/NuGet/Home/issues/4003)
+- Obsługa przywracania projektów PackageReference (normalne i Xplat) i uproszczonego ładowania rozwiązań — [#4003](https://github.com/NuGet/Home/issues/4003)
 
-- obsługa dodawania odwołań do `.csproj` wierszy poleceń — [#3751](https://github.com/NuGet/Home/issues/3751)
+- Obsługa dodawania odwołań do `.csproj` z wiersza polecenia — [#3751](https://github.com/NuGet/Home/issues/3751)
 
-- Obsługa przywracania NuGet dla `packages.config` `project.json`  - lekkiego ładowania rozwiązania dla lub [#3711](https://github.com/NuGet/Home/issues/3711)
+- Obsługa przywracania NuGet na potrzeby uproszczonego ładowania rozwiązań dla programu `packages.config` lub `project.json`  -  [#3711](https://github.com/NuGet/Home/issues/3711)
 
-- contentFiles wsparcie w pliku docelowym generowanym przez nuget - [#3683](https://github.com/NuGet/Home/issues/3683)
+- Obsługa contentFiles w pliku docelowych wygenerowanych przez narzędzie NuGet — [#3683](https://github.com/NuGet/Home/issues/3683)
 
-- Ustanawianie mono ci dla sprawdzania poprawności nuget.exe na komputerze Mac przy użyciu MSBuild - [#3646](https://github.com/NuGet/Home/issues/3646)
+- Ustanawianie elementu konfiguracji mono dla nuget.exe weryfikacji na komputerze Mac przy użyciu programu MSBuild — [#3646](https://github.com/NuGet/Home/issues/3646)
 
-- Przenieś NuGet off z v2 NuGet.Core zależności - [#3645](https://github.com/NuGet/Home/issues/3645)
+- Przenoszenie narzędzia NuGet z wersji 2 programu NuGet. zależności podstawowe — [#3645](https://github.com/NuGet/Home/issues/3645)
 
 ### <a name="bugs"></a>Usterki
 
-- NuGet restore w programie Visual Studio nie respektuje właściwości PackageId projektów — [#4586](https://github.com/NuGet/Home/issues/4586)
+- Przywracanie NuGet w programie Visual Studio nie uwzględnia właściwości PackageId projektów — [#4586](https://github.com/NuGet/Home/issues/4586)
 
-- Błąd NuGet ProjectSystemCache podczas dodawania pakietu w pakiecie vsix - [#4545](https://github.com/NuGet/Home/issues/4545)
+- Błąd narzędzia NuGet ProjectSystemCache podczas dodawania pakietu w pakiecie VSIX — [#4545](https://github.com/NuGet/Home/issues/4545)
 
-- Pack zgłasza wyjątek, jeśli IncludeSource jest używany w projekcie z wieloma TFM - [#4536](https://github.com/NuGet/Home/issues/4536)
+- Pakiet zgłasza wyjątek, jeśli IncludeSource jest używany w projekcie z wieloma TFMs- [#4536](https://github.com/NuGet/Home/issues/4536)
 
-- Vs 2017 RC3 zawiesza się przy użyciu aktualizacji z zarządzania pakietami w całej rozwiązania - [#4474](https://github.com/NuGet/Home/issues/4474)
+- VS 2017 RC3 awarie przy użyciu aktualizacji z zarządzania pakietami w całym rozwiązaniu — [#4474](https://github.com/NuGet/Home/issues/4474)
 
-- Nie można odinstalować nowo zainstalowanego pakietu - [#4435](https://github.com/NuGet/Home/issues/4435)
+- Nie można odinstalować nowo zainstalowanego pakietu — [#4435](https://github.com/NuGet/Home/issues/4435)
 
-- Podczas migracji do PackageRef rozwiązania hybrydowe mają dziwne zachowanie przywracania — [#4433](https://github.com/NuGet/Home/issues/4433)
+- W przypadku migrowania do PackageRef rozwiązania hybrydowe mają nietypowe zachowanie przywracania — [#4433](https://github.com/NuGet/Home/issues/4433)
 
-- Tworzenie wkrótce po uruchomieniu operacji NuGet (instalacja, aktualizacja, przywracanie), może spowodować VS hang - [#4420](https://github.com/NuGet/Home/issues/4420)
+- Kompilowanie wkrótce po uruchomieniu operacji NuGet (Install, Update, Restore), może spowodować zawieszenie [#4420](https://github.com/NuGet/Home/issues/4420)
 
-- Zawieszanie interfejsu użytkownika — zakleszczenie inicjowania nuget.solutionrestoremanager.RestoreManagerPackage [#4371](https://github.com/NuGet/Home/issues/4371)
+- Zawieszanie zawieszenia interfejsu użytkownika podczas inicjowania NuGet. SolutionRestoreManager. RestoreManagerPackage [#4371](https://github.com/NuGet/Home/issues/4371)
 
-- polecenie dodaj pakiet należy dodać wersję jako atrybut zamiast elementu - [#4325](https://github.com/NuGet/Home/issues/4325)
-
-- dotnet
-  - dotnetcore Restore foo.sln -- kończy się niepowodzeniem, gdy konfiguracje w SLN powodują duplikaty (ale diff config) projekty na wykresie przywracania - [#4316](https://github.com/NuGet/Home/issues/4316)
-
-- Pakiety tylko do zawartości - [#3668](https://github.com/NuGet/Home/issues/3668)
-
-- Domyślnie opcja wyboru formatu pakietu - [#4468](https://github.com/NuGet/Home/issues/4468)
-
-- Perf: CreateUAP_CSharp_VS.01.1.Tworzenie projektu regressed Duration_TotalElapsedTime o 3.153.570 ms (149.1%). Wartość bazowa 26129,02 - [#4452](https://github.com/NuGet/Home/issues/4452)
-
-- Perf: ManagedLangs_CS_DDRIT.0300.Rebuild Rozwiązanie cofło Duration_TotalElapsedTime o 1,5 s. Wartość bazowa 26105 - [#4441](https://github.com/NuGet/Home/issues/4441)
-
-- Nominacja nie powiedzie się w wielu projektach TFM - [#4419](https://github.com/NuGet/Home/issues/4419)
-
-- Perf: WebForms_DDRIT.1200.Close Rozwiązanie cofło VM_ImagesInMemory_Total_devenv o 3.000 Count (0.5%). Wartość bazowa 26123,04 - [#4408](https://github.com/NuGet/Home/issues/4408)
-
-- vsfeedback - Ostrzeżenia o pakowaniu podczas kierowania netcoreapp1.1 - [#4397](https://github.com/NuGet/Home/issues/4397)
-
-- PathTooLongException podczas próby dodania pakietu NuGet do pustej aplikacji sieci web ASP.NET Core — [#4391](https://github.com/NuGet/Home/issues/4391)
-
-- Pakiet działa zbyt często - dotnet
-  - pakiet dotnetcore kończy się niepowodzeniem z istnieje cykliczna zależność na wykresie zależności docelowej obejmującej docelowy "Pack" — [#4381](https://github.com/NuGet/Home/issues/4381)
-
-- Pakiet działa zbyt często — generowanie pakietu NuGet nie zawiera wszystkich konfiguracji — [#4380](https://github.com/NuGet/Home/issues/4380)
-
-- NullReferenceException dodawanie nuget z packageref w projekcie C++ - [#4378](https://github.com/NuGet/Home/issues/4378)
-
-- Dostępność : Narrator nie opowiada pola wyboru, aby wybrać projekty, aby zainstalować pakiet do - [#4366](https://github.com/NuGet/Home/issues/4366)
-
-- NuGet VS17 sporadycznie nie łączy się z kanałami informacyjnymi VSO/VSTS — błąd 365798 — [#4365](https://github.com/NuGet/Home/issues/4365)
-
-- contentFiles uzyskać dane wyjściowe do niewłaściwej lokalizacji, jeśli PackagePath określa ścieżkę jako "contentFiles" - [#4348](https://github.com/NuGet/Home/issues/4348)
-
-- Pack target dołącza packageversion właściwości z VersionSuffix - [#4324](https://github.com/NuGet/Home/issues/4324)
-
-- Określanie ścieżki pakietu nie działa z pakietem dotnet - [#4321](https://github.com/NuGet/Home/issues/4321)
-
-- NuGet wyprowadza kilka ostrzeżeń o zduplikowanych importach podczas przywracania — [#4304](https://github.com/NuGet/Home/issues/4304)
-
-- Wybierz okno dialogowe "NuGet Package Manager Format" wygląda źle pod ciemnym motywem - [#4300](https://github.com/NuGet/Home/issues/4300)
-
-- Awaria vs na przywracanie kompilacji - [#4298](https://github.com/NuGet/Home/issues/4298)
-
-- Zakleszczenia programu Visual Studio, jeśli dodasz TFM w targetframeworks, zapisz, a następnie skompilować. 10% czasu - [#4295](https://github.com/NuGet/Home/issues/4295)
-
-- nuget pack nie wyprowadza komunikatu o sukcesie podczas pomyślnego pakowania projektu - [#4294](https://github.com/NuGet/Home/issues/4294)
-
-- PackTask nie powiedzie się z powodu nieuleczeniu systemu.IO.Compression 4.1 - [#4290](https://github.com/NuGet/Home/issues/4290)
-
-- Pack działa zbyt często — PackTask często kończy się niepowodzeniem z konfliktem dostępu do plików - [#4289](https://github.com/NuGet/Home/issues/4289)
-
-- NuGet otwiera okno wyjściowe podczas przywracania tła - [#4274](https://github.com/NuGet/Home/issues/4274)
-
-- Wyeliminuj ServiceProvider jako niebezpieczny wzorzec kodowania (który może powodować zawiesza się) - [#4268](https://github.com/NuGet/Home/issues/4268)
-
-- Perf/UIHang - Poprawa odczytów DownloadTimeoutStream - [#4266](https://github.com/NuGet/Home/issues/4266)
-
-- Zakleszczenia programu Visual Studio, jeśli spróbujesz zamknąć projekt przed zakończeniem przywracania NuGet - [#4257](https://github.com/NuGet/Home/issues/4257)
-
-- Problemy z PackTask `.nuspec`  - i pakowania [#4250](https://github.com/NuGet/Home/issues/4250)
-
-- [vsfeedback] Nie można rozwiązać pakietów nuget w nowym projekcie (musi ponownie uruchomić visual studio) - [#4217](https://github.com/NuGet/Home/issues/4217)
-
-- [vsfeedback] Rozwijana "Wersja", która pokazuje dostępne wersje pakietów, stara się pozostać w synchronizacji z wybranym pakietem nuGet... - [#4198](https://github.com/NuGet/Home/issues/4198)
-
-- Nuget.Client powinien używać CPS JoinableTaskFactory podczas interakcji z CPS, aby zapobiec zakleszczenia - [#4185](https://github.com/NuGet/Home/issues/4185)
-
-- NuGet 3.5.0 nie `.targets` rozpakowywanie z opakowania - [#4171](https://github.com/NuGet/Home/issues/4171)
+- polecenie Dodaj pakiet powinno dodać wersję jako atrybut zamiast elementu [#4325](https://github.com/NuGet/Home/issues/4325)
 
 - dotnet
-  - dotnetcore pack nie obsługuje `.csproj`  - tytułu w [#4150](https://github.com/NuGet/Home/issues/4150)
+  - dotnetcore Restore foo. sln--kończy się niepowodzeniem, jeśli konfiguracje w SLN powodują zduplikowane projekty (ale różnice konfiguracji) w programie Restore Graph- [#4316](https://github.com/NuGet/Home/issues/4316)
 
-- Install-Package powoduje błąd w vs2017 RC - [#4127](https://github.com/NuGet/Home/issues/4127)
+- Pakiety tylko zawartości — [#3668](https://github.com/NuGet/Home/issues/3668)
 
-- Aktualizowanie pakietu dla projektu .net core wydaje się nie działać, ponieważ interfejs użytkownika nie pobiera aktualizacji CPS z nominuj. - [#4035](https://github.com/NuGet/Home/issues/4035)
+- Domyślnie zrezygnuj z opcji selektora formatu pakietu — [#4468](https://github.com/NuGet/Home/issues/4468)
 
-- Poprawa ostrzeżenia o nierozwiązanym odwołaniu - [#3955](https://github.com/NuGet/Home/issues/3955)
+- Wydajność: CreateUAP_CSharp_VS. 01.1. Create Project uległa pogorszeniu Duration_TotalElapsedTime o 3 153,570 MS (149,1%). Linia bazowa 26129,02- [#4452](https://github.com/NuGet/Home/issues/4452)
 
-- dotnet
-  - dotnetcore pack - ProjectReference traci informacje o wersji - [#3953](https://github.com/NuGet/Home/issues/3953)
+- Wydajność: ManagedLangs_CS_DDRIT .0300. Rebuild rozwiązanie uległa pogorszeniu Duration_TotalElapsedTime o 1,5 sek. Linia bazowa 26105- [#4441](https://github.com/NuGet/Home/issues/4441)
 
-- Tworzenie aplikacji platformy uniwersalnej systemu ZWP tworzenie projektu & odbudowy całkowitych regresji czasu, które upłynął - [#3873](https://github.com/NuGet/Home/issues/3873)
+- Nominacja nie powiedzie się w projektach wieloTFMowych — [#4419](https://github.com/NuGet/Home/issues/4419)
 
-- Komunikat pomyślnego przywracania jest wyświetlany nawet po błędzie podczas przywracania. - [#3799](https://github.com/NuGet/Home/issues/3799)
+- Wydajność: WebForms_DDRIT .1200. Zamknij rozwiązanie uległa pogorszeniu VM_ImagesInMemory_Total_devenv według liczby 3,000 (0,5%). Linia bazowa 26123,04- [#4408](https://github.com/NuGet/Home/issues/4408)
 
-- ponownie opublikować Nuget.CommandLine 3.4.4 do Nuget.org - [#2931](https://github.com/NuGet/Home/issues/2931)
+- vsfeedback — ostrzeżenia dotyczące pakietów podczas określania wartości docelowej netcoreapp [#4397](https://github.com/NuGet/Home/issues/4397) 1.1
 
-- Podczas migracji projekty zmieniają `project.json` `.csproj` się z --- przywracania --- nie powiedzie się — [#4297](https://github.com/NuGet/Home/issues/4297)
+- PathTooLongException podczas próby dodania pakietu NuGet do pustej ASP.NET Core aplikacji sieci Web — [#4391](https://github.com/NuGet/Home/issues/4391)
 
-- Przywracanie w przypadku niepowodzenia nowo utworzonego projektu testu xunit — [#4296](https://github.com/NuGet/Home/issues/4296)
+- Pakiet jest uruchamiany zbyt często — dotnet
+  - Pakiet dotnetcore kończy się niepowodzeniem, gdy istnieje zależność cykliczna w docelowym grafie zależności obejmująca element docelowy "Pack" — [#4381](https://github.com/NuGet/Home/issues/4381)
 
-- Podstawowe projekty mogą zawieszać się, blokować interfejs użytkownika na otwartym - [#4269](https://github.com/NuGet/Home/issues/4269)
+- Pakiet jest uruchamiany zbyt często — Generowanie pakietu NuGet nie obejmuje wszystkich konfiguracji — [#4380](https://github.com/NuGet/Home/issues/4380)
 
-- naprawić plik docelowy dla zadań kompilacji - [#4267](https://github.com/NuGet/Home/issues/4267)
+- NullReferenceException Dodawanie NuGet z packageref w projekcie C++ — [#4378](https://github.com/NuGet/Home/issues/4378)
 
-- Lista błędów zawiera błąd po rozwiązaniu kompilacji, które zwalnia projekt, do którego istnieje odwołanie - [#4208](https://github.com/NuGet/Home/issues/4208)
+- Ułatwienia dostępu: program Narrator nie narratoruje tego pola wyboru, aby wybrać projekty, do których ma zostać zainstalowany pakiet- [#4366](https://github.com/NuGet/Home/issues/4366)
 
-- MSB4057: Docelowy "_GenerateRestoreGraphProjectEntry" nie istnieje w projekcie. - [#4194](https://github.com/NuGet/Home/issues/4194)
+- VS17 NuGet sporadycznie nie może nawiązać połączenia ze źródłami VSO/VSTS — Usterka programu VS 365798 — [#4365](https://github.com/NuGet/Home/issues/4365)
 
-- vsfeedback: nuget manager ui dla rozwiązania ulega awarii po wybraniu wszystkich projektów - [#4191](https://github.com/NuGet/Home/issues/4191)
+- contentFiles uzyskać dane wyjściowe do nieprawidłowej lokalizacji, jeśli PackagePath określa ścieżkę jako "contentFiles"- [#4348](https://github.com/NuGet/Home/issues/4348)
 
-- nuget.exe msbuildpath nie powiedzie się, gdy istnieje cięcie końcowe - [#4180](https://github.com/NuGet/Home/issues/4180)
+- Element docelowy Pack dołącza Właściwość PackageVersion z VersionSuffix- [#4324](https://github.com/NuGet/Home/issues/4324)
 
-- vsfeedback: Przywracanie NuGet daje kilka ostrzeżeń odwołania do projektu LinqToTwitter — [#4156](https://github.com/NuGet/Home/issues/4156)
+- Określanie ścieżki pakietu nie działa z pakietem dotnet Pack — [#4321](https://github.com/NuGet/Home/issues/4321)
 
-- Pakiet `.csproj` z nie zawiera atrybutu minClientVersion - [#4135](https://github.com/NuGet/Home/issues/4135)
+- Pakiet NuGet wyprowadza wiele ostrzeżeń dotyczących zduplikowanych importów podczas przywracania [#4304](https://github.com/NuGet/Home/issues/4304)
 
-- NuGet.Build.Tasks.Pack.dll wysłane opóźnienie podpisane w programie VS2017 (d15rel 26014.00) - [#4122](https://github.com/NuGet/Home/issues/4122)
+- Wybierz opcję "format Menedżera pakietów NuGet" jest nieprawidłowy w przypadku motywu ciemny — [#4300](https://github.com/NuGet/Home/issues/4300)
 
-- VSFeedback: Przywracanie kończy się niepowodzeniem dla projektu VS 2015 wygenerowanego za pomocą CMake 3.7.1 - [#4114](https://github.com/NuGet/Home/issues/4114)
+- VS Crash podczas przywracania kompilacji — [#4298](https://github.com/NuGet/Home/issues/4298)
 
-- VSFeedback: Przywracanie błędów może przesłaniać bardziej kompletne komunikaty o błędach, które kompilacji może dać - [#4113](https://github.com/NuGet/Home/issues/4113)
+- Zakleszczenie programu Visual Studio w przypadku dodania TFM w targetframeworks, Zapisz, a następnie Skompiluj. 10% czasu [#4295](https://github.com/NuGet/Home/issues/4295)
 
-- [VSFeedback] Wystąpił błąd podczas przywracania pakietów NuGet dla projektu witryny: Wartość nie może być null. - [#4092](https://github.com/NuGet/Home/issues/4092)
+- Pakiet NuGet nie wyprowadza komunikatu o powodzeniu w przypadku pomyślnego pakowania projektu — [#4294](https://github.com/NuGet/Home/issues/4294)
 
-- Migracja zgłasza "Wyjątek odwołania do obiektu" w NuGet.PackageManagement.VisualStudio.SolutionRestoreWorker - [#4067](https://github.com/NuGet/Home/issues/4067)
+- PackTask nie powiodła się z powodu nieznalezienia metody System. IO. Compression 4,1- [#4290](https://github.com/NuGet/Home/issues/4290)
 
-- dotnet
-  - dotnetcore pack powinien pakować narzędzia z wersjami, przeciwko których pakiet został zbudowany - [#4063](https://github.com/NuGet/Home/issues/4063)
+- Pakiet jest uruchamiany zbyt często — PackTask często kończy się niepowodzeniem z powodu konfliktu dostępu do plików — [#4289](https://github.com/NuGet/Home/issues/4289)
 
-- Nowe przywracanie tła zapisuje milisekundy na pasku stanu, gdy trwa kilka sekund, aby przywrócić - [#4036](https://github.com/NuGet/Home/issues/4036)
+- Pakiet NuGet otwiera okno dane wyjściowe podczas przywracania w tle — [#4274](https://github.com/NuGet/Home/issues/4274)
 
-- Literówka na nie może rozwiązać wszystkich odwołań do projektu - [#4018](https://github.com/NuGet/Home/issues/4018)
+- Eliminowanie jako wzorca kodowania niebezpiecznego (co może spowodować zawieszenie) — [#4268](https://github.com/NuGet/Home/issues/4268)
 
-- Włączanie przepływów pracy PCM w scenariuszach referencyjnych pakietów — [#4016](https://github.com/NuGet/Home/issues/4016)
+- Perf/UIHang — ulepszanie operacji odczytu DownloadTimeoutStream- [#4266](https://github.com/NuGet/Home/issues/4266)
 
-- Nie można znaleźć zainstalowanych pakietów w interfejsie menedżera pakietów - [#4015](https://github.com/NuGet/Home/issues/4015)
+- Zakleszczenie programu Visual Studio w przypadku próby zamknięcia projektu przed zakończeniem przywracania NuGet [#4257](https://github.com/NuGet/Home/issues/4257)
 
-- dotnet
-  - pakiet dotnetcore kończy się niepowodzeniem, gdy PackagePath jest pusty - [#3993](https://github.com/NuGet/Home/issues/3993)
+- Problemy z PackTask i pakowanie `.nuspec`  -  [#4250](https://github.com/NuGet/Home/issues/4250)
 
-- Przywracanie zadania kończy się niepowodzeniem w scenariuszu dla wielu użytkowników — [#3897](https://github.com/NuGet/Home/issues/3897)
+- [vsfeedback] Nie można rozpoznać pakietów NuGet w nowym projekcie (wymaga ponownego uruchomienia programu Visual Studio) — [#4217](https://github.com/NuGet/Home/issues/4217)
 
-- Nie można zmienić typu zawartości podczas pakowania przy użyciu zadania Pakietu NuGet Pack — [#3895](https://github.com/NuGet/Home/issues/3895)
+- [vsfeedback] Zostanie wyświetlona lista rozwijana "wersja", która zawiera dostępne wersje pakietów, co może pozostawać w synchronizacji z wybranym pakietem nuGet...- [#4198](https://github.com/NuGet/Home/issues/4198)
 
-- Domyślna kopia contentfiles są niepoprawne dla MsBuild /t:pack - [#3894](https://github.com/NuGet/Home/issues/3894)
+- Pakiet NuGet. Klient powinien używać JoinableTaskFactory CPS podczas współpracy z serwerem CPS, aby zapobiec zakleszczeniom — [#4185](https://github.com/NuGet/Home/issues/4185)
 
-- Zainstaluj pakiet przywracanie dwukrotnie rejestruje komunikat przywracania pakietów - [#3785](https://github.com/NuGet/Home/issues/3785)
-
-- Usuń barierki — przywracanie sekcji "środowiska wykonawcze" powinno dotyczyć tylko bieżącego projektu — [#3768](https://github.com/NuGet/Home/issues/3768)
-
-- Zadanie pack umieszcza pliki zawartości zarówno w "zawartość / " i "contentFiles/" - [#3718](https://github.com/NuGet/Home/issues/3718)
+- Pakiet NuGet 3.5.0 nie rozpakować `.targets` z pakietu — [#4171](https://github.com/NuGet/Home/issues/4171)
 
 - dotnet
-  - dotnetcore pack3 robi dodatkowe dzielenie tagów - [#3701](https://github.com/NuGet/Home/issues/3701)
+  - Pakiet dotnetcore nie obsługuje tytułu w `.csproj`  -  [#4150](https://github.com/NuGet/Home/issues/4150)
+
+- Install-Package wyniki w oknie dialogowym błędów w program VS2017 RC — [#4127](https://github.com/NuGet/Home/issues/4127)
+
+- Aktualizacja pakietu dla projektu .NET Core prawdopodobnie nie działa, ponieważ interfejs użytkownika nie pobiera aktualizacji CPS z nominacji. - [#4035](https://github.com/NuGet/Home/issues/4035)
+
+- Popraw nierozwiązane ostrzeżenie dotyczące odwołań — [#3955](https://github.com/NuGet/Home/issues/3955)
 
 - dotnet
-  - dotnetcore pack: projekty pakowania z odniesieniami do pakietów skutkują zduplikowanym ostrzeżeniem importu - [#3665](https://github.com/NuGet/Home/issues/3665)
+  - dotnetcore Pack — elementu ProjectReference utraci informacje o wersji — [#3953](https://github.com/NuGet/Home/issues/3953)
 
-- Przywróć rejestrowanie w vs nie zawsze pokazuje - [#3633](https://github.com/NuGet/Home/issues/3633)
+- Utwórz aplikację platformy UWP Utwórz projekt & ponownie skompilować łączny czas, który upłynął, [#3873](https://github.com/NuGet/Home/issues/3873)
 
-- nuget mieszkańcy pomagają tekst nadal wymienione pakiety cache - [#3592](https://github.com/NuGet/Home/issues/3592)
+- Komunikat o powodzeniu przywracania jest wyświetlany nawet po wystąpieniu błędu podczas przywracania. - [#3799](https://github.com/NuGet/Home/issues/3799)
 
-- Restore3 pary PackageReferences z TargetFrameworks. - [#3504](https://github.com/NuGet/Home/issues/3504)
+- ponownie Opublikuj pakiet NuGet. CommandLine 3.4.4 do Nuget.org- [#2931](https://github.com/NuGet/Home/issues/2931)
 
-- Nuget wybiera nieoczekiwaną wersję MSBuild w vs "15" Preview 4 dev. wiersz polecenia - [#3408](https://github.com/NuGet/Home/issues/3408)
+- Po migracji projekty zmieniają się z `project.json` na `.csproj` ---przywracanie nie powiedzie się [#4297](https://github.com/NuGet/Home/issues/4297)
 
-- Zapisz pliki obiektów docelowych/rekwizytów podczas nie powiodło się przywracanie - [#3399](https://github.com/NuGet/Home/issues/3399)
+- Przywracanie nie powiodło się w przypadku nowo utworzonego projektu testowego xUnit — [#4296](https://github.com/NuGet/Home/issues/4296)
 
-- NuGet podczas przywracania nie respektuje tych samych podkładek compat co MSBuild podczas uruchamiania w wierszu polecenia programu VS 15 — [#3387](https://github.com/NuGet/Home/issues/3387)
+- Projekty podstawowe mogą zawieszać się, blokować interfejs użytkownika przy otwartym [#4269](https://github.com/NuGet/Home/issues/4269)
 
-- Ponownie włącz PackFromProjectWithDevelopmentDependencySet for VS15 - [#3272](https://github.com/NuGet/Home/issues/3272)
+- Napraw plik elementów docelowych dla zadań kompilacji — [#4267](https://github.com/NuGet/Home/issues/4267)
 
-- Problemy z mieszaniem z NuGet - [#4043](https://github.com/NuGet/Home/issues/4043)
+- Lista błędów zawiera błąd po rozwiązaniu kompilacji, które zwalnia przywoływany projekt [#4208](https://github.com/NuGet/Home/issues/4208)
 
-- Integracja 4.0.0.2067 z repo CLI i SDK do wysyłki z RC2 - [#4029](https://github.com/NuGet/Home/issues/4029)
+- MSB4057: element docelowy "_GenerateRestoreGraphProjectEntry" nie istnieje w projekcie. - [#4194](https://github.com/NuGet/Home/issues/4194)
 
-- VS zawiesza się podczas tworzenia nowej aplikacji Core Console, zamknij rozwiązanie, otwarte rozwiązanie i zamknij rozwiązanie - [#4008](https://github.com/NuGet/Home/issues/4008)
+- vsfeedback: interfejs użytkownika Menedżera NuGet dla awarii rozwiązań po wybraniu opcji wszystkie projekty — [#4191](https://github.com/NuGet/Home/issues/4191)
 
-- Uderzenie w projekt otwarcia zawieszenia przeciwko d15prerel.25916.01 - [#3982](https://github.com/NuGet/Home/issues/3982)
+- nuget.exe msbuildpath kończy się niepowodzeniem, gdy występuje końcowy ukośnik — [#4180](https://github.com/NuGet/Home/issues/4180)
 
-- Napraw komunikat dotnet/nuget.exe locals doc/help - [#3919](https://github.com/NuGet/Home/issues/3919)
+- vsfeedback: Przywracanie NuGet daje kilka ostrzeżeń odwołania projektu dla projektu LinqToTwitter — [#4156](https://github.com/NuGet/Home/issues/4156)
 
-- Sprawdź PackTask pod kątem problemów z spływu lub wiodących odstępów - [#3906](https://github.com/NuGet/Home/issues/3906)
+- Pakiet od `.csproj` nie zawiera atrybutu minClientVersion — [#4135](https://github.com/NuGet/Home/issues/4135)
+
+- NuGet.Build.Tasks.Pack.dll wysłane opóźnienie z podpisem program VS2017 (d15rel 26014,00) — [#4122](https://github.com/NuGet/Home/issues/4122)
+
+- VSFeedback: Przywracanie nie powiodło się dla projektu VS 2015 wygenerowanego z CMake 3.7.1- [#4114](https://github.com/NuGet/Home/issues/4114)
+
+- VSFeedback: Błędy przywracania mogą zasłaniać bardziej kompletne komunikaty o błędach, które kompilacja może dać [#4113](https://github.com/NuGet/Home/issues/4113)
+
+- [VSFeedback] Wystąpił błąd podczas przywracania pakietów NuGet dla projektu witryny sieci Web: wartość nie może być równa null. - [#4092](https://github.com/NuGet/Home/issues/4092)
+
+- Migracja zgłasza "wyjątek odwołania do obiektu" w NuGet. PackageManagement. VisualStudio. SolutionRestoreWorker- [#4067](https://github.com/NuGet/Home/issues/4067)
 
 - dotnet
-  - dotnetcore pack jest pakowanie z obj nie bin - [#3880](https://github.com/NuGet/Home/issues/3880)
+  - Pakiet dotnetcore Pack powinien mieć pakiet narzędzi z wersjami, dla których został skompilowany pakiet — [#4063](https://github.com/NuGet/Home/issues/4063)
+
+- Nowe przywracanie w tle powoduje zapis milisekund na pasku stanu, gdy trwa sekund, aby przywrócić [#4036](https://github.com/NuGet/Home/issues/4036)
+
+- Literówka w przypadku niepowodzenia rozpoznania wszystkich odwołań do projektu — [#4018](https://github.com/NuGet/Home/issues/4018)
+
+- Włącz przepływy pracy PCM w scenariuszach odwołań do pakietów — [#4016](https://github.com/NuGet/Home/issues/4016)
+
+- Nie można znaleźć zainstalowanych pakietów w interfejsie użytkownika Menedżera pakietów — [#4015](https://github.com/NuGet/Home/issues/4015)
 
 - dotnet
-  - dotnetcore pack zawsze wydaje się ustawić wersję ProjectReference na 1.0.0 - [#3874](https://github.com/NuGet/Home/issues/3874)
+  - Pakiet dotnetcore kończy się niepowodzeniem, gdy PackagePath jest pusty- [#3993](https://github.com/NuGet/Home/issues/3993)
+
+- Zadanie przywracania kończy się niepowodzeniem w scenariuszu obejmującym wiele użytkowników — [#3897](https://github.com/NuGet/Home/issues/3897)
+
+- Nie można zmienić typu zawartości podczas pakowania przy użyciu zadania pakietu NuGet — [#3895](https://github.com/NuGet/Home/issues/3895)
+
+- Domyślna kopia ContentFiles jest niepoprawna dla programu MsBuild/t: Pack- [#3894](https://github.com/NuGet/Home/issues/3894)
+
+- Pakiet instalacyjny programu instalacyjnego podwójnego rejestrowania komunikat przywracania pakietów — [#3785](https://github.com/NuGet/Home/issues/3785)
+
+- Usuń Guardrails — przywracanie sekcji "środowiska uruchomieniowe" powinno być stosowane tylko do bieżącego projektu — [#3768](https://github.com/NuGet/Home/issues/3768)
+
+- Pakiet Task umieszcza pliki zawartości w "Content/" i "contentFiles/"- [#3718](https://github.com/NuGet/Home/issues/3718)
 
 - dotnet
-  - pakiet dotnetcore kończy się <TargetFramework>  - niepowodzeniem z odwołaniami do projektu i [#3865](https://github.com/NuGet/Home/issues/3865)
+  - dotnetcore Pack3 wykonuje dodatkowe dzielenie tagów — [#3701](https://github.com/NuGet/Home/issues/3701)
 
-- LockRecursionException w programie ProjectSystemCache.TryGetProjectNameByShortName — [#3861](https://github.com/NuGet/Home/issues/3861)
+- dotnet
+  - Pakiet dotnetcore: projekty pakowania z odwołaniami do pakietu są wynikiem ostrzeżenia o zduplikowanym imporcie — [#3665](https://github.com/NuGet/Home/issues/3665)
 
-- Przycinanie odstępu z właściwości MSBuild - [#3819](https://github.com/NuGet/Home/issues/3819)
+- Przywracanie dzienników w programie VS nie jest zawsze wyświetlane- [#3633](https://github.com/NuGet/Home/issues/3633)
 
-- Konsolidacja dwóch zdarzeń projektu podniesionych przy obciążeniu projektu - [#3759](https://github.com/NuGet/Home/issues/3759)
+- tekst pomocy dla ustawień regionalnych NuGet nadal omawiany w pamięci podręcznej pakietów — [#3592](https://github.com/NuGet/Home/issues/3592)
 
-- Biblioteki P2P `project.assets.json` w pliku mają niepoprawną wersję - [#3748](https://github.com/NuGet/Home/issues/3748)
+- Restore3 Couples składnika packagereferences z TargetFrameworks. - [#3504](https://github.com/NuGet/Home/issues/3504)
 
-- Przywracanie awarii z powodu braku odpowiedzi i niedostępnego pakietu - [#3672](https://github.com/NuGet/Home/issues/3672)
+- Pakiet NuGet wybiera nieoczekiwaną wersję programu MSBuild w programie VS "15" (wersja zapoznawcza 4). wiersz polecenia — [#3408](https://github.com/NuGet/Home/issues/3408)
 
-- nuget.exe może zawiesić się na dużej ilości danych wyjściowych błędu MSBuild - [#3572](https://github.com/NuGet/Home/issues/3572)
+- Zapisuj pliki docelowe/elementy props w przypadku niepowodzenia przywracania — [#3399](https://github.com/NuGet/Home/issues/3399)
 
-- Przywracanie na kompilacji dla blendu kończy się niepowodzeniem po raz pierwszy, kończy się po raz drugi (poprawiony scenariusz VS) — [#2121](https://github.com/NuGet/Home/issues/2121)
+- Pakiet NuGet podczas przywracania nie uwzględnia tych samych podkładek zgodności jak MSBuild w przypadku uruchamiania w wierszu polecenia programu VS 15 — [#3387](https://github.com/NuGet/Home/issues/3387)
 
-### <a name="dcrs"></a>DDR
+- Ponowne włączanie PackFromProjectWithDevelopmentDependencySet dla VS15- [#3272](https://github.com/NuGet/Home/issues/3272)
 
-- migrować vsix z v2 vsix do v3 vsix - [#4196](https://github.com/NuGet/Home/issues/4196)
+- Mieszanie problemów z pakietem NuGet — [#4043](https://github.com/NuGet/Home/issues/4043)
 
-- NuGet powinien mieć mechanizm uzyskiwania ścieżki do pliku blokady w MSBuild - [#3351](https://github.com/NuGet/Home/issues/3351)
+- Integruj 4.0.0.2067 w interfejsie wiersza polecenia i repozytoria zestawu SDK, aby dostarczyć z użyciem RC2- [#4029](https://github.com/NuGet/Home/issues/4029)
 
-- Dodawanie zasobów kompilacji do pliku sprawdzania zgodności tfm i zasobów — [#3296](https://github.com/NuGet/Home/issues/3296)
+- VS zawiesza się podczas tworzenia nowej aplikacji z konsolą podstawową, zamykaj rozwiązanie, otwieraj rozwiązanie i zamykaj rozwiązanie — [#4008](https://github.com/NuGet/Home/issues/4008)
 
-- Zdefiniuj nowy pakiet "Pack" w pakiecie docelowym umożliwiający włączenie możliwości związanych z pakietem — [#4146](https://github.com/NuGet/Home/issues/4146)
+- Wysunięcie otwierające projekt względem d15prerel. 25916.01- [#3982](https://github.com/NuGet/Home/issues/3982)
 
-- Uruchom pakiet jako miejsce docelowe kompilacji postu uwarunkowane właściwością MSBuild "GeneratePackageOnBuild" — [#4145](https://github.com/NuGet/Home/issues/4145)
+- Naprawianie dokumentu/pomocy dotyczącej ustawień regionalnych dotnet/nuget.exe — [#3919](https://github.com/NuGet/Home/issues/3919)
 
-- Użyj Właściwości NuGet RestoreProjectStyle do utworzenia określonego projektu NuGet - [#4134](https://github.com/NuGet/Home/issues/4134)
+- Sprawdź PackTask pod kątem problemów z końcowym lub wiodącym odstępem — [#3906](https://github.com/NuGet/Home/issues/3906)
 
-- Adaptuj przywracanie dla przechodnich odwołań do projektu — [#4076](https://github.com/NuGet/Home/issues/4076)
+- dotnet
+  - Pakiet dotnetcore Pack jest pakowany z opakowania nie bin- [#3880](https://github.com/NuGet/Home/issues/3880)
 
-- Dodaj właściwości NuGet w pliku docelowym dla projektów innych niż platformy uniwersalne — [#4030](https://github.com/NuGet/Home/issues/4030)
+- dotnet
+  - Pakiet dotnetcore zawsze wygląda na ustawienie wersji elementu ProjectReference na 1.0.0- [#3874](https://github.com/NuGet/Home/issues/3874)
 
-- Obsługa platformy docelowej platformy uniwersalnej platformy uniwersalnej — [#3923](https://github.com/NuGet/Home/issues/3923)
+- dotnet
+  - Pakiet dotnetcore kończy się niepowodzeniem z odwołaniami projektu i <TargetFramework>  -  [#3865](https://github.com/NuGet/Home/issues/3865)
 
-- Komunikuj metadane odwołania do projektu do systemu projektu NuGet — [#3922](https://github.com/NuGet/Home/issues/3922)
+- LockRecursionException w ProjectSystemCache. TryGetProjectNameByShortName- [#3861](https://github.com/NuGet/Home/issues/3861)
 
-- Dodaj interfejs użytkownika dla trybu pakowania - [#3921](https://github.com/NuGet/Home/issues/3921)
+- Przytnij odstępy od właściwości programu MSBuild — [#3819](https://github.com/NuGet/Home/issues/3819)
 
-- Starsze `.csproj` potrzeby NugetTargetMoniker i RuntimeIdentifiers określone w proj/targets - [#3854](https://github.com/NuGet/Home/issues/3854)
+- Konsoliduj dwa zdarzenia projektu zgłoszone podczas ładowania projektu — [#3759](https://github.com/NuGet/Home/issues/3759)
 
-- Pakiet instalacyjny może pokrywać się z automatycznym przywracaniem - [#3836](https://github.com/NuGet/Home/issues/3836)
+- Biblioteki P2P w `project.assets.json` pliku mają niepoprawną wersję [#3748](https://github.com/NuGet/Home/issues/3748)
 
-- Menu kontekstowe QueryStatus nie dzieje się, gdy VSPackage nie jest załadowany - [#3835](https://github.com/NuGet/Home/issues/3835)
+- Przywracanie awarii z powodu braku odpowiedzi i niedostępnego pakietu — [#3672](https://github.com/NuGet/Home/issues/3672)
 
-- Przywracanie i przywracanie kompilacji rozwiązania nadal wyświetla okna dialogowe - [#3789](https://github.com/NuGet/Home/issues/3789)
+- nuget.exe może zawiesić się dużą ilość danych wyjściowych błędu MSBuild — [#3572](https://github.com/NuGet/Home/issues/3572)
 
-- Izoluj wersję VSSDK w kompilacji rozwiązania NuGet.Clients - [#3890](https://github.com/NuGet/Home/issues/3890)
+- Przywracanie po kompilacji dla programu Blend kończy się niepowodzeniem po raz pierwszy [#2121](https://github.com/NuGet/Home/issues/2121) .
 
-## <a name="links-to-github-issues-fixed-in-rtm"></a>Naprawiono łącza do githubu
+### <a name="dcrs"></a>DCR
+
+- Migrowanie VSIX z wersji 2 VSIX do V3 VSIX- [#4196](https://github.com/NuGet/Home/issues/4196)
+
+- Pakiet NuGet powinien mieć mechanizm pobierania ścieżki do pliku blokady w programie MSBuild — [#3351](https://github.com/NuGet/Home/issues/3351)
+
+- Dodaj zasoby kompilacji do TFM kontroli zgodności i plików zasobów — [#3296](https://github.com/NuGet/Home/issues/3296)
+
+- Zdefiniuj nowy ProjectCapability "Pack" w celu włączenia funkcji związanych z pakietem — [#4146](https://github.com/NuGet/Home/issues/4146)
+
+- Uruchom pakiet jako element docelowy po kompilacji dla właściwości "GeneratePackageOnBuild" programu MSBuild — [#4145](https://github.com/NuGet/Home/issues/4145)
+
+- Użyj właściwości NuGet RestoreProjectStyle, aby utworzyć określony projekt NuGet — [#4134](https://github.com/NuGet/Home/issues/4134)
+
+- Dostosuj przywracanie dla przechodnich odwołań do projektu- [#4076](https://github.com/NuGet/Home/issues/4076)
+
+- Dodaj właściwości NuGet w pliku docelowym dla projektów innych niż platformy UWP — [#4030](https://github.com/NuGet/Home/issues/4030)
+
+- Obsługa TargetPlatformVersion platformy UWP — [#3923](https://github.com/NuGet/Home/issues/3923)
+
+- Przekaż metadane odwołania projektu do systemu projektu NuGet — [#3922](https://github.com/NuGet/Home/issues/3922)
+
+- Dodaj interfejs użytkownika dla trybu pakowania — [#3921](https://github.com/NuGet/Home/issues/3921)
+
+- Starsze `.csproj` potrzeby NugetTargetMoniker i RuntimeIdentifiers są ustawiane w elemencie proj/targets- [#3854](https://github.com/NuGet/Home/issues/3854)
+
+- Pakiet instalacyjny może się pokrywać z funkcją automatycznej przywracania [#3836](https://github.com/NuGet/Home/issues/3836)
+
+- QueryStatus menu kontekstowego nie nastąpi, gdy pakietu VSPackage nie jest załadowany- [#3835](https://github.com/NuGet/Home/issues/3835)
+
+- Przywracanie rozwiązań i przywracanie kompilacji nadal wyświetla okna dialogowe — [#3789](https://github.com/NuGet/Home/issues/3789)
+
+- Izolowanie wersji VSSDK w programie NuGet. klienci — kompilacja rozwiązań — [#3890](https://github.com/NuGet/Home/issues/3890)
+
+## <a name="links-to-github-issues-fixed-in-rtm"></a>Linki do problemów z usługą GitHub rozwiązane w wersji RTM
 [Lista problemów 1](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0%20RTM")  
 [Lista problemów 2](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0%20RC4")  
 [Lista problemów 3](https://github.com/NuGet/Home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%224.0%20RC3")  

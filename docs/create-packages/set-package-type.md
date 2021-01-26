@@ -1,32 +1,32 @@
 ---
-title: Ustawianie typu pakietu NuGet
-description: W tym artykule opisano typy pakietów, aby wskazać zamierzone użycie pakietu.
-author: karann-msft
-ms.author: karann
+title: Ustaw typ pakietu NuGet
+description: Opisuje typy pakietów, aby wskazać zamierzone użycie pakietu.
+author: JonDouglas
+ms.author: jodou
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d869f616ce0291cf1c0a17b7ff20fc61e6a3bd5
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 990ac580f4031615566d78e359a24eaedaaf3e07
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78230827"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774360"
 ---
-# <a name="set-a-nuget-package-type"></a>Ustawianie typu pakietu NuGet
+# <a name="set-a-nuget-package-type"></a>Ustaw typ pakietu NuGet
 
-Z NuGet 3.5+, pakiety mogą być oznaczone określonego *typu pakietu,* aby wskazać jego przeznaczenie. Pakiety nie są oznaczone typem, w tym wszystkie pakiety `Dependency` utworzone z wcześniejszymi wersjami NuGet, domyślnie typu.
+W przypadku programu NuGet 3.5 + pakiety można oznaczyć przy użyciu określonego *typu pakietu* , aby wskazać jego zamierzone użycie. Pakiety, które nie są oznaczone jako typu, w tym wszystkie pakiety utworzone przy użyciu wcześniejszych wersji programu NuGet, domyślnie są `Dependency` typu.
 
-- `Dependency`pakiety typu dodać zasoby kompilacji lub wykonywania do bibliotek i aplikacji i mogą być instalowane w dowolnym typie projektu (przy założeniu, że są one zgodne).
+- `Dependency` pakiety typów dodają zasoby kompilacji lub czasu wykonywania do bibliotek i aplikacji, które można zainstalować w dowolnym typie projektu (przy założeniu, że są one zgodne).
 
-- `DotnetTool`pakiety typów są rozszerzeniami do [dotnet CLI](/dotnet/articles/core/tools/index) i są wywoływane z wiersza polecenia. Takie pakiety mogą być instalowane tylko w projektach .NET Core i nie mają wpływu na operacje przywracania. Więcej szczegółów na temat tych rozszerzeń dla projektu są dostępne w dokumentacji [rozszerzalności .NET Core.](/dotnet/articles/core/tools/extensibility#per-project-based-extensibility)
+- `DotnetTool` pakiety typów są rozszerzeniami [interfejsu wiersza polecenia dotnet](/dotnet/articles/core/tools/index) i są wywoływane z wiersza poleceń. Takie pakiety można instalować tylko w projektach .NET Core i nie mają wpływu na operacje przywracania. Więcej informacji na temat tych rozszerzeń dla poszczególnych projektów można znaleźć w dokumentacji  [rozszerzalności platformy .NET Core](/dotnet/articles/core/tools/extensibility#per-project-based-extensibility) .
 
-- `Template`pakiety typów zapewniają [niestandardowe szablony,](/dotnet/core/tools/custom-templates) które mogą być używane do tworzenia plików lub projektów, takich jak aplikacja, usługa, narzędzie lub biblioteka klas.
+- `Template` pakiety typów udostępniają [niestandardowe szablony](/dotnet/core/tools/custom-templates) , których można użyć do tworzenia plików lub projektów, takich jak aplikacja, usługa, narzędzie lub Biblioteka klas.
 
-- Niestandardowe pakiety typów używają dowolnego identyfikatora typu, który jest zgodny z regułami tego samego formatu co identyfikatory pakietów. Każdy typ `Dependency` inny `DotnetTool`niż i , jednak nie są rozpoznawane przez Menedżera pakietów NuGet w programie Visual Studio.
+- Pakiety typu niestandardowego używają dowolnego identyfikatora typu, który jest zgodny z tymi samymi regułami formatowania co identyfikatory pakietów. Każdy typ inny niż `Dependency` i `DotnetTool` , ale nie jest rozpoznawany przez Menedżera pakietów NuGet w programie Visual Studio.
 
-Typy pakietów `.nuspec` są ustawiane w pliku. Najlepiej jest dla zgodności z powrotem, aby *nie* jawnie ustawić `Dependency` typ i zamiast polegać na NuGet przy założeniu, że ten typ, gdy nie określono typu.
+Typy pakietów są ustawiane w `.nuspec` pliku. Najlepiej, aby zapewnić zgodność z poprzednimi wersjami, aby *nie* ustawiać jawnie `Dependency` typu i zamiast tego polegać na NuGet przy założeniu, że ten typ nie jest określony.
 
-- `.nuspec`: Wskazać typ pakietu `packageTypes\packageType` w `<metadata>` węźle pod elementem:
+- `.nuspec`: Wskaż typ pakietu w `packageTypes\packageType` węźle pod `<metadata>` elementem:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

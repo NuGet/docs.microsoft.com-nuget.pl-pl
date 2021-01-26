@@ -1,22 +1,22 @@
 ---
 title: Wiele elementów docelowych dla pakietów NuGet
 description: Opis różnych metod ukierunkowanych na wiele wersji .NET Framework z jednego pakietu NuGet.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7c0da38ab4059b89c9693ecbece2bc8ed1a775ec
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: e919b11670589900d9e588db33fd68b8df592ac2
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93237948"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98774560"
 ---
 # <a name="support-multiple-net-versions"></a>Obsługa wielu wersji platformy .NET
 
 Wiele bibliotek jest przeznaczonych dla określonej wersji .NET Framework. Na przykład może istnieć jedna wersja biblioteki, która jest specyficzna dla platformy UWP, oraz inna wersja, która wykorzystuje funkcje w .NET Framework 4,6. Aby to umożliwić, pakiet NuGet obsługuje umieszczanie wielu wersji tej samej biblioteki w jednym pakiecie.
 
-W tym artykule opisano układ pakietu NuGet, bez względu na to, w jaki sposób jest tworzony pakiet lub zestawy (to oznacza, że układ jest taki sam, niezależnie od tego, czy jest używany wiele plików *csproj.* *.nuspec* *.csproj* W przypadku projektu w stylu zestawu SDK [elementy docelowe pakietu](../reference/msbuild-targets.md) NuGet wiedzą, w jaki sposób pakiet musi być layed i automatyzuje umieszczanie zestawów w poprawnych folderach lib i tworzenie grup zależności dla każdej platformy docelowej (TFM). Aby uzyskać szczegółowe instrukcje, zobacz [Obsługa wielu wersji .NET Framework w pliku projektu](multiple-target-frameworks-project-file.md).
+W tym artykule opisano układ pakietu NuGet, bez względu na to, w jaki sposób jest tworzony pakiet lub zestawy (to oznacza, że układ jest taki sam, niezależnie od tego, czy jest używany wiele plików *csproj.*   W przypadku projektu w stylu zestawu SDK [elementy docelowe pakietu](../reference/msbuild-targets.md) NuGet wiedzą, w jaki sposób pakiet musi być layed i automatyzuje umieszczanie zestawów w poprawnych folderach lib i tworzenie grup zależności dla każdej platformy docelowej (TFM). Aby uzyskać szczegółowe instrukcje, zobacz [Obsługa wielu wersji .NET Framework w pliku projektu](multiple-target-frameworks-project-file.md).
 
 Należy ręcznie określić pakiet, zgodnie z opisem w tym artykule w przypadku korzystania z metody katalogu roboczego opartej na Konwencji opisanej w temacie [Tworzenie pakietu](../create-packages/creating-a-package.md#from-a-convention-based-working-directory). W przypadku projektu w stylu zestawu SDK zaleca się metodę zautomatyzowaną, ale można również ręcznie określić układ pakietu zgodnie z opisem w tym artykule.
 
@@ -24,7 +24,9 @@ Należy ręcznie określić pakiet, zgodnie z opisem w tym artykule w przypadku 
 
 Podczas kompilowania pakietu zawierającego tylko jedną wersję biblioteki lub docelową wiele struktur, należy zawsze tworzyć podfoldery w ramach `lib` różnych nazw struktur uwzględniających wielkość liter w następującej konwencji:
 
-    lib\{framework name}[{version}]
+```
+lib\{framework name}[{version}]
+```
 
 Aby uzyskać pełną listę obsługiwanych nazw, zobacz [Dokumentacja platformy docelowej](../reference/target-frameworks.md#supported-frameworks).
 
@@ -32,15 +34,17 @@ Nigdy nie należy mieć wersji biblioteki, która nie jest specyficzna dla struk
 
 Na przykład następująca struktura folderów obsługuje cztery wersje zestawu, który jest specyficzny dla platformy:
 
-    \lib
-        \net46
-            \MyAssembly.dll
-        \net461
-            \MyAssembly.dll
-        \uap
-            \MyAssembly.dll
-        \netcore
-            \MyAssembly.dll
+```
+\lib
+    \net46
+        \MyAssembly.dll
+    \net461
+        \MyAssembly.dll
+    \uap
+        \MyAssembly.dll
+    \netcore
+        \MyAssembly.dll
+```
 
 Aby łatwo uwzględnić wszystkie te pliki podczas kompilowania pakietu, użyj cyklicznego `**` symbolu wieloznacznego w `<files>` sekcji `.nuspec` :
 
@@ -54,16 +58,18 @@ Aby łatwo uwzględnić wszystkie te pliki podczas kompilowania pakietu, użyj c
 
 W przypadku zestawów specyficznych dla architektury, czyli oddzielnych zestawów przeznaczonych dla ARM, x86 i x64, należy umieścić je w folderze o nazwie `runtimes` w podfolderach o nazwie `{platform}-{architecture}\lib\{framework}` lub `{platform}-{architecture}\native` . Na przykład następująca struktura folderów będzie obsługiwać natywne i zarządzane biblioteki DLL przeznaczone dla systemu Windows 10 i `uap10.0` platformy:
 
-    \runtimes
-        \win10-arm
-            \native
-            \lib\uap10.0
-        \win10-x86
-            \native
-            \lib\uap10.0
-        \win10-x64
-            \native
-            \lib\uap10.0
+```
+\runtimes
+    \win10-arm
+        \native
+        \lib\uap10.0
+    \win10-x86
+        \native
+        \lib\uap10.0
+    \win10-x64
+        \native
+        \lib\uap10.0
+```
 
 Te zestawy będą dostępne tylko w czasie wykonywania, dlatego jeśli chcesz podać odpowiedni zestaw czasu kompilacji, a następnie `AnyCPU` zestaw w `/ref/{tfm}` folderze. 
 
@@ -81,11 +87,13 @@ Jeśli dopasowanie nie zostanie znalezione, pakiet NuGet kopiuje zestaw dla najw
 
 Rozważmy na przykład następującą strukturę folderów w pakiecie:
 
-    \lib
-        \net45
-            \MyAssembly.dll
-        \net461
-            \MyAssembly.dll
+```
+\lib
+    \net45
+        \MyAssembly.dll
+    \net461
+        \MyAssembly.dll
+```
 
 Podczas instalowania tego pakietu w projekcie, który jest przeznaczony dla .NET Framework 4,6, pakiet NuGet instaluje zestaw w `net45` folderze, ponieważ jest to najwyższa dostępna wersja, która jest mniejsza lub równa 4,6.
 
@@ -97,12 +105,14 @@ Jeśli projekt jest przeznaczony dla programu .NET Framework 4,0 i jego wcześni
 
 Pakiet NuGet kopiuje zestawy tylko z jednego folderu biblioteki w pakiecie. Załóżmy na przykład, że pakiet ma następującą strukturę folderów:
 
-    \lib
-        \net40
-            \MyAssembly.dll (v1.0)
-            \MyAssembly.Core.dll (v1.0)
-        \net45
-            \MyAssembly.dll (v2.0)
+```
+\lib
+    \net40
+        \MyAssembly.dll (v1.0)
+        \MyAssembly.Core.dll (v1.0)
+    \net45
+        \MyAssembly.dll (v2.0)
+```
 
 Gdy pakiet jest zainstalowany w projekcie, który jest przeznaczony dla .NET Framework 4,5, `MyAssembly.dll` (v 2.0) jest jedynym zainstalowanym zestawem. `MyAssembly.Core.dll` (wersja 1.0) nie jest zainstalowana, ponieważ nie znajduje się ona w `net45` folderze. Pakiet NuGet działa w ten sposób `MyAssembly.Core.dll` , ponieważ mógł zostać scalony w wersji 2,0 programu `MyAssembly.dll` .
 
@@ -112,7 +122,7 @@ Jeśli chcesz `MyAssembly.Core.dll` zainstalować program dla .NET Framework 4,5
 
 Pakiet NuGet obsługuje również określanie konkretnego profilu struktury przez dołączenie kreski i nazwy profilu do końca folderu.
 
-    lib\{framework name}-{profile}
+\{Nazwa struktury lib}-{profile}
 
 Obsługiwane są następujące profile:
 
@@ -160,24 +170,26 @@ W przypadku bibliotek opakowaniowych przeznaczonych dla przenośnej biblioteki k
 > [!Warning]
 > Modyfikowalne pliki zawartości i wykonywanie skryptów są dostępne `packages.config` tylko w formacie. są one przestarzałe ze wszystkimi innymi formatami i nie powinny być używane dla żadnych nowych pakietów.
 
-W programie `packages.config` pliki zawartości i skrypty programu PowerShell mogą być pogrupowane według platformy docelowej przy użyciu tej samej Konwencji folderów w `content` `tools` folderach i. Przykład:
+W programie `packages.config` pliki zawartości i skrypty programu PowerShell mogą być pogrupowane według platformy docelowej przy użyciu tej samej Konwencji folderów w `content` `tools` folderach i. Na przykład:
 
-    \content
-        \net46
-            \MyContent.txt
-        \net461
-            \MyContent461.txt
-        \uap
-            \MyUWPContent.html
-        \netcore
-    \tools
-        init.ps1
-        \net46
-            install.ps1
-            uninstall.ps1
-        \uap
-            install.ps1
-            uninstall.ps1
+```
+\content
+    \net46
+        \MyContent.txt
+    \net461
+        \MyContent461.txt
+    \uap
+        \MyUWPContent.html
+    \netcore
+\tools
+    init.ps1
+    \net46
+        install.ps1
+        uninstall.ps1
+    \uap
+        install.ps1
+        uninstall.ps1
+```
 
 Jeśli folder struktury pozostanie pusty, pakiet NuGet nie dodaje odwołań do zestawu ani plików zawartości ani nie uruchamia skryptów programu PowerShell dla tej struktury.
 
