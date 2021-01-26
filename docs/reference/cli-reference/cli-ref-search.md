@@ -1,16 +1,16 @@
 ---
 title: Polecenie wyszukiwania interfejsu wiersza polecenia NuGet
 description: Odwołanie do nuget.exe polecenia Search
-author: advay26
-ms.author: t-adtand
+author: JonDouglas
+ms.author: jodou
 ms.date: 08/17/2020
 ms.topic: reference
-ms.openlocfilehash: 8d63efefb8f14c03fbe3986d8d7eebcc3eb5bcac
-ms.sourcegitcommit: 6cda91f135e58cf57a2471b0c7c4a2f748f40024
+ms.openlocfilehash: 6f4adcdf3981e5ec0e5e88337a8c3bcdd9158ca3
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89359685"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98779166"
 ---
 # <a name="search-command-nuget-cli"></a>Search — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -46,15 +46,15 @@ Zobacz również [zmienne środowiskowe](cli-ref-environment-variables.md)
 
 ## <a name="examples"></a>Przykłady
 
-Wyszukaj pakiety powiązane z *rejestrowaniem*ze źródeł domyślnych:
+Wyszukaj pakiety powiązane z *rejestrowaniem* ze źródeł domyślnych:
 ```
 nuget search logging
 ```
-Wyszukaj pakiety związane z *rejestrowaniem*ze szczegółowym szczegółowośćem:
+Wyszukaj pakiety związane z *rejestrowaniem* ze szczegółowym szczegółowośćem:
 ```
 nuget search logging -Verbosity detailed
 ```
-Wyszukaj pakiety związane z *rejestrowaniem*i Pokaż tylko 5 najważniejszych wyników:
+Wyszukaj pakiety związane z *rejestrowaniem* i Pokaż tylko 5 najważniejszych wyników:
 ```
 nuget search logging -Take 5
 ```
@@ -62,7 +62,7 @@ Wyszukaj pakiety powiązane ze standardem *JSON*, w tym wersje wstępne, z okre�
 ```
 nuget search JSON -PreRelease -Source "https://api.nuget.org/v3/index.json"
 ```
-Wyszukaj pakiety powiązane ze standardem *JSON*z wielu źródeł/źródeł:
+Wyszukaj pakiety powiązane ze standardem *JSON* z wielu źródeł/źródeł:
 ```
 nuget search JSON -Source "https://api.nuget.org/v3/index.json" -Source "https://other-feed-url-goes-here"
 ```

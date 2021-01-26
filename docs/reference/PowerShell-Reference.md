@@ -1,16 +1,16 @@
 ---
 title: Dokumentacja programu PowerShell NuGet
 description: Kompletne odwołanie do poleceń programu PowerShell dostępnych w konsoli Menedżera pakietów NuGet w programie Visual Studio.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 10/02/2017
 ms.topic: reference
-ms.openlocfilehash: 4f8b42847cbc155393fe6d2afbe2e0857b619da3
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 98bea8a225f4864953f898ef57b26e9093f7c2e9
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93236883"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98779372"
 ---
 # <a name="powershell-reference"></a>Informacje dotyczące programu PowerShell
 

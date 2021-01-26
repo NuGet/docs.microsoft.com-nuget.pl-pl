@@ -1,16 +1,16 @@
 ---
 title: Informacje o wersji narzędzia NuGet 5,5
 description: Informacje o wersji programu NuGet 5,5, w tym nowe funkcje, poprawki błędów i DCR.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0e8ab66c937058e84420bc3e3a5031cbc133aad7
-ms.sourcegitcommit: 1a63a84da2719c8141823ac89a20bf507fd22b00
+ms.openlocfilehash: 0fde67dd03c31e986ed89f2f8627608e279ef908
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80148298"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98780111"
 ---
 # <a name="nuget-55-release-notes"></a>Informacje o wersji narzędzia NuGet 5,5
 
@@ -32,15 +32,15 @@ Pojazdy dystrybucji NuGet:
 
 * Obsługa wbudowanych ikon samodzielnego umieszczania w interfejsie użytkownika Menedżera pakietów programu Visual Studio dla pakietów hostowanych w lokalnych źródłach danych — [#8189](https://github.com/NuGet/Home/issues/8189)
 
-* Znacznie ulepszona wydajność przywracania No-op przy użyciu `RestoreUseStaticGraphEvaluation`, która przyspiesza Obliczanie przez wywoływanie interfejsów API programu MSBuild static Graph- [8791](https://github.com/NuGet/Home/issues/8791)
+* Znacznie ulepszona wydajność przywracania No-op przy użyciu `RestoreUseStaticGraphEvaluation` przyspieszania obliczeń przez wywoływanie statycznych interfejsów API programu MSBuild — [8791](https://github.com/NuGet/Home/issues/8791)
 
-* Ulepszona niezawodność programu dotnet. exe z wtyczkami uwierzytelniania dla wielu platform
+* Ulepszona dotnet.exe niezawodność przy użyciu wtyczek do uwierzytelniania dla wielu platform
     * dotnet restore niepowodzenie z TaskCanceledException- [#7842](https://github.com/NuGet/Home/issues/7842)
     * Wtyczka: "zadanie zostało anulowane" — problem z uwierzytelnianiem ADO z powodu tego elementu. - [#8528](https://github.com/NuGet/Home/issues/8528)
 
 * Dodaj `dotnet nuget <add|remove|update|disable|enable|list> source` polecenie [#4126](https://github.com/NuGet/Home/issues/4126)
 
-* Obsługę dla `--skip-duplicate` przy użyciu wypychania NuGet programu dotnet- [#8778](https://github.com/NuGet/Home/issues/8778)
+* Obsługę do `--skip-duplicate`  użycia wypychania NuGet programu dotnet- [#8778](https://github.com/NuGet/Home/issues/8778)
 
 * Obsługa `packages.config` przy użyciu programu MSBuild/Restore — [#8506](https://github.com/NuGet/Home/issues/8506)
 
@@ -48,7 +48,7 @@ Pojazdy dystrybucji NuGet:
 
 **Usterek**
 
-* Współaktualizator z interfejsami API v3 — [#4197](https://github.com/NuGet/Home/issues/4197)
+* Self-Updater współpracujące z interfejsami API v3 — [#4197](https://github.com/NuGet/Home/issues/4197)
 
 * Nieprawidłowa wersja zależności pakietu, jeśli w wersji zależności pakietu ustawiono wartość "*"- [#6697](https://github.com/NuGet/Home/issues/6697)
 
@@ -56,7 +56,7 @@ Pojazdy dystrybucji NuGet:
 
 * Plik blokady nie jest uznawany za scenariusze "*" — [#8073](https://github.com/NuGet/Home/issues/8073)
 
-* Program NuGet. exe nie jest rozpoznawany jako Najnowsza wersja pakietu, gdy jest używany program * w PackageReference (MSBuild/dotnet/przywracanie VS) — [#8432](https://github.com/NuGet/Home/issues/8432)
+* NuGet.exe nie jest rozpoznawana jako Najnowsza wersja pakietu przy użyciu funkcji * w PackageReference (MSBuild/dotnet/program VS Restore) — [#8432](https://github.com/NuGet/Home/issues/8432)
 
 * pakiet listy dotnet z projektem WPF o wiele elementów docelowych — [#8463](https://github.com/NuGet/Home/issues/8463)
 
@@ -92,9 +92,9 @@ Pojazdy dystrybucji NuGet:
 
 * Przywracanie: duże ciągi utworzone na stercie dużego obiektu (LOH) — [#9031](https://github.com/NuGet/Home/issues/9031)
 
-* Niestandardowa NuGet. exe w nowszej wersji mono może ulec przerwaniu z powodu programu rozpoznawania SDK MSBuild- [8848](https://github.com/NuGet/Home/issues/8848)
+* Niestandardowe nuget.exe w nowszych mono mogą zostać przerwane ze względu na program rozpoznawania SDK MSBuild- [8848](https://github.com/NuGet/Home/issues/8848)
 
-* Przywracanie kończy się niepowodzeniem, gdy plik NuGet. dgspec. JSON jest używany przez inny proces — [8692](https://github.com/NuGet/Home/issues/8692)
+* Przywracanie kończy się niepowodzeniem, gdy nuget.dgspec.json jest używany przez inny proces "- [8692](https://github.com/NuGet/Home/issues/8692)
 
 **DCR**
 

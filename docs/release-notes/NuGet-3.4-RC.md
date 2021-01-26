@@ -1,51 +1,51 @@
 ---
-title: Informacje o wersji 3.4 RC NuGet
-description: Informacje o wersji programu NuGet 3.4 RC obejmuje znane problemy, poprawki błędów, funkcje dodane i DCRs.
-author: karann-msft
-ms.author: karann
+title: Pakiet NuGet 3,4 — Informacje o wersji RC
+description: Informacje o wersji programu NuGet 3,4 RC, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: 795bdcfaa2e22447856b60d05807aeb0992cdfa0
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: 3023dd3727c7c585212032d38c042bded4135c1e
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43546757"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98780242"
 ---
-# <a name="nuget-34-rc-release-notes"></a>Informacje o wersji 3.4 RC NuGet
+# <a name="nuget-34-rc-release-notes"></a>Pakiet NuGet 3,4 — Informacje o wersji RC
 
-[Informacje o wersji NuGet 3.3](../release-notes/nuget-3.3.md) | [informacjach o wersji NuGet 3.4](../release-notes/nuget-3.4.md)
+Informacje o wersji narzędzia [NuGet 3,3](../release-notes/nuget-3.3.md)  |  [Informacje o wersji narzędzia NuGet 3,4](../release-notes/nuget-3.4.md)
 
-NuGet 3.4-RC został wydany 3 marca 2016 wraz z Visual Studio 2015 Update 2 RC i został skompilowany przy użyciu kilku założenia w umysłów:
+Pakiet NuGet 3,4-RC został wydana 3 marca, 2016 obok programu Visual Studio 2015 Update 2 RC i został skompilowany za pomocą kilku założenia w zdanie:
 
-* Obsługa wielu Platform
-* Ulepszenia wydajności
-* Drobne ulepszenia interfejsu użytkownika
+* Obsługa wielu platform
+* Usprawnienia wydajności
+* Ulepszenia pomocniczych interfejsów użytkownika
 
-Następujące funkcje są dostępne w tej wersji RC, kolejne zaplanowane 3.4 ostatecznej wersji.
+W tej wersji RC dostępne są następujące funkcje z zaplanowanymi wersjami ostateczną 3,4.
 
 ## <a name="new-features"></a>Nowe funkcje
 
-* Klienci programu NuGet teraz obsługuje gzip kodowania zawartości z repozytoriów
-* Obsługa plików PDB z pakietów w kompilowanych projektach xproj
-* Obsługa systemów iOS i Android akcji kompilowania w systemach elementu contentFiles
-* Obsługa netstandard i netstandardapp monikerów framework
+* Klienci NuGet obsługują teraz kodowanie zawartości gzip z repozytoriów
+* Obsługa plików PDB z pakietów w projektach xproj
+* Obsługa akcji kompilacji dla systemów iOS i Android w elemencie contentFiles
+* Obsługa krótkich monikerów struktury netstandardapp
 
 ## <a name="new-user-interface-features"></a>Nowe funkcje interfejsu użytkownika
 
-* Znaczne ulepszenia wydajności zwłaszcza na kartach zainstalowany, aktualizacji i Konsolidacja
-* Zainstalowany i karty aktualizacje teraz są sortowane alfabetycznie
-* Dodaje przycisk odświeżania, która umożliwia wyszukiwanie do odświeżenia
+* Znaczące ulepszenia wydajności dotyczące kart zainstalowanych, aktualizacji i konsolidowania
+* Karty zainstalowane i aktualizacje są teraz sortowane alfabetycznie
+* Dodano przycisk odświeżania, który umożliwia odświeżenie wyszukiwania
 
 ## <a name="updates-and-improvements"></a>Aktualizacje i ulepszenia
 
-* Pakiety, do którego odwołuje się `project.json` , które mają zmiennoprzecinkowy wersji nie będzie aktualizowana przy każdej kompilacji. Zamiast tego zostanie zaktualizowana tylko wtedy, gdy zmuszeni do przywrócenia, czyszczenia, odbudować lub zmodyfikować `project.json`.
-* źródeł repozytorium nuget.org już jest zmuszony do konfiguracji projektu, korzystając z interfejsu użytkownika konfiguracji NuGet.
-* NuGet nie są już pakiety w udostępnionych projektach ani zapisuje plik blokady.
-* Firma Microsoft może udoskonalenia awarii sieci, a następnie ponów próbę obsługi dla serwerów niedostępne lub powolne odpowiedzi.
-* Klawiatura i mysz zachowania ulegają poprawie w Interfejsie użytkownika Menedżera pakietów Visual Studio.
-* Obsługujemy teraz najnowsze `project.json` schemat środowiska DNX.
+* Pakiety, do których się odwołują `project.json` , mają przepływającą wersję, nie będą aktualizowane dla każdej kompilacji. Zamiast tego zostaną one zaktualizowane tylko wtedy, gdy zostanie wymuszone przywrócenie, oczyszczenie, odbudowanie lub zmodyfikowanie `project.json` .
+* źródła repozytorium nuget.org nie są już wymuszane w konfiguracji projektu podczas korzystania z interfejsu użytkownika konfiguracji NuGet.
+* Pakiet NuGet nie przywraca już pakietów w projektach udostępnionych ani nie zapisuje pliku blokady.
+* Ulepszono awarię sieci i obsługę ponownych prób w przypadku nieosiągalnych lub wolnych serwerów.
+* W interfejsie użytkownika Menedżera pakietów programu Visual Studio Ulepszono zachowania klawiatury i myszy.
+* Teraz obsługujemy najnowszy `project.json` schemat w programie środowiska DNX.
 
 ## <a name="known-issues"></a>Znane problemy
 
-W dalszym ciągu śledzenia problemów na naszej liście problemów GitHub, który znajduje się w temacie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)
+Będziemy nadal śledzić problemy na naszej liście problemów usługi GitHub, którą można znaleźć w witrynie: [http://github.com/nuget/home/issues](http://github.com/nuget/home/issues)

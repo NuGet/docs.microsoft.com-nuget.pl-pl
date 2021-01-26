@@ -1,48 +1,48 @@
 ---
-title: Informacje o wersji NuGet 2.8.2
-description: Informacje o wersji programu NuGet 2.8.2 tym — znane problemy, poprawki, funkcje dodane i DCRs.
-author: karann-msft
-ms.author: karann
+title: Informacje o wersji narzędzia NuGet 2.8.2
+description: Informacje o wersji programu NuGet 2.8.2, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: ed22aef6766bbe8e4b688e0587304a18eaeb8895
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: d39f2dc9a429ed264461174325c2080468fa8aae
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43551151"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98780372"
 ---
-# <a name="nuget-282-release-notes"></a>Informacje o wersji NuGet 2.8.2
+# <a name="nuget-282-release-notes"></a>Informacje o wersji narzędzia NuGet 2.8.2
 
-[Informacje o wersji NuGet 2.8.1](../release-notes/nuget-2.8.1.md) | [informacje o wersji programu NuGet 2.8.3](../release-notes/nuget-2.8.3.md)
+Informacje o wersji narzędzia [NuGet 2.8.1](../release-notes/nuget-2.8.1.md)  |  [Informacje o wersji narzędzia NuGet 2.8.3](../release-notes/nuget-2.8.3.md)
 
-NuGet 2.8.2 została wydana 22 maja 2014 r.  W tej wersji uwzględnione tylko zmiany wiersza polecenia nuget.exe, pakiet NuGet.Server i inne pakiety NuGet.  Wersja nie zawiera rozszerzenia programu WebMatrix lub zaktualizowane rozszerzenie programu Visual Studio.
+Pakiet NuGet 2.8.2 został opublikowany w dniu 22 maja 2014.  W tej wersji uwzględniono tylko zmiany w nuget.exe wierszu polecenia, pakiet NuGet. Server i inne pakiety NuGet.  Wydanie nie zawiera zaktualizowanego rozszerzenia programu Visual Studio lub rozszerzenia WebMatrix.
 
-## <a name="notable-updates"></a>Znaczące zmiany
+## <a name="notable-updates"></a>Ważne aktualizacje
 
-Najbardziej znaczące zmiany były związane z wiersza polecenia nuget.exe oraz pakiet NuGet.Server (na potrzeby samodzielnie hostowane kanały informacyjne NuGet).
+Najbardziej ważne aktualizacje zostały nuget.exe w wierszu polecenia i pakiecie NuGet. Server (dla własnych źródeł NuGet).
 
-### <a name="important-nugetexe-bug-fixes"></a>Nuget.exe ważne poprawki błędów
+### <a name="important-nugetexe-bug-fixes"></a>Ważne poprawki nuget.exe błędów
 
-1. [nuget.exe wypychania nie powiedzie się i utrzymuje ponawianie próby](https://nuget.codeplex.com/workitem/4000)
-1. [nuget.exe wypychania nie wysyła poprawne poświadczenia uwierzytelniania podstawowego](https://nuget.codeplex.com/workitem/4109)
-1. [nuget.exe wypychania nie wykonaj przekierowania tymczasowego](https://nuget.codeplex.com/workitem/4050)
+1. [nuget.exe wypychanie nie powiedzie się i kontynuuje ponawianie próby](https://nuget.codeplex.com/workitem/4000)
+1. [nuget.exe push nie wysyła prawidłowo poświadczeń uwierzytelniania podstawowego](https://nuget.codeplex.com/workitem/4109)
+1. [ Wypychanienuget.exe nie będzie podążać za przekierowaniem tymczasowym](https://nuget.codeplex.com/workitem/4050)
 
-### <a name="important-nugetserver-bug-fix"></a>Naprawienie usterki NuGet.Server ważne
+### <a name="important-nugetserver-bug-fix"></a>Ważna Poprawka błędu NuGet. serwer
 
-1. [Nieprawidłowa wartość zwrócona przez NuGet.Server IsAbsoluteLatestVersion](https://nuget.codeplex.com/workitem/4147)
+1. [Niepoprawna wartość IsAbsoluteLatestVersion zwrócona przez NuGet. serwer](https://nuget.codeplex.com/workitem/4147)
 
 ## <a name="packages-updated"></a>Zaktualizowano pakiety
 
-Wiersza polecenia nuget.exe oraz NuGet.Server poprawki są dostarczane jako aktualizacje pakietu NuGet.  Wystąpiły inne pakiety aktualizowane przy użyciu 2.8.2 także.
+nuget.exe wiersza polecenia i NuGet. poprawki serwera są dostarczane jako aktualizacje pakietu NuGet.  Dodano również inne pakiety z 2.8.2.
 
-Poniżej przedstawiono listę zaktualizowanych pakietów:
+Oto lista zaktualizowanych pakietów:
 
-1. [NuGet.Core](https://www.nuget.org/packages/NuGet.Core/)
-1. [NuGet.CommandLine](https://www.nuget.org/packages/NuGet.CommandLine/)
+1. [NuGet. Core](https://www.nuget.org/packages/NuGet.Core/)
+1. [NuGet. CommandLine](https://www.nuget.org/packages/NuGet.CommandLine/)
 1. [NuGet.Server](https://www.nuget.org/packages/NuGet.Server/)
-1. [NuGet.Build](https://www.nuget.org/packages/NuGet.Build/)
-1. [NuGet.VisualStudio](https://www.nuget.org/packages/NuGet.VisualStudio/) (pakiet, nie rozszerzenia)
+1. [NuGet. Build](https://www.nuget.org/packages/NuGet.Build/)
+1. [NuGet. VisualStudio](https://www.nuget.org/packages/NuGet.VisualStudio/) (pakiet, a nie rozszerzenie)
 
 ## <a name="all-changes"></a>Wszystkie zmiany
-Wystąpiły problemy 10, które zostały rozwiązane w wydaniu. Pełną listę prac elementy rozwiązane w NuGet 2.8.2, sprawdź widok [NuGet narzędzie do śledzenia problemów w tej wersji](https://nuget.codeplex.com/workitem/list/advanced?keyword=&status=All&type=All&priority=All&release=NuGet%202.8.2&assignedTo=All&component=All&sortField=LastUpdatedDate&sortDirection=Descending&page=0&reasonClosed=All).
+Wystąpiły 10 problemów rozwiązanych w wydaniu. Aby zapoznać się z pełną listą elementów roboczych ustalonych w programie NuGet 2.8.2, zobacz [Śledzenie problemów NuGet dla tej wersji](https://nuget.codeplex.com/workitem/list/advanced?keyword=&status=All&type=All&priority=All&release=NuGet%202.8.2&assignedTo=All&component=All&sortField=LastUpdatedDate&sortDirection=Descending&page=0&reasonClosed=All).

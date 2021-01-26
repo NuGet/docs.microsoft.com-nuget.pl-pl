@@ -1,16 +1,16 @@
 ---
 title: Pakiet interfejsu wiersza polecenia NuGet
 description: Informacje dotyczące polecenia nuget.exe Pack
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 01/18/2018
 ms.topic: reference
-ms.openlocfilehash: 0483a75c7ee1fd851f935f44d96a417e2e86bf20
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: e2906d53119cb8c922df7d177cd686836ac50a5a
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88622957"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98780044"
 ---
 # <a name="pack-command-nuget-cli"></a>Pack — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -105,7 +105,7 @@ gdzie `<nuspecPath>` i `<projectPath>` Określ `.nuspec` odpowiednio plik projek
 
 - **`-p|-Properties`**
 
-  Powinna zostać wyświetlona jako Ostatnia w wierszu polecenia po innych opcjach. Określa listę właściwości, które zastępują wartości w pliku projektu; Zobacz [wspólne właściwości projektu MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazw właściwości. Argument właściwości znajduje się na liście par token = wartość, oddzielonych średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostanie zastąpione daną wartością. Wartości mogą być ciągami w cudzysłowie. Należy pamiętać, że w przypadku właściwości "Configuration" wartością domyślną jest "debug". Aby zmienić konfigurację wydania, użyj programu `-Properties Configuration=Release` . **Ogólnie rzecz**biorąc, właściwości powinny być takie same, które były używane podczas odpowiedniej kompilacji projektu, aby uniknąć potencjalnie nietypowego zachowania.
+  Powinna zostać wyświetlona jako Ostatnia w wierszu polecenia po innych opcjach. Określa listę właściwości, które zastępują wartości w pliku projektu; Zobacz [wspólne właściwości projektu MSBuild](/visualstudio/msbuild/common-msbuild-project-properties) dla nazw właściwości. Argument właściwości znajduje się na liście par token = wartość, oddzielonych średnikami, gdzie każde wystąpienie `$token$` w `.nuspec` pliku zostanie zastąpione daną wartością. Wartości mogą być ciągami w cudzysłowie. Należy pamiętać, że w przypadku właściwości "Configuration" wartością domyślną jest "debug". Aby zmienić konfigurację wydania, użyj programu `-Properties Configuration=Release` . **Ogólnie rzecz** biorąc, właściwości powinny być takie same, które były używane podczas odpowiedniej kompilacji projektu, aby uniknąć potencjalnie nietypowego zachowania.
 
 - **`-SolutionDirectory`**
 

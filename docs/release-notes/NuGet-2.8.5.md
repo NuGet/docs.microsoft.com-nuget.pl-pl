@@ -1,30 +1,30 @@
 ---
-title: Informacje o wersji NuGet 2.8.5
-description: Informacje o wersji programu NuGet 2.8.5 tym — znane problemy, poprawki, funkcje dodane i DCRs.
-author: karann-msft
-ms.author: karann
+title: Informacje o wersji narzędzia NuGet 2.8.5
+description: Informacje o wersji programu NuGet 2.8.5, w tym znane problemy, poprawki błędów, dodane funkcje i DCR.
+author: JonDouglas
+ms.author: jodou
 ms.date: 11/11/2016
 ms.topic: conceptual
-ms.openlocfilehash: aa03b00a0043a4805f33900124c13b0777c2b7a3
-ms.sourcegitcommit: 1d1406764c6af5fb7801d462e0c4afc9092fa569
+ms.openlocfilehash: f729092bc964b286a007564bd3bbd8c79bc895c9
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43548628"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98780360"
 ---
-# <a name="nuget-285-release-notes"></a>Informacje o wersji NuGet 2.8.5
+# <a name="nuget-285-release-notes"></a>Informacje o wersji narzędzia NuGet 2.8.5
 
-[Informacje o wersji programu NuGet 2.8.3](../release-notes/nuget-2.8.3.md) | [informacjach o wersji NuGet 2.8.6](../release-notes/nuget-2.8.6.md)
+Informacje o wersji narzędzia [NuGet 2.8.3](../release-notes/nuget-2.8.3.md)  |  [Informacje o wersji narzędzia NuGet 2.8.6](../release-notes/nuget-2.8.6.md)
 
-NuGet 2.8.5 został wydany 30 marca 2015 r. Jest aktualizację pomocniczą do naszych wersji 2.8.3 VSIX z niektórymi docelowe poprawki.
+2.8.5 NuGet wydano 30 marca 2015. Jest to drobna aktualizacja naszego 2.8.3 VSIX z niektórymi poprawkami.
 
-W tej wersji dodano obsługę dla okna dialogowego Menedżer pakietów NuGet [środowiska DNX Target Framework monikerów](https://github.com/aspnet/dnx).  Te nowe krótkie nazwy framework, które są obsługiwane, obejmują:
+W tej wersji dodano okno dialogowe obsługa Menedżera pakietów NuGet dla [monikerów platformy docelowej środowiska DNX](https://github.com/aspnet/dnx).  Te nowe monikery struktury, które są obsługiwane, obejmują:
 
-* **core50** — "base" docelowe moniker struktury (TFM), która jest zgodna z Core CLR.
-* **dnx452** — TFM specyficzne dla środowiska DNX na podstawie używających 4.5.2 pełną wersję platformy
-* **dnx46** — TFM specyficzne dla środowiska DNX na podstawie używających 4.6 pełną wersję platformy
-* **dnxcore50** — TFM: specyficzne dla środowiska DNX na podstawie aplikacji przy użyciu wersji Core 5.0 framework
+* **core50** — moniker platformy docelowej "Base" (TFM), który jest zgodny z rdzeniem CLR.
+* **dnx452** -A TFM specyficzne dla aplikacji opartych na środowiska dnxch przy użyciu pełnej wersji 4.5.2 platformy
+* **dnx46** -A TFM specyficzne dla aplikacji opartych na środowiska dnxach przy użyciu pełnej wersji 4,6 platformy
+* **dnxcore50** -A TFM specyficzne dla aplikacji opartych na środowiska DNX przy użyciu podstawowej wersji 5,0 platformy
 
-Jeden błąd został naprawiony tego uniemożliwił pakietów instalacji do projektów języka FSharp prawidłowo:
+Rozwiązano problem polegający na tym, że uniemożliwiło zainstalowanie pakietów w projektach FSharp:
 
 https://nuget.codeplex.com/workitem/4400

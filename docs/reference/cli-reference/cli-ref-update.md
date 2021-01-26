@@ -1,16 +1,16 @@
 ---
 title: Polecenie aktualizacji interfejsu wiersza polecenia NuGet
 description: Odwołanie do nuget.exe Update — polecenie
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 106c4027f03d8e8c1d19545b3ca9b6cd5263830e
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: cfa7fdcc6af46fd5f4030ba424754291f697bc43
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93236792"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98779138"
 ---
 # <a name="update-command-nuget-cli"></a>Update — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -40,7 +40,7 @@ gdzie `<configPath>` identyfikuje `packages.config` lub plik rozwiązania, któr
   
 - **`-DependencyVersion [Lowest, HighestPatch, HighestMinor, Highest, Ignore]`**
 
-  Określa wersję pakietów zależności do użycia, która może być jedną z następujących:<br/><ul><li>*Najniższy* (domyślny): najniższa wersja</li><li>*HighestPatch* : wersja z najniższą główną, najmniejszą niewielką lub najwyższą poprawką</li><li>*HighestMinor* : wersja z najmniejszą główną, najwyższą niewielką lub najwyższą poprawką</li><li>*Najwyższa* : najwyższa wersja</li><li>*Ignoruj* : nie będą używane żadne pakiety zależności</li></ul>
+  Określa wersję pakietów zależności do użycia, która może być jedną z następujących:<br/><ul><li>*Najniższy* (domyślny): najniższa wersja</li><li>*HighestPatch*: wersja z najniższą główną, najmniejszą niewielką lub najwyższą poprawką</li><li>*HighestMinor*: wersja z najmniejszą główną, najwyższą niewielką lub najwyższą poprawką</li><li>*Najwyższa*: najwyższa wersja</li><li>*Ignoruj*: nie będą używane żadne pakiety zależności</li></ul>
 
 - **`-FileConflictAction [PromptUser, Overwrite, Ignore]`**
 

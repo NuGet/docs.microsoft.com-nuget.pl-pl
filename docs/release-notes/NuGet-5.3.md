@@ -1,16 +1,16 @@
 ---
 title: Informacje o wersji narzędzia NuGet 5,3
 description: Informacje o wersji programu NuGet 5,3, w tym nowe funkcje, poprawki błędów i DCR.
-author: karann-msft
-ms.author: karann
+author: JonDouglas
+ms.author: jodou
 ms.date: 09/06/2019
 ms.topic: conceptual
-ms.openlocfilehash: ca71c5b9ef546f3ea92e55763d5059466ac3a930
-ms.sourcegitcommit: e9c1dd0679ddd8ba3ee992d817b405f13da0472a
+ms.openlocfilehash: 009a219139a767ee6453305be68ccce478b0ec75
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76813757"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98780121"
 ---
 # <a name="nuget-53-release-notes"></a>Informacje o wersji narzędzia NuGet 5,3
 
@@ -27,9 +27,9 @@ Pojazdy dystrybucji NuGet:
 
 * [Ikonę pakietu można osadzić w pakiecie](../reference/msbuild-targets.md#packing-an-icon-image-file), zamiast korzystać z zewnętrznego adresu URL. - [#352](https://github.com/NuGet/Home/issues/352)
 
-* Ulepszone zabezpieczenia dzięki śledzeniu i wymuszaniu algorytmu SHA dla pakietów Packages. config — [#7281](https://github.com/NuGet/Home/issues/7281)
+* Ulepszone zabezpieczenia dzięki śledzeniu i wymuszeniu algorytmu SHA dla Packages.Config- [#7281](https://github.com/NuGet/Home/issues/7281)
 
-* Włącz wycofanie przestarzałych/starszych pakietów NuGet [#2867](https://github.com/NuGet/Home/issues/2867) | [wpis w blogu](https://devblogs.microsoft.com/nuget/deprecating-packages-on-nuget-org/) | [docs](../nuget-org/deprecate-packages.md)
+* Włącz wycofanie przestarzałych/starszych pakietów NuGet [#2867](https://github.com/NuGet/Home/issues/2867)  |  [Dokumentacja wpisów w blogu](https://devblogs.microsoft.com/nuget/deprecating-packages-on-nuget-org/)  |  [](../nuget-org/deprecate-packages.md)
 
 ### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
 
@@ -47,7 +47,7 @@ Pojazdy dystrybucji NuGet:
 
 * Udoskonalenia NU1403 — sprawdzaj poprawność wszystkich pakietów, Uwzględnij oczekiwane/rzeczywiste wartości SHA- [#8424](https://github.com/NuGet/Home/issues/8424)
 
-* Wielokrotne Wyliczenie w `NuGetPackageManager.PreviewUpdatePackagesAsync` - [#8401](https://github.com/NuGet/Home/issues/8401)
+* Wielokrotne Wyliczenie w `NuGetPackageManager.PreviewUpdatePackagesAsync`  -  [#8401](https://github.com/NuGet/Home/issues/8401)
 
 * Przywróć zmianę "Public-> Internal" w PluginProcess — [#8390](https://github.com/NuGet/Home/issues/8390)
 
@@ -71,7 +71,7 @@ Pojazdy dystrybucji NuGet:
 
 * Ustaw odczytywanie ustawień w programie VS z opóźnieniem [#8156](https://github.com/NuGet/Home/issues/8156)
 
-* Regresja w `Nuget sources add` powoduje, że "znak": ", wartość szesnastkowa 0x3A, nie może zostać uwzględniony w nazwie" Błędy — [#7948](https://github.com/NuGet/Home/issues/7948)
+* Regresja w programie `Nuget sources add` powoduje, że znak ":", wartość szesnastkowa 0x3A, nie może zostać uwzględniony w nazwie "Błędy- [#7948](https://github.com/NuGet/Home/issues/7948)
 
 * Dostawcy poświadczeń wtyczki NuGet — ukrywanie okna procesu — [#7511](https://github.com/NuGet/Home/issues/7511)
 
@@ -87,11 +87,11 @@ Pojazdy dystrybucji NuGet:
 
 * Włącz przywracanie na plikach. proj — [#8212](https://github.com/NuGet/Home/issues/8212)
 
-* Wprowadź `NUGET_NETFX_PLUGIN_PATHS` i `NUGET_NETCORE_PLUGIN_PATHS` do obsługi konfiguracji obu jednocześnie [#8151](https://github.com/NuGet/Home/issues/8151)
+* Wprowadź `NUGET_NETFX_PLUGIN_PATHS` i `NUGET_NETCORE_PLUGIN_PATHS` Aby obsługiwać konfigurację obu jednocześnie — [#8151](https://github.com/NuGet/Home/issues/8151)
 
 * Włącz wiele wersji dla PackageDownload za pomocą atrybutu Version- [#8074](https://github.com/NuGet/Home/issues/8074)
 
-* Opcje Add-SolutionDirectory i-PackageDirectory do programu NuGet. exe Pack- [#7163](https://github.com/NuGet/Home/issues/7163)
+* Opcje Add-SolutionDirectory i-PackageDirectory do nuget.exe Pack [#7163](https://github.com/NuGet/Home/issues/7163)
 
 **[Lista wszystkich problemów rozwiązanych w tej wersji — 5,3](https://github.com/nuget/home/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%225.3")**
 

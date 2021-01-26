@@ -1,41 +1,41 @@
 ---
-title: Obsługa nuget dla systemu projektu programu Visual Studio
-description: Integracja NuGet do systemu projektu Visual Studio dla typów projektów innych firm.
-author: karann-msft
-ms.author: karann
+title: Obsługa NuGet dla systemu projektu programu Visual Studio
+description: Integracja programu NuGet z systemem projektu programu Visual Studio dla typów projektów innych firm.
+author: JonDouglas
+ms.author: jodou
 ms.date: 01/09/2017
 ms.topic: reference
-ms.openlocfilehash: 00a64d95c943e9e5cb3a279358a6495125a1bd87
-ms.sourcegitcommit: 2b50c450cca521681a384aa466ab666679a40213
+ms.openlocfilehash: 7af330f88b47352666933598719d9c8f8cb66a78
+ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "64495930"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98779408"
 ---
-# <a name="nuget-support-for-the-visual-studio-project-system"></a>Obsługa nuGet dla systemu projektu programu Visual Studio
+# <a name="nuget-support-for-the-visual-studio-project-system"></a>Obsługa NuGet dla systemu projektu programu Visual Studio
 
-Aby obsługiwać typy projektów innych firm w programie Visual Studio, NuGet 3.x+ obsługuje [wspólny system projektu (CPS),](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/intro.md)a NuGet 3.2+ obsługuje również systemy projektów innych niż CPS.
+Aby można było obsługiwać typy projektów innych firm w programie Visual Studio, pakiet NuGet 3. x + obsługuje program [Common Project System (CPS)](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/intro.md)i NuGet 3.2 + obsługuje również systemy projektów innych niż CPS.
 
-Aby zintegrować z NuGet, system projektu musi anonsować własne wsparcie dla wszystkich możliwości projektu opisanych w tym temacie.
+Aby przeprowadzić integrację z pakietem NuGet, system projektu musi zaanonsować własną obsługę wszystkich możliwości projektu opisanych w tym temacie.
 
 > [!Note]
-> Nie deklaruj możliwości, których projekt faktycznie nie ma ze względu na włączenie pakietów do zainstalowania w projekcie. Wiele funkcji programu Visual Studio i innych rozszerzeń zależy od możliwości projektu oprócz klienta NuGet. Fałszywie reklamowe możliwości projektu mogą doprowadzić te składniki do nieprawidłowego działania, a środowisko użytkowników do degradacji.
+> Nie deklaruj możliwości, które projekt nie ma w rzeczywistości, aby można było włączyć pakiety do zainstalowania w projekcie. Wiele funkcji programu Visual Studio i innych rozszerzeń zależy od możliwości projektu poza klientem NuGet. Fałszywie reklamowe możliwości projektu mogą prowadzić do nieprawidłowego działania tych składników i obniżyć komfort pracy użytkowników.
 
-## <a name="advertise-project-capabilities"></a>Reklamowanie możliwości projektu
+## <a name="advertise-project-capabilities"></a>Anonsuj możliwości projektu
 
 Klient NuGet określa, które pakiety są zgodne z typem projektu na podstawie [możliwości projektu](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/about_project_capabilities.md), zgodnie z opisem w poniższej tabeli.
 
-| Możliwości | Opis |
+| Możliwość | Opis |
 | --- | --- |
-| Wnioski o assemblyreferences | Wskazuje, że projekt obsługuje odwołania do zestawu (w odróżnieniu od WinRTReferences). |
-| Zadeklarowanezajednak. | Wskazuje, że projekt jest typowym projektem MSBuild (nie DNX), ponieważ deklaruje elementy źródłowe w samym projekcie. |
-| Zasoby zasobów użytkownika|Wskazuje, że użytkownik może dodawać dowolne pliki do swojego projektu. |
+| AssemblyReferences | Wskazuje, że projekt obsługuje odwołania do zestawów (różne od WinRTReferences). |
+| DeclaredSourceItems | Wskazuje, że projekt jest typowym projektem programu MSBuild (nie środowiska DNX) w tym, że deklaruje elementy źródłowe w samym projekcie. |
+| UserSourceItems|Wskazuje, że użytkownik może dodawać do projektu dowolne pliki. |
 
-W przypadku systemów projektowych opartych na cps szczegóły implementacji możliwości projektu opisane w pozostałej części tej sekcji zostały wykonane dla Ciebie. Zobacz [deklarowanie możliwości projektu w projektach CPS](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/about_project_capabilities.md#how-to-declare-project-capabilities-in-your-project).
+W przypadku systemów projektów opartych na serwerze CPS szczegóły implementacji dotyczące możliwości projektu opisanych w dalszej części tej sekcji zostały wykonane. Zobacz [deklarowanie możliwości projektu w projektach CPS](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/about_project_capabilities.md#how-to-declare-project-capabilities-in-your-project).
 
-## <a name="implementing-vsprojectcapabilitiespresencechecker"></a>Wdrażanie VsProjectCapabilitiesPresenceChecker
+## <a name="implementing-vsprojectcapabilitiespresencechecker"></a>Implementowanie VsProjectCapabilitiesPresenceChecker
 
-Klasa `VsProjectCapabilitiesPresenceChecker` musi implementować `IVsBooleanSymbolPresenceChecker` interfejs, który jest zdefiniowany w następujący sposób:
+`VsProjectCapabilitiesPresenceChecker`Klasa musi implementować `IVsBooleanSymbolPresenceChecker` interfejs, który jest zdefiniowany w następujący sposób:
 
 ```cs
 public interface IVsBooleanSymbolPresenceChecker
@@ -67,7 +67,7 @@ public interface IVsBooleanSymbolPresenceChecker
 }
 ```
 
-Przykładową implementacją tego interfejsu będzie wówczas:
+Przykładowa implementacja tego interfejsu będzie:
 
 ```cs
 class VsProjectCapabilitiesPresenceChecker : IVsBooleanSymbolPresenceChecker
@@ -97,13 +97,13 @@ class VsProjectCapabilitiesPresenceChecker : IVsBooleanSymbolPresenceChecker
 }
 ```
 
-Pamiętaj, aby dodać/usunąć `ActualProjectCapabilities` możliwości z zestawu w oparciu o to, co system projektu faktycznie obsługuje. Pełne [opisy można](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/project_capabilities.md) znaleźć w dokumentacji możliwości projektu.
+Należy pamiętać o możliwości dodania/usunięcia z `ActualProjectCapabilities` zestawu na podstawie tego, co system projektu rzeczywiście obsługuje. Zobacz [dokumentację możliwości projektu](https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/project_capabilities.md) , aby zapoznać się z pełnymi opisami.
 
-## <a name="responding-to-queries"></a>Odpowiadanie na zapytania
+## <a name="responding-to-queries"></a>Reagowanie na zapytania
 
-Projekt deklaruje tę możliwość, wspierając `VSHPROPID_ProjectCapabilitiesChecker` właściwość `IVsHierarchy::GetProperty`za pośrednictwem . Powinien zwrócić wystąpienie `Microsoft.VisualStudio.Shell.Interop.IVsBooleanSymbolPresenceChecker`, który jest `Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime.dll` zdefiniowany w zestawie. Odwołaj się do tego zestawu, instalując [jego pakiet NuGet](https://www.nuget.org/packages/Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime).
+Projekt deklaruje tę możliwość, obsługując  `VSHPROPID_ProjectCapabilitiesChecker` Właściwość za pomocą `IVsHierarchy::GetProperty` . Powinien zwrócić wystąpienie `Microsoft.VisualStudio.Shell.Interop.IVsBooleanSymbolPresenceChecker` , które jest zdefiniowane w `Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime.dll` zestawie. Odwołuje się do tego zestawu, instalując [jego pakiet NuGet](https://www.nuget.org/packages/Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime).
 
-Na przykład można dodać `case` następującą `IVsHierarchy::GetProperty` instrukcję `switch` do instrukcji metody:
+Na przykład można dodać następującą `case` instrukcję do `IVsHierarchy::GetProperty` `switch` instrukcji metody:
 
 ```cs
 case __VSHPROPID8.VSHPROPID_ProjectCapabilitiesChecker:
@@ -113,6 +113,6 @@ case __VSHPROPID8.VSHPROPID_ProjectCapabilitiesChecker:
 
 ## <a name="dte-support"></a>Obsługa DTE
 
-NuGet dyski systemu projektu, aby dodać odwołania, elementy zawartości i MSBuild importu przez wywołanie do [DTE](/dotnet/api/envdte.dte?view=visualstudiosdk-2017), który jest interfejsem automatyzacji najwyższego poziomu programu Visual Studio. DTE to zestaw interfejsów COM, które można już zaimplementować.
+Pakiet NuGet umożliwia dodanie odwołań, elementów zawartości i importów MSBuild przez wywołanie do [DTE](/dotnet/api/envdte.dte?view=visualstudiosdk-2017), który jest interfejsem automatyzacji programu Visual Studio najwyższego poziomu. DTE jest zestawem interfejsów COM, które mogą już być wdrożone.
 
-Jeśli typ projektu jest oparty na CPS, DTE jest implementowany dla Ciebie.
+Jeśli typ projektu jest oparty na CPS, dla Ciebie zaimplementowano DTE.
