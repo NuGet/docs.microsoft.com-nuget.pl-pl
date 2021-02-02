@@ -35,9 +35,10 @@
 ## [Tworzenie pakietu (interfejs wiersza polecenia dotnet)](create-packages/creating-a-package-dotnet-cli.md)
 ## [Tworzenie pakietu (interfejs wiersza polecenia nuget.exe)](create-packages/creating-a-package.md)
 ## [Tworzenie pakietu (program MSBuild)](create-packages/creating-a-package-msbuild.md)
-## [Obsługa wielu platform docelowych w pliku projektu](create-packages/multiple-target-frameworks-project-file.md)
+## [Najlepsze rozwiązania dotyczące tworzenia pakietów](create-packages/Package-authoring-best-practices.md)
 ## [Tworzenie pakietu w wersji wstępnej](create-packages/prerelease-packages.md)
 ## [Tworzenie pakietu symboli](create-packages/symbol-packages-snupkg.md)
+## [Obsługa wielu platform docelowych w pliku projektu](create-packages/multiple-target-frameworks-project-file.md)
 ## Zaawansowane zadania
 ### [Obsługa wielu platform docelowych](create-packages/supporting-multiple-target-frameworks.md)
 ### [Modyfikowanie kodu źródłowego i plików konfiguracji](create-packages/source-and-config-file-transformations.md)
