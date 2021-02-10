@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/30/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 11485f583d6993919f6bb8acabcc87d9e4261975
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 6c04453fec9beb7b0998953384ec60694e1213c1
+ms.sourcegitcommit: af059dc776cfdcbad20baab2919b5d6dc1e9022d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98774153"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99990149"
 ---
 # <a name="catalog"></a>Wykaz
 
@@ -220,6 +220,7 @@ Podsumowanie                 | ciąg                     | nie       |
 tags                    | tablica ciągów           | nie       |
 tytuł                   | ciąg                     | nie       |
 verbatimVersion         | ciąg                     | nie       | Ciąg wersji, który został pierwotnie odnaleziony w. nuspec
+mogąc         | Tablica obiektów           | nie       | Luki w zabezpieczeniach pakietu
 
 Właściwość Package `version` jest pełnym ciągiem wersji po normalizacji. Oznacza to, że w tym miejscu można uwzględnić dane kompilacji SemVer 2.0.0.
 
@@ -238,6 +239,17 @@ Wersja    | ciąg  | nie       | Wersja typu pakietu. Tylko wtedy, gdy autor jaw
 
 > [!Note]
 > W `published` przypadku NuGet.org wartość jest ustawiana na rok 1900, gdy pakiet zostanie wystawiony.
+
+#### <a name="vulnerabilities"></a>Luki w zabezpieczeniach
+
+Tablica `vulnerability` obiektów. Każda usterka ma następujące właściwości:
+
+Nazwa         | Typ   | Wymagane | Uwagi
+------------ | ------ | -------- | -----
+advisoryUrl  | ciąg | tak      | Lokalizacja poradnika zabezpieczeń pakietu
+ważność     | ciąg | tak      | Ważność poradnika: "0" = niska, "1" = umiarkowane, "2" = wysokie, "3" = krytyczne
+
+Jeśli `severity` Właściwość zawiera wartości inne niż wymienione w tym miejscu, ważność poradnika jest traktowana jako niska.
 
 #### <a name="sample-request"></a>Przykładowe żądanie
 

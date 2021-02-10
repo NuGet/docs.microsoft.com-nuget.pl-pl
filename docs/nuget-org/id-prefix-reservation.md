@@ -6,12 +6,12 @@ ms.author: jodou
 ms.date: 09/07/2019
 ms.topic: reference
 ms.reviewer: karann
-ms.openlocfilehash: af9969df33c6bf7a62709e6e3535b8b886376e3e
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 428fd3d7b324f6eb825b17e4a87a662fbd84a2f0
+ms.sourcegitcommit: af059dc776cfdcbad20baab2919b5d6dc1e9022d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98775924"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99990101"
 ---
 # <a name="package-id-prefix-reservation"></a>Rezerwowanie prefiksów identyfikatorów pakietów
 
@@ -73,23 +73,25 @@ Po przesłaniu aplikacji otrzymasz powiadomienie o przyjęciu lub odrzuceniu (z 
 
 ### <a name="id-prefix-reservation-criteria"></a>Kryteria rezerwacji prefiksów identyfikatorów
 
-Podczas przeglądania dowolnych aplikacji dla rezerwacji prefiksów identyfikatorów zespół [NuGet.org](https://www.nuget.org/) ocenia aplikację pod kątem poniższych kryteriów. Nie wszystkie kryteria muszą zostać spełnione dla prefiksu, który ma być zarezerwowany, ale aplikacja może zostać odrzucona, jeśli nie ma istotnego dowodu spełnienia kryteriów (z podaną wyjaśnieniem):
+Podczas przeglądania dowolnych aplikacji dla rezerwacji prefiksów identyfikatorów zespół [NuGet.org](https://www.nuget.org) ocenia aplikację pod kątem poniższych kryteriów. Należy pamiętać, że nie wszystkie kryteria muszą zostać spełnione dla prefiksu, który ma być zarezerwowany, ale aplikacja może zostać odrzucona, jeśli nie ma istotnego dowodu spełnienia kryteriów (z podaną wyjaśnieniem):
 
-1. Czy identyfikator pakietu jest poprawny i jasno identyfikuje właściciela pakietu?
+1. Czy identyfikator pakietu jest poprawny i jasno identyfikuje właściciela rezerwacji?
 
-1. Czy właściciel pakietu jest [włączony funkcji 2FA dla swojego konta NuGet.org](individual-accounts.md#enable-two-factor-authentication-2fa)?
-
-1. Czy jest to znaczna liczba pakietów, które zostały już przesłane przez właściciela w ramach prefiksu identyfikatora pakietu?
+1. Czy właściciel [WŁĄCZYŁ funkcji 2FA dla swojego konta NuGet.org](individual-accounts.md#enable-two-factor-authentication-2fa)?
 
 1. Czy identyfikator pakietu jest często stosowany, który nie powinien należeć do poszczególnych właścicieli lub organizacji?
 
-1. *Nie* zapełnianie prefiksu identyfikatora pakietu powoduje niejednoznaczność i nieporozumień dla społeczności?
+1. *Nie* zapełnianie prefiksu identyfikatora pakietu powoduje niejednoznaczność, pomyłkę lub inne szkody dla społeczności?
+
+Podczas publikowania pakietów do NuGet.org w ramach rezerwacji prefiksu identyfikatora należy wziąć pod uwagę następujące najlepsze rozwiązania:
 
 1. Czy właściwości identyfikacyjne pakietów, które pasują do prefiksu identyfikatora pakietu, są wyraźne i spójne (zwłaszcza autor pakietu)?
 
 1. Czy pakiety mają licencję (przy użyciu elementu metadanych [licencji](../reference/nuspec.md#license) , a nie licenseUrl, który jest przestarzały)?
 
-1. Jeśli pakiety mają ikonę (przy użyciu elementu metadanych iconUrl), czy również używają elementu metadanych [ikony](../reference/nuspec.md#icon) (nie jest to wymagane do usunięcia iconUrl)?
+1. Jeśli pakiety mają ikonę (przy użyciu elementu metadanych iconUrl), czy również używają elementu metadanych [ikony](../reference/nuspec.md#icon) ? Nie jest wymagane usuwanie iconUrl, ale należy użyć ikon osadzonych.
+ 
+Zapoznaj się z [przewodnikiem dotyczącym pełnego rozwiązania tworzenia pakietów](../create-packages/package-authoring-best-practices.md) , oprócz powyższych punktów.
 
 ## <a name="third-party-feed-provider-scenarios"></a>Scenariusze dostawcy kanałów informacyjnych innych firm
 

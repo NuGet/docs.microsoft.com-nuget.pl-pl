@@ -6,12 +6,12 @@ ms.author: jver
 ms.date: 10/26/2017
 ms.topic: reference
 ms.reviewer: kraigb
-ms.openlocfilehash: 403686de42bf4dc1fa94b9dd92ca6d33f3be2183
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 8d1ab4d1f3d75d93c30d94958fd9d1abf0742730
+ms.sourcegitcommit: af059dc776cfdcbad20baab2919b5d6dc1e9022d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98775293"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99990122"
 ---
 # <a name="package-metadata"></a>Metadane pakietu
 
@@ -155,6 +155,7 @@ Podsumowanie                  | ciąg                     | nie       |
 tags                     | ciąg lub tablica ciągu  | nie       | 
 tytuł                    | ciąg                     | nie       | 
 Wersja                  | ciąg                     | tak      | Pełny ciąg wersji po normalizacji
+mogąc          | Tablica obiektów           | nie       | Luki w zabezpieczeniach pakietu
 
 Właściwość Package `version` jest pełnym ciągiem wersji po normalizacji. Oznacza to, że w tym miejscu można uwzględnić dane kompilacji SemVer 2.0.0.
 
@@ -218,6 +219,15 @@ Nazwa         | Typ   | Wymagane | Uwagi
 ------------ | ------ | -------- | -----
 identyfikator           | ciąg | tak      | Identyfikator alternatywnego pakietu
 range        | object | nie       | Dozwolony [zakres wersji](../concepts/package-versioning.md#version-ranges)lub `*` Jeśli dowolna wersja jest dozwolona
+
+#### <a name="vulnerabilities"></a>Luki w zabezpieczeniach
+
+Tablica `vulnerability` obiektów. Każda usterka ma następujące właściwości:
+
+Nazwa         | Typ   | Wymagane | Uwagi
+------------ | ------ | -------- | -----
+advisoryUrl  | ciąg | tak      | Lokalizacja poradnika zabezpieczeń pakietu
+ważność     | ciąg | tak      | Ważność poradnika: "0" = niska, "1" = umiarkowane, "2" = wysokie, "3" = krytyczne
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
