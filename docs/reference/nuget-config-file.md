@@ -5,12 +5,12 @@ author: JonDouglas
 ms.author: jodou
 ms.date: 08/13/2019
 ms.topic: reference
-ms.openlocfilehash: 9b15550d0e6e8aec4d526391d77c654a756f343e
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 60626a5a2a261241e0dce34421f73a86d815e454
+ms.sourcegitcommit: aeb9072f2fcaca73dc9de05b7fd643f1aa7c5821
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98777661"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101351"
 ---
 # <a name="nugetconfig-reference"></a>Informacje nuget.config
 
@@ -32,8 +32,8 @@ Zawiera różne ustawienia konfiguracji, które można ustawić za pomocą [ `nu
 | Klucz | Wartość |
 | --- | --- |
 | dependencyVersion ( `packages.config` tylko) | Wartość domyślna `DependencyVersion` instalacji, przywracania i aktualizacji pakietu, gdy `-DependencyVersion` przełącznik nie jest określony bezpośrednio. Ta wartość jest również używana przez interfejs użytkownika Menedżera pakietów NuGet. Wartości to `Lowest` , `HighestPatch` , `HighestMinor` , `Highest` . |
-| globalPackagesFolder (projekty korzystające tylko z PackageReference) | Lokalizacja domyślnego folderu pakiety globalne. Wartość domyślna to `%userprofile%\.nuget\packages` (Windows) lub `~/.nuget/packages` (Mac/Linux). Ścieżka względna może być używana w plikach specyficznych dla projektu `nuget.config` . To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
-| repositoryPath ( `packages.config` tylko) | Lokalizacja, w której mają zostać zainstalowane pakiety NuGet zamiast folderu domyślnego `$(Solutiondir)/packages` . Ścieżka względna może być używana w plikach specyficznych dla projektu `nuget.config` . To ustawienie jest zastępowane przez zmienną środowiskową NUGET_PACKAGES, która ma pierwszeństwo. |
+| globalPackagesFolder (projekty korzystające tylko z PackageReference) | Lokalizacja domyślnego folderu pakiety globalne. Wartość domyślna to `%userprofile%\.nuget\packages` (Windows) lub `~/.nuget/packages` (Mac/Linux). Ścieżka względna może być używana w plikach specyficznych dla projektu `nuget.config` . To ustawienie jest zastępowane przez `NUGET_PACKAGES` zmienną środowiskową, która ma pierwszeństwo. |
+| repositoryPath ( `packages.config` tylko) | Lokalizacja, w której mają zostać zainstalowane pakiety NuGet zamiast folderu domyślnego `$(Solutiondir)/packages` . Ścieżka względna może być używana w plikach specyficznych dla projektu `nuget.config` . To ustawienie jest zastępowane przez `NUGET_PACKAGES` zmienną środowiskową, która ma pierwszeństwo. |
 | defaultPushSource | Określa adres URL lub ścieżkę źródła pakietu, które ma być używane jako wartość domyślna, jeśli nie znaleziono żadnych innych źródeł pakietów dla operacji. |
 | http_proxy http_proxy. User http_proxy. Password no_proxy | Ustawienia serwera proxy do użycia podczas nawiązywania połączenia ze źródłami pakietów; `http_proxy` powinien mieć format `http://<username>:<password>@<domain>` . Hasła są szyfrowane i nie można ich dodać ręcznie. W przypadku `no_proxy` , wartość jest rozdzielaną przecinkami listą domen, które pomijają serwer proxy. Dla tych wartości można użyć zmiennych środowiskowych http_proxy i no_proxy. Aby uzyskać więcej informacji, zobacz [Ustawienia serwera proxy NuGet](http://skolima.blogspot.com/2012/07/nuget-proxy-settings.html) (skolima.blogspot.com). |
 | signatureValidationMode | Określa tryb weryfikacji używany do weryfikowania podpisów pakietów na potrzeby instalacji pakietu i przywracania. Wartości to `accept` , `require` . Wartość domyślna to `accept` .

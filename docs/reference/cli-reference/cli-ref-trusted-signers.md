@@ -6,12 +6,12 @@ ms.author: patbel
 ms.date: 11/12/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: 9e25f439617a76d30880bea3c10a5d063e681a41
-ms.sourcegitcommit: b138bc1d49fbf13b63d975c581a53be4283b7ebf
+ms.openlocfilehash: 4b6a1c3b6eb0fefd9a78c78233f974eb0db19e93
+ms.sourcegitcommit: aeb9072f2fcaca73dc9de05b7fd643f1aa7c5821
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93238156"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101371"
 ---
 # <a name="trusted-signers-command-nuget-cli"></a>Zaufane-podpisujące — polecenie (interfejs wiersza polecenia NuGet)
 
@@ -90,7 +90,7 @@ Udostępnianie jednocześnie `-Author` i `-Repository` w tym samym czasie nie je
 nuget trusted-signers add -Name <name> [options]
 ```
 
-_Uwaga_ : Ta opcja spowoduje dodanie tylko zaufanych repozytoriów. 
+_Uwaga_: Ta opcja spowoduje dodanie tylko zaufanych repozytoriów. 
 
 - **`-AllowUntrustedRoot`**
 
@@ -110,7 +110,7 @@ _Uwaga_ : Ta opcja spowoduje dodanie tylko zaufanych repozytoriów.
 nuget trusted-signers add -Name <name> [options]
 ```
 
-_Uwaga_ : Jeśli zaufany podpis o podanej nazwie już istnieje, element certyfikatu zostanie dodany do osoby podpisującej. W przeciwnym razie zaufany autor zostanie utworzony za pomocą elementu certyfikatu z informacji podanych w certyfikacie.
+_Uwaga_: Jeśli zaufany podpis o podanej nazwie już istnieje, element certyfikatu zostanie dodany do osoby podpisującej. W przeciwnym razie zaufany autor zostanie utworzony za pomocą elementu certyfikatu z informacji podanych w certyfikacie.
 
 
 - **`-AllowUntrustedRoot`**
@@ -133,7 +133,7 @@ Usuwa wszystkie zaufane osoby podpisujące zgodne z podaną nazwą.
 
 Żąda najnowszej listy certyfikatów używanych w bieżącym repozytorium, aby zaktualizować listę istniejących certyfikatów w zaufanej rejestracji.
 
-_Uwaga_ : ten gest spowoduje usunięcie bieżącej listy certyfikatów i zamienienie ich na aktualną listę z repozytorium.
+_Uwaga_: ten gest spowoduje usunięcie bieżącej listy certyfikatów i zamienienie ich na aktualną listę z repozytorium.
 
 ## <a name="options"></a>Opcje
 
@@ -175,7 +175,7 @@ nuget trusted-signers Add -Name author1 -CertificateFingerprint CE40881FF5F0AD3E
 
 nuget trusted-signers Add -Repository .\..\MyRepositorySignedPackage.nupkg -Name TrustedRepo
 
-nuget-trusted-signers Remove -Name TrustedRepo
+nuget trusted-signers Remove -Name TrustedRepo
 
-nuget-trusted-signers Sync -Name TrustedRepo
+nuget trusted-signers Sync -Name TrustedRepo
 ```
