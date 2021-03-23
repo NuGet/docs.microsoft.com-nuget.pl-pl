@@ -6,12 +6,12 @@ ms.author: jodou
 ms.date: 03/23/2018
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 5ba7860fae1037c0c0eb4c55d2df12d98b1d77cf
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 77b96e83f8fc7afd391537d16120d037585dd379
+ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98775124"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104859203"
 ---
 # <a name="package-versioning"></a>Przechowywanie wersji pakietów
 
@@ -245,3 +245,13 @@ Podczas uzyskiwania pakietów z repozytorium podczas operacji instalacji, ponown
 `pack` i `restore` operacje normalizuje wersje wszędzie tam, gdzie to możliwe. W przypadku pakietów, które zostały już skompilowane, normalizacja nie ma wpływu na numery wersji w samych pakietach; ma wpływ tylko na to, jak program NuGet dopasowuje wersje podczas rozpoznawania zależności.
 
 Jednak repozytoria pakietów NuGet musi traktować te wartości w taki sam sposób jak NuGet, aby zapobiec duplikowaniu wersji pakietu. W ten sposób repozytorium zawierające wersję *1,0* pakietu nie powinno również hostować wersji *1.0.0* jako oddzielnego i innego pakietu.
+
+## <a name="where-nugetversion-diverges-from-semantic-versioning"></a>Gdzie NuGetVersion rozbieżność od wersji semantycznej
+
+Jeśli chcesz programowo używać wersji pakietów NuGet, zdecydowanie zalecamy użycie [pakietu NuGet. przechowywanie wersji](https://www.nuget.org/packages/NuGet.Versioning). Metoda statyczna `NuGetVersion.Parse(string)` może służyć do analizowania ciągów wersji i `VersionComparer` może służyć do sortowania `NuGetVersion` wystąpień.
+
+W przypadku wdrażania funkcji programu NuGet w języku, który nie działa w programie .NET, poniżej przedstawiono listę różnic między `NuGetVersion` wersjami semantycznymi i przyczyny, dlaczego istniejąca Biblioteka semantyczna może nie działać w przypadku pakietów opublikowanych w witrynie NuGet.org.
+
+1. `NuGetVersion` obsługuje czwarty segment wersji, `Revision` , aby był zgodny z lub nadzbiorem programu [`System.Version`](/dotnet/api/system.version) . W związku z tym, z wyłączeniem wersji wstępnej i etykiet metadanych, ciąg wersji jest `Major.Minor.Patch.Revision` . Zgodnie z powyższym normalizacją wersji, jeśli `Revision` jest równa zero, jest pomijana w znormalizowanym ciągu wersji.
+2. `NuGetVersion` wymagany jest tylko podstawowy segment, który ma być zdefiniowany. Wszystkie inne są opcjonalne i są równoważne zeru. Oznacza to `1` , że `1.0` , `1.0.0` i `1.0.0.0` są akceptowane i równe.
+3. `NuGetVersion` używa porównania ciągów insenstive w przypadku składników w wersji wstępnej. Oznacza to, że `1.0.0-alpha` i `1.0.0-Alpha` są równe.

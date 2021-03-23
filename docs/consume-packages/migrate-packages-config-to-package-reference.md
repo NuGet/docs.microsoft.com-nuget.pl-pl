@@ -5,12 +5,12 @@ author: JonDouglas
 ms.author: jodou
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8161f4a39d4adfdb9efb25bcb840b20b85a58e07
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: fabfd76a46a38ff26acbc6439406d99eb3f85bf4
+ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98774786"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104859164"
 ---
 # <a name="migrate-from-packagesconfig-to-packagereference"></a>Migrowanie z packages.config do PackageReference
 
@@ -100,31 +100,27 @@ Niektóre aspekty, które były obsługiwane w packages.config nie są obsługiw
 
 ### <a name="installps1-scripts-are-ignored-when-the-package-is-installed-after-the-migration"></a>Skrypty "install.ps1" są ignorowane, gdy pakiet zostanie zainstalowany po migracji
 
-| | |
-| --- | --- |
-| **Opis** | W programie PackageReference skrypty programu PowerShell install.ps1 i uninstall.ps1 nie są wykonywane podczas instalowania lub odinstalowywania pakietu. |
-| **Potencjalny wpływ** | Pakiety, które są zależne od tych skryptów, aby skonfigurować zachowanie w projekcie docelowym, mogą nie funkcjonować zgodnie z oczekiwaniami. |
+* **Opis**: w programie PackageReference install.ps1 i uninstall.ps1 skrypty programu PowerShell nie są wykonywane podczas instalowania lub odinstalowywania pakietu.
+
+* **Potencjalny wpływ**: pakiety, które są zależne od tych skryptów, aby skonfigurować zachowanie w projekcie docelowym, mogą nie funkcjonować zgodnie z oczekiwaniami.
 
 ### <a name="content-assets-are-not-available-when-the-package-is-installed-after-the-migration"></a>zasoby "Content" nie są dostępne, gdy pakiet zostanie zainstalowany po migracji
 
-| | |
-| --- | --- |
-| **Opis** | Elementy zawartości w folderze pakietu `content` nie są obsługiwane w programie PackageReference i są ignorowane. PackageReference dodaje obsługę programu `contentFiles` w celu uzyskania lepszej obsługi przechodniej i zawartości udostępnionej.  |
-| **Potencjalny wpływ** | Elementy zawartości w programie `content` nie są kopiowane do projektu i kodu projektu, które są zależne od obecności tych zasobów, wymagają refaktoryzacji.  |
+* **Opis**: elementy zawartości w folderze pakietu `content` nie są obsługiwane w programie PackageReference i są ignorowane. PackageReference dodaje obsługę programu `contentFiles` w celu uzyskania lepszej obsługi przechodniej i zawartości udostępnionej.
+
+* **Potencjalny wpływ**: zasoby w programie `content` nie są kopiowane do projektu i kodu projektu, który zależy od obecności tych zasobów wymaga refaktoryzacji.
 
 ### <a name="xdt-transforms-are-not-applied-when-the-package-is-installed-after-the-upgrade"></a>Przekształcenia XDT nie są stosowane, gdy pakiet zostanie zainstalowany po uaktualnieniu
 
-| | |
-| --- | --- |
-| **Opis** | Przekształcenia XDT są nieobsługiwane w przypadku PackageReference i `.xdt` pliki są ignorowane podczas instalowania lub odinstalowywania pakietu.   |
-| **Potencjalny wpływ** | Przekształcenia XDT nie są stosowane do żadnych plików XML projektu, najczęściej `web.config.install.xdt` i `web.config.uninstall.xdt` , co oznacza, że ` web.config` plik projektu nie jest aktualizowany po zainstalowaniu lub odinstalowaniu pakietu. |
+* **Opis**: przekształcenia XDT są nieobsługiwane w przypadku PackageReference i `.xdt` pliki są ignorowane podczas instalowania lub odinstalowywania pakietu.
+
+* **Potencjalny wpływ**: przekształcenia XDT nie są stosowane do żadnych plików XML projektu, najczęściej `web.config.install.xdt` i `web.config.uninstall.xdt` , co oznacza, że ` web.config` plik projektu nie jest aktualizowany po zainstalowaniu lub odinstalowaniu pakietu.
 
 ### <a name="assemblies-in-the-lib-root-are-ignored-when-the-package-is-installed-after-the-migration"></a>Zestawy w katalogu głównym lib są ignorowane, gdy pakiet zostanie zainstalowany po migracji
 
-| | |
-| --- | --- |
-| **Opis** | W przypadku PackageReference zestawy znajdujące się w katalogu głównym `lib` folderu bez podfolderu specyficznego dla platformy docelowej są ignorowane. Pakiet NuGet szuka podfolderu pasującego do krótkiej nazwy platformy docelowej (TFM) odpowiadającej platformie docelowej projektu i instaluje pasujące zestawy do projektu. |
-| **Potencjalny wpływ** | Pakiety, które nie mają podfolderu pasującego do monikera platformy docelowej (TFM) odpowiadające platformie docelowej projektu, mogą nie zachowywać się zgodnie z oczekiwaniami po przejściu lub nieudanej instalacji podczas migracji |
+* **Opis**: w przypadku PackageReference zestawy obecne w katalogu głównym `lib` folderu bez podfolderu specyficznego dla platformy docelowej są ignorowane. Pakiet NuGet szuka podfolderu pasującego do krótkiej nazwy platformy docelowej (TFM) odpowiadającej platformie docelowej projektu i instaluje pasujące zestawy do projektu.
+
+* **Potencjalny wpływ**: pakiety, które nie mają podfolderu pasującego do monikera platformy docelowej (TFM) odpowiadające platformie docelowej projektu, mogą nie zachowywać się w oczekiwany sposób po przejściu lub nieudanej instalacji podczas migracji.
 
 ## <a name="found-an-issue-report-it"></a>Znaleziono problem? Zgłoś!
 

@@ -5,16 +5,16 @@ author: JonDouglas
 ms.author: jodou
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0c663863673b50d0ba4969adf3a5d95151b2ca49
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: b12672e81a974e113ffbda80560c9d3eede9c69d
+ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98774491"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104859125"
 ---
 # <a name="create-nuget-packages-that-contain-com-interop-assemblies"></a>Utwórz pakiety NuGet zawierające zestawy międzyoperacyjności modelu COM
 
-Pakiety zawierające zestawy międzyoperacyjności modelu COM muszą zawierać odpowiedni [plik targets](creating-a-package.md#include-msbuild-props-and-targets-in-a-package) , aby poprawne `EmbedInteropTypes` metadane były dodawane do projektów przy użyciu formatu PackageReference. Domyślnie `EmbedInteropTypes` metadane są zawsze fałszywe dla wszystkich zestawów, gdy jest używana PackageReference, więc plik targets dodaje te metadane jawnie. Aby uniknąć konfliktów, nazwa elementu docelowego powinna być unikatowa. w idealnym przypadku użyj kombinacji nazwy pakietu i osadzonego zestawu, zastępując `{InteropAssemblyName}` Poniższy przykład wartością. (Zobacz też [NuGet. Samples. Interop](https://github.com/NuGet/Samples/tree/master/NuGet.Samples.Interop) na przykład).
+Pakiety zawierające zestawy międzyoperacyjności modelu COM muszą zawierać odpowiedni [plik targets](creating-a-package.md#include-msbuild-props-and-targets-in-a-package) , aby poprawne `EmbedInteropTypes` metadane były dodawane do projektów przy użyciu formatu PackageReference. Domyślnie `EmbedInteropTypes` metadane są zawsze fałszywe dla wszystkich zestawów, gdy jest używana PackageReference, więc plik targets dodaje te metadane jawnie. Aby uniknąć konfliktów, nazwa elementu docelowego powinna być unikatowa. w idealnym przypadku użyj kombinacji nazwy pakietu i osadzonego zestawu, zastępując `{InteropAssemblyName}` Poniższy przykład wartością. (Zobacz też [NuGet. Samples. Interop](https://github.com/NuGet/Samples/tree/main/NuGet.Samples.Interop) na przykład).
 
 ```xml
 <Target Name="Embedding**AssemblyName**From**PackageId**" AfterTargets="ResolveReferences" BeforeTargets="FindReferenceAssembliesForReferences">

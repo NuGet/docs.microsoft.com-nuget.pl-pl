@@ -5,12 +5,12 @@ author: JonDouglas
 ms.author: jodou
 ms.date: 03/22/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5f1856940a988e0585c29ccfd581d823e4f69921
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 92968236262f891106ab2d4cd3ba399f1644400b
+ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98775067"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104859216"
 ---
 # <a name="package-consumption-workflow"></a>Przepływ pracy zużycia pakietów
 
@@ -45,9 +45,9 @@ Na koniec zachowanie narzędzia NuGet jest zależne od `Nuget.Config` plików. W
 
 Pakiety NuGet są pobierane i instalowane przy użyciu dowolnej metody z poniższej tabeli.
 
-| Narzędzie | Opis |
-| --- | --- |
-| [ INTERFEJS WIERSZA POLECENIAdotnet.exe](install-use-packages-dotnet-cli.md) | (Wszystkie platformy) Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla projektów w stylu zestawu SDK, które są przeznaczone dla .NET Framework (zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions)). Pobiera pakiet identyfikowany przez \<package_name\> i dodaje odwołanie do pliku projektu. Program również pobiera i instaluje zależności. |
-| Visual Studio | (Systemy Windows i Mac) Udostępnia interfejs użytkownika, za pomocą którego można przeglądać, wybierać i instalować pakiety oraz ich zależności w projekcie z określonego źródła pakietu. Dodaje odwołania do zainstalowanych pakietów do pliku projektu.<ul><li>[Instalowanie pakietów i zarządzanie nimi za pomocą programu Visual Studio](install-use-packages-visual-studio.md)</li><li>[Dołączanie pakietu NuGet w projekcie (Mac)](/visualstudio/mac/nuget-walkthrough)</li></ul> |
-| [Konsola menedżera pakietów (Visual Studio)](install-use-packages-powershell.md) | (Tylko system Windows) Pobiera i instaluje pakiet identyfikowany przez \<package_name\> z wybranego źródła w określonym projekcie w rozwiązaniu, a następnie dodaje odwołanie do pliku projektu. Program również pobiera i instaluje zależności. |
-| [Interfejs wiersza polecenia nuget.exe](install-use-packages-nuget-cli.md) | (Wszystkie platformy) Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i projektów spoza zestawu SDK, które są przeznaczone dla .NET Standard bibliotek. Pobiera pakiet identyfikowany przez program \<package_name\> i rozszerza jego zawartość do folderu w bieżącym katalogu. można również pobrać wszystkie pakiety wymienione w `packages.config` pliku. Program również pobiera i instaluje zależności, ale nie wprowadza zmian w plikach projektu ani `packages.config` . |
+| Narzędzie | Platformy | Opis |
+| --- | --- | --- |
+| [Interfejs wiersza polecenia dotnet](install-use-packages-dotnet-cli.md) | Wszystko | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla projektów w stylu zestawu SDK, które są przeznaczone dla .NET Framework (zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions)). Pobiera pakiet identyfikowany przez \<package_name\> i dodaje odwołanie do pliku projektu. Program również pobiera i instaluje zależności. |
+| Visual Studio | Systemy Windows i Mac | Udostępnia interfejs użytkownika, za pomocą którego można przeglądać, wybierać i instalować pakiety oraz ich zależności w projekcie z określonego źródła pakietu. Dodaje odwołania do zainstalowanych pakietów do pliku projektu.<ul><li>[Instalowanie pakietów i zarządzanie nimi za pomocą programu Visual Studio](install-use-packages-visual-studio.md)</li><li>[Dołączanie pakietu NuGet w projekcie (Mac)](/visualstudio/mac/nuget-walkthrough)</li></ul> |
+| [Konsola menedżera pakietów (Visual Studio)](install-use-packages-powershell.md) | Tylko Windows | Pobiera i instaluje pakiet identyfikowany przez \<package_name\> z wybranego źródła w określonym projekcie w rozwiązaniu, a następnie dodaje odwołanie do pliku projektu. Program również pobiera i instaluje zależności. |
+| [Interfejs wiersza polecenia nuget.exe](install-use-packages-nuget-cli.md) | Wszystko | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i projektów spoza zestawu SDK, które są przeznaczone dla .NET Standard bibliotek. Pobiera pakiet identyfikowany przez program \<package_name\> i rozszerza jego zawartość do folderu w bieżącym katalogu. można również pobrać wszystkie pakiety wymienione w `packages.config` pliku. Program również pobiera i instaluje zależności, ale nie wprowadza zmian w plikach projektu ani `packages.config` . |

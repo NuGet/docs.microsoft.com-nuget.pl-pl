@@ -5,14 +5,14 @@ author: nkolev92
 ms.author: nikolev
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dcaed83ca54e3234702e963ffc2ebbde4cd75b28
-ms.sourcegitcommit: 323a107c345c7cb4e344a6e6d8de42c63c5188b7
+ms.openlocfilehash: df7c793d115622f04a148cbbc3ebf396a3e4ab69
+ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98235766"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104859190"
 ---
-# <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietów (PackageReference) w plikach projektu
+# <a name="package-references-packagereference-in-project-files"></a>Odwołania do pakietu ( `PackageReference` ) w plikach projektu
 
 Odwołania do pakietów, używanie `PackageReference` węzła, zarządzanie zależnościami NuGet bezpośrednio w plikach projektu (w przeciwieństwie do oddzielnego `packages.config` pliku). Przy użyciu PackageReference, gdy jest wywoływana, nie ma wpływu na inne aspekty NuGet; na przykład ustawienia w `NuGet.config` plikach (w tym źródła pakietów) są nadal stosowane, jak wyjaśniono w [typowych konfiguracjach NuGet](configuring-nuget-behavior.md).
 
@@ -211,7 +211,7 @@ Aby sprawdzić dokładną nazwę wygenerowanej właściwości, zobacz wygenerowa
 W niektórych rzadkich przypadkach różne pakiety będą zawierać klasy znajdujące się w tej samej przestrzeni nazw. Począwszy od programu NuGet 5,7 & Visual Studio 2019 Update 7, równoważne z elementu ProjectReference, PackageReference obsługuje [`Aliases`](/dotnet/api/microsoft.codeanalysis.projectreference.aliases) .
 Domyślnie nie są udostępniane żadne aliasy. Po określeniu aliasu *wszystkie* zestawy pochodzące z pakietu zawierającego adnotacje muszą być przywoływane z aliasem.
 
-Przykładowe użycie można sprawdzić pod adresem [NuGet\Samples](https://github.com/NuGet/Samples/tree/master/PackageReferenceAliasesExample)
+Przykładowe użycie można sprawdzić pod adresem [NuGet\Samples](https://github.com/NuGet/Samples/tree/main/PackageReferenceAliasesExample)
 
 W pliku projektu Określ aliasy w następujący sposób:
 

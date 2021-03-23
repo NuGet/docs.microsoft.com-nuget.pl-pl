@@ -5,16 +5,16 @@ author: JonDouglas
 ms.author: jodou
 ms.date: 05/23/2018
 ms.topic: tutorial
-ms.openlocfilehash: 317937b4d9d773d74384b8ebfcd2146062236ac1
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 7660203ec44db75b7764767b519c9ff10dd1122e
+ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98774326"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104859086"
 ---
 # <a name="creating-ui-controls-as-nuget-packages"></a>Tworzenie kontrolek interfejsu użytkownika jako pakietów NuGet
 
-Począwszy od programu Visual Studio 2017, możesz skorzystać z dodatkowych możliwości dla formantów platformy UWP i WPF dostarczanych w pakietach NuGet. Ten przewodnik przeprowadzi Cię przez te możliwości w kontekście formantów platformy UWP za pomocą [przykładu ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage). To samo dotyczy formantów WPF, chyba że określono inaczej.
+Począwszy od programu Visual Studio 2017, możesz skorzystać z dodatkowych możliwości dla formantów platformy UWP i WPF dostarczanych w pakietach NuGet. Ten przewodnik przeprowadzi Cię przez te możliwości w kontekście formantów platformy UWP za pomocą [przykładu ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/main/ExtensionSDKasNuGetPackage). To samo dotyczy formantów WPF, chyba że określono inaczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -90,7 +90,7 @@ W poniższym przykładzie kontrolka zaimplementowana w programie `ManagedPackage
 
 ## <a name="add-custom-icons-to-your-controls"></a>Dodawanie niestandardowych ikon do kontrolek
 
-Aby wyświetlić niestandardową ikonę w okienku Przybornik/składniki, Dodaj obraz do projektu lub odpowiedni `design.dll` projekt o nazwie "Namespace. ControlName. Extension" i ustaw akcję Build na "osadzony zasób". Należy również upewnić się, że skojarzona wartość `AssemblyInfo.cs` określa atrybut ProvideMetadata- `[assembly: ProvideMetadata(typeof(RegisterMetadata))]` . Zapoznaj się z tym [przykładem](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/NativePackage.Design/Properties/AssemblyInfo.cs#L20).
+Aby wyświetlić niestandardową ikonę w okienku Przybornik/składniki, Dodaj obraz do projektu lub odpowiedni `design.dll` projekt o nazwie "Namespace. ControlName. Extension" i ustaw akcję Build na "osadzony zasób". Należy również upewnić się, że skojarzona wartość `AssemblyInfo.cs` określa atrybut ProvideMetadata- `[assembly: ProvideMetadata(typeof(RegisterMetadata))]` . Zapoznaj się z tym [przykładem](https://github.com/NuGet/Samples/blob/main/ExtensionSDKasNuGetPackage/NativePackage.Design/Properties/AssemblyInfo.cs#L20).
 
 Obsługiwane formaty to `.png` ,,, `.jpg` `.jpeg` `.gif` i `.bmp` . Zalecany format to BMP24 16 pikseli przez 16 pikseli.
 
@@ -158,12 +158,12 @@ W przypadku platformy WPF kontynuując przykład, w którym chcesz, aby pakiet f
 
 W pakiecie można osadzić zasoby ciągów ( `.resw` ), które mogą być używane przez formant lub projekt zużywający platformy UWP, ustawić właściwość **Akcja kompilacji** `.resw` pliku na **PRIResource**.
 
-Aby zapoznać się z przykładem, zobacz [MyCustomControl.cs](https://github.com/NuGet/Samples/blob/master/ExtensionSDKasNuGetPackage/ManagedPackage/MyCustomControl.cs) w przykładzie ExtensionSDKasNuGetPackage.
+Aby zapoznać się z przykładem, zobacz [MyCustomControl. cs](https://github.com/NuGet/Samples/blob/main/ExtensionSDKasNuGetPackage/ManagedPackage/MyCustomControl.cs) w przykładowym ExtensionSDKasNuGetPackage.
 
 > [!Note]
 > Ma to zastosowanie tylko do kontrolek platformy UWP.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Tworzenie pakietów platformy UWP](create-uwp-packages.md)
-- [Przykład ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/master/ExtensionSDKasNuGetPackage)
+- [Przykład ExtensionSDKasNuGetPackage](https://github.com/NuGet/Samples/tree/main/ExtensionSDKasNuGetPackage)

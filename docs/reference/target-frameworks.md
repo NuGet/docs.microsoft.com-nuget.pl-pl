@@ -6,12 +6,12 @@ ms.author: jodou
 ms.date: 12/11/2017
 ms.topic: reference
 ms.reviewer: anangaur
-ms.openlocfilehash: 7671b50b84bf1447fe94e02896786d1f309425dd
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 9172aefb48ab3e542498f5a144f1d4f381ad55bd
+ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98777312"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104859489"
 ---
 # <a name="target-frameworks"></a>Platformy docelowe
 
@@ -23,13 +23,17 @@ Pakiet NuGet używa odwołań platformy docelowej w różnych miejscach, aby ide
 - [packages.config](../reference/packages-config.md): `targetframework` atrybut zależności określa wariant pakietu do zainstalowania.
 
 > [!Note]
-> Kod źródłowy klienta NuGet, który oblicza poniższe tabele, znajduje się w następujących lokalizacjach:
-> - Obsługiwane nazwy struktur: [FrameworkConstants.cs](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Frameworks/FrameworkConstants.cs)
-> - Pierwszeństwo i mapowanie struktury: [DefaultFrameworkMappings.cs](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Frameworks/DefaultFrameworkMappings.cs)
+> Pakiet NuGet obsługuje wszystkie nowoczesne platformy docelowe .NET:
+> - Lista najnowszych platform docelowych znajduje się w dokumentacji dotyczącej [platform docelowych w projektach w stylu zestawu SDK](/dotnet/standard/frameworks) .
 
 ## <a name="supported-frameworks"></a>Obsługiwane struktury
 
 Struktura jest zwykle przywoływana przez krótką moniker struktury docelowej lub TFM. W .NET Standard jest to również uogólnione *TxM* , aby umożliwić pojedyncze odwołanie do wielu struktur.
+
+> [!Note]
+> Kod źródłowy klienta NuGet, który oblicza poniższe tabele, znajduje się w następujących lokalizacjach:
+> - Obsługiwane nazwy struktur: [FrameworkConstants. cs](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Frameworks/FrameworkConstants.cs)
+> - Pierwszeństwo i mapowanie struktury: [DefaultFrameworkMappings. cs](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Frameworks/DefaultFrameworkMappings.cs)
 
 Klienci NuGet obsługują struktury w poniższej tabeli. Równoważne są wyświetlane w nawiasach kwadratowych []. Należy zauważyć, że niektóre narzędzia, takie jak `dotnet` , mogą używać odmian kanonicznych TFMs w niektórych plikach. Na przykład `dotnet pack` używa  `.NETCoreApp2.0` w pliku, `.nuspec` a nie `netcoreapp2.0` . Różne narzędzia klienta NuGet odpowiednio obsługują te odmiany, ale w przypadku bezpośredniej edycji plików należy zawsze używać kanonicznej TFMs.
 
