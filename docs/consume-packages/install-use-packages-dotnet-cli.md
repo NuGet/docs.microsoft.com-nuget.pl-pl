@@ -5,93 +5,93 @@ author: mikejo5000
 ms.author: mikejo
 ms.date: 06/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: 38455e61bd91f115df9f27df090ba47a029f6877
-ms.sourcegitcommit: cbc87fe51330cdd3eacaad3e8656eb4258882fc7
+ms.openlocfilehash: fecf14f0f04d5063f89080b2756f988739c1412c
+ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88622944"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104859268"
 ---
-# <a name="install-and-manage-packages-using-the-dotnet-cli"></a><span data-ttu-id="e938b-103">Instalowanie pakietów i zarządzanie nimi przy użyciu interfejsu wiersza polecenia dotnet</span><span class="sxs-lookup"><span data-stu-id="e938b-103">Install and manage packages using the dotnet CLI</span></span>
+# <a name="install-and-manage-packages-using-the-dotnet-cli"></a><span data-ttu-id="3af18-103">Instalowanie pakietów i zarządzanie nimi przy użyciu interfejsu wiersza polecenia dotnet</span><span class="sxs-lookup"><span data-stu-id="3af18-103">Install and manage packages using the dotnet CLI</span></span>
 
-<span data-ttu-id="e938b-104">Narzędzie interfejsu wiersza polecenia umożliwia łatwe instalowanie, Odinstalowywanie i aktualizowanie pakietów NuGet w projektach i rozwiązaniach.</span><span class="sxs-lookup"><span data-stu-id="e938b-104">The CLI tool allows you to easily install, uninstall, and update NuGet packages in projects and solutions.</span></span> <span data-ttu-id="e938b-105">Działa w systemach Windows, Mac OS X i Linux.</span><span class="sxs-lookup"><span data-stu-id="e938b-105">It runs on Windows, Mac OS X, and Linux.</span></span>
+<span data-ttu-id="3af18-104">Narzędzie interfejsu wiersza polecenia umożliwia łatwe instalowanie, Odinstalowywanie i aktualizowanie pakietów NuGet w projektach i rozwiązaniach.</span><span class="sxs-lookup"><span data-stu-id="3af18-104">The CLI tool allows you to easily install, uninstall, and update NuGet packages in projects and solutions.</span></span> <span data-ttu-id="3af18-105">Działa w systemach Windows, Mac OS X i Linux.</span><span class="sxs-lookup"><span data-stu-id="3af18-105">It runs on Windows, Mac OS X, and Linux.</span></span>
 
-<span data-ttu-id="e938b-106">Interfejs wiersza polecenia dotnet jest używany w projekcie .NET Core i .NET Standard projektu (typy projektów w stylu zestawu SDK) oraz dla innych projektów w stylu zestawu SDK (na przykład projekt w stylu zestawu SDK, który jest przeznaczony dla .NET Framework).</span><span class="sxs-lookup"><span data-stu-id="e938b-106">The dotnet CLI is for use in your .NET Core and .NET Standard project (SDK-style project types), and for any other SDK-style projects (for example, an SDK-style project that targets .NET Framework).</span></span> <span data-ttu-id="e938b-107">Aby uzyskać więcej informacji, zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions).</span><span class="sxs-lookup"><span data-stu-id="e938b-107">For more information, see [SDK attribute](/dotnet/core/tools/csproj#additions).</span></span>
+<span data-ttu-id="3af18-106">Interfejs wiersza polecenia dotnet jest używany w projekcie .NET Core i .NET Standard projektu (typy projektów w stylu zestawu SDK) oraz dla innych projektów w stylu zestawu SDK (na przykład projekt w stylu zestawu SDK, który jest przeznaczony dla .NET Framework).</span><span class="sxs-lookup"><span data-stu-id="3af18-106">The dotnet CLI is for use in your .NET Core and .NET Standard project (SDK-style project types), and for any other SDK-style projects (for example, an SDK-style project that targets .NET Framework).</span></span> <span data-ttu-id="3af18-107">Aby uzyskać więcej informacji, zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions).</span><span class="sxs-lookup"><span data-stu-id="3af18-107">For more information, see [SDK attribute](/dotnet/core/tools/csproj#additions).</span></span>
 
-<span data-ttu-id="e938b-108">W tym artykule przedstawiono podstawowe użycie kilku typowych poleceń interfejsu wiersza polecenia dotnet.</span><span class="sxs-lookup"><span data-stu-id="e938b-108">This article shows you basic usage for a few of the most common dotnet CLI commands.</span></span> <span data-ttu-id="e938b-109">W przypadku większości tych poleceń narzędzie interfejsu wiersza polecenia szuka pliku projektu w bieżącym katalogu, chyba że plik projektu jest określony w poleceniu (plik projektu jest przełącznikiem opcjonalnym).</span><span class="sxs-lookup"><span data-stu-id="e938b-109">For most of these commands, the CLI tool looks for a project file in the current directory, unless a project file is specified in the command (the project file is an optional switch).</span></span> <span data-ttu-id="e938b-110">Aby uzyskać pełną listę poleceń i argumentów, których można użyć, zobacz [Narzędzia interfejsu wiersza polecenia (CLI) platformy .NET Core](../reference/dotnet-commands.md).</span><span class="sxs-lookup"><span data-stu-id="e938b-110">For a complete list of commands and the arguments you may use, see the [.NET Core command-line interface (CLI) tools](../reference/dotnet-commands.md).</span></span>
+<span data-ttu-id="3af18-108">W tym artykule przedstawiono podstawowe użycie kilku typowych poleceń interfejsu wiersza polecenia dotnet.</span><span class="sxs-lookup"><span data-stu-id="3af18-108">This article shows you basic usage for a few of the most common dotnet CLI commands.</span></span> <span data-ttu-id="3af18-109">W przypadku większości tych poleceń narzędzie interfejsu wiersza polecenia szuka pliku projektu w bieżącym katalogu, chyba że plik projektu jest określony w poleceniu (plik projektu jest przełącznikiem opcjonalnym).</span><span class="sxs-lookup"><span data-stu-id="3af18-109">For most of these commands, the CLI tool looks for a project file in the current directory, unless a project file is specified in the command (the project file is an optional switch).</span></span> <span data-ttu-id="3af18-110">Aby uzyskać pełną listę poleceń i argumentów, których można użyć, zobacz [Narzędzia interfejsu wiersza polecenia (CLI) platformy .NET Core](../reference/dotnet-commands.md).</span><span class="sxs-lookup"><span data-stu-id="3af18-110">For a complete list of commands and the arguments you may use, see the [.NET Core command-line interface (CLI) tools](../reference/dotnet-commands.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="e938b-111">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="e938b-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="3af18-111">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="3af18-111">Prerequisites</span></span>
 
-- <span data-ttu-id="e938b-112">[Zestaw .NET Core SDK](https://www.microsoft.com/net/download/), która udostępnia `dotnet` Narzędzie wiersza polecenia.</span><span class="sxs-lookup"><span data-stu-id="e938b-112">The [.NET Core SDK](https://www.microsoft.com/net/download/), which provides the `dotnet` command-line tool.</span></span> <span data-ttu-id="e938b-113">Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.</span><span class="sxs-lookup"><span data-stu-id="e938b-113">Starting in Visual Studio 2017, the dotnet CLI is automatically installed with any .NET Core related workloads.</span></span>
+- <span data-ttu-id="3af18-112">[Zestaw .NET Core SDK](https://www.microsoft.com/net/download/), która udostępnia `dotnet` Narzędzie wiersza polecenia.</span><span class="sxs-lookup"><span data-stu-id="3af18-112">The [.NET Core SDK](https://www.microsoft.com/net/download/), which provides the `dotnet` command-line tool.</span></span> <span data-ttu-id="3af18-113">Począwszy od programu Visual Studio 2017, interfejs wiersza polecenia dotnet jest automatycznie instalowany z dowolnymi obciążeniami związanymi z platformą .NET Core.</span><span class="sxs-lookup"><span data-stu-id="3af18-113">Starting in Visual Studio 2017, the dotnet CLI is automatically installed with any .NET Core related workloads.</span></span>
 
-## <a name="install-a-package"></a><span data-ttu-id="e938b-114">Instalowanie pakietu</span><span class="sxs-lookup"><span data-stu-id="e938b-114">Install a package</span></span>
+## <a name="install-a-package"></a><span data-ttu-id="3af18-114">Instalowanie pakietu</span><span class="sxs-lookup"><span data-stu-id="3af18-114">Install a package</span></span>
 
-<span data-ttu-id="e938b-115">polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) dodaje odwołanie do pakietu do pliku projektu, a następnie uruchamia polecenie, `dotnet restore` Aby zainstalować pakiet.</span><span class="sxs-lookup"><span data-stu-id="e938b-115">[dotnet add package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) adds a package reference to the project file, then runs `dotnet restore` to install the package.</span></span>
+<span data-ttu-id="3af18-115">polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) dodaje odwołanie do pakietu do pliku projektu, a następnie uruchamia polecenie, `dotnet restore` Aby zainstalować pakiet.</span><span class="sxs-lookup"><span data-stu-id="3af18-115">[dotnet add package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) adds a package reference to the project file, then runs `dotnet restore` to install the package.</span></span>
 
-1. <span data-ttu-id="e938b-116">Otwórz wiersz polecenia i przejdź do katalogu, który zawiera plik projektu.</span><span class="sxs-lookup"><span data-stu-id="e938b-116">Open a command line and switch to the directory that contains your project file.</span></span>
+1. <span data-ttu-id="3af18-116">Otwórz wiersz polecenia i przejdź do katalogu, który zawiera plik projektu.</span><span class="sxs-lookup"><span data-stu-id="3af18-116">Open a command line and switch to the directory that contains your project file.</span></span>
 
-2. <span data-ttu-id="e938b-117">Użyj następującego polecenia, aby zainstalować pakiet NuGet:</span><span class="sxs-lookup"><span data-stu-id="e938b-117">Use the following command to install a Nuget package:</span></span>
+2. <span data-ttu-id="3af18-117">Użyj następującego polecenia, aby zainstalować pakiet NuGet:</span><span class="sxs-lookup"><span data-stu-id="3af18-117">Use the following command to install a Nuget package:</span></span>
 
     ```dotnetcli
     dotnet add package <PACKAGE_NAME>
     ```
 
-    <span data-ttu-id="e938b-118">Na przykład aby zainstalować `Newtonsoft.Json` pakiet, użyj następującego polecenia</span><span class="sxs-lookup"><span data-stu-id="e938b-118">For example, to install the `Newtonsoft.Json` package, use the following command</span></span>
+    <span data-ttu-id="3af18-118">Na przykład aby zainstalować `Newtonsoft.Json` pakiet, użyj następującego polecenia</span><span class="sxs-lookup"><span data-stu-id="3af18-118">For example, to install the `Newtonsoft.Json` package, use the following command</span></span>
 
     ```dotnetcli
     dotnet add package Newtonsoft.Json
     ```
 
-3. <span data-ttu-id="e938b-119">Po zakończeniu wykonywania polecenia Sprawdź plik projektu, aby upewnić się, że pakiet został zainstalowany.</span><span class="sxs-lookup"><span data-stu-id="e938b-119">After the command completes, look at the project file to make sure the package was installed.</span></span>
+3. <span data-ttu-id="3af18-119">Po zakończeniu wykonywania polecenia Sprawdź plik projektu, aby upewnić się, że pakiet został zainstalowany.</span><span class="sxs-lookup"><span data-stu-id="3af18-119">After the command completes, look at the project file to make sure the package was installed.</span></span>
 
-   <span data-ttu-id="e938b-120">Możesz otworzyć plik, `.csproj` Aby zobaczyć dodane odwołanie:</span><span class="sxs-lookup"><span data-stu-id="e938b-120">You can open the `.csproj` file to see the added reference:</span></span>
+   <span data-ttu-id="3af18-120">Możesz otworzyć plik, `.csproj` Aby zobaczyć dodane odwołanie:</span><span class="sxs-lookup"><span data-stu-id="3af18-120">You can open the `.csproj` file to see the added reference:</span></span>
 
     ```xml
-   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-   </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    </ItemGroup>
     ```
 
-## <a name="install-a-specific-version-of-a-package"></a><span data-ttu-id="e938b-121">Zainstaluj określoną wersję pakietu</span><span class="sxs-lookup"><span data-stu-id="e938b-121">Install a specific version of a package</span></span>
+## <a name="install-a-specific-version-of-a-package"></a><span data-ttu-id="3af18-121">Zainstaluj określoną wersję pakietu</span><span class="sxs-lookup"><span data-stu-id="3af18-121">Install a specific version of a package</span></span>
 
-<span data-ttu-id="e938b-122">Jeśli wersja nie zostanie określona, NuGet zainstaluje najnowszą wersję pakietu.</span><span class="sxs-lookup"><span data-stu-id="e938b-122">If the version is not specified, NuGet installs the latest version of the package.</span></span> <span data-ttu-id="e938b-123">Aby zainstalować określoną wersję pakietu NuGet, można również użyć polecenia [dotnet Add Package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) :</span><span class="sxs-lookup"><span data-stu-id="e938b-123">You can also use the [dotnet add package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) command to install a specific version of a Nuget package:</span></span>
+<span data-ttu-id="3af18-122">Jeśli wersja nie zostanie określona, NuGet zainstaluje najnowszą wersję pakietu.</span><span class="sxs-lookup"><span data-stu-id="3af18-122">If the version is not specified, NuGet installs the latest version of the package.</span></span> <span data-ttu-id="3af18-123">Aby zainstalować określoną wersję pakietu NuGet, można również użyć polecenia [dotnet Add Package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) :</span><span class="sxs-lookup"><span data-stu-id="3af18-123">You can also use the [dotnet add package](/dotnet/core/tools/dotnet-add-package?tabs=netcore2x) command to install a specific version of a Nuget package:</span></span>
 
 ```dotnetcli
 dotnet add package <PACKAGE_NAME> --version <VERSION>
 ```
 
-<span data-ttu-id="e938b-124">Na przykład, aby dodać wersję 12.0.1 `Newtonsoft.Json` pakietu, użyj tego polecenia:</span><span class="sxs-lookup"><span data-stu-id="e938b-124">For example, to add version 12.0.1 of the `Newtonsoft.Json` package, use this command:</span></span>
+<span data-ttu-id="3af18-124">Na przykład, aby dodać wersję 12.0.1 `Newtonsoft.Json` pakietu, użyj tego polecenia:</span><span class="sxs-lookup"><span data-stu-id="3af18-124">For example, to add version 12.0.1 of the `Newtonsoft.Json` package, use this command:</span></span>
 
 ```dotnetcli
 dotnet add package Newtonsoft.Json --version 12.0.1
 ```
 
-## <a name="list-package-references"></a><span data-ttu-id="e938b-125">Wyświetl listę odwołań do pakietów</span><span class="sxs-lookup"><span data-stu-id="e938b-125">List package references</span></span>
+## <a name="list-package-references"></a><span data-ttu-id="3af18-125">Wyświetl listę odwołań do pakietów</span><span class="sxs-lookup"><span data-stu-id="3af18-125">List package references</span></span>
 
-<span data-ttu-id="e938b-126">Możesz wyświetlić listę odwołań do pakietów dla projektu przy użyciu polecenia [pakietu dotnet list](/dotnet/core/tools/dotnet-list-package?tabs=netcore2x) .</span><span class="sxs-lookup"><span data-stu-id="e938b-126">You can list the package references for your project using the [dotnet list package](/dotnet/core/tools/dotnet-list-package?tabs=netcore2x) command.</span></span>
+<span data-ttu-id="3af18-126">Możesz wyświetlić listę odwołań do pakietów dla projektu przy użyciu polecenia [pakietu dotnet list](/dotnet/core/tools/dotnet-list-package?tabs=netcore2x) .</span><span class="sxs-lookup"><span data-stu-id="3af18-126">You can list the package references for your project using the [dotnet list package](/dotnet/core/tools/dotnet-list-package?tabs=netcore2x) command.</span></span>
 
 ```dotnetcli
 dotnet list package
 ```
 
-## <a name="remove-a-package"></a><span data-ttu-id="e938b-127">Usuń pakiet</span><span class="sxs-lookup"><span data-stu-id="e938b-127">Remove a package</span></span>
+## <a name="remove-a-package"></a><span data-ttu-id="3af18-127">Usuń pakiet</span><span class="sxs-lookup"><span data-stu-id="3af18-127">Remove a package</span></span>
 
-<span data-ttu-id="e938b-128">Aby usunąć odwołanie do pakietu z pliku projektu, użyj polecenia [dotnet Remove Package](/dotnet/core/tools/dotnet-remove-package?tabs=netcore2x) .</span><span class="sxs-lookup"><span data-stu-id="e938b-128">Use the [dotnet remove package](/dotnet/core/tools/dotnet-remove-package?tabs=netcore2x) command to remove a package reference from the project file.</span></span>
+<span data-ttu-id="3af18-128">Aby usunąć odwołanie do pakietu z pliku projektu, użyj polecenia [dotnet Remove Package](/dotnet/core/tools/dotnet-remove-package?tabs=netcore2x) .</span><span class="sxs-lookup"><span data-stu-id="3af18-128">Use the [dotnet remove package](/dotnet/core/tools/dotnet-remove-package?tabs=netcore2x) command to remove a package reference from the project file.</span></span>
 
 ```dotnetcli
 dotnet remove package <PACKAGE_NAME>
 ```
 
-<span data-ttu-id="e938b-129">Na przykład aby usunąć `Newtonsoft.Json` pakiet, użyj następującego polecenia</span><span class="sxs-lookup"><span data-stu-id="e938b-129">For example, to remove the `Newtonsoft.Json` package, use the following command</span></span>
+<span data-ttu-id="3af18-129">Na przykład aby usunąć `Newtonsoft.Json` pakiet, użyj następującego polecenia</span><span class="sxs-lookup"><span data-stu-id="3af18-129">For example, to remove the `Newtonsoft.Json` package, use the following command</span></span>
 
 ```dotnetcli
 dotnet remove package Newtonsoft.Json
 ```
 
-## <a name="update-a-package"></a><span data-ttu-id="e938b-130">Aktualizowanie pakietu</span><span class="sxs-lookup"><span data-stu-id="e938b-130">Update a package</span></span>
+## <a name="update-a-package"></a><span data-ttu-id="3af18-130">Aktualizowanie pakietu</span><span class="sxs-lookup"><span data-stu-id="3af18-130">Update a package</span></span>
 
-<span data-ttu-id="e938b-131">Pakiet NuGet instaluje najnowszą wersję pakietu przy użyciu `dotnet add package` polecenia, o ile nie zostanie określona wersja pakietu ( `-v` przełącznik).</span><span class="sxs-lookup"><span data-stu-id="e938b-131">NuGet installs the latest version of the package when you use the `dotnet add package` command unless you specify the package version (`-v` switch).</span></span>
+<span data-ttu-id="3af18-131">Pakiet NuGet instaluje najnowszą wersję pakietu przy użyciu `dotnet add package` polecenia, o ile nie zostanie określona wersja pakietu ( `-v` przełącznik).</span><span class="sxs-lookup"><span data-stu-id="3af18-131">NuGet installs the latest version of the package when you use the `dotnet add package` command unless you specify the package version (`-v` switch).</span></span>
 
-## <a name="restore-packages"></a><span data-ttu-id="e938b-132">Przywracanie pakietów</span><span class="sxs-lookup"><span data-stu-id="e938b-132">Restore packages</span></span>
+## <a name="restore-packages"></a><span data-ttu-id="3af18-132">Przywracanie pakietów</span><span class="sxs-lookup"><span data-stu-id="3af18-132">Restore packages</span></span>
 
 [!INCLUDE [restore-dotnet-cli](includes/restore-dotnet-cli.md)]
