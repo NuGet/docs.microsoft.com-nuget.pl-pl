@@ -1,87 +1,90 @@
 ---
 title: Zestaw SDK klienta programu NuGet
-description: Interfejs API jest rozwijany i nie został jeszcze udokumentowany, ale przykłady są dostępne w blogu Dave Glick.
+description: Interfejs API ewoluuje i nie został jeszcze udokumentowany, ale przykłady są dostępne na blogu Dave'a Glicka.
 author: JonDouglas
 ms.author: jodou
 ms.date: 01/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: f9e08d37b30dfea83fd9b61f168c1e20f530ff9f
-ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
+ms.openlocfilehash: 6417c971dc13cf9ed05dcec4e4156af94c0ea058
+ms.sourcegitcommit: c8bf16420f235fc3e42c08cd0d56359e91d490e5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104859411"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387390"
 ---
 # <a name="nuget-client-sdk"></a>Zestaw SDK klienta programu NuGet
 
-*Zestaw SDK klienta NuGet* odwołuje się do grupy pakietów NuGet:
+Zestaw *SDK klienta NuGet* odwołuje się do grupy pakietów NuGet:
 
-* [`NuGet.Protocol`](https://www.nuget.org/packages/NuGet.Protocol) — Służy do współpracy z użyciem protokołu HTTP i opartych na plikach źródeł narzędzia NuGet
-* [`NuGet.Packaging`](https://www.nuget.org/packages/NuGet.Packaging) — Służy do współpracy z pakietami NuGet. `NuGet.Protocol` zależy od tego pakietu
+* [`NuGet.Protocol`](https://www.nuget.org/packages/NuGet.Protocol) — Służy do interakcji ze źródłami danych NuGet opartymi na plikach i HTTP
+* [`NuGet.Packaging`](https://www.nuget.org/packages/NuGet.Packaging) — Służy do interakcji z pakietami NuGet. `NuGet.Protocol` zależy od tego pakietu
 
-Kod źródłowy tych pakietów można znaleźć w repozytorium programu [NuGet/NuGet. Client](https://github.com/NuGet/NuGet.Client) w serwisie GitHub.
-Kod źródłowy dla tych przykładów można znaleźć w projekcie [NuGet. Protocol. Samples](https://github.com/NuGet/Samples/tree/main/NuGetProtocolSamples) w witrynie GitHub.
+Kod źródłowy tych pakietów można znaleźć w [repozytorium GitHub NuGet/NuGet.Client.](https://github.com/NuGet/NuGet.Client)
+Kod źródłowy tych przykładów można znaleźć w [projekcie NuGet.Protocol.Samples](https://github.com/NuGet/Samples/tree/main/NuGetProtocolSamples) w witrynie GitHub.
 
 > [!Note]
-> Aby uzyskać dokumentację dotyczącą protokołu serwera NuGet, zapoznaj się z [interfejsem API serwera NuGet](~/api/overview.md).
+> Aby uzyskać dokumentację dotyczącą protokołu serwera NuGet, zapoznaj się z interfejsem [API serwera NuGet.](~/api/overview.md)
 
-## <a name="nugetprotocol"></a>NuGet. Protocol
+## <a name="nugetprotocol"></a>NuGet.Protocol
 
-Zainstaluj `NuGet.Protocol` pakiet, aby korzystać z kanałów informacyjnych pakietów NuGet opartych na protokole HTTP i folderze:
+Zainstaluj pakiet, aby wchodzić w interakcje z kanałami informacyjnymi pakietów NuGet opartymi na http `NuGet.Protocol` i folderach:
 
 ```ps1
 dotnet add package NuGet.Protocol
 ```
 
-### <a name="list-package-versions"></a>Wyświetl wersje pakietów
+> [!Tip]
+> `Repository.Factory` Element jest zdefiniowany w `NuGet.Protocol.Core.Types` przestrzeni nazw , a metoda jest metodą rozszerzenia `GetCoreV3` zdefiniowaną w przestrzeni nazw `NuGet.Protocol` . W związku z tym należy dodać `using` instrukcje dla obu przestrzeni nazw.
 
-Znajdź wszystkie wersje Newtonsoft.Jsna korzystanie z [interfejsu API zawartości pakietu NuGet v3](../api/package-base-address-resource.md#enumerate-package-versions):
+### <a name="list-package-versions"></a>Lista wersji pakietów
+
+Znajdź wszystkie wersje pakietu Newtonsoft.Jsprzy użyciu interfejsu API zawartości pakietu [NuGet V3:](../api/package-base-address-resource.md#enumerate-package-versions)
 
 [!code-csharp[ListPackageVersions](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=ListPackageVersions)]
 
-### <a name="download-a-package"></a>Pobierz pakiet
+### <a name="download-a-package"></a>Pobieranie pakietu
 
-Pobierz Newtonsoft.Jsw usłudze v 12.0.1 przy użyciu [interfejsu API zawartości pakietu NuGet v3](../api/package-base-address-resource.md):
+Pobierz Newtonsoft.Jsw wersji 12.0.1 przy użyciu interfejsu API zawartości pakietu [NuGet V3:](../api/package-base-address-resource.md)
 
 [!code-csharp[DownloadPackage](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=DownloadPackage)]
 
-### <a name="get-package-metadata"></a>Pobierz metadane pakietu
+### <a name="get-package-metadata"></a>Uzyskiwanie metadanych pakietu
 
-Pobierz metadane pakietu "Newtonsoft.Json" przy użyciu [interfejsu API metadanych pakietu NuGet v3](../api/registration-base-url-resource.md):
+Pobierz metadane dla pakietu "Newtonsoft.Json" przy użyciu interfejsu API metadanych pakietu [NuGet v3:](../api/registration-base-url-resource.md)
 
 [!code-csharp[GetPackageMetadata](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=GetPackageMetadata)]
 
-### <a name="search-packages"></a>Wyszukaj pakiety
+### <a name="search-packages"></a>Wyszukiwanie pakietów
 
-Wyszukaj pakiety "JSON" przy użyciu [interfejsu API wyszukiwania programu NuGet v3](../api/search-query-service-resource.md):
+Wyszukaj pakiety "json" przy użyciu interfejsu [API wyszukiwania NuGet v3:](../api/search-query-service-resource.md)
 
 [!code-csharp[SearchPackages](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=SearchPackages)]
 
-### <a name="push-a-package"></a>Wypchnij pakiet
+### <a name="push-a-package"></a>Wypychanie pakietu
 
-Wypchnij pakiet za pomocą [interfejsu API wypychania i usuwania NuGet v3](../api/package-publish-resource.md):
+Wypchnąć pakiet przy użyciu interfejsu API wypychania i usuwania [nuGet w wersji 3:](../api/package-publish-resource.md)
 
 [!code-csharp[PushPackage](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=PushPackage)]
 
 ### <a name="delete-a-package"></a>Usuwanie pakietu
 
-Usuń pakiet za pomocą [interfejsu API wypychania i usuwania NuGet v3](../api/package-publish-resource.md):
+Usuń pakiet przy użyciu interfejsu [API wypychania NuGet v3 i usuwania:](../api/package-publish-resource.md)
 
 > [!Note]
-> Serwery NuGet są bezpłatne, aby interpretować żądanie usunięcia pakietu jako "trwałe usuwanie", "Usuwanie miękkie" lub "unlisting".
-> Na przykład nuget.org interpretuje żądanie usunięcia pakietu jako "unlisting". Aby uzyskać więcej informacji na temat tego rozwiązania, zobacz [usuwanie zasad pakietów](../nuget-org/policies/deleting-packages.md) .
+> Serwery NuGet mogą interpretować żądanie usunięcia pakietu jako "twarde usuwanie", "usuwanie nie soft" lub "unlist".
+> Na przykład nuget.org żądanie usunięcia pakietu jest interpretowane jako "unlist". Aby uzyskać więcej informacji na temat tego rozwiązania, zobacz [zasady Usuwanie](../nuget-org/policies/deleting-packages.md) pakietów.
 
 [!code-csharp[DeletePackage](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=DeletePackage)]
 
-### <a name="work-with-authenticated-feeds"></a>Pracuj z uwierzytelnionymi źródłami danych
+### <a name="work-with-authenticated-feeds"></a>Praca z uwierzytelnionym kanałami informacyjnymi
 
-Służy [`NuGet.Protocol`](https://www.nuget.org/packages/NuGet.Protocol) do pracy z uwierzytelnionymi źródłami danych.
+Użyj [`NuGet.Protocol`](https://www.nuget.org/packages/NuGet.Protocol) do pracy z uwierzytelnianych kanałów informacyjnych.
 
 [!code-csharp[AuthenticatedFeed](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=AuthenticatedFeed)]
 
-## <a name="nugetpackaging"></a>NuGet. pakowanie
+## <a name="nugetpackaging"></a>NuGet.Packaging
 
-Zainstaluj `NuGet.Packaging` pakiet, aby korzystać z usługi `.nupkg` i `.nuspec` plików ze strumienia:
+Zainstaluj `NuGet.Packaging` pakiet, aby wchodzić w `.nupkg` interakcje z `.nuspec` plikami i ze strumienia:
 
 ```ps1
 dotnet add package NuGet.Packaging
@@ -89,33 +92,33 @@ dotnet add package NuGet.Packaging
 
 ### <a name="create-a-package"></a>Tworzenie pakietu
 
-Tworzenie pakietu, Ustawianie metadanych i Dodawanie zależności przy użyciu [`NuGet.Packaging`](https://www.nuget.org/packages/NuGet.Packaging) .
+Utwórz pakiet, ustaw metadane i dodaj zależności przy użyciu elementu [`NuGet.Packaging`](https://www.nuget.org/packages/NuGet.Packaging) .
 
 > [!IMPORTANT]
-> Zdecydowanie zaleca się, aby pakiety NuGet zostały utworzone przy użyciu oficjalnych narzędzi NuGet, a **nie** za pomocą tego interfejsu API niskiego poziomu. Istnieją różne cechy istotne dla dobrze uformowanego pakietu, a Najnowsza wersja narzędzi ułatwia uwzględnienie tych najlepszych rozwiązań.
+> Zdecydowanie zaleca się, aby pakiety NuGet były tworzone przy użyciu oficjalnych narzędzi NuGet, a **nie** przy użyciu tego interfejsu API niskiego poziomu. W przypadku dobrze utworzonego pakietu istnieją różne charakterystyki, a najnowsza wersja narzędzi ułatwia uwzględnienie tych najlepszych rozwiązań.
 > 
-> Aby uzyskać więcej informacji na temat tworzenia pakietów NuGet, zobacz Omówienie [przepływu pracy tworzenia pakietów](../create-packages/overview-and-workflow.md) i dokumentacji oficjalnych narzędzi pakietu (na przykład [za pomocą interfejsu wiersza polecenia dotnet](../create-packages/creating-a-package-dotnet-cli.md)).
+> Aby uzyskać więcej informacji na temat tworzenia [](../create-packages/overview-and-workflow.md) pakietów NuGet, zobacz omówienie przepływu pracy tworzenia pakietów i dokumentację dotyczącą oficjalnych narzędzi pakietu (na przykład przy użyciu interfejsu wiersza [polecenia dotnet).](../create-packages/creating-a-package-dotnet-cli.md)
 
 [!code-csharp[CreatePackage](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=CreatePackage)]
 
-### <a name="read-a-package"></a>Odczytaj pakiet
+### <a name="read-a-package"></a>Odczytywanie pakietu
 
-Odczytaj pakiet ze strumienia plików przy użyciu polecenia [`NuGet.Packaging`](https://www.nuget.org/packages/NuGet.Packaging) .
+Odczytaj pakiet ze strumienia plików przy [`NuGet.Packaging`](https://www.nuget.org/packages/NuGet.Packaging) użyciu .
 
 [!code-csharp[ReadPackage](~/../nuget-samples/NuGetProtocolSamples/Program.cs?name=ReadPackage)]
 
-## <a name="third-party-documentation"></a>Dokumentacja dotycząca innych firm
+## <a name="third-party-documentation"></a>Dokumentacja innych firm
 
-Przykłady i Dokumentacja dla niektórych interfejsów API można znaleźć w następujących seriach blogów: Dave Glick, opublikowano 2016.
+Przykłady i dokumentację dla niektórych interfejsów API można znaleźć w następującej serii blogów Autorstwa Dave'a Glicka, opublikowanej w 2016 r.:
 
-- [Eksplorowanie bibliotek programu NuGet v3, część 1: wprowadzenie i pojęcia](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-1)
-- [Eksplorowanie bibliotek programu NuGet v3, część 2: wyszukiwanie pakietów](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-2)
-- [Eksplorowanie bibliotek programu NuGet v3, część 3: Instalowanie pakietów](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-3)
+- [Exploring the NuGet v3 Libraries, Part 1: Introduction and concepts (Eksplorowanie bibliotek NuGet w wersji 3, część 1: wprowadzenie i pojęcia)](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-1)
+- [Exploring the NuGet v3 Libraries, Part 2: Searching for packages (Eksplorowanie bibliotek NuGet w wersji 3, część 2: wyszukiwanie pakietów)](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-2)
+- [Eksplorowanie bibliotek NuGet w wersji 3, część 3: instalowanie pakietów](http://daveaglick.com/posts/exploring-the-nuget-v3-libraries-part-3)
 
 > [!Note]
-> Te wpisy w blogu zostały ogłoszone wkrótce po wydaniu wersji **3.4.3** pakietów SDK klienta NuGet.
-> Nowsze wersje pakietów mogą być niezgodne z informacjami w wpisach w blogu.
+> Te wpisy w blogu zostały napisane wkrótce po wersji **3.4.3** pakietów zestawu SDK klienta NuGet.
+> Nowsze wersje pakietów mogą być niezgodne z informacjami we wpisach w blogu.
 
-Martin Björkström zakończył wpis w blogu do serii blogów Dave Glick, gdzie wprowadzono inne podejście do instalowania pakietów NuGet przy użyciu zestawu SDK klienta NuGet:
+Martin Björkström opublikował kolejne wpisy w blogu Dave'a Glicka, w którym przedstawia inne podejście do instalowania pakietów NuGet przy użyciu zestawu SDK klienta NuGet:
 
-- [Ponowne odwiedzanie bibliotek NuGet v3](https://martinbjorkstrom.com/posts/2018-09-19-revisiting-nuget-client-libraries)
+- [Ponowne poprawianie bibliotek NuGet w wersji 3](https://martinbjorkstrom.com/posts/2018-09-19-revisiting-nuget-client-libraries)
