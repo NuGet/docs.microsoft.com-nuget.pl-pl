@@ -70,6 +70,7 @@
 ## [Przechowywanie wersji pakietów](concepts/package-versioning.md)
 ## [Rozwiązywanie zależności](concepts/dependency-resolution.md)
 ## [Najlepsze rozwiązania dotyczące bezpiecznego łańcucha dostaw oprogramowania](concepts/Security-Best-Practices.md)
+## [Rozwiązywanie problemów z zainstalowanymi pakietami](concepts/troubleshooting-installed-packages.md)
 # Tematy pomocy
 ## [.nuspec](reference/nuspec.md)
 ## [Plik nuget.config](reference/nuget-config-file.md)
@@ -291,7 +292,7 @@
 ## Uwagi do wersji
 ### [Znane problemy](release-notes/known-issues.md)
 ### NuGet 5.x
-#### [Pakiet NuGet 5,9](release-notes/NuGet-5.9.md)
+#### [NuGet 5.9](release-notes/NuGet-5.9.md)
 #### [NuGet 5.8](release-notes/NuGet-5.8.md)
 #### [NuGet 5.7](release-notes/NuGet-5.7.md)
 #### [NuGet 5.6](release-notes/NuGet-5.6.md)
