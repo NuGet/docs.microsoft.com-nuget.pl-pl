@@ -1,109 +1,122 @@
 ---
-title: Informacje o wersji narzędzia NuGet 5,7
-description: Informacje o wersji programu NuGet 5,7, w tym nowe funkcje, poprawki błędów i DCR.
+title: Informacje o wersji nuGet 5.7
+description: Informacje o wersji dla programu NuGet 5.7, w tym nowe funkcje, poprawki błędów i dcrs.
 author: chgill-msft
 ms.author: chgill
 ms.date: 8/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c821091983ab0b5d59b759e1ee9930cf449fd9d
-ms.sourcegitcommit: 6cda91f135e58cf57a2471b0c7c4a2f748f40024
+ms.openlocfilehash: 58ab481f0c6a6cb5549c269788170b8c3ff6002f
+ms.sourcegitcommit: 1462f9f42ae36b3c990762ad4f02e38ab799ad09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89364169"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107508790"
 ---
-# <a name="nuget-57-release-notes"></a>Informacje o wersji narzędzia NuGet 5,7
+# <a name="nuget-57-release-notes"></a>Informacje o wersji nuGet 5.7
 
 Pojazdy dystrybucji NuGet:
 
-| Wersja programu NuGet | Dostępne w wersji programu Visual Studio | Dostępne w zestawach SDK platformy .NET |
+| Wersja nuGet | Dostępne w Visual Studio wersji | Dostępne w zestawach SDK platformy .NET |
 |:---|:---|:---|
-| [**5.7.0**](https://nuget.org/downloads) | [Visual Studio 2019 w wersji 16,7](https://visualstudio.microsoft.com/downloads/) | [3.1.401](https://dotnet.microsoft.com/download/dotnet-core/3.1)<sup>1</sup> |
+| [**5.7.0**](https://nuget.org/downloads) | [Visual Studio 2019 w wersji 16.7](https://visualstudio.microsoft.com/downloads/) | [3.1.401](https://dotnet.microsoft.com/download/dotnet-core/3.1)<sup>1</sup> |
+| [**5.7.1**](https://nuget.org/downloads) | [Visual Studio 2019 w wersji 16.7](https://visualstudio.microsoft.com/downloads/) | [3.1.408](https://dotnet.microsoft.com/download/dotnet-core/3.1)<sup>1</sup> |
 
-<sup>1</sup> zainstalowano z programem Visual Studio 2019 przy użyciu obciążenia .NET Core
+<sup>1 Zainstalowane</sup> z programem Visual Studio 2019 z obciążeniem .NET Core
 
-## <a name="summary-whats-new-in-57"></a>Podsumowanie: co nowego w 5,7
+## <a name="summary-whats-new-in-57"></a>Podsumowanie: co nowego w programie 5.7
 
 ### <a name="features-added-in-this-release"></a>Funkcje dodane w tej wersji
 
-* Dodano obsługę aliasów zewnętrznych dla odwołań do pakietów NuGet — [#4989](https://github.com/NuGet/Home/issues/4989)
+* Dodano obsługę aliasów zewnętrznych dla odwołań do pakietów NuGet [— #4989](https://github.com/NuGet/Home/issues/4989)
 
-* Przełączenie między zainstalowanym i aktualizowaniem kart jest szybsze, umożliwiając im udostępnianie źródła danych i zmniejszenie resfreshing [#8294](https://github.com/NuGet/Home/issues/8294)
+* Szybsze przełączanie między kartami Zainstalowane i Aktualizacje przez umożliwienie im udostępniania źródła [](https://github.com/NuGet/Home/issues/8294) danych i ograniczenie ponownego #8294
 
-* Zwiększ szybkość przywracania przyspieszanie, wywołując statyczne interfejsy API programu MSBuild (dotnet.exe) — [#9644](https://github.com/NuGet/Home/issues/9644)
+* Szybsze przywracanie — przyspieszanie ocen przez wywołanie interfejsów API programu MSBuild Static Graph (dotnet.exe) — [#9644](https://github.com/NuGet/Home/issues/9644)
 
-* Dodano częściowe przywracanie programu Visual Studio dla projektów PackageReference (No-op + +) — [#9513](https://github.com/NuGet/Home/issues/9513)
+* Dodano Visual Studio częściowego przywracania dla projektów PackageReference (no-op++) — [#9513](https://github.com/NuGet/Home/issues/9513)
 
-* Interfejs użytkownika Menedżera pakietów programu Visual Studio będzie rzadziej ulegać awarii podczas wyszukiwania źródeł pakietów błędna, które zwracają więcej niż żądaną liczbę wyników na żądanie HTTP. - [#8478](https://github.com/NuGet/Home/issues/8478)
+* Visual Studio Menedżer pakietów użytkownika będzie rzadziej ulegać awarii podczas wyszukiwania nieprawidłowo zachowujących się źródeł pakietów, które zwracają więcej niż żądana liczba wyników na żądanie HTTP. - [#8478](https://github.com/NuGet/Home/issues/8478)
 
-* Dodano integrację PackageVersion informacji dla projektów typu non-SDK w programie VS Restore- [#9236](https://github.com/NuGet/Home/issues/9236)
+* Dodano integrację informacji PackageVersion dla projektów innych niż w stylu zestawu SDK w przywracaniu programu VS — [#9236](https://github.com/NuGet/Home/issues/9236)
 
 * Dodano obsługę nuget.exe aktualizacji `-self -Source` https://feed  -  [#1783](https://github.com/NuGet/Home/issues/1783)
 
-* Dodano obsługę wielu plików konfiguracji w katalogu%APPDATA%\NuGet — [#9394](https://github.com/NuGet/Home/issues/9394)
+* Dodano obsługę wielu plików konfiguracji w katalogu %APPDATA%\NuGet — [#9394](https://github.com/NuGet/Home/issues/9394)
 
-* DeterministicSourcePaths teraz pobiera pakiety źródłowe NuGet do konta [#9431](https://github.com/NuGet/Home/issues/9431)
+* DeterministicSourcePaths uwzględnia teraz pakiety źródłowe NuGet [—](https://github.com/NuGet/Home/issues/9431) #9431
 
-* Dodano interfejs API rozszerzalności INuGetProjectService. GetInstalledPackagesAsync — [#9702](https://github.com/NuGet/Home/issues/9702)
+* Dodano interfejs API rozszerzalności INuGetProjectService.GetInstalledPackagesAsync — [#9702](https://github.com/NuGet/Home/issues/9702)
 
-* Dodano interfejs API międzyoperacyjności do wyliczania folderów rezerwowych bez konieczności [#9395](https://github.com/NuGet/Home/issues/9395) rozwiązania/projektu
+* Dodano międzyopłacowy interfejs API do wyliczania folderów rezerwowych bez konieczności użycia rozwiązania/projektu [— #9395](https://github.com/NuGet/Home/issues/9395)
 
-* Dodano `latest` opcję dla `-MSBuildVersion`  -  [#8808](https://github.com/NuGet/Home/issues/8808)
+* Dodano `latest` opcję `-MSBuildVersion`  -  [dla #8808](https://github.com/NuGet/Home/issues/8808)
 
 ### <a name="issues-fixed-in-this-release"></a>Problemy rozwiązane w tej wersji
 
 **Błędy:**
 
-* W przypadku przywracania interfejsu wiersza polecenia dotnet podczas uruchamiania wtyczek poświadczeń wypróbuj interfejs wiersza polecenia dotnet na ścieżce systemowej, jeśli `DOTNET_HOST_PATH`  zmienna środowiskowa nie jest zdefiniowana. - [#7438](https://github.com/NuGet/Home/issues/7438)
+* W przypadku przywracania interfejsu wiersza polecenia dotnet podczas uruchamiania wtyczek poświadczeń wypróbuj interfejs wiersza polecenia dotnet w ścieżce systemowej, jeśli zmienna `DOTNET_HOST_PATH`  środowiskowa nie jest zdefiniowana. - [#7438](https://github.com/NuGet/Home/issues/7438)
 
-* Specyfikacja nuget.exea generuje tag Copyright z zakodowanym tekstem Copyright rrrr zamiast `$copyright$`  -  [#8696](https://github.com/NuGet/Home/issues/8696)
+* nuget.exe spec generuje tag praw autorskich z zakodowanym tekstem Copyright YYYY Zamiast `$copyright$`  -  [#8696](https://github.com/NuGet/Home/issues/8696)
 
-* NuGet.exe zgłasza wyjątek "autorów wymaganych" w trakcie pakowania csproj ignorowanie symboli zastępczych i atrybutów AssemblyInfo, jeśli nazwa zestawu zostanie zmieniona — [#4234](https://github.com/NuGet/Home/issues/4234)
+* NuGet.exe zgłasza wyjątek "wymagani autorzy" podczas pakowania pliku csproj ignorując symbole zastępcze [](https://github.com/NuGet/Home/issues/4234) i atrybuty assemblyinfo, jeśli nazwa zestawu zostanie zmieniona — #4234
 
-* HttpRequestMessage wielokrotnie wykorzystano wielokrotnie, co nie jest obsługiwane w przypadku SocketHttpHandler- [#8661](https://github.com/NuGet/Home/issues/8661)
+* Funkcja HttpRequestMessage jest ponownie wielokrotnie wielokrotnie, co nie jest obsługiwane w przypadku funkcji SocketHttpHandler [— #8661](https://github.com/NuGet/Home/issues/8661)
 
-* NuGet. Indexing 5.6.0 wersja zapoznawcza 3 i nowsze używają innego tokenu klucza publicznego — [#9481](https://github.com/NuGet/Home/issues/9481)
+* NuGet.Indexing 5.6.0 (wersja zapoznawcza 3 lub nowszy) używa innego tokenu klucza publicznego [—](https://github.com/NuGet/Home/issues/9481) #9481
 
-* Honor TreatWarningsAsErrors podczas tworzenia pakietu NuGet — [#7404](https://github.com/NuGet/Home/issues/7404)
+* Honoruj wartości TreatWarningsAsErrors podczas tworzenia pakietu NuGet — [#7404](https://github.com/NuGet/Home/issues/7404)
 
-* [CPVM] Fałszywe obniżenie pakietów dla wielu projektów P2P — [#9549](https://github.com/NuGet/Home/issues/9549)
+* [CPVM] Spurious package downgrades for multiple p2p projects - [#9549](https://github.com/NuGet/Home/issues/9549)
 
-* Karta "Przeglądaj" nie jest wyrównana do lewej strony pola wyszukiwania — [#9559](https://github.com/NuGet/Home/issues/9559)
+* Karta "Przeglądaj" nie jest wyrównana do lewej z polem wyszukiwania [— #9559](https://github.com/NuGet/Home/issues/9559)
 
-* Zainstalowana wersja jest niespójna z osadzoną ikoną w interfejsie użytkownika PM poziomu rozwiązania dla jednego identyfikatora pakietu z zainstalowanymi wieloma wersjami — [#9321](https://github.com/NuGet/Home/issues/9321)
+* Zainstalowana wersja jest niespójna z ikoną osadzoną w interfejsie użytkownika pm na poziomie rozwiązania dla jednego identyfikatora pakietu z zainstalowanymi wieloma [wersjami](https://github.com/NuGet/Home/issues/9321) — #9321
 
-* Przeciek: obiektu partcreationpolicy (CreationPolicy. inshared) NuGet. SolutionRestoreManager. RestoreOperationLogger- [#9595](https://github.com/NuGet/Home/issues/9595)
+* Przeciek: PartCreationPolicy(CreationPolicy.NonShared) NuGet.SolutionRestoreManager.RestoreOperationLogger — [#9595](https://github.com/NuGet/Home/issues/9595)
 
-* Unikanie odczytywania pliku zasobów w ramach przywracania No-op — [#9693](https://github.com/NuGet/Home/issues/9693)
+* Unikaj odczytywania pliku assets w przypadku przywracania bez [#9693](https://github.com/NuGet/Home/issues/9693)
 
-* Pakiet NuGet. Protocol nie obsługuje pobierania liczby pobieranych wersji z wyszukiwania [#9086](https://github.com/NuGet/Home/issues/9086)
+* Protokół NuGet.Protocol nie obsługuje pobierania liczby pobierania wersji z wyszukiwania — [#9086](https://github.com/NuGet/Home/issues/9086)
 
-* Zwiększenie wydajności pamięci PackageMetadataResourceV3 przez zredukowanie zależności JObject — [#9719](https://github.com/NuGet/Home/issues/9719)
+* Zwiększ wydajność pamięci dla packageMetadataResourceV3, zmniejszając zależności JObject — [#9719](https://github.com/NuGet/Home/issues/9719)
 
-**Żądania zmiany projektu:**
+**Zaprojektuj żądania zmiany:**
 
-* Pominięto `<owners>` element, gdy jest nadmiarowy — [#5134](https://github.com/NuGet/Home/issues/5134)
+* Pominięto `<owners>` element, gdy jest nadmiarowy [— #5134](https://github.com/NuGet/Home/issues/5134)
 
-* Rejestruj IntervalTrackers jako zdarzenia ETW — [#9593](https://github.com/NuGet/Home/issues/9593)
+* Rejestrowanie węzłoń IntervalTracker jako zdarzeń ETW [— #9593](https://github.com/NuGet/Home/issues/9593)
 
-* Dodano komunikat informacyjny dotyczący przywracania w celu informowania użytkowników CPVM o tym, że ta funkcja jest w wersji zapoznawczej — [#9340](https://github.com/NuGet/Home/issues/9340)
+* Dodano komunikat informacyjny o przywracaniu w celu poinformowania użytkowników protokołu CPVM, że funkcja jest w wersji zapoznawczej [—](https://github.com/NuGet/Home/issues/9340) #9340
 
-* Wypełnij Eksplorator rozwiązań zależności między pakietami i projektami z pliku zasobów — [#9580](https://github.com/NuGet/Home/issues/9580)
+* Wypełnij Eksplorator rozwiązań pakietu/projektu przechodnie z pliku assets [—](https://github.com/NuGet/Home/issues/9580) #9580
 
-* Na karcie zainstalowane pakiety nie należy podzielić na strony listy pakietów — [#6995](https://github.com/NuGet/Home/issues/6995)
+* Karta Zainstalowane pakiety nie powinna dawać stronicowania listy pakietów [—](https://github.com/NuGet/Home/issues/6995) #6995
 
-**[Lista wszystkich problemów rozwiązanych w tej wersji — 5,7](https://app.zenhub.com/workspaces/nuget-client-team-55aec9a240305cf007585881/reports/release?release=5ea77f51ab1a972297db2e92)**
+**[Lista wszystkich problemów rozwiązanych w tej wersji — 5.7](https://app.zenhub.com/workspaces/nuget-client-team-55aec9a240305cf007585881/reports/release?release=5ea77f51ab1a972297db2e92)**
 
 ### <a name="community-contributions"></a>Materiały przekazywane przez społeczność
 
-Dziękujemy, że wszyscy Współautorzy, którzy pomogą Ci w udostępnieniu tej wersji NuGet!
+Dziękujemy wszystkim współautorom, którzy pomogli w wytwórzeniu tej wersji NuGet!
 
-|Którzy|Żądań ściągnięcia|Problemy|
+|Który|Prs|Problemy|
 |----|----|----|
-|[campersau](https://github.com/campersau)|[3433](https://github.com/NuGet/NuGet.Client/pull/3433), [3120](https://github.com/NuGet/NuGet.Client/pull/3120)|Pakiet NuGet. Protocol nie obsługuje pobierania liczby pobieranych wersji z wyszukiwania [#9086](https://github.com/NuGet/Home/issues/9086) </br>HttpRequestMessage wielokrotnie wykorzystano wielokrotnie, co nie jest obsługiwane w przypadku SocketHttpHandler- [#8661](https://github.com/NuGet/Home/issues/8661)|
-|[Joseph Musser (jnm2)](https://github.com/jnm2)|[3241](https://github.com/NuGet/NuGet.Client/pull/3241)|Pominięto `<owners>` element, gdy jest nadmiarowy — [#5134](https://github.com/NuGet/Home/issues/5134)|
-|[Volodymyr Shkolka (BlackGad)](https://github.com/BlackGad)|[3273](https://github.com/NuGet/NuGet.Client/pull/3273)|Pakiet NuGet nie może zostać przywrócony ze źródeł HTTPS, które wymagają certyfikatów klienta — [#5773](https://github.com/NuGet/Home/issues/5773)|
-|[Mariusa Ungureanu (Therzok)](https://github.com/Therzok)|[3357](https://github.com/NuGet/NuGet.Client/pull/3357)|HttpSourceAuthenticationHandler SemaphoreSlim w przyszłości — [#9463](https://github.com/NuGet/Home/issues/9463)|
-|[Sunner (SuNNjek)](https://github.com/SuNNjek)|[3088](https://github.com/NuGet/NuGet.Client/pull/3088)|Specyfikacja nuget.exea generuje tag Copyright z zakodowanym tekstem Copyright rrrr zamiast `$copyright$`  -  [#8696](https://github.com/NuGet/Home/issues/8696)|
-|[Olivier Spinelli (olivier-spinelli)](https://github.com/olivier-spinelli)|[3335](https://github.com/NuGet/NuGet.Client/pull/3335)|W przypadku przywracania interfejsu wiersza polecenia dotnet podczas uruchamiania wtyczek poświadczeń wypróbuj interfejs wiersza polecenia dotnet na ścieżce systemowej, jeśli `DOTNET_HOST_PATH`  zmienna środowiskowa nie jest zdefiniowana. - [#7438](https://github.com/NuGet/Home/issues/7438)|
-|[goyzhang](https://github.com/goyzhang)|[3370](https://github.com/NuGet/NuGet.Client/pull/3370)|Dodano `latest` opcję dla `-MSBuildVersion`  -  [#8808](https://github.com/NuGet/Home/issues/8808)|
+|[campersau](https://github.com/campersau)|[3433,](https://github.com/NuGet/NuGet.Client/pull/3433) [3120](https://github.com/NuGet/NuGet.Client/pull/3120)|Protokół NuGet.Protocol nie obsługuje pobierania liczby pobierania wersji z wyszukiwania — [#9086](https://github.com/NuGet/Home/issues/9086) </br>Funkcja HttpRequestMessage jest ponownie wielokrotnie wielokrotnie, co nie jest obsługiwane w przypadku funkcji SocketHttpHandler — [#8661](https://github.com/NuGet/Home/issues/8661)|
+|[Joseph Musser (jnm2)](https://github.com/jnm2)|[3241](https://github.com/NuGet/NuGet.Client/pull/3241)|Pominięto `<owners>` element, gdy jest nadmiarowy [— #5134](https://github.com/NuGet/Home/issues/5134)|
+|[Volodymyr Shkolka (BlackGad)](https://github.com/BlackGad)|[3273](https://github.com/NuGet/NuGet.Client/pull/3273)|Nie można przywrócić programu NuGet ze źródeł HTTPS, które wymagają certyfikatów klienta — [#5773](https://github.com/NuGet/Home/issues/5773)|
+|[Majan Ungureanu (Therzok)](https://github.com/Therzok)|[3357](https://github.com/NuGet/NuGet.Client/pull/3357)|Przyszłe weryfikacje httpSourceAuthenticationHandler SemaphoreSlim — [#9463](https://github.com/NuGet/Home/issues/9463)|
+|[Sunner (SuNNjek)](https://github.com/SuNNjek)|[3088](https://github.com/NuGet/NuGet.Client/pull/3088)|nuget.exe spec generuje tag praw autorskich z zakodowanym tekstem Copyright YYYY Zamiast `$copyright$`  -  [#8696](https://github.com/NuGet/Home/issues/8696)|
+|[Olivier Spinelli (olivier-spinelli)](https://github.com/olivier-spinelli)|[3335](https://github.com/NuGet/NuGet.Client/pull/3335)|W przypadku przywracania interfejsu wiersza polecenia dotnet podczas uruchamiania wtyczek poświadczeń wypróbuj interfejs wiersza polecenia dotnet w ścieżce systemowej, jeśli zmienna `DOTNET_HOST_PATH`  środowiskowa nie jest zdefiniowana. - [#7438](https://github.com/NuGet/Home/issues/7438)|
+|[goyzhang](https://github.com/goyzhang)|[3370](https://github.com/NuGet/NuGet.Client/pull/3370)|Dodano `latest` opcję `-MSBuildVersion`  -  [dla #8808](https://github.com/NuGet/Home/issues/8808)|
+
+## <a name="summary-whats-new-in-571"></a>Podsumowanie: Co nowego w programie 5.7.1
+
+* Rozszerz plik .nupkg.metadata, aby uwzględnić źródło instalacji — [#10354](https://github.com/NuGet/Home/issues/10354)
+
+* Zawartość pakietu dziennikahash podczas rejestrowania przywracania (podczas wyodrębniania) [— #10384](https://github.com/NuGet/Home/issues/10384)
+
+* Podczas przywracania z normalnym poziomem szczegółowości należy rejestrować źródło, z którego jest przywracany [pakiet](https://github.com/NuGet/Home/issues/10461) — #10461
+
+**[Lista wszystkich problemów rozwiązanych w tej wersji — 5.7.1](https://app.zenhub.com/workspaces/nuget-client-team-55aec9a240305cf007585881/reports/release?release=6075f5724f84579cc29a79ee)**
+
+**[Lista zatwierdzeń w tej wersji — 5.7.1](https://github.com/NuGet/NuGet.Client/compare/80512866a2c127e52ce3e86fd803fff77e9b9b52...5.7.1.4)**
