@@ -1,22 +1,22 @@
 ---
-title: Dokumentacja programu NuGet Get-Package PowerShell
-description: Informacje dotyczące Get-Package polecenia programu PowerShell w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Informacje o programie PowerShell Get-Package NuGet
+description: Informacje dotyczące Get-Package programu PowerShell w konsoli Menedżer pakietów NuGet w programie Visual Studio.
 author: JonDouglas
 ms.author: jodou
 ms.date: 12/07/2017
 ms.topic: reference
-ms.openlocfilehash: 8394f888ec3d5e57eacd351a4867173da1070ead
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 7c91faecaac2967c7a01dd81e72b9097e7bd6cae
+ms.sourcegitcommit: 40c039ace0330dd9e68922882017f9878f4283d1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98777499"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107901736"
 ---
-# <a name="get-package-package-manager-console-in-visual-studio"></a>Get-Package (konsola Menedżera pakietów w programie Visual Studio)
+# <a name="get-package-package-manager-console-in-visual-studio"></a>Get-Package (konsola Menedżer pakietów w programie Visual Studio)
 
-*W tym temacie opisano polecenie w [konsoli Menedżera pakietów](../../consume-packages/install-use-packages-powershell.md) w programie Visual Studio w systemie Windows. Ogólne polecenie programu PowerShell Get-Package można znaleźć w [dokumentacji programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
+*W tym temacie opisano polecenie w konsoli [Menedżer pakietów w](../../consume-packages/install-use-packages-powershell.md) Visual Studio w systemie Windows. Aby uzyskać ogólne polecenie Get-Package Programu PowerShell, zobacz informacje dotyczące polecenia [PackageManagement programu PowerShell.](/powershell/module/packagemanagement)*
 
-Pobiera listę pakietów zainstalowanych w repozytorium lokalnym, wyświetla listę pakietów dostępnych ze źródła pakietów, gdy jest używany z przełącznikiem-ListAvailable lub wyświetla listę dostępnych aktualizacji, gdy jest używany z przełącznikiem-Update.
+Pobiera listę pakietów zainstalowanych w repozytorium lokalnym, wyświetla listę pakietów dostępnych ze źródła pakietu, gdy są używane z przełącznikiem -ListAvailable, lub wyświetla listę dostępnych aktualizacji w przypadku korzystania z przełącznika -Update.
 
 ## <a name="syntax"></a>Składnia
 
@@ -26,28 +26,28 @@ Get-Package -Source <string> [-ListAvailable] [-Updates] [-ProjectName <string>]
     [-PageSize] [<CommonParameters>]
 ```
 
-Bez parametrów, `Get-Package` wyświetla listę pakietów zainstalowanych w domyślnym projekcie.
+Bez parametrów program `Get-Package` wyświetla listę pakietów zainstalowanych w projekcie domyślnym.
 
 ## <a name="parameters"></a>Parametry
 
 | Parametr | Opis |
 | --- | --- |
-| Element źródłowy | Ścieżka adresu URL lub folderu dla pakietu. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia program `Get-Package` przeszukuje aktualnie wybrane źródło pakietu. W przypadku użycia z opcją-ListAvailable wartość domyślna to nuget.org. |
-| ListAvailable | Wyświetla listę pakietów dostępnych ze źródła pakietów, domyślnie nuget.org. Wyświetla domyślnie 50 pakietów, chyba że są określone wartości-PageSize i/lub-First. |
-| Aktualizacje | Wyświetla listę pakietów z aktualizacją dostępną w źródle pakietu. |
-| ProjectName | Projekt, z którego mają zostać pobrane zainstalowane pakiety. W przypadku pominięcia zwraca zainstalowane projekty dla całego rozwiązania. |
-| Filtr | Ciąg filtru służący do zawężenia listy pakietów przez zastosowanie jej do identyfikatora pakietu, opisu i tagów. |
-| Pierwsze | Liczba pakietów do zwrócenia od początku listy. Jeśli nie zostanie określony, wartość domyślna to 50. |
-| Pomiń | Pomija pierwsze &lt; &gt; pakiety int z wyświetlonej listy.  |
+| Element źródłowy | Adres URL lub ścieżka folderu dla pakietu . Ścieżki folderów lokalnych mogą być bezwzględne lub względne względem bieżącego folderu. W przypadku pominięcia `Get-Package` program wyszukuje aktualnie wybrane źródło pakietu. W przypadku korzystania z -ListAvailable wartość domyślna to nuget.org. |
+| ListAvailable | Wyświetla listę pakietów dostępnych ze źródła pakietu, domyślnie nuget.org. Przedstawia domyślną wartość 50 pakietów, chyba że określono -PageSize i/lub -First. |
+| Aktualizacje | Wyświetla listę pakietów, które mają aktualizację dostępną ze źródła pakietu. |
+| ProjectName | Projekt, z którego mają zostać zainstalowane pakiety. W przypadku pominięcia funkcja zwraca zainstalowane projekty dla całego rozwiązania. |
+| Filtr | Ciąg filtru używany do zawężenia listy pakietów przez zastosowanie go do identyfikatora pakietu, opisu i tagów. |
+| Pierwsze | Liczba pakietów, które mają być zwracane od początku listy. Jeśli nie zostanie określony, wartość domyślna to 50. |
+| Pomiń | Pomija pierwsze pakiety &lt; int &gt; z wyświetlonej listy.  |
 | AllVersions | Wyświetla wszystkie dostępne wersje każdego pakietu, a nie tylko najnowszą wersję. |
-| IncludePrerelease | Zawiera pakiety wersji wstępnej w wynikach. |
-| PageSize | *(3.0 +)* Jeśli jest używany z-ListAvailable (required), liczba pakietów do wyświetlenia przed podawaniem monitu o kontynuowanie. |
+| IncludePrerelease | Zawiera pakiety wytłaczania wstępnego w wynikach. |
+| PageSize | *(3.0+)* W przypadku korzystania z polecenia z ciągiem -ListAvailable (wymagane) — liczba pakietów, które należy wyświetlić przed monitem o kontynuowanie. |
 
-Żaden z tych parametrów nie akceptuje danych wejściowych potoku ani symboli wieloznacznych.
+Żaden z tych parametrów nie akceptuje znaków wejściowych potoku ani symboli wieloznacznych.
 
-## <a name="common-parameters"></a>Parametry wspólne
+## <a name="common-parameters"></a>Typowe parametry
 
-`Get-Package` obsługuje następujące [typowe parametry programu PowerShell](/powershell/module/microsoft.powershell.core/about/about_commonparameters): debugowanie, Akcja błędu, ErrorVariable, wybuforuj, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Get-Package` obsługuje następujące typowe [parametry programu PowerShell:](/powershell/module/microsoft.powershell.core/about/about_commonparameters)Debug, Error Action, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, Verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

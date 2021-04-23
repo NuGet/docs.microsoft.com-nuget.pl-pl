@@ -5,12 +5,12 @@ author: chgill-MSFT
 ms.author: chgill
 ms.date: 09/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: aae05b63921f3494376b430186d3605eeff174c1
-ms.sourcegitcommit: c8bf16420f235fc3e42c08cd0d56359e91d490e5
+ms.openlocfilehash: 358e574339688514448b684aadc6911f9d83611f
+ms.sourcegitcommit: 40c039ace0330dd9e68922882017f9878f4283d1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107387364"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107901450"
 ---
 # <a name="package-authoring-best-practices"></a>Najlepsze rozwiązania dotyczące tworzenia pakietów
 
@@ -18,7 +18,7 @@ Te wskazówki mają na celu zapewnienie autorom pakietów NuGet lekkiego odwoła
 
 ## <a name="types-of-recommendations"></a>Typy rekomendacji
 
-Każdy artykuł zawiera cztery typy rekomendacji: **Czy,** **Consider**, **Avoid**, **i Do not**. Typ zalecenia wskazuje, jak ściśle należy je stosować.
+Każdy artykuł zawiera cztery typy zaleceń: **Nie,** **Rozważ,** **Unikaj** i **Nie .** Typ zalecenia wskazuje, jak blisko powinno być stosowane.
 
 Prawie zawsze należy postępować zgodnie z **zaleceniem Wykonaj.** Na przykład:
 
@@ -46,7 +46,7 @@ Utwórz pakiet z projektu w stylu zestawu SDK, [](../quickstart/create-and-publi
 
 Aby uzyskać bardziej szczegółowe wskazówki dotyczące tworzenia pakietów, w tym niezbędne narzędzia klienckie, przykładowy plik projektu i polecenia, zobacz [Create a NuGet package using the dotnet CLI](./creating-a-package-dotnet-cli.md)(Tworzenie pakietu NuGet przy użyciu interfejsu wiersza polecenia dotnet).
 
-Aby ułatwić podjęcie decyzji o tym, które platformy .NET mają być przeznaczone dla użytkowników docelowych, zobacz nasze najnowsze wskazówki dotyczące określania wartości docelowej [dla platform](/dotnet/standard/library-guidance/cross-platform-targeting).
+Aby ułatwić podjęcie decyzji o tym, które platformy .NET mają być przeznaczone dla użytkowników docelowych, zobacz nasze najnowsze wskazówki dotyczące określania platform [docelowych.](/dotnet/standard/library-guidance/cross-platform-targeting)
 
 ## <a name="package-metadata"></a>Metadane pakietu
 
@@ -58,21 +58,21 @@ Elementy metadanych pakietu można również [określić bezpośrednio w pliku p
 
 Poniżej znajduje się mapowanie tabeli i opisywanie dostępnych elementów metadanych pakietu:
 
-| Visual Studio nazwa właściwości                       | [Plik projektu/ nazwa właściwości MSBuild](https://docs.microsoft.com/dotnet/core/tools/csproj#packagereleasenotes)                            | [Nazwa właściwości nuspec](https://docs.microsoft.com/nuget/reference/nuspec#general-form-and-schema)     | Opis                                                                                                           |
+| Visual Studio nazwy właściwości                       | [Plik projektu/ nazwa właściwości MSBuild](https://docs.microsoft.com/dotnet/core/tools/csproj#packagereleasenotes)                            | [Nazwa właściwości nuspec](https://docs.microsoft.com/nuget/reference/nuspec#general-form-and-schema)     | Opis                                                                                                           |
 |-----------------------------------------------    |-----------------------------------------------------------------------------------------------------------------------------------------  |---------------------------------------------------------------------------------------------------    |-------------------------------------------------------------------------------------------------------------------    |
-| [`Package id`](#package-id)                       | [`PackageId`](https://docs.microsoft.com/dotnet/core/tools/csproj#packageid)                                                              | [`id`](https://docs.microsoft.com/nuget/reference/nuspec#id)                                          | Nazwa lub identyfikator pakietu.                                                                                       |
-| [`Package version`](#package-version)             | [`PackageVersion`](https://docs.microsoft.com/dotnet/core/tools/csproj#packageversion)                                                    | [`version`](https://docs.microsoft.com/nuget/reference/nuspec#version)                                | Wersja pakietu NuGet.                                                                                                |
-| [`Authors`](#authors)                             | [`Authors`](https://docs.microsoft.com/dotnet/core/tools/csproj#authors)                                                                  | [`authors`](https://docs.microsoft.com/nuget/reference/nuspec#authors)                                | Rozdzielana przecinkami lista autorów pakietów, często używająca "dobrej nazwy" osoby lub organizacji.           |
-| [`Description`](#description)                     | [`Description`](https://docs.microsoft.com/dotnet/core/tools/csproj#description)                                                          | [`description`](https://docs.microsoft.com/nuget/reference/nuspec#description)                        | Opis pakietu.                                                                                         |
-| [`Copyright`](#copyright)                         | [`Copyright`](https://docs.microsoft.com/dotnet/core/tools/csproj#copyright)                                                              | [`copyright`](https://docs.microsoft.com/nuget/reference/nuspec#copyright)                            | Szczegóły praw autorskich dla pakietu.                                                                                    |
+| [`Package id`](#package-id)                       | [`PackageId`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                                             | [`id`](https://docs.microsoft.com/nuget/reference/nuspec#id)                                          | Nazwa lub identyfikator pakietu.                                                                                       |
+| [`Package version`](#package-version)             | [`PackageVersion`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                                    | [`version`](https://docs.microsoft.com/nuget/reference/nuspec#version)                                | Wersja pakietu NuGet.                                                                                                |
+| [`Authors`](#authors)                             | [`Authors`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                                                   | [`authors`](https://docs.microsoft.com/nuget/reference/nuspec#authors)                                | Rozdzielana przecinkami lista autorów pakietów, często używająca "dobrej nazwy" osoby lub organizacji.           |
+| [`Description`](#description)                     | [`Description`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                                           | [`description`](https://docs.microsoft.com/nuget/reference/nuspec#description)                        | Opis pakietu.                                                                                         |
+| [`Copyright`](#copyright)                         | [`Copyright`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                                             | [`copyright`](https://docs.microsoft.com/nuget/reference/nuspec#copyright)                            | Szczegóły praw autorskich dla pakietu.                                                                                    |
 | [`Licensing - Expression`](#licensing)            | [`PackageLicenseExpression`](https://docs.microsoft.com/nuget/reference/msbuild-targets#packing-a-license-expression-or-a-license-file)   | [`license type="expression"`](https://docs.microsoft.com/nuget/reference/nuspec#license)              | Wyrażenie licencji SPDX.                                                                                           |
 | [`Licensing - File`](#licensing)                  | [`PackageLicenseFile`](https://docs.microsoft.com/nuget/reference/msbuild-targets#packing-a-license-expression-or-a-license-file)         | [`license type="file"`](https://docs.microsoft.com/nuget/reference/nuspec#license)                    | Ścieżka do niestandardowego pliku licencji.                                                                                        |
 | [`Project URL`](#project-url)                     | `PackageProjectUrl`                                                                                                                       | [`projectUrl`](https://docs.microsoft.com/nuget/reference/nuspec#projecturl)                          | Adres URL strony głównej projektu.                                                                                       |
 | [`Icon File`](#icon)                              | [`PackageIcon`](https://docs.microsoft.com/nuget/reference/msbuild-targets#packing-an-icon-image-file)                                    | [`icon`](https://docs.microsoft.com/nuget/reference/nuspec#icon)                                      | Ścieżka do pliku obrazu ikony pakietu.                                                                                  |
-| [`Repository URL`](#repository-type-and-url)      | [`RepositoryUrl`](https://docs.microsoft.com/dotnet/core/tools/csproj#repositoryurl)                                                      | [`repository url`](https://docs.microsoft.com/nuget/reference/nuspec#repository)                      | Adres URL repozytorium, z którego został sbudowaną zawartość pakietu.                                                               |
-| [`Repository type`](#repository-type-and-url)     | [`RespositoryType`](https://docs.microsoft.com/dotnet/core/tools/csproj#repositorytype)                                                   | [`repository type`](https://docs.microsoft.com/nuget/reference/nuspec#repository)                     | Typ repozytorium, na który wskazują adresy URL repozytorium (np. "git").                                                    |
-| [`Tags`](#tags)                                   | [`PackageTags`](https://docs.microsoft.com/dotnet/core/tools/csproj#packagetags)                                                          | [`tags`](https://docs.microsoft.com/nuget/reference/nuspec#tags)                                      | Rozdzielana spacjami lista tagów i słów kluczowych opisujących pakiet. Tagi są używane podczas wyszukiwania pakietów.     |
-| [`Release notes`](#release-notes)                 | [`PackageReleaseNotes`](https://docs.microsoft.com/dotnet/core/tools/csproj#packagereleasenotes)                                          | [`releaseNotes`](https://docs.microsoft.com/nuget/reference/nuspec#releasenotes)                      | Opis zmian wprowadzonych w tej wersji pakietu.                                                     |
+| [`Repository URL`](#repository-type-and-url)      | [`RepositoryUrl`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                                     | [`repository url`](https://docs.microsoft.com/nuget/reference/nuspec#repository)                      | Adres URL repozytorium, z którego został sbudowaną zawartość pakietu.                                                               |
+| [`Repository type`](#repository-type-and-url)     | [`RespositoryType`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                                   | [`repository type`](https://docs.microsoft.com/nuget/reference/nuspec#repository)                     | Typ repozytorium, na który wskazują adresy URL repozytorium (np. "git").                                                    |
+| [`Tags`](#tags)                                   | [`PackageTags`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                                           | [`tags`](https://docs.microsoft.com/nuget/reference/nuspec#tags)                                      | Rozdzielana spacjami lista tagów i słów kluczowych opisujących pakiet. Tagi są używane podczas wyszukiwania pakietów.     |
+| [`Release notes`](#release-notes)                 | [`PackageReleaseNotes`](https://docs.microsoft.com/nuget/reference/msbuild-targets#pack-target)                                           | [`releaseNotes`](https://docs.microsoft.com/nuget/reference/nuspec#releasenotes)                      | Opis zmian wprowadzonych w tej wersji pakietu.                                                     |
 ### <a name="package-id"></a>Identyfikator pakietu
 
 Jeśli publikujesz zupełnie nowy pakiet:
@@ -87,7 +87,7 @@ Jeśli publikujesz zupełnie nowy pakiet:
 
 ### <a name="package-version"></a>Wersja pakietu
 
-✔️ rozważ użycie [narzędzia SemVer do](https://semver.org/) wersji pakietu NuGet.
+✔️ rozważyć użycie [narzędzia SemVer do](https://semver.org/) wersji pakietu NuGet.
 > Zasadniczo oznacza to użycie formatu Major.Minor.Patch[-prerelease].
 
 ✔️ OPUBLIKOWAĆ pakiet jako pakiet [wersji wstępnej,](./prerelease-packages.md) jeśli nie jest stabilny lub w wersji zapoznawczej.
@@ -97,7 +97,7 @@ Bardziej zaawansowane wskazówki można znaleźć w [przewodniku obsługi wersji
 ### <a name="authors"></a>Autorzy
 
 ✔️ NALEŻY użyć pola author (autor) dla "pretty name" (dosyć nazwa) organizacji.
-> Jeśli na przykład nazwa NuGet.org użytkownika to "jdoe", użycie pola "Jane Doe" w polu autora może ułatwić użytkownikom rozpoznawanie mnie jako autora. Jeśli nazwa użytkownika mojej NuGet.org to "ContosoToolkit", użycie nazwy "Contoso Corporation" może być bardziej rozpoznawalne i inspirować klientów.
+> Jeśli na przykład nazwa NuGet.org użytkownika to "jdoe", użycie pola "Jane Doe" w polu autora może ułatwić użytkownikom rozpoznawanie mnie jako autora. Jeśli nazwa użytkownika mojej NuGet.org to "ContosoToolkit", użycie nazwy "Contoso Corporation" może być bardziej rozpoznawalne i zainspirowane do większej zaufania klientów.
 ### <a name="description"></a>Opis
 
 ✔️ DO zawierają krótki opis (do 4000 znaków) opisujący pakiet.
@@ -121,8 +121,8 @@ Przykład: Copyright (c) Contoso 2020
 
 #### <a name="if-your-package-is-open-source"></a>Jeśli pakiet jest [open source](https://opensource.org/osd)
 
-✔️ WYBIERZ [licencję open source,](https://choosealicense.com/) aby pakiet został open source.
-> *"Licencje typu open source to licencje zgodne z definicją open source — w skrócie umożliwiają one bezpłatne wykorzystanie, modyfikację i współużytkowanie oprogramowania".* — Inicjatywa open source. Aby dowiedzieć się więcej o open source oprogramowania i inicjatywie open source, zobacz https://opensource.org/ .
+✔️ NALEŻY [wybrać licencję open source,](https://choosealicense.com/) aby pakiet open source.
+> *"Licencje typu open source to licencje zgodne z definicją open source — w skrócie umożliwiają one bezpłatne wykorzystanie, modyfikację i współużytkowanie oprogramowania".* — Inicjatywa open source. Aby dowiedzieć się więcej na temat open source oprogramowania i inicjatywy open source, zapoznaj się z https://opensource.org/ tematem .
 
 ✔️ rozważ [uwzględnienie wyrażenia licencji w pakiecie](../reference/msbuild-targets.md#packing-a-license-expression-or-a-license-file).
 > Wyrażenia licencji są widoczne w sposób najbardziej czytelny i bardziej oczywiste dla użytkowników, jeśli mogą korzystać z Twojego pakietu lub jeśli licencja została zmieniona. 
@@ -137,7 +137,7 @@ Przykład: Copyright (c) Contoso 2020
 ### <a name="project-url"></a>Adres URL projektu
 
 ✔️ rozważyć do uwzględnienia linku do skojarzonego projektu, repozytorium lub witryny internetowej firmy.
-> Witryna projektu powinna mieć wszystko, co użytkownicy muszą wiedzieć o pakiecie, i prawdopodobnie będzie to miejsce, w którym użytkownicy poszukaj dokumentacji.
+> Witryna projektu powinna mieć wszystko, co użytkownicy muszą wiedzieć o pakiecie, i prawdopodobnie będzie tam, gdzie użytkownicy poszukaj dokumentacji.
 
 ### <a name="icon"></a>Ikona
 
@@ -145,7 +145,7 @@ Przykład: Copyright (c) Contoso 2020
 > Ikony mogą być specyficzne dla poszczególnych pakietów lub być logo marki.
 
 ✔️ UŻYWAĆ obrazu o rozdzielczości 128 x 128 i z przezroczystym tłem (PNG) w celu najlepszego wyświetlania wyników.
-> Program NuGet automatycznie skaluje obraz do klienta, na który jest wyświetlany.
+> Program NuGet automatycznie przeskaluje obraz do klienta, na który jest wyświetlany.
 
 ❌ NIE UŻYWAJ przestarzałej `IconUrl` właściwości metadanych.
 
@@ -156,7 +156,7 @@ Przykład: Copyright (c) Contoso 2020
 
 ### <a name="tags"></a>Tagi
 
-✔️ DO obejmują kilka tagów z kluczowymi terminami związanymi z pakietem, aby zwiększyć możliwości odnajdywania.
+✔️ DO obejmują kilka tagów z kluczowymi terminami związanymi z pakietem w celu zwiększenia możliwości odnajdywania.
 > Tagi są brane pod uwagę w algorytmie wyszukiwania nuGet.org i są szczególnie przydatne w przypadku terminów, które nie znajdują się w identyfikatorze pakietu, ale są istotne.
 
 Jeśli na przykład opublikowano pakiet w celu rejestrowania ciągów w konsoli, obejmowałbym następujące dane: "rejestrowanie, dziennik, konsola, ciąg, dane wyjściowe"

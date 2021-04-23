@@ -1,20 +1,20 @@
 ---
-title: Dokumentacja programu NuGet Install-Package PowerShell
-description: Informacje dotyczące Install-Package polecenia programu PowerShell w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Informacje o programie PowerShell Install-Package NuGet
+description: Informacje dotyczące Install-Package programu PowerShell w konsoli Menedżer pakietów NuGet w programie Visual Studio.
 author: JonDouglas
 ms.author: jodou
 ms.date: 06/01/2017
 ms.topic: reference
-ms.openlocfilehash: 110b41e830636d60741b14292c17840aa5a63dfd
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: ad551b8701cfc2061f7721fb050ed9b5a4fede32
+ms.sourcegitcommit: 40c039ace0330dd9e68922882017f9878f4283d1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98777446"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107901697"
 ---
-# <a name="install-package-package-manager-console-in-visual-studio"></a>Install-Package (konsola Menedżera pakietów w programie Visual Studio)
+# <a name="install-package-package-manager-console-in-visual-studio"></a>Install-Package (konsola Menedżer pakietów w programie Visual Studio)
 
-*W tym temacie opisano polecenie w [konsoli Menedżera pakietów](../../consume-packages/install-use-packages-powershell.md) w programie Visual Studio w systemie Windows. Ogólne polecenie programu PowerShell Install-Package można znaleźć w [dokumentacji programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
+*W tym temacie opisano polecenie w konsoli [Menedżer pakietów w](../../consume-packages/install-use-packages-powershell.md) Visual Studio w systemie Windows. Aby uzyskać ogólne polecenie Install-Package Programu PowerShell, zobacz informacje dotyczące polecenia [PackageManagement programu PowerShell.](/powershell/module/packagemanagement)*
 
 Instaluje pakiet i jego zależności w projekcie.
 
@@ -26,7 +26,7 @@ Install-Package [-Id] <string> [-IgnoreDependencies] [-ProjectName <string>] [[-
     [-WhatIf] [<CommonParameters>]
 ```
 
-W programie NuGet 2.8 + `Install-Package` można obniżyć poziom istniejącego pakietu w projekcie. Na przykład jeśli masz zainstalowany plik Microsoft. AspNet. MVC 5.1.0-RC1, następujące polecenie obniży go do 5.0.0:
+W programie NuGet 2.8+ można obniżyć poziom istniejącego `Install-Package` pakietu w projekcie. Jeśli na przykład masz zainstalowaną wersję Microsoft.AspNet.MVC 5.1.0-rc1, następujące polecenie obniży ją do wersji 5.0.0:
 
 ```ps
 Install-Package Microsoft.AspNet.MVC -Version 5.0.0.
@@ -36,21 +36,21 @@ Install-Package Microsoft.AspNet.MVC -Version 5.0.0.
 
 | Parametr | Opis |
 | --- | --- |
-| Id | Potrzeb Identyfikator pakietu do zainstalowania. (*3.0 +*) Identyfikator może być ścieżką lub adresem URL `packages.config` pliku lub `.nupkg` pliku. Przełącznik-ID jest opcjonalny. |
+| Id | (Wymagane) Identyfikator pakietu do zainstalowania. (*3.0+*) Identyfikator może być ścieżką lub adresem URL `packages.config` pliku lub `.nupkg` pliku. Sam przełącznik -Id jest opcjonalny. |
 | IgnoreDependencies | Zainstaluj tylko ten pakiet, a nie jego zależności. |
-| ProjectName | Projekt, w którym ma zostać zainstalowany pakiet, domyślny dla projektu domyślnego. |
-| Element źródłowy | Ścieżka adresu URL lub folderu dla źródła pakietu do przeszukania. Ścieżki folderu lokalnego mogą być bezwzględne lub względne w stosunku do bieżącego folderu. W przypadku pominięcia program `Install-Package` przeszukuje aktualnie wybrane źródło pakietu. |
-| Wersja | Wersja pakietu do zainstalowania, domyślnie przyaktualna do najnowszej wersji. |
-| IncludePrerelease | Traktuje pakiety wersji wstępnej do zainstalowania. W przypadku pominięcia są brane pod uwagę tylko pakiety stabilne. |
-| FileConflictAction | Akcja, która ma zostać podjęta po wyświetleniu monitu o zastąpienie lub zignorowanie istniejących plików, do których odwołuje się projekt. Możliwe wartości to *overwrite, IGNORE, None, OverwriteAll* i *(3.0 +)* *IgnoreAll*. |
-| DependencyVersion | Wersja pakietów zależności do użycia, która może być jedną z następujących:<br/><ul><li>*Najniższy* (domyślny): najniższa wersja</li><li>*HighestPatch*: wersja z najniższą główną, najmniejszą niewielką lub najwyższą poprawką</li><li>*HighestMinor*: wersja z najmniejszą główną, najwyższą niewielką lub najwyższą poprawką</li><li>*Najwyższe* (domyślnie dla Update-Package bez parametrów): najwyższa wersja</li></ul>Możesz ustawić wartość domyślną przy użyciu [`dependencyVersion`](../nuget-config-file.md#config-section) Ustawienia w `Nuget.Config` pliku. |
-| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez faktycznego wykonania instalacji. |
+| ProjectName | Projekt, w którym ma być instalowany pakiet , domyślnie domyślny projekt. |
+| Element źródłowy | Adres URL lub ścieżka folderu dla źródła pakietu do wyszukania. Ścieżki folderów lokalnych mogą być bezwzględne lub względne względem bieżącego folderu. W przypadku pominięcia `Install-Package` program wyszukuje aktualnie wybrane źródło pakietu. |
+| Wersja | Wersja pakietu do zainstalowania, domyślnie najnowsza wersja. |
+| IncludePrerelease | Uwzględnia pakiety w wstępną aktualizację dla instalacji. W przypadku pominięcia są rozważane tylko stabilne pakiety. |
+| FileConflictAction | Akcja do podjęcia po prośbie o zastąpienie lub zignorowanie istniejących plików, do których odwołuje się projekt. Możliwe wartości to *Overwrite, Ignore, None, OverwriteAll* i *(3.0+)* *IgnoreAll.* |
+| DependencyVersion | Wersja pakietów zależności do użycia, która może być jedną z następujących wersji:<br/><ul><li>*Najniższa* (domyślna): najniższa wersja</li><li>*HighestPatch:* wersja z najniższą wersją główną, najmniejszą wersją pomocniczą, najwyższą poprawką</li><li>*HighestMinor:* wersja z najniższą wersją główną, najwyższą wersją pomocniczą, najwyższą poprawką</li><li>*Najwyższy* (domyślnie dla Update-Package bez parametrów): najwyższa wersja</li></ul>Wartość domyślną można ustawić przy [`dependencyVersion`](../nuget-config-file.md#config-section) użyciu ustawienia w pliku `Nuget.Config` . |
+| Instrukcja WhatIf | Pokazuje, co się stanie w przypadku uruchomienia polecenia bez przeprowadzania instalacji. |
 
-Żaden z tych parametrów nie akceptuje danych wejściowych potoku ani symboli wieloznacznych.
+Żaden z tych parametrów nie akceptuje znaków wejściowych potoku ani symboli wieloznacznych.
 
-## <a name="common-parameters"></a>Parametry wspólne
+## <a name="common-parameters"></a>Typowe parametry
 
-`Install-Package` obsługuje następujące [typowe parametry programu PowerShell](/powershell/module/microsoft.powershell.core/about/about_commonparameters): debugowanie, Akcja błędu, ErrorVariable, wybuforuj, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Install-Package` obsługuje następujące typowe [parametry programu PowerShell:](/powershell/module/microsoft.powershell.core/about/about_commonparameters)Debug, Error Action, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, Verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

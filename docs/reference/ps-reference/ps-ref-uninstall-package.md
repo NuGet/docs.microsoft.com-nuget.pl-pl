@@ -1,22 +1,22 @@
 ---
-title: Dokumentacja programu NuGet Uninstall-Package PowerShell
-description: Informacje dotyczące Uninstall-Package polecenia programu PowerShell w konsoli Menedżera pakietów NuGet w programie Visual Studio.
+title: Informacje o programie PowerShell Uninstall-Package NuGet
+description: Informacje dotyczące Uninstall-Package programu PowerShell w konsoli Menedżer pakietów NuGet w Visual Studio.
 author: JonDouglas
 ms.author: jodou
 ms.date: 06/01/2017
 ms.topic: reference
-ms.openlocfilehash: 961a9d68e5cba09030401fc871a93bf1145b23a3
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 371e95c341efbce1c4a15facefc15cd51b266141
+ms.sourcegitcommit: 40c039ace0330dd9e68922882017f9878f4283d1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98777394"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107901788"
 ---
-# <a name="uninstall-package-package-manager-console-in-visual-studio"></a>Uninstall-Package (konsola Menedżera pakietów w programie Visual Studio)
+# <a name="uninstall-package-package-manager-console-in-visual-studio"></a>Uninstall-Package (Menedżer pakietów Console in Visual Studio)
 
-*W tym temacie opisano polecenie w [konsoli Menedżera pakietów](../../consume-packages/install-use-packages-powershell.md) w programie Visual Studio w systemie Windows. Ogólne polecenie programu PowerShell Uninstall-Package można znaleźć w [dokumentacji programu PowerShell PackageManagement](/powershell/module/packagemanagement/?view=powershell-6).*
+*W tym temacie opisano polecenie w konsoli [Menedżer pakietów w](../../consume-packages/install-use-packages-powershell.md) Visual Studio w systemie Windows. Aby uzyskać ogólne polecenie polecenia Uninstall-Package PowerShell, zobacz informacje dotyczące polecenia [PackageManagement programu PowerShell](/powershell/module/packagemanagement).*
 
-Usuwa pakiet z projektu, opcjonalnie usuwając jego zależności. Jeśli inne pakiety zależą od tego pakietu, polecenie zakończy się niepowodzeniem, chyba że określono opcję – Force.
+Usuwa pakiet z projektu, opcjonalnie usuwając jego zależności. Jeśli inne pakiety zależą od tego pakietu, polecenie nie powiedzie się, chyba że określono opcję –Force.
 
 ## <a name="syntax"></a>Składnia
 
@@ -25,24 +25,24 @@ Uninstall-Package [-Id] <string> [-RemoveDependencies] [-ProjectName <string>] [
     [-Version <string>] [-WhatIf] [<CommonParameters>]
 ```
 
-Jeśli inne pakiety zależą od tego pakietu, polecenie zakończy się niepowodzeniem, chyba że określono opcję – Force.
+Jeśli inne pakiety zależą od tego pakietu, polecenie nie powiedzie się, chyba że określono opcję –Force.
 
 ## <a name="parameters"></a>Parametry
 
 | Parametr | Opis |
 | --- | --- |
-| Id | Potrzeb Identyfikator pakietu do odinstalowania. Przełącznik-ID jest opcjonalny. |
-| Wersja | Wersja pakietu do odinstalowania, domyślnie przydana do aktualnie zainstalowanej wersji. |
+| Id | (Wymagane) Identyfikator pakietu do odinstalowania. Sam przełącznik -Id jest opcjonalny. |
+| Wersja | Wersja pakietu do odinstalowania, domyślnie zainstalowana wersja. |
 | RemoveDependencies | Odinstaluj pakiet i jego nieużywane zależności. Oznacza to, że jeśli jakakolwiek zależność ma inny pakiet, który od niego zależy, zostanie pominięty. |
-| ProjectName | Projekt, z którego ma zostać odinstalowany pakiet, domyślny projekt domyślny. |
-| Force | Wymusza odinstalowanie pakietu, nawet jeśli inne pakiety są od niego zależne. |
-| Instrukcja WhatIf | Pokazuje, co się stanie po uruchomieniu polecenia bez faktycznego wykonania operacji odinstalowywania. |
+| ProjectName | Projekt, z którego ma zostać odinstalowany pakiet ( domyślnie jest to projekt domyślny). |
+| Force | Wymusza odinstalowanie pakietu, nawet jeśli od niego zależą inne pakiety. |
+| Instrukcja WhatIf | Pokazuje, co się stanie w przypadku uruchomienia polecenia bez przeprowadzania dezinstalacji. |
 
-Żaden z tych parametrów nie akceptuje danych wejściowych potoku ani symboli wieloznacznych.
+Żaden z tych parametrów nie akceptuje znaków wejściowych potoku ani symboli wieloznacznych.
 
-## <a name="common-parameters"></a>Parametry wspólne
+## <a name="common-parameters"></a>Typowe parametry
 
-`Uninstall-Package` obsługuje następujące [typowe parametry programu PowerShell](/powershell/module/microsoft.powershell.core/about/about_commonparameters): debugowanie, Akcja błędu, ErrorVariable, wybuforuj, subvariable, PipelineVariable, verbose, WarningAction i WarningVariable.
+`Uninstall-Package` obsługuje następujące typowe [parametry programu PowerShell:](/powershell/module/microsoft.powershell.core/about/about_commonparameters)Debug, Error Action, ErrorVariable, OutBuffer, OutVariable, PipelineVariable, Verbose, WarningAction i WarningVariable.
 
 ## <a name="examples"></a>Przykłady
 

@@ -10,12 +10,12 @@ no-loc:
 - MSBuild
 - .nuspec
 - nuspec
-ms.openlocfilehash: 47411641db47884f79f2bc9a4aa00035fc79993b
-ms.sourcegitcommit: c8bf16420f235fc3e42c08cd0d56359e91d490e5
+ms.openlocfilehash: 0a10a6f1e4c71903232281c25a6c4b6bbc65fb34
+ms.sourcegitcommit: 40c039ace0330dd9e68922882017f9878f4283d1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107387377"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107901488"
 ---
 # <a name="nuget-pack-and-restore-as-msbuild-targets"></a>NuGet spakuj i przywróć jako MSBuild obiekty docelowe
 
@@ -23,7 +23,7 @@ ms.locfileid: "107387377"
 
 W [formacie PackageReference](../consume-packages/package-references-in-project-files.md) program 4.0+ może przechowywać wszystkie metadane manifestu bezpośrednio w pliku projektu, NuGet zamiast używać oddzielnego `.nuspec` pliku.
 
-W przypadku programu 15.1+ jest również pierwszoklasowym obywatelem z celami i , MSBuild NuGet jak MSBuild `pack` `restore` opisano poniżej. Te obiekty docelowe umożliwiają pracę z usługą tak NuGet samo jak z innymi zadaniami lub MSBuild obiektami docelowymi. Aby uzyskać instrukcje NuGet dotyczące tworzenia pakietu przy użyciu polecenia , zobacz Tworzenie pakietu przy użyciu MSBuild [ NuGet polecenia MSBuild ](../create-packages/creating-a-package-msbuild.md). (W przypadku NuGet W wersji 3.x lub starszej zamiast tego należy użyć poleceń [pakowania](../reference/cli-reference/cli-ref-pack.md) [i](../reference/cli-reference/cli-ref-restore.md) przywracania za pośrednictwem interfejsu NuGet wiersza polecenia).
+W przypadku programu 15.1+ jest również pierwszoklasowym obywatelem z celami i , MSBuild NuGet jak MSBuild `pack` `restore` opisano poniżej. Te obiekty docelowe umożliwiają pracę z usługą tak NuGet jak z innymi zadaniami lub MSBuild obiektami docelowymi. Aby uzyskać instrukcje NuGet dotyczące tworzenia pakietu przy użyciu polecenia , zobacz Tworzenie pakietu przy użyciu MSBuild [ NuGet polecenia MSBuild ](../create-packages/creating-a-package-msbuild.md). (W przypadku NuGet W wersji 3.x lub starszej zamiast tego należy użyć poleceń [pakowania](../reference/cli-reference/cli-ref-pack.md) [i](../reference/cli-reference/cli-ref-restore.md) przywracania za pośrednictwem interfejsu NuGet wiersza polecenia).
 
 ## <a name="target-build-order"></a>Kolejność kompilowania obiektów docelowych
 
@@ -47,7 +47,7 @@ Podobnie można napisać MSBuild zadanie, napisać własny element docelowy i ko
 
 W przypadku projektów .NET, które używają formatu , przy użyciu rysuje dane wejściowe z pliku projektu do `PackageReference` `msbuild -t:pack` użycia podczas tworzenia NuGet pakietu.
 
-W poniższej tabeli MSBuild opisano właściwości, które można dodać do pliku projektu w pierwszym `<PropertyGroup>` węźle. Te zmiany można łatwo wprowadzić w programie Visual Studio 2017 lub nowszym, klikając prawym przyciskiem myszy projekt i wybierając pozycję **Edytuj {project_name}** w menu kontekstowym. Dla wygody tabela jest zorganizowana według równoważnej właściwości w [ `.nuspec` pliku](../reference/nuspec.md).
+W poniższej tabeli MSBuild opisano właściwości, które można dodać do pliku projektu w pierwszym `<PropertyGroup>` węźle. Te zmiany można łatwo wprowadzić w programie Visual Studio 2017 lub nowszym, klikając prawym przyciskiem myszy projekt i wybierając pozycję Edytuj **{project_name}** w menu kontekstowym. Dla wygody tabela jest zorganizowana według równoważnej właściwości w [ `.nuspec` pliku](../reference/nuspec.md).
 
 > [!NOTE]
 > `Owners` Właściwości `Summary` i z nie są obsługiwane w `.nuspec` programie MSBuild .
@@ -55,7 +55,7 @@ W poniższej tabeli MSBuild opisano właściwości, które można dodać do plik
 | nuspecAtrybut/wartość | MSBuild Właściwość | Domyślne | Uwagi |
 |--------|--------|--------|--------|
 | `Id` | `PackageId` | `$(AssemblyName)` | `$(AssemblyName)` Z MSBuild |
-| `Version` | `PackageVersion` | Wersja | Jest to zgodne z semver, na przykład `1.0.0` `1.0.0-beta` , lub `1.0.0-beta-00345` |
+| `Version` | `PackageVersion` | Wersja | Jest to zgodne ze semver, na przykład `1.0.0` `1.0.0-beta` , lub `1.0.0-beta-00345` |
 | `VersionPrefix` | `PackageVersionPrefix` | puste | Zastępowanie `PackageVersion` ustawień `PackageVersionPrefix` |
 | `VersionSuffix` | `PackageVersionSuffix` | puste | `$(VersionSuffix)` z MSBuild . Zastępowanie `PackageVersion` ustawień `PackageVersionSuffix` |
 | `Authors` | `Authors` | Nazwa użytkownika bieżącego użytkownika | Rozdzielana średnikami lista autorów pakietów pasujących do nazw profilów na nuget.org. Są one wyświetlane w galerii na nuget.org i są używane do odsyłania pakietów NuGet przez tych samych autorów. |
@@ -73,10 +73,10 @@ W poniższej tabeli MSBuild opisano właściwości, które można dodać do plik
 | `Readme` | `PackageReadmeFile` | puste | Należy jawnie spakować przywołyowany plik readme.|
 | `Tags` | `PackageTags` | puste | Rozdzielana średnikami lista tagów, która wyznacza pakiet. |
 | `ReleaseNotes` | `PackageReleaseNotes` | puste | Informacje o wersji pakietu. |
-| `Repository/Url` | `RepositoryUrl` | puste | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przykład: *https://github.com/ NuGet / NuGet . Client.git.* |
+| `Repository/Url` | `RepositoryUrl` | puste | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przykład: *https://github.com/ NuGet / NuGet . Client.git*. |
 | `Repository/Type` | `RepositoryType` | puste | Typ repozytorium. Przykłady: `git` (ustawienie domyślne), `tfs` . |
 | `Repository/Branch` | `RepositoryBranch` | puste | Opcjonalne informacje o gałęzi repozytorium. `RepositoryUrl` Należy również określić dla tej właściwości, która ma zostać uwzględniona. Przykład: *master* NuGet (4.7.0+). |
-| `Repository/Commit` | `RepositoryCommit` | puste | Opcjonalne zatwierdzenie repozytorium lub zestaw zmian w celu wskazania źródła, z którego został s zbudowany pakiet. `RepositoryUrl` Należy również określić dla tej właściwości do dołączona. Przykład: *0e4d1b598f350b3dc675018d539114d1328189ef* ( NuGet 4.7.0+). |
+| `Repository/Commit` | `RepositoryCommit` | puste | Opcjonalne zatwierdzenie repozytorium lub zestaw zmian w celu wskazania źródła, z którego został s zbudowany pakiet. `RepositoryUrl` Należy również określić dla tej właściwości, aby można było do nich do nich dołączona. Przykład: *0e4d1b598f350b3dc675018d539114d1328189ef* ( NuGet 4.7.0+). |
 | `PackageType` | `<PackageType>DotNetCliTool, 1.0.0.0;Dependency, 2.0.0.0</PackageType>` | | |
 | `Summary` | Nieobsługiwane | | |
 
@@ -86,7 +86,7 @@ W poniższej tabeli MSBuild opisano właściwości, które można dodać do plik
 | - | - |
 | `IsPackable` | Wartość logiczna określająca, czy można spakować projekt. Wartość domyślna to `true`. |
 | `SuppressDependenciesWhenPacking` | Ustaw na `true` , aby pominąć zależności pakietu z wygenerowanego NuGet pakietu. |
-| `PackageVersion` | Określa wersję pakietu wynikowego. Akceptuje wszystkie formy ciągu NuGet wersji. Wartość domyślna to wartość , czyli właściwości `$(Version)` `Version` w projekcie. |
+| `PackageVersion` | Określa wersję pakietu wynikowego. Akceptuje wszystkie formy ciągu NuGet wersji. Wartość domyślna to `$(Version)` wartość , czyli właściwości w `Version` projekcie. |
 | `PackageId` | Określa nazwę pakietu wynikowego. Jeśli nie zostanie określony, operacja domyślnie będzie używać nazwy katalogu lub jako `pack` `AssemblyName` nazwy pakietu. |
 | `PackageDescription` | Długi opis pakietu dla wyświetlania interfejsu użytkownika. |
 | `Authors` | Rozdzielana średnikami lista autorów pakietów pasujących do nazw profilów na nuget.org. Są one wyświetlane w galerii na nuget.org i są używane do odsyłania pakietów NuGet przez tych samych autorów. |
@@ -106,12 +106,12 @@ W poniższej tabeli MSBuild opisano właściwości, które można dodać do plik
 | `IncludeSymbols` | Ta wartość logiczna wskazuje, czy pakiet powinien utworzyć dodatkowy pakiet symboli podczas pakowania projektu. Format pakietu symboli jest kontrolowany przez `SymbolPackageFormat` właściwość . Aby uzyskać więcej informacji, zobacz [IncludeSymbols](#includesymbols). |
 | `IncludeSource` | Ta wartość logiczna wskazuje, czy proces pakietu powinien utworzyć pakiet źródłowy. Pakiet źródłowy zawiera kod źródłowy biblioteki, a także pliki PDB. Pliki źródłowe są umieszczane `src/ProjectName` w katalogu w wynikowym pliku pakietu. Aby uzyskać więcej informacji, zobacz [IncludeSource](#includesource). |
 | `PackageType` | |
-| `IsTool` | Określa, czy wszystkie pliki wyjściowe są kopiowane do folderu *tools,* a nie do *folderu lib.* Aby uzyskać więcej informacji, zobacz [IsTool](#istool). |
+| `IsTool` | Określa, czy wszystkie pliki wyjściowe są kopiowane do folderu *tools* zamiast do *folderu lib.* Aby uzyskać więcej informacji, zobacz [IsTool](#istool). |
 | `RepositoryUrl` | Adres URL repozytorium używany do klonowania lub pobierania kodu źródłowego. Przykład: *https://github.com/ NuGet / NuGet . Client.git*. |
 | `RepositoryType` | Typ repozytorium. Przykłady: `git` (ustawienie domyślne), `tfs` . |
 | `RepositoryBranch` | Opcjonalne informacje o gałęzi repozytorium. `RepositoryUrl` Należy również określić dla tej właściwości, aby można było do nich do nich dołączona. Przykład: *master* NuGet (4.7.0+). |
-| `RepositoryCommit` | Opcjonalne zatwierdzenie repozytorium lub zestaw zmian w celu wskazania źródła, z którego został s zbudowany pakiet. `RepositoryUrl` Należy również określić dla tej właściwości do dołączona. Przykład: *0e4d1b598f350b3dc675018d539114d1328189ef* ( NuGet 4.7.0+). |
-| `SymbolPackageFormat` | Określa format pakietu symboli. W przypadku pliku "symbols.nupkg" starszy pakiet symboli jest tworzony z rozszerzeniem *.symbols.nupkg* zawierającym pliki PDB, DLL i inne pliki wyjściowe. W przypadku polecenia "snupkg" tworzony jest pakiet symboli snupkg zawierający przenośne pliki PDB. Wartość domyślna to "symbols.nupkg". |
+| `RepositoryCommit` | Opcjonalne zatwierdzenie repozytorium lub zestaw zmian, aby wskazać źródło, z którego został s zbudowany pakiet. `RepositoryUrl` Należy również określić dla tej właściwości, aby można było do nich do nich dołączona. Przykład: *0e4d1b598f350b3dc675018d539114d1328189ef* ( NuGet 4.7.0+). |
+| `SymbolPackageFormat` | Określa format pakietu symboli. W przypadku pliku "symbols.nupkg" starszy pakiet symboli jest tworzony z rozszerzeniem *.symbols.nupkg* zawierającym pliki PDB, DLL i inne pliki wyjściowe. W przypadku polecenia "snupkg" tworzony jest pakiet symboli tabupkg zawierający przenośne pliki PDB. Wartość domyślna to "symbols.nupkg". |
 | `NoPackageAnalysis` | Określa, `pack` że nie należy uruchamiać analizy pakietu po sbudowania pakietu. |
 | `MinClientVersion` | Określa minimalną wersję klienta, który może zainstalować ten pakiet, wymuszaną przez nuget.exe NuGet i Visual Studio Menedżer pakietów. |
 | `IncludeBuildOutput` | Ta wartość logiczna określa, czy zestawy wyjściowe kompilacji powinny być spakowane w pliku *nupkg,* czy nie. |
@@ -139,7 +139,7 @@ Aby pominąć zależności pakietu z wygenerowanego pakietu, ustaw wartość , a
 
 #### <a name="packing-an-icon-image-file"></a>Pakowanie pliku obrazu ikony
 
-Podczas pakowania pliku obrazu ikony użyj właściwości , aby określić ścieżkę pliku ikony `PackageIcon` względem katalogu głównego pakietu. Ponadto upewnij się, że plik znajduje się w pakiecie . Rozmiar pliku obrazu jest ograniczony do 1 MB. Obsługiwane formaty plików to JPEG i PNG. Zalecamy rozdzielczość obrazu 128 x 128.
+Podczas pakowania pliku obrazu ikony użyj właściwości , aby określić ścieżkę pliku ikony względem katalogu `PackageIcon` głównego pakietu. Ponadto upewnij się, że plik znajduje się w pakiecie . Rozmiar pliku obrazu jest ograniczony do 1 MB. Obsługiwane formaty plików to JPEG i PNG. Zalecamy rozdzielczość obrazu 128 x 128.
 
 Na przykład:
 
@@ -162,6 +162,8 @@ Na przykład:
 Aby uzyskać nuspec odpowiednik, zobacz odwołanie do [ nuspec ikony](nuspec.md#icon).
 
 ### <a name="packagereadmefile"></a>PackageReadmeFile
+
+*Obsługiwane w **NuGet wersji 5.10.0 (wersja zapoznawcza 2)**  /  **.NET 5.0.3** i wersjach powyżej*
 
 Podczas pakowania pliku readme należy użyć właściwości , aby określić ścieżkę pakietu względem katalogu `PackageReadmeFile` głównego pakietu. Oprócz tego należy się upewnić, że plik znajduje się w pakiecie . Obsługiwane formaty plików obejmują tylko markdown *(md).*
 
@@ -198,7 +200,7 @@ Zobacz [Odwołania do pakietów w plikach projektu](../consume-packages/package-
 
 ### <a name="project-to-project-references"></a>Odwołania projektu do projektu
 
-Odwołania projektu do projektu są domyślnie traktowane jako NuGet odwołania do pakietu. Na przykład:
+Odwołania projektu do projektu są domyślnie traktowane jako odwołania NuGet do pakietu. Na przykład:
 
 ```xml
 <ProjectReference Include="..\UwpLibrary2\UwpLibrary2.csproj"/>
@@ -214,7 +216,7 @@ Możesz również dodać następujące metadane do odwołania do projektu:
 
 ### <a name="including-content-in-a-package"></a>Łącznie z zawartością w pakiecie
 
-Aby dołączyć zawartość, dodaj dodatkowe metadane do istniejącego `<Content>` elementu. Domyślnie wszystkie elementy typu "Zawartość" są uwzględniane w pakiecie, chyba że zostaną przesłonięcia przy użyciu wpisów podobnych do następujących:
+Aby dołączyć zawartość, dodaj dodatkowe metadane do istniejącego `<Content>` elementu. Domyślnie wszystko typu "Zawartość" jest uwzględniane w pakiecie, chyba że zastąpisz wpisami podobnymi do następujących:
 
  ```xml
 <Content Include="..\win7-x64\libuv.txt">
@@ -257,7 +259,7 @@ W przypadku `MSBuild -t:pack -p:IncludeSymbols=true` korzystania z programu odpo
 
 ### <a name="includesource"></a>IncludeSource
 
-Jest to taka sama jak , z tą różnicą, że kopiuje również pliki źródłowe `IncludeSymbols` `.pdb` wraz z plikami. Wszystkie pliki typu są kopiowane do zachowywania struktury folderów ścieżki `Compile` `src\<ProjectName>\` względnej w wynikowym pakiecie. To samo dzieje się również w przypadku plików źródłowych dowolnego `ProjectReference` z nich, dla `TreatAsPackageReference` którego ustawiono wartość `false` .
+Jest to taka sama jak `IncludeSymbols` , z tą różnicą, że kopiuje pliki źródłowe wraz `.pdb` z plikami. Wszystkie pliki typu są kopiowane do zachowywania struktury folderów ścieżki `Compile` `src\<ProjectName>\` względnej w wynikowym pakiecie. To samo dzieje się również w przypadku plików źródłowych `ProjectReference` dowolnego, dla którego `TreatAsPackageReference` ustawiono wartość `false` .
 
 Jeśli plik typu Compile znajduje się poza folderem projektu, jest po prostu dodawany do `src\<ProjectName>\` pliku .
 
@@ -310,13 +312,13 @@ Ze względów historycznych ścieżki bez rozszerzenia należy traktować NuGet 
 
 ### <a name="istool"></a>IsTool
 
-W przypadku korzystania z programu wszystkie pliki wyjściowe określone w scenariuszu Zestawy wyjściowe są kopiowane do folderu , `MSBuild -t:pack -p:IsTool=true` a nie do folderu [](#output-assemblies) `tools` `lib` . Należy zauważyć, że różni się to od `DotNetCliTool` obiektu , który jest określony przez ustawienie w pliku `PackageType` `.csproj` .
+W przypadku korzystania z programu wszystkie pliki wyjściowe określone w scenariuszu Zestawów wyjściowych są kopiowane do folderu , `MSBuild -t:pack -p:IsTool=true` a nie do folderu [](#output-assemblies) `tools` `lib` . Należy zauważyć, że różni się to od `DotNetCliTool` obiektu , który jest określony przez ustawienie w pliku `PackageType` `.csproj` .
 
 ### <a name="packing-using-a-nuspec-file"></a>Pakowanie przy użyciu `.nuspec` pliku
 
-Mimo że zaleca się, [aby](../reference/msbuild-targets.md#pack-target) zamiast tego uwzględnić wszystkie właściwości, które zwykle znajdują się w pliku projektu, można użyć pliku do `.nuspec` `.nuspec` pakowania projektu. W przypadku projektu w stylu innym niż SDK, który używa programu , należy zaimportować plik , aby `PackageReference` można było wykonać zadanie `NuGet.Build.Tasks.Pack.targets` pakietu. Aby można było spakować plik, należy przywrócić nuspec projekt. (Projekt w stylu zestawu SDK domyślnie zawiera elementy docelowe pakietu).
+Mimo że zaleca się, [aby](../reference/msbuild-targets.md#pack-target) zamiast tego uwzględnić wszystkie właściwości, które zwykle znajdują się w pliku projektu, można użyć pliku do `.nuspec` `.nuspec` pakowania projektu. W przypadku projektu bez zestawu SDK, który używa narzędzia , należy zaimportować plik , aby `PackageReference` można było wykonać zadanie `NuGet.Build.Tasks.Pack.targets` pakietu. Aby można było spakować plik, należy przywrócić nuspec projekt. (Projekt w stylu zestawu SDK domyślnie zawiera elementy docelowe pakietu).
 
-Docelowa framework pliku projektu nie ma znaczenia i nie jest używana podczas pakowania nuspec obiektu . Następujące trzy właściwości MSBuild są istotne w przypadku pakowania przy użyciu obiektu `.nuspec` :
+Docelowa framework pliku projektu nie ma znaczenia i nie jest używana podczas pakowania obiektu nuspec . Następujące trzy właściwości MSBuild są istotne w przypadku pakowania przy użyciu obiektu `.nuspec` :
 
 1. `NuspecFile`: względna lub bezwzględna ścieżka `.nuspec` do pliku używanego do pakowania.
 1. `NuspecProperties`: rozdzielana średnikami lista par klucz=wartość. Ze względu na sposób działania analizowania wiersza polecenia należy określić wiele właściwości MSBuild w następujący sposób: `-p:NuspecProperties="key1=value1;key2=value2"` .  
@@ -353,9 +355,9 @@ Przykład pliku *csproj służącego* do pakowania nuspec pliku to:
 
 ### <a name="advanced-extension-points-to-create-customized-package"></a>Zaawansowane punkty rozszerzenia do tworzenia dostosowanego pakietu
 
-Obiekt `pack` docelowy udostępnia dwa punkty rozszerzenia, które są uruchamiane w kompilacji wewnętrznej, określonej struktury docelowej. Punkty rozszerzenia obsługują m.in. zawartość i zestawy specyficzne dla docelowej struktury w pakiecie:
+Obiekt `pack` docelowy udostępnia dwa punkty rozszerzenia, które są uruchamiane w kompilacji specyficznej dla wewnętrznej, docelowej struktury. Punkty rozszerzenia obsługują m.in. zawartość i zestawy specyficzne dla docelowej struktury w pakiecie:
 
-- `TargetsForTfmSpecificBuildOutput`target: użyj dla plików w `lib` folderze lub folderze określonym za pomocą . `BuildOutputTargetFolder`
+- `TargetsForTfmSpecificBuildOutput` target: użyj dla plików w `lib` folderze lub folderze określonym za pomocą `BuildOutputTargetFolder` .
 - `TargetsForTfmSpecificContentInPackage` target: użyj dla plików spoza `BuildOutputTargetFolder` .
 
 #### `TargetsForTfmSpecificBuildOutput`
@@ -363,7 +365,7 @@ Obiekt `pack` docelowy udostępnia dwa punkty rozszerzenia, które są uruchamia
 Napisz niestandardowy element docelowy i określ go jako wartość `$(TargetsForTfmSpecificBuildOutput)` właściwości . W przypadku plików, które muszą przejść do pliku (domyślnie lib), obiekt docelowy powinien zapisać te pliki w grupie ItemGroup i ustawić `BuildOutputTargetFolder` `BuildOutputInPackage` następujące dwie wartości metadanych:
 
 - `FinalOutputPath`: ścieżka bezwzględna pliku; Jeśli nie zostanie podany, tożsamość jest używana do oceny ścieżki źródłowej.
-- `TargetPath`: (Opcjonalnie) Ustaw, gdy plik musi przejść do podfolderu w programie , na przykład zestawów satelicie, które są dostępne w `lib\<TargetFramework>` odpowiednich folderach kulturowych. Wartość domyślna to nazwa pliku.
+- `TargetPath`: (Opcjonalnie) Ustaw, gdy plik musi przejść do podfolderu w programie , na przykład zestawów satelicie, które trafiają do `lib\<TargetFramework>` odpowiednich folderów kulturowych. Wartość domyślna to nazwa pliku.
 
 Przykład:
 
@@ -386,7 +388,7 @@ Przykład:
 Napisz niestandardowy element docelowy i określ go jako wartość `$(TargetsForTfmSpecificContentInPackage)` właściwości . W przypadku plików do uwzględnienia w pakiecie element docelowy powinien zapisać te pliki w grupie ItemGroup i ustawić `TfmSpecificPackageFile` następujące opcjonalne metadane:
 
 - `PackagePath`: ścieżka, w której plik powinien być wyjściowy w pakiecie. NuGet program wydaje ostrzeżenie, jeśli do tej samej ścieżki pakietu zostanie dodany więcej niż jeden plik.
-- `BuildAction`: akcja kompilacji do przypisania do pliku, wymagana tylko wtedy, gdy ścieżka pakietu znajduje się w `contentFiles` folderze . Wartość domyślna to "Brak".
+- `BuildAction`: akcja kompilacji do przypisania do pliku, wymagana tylko wtedy, gdy ścieżka pakietu znajduje się w `contentFiles` folderze . Wartość domyślna to "None".
 
 Przykład:
 ```xml
@@ -434,14 +436,14 @@ Dodatkowe ustawienia przywracania mogą pochodzić MSBuild z właściwości w pl
 | `RestoreDisableParallel` | Ogranicz pobieranie do jednego na raz. |
 | `RestoreConfigFile` | Ścieżka do `Nuget.Config` pliku do zastosowania. |
 | `RestoreNoCache` | W przypadku wartości true unika używania buforowanych pakietów. Zobacz [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej.](../consume-packages/managing-the-global-packages-and-cache-folders.md) |
-| `RestoreIgnoreFailedSources` | W przypadku wartości true ignoruje brakujące źródła pakietów lub brakujące. |
+| `RestoreIgnoreFailedSources` | W przypadku wartości true ignoruje brakujące źródła pakietów lub je ignoruje. |
 | `RestoreFallbackFolders` | Foldery rezerwowe używane w taki sam sposób jak folder pakietów użytkowników. |
 | `RestoreAdditionalProjectSources` | Dodatkowe źródła do użycia podczas przywracania. |
 | `RestoreAdditionalProjectFallbackFolders` | Dodatkowe foldery rezerwowe do użycia podczas przywracania. |
 | `RestoreAdditionalProjectFallbackFoldersExcludes` | Wyklucza foldery rezerwowe określone w `RestoreAdditionalProjectFallbackFolders` |
 | `RestoreTaskAssemblyFile` | Ścieżka do `NuGet.Build.Tasks.dll` . |
 | `RestoreGraphProjectInput` | Rozdzielana średnikami lista projektów do przywrócenia, która powinna zawierać ścieżki bezwzględne. |
-| `RestoreUseSkipNonexistentTargets`  | Gdy projekty są zbierane za pośrednictwem programu , określa, czy są one MSBuild zbierane przy użyciu `SkipNonexistentTargets` optymalizacji. Jeśli nie zostanie ustawiona, wartość domyślna to `true` . Konsekwencją jest szybkie działanie w przypadku, gdy nie można zaimportować obiektów docelowych projektu. |
+| `RestoreUseSkipNonexistentTargets`  | Gdy projekty są zbierane za pośrednictwem programu , określa, czy są one MSBuild zbierane przy użyciu `SkipNonexistentTargets` optymalizacji. Jeśli wartość nie zostanie ustawiona, wartość domyślna to `true` . Konsekwencją jest szybkie działanie w przypadku, gdy nie można zaimportować obiektów docelowych projektu. |
 | `MSBuildProjectExtensionsPath` | Folder wyjściowy z wartością domyślną `BaseIntermediateOutputPath` i `obj` folderem . |
 | `RestoreForce` | W projektach opartych na packageReference program wymusza rozwiązanie wszystkich zależności, nawet jeśli ostatnie przywracanie powiodło się. Określenie tej flagi jest podobne do usuwania `project.assets.json` pliku. Nie pomija to pamięci podręcznej http. |
 | `RestorePackagesWithLockFile` | Decyduje się na użycie pliku blokady. |
@@ -527,7 +529,7 @@ Alternatywnie można ją włączyć, ustawiając właściwość w Directory.Buil
 > [!NOTE]
 > Od Visual Studio 2019.x i 5.x ta funkcja jest uznawana za eksperymentalną i NuGet zrezygnuje z jej otrzymywania. Postępuj [ NuGet zgodnie z /Home#9803,](https://github.com/NuGet/Home/issues/9803) aby uzyskać szczegółowe informacje na temat tego, kiedy ta funkcja będzie domyślnie włączona.
 
-Statyczne przywracanie grafu zmienia część msbuild przywracania, odczytywanie i ocenianie projektu, ale nie algorytm przywracania! Algorytm przywracania jest taki sam we wszystkich NuGet narzędziach NuGet (exe, MSBuild exe, dotnet.exe i Visual Studio).
+Statyczne przywracanie grafu zmienia część msbuild przywracania, odczytywanie i ocenianie projektu, ale nie algorytm przywracania! Algorytm przywracania jest taki sam we wszystkich narzędziach NuGet NuGet (exe, MSBuild exe, dotnet.exe i Visual Studio).
 
 W bardzo nielicznych scenariuszach przywracanie statycznego grafu może zachowywać się inaczej niż bieżące przywracanie, a niektóre zadeklarowane elementy PackageReferences lub ProjectReferences mogą być brakujące.
 

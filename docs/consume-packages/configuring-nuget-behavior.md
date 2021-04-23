@@ -1,45 +1,45 @@
 ---
 title: Typowe konfiguracje narzędzia NuGet
-description: NuGet.Config pliki kontrolują zachowanie narzędzia NuGet zarówno globalnie, jak i dla każdego projektu i są modyfikowane za pomocą polecenia konfiguracji NuGet.
+description: NuGet.Config plików sterują zachowaniem nuGet zarówno globalnie, jak i dla każdego projektu, i są modyfikowane za pomocą polecenia nuget config.
 author: JonDouglas
 ms.author: jodou
 ms.date: 10/25/2017
 ms.topic: conceptual
-ms.openlocfilehash: 35339626b0a20ccfceafa89fef94fb3187013fd7
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 18e3af7145495b5753b5900915ffb4b07942b856
+ms.sourcegitcommit: 40c039ace0330dd9e68922882017f9878f4283d1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98774853"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107901476"
 ---
 # <a name="common-nuget-configurations"></a>Typowe konfiguracje narzędzia NuGet
 
-Zachowanie narzędzia NuGet jest zależne od ustawień skumulowanych w jednym lub kilku `NuGet.Config` plikach (XML), które mogą istnieć na poziomach na poziomie projektu, użytkownika i komputera. Plik globalny `NuGetDefaults.Config` również służy do konfigurowania źródeł pakietów. Ustawienia dotyczą wszystkich poleceń wydawanych w interfejsie wiersza polecenia, konsoli Menedżera pakietów i interfejsu użytkownika Menedżera pakietów.
+Zachowanie programu NuGet jest oparte na skumulowanych ustawieniach w co najmniej jednym pliku (XML), które mogą istnieć na poziomie całego projektu, użytkownika `NuGet.Config` i komputera. Plik globalny `NuGetDefaults.Config` również specjalnie konfiguruje źródła pakietów. Ustawienia dotyczą wszystkich poleceń wydanych w interfejsie wiersza polecenia, Menedżer pakietów i interfejsie Menedżer pakietów użytkownika.
 
-## <a name="config-file-locations-and-uses"></a>Lokalizacje i użycia plików konfiguracji
+## <a name="config-file-locations-and-uses"></a>Lokalizacje i zastosowania pliku konfiguracji
 
-| Zakres | Lokalizacja pliku NuGet.Config | Opis |
+| Zakres | `NuGet.Config` lokalizacja pliku | Opis |
 | --- | --- | --- |
-| Rozwiązanie | Bieżący folder (folder rozwiązania) lub dowolny folder w katalogu głównym dysku.| W folderze rozwiązania ustawienia są stosowane do wszystkich projektów w podfolderach. Należy pamiętać, że jeśli plik konfiguracyjny znajduje się w folderze projektu, nie ma wpływu na ten projekt. |
-| Użytkownik | **System Windows:**`%appdata%\NuGet\NuGet.Config`<br/>**Mac/Linux:** `~/.config/NuGet/NuGet.Config` lub `~/.nuget/NuGet/NuGet.Config` (w zależności od dystrybucji systemu operacyjnego) <br/>Dodatkowe konfiguracje są obsługiwane na wszystkich platformach. Te konfiguracje nie mogą być edytowane przez narzędzia. </br> **System Windows:**`%appdata%\NuGet\config\*.Config` <br/>**Mac/Linux:** `~/.config/NuGet/config/*.config` oraz `~/.nuget/config/*.config` | Ustawienia dotyczą wszystkich operacji, ale są zastępowane przez dowolne ustawienia na poziomie projektu. |
-| Computer (Komputer) | **System Windows:**`%ProgramFiles(x86)%\NuGet\Config`<br/>**Mac/Linux:** `$XDG_DATA_HOME` . Jeśli `$XDG_DATA_HOME` ma wartość null lub jest pusty `~/.local/share` lub `/usr/local/share` będzie używany (zależy od dystrybucji systemu operacyjnego)  | Ustawienia dotyczą wszystkich operacji na komputerze, ale są zastępowane przez dowolne ustawienia użytkownika lub poziomu projektu. |
+| Rozwiązanie | Bieżący folder (folder rozwiązania) lub dowolny folder aż do katalogu głównego dysku.| W folderze rozwiązania ustawienia są stosowane do wszystkich projektów w podfolderach. Należy pamiętać, że jeśli plik konfiguracji zostanie umieszczony w folderze projektu, nie ma to wpływu na ten projekt. |
+| Użytkownik | **Windows:**`%appdata%\NuGet\NuGet.Config`<br/>**Mac/Linux:** `~/.config/NuGet/NuGet.Config` lub `~/.nuget/NuGet/NuGet.Config` (zależy od dystrybucji systemu operacyjnego) <br/>Dodatkowe konfiguracje są obsługiwane na wszystkich platformach. Tych konfiguracji nie można edytować za pomocą narzędzi. </br> **Windows:**`%appdata%\NuGet\config\*.Config` <br/>**Mac/Linux:** `~/.config/NuGet/config/*.config` Lub `~/.nuget/config/*.config` | Ustawienia mają zastosowanie do wszystkich operacji, ale są zastępowany przez dowolne ustawienia na poziomie projektu. |
+| Computer (Komputer) | **Windows:**`%ProgramFiles(x86)%\NuGet\Config`<br/>**Mac/Linux:** `$XDG_DATA_HOME` . Wartość `$XDG_DATA_HOME` null lub pusta albo wartość będzie używana `~/.local/share` `/usr/local/share` (różni się w zależności od dystrybucji systemu operacyjnego)  | Ustawienia mają zastosowanie do wszystkich operacji na komputerze, ale są zastępowany przez dowolne ustawienia na poziomie użytkownika lub projektu. |
 
 Uwagi dotyczące wcześniejszych wersji programu NuGet:
-- Pakiet NuGet 3,3 i wcześniejsze użycie `.nuget` folderu dla ustawień całego rozwiązania. Ten folder nie jest używany w programie NuGet 3.4 +.
-- W przypadku programu NuGet 2,6 do 3. x plik konfiguracyjny na poziomie komputera w systemie Windows został zlokalizowany w%ProgramData%\NuGet\Config [ \\ {IDE} [ \\ {Version} [ \\ {SKU}]]] \NuGet.Config, gdzie *{IDE}* może być *VisualStudio*, *{Version}* była wersją programu Visual Studio, taką jak *14,0*, i *{SKU}* to *społeczność*, *Pro* lub *Enterprise*. Aby przeprowadzić migrację ustawień do programu NuGet 4.0 +, po prostu skopiuj plik konfiguracyjny do% ProgramFiles (x86)% \ NuGet\Config. W systemie Linux ta poprzednia lokalizacja została/etc/opt oraz na komputerach Mac,/Library/Application Support support.
+- Program NuGet w wersji 3.3 i starszych używa `.nuget` folderu dla ustawień całego rozwiązania. Ten folder nie jest używany w programie NuGet 3.4+.
+- W przypadku pakietu NuGet w wersji 2.6 do 3.x plik konfiguracji na poziomie komputera w systemie Windows znajdował się w pliku , gdzie może to być , Visual Studio wersja, taka jak , i to , `%ProgramData%\NuGet\Config[\{IDE}[\{Version}[\{SKU}]]]\NuGet.Config` `{IDE}` lub `VisualStudio` `{Version}` `14.0` `{SKU}` `Community` `Pro` `Enterprise` . Aby przeprowadzić migrację ustawień do programu NuGet 4.0+, po prostu skopiuj plik konfiguracji do pliku `%ProgramFiles(x86)%\NuGet\Config` . W systemie Linux ta poprzednia lokalizacja to `/etc/opt` , a na komputerze Mac — `/Library/Application Support` .
 
 ## <a name="changing-config-settings"></a>Zmienianie ustawień konfiguracji
 
-`NuGet.Config`Plik to prosty plik tekstowy XML zawierający pary klucz/wartość, zgodnie z opisem w temacie [Ustawienia konfiguracji programu NuGet](../reference/nuget-config-file.md) .
+Plik `NuGet.Config` to prosty plik tekstowy XML zawierający pary klucz/wartość zgodnie z opisem w temacie Ustawienia konfiguracji [nuGet.](../reference/nuget-config-file.md)
 
-Ustawienia są zarządzane przy użyciu interfejsu wiersza [polecenia NuGet konfiguracji](../reference/cli-reference/cli-ref-config.md):
-- Domyślnie zmiany są wprowadzane w pliku konfiguracji na poziomie użytkownika.
-- Aby zmienić ustawienia w innym pliku, należy użyć `-configFile` przełącznika. W tym przypadku pliki mogą używać dowolnych nazw plików.
-- Klucze zawsze uwzględniają wielkość liter.
-- Aby zmienić ustawienia w pliku ustawień na poziomie komputera, wymagana jest podniesienie uprawnień.
+Ustawieniami zarządza się za pomocą polecenia [konfiguracji interfejsu](../reference/cli-reference/cli-ref-config.md)wiersza polecenia nuGet:
+- Domyślnie zmiany są dokonywane w pliku konfiguracji na poziomie użytkownika.
+- Aby zmienić ustawienia w innym pliku, użyj `-configFile` przełącznika . W takim przypadku pliki mogą używać dowolnej nazwy pliku.
+- W kluczach jest zawsze wielkość liter.
+- Podniesienie uprawnień jest wymagane do zmiany ustawień w pliku ustawień na poziomie komputera.
 
 > [!Warning]
-> Chociaż można modyfikować plik w dowolnym edytorze tekstu, pakiet NuGet (v 3.4.3 i nowsze) w trybie cichym ignoruje cały plik konfiguracyjny, jeśli zawiera źle sformułowany kod XML (niezgodne Tagi, nieprawidłowe znaki cudzysłowu itp.). Dlatego zaleca się zarządzanie ustawieniami przy użyciu `nuget config` .
+> Chociaż plik można zmodyfikować w dowolnym edytorze tekstów, nuGet (wersja 3.4.3 i nowsze) dyskretnie ignoruje cały plik konfiguracji, jeśli zawiera źle sformułowany kod XML (niezgodne tagi, nieprawidłowe cudzysłowy itp.). Dlatego lepiej jest zarządzać ustawieniem przy użyciu programu `nuget config` .
 
 ### <a name="setting-a-value"></a>Ustawianie wartości
 
@@ -72,7 +72,7 @@ nuget config -set repositoryPath=/home/packages -configfile $XDG_DATA_HOME/NuGet
 ```
 
 > [!Note]
-> W programie NuGet 3,4 i nowszych można używać zmiennych środowiskowych w dowolnej wartości, jak w `repositoryPath=%PACKAGEHOME%` systemach (Windows) i `repositoryPath=$PACKAGEHOME` (Mac/Linux).
+> W programie NuGet 3.4 lub nowszym można używać zmiennych środowiskowych w dowolnej wartości, tak jak w `repositoryPath=%PACKAGEHOME%` systemach (Windows) i `repositoryPath=$PACKAGEHOME` (Mac/Linux).
 
 ### <a name="removing-a-value"></a>Usuwanie wartości
 
@@ -88,7 +88,7 @@ nuget config -set repositoryPath= -configfile /home/my.Config
 
 ### <a name="creating-a-new-config-file"></a>Tworzenie nowego pliku konfiguracji
 
-Skopiuj szablon poniżej do nowego pliku, a następnie użyj, `nuget config -configFile <filename>` Aby ustawić wartości:
+Skopiuj poniższy szablon do nowego pliku, a następnie użyj funkcji `nuget config -configFile <filename>` , aby ustawić wartości:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -98,23 +98,21 @@ Skopiuj szablon poniżej do nowego pliku, a następnie użyj, `nuget config -con
 
 ## <a name="how-settings-are-applied"></a>Jak są stosowane ustawienia
 
-Wiele `NuGet.Config` plików umożliwia przechowywanie ustawień w różnych lokalizacjach, tak aby dotyczyły one jednego projektu, grupy projektów lub wszystkich projektów. Te ustawienia są stosowane zbiorczo do każdej operacji NuGet wywołanej z wiersza polecenia lub z programu Visual Studio z ustawieniami, które istnieją "najbliżej" w projekcie lub bieżącym folderze, który ma pierwszeństwo.
+Wiele plików umożliwia przechowywanie ustawień w różnych lokalizacjach, tak aby dotyczyły pojedynczego projektu, grupy `NuGet.Config` projektów lub wszystkich projektów. Te ustawienia mają zbiorczo zastosowanie do każdej operacji NuGet wywoływanej z wiersza polecenia lub z programu Visual Studio, z ustawieniami, które istnieją "najbliżej" projektu lub bieżącego folderu, które mają pierwszeństwo.
 
-W programie NuGet są ładowane ustawienia z różnych plików konfiguracji w następującej kolejności:
+W szczególności program NuGet ładuje ustawienia z różnych plików konfiguracji w następującej kolejności:
 
-1. [PlikNuGetDefaults.Config](#nuget-defaults-file), który zawiera ustawienia dotyczące tylko źródeł pakietów.
+1. Plik [ `NuGetDefaults.Config` ,](#nuget-defaults-file)który zawiera ustawienia związane tylko ze źródłami pakietów.
 1. Plik na poziomie komputera.
 1. Plik na poziomie użytkownika.
-1. Plik określony przy użyciu `-configFile` .
-1. Pliki znajdujące się w każdym folderze w ścieżce z katalogu głównego dysku do bieżącego folderu (gdzie nuget.exe są wywoływane lub folder zawierający projekt programu Visual Studio). Na przykład jeśli polecenie jest wywoływane w c:\A\B\C, NuGet szuka i ładuje pliki konfiguracji w c: \, then c:\a, c:\A\B i finally c:\A\B\C.
+1. Plik określony za `-configFile` pomocą .
+1. Pliki znalezione w każdym folderze w ścieżce od katalogu głównego dysku do bieżącego folderu (gdzie jest wywoływany lub folderu zawierającego Visual Studio `nuget.exe` projektu). Jeśli na przykład polecenie jest wywoływane w pliku , program NuGet szuka i ładuje pliki konfiguracji w plikach `c:\A\B\C` , następnie , , i na końcu `c:\` `c:\A` `c:\A\B` `c:\A\B\C` .
 
-Ponieważ program NuGet odnajdzie ustawienia w tych plikach, są one stosowane w następujący sposób:
+Gdy nuGet znajdzie ustawienia w tych plikach, są one stosowane w następujący sposób:
 
-1. W przypadku elementów jednego elementu NuGet zastępuje wszystkie poprzednio znalezione wartości dla tego samego klucza. Oznacza to, że ustawienia, które są "najbliżej" w bieżącym folderze lub projekcie zastępują inne znalezione wcześniej. Na przykład `defaultPushSource` ustawienie w `NuGetDefaults.Config` jest zastępowane, jeśli istnieje w innym pliku konfiguracyjnym.
-
-1. W przypadku elementów kolekcji (takich jak `<packageSources>` ) pakiet NuGet łączy wartości ze wszystkich plików konfiguracji w jedną kolekcję.
-
-1. Gdy `<clear />` jest obecny dla danego węzła, pakiet NuGet ignoruje wcześniej zdefiniowane wartości konfiguracji dla tego węzła.
+1. W przypadku elementów z jednym elementem program NuGet zastąpił wszystkie wcześniej znalezione wartości dla tego samego klucza. Oznacza to, że ustawienia znajdujące się "najbliżej" bieżącego folderu lub projektu przesłaniają wszystkie znalezione wcześniej ustawienia. Na przykład ustawienie `defaultPushSource` w pliku `NuGetDefaults.Config` zostanie zastąpione, jeśli istnieje w dowolnym innym pliku konfiguracji.
+1. W przypadku elementów kolekcji (takich jak ) program NuGet łączy wartości ze `<packageSources>` wszystkich plików konfiguracji w jedną kolekcję.
+1. Gdy `<clear />` jest obecny dla danego węzła, nuGet ignoruje wcześniej zdefiniowane wartości konfiguracji dla tego węzła.
 
 ### <a name="settings-walkthrough"></a>Przewodnik po ustawieniach
 
@@ -131,9 +129,9 @@ disk_drive_2
     tmp
 ```
 
-Następnie `NuGet.Config` w poniższych lokalizacjach znajdują się cztery pliki o podaną zawartość. (Plik na poziomie komputera nie jest uwzględniony w tym przykładzie, ale zachowuje się podobnie do pliku na poziomie użytkownika).
+Następnie masz cztery `NuGet.Config` pliki w następujących lokalizacjach z podaną zawartością. (Plik na poziomie komputera nie jest uwzględniony w tym przykładzie, ale będzie działać podobnie do pliku na poziomie użytkownika).
 
-Plik A. plik na poziomie użytkownika ( `%appdata%\NuGet\NuGet.Config` w systemie Windows, `~/.config/NuGet/NuGet.Config` na komputerze Mac/Linux):
+Plik A. Plik na poziomie użytkownika ( `%appdata%\NuGet\NuGet.Config` w systemie Windows w systemie `~/.config/NuGet/NuGet.Config` Mac/Linux):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -144,7 +142,7 @@ Plik A. plik na poziomie użytkownika ( `%appdata%\NuGet\NuGet.Config` w systemi
 </configuration>
 ```
 
-Plik B. disk_drive_2/NuGet.Config:
+Plik B. `disk_drive_2/NuGet.Config` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -158,7 +156,7 @@ Plik B. disk_drive_2/NuGet.Config:
 </configuration>
 ```
 
-Plik C. disk_drive_2/Project1/NuGet.Config:
+Plik C. `disk_drive_2/Project1/NuGet.Config` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -174,7 +172,7 @@ Plik C. disk_drive_2/Project1/NuGet.Config:
 </configuration>
 ```
 
-Plik D. disk_drive_2/Project2/NuGet.Config:
+Plik D. `disk_drive_2/Project2/NuGet.Config` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -186,21 +184,21 @@ Plik D. disk_drive_2/Project2/NuGet.Config:
 </configuration>
 ```
 
-Następnie program NuGet ładuje i stosuje ustawienia w następujący sposób, w zależności od tego, gdzie jest wywoływany:
+Następnie nuGet ładuje i stosuje ustawienia w następujący sposób, w zależności od tego, gdzie jest wywoływany:
 
-- **Wywołane z disk_drive_1/users**: używany jest tylko repozytorium domyślne wymienione w pliku konfiguracji na poziomie użytkownika (A), ponieważ jest to jedyny plik znaleziony w disk_drive_1.
+- **Wywoływane `disk_drive_1/users` z**: używane jest tylko domyślne repozytorium wymienione w pliku konfiguracji na poziomie użytkownika (A), ponieważ jest to jedyny plik znaleziony w pliku `disk_drive_1` .
 
-- **Wywołane z disk_drive_2/lub disk_drive_/tmp**: najpierw załadowano plik poziomu użytkownika (A), a następnie pakiet NuGet przechodzi do katalogu głównego disk_drive_2 i odnajdzie plik (B). Pakiet NuGet szuka również pliku konfiguracji w programie/tmp, ale go nie znaleziono. W związku z tym używane jest domyślne repozytorium w nuget.org, przywracanie pakietu jest włączone, a pakiety zostaną rozwinięte w disk_drive_2/tmp.
+- **Wywoływane z `disk_drive_2/` lub `disk_drive_/tmp`**: najpierw jest ładowany plik na poziomie użytkownika (A), a następnie nuGet przechodzi do katalogu głównego pliku i znajduje plik `disk_drive_2` (B). Program NuGet wyszukuje również plik konfiguracji w pliku `/tmp` , ale nie znajduje go. W związku z tym jest używane domyślne repozytorium w repozytorium , przywracanie pakietów jest włączone, a pakiety są `nuget.org` rozszerzane w . `disk_drive_2/tmp`
 
-- **Wywołane z disk_drive_2/Project1 lub disk_drive_2/Project1/Source**: najpierw załadowano plik na poziomie użytkownika (A), a następnie program NuGet ładuje plik (B) z katalogu głównego disk_drive_2, a następnie plik (C). Ustawienia w (C) przesłaniają te w (B) i (A), dzięki czemu `repositoryPath` instalowane pakiety są disk_drive_2/Project1/External/Packages, a nie *disk_drive_2/tmp*. Ponadto, ponieważ (C) czyści `<packageSources>` , NuGet.org nie jest już dostępne tylko jako źródło wychodzące `https://MyPrivateRepo/ES/nuget` .
+- **Wywoływany z `disk_drive_2/Project1` lub `disk_drive_2/Project1/Source`**: najpierw jest ładowany plik na poziomie użytkownika (A), a następnie nuGet ładuje plik (B) z katalogu głównego , a następnie plik `disk_drive_2` (C). Ustawienia w programie (C) zastępują ustawienia w systemach (B) i (A), więc miejsce, w którym `repositoryPath` instalowane są pakiety, `disk_drive_2/Project1/External/Packages` to zamiast `disk_drive_2/tmp` . Ponadto, ponieważ (C) czyszczy `<packageSources>` , nuget.org nie jest już dostępna jako źródło, pozostawiając tylko `https://MyPrivateRepo/ES/nuget` .
 
-- **Wywołane z disk_drive_2/Project2 lub disk_drive_2/Project2/Source**: plik na poziomie użytkownika (A) jest ładowany po raz pierwszy, po którym następuje plik (B) i plik (D). Ponieważ `packageSources` nie jest wyczyszczone, oba `nuget.org` i `https://MyPrivateRepo/DQ/nuget` są dostępne jako źródła. Pakiety zostaną rozwinięte w disk_drive_2/tmp zgodnie z opisem w (B).
+- **Wywoływane z `disk_drive_2/Project2` lub `disk_drive_2/Project2/Source`**: plik na poziomie użytkownika (A) jest ładowany jako pierwszy, po którym następuje plik (B) i plik (D). Ponieważ `packageSources` nie jest wyczyszczyszona, `nuget.org` zarówno , jak i są dostępne jako `https://MyPrivateRepo/DQ/nuget` źródła. Pakiety są rozszerzane w `disk_drive_2/tmp` sposób określony w (B).
 
-## <a name="additional-user-wide-configuration"></a>Dodatkowa konfiguracja dla wszystkich użytkowników
+## <a name="additional-user-wide-configuration"></a>Dodatkowa konfiguracja dla całego użytkownika
 
-Począwszy od 5,7, pakiet NuGet dodał obsługę dodatkowych plików konfiguracji o wielu użytkownikach. Umożliwia to dostawcom innych firm Dodawanie dodatkowych plików konfiguracji użytkownika bez podniesienia uprawnień.
-Te pliki konfiguracyjne znajdują się w folderze Standardowa konfiguracja użytkownika w `config` podfolderze.
-Wszystkie pliki kończące się na `.config` lub `.Config` zostaną uwzględnione.
+Począwszy od programu 5.7, w programie NuGet dodano obsługę dodatkowych plików konfiguracji dla całego użytkownika. Dzięki temu dostawcy innych firm mogą dodawać dodatkowe pliki konfiguracji użytkownika bez podniesienia uprawnień.
+Te pliki konfiguracji znajdują się w folderze konfiguracji użytkownika standardowego w `config` podfolderze.
+Wszystkie pliki kończące się `.config` na lub `.Config` zostaną rozważone.
 Tych plików nie można edytować za pomocą standardowych narzędzi.
 
 | Platforma systemu operacyjnego  | Dodatkowe konfiguracje |
@@ -208,33 +206,33 @@ Tych plików nie można edytować za pomocą standardowych narzędzi.
 | Windows      | `%appdata%\NuGet\config\*.Config` |
 | System Mac/Linux    | `~/.config/NuGet/config/*.config` lub `~/.nuget/config/*.config` |
 
-## <a name="nuget-defaults-file"></a>Plik domyślny NuGet
+## <a name="nuget-defaults-file"></a>Plik domyślny nuGet
 
-`NuGetDefaults.Config`Plik istnieje, aby określić źródła pakietów, z których pakiety są instalowane i aktualizowane, i kontrolować domyślny element docelowy dla pakietów publikowanych za pomocą programu `nuget push` . Ze względu na to, że administratorzy mogą wygodnie (na przykład za pomocą zasady grupy) wdrażać spójne `NuGetDefaults.Config` pliki na maszynach deweloperskich i kompilacji, mogą oni upewnić się, że wszyscy w organizacji używają odpowiednich źródeł pakietów, a nie NuGet.org.
+Plik istnieje, aby określić źródła pakietów, z których pakiety są instalowane i aktualizowane, oraz kontrolować domyślny element `NuGetDefaults.Config` docelowy publikowania pakietów za pomocą programu `nuget push` . Ponieważ administratorzy mogą wygodnie (na przykład przy użyciu usługi zasady grupy) wdrażać spójne pliki na maszynach dewelopera i kompilacji, mogą zapewnić, że wszyscy w organizacji będą używać odpowiednich źródeł pakietów, a nie `NuGetDefaults.Config` nuget.org.
 
 > [!Important]
-> `NuGetDefaults.Config`Plik nigdy nie powoduje usunięcia źródła pakietu z konfiguracji NuGet dewelopera. Oznacza to, że deweloper już użył NuGet i w związku z tym ma zarejestrowane źródło pakietów nuget.org, nie zostanie usunięte po utworzeniu `NuGetDefaults.Config` pliku.
+> Plik nigdy nie powoduje usunięcia źródła pakietu z konfiguracji `NuGetDefaults.Config` NuGet dewelopera. Oznacza to, że jeśli deweloper już użył narzędzia NuGet i w związku z tym ma zarejestrowane źródło pakietu nuget.org, nie zostanie on usunięty po utworzeniu `NuGetDefaults.Config` pliku.
 >
-> Ponadto żaden `NuGetDefaults.Config` inny mechanizm w pakiecie NuGet nie może uniemożliwiać dostępu do źródeł pakietów, takich jak NuGet.org. Jeśli organizacja chce zablokować taki dostęp, musi użyć innych środków, takich jak zapory, aby to zrobić.
+> Ponadto ani żaden inny mechanizm w pakiecie NuGet nie może uniemożliwić dostępu do źródeł pakietów, takich `NuGetDefaults.Config` jak nuget.org. Jeśli organizacja chce zablokować taki dostęp, musi w tym celu użyć innych środków, takich jak zapory.
 
-### <a name="nugetdefaultsconfig-location"></a>Lokalizacja NuGetDefaults.Config
+### <a name="nugetdefaultsconfig-location"></a>`NuGetDefaults.Config` Lokalizacji
 
-W poniższej tabeli opisano, gdzie `NuGetDefaults.Config` należy przechowywać plik, w zależności od docelowego systemu operacyjnego:
+W poniższej tabeli opisano `NuGetDefaults.Config` miejsce przechowywania pliku w zależności od docelowego systemu operacyjnego:
 
-| Platforma systemu operacyjnego  | Lokalizacja NuGetDefaults.Config |
+| Platforma systemu operacyjnego  | `NuGetDefaults.Config` Lokalizacji |
 | --- | --- |
-| Windows      | **Visual Studio 2017 lub NuGet 4. x +:**`%ProgramFiles(x86)%\NuGet\Config` <br />**Program Visual Studio 2015 i wcześniejsze lub NuGet 3. x i wcześniejsze:**`%PROGRAMDATA%\NuGet` |
-| System Mac/Linux    | `$XDG_DATA_HOME` (zwykle `~/.local/share` lub `/usr/local/share` , w zależności od dystrybucji systemu operacyjnego)|
+| Windows      | **Visual Studio 2017 lub NuGet 4.x+:**`%ProgramFiles(x86)%\NuGet\Config` <br />**Visual Studio 2015 i starsze lub NuGet 3.x i starsze:**`%PROGRAMDATA%\NuGet` |
+| System Mac/Linux    | `$XDG_DATA_HOME` (zazwyczaj `~/.local/share` lub `/usr/local/share` , w zależności od dystrybucji systemu operacyjnego)|
 
-### <a name="nugetdefaultsconfig-settings"></a>Ustawienia NuGetDefaults.Config
+### <a name="nugetdefaultsconfig-settings"></a>NuGetDefaults.Config ustawień
 
-- `packageSources`: Ta kolekcja ma takie samo znaczenie jak `packageSources` w zwykłych plikach konfiguracji i określa domyślne źródła. Przy instalowaniu lub aktualizowaniu pakietów w projektach przy użyciu formatu zarządzania narzędzia NuGet używa źródeł `packages.config` . W przypadku projektów korzystających z formatu PackageReference, pakiet NuGet najpierw używa lokalnych źródeł, a następnie źródeł w udziałach sieciowych, a następnie źródeł HTTP, niezależnie od kolejności w plikach konfiguracji. NuGet zawsze ignoruje kolejność źródeł przy użyciu operacji przywracania.
+- `packageSources`: ta kolekcja ma takie samo znaczenie `packageSources` jak w zwykłych plikach konfiguracji i określa domyślne źródła. Program NuGet używa źródeł w kolejności podczas instalowania lub aktualizowania pakietów w projektach przy użyciu `packages.config` formatu zarządzania. W przypadku projektów korzystających z formatu PackageReference program NuGet najpierw używa źródeł lokalnych, a następnie źródeł w udziałach sieciowych, a następnie źródeł HTTP, niezależnie od kolejności w plikach konfiguracji. Program NuGet zawsze ignoruje kolejność źródeł w operacjach przywracania.
 
-- `disabledPackageSources`: Ta kolekcja ma także takie samo znaczenie jak w `NuGet.Config` przypadku plików, gdzie każde z nich ma swoją nazwę i wartość true/false wskazującą, czy jest ona wyłączona. Dzięki temu nazwa i adres URL źródła mogą pozostać w programie `packageSources` bez domyślnego włączenia. Poszczególni deweloperzy mogą następnie ponownie włączyć źródło, ustawiając wartość źródła na false w innych `NuGet.Config` plikach bez konieczności ponownego znalezienia poprawnego adresu URL. Jest to również przydatne w przypadku deweloperów, którzy mają pełną listę wewnętrznych źródłowych adresów URL dla organizacji, jednocześnie domyślnie włączając tylko źródło poszczególnych zespołów.
+- `disabledPackageSources`: ta kolekcja ma również takie samo znaczenie jak w plikach, gdzie każde źródło, którego dotyczy problem, jest wyświetlane według nazwy i wartości wskazującej, czy `NuGet.Config` `true` / `false` jest wyłączone. Dzięki temu nazwa źródła i adres URL mogą pozostać w `packageSources` bez domyślnych włączone. Poszczegnieni deweloperzy mogą ponownie włączyć źródło, ustawiając wartość źródła na w innych plikach bez konieczności ponownego znalezienia `false` `NuGet.Config` poprawnego adresu URL. Jest to również przydatne w przypadku dostarczania deweloperom pełnej listy wewnętrznych adresów URL źródeł dla organizacji przy jednoczesnym domyślnym włączeniu tylko źródła poszczególnych reprezentacji zespołu.
 
-- `defaultPushSource`: określa domyślny element docelowy dla `nuget push` operacji, zastępując wbudowane domyślne wartości NuGet.org. Administratorzy mogą wdrożyć to ustawienie, aby zapobiec publikowaniu wewnętrznych pakietów nuget.org w sposób niezależny od sytuacji, gdy deweloperzy muszą używać `nuget push -Source` do publikowania w NuGet.org.
+- `defaultPushSource`: określa domyślny element docelowy dla `nuget push` operacji, zastępując wbudowane ustawienie domyślne `nuget.org` . Administratorzy mogą wdrożyć to ustawienie, aby uniknąć publikowania pakietów wewnętrznych publicznie przypadkowo, ponieważ deweloperzy muszą używać programu do `nuget.org` `nuget push -Source` publikowania w programie `nuget.org` .
 
-### <a name="example-nugetdefaultsconfig-and-application"></a>Przykład NuGetDefaults.Config i aplikacji
+### <a name="example-nugetdefaultsconfig-and-application"></a>Przykładowe NuGetDefaults.Config aplikacji
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
