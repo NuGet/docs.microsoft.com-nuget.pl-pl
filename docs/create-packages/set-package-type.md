@@ -1,41 +1,137 @@
 ---
-title: Ustaw typ pakietu NuGet
-description: Opisuje typy pakietów, aby wskazać zamierzone użycie pakietu.
+title: Ustawianie typu pakietu NuGet
+description: Opisuje typy pakietów wskazujące zamierzone użycie pakietu.
 author: JonDouglas
 ms.author: jodou
 ms.date: 07/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 990ac580f4031615566d78e359a24eaedaaf3e07
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: fa369e8327330e13f5adda39a75008e42ac99896
+ms.sourcegitcommit: 08c5b2c956a1a45f0ea9fb3f50f55e41312d8ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98774360"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108067284"
 ---
-# <a name="set-a-nuget-package-type"></a>Ustaw typ pakietu NuGet
+# <a name="set-a-nuget-package-type"></a>Ustawianie typu pakietu NuGet
 
-W przypadku programu NuGet 3.5 + pakiety można oznaczyć przy użyciu określonego *typu pakietu* , aby wskazać jego zamierzone użycie. Pakiety, które nie są oznaczone jako typu, w tym wszystkie pakiety utworzone przy użyciu wcześniejszych wersji programu NuGet, domyślnie są `Dependency` typu.
+Pakiety można oznaczać za pomocą jeszcze jednego *typu pakietu,* aby wskazać jego przeznaczenie.
 
-- `Dependency` pakiety typów dodają zasoby kompilacji lub czasu wykonywania do bibliotek i aplikacji, które można zainstalować w dowolnym typie projektu (przy założeniu, że są one zgodne).
+## <a name="known-package-types"></a>Znane typy pakietów
 
-- `DotnetTool` pakiety typów są rozszerzeniami [interfejsu wiersza polecenia dotnet](/dotnet/articles/core/tools/index) i są wywoływane z wiersza poleceń. Takie pakiety można instalować tylko w projektach .NET Core i nie mają wpływu na operacje przywracania. Więcej informacji na temat tych rozszerzeń dla poszczególnych projektów można znaleźć w dokumentacji  [rozszerzalności platformy .NET Core](/dotnet/articles/core/tools/extensibility#per-project-based-extensibility) .
+- `Dependency` pakiety typu dodają zasoby kompilacji lub czasu uruchamiania do bibliotek i aplikacji i mogą być instalowane w dowolnym typie projektu (przy założeniu, że są zgodne).
 
-- `Template` pakiety typów udostępniają [niestandardowe szablony](/dotnet/core/tools/custom-templates) , których można użyć do tworzenia plików lub projektów, takich jak aplikacja, usługa, narzędzie lub Biblioteka klas.
+- `DotnetTool`Pakiety typu to narzędzia .NET, które można zainstalować za pomocą interfejsu wiersza [polecenia dotnet.](/dotnet/articles/core/tools/index)
 
-- Pakiety typu niestandardowego używają dowolnego identyfikatora typu, który jest zgodny z tymi samymi regułami formatowania co identyfikatory pakietów. Każdy typ inny niż `Dependency` i `DotnetTool` , ale nie jest rozpoznawany przez Menedżera pakietów NuGet w programie Visual Studio.
+- `Template` Pakiety typu zawierają [szablony niestandardowe,](/dotnet/core/tools/custom-templates) których można używać do tworzenia plików lub projektów, takich jak biblioteka aplikacji, usługi, narzędzia lub klas.
 
-Typy pakietów są ustawiane w `.nuspec` pliku. Najlepiej, aby zapewnić zgodność z poprzednimi wersjami, aby *nie* ustawiać jawnie `Dependency` typu i zamiast tego polegać na NuGet przy założeniu, że ten typ nie jest określony.
+Pakiety, które nie są oznaczone typem , łącznie ze wszystkimi pakietami utworzonymi za pomocą wcześniejszych wersji pakietu NuGet, są domyślnie `Dependency` typu.
 
-- `.nuspec`: Wskaż typ pakietu w `packageTypes\packageType` węźle pod `<metadata>` elementem:
+> [!NOTE]
+> Obsługa typów pakietów została dodana w pakiecie NuGet 3.5.
+> Jeśli nie potrzebujesz niestandardowego typu pakietu, najlepiej  nie jawnie ustawić typu pakietu.
+> Program NuGet domyślnie określa `Dependency` typ, gdy nie określono typu.
 
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-        <metadata>
+## <a name="custom-package-types"></a>Niestandardowe typy pakietów
+
+Możesz oznaczyć pakiet za pomocą co najmniej jednego niestandardowego typu pakietu, jeśli jego użycie nie pasuje do [znanych typów pakietów](#known-package-types).
+
+Załóżmy na przykład, że klienci `Contoso` aplikacji mogą instalować rozszerzenia. Aplikacja może wymagać od autorów rozszerzeń użycia niestandardowego typu pakietu w celu zidentyfikowania ich pakietów jako odpowiednich rozszerzeń, które są zgodne `ContosoExtension` z wymaganymi konwencjami.
+
+> [!WARNING]
+> Pakiet z niestandardowym typem pakietu nie może zostać zainstalowany przez Visual Studio lub nuget.exe. Aby uzyskać więcej informacji, zobacz [NuGet/Home#10468.](https://github.com/NuGet/Home/issues/10468)
+
+# <a name="using-dotnet-cli"></a>[Korzystanie z interfejsu wiersza polecenia dotnet](#tab/dotnet)
+
+Typy pakietów można ustawić w pliku projektu ( `.csproj` ):
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    
+    <PackageType>ContosoExtension</PackageType>
+  </PropertyGroup>
+
+</Project>
+```
+
+Pakiety o wielu zamierzonych zastosowaniach można oznaczać wieloma typami pakietów za pomocą `;` ogranicznika:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    
+    <PackageType>PackageType1;PackageType2</PackageType>
+  </PropertyGroup>
+
+</Project>
+```
+
+Typy pakietów mogą być wersjonarowane przy użyciu `,` ogranicznika między typem pakietu a jego [`Version`](/dotnet/api/system.version) ciągiem:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    
+    <PackageType>PackageType1, 1.0.0.0;PackageType2</PackageType>
+  </PropertyGroup>
+
+</Project>
+```
+
+# <a name="using-nugetexe"></a>[Korzystanie z nuget.exe](#tab/nugetexe)
+
+Typy pakietów są ustawiane `.nuspec` w pliku w `packageTypes\packageType` węźle w `<metadata>` ramach elementu :
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
         <!-- ... -->
         <packageTypes>
-            <packageType name="DotnetTool" />
+            <packageType name="ContosoExtension" />
         </packageTypes>
-        </metadata>
-    </package>
-    ```
+    </metadata>
+</package>
+```
+
+Pakiety o wielu zamierzonych zastosowaniach mogą być oznaczone wieloma typami pakietów:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- ... -->
+        <packageTypes>
+            <packageType name="PackageType1" />
+            <packageType name="PackageType2" />
+        </packageTypes>
+    </metadata>
+</package>
+```
+
+Typy pakietów mogą być wersjonarowane przy użyciu [`Version`](/dotnet/api/system.version) ciągu:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- ... -->
+        <packageTypes>
+            <packageType name="PackageType1" version="1.0.0.0" />
+            <packageType name="PackageType2" />
+        </packageTypes>
+    </metadata>
+</package>
+```
+
+---
+
+Format ciągu typu pakietu jest dokładnie taki sam jak identyfikator pakietu. Oznacza to, że typ pakietu jest ciągiem bez uwzględniania liter pasującymi do wyrażenia regularnego, który zawiera co najmniej jeden znak i co najwyżej `^\w+([_.-]\w+)*$` 100 znaków.
+
+Jeśli zostanie podany, wersja typu pakietu będzie [`Version`](/dotnet/api/system.version) ciągiem. Wersja typu pakietu jest opcjonalna i domyślnie ma wartość `0.0` .
