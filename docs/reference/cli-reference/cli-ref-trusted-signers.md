@@ -1,37 +1,37 @@
 ---
-title: Polecenie zaufanych-podpisywania interfejsu wiersza polecenia NuGet
-description: Informacje dotyczące nuget.exe zaufanych-Signer polecenia
+title: Polecenie zaufanych podpisujących interfejs wiersza polecenia nuGet
+description: Odwołanie do polecenia nuget.exe zaufanych podpisujących
 author: patbel
 ms.author: patbel
 ms.date: 11/12/2018
 ms.topic: reference
 ms.reviewer: rmpablos
-ms.openlocfilehash: 9dd3fe3786c824c4a0a1cb252aa50cfc4458a483
-ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
+ms.openlocfilehash: a5f3564af8b96dfa673d2252aea2e77a79c184a4
+ms.sourcegitcommit: f3d98c23408a4a1c01ea92fc45493fa7bd97c3ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104859424"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112323593"
 ---
-# <a name="trusted-signers-command-nuget-cli"></a><span data-ttu-id="cd2f3-103">Zaufane-podpisujące — polecenie (interfejs wiersza polecenia NuGet)</span><span class="sxs-lookup"><span data-stu-id="cd2f3-103">trusted-signers command (NuGet CLI)</span></span>
+# <a name="trusted-signers-command-nuget-cli"></a><span data-ttu-id="60e28-103">Polecenie trusted-signers (interfejs wiersza polecenia NuGet)</span><span class="sxs-lookup"><span data-stu-id="60e28-103">trusted-signers command (NuGet CLI)</span></span>
 
-<span data-ttu-id="cd2f3-104">**Dotyczy:** &bullet; **obsługiwane wersje** pakietów: 4.9.1 +</span><span class="sxs-lookup"><span data-stu-id="cd2f3-104">**Applies to:** package consumption &bullet; **Supported versions:** 4.9.1+</span></span>
+<span data-ttu-id="60e28-104">**Dotyczy: zużycie** pakietu &bullet; **Obsługiwane wersje:** 4.9.1+</span><span class="sxs-lookup"><span data-stu-id="60e28-104">**Applies to:** package consumption &bullet; **Supported versions:** 4.9.1+</span></span>
 
-<span data-ttu-id="cd2f3-105">Pobiera lub ustawia zaufane osoby podpisujące do konfiguracji programu NuGet.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-105">Gets or sets trusted signers to the NuGet configuration.</span></span> <span data-ttu-id="cd2f3-106">Aby uzyskać dodatkowe użycie, zobacz [typowe konfiguracje NuGet](../../consume-packages/configuring-nuget-behavior.md).</span><span class="sxs-lookup"><span data-stu-id="cd2f3-106">For additional usage, see [Common NuGet configurations](../../consume-packages/configuring-nuget-behavior.md).</span></span> <span data-ttu-id="cd2f3-107">Aby uzyskać szczegółowe informacje o tym, jak wygląda schemat nuget.config, zapoznaj się z tematem [Dokumentacja pliku konfiguracji programu NuGet](../nuget-config-file.md).</span><span class="sxs-lookup"><span data-stu-id="cd2f3-107">For details on how the nuget.config schema looks like, refer to the [NuGet config file reference](../nuget-config-file.md).</span></span>
+<span data-ttu-id="60e28-105">Pobiera lub ustawia zaufanych podpisujących do konfiguracji NuGet.</span><span class="sxs-lookup"><span data-stu-id="60e28-105">Gets or sets trusted signers to the NuGet configuration.</span></span> <span data-ttu-id="60e28-106">Aby uzyskać dodatkowe informacje o użyciu, zobacz [Typowe konfiguracje NuGet.](../../consume-packages/configuring-nuget-behavior.md)</span><span class="sxs-lookup"><span data-stu-id="60e28-106">For additional usage, see [Common NuGet configurations](../../consume-packages/configuring-nuget-behavior.md).</span></span> <span data-ttu-id="60e28-107">Aby uzyskać szczegółowe informacje na temat nuget.config schematu, zapoznaj się z odwołaniem do pliku [konfiguracji NuGet](../nuget-config-file.md).</span><span class="sxs-lookup"><span data-stu-id="60e28-107">For details on how the nuget.config schema looks like, refer to the [NuGet config file reference](../nuget-config-file.md).</span></span>
 
-## <a name="usage"></a><span data-ttu-id="cd2f3-108">Użycie</span><span class="sxs-lookup"><span data-stu-id="cd2f3-108">Usage</span></span>
+## <a name="usage"></a><span data-ttu-id="60e28-108">Użycie</span><span class="sxs-lookup"><span data-stu-id="60e28-108">Usage</span></span>
 
 ```cli
 nuget trusted-signers <list|add|remove|sync> [options]
 ```
 
-<span data-ttu-id="cd2f3-109">Jeśli żadna z nie `list|add|remove|sync` jest określona, polecenie będzie domyślnie `list` .</span><span class="sxs-lookup"><span data-stu-id="cd2f3-109">if none of `list|add|remove|sync` is specified, the command will default to `list`.</span></span>
+<span data-ttu-id="60e28-109">Jeśli żadna z `list|add|remove|sync` wartości nie zostanie określona, polecenie domyślnie będzie mieć wartość `list` .</span><span class="sxs-lookup"><span data-stu-id="60e28-109">if none of `list|add|remove|sync` is specified, the command will default to `list`.</span></span>
 
-## <a name="nuget-trusted-signers-list"></a><span data-ttu-id="cd2f3-110">Lista zaufanych nadawców NuGet</span><span class="sxs-lookup"><span data-stu-id="cd2f3-110">nuget trusted-signers list</span></span>
+## <a name="nuget-trusted-signers-list"></a><span data-ttu-id="60e28-110">Lista zaufanych podpisujących nuget</span><span class="sxs-lookup"><span data-stu-id="60e28-110">nuget trusted-signers list</span></span>
 
-<span data-ttu-id="cd2f3-111">Wyświetla listę wszystkich zaufanych podpisów w konfiguracji.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-111">Lists all the trusted signers in the configuration.</span></span> <span data-ttu-id="cd2f3-112">Ta opcja spowoduje uwzględnienie wszystkich certyfikatów (z użyciem algorytmu odcisku palca i odcisku palca) każdego osoby podpisującej.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-112">This option will include all the certificates (with fingerprint and fingerprint algorithm) each signer has.</span></span> <span data-ttu-id="cd2f3-113">Jeśli certyfikat ma wcześniejszą wartość `[U]` , oznacza to, że wpis certyfikatu ma `allowUntrustedRoot` ustawioną opcję `true` .</span><span class="sxs-lookup"><span data-stu-id="cd2f3-113">If a certificate has a preceding `[U]`, it means that certificate entry has `allowUntrustedRoot` set as `true`.</span></span>
+<span data-ttu-id="60e28-111">Wyświetla listę wszystkich zaufanych osób podpisujących w konfiguracji.</span><span class="sxs-lookup"><span data-stu-id="60e28-111">Lists all the trusted signers in the configuration.</span></span> <span data-ttu-id="60e28-112">Ta opcja obejmuje wszystkie certyfikaty (z algorytmem odcisku palca i odcisku palca) posiadane przez każdego podpiszcę.</span><span class="sxs-lookup"><span data-stu-id="60e28-112">This option will include all the certificates (with fingerprint and fingerprint algorithm) each signer has.</span></span> <span data-ttu-id="60e28-113">Jeśli certyfikat ma poprzednią `[U]` wartość , oznacza to, że wpis certyfikatu został `allowUntrustedRoot` ustawiony jako `true` .</span><span class="sxs-lookup"><span data-stu-id="60e28-113">If a certificate has a preceding `[U]`, it means that certificate entry has `allowUntrustedRoot` set as `true`.</span></span>
 
-<span data-ttu-id="cd2f3-114">Poniżej znajduje się przykładowe dane wyjściowe z tego polecenia:</span><span class="sxs-lookup"><span data-stu-id="cd2f3-114">Below is an example output from this command:</span></span>
+<span data-ttu-id="60e28-114">Poniżej przedstawiono przykładowe dane wyjściowe tego polecenia:</span><span class="sxs-lookup"><span data-stu-id="60e28-114">Below is an example output from this command:</span></span>
 
 ```cli
 $ nuget trusted-signers
@@ -55,115 +55,115 @@ Registered trusted signers:
         
 ```
 
-## <a name="nuget-trusted-signers-add-options"></a><span data-ttu-id="cd2f3-115">zaufane osoby podpisujące NuGet — Dodawanie [opcje]</span><span class="sxs-lookup"><span data-stu-id="cd2f3-115">nuget trusted-signers add [options]</span></span>
+## <a name="nuget-trusted-signers-add-options"></a><span data-ttu-id="60e28-115">NuGet — zaufani podpisujący dodają [opcje]</span><span class="sxs-lookup"><span data-stu-id="60e28-115">nuget trusted-signers add [options]</span></span>
 
-<span data-ttu-id="cd2f3-116">Dodaje do konfiguracji nazwę zaufanego podpisującego o danej nazwie. Ta opcja ma inne gesty umożliwiające dodanie zaufanego autora lub repozytorium.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-116">Adds a trusted signer with the given name to the config. This option has different gestures to add a trusted author or repository.</span></span>
+<span data-ttu-id="60e28-116">Dodaje zaufanego podpiszącego o podanej nazwie do konfiguracji. Ta opcja ma różne gesty dodawania zaufanego autora lub repozytorium.</span><span class="sxs-lookup"><span data-stu-id="60e28-116">Adds a trusted signer with the given name to the config. This option has different gestures to add a trusted author or repository.</span></span>
 
-## <a name="options-for-add-based-on-a-package"></a><span data-ttu-id="cd2f3-117">Opcje dodawania w oparciu o pakiet</span><span class="sxs-lookup"><span data-stu-id="cd2f3-117">Options for add based on a package</span></span>
+## <a name="options-for-add-based-on-a-package"></a><span data-ttu-id="60e28-117">Opcje dodawania na podstawie pakietu</span><span class="sxs-lookup"><span data-stu-id="60e28-117">Options for add based on a package</span></span>
 
 ```cli
-nuget trusted-signers add <package(s)> -Name <name> [options]
+nuget trusted-signers add <package> -Name <name> [options]
 ```
 
-<span data-ttu-id="cd2f3-118">gdzie `<package(s)>` jest co najmniej jeden `.nupkg` plik.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-118">where `<package(s)>` is one or more `.nupkg` files.</span></span>
+<span data-ttu-id="60e28-118">gdzie `<package>` to jeden podpisany `.nupkg` plik.</span><span class="sxs-lookup"><span data-stu-id="60e28-118">where `<package>` is one signed `.nupkg` file.</span></span>
 
 - **`-Author`**
 
-  <span data-ttu-id="cd2f3-119">Określa, że podpis autora pakietów powinien być zaufany.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-119">Specifies that the author signature of the package(s) should be trusted.</span></span>
+  <span data-ttu-id="60e28-119">Określa, że podpis autora podpisanego pakietu powinien być zaufany.</span><span class="sxs-lookup"><span data-stu-id="60e28-119">Specifies that the author signature of the signed package should be trusted.</span></span>
 
 - **`-AllowUntrustedRoot`**
 
-  <span data-ttu-id="cd2f3-120">Określa, czy certyfikat zaufanego podpisującego ma być dozwolony w łańcuchu do niezaufanego certyfikatu głównego.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-120">Specifies if the certificate for the trusted signer should be allowed to chain to an untrusted root.</span></span>
+  <span data-ttu-id="60e28-120">Określa, czy certyfikat zaufanego podpiszącego powinien mieć możliwość podpisania łańcucha do niezaufanego katalogu głównego.</span><span class="sxs-lookup"><span data-stu-id="60e28-120">Specifies if the certificate for the trusted signer should be allowed to chain to an untrusted root.</span></span>
 
 - **`-Owners`**
 
-  <span data-ttu-id="cd2f3-121">Rozdzielana średnikami lista zaufanych właścicieli, aby bardziej ograniczyć zaufanie do repozytorium.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-121">Semi-colon separated list of trusted owners to further restrict the trust of a repository.</span></span> <span data-ttu-id="cd2f3-122">Prawidłowy tylko w przypadku użycia `-Repository` opcji.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-122">Only valid when using the `-Repository` option.</span></span>
+  <span data-ttu-id="60e28-121">Rozdzielana średnikami lista zaufanych właścicieli w celu dalszego ograniczenia zaufania repozytorium.</span><span class="sxs-lookup"><span data-stu-id="60e28-121">Semi-colon separated list of trusted owners to further restrict the trust of a repository.</span></span> <span data-ttu-id="60e28-122">Prawidłowy tylko w przypadku korzystania z `-Repository` opcji .</span><span class="sxs-lookup"><span data-stu-id="60e28-122">Only valid when using the `-Repository` option.</span></span>
 
 - **`-Repository`**
 
-  <span data-ttu-id="cd2f3-123">Określa, że podpis repozytorium lub kontrpodpis pakietów powinien być zaufany.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-123">Specifies that the repository signature or countersignature of the package(s) should be trusted.</span></span>
+  <span data-ttu-id="60e28-123">Określa, że podpis repozytorium lub countersignature podpisanego pakietu powinny być zaufane.</span><span class="sxs-lookup"><span data-stu-id="60e28-123">Specifies that the repository signature or countersignature of the signed package should be trusted.</span></span>
 
-<span data-ttu-id="cd2f3-124">Udostępnianie jednocześnie `-Author` i `-Repository` w tym samym czasie nie jest obsługiwane.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-124">Providing both `-Author` and `-Repository` at the same time is not supported.</span></span>
+<span data-ttu-id="60e28-124">Zarówno, `-Author` jak i w tym samym `-Repository` czasie, nie są obsługiwane.</span><span class="sxs-lookup"><span data-stu-id="60e28-124">Providing both `-Author` and `-Repository` at the same time is not supported.</span></span>
 
-## <a name="options-for-add-based-on-a-service-index"></a><span data-ttu-id="cd2f3-125">Opcje dodawania oparte na indeksie usługi</span><span class="sxs-lookup"><span data-stu-id="cd2f3-125">Options for add based on a service index</span></span>
+## <a name="options-for-add-based-on-a-service-index"></a><span data-ttu-id="60e28-125">Opcje dodawania na podstawie indeksu usługi</span><span class="sxs-lookup"><span data-stu-id="60e28-125">Options for add based on a service index</span></span>
 
 ```cli
 nuget trusted-signers add -Name <name> [options]
 ```
 
-<span data-ttu-id="cd2f3-126">_Uwaga_: Ta opcja spowoduje dodanie tylko zaufanych repozytoriów.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-126">_Note_: This option will only add trusted repositories.</span></span> 
+<span data-ttu-id="60e28-126">_Uwaga:_ ta opcja spowoduje dodanie tylko zaufanych repozytoriów.</span><span class="sxs-lookup"><span data-stu-id="60e28-126">_Note_: This option will only add trusted repositories.</span></span> 
 
 - **`-AllowUntrustedRoot`**
 
-  <span data-ttu-id="cd2f3-127">Określa, czy certyfikat zaufanego podpisującego ma być dozwolony w łańcuchu do niezaufanego certyfikatu głównego.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-127">Specifies if the certificate for the trusted signer should be allowed to chain to an untrusted root.</span></span>
+  <span data-ttu-id="60e28-127">Określa, czy certyfikat zaufanego podpiszącego powinien mieć możliwość podpisania łańcucha do niezaufanego katalogu głównego.</span><span class="sxs-lookup"><span data-stu-id="60e28-127">Specifies if the certificate for the trusted signer should be allowed to chain to an untrusted root.</span></span>
 
 - **`-Owners`**
 
-  <span data-ttu-id="cd2f3-128">Rozdzielana średnikami lista zaufanych właścicieli, aby bardziej ograniczyć zaufanie do repozytorium.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-128">Semi-colon separated list of trusted owners to further restrict the trust of a repository.</span></span>
+  <span data-ttu-id="60e28-128">Rozdzielana średnikami lista zaufanych właścicieli w celu dalszego ograniczenia zaufania repozytorium.</span><span class="sxs-lookup"><span data-stu-id="60e28-128">Semi-colon separated list of trusted owners to further restrict the trust of a repository.</span></span>
 
 - **`-ServiceIndex`**
 
-  <span data-ttu-id="cd2f3-129">Określa indeks usługi v3 repozytorium, który ma być zaufany.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-129">Specifies the V3 service index of the repository to be trusted.</span></span> <span data-ttu-id="cd2f3-130">To repozytorium ma obsługiwać zasób sygnatur repozytorium.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-130">This repository has to support the repository signatures resource.</span></span> <span data-ttu-id="cd2f3-131">Jeśli nie zostanie podany, polecenie będzie szukać źródła pakietu o tej samej `-Name` i pobrać z niego indeks usługi.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-131">If not provided, the command will look for a package source with the same `-Name` and get the service index from there.</span></span>
+  <span data-ttu-id="60e28-129">Określa indeks usługi w wersji 3 repozytorium, który ma być zaufany.</span><span class="sxs-lookup"><span data-stu-id="60e28-129">Specifies the V3 service index of the repository to be trusted.</span></span> <span data-ttu-id="60e28-130">To repozytorium musi obsługiwać zasób sygnatur repozytorium.</span><span class="sxs-lookup"><span data-stu-id="60e28-130">This repository has to support the repository signatures resource.</span></span> <span data-ttu-id="60e28-131">Jeśli nie zostanie podany, polecenie będzie szukać źródła pakietu z tym samym i `-Name` pobrać indeks usługi z tego źródła.</span><span class="sxs-lookup"><span data-stu-id="60e28-131">If not provided, the command will look for a package source with the same `-Name` and get the service index from there.</span></span>
 
-## <a name="options-for-add-based-on-the-certificate-information"></a><span data-ttu-id="cd2f3-132">Opcje dodawania na podstawie informacji o certyfikacie</span><span class="sxs-lookup"><span data-stu-id="cd2f3-132">Options for add based on the certificate information</span></span>
+## <a name="options-for-add-based-on-the-certificate-information"></a><span data-ttu-id="60e28-132">Opcje dodawania na podstawie informacji o certyfikacie</span><span class="sxs-lookup"><span data-stu-id="60e28-132">Options for add based on the certificate information</span></span>
 
 ```cli
 nuget trusted-signers add -Name <name> [options]
 ```
 
-<span data-ttu-id="cd2f3-133">_Uwaga_: Jeśli zaufany podpis o podanej nazwie już istnieje, element certyfikatu zostanie dodany do osoby podpisującej.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-133">_Note_: If a trusted signer with the given name already exists, the certificate item will be added to that signer.</span></span> <span data-ttu-id="cd2f3-134">W przeciwnym razie zaufany autor zostanie utworzony za pomocą elementu certyfikatu z informacji podanych w certyfikacie.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-134">Otherwise a trusted author will be created with a certificate item from given certificate information.</span></span>
+<span data-ttu-id="60e28-133">_Uwaga:_ jeśli zaufany podpiszator o podanej nazwie już istnieje, element certyfikatu zostanie dodany do tego osoby podpiszącego.</span><span class="sxs-lookup"><span data-stu-id="60e28-133">_Note_: If a trusted signer with the given name already exists, the certificate item will be added to that signer.</span></span> <span data-ttu-id="60e28-134">W przeciwnym razie zostanie utworzony zaufany autor z elementem certyfikatu z informacji o certyfikacie.</span><span class="sxs-lookup"><span data-stu-id="60e28-134">Otherwise a trusted author will be created with a certificate item from given certificate information.</span></span>
 
 
 - **`-AllowUntrustedRoot`**
 
-  <span data-ttu-id="cd2f3-135">Określa, czy certyfikat zaufanego podpisującego ma być dozwolony w łańcuchu do niezaufanego certyfikatu głównego.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-135">Specifies if the certificate for the trusted signer should be allowed to chain to an untrusted root.</span></span>
+  <span data-ttu-id="60e28-135">Określa, czy certyfikat zaufanego podpiszącego powinien mieć możliwość podpisania łańcucha do niezaufanego katalogu głównego.</span><span class="sxs-lookup"><span data-stu-id="60e28-135">Specifies if the certificate for the trusted signer should be allowed to chain to an untrusted root.</span></span>
 
 - **`-CertificateFingerprint`**
 
-  <span data-ttu-id="cd2f3-136">Określa odciski palca certyfikatu, z którym podpisane pakiety muszą być podpisane.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-136">Specifies a certificate fingerprints of a certificate which signed packages must be signed with.</span></span> <span data-ttu-id="cd2f3-137">Odcisk palca certyfikatu jest skrótem certyfikatu.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-137">A certificate fingerprint is a hash of the certificate.</span></span> <span data-ttu-id="cd2f3-138">Algorytm wyznaczania wartości skrótu używany do obliczania tego skrótu powinien być określany w `FingerprintAlgorithm` opcji.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-138">The hash algorithm used for calculating this hash should be specifies in the `FingerprintAlgorithm` option.</span></span>
+  <span data-ttu-id="60e28-136">Określa odciski palców certyfikatu, za pomocą którego muszą być podpisane podpisane pakiety.</span><span class="sxs-lookup"><span data-stu-id="60e28-136">Specifies a certificate fingerprints of a certificate which signed packages must be signed with.</span></span> <span data-ttu-id="60e28-137">Odcisk palca certyfikatu jest skrótem certyfikatu.</span><span class="sxs-lookup"><span data-stu-id="60e28-137">A certificate fingerprint is a hash of the certificate.</span></span> <span data-ttu-id="60e28-138">W opcji należy określić algorytm wyznaczania wartości skrótu używany do obliczania tego `FingerprintAlgorithm` skrótu.</span><span class="sxs-lookup"><span data-stu-id="60e28-138">The hash algorithm used for calculating this hash should be specifies in the `FingerprintAlgorithm` option.</span></span>
 
 - **`-FingerprintAlgorithm`**
 
-  <span data-ttu-id="cd2f3-139">Określa algorytm wyznaczania wartości skrótu używany do obliczania odcisku palca certyfikatu.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-139">Specifies the hash algorithm used to calculate the certificate fingerprint.</span></span> <span data-ttu-id="cd2f3-140">Wartość domyślna to `SHA256` .</span><span class="sxs-lookup"><span data-stu-id="cd2f3-140">Defaults to `SHA256`.</span></span> <span data-ttu-id="cd2f3-141">Obsługiwane są wartości `SHA256` , `SHA384` i `SHA512` .</span><span class="sxs-lookup"><span data-stu-id="cd2f3-141">Values supported are `SHA256`, `SHA384` and `SHA512`.</span></span>
+  <span data-ttu-id="60e28-139">Określa algorytm wyznaczania wartości skrótu używany do obliczania odcisku palca certyfikatu.</span><span class="sxs-lookup"><span data-stu-id="60e28-139">Specifies the hash algorithm used to calculate the certificate fingerprint.</span></span> <span data-ttu-id="60e28-140">Wartość domyślna to `SHA256` .</span><span class="sxs-lookup"><span data-stu-id="60e28-140">Defaults to `SHA256`.</span></span> <span data-ttu-id="60e28-141">Obsługiwane wartości to `SHA256` , `SHA384` i `SHA512` .</span><span class="sxs-lookup"><span data-stu-id="60e28-141">Values supported are `SHA256`, `SHA384` and `SHA512`.</span></span>
 
-## <a name="nuget-trusted-signers-remove--name-name"></a><span data-ttu-id="cd2f3-142">zaufane osoby podpisujące NuGet — usuwanie nazwy \<name\></span><span class="sxs-lookup"><span data-stu-id="cd2f3-142">nuget trusted-signers remove -Name \<name\></span></span>
+## <a name="nuget-trusted-signers-remove--name-name"></a><span data-ttu-id="60e28-142">Zaufani podpisujący nuget usuwają -Name \<name\></span><span class="sxs-lookup"><span data-stu-id="60e28-142">nuget trusted-signers remove -Name \<name\></span></span>
 
-<span data-ttu-id="cd2f3-143">Usuwa wszystkie zaufane osoby podpisujące zgodne z podaną nazwą.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-143">Removes any trusted signers that match the given name.</span></span>
+<span data-ttu-id="60e28-143">Usuwa wszystkich zaufanych podpisujących, które pasują do podanej nazwy.</span><span class="sxs-lookup"><span data-stu-id="60e28-143">Removes any trusted signers that match the given name.</span></span>
 
-## <a name="nuget-trusted-signers-sync--name-name"></a><span data-ttu-id="cd2f3-144">Synchronizacja zaufanych nadawców NuGet — nazwa \<name\></span><span class="sxs-lookup"><span data-stu-id="cd2f3-144">nuget trusted-signers sync -Name \<name\></span></span>
+## <a name="nuget-trusted-signers-sync--name-name"></a><span data-ttu-id="60e28-144">Nuget trusted-signers sync -Name \<name\></span><span class="sxs-lookup"><span data-stu-id="60e28-144">nuget trusted-signers sync -Name \<name\></span></span>
 
-<span data-ttu-id="cd2f3-145">Żąda najnowszej listy certyfikatów używanych w bieżącym repozytorium, aby zaktualizować listę istniejących certyfikatów w zaufanej rejestracji.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-145">Requests the latest list of certificates used in a currently trusted repository to update the the existing certificate list in the trusted signer.</span></span>
+<span data-ttu-id="60e28-145">Żąda najnowszej listy certyfikatów używanych w aktualnie zaufanym repozytorium w celu zaktualizowania istniejącej listy certyfikatów na zaufanym podpisie.</span><span class="sxs-lookup"><span data-stu-id="60e28-145">Requests the latest list of certificates used in a currently trusted repository to update the the existing certificate list in the trusted signer.</span></span>
 
-<span data-ttu-id="cd2f3-146">_Uwaga_: ten gest spowoduje usunięcie bieżącej listy certyfikatów i zamienienie ich na aktualną listę z repozytorium.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-146">_Note_: This gesture will delete the current list of certificates and replace them with an up-to-date list from the repository.</span></span>
+<span data-ttu-id="60e28-146">_Uwaga:_ ten gest spowoduje usunięcie bieżącej listy certyfikatów i zastąpienie ich aktualną listą z repozytorium.</span><span class="sxs-lookup"><span data-stu-id="60e28-146">_Note_: This gesture will delete the current list of certificates and replace them with an up-to-date list from the repository.</span></span>
 
-## <a name="options"></a><span data-ttu-id="cd2f3-147">Opcje</span><span class="sxs-lookup"><span data-stu-id="cd2f3-147">Options</span></span>
+## <a name="options"></a><span data-ttu-id="60e28-147">Opcje</span><span class="sxs-lookup"><span data-stu-id="60e28-147">Options</span></span>
 
 - **`-ConfigFile`**
 
-  <span data-ttu-id="cd2f3-148">Plik konfiguracji NuGet, który ma zostać zastosowany.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-148">The NuGet configuration file to apply.</span></span> <span data-ttu-id="cd2f3-149">Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (system Windows) lub `~/.nuget/NuGet/NuGet.Config` lub `~/.config/NuGet/NuGet.Config` (Mac/Linux) jest używany.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-149">If not specified, `%AppData%\NuGet\NuGet.Config` (Windows), or `~/.nuget/NuGet/NuGet.Config` or `~/.config/NuGet/NuGet.Config` (Mac/Linux) is used.</span></span>
+  <span data-ttu-id="60e28-148">Plik konfiguracji NuGet do zastosowania.</span><span class="sxs-lookup"><span data-stu-id="60e28-148">The NuGet configuration file to apply.</span></span> <span data-ttu-id="60e28-149">Jeśli nie zostanie określony, `%AppData%\NuGet\NuGet.Config` (Windows) `~/.nuget/NuGet/NuGet.Config` lub `~/.config/NuGet/NuGet.Config` (Mac/Linux) jest używany.</span><span class="sxs-lookup"><span data-stu-id="60e28-149">If not specified, `%AppData%\NuGet\NuGet.Config` (Windows), or `~/.nuget/NuGet/NuGet.Config` or `~/.config/NuGet/NuGet.Config` (Mac/Linux) is used.</span></span>
 
 - **`-ForceEnglishOutput`**
 
-  <span data-ttu-id="cd2f3-150">Wymusza uruchamianie nuget.exe przy użyciu niezmiennej kultury opartej na języku angielskim.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-150">Forces nuget.exe to run using an invariant, English-based culture.</span></span>
+  <span data-ttu-id="60e28-150">Wymusza nuget.exe uruchamiania przy użyciu niezmiennej kultury opartej na języku angielskim.</span><span class="sxs-lookup"><span data-stu-id="60e28-150">Forces nuget.exe to run using an invariant, English-based culture.</span></span>
 
 - **`-?|-help`**
 
-  <span data-ttu-id="cd2f3-151">Wyświetla informacje pomocy dla polecenia.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-151">Displays help information for the command.</span></span>
+  <span data-ttu-id="60e28-151">Wyświetla informacje pomocy dotyczące polecenia.</span><span class="sxs-lookup"><span data-stu-id="60e28-151">Displays help information for the command.</span></span>
 
 - **`-Name`**
 
-  <span data-ttu-id="cd2f3-152">Nazwa zaufanej osoby podpisującej.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-152">Name of the trusted signer.</span></span>
+  <span data-ttu-id="60e28-152">Nazwa zaufanego podpisatora.</span><span class="sxs-lookup"><span data-stu-id="60e28-152">Name of the trusted signer.</span></span>
 
 - **`-NonInteractive`**
 
-  <span data-ttu-id="cd2f3-153">Pomija monity o dane wejściowe lub potwierdzone przez użytkownika.</span><span class="sxs-lookup"><span data-stu-id="cd2f3-153">Suppresses prompts for user input or confirmations.</span></span>
+  <span data-ttu-id="60e28-153">Pomija monity o wprowadzenie danych przez użytkownika lub potwierdzenia.</span><span class="sxs-lookup"><span data-stu-id="60e28-153">Suppresses prompts for user input or confirmations.</span></span>
 
 - **`-Verbosity [normal|quiet|detailed]`**
 
-  <span data-ttu-id="cd2f3-154">Określa ilość szczegółów wyświetlanych w danych wyjściowych: `normal` (wartość domyślna), `quiet` lub `detailed` .</span><span class="sxs-lookup"><span data-stu-id="cd2f3-154">Specifies the amount of detail displayed in the output: `normal` (the default), `quiet`, or `detailed`.</span></span>
+  <span data-ttu-id="60e28-154">Określa ilość szczegółów wyświetlanych w danych wyjściowych: `normal` (ustawienie domyślne), `quiet` lub `detailed` .</span><span class="sxs-lookup"><span data-stu-id="60e28-154">Specifies the amount of detail displayed in the output: `normal` (the default), `quiet`, or `detailed`.</span></span>
 
 
-## <a name="examples"></a><span data-ttu-id="cd2f3-155">Przykłady</span><span class="sxs-lookup"><span data-stu-id="cd2f3-155">Examples</span></span>
+## <a name="examples"></a><span data-ttu-id="60e28-155">Przykłady</span><span class="sxs-lookup"><span data-stu-id="60e28-155">Examples</span></span>
 
 ```cli
 nuget trusted-signers list
