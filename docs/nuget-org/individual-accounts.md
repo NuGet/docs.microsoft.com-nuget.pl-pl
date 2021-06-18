@@ -5,12 +5,12 @@ author: mikejo5000
 ms.author: mikejo
 ms.date: 06/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5224a4f5be519e1d72285562c1611d047582f7de
-ms.sourcegitcommit: 40c039ace0330dd9e68922882017f9878f4283d1
+ms.openlocfilehash: d032b69f6eb4cbd3687ca60190c15aed9b7a4d79
+ms.sourcegitcommit: f3d98c23408a4a1c01ea92fc45493fa7bd97c3ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107901567"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112323898"
 ---
 # <a name="individual-accounts-on-nugetorg"></a>Indywidualne konta na NuGet.org
 
@@ -40,31 +40,31 @@ Aby utworzyć konto NuGet.org, musisz mieć konto osobiste konto Microsoft (MSA)
 
 1. Określ nazwę użytkownika w polu wejściowym. Pamiętaj, że  w nazwie użytkownika jest zróżnicowana wielkość liter i nie można jej później zmienić ani zmienić jej nazwy.
 
-   ![Określ nazwę użytkownika w NuGet.org](media/nuget-org-register.png) 
+   ![Określ nazwę użytkownika na NuGet.org](media/nuget-org-register.png) 
 
 1. Kliknij przycisk **Zarejestruj.**
 
-Masz teraz konto NuGet.org użytkownika. Zarządzanie kontami można wykonać na [stronie ustawień](https://www.nuget.org/account) konta.
+Masz teraz konto NuGet.org konto. Zarządzanie kontami można wykonywać na [stronie ustawień](https://www.nuget.org/account) konta.
 
 ## <a name="enable-two-factor-authentication-2fa"></a>Włączanie uwierzytelniania dwuskładnikowego (2FA)
 
 Uwierzytelnianie dwuskładnikowe (2FA) to dodatkowa warstwa zabezpieczeń używana podczas logowania się do witryn internetowych lub aplikacji. W przypadku uwierzytelniania 2FA musisz zalogować się przy użyciu konta Microsoft (MSA) i podać inną formę uwierzytelniania, do których tylko Ty znasz lub do których masz dostęp. Aby lepiej chronić konto, włącz uwierzytelnianie dwuskładnikowe (zalecane).
 
-1. Po zalogowaniu się na koncie otwórz swój profil i wybierz pozycję **Włącz w obszarze** Konto **logowania.**
+1. Po zalogowaniu się na koncie otwórz swój profil i wybierz pozycję **Włącz w** obszarze **Konto logowania.**
 
    ![Włączanie funkcji 2FA](media/nuget-org-register-2fa.png)
 
-   Zostanie wyświetlony komunikat informujący o tym, że podczas następnego logowania do usługi *nuget.org* zostanie wyświetlony monit o dodatkowe poświadczenia.
+   Zostanie wyświetlony komunikat informujący o tym, że przy następnym zalogowaniu się do usługi *nuget.org* zostanie wyświetlony monit o dodatkowe poświadczenia.
 
 2. Aby ukończyć uwierzytelnianie w tej chwili, wyloguj się, a następnie zaloguj się ponownie.
 
 3. Po zalogowaniu wybierz tekst lub wiadomość e-mail jako drugą formę uwierzytelniania.
 
-   Sprawdź numer telefonu lub adres e-mail, który jest już skojarzony z Twoim konto Microsoft. Może być konieczne wprowadzenie nowego numeru telefonu lub adresu e-mail dla konta. Jeśli tak, wprowadź wymagane informacje zgodnie z instrukcjami, a następnie kliknij przycisk **Dalej.**
+   Sprawdź numer telefonu lub adres e-mail skojarzony już z Twoim konto Microsoft. Może być konieczne wprowadzenie nowego numeru telefonu lub adresu e-mail dla konta. Jeśli tak, wprowadź wymagane informacje zgodnie z instrukcjami, a następnie kliknij przycisk **Dalej.**
 
    ![Włącz funkcję 2FA i wprowadź numer telefonu](media/nuget-org-sign-in-2fa.png)
 
-4. Sprawdź urządzenie lub konto e-mail, a następnie wprowadź właśnie wysłany kod.
+4. Sprawdź urządzenie lub konto e-mail i wprowadź właśnie wysłany kod.
 
    ![Włącz funkcję 2FA i wprowadź kod](media/nuget-org-enter-code-2fa.png)
 
@@ -75,4 +75,4 @@ Uwierzytelnianie dwuskładnikowe (2FA) to dodatkowa warstwa zabezpieczeń używa
 
 ## <a name="delete-a-nugetorg-account"></a>Usuwanie NuGet.org konta
 
-Aby uzyskać pomoc w zakresie dodatkowych zadań związanych z kontem, takich jak usuwanie konta NuGet.org, zobacz [NuGet.org zarządzania kontami.](nuget-org-faq.md#nugetorg-account-management)
+Aby uzyskać pomoc w zakresie dodatkowych zadań związanych z kontem, takich jak usuwanie konta NuGet.org, zobacz [NuGet.org zarządzania kontami.](/nuget/nuget-org/nuget-org-faq#nuget.org-account-management)

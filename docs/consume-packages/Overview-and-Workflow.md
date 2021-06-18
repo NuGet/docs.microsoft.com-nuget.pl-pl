@@ -1,53 +1,53 @@
 ---
-title: Omówienie i przepływ pracy z użyciem pakietów NuGet
-description: Przegląd procesu zużywania pakietów NuGet w projekcie z linkami do innych określonych części procesu.
+title: Omówienie i przepływ pracy korzystania z pakietów NuGet
+description: Omówienie procesu zużywania pakietów NuGet w projekcie z linkami do innych określonych części procesu.
 author: JonDouglas
 ms.author: jodou
 ms.date: 03/22/2018
 ms.topic: conceptual
-ms.openlocfilehash: 92968236262f891106ab2d4cd3ba399f1644400b
-ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
+ms.openlocfilehash: d1d6df3bcc36d8a78fcee97099b301c9ffc440d9
+ms.sourcegitcommit: f3d98c23408a4a1c01ea92fc45493fa7bd97c3ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104859216"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112323638"
 ---
-# <a name="package-consumption-workflow"></a>Przepływ pracy zużycia pakietów
+# <a name="package-consumption-workflow"></a>Przepływ pracy użycia pakietów
 
-Między nuget.org i prywatnymi galeriami pakietów, które organizacja może ustalić, można znaleźć dziesiątki tysięcy wysoce przydatnych pakietów do użycia w aplikacjach i usługach. Bez względu na to, że pakiet korzystający z pakietu jest zgodny z tym samym ogólnym przepływem pracy.
+Między nuget.org prywatnymi i prywatnymi galeriami pakietów, które organizacja może ustanowić, możesz znaleźć dziesiątki tysięcy wysoce przydatnych pakietów do użycia w aplikacjach i usługach. Jednak niezależnie od źródła, korzystanie z pakietu jest w tym samym ogólnym przepływie pracy.
 
-![Przepływ do źródła pakietów, wyszukiwanie pakietu, instalowanie go w projekcie, Dodawanie instrukcji using i wywołań do interfejsu API pakietu](media/Overview-01-GeneralFlow.png)
+![Przepływ przechodzący do źródła pakietu, znajdowania pakietu, instalowania go w projekcie, a następnie dodawania instrukcji using i wywołań do interfejsu API pakietu](media/Overview-01-GeneralFlow.png)
 
-\*_Visual Studio i `dotnet.exe` tylko. `nuget install`Polecenie nie modyfikuje plików projektu lub `packages.config` pliku; wpisy muszą być zarządzane ręcznie._
+\*_Visual Studio tylko `dotnet.exe` i . Polecenie `nuget install` nie modyfikuje plików projektu ani `packages.config` pliku. Wpisy muszą być zarządzane ręcznie._
 
-Aby uzyskać więcej informacji, zobacz [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md) oraz [to, co się dzieje po zainstalowaniu pakietu?](../concepts/package-installation-process.md).
+Aby uzyskać więcej informacji, zobacz [Znajdowanie i wybieranie pakietów](../consume-packages/finding-and-choosing-packages.md) oraz Co się [dzieje po zainstalowaniu pakietu?](../concepts/package-installation-process.md).
 
-Pakiet NuGet zapamiętuje tożsamość i numer wersji każdego z zainstalowanych pakietów, rejestrując go w pliku projektu (przy użyciu [PackageReference](../consume-packages/package-references-in-project-files.md)) lub [`packages.config`](../reference/packages-config.md) , w zależności od typu projektu i używanej wersji programu NuGet. W przypadku programu NuGet 4.0 + PackageReference jest preferowany, chociaż można go skonfigurować w programie Visual Studio za pomocą [interfejsu użytkownika Menedżera pakietów](install-use-packages-visual-studio.md). W każdym przypadku można w dowolnym momencie wyszukać odpowiedni plik, aby wyświetlić pełną listę zależności dla projektu.
+NuGet zapamiętuje tożsamość i numer wersji każdego zainstalowanego pakietu, rejestrując go w pliku projektu (przy użyciu [funkcji PackageReference](../consume-packages/package-references-in-project-files.md)) lub , w zależności od typu projektu i wersji [`packages.config`](../reference/packages-config.md) pakietu NuGet. W przypadku pakietu NuGet 4.0+, preferowany jest packageReference, chociaż można to Visual Studio za pomocą interfejsu [Menedżer pakietów użytkownika.](install-use-packages-visual-studio.md) W każdym przypadku możesz w dowolnym momencie zajrzeć do odpowiedniego pliku, aby wyświetlić pełną listę zależności dla projektu.
 
 > [!Tip]
-> Należy zawsze sprawdzić licencję dla każdego pakietu, którego zamierzasz używać w oprogramowaniu. W witrynie nuget.org znajdziesz link **informacji o licencji** po prawej stronie strony opisu każdego pakietu. Jeśli pakiet nie określa postanowień licencyjnych, skontaktuj się z właścicielem pakietu bezpośrednio, korzystając z linku **właściciele kontaktu** na stronie pakiet. Firma Microsoft nie udziela licencji jakiejkolwiek własności intelektualnej od dostawców pakietów innych firm i nie ponosi odpowiedzialności za informacje udostępniane przez strony trzecie.
+> Warto zawsze sprawdzać licencję dla każdego pakietu, który ma być w tym oprogramowaniu. Na nuget.org stronie opisu każdego pakietu znajduje się **link** Informacje o licencji. Jeśli pakiet nie zawiera postanowień licencyjnych, skontaktuj się bezpośrednio z właścicielem pakietu przy użyciu linku **Skontaktuj** się z właścicielami na stronie pakietu. Firma Microsoft nie udziela Licencjobiorcy licencji na własność intelektualną od zewnętrznych dostawców pakietów i nie jest odpowiedzialna za informacje udostępniane przez osoby trzecie.
 
-Podczas instalowania pakietów NuGet zwykle sprawdza, czy pakiet jest już dostępny w jego pamięci podręcznej. Możesz ręcznie wyczyścić tę pamięć podręczną z poziomu wiersza polecenia, zgodnie z opisem w temacie [Zarządzanie pakietami globalnymi i folderami pamięci podręcznej](../consume-packages/managing-the-global-packages-and-cache-folders.md).
+Podczas instalowania pakietów pakiet NuGet zwykle sprawdza, czy pakiet jest już dostępny w jego pamięci podręcznej. Tę pamięć podręczną można wyczyścić ręcznie z wiersza polecenia zgodnie z opisem w tece [Zarządzanie globalnymi pakietami i folderami pamięci podręcznej.](../consume-packages/managing-the-global-packages-and-cache-folders.md)
 
-Pakiet NuGet gwarantuje również, że Platformy docelowe obsługiwane przez ten element są zgodne z projektem. Jeśli pakiet nie zawiera zgodnych zestawów, program NuGet wyświetli błąd. Zobacz [Rozwiązywanie niezgodnych błędów pakietów](../concepts/dependency-resolution.md#resolving-incompatible-package-errors).
+Program NuGet zapewnia również zgodność platform docelowych obsługiwanych przez pakiet z projektem. Jeśli pakiet nie zawiera zgodnych zestawów, nuGet wyświetla błąd. Zobacz [Rozwiązywanie problemów z niezgodnymi pakietami](../concepts/dependency-resolution.md#resolving-incompatible-package-errors).
 
-W przypadku dodawania kodu projektu do repozytorium źródłowego zazwyczaj nie są uwzględniane pakiety NuGet. Osoby, które później sklonują repozytorium lub pozyskają projekt, w tym agentów kompilacji w systemach, takich jak Visual Studio Team Services, muszą przywrócić wymagane pakiety przed uruchomieniem kompilacji:
+Podczas dodawania kodu projektu do repozytorium źródłowego zazwyczaj nie dołącza się pakietów NuGet. Osoby, które później sklonują repozytorium lub w inny sposób uzyskają projekt, w tym agentów kompilacji w systemach takich jak Visual Studio Team Services, muszą przywrócić niezbędne pakiety przed uruchomieniem kompilacji:
 
-![Przepływ przywracania pakietów NuGet przez klonowanie repozytorium i użycie polecenia Restore](media/Overview-02-RestoreFlow.png)
+![Przepływ przywracania pakietów NuGet przez klonowanie repozytorium i używanie polecenia przywracania](media/Overview-02-RestoreFlow.png)
 
-[Przywracanie pakietu](../consume-packages/package-restore.md) używa informacji w pliku projektu lub `packages.config` do ponownego zainstalowania wszystkich zależności. Należy zauważyć, że występują różnice w procesie, zgodnie z opisem w temacie [rozpoznawanie zależności](../concepts/dependency-resolution.md). Ponadto na powyższym diagramie nie jest wyświetlane polecenie Restore dla konsoli Menedżera pakietów, ponieważ jeśli masz już konsolę programu Visual Studio, która zwykle przywraca pakiety automatycznie i udostępnia polecenie na poziomie rozwiązania, jak pokazano.
+[Przywracanie pakietu](../consume-packages/package-restore.md) używa informacji w pliku projektu lub `packages.config` do ponownego zainstalowania wszystkich zależności. Należy pamiętać, że istnieją różnice w tym procesie, zgodnie z opisem w [rozwiązywaniu zależności](../concepts/dependency-resolution.md). Ponadto na powyższym diagramie nie pokazano polecenia przywracania dla konsoli programu Menedżer pakietów, ponieważ jeśli używasz konsoli programu , jesteś już w kontekście programu Visual Studio, który zazwyczaj automatycznie przywraca pakiety i udostępnia polecenie na poziomie rozwiązania, jak pokazano.
 
-Czasami konieczne jest ponowne zainstalowanie pakietów, które już znajdują się w projekcie, co może również ponownie zainstalować zależności. Można to łatwo zrobić przy użyciu `nuget reinstall` polecenia lub konsoli Menedżera pakietów NuGet. Aby uzyskać szczegółowe informacje, zobacz [ponowne instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md).
+Czasami konieczne jest ponowne zainstalowanie pakietów, które są już zawarte w projekcie, co może również spowodować ponowne zainstalowanie zależności. Można to łatwo zrobić za pomocą `nuget reinstall` polecenia lub konsoli Menedżer pakietów NuGet. Aby uzyskać szczegółowe informacje, zobacz [Ponowne instalowanie i aktualizowanie pakietów](../consume-packages/reinstalling-and-updating-packages.md).
 
-Na koniec zachowanie narzędzia NuGet jest zależne od `Nuget.Config` plików. Wiele plików może służyć do scentralizowania niektórych ustawień na różnych poziomach, jak wyjaśniono w temacie [Konfigurowanie zachowania NuGet](../consume-packages/configuring-nuget-behavior.md).
+Na koniec zachowanie programu NuGet jest oparte na `NuGet.Config` plikach. Wiele plików może służyć do scentralizować niektóre ustawienia na różnych poziomach, jak wyjaśniono w konfigurowanie [zachowania NuGet](../consume-packages/configuring-nuget-behavior.md).
 
-## <a name="ways-to-install-a-nuget-package"></a>Sposoby instalacji pakietu NuGet
+## <a name="ways-to-install-a-nuget-package"></a>Sposoby instalowania pakietu NuGet
 
-Pakiety NuGet są pobierane i instalowane przy użyciu dowolnej metody z poniższej tabeli.
+Pakiety NuGet są pobierane i instalowane przy użyciu dowolnej z metod z poniższej tabeli.
 
 | Narzędzie | Platformy | Opis |
 | --- | --- | --- |
-| [Interfejs wiersza polecenia dotnet](install-use-packages-dotnet-cli.md) | Wszystko | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Core i .NET Standard oraz dla projektów w stylu zestawu SDK, które są przeznaczone dla .NET Framework (zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions)). Pobiera pakiet identyfikowany przez \<package_name\> i dodaje odwołanie do pliku projektu. Program również pobiera i instaluje zależności. |
-| Visual Studio | Systemy Windows i Mac | Udostępnia interfejs użytkownika, za pomocą którego można przeglądać, wybierać i instalować pakiety oraz ich zależności w projekcie z określonego źródła pakietu. Dodaje odwołania do zainstalowanych pakietów do pliku projektu.<ul><li>[Instalowanie pakietów i zarządzanie nimi za pomocą programu Visual Studio](install-use-packages-visual-studio.md)</li><li>[Dołączanie pakietu NuGet w projekcie (Mac)](/visualstudio/mac/nuget-walkthrough)</li></ul> |
-| [Konsola menedżera pakietów (Visual Studio)](install-use-packages-powershell.md) | Tylko Windows | Pobiera i instaluje pakiet identyfikowany przez \<package_name\> z wybranego źródła w określonym projekcie w rozwiązaniu, a następnie dodaje odwołanie do pliku projektu. Program również pobiera i instaluje zależności. |
-| [Interfejs wiersza polecenia nuget.exe](install-use-packages-nuget-cli.md) | Wszystko | Narzędzie interfejsu wiersza polecenia dla bibliotek .NET Framework i projektów spoza zestawu SDK, które są przeznaczone dla .NET Standard bibliotek. Pobiera pakiet identyfikowany przez program \<package_name\> i rozszerza jego zawartość do folderu w bieżącym katalogu. można również pobrać wszystkie pakiety wymienione w `packages.config` pliku. Program również pobiera i instaluje zależności, ale nie wprowadza zmian w plikach projektu ani `packages.config` . |
+| [Interfejs wiersza polecenia dotnet](install-use-packages-dotnet-cli.md) | Wszystko | Narzędzie interfejsu wiersza polecenia dla platformy .NET Core .NET Standard bibliotek i projektów w stylu zestawu SDK, które są .NET Framework (zobacz [atrybut zestawu SDK](/dotnet/core/tools/csproj#additions)). Pobiera pakiet identyfikowany przez \<package_name\> i dodaje odwołanie do pliku projektu. Pobiera również i instaluje zależności. |
+| Visual Studio | Windows i Mac | Udostępnia interfejs użytkownika, za pomocą którego można przeglądać, wybierać i instalować pakiety oraz ich zależności w projekcie z określonego źródła pakietu. Dodaje odwołania do zainstalowanych pakietów do pliku projektu.<ul><li>[Instalowanie pakietów i zarządzanie nimi przy użyciu Visual Studio](install-use-packages-visual-studio.md)</li><li>[Łącznie z pakietem NuGet w projekcie (Mac)](/visualstudio/mac/nuget-walkthrough)</li></ul> |
+| [Konsola menedżera pakietów (Visual Studio)](install-use-packages-powershell.md) | Tylko Windows | Pobiera i instaluje pakiet identyfikowany przez z wybranego źródła do określonego projektu w rozwiązaniu, a następnie dodaje \<package_name\> odwołanie do pliku projektu. Pobiera również i instaluje zależności. |
+| [Interfejs wiersza polecenia nuget.exe](install-use-packages-nuget-cli.md) | Wszystko | Narzędzie interfejsu wiersza polecenia dla .NET Framework i projektów innych niż w stylu zestawu SDK, które są .NET Standard biblioteki. Pobiera pakiet zidentyfikowany przez i rozwija jego zawartość do folderu w bieżącym katalogu; może również pobrać wszystkie \<package_name\> pakiety wymienione w `packages.config` pliku. Ponadto pobiera i instaluje zależności, ale nie wprowadza żadnych zmian w plikach projektu lub `packages.config` . |

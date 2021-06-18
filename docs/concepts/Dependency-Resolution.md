@@ -1,142 +1,142 @@
 ---
-title: Rozpoznawanie zależności pakietu NuGet
-description: Szczegółowe informacje na temat procesu, za pomocą którego zależności pakietu NuGet są rozwiązywane i instalowane zarówno w programie NuGet 2. x, jak i NuGet 3. x +.
+title: Rozwiązanie zależności pakietu NuGet
+description: Szczegółowe informacje na temat procesu, za pomocą którego zależności pakietu NuGet są rozwiązywane i instalowane zarówno w pakiecie NuGet 2.x, jak i NuGet 3.x+.
 author: JonDouglas
 ms.author: jodou
 ms.date: 08/14/2017
 ms.topic: conceptual
-ms.openlocfilehash: 0ef309d95c6ef5437765c02791da6dab13794678
-ms.sourcegitcommit: ee6c3f203648a5561c809db54ebeb1d0f0598b68
+ms.openlocfilehash: 69adbbad20debf2e53f247e85d638b3226c0491d
+ms.sourcegitcommit: f3d98c23408a4a1c01ea92fc45493fa7bd97c3ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98775272"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112323755"
 ---
-# <a name="how-nuget-resolves-package-dependencies"></a>Jak narzędzie NuGet rozpoznaje zależności pakietów
+# <a name="how-nuget-resolves-package-dependencies"></a>Jak pakiet NuGet rozwiązuje zależności pakietów
 
-Za każdym razem, gdy pakiet zostanie zainstalowany lub ponownie zainstalowany, który obejmuje instalację w ramach procesu [przywracania](../consume-packages/package-restore.md) , program NuGet zainstaluje także wszystkie dodatkowe pakiety, od których zależy pierwszy pakiet.
+Za każdym razem, gdy pakiet jest instalowany lub [](../consume-packages/package-restore.md) ponownie instalowany, co obejmuje instalację w ramach procesu przywracania, pakiet NuGet instaluje również wszelkie dodatkowe pakiety, od których zależy pierwszy pakiet.
 
-Te bezpośrednie zależności mogą również mieć własne zależności, które mogą przejść do dowolnej głębokości. Powoduje to utworzenie *grafu zależności* opisującego relacje między pakietami na wszystkich poziomach.
+Te bezpośrednie zależności mogą również mieć zależności samodzielnie, co może nadal mieć dowolną głębokość. W ten sposób powstaje tzw. wykres *zależności* opisujący relacje między pakietami na wszystkich poziomach.
 
-Gdy wiele pakietów ma tę samą zależność, ten sam identyfikator pakietu może być wyświetlany na wykresie wiele razy, potencjalnie z innymi ograniczeniami wersji. Jednak w projekcie można używać tylko jednej wersji danego pakietu, więc pakiet NuGet musi wybrać używaną wersję. Dokładny proces zależy od używanego formatu zarządzania pakietami.
+Jeśli wiele pakietów ma tę samą zależność, ten sam identyfikator pakietu może pojawić się na wykresie wiele razy, potencjalnie z różnymi ograniczeniami wersji. Jednak w projekcie można używać tylko jednej wersji danego pakietu, więc nuGet musi wybrać wersję, która jest używana. Dokładny proces zależy od używanego formatu zarządzania pakietami.
 
-## <a name="dependency-resolution-with-packagereference"></a>Rozpoznawanie zależności z PackageReference
+## <a name="dependency-resolution-with-packagereference"></a>Rozwiązanie zależności za pomocą packageReference
 
-W przypadku instalowania pakietów do projektów przy użyciu formatu PackageReference, NuGet dodaje odwołania do wykresu prostego pakietu w odpowiednim pliku i rozwiązuje konflikty przed czasem. Ten proces jest nazywany *przywracaniem przechodnim*. Ponowne instalowanie lub przywracanie pakietów jest procesem pobierania pakietów wymienionych na grafie, co powoduje szybsze i bardziej przewidywalne kompilacje. Możesz również korzystać z wersji zmiennoprzecinkowych, na przykład 2,8. \* , aby uniknąć modyfikacji projektu w celu korzystania z najnowszej wersji pakietu.
+Podczas instalowania pakietów w projektach przy użyciu formatu PackageReference pakiet NuGet dodaje odwołania do płaskiego grafu pakietu w odpowiednim pliku i z wyprzedzeniem rozwiązuje konflikty. Ten proces jest określany jako przywracanie *przechodnie.* Ponowne instalowanie lub przywracanie pakietów to proces pobierania pakietów wymienionych na grafie, co spowoduje szybsze i bardziej przewidywalne kompilacje. Można również korzystać z wersji zmiennoprzecinkowych, takich jak 2.8. , aby uniknąć modyfikowania projektu w celu używania najnowszej \* wersji pakietu.
 
-Gdy proces przywracania NuGet zostanie uruchomiony przed kompilacją, rozpoznaje zależności jako pierwsze w pamięci, a następnie zapisuje wykres wyjściowy do pliku o nazwie `project.assets.json` . Zapisuje także rozwiązane zależności do pliku blokady o nazwie `packages.lock.json` , jeśli [jest włączona funkcja blokowania plików](../consume-packages/package-references-in-project-files.md#locking-dependencies).
-Plik zasobów znajduje się w lokalizacji `MSBuildProjectExtensionsPath` , która domyślnie jest folderem "obj" projektu. Program MSBuild odczytuje następnie ten plik i tłumaczy go na zestaw folderów, w których można znaleźć potencjalne odwołania, a następnie dodaje je do drzewa projektu w pamięci.
+Gdy proces przywracania NuGet jest uruchamiany przed kompilacją, najpierw rozwiązuje zależności w pamięci, a następnie zapisuje wynikowy graf do pliku o nazwie `project.assets.json` . Ponadto zapisuje rozpoznane zależności w pliku blokady o nazwie , jeśli włączono funkcję `packages.lock.json` [pliku blokady](../consume-packages/package-references-in-project-files.md#locking-dependencies).
+Plik assets znajduje się w folderze , który domyślnie jest `MSBuildProjectExtensionsPath` folderem "obj" projektu. Następnie program MSBuild odczytuje ten plik i tłumaczy go na zestaw folderów, w których można znaleźć potencjalne odwołania, a następnie dodaje je do drzewa projektów w pamięci.
 
-`project.assets.json`Plik jest tymczasowy i nie należy go dodawać do kontroli źródła. Jest on wyświetlany domyślnie w obu `.gitignore` i `.tfignore` . Zobacz [pakiety i kontrola źródła](../consume-packages/packages-and-source-control.md).
+Plik `project.assets.json` jest tymczasowy i nie powinien być dodawany do kontroli źródła. Jest ona domyślnie wymieniona zarówno w wartościach , `.gitignore` jak i `.tfignore` . Zobacz [Pakiety i kontrola źródła](../consume-packages/packages-and-source-control.md).
 
-### <a name="dependency-resolution-rules"></a>Reguły rozpoznawania zależności
+### <a name="dependency-resolution-rules"></a>Reguły rozwiązywania zależności
 
-Przywracanie przechodnie stosuje cztery główne reguły do rozwiązywania zależności: najniższa odpowiednia wersja, liczba zmiennoprzecinkowa, najbliższy serwer WINS i zależności Cousin.
+Przywracanie przechodnie stosuje cztery główne reguły rozwiązywania zależności: najniższą dostępną wersję, wersje zmiennoprzecincze, najbliższą wins i zależności zależność zależność zależności.
 
 <a name="lowest-applicable-version"></a>
 
-#### <a name="lowest-applicable-version"></a>Najniższa odpowiednia wersja
+#### <a name="lowest-applicable-version"></a>Najniższa wersja, która ma zastosowanie
 
-Najniższa odpowiednia reguła wersji przywraca najmniejszą możliwą wersję pakietu określoną przez jego zależności. Dotyczy to również zależności aplikacji lub biblioteki klas, chyba że jest zadeklarowana jako [zmienna](#floating-versions).
+Najniższa obowiązująca reguła wersji przywraca najniższą możliwą wersję pakietu zdefiniowaną przez jego zależności. Dotyczy to również zależności aplikacji lub biblioteki klas, chyba że jest zadeklarowana jako [zmiennoprzecinkowa](#floating-versions).
 
-Na poniższej ilustracji na przykład 1,0-beta jest uważana za mniej niż 1,0, więc pakiet NuGet wybiera wersję 1,0:
+Na przykład na poniższej ilustracji wersja 1.0-beta jest uznawana za niższą niż 1.0, więc nuGet wybiera wersję 1.0:
 
 ![Wybieranie najniższej odpowiedniej wersji](media/projectJson-dependency-1.png)
 
-Na następnym rysunku wersja 2,1 nie jest dostępna w kanale informacyjnym, ale ponieważ ograniczenie wersji jest >= 2,1 pakiet NuGet wybiera następną najniższą wersję, którą może znaleźć w tym przypadku 2,2:
+Na następnej ilustracji wersja 2.1 nie jest dostępna w kanale informacyjnym, ale ponieważ ograniczenie wersji to >= 2.1 NuGet wybiera następną najniższą możliwą wersję, w tym przypadku 2.2:
 
 ![Wybieranie następnej najniższej wersji dostępnej w kanale informacyjnym](media/projectJson-dependency-2.png)
 
-Gdy aplikacja określa dokładny numer wersji, na przykład 1,2, który nie jest dostępny w kanale informacyjnym, pakiet NuGet kończy się niepowodzeniem z powodu błędu podczas próby zainstalowania lub przywrócenia pakietu:
+Gdy aplikacja określa dokładny numer wersji, taki jak 1.2, który nie jest dostępny w kanale informacyjnym, program NuGet kończy się niepowodzeniem z błędem podczas próby zainstalowania lub przywrócenia pakietu:
 
-![Pakiet NuGet generuje błąd w przypadku niedostępności dokładnej wersji pakietu](media/projectJson-dependency-3.png)
+![Program NuGet generuje błąd, gdy dokładna wersja pakietu jest niedostępny](media/projectJson-dependency-3.png)
 
 <a name="floating-versions"></a>
 
-#### <a name="floating-versions"></a>Wersje zmiennoprzecinkowe
+#### <a name="floating-versions"></a>Wersje zmiennoprzecinowe
 
-Określono przepływającą wersję zależności ze \* znakiem. Na przykład `6.0.*`. W tej specyfikacji wersji znajduje się komunikat "Użyj najnowszej wersji programu 6.0. x"; `4.*` oznacza "Użyj najnowszej wersji 4. x". Użycie wersji zmiennej zmniejsza liczbę zmian w pliku projektu, jednocześnie zapewniając użycie zawsze najnowszej wersji zależności.
+Zmiennoprzecinkową wersję zależności określa się za pomocą \* znaku . Na przykład `6.0.*`. Ta specyfikacja wersji zawiera "użyj najnowszej wersji 6.0.x"; `4.*` oznacza "użyj najnowszej wersji 4.x". Użycie wersji zmiennej zmniejsza liczbę zmian w pliku projektu, jednocześnie zapewniając użycie zawsze najnowszej wersji zależności.
 
-W przypadku korzystania z wersji zmiennoprzecinkowej program NuGet rozpoznaje najwyższą wersję pakietu, która jest zgodna ze wzorcem wersji, na przykład `6.0.*` Pobiera największą wersję pakietu rozpoczynającą się od 6,0:
+W przypadku korzystania z wersji zmiennoprzecinków NuGet rozpozna najwyższą wersję pakietu, która pasuje do wzorca wersji, na przykład pobiera najwyższą wersję pakietu, która rozpoczyna się od `6.0.*` wersji 6.0:
 
-![Wybieranie wersji 6.0.1 w przypadku żądania zmiennoprzecinkowej wersji 6,0. *](media/projectJson-dependency-4.png)
+![Wybieranie wersji 6.0.1, gdy żądana jest zmiennoprzecinkowa wersja 6.0.*](media/projectJson-dependency-4.png)
 
 > [!Note]
-> Aby uzyskać informacje na temat zachowania liczbowych wersji i wersji wstępnych, zobacz [wersja pakietu](package-versioning.md#version-ranges).
+> Aby uzyskać informacje na temat zachowania wersji zmiennoprzecinkowych i wersji wstępnych, zobacz [Package versioning (Wersjowanie pakietów).](package-versioning.md#version-ranges)
 
 
 <a name="nearest-wins"></a>
 
-#### <a name="nearest-wins"></a>Najbliższy serwer WINS
+#### <a name="nearest-wins"></a>Najbliższa wins
 
-Gdy Graf pakietu dla aplikacji zawiera różne wersje tego samego pakietu, NuGet wybiera pakiet, który znajduje się najbliżej aplikacji na grafie i ignoruje wszystkie pozostałe. Takie zachowanie umożliwia aplikacji przesłonięcie dowolnej konkretnej wersji pakietu na wykresie zależności.
+Gdy wykres pakietu dla aplikacji zawiera różne wersje tego samego pakietu, nuGet wybiera pakiet, który znajduje się najbliżej aplikacji na wykresie, i ignoruje wszystkie inne. To zachowanie umożliwia aplikacji zastąpienie dowolnej konkretnej wersji pakietu na wykresie zależności.
 
-W poniższym przykładzie aplikacja zależy bezpośrednio od pakietu B z ograniczeniem wersji >= 2,0. Aplikacja zależy również od pakietu, który z kolei zależy również od pakietu B, ale z ograniczeniem >= 1,0. Ponieważ zależność od pakietu B 2,0 jest bliska aplikacji na grafie, używana jest ta wersja:
+W poniższym przykładzie aplikacja zależy bezpośrednio od pakietu B z ograniczeniem wersji >=2.0. Aplikacja zależy również od pakietu A, który z kolei zależy również od pakietu B, ale z >=1.0. Ponieważ zależność od pakietu B 2.0 jest bliżej aplikacji na wykresie, używana jest ta wersja:
 
-![Aplikacja przy użyciu najbliższej reguły WINS](media/projectJson-dependency-5.png)
+![Aplikacja używająca reguły najbliższego wins](media/projectJson-dependency-5.png)
 
 >[!Warning]
-> Najbliższa reguła WINS może spowodować obniżenie wersji pakietu, co może spowodować zakłócenie innych zależności w grafie. W związku z tym ta reguła jest stosowana z ostrzeżeniem dotyczącym alertu użytkownika.
+> Reguła Najbliższe wins może spowodować obniżenie wersji pakietu, co może potencjalnie spowodować przerwanie innych zależności na wykresie. W związku z tym ta reguła jest stosowana z ostrzeżeniem ostrzegawczym użytkownika.
 
-Ta zasada powoduje również zwiększenie wydajności przy użyciu wykresu z dużą zależnością (na przykład z pakietami BCL), ponieważ po zignorowaniu danej zależności, NuGet ignoruje także wszystkie pozostałe zależności z tej gałęzi wykresu. Na poniższym diagramie, na przykład, ponieważ używany jest pakiet C 2,0, NuGet ignoruje wszystkie gałęzie na grafie odwołujące się do starszej wersji pakietu C:
+Ta reguła powoduje również zwiększenie wydajności przy użyciu dużego grafu zależności (na przykład tych z pakietami BCL), ponieważ po zignorowania danej zależności nuGet ignoruje również wszystkie pozostałe zależności w tej gałęzi grafu. Na przykład na poniższym diagramie, ponieważ jest używany pakiet C 2.0, nuGet ignoruje wszystkie gałęzie grafu odwołujące się do starszej wersji pakietu C:
 
-![Gdy NuGet zignoruje pakiet na grafie, ignoruje całą gałąź](media/projectJson-dependency-6.png)
+![Gdy program NuGet ignoruje pakiet w grafie, ignoruje tę całą gałąź](media/projectJson-dependency-6.png)
 
 <a name="cousin-dependencies"></a>
 
-#### <a name="cousin-dependencies"></a>Cousin zależności
+#### <a name="cousin-dependencies"></a>Zależności z 2018 r.
 
-Gdy różne wersje pakietów są określone w tej samej odległości na wykresie z aplikacji, pakiet NuGet używa najniższej wersji, która spełnia wszystkie wymagania dotyczące wersji (tak jak w przypadku [najniższych odpowiednich wersji](#lowest-applicable-version) i reguł [wersji zmiennoprzecinkowych](#floating-versions) ). Na przykład na poniższym obrazie wersja 2,0 pakietu B spełnia pozostałe ograniczenia >= 1,0 i jest w ten sposób używana:
+Gdy różne wersje pakietów są określane w tej samej odległości na grafie od aplikacji, program NuGet [](#lowest-applicable-version) używa najniższej wersji, która spełnia wszystkie wymagania dotyczące wersji (tak jak w przypadku reguł o najniższej obowiązującej wersji i wersjach zmiennoprzecinków). [](#floating-versions) Na przykład na poniższej ilustracji wersja 2.0 pakietu B spełnia inne ograniczenie >=1.0 i dlatego jest używana:
 
-![Rozpoznawanie zależności Cousin przy użyciu niższej wersji, która spełnia wszystkie ograniczenia](media/projectJson-dependency-7.png)
+![Rozwiązywanie zależności zależności przy użyciu niższej wersji, która spełnia wszystkie ograniczenia](media/projectJson-dependency-7.png)
 
-W niektórych przypadkach nie jest możliwe spełnienie wszystkich wymagań dotyczących wersji. Jak pokazano poniżej, jeśli pakiet A wymaga dokładnie pakietu B 1,0, a pakiet C wymaga pakietu B >= 2,0, program NuGet nie może rozpoznać zależności i nadaje błędu.
+W niektórych przypadkach nie jest możliwe spełnienie wszystkich wymagań dotyczących wersji. Jak pokazano poniżej, jeśli pakiet A wymaga dokładnie pakietu B 1.0, a pakiet C wymaga pakietu B >=2.0, wówczas nuGet nie może rozpoznać zależności i wyświetla błąd.
 
-![Nierozpoznawalne zależności z powodu dokładnego wymagania wersji](media/projectJson-dependency-8.png)
+![Nierozpoznane zależności ze względu na dokładne wymaganie dotyczące wersji](media/projectJson-dependency-8.png)
 
-W takich sytuacjach konsument najwyższego poziomu (aplikacja lub pakiet) powinien dodać własną bezpośrednią zależność od pakietu B w celu zastosowania [najbliższej reguły usługi WINS](#nearest-wins) .
+W takich sytuacjach konsument najwyższego poziomu (aplikacja lub pakiet) powinien dodać własną bezpośrednią [](#nearest-wins) zależność od pakietu B, aby miała zastosowanie reguła Najbliższe wins.
 
-## <a name="dependency-resolution-with-packagesconfig"></a>Rozpoznawanie zależności z packages.config
+## <a name="dependency-resolution-with-packagesconfig"></a>Rozwiązanie zależności za pomocą packages.config
 
-W programie `packages.config` zależności projektu są zapisywane `packages.config` jako płaska lista. Wszystkie zależności tych pakietów są również zapisywane na tej samej liście. Po zainstalowaniu pakietów NuGet może także zmodyfikować `.csproj` plik,, `app.config` `web.config` i inne poszczególne pliki.
+W przypadku programu zależności projektu są zapisywane w `packages.config` `packages.config` programie jako płaska lista. Wszelkie zależności tych pakietów są również zapisywane na tej samej liście. Po zainstalowaniu pakietów pakiet NuGet może również modyfikować `.csproj` plik , i inne pojedyncze `app.config` `web.config` pliki.
 
-W programie `packages.config` NuGet próbuje rozwiązać konflikty zależności podczas instalacji poszczególnych pakietów. Oznacza to, że jeśli pakiet A jest instalowany i zależy od pakietu B, a pakiet B jest już wymieniony w `packages.config` zależności od czegoś innego, NuGet porównuje wersje żądanego pakietu i próbuje znaleźć wersję, która spełnia wszystkie ograniczenia wersji. Pakiet NuGet wybiera niższą wersję *główną. pomocniczą* , która spełnia zależności.
+W `packages.config` programie nuGet próbuje rozwiązać konflikty zależności podczas instalacji poszczególnych pakietów. Oznacza to, że jeśli pakiet A jest instalowany i zależy od pakietu B, a pakiet B jest już wymieniony jako zależność innego pakietu, NuGet porównuje żądane wersje pakietu B i próbuje znaleźć wersję, która spełnia wszystkie ograniczenia `packages.config` wersji. W szczególności nuGet wybiera niższą *wersję główną.pomocniczą,* która spełnia zależności.
 
-Domyślnie program NuGet 2,8 szuka najniższej wersji poprawki (zobacz [Informacje o wersji programu nuget 2,8](../release-notes/nuget-2.8.md#patch-resolution-for-dependencies)). To ustawienie można kontrolować za pomocą `DependencyVersion` atrybutu w `Nuget.Config` i `-DependencyVersion` przełącznika w wierszu polecenia.  
+Domyślnie program NuGet 2.8 szuka najniższej wersji poprawki (zobacz Informacje o wersji [nuGet 2.8).](../release-notes/nuget-2.8.md#patch-resolution-for-dependencies) To ustawienie można kontrolować za pomocą `DependencyVersion` atrybutu w pliku `NuGet.Config` i `-DependencyVersion` przełącznika w wierszu polecenia.  
 
-`packages.config`Proces rozpoznawania zależności jest skomplikowany dla większych wykresów zależności. Każdy nowy pakiet instalacji wymaga przechodzenia do całego wykresu i podnosi ryzyko wystąpienia konfliktów wersji. Po wystąpieniu konfliktu instalacja zostaje zatrzymana, pozostawiając projekt w nieokreślonym stanie, szczególnie z potencjalnymi modyfikacjami samego pliku projektu. Nie jest to problem występujący w przypadku używania innych formatów zarządzania pakietami.
+Proces `packages.config` rozwiązywania zależności jest skomplikowany w przypadku większych grafów zależności. Każda nowa instalacja pakietu wymaga przechodzenia całego grafu i zwiększa prawdopodobieństwo konfliktów wersji. Gdy wystąpi konflikt, instalacja jest zatrzymywana, pozostawiając projekt w stanie nieokreślonym, szczególnie w przypadku potencjalnych modyfikacji samego pliku projektu. Nie jest to problem w przypadku korzystania z innych formatów zarządzania pakietami.
 
 ## <a name="managing-dependency-assets"></a>Zarządzanie zasobami zależności
 
-W przypadku korzystania z formatu PackageReference można kontrolować, które zasoby z zależności są przepływem do projektu najwyższego poziomu. Aby uzyskać szczegółowe informacje, zobacz [PackageReference](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
+W przypadku korzystania z formatu PackageReference można kontrolować, które zasoby z zależności przepływają do projektu najwyższego poziomu. Aby uzyskać szczegółowe informacje, zobacz [PackageReference](../consume-packages/package-references-in-project-files.md#controlling-dependency-assets).
 
-Gdy projekt najwyższego poziomu jest samym pakietem, masz również kontrolę nad tym przepływem przy użyciu `include` atrybutów i `exclude` z zależnościami wymienionymi w `.nuspec` pliku. Zobacz [. nuspec — zależności](../reference/nuspec.md#dependencies).
+Gdy projekt najwyższego poziomu jest samym pakietem, masz również kontrolę nad tym przepływem przy użyciu atrybutów i z zależnościami wymienionymi `include` `exclude` w pliku `.nuspec` . Zobacz [.nuspec Reference - Dependencies (Odwołanie do nuspec — zależności).](../reference/nuspec.md#dependencies)
 
 ## <a name="excluding-references"></a>Wykluczanie odwołań
 
-Istnieją scenariusze, w których zestawy o tej samej nazwie mogą być przywoływane więcej niż raz w projekcie, generowanie błędów czasu projektowania i czasu kompilacji. Rozważmy projekt, który zawiera niestandardową wersję programu `C.dll` , i odwołuje się do niego pakiet C, który również zawiera `C.dll` . W tym samym czasie projekt zależy również od pakietu B, który również jest zależny od pakietu C i `C.dll` . W związku z tym nie można określić `C.dll` , który z nich ma być używany, ale nie można usunąć zależności projektu w pakiecie C, ponieważ pakiet B również zależy od niego.
+Istnieją scenariusze, w których zestawy o tej samej nazwie mogą być przywołyowane w projekcie więcej niż raz, co tworzy błędy czasu projektowania i kompilacji. Rozważmy projekt, który zawiera niestandardową wersję i odwołuje `C.dll` się do pakietu C, który również zawiera . `C.dll` W tym samym czasie projekt zależy również od pakietu B, który zależy również od pakietu C i `C.dll` . W związku z tym nuGet nie może określić, którego pakietu użyć, ale nie można po prostu usunąć zależności projektu od pakietu C, ponieważ pakiet B również od niego `C.dll` zależy.
 
-Aby rozwiązać ten problem, należy bezpośrednio odwołać się do żądanego elementu `C.dll` (lub użyć innego pakietu, który odwołuje się do niego), a następnie dodać zależność od pakietu C, który wyklucza wszystkie jego zasoby. Jest to wykonywane w zależności od używanego formatu zarządzania pakietami:
+Aby rozwiązać ten problem, należy bezpośrednio odwoływać się do odpowiedniego pakietu (lub użyć innego pakietu, który odwołuje się do odpowiedniego pakietu), a następnie dodać zależność od pakietu C, która wyklucza wszystkie jego `C.dll` zasoby. Odbywa się to w następujący sposób w zależności od formatu zarządzania pakietami w użyciu:
 
-- [PackageReference](../consume-packages/package-references-in-project-files.md): Dodaj `ExcludeAssets="All"` w zależności:
+- [PackageReference](../consume-packages/package-references-in-project-files.md): `ExcludeAssets="All"` dodaj w zależności:
 
     ```xml
     <PackageReference Include="PackageC" Version="1.0.0" ExcludeAssets="All" />
     ```
 
-- `packages.config`: Usuń odwołanie do PackageC z `.csproj` pliku, aby odwoływać się tylko do `C.dll` żądanej wersji.
+- `packages.config`: usuń z pliku odwołanie do packagec, aby odwołyło `.csproj` się tylko do `C.dll` wersji, której potrzebujesz.
     
-## <a name="dependency-updates-during-package-install"></a>Aktualizacje zależności podczas instalacji pakietu 
+## <a name="dependency-updates-during-package-install"></a>Aktualizacje zależności podczas instalowania pakietu 
 
-Jeśli poprzednia wersja zależności jest już spełniona, zależność nie jest aktualizowana podczas innych instalacji pakietu. Rozważmy na przykład pakiet A, który zależy od pakietu B i określa 1,0 dla numeru wersji. Repozytorium źródłowe zawiera wersje 1,0, 1,1 i 1,2 pakietu B. Jeśli jest zainstalowany w projekcie, który zawiera już B w wersji 1,0, wówczas B 1,0 nadal jest używany, ponieważ spełnia ograniczenie wersji. Jeśli jednak pakiet A ma żądania w wersji 1,1 lub nowszej B, wówczas zostanie zainstalowana B 1,2. 
+Jeśli wersja zależności jest już spełniona, zależność nie jest aktualizowana podczas innych instalacji pakietów. Rozważmy na przykład pakiet A, który zależy od pakietu B i określa 1.0 jako numer wersji. Repozytorium źródłowe zawiera wersje 1.0, 1.1 i 1.2 pakietu B. Jeśli A jest zainstalowany w projekcie, który zawiera już wersję B 1.0, wersja B 1.0 pozostaje w użyciu, ponieważ spełnia ograniczenie wersji. Jeśli jednak pakiet A zawierał żądania w wersji 1.1 lub wyższej od wersji B, zostanie zainstalowana wersja B 1.2. 
 
-## <a name="resolving-incompatible-package-errors"></a>Rozwiązywanie niezgodnych błędów pakietów
+## <a name="resolving-incompatible-package-errors"></a>Rozwiązywanie problemów z niezgodnymi pakietami
 
-Podczas operacji przywracania pakietu może zostać wyświetlony komunikat o błędzie "co najmniej jeden pakiet nie jest zgodny. lub że pakiet "jest niezgodny" z platformą docelową projektu.
+Podczas operacji przywracania pakietu może zostać wyświetlony błąd "Co najmniej jeden pakiet nie jest zgodny..." lub że pakiet "nie jest zgodny" z platformą docelową projektu.
 
-Ten błąd występuje, gdy jeden lub więcej pakietów, do których odwołuje się projekt, nie wskazuje, że obsługują platformę docelową projektu; oznacza to, że pakiet nie zawiera odpowiedniej biblioteki DLL w jej `lib` folderze dla platformy docelowej, która jest zgodna z projektem. (Zobacz [Platformy docelowe](../reference/target-frameworks.md) dla listy). 
+Ten błąd występuje, gdy co najmniej jeden pakiet przywołyowany w projekcie nie wskazuje, że obsługuje platformę docelową projektu; oznacza to, że pakiet nie zawiera odpowiedniej biblioteki DLL w folderze dla docelowej `lib` struktury, która jest zgodna z projektem. (Aby uzyskać [listę,](../reference/target-frameworks.md) zobacz Platforme docelowe). 
 
-Na przykład jeśli projekt jest obiektem docelowym `netstandard1.6` i podjęto próbę zainstalowania pakietu zawierającego biblioteki DLL tylko w `lib\net20` `\lib\net45` folderach i, zobaczysz komunikaty podobne do następujących dla pakietu i prawdopodobnie jego zależności:
+Jeśli na przykład projekt jest przeznaczony i próbujesz zainstalować pakiet zawierający biblioteki DLL tylko w folderach i , zobaczysz komunikaty podobne do następujących dla pakietu i prawdopodobnie `netstandard1.6` `lib\net20` jego `\lib\net45` zależności:
 
 ```output
 Restoring packages for myproject.csproj...
@@ -152,7 +152,7 @@ One or more packages are incompatible with .NETStandard,Version=v1.6.
 Package restore failed. Rolling back package changes for 'MyProject'.
 ```
 
-Aby rozwiązać niezgodności, wykonaj jedną z następujących czynności:
+Aby rozwiązać problemy z niezgodnościami, wykonaj jedną z następujących czynności:
 
 - Przekieruj projekt do struktury, która jest obsługiwana przez pakiety, których chcesz użyć.
-- Skontaktuj się z autorem pakietów i pracuj z nimi, aby dodać obsługę wybranej platformy. Każda Strona z listą pakietów w witrynie [NuGet.org](https://www.nuget.org/) ma link **Contact Owners** do tego celu.
+- Skontaktuj się z autorem pakietów i skontaktuj się z nimi, aby dodać obsługę wybranej struktury. Każda strona listy pakietów w [nuget.org](https://www.nuget.org/) ma **w** tym celu link Kontakt z właścicielami.
