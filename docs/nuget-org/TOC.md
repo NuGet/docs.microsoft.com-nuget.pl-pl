@@ -17,4 +17,4 @@
 ## [Interfejs API narzędzia NuGet](../api/overview.md)
 ## [licenses.nuget.org](licenses.nuget.org.md)
 # Zasoby
-## [Często zadawane pytania](nuget-org-faq.md)
+## [Często zadawane pytania](nuget-org-faq.yml)
