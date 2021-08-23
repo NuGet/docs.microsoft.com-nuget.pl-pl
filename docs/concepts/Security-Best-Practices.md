@@ -1,191 +1,191 @@
 ---
 title: Najlepsze rozwiązania dotyczące bezpiecznego łańcucha dostaw oprogramowania
-description: Najlepsze rozwiązania dotyczące zabezpieczania łańcucha dostaw oprogramowania przy użyciu narzędzia NuGet & GitHub.
+description: Najlepsze rozwiązania dotyczące zabezpieczania łańcucha dostaw oprogramowania przy użyciu NuGet & GitHub.
 author: JonDouglas
 ms.author: jodou
 ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: e0f235d99e41e23a4551fbf7577f6c42e3381f5b
-ms.sourcegitcommit: bb9560dcc7055bde84b4940c5eb0db402bf46a48
+ms.openlocfilehash: 4575d4779ed90150cec667489c85875b7fb87a8d
+ms.sourcegitcommit: 5f706c62c97b78bbe3d8c7e95659976535fe486f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104859229"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122726980"
 ---
 # <a name="best-practices-for-a-secure-software-supply-chain"></a>Najlepsze rozwiązania dotyczące bezpiecznego łańcucha dostaw oprogramowania
 
-"Open source" jest wszędzie. Znajduje się w wielu zastrzeżonych bazach kodu i projektach społecznościowych. W przypadku organizacji i osób indywidualnych pytanie nie jest związane z tym, czy jesteś, czy nie używasz kodu open source, ale jaki jest używany kod Open Source i ile.
+Open Source jest wszędzie. Znajduje się w wielu zastrzeżonych bazach kodu i projektach społecznościowych. W przypadku organizacji i użytkowników indywidualnych pytanie nie dotyczy tego, czy korzystasz z kodu open source, ale z jakiego kodu open source korzystasz i ile.
 
-Jeśli nie masz informacji o tym, co znajduje się w łańcuchu podaży oprogramowania, usterka nadrzędna w jednej z Twoich zależności może być dla Ciebie krytyczna, sprawiać, że klient jest narażony na potencjalne zagrożenia. W tym dokumencie będziemy szczegółowe więcej informacji o tym, co oznacza termin "łańcuch dostaw oprogramowania", przyczynę i sposób zabezpieczania łańcucha dostaw projektu z najlepszymi rozwiązaniami.
+Jeśli nie wiesz, co znajduje się w łańcuchu dostaw oprogramowania, potencjalna luka w zabezpieczeniach jednej z Twoich zależności może być krytycznym zagrożeniem, przez co Ty i Twoi klienci będziecie narażeni na potencjalne naruszenia. W tym dokumencie bardziej zagłębimy się w znaczenie terminu "łańcuch dostaw oprogramowania", przyczynę jego znaczenia i sposób zabezpieczania łańcucha dostaw projektu przy użyciu najlepszych rozwiązań.
 
-![Stan Octoverse 2020-Open Source](media/opensource-percent.png)
+![The State of the Octoverse 2020 - Open Source](media/opensource-percent.png)
 
 ## <a name="dependencies"></a>Zależności 
 
-Termin łańcucha dostaw oprogramowania służy do odwoływania się do wszystkich elementów, które znajdują się w oprogramowaniu i skąd pochodzą. Są to zależności i właściwości zależności, od których zależy łańcuch dostaw oprogramowania. Zależność to to, co musi być uruchamiane w oprogramowaniu. Może to być kod, pliki binarne lub inne składniki oraz miejsce, z którego pochodzą, takie jak repozytorium lub Menedżer pakietów.
+Termin łańcuch dostaw oprogramowania odnosi się do wszystkiego, co wchodzi do oprogramowania i skąd pochodzi. To zależności i właściwości zależności, od których zależy łańcuch dostaw oprogramowania. Zależność to to, czego wymaga oprogramowanie do uruchomienia. Może to być kod, pliki binarne lub inne składniki, z których pochodzą, takie jak repozytorium lub menedżer pakietów.
 
-Obejmuje to, kto napisał kod, kiedy został wniesiony, jak został on sprawdzony pod kątem problemów z zabezpieczeniami, znanych luk w zabezpieczeniach, obsługiwanych wersji, informacji o licencjach i niemal wszystkich elementów, które dotykają go w dowolnym momencie.
+Zawiera on informacje o tym, kto napisał kod, kiedy został dodany, w jaki sposób został przejmowany pod uwagę pod względami bezpieczeństwa, znane luki w zabezpieczeniach, obsługiwane wersje, informacje o licencjach i wszystkie elementy, które go dotykają w dowolnym momencie procesu.
 
-Łańcuch dostaw obejmuje również inne części stosu niż pojedyncze aplikacje, takie jak skrypty kompilacji i pakowania lub oprogramowanie, na których bazuje aplikacja.
+Łańcuch dostaw obejmuje również inne części stosu poza pojedynczą aplikacją, takie jak skrypty kompilacji i pakowania lub oprogramowanie, które uruchamia infrastrukturę, na których opiera się aplikacja.
 
 ## <a name="vulnerabilities"></a>Luki w zabezpieczeniach
 
-Obecnie zależności oprogramowania są rozpowszechnione. Istnieje bardzo częste dla projektów, które umożliwiają korzystanie z setek zależności typu open source dla funkcji, które nie były jeszcze przeznaczone do pisania. Może to oznaczać, że większość aplikacji składa się z kodu, który nie został utworzony. 
+Obecnie zależności oprogramowania są bardzo pervasive. Dość często w projektach używa się setek zależności typu open source dla funkcji, których nie trzeba pisać samodzielnie. Może to oznaczać, że większość aplikacji składa się z kodu, który nie został przez Ciebie autorstwa. 
 
-![Stan Octoverse 2020 — zależności](media/dependencies.png)
+![Stan października 2020 r. — zależności](media/dependencies.png)
 
-Możliwe luki w zabezpieczeniach innych firm lub w zależności od źródła, są najprawdopodobniej niezależnie od tego, jak napisano kod, co może spowodować potencjalne zagrożenia bezpieczeństwa w łańcuchu dostaw.
+Możliwe luki w zabezpieczeniach w zależnościach od innych firm lub typu open source to prawdopodobnie zależności, którymi nie można sterować tak ściśle jak pisany kod, co może tworzyć potencjalne zagrożenia bezpieczeństwa w łańcuchu dostaw.
 
-Jeśli jedna z tych zależności ma lukę w zabezpieczeniach, prawdopodobnie masz również lukę w zabezpieczeniach. Może to być Scary, ponieważ jedna z zależności może ulec zmianie bez wiedzy użytkownika. Nawet jeśli w danej chwili istnieje luka w zabezpieczeniach, ale nie jest ona wykorzystywana, może ona być wykorzystywana w przyszłości. 
+Jeśli jedna z tych zależności ma lukę w zabezpieczeniach, istnieje również prawdopodobieństwo, że istnieje luka w zabezpieczeniach. Może to być straszne, ponieważ jedna z zależności może ulec zmianie bez Twojej wiedzy. Nawet jeśli luka w zabezpieczeniach istnieje obecnie w zależności, ale nie można jej wykorzystać, można ją wykorzystać w przyszłości. 
 
-Możliwość korzystania z tysięcy deweloperów typu "open source" i autorów biblioteki oznacza, że tysiące obcych elementów mogą efektywnie współtworzyć bezpośrednio z kodem produkcyjnym. Produkt, za pomocą łańcucha dostaw oprogramowania, ma wpływ nienaruszone luki, nieszkodliwe błędy lub nawet złośliwe ataki na zależności.
+Możliwość wykorzystania pracy tysięcy deweloperów i autorów bibliotek typu open source oznacza, że tysiące bibliotek może efektywnie współtwarzyć bezpośrednio w kodzie produkcyjnym. Na Twój produkt, za pośrednictwem łańcucha dostaw oprogramowania, wpływają niewprawkowane luki w zabezpieczeniach, błędy złych ludzi, a nawet złośliwe ataki na zależności.
 
-## <a name="supply-chain-compromises"></a>Kompromisy dotyczące łańcucha dostaw
+## <a name="supply-chain-compromises"></a>Naruszenia łańcucha dostaw
 
-Tradycyjna definicja łańcucha dostaw pochodzi z produkcji; jest to łańcuch procesów wymaganych do wypróbowania i dostarczenia elementu. Obejmuje to planowanie, dostawę materiałów, produkcję i sprzedaż detaliczną. Łańcuch dostaw oprogramowania jest podobny, z wyjątkiem przypadków, gdy nie są materiałami, jest to kod. Zamiast produkcji, jest to programowanie. Zamiast przeszukiwanie stosów rudy od podstaw, kod jest pochodzący od dostawców, komercyjnych lub Open Source, a ogólnie rzecz biorąc, kod typu open source pochodzi z repozytoriów. Dodanie kodu z repozytorium oznacza, że produkt przyjmuje zależność od tego kodu.
+Tradycyjna definicja łańcucha dostaw pochodzi z produkcji. jest to łańcuch procesów wymaganych do ich produkcji i dostarczania. Obejmuje planowanie, dostarczanie materiałów, produkcja i sprzedaż detaliczną. Łańcuch dostaw oprogramowania jest podobny, z wyjątkiem tego, że zamiast materiałów jest to kod. Zamiast produkcji, jest to rozwój. Zamiast zagłębiać się w ore z ziemi, kod jest pozytywowany od dostawców, komercyjnych lub open source, a ogólnie rzecz biorąc, kod typu open source pochodzi z repozytoriów. Dodanie kodu z repozytorium oznacza, że produkt jest zależny od tego kodu.
 
-Przykład ataku w łańcuchu dostaw oprogramowania występuje, gdy złośliwy kod jest celowo całkowicie dodawany do zależności, przy użyciu łańcucha dostaw tej zależności do dystrybuowania kodu do ofiar. Ataki łańcucha dostaw są prawdziwe. Istnieje wiele metod ataku łańcucha dostaw, bezpośrednio wstawiając złośliwy kod jako nowy współautor, aby przejąć konto współautora bez innych obserwowanie, lub nawet narażać klucz podpisywania w celu dystrybucji oprogramowania, które nie jest oficjalnie częścią tej zależności.
+Jednym z przykładów ataku łańcucha dostaw oprogramowania jest celowe dodanie złośliwego kodu do zależności przy użyciu łańcucha dostaw tej zależności w celu dystrybucji kodu do ofiar. Ataki na łańcuch dostaw są prawdziwe. Istnieje wiele metod ataku na łańcuch dostaw, od bezpośredniego wstawiania złośliwego kodu jako nowego współautora, przez przejęcie konta współautora bez zacałowania innych osób, a nawet naruszenia klucza podpisywania w celu rozpowszechniania oprogramowania, które nie jest oficjalnie częścią zależności.
 
-Atak łańcucha dostaw oprogramowania polega na tym, że rzadko jest to cel końcowy, a tym samym na początku szansa, że osoba atakująca może wstawić złośliwe oprogramowanie lub tylne wejście do przyszłego dostępu.
+Atak łańcucha dostaw oprogramowania rzadko stanowi cel końcowy, a raczej początek możliwości wstawienia złośliwego oprogramowania lub zapewnienia tylnego dostępu w przyszłości.
 
-![Stan Octoverse 2020 — cykl życia luki w zabezpieczeniach](media/vulnerability-lifecycle.png)
+![Stan października 2020 r. — cykl życia luk w zabezpieczeniach](media/vulnerability-lifecycle.png)
 
-## <a name="unpatched-software"></a>Niepoprawione oprogramowanie
+## <a name="unpatched-software"></a>Oprogramowanie bez zainstalowanej wersji
 
-Korzystanie z programu Open Source dzisiaj jest istotne i nie jest oczekiwane wkrótce. Z uwagi na to, że nie będziemy zatrzymywać korzystania z oprogramowania "open source", zagrożenie związane z zabezpieczeniami łańcucha jest Niepoprawione. Jak to zrobić, jak można rozwiązać ryzyko związane z usterką w zależności od projektu?
+Obecnie użycie open source jest znaczące i nie należy spodziewać się, że spowolnienie w dowolnym momencie. Ze względu na to, że nie zamierzamy przestać korzystać z oprogramowania open source, zagrożeniem dla bezpieczeństwa łańcucha dostaw jest oprogramowanie nieoprawione. Jak można rozwiązać ryzyko związane z luką w zabezpieczeniach w zależności od projektu?
 
-- **Zapoznaj się z informacjami w Twoim środowisku.** Wymaga to odnajdywania zależności i wszelkich zależności przechodnich, aby zrozumieć ryzyko tych zależności, takich jak luki w zabezpieczeniach lub ograniczenia licencjonowania.
-- **Zarządzanie zależnościami.** Po wykryciu nowej luki w zabezpieczeniach należy określić, czy ma to wpływ, a jeśli tak, należy zaktualizować najnowszą wersję i poprawkę zabezpieczeń. Jest to szczególnie ważne, aby przejrzeć zmiany, które wprowadzają nowe zależności lub regularnie przeprowadzają inspekcję starszych zależności.
-- **Monitoruj łańcuch dostaw.** W tym celu należy przeprowadzić inspekcję kontrolowanych kontrolek w celu zarządzania zależnościami. Pomoże to wymusić spełnienie bardziej restrykcyjnych warunków dla zależności.
+- **Znajomość tego, co znajduje się w Twoim środowisku.** Wymaga to odnajdywania zależności i zależności przechodniej w celu zrozumienia ryzyka związanego z tymi zależnościami, takich jak luki w zabezpieczeniach lub ograniczenia licencjonowania.
+- **Zarządzanie zależnościami.** Po odkryeniu nowej luki w zabezpieczeniach należy określić, czy ma to wpływ, a jeśli tak, zaktualizować do najnowszej dostępnej wersji i poprawki zabezpieczeń. Jest to szczególnie ważne, aby przejrzeć zmiany, które wprowadzają nowe zależności, lub regularnie przeprowadzać inspekcję starszych zależności.
+- **Monitorowanie łańcucha dostaw.** Odbywa się to przez inspekcję posiadanych kontrolek do zarządzania zależnościami. Pomoże to wymusić bardziej restrykcyjne warunki, które zostaną spełnione dla zależności.
 
-![Stan Octoverse 2020-Advisors](media/advisories.png)
+![The State of the Octoverse 2020 - Advisories](media/advisories.png)
 
-Będziemy omawiać różne narzędzia i techniki, które zapewnia pakiet NuGet i GitHub, których możesz użyć dzisiaj do rozwiązywania potencjalnych zagrożeń w projekcie. 
+Zostaną pokrytą różnymi narzędziami i technikami NuGet i GitHub, których można obecnie używać do zarządzania potencjalnymi zagrożeniami w projekcie. 
 
-## <a name="knowing-what-is-in-your-environment"></a>Informacje o tym, co jest w Twoim środowisku
+## <a name="knowing-what-is-in-your-environment"></a>Znajomość tego, co znajduje się w Twoim środowisku
 
-### <a name="nuget-dependency-graph"></a>Wykres zależności NuGet
+### <a name="nuget-dependency-graph"></a>NuGet wykres zależności
 
-**📦 Odbiorca pakietu**
+**📦 Konsument pakietu**
 
-Możesz wyświetlić zależności NuGet w projekcie, patrząc bezpośrednio na odpowiedni plik projektu.
+Możesz wyświetlić swoje NuGet w projekcie, patrząc bezpośrednio na odpowiedni plik projektu.
 
-Jest to zazwyczaj dostępne w jednym z dwóch miejsc:
+Zwykle znajduje się on w jednym z dwóch miejsc:
 
--   [`packages.config`](../reference/packages-config.md) — Znajduje się w katalogu głównym projektu.
--   [`<PackageReference>`](../consume-packages/package-references-in-project-files.md) — Znajduje się w pliku projektu. 
+-   [`packages.config`](../reference/packages-config.md) — znajduje się w katalogu głównym projektu.
+-   [`<PackageReference>`](../consume-packages/package-references-in-project-files.md) — znajduje się w pliku projektu. 
 
-W zależności od metody używanej do zarządzania zależnościami NuGet można także użyć programu Visual Studio, aby wyświetlić zależności bezpośrednio w programie [Eksplorator rozwiązań](/visualstudio/ide/solutions-and-projects-in-visual-studio#solution-explorer) lub [Menedżera pakietów NuGet](../consume-packages/install-use-packages-visual-studio.md).
+W zależności od metody zarządzania zależnościami NuGet można również użyć funkcji Visual Studio, aby wyświetlić zależności bezpośrednio w [programie Eksplorator rozwiązań](/visualstudio/ide/solutions-and-projects-in-visual-studio#solution-explorer) lub [NuGet Menedżer pakietów](../consume-packages/install-use-packages-visual-studio.md).
 
-W przypadku środowisk interfejsu wiersza polecenia można użyć [`dotnet list package`](/dotnet/core/tools/dotnet-list-package) polecenie, aby wyświetlić listę zależności projektu lub rozwiązania. 
+W przypadku środowisk interfejsu wiersza polecenia możesz użyć polecenia , aby wyświetlić listę zależności [`dotnet list package`](/dotnet/core/tools/dotnet-list-package) projektu lub rozwiązania. 
 
-Aby uzyskać więcej informacji na temat zarządzania zależnościami NuGet, [Zobacz następującą dokumentację](../consume-packages/overview-and-workflow.md).
+Aby uzyskać więcej informacji na temat NuGet zależności, [zobacz następującą dokumentację.](../consume-packages/overview-and-workflow.md)
 
 ### <a name="github-dependency-graph"></a>Wykres zależności usługi GitHub 
 
-**📦 Odbiorca pakietu | 📦🖊 Autor pakietu**
+**📦 Pakiet dla konsumentów | 📦🖊 Autor pakietu**
 
-Możesz użyć grafu zależności usługi GitHub, aby zobaczyć pakiety, od których zależy projekt, oraz repozytoria, które są od niego zależne. Może to pomóc w znalezieniu luk w zabezpieczeniach.
+Możesz użyć GitHub zależności, aby zobaczyć pakiety, od których zależy projekt, oraz repozytoria, które od niego zależą. Może to pomóc w zobaczeniu wszelkich luk w zabezpieczeniach wykrytych w jego zależnościach.
 
-Więcej informacji o zależnościach repozytorium GitHub znajduje się w [następującej dokumentacji](https://github.co/dependency-graph).
+Aby uzyskać więcej informacji GitHub zależności repozytorium, [zobacz następującą dokumentację.](https://github.co/dependency-graph)
 
 ### <a name="dependency-versions"></a>Wersje zależności
 
-**📦 Odbiorca pakietu | 📦🖊 Autor pakietu**
+**📦 Pakiet dla konsumentów | 📦🖊 Autor pakietu**
 
-Aby zapewnić bezpieczny łańcuch dostaw zależności, należy upewnić się, że wszystkie zależności & narzędzia są regularnie aktualizowane do najnowszej stabilnej wersji, ponieważ będą często obejmować najnowsze funkcje i poprawki zabezpieczeń znanych luk w zabezpieczeniach. Twoje zależności mogą obejmować kod, od którego jest zależny, pliki binarne, z których korzystasz oraz inne składniki. Może to obejmować:
+Aby zapewnić bezpieczny łańcuch dostaw zależności, należy upewnić się, że wszystkie narzędzia & zależności są regularnie aktualizowane do najnowszej stabilnej wersji, ponieważ często obejmują one najnowsze funkcje i poprawki zabezpieczeń do znanych luk w zabezpieczeniach. Zależności mogą obejmować kod, od których korzystasz, używane pliki binarne, używane narzędzia i inne składniki. Może to obejmować:
 
 -   [Visual Studio](https://visualstudio.microsoft.com/downloads/)
--   [Środowisko uruchomieniowe & .NET SDK](https://dotnet.microsoft.com/download)
+-   [Środowisko uruchomieniowe zestawu SDK & .NET](https://dotnet.microsoft.com/download)
 -   [NuGet](https://www.nuget.org/downloads)
 -   [Pakiety NuGet](../consume-packages/reinstalling-and-updating-packages.md)
 
 ## <a name="manage-your-dependencies"></a>Zarządzanie zależnościami
 
-### <a name="nuget-deprecated-and-vulnerable-dependencies"></a>Przestarzałe i zagrożone rozwiązania NuGet
+### <a name="nuget-deprecated-and-vulnerable-dependencies"></a>NuGet przestarzałe i narażone na zagrożenia zależności
 
-**📦 Odbiorca pakietu | 📦🖊 Autor pakietu**
+**📦 Pakiet dla konsumentów | 📦🖊 Autor pakietu**
 
-Możesz użyć [interfejsu wiersza polecenia dotnet](/dotnet/core/tools/dotnet-list-package) , aby wyświetlić wszystkie znane przestarzałe lub zagrożone zależności, które mogą znajdować się w projekcie lub rozwiązaniu. Możesz użyć polecenia lub, `dotnet list package --deprecated` `dotnet list package --vulnerable` Aby dostarczyć listę znanych przestarzałych lub luk w zabezpieczeniach.
+Za pomocą interfejsu wiersza [polecenia dotnet można](/dotnet/core/tools/dotnet-list-package) wyświetlić listę wszelkich znanych przestarzałych lub narażonych zależności, które mogą się pojawić w projekcie lub rozwiązaniu. Możesz użyć polecenia lub , aby podać listę znanych `dotnet list package --deprecated` wyerenowania lub luk w `dotnet list package --vulnerable` zabezpieczeniach.
 
-### <a name="github-vulnerable-dependencies"></a>Zależności narażone na usługi GitHub
+### <a name="github-vulnerable-dependencies"></a>GitHub zależności narażone na zagrożenia
 
-**📦 Odbiorca pakietu | 📦🖊 Autor pakietu**
+**📦 Pakiet dla konsumentów | 📦🖊 Autor pakietu**
 
-Jeśli projekt jest hostowany w serwisie GitHub, możesz wykorzystać [zabezpieczenia usługi GitHub](https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/automatically-scanning-your-code-for-vulnerabilities-and-errors) , aby znaleźć luki w zabezpieczeniach i błędy w projekcie, a Dependabot naprawi je, otwierając żądanie ściągnięcia względem bazy kodu. 
+Jeśli projekt jest hostowany na platformie GitHub, możesz użyć usługi [GitHub Security,](https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/automatically-scanning-your-code-for-vulnerabilities-and-errors) aby znaleźć luki w zabezpieczeniach i błędy w projekcie, a dependabot naprawi je, otwierając żądanie ściągnięcie względem bazy kodu. 
 
-Przechwycenie zależnych zależności przed wprowadzeniem jest jednym z celów przenoszenia przesunięcia w [lewo](https://en.wikipedia.org/wiki/Shift-left_testing) . W ten sposób można uzyskać informacje o zależnościach, takich jak ich licencja, zależności przechodnie i wiek.
+Wychwytanie zależności narażonych na zagrożenia przed ich wprowadzeniem jest jednym z celem ruchu ["Shift Left".](https://en.wikipedia.org/wiki/Shift-left_testing) Możliwość zawierania informacji o zależnościach, takich jak licencja, zależności przechodnie i wiek zależności, właśnie to ułatwia.
 
-Aby uzyskać więcej informacji na temat alertów Dependabot & aktualizacji zabezpieczeń, [Zobacz następującą dokumentację](https://docs.github.com/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies).
+Aby uzyskać więcej informacji na temat alertów funkcji Dependabot & aktualizacji zabezpieczeń, [zobacz następującą dokumentację.](https://docs.github.com/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies)
 
-### <a name="nuget-feeds"></a>Źródła danych NuGet
+### <a name="nuget-feeds"></a>NuGet informacyjne
 
-**📦 Odbiorca pakietu**
+**📦 Konsument pakietu**
 
-W przypadku korzystania z wielu & publicznych danych prywatnych źródeł NuGet, można pobrać pakiet z dowolnego źródła. Aby upewnić się, że kompilacja jest przewidywalna i zabezpieczona przed znanymi atakami, takimi jak [nieporozumienie zależności](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610), wiedząc, z których konkretnych źródeł pochodzą Twoje pakiety, to najlepsze rozwiązanie. Do ochrony można użyć pojedynczego źródła danych lub prywatnego kanału informacyjnego.
+W przypadku korzystania z & prywatnych NuGet źródła danych pakiet można pobrać z dowolnego źródła danych. Aby upewnić się, że kompilacja jest przewidywalna i bezpieczna przed znanymi atakami, takimi jak błąd [zależności,](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610)najlepszym rozwiązaniem jest znajomość określonych źródeł danych, z których pochodzą pakiety. W celu ochrony można użyć pojedynczego kanału informacyjnego lub prywatnego źródła danych z możliwościami nadrzędnego.
 
-Aby uzyskać więcej informacji na temat zabezpieczania kanałów informacyjnych pakietu, zobacz [trzy sposoby zmniejszania ryzyka podczas korzystania z prywatnych źródeł pakietów](https://azure.microsoft.com/en-us/resources/3-ways-to-mitigate-risk-using-private-package-feeds/).
+Aby uzyskać więcej informacji na temat zabezpieczania źródeł danych pakietów, zobacz [3 Ways to Mitigate Risk When Using Private Package Feeds (3 Sposoby](https://azure.microsoft.com/resources/3-ways-to-mitigate-risk-using-private-package-feeds/)ograniczania ryzyka w przypadku korzystania z prywatnych źródeł danych pakietów).
 
 ### <a name="client-trust-policies"></a>Zasady zaufania klienta
 
-**📦 Odbiorca pakietu**
+**📦 Konsument pakietu**
 
-Istnieją zasady, w których można wybrać, które pakiety mają być podpisane. Pozwala to na ufanie autorowi pakietu, o ile jest on podpisany, lub zaufaniem do pakietu, jeśli jest własnością określonego użytkownika lub konta, które jest repozytorium podpisane przez NuGet.org.
+Istnieją zasady, z którymi można się zrezygnować, wymagając podpisania pakietów, których używasz. Dzięki temu można ufać autorowi pakietu, o ile został on podpisany, lub ufać pakietowi, jeśli jest on własnością określonego użytkownika lub konta podpisanego przez NuGet.org.
 
-Aby skonfigurować zasady zaufania klienta, [zapoznaj się z poniższą dokumentacją](../consume-packages/installing-signed-packages.md).
+Aby skonfigurować zasady zaufania klienta, [zapoznaj się z następującą dokumentacją.](../consume-packages/installing-signed-packages.md)
 
-### <a name="lock-files"></a>Zablokuj pliki
+### <a name="lock-files"></a>Blokowanie plików
 
-**📦 Odbiorca pakietu**
+**📦 Konsument pakietów**
 
-Pliki blokad przechowują skrót zawartości pakietu. Jeśli skrót zawartości pakietu, który chcesz zainstalować, jest zgodny z plikiem blokady, zagwarantuje powtarzalność opakowania.
+Pliki blokady przechowują skrót zawartości pakietu. Jeśli skrót zawartości pakietu, który chcesz zainstalować, pasuje do pliku blokady, zapewni to powtarzalność pakietu.
 
-Aby włączyć pliki blokad, [zapoznaj się z poniższą dokumentacją](../consume-packages/package-references-in-project-files.md#locking-dependencies).
+Aby włączyć pliki blokady, [zobacz następującą dokumentację.](../consume-packages/package-references-in-project-files.md#locking-dependencies)
 
 ## <a name="monitor-your-supply-chain"></a>Monitorowanie łańcucha dostaw
 
 ### <a name="github-secret-scanning"></a>Skanowanie wpisów tajnych usługi GitHub
 
-**📦🖊 Autor pakietu**
+**📦🖊 Tworzenie pakietu**
 
-W witrynie GitHub są skanowane repozytoria kluczy interfejsu API NuGet, które uniemożliwiają fałszywe użycie wpisów tajnych, które zostały przypadkowo zatwierdzone. 
+GitHub repozytoria w poszukiwaniu kluczy interfejsu API NuGet, aby zapobiec fałszywemu użyciu wpisów tajnych, które zostały przypadkowo zatwierdzone. 
 
-Aby dowiedzieć się więcej o skanowaniu tajnym, zobacz [Informacje o skanowaniu tajnym](https://docs.github.com/en/github/administering-a-repository/about-secret-scanning).
+Aby dowiedzieć się więcej na temat skanowania pod kluczami tajnymi, zobacz About secret scanning (Informacje [o skanowaniu tajnym).](https://docs.github.com/en/github/administering-a-repository/about-secret-scanning)
 
-### <a name="author-package-signing"></a>Tworzenie podpisywania pakietu
+### <a name="author-package-signing"></a>Tworzenie podpisywania pakietów
 
-**📦🖊 Autor pakietu**
+**📦🖊 Tworzenie pakietu**
 
-[Podpisywanie autora](../reference/signed-packages-reference.md) pozwala autorowi pakietu na sygnaturę w pakiecie i dla konsumenta, aby go zweryfikować. Chroni to przed naruszeniem zawartości i służy jako pojedyncze Źródło prawdziwie informacji o pochodzeniu pakietu i autentyczności pakietu. W połączeniu z zasadami zaufania klienta można zweryfikować pakiet pochodzący od określonego autora.
+[Podpisywanie autora](../reference/signed-packages-reference.md) umożliwia autorowi pakietu sygnaturę tożsamości na pakiecie, a użytkownik może sprawdzić, czy pochodzi od Ciebie. Chroni to przed naruszeniami zawartości i służy jako pojedyncze źródło prawdziwych informacji o pochodzeniu pakietu i autentyczności pakietu. W połączeniu z zasadami zaufania klienta można sprawdzić, czy pakiet pochodzi od określonego autora.
 
-Aby utworzyć Podpisz pakiet, zobacz [Podpisz pakiet](../create-packages/sign-a-package.md).
+Aby podpisania pakietu przez autora, zobacz [Podpisywanie pakietu](../create-packages/sign-a-package.md).
 
-### <a name="two-factor-authentication-2fa"></a>Uwierzytelnianie Two-Factor (funkcji 2FA)
+### <a name="two-factor-authentication-2fa"></a>Two-Factor uwierzytelniania (2FA)
 
-**📦🖊 Autor pakietu**
+**📦🖊 Tworzenie pakietu**
 
-Włączenie uwierzytelniania dwuskładnikowego (funkcji 2FA) może dodać dodatkową warstwę zabezpieczeń podczas [logowania do konta usługi GitHub](https://docs.github.com/en/github/authenticating-to-github/securing-your-account-with-two-factor-authentication-2fa) lub [repozytorium pakietu publicznego NuGet.org](../nuget-org/individual-accounts.md#enable-two-factor-authentication-2fa). Zaleca się włączenie uwierzytelniania dwuskładnikowego w celu ochrony Twojego konta.
+Włączenie uwierzytelniania dwuskładnikowego (2FA) może dodać dodatkową warstwę zabezpieczeń podczas logowania się do konta [usługi GitHub](https://docs.github.com/en/github/authenticating-to-github/securing-your-account-with-two-factor-authentication-2fa) lub publicznego repozytorium pakietów [NuGet.org.](../nuget-org/individual-accounts.md#enable-two-factor-authentication-2fa) Zaleca się włączenie uwierzytelniania dwuskładnikowego w celu ochrony konta.
 
 ### <a name="package-id-prefix-reservation"></a>Rezerwowanie prefiksów identyfikatorów pakietów 
 
-**📦🖊 Autor pakietu**
+**📦🖊 Tworzenie pakietu**
 
-Aby chronić tożsamość pakietów, można zarezerwować prefiks identyfikatora pakietu z odpowiednią przestrzenią nazw w celu skojarzenia pasującego właściciela, jeśli prefiks identyfikatora pakietu jest prawidłowo objęty [określonymi kryteriami](../nuget-org/id-prefix-reservation.md#id-prefix-reservation-criteria). 
+Aby chronić tożsamość pakietów, można zarezerwować prefiks identyfikatora pakietu z odpowiednią przestrzenią nazw, aby skojarzyć pasującego właściciela, jeśli prefiks identyfikatora pakietu prawidłowo spełnia [określone kryteria](../nuget-org/id-prefix-reservation.md#id-prefix-reservation-criteria). 
 
-Aby dowiedzieć się więcej o sposobie rezerwowania prefiksów, zobacz temat [rezerwacja prefiksów identyfikatora pakietu](../nuget-org/id-prefix-reservation.md).
+Aby dowiedzieć się więcej na temat rezerwowania prefiksów identyfikatorów, zobacz [Rezerwacja prefiksów identyfikatorów pakietów](../nuget-org/id-prefix-reservation.md).
 
-### <a name="deprecating-and-unlisting-a-vulnerable-package"></a>Wycofanie i wycofanie listy zagrożonego pakietu
+### <a name="deprecating-and-unlisting-a-vulnerable-package"></a>Wycofaniu i wycofaniu pakietu narażonego na zagrożenia
 
-**📦🖊 Autor pakietu**
+**📦🖊 Tworzenie pakietu**
 
-Aby zapewnić ochronę ekosystemu pakietu .NET w przypadku wystąpienia luki w zabezpieczeniach w pakiecie, który został utworzony, należy się zaniechać i wycofać z listy pakietów, aby był on ukryty przed użytkownikami wyszukiwania pakietów. Jeśli używasz pakietu, który jest przestarzały i nie jest wystawiony, należy unikać używania pakietu.
+Aby chronić ekosystem pakietów .NET, gdy masz świadomość luki w zabezpieczeniach w pakiecie, który został przez Ciebie autorstwa, jak najlepiej, aby wycofać i wyeksskrybować pakiet, aby był ukryty przed użytkownikami wyszukując pakiety. Jeśli używasz pakietu, który jest przestarzały i nie znajduje się na liście, należy unikać używania pakietu.
 
-Aby dowiedzieć się, jak wycofać i rozpakować pakiet, zapoznaj się [z](../nuget-org/deprecate-packages.md) poniższą dokumentacją dotyczącą wycofywania i [wystawiania pakietów](../nuget-org/policies/deleting-packages.md#unlisting-a-package).
+Aby dowiedzieć się, jak wyeznać i wycofać pakiet z listy, zapoznaj się z następującą dokumentacją dotyczącą wyeznania pakietów jako przestarzałych [i cokończenia ich na liście.](../nuget-org/policies/deleting-packages.md#unlisting-a-package) [](../nuget-org/deprecate-packages.md)
 
 ## <a name="summary"></a>Podsumowanie
 
-Łańcuch dostaw oprogramowania to wszystko, co powoduje lub wpływa na kod. Mimo że kompromisy między łańcuchami dostaw są prawdziwe i rosnące w popularności, nadal są rzadkie; Dzięki temu możesz chronić łańcuch dostaw **, uwzględniając zależności, zarządzanie zależnościami** i **monitorowanie łańcucha dostaw.**
+Łańcuch dostaw oprogramowania to wszystko, co wchodzi w jego kod lub ma na nie wpływ. Mimo że naruszenia łańcucha dostaw są prawdziwe i rosną w popularności, nadal są rzadkie; Dlatego najważniejszą rzeczą, jaką można zrobić, jest ochrona łańcucha dostaw przez świadomość **zależności,** zarządzanie zależnościami i **monitorowanie łańcucha dostaw.**
 
-Znasz różne metody zapewniane przez narzędzia NuGet i [GitHub](/learn/modules/maintain-secure-repository-github/) , które są obecnie dostępne dla Ciebie, aby zwiększyć efektywność wyświetlania i monitorowania łańcucha dostaw oraz zarządzania nim.
+Poznaliśmy różne metody, NuGet i [](/learn/modules/maintain-secure-repository-github/) GitHub, które są dostępne dzisiaj, aby skuteczniej wyświetlać i monitorować łańcuch dostaw oraz zarządzać nim.
 
-Aby uzyskać więcej informacji na temat zabezpieczania oprogramowania na całym świecie, zobacz [stan raportu zabezpieczeń systemu Octoverse 2020](https://octoverse.github.com/static/github-octoverse-2020-security-report.pdf).
+Aby uzyskać więcej informacji na temat zabezpieczania oprogramowania na świecie, zobacz [The State of the Octoverse 2020 Security Report (Stan raportu zabezpieczeń octoverse 2020).](https://octoverse.github.com/static/github-octoverse-2020-security-report.pdf)
